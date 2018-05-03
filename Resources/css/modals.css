@@ -1,0 +1,116 @@
+
+.modal-lg{
+  max-width: 1000px!important;
+  padding-top:100px;
+}
+.modal-content{
+  border-radius:10px!important;
+}
+.modal-body{
+  font-size: 13px;
+}
+.modal-header{
+  background-color:#ccc;
+  color: white;
+  padding: 7px!important;
+}
+.modal-tittle{
+  letter-spacing:10px;
+  font-size:14px;
+}
+.modal-table{
+  border: 0!important;
+  max-width:70%!important;
+  margin: 10px 110px;
+}
+.modal-table2{
+  margin:30px 40px 0px 40px;
+  width:90%!important;
+}
+.modal-table3{
+  border: 0!important;
+  max-width: 90%!important;
+  margin: 10px 40px;
+}
+
+button[type=button].btn-dpol{
+  font-size: 14px!important;
+  border: 1px solid #ccc!important;
+  letter-spacing: 2px!important;
+  background-color: transparent;
+  border-radius: 4px;
+  width: 180px;
+  color: #ccc;
+}
+button[type=button].btn-dpol:hover,button[type=button].btn-dpol:focus{
+  font-size: 14px!important;
+  letter-spacing: 7px!important;
+  color: rgb(209, 28, 28);
+}
+
+#submenuModal{
+  background-color: transparent!important;
+  color: rgb(161, 160, 160)!important;
+
+}
+#submenuModal:hover, #submenuModal:focus{
+  color: rgb(209, 28, 28)!important;
+  cursor: pointer;
+  font-size: 14px;
+}
+#submenuModal2{
+  background-color: transparent!important;
+  color: rgb(161, 160, 160)!important;
+
+}
+#submenuModal2:hover, #submenuModal2:focus{
+  color: rgb(209, 28, 28)!important;
+  cursor: pointer;
+  font-size: 13px;
+}
+.modal-xl{
+  max-width: 1200px!important;
+}
+.effect-21modal{
+  letter-spacing: 4px!important;
+}
+
+#centrar{
+  padding-top: 10px!important;
+}
+.contorno-modal{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0px 3px!important;
+  margin: 8px!important;
+}
+
+.titulograndetop-modal {
+  letter-spacing: 20px;
+  font-size: -webkit-xxx-large!important;
+  color: rgba(161, 28, 0, 0.16);
+  margin: 0px 120px!important;
+  background-color: rgba(194, 189, 189, 0.2);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom: 1px solid rgb(209, 28, 28);
+}
+
+
+.intermedio-modal {
+    background-color: transparent;
+    margin: 0px 120px!important;
+    border: 2px solid #ccc;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.modal-med{
+  max-width: 800px!important;
+  margin-top: 100px!important;
+}
+
+.modal-ch{
+  max-width: 500px!important;
+  margin-top: 100px!important;
+}
