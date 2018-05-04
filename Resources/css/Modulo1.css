@@ -1,43 +1,7 @@
 /* PARA QUITAR FONDO AMARILLO DE LOS INPUTS */
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px white inset;
-}
-input[type=date]{
-  padding-left: 40px;
-}
-input[type=date]:hover{
-  color: rgb(209, 28, 28);
-  font-size: 16px!important;
-}
-input[type=date].data-date:hover{
-  color: rgb(209, 28, 28);
-  font-size: 16px!important;
-}
-input[type=submit]{
-  background-color: transparent!important;
-  color: rgb(110, 110, 110)!important;
-  letter-spacing: 8px;
-}
-input[type=submit]:focus,input[type=submit]:hover{
-  color: rgb(209, 28, 28)!important;
-  font-size: 14px;
-}
-input[type=text].noborder{
-  border: 0!important;
-}
-input:disabled{
-  background: rgba(194, 189, 189, 0.2)!important;
-}
 
-/*Comienzan estilos para Detalle poliza*/
-input[type=date].dpol:hover{
-  font-size: 12px!important;
-  letter-spacing: 6px!important;
-}
-input[type=submit].btn-dpol:hover{
-  font-size: 10px!important;
-  letter-spacing: 12px!important;
-}
+
+
 input.input-dpol{
   background-color:transparent!important;
   letter-spacing:3px!important;
@@ -45,20 +9,7 @@ input.input-dpol{
   font-size:11px!important;
   height: 22px;
 }
-button[type=button].btn{
-  height: 24px;
-  font-size: 14px!important;
-  border: 1px solid #ccc!important;
-  letter-spacing: 2px!important;
-  background-color: transparent;
-  border-radius: 4px;
-  width: 180px;
-  color: #ccc;
-}
-button[type=button].btn:hover{
-  letter-spacing: 5px!important;
-  color: rgb(209, 28, 28);
-}
+
 th.sub, td.sub, div.sub{
   letter-spacing: 7px!important;
   font-size: 12px!important;
@@ -246,16 +197,7 @@ input.reg{
   text-align:center!important;
   color: rgb(75, 74, 74)!important;
 }
-input[type=text].modif {
-  height: 80px;
-  -webkit-transition: height 1s ease-in-out!important;
-  transition: height 1s ease-in-out!important;
-  font-size: 30pt!important;
-}
-input[type=text].modif:focus {
-  height: 110px;
-  font-size: 45pt!important;
-}
+
 #pills{
   background-color: transparent!important;
   color: rgb(161, 160, 160)!important;

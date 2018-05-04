@@ -36,10 +36,10 @@
             <input class="efecto text-center" type="text" readonly value="Estefania">
           </td>
           <td class="col-md-2">
-            <input class="efecto text-center data-date" type="date">
+            <input class="efecto text-center" type="date">
           </td>
           <td class="col-md-2">
-            <input class="efecto text-center data-date" type="date">
+            <input class="efecto text-center" type="date">
           </td>
           <td class="col-md-2">
             <input class="efecto text-center" type="text" readonly value="Nuevo Laredo">
@@ -216,7 +216,7 @@
               </tr>
             </thead>
             <tbody class="">
-              <tr class="row backpink">
+              <tr class="row m-0 backpink">
                 <td class="xs"></td>
                 <td class="small">CUENTA</td>
                 <td class="small">GASTO</td>
@@ -451,7 +451,7 @@
                     <label for="ch-importe">Importe</label>
                   </td>
                   <td class="col-md-3 input-effect brx2">
-                    <input class="efecto text-center data-date" type="text" onfocus="(this.type='date')" id="ch-fecha">
+                    <input class="efecto text-center tiene-contenido" type="date" id="ch-fecha">
                     <label for="ch-fecha">Fecha</label>
                   </td>
                   <td class="col-md-2 input-effect brx2">
@@ -547,7 +547,7 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-3 input-effect brx2">
-                    <input class=" efecto text-center data-date" type="text" onfocus="(this.type='date')" id="otr-fecha">
+                    <input class=" efecto text-center tiene-contenido" type="date" id="otr-fecha">
                     <label for="otr-fecha">Fecha</label>
                   </td>
                   <td class="col-md-2 input-effect brx2">
@@ -583,6 +583,7 @@
                 </tr>
               </thead>
               <tbody>
+
                 <tr class="row m-0">
                   <td class="col-md-6 input-effect brx2">
                     <input  list="transf-bsat" class="efecto input-dpol input-control text-center"  id="transf-bancossat">
@@ -691,7 +692,8 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-1">
-                    <input class="input-dpol input-control dpol noborder" type="text" value="012">
+                    <!-- <input class="input-dpol input-control dpol noborder" type="text" value="012"> -->
+                    <input class="text-center noborder" type="text" value="012">
                   </td>
                   <td class="col-md-4">
                     <input class="input-dpol input-control" type="text" value="012821011521461544">
@@ -754,7 +756,7 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-3 input-effect brx2">
-                    <input class=" efecto input-dpol input-control text-center" type="text" onfocus="(this.type='date')" id="trans-fecha">
+                    <input class=" efecto input-dpol input-control text-center" type="date" id="trans-fecha">
                     <label for="trans-fecha">Fecha</label>
                   </td>
                   <td class="col-md-2 input-effect brx2">

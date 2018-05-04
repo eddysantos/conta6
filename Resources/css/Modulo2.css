@@ -222,16 +222,7 @@ th.subtext, td.subtext {
   cursor: pointer;
   font-size: 18px;
 }
-input[type=text].reg {
-  height: 80px;
-  -webkit-transition: height 1s ease-in-out!important;
-  transition: height 1s ease-in-out!important;
-  font-size: 30pt!important;
-}
-input[type=text].reg:focus {
-  height: 140px;
-  font-size: 45pt!important;
-}
+
 .form2 {
   line-height: 0.8;
 }

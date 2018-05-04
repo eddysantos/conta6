@@ -37,10 +37,10 @@
             <input class="efecto text-center" type="text" readonly value="Estefania">
           </td>
           <td class="col-md-2">
-            <input class=" efecto text-center data-date" type="date">
+            <input class="efecto text-center" type="date">
           </td>
           <td class="col-md-2">
-            <input class=" efecto text-center data-date" type="date">
+            <input class="efecto text-center" type="date">
           </td>
           <td class="col-md-2">
             <input class="efecto text-center" type="text" readonly value="Nuevo Laredo">

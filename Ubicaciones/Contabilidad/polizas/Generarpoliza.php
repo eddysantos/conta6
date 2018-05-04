@@ -32,8 +32,12 @@
       </thead>
       <tbody class="cuerpo">
         <tr class="row m-0">
-          <td class="col-md-3 input-effect brx3">
+          <!-- <td class="col-md-3 input-effect brx3">
             <input class="efecto text-center data-date" type="text" onfocus="(this.type='date')" id="diafecha">
+            <label for="diafecha">Fecha Póliza</label>
+          </td> -->
+          <td class="col-md-3 input-effect brx3">
+            <input class="efecto text-center tiene-contenido" type="date" id="diafecha">
             <label for="diafecha">Fecha Póliza</label>
           </td>
           <td class="col-md-6 input-effect brx3">
@@ -68,7 +72,7 @@
       <tbody class="cuerpo">
         <tr class="row m-0">
           <td class="col-md-3 input-effect brx3">
-            <input class="dpol2 efecto text-center data-date" type="text" onfocus="(this.type='date')" id="ingrefecha">
+            <input class="dpol2 efecto text-center tiene-contenido" type="date" id="ingrefecha">
             <label for="ingrefecha">Fecha Póliza</label>
           </td>
           <td class="col-md-6 input-effect brx3">
@@ -103,7 +107,7 @@
       <tbody class="cuerpo">
         <tr class="row m-0">
           <td class="col-md-3 input-effect brx3">
-            <input class="dpol2 efecto text-center data-date" type="text" onfocus="(this.type='date')" id="chfecha">
+            <input class="dpol2 efecto text-center tiene-contenido" type="date" id="chfecha">
             <label for="chfecha">Fecha Cheque</label>
           </td>
           <td class="col-md-9 input-effect brx3">
@@ -163,7 +167,7 @@
       <tbody class="cuerpo">
         <tr class="row m-0">
           <td class="col-md-3 input-effect brx3">
-            <input class="dpol2 efecto text-center data-date" type="text" onfocus="(this.type='date')" id="antfecha">
+            <input class="dpol2 efecto text-center tiene-contenido" type="date" id="antfecha">
             <label for="antfecha">Fecha Anticipo</label>
           </td>
           <td class="col-md-3 input-effect brx3">

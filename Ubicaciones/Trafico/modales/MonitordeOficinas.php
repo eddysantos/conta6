@@ -73,4 +73,4 @@
   </div>
 </div>
 
-<script src="../js/Trafico.js"></script>
+<script src="/conta6/Ubicaciones/Trafico/js/Trafico.js"></script>
