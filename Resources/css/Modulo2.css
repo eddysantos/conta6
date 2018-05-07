@@ -1,0 +1,244 @@
+.tRepo {
+  letter-spacing: 8px;
+  font-size: xx-large;
+  color: rgba(161, 28, 0, 0.16);
+  width: 1330px;
+  background-color:#fbfbfb;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom: 1px solid  rgb(209, 28, 28);
+}
+.tRepo2 {
+  background-color: rgba(194, 189, 189, 0.2);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid rgb(209, 28, 28);
+  padding: .7rem!important;
+}
+.tRepoNom {
+  color: rgba(161, 28, 0, 0.36);
+  background-color: rgba(194, 189, 189, 0.2);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid rgb(209, 28, 28);
+  padding: .6rem!important;
+  font-size: 14px!important;
+  text-align: center!important;
+}
+.sGrande {
+  display: block;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, .15);
+  font-size: large;
+  height: 40px;
+  width: 100%;
+  color: black;
+}
+.sChico {
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, .15);
+  font-size: 26px!important;
+  height: inherit;
+  color: #aaa;
+  width: inherit;
+}
+.aDatosSm {
+  height: inherit;
+  font-size: 22px!important;
+  text-align: center!important;
+  color: #aaa!important;
+  border-radius: 0.6rem!important;
+}
+.black {
+  color: rgb(75, 74, 74);
+  letter-spacing: 8px;
+}
+a img.icomediano {
+  width:23px;
+}
+a img.icomediano:hover {
+  width:25px;
+}
+a img.icochico {
+  width:18px;
+}
+a img.icochico:hover {
+  width:20px;
+}
+#submenuMed {
+  background-color: transparent!important;
+  color: rgb(161, 160, 160)!important;
+  letter-spacing: 6px!important;
+  font-size: large;
+}
+#submenuMed:hover, #submenuMed:focus {
+  color: rgb(209, 28, 28)!important;
+  cursor: pointer;
+  font-size: 20px;
+}
+#submenuMed:visited {
+  color: black!important;
+}
+
+.submenu {
+  background-color: rgba(254, 113, 113, 0.06);
+  height: 80px;
+}
+div.submenu {
+  padding:12px;
+}
+.submenuMed {
+  background-color: rgba(254, 113, 113, 0.06);
+  height: 50px;
+}
+.submenuch {
+  background-color: rgba(254, 113, 113, 0.06);
+  height: 20px;
+}
+div.submenuMed {
+  padding:10px;
+}
+.acordeon {
+  border-bottom: 1.5px solid rgb(242, 242, 242);
+  font-size: 18px;
+  color: rgb(75, 74, 74)!important;
+}
+.drop {
+  font-size: large;
+  letter-spacing: 7px;
+  margin: 10px!important;
+  background-color: rgba(226, 226, 226, 0.12);
+  color: #8c8c8c!important;
+  border-radius: 8px!important;
+}
+.dropdiv {
+  font-size: large;
+  letter-spacing: 7px;
+  margin: 10px!important;
+  color: #8c8c8c!important;
+  border-radius: 8px!important;
+}
+.contorno {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px 30px 10px 30px!important;
+  margin: 20px!important;
+}
+th.subtext, td.subtext {
+  letter-spacing: 2px!important;
+  font-size: 18px;
+  background-color:rgba(246, 92, 92, 0.09)!important;
+  color:rgb(87, 87, 87)!important;
+  text-align: center!important;
+  line-height: 0.9;
+}
+.cuerpo {
+  font-size: 17px;
+  line-height: 0.9;
+  letter-spacing: 5px;
+  text-align: center!important;
+}
+.blateral {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom-left-radius: 8px;
+}
+.contenidorow {
+  font-size: initial;
+  line-height: 0.9;
+}
+
+.totalrow {
+  font-size: large;
+  color: rgb(117,117,117);
+}
+
+/*Acordeon para Editar*/
+.acordeon2 {
+  flex-direction: column;
+  background-color: #fff;
+  border-top-left-radius: .8rem;
+  border-top-right-radius: .8rem;
+}
+.inpReg {
+  background-color: transparent!important;
+  letter-spacing: 3px!important;
+  text-align: center!important;
+  font-size: 14px!important;
+  height: 28px!important;
+  width: 100%;
+  border-radius: .7rem;
+  border: 1px solid rgba(0, 0, 0, .15);
+}
+.transEff {
+  transition-duration: 0.6s;
+  -webkit-transition-duration: 0.6s;
+  -moz-transition-duration: 0.6s;
+  transition-property: all;
+  -webkit-transition-property: all;
+}
+.intermedio {
+  background-color:transparent;
+  width: 700px;
+  margin: 0px 370px!important;
+  border: 2px solid #ccc;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.titulograndetop {
+  letter-spacing: 20px;
+  font-size:-webkit-xxx-large!important;
+  color: rgba(161, 28, 0, 0.16);
+  width: 700px;
+  margin: 0px 370px!important;
+  background-color: rgba(194, 189, 189, 0.2);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom: 1px solid  rgb(209, 28, 28);
+}
+.contenedor {
+  margin-top:100px!important;
+  border-radius: 20px;
+}
+.atras {
+  background-color: transparent!important;
+  color: rgb(161, 160, 160)!important;
+  letter-spacing: 3px!important;
+  font-size: 16px;
+}
+.atras:hover, .atras:focus {
+  color: rgb(209, 28, 28)!important;
+  cursor: pointer;
+  font-size: 18px;
+}
+.regresar {
+  background-color: transparent!important;
+  color: rgb(161, 160, 160)!important;
+  letter-spacing: 3px!important;
+  font-size: 16px;
+}
+.regresar:hover, .regresar:focus {
+  color: rgb(209, 28, 28)!important;
+  cursor: pointer;
+  font-size: 18px;
+}
+input[type=text].reg {
+  height: 80px;
+  -webkit-transition: height 1s ease-in-out!important;
+  transition: height 1s ease-in-out!important;
+  font-size: 30pt!important;
+}
+input[type=text].reg:focus {
+  height: 140px;
+  font-size: 45pt!important;
+}
+.form2 {
+  line-height: 0.8;
+}
+a img.file2 {
+    width: 18px;
+    margin: 0px 5px;
+}
+a img.file2:hover {
+    width: 20px;
+}

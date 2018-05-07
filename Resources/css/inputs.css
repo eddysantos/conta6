@@ -1,0 +1,68 @@
+
+
+.efecto{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: 30px;
+  width: 100%;
+  text-align: center!important;
+}
+
+.efecto ~ label{
+  position: absolute;
+  left: 3px;
+  width: 100%;
+  top: 12px;
+  color: #afacac;
+  transition: 0.3s;
+  z-index: 1;
+  font-size: 14px
+}
+.efecto:focus ~ label, .tiene-contenido.efecto ~ label{
+  top: -12px;
+  font-size: 14px;
+  color: #d59f9f;
+  transition: 0.3s;
+}
+
+.data-date{
+  display: block;
+  width: 100%;
+}
+
+/*LINKS COMO BOTONES*/
+
+.boton{
+  background-color: transparent!important;
+  color: rgb(110, 110, 110)!important;
+  letter-spacing: 2px!important;
+  border: 1px solid #ccc;
+  padding: 4px!important;
+  border-radius: 10px;
+}
+.boton:hover,.boton:focus{
+  color: rgb(217, 0, 0)!important;
+  letter-spacing: 3px!important;
+}
+
+
+.botonrow{
+  background-color: transparent!important;
+  color: rgb(110, 110, 110)!important;
+  letter-spacing: 2px!important;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+.botonrow:hover,.botonrow:focus{
+  color: rgb(217, 0, 0)!important;
+  letter-spacing: 3px!important;
+}
+
+
+input.inp-nom{
+  background-color: transparent;
+  text-align: center;
+  font-size: 16px;
+  height: 22px;
+  color: rgb(136, 136, 136);
+}
