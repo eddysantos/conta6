@@ -61,7 +61,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTE COBRANZA EFECTIVA</td>
                     </tr>
                   </thead>
@@ -135,7 +135,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTES CONTABILIDAD</td>
                     </tr>
                   </thead>
@@ -234,7 +234,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTES FACTURACIÓN</td>
                     </tr>
                   </thead>
@@ -311,7 +311,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTES FINANCIEROS</td>
                     </tr>
                   </thead>
@@ -382,7 +382,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTES IMPUESTOS</td>
                     </tr>
                   </thead>
@@ -460,7 +460,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTES PARA REVISIONES</td>
                     </tr>
                   </thead>

@@ -36,6 +36,8 @@ input[type=submit]:focus,input[type=submit]:hover{
 }
 input[type=text].noborder{
   border: 0!important;
+  text-align: center;
+  background-color: transparent;
 }
 
 input[type=text].modif {
@@ -108,7 +110,8 @@ button[type=button].btn:hover{
   color: #afacac;
   transition: 0.3s;
   z-index: 1;
-  font-size: 14px
+  font-size: 14px;
+  padding-top: 4px;
 }
 .efecto:focus ~ label, .tiene-contenido.efecto ~ label{
   top: -12px;

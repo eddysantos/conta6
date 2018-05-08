@@ -13,7 +13,7 @@
   <div id="contorno"  class="contorno brx4">
   <h5 class="titulo2" style="font-size:15px">REGISTRO EMPLEADOS</h5>
     <div class="acordeon2 text-center">
-      <div class="tRepo2" data-toggle="collapse" href="#collapsegenerales">
+      <div class="encabezado" data-toggle="collapse" href="#collapsegenerales">
         <a  id="bread" class="text-center">DATOS GENERALES</a>
       </div>
       <div id="collapsegenerales" class="card-block collapse">
@@ -142,7 +142,7 @@
     </div>
 
     <div class="acordeon2 text-center brx1">
-      <div class="tRepo2" data-toggle="collapse" href="#collapselaborales">
+      <div class="encabezado" data-toggle="collapse" href="#collapselaborales">
         <a  id="bread">DATOS LABORALES</a>
       </div>
       <div id="collapselaborales" class="card-block collapse">
@@ -281,7 +281,7 @@
     </div>
 
     <div class="acordeon2 text-center brx1">
-      <div class="tRepo2" data-toggle="collapse" href="#collapsetres">
+      <div class="encabezado" data-toggle="collapse" href="#collapsetres">
         <a  id="bread">DISTRIBUCION DE SALARIO</a>
       </div>
       <div id="collapsetres" class="card-block collapse">
@@ -321,7 +321,7 @@
     </div>
 
     <div class="acordeon2 text-center brx1">
-      <div class="tRepo2" data-toggle="collapse" href="#collapsehonasim">
+      <div class="encabezado" data-toggle="collapse" href="#collapsehonasim">
         <a  id="bread">HONORARIOS ASIMILADOS A SALARIOS</a>
       </div>
       <div id="collapsehonasim" class="card-block collapse">
@@ -357,7 +357,7 @@
     <h5 class="titulo2" style="font-size:15px">EMPLEADOS CAPTURADOS</h5>
     <table class="table table-hover">
       <thead>
-        <tr class="row m-0 tRepo2">
+        <tr class="row m-0 encabezado">
           <td class="col-md-1 text-center">Datos</td>
           <td class="col-md-1 text-center">Estatus</td>
           <td class="col-md-1 text-center">Pagar</td>

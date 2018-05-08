@@ -8,13 +8,13 @@
   border-top-left-radius: 8px;
   border-bottom: 1px solid  rgb(209, 28, 28);
 }
-.tRepo2 {
+/* .tRepo2 {
   background-color: rgba(194, 189, 189, 0.2);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   border-bottom: 1px solid rgb(209, 28, 28);
   padding: .7rem!important;
-}
+} */
 .tRepoNom {
   color: rgba(161, 28, 0, 0.36);
   background-color: rgba(194, 189, 189, 0.2);
@@ -25,6 +25,44 @@
   font-size: 14px!important;
   text-align: center!important;
 }
+
+.encabezado{
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid rgb(209, 28, 28);
+  background-color: rgba(194, 189, 189, 0.1);
+  /* padding: .7rem!important; */
+  padding: .1rem!important;
+  text-align: center;
+}
+.font14{
+  font-size: 14px!important;
+}
+.font18{
+  font-size: 18px!important;
+}
+
+.colorRosa{
+  color: rgba(161, 28, 0, 0.36);
+  font-size: 14px!important;
+}
+
+.titulograndetop {
+  letter-spacing: 20px;
+  font-size:-webkit-xxx-large!important;
+  color: rgba(161, 28, 0, 0.16);
+  width: 700px;
+  margin: 0px 370px!important;
+  background-color: rgba(194, 189, 189, 0.2);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom: 1px solid  rgb(209, 28, 28);
+}
+
+
+
+
+
 .sGrande {
   display: block;
   background-color: transparent;
@@ -88,7 +126,7 @@ div.submenu {
   padding:12px;
 }
 .submenuMed {
-  background-color: rgba(254, 113, 113, 0.06);
+  background-color: rgba(254, 113, 113, 0.04);
   height: 50px;
 }
 .submenuch {
@@ -185,19 +223,9 @@ th.subtext, td.subtext {
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
 }
-.titulograndetop {
-  letter-spacing: 20px;
-  font-size:-webkit-xxx-large!important;
-  color: rgba(161, 28, 0, 0.16);
-  width: 700px;
-  margin: 0px 370px!important;
-  background-color: rgba(194, 189, 189, 0.2);
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
-  border-bottom: 1px solid  rgb(209, 28, 28);
-}
+
 .contenedor {
-  margin-top:100px!important;
+  margin-top:150px!important;
   border-radius: 20px;
 }
 .atras {

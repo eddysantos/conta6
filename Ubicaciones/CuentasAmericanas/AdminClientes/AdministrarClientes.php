@@ -26,7 +26,7 @@
   <div id="cta-Generar" class="contorno" style="display:none">
     <table class="table text-center">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row m-0 tRepo2">
+        <tr class="row m-0 encabezado">
           <td class="col-md-12">Datos del Cliente</td>
         </tr>
       </thead>
@@ -190,7 +190,7 @@
     </table>
     <table class="table text-center">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row m-0 tRepo2">
+        <tr class="row m-0 encabezado">
           <td class="col-md-12 ">Modificar Datos del Cliente</td>
         </tr>
       </thead>
@@ -327,7 +327,7 @@
     </table>
     <table class="table text-center">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row m-0 tRepo2">
+        <tr class="row m-0 encabezado">
           <td class="col-md-12 ">Consultar Cliente</td>
         </tr>
       </thead>
@@ -440,7 +440,7 @@
   <div id="cta-credito" class="contorno" style="display:none">
     <table class="table text-center">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row tRepo2">
+        <tr class="row encabezado">
           <td class="col-md-6 text-left">Agregar Credito a Cliente</td>
           <td class="col-md-3 offset-md-3">
             <a href="#creditos"  data-toggle="modal" class="boton btn-block"><img class="icochico" src="/conta6/Resources/iconos/magnifier.svg"> REVISAR CREDITOS</a>

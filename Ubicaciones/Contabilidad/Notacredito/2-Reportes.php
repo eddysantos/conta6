@@ -20,7 +20,7 @@
   <div id="RepoxOficina" class="contorno" style="display:none">
     <table class="table">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row m-0 tRepo2">
+        <tr class="row m-0 encabezado">
           <td class="col-md-12 text-center">Aplización de Condiciones</td>
         </tr>
       </thead>
@@ -61,7 +61,7 @@
   <div id="RepoxCliente" class="contorno" style="display:none">
     <table class="table">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row m-0 tRepo2">
+        <tr class="row m-0 encabezado">
           <td class="col-md-12 text-center">Aplización de Condiciones</td>
         </tr>
       </thead>

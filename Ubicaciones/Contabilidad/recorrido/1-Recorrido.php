@@ -40,7 +40,7 @@
       <form class="form1">
         <table class="table text-center">
           <thead style="font-size: 18px;font-weight: 100;">
-            <tr class="row m-0 tRepo2">
+            <tr class="row m-0 encabezado">
               <td class="col-md-12">Otras Facturas</td>
             </tr>
           </thead>
@@ -121,7 +121,7 @@
     <div class="contorno">
       <table class="table">
         <thead style="font-size: 18px;font-weight: 100;">
-          <tr class="row tRepo2">
+          <tr class="row encabezado">
             <td class="col-md-12 text-center">Consultas</td>
           </tr>
         </thead>
@@ -197,7 +197,7 @@
   <div id="Recor" class="contorno" style="display:none">
     <table class="table text-center">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row tRepo2">
+        <tr class="row encabezado">
           <td class="col-md-12 text-center">CUENTAS PARA RECORRIDO
             <a href=""><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>
           </td>

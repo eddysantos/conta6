@@ -148,7 +148,7 @@
 
     <table class="table brx2 table-hover text-center table-center">
       <thead>
-        <tr class="row tRepoNom brx2">
+        <tr class="row encabezado mt-3">
           <td class="col-md-2">ID OFICINA</td>
           <td class="col-md-2">ID MODULO</td>
           <td class="col-md-2">FECHA INICIAL</td>

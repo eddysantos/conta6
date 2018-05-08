@@ -26,7 +26,7 @@
   <div id="polizadiario" class="contorno" style="display:none">
     <table class="table">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row m-0 tRepo2">
+        <tr class="row m-0 encabezado">
           <td class="col-md-12 text-center">GENERAR POLIZA TIPO 4</td>
         </tr>
       </thead>
@@ -65,7 +65,7 @@
   <div id="polizaingresos" class="contorno" style="display:none">
     <table class="table">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row m-0 tRepo2">
+        <tr class="row m-0 encabezado">
           <td class="col-md-12 text-center">GENERAR POLIZA TIPO 2</td>
         </tr>
       </thead>
@@ -100,7 +100,7 @@
   <div id="cheques" class="contorno" style="display:none">
     <table class="table">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row tRepo2">
+        <tr class="row encabezado">
           <td class="col-md-12 text-center">GENERAR CHEQUE</td>
         </tr>
       </thead>
@@ -160,7 +160,7 @@
   <div id="anticipos" class="contorno" style="display:none">
     <table class="table">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row tRepo2">
+        <tr class="row encabezado">
           <td class="col-md-12 text-center">GENERAR ANTICIPO</td>
         </tr>
       </thead>

@@ -15,18 +15,18 @@
 
 <div id="datosanticipo" class="contorno brx3" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
   <h5 class="titulo">DATOS DE ANTICIPO</h5>
-  <form class="form1" method="post">
+  <form class="form1">
     <table class="table text-center">
-      <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row m-0 tRepoNom" style="font-size:14px">
-          <td class="col-md-1  text-center">POLIZA</td>
-          <td class="col-md-1  text-center">USUARIO</td>
-          <td class="col-md-1  text-center">ANTICIPO</td>
-          <td class="col-md-2  text-center">FECHA REGISTRO</td>
-          <td class="col-md-2  text-center">FECHA ANTICIPO</td>
-          <td class="col-md-1  text-center">OFICINA</td>
-          <td class="col-md-2  text-center">CANCELACION</td>
-          <td class="col-md-2  text-center">NOTA</td>
+      <thead>
+        <tr class="row m-0 encabezado colorRosa">
+          <td class="col-md-1">POLIZA</td>
+          <td class="col-md-1">USUARIO</td>
+          <td class="col-md-1">ANTICIPO</td>
+          <td class="col-md-2">FECHA REGISTRO</td>
+          <td class="col-md-2">FECHA ANTICIPO</td>
+          <td class="col-md-1">OFICINA</td>
+          <td class="col-md-2">CANCELACION</td>
+          <td class="col-md-2">NOTA</td>
         </tr>
       </thead>
       <tbody class="">
@@ -104,9 +104,9 @@
       <div id="one"><!--CAPTURA DE POLIZAS-->
         <div id="capturapoliza" class="contorno-mov">
           <table class="table">
-            <thead style="font-size: 18px;font-weight: 100;">
-              <tr class="row m-0 tRepo2">
-                <td class="col-md-12 text-center">CAPTURA DETALLE DE ANTICIPO</td>
+            <thead class="cuerpo">
+              <tr class="row m-0 encabezado">
+                <td class="col-md-12">CAPTURA DETALLE DE ANTICIPO</td>
               </tr>
             </thead>
             <tbody class="cuerpo">
@@ -201,9 +201,9 @@
 
         <div id="detallepoliza" class="contorno-mov brx1">
           <table class="table table-hover text-center">
-            <thead style="font-size: 18px;font-weight: 100;">
-              <tr class="row tRepo2 m-0">
-                <td class="col-md-12 text-center">DETALLE ANTICIPO</td>
+            <thead class="cuerpo">
+              <tr class="row encabezado m-0">
+                <td class="col-md-12">DETALLE ANTICIPO</td>
               </tr>
             </thead>
             <tbody class="">

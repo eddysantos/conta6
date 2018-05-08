@@ -11,9 +11,9 @@
     </div>
   </div>
 
-  <div id="contorno"   class="contorno brx4">
+  <div id="contorno" class="contorno">
     <div class="acordeon2 text-center">
-      <div class="tRepo2" data-toggle="collapse" href="#CuentasMaestras">
+      <div class="encabezado" data-toggle="collapse" href="#CuentasMaestras">
         <a  id="bread">GENERAR CUENTAS MAESTRAS (Primer Nivel)</a>
       </div>
       <div id="CuentasMaestras" class="card-block collapse mr-20 ml-20">
@@ -81,7 +81,7 @@
     </div>
 
     <div class="acordeon2 text-center brx1">
-      <div class="tRepo2" data-toggle="collapse" href="#collapsetwo">
+      <div class="encabezado" data-toggle="collapse" href="#collapsetwo">
         <a  id="bread">GENERAR CUENTAS DE DETALLE (Segundo Nivel)</a>
       </div>
       <div id="collapsetwo" class="card-block collapse mr-20 ml-20">
@@ -127,7 +127,7 @@
     </div>
 
     <div class="acordeon2 text-center brx1">
-      <div class="tRepo2" data-toggle="collapse" href="#collapsetres">
+      <div class="encabezado" data-toggle="collapse" href="#collapsetres">
         <a  id="bread">GENERAR CUENTAS DE CLIENTES (Segundo Nivel)</a>
       </div>
       <div id="collapsetres" class="card-block collapse ml-20 mr-20">
@@ -155,7 +155,7 @@
     </div>
   </div>
 
-  <div id="contornoEmp" class="contorno brx4" style="display:none;">
+  <div id="contornoEmp" class="contorno" style="display:none;">
     <h5 class="titulo" style="font-size:15px">CATALOGO</h5>
     <table class="table brx2">
       <td class="col-md-12">
@@ -164,9 +164,9 @@
         <a href="#"><img class="icomediano mleftx2" src="/conta6/Resources/iconos/xml.svg"></a>
       </td>
     </table>
-    <table class="table table-hover" id="empleadosCap" style="display:none;">
+    <table class="table table-hover text0-center" id="empleadosCap" style="display:none;">
       <thead>
-        <tr class="row text-center m-0 tRepoNom">
+        <tr class="row  m-0 encabezado">
           <td class="col-md-1"></td>
           <td class="col-md-1">CUENTA</td>
           <td class="col-md-4">DESCRIPCION</td>

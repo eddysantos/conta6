@@ -16,16 +16,16 @@
   <h5 class="titulo">DATOS DE ANTICIPO</h5>
   <form class="form1" method="post">
     <table class="table text-center">
-      <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row tRepoNom" style="font-size:14px">
-          <td class="col-md-1  text-center">POLIZA</td>
-          <td class="col-md-1  text-center">USUARIO</td>
-          <td class="col-md-1  text-center">ANTICIPO</td>
-          <td class="col-md-2  text-center">FECHA REGISTRO</td>
-          <td class="col-md-2  text-center">FECHA ANTICIPO</td>
-          <td class="col-md-1  text-center">OFICINA</td>
-          <td class="col-md-2  text-center">CANCELACION</td>
-          <td class="col-md-2  text-center">NOTA</td>
+      <thead>
+        <tr class="row encabezado colorRosa">
+          <td class="col-md-1">POLIZA</td>
+          <td class="col-md-1">USUARIO</td>
+          <td class="col-md-1">ANTICIPO</td>
+          <td class="col-md-2">FECHA REGISTRO</td>
+          <td class="col-md-2">FECHA ANTICIPO</td>
+          <td class="col-md-1">OFICINA</td>
+          <td class="col-md-2">CANCELACION</td>
+          <td class="col-md-2">NOTA</td>
         </tr>
       </thead>
       <tbody>
@@ -102,7 +102,7 @@
   <div id="detallepoliza" class="contorno brx1">
     <table class="table table-hover text-center">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row tRepo2">
+        <tr class="row encabezado">
           <td class="col-md-12 text-center">DETALLE POLIZA</td>
         </tr>
       </thead>

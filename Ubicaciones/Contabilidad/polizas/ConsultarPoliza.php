@@ -79,7 +79,7 @@
   <div id="detallepoliza" class="contorno brx1">
     <table class="table table-hover text-center">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row tRepo2">
+        <tr class="row encabezado">
           <td class="col-md-12 text-center">DETALLE POLIZA</td>
         </tr>
       </thead>

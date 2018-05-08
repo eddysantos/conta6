@@ -386,7 +386,7 @@
   <div class="contorno brx4">
     <h5 class="titulo" style="font-size:15px">PARAMETROS</h5>
     <div class="acordeon2">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#colapsoArticulo80">
+      <div class="encabezado text-center" data-toggle="collapse" href="#colapsoArticulo80">
         <a  id="bread">ARTICULO 80</a>
       </div>
       <div class="collapse" id="colapsoArticulo80" style="padding:0rem 1.5rem!important;font-size:14px">
@@ -446,7 +446,7 @@
     </div>
 
     <div class="acordeon2 brx1">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#colapsoGenerales">
+      <div class="encabezado text-center" data-toggle="collapse" href="#colapsoGenerales">
         <a  id="bread">GENERALES</a>
       </div>
       <div class="collapse" id="colapsoGenerales" style="padding:0rem 1.5rem!important;font-size:14px">
@@ -528,7 +528,7 @@
     </div>
 
     <div class="acordeon2 brx1">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#colapsofIntegracion">
+      <div class="encabezado text-center" data-toggle="collapse" href="#colapsofIntegracion">
         <a  id="bread">FACTOR DE INTEGRACION</a>
       </div>
       <div class="collapse" id="colapsofIntegracion" style="padding:0rem 1.5rem!important;font-size:14px">
@@ -580,7 +580,7 @@
     </div>
 
     <div class="acordeon2 brx1">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#colapsosubsidio">
+      <div class="encabezado text-center" data-toggle="collapse" href="#colapsosubsidio">
         <a  id="bread">SUBSIDIO AL EMPLEO</a>
       </div>
       <div class="collapse" id="colapsosubsidio" style="padding:0rem 1.5rem!important;font-size:14px">
@@ -636,7 +636,7 @@
     </div>
 
     <div class="acordeon2 brx1">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#colapsoimss">
+      <div class="encabezado text-center" data-toggle="collapse" href="#colapsoimss">
         <a  id="bread">IMSS</a>
       </div>
       <div class="collapse" id="colapsoimss" style="padding:0rem 1.5rem!important;font-size:14px">

@@ -6,21 +6,21 @@
 
 <div class="contorno brx4">
   <h5 class="titulo" style="font-size:15px">CATÁLOGO</h5>
-  <table class="table brx2">
+  <table class="table">
     <tbody class="cuerpo">
-      <tr class="row">
+      <tr class="row m-0">
         <td class="col-md-1">
-          <a><img class="icomediano mleftx2" src="/conta6/Resources/iconos/printer.svg"></a>
+          <a><img class="icomediano ml-2" src="/conta6/Resources/iconos/printer.svg"></a>
         </td>
-        <td class="col-md-3 offset-md-7">
-          <a href="#NuevoCorresponsal"  data-toggle="modal" class="boton btn-block mleftx10"><img class="icochico" src="/conta6/Resources/iconos/add.svg"> AGREGAR NUEVO</a>
+        <td class="col-md-3 offset-md-8">
+          <a href="#NuevoCorresponsal"  data-toggle="modal" class="boton btn-block"><img class="icochico" src="/conta6/Resources/iconos/add.svg"> AGREGAR NUEVO</a>
         </td>
       </tr>
     </tbody>
   </table>
   <table class="table table-hover">
     <thead>
-      <tr class="row text-center m-0 tRepoNom">
+      <tr class="row m-0 encabezado colorRosa">
         <td class="col-md-1"></td>
         <td class="col-md-5">CORRESPONSAL</td>
         <td class="col-md-4">CONTACTO</td>

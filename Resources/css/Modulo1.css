@@ -1,7 +1,5 @@
 /* PARA QUITAR FONDO AMARILLO DE LOS INPUTS */
 
-
-
 input.input-dpol{
   background-color:transparent!important;
   letter-spacing:3px!important;
@@ -10,14 +8,14 @@ input.input-dpol{
   height: 22px;
 }
 
-th.sub, td.sub, div.sub{
+.sub{
   letter-spacing: 7px!important;
   font-size: 12px!important;
   background-color: rgba(138,138,138,0.54)!important;
   font-weight: normal!important;
   color: white!important;
 }
-th.sub2, td.sub2, div.sub2{
+.sub2{
   letter-spacing: 3px!important;
   font-size: 10px!important;
   background-color:rgba(173, 173, 173, 0.1)!important;
@@ -36,8 +34,12 @@ th.iap, td.iap, div.iap{
 .form-control {
     padding: .1rem .7rem;
 }
-.table td, .table th{
+/* .table td, .table th{
   padding: .4rem!important;
+} */
+
+.centrar{
+height: 30px;
 }
 
 h5.titulo{
@@ -273,7 +275,7 @@ h5.titulo-mov {
 .small{
   max-width: 5.9%;
   min-width: 5.9%;
-  font-size: 11px!important;
+  font-size: 12px!important;
 }
 .sm{
   min-width: 8.86%;

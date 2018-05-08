@@ -83,7 +83,7 @@
         <div id="capturapoliza" class="contorno-mov">
           <table class="table">
             <thead style="font-size: 18px;font-weight: 100;">
-              <tr class="row m-0 tRepo2">
+              <tr class="row m-0 encabezado">
                 <td class="col-md-12 text-center">CAPTURA DETALLE POLIZA</td>
               </tr>
             </thead>
@@ -211,7 +211,7 @@
         <div id="detallepoliza" class="contorno-mov brx1">
           <table class="table table-hover text-center">
             <thead style="font-size: 18px;font-weight: 100;">
-              <tr class="row tRepo2 m-0">
+              <tr class="row encabezado m-0">
                 <td class="col-md-12 text-center">DETALLE POLIZA</td>
               </tr>
             </thead>
@@ -284,7 +284,7 @@
           <form class="form1" method="post">
             <table class="table text-center">
               <thead style="font-size: 18px;font-weight: 100;">
-                <tr class="row m-0 tRepo2">
+                <tr class="row m-0 encabezado">
                   <td class="col-md-12">CFD / CBB</td>
                 </tr>
               </thead>
@@ -334,7 +334,7 @@
           <form class="form1"  method="post">
             <table class="table text-center">
               <thead style="font-size: 18px;font-weight: 100;">
-                <tr class="row tRepo2 m-0">
+                <tr class="row encabezado m-0">
                   <td class="col-md-12">CFDI</td>
                 </tr>
                 <tr class="row m-0">
@@ -386,7 +386,7 @@
           <form class="form1" method="post">
             <table class="table text-center">
               <thead style="font-size: 18px;font-weight: 100;">
-                <tr class="row m-0 tRepo2">
+                <tr class="row m-0 encabezado">
                   <td class="col-md-12">CHEQUES</td>
                 </tr>
               </thead>
@@ -472,7 +472,7 @@
           <form class="form1" method="post">
             <table class="table text-center">
               <thead style="font-size: 18px;font-weight: 100;">
-                <tr class="row m-0 tRepo2">
+                <tr class="row m-0 encabezado">
                   <td class="col-md-12">Comprobante Extranjero</td>
                 </tr>
               </thead>
@@ -520,7 +520,7 @@
           <form class="form1">
             <table class="table text-center">
               <thead style="font-size: 18px;font-weight: 100;">
-                <tr class="row m-0 tRepo2">
+                <tr class="row m-0 encabezado">
                   <td class="col-md-12">Otro</td>
                 </tr>
               </thead>
@@ -578,7 +578,7 @@
           <form class="form1">
             <table class="table text-center">
               <thead style="font-size: 18px;font-weight: 100;">
-                <tr class="row m-0 tRepo2">
+                <tr class="row m-0 encabezado">
                   <td class="col-md-12">Transferencia</td>
                 </tr>
               </thead>
