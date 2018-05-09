@@ -35,8 +35,14 @@
   padding: .1rem!important;
   text-align: center;
 }
+.font12{
+  font-size: 12px!important;
+}
 .font14{
   font-size: 14px!important;
+}
+.font16{
+  font-size: 16px!important;
 }
 .font18{
   font-size: 18px!important;
@@ -129,10 +135,10 @@ div.submenu {
   background-color: rgba(254, 113, 113, 0.04);
   height: 50px;
 }
-.submenuch {
+/* .submenuch {
   background-color: rgba(254, 113, 113, 0.06);
   height: 20px;
-}
+} */
 div.submenuMed {
   padding:10px;
 }

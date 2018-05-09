@@ -13,7 +13,7 @@
         <form class="form1">
           <table class="table text-center">
             <thead class="text-normal">
-              <tr class="row submenuch m-0" style="height:30px;padding: .5rem!important;">
+              <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
                 <td class="col-md-3">Inferior</td>
                 <td class="col-md-3">Superior</td>
                 <td class="col-md-3">Cuota</td>

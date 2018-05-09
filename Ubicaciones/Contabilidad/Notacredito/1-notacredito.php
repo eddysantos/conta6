@@ -24,34 +24,34 @@
 
 <!---se muestra al escribir la referencia y dar enter-->
   <div class="contenedor container-fluid cont" id="repoPed" style="display:none">
-    <table class="table">
+    <table class="table text-center">
       <thead>
         <tr class="row">
-          <td class="col-md-12 offset-sm-11 p0">
+          <td class="col-md-1 offset-sm-11">
             <a href="" class="atras" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
           </td>
         </tr>
-        <tr class="row tRepo">
-          <td class="col-md-12 text-center">Facturas Generadas con la misma Referencia</td>
+        <tr class="row encabezado font18">
+          <td class="col-md-12">Facturas Generadas con la misma Referencia</td>
         </tr>
       </thead>
       <tbody>
-        <tr class="row text-normal">
-          <td class="col-md-1 text-center iap">FACTURA</td>
-          <td class="col-md-1 text-center iap">REFERENCIA</td>
-          <td class="col-md-2 text-center iap">POLIZA</td>
-          <td class="col-md-1 text-center iap">CANCELACIÓN</td>
-          <td class="col-md-6 text-center iap">CLIENTE</td>
-          <td class="col-md-1 text-center iap"></td>
+        <tr class="row text-normal backpink">
+          <td class="col-md-1">FACTURA</td>
+          <td class="col-md-1">REFERENCIA</td>
+          <td class="col-md-1">POLIZA</td>
+          <td class="col-md-1">CANCELACIÓN</td>
+          <td class="col-md-6">CLIENTE</td>
+          <td class="col-md-2"></td>
         </tr>
-        <tr class="row borderojo" style="font-size:18px!important">
-          <td class="col-md-1 text-center">76854</td>
-          <td class="col-md-1 text-center">N15001460R</td>
-          <td class="col-md-2 text-center">234567</td>
-          <td class="col-md-1 text-center">234568</td>
-          <td class="col-md-6 text-center">MOTORES ELECTRICOS SUMERGIBLES S DE RL DE CV</td>
-          <td class="col-md-1 text-center">
-            <input class="btn-block botonrow" type="button" value="Siguiente">
+        <tr class="row borderojo font18">
+          <td class="col-md-1">76854</td>
+          <td class="col-md-1">N15001460R</td>
+          <td class="col-md-1">234567</td>
+          <td class="col-md-1">234568</td>
+          <td class="col-md-6">MOTORES ELECTRICOS SUMERGIBLES S DE RL DE CV</td>
+          <td class="col-md-2 text-right">
+            <input class="botonrow" type="button" value="Siguiente">
           </td>
         </tr>
       </tbody>

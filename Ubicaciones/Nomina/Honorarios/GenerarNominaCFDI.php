@@ -91,7 +91,7 @@
           <form class="form1"method="post">
             <table class="table text-center mb-0">
               <thead>
-                <tr class="row submenuch">
+                <tr class="row backpink">
                   <td class="col-md-1">Empleados</td>
                   <td class="col-md-1">CFDI</td>
                   <td class="col-md-2">Cancelados</td>
@@ -179,7 +179,7 @@
           <form class="form1">
             <table class="table table-hover text-center">
               <thead>
-                <tr class="row submenuch m-0">
+                <tr class="row backpink m-0">
                   <td class="col-md-1">Editar</td>
                   <td class="col-md-2">Inferior</td>
                   <td class="col-md-2">Superior</td>

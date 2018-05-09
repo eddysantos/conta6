@@ -5,8 +5,11 @@
 
 <div class="container-fluid">
   <div class="row m-0 submenuMed">
-    <div class="col-md-12 text-center" role="button">
+    <div class="col-md-6 text-center" role="button">
       <a  id="submenuMed" class="ctagastos" accion="datcliente" status="cerrado">DATOS CLIENTE</a>
+    </div>
+    <div class="col-md-6 text-center" role="button">
+      <a  id="submenuMed" class="ctagastos" accion="datinfo" status="cerrado">INFORMACIÓN CLIENTE</a>
     </div>
   </div>
 
@@ -20,12 +23,12 @@
     <h5 class="titulo" style="font-size:15px">DATOS CLIENTES</h5>
     <table class="table text-center" id="eCliente">
       <thead>
-        <tr class="row">
-          <td class="col-md-12 tRepoNom">MOTORES ELECTRICOS SUMERGIBLES DE MEXICO S. DE R.L DE C.V</td>
+        <tr class="row encabezado font14">
+          <td class="col-md-12">MOTORES ELECTRICOS SUMERGIBLES DE MEXICO S. DE R.L DE C.V</td>
         </tr>
-        <tr class="row">
-          <td class="col-md-6 subtext">Direccion</td>
-          <td class="col-md-6 subtext">Proveedor</td>
+        <tr class="row backpink font14">
+          <td class="col-md-6">DIRECCIÓN</td>
+          <td class="col-md-6">PROVEEDOR</td>
         </tr>
       </thead>
       <tbody class="text-normal">
@@ -49,33 +52,33 @@
     </table>
   </div>
   <div id="contornoInfo" class="contorno brx4" style="display:none">
-    <h5 class="titulo" style="font-size:15px">INFO GENERAL</h5>
+    <h5 class="titulo font14">INFO GENERAL</h5>
     <table class="table text-center" id="eInfo">
       <thead>
-        <tr class="row">
-          <td class="col-md-12 tRepoNom">INFORMACION GENERAL NO EDITABLE</td>
+        <tr class="row encabezado font14">
+          <td class="col-md-12">INFORMACION GENERAL NO EDITABLE</td>
         </tr>
-        <tr class="row">
-          <td class="col-md-2 subtext">No.solicitud</td>
-          <td class="col-md-2 subtext">Almacen</td>
-          <td class="col-md-1 subtext">Aduana</td>
-          <td class="col-md-1 subtext">Tipo</td>
-          <td class="col-md-2 subtext">Valor</td>
-          <td class="col-md-1 subtext">Peso</td>
-          <td class="col-md-2 subtext">Volumen</td>
-          <td class="col-md-1 subtext">Dias</td>
+        <tr class="row backpink font14">
+          <td class="col-md-2">No.solicitud</td>
+          <td class="col-md-2">Almacen</td>
+          <td class="col-md-1">Aduana</td>
+          <td class="col-md-1">Tipo</td>
+          <td class="col-md-2">Valor</td>
+          <td class="col-md-1">Peso</td>
+          <td class="col-md-2">Volumen</td>
+          <td class="col-md-1">Dias</td>
         </tr>
       </thead>
-      <tbody class="cuerpo">
+      <tbody class="font14">
         <tr class="row">
-          <td class="col-md-2 text-center">280380</td>
-          <td class="col-md-2 text-center">Sin Nombre</td>
-          <td class="col-md-1 text-center">240</td>
-          <td class="col-md-1 text-center">IMP</td>
-          <td class="col-md-2 text-center">906600.7667</td>
-          <td class="col-md-1 text-center">4660</td>
-          <td class="col-md-2 text-center">20000</td>
-          <td class="col-md-1 text-center">1</td>
+          <td class="col-md-2">280380</td>
+          <td class="col-md-2">Sin Nombre</td>
+          <td class="col-md-1">240</td>
+          <td class="col-md-1">IMP</td>
+          <td class="col-md-2">906600.7667</td>
+          <td class="col-md-1">4660</td>
+          <td class="col-md-2">20000</td>
+          <td class="col-md-1">1</td>
         </tr>
       </tbody>
     </table>
@@ -84,62 +87,62 @@
 
 <div class="contorno">
   <div class="container-fluid">
-    <table class="table text-center w-50" style="float:left">
+    <table class="table text-center w-50" style="float:left;color:black">
       <tr class="row m-0">
         <td class="col-md-11 backpink">REFERENCE</td>
       </tr>
       <tr class="row m-0">
-        <td class="col-md-6"><input class="text-right noborder" type="text" value="Reference :" readonly></td>
-        <td class="col-md-5"><input class="noborder" type="text" value="N17003012" readonly></td>
+        <td class="col-md-6 text-right">Reference :</td>
+        <td class="col-md-5">N17003012</td>
         <td class="col-md-1"></td>
       </tr>
       <tr class="row m-0">
-        <td class="col-md-6"><input class="text-right noborder" type="text" value="Freight Bill :" readonly></td>
-        <td class="col-md-5"><input class="inpReg" type="text" value="316140370"></td>
+        <td class="col-md-6 text-right">Freight Bill :</td>
+        <td class="col-md-5"><input class="efecto" type="text" value="316140370"></td>
         <td class="col-md-1"></td>
       </tr>
       <tr class="row m-0">
-        <td class="col-md-6"><input class="text-right noborder" type="text" value="Quantity :" readonly></td>
-        <td class="col-md-5"><input class="inpReg" type="text" value="22"></td>
+        <td class="col-md-6 text-right">Quantity :</td>
+        <td class="col-md-5"><input class="efecto" type="text" value="22"></td>
         <td class="col-md-1"></td>
       </tr>
       <tr class="row m-0">
-        <td class="col-md-6"><input class="text-right noborder" type="text" value="Type :" readonly></td>
-        <td class="col-md-5"><input class="noborder" type="text" value="IN" readonly></td>
+        <td class="col-md-6 text-right">Type :</td>
+        <td class="col-md-5">IN</td>
         <td class="col-md-1"></td>
       </tr>
       <tr class="row m-0">
-        <td class="col-md-6"><input class="text-right noborder" type="text" value="Description :" readonly></td>
-        <td class="col-md-5"><input class="noborder" type="text" value="Materia Prima" readonly></td>
+        <td class="col-md-6 text-right">Description :</td>
+        <td class="col-md-5">Materia Prima</td>
         <td class="col-md-1"></td>
       </tr>
     </table>
 
-    <table class="table text-center w-50" style="float:right">
+    <table class="table text-center w-50" style="float:right;color:black">
       <tr class="row m-0">
         <td class="col-md-12 backpink">GENERAL</td>
       </tr>
       <tr class="row m-0">
-        <td class="col-md-3"><input class="text-right noborder" type="text" value="Invoince No :" readonly></td>
-        <td class="col-md-3"><input class="noborder" type="text" value="544268" readonly></td>
+        <td class="col-md-3 text-right">Invoince No :</td>
+        <td class="col-md-3">544268</td>
 
-        <td class="col-md-3"><input class="text-right noborder" type="text" value="Invoince Value :" readonly></td>
-        <td class="col-md-3"><input class="inpReg" type="text" value="46722.98"></td>
+        <td class="col-md-3 text-right">Invoince Value :</td>
+        <td class="col-md-3"><input class="efecto" type="text" value="46722.98"></td>
       </tr>
       <tr class="row m-0">
-        <td class="col-md-3"><input class="text-right noborder" type="text" value="Proforma :" readonly></td>
-        <td class="col-md-3"><input class="noborder" type="text" value="280380" readonly></td>
+        <td class="col-md-3 text-right">Proforma :</td>
+        <td class="col-md-3">280380</td>
 
-        <td class="col-md-3"><input class="text-right noborder" type="text" value="Date :" readonly></td>
-        <td class="col-md-3"><input class="efecto data-date" type="date"></td>
+        <td class="col-md-3 text-right">Date :</td>
+        <td class="col-md-3"><input class="efecto" type="date"></td>
       </tr>
 
       <tr class="row m-0">
-        <td class="col-md-3"><input class="text-right noborder" type="text" value="Weight :" readonly></td>
-        <td class="col-md-3"><input class="noborder" type="text" value="4660.00" readonly></td>
+        <td class="col-md-3 text-right">Weight :</td>
+        <td class="col-md-3">4660.00</td>
 
-        <td class="col-md-3"><input class="text-right noborder" type="text" value="Customer Invoice :" readonly></td>
-        <td class="col-md-3"><input class="inpReg" type="text" value="47352,47353,47354,47355"></td>
+        <td class="col-md-3 text-right">Customer Invoice :</td>
+        <td class="col-md-3"><input class="efecto" type="text" value="47352,47353,47354,47355"></td>
       </tr>
     </table>
   </div>
@@ -148,14 +151,12 @@
 <div class="contorno brx4">
   <h5 class="titulo" style="font-size:15px">EDITAR CTA GASTOS</h5>
   <div class="container-fluid">
-    <div class="tRepoNom text-center" data-toggle="collapse" href="#collapseOne">
-      <a  id="bread">ACCOUNT CHARGES</a>
-    </div>
+    <div class="encabezado font18">ACCOUNT CHARGES</div>
       <form class="form1">
-        <table class="table">
+        <table class="table text-center">
           <tbody>
-            <tr class="row brx1 ml-0 mr-0">
-              <td class="col-md-6 text-center">
+            <tr class="row m-0 mt-3">
+              <td class="col-md-6">
                 <select class="form-control">
                   <option selected>Customer Tariff</option>
                   <option>Additional Entries</option>
@@ -173,7 +174,7 @@
                   <option>Third Party Billing</option>
                 </select>
               </td>
-              <td class="col-md-6 text-center">
+              <td class="col-md-6">
                 <select class="form-control">
                   <option selected>General Tariff</option>
                   <option>Additional Entries</option>
@@ -213,16 +214,16 @@
                 </select>
               </td>
             </tr>
-            <tr class="row ml-0 mr-0">
+            <tr class="row">
               <td class="col-md-1"></td>
               <td class="col-md-1">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-6">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-2">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-1 text-left">
                 <a href="">
@@ -236,124 +237,118 @@
 
         <table class="table text-center">
           <tbody>
-            <tr class="row brx3 ml-0 mr-0">
-              <td class="col-md-1 text-center iap">SERV.</td>
-              <td class="col-md-3 text-center iap">CONCEPTO</td>
-              <td class="col-md-3 text-center iap">DESCRIPTION</td>
-              <td class="col-md-1 text-center iap"></td>
-              <td class="col-md-1 text-center iap">SPEND</td>
-              <td class="col-md-1 text-center iap">GAIN</td>
-              <td class="col-md-1 text-center iap">AMOUNT</td>
-              <td class="col-md-1 text-center iap">SUBTOTAL</td>
+            <tr class="row m-0 mt-5 backpink">
+              <td class="col-md-1">SERV.</td>
+              <td class="col-md-3">CONCEPTO</td>
+              <td class="col-md-3">DESCRIPTION</td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1">SPEND</td>
+              <td class="col-md-1">GAIN</td>
+              <td class="col-md-1">AMOUNT</td>
+              <td class="col-md-1">SUBTOTAL</td>
             </tr>
-            <tr class="row ml-0 mr-0">
+            <tr class="row m-0">
               <td class="col-md-1">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-3">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-3">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-1"></td>
               <td class="col-md-1">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-1">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-1">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-1">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
             </tr>
 
-            <tr class="row ml-0 mr-0">
+            <tr class="row m-0">
               <td class="col-md-1">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-3">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-3">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-1"></td>
               <td class="col-md-1">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-1">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-1">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
               <td class="col-md-1">
-                <input class="inpReg" type="text">
+                <input class="efecto" type="text">
               </td>
             </tr>
 
-            <tr class="row ml-0 mr-0">
+            <tr class="row m-0">
               <td class="col-md-1 offset-md-7"></td>
               <td class="col-md-1">
-                <input class="inpReg noborder" type="text" disabled>
+                <input class="efecto noborder" type="text" disabled>
               </td>
               <td class="col-md-1">
-                <input class="inpReg noborder" type="text" disabled>
+                <input class="efecto noborder" type="text" disabled>
               </td>
               <td class="col-md-1">
-                <input class="inpReg noborder" type="text" disabled>
+                <input class="efecto noborder" type="text" disabled>
               </td>
               <td class="col-md-1">
-                <input class="inpReg noborder" type="text" disabled>
+                <input class="efecto noborder" type="text" disabled>
+              </td>
+            </tr>
+
+            <tr class="row m-0">
+              <td class="col-md-2 offset-md-8 text-right pt-3">Less Advance 1 :</td>
+              <td class="col-md-1 pt-1">
+                <input class="efecto" type="text">
+              </td>
+              <td class="col-md-1 pt-1">
+                <input class="efecto" type="text">
+              </td>
+            </tr>
+
+            <tr class="row m-0">
+              <td class="col-md-2 offset-md-8 text-right pt-3">Less Advance 2 :</td>
+              <td class="col-md-1 pt-1">
+                <input class="efecto" type="text">
+              </td>
+              <td class="col-md-1 pt-1">
+                <input class="efecto" type="text">
               </td>
             </tr>
 
             <tr class="row ml-0 mr-0">
-              <td class="col-md-2 offset-md-8">
-                <input class="text-right noborder" type="text" value="Less Advance 1 :" readonly>
-              </td>
-              <td class="col-md-1">
-                <input class="inpReg" type="text">
-              </td>
-              <td class="col-md-1">
-                <input class="inpReg" type="text">
-              </td>
-            </tr>
-
-            <tr class="row ml-0 mr-0">
-              <td class="col-md-2 offset-md-8">
-                <input class="text-right noborder" type="text" value="Less Advance 2 :" readonly>
-              </td>
-              <td class="col-md-1">
-                <input class="inpReg" type="text">
-              </td>
-              <td class="col-md-1">
-                <input class="inpReg" type="text">
-              </td>
-            </tr>
-
-            <tr class="row ml-0 mr-0">
-              <td class="col-md-2 offset-md-8">
-                <input class="text-right noborder" type="text" value="Total :" readonly>
-              </td>
-              <td class="col-md-1">
+              <td class="col-md-2 offset-md-8 text-right pt-3">Total :</td>
+              <td class="col-md-1 pt-1">
                 <input class="btn-block botonrow" type="button" value="Calculate" style="padding:7px">
               </td>
-              <td class="col-md-1">
-                <input class="inpReg noborder" type="text" disabled>
+              <td class="col-md-1 pt-1">
+                <input class="efecto noborder" type="text" disabled>
               </td>
             </tr>
 
-            <tr class="row brx3 justify-content-center">
+            <tr class="row mt-5 justify-content-center">
               <td class="col-md-2">
-                <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
+                <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
               </td>
               <td class="col-md-2">
-                <a href="" class="boton btn-block brx1"> <img src= "/conta6/Resources/iconos/cross.svg" class="icochico"> CALCELAR</a><!--nueva pagina, ingresar datos en poliza-->
+                <a href="" class="boton btn-block"> <img src= "/conta6/Resources/iconos/cross.svg" class="icochico"> CALCELAR</a><!--nueva pagina, ingresar datos en poliza-->
               </td>
             </tr>
           </tbody>

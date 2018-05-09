@@ -180,13 +180,13 @@ select{
   cursor: pointer;
   font-size: 40px;
 }
-#submenuchico{
+#backpinkico{
   cursor: pointer;
   background-color: transparent!important;
   color: rgb(161, 160, 160)!important;
   font-size: 12px;
 }
-#submenuchico:hover, #submenuchico:focus {
+#backpinkico:hover, #backpinkico:focus {
   color: rgb(209, 28, 28)!important;
   letter-spacing: 3px!important;
   font-size: 13px;

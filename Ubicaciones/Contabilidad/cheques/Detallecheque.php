@@ -308,8 +308,8 @@
         <div id="capturapoliza" class="contorno-mov cfdcbb"><!--solo aparece al seleccionar CFD / CBB-->
           <form class="form1">
             <table class="table text-center">
-              <thead style="font-size:14px">
-                <tr class="row m-0 encabezado">
+              <thead>
+                <tr class="row m-0 encabezado font18">
                   <td class="col-md-12">CFD / CBB</td>
                 </tr>
               </thead>
@@ -601,17 +601,17 @@
         </div>
 
         <div id="capturapoliza" class="contorno-mov transferencia"><!--solo aparece al seleccionar Transferencia-->
-          <form class="form1"  method="post">
+          <form class="form1">
             <table class="table text-center">
-              <thead style="font-size: 14px" >
-                <tr class="row m-0 encabezado">
+              <thead>
+                <tr class="row m-0 encabezado font14">
                   <td class="col-md-12">Transferencia</td>
                 </tr>
               </thead>
               <tbody>
                 <tr class="row m-0 mt-1">
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-bsat" class="efecto input-dpol input-control text-center"  id="transf-bancossat">
+                    <input  list="transf-bsat" class="efecto input-dpol"  id="transf-bancossat">
                     <datalist id="transf-bsat">
                       <option value="Afirme"></option>
                       <option value="American Express"></option>
@@ -623,7 +623,7 @@
                   </td>
 
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-bplaa" class="efecto input-dpol input-control text-center"  id="transf-bancosplaa">
+                    <input  list="transf-bplaa" class="efecto input-dpol"  id="transf-bancosplaa">
                     <datalist id="transf-bplaa">
                       <option value="BBVA BANCOMER -- 0109722246 -- 430"></option>
                       <option value="BBVA BANCOMER -- 0166627773 -- 430"></option>
@@ -636,7 +636,7 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-ben" class="efecto input-dpol input-control text-center"  id="transf-benef">
+                    <input  list="transf-ben" class="efecto input-dpol"  id="transf-benef">
                     <datalist id="transf-ben">
                       <option value="Administracion Portuaria Integral de Manzanillo SA de CV -- API931215862 -- SANTANDER -- 014095655008263897"></option>
                       <option value="AAADAM A.C -- AAA8711107K5 -- BANAMEX -- 2801662"></option>
@@ -644,7 +644,7 @@
                     <label class="pt-1" for="transf-benef">BANCOS BENEFICIARIOS</label>
                   </td>
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-cli" class="efecto input-dpol input-control text-center"  id="transf-clientes">
+                    <input  list="transf-cli" class="efecto input-dpol"  id="transf-clientes">
                     <datalist id="transf-cli">
                       <option value="Fabricaciones Industriales Computarizadas SA de CV -- FIC980227TCA -- BANORTE -- 1260"></option>
                       <option value="Geiko Maiko Industrial S.A de C.V -- GMI120928KU4 -- BBVA BANCOMER -- 2554"></option>
@@ -654,7 +654,7 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-emp" class="efecto input-dpol input-control text-center"  id="transf-empleados">
+                    <input  list="transf-emp" class="efecto input-dpol"  id="transf-empleados">
                     <datalist id="transf-emp">
                       <option value="PINALES AVALOS -- PIAA911122Lp2 -- BANAMEX -- 5256781310675298"></option>
                       <option value="MARTINEZ MARTINEZ -- MAMD800330DQ3 -- BBVA BANCOMER -- 012821015214161544"></option>
@@ -663,7 +663,7 @@
                   </td>
 
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-prov" class="efecto input-dpol input-control text-center"  id="transf-proveedores">
+                    <input  list="transf-prov" class="efecto input-dpol"  id="transf-proveedores">
                     <datalist id="transf-prov">
                       <option value="Control Integrado de Tratamiendos Cuarentenarios y Plagas S.A de C.V -- CIT0010198Y0 -- 012821001069756749"></option>
                       <option value="Banco Monex S.A Institución de Banca Multiple, Mone Grupo Financiero -- BMI9704113pa -- 6580894"></option>
@@ -739,7 +739,7 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-1">
-                    <input class="input-dpol input-control dpol noborder" type="text" value="012">
+                    <input class="noborder" type="text" value="012">
                   </td>
                   <td class="col-md-4">
                     <input class="input-dpol input-control" type="text" value="012821011521461544">
@@ -754,20 +754,20 @@
 
                 <tr class="row m-0">
                   <td class="col-md-3 input-effect mt-4">
-                    <input id="trans-emext" class="efecto input-dpol input-control" type="text">
+                    <input id="trans-emext" class="efecto input-dpol" type="text">
                     <label class="pt-1" for="trans-emext">Bco. Emisor Extranjero</label>
                   </td>
 
                   <td class="col-md-3 input-effect mt-4">
-                    <input id="trans-desext" class="efecto input-dpol input-control" type="text">
+                    <input id="trans-desext" class="efecto input-dpol" type="text">
                     <label class="pt-1" for="trans-desext">Bco. Destino Extranjero</label>
                   </td>
                   <td class="col-md-2 input-effect mt-4">
-                    <input id="trans-tc" class="efecto input-dpol input-control" type="text">
+                    <input id="trans-tc" class="efecto input-dpol" type="text">
                     <label class="pt-1" for="trans-tc">Tipo de Cambio</label>
                   </td>
                   <td class="col-md-4 input-effect mt-4">
-                    <input  list="trans-mon" class="efecto input-dpol input-control"  id="trans-moneda">
+                    <input  list="trans-mon" class="efecto input-dpol"  id="trans-moneda">
                     <datalist id="trans-mon">
                       <option value="Peso Mexicano -- MXN"></option>
                       <option value="Boliviano -- BOB"></option>
@@ -779,22 +779,21 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-3 input-effect mt-4">
-                    <input class=" efecto input-dpol input-control" type="text" onfocus="(this.type='date')" id="trans-fecha">
+                    <input class=" efecto input-dpol" type="text" onfocus="(this.type='date')" id="trans-fecha">
                     <label class="pt-1" for="trans-fecha">Fecha</label>
                   </td>
                   <td class="col-md-2 input-effect mt-4">
-                    <input id="trans-imp" class="efecto input-dpol input-control" type="text">
+                    <input id="trans-imp" class="efecto input-dpol" type="text">
                     <label class="pt-1" for="trans-imp">Importe</label>
                   </td>
                   <td class="col-md-7 input-effect mt-4">
-                    <input id="trans-observ" class="efecto input-dpol input-control text-center" type="text">
+                    <input id="trans-observ" class="efecto input-dpol" type="text">
                     <label class="pt-1" for="trans-observ">Observaciones</label>
                   </td>
                 </tr>
               </tbody>
             </table>
           </form>
-
         </div>
 
 
