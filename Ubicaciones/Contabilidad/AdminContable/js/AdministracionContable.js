@@ -86,13 +86,14 @@ $(document).ready(function(){
     });
 
     $('#generarCtaMst').click(function(){
-      var ctaSAT = $('#ctaSAT').find('[select=true]').html();
+      //var ctaSAT = $('#ctaSAT').find('[select=true]').html();
+      var cuentasSAT = $('#cuentasSAT').val();
       var naturSAT = $('#naturSAT').val();
       var tipo = $('#tipo').val();
       var ctamaestra = $('#ctamaestra').val();
       var concepto = $('#concepto').val();
 
-      var dataString = 'ctaSAT=' + ctaSAT + '&naturSAT=' + naturSAT + '&tipo=' + tipo + '&ctamaestra=' + ctamaestra + '&concepto=' + concepto;
+      var dataString = 'cuentasSAT=' + cuentasSAT + '&naturSAT=' + naturSAT + '&tipo=' + tipo + '&ctamaestra=' + ctamaestra + '&concepto=' + concepto;
 
         $.ajax({
     			type: "POST",
