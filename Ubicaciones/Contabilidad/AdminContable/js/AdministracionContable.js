@@ -86,7 +86,7 @@ $(document).ready(function(){
     });
 
     $('#generarCtaMst').click(function(){
-      //var ctaSAT = $('#ctaSAT').find('[select=true]').html();
+      var ctaSAT = $('#ctaSAT').val();
       var cuentasSAT = $('#cuentasSAT').val();
       var naturSAT = $('#naturSAT').val();
       var tipo = $('#tipo').val();
