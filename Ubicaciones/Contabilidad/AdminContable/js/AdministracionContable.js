@@ -86,19 +86,21 @@ $(document).ready(function(){
     });
 
     $('#generarCtaMst').click(function(){
-      var ctaSAT = $('#ctaSAT').val();
-      var cuentasSAT = $('#cuentasSAT').val();
-      var naturSAT = $('#naturSAT').val();
-      var tipo = $('#tipo').val();
-      var ctamaestra = $('#ctamaestra').val();
-      var concepto = $('#concepto').val();
 
-      var dataString = 'cuentasSAT=' + cuentasSAT + '&naturSAT=' + naturSAT + '&tipo=' + tipo + '&ctamaestra=' + ctamaestra + '&concepto=' + concepto;
+        var data = {
+          ctaSAT: $('#ctaSAT').val(),
+          naturSAT: $('#naturSAT').val(),
+          tipo: $('#tipo').val(),
+          ctamaestra: $('#ctamaestra').val(),
+          concepto: $('#concepto').val(),
+          accion: "MST";
+        }
+
 
         $.ajax({
     			type: "POST",
     			url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregar.php",
-    			data: dataString,
+    			data: data,
     			success: 	function(request, settings){
             $('#respuestaCtasMST').html(request);
     		    /*	$('#respuestaCtasMST').html("<div id='message'></div>");
@@ -109,8 +111,6 @@ $(document).ready(function(){
     		        });*/
     		    }
     		});
-
-
     });
 
 

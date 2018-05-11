@@ -1,14 +1,13 @@
 <?php
 #http://localhost:88/conta6/Ubicaciones/Contabilidad/AdminContable/catalogocuentas.php?usuario=admado
-
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-  require $root . '/conta6/Resources/PHP/Databases/conexion.php';
-
   $usuario = trim($_GET['usuario']);
 
+  $root = $_SERVER['DOCUMENT_ROOT'];
 
-  $oRst_permisos = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM conta_cu_permisos WHERE pk_usuario = '$usuario' "));
+  require $root . '/conta6/Resources/PHP/Databases/conexion.php';
+  require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
+  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+
 ?>
 <div class="container-fluid">
   <div class="row submenuMed">
@@ -29,13 +28,7 @@
               <tr class="row brx2">
                 <td class="col-md-12 input-effect">
                   <input  list="cuentasSAT" class="text-normal efecto text-center"  id="ctaSAT">
-                  <datalist id="cuentasSAT">
-      				  	<?php
-          					$sql_CuentasSAT = mysqli_query($conn,"SELECT * FROM conta_cs_sat_cuentas WHERE s_activo = 'S' ORDER BY s_ctaNombre");
-          					while($oRst_CuentasSAT = $sql_CuentasSAT->fetch_assoc()) {
-          						echo '<option value='.trim($oRst_CuentasSAT['pk_codAgrup']).'>'.htmlentities(trim($oRst_CuentasSAT['s_ctaNombre'])).' ----- '.trim($oRst_CuentasSAT['pk_codAgrup']).'</option>';
-          				  }
-                  ?>
+                  <datalist id="cuentasSAT" href="#lst_conta_cs_cuentas_mst">
                   </datalist>
                   <label for="ctaSAT">CUENTAS SAT</label>
                 </td>
@@ -116,7 +109,7 @@
         													and pk_id_cuenta not like '0106%'
         													and pk_id_cuenta not like '0203%'
         													and pk_id_cuenta not like '0206%'
-        													ORDER BY pk_id_cuenta");
+        													ORDER BY pk_id_cuenta limit 25");
 
         					while($oRst_Cuentas = $sql_Cuentas->fetch_assoc()) {
         					       echo '<option value="'.trim($oRst_Cuentas['pk_id_cuenta']).'">'.trim($oRst_Cuentas['pk_id_cuenta']).' ----- '.htmlentities(trim($oRst_Cuentas['s_cta_desc'])).'</option>';
@@ -242,6 +235,7 @@
 <script src="js/AdministracionContable.js"></script>
 <?php
 require_once('modales/EditarCatalogo.php');
+require_once('/conta6/Resources/PHP/actions/lst_conta_cs_cuentas_mst.php');
  ?>
 <?php
 
