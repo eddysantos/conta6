@@ -11,44 +11,32 @@
       </li>
     </ul>
   </div>
-  <div id="datospoliza" class="contorno brx3" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
+  <div id="datospoliza" class="contorno" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
     <h5 class="titulo">DATOS DE LA POLIZA</h5>
     <form class="form1">
       <table class="table text-center">
         <thead>
-          <tr class="row m-0 encabezado font14">
+          <tr class="row  encabezado font16">
             <td class="col-md-2">POLIZA</td>
             <td class="col-md-2">USUARIO</td>
             <td class="col-md-2">FECHA POLIZA</td>
             <td class="col-md-2">GENERACION</td>
             <td class="col-md-2">ADUANA</td>
-            <td class="col-md-2">CANCELACION</td>
+            <td class="col-md-2">CANCELACIÓN</td>
           </tr>
         </thead>
-        <tbody class="cuerpo">
-          <tr class="row m-0">
-            <td class="col-md-2">
-              <input class="noborder" type="text" readonly value="234567">
-            </td>
-            <td class="col-md-2">
-              <input class="noborder" type="text" readonly value="Estefania">
-            </td>
-            <td class="col-md-2">
-              <input class="noborder" type="text" readonly value="22/11/2017">
-            </td>
-            <td class="col-md-2">
-              <input class=" noborder" type="text" readonly value="30/12/2017">
-            </td>
-            <td class="col-md-2">
-              <input class="noborder" type="text" readonly value="Nuevo Laredo">
-            </td>
-            <td class="col-md-2">
-              <input class="noborder" type="text" readonly value="234567">
-            </td>
+        <tbody class="font16">
+          <tr class="row">
+            <td class="col-md-2">234567</td>
+            <td class="col-md-2">Estefania</td>
+            <td class="col-md-2">22/11/2017</td>
+            <td class="col-md-2">30/12/2017</td>
+            <td class="col-md-2">Nuevo Laredo</td>
+            <td class="col-md-2">234567</td>
           </tr>
           <tr class="row m-0">
-            <td class="col-md-12 brx2">
-              <input id="concep" class="text-normal noborder efecto text-center tiene-contenido" value="CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA" type="text">
+            <td class="col-md-12 mt-5">
+              <input id="concep" class="noborder efecto tiene-contenido" value="Ejemplo del contenido Ejemplo del contenido" type="text">
               <label for="concep">CONCEPTO</label>
             </td>
           </tr>
@@ -57,14 +45,14 @@
     </form>
   </div><!--/Termina DETALLE DATOS DE POLIZA-->
 
-  <form style="font-size:13px">
+  <form  class="font14">
     <div class="row text-center"><!--DETALLE DE POLIZAS-->
       <div class="col-md-2 offset-md-7">SUMA DE CARGOS</div>
       <div class="col-md-2">SUMA DE ABONOS</div>
     </div>
     <div class="row">
       <div class="col-md-2">
-        <a  class="boton btn-block" style="border:none"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+        <a  class="boton" style="border:none"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
       </div>
       <div class="col-md-2 offset-md-5 mt-3">
         <input  class="text-normal form-control efecto" value="$ 15, 932.08" readonly>

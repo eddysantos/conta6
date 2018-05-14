@@ -87,10 +87,10 @@
                 <label for="concepto">Concepto</label>
               </td>
               <td class="col-md-2 brx2">
-                <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR</a>
+                <a href="" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR</a>
               </td>
               <td class="col-md-2 brx2">
-                <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/delete.svg" class="icochico"> CANCELAR</a>
+                <a href="" class="boton"><img src= "/conta6/Resources/iconos/delete.svg" class="icochico"> CANCELAR</a>
               </td>
             </tr>
           </tbody>

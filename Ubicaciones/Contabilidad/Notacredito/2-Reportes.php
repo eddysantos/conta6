@@ -47,10 +47,10 @@
         </tr>
         <tr class="row brx3">
           <td class="col-md-3 offset-md-3">
-            <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
+            <a href="" class="boton brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
           </td>
           <td class="col-md-3">
-            <a href="" class="boton btn-block brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
+            <a href="" class="boton brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>
@@ -86,10 +86,10 @@
         </tr>
         <tr class="row brx3">
           <td class="col-md-3 offset-md-3">
-            <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
+            <a href="" class="boton brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
           </td>
           <td class="col-md-3">
-            <a href="" class="boton btn-block brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
+            <a href="" class="boton brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>

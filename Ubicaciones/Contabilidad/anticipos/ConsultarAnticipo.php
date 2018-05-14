@@ -89,7 +89,7 @@
     </div>
     <div class="row">
       <div class="col-md-2">
-        <a href="" class="boton btn-block" style="border:none"><img class="icomediano mleftx5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+        <a href="" class="boton" style="border:none"><img class="icomediano mleftx5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
       </div>
       <div class="col-md-2 offset-md-5 input-effect brx1">
         <input  class="text-normal form-control efecto text-center tiene-contenido" value="$ 15, 932.08" readonly>

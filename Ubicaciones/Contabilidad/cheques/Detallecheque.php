@@ -149,7 +149,7 @@
                   <label for="detpol-cliente">Cliente</label>
                 </td>
                 <td class="col-md-2 mt-4" role="button">
-                  <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton btn-block text-center icochico"  style="border:none"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                  <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton text-center icochico"  style="border:none"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
                 </td>
               </tr>
 
@@ -188,7 +188,7 @@
               </tr>
               <tr class="row">
                 <td class="col-md-2 offset-md-5 mt-4">
-                  <a href="" class="boton btn-block mt-3"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                  <a href="" class="boton mt-3"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
                 </td>
               </tr>
             </tbody>
@@ -215,13 +215,13 @@
         </div>
         <div class="row">
           <div class="col-md-3">
-            <a href="#detpol-Sueldos" data-toggle="modal" class="text-normal boton btn-block"><img src= "/conta6/Resources/iconos/refresh-button.svg"> ACTUALIZAR CHEQUE</a>
+            <a href="#detpol-Sueldos" data-toggle="modal" class="text-normal boton"><img src= "/conta6/Resources/iconos/refresh-button.svg"> ACTUALIZAR CHEQUE</a>
           </div>
           <div class="col-md-3">
-            <a href="#detpol-Honorarios" data-toggle="modal" class="text-normal boton btn-block"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR POLIZA DE CHEQUE</a>
+            <a href="#detpol-Honorarios" data-toggle="modal" class="text-normal boton"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR POLIZA DE CHEQUE</a>
           </div>
           <div class="col-md-2">
-            <a  class="boton btn-block" style="border:none"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+            <a  class="boton" style="border:none"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
           </div>
           <div class="col-md-2 mt-3">
             <input  class="text-normal form-control efecto" value="$ 15, 932.08" readonly>
@@ -799,7 +799,7 @@
 
         <div class="container-fluid xl mt-4">
           <form>
-            <table class="notable text-center">
+            <table class=" text-center">
               <tbody>
                 <tr class="table-bordered sub">
                   <th colspan="3"></th>

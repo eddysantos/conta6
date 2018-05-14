@@ -85,7 +85,7 @@
           </tr>
           <tr class="row justify-content-center">
             <td class="col-md-3 brx2">
-              <a role="button" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR CONCEPTO</a>
+              <a role="button" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR CONCEPTO</a>
             </td>
           </tr>
         </tbody>
@@ -115,7 +115,7 @@
   <form>
     <table class="table text-center">
       <thead>
-        <tr class="row tRepoNom">
+        <tr class="row encabezado">
           <td class="col-md-12 text-center">240 CLT_6967 MOTORES FRANKLIN S.A DE C.V</td>
         </tr>
       </thead>

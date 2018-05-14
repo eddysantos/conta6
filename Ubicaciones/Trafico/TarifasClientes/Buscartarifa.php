@@ -13,7 +13,7 @@
   <form class="form1">
     <table class="table text-center text-normal table-hover">
       <tbody>
-        <tr class="row tRepoNom">
+        <tr class="row encabezado">
           <th class="col-md-12 text-center" style="font-weight:100">TARIFA DE CLT_6967 MOTORES FRANKLIN S.A DE C.V</th>
         </tr>
         <tr class="row">

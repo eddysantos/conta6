@@ -13,12 +13,12 @@
   </div>
 </div>
 
-<div id="datospoliza" class="contorno brx3" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
+<div id="datospoliza" class="contorno mt-5" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
   <h5 class="titulo">DATOS DE LA POLIZA</h5>
   <form class="form1">
-    <table class="table text-center">
+    <table class="table text-center font14">
       <thead>
-        <tr class="row m-0 encabezado font14">
+        <tr class="row m-0 encabezado">
           <td class="col-md-2">POLIZA</td>
           <td class="col-md-2">USUARIO</td>
           <td class="col-md-2">FECHA POLIZA</td>
@@ -29,28 +29,18 @@
       </thead>
       <tbody>
         <tr class="row m-0">
+          <td class="col-md-2 pt-4">234567</td>
+          <td class="col-md-2 pt-4">Estefania</td>
           <td class="col-md-2">
-            <input class="efecto" type="text" readonly value="234567">
+            <input class="efecto tiene-contenido" type="date">
           </td>
-          <td class="col-md-2">
-            <input class="efecto" type="text" readonly value="Estefania">
-          </td>
-          <td class="col-md-2">
-            <input class="efecto" type="date">
-          </td>
-          <td class="col-md-2">
-            <input class="efecto" type="date">
-          </td>
-          <td class="col-md-2">
-            <input class="efecto" type="text" readonly value="Nuevo Laredo">
-          </td>
-          <td class="col-md-2">
-            <input class="efecto" type="text" readonly value="234567">
-          </td>
+          <td class="col-md-2 pt-4">23/05/18</td>
+          <td class="col-md-2 pt-4">Nuevo Laredo</td>
+          <td class="col-md-2 pt-4">234567</td>
         </tr>
         <tr class="row m-0">
           <td class="col-md-11 mt-4">
-            <input id="concep" class="text-normal efecto text-center tiene-contenido" value="CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA" type="text">
+            <input id="concep" class="efecto tiene-contenido" value="CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA" type="text">
             <label for="concep">CONCEPTO</label>
           </td>
           <td class="col-md-1 mt-4 text-left">
@@ -88,9 +78,9 @@
               </tr>
             </thead>
             <tbody class="cuerpo">
-              <tr class="row m-0">
+              <tr class="row m-0 font14">
                 <td class="col-md-10 input-effect mt-5">
-                  <input  list="todascuentas" class="text-normal efecto"  id="detpol-cuenta">
+                  <input  list="todascuentas" class="efecto"  id="detpol-cuenta">
                   <datalist id="todascuentas">
                     <option value="0206-00648 -- COMITE PARA EL FOMENTO Y PROTECCION PRECUARIA DEL ESTA DE NUEVO LEON A.C"></option>
                     <option value="0100-00011 ---- BANAMEX DLLS CTA.79033561 NLDO"></option>
@@ -101,7 +91,7 @@
                   <label for="detpol-cuenta">Seleccione una Cuenta</label>
                 </td>
                 <td class="col-md-2 input-effect mt-5">
-                  <input  list="gtoficina" class="text-normal efecto"  id="detpol-gtoficina">
+                  <input  list="gtoficina" class="efecto"  id="detpol-gtoficina">
                   <datalist id="gtoficina">
                     <option value="AEROPUERTO"></option>
                     <option value="MANZANILLO"></option>
@@ -111,10 +101,9 @@
                   <label for="detpol-gtoficina">Gasto Oficina</label>
                 </td>
               </tr>
-
-              <tr class="row m-0 text-center">
+              <tr class="row m-0 font14">
                 <td class="col-md-10 input-effect mt-4">
-                  <input  list="clientes" class="text-normal efecto"  id="detpol-cliente">
+                  <input  list="clientes" class="efecto"  id="detpol-cliente">
                   <datalist id="clientes">
                     <option value="AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V --- CLT 6109"></option>
                     <option value="INTERNATIONAL FREIGHT FORWARDER AND ADVISOR CUSTOMS DELIVERY S.A DE C.V --- CLT_7663"></option>
@@ -122,49 +111,48 @@
                   <label for="detpol-cliente">Cliente</label>
                 </td>
                 <td class="col-md-2 mt-4" role="button">
-                  <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton btn-block icochico"  style="border:none"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                  <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton icochico"  style="border:none"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
                 </td>
               </tr>
-
-              <tr class="row m-0">
+              <tr class="row m-0 font14">
                 <td class="col-md-12 input-effect mt-4">
-                  <input  class="text-normal efecto" id="detpol-concepto">
+                  <input  class="efecto" id="detpol-concepto">
                   <label for="detpol-concepto">Concepto</label>
                 </td>
               </tr>
-              <tr class="row m-0">
+              <tr class="row m-0 font14">
                 <td class="col-md-2 input-effect mt-4">
-                  <input class="text-normal efecto" id="detpol-referencia">
+                  <input class="efecto" id="detpol-referencia">
                   <label for="detpol-referencia">Referencia</label>
                 </td>
                 <td class="col-md-2 input-effect mt-4">
-                  <input class="text-normal efecto" id="detpol-documento">
+                  <input class="efecto" id="detpol-documento">
                   <label for="detpol-documento">Documento</label>
                 </td>
                 <td class="col-md-2 input-effect mt-4">
-                  <input class="text-normal efecto" id="detpol-factura">
+                  <input class="efecto" id="detpol-factura">
                   <label for="detpol-factura">Factura</label>
                 </td>
                 <td class="col-md-1 input-effect mt-4">
-                  <input class="text-normal efecto" id="detpol-anticipo">
+                  <input class="efecto" id="detpol-anticipo">
                   <label for="detpol-anticipo">Anticipo</label>
                 </td>
                 <td class="col-md-1 input-effect mt-4">
-                  <input class="text-normal efecto" id="detpol-cheque">
+                  <input class="efecto" id="detpol-cheque">
                   <label for="detpol-cheque">Cheque</label>
                 </td>
                 <td class="col-md-2 input-effect mt-4">
-                  <input class="text-normal efecto" id="detpol-cargo">
+                  <input class="efecto" id="detpol-cargo">
                   <label for="detpol-cargo">Cargo</label>
                 </td>
                 <td class="col-md-2 input-effect mt-4">
-                  <input class="text-normal efecto" id="detpol-abono">
+                  <input class="efecto" id="detpol-abono">
                   <label for="detpol-abono">Abono</label>
                 </td>
               </tr>
               <tr class="row justify-content-center">
                 <td class="col-md-2 mt-4">
-                  <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                  <a href="" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
                 </td>
               </tr>
             </tbody>
@@ -176,10 +164,10 @@
         </div>
         <div class="row justify-content-center text-center">
           <div class="col-md-2 mt-3">
-            <input  class="text-normal form-control efecto" value="$ 15, 932.08" readonly>
+            <input  class="font14 efecto" value="$ 15, 932.08" readonly>
           </div>
           <div class="col-md-2 mt-3">
-            <input  class="text-normal form-control efecto" value="$ 15, 932.08" readonly>
+            <input  class="font14 efecto" value="$ 15, 932.08" readonly>
           </div>
         </div>
       </div>
@@ -189,21 +177,21 @@
           <div class="col-md-2">SUMA DE CARGOS</div>
           <div class="col-md-2">SUMA DE ABONOS</div>
         </div>
-        <div class="row text-center">
+        <div class="row text-center font14">
           <div class="col-md-3 mt-3">
-            <a href="#detpol-Sueldos" data-toggle="modal" class="boton btn-block"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI SUELDOS Y SALARIOS</a>
+            <a href="#detpol-Sueldos" data-toggle="modal" class="boton"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI SUELDOS Y SALARIOS</a>
           </div>
           <div class="col-md-3 mt-3">
-            <a href="#detpol-Honorarios" data-toggle="modal" class="boton btn-block"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI HONORARIOS</a>
+            <a href="#detpol-Honorarios" data-toggle="modal" class="boton"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI HONORARIOS</a>
           </div>
           <div class="col-md-2 mt-3">
-            <a class="boton btn-block" style="border:none"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+            <a class="boton" style="border:none"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg" style="border:none"></a>
           </div>
           <div class="col-md-2 mt-3">
-            <input class="text-normal form-control efecto" value="$ 15, 932.08" readonly>
+            <input class="efecto" value="$ 15, 932.08" readonly>
           </div>
           <div class="col-md-2 mt-3">
-            <input class="text-normal form-control efecto" value="$ 15, 932.08" readonly>
+            <input class="efecto" value="$ 15, 932.08" readonly>
           </div>
         </div>
 
@@ -265,7 +253,7 @@
           <table class="table">
             <tr class="row justify-content-center">
               <td class="col-md-4">
-                <select class="input-dpol form-control" name="selector" id="opcionespolizas">
+                <select name="selector" id="opcionespolizas">
                   <option >Selecciona</option>
                   <option value="1">CFD/CBB</option>
                   <option value="2">CFDI</option>
@@ -286,7 +274,7 @@
                   <td class="col-md-12">CFD / CBB</td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="font14">
                 <tr class="row m-0">
                   <td class="col-md-2 input-effect mt-4">
                     <input id="dpol-rfc" class="efecto" type="text">
@@ -329,7 +317,7 @@
         </div>
 
         <div id="capturapoliza" class="contorno-mov cfdi"><!--solo aparece al seleccionar CFDI-->
-          <form class="form1"  method="post">
+          <form class="form1">
             <table class="table text-center">
               <thead>
                 <tr class="row encabezado m-0 font18">
@@ -341,7 +329,7 @@
                   </td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="font14">
                 <tr class="row m-0">
                   <td class="col-md-2 input-effect mt-3">
                     <input id="cfdi-rfc" class="efecto" type="text">
@@ -377,7 +365,6 @@
               </tbody>
             </table>
           </form>
-
         </div>
 
         <div id="capturapoliza" class="contorno-mov cheque"><!--solo aparece al seleccionar CHEQUES-->
@@ -388,10 +375,10 @@
                   <td class="col-md-12">CHEQUES</td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="font14">
                 <tr class="row m-0">
                   <td class="col-md-5 input-effect mt-4">
-                    <input list="ch-origen" class="text-normal efecto" id="chorigen">
+                    <input list="ch-origen" class="efecto" id="chorigen">
                     <datalist id="ch-origen">
                       <option value="Banamex - 002 - 7658424"></option>
                       <option value="Banamex - 002 - 79033561"></option>
@@ -409,7 +396,7 @@
                     <label for="ch-ncuenta">No.Cuenta</label>
                   </td>
                   <td class="col-md-2 input-effect mt-4">
-                    <input  list="numcheques" class="text-normal efecto" id="ch-cheques">
+                    <input  list="numcheques" class="efecto" id="ch-cheques">
                     <datalist id="numcheques">
                       <option value="3421"></option>
                       <option value="3422"></option>
@@ -429,7 +416,7 @@
                     <label for="ch-tc">Tipo de Cambio</label>
                   </td>
                   <td class="col-md-5 input-effect mt-4">
-                    <input  list="chmoneda" class="text-normal efecto"  id="ch-moneda">
+                    <input  list="chmoneda" class="efecto"  id="ch-moneda">
                     <datalist id="chmoneda">
                       <option value="Peso Mexicano -- MXN"></option>
                       <option value="Boliviano -- BOB"></option>
@@ -474,7 +461,7 @@
                   <td class="col-md-12">Comprobante Extranjero</td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="font14">
                 <tr class="row m-0">
                   <td class="col-md-4 input-effect mt-4">
                     <input id="comext-tax" class="efecto" type="text">
@@ -491,7 +478,7 @@
                     <label for="comext-fact">Número de Factura</label>
                   </td>
                   <td class="col-md-5 input-effect mt-4">
-                    <input  list="comext-mon" class="text-normal efecto"  id="comext-moneda">
+                    <input  list="comext-mon" class="efecto"  id="comext-moneda">
                     <datalist id="comext-mon">
                       <option value="Peso Mexicano -- MXN"></option>
                       <option value="Peso Cubano -- CUP"></option>
@@ -522,10 +509,10 @@
                   <td class="col-md-12">Otro</td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="font14">
                 <tr class="row m-0">
                   <td class="col-md-3 input-effect mt-4">
-                    <input  list="otr-metpago" class="text-normal efecto"  id="otr-pago">
+                    <input  list="otr-metpago" class="efecto"  id="otr-pago">
                     <datalist id="otr-metpago">
                       <option value="Bienes -- 09"></option>
                       <option value="Cancelacion -- 16"></option>
@@ -545,7 +532,7 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-3 input-effect mt-4">
-                    <input class=" efecto tiene-contenido" type="date" id="otr-fecha">
+                    <input class="efecto tiene-contenido" type="date" id="otr-fecha">
                     <label for="otr-fecha">Fecha</label>
                   </td>
                   <td class="col-md-2 input-effect mt-4">
@@ -553,7 +540,7 @@
                     <label for="otr-imp">Importe</label>
                   </td>
                   <td class="col-md-5 input-effect mt-4">
-                    <input  list="otr-mon" class="text-normal efecto"  id="otr-moneda">
+                    <input  list="otr-mon" class="efecto"  id="otr-moneda">
                     <datalist id="otr-mon">
                       <option value="Peso Mexicano -- MXN"></option>
                       <option value="Boliviano -- BOB"></option>
@@ -580,10 +567,10 @@
                   <td class="col-md-12">Transferencia</td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="font14">
                 <tr class="row m-0">
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-bsat" class="efecto input-dpol"  id="transf-bancossat">
+                    <input  list="transf-bsat" class="efecto h22"  id="transf-bancossat">
                     <datalist id="transf-bsat">
                       <option value="Afirme"></option>
                       <option value="American Express"></option>
@@ -594,7 +581,7 @@
                     <label class="pt-1" for="transf-bancossat">BANCOS SAT</label>
                   </td>
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-bplaa" class="efecto input-dpol"  id="transf-bancosplaa">
+                    <input  list="transf-bplaa" class="efecto h22"  id="transf-bancosplaa">
                     <datalist id="transf-bplaa">
                       <option value="BBVA BANCOMER -- 0109722246 -- 430"></option>
                       <option value="BBVA BANCOMER -- 0166627773 -- 430"></option>
@@ -607,7 +594,7 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-ben" class="efecto input-dpol"  id="transf-benef">
+                    <input  list="transf-ben" class="efecto h22"  id="transf-benef">
                     <datalist id="transf-ben">
                       <option value="Administracion Portuaria Integral de Manzanillo SA de CV -- API931215862 -- SANTANDER -- 014095655008263897"></option>
                       <option value="AAADAM A.C -- AAA8711107K5 -- BANAMEX -- 2801662"></option>
@@ -615,7 +602,7 @@
                     <label class="pt-1" for="transf-benef">BANCOS BENEFICIARIOS</label>
                   </td>
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-cli" class="efecto input-dpol"  id="transf-clientes">
+                    <input  list="transf-cli" class="efecto h22"  id="transf-clientes">
                     <datalist id="transf-cli">
                       <option value="Fabricaciones Industriales Computarizadas SA de CV -- FIC980227TCA -- BANORTE -- 1260"></option>
                       <option value="Geiko Maiko Industrial S.A de C.V -- GMI120928KU4 -- BBVA BANCOMER -- 2554"></option>
@@ -623,10 +610,9 @@
                     <label class="pt-1" for="transf-clientes">BANCOS CLIENTES</label>
                   </td>
                 </tr>
-
                 <tr class="row m-0">
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-emp" class="efecto input-dpol"  id="transf-empleados">
+                    <input  list="transf-emp" class="efecto h22"  id="transf-empleados">
                     <datalist id="transf-emp">
                       <option value="PINALES AVALOS -- PIAA911122Lp2 -- BANAMEX -- 5256781310675298"></option>
                       <option value="MARTINEZ MARTINEZ -- MAMD800330DQ3 -- BBVA BANCOMER -- 012821015214161544"></option>
@@ -634,7 +620,7 @@
                     <label class="pt-1" for="transf-empleados">EMPLEADOS</label>
                   </td>
                   <td class="col-md-6 input-effect mt-4">
-                    <input  list="transf-prov" class="efecto input-dpol"  id="transf-proveedores">
+                    <input  list="transf-prov" class="efecto h22"  id="transf-proveedores">
                     <datalist id="transf-prov">
                       <option value="Control Integrado de Tratamiendos Cuarentenarios y Plagas S.A de C.V -- CIT0010198Y0 -- 012821001069756749"></option>
                       <option value="Banco Monex S.A Institución de Banca Multiple, Mone Grupo Financiero -- BMI9704113pa -- 6580894"></option>
@@ -651,28 +637,28 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-1">
-                    <input class="noborder" type="text" value="012">
+                    <input class="noborder pt-1" type="text" value="012">
                   </td>
                   <td class="col-md-4">
-                    <input class="text-center p-1 input-control" type="text" value="012821011521461544">
+                    <input class="efecto h22" type="text" value="012821011521461544">
                   </td>
                   <td class="col-md-5">
-                    <input  class="text-center p-1 input-control" type="text" value="Martinez Martinez">
+                    <input  class="efecto h22" type="text" value="Martinez Martinez">
                   </td>
                   <td class="col-md-2">
-                    <input class="text-center p-1 input-control" type="text" value="MAMD800330DQ3">
+                    <input class="efecto h22" type="text" value="MAMD800330DQ3">
                   </td>
                 </tr>
 
                 <tr class="row m-0">
                   <td class="col-md-4 mt-3"></td>
                   <td class="col-md-2 mt-3">
-                    <button  type="button" class="btn">
+                    <button  type="button" class="boton">
                       <i class="fa fa-plus-circle"></i> ORIGEN
                     </button>
                   </td>
                   <td class="col-md-2 mt-3">
-                    <button  type="button" class="btn">
+                    <button  type="button" class="boton">
                       <i class="fa fa-plus-circle"></i> DESTINO
                     </button>
                   </td>
@@ -689,17 +675,16 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-1">
-                    <!-- <input class="input-dpol input-control dpol noborder" type="text" value="012"> -->
                     <input class="noborder" type="text" value="012">
                   </td>
                   <td class="col-md-4">
-                    <input class="text-center p-1 input-control" type="text" value="012821011521461544">
+                    <input class="efecto h22" type="text" value="012821011521461544">
                   </td>
                   <td class="col-md-4">
-                    <input  class="text-center p-1 input-control" type="text" value="Martinez Martinez">
+                    <input  class="efecto h22" type="text" value="Martinez Martinez">
                   </td>
                   <td class="col-md-3">
-                    <input class="text-center p-1 input-control" type="text" value="MAMD800330DQ3">
+                    <input class="efecto h22" type="text" value="MAMD800330DQ3">
                   </td>
                 </tr>
                 <tr class="row m-0">
@@ -716,32 +701,32 @@
                     <input class="noborder" type="text" value="012">
                   </td>
                   <td class="col-md-4">
-                    <input class="text-center p-1 input-control" type="text" value="012821011521461544">
+                    <input class="efecto h22" type="text" value="012821011521461544">
                   </td>
                   <td class="col-md-4">
-                    <input  class="text-center p-1 input-control" type="text" value="Martinez Martinez">
+                    <input  class="efecto h22" type="text" value="Martinez Martinez">
                   </td>
                   <td class="col-md-3">
-                    <input class="text-center p-1 input-control" type="text" value="MAMD800330DQ3">
+                    <input class="efecto h22" type="text" value="MAMD800330DQ3">
                   </td>
                 </tr>
 
-                <tr class="row m-0">
-                  <td class="col-md-3 input-effect mt-4">
-                    <input id="trans-emext" class="efecto input-dpol" type="text">
+                <tr class="row m-0 mt-4">
+                  <td class="col-md-3">
+                    <input id="trans-emext" class="efecto h22" type="text">
                     <label class="pt-1" for="trans-emext">Bco. Emisor Extranjero</label>
                   </td>
 
-                  <td class="col-md-3 input-effect mt-4">
-                    <input id="trans-desext" class="efecto input-dpol" type="text">
+                  <td class="col-md-3">
+                    <input id="trans-desext" class="efecto h22" type="text">
                     <label class="pt-1" for="trans-desext">Bco. Destino Extranjero</label>
                   </td>
-                  <td class="col-md-2 input-effect mt-4">
-                    <input id="trans-tc" class="efecto input-dpol" type="text">
+                  <td class="col-md-2">
+                    <input id="trans-tc" class="efecto h22" type="text">
                     <label class="pt-1" for="trans-tc">Tipo de Cambio</label>
                   </td>
-                  <td class="col-md-4 input-effect mt-4">
-                    <input  list="trans-mon" class="efecto input-dpol"  id="trans-moneda">
+                  <td class="col-md-4">
+                    <input  list="trans-mon" class="efecto h22"  id="trans-moneda">
                     <datalist id="trans-mon">
                       <option value="Peso Mexicano -- MXN"></option>
                       <option value="Boliviano -- BOB"></option>
@@ -751,17 +736,17 @@
                     <label class="pt-1" for="trans-moneda">Moneda</label>
                   </td>
                 </tr>
-                <tr class="row m-0">
-                  <td class="col-md-3 input-effect mt-4">
-                    <input class="efecto input-dpol" type="date" id="trans-fecha">
+                <tr class="row m-0 mt-4">
+                  <td class="col-md-3">
+                    <input class="efecto h22 tiene-contenido" type="date" id="trans-fecha">
                     <label class="pt-1" for="trans-fecha">Fecha</label>
                   </td>
-                  <td class="col-md-2 input-effect mt-4">
-                    <input id="trans-imp" class="efecto input-dpol" type="text">
+                  <td class="col-md-2">
+                    <input id="trans-imp" class="efecto h22" type="text">
                     <label class="pt-1" for="trans-imp">Importe</label>
                   </td>
-                  <td class="col-md-7 input-effect mt-4">
-                    <input id="trans-observ" class="efecto input-dpol" type="text">
+                  <td class="col-md-7">
+                    <input id="trans-observ" class="efecto h22" type="text">
                     <label class="pt-1" for="trans-observ">Observaciones</label>
                   </td>
                 </tr>
@@ -773,7 +758,7 @@
 
         <div class="container-fluid xl mt-4">
           <form>
-            <table class="notable text-center">
+            <table class="text-center">
               <tbody>
                 <tr class="table-bordered sub">
                   <th colspan="3"></th>
@@ -786,22 +771,12 @@
                 </tr>
                 <tr>
                   <td colspan="3"></td>
+                  <td>4</td>
+                  <td colspan="4">0206-00929</td>
+                  <td colspan="10">Servicio Ancira Garza S.A de C.V</td>
+                  <td colspan="2">$ 3,000</td>
+                  <td colspan="2">0.00</td>
                   <td>
-                    <input class="input-dpol form-control  noborder" type="text" readonly value="4">
-                  </td>
-                  <td colspan="4">
-                    <input class="input-dpol form-control  noborder" type="text" readonly value="0206-00929">
-                  </td>
-                  <td colspan="10">
-                    <input class="input-dpol form-control  noborder" type="text" readonly value="Servicio Ancira Garza S.A de C.V">
-                  </td>
-                  <td colspan="2">
-                    <input class="input-dpol form-control  noborder" type="text" readonly value="$3,000">
-                  </td>
-                  <td colspan="2">
-                    <input class="input-dpol form-control  noborder" type="text" readonly value="0.00">
-                  </td>
-                  <td class="text-center">
                     <a href="">
                       <img class="icochico" src="/conta6/Resources/iconos/001-add.svg">
                     </a>
@@ -840,35 +815,7 @@
                   <th>RFC</th>
                   <th>Obser</th>
                 </tr>
-                <tr>
-                  <td colspan="2">
-                    <a href="">
-                      <img class="icochico" src="/conta6/Resources/iconos/002-trash.svg">
-                    </a>
-                  </td>
-                  <td>CompNal</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>0084882-k202-op01-2344826181903kj</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>SAG950408LE8</td>
-                  <td></td>
-                  <td>$3,000</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>MXN</td>
-                  <td>1</td>
-                  <td>Servicio Ancira Garza S.A de C.V</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr style="border-top:1px solid rgba(190, 91, 106, 0.33)">
+                <tr class="borderojo">
                   <td colspan="2">
                     <a href="">
                       <img class="icochico" src="/conta6/Resources/iconos/002-trash.svg">

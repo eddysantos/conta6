@@ -87,7 +87,7 @@
     </div>
     <div class="row">
       <div class="col-md-2">
-        <a  class="boton btn-block" style="border:none"><img class="icomediano mleftx5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+        <a  class="boton" style="border:none"><img class="icomediano mleftx5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
       </div>
       <div class="col-md-2 offset-md-5 pt-3">
         <input  class="text-normal form-control text-center" value="$ 15, 932.08" readonly>

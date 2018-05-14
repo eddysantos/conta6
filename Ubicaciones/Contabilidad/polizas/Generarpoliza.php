@@ -24,37 +24,33 @@
 
   <!--Comienza Generar Poliza de Diario-->
   <div id="polizadiario" class="contorno" style="display:none">
-    <table class="table">
-      <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row m-0 encabezado">
-          <td class="col-md-12 text-center">GENERAR POLIZA TIPO 4</td>
+    <table class="table text-center">
+      <thead>
+        <tr class="row m-0 encabezado font18">
+          <td class="col-md-12">GENERAR POLIZA TIPO 4</td>
         </tr>
       </thead>
       <tbody class="cuerpo">
-        <tr class="row m-0">
-          <!-- <td class="col-md-3 input-effect brx3">
-            <input class="efecto text-center data-date" type="text" onfocus="(this.type='date')" id="diafecha">
-            <label for="diafecha">Fecha Póliza</label>
-          </td> -->
-          <td class="col-md-3 input-effect brx3">
-            <input class="efecto text-center tiene-contenido" type="date" id="diafecha">
+        <tr class="row m-0 mt-5">
+          <td class="col-md-3 input-effect">
+            <input class="efecto tiene-contenido" type="date" id="diafecha">
             <label for="diafecha">Fecha Póliza</label>
           </td>
-          <td class="col-md-6 input-effect brx3">
-            <input id="diaconcepto" class="efecto text-center text-normal w-100" type="text">
+          <td class="col-md-6 input-effect">
+            <input id="diaconcepto" class="efecto" type="text">
             <label for="diaconcepto">Concepto</label>
           </td>
-          <td class="col-md-3 input-effect brx3">
-            <input id="diapoliza" class="efecto text-center tiene-contenido" type="text" readonly>
+          <td class="col-md-3 input-effect">
+            <input id="diapoliza" class="efecto tiene-contenido" type="text" readonly>
             <label for="diapoliza">Póliza Generada</label>
           </td>
         </tr>
-        <tr class="row brx3 justify-content-center">
+        <tr class="row justify-content-center mt-5">
           <td class="col-md-3">
-            <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a>
+            <a href="" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a>
           </td>
           <td class="col-md-3">
-            <a href="DetallepolizaDiario.php" class="boton btn-block brx1"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a><!--nueva pagina, ingresar datos en poliza-->
+            <a href="DetallepolizaDiario.php" class="boton"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>
@@ -63,33 +59,33 @@
 
   <!--Comienza Generar Poliza de Ingreso-->
   <div id="polizaingresos" class="contorno" style="display:none">
-    <table class="table">
-      <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row m-0 encabezado">
-          <td class="col-md-12 text-center">GENERAR POLIZA TIPO 2</td>
+    <table class="table text-center">
+      <thead>
+        <tr class="row m-0 encabezado font18">
+          <td class="col-md-12">GENERAR POLIZA TIPO 2</td>
         </tr>
       </thead>
       <tbody class="cuerpo">
-        <tr class="row m-0">
-          <td class="col-md-3 input-effect brx3">
-            <input class="dpol2 efecto text-center tiene-contenido" type="date" id="ingrefecha">
+        <tr class="row m-0  mt-5">
+          <td class="col-md-3 input-effect">
+            <input class="efecto tiene-contenido" type="date" id="ingrefecha">
             <label for="ingrefecha">Fecha Póliza</label>
           </td>
-          <td class="col-md-6 input-effect brx3">
-            <input id="ingreconcepto" class="efecto text-center" type="text">
+          <td class="col-md-6 input-effect">
+            <input id="ingreconcepto" class="efecto" type="text">
             <label for="ingreconcepto">Concepto</label>
           </td>
-          <td class="col-md-3 input-effect brx3">
-            <input id="ingrepoliza" class="efecto text-center tiene-contenido" type="text"  readonly>
+          <td class="col-md-3 input-effect">
+            <input id="ingrepoliza" class="efecto tiene-contenido" type="text"  readonly>
             <label for="ingrepoliza">Póliza Generada</label>
           </td>
         </tr>
-        <tr class="row brx3 justify-content-center">
+        <tr class="row mt-5 justify-content-center">
           <td class="col-md-3">
-            <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a><!--nueva pagina, ingresar datos en poliza-->
+            <a href="" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
           <td class="col-md-3">
-            <a href="DetallepolizaIngreso.php" class="boton btn-block brx1"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a><!--nueva pagina, ingresar datos en poliza-->
+            <a href="DetallepolizaIngreso.php" class="boton"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>
@@ -98,20 +94,20 @@
 
 
   <div id="cheques" class="contorno" style="display:none">
-    <table class="table">
-      <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row encabezado">
-          <td class="col-md-12 text-center">GENERAR CHEQUE</td>
+    <table class="table text-center">
+      <thead>
+        <tr class="row encabezado font18">
+          <td class="col-md-12">GENERAR CHEQUE</td>
         </tr>
       </thead>
       <tbody class="cuerpo">
-        <tr class="row m-0">
-          <td class="col-md-3 input-effect brx3">
-            <input class="dpol2 efecto text-center tiene-contenido" type="date" id="chfecha">
+        <tr class="row m-0 mt-5">
+          <td class="col-md-3 input-effect">
+            <input class="efecto tiene-contenido" type="date" id="chfecha">
             <label for="chfecha">Fecha Cheque</label>
           </td>
-          <td class="col-md-9 input-effect brx3">
-            <input  list="oficina" class="text-normal efecto text-center"  id="chncuenta">
+          <td class="col-md-9 input-effect">
+            <input  list="oficina" class="efecto"  id="chncuenta">
             <datalist id="oficina">
               <option value="0100-00006 ---- BANAMEX CTA.7658424 NLDO"></option>
               <option value="0100-00011 ---- BANAMEX DLLS CTA.79033561 NLDO"></option>
@@ -122,17 +118,17 @@
             <label for="chncuenta">Seleccione una Cuenta</label>
           </td>
         </tr>
-        <tr class="row m-0 ">
-          <td class="col-md-3 input-effect brx2">
-            <input id="chnumero" class="efecto text-center" type="text">
+        <tr class="row m-0 mt-5">
+          <td class="col-md-3 input-effect">
+            <input id="chnumero" class="efecto" type="text">
             <label for="chnumero">No.Cheque</label>
           </td>
-          <td class="col-md-3 input-effect brx2">
-            <input id="chimporte" class="efecto text-center" type="text">
+          <td class="col-md-3 input-effect">
+            <input id="chimporte" class="efecto" type="text">
             <label for="chimporte">Importe</label>
           </td>
-          <td class="col-md-6 input-effect brx2">
-            <input  list="beneficiarios" class="text-normal efecto text-center" id="chbeneficiarios">
+          <td class="col-md-6 input-effect">
+            <input  list="beneficiarios" class="efecto" id="chbeneficiarios">
             <datalist id="beneficiarios">
               <option value="BENEFICIARIO NUMERO 1"></option>
               <option value="BENEFICIARIO NUMERO 2"></option>
@@ -143,13 +139,13 @@
             <label for="chbeneficiarios">Beneficiario</label>
           </td>
         </tr>
-        <tr class="row  m-0">
-          <td class="col-9 input-effect brx2">
-            <input id="chconcepto" class="efecto text-center" type="text">
+        <tr class="row m-0 mt-5">
+          <td class="col-9 input-effect">
+            <input id="chconcepto" class="efecto" type="text">
             <label for="chconcepto">Concepto</label>
           </td>
-          <td class="col-md-3 brx2">
-            <a href="/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php" class="boton btn-block"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico noborder"> GENERAR CHEQUE</a><!--nueva pagina, ingresar datos en poliza-->
+          <td class="col-md-3">
+            <a href="/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR CHEQUE</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>
@@ -158,24 +154,24 @@
 
 
   <div id="anticipos" class="contorno" style="display:none">
-    <table class="table">
-      <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row encabezado">
-          <td class="col-md-12 text-center">GENERAR ANTICIPO</td>
+    <table class="table text-center">
+      <thead>
+        <tr class="row m-0 encabezado font18">
+          <td class="col-md-12">GENERAR ANTICIPO</td>
         </tr>
       </thead>
       <tbody class="cuerpo">
-        <tr class="row m-0">
-          <td class="col-md-3 input-effect brx3">
-            <input class="dpol2 efecto text-center tiene-contenido" type="date" id="antfecha">
+        <tr class="row m-0 mt-5">
+          <td class="col-md-3 input-effect">
+            <input class="efecto tiene-contenido" type="date" id="antfecha">
             <label for="antfecha">Fecha Anticipo</label>
           </td>
-          <td class="col-md-3 input-effect brx3">
-            <input id="antimporte" class="efecto text-center" type="text">
+          <td class="col-md-3 input-effect">
+            <input id="antimporte" class="efecto" type="text">
             <label for="antimporte">Importe</label>
           </td>
-          <td class="col-md-6 input-effect brx3">
-            <input  list="antcta" class="text-normal efecto text-center"  id="antcuenta">
+          <td class="col-md-6 input-effect">
+            <input  list="antcta" class="efecto"  id="antcuenta">
             <datalist id="antcta">
               <option value="0100-00006 ---- BANAMEX CTA.7658424 NLDO"></option>
               <option value="0100-00011 ---- BANAMEX DLLS CTA.79033561 NLDO"></option>
@@ -186,17 +182,17 @@
             <label for="antcuenta">Seleccione una Cuenta</label>
           </td>
         </tr>
-        <tr class="row m-0">
-          <td class="col-md-8 input-effect brx2">
-            <input  list="listaclientes" class="text-normal efecto text-center" id="antcliente">
+        <tr class="row m-0 mt-4">
+          <td class="col-md-8 input-effect">
+            <input  list="listaclientes" class="efecto" id="antcliente">
             <datalist id="listaclientes">
               <option value="SERVICIOS INTEGRALES EN LOGISTICA INTERNACIONAL, ADUANAS Y TECNOLOGIA, S.C --- CLT_7158"></option>
               <option value="TURBO-MEX REFACCIONES,MANTENIMIENTO Y SEGURIDAD INDUSTRIAL S.A DE C.V --- CLT_7114"></option>
             </datalist>
             <label for="antcliente">Cliente</label>
           </td>
-          <td class="col-md-4 input-effect brx2">
-            <input  list="listacuentacliente" class="text-normal efecto text-center" id="antbcocliente">
+          <td class="col-md-4 input-effect">
+            <input  list="listacuentacliente" class="efecto" id="antbcocliente">
             <datalist id="listacuentacliente">
               <option value="HSBC --- 3336"></option>
               <option value="BANAMEX --- 0192"></option>
@@ -205,13 +201,13 @@
             <label for="antbcocliente">Banco Cliente</label>
           </td>
         </tr>
-        <tr class="row  m-0">
-          <td class="col-9 input-effect brx2">
-            <input id="antconcepto" class="efecto text-center" type="text">
+        <tr class="row  m-0 mt-4">
+          <td class="col-9 input-effect">
+            <input id="antconcepto" class="efecto" type="text">
             <label for="antconcepto">Concepto</label>
           </td>
-          <td class="col-md-3 brx2">
-            <a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="boton btn-block"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico noborder"> GENERAR ANTICIPO</a><!--nueva pagina, ingresar datos en poliza-->
+          <td class="col-md-3">
+            <a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR ANTICIPO</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>

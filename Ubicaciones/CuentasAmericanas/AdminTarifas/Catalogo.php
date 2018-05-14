@@ -13,7 +13,7 @@
           <a href=""><img class="icomediano mleftx2" src="/conta6/Resources/iconos/printer.svg"></a>
         </td>
         <td class="col-md-3 offset-md-7">
-          <a href="#catalogo" data-toggle="modal" class="boton btn-block mleftx10"><img class="icochico" src="/conta6/Resources/iconos/add.svg"> AGREGAR CONCEPTO</a>
+          <a href="#catalogo" data-toggle="modal" class="boton mleftx10"><img class="icochico" src="/conta6/Resources/iconos/add.svg"> AGREGAR CONCEPTO</a>
         </td>
       </tr>
     </tbody>

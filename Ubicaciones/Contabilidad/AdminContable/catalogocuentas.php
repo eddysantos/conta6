@@ -74,7 +74,7 @@
               </tr>
               <tr class="row">
                 <td class="col-md-2 offset-md-5 brx2">
-                  <a href="#" id="generarCtaMst" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
+                  <a href="#" id="generarCtaMst" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
                   <div id="respuestaCtasMST"></div>
                 </td>
               </tr>
@@ -132,7 +132,7 @@
               </tr>
               <tr class="row">
                 <td class="col-md-4 offset-md-4 mt-4">
-                  <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR CUENTA DETALLE</a>
+                  <a href="" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR CUENTA DETALLE</a>
                 </td>
               </tr>
             </tbody>
@@ -164,7 +164,7 @@
                   <label for="clt">CLIENTES</label>
                 </td>
                 <td class="col-md-2">
-                  <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
+                  <a href="" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
                 </td>
               </tr>
             </tbody>

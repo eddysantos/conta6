@@ -161,7 +161,7 @@
             <label class="pt-0" for="dias">DÍAS</label>
           </td>
           <td class="col-md-2 form1">
-            <a href="#" class="boton btn-block"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> BUSCAR</a><!--nueva pagina, ingresar datos en poliza-->
+            <a href="#" class="boton"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> BUSCAR</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </table>

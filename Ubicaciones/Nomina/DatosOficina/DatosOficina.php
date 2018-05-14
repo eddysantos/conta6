@@ -81,7 +81,7 @@
             </select>
           </td>
           <td class="col-md-4 offset-md-4">
-            <a href="" class="boton btn-block brx2"> <img src= "/conta6/Resources/iconos/refresh-button.svg" class="icochico"> ACTUALIZAR</a>
+            <a href="" class="boton brx2"> <img src= "/conta6/Resources/iconos/refresh-button.svg" class="icochico"> ACTUALIZAR</a>
           </td>
         </tr>
       </tbody>
