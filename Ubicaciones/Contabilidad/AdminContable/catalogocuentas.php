@@ -1,6 +1,11 @@
 <?php
 #http://localhost:88/conta6/Ubicaciones/Contabilidad/AdminContable/catalogocuentas.php?usuario=admado
-  $usuario = trim($_GET['usuario']);
+#  $usuario = trim($_GET['usuario']);
+
+//session_start();
+$_SESSION['user_name'] = 'admado';
+$usuario = $_SESSION['user_name'];
+
 
   $root = $_SERVER['DOCUMENT_ROOT'];
 
@@ -47,7 +52,7 @@
                   <label for="naturSAT">NATURALEZA SAT</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input  list="cta-mtraTipo" class="text-normal efecto text-center"  id="tipo">
+                  <input list="cta-mtraTipo" class="text-normal efecto text-center" id="tipo">
                   <datalist id="cta-mtraTipo">
                     <option value="A">Activo</option>
           					<option value="P">Pasivo</option>
@@ -59,11 +64,11 @@
                   <label for="tipo">TIPO</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="ctamaestra" class="efecto text-center" type="text">
+                  <input id="ctamaestra" class="efecto text-center" type="text" maxlength="10">
                   <label for="ctamaestra">CUENTA MAESTRA</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input id="concepto" class="efecto text-center" type="text">
+                  <input id="concepto" class="efecto text-center" type="text" maxlength="100">
                   <label for="concepto">CONCEPTO</label>
                 </td>
               </tr>

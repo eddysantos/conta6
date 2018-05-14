@@ -85,7 +85,19 @@ $(document).ready(function(){
       }
     });
 
+
+
+
+
+
     $('#generarCtaMst').click(function(){
+
+        if($('#ctaSAT').val() == ""){
+          $('#respuestaCtasMST').html("<center><font size=3 color=#FF0000>Seleccione Cuenta del SAT</font></center>");
+          $('#ctaSAT').focus();
+          return false;
+        }
+
 
         var data = {
           ctaSAT: $('#ctaSAT').val(),
@@ -93,9 +105,8 @@ $(document).ready(function(){
           tipo: $('#tipo').val(),
           ctamaestra: $('#ctamaestra').val(),
           concepto: $('#concepto').val(),
-          accion: "MST";
+          accion: 'MST'
         }
-
 
         $.ajax({
     			type: "POST",
@@ -103,14 +114,10 @@ $(document).ready(function(){
     			data: data,
     			success: 	function(request, settings){
             $('#respuestaCtasMST').html(request);
-    		    /*	$('#respuestaCtasMST').html("<div id='message'></div>");
-    		        $('#message').html("<h2>Tus datos han sido guardados correctamente!</h2>")
-    		        .hide()
-    		        .fadeIn(1500, function() {
-    					         $('#message').append("<a href='index.php?action=see'>Ver usuarios registrados</a>");
-    		        });*/
     		    }
     		});
+
+
     });
 
 
