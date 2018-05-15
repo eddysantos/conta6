@@ -1,4 +1,4 @@
-.tRepo {
+/* .tRepo {
   letter-spacing: 8px;
   font-size: xx-large;
   color: rgba(161, 28, 0, 0.16);
@@ -7,7 +7,7 @@
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   border-bottom: 1px solid  rgb(209, 28, 28);
-}
+} */
 /* .tRepo2 {
   background-color: rgba(194, 189, 189, 0.2);
   border-top-left-radius: 8px;
@@ -15,7 +15,7 @@
   border-bottom: 1px solid rgb(209, 28, 28);
   padding: .7rem!important;
 } */
-.tRepoNom {
+/* .tRepoNom {
   color: rgba(161, 28, 0, 0.36);
   background-color: rgba(194, 189, 189, 0.2);
   border-top-left-radius: 8px;
@@ -24,7 +24,7 @@
   padding: .6rem!important;
   font-size: 14px!important;
   text-align: center!important;
-}
+} */
 
 .encabezado{
   border-top-left-radius: 8px;
@@ -64,10 +64,6 @@
   border-top-left-radius: 8px;
   border-bottom: 1px solid  rgb(209, 28, 28);
 }
-
-
-
-
 
 .sGrande {
   display: block;
@@ -179,7 +175,7 @@ th.subtext, td.subtext {
 .cuerpo {
   font-size: 17px;
   line-height: 0.9;
-  letter-spacing: 5px;
+  letter-spacing: 3px;
   text-align: center!important;
 }
 .blateral {

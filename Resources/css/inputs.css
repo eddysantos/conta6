@@ -130,14 +130,16 @@ button[type=button].btn:hover{
 .boton{
   background-color: transparent!important;
   color: rgb(110, 110, 110)!important;
-  letter-spacing: 2px!important;
+  letter-spacing: 1px!important;
   border: 1px solid #ccc;
   padding: 4px!important;
   border-radius: 10px;
+  display: block;
+  width: 100%
 }
 .boton:hover,.boton:focus{
-  color: rgb(217, 0, 0)!important;
-  letter-spacing: 3px!important;
+  /* color: rgb(217, 0, 0)!important; */
+  letter-spacing: 2px!important;
 }
 
 
@@ -160,4 +162,3 @@ input.inp-nom{
   font-size: 16px;
   height: 22px;
   color: rgb(136, 136, 136);
-}

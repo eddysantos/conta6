@@ -13,7 +13,7 @@
           <a><img class="icomediano ml-2" src="/conta6/Resources/iconos/printer.svg"></a>
         </td>
         <td class="col-md-3 offset-md-8">
-          <a href="#NuevoCorresponsal"  data-toggle="modal" class="boton btn-block"><img class="icochico" src="/conta6/Resources/iconos/add.svg"> AGREGAR NUEVO</a>
+          <a href="#NuevoCorresponsal"  data-toggle="modal" class="boton"><img class="icochico" src="/conta6/Resources/iconos/add.svg"> AGREGAR NUEVO</a>
         </td>
       </tr>
     </tbody>

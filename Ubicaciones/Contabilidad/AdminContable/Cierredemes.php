@@ -1,4 +1,3 @@
-
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
@@ -57,7 +56,7 @@
         </tr>
         <tr class="row mt-4 justify-content-center">
           <td class="col-md-2">
-            <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
+            <a href="" class="boton"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
           </td>
         </tr>
       </tbody>
@@ -96,7 +95,7 @@
         </tr>
         <tr class="row mt-4 justify-content-center">
           <td class="col-md-2">
-            <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/003-edit.svg" class="icochico"> MODIFICAR</a>
+            <a href="" class="boton"><img src= "/conta6/Resources/iconos/003-edit.svg" class="icochico"> MODIFICAR</a>
           </td>
         </tr>
       </tbody>
@@ -110,7 +109,7 @@
       <tbody class="cuerpo">
         <tr class="row">
           <td class="col-md-3 offset-md-2">
-            <select class="input-dpol form-control" name="selector" id="opcion">
+            <select name="selector" id="opcion">
               <option >Seleccione Oficina</option>
               <option value="1">Todas</option>
               <option value="2">Aeropuerto</option>
@@ -120,7 +119,7 @@
             </select>
           </td>
           <td class="col-md-2">
-            <select class="input-dpol form-control" name="selector" id="opcion">
+            <select name="selector" id="opcion">
               <option >Seleccione Año</option>
               <option value="1">2017</option>
               <option value="2">2015</option>
@@ -130,7 +129,7 @@
             </select>
           </td>
           <td class="col-md-3">
-            <select class="input-dpol form-control" name="selector" id="opcion">
+            <select name="selector" id="opcion">
               <option >Seleccione Año</option>
               <option value="1">Todos los Módulos -- 0</option>
               <option value="2">Anticipos -- 5</option>
