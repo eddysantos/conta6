@@ -14,13 +14,6 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('', );
-if (!($stmt)) {
-  $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
-  exit_script($system_callback);
-}
-
 if (!($stmt->execute())) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during query execution [$stmt->errno]: $stmt->error";

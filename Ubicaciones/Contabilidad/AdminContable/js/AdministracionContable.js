@@ -1,5 +1,26 @@
+function fetch_cuentas_mst(){
+  $.ajax({
+    method: 'POST',
+    url: '/conta6/Resources/PHP/actions/lst_conta_cs_cuentas_mst.php',
+    success: function(result){
+      var r = JSON.parse(result);
+
+      if (r.code == 1) {
+        $('#cuentasSAT').html(r.data);
+      } else {
+        alert('Error: No se cargaron los catálogos del SAT. Reportáselo a sistemas.');
+      }
+    },
+    error: function(exception){
+      console.error(exception);
+      alert('Hubo un error fatal, favor de reportarselo a sistemas de inmediato.');
+    }
+  })
+}
 
 $(document).ready(function(){
+  fetch_cuentas_mst();
+
   $('.consultar').click(function(){
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');

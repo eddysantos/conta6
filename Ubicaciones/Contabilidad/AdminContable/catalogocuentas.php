@@ -240,7 +240,6 @@ $usuario = $_SESSION['user_name'];
 <script src="js/AdministracionContable.js"></script>
 <?php
 require_once('modales/EditarCatalogo.php');
-require_once('/conta6/Resources/PHP/actions/lst_conta_cs_cuentas_mst.php');
  ?>
 <?php
 
