@@ -1,9 +1,10 @@
 <?php
 
+error_reporting(0);
 
-require $root . '/plsuite/Resources/PHP/Utilities/session.php';
+require $root . '/conta6/Resources/PHP/Utilities/session.php';
 
-include($root . '/plsuite/Resources/PHP/loginDatabase.php');
+include($root . '/Conta6/Resources/PHP/Databases/conexion.php');
 date_default_timezone_set('America/Monterrey');
 
 function exit_script($input_array){

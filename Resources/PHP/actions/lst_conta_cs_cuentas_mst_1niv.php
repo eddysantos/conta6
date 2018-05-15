@@ -5,7 +5,14 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
 $data = $_POST;
 
-$query = "SELECT * FROM conta_cs_sat_cuentas WHERE s_activo = 'S' ORDER BY s_ctaNombre";
+$query = "SELECT * FROM conta_cs_cuentas_mst
+                WHERE pk_id_cuenta LIKE '%-00000'
+                and pk_id_cuenta not like '0108%'
+                and pk_id_cuenta not like '0208%'
+                and pk_id_cuenta not like '0106%'
+                and pk_id_cuenta not like '0203%'
+                and pk_id_cuenta not like '0206%'
+                ORDER BY pk_id_cuenta";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -30,8 +37,7 @@ if ($rslt->num_rows == 0) {
 
 while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
-  "<option value=".trim($oRst_CuentasSAT['pk_codAgrup']).">".htmlentities(trim($oRst_CuentasSAT['s_ctaNombre']))." ----- ".trim($oRst_CuentasSAT['pk_codAgrup'])."</option>";
-  //"<p db-id='$row[pkid_driver]'>$row[nameFirst] $row[nameLast]</p>";
+  "<option value=".trim($row['pk_id_cuenta']).">".trim($row['pk_id_cuenta'])." ----- ".htmlentities(trim($row['s_cta_desc']))."</option>";
 }
 
 $system_callback['code'] = 1;

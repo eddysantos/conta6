@@ -32,23 +32,15 @@ $usuario = $_SESSION['user_name'];
             <tbody class="cuerpo">
               <tr class="row brx2">
                 <td class="col-md-12 input-effect">
-                  <input  list="cuentasSAT" class="text-normal efecto text-center"  id="ctaSAT">
-                  <datalist id="cuentasSAT" href="#lst_conta_cs_cuentas_mst">
-                  </datalist>
+                  <input  list="cuentasSAT" class="text-normal efecto text-center" id="ctaSAT">
+                  <datalist id="cuentasSAT" href="#lst_conta_cs_cuentas_mst"></datalist>
                   <label for="ctaSAT">CUENTAS SAT</label>
                 </td>
               </tr>
               <tr class="row brx2">
                 <td class="col-md-4 input-effect">
                   <input  list="NSAT" class="text-normal efecto text-center"  id="naturSAT">
-                  <datalist id="NSAT">
-      				  	<?php
-          					$sql_CuentasSAT_natur = mysqli_query($conn,"SELECT * FROM conta_cs_sat_natur_cuentas where s_activo = 'S' ORDER BY s_naturaleza");
-          					while($oRst_CuentasSAT_natur = $sql_CuentasSAT_natur->fetch_assoc()) {
-          						echo '<option value='.trim($oRst_CuentasSAT_natur['fk_id_naturaleza']).'>'.htmlentities(trim($oRst_CuentasSAT_natur['s_naturaleza'])).' ----- '.trim($oRst_CuentasSAT_natur['fk_id_naturaleza']).'</option>';
-          				  }
-                  ?>
-                  </datalist>
+                  <datalist id="NSAT" href="#lst_conta_cs_sat_natur_cuentas"></datalist>
                   <label for="naturSAT">NATURALEZA SAT</label>
                 </td>
                 <td class="col-md-3 input-effect">
@@ -105,22 +97,7 @@ $usuario = $_SESSION['user_name'];
                   <label for="naturSAT1">NATURALEZA SAT</label>                </td>
                 <td class="col-md-6 input-effect">
                   <input  list="CuentaMaestra" class="text-normal efecto text-center"  id="tipo1">
-                  <datalist id="CuentaMaestra">
-        				  <?php
-        					$sql_Cuentas = mysqli_query($conn,"SELECT * FROM conta_cs_cuentas_mst
-        													WHERE pk_id_cuenta LIKE '%-00000'
-        													and pk_id_cuenta not like '0108%'
-        													and pk_id_cuenta not like '0208%'
-        													and pk_id_cuenta not like '0106%'
-        													and pk_id_cuenta not like '0203%'
-        													and pk_id_cuenta not like '0206%'
-        													ORDER BY pk_id_cuenta limit 25");
-
-        					while($oRst_Cuentas = $sql_Cuentas->fetch_assoc()) {
-        					       echo '<option value="'.trim($oRst_Cuentas['pk_id_cuenta']).'">'.trim($oRst_Cuentas['pk_id_cuenta']).' ----- '.htmlentities(trim($oRst_Cuentas['s_cta_desc'])).'</option>';
-        				  }
-                  ?>
-                  </datalist>
+                  <datalist id="CuentaMaestra" href="#lst_conta_cs_cuentas_mst_1niv"></datalist>
                   <label for="tipo1">CUENTA MAESTRA</label>                </td>
                 <td class="col-md-3 input-effect">
                   <input id="concepto1" class="efecto text-center" type="text">
@@ -149,7 +126,7 @@ $usuario = $_SESSION['user_name'];
                   <input  list="Clientes" class="text-normal efecto text-center"  id="clt">
                   <datalist id="Clientes">
       				  	<?php
-      					  $sql_Clientes = mysqli_query($conn,"SELECT * FROM conta_replica_clientes WHERE pk_id_cliente NOT IN( SELECT DISTINCT s_cta_identificador  FROM conta_cs_cuentas_mst WHERE s_cta_identificador is not null) ORDER BY s_nombre");
+      					  $sql_Clientes = mysqli_query($db,"SELECT * FROM conta_replica_clientes WHERE pk_id_cliente NOT IN( SELECT DISTINCT s_cta_identificador  FROM conta_cs_cuentas_mst WHERE s_cta_identificador is not null) ORDER BY s_nombre");
 
         					while($oRst_Clientes = $sql_Clientes->fetch_assoc()) {
         						echo '<option value='.trim($oRst_Clientes['pk_id_cliente']).'>'.htmlentities(trim($oRst_Clientes['s_nombre'])).' ----- '.trim($oRst_Clientes['pk_id_cliente']).'</option>';
@@ -195,7 +172,7 @@ $usuario = $_SESSION['user_name'];
       <tbody class="text-normal">
 	  	<tr class="row text-center m-0 borderojo">
 		<?php
-    	$sql_consultaCuentas = mysqli_query($conn,"SELECT * FROM conta_cs_cuentas_mst");
+    	$sql_consultaCuentas = mysqli_query($db,"SELECT * FROM conta_cs_cuentas_mst");
   		while($oRst_consultaCuentas = $sql_consultaCuentas->fetch_assoc()) {
   			$id_cuenta = trim($oRst_consultaCuentas['pk_id_cuenta']);
   			$actividad = trim($oRst_consultaCuentas['s_cta_actividad']);
@@ -243,5 +220,5 @@ require_once('modales/EditarCatalogo.php');
  ?>
 <?php
 
-	$conn->close();
+	$db->close();
 ?>

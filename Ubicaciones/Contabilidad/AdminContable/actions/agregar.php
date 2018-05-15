@@ -18,7 +18,7 @@ if( $accion == 'MST' ){
     $Descripcion_Cta = $_POST['concepto'] ;
 
 
-    mysqli_query($conn,"INSERT INTO conta_cs_cuentas_mst(pk_id_cuenta,s_cta_desc,s_cta_tipo,s_cta_nivel,fk_codAgrup,fk_id_naturaleza,s_usuario_alta)
+    mysqli_query($db,"INSERT INTO conta_cs_cuentas_mst(pk_id_cuenta,s_cta_desc,s_cta_tipo,s_cta_nivel,fk_codAgrup,fk_id_naturaleza,s_usuario_alta)
     VALUES ('$Cta_Mta','$Descripcion_Cta','$Tipo','1','$ctaSAT','$natur','$usuario')");
 
     echo $descripcion = "Se Genero la Cuenta Maestra: $Cta_Mta, $Descripcion_Cta";
