@@ -111,7 +111,7 @@
             <label for="cinter">CUENTA / INTERBANCARIA</label>
           </td>
           <td class="col-md-2 input-effect mt-4">
-            <a href="" role="button" class="ver boton btn-block" accion="mostrarcta"> <img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR</a>
+            <a href="" role="button" class="ver boton" accion="mostrarcta"> <img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR</a>
           </td>
         </tr>
       </tbody>

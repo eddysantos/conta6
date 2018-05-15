@@ -4,23 +4,23 @@
 ?>
 
 
-<div class="contorno brx4">
-  <h5 class="titulo" style="font-size:15px">CATÁLOGO</h5>
-  <table class="table">
+<div class="contorno mt-5">
+  <h5 class="titulo font14">CATÁLOGO</h5>
+  <table class="table text-center">
     <tbody class="cuerpo">
       <tr class="row m-0">
         <td class="col-md-1">
           <a><img class="icomediano ml-2" src="/conta6/Resources/iconos/printer.svg"></a>
         </td>
         <td class="col-md-3 offset-md-8">
-          <a href="#NuevoCorresponsal"  data-toggle="modal" class="boton btn-block"><img class="icochico" src="/conta6/Resources/iconos/add.svg"> AGREGAR NUEVO</a>
+          <a href="#NuevoCorresponsal"  data-toggle="modal" class="boton"><img class="icochico" src="/conta6/Resources/iconos/add.svg"> AGREGAR NUEVO</a>
         </td>
       </tr>
     </tbody>
   </table>
-  <table class="table table-hover">
+  <table class="table table-hover text-center">
     <thead>
-      <tr class="row m-0 encabezado colorRosa">
+      <tr class="row m-0 encabezado font14">
         <td class="col-md-1"></td>
         <td class="col-md-5">CORRESPONSAL</td>
         <td class="col-md-4">CONTACTO</td>
@@ -28,13 +28,13 @@
       </tr>
     </thead>
     <tbody class="text-normal">
-      <tr class="row text-center m-0 borderojo">
+      <tr class="row m-0 borderojo">
         <td class="col-md-1 text-center">
           <a href="#EditarCorresponsal" data-toggle="modal">
             <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
           </a>
           <a>
-            <img class="icochico mleftx2" src="/conta6/Resources/iconos/001-add.svg">
+            <img class="icochico ml-5" src="/conta6/Resources/iconos/001-add.svg">
           </a>
         </td>
         <td class="col-md-5">Servicios Integrales en Logistica Internacional, Aduanas y Tecnologia S.C</td>

@@ -345,10 +345,10 @@
 
             <tr class="row mt-5 justify-content-center">
               <td class="col-md-2">
-                <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
+                <a href="" class="boton"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
               </td>
               <td class="col-md-2">
-                <a href="" class="boton btn-block"> <img src= "/conta6/Resources/iconos/cross.svg" class="icochico"> CALCELAR</a><!--nueva pagina, ingresar datos en poliza-->
+                <a href="" class="boton"> <img src= "/conta6/Resources/iconos/cross.svg" class="icochico"> CALCELAR</a><!--nueva pagina, ingresar datos en poliza-->
               </td>
             </tr>
           </tbody>

@@ -7,9 +7,14 @@ input.input-dpol{
   font-size:11px!important;
   height: 22px;
 }
-
+input:read-only{
+  background-color: #e9ecef;
+}
 .h35{
   height: 35px;
+}
+.h22{
+  height: 22px;
 }
 
 .sub{
@@ -165,6 +170,10 @@ a img.file:hover{
 select{
   font-size: 10pt!important;
   text-align-last:center;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #ced4da;
+  height: calc(2.25rem + 2px);
 }
 .form1{
   letter-spacing:3px;

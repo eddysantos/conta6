@@ -161,7 +161,7 @@
         </tr>
         <tr class="row">
           <td class="col-md-2 offset-md-5">
-            <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a><!--nueva pagina, ingresar datos en poliza-->
+            <a href="" class="boton brx1"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>
@@ -299,7 +299,7 @@
         </tr>
         <tr class="row">
           <td class="col-md-2 offset-md-5">
-            <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/003-edit.svg" class="icochico"> MODIFICAR</a><!--nueva pagina, ingresar datos en poliza-->
+            <a href="" class="boton brx1"><img src= "/conta6/Resources/iconos/003-edit.svg" class="icochico"> MODIFICAR</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>
@@ -443,7 +443,7 @@
         <tr class="row encabezado">
           <td class="col-md-6 text-left">Agregar Credito a Cliente</td>
           <td class="col-md-3 offset-md-3">
-            <a href="#creditos"  data-toggle="modal" class="boton btn-block"><img class="icochico" src="/conta6/Resources/iconos/magnifier.svg"> REVISAR CREDITOS</a>
+            <a href="#creditos"  data-toggle="modal" class="boton"><img class="icochico" src="/conta6/Resources/iconos/magnifier.svg"> REVISAR CREDITOS</a>
           </td>
         </tr>
       </thead>

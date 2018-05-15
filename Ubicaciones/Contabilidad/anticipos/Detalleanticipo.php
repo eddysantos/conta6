@@ -127,7 +127,7 @@
                   <label for="ant-clientes">Seleccione un Cliente</label>
                 </td>
                 <td class="col-md-2 brx3" role="button">
-                  <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton btn-block text-center icochico"  style="border:none"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                  <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton text-center icochico"  style="border:none"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
                 </td>
               </tr>
 
@@ -154,7 +154,7 @@
               </tr>
               <tr class="row">
                 <td class="col-md-2 offset-md-5 brx2">
-                  <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                  <a href="" class="boton brx1"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
                 </td>
               </tr>
             </tbody>
@@ -183,13 +183,13 @@
         </div>
         <div class="row">
           <div class="col-md-3 text-center">
-            <a href="#" class="text-normal boton btn-block"><img src= "/conta6/Resources/iconos/refresh-button.svg"> ACTUALIZAR ANTICIPO</a>
+            <a href="#" class="text-normal boton"><img src= "/conta6/Resources/iconos/refresh-button.svg"> ACTUALIZAR ANTICIPO</a>
           </div>
           <div class="col-md-3 text-center">
-            <a href="#" class="text-normal boton btn-block"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR ANTICIPO</a>
+            <a href="#" class="text-normal boton"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR ANTICIPO</a>
           </div>
           <div class="col-md-2">
-            <a href="#" class="boton btn-block" style="border:none"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+            <a href="#" class="boton" style="border:none"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
           </div>
           <div class="col-md-2 input-effect brx1">
             <input  class="text-normal form-control efecto text-center tiene-contenido" value="$ 15, 932.08" readonly>
