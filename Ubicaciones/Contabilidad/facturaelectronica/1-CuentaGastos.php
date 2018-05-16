@@ -35,7 +35,7 @@
               <label for="ctagatos-cReferencia">CON REFERENCIA</label>
             </td>
             <td class="col-md-2 mt-3" role="button">
-              <a href="" class="boton btn-block" style="font-size:17px"> <i class="fa fa-search "></i> Consultar</a>
+              <a href="" class="boton" style="font-size:17px"> <i class="fa fa-search "></i> Consultar</a>
             </td>
           </tr>
           <tr class="row brx1">
@@ -50,10 +50,10 @@
               <label for="ctagatos-sReferencia">SELECCIONAR CLIENTE (Sin Referencia)</label>
             </td>
             <td class="col-md-2 mt-3">
-              <a href="" class="boton btn-block" style="font-size:17px">Siguiente <i class="fa fa-angle-double-right fa-lg"></i></a>
+              <a href="" class="boton" style="font-size:17px">Siguiente <i class="fa fa-angle-double-right fa-lg"></i></a>
             </td>
             <td class="col-md-3 mt-3">
-              <a href="" class="boton btn-block" style="font-size:17px">Generar Tasa Cero <i class="fa fa-angle-double-right fa-lg"></i></a>
+              <a href="" class="boton" style="font-size:17px">Generar Tasa Cero <i class="fa fa-angle-double-right fa-lg"></i></a>
             </td>
           </tr>
           <tr class="row backpink mt-1">

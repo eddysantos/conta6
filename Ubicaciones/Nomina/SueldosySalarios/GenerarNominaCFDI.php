@@ -49,13 +49,13 @@
 
     <div class="row font16" id="vprev"><!--RUTA VISTA PREVIA-->
       <div class="col-md-4 offset-md-4 mt-3" role="button">
-        <a href="#" class="sueldosysalarios boton btn-block text-center icochico" accion="vnomina" status="cerrado" style="border:none"> <img src= "/conta6/Resources/iconos/magnifier.svg"> VISTA PREVIA</a>
+        <a href="#" class="sueldosysalarios boton text-center icochico" accion="vnomina" status="cerrado" style="border:none"> <img src= "/conta6/Resources/iconos/magnifier.svg"> VISTA PREVIA</a>
       </div>
     </div> <!--VISTA PREVIA-->
 
     <div class="row font16" style="display:none" id="generarnom"><!--RUTA GENERAR NOMINA-->
       <div class="col-md-4 offset-md-4" role="button">
-        <a href="#" class="sueldosysalarios boton btn-block text-center icochico" style="border:none" accion="GenerarNomina" status="cerrado">
+        <a href="#" class="sueldosysalarios boton text-center icochico" style="border:none" accion="GenerarNomina" status="cerrado">
           <img src= "/conta6/Resources/iconos/002-plus.svg"> GENERAR NOMINA
         </a>
       </div>
@@ -63,10 +63,10 @@
 
     <div class="row font16" style="display:none" id="preytimbrar"><!--RUTAS PREVISUALIZAR Y TIMBRAR CFDIS-->
       <div class="col-md-4 offset-md-2" role="button">
-        <a href="#" class="boton btn-block text-center icochico" style="border:none"> <img src= "/conta6/Resources/iconos/magnifier.svg"> PREVISUALIZAR CFDI'S</a>
+        <a href="#" class="boton text-center icochico" style="border:none"> <img src= "/conta6/Resources/iconos/magnifier.svg"> PREVISUALIZAR CFDI'S</a>
       </div>
       <div class="col-md-4" role="button">
-        <a href="#" class="boton btn-block text-center icochico" style="border:none"> <img src= "/conta6/Resources/iconos/timbrar.svg"> TIMBRAR TODOS LOS CFDI'S</a>
+        <a href="#" class="boton text-center icochico" style="border:none"> <img src= "/conta6/Resources/iconos/timbrar.svg"> TIMBRAR TODOS LOS CFDI'S</a>
       </div>
     </div>
 

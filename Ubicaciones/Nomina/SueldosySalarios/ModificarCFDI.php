@@ -568,7 +568,7 @@
 
     <div class="row">
       <div class="col-md-4 offset-md-4 text-center brx2" style="font-size: 16px;">
-          <a href="" class="boton btn-block">REGREGAR</a>
+          <a href="" class="boton">REGREGAR</a>
       </div>
     </div>
   </div> <!--Termina el contorno-->

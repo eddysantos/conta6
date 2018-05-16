@@ -382,7 +382,7 @@
     </div>
 
     <div class="col-md-4 offset-md-4 text-center brx2" style="font-size: 16px;">
-        <a href="" class="boton btn-block "> <img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR DATOS</a><!--Guardar Datos de poliza/cuando se actualizo algun dato-->
+        <a href="" class="boton "> <img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR DATOS</a><!--Guardar Datos de poliza/cuando se actualizo algun dato-->
     </div>
   </div>
 
