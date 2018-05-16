@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:400,500');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500');
+
+*{
+  box-sizing: border-box;
+}
+
+.bienvenida{
+  /* font-family: 'Dosis', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
+  list-style: none ;
+  text-decoration: none ;
+  margin: 0 ;
+  padding: 0 ;
+}
+html body{
+  margin-top: 0px;
+  padding: 0;
+  height: 100%;
+  min-height: 100%
+}
+body{
+  color: #989898 !important;
+  font-family: 'Montserrat', sans-serif!important;
+  font-size:1.2em!important;
+}
+h1{
+  font-size: 3.5em!important;
+  letter-spacing: 4px;
+  color: #b5b0b2;
+  margin: 15px;
+}
+h2{
+  font-size: 2.6em!important;
+  letter-spacing: 5px;
+  color: #b5b0b2;
+  line-height: 1;
+  margin: 4px;
+}
+span{
+  color: rgb(232, 26, 26) ;
+}
+
+.container{
+  margin-top: 180px !important;
+}
+.bienvenida{
+  position: relative;
+}
+#cargando{
+  width: 50%;
+  position: absolute;
+  left: 25%;
+  top: 65%;
+  padding-top: 5em;
+  padding-bottom: 0px;
+  display: block;
+  content: "";
+  border-bottom: 2px solid rgb(232, 26, 26);
+  animation: load 3s;
+}
+@keyframes load {
+  0%{
+    width: 0;
+  }
+
+  100%{
+    width: 50%;
+    opacity: 1;
+  }
+}
