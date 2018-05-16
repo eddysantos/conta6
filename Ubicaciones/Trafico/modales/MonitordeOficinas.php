@@ -12,18 +12,18 @@
         <div class="container-fluid">
           <div class="contorno">
             <form id="BuscarMonOfi">
-              <table class="table text-center mt-3">
+              <table class="table text-center brx1">
                 <tbody class="cuerpo">
                   <tr class="row">
-                    <td class="col-md-4 offset-md-2 input-effect mt-3">
-                      <input class="efecto tiene-contenido" type="date"  id="imp-fechaIn1">
+                    <td class="col-md-4 offset-md-2 input-effect brx2">
+                      <input class="efecto data-date" type="text" onfocus="(this.type='date')" id="imp-fechaIn1">
                       <label for="imp-fechaIn1">Fecha Inicial</label>
                     </td>
-                    <td class="col-md-4 input-effect mt-3">
-                      <input class="efecto tiene-contenido" type="date" id="imp-fechaFin1">
+                    <td class="col-md-4 input-effect brx2">
+                      <input class="efecto data-date" type="text" onfocus="(this.type='date')" id="imp-fechaFin1">
                       <label for="imp-fechaFin1">Fecha Final</label>
                     </td>
-                    <td class="col-md-1 text-left mt-3">
+                    <td class="col-md-1 text-left brx2">
                       <a class="btn-block trafico" accion="botonverDetalle" role="button"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icomediano"></a>
                     </td>
                   </tr>
@@ -31,8 +31,8 @@
               </table>
             </form>
 
-            <table id="VerMonitorOficinas" class="table text-center mt-3" style="display:none">
-              <tr class="row encabezado">
+            <table id="VerMonitorOficinas" class="table text-center brx3" style="display:none">
+              <tr class="row tRepoNom">
                 <td class="col-md-1">
                   <a class="trafico" accion="cerrarMonitorOficinas" role="button"><img src= "/conta6/Resources/iconos/cross.svg" class="icochico"></a>
                 </td>

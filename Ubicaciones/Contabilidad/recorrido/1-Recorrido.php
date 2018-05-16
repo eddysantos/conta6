@@ -40,7 +40,7 @@
       <form class="form1">
         <table class="table text-center">
           <thead style="font-size: 18px;font-weight: 100;">
-            <tr class="row m-0 encabezado">
+            <tr class="row m-0 tRepo2">
               <td class="col-md-12">Otras Facturas</td>
             </tr>
           </thead>
@@ -87,10 +87,10 @@
                 <label for="concepto">Concepto</label>
               </td>
               <td class="col-md-2 brx2">
-                <a href="" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR</a>
+                <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR</a>
               </td>
               <td class="col-md-2 brx2">
-                <a href="" class="boton"><img src= "/conta6/Resources/iconos/delete.svg" class="icochico"> CANCELAR</a>
+                <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/delete.svg" class="icochico"> CANCELAR</a>
               </td>
             </tr>
           </tbody>
@@ -121,7 +121,7 @@
     <div class="contorno">
       <table class="table">
         <thead style="font-size: 18px;font-weight: 100;">
-          <tr class="row encabezado">
+          <tr class="row tRepo2">
             <td class="col-md-12 text-center">Consultas</td>
           </tr>
         </thead>
@@ -197,7 +197,7 @@
   <div id="Recor" class="contorno" style="display:none">
     <table class="table text-center">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row encabezado">
+        <tr class="row tRepo2">
           <td class="col-md-12 text-center">CUENTAS PARA RECORRIDO
             <a href=""><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>
           </td>

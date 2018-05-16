@@ -8,35 +8,35 @@
         </button>
         <h5 class="modal-tittle">Editar Catalogo de Cuentas</h5>
       </div>
-      <div class="modal-body p-0">
+      <div class="modal-body" style="padding:0px">
         <div class="container-fluid">
           <div id="" class="contorno">
-            <table class="table m-0">
+            <table class="table" style="margin-bottom:0px">
               <tbody class="cuerpo">
-                <tr class="row mt-4">
+                <tr class="row brx2">
                   <td class="col-md-12 input-effect">
-                    <input  list="cuentasSAT" class="text-normal efecto"  id="medit-ctaSAT">
+                    <input  list="cuentasSAT" class="text-normal efecto text-center"  id="edit-ctaSAT">
                     <datalist id="cuentasSAT"></datalist>
-                    <label for="medit-ctaSAT">CUENTAS SAT</label>
+                    <label for="edit-ctaSAT">CUENTAS SAT</label>
                   </td>
                 </tr>
-                <tr class="row mt-4">
+                <tr class="row brx2">
                   <td class="col-md-6 input-effect">
-                    <input id="mconcepto" class="efecto" type="text">
-                    <label for="mconcepto">CONCEPTO</label>
+                    <input id="concepto" class="efecto text-center" type="text">
+                    <label for="concepto">CONCEPTO</label>
                   </td>
                   <td class="col-md-3 input-effect">
-                    <input  list="status" class="text-normal efecto"  id="medit-status">
+                    <input  list="status" class="text-normal efecto text-center"  id="edit-status">
                     <datalist id="status">
                       <option>Activa</option>
                       <option>Inactiva</option>
                     </datalist>
-                    <label for="medit-status">ESTATUS CAPTURA</label>
+                    <label for="edit-status">ESTATUS CAPTURA</label>
                   </td>
                   <td class="col-md-3 input-effect">
-                    <input  list="NSAT" class="text-normal efecto"  id="medit-naturSAT">
+                    <input  list="NSAT" class="text-normal efecto text-center"  id="edit-naturSAT">
                     <datalist id="NSAT"></datalist>
-                    <label for="medit-naturSAT">NATURALEZA SAT</label>
+                    <label for="edit-naturSAT">NATURALEZA SAT</label>
                   </td>
                 </tr>
               </tbody>

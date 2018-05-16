@@ -16,16 +16,16 @@
   <h5 class="titulo">DATOS DE ANTICIPO</h5>
   <form class="form1" method="post">
     <table class="table text-center">
-      <thead>
-        <tr class="row encabezado colorRosa">
-          <td class="col-md-1">POLIZA</td>
-          <td class="col-md-1">USUARIO</td>
-          <td class="col-md-1">ANTICIPO</td>
-          <td class="col-md-2">FECHA REGISTRO</td>
-          <td class="col-md-2">FECHA ANTICIPO</td>
-          <td class="col-md-1">OFICINA</td>
-          <td class="col-md-2">CANCELACION</td>
-          <td class="col-md-2">NOTA</td>
+      <thead style="font-size: 18px;font-weight: 100;">
+        <tr class="row tRepoNom" style="font-size:14px">
+          <td class="col-md-1  text-center">POLIZA</td>
+          <td class="col-md-1  text-center">USUARIO</td>
+          <td class="col-md-1  text-center">ANTICIPO</td>
+          <td class="col-md-2  text-center">FECHA REGISTRO</td>
+          <td class="col-md-2  text-center">FECHA ANTICIPO</td>
+          <td class="col-md-1  text-center">OFICINA</td>
+          <td class="col-md-2  text-center">CANCELACION</td>
+          <td class="col-md-2  text-center">NOTA</td>
         </tr>
       </thead>
       <tbody>
@@ -89,7 +89,7 @@
     </div>
     <div class="row">
       <div class="col-md-2">
-        <a href="" class="boton" style="border:none"><img class="icomediano mleftx5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+        <a href="" class="boton btn-block" style="border:none"><img class="icomediano mleftx5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
       </div>
       <div class="col-md-2 offset-md-5 input-effect brx1">
         <input  class="text-normal form-control efecto text-center tiene-contenido" value="$ 15, 932.08" readonly>
@@ -102,7 +102,7 @@
   <div id="detallepoliza" class="contorno brx1">
     <table class="table table-hover text-center">
       <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row encabezado">
+        <tr class="row tRepo2">
           <td class="col-md-12 text-center">DETALLE POLIZA</td>
         </tr>
       </thead>

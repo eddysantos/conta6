@@ -33,7 +33,7 @@
             </a>
           </td>
         </tr>
-        <tr class="row encabezado">
+        <tr class="row tRepo2">
           <td class="col-md-12 text-center">DATOS IMPORTADOS DEL PEDIMENTO</td>
         </tr>
       </thead>

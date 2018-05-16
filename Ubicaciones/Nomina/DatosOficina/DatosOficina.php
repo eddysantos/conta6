@@ -16,11 +16,11 @@
     </div>
   </div>
 
-  <div id="contornoDom" class="contorno" style="display:none">
+  <div id="contornoDom" class="contorno brx4" style="display:none">
     <h5 class="titulo" style="font-size:15px">DOMICILIO FISCAL</h5>
     <table class="table" id="DomicilioFiscal">
       <thead>
-        <tr class="row m-0 encabezado">
+        <tr class="row m-0 tRepo2">
           <td class="col-md-12 text-center">PROYECCION LOGISTICA AGENCIA ADUANAL S.A DE C.V</td>
         </tr>
       </thead>
@@ -55,23 +55,23 @@
 
   <div id="contornoEdit" class="contorno" style="display:none;">
     <h5 class="titulo2" style="font-size:15px">MODIFICAR DOMICILIO FISCAL</h5>
-    <table class="table text-center" id="EditarDomicilio">
+    <table class="table" id="EditarDomicilio">
       <thead>
-        <tr class="row m-0 encabezado">
-          <td class="col-md-6">RAZON SOCIAL</td>
-          <td class="col-md-3">RFC</td>
-          <td class="col-md-3">OFICINA</td>
+        <tr class="row m-0 tRepo2" style="height:40px">
+          <td class="col-md-6 text-center">RAZON SOCIAL</td>
+          <td class="col-md-3 text-center">RFC</td>
+          <td class="col-md-3 text-center">OFICINA</td>
         </tr>
       </thead>
       <tbody class="cuerpo">
         <tr class="row m-0">
-          <td class="col-md-6">
+          <td class="col-md-6 text-center">
             <input class="inpReg" type="text" value="Proyeccion Logistica Agencia Aduanal S.A de C.V">
           </td>
-          <td class="col-md-3">
+          <td class="col-md-3 text-center">
             <input class="inpReg" type="text" value="PLA090609N21">
           </td>
-          <td class="col-md-3">
+          <td class="col-md-3 text-center">
             <select class="inpReg">
               <option selected>Seleccione</option>
               <option>Nuevo Laredo</option>
@@ -81,7 +81,7 @@
             </select>
           </td>
           <td class="col-md-4 offset-md-4">
-            <a href="" class="boton brx2"> <img src= "/conta6/Resources/iconos/refresh-button.svg" class="icochico"> ACTUALIZAR</a>
+            <a href="" class="boton btn-block brx2"> <img src= "/conta6/Resources/iconos/refresh-button.svg" class="icochico"> ACTUALIZAR</a>
           </td>
         </tr>
       </tbody>
@@ -92,8 +92,8 @@
     <h5 class="titulo" style="font-size:15px">DATOS DE OFICINA</h5>
     <table class="table" id="DatosOficina">
       <thead>
-        <tr class="row m-0 text-center encabezado">
-          <td class="col-md-12">SUCURSAL 240 NUEVO LAREDO</td>
+        <tr class="row m-0">
+          <td class="col-md-12 text-center tRepo2">SUCURSAL 240 NUEVO LAREDO</td>
         </tr>
       </thead>
       <tbody class="cuerpo">

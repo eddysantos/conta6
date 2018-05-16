@@ -8,15 +8,15 @@
         </button>
         <h5 class="modal-tittle">Editar Registro</h5>
       </div>
-      <div class="modal-body p-0">
+      <div class="modal-body" style="padding:0px">
         <div class="container-fluid">
           <div id="contorno" class="contorno-modal">
-            <form class="form1">
-              <table class="table text-center">
-                <tbody>
-                  <tr class="row m-0 mt-4">
-                    <td class="col-md-10 input-effect">
-                      <input  list="todascuentas" class="efecto"  id="ch-cuenta1">
+            <form class="form1"method="post">
+              <table class="table">
+                <tbody class="cuerpo">
+                  <tr class="row m-0">
+                    <td class="col-md-10 input-effect brx2">
+                      <input  list="todascuentas" class="text-normal efecto text-center"  id="ch-cuenta1">
                       <datalist id="todascuentas">
                         <option value="0206-00648 -- COMITE PARA EL FOMENTO Y PROTECCION PRECUARIA DEL ESTA DE NUEVO LEON A.C"></option>
                         <option value="0100-00011 ---- BANAMEX DLLS CTA.79033561 NLDO"></option>
@@ -26,8 +26,8 @@
                       </datalist>
                       <label for="ch-cuenta1">Seleccione una Cuenta</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  list="gtoficina" class="efecto"  id="ch-gtoficina1">
+                    <td class="col-md-2 input-effect brx2">
+                      <input  list="gtoficina" class="text-normal efecto text-center"  id="ch-gtoficina1">
                       <datalist id="gtoficina">
                         <option value="AEROPUERTO"></option>
                         <option value="MANZANILLO"></option>
@@ -38,9 +38,9 @@
                     </td>
                   </tr>
 
-                  <tr class="row m-0 mt-4">
-                    <td class="col-md-12 input-effect">
-                      <input  list="clientes" class="efecto"  id="ch-cliente1">
+                  <tr class="row m-0 text-center">
+                    <td class="col-md-12 input-effect brx2">
+                      <input  list="clientes" class="text-normal efecto text-center"  id="ch-cliente1">
                       <datalist id="clientes">
                         <option value="AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V --- CLT 6109"></option>
                         <option value="INTERNATIONAL FREIGHT FORWARDER AND ADVISOR CUSTOMS DELIVERY S.A DE C.V --- CLT_7663"></option>
@@ -49,36 +49,36 @@
                     </td>
                   </tr>
 
-                  <tr class="row m-0 mt-4">
-                    <td class="col-md-12 input-effect">
-                      <input  class="efecto"  id="ch-concepto1">
+                  <tr class="row m-0">
+                    <td class="col-md-12 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="ch-concepto1">
                       <label for="ch-concepto1">Concepto</label>
                     </td>
                   </tr>
 
-                  <tr class="row m-0 mt-4">
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="ch-referencia1">
+                  <tr class="row m-0">
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="ch-referencia1">
                       <label for="ch-referencia1">Referencia</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="ch-documento1">
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="ch-documento1">
                       <label for="ch-documento1">Documento</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="ch-factura1">
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="ch-factura1">
                       <label for="ch-factura1">Factura</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="ch-anticipo1">
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="ch-anticipo1">
                       <label for="ch-anticipo1">Anticipo</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="ch-cargo1">
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="ch-cargo1">
                       <label for="ch-cargo1">Cargo</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="ch-abono1">
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="ch-abono1">
                       <label for="ch-abono1">Abono</label>
                     </td>
                   </tr>

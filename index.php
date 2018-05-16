@@ -28,17 +28,17 @@
   </div>
 
 	<div class="login-form-1">
-		<form id="login-form" class="text-left">
+		<form id="login-form" class="text-left" onsubmit="return false;" method="post">
 			<div class="login-form-main-message"></div>
 			<div class="main-login-form">
 				<div class="login-group">
 					<div class="text">
 						<label for="lg_usuario"></label>
-						<input type="text" class="text" id="lg_usuario" placeholder="Usuario" autocomplete="off" required>
+						<input type="text" class="text" id="lg_usuario" name="lg_usuario" placeholder="Usuario" required>
 					</div>
 					<div class="text">
 						<label for="lg_password"></label>
-						<input type="password" class="text" id="lg_password" placeholder="Contraseña" autocomplete="off" required>
+						<input type="password" class="text" id="lg_password" name="lg_password" placeholder="Contraseña" required>
 					</div>
 					<div class="form-group">
 						<label for="lg_recordar" class="anim">

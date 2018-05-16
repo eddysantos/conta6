@@ -15,7 +15,7 @@
         <form class="form1" method="post">
           <table class="table text-center">
             <thead class="text-normal">
-              <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
+              <tr class="row submenuch m-0" style="height:30px;padding: .5rem!important;">
                 <td class="col-md-3">Inferior</td>
                 <td class="col-md-3">Superior</td>
                 <td class="col-md-3">Cuota</td>
@@ -63,7 +63,7 @@
         <form class="form1" method="post">
           <table class="table text-center">
             <thead style="font-size:12px">
-              <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
+              <tr class="row submenuch m-0" style="height:30px;padding: .5rem!important;">
                 <td class="col-md-2">Oficina</td>
                 <td class="col-md-2">Salario Min</td>
                 <td class="col-md-2">IMSS</td>
@@ -120,7 +120,7 @@
         <form class="form1" method="post">
           <table class="table text-center">
             <thead class="text-normal">
-              <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
+              <tr class="row submenuch m-0" style="height:30px;padding: .5rem!important;">
                 <td class="col-md-6">Oficina</td>
                 <td class="col-md-6">Integración</td>
               </tr>
@@ -161,7 +161,7 @@
         <form class="form1" method="post">
           <table class="table text-center">
             <thead style="font-size:16px">
-              <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
+              <tr class="row submenuch m-0" style="height:30px;padding: .5rem!important;">
                 <td class="col-md-4">Interior</td>
                 <td class="col-md-4">Superior</td>
                 <td class="col-md-4">Cuota</td>
@@ -206,7 +206,7 @@
         <form class="form1" method="post">
           <table class="table text-center">
             <thead style="font-size:16px">
-              <tr class="row backpink m-0" style="height:30px">
+              <tr class="row submenuch m-0" style="height:30px">
                 <td class="col-md-1">Ramo</td>
                 <td class="col-md-3">Descripción</td>
                 <td class="col-md-2">Base</td>
