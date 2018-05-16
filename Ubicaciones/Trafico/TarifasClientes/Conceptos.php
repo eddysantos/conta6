@@ -88,7 +88,7 @@
           </tr>
           <tr class="row justify-content-center">
             <td class="col-md-3 brx2">
-              <a role="button" class="boton btn-block">
+              <a role="button" class="boton">
                 <img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR CONCEPTO
               </a>
             </td>
@@ -128,7 +128,7 @@
   <form>
     <table class="table text-center">
       <tbody>
-        <tr class="row tRepoNom">
+        <tr class="row encabezado">
           <td class="col-md-12 text-center">470 4 AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V</td>
         </tr>
         <tr class="row">

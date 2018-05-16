@@ -8,13 +8,13 @@
         </button>
         <h5 class="modal-tittle">Facturas de: Nombre del CLiente (CLT_NUMERO)</h5>
       </div>
-      <div class="modal-body" style="padding:0px">
+      <div class="modal-body p-0">
         <div class="container-fluid">
           <div id="contorno" class="contorno">
-            <form class="form1"method="post">
-              <table class="table text-center table-hover" style="margin-bottom:0px;">
+            <form>
+              <table class="table text-center table-hover m-0">
                 <thead>
-                  <tr class="row tRepoNom">
+                  <tr class="row encabezado">
                     <td class="col-md-2">REFERENCIA</td>
                     <td class="col-md-2">FACTURA</td>
                     <td class="col-md-2">NOTA CREDITO</td>
@@ -25,12 +25,12 @@
                 </thead>
                 <tbody>
                   <tr class="row">
-                    <td id="centrar" class="col-md-2">N17003469</td>
-                    <td id="centrar" class="col-md-2">75729</td>
-                    <td id="centrar" class="col-md-2">11111</td>
-                    <td id="centrar" class="col-md-2">-3,806.66</td>
-                    <td class="col-md-2"><input class="efecto input-dpol input-control text-center" type="text"></td>
-                    <td class="col-md-2">
+                    <td class="col-md-2 centrar pt-3">N17003469</td>
+                    <td class="col-md-2 centrar pt-3">75729</td>
+                    <td class="col-md-2 centrar pt-3">11111</td>
+                    <td class="col-md-2 centrar pt-3">-3,806.66</td>
+                    <td class="col-md-2 centrar pt-2"><input class="efecto h22" type="text"></td>
+                    <td class="col-md-2 centrar pt-1">
                       <div class="checkbox-xs">
                         <label>
                           <input type="checkbox" data-toggle="toggle">
@@ -62,13 +62,13 @@
         </button>
         <h5 class="modal-tittle">CFDI de Nomina Sueldos y Salarios</h5>
       </div>
-      <div class="modal-body" style="padding:0px">
+      <div class="modal-body p-0">
         <div class="container-fluid">
           <div id="contorno" class="contorno">
-            <form class="form1"method="post">
-              <table class="table text-center table-hover" style="margin-bottom:0px;">
+            <form>
+              <table class="table text-center table-hover">
                 <thead>
-                  <tr class="row tRepoNom">
+                  <tr class="row encabezado">
                     <td class="col-md-1">BANCO</td>
                     <td class="col-md-2">CUENTA</td>
                     <td class="col-md-1">FACTURA</td>
@@ -79,13 +79,13 @@
                 </thead>
                 <tbody>
                   <tr class="row">
-                    <td id="centrar" class="col-md-1">002</td>
-                    <td id="centrar" class="col-md-2">5256781310703496</td>
-                    <td id="centrar" class="col-md-1">15668</td>
-                    <td id="centrar" class="col-md-5">Diana Eustolia Rodriguez Ramos</td>
-                    <td id="centrar" class="col-md-2">$ 1,312.18</td>
-                    <td class="col-md-1">
-                      <div class="">
+                    <td class="col-md-1 centrar pt-3">002</td>
+                    <td class="col-md-2 centrar pt-3">5256781310703496</td>
+                    <td class="col-md-1 centrar pt-3">15668</td>
+                    <td class="col-md-5 centrar pt-3">Diana Eustolia Rodriguez Ramos</td>
+                    <td class="col-md-2 centrar pt-3">$ 1,312.18</td>
+                    <td class="col-md-1 centrar pt-1">
+                      <div class="checkbox-xs">
                         <label>
                           <input type="checkbox" data-toggle="toggle">
                         </label>
@@ -93,13 +93,13 @@
                     </td>
                   </tr>
                   <tr class="row">
-                    <td id="centrar" class="col-md-1">001</td>
-                    <td id="centrar" class="col-md-2">012821015214161544</td>
-                    <td id="centrar" class="col-md-1">15726</td>
-                    <td id="centrar" class="col-md-5">Domingo Martinez Martinez</td>
-                    <td id="centrar" class="col-md-2">$ 4,915.46</td>
-                    <td class="col-md-1">
-                      <div class="">
+                    <td class="col-md-1 centrar pt-3">001</td>
+                    <td class="col-md-2 centrar pt-3">012821015214161544</td>
+                    <td class="col-md-1 centrar pt-3">15726</td>
+                    <td class="col-md-5 centrar pt-3">Domingo Martinez Martinez</td>
+                    <td class="col-md-2 centrar pt-3">$ 4,915.46</td>
+                    <td class="col-md-1 centrar pt-1">
+                      <div class="checkbox-xs">
                         <label>
                           <input type="checkbox" data-toggle="toggle">
                         </label>
@@ -131,13 +131,13 @@
         </button>
         <h5 class="modal-tittle">CFDI de Nomina Honorarios</h5>
       </div>
-      <div class="modal-body" style="padding:0px">
+      <div class="modal-body p-0">
         <div class="container-fluid">
           <div id="contorno" class="contorno">
-            <form class="form1"method="post">
-              <table class="table text-center table-hover" style="margin-bottom:0px;">
+            <form>
+              <table class="table text-center table-hover">
                 <thead>
-                  <tr class="row tRepoNom">
+                  <tr class="row encabezado">
                     <td class="col-md-1">BANCO</td>
                     <td class="col-md-2">CUENTA</td>
                     <td class="col-md-1">FACTURA</td>
@@ -148,13 +148,13 @@
                 </thead>
                 <tbody>
                   <tr class="row">
-                    <td id="centrar" class="col-md-1">002</td>
-                    <td id="centrar" class="col-md-2">5256781310703496</td>
-                    <td id="centrar" class="col-md-1">15668</td>
-                    <td id="centrar" class="col-md-5">Graciela Salazar Villaverde</td>
-                    <td id="centrar" class="col-md-2">$ 10,000.00</td>
-                    <td class="col-md-1">
-                      <div class="">
+                    <td class="col-md-1 centrar pt-3">002</td>
+                    <td class="col-md-2 centrar pt-3">5256781310703496</td>
+                    <td class="col-md-1 centrar pt-3">15668</td>
+                    <td class="col-md-5 centrar pt-3">Graciela Salazar Villaverde</td>
+                    <td class="col-md-2 centrar pt-3">$ 10,000.00</td>
+                    <td class="col-md-1 centrar pt-1">
+                      <div class="checkbox-xs">
                         <label>
                           <input type="checkbox" data-toggle="toggle">
                         </label>
@@ -162,13 +162,13 @@
                     </td>
                   </tr>
                   <tr class="row">
-                    <td id="centrar" class="col-md-1">001</td>
-                    <td id="centrar" class="col-md-2">012821015214161544</td>
-                    <td id="centrar" class="col-md-1">15726</td>
-                    <td id="centrar" class="col-md-5">Graciela Salazar Villaverde</td>
-                    <td id="centrar" class="col-md-2">$ 4,915.46</td>
-                    <td class="col-md-1">
-                      <div class="">
+                    <td class="col-md-1 centrar pt-3">001</td>
+                    <td class="col-md-2 centrar pt-3">012821015214161544</td>
+                    <td class="col-md-1 centrar pt-3">15726</td>
+                    <td class="col-md-5 centrar pt-3">Graciela Salazar Villaverde</td>
+                    <td class="col-md-2 centrar pt-3">$ 4,915.46</td>
+                    <td class="col-md-1 centrar pt-1">
+                      <div class="checkbox-xs">
                         <label>
                           <input type="checkbox" data-toggle="toggle">
                         </label>

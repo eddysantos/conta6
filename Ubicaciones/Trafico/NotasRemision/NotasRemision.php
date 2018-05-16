@@ -5,7 +5,7 @@
 
 
   <div class="contenedor" id="b-notaRemision">
-    <div class="row titulograndetop transEff brx2" id="referencia">
+    <div class="row titulograndetop transEff" id="referencia">
       <div class="col-md-12 text-center">
         <label class="transEff" for="bRef" id="labelRef">Referencia</label>
       </div>
@@ -25,33 +25,33 @@
       <table class="table text-center">
         <thead>
           <tr class="row">
-            <td class="col-md-1 offset-md-11 p-0">
+            <td class="col-md-1 offset-md-11 p-0 mb-2">
               <a class="atras" accion="BuscarOtro">
                 <i class="back fa fa-arrow-left">Regresar</i>
               </a>
             </td>
           </tr>
-          <tr class="row tRepo">
+          <tr class="row encabezado font16">
             <td class="col-md-12">NOTA DE REMISIÓN</td>
           </tr>
         </thead>
         <tbody>
-          <tr class="row">
-            <td class="col-md-12 iap">CONSIGNACIÓN</td>
+          <tr class="row backpink">
+            <td class="col-md-12">CONSIGNACIÓN</td>
           </tr>
-          <tr class="row" style="font-size:14px!important">
+          <tr class="row font14">
             <td class="col-md-12">MOTORES ELECTRICOS SUMERGIBLES DE MÉXICO, S DE R.L DE C.V</td>
             <td class="col-md-12">AVE.INDUSTRIA ALIMENTARIA, 2201</td>
             <td class="col-md-12">PARQUE INDUSTRIAL LINARES, CP 67735 LINARES</td>
           </tr>
-          <tr class="row brx2">
-            <td class="col-md-2 iap">REFERENCIA</td>
-            <td class="col-md-2 iap">VALOR COMERCIAL</td>
-            <td class="col-md-1 iap">PEDIMENTO</td>
-            <td class="col-md-2 iap">CONTENIDO</td>
-            <td class="col-md-1 iap">PESO</td>
-            <td class="col-md-2 iap">TALONES,GUIA</td>
-            <td class="col-md-2 iap">FLETES</td>
+          <tr class="row mt-4 backpink">
+            <td class="col-md-2">REFERENCIA</td>
+            <td class="col-md-2">VALOR COMERCIAL</td>
+            <td class="col-md-1">PEDIMENTO</td>
+            <td class="col-md-2">CONTENIDO</td>
+            <td class="col-md-1">PESO</td>
+            <td class="col-md-2">TALONES,GUIA</td>
+            <td class="col-md-2">FLETES</td>
           </tr>
           <tr class="row text-normal">
             <td class="col-md-2">N17004726</td>
@@ -62,16 +62,16 @@
             <td class="col-md-2">STPE0130070</td>
             <td class="col-md-2">0.0000</td>
           </tr>
-          <tr class="row">
-            <td class="col-md-3 input-effect brx3">
+          <tr class="row mt-5">
+            <td class="col-md-3 input-effect">
               <input id="cantidad" class="efecto text-normal w-100" type="text">
               <label for="cantidad">CANTIDAD</label>
             </td>
-            <td class="col-md-8 input-effect brx3">
+            <td class="col-md-8 input-effect">
               <input id="observacion" class="efecto text-normal w-100" type="text">
               <label for="observacion">OBSERVACIONES</label>
             </td>
-            <td class="col-md-1 brx3">
+            <td class="col-md-1">
               <a><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>
             </td>
           </tr>

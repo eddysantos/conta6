@@ -23,7 +23,7 @@
     <h5 class="titulo" style="font-size:15px">DATOS GENERALES</h5>
     <table class="table">
       <thead>
-        <tr class="row m-0 tRepo2 text-center">
+        <tr class="row m-0 encabezado text-center">
           <td class="col-md-1">No.</td>
           <td class="col-md-2">Nombre</td>
           <td class="col-md-3">Apellidos</td>
@@ -51,7 +51,7 @@
     <h5 class="titulo" style="font-size:15px">DATOS LABORALES</h5>
     <table class="table">
       <thead>
-        <tr class="row m-0 tRepo2 text-center">
+        <tr class="row m-0 encabezado text-center">
           <td class="col-md-2">Periosidad del Pagó</td>
           <td class="col-md-2">Riesgo de Trabajo</td>
           <td class="col-md-2">Departamento</td>
@@ -77,7 +77,7 @@
 
   <div id="contorno" class="contorno brx4">
     <div class="acordeon2">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#datospago">
+      <div class="encabezado text-center" data-toggle="collapse" href="#datospago">
         <a  id="bread">DATOS DEL PAGO</a>
       </div>
       <div id="datospago" class="card-block collapse">
@@ -156,7 +156,7 @@
 
 <!--ACORDEON DE PERCEPCIONES-->
     <div class="acordeon2 brx1">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#percep">
+      <div class="encabezado text-center" data-toggle="collapse" href="#percep">
         <a  id="bread">PERCEPCIONES</a>
       </div>
       <div id="percep" class="card-block collapse">
@@ -249,7 +249,7 @@
 
 <!--ACORDEON DE OTROS PAGOS-->
     <div class="acordeon2 brx1">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#otrospagos">
+      <div class="encabezado text-center" data-toggle="collapse" href="#otrospagos">
         <a  id="bread">OTROS PAGOS</a>
       </div>
       <div id="otrospagos" class="card-block collapse">
@@ -304,7 +304,7 @@
 
 <!--ACORDEON HORAS EXTRAS-->
     <div class="acordeon2 brx1">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#horasextras">
+      <div class="encabezado text-center" data-toggle="collapse" href="#horasextras">
         <a  id="bread">HORAS EXTRAS</a>
       </div>
       <div id="horasextras" class="card-block collapse">
@@ -361,7 +361,7 @@
 
 <!--ACORDEON DEDUCCIONES-->
     <div class="acordeon2 brx1">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#deduc">
+      <div class="encabezado text-center" data-toggle="collapse" href="#deduc">
         <a  id="bread">DEDUCCIONES</a>
       </div>
       <div id="deduc" class="card-block collapse">
@@ -440,7 +440,7 @@
 
 <!--ACORDEON DEDUCCIONES-->
     <div class="acordeon2 brx1">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#pension">
+      <div class="encabezado text-center" data-toggle="collapse" href="#pension">
         <a  id="bread">PENSIÓN ALIMENTICIA</a>
       </div>
       <div id="pension" class="card-block collapse">
@@ -496,7 +496,7 @@
 
 <!--ACORDEON TOTALES-->
     <div class="acordeon2 brx1">
-      <div class="tRepo2 text-center" data-toggle="collapse" href="#totales">
+      <div class="encabezado text-center" data-toggle="collapse" href="#totales">
         <a  id="bread">TOTALES</a>
       </div>
       <div id="totales" class="card-block collapse">
@@ -568,7 +568,7 @@
 
     <div class="row">
       <div class="col-md-4 offset-md-4 text-center brx2" style="font-size: 16px;">
-          <a href="" class="boton btn-block">REGREGAR</a>
+          <a href="" class="boton">REGREGAR</a>
       </div>
     </div>
   </div> <!--Termina el contorno-->

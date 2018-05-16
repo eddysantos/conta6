@@ -7,48 +7,36 @@
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
-        <a class="nav-link visualizar" id="submenuMed" status="cerrado" accion="dtospol">DATOS DE POLIZA</a>
+        <a class="nav-link consultar" id="submenuMed" status="cerrado" accion="dtospol">DATOS DE POLIZA</a>
       </li>
     </ul>
   </div>
-  <div id="datospoliza" class="contorno brx3" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
+  <div id="datospoliza" class="contorno" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
     <h5 class="titulo">DATOS DE LA POLIZA</h5>
     <form class="form1">
       <table class="table text-center">
-        <thead style="font-size: 18px;font-weight: 100;">
-          <tr class="row m-0 tRepoNom" style="font-size:14px">
-            <td class="col-md-2  text-center">POLIZA</td>
-            <td class="col-md-2  text-center">USUARIO</td>
-            <td class="col-md-2  text-center">FECHA POLIZA</td>
-            <td class="col-md-2  text-center">GENERACION</td>
-            <td class="col-md-2  text-center">ADUANA</td>
-            <td class="col-md-2  text-center">CANCELACION</td>
+        <thead>
+          <tr class="row  encabezado font16">
+            <td class="col-md-2">POLIZA</td>
+            <td class="col-md-2">USUARIO</td>
+            <td class="col-md-2">FECHA POLIZA</td>
+            <td class="col-md-2">GENERACION</td>
+            <td class="col-md-2">ADUANA</td>
+            <td class="col-md-2">CANCELACIÓN</td>
           </tr>
         </thead>
-        <tbody>
-          <tr class="row m-0">
-            <td class="col-md-2">
-              <input class="noborder text-center" type="text" readonly value="234567">
-            </td>
-            <td class="col-md-2">
-              <input class="noborder text-center" type="text" readonly value="Estefania">
-            </td>
-            <td class="col-md-2">
-              <input class=" noborder text-center data-date" type="text" readonly value="22/11/2017">
-            </td>
-            <td class="col-md-2">
-              <input class=" noborder text-center data-date" type="text" readonly value="30/12/2017">
-            </td>
-            <td class="col-md-2">
-              <input class="noborder text-center" type="text" readonly value="Nuevo Laredo">
-            </td>
-            <td class="col-md-2">
-              <input class="noborder text-center" type="text" readonly value="234567">
-            </td>
+        <tbody class="font16">
+          <tr class="row">
+            <td class="col-md-2">234567</td>
+            <td class="col-md-2">Estefania</td>
+            <td class="col-md-2">22/11/2017</td>
+            <td class="col-md-2">30/12/2017</td>
+            <td class="col-md-2">Nuevo Laredo</td>
+            <td class="col-md-2">234567</td>
           </tr>
           <tr class="row m-0">
-            <td class="col-md-12 brx2">
-              <input id="concep" class="text-normal noborder efecto text-center tiene-contenido" value="CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA" type="text">
+            <td class="col-md-12 mt-5">
+              <input id="concep" class="noborder efecto tiene-contenido" value="Ejemplo del contenido Ejemplo del contenido" type="text">
               <label for="concep">CONCEPTO</label>
             </td>
           </tr>
@@ -57,52 +45,52 @@
     </form>
   </div><!--/Termina DETALLE DATOS DE POLIZA-->
 
-  <form style="font-size:13px">
-    <div class="row"><!--DETALLE DE POLIZAS-->
-      <div class="col-md-2 offset-md-7 text-center">SUMA DE CARGOS</div>
-      <div class="col-md-2 text-center">SUMA DE ABONOS</div>
+  <form  class="font14">
+    <div class="row text-center"><!--DETALLE DE POLIZAS-->
+      <div class="col-md-2 offset-md-7">SUMA DE CARGOS</div>
+      <div class="col-md-2">SUMA DE ABONOS</div>
     </div>
     <div class="row">
       <div class="col-md-2">
-        <a  class="boton btn-block" style="border:none"><img class="icomediano mleftx5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+        <a  class="boton" style="border:none"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
       </div>
-      <div class="col-md-2 offset-md-5 input-effect brx1">
-        <input  class="text-normal form-control efecto text-center tiene-contenido" value="$ 15, 932.08" readonly>
+      <div class="col-md-2 offset-md-5 mt-3">
+        <input  class="text-normal form-control efecto" value="$ 15, 932.08" readonly>
       </div>
-      <div class="col-md-2 input-effect brx1">
-        <input  class="text-normal form-control efecto text-center tiene-contenido" value="$ 15, 932.08" readonly>
+      <div class="col-md-2 input-effect mt-3">
+        <input  class="text-normal form-control efecto" value="$ 15, 932.08" readonly>
       </div>
     </div>
   </form>
 
 
-  <div id="detallepoliza" class="contorno brx1">
+  <div id="detallepoliza" class="contorno mt-5">
     <table class="table table-hover text-center">
-      <thead style="font-size: 18px;font-weight: 100;">
-        <tr class="row tRepo2">
-          <td class="col-md-12 text-center">DETALLE POLIZA</td>
+      <thead>
+        <tr class="row encabezado font18">
+          <td class="col-md-12">DETALLE POLIZA</td>
         </tr>
       </thead>
       <tbody>
-        <tr class="row m-0">
-          <td class="xs backpink"></td>
-          <td class="small backpink">CUENTA</td>
-          <td class="small backpink">GASTO</td>
-          <td class="small backpink">PROV</td>
-          <td class="small backpink">REFERENCIA</td>
-          <td class="small backpink">CLIENTE</td>
-          <td class="small backpink">DOCUMENTO</td>
-          <td class="small backpink">FACTURA</td>
-          <td class="small backpink">NOTACRED</td>
-          <td class="small backpink">ANTICIPO</td>
-          <td class="small backpink">CHEQUE</td>
-          <td class="med backpink">DESCRIPCION</td>
-          <td class="small backpink">CARGO</td>
-          <td class="small backpink">ABONO</td>
-          <td class="xs backpink"></td>
+        <tr class="row backpink">
+          <td class="xs"></td>
+          <td class="small">CUENTA</td>
+          <td class="small">GASTO</td>
+          <td class="small">PROV</td>
+          <td class="small">REFERENCIA</td>
+          <td class="small">CLIENTE</td>
+          <td class="small">DOCUMENTO</td>
+          <td class="small">FACTURA</td>
+          <td class="small">NOTACRED</td>
+          <td class="small">ANTICIPO</td>
+          <td class="small">CHEQUE</td>
+          <td class="med">DESCRIPCION</td>
+          <td class="small">CARGO</td>
+          <td class="small">ABONO</td>
+          <td class="xs"></td>
         </tr>
 
-        <tr class="row m-0 borderojo">
+        <tr class="row borderojo">
           <td class="xs"></td>
           <td class="small">0110-00001</td>
           <td class="small">2222</td>

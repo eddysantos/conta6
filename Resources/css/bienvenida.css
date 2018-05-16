@@ -1,6 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:400,500');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500');
 
 *{
   box-sizing: border-box;
+}
+
+.bienvenida{
+  /* font-family: 'Dosis', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
+  list-style: none ;
+  text-decoration: none ;
+  margin: 0 ;
+  padding: 0 ;
 }
 html body{
   margin-top: 0px;
@@ -9,44 +20,37 @@ html body{
   min-height: 100%
 }
 body{
-  background-color: rgb(34, 145, 187);
   color: #989898 !important;
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif!important;
   font-size:1.2em!important;
 }
 h1{
   font-size: 3.5em!important;
   letter-spacing: 4px;
+  color: #b5b0b2;
+  margin: 15px;
 }
 h2{
   font-size: 2.6em!important;
   letter-spacing: 5px;
+  color: #b5b0b2;
+  line-height: 1;
+  margin: 4px;
 }
 span{
   color: rgb(232, 26, 26) ;
 }
 
 .container{
-  margin-top: 150px !important;
+  margin-top: 180px !important;
 }
 .bienvenida{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative;
 }
-.bienvenida h2{
-  color: #b5b0b2;
-  line-height: 1;
-  margin: 4px;
-}
-
-.bienvenida #cargando{
-  width: 70%;
+#cargando{
+  width: 50%;
   position: absolute;
-  left: 15%;
+  left: 25%;
   top: 65%;
   padding-top: 5em;
   padding-bottom: 0px;
@@ -61,11 +65,7 @@ span{
   }
 
   100%{
-    width: 70%;
-    opacity: 0;
+    width: 50%;
+    opacity: 1;
   }
-}
-.bienvenida h1{
-  color: #b5b0b2;
-  margin: 15px;
 }
