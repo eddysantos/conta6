@@ -27,8 +27,11 @@ $usuario = $_SESSION['user_name'];
             <tbody class="font14">
               <tr class="row m-0 mt-5">
                 <td class="col-md-12 input-effect">
-                  <input  list="cuentasSAT" class="efecto" id="ctaSAT">
-                  <datalist id="cuentasSAT" href="#lst_conta_cs_cuentas_mst"></datalist>
+                  <input class="efecto popup-input" id="ctaSAT" type="text" id-display="" db-id="" autocomplete="new-password">
+                  <div class="popup-list" style="display:none"></div>
+
+                  <!-- <input  list="cuentasSAT" class="efecto" id="ctaSAT">
+                  <datalist id="cuentasSAT" href="#lst_conta_cs_cuentas_mst"></datalist> -->
                   <label for="ctaSAT" style="padding-top:.10rem">CUENTAS SAT
                     <a href="#"><img src="/conta6/Resources/iconos/help.svg"></a>
                   </label>
@@ -36,8 +39,11 @@ $usuario = $_SESSION['user_name'];
               </tr>
               <tr class="row m-0 mt-4">
                 <td class="col-md-4 input-effect">
-                  <input  list="NSAT" class="efecto" id="naturSAT">
-                  <datalist id="NSAT" href="#lst_conta_cs_sat_natur_cuentas"></datalist>
+                  <input class="efecto popup-input" id="naturSAT" type="text" id-display="" db-id="" autocomplete="new-password">
+                  <div class="popup-list" style="display:none"></div>
+
+                  <!-- <input  list="NSAT" class="efecto" id="naturSAT">
+                  <datalist id="NSAT" href="#lst_conta_cs_sat_natur_cuentas"></datalist> -->
                   <label for="naturSAT">NATURALEZA SAT</label>
                 </td>
                 <td class="col-md-3 input-effect">
@@ -83,8 +89,11 @@ $usuario = $_SESSION['user_name'];
             <tbody class="font14">
               <tr class="row m-0 mt-4">
                 <td class="col-md-12 input-effect">
-				          <input name="Input" class="efecto"  id="ctaSAT1"  list="cuentasSAT" >
-                  <datalist id="cuentasSAT"></datalist>
+                  <input class="efecto popup-input" id="cuentasSAT" type="text" id-display="" db-id="" autocomplete="new-password">
+                  <div class="popup-list" style="display:none"></div>
+
+				          <!-- <input name="Input" class="efecto"  id="ctaSAT1"  list="cuentasSAT" >
+                  <datalist id="cuentasSAT"></datalist> -->
                   <label for="ctaSAT1" style="padding-top:.10rem">CUENTAS SAT
                     <a href="#"><img src="/conta6/Resources/iconos/help.svg"></a>
                   </label>
@@ -92,13 +101,19 @@ $usuario = $_SESSION['user_name'];
               </tr>
               <tr class="row m-0 mt-4">
                 <td class="col-md-3 input-effect">
-                  <input  list="NSAT" class="efecto" id="naturSAT1">
-                  <datalist id="NSAT"></datalist>
+                  <input class="efecto popup-input" id="naturSAT1" type="text" id-display="" db-id="" autocomplete="new-password">
+                  <div class="popup-list" style="display:none"></div>
+
+                  <!-- <input  list="NSAT" class="efecto" id="naturSAT1">
+                  <datalist id="NSAT"></datalist> -->
                   <label for="naturSAT1">NATURALEZA SAT</label>
                 </td>
                 <td class="col-md-9 input-effect">
-                  <input  list="CuentaMaestra" class="efecto"  id="tipo1">
-                  <datalist id="CuentaMaestra" href="#lst_conta_cs_cuentas_mst_1niv"></datalist>
+                  <input class="efecto popup-input" id="tipo1" type="text" id-display="" db-id="" autocomplete="new-password">
+                  <div class="popup-list" style="display:none"></div>
+
+                  <!-- <input  list="CuentaMaestra" class="efecto"  id="tipo1">
+                  <datalist id="CuentaMaestra" href="#lst_conta_cs_cuentas_mst_1niv"></datalist> -->
                   <label for="tipo1">CUENTA MAESTRA</label>
                 </td>
               </tr>
@@ -107,10 +122,13 @@ $usuario = $_SESSION['user_name'];
 
               <tr class="row m-0 mt-4" style="display:none">
                 <td class="col-md-3 input-effect">
-                  <input  list="bcoSAT" class="efecto" id="banSAT">
+                  <input class="efecto popup-input" id="banSAT" type="text" id-display="" db-id="" autocomplete="new-password">
+                  <div class="popup-list" style="display:none"></div>
+
+                  <!-- <input  list="bcoSAT" class="efecto" id="banSAT">
                   <datalist id="bcoSAT">
                     <option value="EJEMPLO DE BANCOS SAT"></option>
-                  </datalist>
+                  </datalist> -->
                   <label for="banSAT" style="padding-top:.10rem">BANCOS SAT
                     <a href="#"><img src="/conta6/Resources/iconos/help.svg"></a>
                   </label>
@@ -120,10 +138,13 @@ $usuario = $_SESSION['user_name'];
                   <label for="noCuenta">No. CUENTA</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input  list="ofi" class="efecto" id="oficina">
+                  <input class="efecto popup-input" id="oficina" type="text" id-display="" db-id="" autocomplete="new-password">
+                  <div class="popup-list" style="display:none"></div>
+
+                  <!-- <input  list="ofi" class="efecto" id="oficina">
                   <datalist id="ofi">
                     <option value="Nuevo Laredo"></option>
-                  </datalist>
+                  </datalist> -->
                   <label for="oficina">OFICINA</label>
                 </td>
                 <td class="col-md-3 input-effect">
@@ -138,15 +159,21 @@ $usuario = $_SESSION['user_name'];
 
               <tr class="row m-0 mt-4" style="display:none">
                 <td class="col-md-6 input-effect">
-                  <input  list="clientes" class="efecto" id="client">
-                  <datalist id="clientes"></datalist>
+                  <input class="efecto popup-input" id="client" type="text" id-display="" db-id="" autocomplete="new-password">
+                  <div class="popup-list" style="display:none"></div>
+
+                  <!-- <input  list="clientes" class="efecto" id="client">
+                  <datalist id="clientes"></datalist> -->
                   <label for="client">CLIENTES</label>
                 </td>
                 <td class="col-md-6 input-effect">
-                  <input  list="empleados" class="efecto" id="emp">
+                  <input class="efecto popup-input" id="emp" type="text" id-display="" db-id="" autocomplete="new-password">
+                  <div class="popup-list" style="display:none"></div>
+
+                  <!-- <input  list="empleados" class="efecto" id="emp">
                   <datalist id="empleados">
                     <option value="EJEMPLO DE BANCOS SAT"></option>
-                  </datalist>
+                  </datalist> -->
                   <label for="emp">EMPLEADOS</label>
                 </td>
               </tr>
@@ -156,10 +183,13 @@ $usuario = $_SESSION['user_name'];
 
     <!-- SOLO ESTARA VISIBLE CUANDO SELECCIONEN CUENTA 0206-0   -->
                 <td class="col-md-4 input-effect" style="display:none">
-                  <input  list="prov" class="efecto" id="proveedores">
+                  <input class="efecto popup-input" id="proveedores" type="text" id-display="" db-id="" autocomplete="new-password">
+                  <div class="popup-list" style="display:none"></div>
+
+                  <!-- <input  list="prov" class="efecto" id="proveedores">
                   <datalist id="prov">
                     <option value="Proveedores sin Cuenta"></option>
-                  </datalist>
+                  </datalist> -->
                   <label for="proveedores">PROVEEDORES</label>
                 </td>
       <!-- termina CUENTA 0206-0   -->
@@ -190,15 +220,18 @@ $usuario = $_SESSION['user_name'];
             <tbody class="cuerpo">
               <tr class="row m-0 mt-4">
                 <td class="col-md-10 input-effect mt-4">
-                  <input  list="Clientes" class="efecto"  id="clt">
-                  <datalist id="Clientes">
+                  <input class="efecto popup-input" id="clt" type="text" id-display="" db-id="" autocomplete="new-password">
+                  <div class="popup-list" style="display:none"></div>
+
+                  <!-- <input  list="Clientes" class="efecto"  id="clt">
+                  <datalist id="Clientes"> -->
       				  	<?php
-      					  $sql_Clientes = mysqli_query($db,"SELECT * FROM conta_replica_clientes WHERE pk_id_cliente NOT IN( SELECT DISTINCT s_cta_identificador  FROM conta_cs_cuentas_mst WHERE s_cta_identificador is not null) ORDER BY s_nombre");
-        					while($oRst_Clientes = $sql_Clientes->fetch_assoc()) {
-        						echo '<option value='.trim($oRst_Clientes['pk_id_cliente']).'>'.htmlentities(trim($oRst_Clientes['s_nombre'])).' ----- '.trim($oRst_Clientes['pk_id_cliente']).'</option>';
-        				  }
+      					  // $sql_Clientes = mysqli_query($db,"SELECT * FROM conta_replica_clientes WHERE pk_id_cliente NOT IN( SELECT DISTINCT s_cta_identificador  FROM conta_cs_cuentas_mst WHERE s_cta_identificador is not null) ORDER BY s_nombre");
+        					// while($oRst_Clientes = $sql_Clientes->fetch_assoc()) {
+        					// 	echo '<option value='.trim($oRst_Clientes['pk_id_cliente']).'>'.htmlentities(trim($oRst_Clientes['s_nombre'])).' ----- '.trim($oRst_Clientes['pk_id_cliente']).'</option>';
+        				  // }
                   ?>
-                  </datalist>
+                  <!-- </datalist> -->
                   <label for="clt">CLIENTES</label>
                 </td>
                 <td class="col-md-2 mt-4">
