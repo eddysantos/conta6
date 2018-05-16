@@ -335,8 +335,8 @@ h5.titulo-mov {
   border: 1px solid rgb(020, 020, 020);
   background-color: white;
   margin-right: 30px;
-  margin-top: -10px;
   padding: 10px;
+  z-index: 9999;
 }
 
 .popup-list p{
@@ -347,6 +347,7 @@ h5.titulo-mov {
 .popup-list p.hovered{
   background-color: rgba(0, 0, 0, .2);
   cursor: pointer;
+  color: white;
 }
 
 .popup-list p.hovered{

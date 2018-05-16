@@ -1,12 +1,19 @@
 $(document).ready(function(){
 
-  $('.popup-input').keyup(function(){
+  $('.popup-input').keyup(function(e){
     if (e.keyCode === 38 || e.keyCode === 40 || e.keyCode === 13 || e.keyCode === 9){return false;} //Igorar si es enter, flecha arriba o flecha abajo
 
     var display = $($(this).attr('id-display'));
     var text = $(this).val();
     var action = $(this).attr('action');
-    var url = '/Conta6/Resources/PHP/actions/' + action + '.php';
+    var url = '/Conta6/Resources/PHP/actions/popup_actions/' + action + '.php';
+
+    $(this).attr('db-id', '');
+
+    if (text == "") {
+      display.slideUp();
+      return false;
+    }
 
     var db_query = $.ajax({
       method: 'POST',
@@ -30,7 +37,7 @@ $(document).ready(function(){
 
   $('.popup-list').on('click', 'p', function(){
     var dbid = $(this).attr('db-id');
-    var value = $(this).attr('value');
+    var value = $(this).html();
     var inputTarget = $(this).parent().attr('id');
 
     $("[id-display='#" + inputTarget+ "']").attr("value", value).attr('db-id', dbid).change();
@@ -72,7 +79,7 @@ $(document).keydown(function(e){
 
   if (e.keyCode === 13 || e.keyCode === 9) {
     var targetFocus = $(document.activeElement).attr('id-display') + " p" + ".hovered";
-    var value = targetFocus.attr('value');
+    var value = $(targetFocus).html();
     var dbid = $(targetFocus).attr('db-id');
     var inputTarget = $(targetFocus).parent().attr('id');
 
