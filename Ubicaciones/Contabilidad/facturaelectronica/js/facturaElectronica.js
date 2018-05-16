@@ -58,14 +58,9 @@ $(document).ready(function(){
     $('.ver').click(function(){
       var accion = $(this).attr('accion');
       switch (accion) {
-        case "cuadroConsultar":
+        case "cuadroVer":
         $('#buscarfactura').fadeOut();
         $('#ConsulFactura').fadeIn();
-          break;
-
-        case "cuadroCancelar":
-        $('#buscarfactura').fadeOut();
-        $('#CancelFactura').fadeIn();
           break;
         default:
           console.error("Something went terribly wrong...");
@@ -77,10 +72,10 @@ $(document).ready(function(){
     $('#b-ctagastos').slideUp();
   });
 
-  // $('#mostrarConsulta').submit(function(){
-  //   $('#m-factura').fadeIn();
-  //   $('#b-ctagastos').slideUp();
-  // });
+  $('#mostrarConsulta').submit(function(){
+    $('#m-factura').fadeIn();
+    $('#b-ctagastos').slideUp();
+  });
   $('#mostrar').submit(function(){
     $('#capmod').fadeIn();
   });

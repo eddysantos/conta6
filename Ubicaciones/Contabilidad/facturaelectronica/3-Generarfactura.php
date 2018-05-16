@@ -12,7 +12,7 @@
   </div>
   <div class="row intermedio transEff" id="nReferencia">
     <div class="col-md-12" id="mostrarConsulta">
-      <form  class="form-group" onsubmit="return false;">
+      <form  class="form-group" onsubmit="return false;" method="post">
         <input class="reg form-control noborder transEff" id="bRef" type="text">
       </form>
     </div>
@@ -22,32 +22,32 @@
 
 <!---se muestra al escribir la referencia y dar enter-->
 <div class="contenedor container-fluid cont" id="m-factura" style="display:none"><!--antes m-factura-->
-  <form class="form1">
-    <table class="table text-center">
+  <form class="form1" method="post">
+    <table class="table">
       <thead>
         <tr class="row">
-          <td class="col-md-1 offset-md-11 p-0">
+          <td class="col-md-1 offset-md-11 p0">
             <a class="atras" accion="BuscarOtro">
               <i class="back fa fa-arrow-left">Regresar</i>
             </a>
           </td>
         </tr>
-        <tr class="row encabezado cuerpo mt-2">
-          <td class="col-md-12">SOLICITUD DE ANTICIPO</td>
+        <tr class="row tRepo">
+          <td class="col-md-12 text-center">SOLICITUD DE ANTICIPO</td>
         </tr>
       </thead>
       <tbody>
-        <tr class="row backpink">
-          <td class="col-md-2">SOLICITUD</td>
-          <td class="col-md-2">REFERENCIA</td>
-          <td class="col-md-7">CLIENTE</td>
-          <td class="col-md-1"></td>
+        <tr class="row">
+          <td class="col-md-2 text-center iap">SOLICITUD</td>
+          <td class="col-md-2 text-center iap">REFERENCIA</td>
+          <td class="col-md-7 text-center iap">CLIENTE</td>
+          <td class="col-md-1 text-center iap"></td>
         </tr>
         <tr class="row borderojo" style="font-size:14px!important">
-          <td class="col-md-2">280380</td>
-          <td class="col-md-2">N17003012</td>
-          <td class="col-md-7">CLT_6548 MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L DE C.V</td>
-          <td class="col-md-1" style="padding:5px">
+          <td class="col-md-2 text-center">280380</td>
+          <td class="col-md-2 text-center">N17003012</td>
+          <td class="col-md-7 text-center">CLT_6548 MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L DE C.V</td>
+          <td class="col-md-1 text-center" style="padding:5px">
             <a href=""><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
             <a href=""><img class="icomediano mleftx2" src="/conta6/Resources/iconos/printer.svg"></a>
           </td>

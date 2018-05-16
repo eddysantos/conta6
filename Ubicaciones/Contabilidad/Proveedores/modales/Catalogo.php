@@ -8,40 +8,40 @@
         </button>
         <h5 class="modal-tittle">Agregar Nuevo Proveedor</h5>
       </div>
-      <div class="modal-body p-0">
+      <div class="modal-body" style="padding:0px">
         <div class="container-fluid">
           <div id="contorno" class="contorno">
-            <form>
+            <form class="form1"method="post">
               <table class="table">
                 <tbody class="cuerpo">
                   <tr class="row">
-                    <td class="col-md-12 input-effect mt-3">
-                      <input id="razonsocial" class="efecto text-normal" type="text">
+                    <td class="col-md-12 input-effect brx1">
+                      <input id="razonsocial" class="efecto text-center text-normal" type="text">
                       <label for="razonsocial">RAZÓN SOCIAL</label>
                     </td>
                   </tr>
                   <tr class="row">
-                    <td class="col-md-4 input-effect mt-4">
-                      <input  list="persona" class="text-normal efecto"  id="mper">
+                    <td class="col-md-4 input-effect brx2">
+                      <input  list="persona" class="text-normal efecto text-center"  id="per">
                       <datalist id="persona">
                         <option>Fisica</option>
                         <option>Moral</option>
                       </datalist>
-                      <label for="mper">PERSONA</label>
+                      <label for="per">PERSONA</label>
                     </td>
-                    <td class="col-md-4 input-effect mt-4">
-                      <input id="mrfc" class="efecto text-normal" type="text">
-                      <label for="mrfc">RCF</label>
+                    <td class="col-md-4 input-effect brx2">
+                      <input id="rfc" class="efecto text-center text-normal" type="text">
+                      <label for="rfc">RCF</label>
                     </td>
-                    <td class="col-md-4 input-effect mt-4">
-                      <input id="mcurp" class="efecto text-normal" type="text">
-                      <label for="mcurp">CURP</label>
+                    <td class="col-md-4 input-effect brx2">
+                      <input id="curp" class="efecto text-center text-normal" type="text">
+                      <label for="curp">CURP</label>
                     </td>
                   </tr>
                   <tr class="row">
-                    <td class="col-md-12 input-effect mt-4">
-                      <input id="mdomfiscal" class="efecto text-normal" type="text">
-                      <label for="mdomfiscal">DOMICILIO FISCAL</label>
+                    <td class="col-md-12 input-effect brx2">
+                      <input id="domfiscal" class="efecto text-center text-normal" type="text">
+                      <label for="domfiscal">DOMICILIO FISCAL</label>
                     </td>
                   </tr>
                 </tbody>

@@ -21,7 +21,7 @@
     <h5 class="titulo" style="font-size:15px">Documento Ordinario</h5>
     <table class="table" id="generarnominaHon">
       <thead>
-        <tr class="row m-0 encabezado">
+        <tr class="row m-0 tRepo2">
           <td class="col-md-4 text-center">2017 Tiene 52 Semanas</td>
           <td class="col-md-2 text-center">Nómina</td>
           <td class="col-md-2 text-center">Fecha Inicio</td>
@@ -84,14 +84,14 @@
     </form>
     <div  class="contorno brx4">
       <div class="acordeon2">
-        <div class="encabezado text-center" data-toggle="collapse" href="#collapseOne">
+        <div class="tRepo2 text-center" data-toggle="collapse" href="#collapseOne">
           <a  id="bread">DATOS GENERALES</a>
         </div>
         <div id="collapseOne" class="collapse" style="padding:0rem 1.5rem!important;font-size:14px">
           <form class="form1"method="post">
             <table class="table text-center mb-0">
               <thead>
-                <tr class="row backpink">
+                <tr class="row submenuch">
                   <td class="col-md-1">Empleados</td>
                   <td class="col-md-1">CFDI</td>
                   <td class="col-md-2">Cancelados</td>
@@ -132,7 +132,7 @@
     <div class="contorno brx4">
       <table class="table text-center m-0">
         <thead>
-          <tr class="row encabezado">
+          <tr class="row tRepo2">
             <td class="col-md-1"></td>
             <td class="col-md-1">Documento</td>
             <td class="col-md-1">No.</td>
@@ -173,13 +173,13 @@
   <div id="contornoparamHon" style="display:none">
     <div class="contorno brx4">
       <div class="acordeon2">
-        <div class="encabezado text-center">
+        <div class="tRepo2 text-center">
           <a  id="bread">ARTICULO 113</a>
         </div>
           <form class="form1">
             <table class="table table-hover text-center">
               <thead>
-                <tr class="row backpink m-0">
+                <tr class="row submenuch m-0">
                   <td class="col-md-1">Editar</td>
                   <td class="col-md-2">Inferior</td>
                   <td class="col-md-2">Superior</td>

@@ -13,7 +13,7 @@
   <form class="form1">
     <table class="table text-center table-hover">
       <tbody>
-        <tr class="row encabezado">
+        <tr class="row tRepoNom">
           <th class="col-md-12 text-center" style="font-weight:100">TARIFA DE $ AGENTER ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V</th>
         </tr>
         <tr class="row">

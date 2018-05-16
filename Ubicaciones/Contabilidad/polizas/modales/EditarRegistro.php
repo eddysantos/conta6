@@ -8,15 +8,15 @@
         </button>
         <h5 class="modal-tittle">Editar Registro</h5>
       </div>
-      <div class="modal-body p-0">
+      <div class="modal-body" style="padding:0px">
         <div class="container-fluid">
           <div id="contorno" class="contorno-modal">
-            <form class="form1">
-              <table class="table text-center">
-                <tbody>
-                  <tr class="row m-0 mt-5">
-                    <td class="col-md-10 input-effect">
-                      <input  list="todascuentas" class="efecto"  id="md_cuenta">
+            <form class="form1"method="post">
+              <table class="table">
+                <tbody class="cuerpo">
+                  <tr class="row m-0">
+                    <td class="col-md-10 input-effect brx3">
+                      <input  list="todascuentas" class="text-normal efecto text-center"  id="detpol-cuenta1">
                       <datalist id="todascuentas">
                         <option value="0206-00648 -- COMITE PARA EL FOMENTO Y PROTECCION PRECUARIA DEL ESTA DE NUEVO LEON A.C"></option>
                         <option value="0100-00011 ---- BANAMEX DLLS CTA.79033561 NLDO"></option>
@@ -24,66 +24,66 @@
                         <option value="0206-00808 -- CÀMARA DE COMERCIO, SERVICIOS Y TURISMO EN PEQUEÑO DE LA CIUDAD DE MÉXICO"></option>
                         <option value="0100-00017 ---- BANAMEX CTA.7355485 NLDO"></option>
                       </datalist>
-                      <label for="md_cuenta">Seleccione una Cuenta</label>
+                      <label for="detpol-cuenta1">Seleccione una Cuenta</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  list="gtoficina" class="efecto"  id="md_gtoOficina">
+                    <td class="col-md-2 input-effect brx3">
+                      <input  list="gtoficina" class="text-normal efecto text-center"  id="detpol-gtoficina1">
                       <datalist id="gtoficina">
                         <option value="AEROPUERTO"></option>
                         <option value="MANZANILLO"></option>
                         <option value="NUEVO LAREDO"></option>
                         <option value="VERACRUZ"></option>
                       </datalist>
-                      <label for="md_gtoOficina">Gasto Oficina</label>
+                      <label for="detpol-gtoficina1">Gasto Oficina</label>
                     </td>
                   </tr>
 
-                  <tr class="row m-0 mt-4">
-                    <td class="col-md-10 input-effect">
-                      <input  list="clientes" class="efecto" id="md_cliente">
+                  <tr class="row m-0 text-center">
+                    <td class="col-md-10 input-effect brx2">
+                      <input  list="clientes" class="text-normal efecto text-center"  id="detpol-cliente1">
                       <datalist id="clientes">
                         <option value="AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V --- CLT 6109"></option>
                         <option value="INTERNATIONAL FREIGHT FORWARDER AND ADVISOR CUSTOMS DELIVERY S.A DE C.V --- CLT_7663"></option>
                       </datalist>
-                      <label for="md_cliente">Cliente</label>
+                      <label for="detpol-cliente1">Cliente</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto" id="md_referencia">
-                      <label for="md_referencia">Referencia</label>
-                    </td>
-                  </tr>
-
-                  <tr class="row m-0 mt-4">
-                    <td class="col-md-12 input-effect">
-                      <input  class="efecto" id="md_concepto">
-                      <label for="md_concepto">Concepto</label>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpol-referencia1">
+                      <label for="detpol-referencia1">Referencia</label>
                     </td>
                   </tr>
 
-                  <tr class="row m-0 mt-4">
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="md_doc">
-                      <label for="md_doc">Documento</label>
+                  <tr class="row m-0">
+                    <td class="col-md-12 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpol-concepto1">
+                      <label for="detpol-concepto1">Concepto</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="md_fact">
-                      <label for="md_fact">Factura</label>
+                  </tr>
+
+                  <tr class="row m-0">
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpol-documento1">
+                      <label for="detpol-documento1">Documento</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="md_ant">
-                      <label for="md_ant">Anticipo</label>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpol-factura1">
+                      <label for="detpol-factura1">Factura</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="md_che">
-                      <label for="md_che">Cheque</label>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpol-anticipo1">
+                      <label for="detpol-anticipo1">Anticipo</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="md_cargo">
-                      <label for="md_cargo">Cargo</label>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpol-cheque1">
+                      <label for="detpol-cheque1">Cheque</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="md_abono">
-                      <label for="md_abono">Abono</label>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpol-cargo1">
+                      <label for="detpol-cargo1">Cargo</label>
+                    </td>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpol-abono1">
+                      <label for="detpol-abono1">Abono</label>
                     </td>
                   </tr>
                 </tbody>
@@ -100,7 +100,7 @@
 </div>
 
 
-<!--Editar Registro de Polizas Ingreso-->
+<!--Editar Registro de Polizas Diario-->
 <div class="modal fade" id="detpol-editarRegPolIngreso" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
@@ -110,30 +110,30 @@
         </button>
         <h5 class="modal-tittle">Editar Registro</h5>
       </div>
-      <div class="modal-body p-0">
+      <div class="modal-body" style="padding:0px">
         <div class="container-fluid">
           <div id="contorno" class="contorno-modal">
-            <form class="form1">
-              <table class="table text-center">
-                <tbody class="font-14">
-                  <tr class="row m-0 mt-5">
-                    <td class="col-md-10 input-effect">
-                      <input  list="clientes" class="efecto"  id="mi_cliente">
+            <form class="form1"method="post">
+              <table class="table">
+                <tbody class="cuerpo">
+                  <tr class="row m-0 text-center">
+                    <td class="col-md-10 input-effect brx2">
+                      <input  list="clientes" class="text-normal efecto text-center"  id="detpolin-cliente">
                       <datalist id="clientes">
                         <option value="AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V --- CLT 6109"></option>
                         <option value="INTERNATIONAL FREIGHT FORWARDER AND ADVISOR CUSTOMS DELIVERY S.A DE C.V --- CLT_7663"></option>
                       </datalist>
-                      <label for="mi_cliente">Cliente</label>
+                      <label for="detpolin-cliente">Cliente</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="mi_referencia">
-                      <label for="mi_referencia">Referencia</label>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpolin-referencia">
+                      <label for="detpolin-referencia">Referencia</label>
                     </td>
                   </tr>
 
-                  <tr class="row m-0 mt-4">
-                    <td class="col-md-8 input-effect">
-                      <input  list="todascuentas" class="efecto"  id="mi_cuenta">
+                  <tr class="row m-0">
+                    <td class="col-md-8 input-effect brx2">
+                      <input  list="todascuentas" class="text-normal efecto text-center"  id="detpolin-cuenta">
                       <datalist id="todascuentas">
                         <option value="0206-00648 -- COMITE PARA EL FOMENTO Y PROTECCION PRECUARIA DEL ESTA DE NUEVO LEON A.C"></option>
                         <option value="0100-00011 ---- BANAMEX DLLS CTA.79033561 NLDO"></option>
@@ -141,38 +141,38 @@
                         <option value="0206-00808 -- CÀMARA DE COMERCIO, SERVICIOS Y TURISMO EN PEQUEÑO DE LA CIUDAD DE MÉXICO"></option>
                         <option value="0100-00017 ---- BANAMEX CTA.7355485 NLDO"></option>
                       </datalist>
-                      <label for="mi_cuenta">Seleccione una Cuenta</label>
+                      <label for="detpolin-cuenta">Seleccione una Cuenta</label>
                     </td>
-                    <td class="col-md-4 input-effect">
-                      <input  class="efecto"  id="mi_concepto">
-                      <label for="mi_concepto">Concepto</label>
+                    <td class="col-md-4 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpolin-concepto">
+                      <label for="detpolin-concepto">Concepto</label>
                     </td>
                   </tr>
 
-                  <tr class="row m-0 mt-5">
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="mi_doc">
-                      <label for="mi_doc">Documento</label>
+                  <tr class="row m-0">
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpolin-documento">
+                      <label for="detpolin-documento">Documento</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="mi_fact">
-                      <label for="mi_fact">Factura</label>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpolin-factura">
+                      <label for="detpolin-factura">Factura</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="mi_ant">
-                      <label for="mi_ant">Anticipo</label>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpolin-anticipo">
+                      <label for="detpolin-anticipo">Anticipo</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="mi_che">
-                      <label for="mi_che">Cheque</label>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpolin-cheque">
+                      <label for="detpolin-cheque">Cheque</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="mi_cargo">
-                      <label for="mi_cargo">Cargo</label>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpolin-cargo">
+                      <label for="detpolin-cargo">Cargo</label>
                     </td>
-                    <td class="col-md-2 input-effect">
-                      <input  class="efecto"  id="mi_abono">
-                      <label for="mi_abono">Abono</label>
+                    <td class="col-md-2 input-effect brx2">
+                      <input  class="text-normal efecto text-center"  id="detpolin-abono">
+                      <label for="detpolin-abono">Abono</label>
                     </td>
                   </tr>
                 </tbody>

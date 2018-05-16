@@ -12,7 +12,7 @@
   <div id="contornoPed" class="contorno brx4" style="display:none">
     <table class="table text-normal table-hover">
       <thead class="">
-        <tr class="row m-0 encabezado">
+        <tr class="row m-0 tRepo2">
           <td class="col-12 text-center">PEDIMENTOS CAPTURADOS EN EL SISTEMA</td>
         </tr>
         <tr class="row m-0">
@@ -76,7 +76,7 @@
             </a>
           </td>
         </tr>
-        <tr class="row encabezado">
+        <tr class="row tRepo2">
           <td class="col-md-12 text-center">DATOS IMPORTADOS DEL PEDIMENTO</td>
         </tr>
       </thead>

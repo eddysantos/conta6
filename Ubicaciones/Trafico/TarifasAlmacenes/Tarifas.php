@@ -116,7 +116,7 @@
             </select>
           </td>
         </tr>
-        <tr class="row text-center encabezado brx2">
+        <tr class="row text-center tRepoNom brx2">
           <td class="col-md-12">470 3 AEROVIAS DE MÉXICO S.A DE C.V</td>
         </tr>
         <tr class="row text-center">

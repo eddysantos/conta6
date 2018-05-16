@@ -13,16 +13,16 @@
   <form id="MostrarDetPoliza" class="contorno" style="display:none">
     <table class="table text-center text-normal">
       <tbody>
-        <tr  class="row backpink">
-          <td class="col-md-1">
+        <tr  class="row">
+          <td class="col-md-1 iap">
             <a href="" class="ver" accion="cerrarDetalle" role="button"><img src= "/conta6/Resources/iconos/cross.svg" class="icochico"></a>
           </td>
-          <td class="col-md-1">PÓLIZA</td>
-          <td class="col-md-2">USUARIO</td>
-          <td class="col-md-2">FECHA PÓLIZA</td>
-          <td class="col-md-2">FECHA GENERACIÓN</td>
-          <td class="col-md-2">ADUANA</td>
-          <td class="col-md-2">CACELACIÓN</td>
+          <td class="col-md-1 iap">PÓLIZA</td>
+          <td class="col-md-2 iap">USUARIO</td>
+          <td class="col-md-2 iap">FECHA PÓLIZA</td>
+          <td class="col-md-2 iap">FECHA GENERACIÓN</td>
+          <td class="col-md-2 iap">ADUANA</td>
+          <td class="col-md-2 iap">CACELACIÓN</td>
         </tr>
         <tr  class="row">
           <td class="col-md-1 offset-md-1">248955</td>
@@ -51,9 +51,9 @@
       </tr>
     </table>
   </form>
-  <form class="contorno mt-5">
+  <form class="brx4 contorno">
     <table class="table text-center text-normal">
-      <tr  class="row brx1 encabezado">
+      <tr  class="row brx1 tRepoNom">
         <td class="col-md-1">CUENTA</td>
         <td class="col-md-4">DESCRIPCIÓN</td>
         <td class="col-md-1">CARGO</td>
