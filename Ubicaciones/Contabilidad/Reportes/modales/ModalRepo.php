@@ -15,25 +15,25 @@
           <div class="row submenuMed m0">
             <ul class="nav nav-pills nav-fill" id="selecRepoCont" style="width: 100%;">
               <li class="nav-item">
-                <a class="nav-link Consul" id="submenuchico" accion="cobranza" status="cerrado">COBRANZA</a>
+                <a class="nav-link Consul" id="backpinkico" accion="cobranza" status="cerrado">COBRANZA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link Consul" id="submenuchico" accion="conta" status="cerrado">CONTABILIDAD</a>
+                <a class="nav-link Consul" id="backpinkico" accion="conta" status="cerrado">CONTABILIDAD</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link Consul" id="submenuchico" accion="contaElec" status="cerrado">CONTABILIDAD ELECTRONICA</a>
+                <a class="nav-link Consul" id="backpinkico" accion="contaElec" status="cerrado">CONTABILIDAD ELECTRONICA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link Consul" id="submenuchico" accion="Fact" status="cerrado">FACTURACION</a>
+                <a class="nav-link Consul" id="backpinkico" accion="Fact" status="cerrado">FACTURACION</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link Consul" id="submenuchico" accion="Finan" status="cerrado">FINANCIEROS</a>
+                <a class="nav-link Consul" id="backpinkico" accion="Finan" status="cerrado">FINANCIEROS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link Consul" id="submenuchico" accion="Impuestos" status="cerrado">IMPUESTOS</a>
+                <a class="nav-link Consul" id="backpinkico" accion="Impuestos" status="cerrado">IMPUESTOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link Consul" id="submenuchico" accion="Revisiones" status="cerrado">REVISIONES</a>
+                <a class="nav-link Consul" id="backpinkico" accion="Revisiones" status="cerrado">REVISIONES</a>
               </li>
             </ul>
           </div>
@@ -61,7 +61,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTE COBRANZA EFECTIVA</td>
                     </tr>
                   </thead>
@@ -105,10 +105,10 @@
                 <tbody class="cuerpo">
                   <tr class="row">
                     <td class="col-md-3 offset-md-3">
-                      <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
+                      <a href="" class="boton brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
                     </td>
                     <td class="col-md-3">
-                      <a href="" class="boton btn-block brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
+                      <a href="" class="boton brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
                     </td>
                   </tr>
                 </tbody>
@@ -135,7 +135,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTES CONTABILIDAD</td>
                     </tr>
                   </thead>
@@ -182,10 +182,10 @@
                 <tbody class="cuerpo">
                   <tr class="row">
                     <td class="col-md-3 offset-md-3">
-                      <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
+                      <a href="" class="boton brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
                     </td>
                     <td class="col-md-3">
-                      <a href="" class="boton btn-block brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
+                      <a href="" class="boton brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
                     </td>
                   </tr>
                 </tbody>
@@ -234,7 +234,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTES FACTURACIÓN</td>
                     </tr>
                   </thead>
@@ -280,10 +280,10 @@
                 <tbody class="cuerpo">
                   <tr class="row">
                     <td class="col-md-3 offset-md-3">
-                      <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
+                      <a href="" class="boton brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
                     </td>
                     <td class="col-md-3">
-                      <a href="" class="boton btn-block brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
+                      <a href="" class="boton brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
                     </td>
                   </tr>
                 </tbody>
@@ -311,7 +311,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTES FINANCIEROS</td>
                     </tr>
                   </thead>
@@ -347,10 +347,10 @@
                 <tbody class="cuerpo">
                   <tr class="row">
                     <td class="col-md-3 offset-md-3">
-                      <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
+                      <a href="" class="boton brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
                     </td>
                     <td class="col-md-3">
-                      <a href="" class="boton btn-block brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
+                      <a href="" class="boton brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
                     </td>
                   </tr>
                 </tbody>
@@ -382,7 +382,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTES IMPUESTOS</td>
                     </tr>
                   </thead>
@@ -418,10 +418,10 @@
                 <tbody class="cuerpo">
                   <tr class="row">
                     <td class="col-md-3 offset-md-3">
-                      <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
+                      <a href="" class="boton brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
                     </td>
                     <td class="col-md-3">
-                      <a href="" class="boton btn-block brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
+                      <a href="" class="boton brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
                     </td>
                   </tr>
                 </tbody>
@@ -460,7 +460,7 @@
               <form class="form1"method="post">
                 <table class="table">
                   <thead style="font-size: 18px;font-weight: 100;">
-                    <tr class="row m0 tRepo2">
+                    <tr class="row m0 encabezado">
                       <td class="col-md-12 text-center">REPORTES PARA REVISIONES</td>
                     </tr>
                   </thead>
@@ -506,10 +506,10 @@
                 <tbody class="cuerpo">
                   <tr class="row">
                     <td class="col-md-3 offset-md-3">
-                      <a href="" class="boton btn-block brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
+                      <a href="" class="boton brx1"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
                     </td>
                     <td class="col-md-3">
-                      <a href="" class="boton btn-block brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
+                      <a href="" class="boton brx1"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
                     </td>
                   </tr>
                 </tbody>

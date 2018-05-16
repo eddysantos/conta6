@@ -15,7 +15,7 @@
   <div id="contorno" class="contorno brx2">
   <h5 class="titulo2" style="font-size:15px">REGISTRO EMPLEADOS</h5>
     <div class="acordeon2 text-center">
-      <div class="tRepo2" data-toggle="collapse" href="#datosGen">
+      <div class="encabezado" data-toggle="collapse" href="#datosGen">
         <a  id="bread">DATOS GENERALES</a>
       </div>
       <div id="datosGen" class="card-block collapse">
@@ -144,7 +144,7 @@
     </div>
 
     <div class="acordeon2 text-center brx1">
-      <div class="tRepo2" data-toggle="collapse" href="#datosLaborales">
+      <div class="encabezado" data-toggle="collapse" href="#datosLaborales">
         <a  id="bread">DATOS LABORALES</a>
       </div>
       <div id="datosLaborales" class="card-block collapse">
@@ -283,7 +283,7 @@
     </div>
 
     <div class="acordeon2 text-center brx1">
-      <div class="tRepo2" data-toggle="collapse" href="#distSalario">
+      <div class="encabezado" data-toggle="collapse" href="#distSalario">
         <a  id="bread">DISTRIBUCION DE SALARIO</a>
       </div>
       <div id="distSalario" class="card-block collapse ml-20">
@@ -323,7 +323,7 @@
     </div>
 
     <div class="acordeon2 text-center brx1">
-      <div class="tRepo2" data-toggle="collapse" href="#suelysal">
+      <div class="encabezado" data-toggle="collapse" href="#suelysal">
         <a  id="bread">SUELDOS Y SALARIOS</a>
       </div>
       <div id="suelysal" class="card-block collapse">
@@ -382,7 +382,7 @@
     </div>
 
     <div class="col-md-4 offset-md-4 text-center brx2" style="font-size: 16px;">
-        <a href="" class="boton btn-block "> <img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR DATOS</a><!--Guardar Datos de poliza/cuando se actualizo algun dato-->
+        <a href="" class="boton "> <img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR DATOS</a><!--Guardar Datos de poliza/cuando se actualizo algun dato-->
     </div>
   </div>
 
@@ -390,7 +390,7 @@
     <h5 class="titulo2" style="font-size:15px">EMPLEADOS CAPTURADOS</h5>
     <table class="table table-hover" id="empleadosCap">
       <thead>
-        <tr class="row m-0 tRepo2">
+        <tr class="row m-0 encabezado">
           <td class="col-md-1 text-center">Datos</td>
           <td class="col-md-1 text-center">Estatus</td>
           <td class="col-md-1 text-center">Pagar</td>
