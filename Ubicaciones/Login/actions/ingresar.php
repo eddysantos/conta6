@@ -5,8 +5,8 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 
 require $root . "/conta6/Resources/PHP/Databases/conexion.php";
 
-$usuario = $db->real_escape_string($_POST['lg_usuario']);
-$contra = $db->real_escape_string($_POST['lg_password']);
+$usuario = $conn->real_escape_string($_POST['lg_usuario']);
+$contra = $conn->real_escape_string($_POST['lg_password']);
 
 $response = array(
   "code"=>"",
@@ -14,7 +14,7 @@ $response = array(
   "data"=>"",
 );
 
-  $query = $db->query("SELECT * FROM sesiones WHERE usuario = '$usuario' AND password = '$contra'");
+  $query = $conn->query("SELECT * FROM sesiones WHERE usuario = '$usuario' AND password = '$contra'");
 
   if ($result = mysqli_fetch_array($query)) {
     $_SESSION['u_usuario'] = $usuario;
