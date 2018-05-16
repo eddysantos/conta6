@@ -4,7 +4,7 @@ function fetch_conta_cs_sat_cuentas(){
     url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_cuentas.php',
     success: function(result){
 
-      //console.log(result);
+      // console.log(result);
 
       var r = JSON.parse(result);
 
@@ -27,10 +27,9 @@ function fetch_natur_cuentas(){
     url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_natur_cuentas.php',
     success: function(result){
 
-      //console.log(result);
+      // console.log(result);
 
       var r = JSON.parse(result);
-
       if (r.code == 1) {
         $('#NSAT').html(r.data);
       } else {
@@ -50,7 +49,7 @@ function fetch_cuentas_mst_1niv(){
     url: '/conta6/Resources/PHP/actions/lst_conta_cs_cuentas_mst_1niv.php',
     success: function(result){
 
-      //console.log(result);
+      // console.log(result);
 
       var r = JSON.parse(result);
 
