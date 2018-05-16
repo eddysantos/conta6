@@ -8,22 +8,22 @@
         </button>
         <h5 class="modal-tittle">Editar Catalogo de Cuentas</h5>
       </div>
-      <div class="modal-body" style="padding:0px">
+      <div class="modal-body p-0">
         <div class="container-fluid">
           <div id="" class="contorno">
-            <table class="table" style="margin-bottom:0px">
+            <table class="table m-0">
               <tbody class="cuerpo">
-                <tr class="row brx2">
+                <tr class="row mt-4">
                   <td class="col-md-12 input-effect">
-                    <input  list="cuentasSAT" class="text-normal efecto text-center"  id="edit-ctaSAT">
+                    <input  list="cuentasSAT" class="text-normal efecto"  id="medit-ctaSAT">
                     <datalist id="cuentasSAT"></datalist>
-                    <label for="edit-ctaSAT">CUENTAS SAT</label>
+                    <label for="medit-ctaSAT">CUENTAS SAT</label>
                   </td>
                 </tr>
-                <tr class="row brx2">
+                <tr class="row mt-4">
                   <td class="col-md-6 input-effect">
-                    <input id="concepto" class="efecto text-center" type="text">
-                    <label for="concepto">CONCEPTO</label>
+                    <input id="mconcepto" class="efecto" type="text">
+                    <label for="mconcepto">CONCEPTO</label>
                   </td>
                   <td class="col-md-3 input-effect">
                     <input  list="status" class="efecto"  id="medit-status">
@@ -31,12 +31,12 @@
                       <option>Activa</option>
                       <option>Inactiva</option>
                     </datalist>
-                    <label for="edit-status">ESTATUS CAPTURA</label>
+                    <label for="medit-status">ESTATUS CAPTURA</label>
                   </td>
                   <td class="col-md-3 input-effect">
                     <input  list="NSAT" class="efecto"  id="medit-naturSAT">
                     <datalist id="NSAT"></datalist>
-                    <label for="edit-naturSAT">NATURALEZA SAT</label>
+                    <label for="medit-naturSAT">NATURALEZA SAT</label>
                   </td>
                 </tr>
               </tbody>

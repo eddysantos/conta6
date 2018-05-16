@@ -8,13 +8,13 @@
         </button>
         <h5 class="modal-tittle">Facturas de: Nombre del CLiente (CLT_NUMERO)</h5>
       </div>
-      <div class="modal-body" style="padding:0px">
+      <div class="modal-body p-0">
         <div class="container-fluid">
           <div id="contorno" class="contorno">
-            <form class="form1"method="post">
-              <table class="table text-center table-hover" style="margin-bottom:0px;">
+            <form class="form1">
+              <table class="table text-center table-hover m-0">
                 <thead>
-                  <tr class="row tRepoNom">
+                  <tr class="row encabezado">
                     <td class="col-md-2">REFERENCIA</td>
                     <td class="col-md-2">FACTURA</td>
                     <td class="col-md-2">NOTA CREDITO</td>
@@ -25,12 +25,12 @@
                 </thead>
                 <tbody>
                   <tr class="row">
-                    <td id="centrar" class="col-md-2">N17003469</td>
-                    <td id="centrar" class="col-md-2">75729</td>
-                    <td id="centrar" class="col-md-2">11111</td>
-                    <td id="centrar" class="col-md-2">-3,806.66</td>
-                    <td class="col-md-2"><input class="efecto input-dpol input-control text-center" type="text"></td>
-                    <td class="col-md-2">
+                    <td class="col-md-2 centrar pt-3">N17003469</td>
+                    <td class="col-md-2 centrar pt-3">75729</td>
+                    <td class="col-md-2 centrar pt-3">11111</td>
+                    <td class="col-md-2 centrar pt-3">-3,806.66</td>
+                    <td class="col-md-2 centrar pt-2"><input class="efecto h22" type="text"></td>
+                    <td class="col-md-2 centrar pt-1">
                       <div class="checkbox-xs">
                         <label>
                           <input type="checkbox" data-toggle="toggle">

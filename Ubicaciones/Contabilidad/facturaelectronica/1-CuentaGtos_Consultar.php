@@ -29,7 +29,7 @@
     <table class="table" id="detalleCliente" style="display:none">
       <thead>
         <tr class="row m-0">
-          <td class="col-md-12 text-center tRepo2">MOTORES ELECTRICOS SUMERGIBLES DE MEXICO S. DE R.L DE C.V</td>
+          <td class="col-md-12 text-center encabezado">MOTORES ELECTRICOS SUMERGIBLES DE MEXICO S. DE R.L DE C.V</td>
         </tr>
         <tr class="row m-0">
           <td class="col-md-6 text-center subtext">Direccion</td>
@@ -56,7 +56,7 @@
   <div id="contorno2" class="contorno" style="display:none">
     <table class="table" style="display:none" id="detalleEmbarque">
       <thead>
-        <tr class="row tRepo2 m-0">
+        <tr class="row encabezado m-0">
           <td class="col-md-12 text-center">INFORMACION GENERAL</td>
         </tr>
         <tr class="row m-0">
@@ -121,7 +121,7 @@
   <div id="contorno3" class="contorno" style="display:none">
     <table  class="table" style="display:none;" id="detalleUsuario">
       <thead>
-        <tr class="row m-0 tRepo2">
+        <tr class="row m-0 encabezado">
           <td class="col-md-6 text-center">GENERADO POR:</td>
           <td class="col-md-6 text-center">MODIFICADO POR:</td>
         </tr>
@@ -146,7 +146,7 @@
     <div class="container-fluid">
       <table class="table brx2">
         <thead>
-          <tr class="row tRepo2 m-0">
+          <tr class="row encabezado m-0">
             <td class="col-md-6 text-center">PAGOS O CARGOS EN USD</td>
             <td class="col-md-2 text-center">IMPORTE</td>
             <td class="col-md-2 text-center">AL T.C</td>
@@ -183,7 +183,7 @@
 
       <table class="table brx2">
         <thead>
-          <tr class="row tRepo2 m-0">
+          <tr class="row encabezado m-0">
             <td class="col-md-6 text-center">PAGOS POR CUENTA CLIENTE</td>
             <td class="col-md-2 text-center">IMPORTE</td>
             <td class="col-md-2 text-center">IVA</td>
@@ -202,7 +202,7 @@
 
       <table class="table brx2">
         <thead>
-          <tr class="row tRepo2 m-0">
+          <tr class="row encabezado m-0">
             <td class="col-md-6 text-center">HONORARIOS Y SERVICIOS</td>
             <td class="col-md-2 text-center">IMPORTE</td>
             <td class="col-md-2 text-center">IVA</td>
