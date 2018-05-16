@@ -21,9 +21,9 @@ $usuario = $_SESSION['user_name'];
     </div>
   </div>
 
-  <div id="contorno"   class="contorno brx4">
+  <div id="contorno" class="contorno">
     <div class="acordeon2 text-center">
-      <div class="tRepo2" data-toggle="collapse" href="#CuentasMaestras">
+      <div class="encabezado h35 font16" data-toggle="collapse" href="#CuentasMaestras">
         <a  id="bread">GENERAR CUENTAS MAESTRAS (Primer Nivel)</a>
       </div>
       <div id="CuentasMaestras" class="card-block collapse mr-20 ml-20">
@@ -31,20 +31,18 @@ $usuario = $_SESSION['user_name'];
           <table class="table mb-0">
             <tbody class="cuerpo">
               <tr class="row brx2">
-                <td class="col-md-12 input-effect">
-                  <input  list="cuentasSAT" class="text-normal efecto text-center" id="ctaSAT">
+                <td class="col-md-4 input-effect">
+                  <input  list="cuentasSAT" class="efecto" id="ctaSAT">
                   <datalist id="cuentasSAT" href="#lst_conta_cs_cuentas_mst"></datalist>
                   <label for="ctaSAT">CUENTAS SAT</label>
                 </td>
-              </tr>
-              <tr class="row brx2">
-                <td class="col-md-4 input-effect">
+                <td class="col-md-2 input-effect">
                   <input  list="NSAT" class="text-normal efecto text-center"  id="naturSAT">
                   <datalist id="NSAT" href="#lst_conta_cs_sat_natur_cuentas"></datalist>
                   <label for="naturSAT">NATURALEZA SAT</label>
                 </td>
-                <td class="col-md-3 input-effect">
-                  <input list="cta-mtraTipo" class="text-normal efecto text-center" id="tipo">
+                <td class="col-md-2 input-effect">
+                  <input list="cta-mtraTipo" class="efecto" id="tipo">
                   <datalist id="cta-mtraTipo">
                     <option value="A">Activo</option>
           					<option value="P">Pasivo</option>
@@ -59,14 +57,14 @@ $usuario = $_SESSION['user_name'];
                   <input id="ctamaestra" class="efecto text-center" type="text" maxlength="10">
                   <label for="ctamaestra">CUENTA MAESTRA</label>
                 </td>
-                <td class="col-md-3 input-effect">
-                  <input id="concepto" class="efecto text-center" type="text" maxlength="100">
+                <td class="col-md-2 input-effect">
+                  <input id="concepto" class="efecto" type="text" maxlength="100">
                   <label for="concepto">CONCEPTO</label>
                 </td>
               </tr>
               <tr class="row">
                 <td class="col-md-2 offset-md-5 brx2">
-                  <a href="#" id="generarCtaMst" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
+                  <a href="#" id="generarCtaMst" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
                   <div id="respuestaCtasMST"></div>
                 </td>
               </tr>
@@ -76,36 +74,40 @@ $usuario = $_SESSION['user_name'];
       </div>
     </div>
 
-    <div class="acordeon2 text-center brx1">
-      <div class="tRepo2" data-toggle="collapse" href="#collapsetwo">
+    <div class="acordeon2 text-center mt-3">
+      <div class="encabezado h35 font16" data-toggle="collapse" href="#collapsetwo">
         <a  id="bread">GENERAR CUENTAS DE DETALLE (Segundo Nivel)</a>
       </div>
       <div id="collapsetwo" class="card-block collapse mr-20 ml-20">
-        <form class="form1"method="post">
+        <form class="form1">
           <table class="table mb-0">
             <tbody class="cuerpo">
-              <tr class="row brx2">
+              <tr class="row mt-4 m-0">
                 <td class="col-md-12 input-effect">
-				          <input name="Input" class="text-normal efecto text-center"  id="ctaSAT1"  list="cuentasSAT" />
+				          <input name="Input" class="text-normal efecto"  id="ctaSAT1"  list="cuentasSAT" />
                   <datalist id="cuentasSAT"></datalist>
-                  <label for="ctaSAT1">CUENTAS SAT</label></td>
+                  <label for="ctaSAT1">CUENTAS SAT</label>
+                </td>
               </tr>
-              <tr class="row brx2">
+              <tr class="row mt-4 m-0">
                 <td class="col-md-3 input-effect">
                   <input  list="NSAT" class="text-normal efecto text-center"  id="naturSAT1">
                   <datalist id="NSAT"></datalist>
-                  <label for="naturSAT1">NATURALEZA SAT</label>                </td>
+                  <label for="naturSAT1">NATURALEZA SAT</label>
+                </td>
                 <td class="col-md-6 input-effect">
                   <input  list="CuentaMaestra" class="text-normal efecto text-center"  id="tipo1">
                   <datalist id="CuentaMaestra" href="#lst_conta_cs_cuentas_mst_1niv"></datalist>
                   <label for="tipo1">CUENTA MAESTRA</label>                </td>
                 <td class="col-md-3 input-effect">
                   <input id="concepto1" class="efecto text-center" type="text">
-                  <label for="concepto1">CONCEPTO</label>                </td>
+                  <label for="concepto1">CONCEPTO</label>
+                </td>
               </tr>
               <tr class="row">
-                <td class="col-md-4 offset-md-4 brx2">
-                  <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR CUENTA DETALLE</a>                </td>
+                <td class="col-md-4 offset-md-4 mt-4">
+                  <a href="" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR CUENTA DETALLE</a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -113,17 +115,17 @@ $usuario = $_SESSION['user_name'];
       </div>
     </div>
 
-    <div class="acordeon2 text-center brx1">
-      <div class="tRepo2" data-toggle="collapse" href="#collapsetres">
+    <div class="acordeon2 text-center mt-3">
+      <div class="encabezado h35 font16" data-toggle="collapse" href="#collapsetres">
         <a  id="bread">GENERAR CUENTAS DE CLIENTES (Segundo Nivel)</a>
       </div>
       <div id="collapsetres" class="card-block collapse ml-20 mr-20">
-        <form class="form1"method="post">
+        <form class="form1">
           <table class="table mb-0">
             <tbody class="cuerpo">
-              <tr class="row">
-                <td class="col-md-10 input-effect brx2">
-                  <input  list="Clientes" class="text-normal efecto text-center"  id="clt">
+              <tr class="row mt-4 m-0">
+                <td class="col-md-10 input-effect">
+                  <input  list="Clientes" class="text-normal efecto"  id="clt">
                   <datalist id="Clientes">
       				  	<?php
       					  $sql_Clientes = mysqli_query($db,"SELECT * FROM conta_replica_clientes WHERE pk_id_cliente NOT IN( SELECT DISTINCT s_cta_identificador  FROM conta_cs_cuentas_mst WHERE s_cta_identificador is not null) ORDER BY s_nombre");
@@ -135,8 +137,8 @@ $usuario = $_SESSION['user_name'];
                   </datalist>
                   <label for="clt">CLIENTES</label>
                 </td>
-                <td class="col-md-2 brx2">
-                  <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
+                <td class="col-md-2">
+                  <a href="" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
                 </td>
               </tr>
             </tbody>
@@ -146,18 +148,23 @@ $usuario = $_SESSION['user_name'];
     </div>
   </div>
 
-  <div id="contornoEmp" class="contorno brx4" style="display:none;">
-    <h5 class="titulo" style="font-size:15px">CATALOGO</h5>
-    <table class="table brx2">
-      <td class="col-md-12">
-        <a href="#"><img class="icomediano mleft" src="/conta6/Resources/iconos/005-excel.svg"></a>
-        <a href="#"><img class="icomediano mleftx2" src="/conta6/Resources/iconos/printer.svg"></a>
-        <a href="#"><img class="icomediano mleftx2" src="/conta6/Resources/iconos/xml.svg"></a>
-      </td>
+  <div id="contornoEmp" class="contorno" style="display:none">
+    <h5 class="titulo font14">CATALOGO</h5>
+    <table class="table mt-4">
+      <tr class="row m-0">
+        <td class="col-md-6">
+          <a href="#"><img class="icomediano" src="/conta6/Resources/iconos/005-excel.svg"></a>
+          <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/printer.svg"></a>
+          <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/xml.svg"></a>
+        </td>
+        <td class="col-md-3 offset-md-3">
+          <input class="efecto" type="text" name="search" placeholder="Buscar...">
+        </td>
+      </tr>
     </table>
-    <table class="table table-hover" id="empleadosCap" style="display:none;">
+    <table class="table table-hover text-center" id="empleadosCap">
       <thead>
-        <tr class="row text-center m-0 tRepoNom">
+        <tr class="row m-0 encabezado">
           <td class="col-md-1"></td>
           <td class="col-md-1">CUENTA</td>
           <td class="col-md-4">DESCRIPCION</td>
@@ -170,14 +177,14 @@ $usuario = $_SESSION['user_name'];
         </tr>
       </thead>
       <tbody class="text-normal">
-	  	<tr class="row text-center m-0 borderojo">
-		<?php
-    	$sql_consultaCuentas = mysqli_query($db,"SELECT * FROM conta_cs_cuentas_mst");
-  		while($oRst_consultaCuentas = $sql_consultaCuentas->fetch_assoc()) {
-  			$id_cuenta = trim($oRst_consultaCuentas['pk_id_cuenta']);
-  			$actividad = trim($oRst_consultaCuentas['s_cta_actividad']);
-		?>
-			 <td class="col-md-1 text-center">
+<?php
+$sql_consultaCuentas = mysqli_query($db,"SELECT * FROM conta_cs_cuentas_mst");
+while($oRst_consultaCuentas = $sql_consultaCuentas->fetch_assoc()) {
+  $id_cuenta = trim($oRst_consultaCuentas['pk_id_cuenta']);
+  $actividad = trim($oRst_consultaCuentas['s_cta_actividad']);
+  ?>
+	  	<tr class="row m-0 borderojo">
+			 <td class="col-md-1">
 				<a href="#EditarCatalogo" data-toggle="modal">
 				  <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
 				</a>
@@ -204,10 +211,27 @@ $usuario = $_SESSION['user_name'];
                           						</a><div id="borrar_<?php echo $id_cuenta; ?>"></div>
                           				<?php }}?>
 			  </td>
-		<?php } #while($oRst_consultaCuentas ?>
 		</tr>
+  <?php } #while($oRst_consultaCuentas ?>
       </tbody>
     </table>
+    <ul class="pagination justify-content-center font16 mt-5">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </div>
 

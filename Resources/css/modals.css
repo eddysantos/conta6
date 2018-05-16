@@ -75,7 +75,11 @@ button[type=button].btn-dpol:hover,button[type=button].btn-dpol:focus{
   letter-spacing: 4px!important;
 }
 
-#centrar{
+/* #centrar{
+  padding-top: 10px!important;
+} */
+
+.centrar{
   padding-top: 10px!important;
 }
 .contorno-modal{

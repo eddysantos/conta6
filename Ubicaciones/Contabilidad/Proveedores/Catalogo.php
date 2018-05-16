@@ -34,37 +34,37 @@
 
   <div class="contorno">
     <h5 class="titulo" style="font-size:15px">DATOS GENERALES</h5>
-    <table class="table">
+    <table class="table text-center">
       <thead>
-        <tr class="row tRepoNom text-center text-normal">
+        <tr class="row encabezado font14">
           <td class="col-md-12">ABASTECEDORA DE SUPERTIENDAS DE OFICINAS SA DE CV --- 0206-00152</td>
         </tr>
       </thead>
       <tbody class="cuerpo">
-        <tr class="row">
-          <td class="col-md-4 input-effect brx2">
-            <input  list="persona" class="text-normal efecto text-center"  id="per">
+        <tr class="row mt-4">
+          <td class="col-md-4 input-effect">
+            <input  list="persona" class="text-normal efecto"  id="per">
             <datalist id="persona">
               <option>Fisica</option>
               <option>Moral</option>
             </datalist>
             <label for="per">PERSONA</label>
           </td>
-          <td class="col-md-4 input-effect brx2">
-            <input id="rfc" class="efecto text-center text-normal" type="text">
+          <td class="col-md-4 input-effect">
+            <input id="rfc" class="efecto text-normal" type="text">
             <label for="rfc">RCF</label>
           </td>
-          <td class="col-md-4 input-effect brx2">
-            <input id="curp" class="efecto text-center text-normal" type="text">
+          <td class="col-md-4 input-effect">
+            <input id="curp" class="efecto text-normal" type="text">
             <label for="curp">CURP</label>
           </td>
         </tr>
-        <tr class="row">
-          <td class="col-md-11 input-effect brx2">
-            <input id="domfiscal" class="efecto text-center text-normal mleftx3" type="text">
+        <tr class="row mt-4">
+          <td class="col-md-11 input-effect">
+            <input id="domfiscal" class="efecto text-normal ml-5" type="text">
             <label for="domfiscal">DOMICILIO FISCAL</label>
           </td>
-          <td class="col-md-1 brx2">
+          <td class="col-md-1 mt-2">
             <a href="" class="btn-block"><img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
           </td>
         </tr>
@@ -78,7 +78,7 @@
     <table class="table text-center">
       <tbody class="cuerpo">
         <tr class="row">
-          <td class="col-md-4 input-effect brx2">
+          <td class="col-md-4 input-effect mt-4">
             <input  list="cbancarias" class="text-normal efecto text-center"  id="cuentasban">
             <datalist id="cbancarias">
               <option>AFIRME</option>
@@ -106,24 +106,24 @@
             </datalist>
             <label for="cuentasban">CUENTAS BANCARIAS</label>
           </td>
-          <td class="col-md-6 input-effect brx2">
+          <td class="col-md-6 input-effect mt-4">
             <input id="cinter" class="efecto text-center text-normal" type="text">
             <label for="cinter">CUENTA / INTERBANCARIA</label>
           </td>
-          <td class="col-md-2 input-effect brx2">
-            <a href="" role="button" class="ver boton btn-block" accion="mostrarcta"> <img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR</a>
+          <td class="col-md-2 input-effect mt-4">
+            <a href="" role="button" class="ver boton" accion="mostrarcta"> <img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR</a>
           </td>
         </tr>
       </tbody>
     </table>
-    <div id="MostrarCuenta" style="display:none">
+    <div id="MostrarCuenta">
       <table class="table text-center text-normal">
-        <tr  class="row brx2">
-          <td class="col-md-1 iap"></td>
-          <td class="col-md-2 iap">BANCO</td>
-          <td class="col-md-3 iap">CUENTA</td>
-          <td class="col-md-3 iap">AGREGÓ</td>
-          <td class="col-md-3 iap">MODIFICÓ</td>
+        <tr  class="row backpink mt-4">
+          <td class="col-md-1"></td>
+          <td class="col-md-2">BANCO</td>
+          <td class="col-md-3">CUENTA</td>
+          <td class="col-md-3">AGREGÓ</td>
+          <td class="col-md-3">MODIFICÓ</td>
         </tr>
         <tr  class="row borderojo">
           <td class="col-md-1">

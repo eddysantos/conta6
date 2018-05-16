@@ -11,23 +11,23 @@
       <div class="modal-body" style="padding:0px">
         <div class="container-fluid">
           <div id="" class="contorno">
-            <table class="table">
-              <thead style="">
-                <tr class="row m0 tRepoNom">
-                  <td class="col-md-12 text-center">BUSCAR FACTURA</td>
+            <table class="table text-center">
+              <thead>
+                <tr class="row encabezado">
+                  <td class="col-md-12">BUSCAR FACTURA</td>
                 </tr>
               </thead>
               <tbody class="cuerpo">
-                <tr class="row m0">
-                  <td class="col-md-2 input-effect brx3">
-                    <input id="b-referencia" class="efecto text-center text-normal" type="text" >
+                <tr class="row mt-5">
+                  <td class="col-md-2 input-effect">
+                    <input id="b-referencia" class="efecto text-center text-normal" type="text">
                     <label for="b-referencia">Por Referencia</label>
                   </td>
-                  <td class="col-md-2 input-effect brx3">
-                    <input id="b-factura" class="efecto text-center text-normal" type="text" >
+                  <td class="col-md-2 input-effect">
+                    <input id="b-factura" class="efecto text-center text-normal" type="text">
                     <label for="b-factura">Por Factura</label>
                   </td>
-                  <td class="col-md-8 input-effect brx3">
+                  <td class="col-md-8 input-effect">
                     <input  list="clientes" class="text-normal efecto text-center"  id="b-cliente">
                     <datalist id="clientes">
                       <option value="AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V --- CLT 6109"></option>
@@ -63,22 +63,22 @@
         <div class="container-fluid">
           <div id="" class="contorno">
             <table class="table">
-              <thead style="">
-                <tr class="row m0 tRepoNom">
+              <thead>
+                <tr class="row encabezado">
                   <td class="col-md-12 text-center">BUSCAR FACTURA</td>
                 </tr>
               </thead>
               <tbody class="cuerpo">
-                <tr class="row m0">
-                  <td class="col-md-2 input-effect brx3">
+                <tr class="row mt-5">
+                  <td class="col-md-2 input-effect">
                     <input id="b-referencia" class="efecto text-center text-normal" type="text" >
                     <label for="b-referencia">Por Referencia</label>
                   </td>
-                  <td class="col-md-2 input-effect brx3">
+                  <td class="col-md-2 input-effect">
                     <input id="b-factura" class="efecto text-center text-normal" type="text" >
                     <label for="b-factura">Por Factura</label>
                   </td>
-                  <td class="col-md-8 input-effect brx3">
+                  <td class="col-md-8 input-effect">
                     <input  list="clientes" class="text-normal efecto text-center"  id="b-cliente">
                     <datalist id="clientes">
                       <option value="AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V --- CLT 6109"></option>
