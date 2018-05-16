@@ -26,7 +26,7 @@
                     <label for="mconcepto">CONCEPTO</label>
                   </td>
                   <td class="col-md-3 input-effect">
-                    <input  list="status" class="text-normal efecto"  id="medit-status">
+                    <input  list="status" class="efecto"  id="medit-status">
                     <datalist id="status">
                       <option>Activa</option>
                       <option>Inactiva</option>
@@ -34,7 +34,7 @@
                     <label for="medit-status">ESTATUS CAPTURA</label>
                   </td>
                   <td class="col-md-3 input-effect">
-                    <input  list="NSAT" class="text-normal efecto"  id="medit-naturSAT">
+                    <input  list="NSAT" class="efecto"  id="medit-naturSAT">
                     <datalist id="NSAT"></datalist>
                     <label for="medit-naturSAT">NATURALEZA SAT</label>
                   </td>
