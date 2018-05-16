@@ -27,8 +27,8 @@ $usuario = $_SESSION['user_name'];
             <tbody class="font14">
               <tr class="row m-0 mt-5">
                 <td class="col-md-12 input-effect">
-                  <input class="efecto popup-input" id="ctaSAT" type="text" id-display="" db-id="" autocomplete="new-password">
-                  <div class="popup-list" style="display:none"></div>
+                  <input class="efecto popup-input" id="ctaSAT" type="text" id-display="#popup-display-cuentas-sat" action="cuentas_sat" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-cuentas-sat" style="display:none"></div>
 
                   <!-- <input  list="cuentasSAT" class="efecto" id="ctaSAT">
                   <datalist id="cuentasSAT" href="#lst_conta_cs_cuentas_mst"></datalist> -->
@@ -335,6 +335,7 @@ $usuario = $_SESSION['user_name'];
 
 
 <script src="/conta6/Resources/js/Inputs.js"></script>
+<script src="/conta6/Resources/js/popup-list-plugin.js"></script>
 <script src="js/AdministracionContable.js"></script>
 <?php
 require_once('modales/EditarCatalogo.php');

@@ -2,13 +2,14 @@
 
 /** PRODUCTION DATABASE **/
 
-// $datab = 'plsuite';
+// $datab = 'conta6';
 // $host = '10.1.4.10';
 // $port = 3306;
 // $usr = 'prolog';
 // $pwd = 'f4Tnps.03';
 
 /** TEST DATABASE **/
+// $datab = 'conta6';
 $datab = 'conta6';
 $host = 'localhost';
 $port = 8889;

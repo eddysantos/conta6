@@ -9,7 +9,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 date_default_timezone_set('America/Monterrey');
 
 // if (!(isset($_SESSION['user_info']))) {
-//   header("location:/plsuite");
+//   header("location:/conta6");
 // }
 
  ?>
