@@ -65,7 +65,7 @@
   border-bottom: 1px solid  rgb(209, 28, 28);
 }
 
-.sGrande {
+/* .sGrande {
   display: block;
   background-color: transparent;
   border: 1px solid rgba(0, 0, 0, .15);
@@ -73,22 +73,22 @@
   height: 40px;
   width: 100%;
   color: black;
-}
-.sChico {
+} */
+/* .sChico {
   background-color: transparent;
   border: 1px solid rgba(0, 0, 0, .15);
   font-size: 26px!important;
   height: inherit;
   color: #aaa;
   width: inherit;
-}
-.aDatosSm {
+} */
+/* .aDatosSm {
   height: inherit;
   font-size: 22px!important;
   text-align: center!important;
   color: #aaa!important;
   border-radius: 0.6rem!important;
-}
+} */
 .black {
   color: rgb(75, 74, 74);
   letter-spacing: 8px;
@@ -143,21 +143,21 @@ div.submenuMed {
   font-size: 18px;
   color: rgb(75, 74, 74)!important;
 }
-.drop {
+/* .drop {
   font-size: large;
   letter-spacing: 7px;
   margin: 10px!important;
   background-color: rgba(226, 226, 226, 0.12);
   color: #8c8c8c!important;
   border-radius: 8px!important;
-}
-.dropdiv {
+} */
+/* .dropdiv {
   font-size: large;
   letter-spacing: 7px;
   margin: 10px!important;
   color: #8c8c8c!important;
   border-radius: 8px!important;
-}
+} */
 .contorno {
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -178,20 +178,20 @@ th.subtext, td.subtext {
   letter-spacing: 3px;
   text-align: center!important;
 }
-.blateral {
+/* .blateral {
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-bottom-left-radius: 8px;
-}
+} */
 .contenidorow {
   font-size: initial;
   line-height: 0.9;
 }
 
-.totalrow {
+/* .totalrow {
   font-size: large;
   color: rgb(117,117,117);
-}
+} */
 
 /*Acordeon para Editar*/
 .acordeon2 {
