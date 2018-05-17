@@ -31,12 +31,12 @@ input:read-only{
   font-weight: normal!important;
   color:rgb(87, 87, 87)!important;
 }
-th.iap, td.iap, div.iap{
+/* th.iap, td.iap, div.iap{
   letter-spacing: 2px!important;
   background-color:rgba(246, 92, 92, 0.09)!important;
   font-weight: normal!important;
   color:rgb(87, 87, 87)!important;
-}
+} */
 .cont{
   max-width: 1300px;
 }
@@ -173,7 +173,9 @@ select{
   width: 100%;
   background-color: transparent;
   border: 1px solid #ced4da;
-  height: calc(2.25rem + 2px);
+  border-radius: 10px!important;
+  /* height: calc(2.25rem + 2px); */
+  height: 30px
 }
 .form1{
   letter-spacing:3px;
@@ -329,12 +331,11 @@ h5.titulo-mov {
 
 /* popup-list */
 .popup-list{
-  position: absolute;
+  /* position: absolute; */
   width: -webkit-fill-available;
   border-radius: 5px;
-  border: 1px solid rgb(020, 020, 020);
+  border: 1px solid #ced4da;
   background-color: white;
-  margin-right: 30px;
   padding: 10px;
   z-index: 9999;
 }
@@ -345,18 +346,18 @@ h5.titulo-mov {
 }
 
 .popup-list p.hovered{
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
   color: white;
 }
 
 .popup-list p.hovered{
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
 .popup-list p:not(:last-child){
-  border-bottom: 1px solid rgb(1,1,1);
+  border-bottom: 1px solid #ced4da;
 }
 
 .popup-list p:last-child{
