@@ -19,11 +19,15 @@
   <link rel="stylesheet" href="/conta6/Resources/css/bienvenida.css">
   <link rel="stylesheet" href="/conta6/Resources/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/conta6/Resources/bootstrap/css/bootstrap-toggle.css">
+  <link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
+  <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
+  <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
 
 
 <!--***************SCRIPTS*****************-->
   <script src="/conta6/Resources/JQuery/sweetalert.min.js"></script>
+  <script src="/conta6/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
   <script src="/conta6/Resources/JQuery/jquery.min.js"></script>
   <script src="/conta6/Resources/JQuery/popper.min.js"></script>
   <script src="/conta6/Resources/JQuery/tether.min.js"></script>
