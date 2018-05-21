@@ -251,7 +251,11 @@ $usuario = $_SESSION['user_name'];
           <td class="col-md-1">ACTIVIDAD</td>
         </tr>
       </thead>
-      <tbody id="tabla_cuentas"></tbody>
+      <tbody id="tabla_cuentas">
+        <tr>
+          <td colspan="9">No hay resultados</td>
+        </tr>
+      </tbody>
     </table>
     <ul class="pagination justify-content-center font16 mt-5">
       <li class="page-item">

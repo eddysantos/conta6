@@ -8,7 +8,7 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_cs_cuentas_mst WHERE (pk_id_cuenta LIKE ? and s_cta_nivel = '1')  OR (s_cta_desc LIKE ? and s_cta_nivel = '1')";
+$query = "SELECT * FROM conta_cs_cuentas_mst WHERE (pk_id_cuenta LIKE ?)  OR (s_cta_desc LIKE ?)";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -43,12 +43,12 @@ if ($rslt->num_rows == 0) {
 while ($row = $rslt->fetch_assoc()) {
   // $system_callback['data'] .=
   // "<p db-id='$row[pk_id_cuenta]'>$row[pk_id_cuenta] - $row[s_cta_desc]</p>";
-  $idcuenta $id = $row['pk_id_cuenta'];
+  $id = $row['pk_id_cuenta'];
 
   $system_callback['data'] .=
   "<tr class='row text-center m-0 borderojo'>
    <td class='col-md-1 text-center'>
-      <a href='#EditarCatalogo' data-toggle='modal' id='$id'>
+      <a href='#EditarCatalogo' class='editar-cuenta' db-id='$id' role='button'>
         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
       </a>
     </td>
