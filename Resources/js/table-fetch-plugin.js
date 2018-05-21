@@ -20,7 +20,7 @@ $(document).ready(function(){
     db_query.done(function(r){
       r = JSON.parse(r);
       if (r.code == 1) {
-        table-body.html(r.data);
+        table_body.html(r.data);
       } else {
         alert(r.message);
       }
