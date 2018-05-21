@@ -240,6 +240,117 @@ $(document).ready(function(){
 
 
 
+
+      $('#medit-ctas').click(function(){
+
+        if($('#medit-ctaSAT').attr('db-id') == ""){
+          alertify.error("Seleccione cuenta del SAT");
+          $('#medit-ctaSAT').focus();
+          return false;
+        }
+
+        if($('#medit-concepto').val() == ""){
+          alertify.error("Asigne un concepto");
+          $('#medit-concepto').focus();
+          return false;
+        }
+
+        if($('#medit-status').val() == ""){
+          alertify.error("Seleccione el estatutus de captura");
+          $('#medit-status').focus();
+          return false;
+        }
+
+
+        if($('#medit-naturSAT').attr('db-id') == ""){
+          alertify.error("Seleccione Naturaleza de la cuenta");
+          $('#medit-naturSAT').focus();
+          return false;
+        }
+
+        if($('#medit-prodServ').attr('db-id') == ""){
+          alertify.error("Seleccione clave de producto");
+          $('#medit-prodServ').focus();
+          return false;
+        }
+
+
+          var data = {
+            ctaSAT: $('#medit-ctaSAT').attr('db-id'),
+            concepto: $('#medit-concepto').val(),
+            status: $('#medit-status').val(),
+            naturSAT: $('#medit-naturSAT').attr('db-id'),
+            prodServ: $('#medit-prodServ').attr('db-id'),
+          }
+
+          $.ajax({
+            type: "POST",
+            url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/editar.php",
+            data: data,
+            success: 	function(request, settings){
+              //$('#respuestaCtasMST').html(request);
+              console.error(request);
+              mensaje = request;
+              /*if(mensaje.indexOf("Error during query execution [1062]") > -1){
+                swal("La cuenta ya existe");
+                console.error(request);
+                return false;
+              }else{
+                swal("La cuenta se guardo correctamente");
+                console.error(request);
+                return true;
+              }*/
+            }
+
+          });
+
+
+      });
+
+  $('tbody').on('click', '.editar-cuenta', function(){
+    var dbid = $(this).attr('db-id');
+    var tar_modal = $($(this).attr('href'));
+    var fetch_cuenta = $.ajax({
+      method: 'POST',
+      data: {dbid: dbid},
+      url: 'actions/fetchCuentaDetalle.php'
+    });
+
+    fetch_cuenta.done(function(r){
+      r = JSON.parse(r);
+      if (r.code == 1) {
+
+      for (var key in r.data) {
+        if ($('#' + key).is('select')) {
+          continue;
+        }
+
+        if (r.data.hasOwnProperty(key)) {
+          $('#' + key).html(r['data'][key]).val(r['data'][key]).addClass('tiene-contenido');
+          if ( typeof($('#'+key).attr('db-id')) != 'undefined' && $('#'+key).attr('db-id') !== false) {
+            $('#' + key).attr('db-id', r['data'][key + 'id']);
+          }
+        }
+      }
+
+      $('#s_cta_status').val(r.data.s_cta_status);
+      $('#medit-ctas').attr('db-id', r.data.pk_id_cuenta);
+
+      tar_modal.modal('show');
+      } else {
+        console.error(r);
+      }
+    })
+
+  })
+
+  $('#medit-ctas').click(function(){
+
+  //Código para editar el modal, declaración de variables y ajax.
+
+  $('.modal').modal('hide');
+  })
+
 });
 
 function valida_ctamaestra(){

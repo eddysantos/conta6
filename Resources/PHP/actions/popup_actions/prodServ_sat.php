@@ -8,11 +8,7 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-<<<<<<< HEAD
-$query = "SELECT * FROM conta_cs_cuentas_mst WHERE (pk_id_cuenta LIKE ? and s_cta_nivel = '1')  OR (s_cta_desc LIKE ? and s_cta_nivel = '1')";
-=======
-$query = "SELECT * FROM conta_cs_cuentas_mst WHERE (pk_id_cuenta LIKE ?)  OR (s_cta_desc LIKE ?)";
->>>>>>> be-admin-contable
+$query = "SELECT * FROM conta_cs_sat_claveprodserv WHERE pk_c_ClaveProdServ LIKE ? OR s_concepto LIKE ?";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -45,43 +41,14 @@ if ($rslt->num_rows == 0) {
 }
 
 while ($row = $rslt->fetch_assoc()) {
-  // $system_callback['data'] .=
-  // "<p db-id='$row[pk_id_cuenta]'>$row[pk_id_cuenta] - $row[s_cta_desc]</p>";
-<<<<<<< HEAD
-=======
-  $id = $row['pk_id_cuenta'];
->>>>>>> be-admin-contable
-
   $system_callback['data'] .=
-  "<tr class='row text-center m-0 borderojo'>
-   <td class='col-md-1 text-center'>
-<<<<<<< HEAD
-      <a href='#EditarCatalogo' data-toggle='modal'>
-=======
-      <a href='#EditarCatalogo' class='editar-cuenta' db-id='$id' role='button'>
->>>>>>> be-admin-contable
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
-      </a>
-    </td>
-    <td class='col-md-1'>$row[pk_id_cuenta]</td>
-    <td class='col-md-4 text-left'>$row[s_cta_desc]</td>
-    <td class='col-md-1'>$row[s_cta_tipo]</td>
-    <td class='col-md-1'>$row[s_cta_nivel]</td>
-    <td class='col-md-1'>$row[s_cta_status]</td>
-    <td class='col-md-1'>$row[fk_codAgrup]</td>
-    <td class='col-md-1'>$row[fk_id_naturaleza]</td>
-    <td class='col-md-1'>
-    </td>
-  </tr>";
+  "<p db-id='$row[pk_c_ClaveProdServ]'>$row[pk_c_ClaveProdServ] - $row[s_concepto]</p>";
 }
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> be-admin-contable
  ?>
