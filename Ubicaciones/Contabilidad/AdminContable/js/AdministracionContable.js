@@ -307,6 +307,49 @@ $(document).ready(function(){
 
       });
 
+  $('tbody').on('click', '.editar-cuenta', function(){
+    var dbid = $(this).attr('db-id');
+    var tar_modal = $($(this).attr('href'));
+    var fetch_cuenta = $.ajax({
+      method: 'POST',
+      data: {dbid: dbid},
+      url: 'actions/fetchCuentaDetalle.php'
+    });
+
+    fetch_cuenta.done(function(r){
+      r = JSON.parse(r);
+      if (r.code == 1) {
+
+      for (var key in r.data) {
+        if ($('#' + key).is('select')) {
+          continue;
+        }
+
+        if (r.data.hasOwnProperty(key)) {
+          $('#' + key).html(r['data'][key]).val(r['data'][key]).addClass('tiene-contenido');
+          if ( typeof($('#'+key).attr('db-id')) != 'undefined' && $('#'+key).attr('db-id') !== false) {
+            $('#' + key).attr('db-id', r['data'][key + 'id']);
+          }
+        }
+      }
+
+      $('#s_cta_status').val(r.data.s_cta_status);
+      $('#medit-ctas').attr('db-id', r.data.pk_id_cuenta);
+
+      tar_modal.modal('show');
+      } else {
+        console.error(r);
+      }
+    })
+
+  })
+
+  $('#medit-ctas').click(function(){
+
+  //Código para editar el modal, declaración de variables y ajax.
+
+  $('.modal').modal('hide');
+  })
 
 });
 
