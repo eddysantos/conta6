@@ -16,10 +16,10 @@
           <td class="col-12 text-center">PEDIMENTOS CAPTURADOS EN EL SISTEMA</td>
         </tr>
         <tr class="row m-0">
-          <td class="col-md-3 text-center iap">ADUANA</td>
-          <td class="col-md-3 text-center iap">PRIMERO</td>
-          <td class="col-md-3 text-center iap">ÚLTIMO</td>
-          <td class="col-md-3 text-center iap">TOTAL</td>
+          <td class="col-md-3 text-center backpink">ADUANA</td>
+          <td class="col-md-3 text-center backpink">PRIMERO</td>
+          <td class="col-md-3 text-center backpink">ÚLTIMO</td>
+          <td class="col-md-3 text-center backpink">TOTAL</td>
         </tr>
       </thead>
       <tbody>
@@ -82,12 +82,12 @@
       </thead>
       <tbody>
         <tr class="row text-normal">
-          <td class="col-md-1 text-center iap">ADUANA</td>
-          <td class="col-md-2 text-center iap">PEDIMENTO</td>
-          <td class="col-md-2 text-center iap">REFERENCIA</td>
-          <td class="col-md-1 text-center iap">CVE.DOC</td>
-          <td class="col-md-2 text-center iap">FECHA DE PAGO</td>
-          <td class="col-md-4 text-center iap">IMPORTÓ</td>
+          <td class="col-md-1 text-center backpink">ADUANA</td>
+          <td class="col-md-2 text-center backpink">PEDIMENTO</td>
+          <td class="col-md-2 text-center backpink">REFERENCIA</td>
+          <td class="col-md-1 text-center backpink">CVE.DOC</td>
+          <td class="col-md-2 text-center backpink">FECHA DE PAGO</td>
+          <td class="col-md-4 text-center backpink">IMPORTÓ</td>
         </tr>
         <tr class="row borderojo" style="font-size:18px!important">
           <td class="col-md-1 text-center">240</td>
