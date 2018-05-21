@@ -18,15 +18,15 @@
   letter-spacing:10px;
   font-size:14px;
 }
-.modal-table{
+/* .modal-table{
   border: 0!important;
   max-width:70%!important;
   margin: 10px 110px;
-}
-.modal-table2{
+} */
+/* .modal-table2{
   margin:30px 40px 0px 40px;
   width:90%!important;
-}
+} */
 .modal-table3{
   border: 0!important;
   max-width: 90%!important;
@@ -71,9 +71,9 @@ button[type=button].btn-dpol:hover,button[type=button].btn-dpol:focus{
 .modal-xl{
   max-width: 1200px!important;
 }
-.effect-21modal{
+/* .effect-21modal{
   letter-spacing: 4px!important;
-}
+} */
 
 /* #centrar{
   padding-top: 10px!important;

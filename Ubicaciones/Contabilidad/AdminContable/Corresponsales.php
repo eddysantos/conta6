@@ -27,15 +27,13 @@
         <td class="col-md-2">TELEFONO</td>
       </tr>
     </thead>
-    <tbody class="text-normal">
+    <tbody class="font14">
       <tr class="row m-0 borderojo">
-        <td class="col-md-1 text-center">
+        <td class="col-md-1">
           <a href="#EditarCorresponsal" data-toggle="modal">
             <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
           </a>
-          <a>
-            <img class="icochico ml-5" src="/conta6/Resources/iconos/001-add.svg">
-          </a>
+          <a><img class="icochico ml-5" src="/conta6/Resources/iconos/001-add.svg"></a>
         </td>
         <td class="col-md-5">Servicios Integrales en Logistica Internacional, Aduanas y Tecnologia S.C</td>
         <td class="col-md-4">Jose Luis jvalencia@sologiat.com</td>
