@@ -233,7 +233,7 @@ $usuario = $_SESSION['user_name'];
 		  <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/refresh-button.svg"></a>
         </td>
         <td class="col-md-3 offset-md-3">
-          <input class="efecto" type="text" name="search" placeholder="Buscar...">
+          <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." table-body="#mostrarCuentas"  action="tablacuentasDet">
        </td>
       </tr>
     </table>
@@ -251,43 +251,7 @@ $usuario = $_SESSION['user_name'];
           <td class="col-md-1">ACTIVIDAD</td>
         </tr>
       </thead>
-      <tbody id="tabla_cuentas" action="#tablacuentasDet">
-      <?php
-      	// $sql_consultaCuentas = mysqli_query($db,"SELECT * FROM conta_cs_cuentas_mst limit 5");
-    		// while($oRst_consultaCuentas = $sql_consultaCuentas->fetch_assoc()) {
-    		// 	$id_cuenta = trim($oRst_consultaCuentas['pk_id_cuenta']);
-    		// 	$actividad = trim($oRst_consultaCuentas['s_cta_actividad']);
-  		?>
-  	  	<!-- <tr class="row text-center m-0 borderojo">
-  			 <td class="col-md-1 text-center">
-    				<a href="#EditarCatalogo" data-toggle="modal">
-    				  <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-    				</a>
-  			  </td>
-  			  <!- <td class="col-md-1"><?php //echo $id_cuenta; ?></td> -->
-  			  <!-- <td class="col-md-4 text-left"><?php //echo trim($oRst_consultaCuentas['s_cta_desc']); ?></td> -->
-  			  <!-- <td class="col-md-1"><?php //echo trim($oRst_consultaCuentas['s_cta_tipo']); ?></td> -->
-  			  <!-- <td class="col-md-1"><?php //echo trim($oRst_consultaCuentas['s_cta_nivel']); ?></td> -->
-  			  <!-- <td class="col-md-1"><?php //if( $oRst_consultaCuentas['s_cta_status'] == 0 ){ -->
-                  										// 	echo "Inactivo";
-                  										// }else{
-                  										// 	echo "Activo";
-                  										// }
-                  									?>
-  			  </td>
-  			  <!- <td class="col-md-1"><?php //echo trim($oRst_consultaCuentas['fk_codAgrup']); ?></td> -->
-  			  <!-- <td class="col-md-1"><?php //echo trim($oRst_consultaCuentas['fk_id_naturaleza']); ?></td> -->
-  			  <!-- <td class="col-md-1"><?php //if($actividad == 1){
-                            					//echo 'Con registros';
-                            				//}else{
-                            					//if( $oRst_permisos['s_modificar_ctas'] == 1){ ?> -->
-                            						<!-- <a style="text-decoration:none;" onClick="borrar('<?php //echo $id_cuenta; ?>')"> -->
-                            							<!-- <img border="0" src="/conta6/Resources/iconos/delete.svg" alt="Borrar"> -->
-                            						<!-- </a><div id="borrar_<?php //echo $id_cuenta; ?>"></div> -->
-                            				<?php// }}?>
-  			  <!--/td>
-  		  </tr-->
-    <!-- <?php } #while($oRst_consultaCuentas ?> -->
+      <tbody id="tabla_cuentas">
       </tbody>
     </table>
     <ul class="pagination justify-content-center font16 mt-5">
@@ -323,6 +287,7 @@ $usuario = $_SESSION['user_name'];
 <script src="/conta6/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
 <script src="/conta6/Resources/js/Inputs.js"></script>
 <script src="/conta6/Resources/js/popup-list-plugin.js"></script>
+<script src="/conta6/Resources/js/table-fetch-plugin.js"></script>
 <script src="js/AdministracionContable.js"></script>
 <?php
 require_once('modales/EditarCatalogo.php');
