@@ -15,7 +15,7 @@
               <tbody class="cuerpo">
                 <tr class="row mt-4">
                   <td class="col-md-12 input-effect">
-                    <input  list="cuentasSAT" class="efecto"  id="medit-ctaSAT">
+                    <input  list="cuentasSAT" class="text-normal efecto"  id="medit-ctaSAT">
                     <datalist id="cuentasSAT"></datalist>
                     <label for="medit-ctaSAT">CUENTAS SAT</label>
                   </td>
@@ -26,11 +26,12 @@
                     <label for="mconcepto">CONCEPTO</label>
                   </td>
                   <td class="col-md-3 input-effect">
-                    <select class="custom-select" id="medit-status">
-                      <option selected>ESTATUS CAPTURA</option>
+                    <input  list="status" class="efecto"  id="medit-status">
+                    <datalist id="status">
                       <option>Activa</option>
                       <option>Inactiva</option>
-                    </select>
+                    </datalist>
+                    <label for="medit-status">ESTATUS CAPTURA</label>
                   </td>
                   <td class="col-md-3 input-effect">
                     <input  list="NSAT" class="efecto"  id="medit-naturSAT">

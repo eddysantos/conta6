@@ -27,11 +27,8 @@ $usuario = $_SESSION['user_name'];
             <tbody class="font14">
               <tr class="row m-0 mt-5">
                 <td class="col-md-12 input-effect">
-                  <input class="efecto popup-input" id="ctaSAT" type="text" id-display="#popup-display-cuentas-sat" action="cuentas_sat" db-id="" autocomplete="new-password">
-                  <div class="popup-list" id="popup-display-cuentas-sat" style="display:none"></div>
-
-                  <!-- <input  list="cuentasSAT" class="efecto" id="ctaSAT">
-                  <datalist id="cuentasSAT" href="#lst_conta_cs_cuentas_mst"></datalist> -->
+                  <input class="efecto popup-input" id="ctaSAT" type="text" id-display="#popup-display-cuentas_sat" action="cuentas_sat" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-cuentas_sat" style="display:none"></div>
                   <label for="ctaSAT" style="padding-top:.10rem">CUENTAS SAT
                     <a href="#"><img src="/conta6/Resources/iconos/help.svg"></a>
                   </label>
@@ -39,28 +36,25 @@ $usuario = $_SESSION['user_name'];
               </tr>
               <tr class="row m-0 mt-4">
                 <td class="col-md-4 input-effect">
-                  <input class="efecto popup-input" id="naturSAT" type="text" id-display="" db-id="" autocomplete="new-password">
-                  <div class="popup-list" style="display:none"></div>
-
-                  <!-- <input  list="NSAT" class="efecto" id="naturSAT">
-                  <datalist id="NSAT" href="#lst_conta_cs_sat_natur_cuentas"></datalist> -->
+                  <input class="efecto popup-input" id="naturSAT" type="text" id-display="#popup-display-cuentas_sat_natur" action="cuentas_sat_natur" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-cuentas_sat_natur" style="display:none"></div>
                   <label for="naturSAT">NATURALEZA SAT</label>
                 </td>
                 <td class="col-md-3 input-effect">
                   <input list="cta-mtraTipo" class="efecto" id="tipo">
                   <datalist id="cta-mtraTipo">
-                    <option value="Activo -- A"></option>
-          					<option value="Pasivo -- P"></option>
-          					<option value="Capital -- C"></option>
-          					<option value="Gastos -- G"></option>
-          					<option value="Ingresos -- I"></option>
-          					<option value="Cuentas de Orden -- O"></option>
+                    <option value="A">Activo -- A</option>
+          			<option value="P">Pasivo -- P</option>
+          			<option value="C">Capital -- C</option>
+          			<option value="G">Gastos -- G</option>
+          			<option value="I">Ingresos -- I</option>
+          			<option value="O">Cuentas de Orden -- O</option>
                   </datalist>
                   <label for="tipo">TIPO</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="ctamaestra" class="efecto" type="text" maxlength="10">
-                  <label for="ctamaestra">CUENTA MAESTRA</label>
+				  <input id="ctamaestra" class="efecto" type="text" autocomplete="new-password" maxlength="10" onblur="valida_ctamaestra()">
+				  <label for="ctamaestra">CUENTA MAESTRA</label>
                 </td>
                 <td class="col-md-3 input-effect">
                   <input id="concepto" class="efecto" type="text" maxlength="100">
@@ -89,11 +83,8 @@ $usuario = $_SESSION['user_name'];
             <tbody class="font14">
               <tr class="row m-0 mt-4">
                 <td class="col-md-12 input-effect">
-                  <input class="efecto popup-input" id="cuentasSAT" type="text" id-display="" db-id="" autocomplete="new-password">
-                  <div class="popup-list" style="display:none"></div>
-
-				          <!-- <input name="Input" class="efecto"  id="ctaSAT1"  list="cuentasSAT" >
-                  <datalist id="cuentasSAT"></datalist> -->
+                  <input class="efecto popup-input" id="ctaSAT1" type="text" id-display="#popup-display-cuentas_sat1" action="cuentas_sat" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-cuentas_sat1" style="display:none"></div>
                   <label for="ctaSAT1" style="padding-top:.10rem">CUENTAS SAT
                     <a href="#"><img src="/conta6/Resources/iconos/help.svg"></a>
                   </label>
@@ -101,19 +92,13 @@ $usuario = $_SESSION['user_name'];
               </tr>
               <tr class="row m-0 mt-4">
                 <td class="col-md-3 input-effect">
-                  <input class="efecto popup-input" id="naturSAT1" type="text" id-display="" db-id="" autocomplete="new-password">
-                  <div class="popup-list" style="display:none"></div>
-
-                  <!-- <input  list="NSAT" class="efecto" id="naturSAT1">
-                  <datalist id="NSAT"></datalist> -->
+                  <input class="efecto popup-input" id="naturSAT1" type="text" id-display="#popup-display-cuentas_sat_natur1" action="cuentas_sat_natur" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-cuentas_sat_natur1" style="display:none"></div>
                   <label for="naturSAT1">NATURALEZA SAT</label>
                 </td>
                 <td class="col-md-9 input-effect">
-                  <input class="efecto popup-input" id="tipo1" type="text" id-display="" db-id="" autocomplete="new-password">
-                  <div class="popup-list" style="display:none"></div>
-
-                  <!-- <input  list="CuentaMaestra" class="efecto"  id="tipo1">
-                  <datalist id="CuentaMaestra" href="#lst_conta_cs_cuentas_mst_1niv"></datalist> -->
+                  <input class="efecto popup-input" id="ctamaestra1" type="text" id-display="#popup-display-cuentas_mst_1niv1" action="cuentas_mst_1niv" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-cuentas_mst_1niv1" style="display:none"></div>
                   <label for="tipo1">CUENTA MAESTRA</label>
                 </td>
               </tr>
@@ -201,7 +186,8 @@ $usuario = $_SESSION['user_name'];
               </tr>
               <tr class="row justify-content-center mt-5">
                 <td class="col-md-4">
-                  <a href="" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR CUENTA DETALLE</a>
+                  <a href="#" id="generarCtaDet" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR CUENTA DETALLE</a>
+				  <div id="respuestaCtasDET"></div>
                 </td>
               </tr>
             </tbody>
@@ -220,22 +206,13 @@ $usuario = $_SESSION['user_name'];
             <tbody class="cuerpo">
               <tr class="row m-0 mt-4">
                 <td class="col-md-10 input-effect mt-4">
-                  <input class="efecto popup-input" id="clt" type="text" id-display="" db-id="" autocomplete="new-password">
-                  <div class="popup-list" style="display:none"></div>
-
-                  <!-- <input  list="Clientes" class="efecto"  id="clt">
-                  <datalist id="Clientes"> -->
-      				  	<?php
-      					  // $sql_Clientes = mysqli_query($db,"SELECT * FROM conta_replica_clientes WHERE pk_id_cliente NOT IN( SELECT DISTINCT s_cta_identificador  FROM conta_cs_cuentas_mst WHERE s_cta_identificador is not null) ORDER BY s_nombre");
-        					// while($oRst_Clientes = $sql_Clientes->fetch_assoc()) {
-        					// 	echo '<option value='.trim($oRst_Clientes['pk_id_cliente']).'>'.htmlentities(trim($oRst_Clientes['s_nombre'])).' ----- '.trim($oRst_Clientes['pk_id_cliente']).'</option>';
-        				  // }
-                  ?>
-                  <!-- </datalist> -->
+				  <input class="efecto popup-input" id="clt" type="text" id-display="#popup-display-clientes_sinCtaDet" action="clientes_sinCtaDet" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-clientes_sinCtaDet" style="display:none"></div>
                   <label for="clt">CLIENTES</label>
                 </td>
                 <td class="col-md-2 mt-4">
-                  <a href="" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
+                  <a href="#" id="generarCtaCLT" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
+				  <div id="respuestaCtasClientes"></div>
                 </td>
               </tr>
             </tbody>
@@ -253,9 +230,10 @@ $usuario = $_SESSION['user_name'];
           <a href="#"><img class="icomediano" src="/conta6/Resources/iconos/005-excel.svg"></a>
           <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/printer.svg"></a>
           <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/xml.svg"></a>
+		  <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/refresh-button.svg"></a>
         </td>
         <td class="col-md-3 offset-md-3">
-          <input class="efecto" type="text" name="search" placeholder="Buscar...">
+          <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." table-body="#mostrarCuentas"  action="tablacuentasDet">
        </td>
       </tr>
     </table>
@@ -273,43 +251,7 @@ $usuario = $_SESSION['user_name'];
           <td class="col-md-1">ACTIVIDAD</td>
         </tr>
       </thead>
-      <tbody>
-      <?php
-      	$sql_consultaCuentas = mysqli_query($db,"SELECT * FROM conta_cs_cuentas_mst limit 5");
-    		while($oRst_consultaCuentas = $sql_consultaCuentas->fetch_assoc()) {
-    			$id_cuenta = trim($oRst_consultaCuentas['pk_id_cuenta']);
-    			$actividad = trim($oRst_consultaCuentas['s_cta_actividad']);
-  		?>
-  	  	<tr class="row text-center m-0 borderojo">
-  			 <td class="col-md-1 text-center">
-    				<a href="#EditarCatalogo" data-toggle="modal">
-    				  <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-    				</a>
-  			  </td>
-  			  <td class="col-md-1"><?php echo $id_cuenta; ?></td>
-  			  <td class="col-md-4 text-left"><?php echo trim($oRst_consultaCuentas['s_cta_desc']); ?></td>
-  			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['s_cta_tipo']); ?></td>
-  			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['s_cta_nivel']); ?></td>
-  			  <td class="col-md-1"><?php if( $oRst_consultaCuentas['s_cta_status'] == 0 ){
-                  											echo "Inactivo";
-                  										}else{
-                  											echo "Activo";
-                  										}
-                  									?>
-  			  </td>
-  			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['fk_codAgrup']); ?></td>
-  			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['fk_id_naturaleza']); ?></td>
-  			  <td class="col-md-1"><?php if($actividad == 1){
-                            					echo 'Con registros';
-                            				}else{
-                            					if( $oRst_permisos['s_modificar_ctas'] == 1){ ?>
-                            						<a style="text-decoration:none;" onClick="borrar('<?php echo $id_cuenta; ?>')">
-                            							<img border="0" src="/conta6/Resources/iconos/delete.svg" alt="Borrar">
-                            						</a><div id="borrar_<?php echo $id_cuenta; ?>"></div>
-                            				<?php }}?>
-  			  </td>
-  		  </tr>
-    <?php } #while($oRst_consultaCuentas ?>
+      <tbody id="tabla_cuentas">
       </tbody>
     </table>
     <ul class="pagination justify-content-center font16 mt-5">
@@ -333,9 +275,19 @@ $usuario = $_SESSION['user_name'];
 </div>
 
 
+<!--***************ESTILOS*****************-->
+<link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
+<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
+<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
+
+
+<!--***************SCRIPTS*****************-->
+<script src="/conta6/Resources/JQuery/sweetalert.min.js"></script>
+<script src="/conta6/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
 <script src="/conta6/Resources/js/Inputs.js"></script>
 <script src="/conta6/Resources/js/popup-list-plugin.js"></script>
+<script src="/conta6/Resources/js/table-fetch-plugin.js"></script>
 <script src="js/AdministracionContable.js"></script>
 <?php
 require_once('modales/EditarCatalogo.php');

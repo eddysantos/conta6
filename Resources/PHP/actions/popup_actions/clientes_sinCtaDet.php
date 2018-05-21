@@ -8,7 +8,14 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_cs_sat_cuentas WHERE pk_codAgrup LIKE ? OR s_ctaNombre LIKE ? ";
+$query = "SELECT * FROM conta_replica_clientes WHERE (pk_id_cliente LIKE ? OR s_nombre LIKE ?)
+                                                    and pk_id_cliente NOT IN(
+                                                        SELECT DISTINCT s_cta_identificador
+                                                        FROM conta_cs_cuentas_mst
+                                                        WHERE s_cta_identificador is not null)
+                                                    ORDER BY s_nombre ";
+
+
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -42,13 +49,12 @@ if ($rslt->num_rows == 0) {
 
 while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
-  "<p db-id='$row[pk_codAgrup]'>$row[pk_codAgrup] - $row[s_ctaNombre]</p>";
+  "<p db-id='$row[pk_id_cliente]'>$row[pk_id_cliente] - $row[s_nombre]</p>";
 }
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
-
 
 
  ?>
