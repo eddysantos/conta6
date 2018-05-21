@@ -15,15 +15,18 @@
               <tbody class="cuerpo">
                 <tr class="row mt-4">
                   <td class="col-md-12 input-effect">
-                    <input  list="cuentasSAT" class="efecto"  id="medit-ctaSAT">
-                    <datalist id="cuentasSAT"></datalist>
-                    <label for="medit-ctaSAT">CUENTAS SAT</label>
+				  	<input class="efecto popup-input" id="medit-ctaSAT" type="text" id-display="#medit-popup-display-cuentas_sat" action="cuentas_sat" db-id="" autocomplete="new-password">
+					  <div class="popup-list" id="medit-popup-display-cuentas_sat" style="display:none"></div>
+					  <label for="medit-ctaSAT" style="padding-top:.10rem">CUENTAS SAT
+						<a href="#"><img src="/conta6/Resources/iconos/help.svg"></a>
+					  </label>
                   </td>
                 </tr>
                 <tr class="row mt-4">
                   <td class="col-md-6 input-effect">
-                    <input id="mconcepto" class="efecto" type="text">
-                    <label for="mconcepto">CONCEPTO</label>
+                    <!--input id="mconcepto" class="efecto" type="text"-->
+					<input id="medit-concepto" class="efecto" type="text" maxlength="100">
+                    <label for="medit-concepto">CONCEPTO</label>
                   </td>
                   <td class="col-md-3 input-effect">
                     <select class="custom-select" id="medit-status">
@@ -33,9 +36,16 @@
                     </select>
                   </td>
                   <td class="col-md-3 input-effect">
-                    <input  list="NSAT" class="efecto"  id="medit-naturSAT">
-                    <datalist id="NSAT"></datalist>
+				  	        <input class="efecto popup-input" id="medit-naturSAT" type="text" id-display="#medit-popup-display-cuentas_sat_natur" action="cuentas_sat_natur" db-id="" autocomplete="new-password">
+                  	<div class="popup-list" id="medit-popup-display-cuentas_sat_natur" style="display:none"></div>
                     <label for="medit-naturSAT">NATURALEZA SAT</label>
+                  </td>
+                </tr>
+				<tr class="row mt-4">
+                  <td class="col-md-12 input-effect">
+                    <input class="efecto popup-input" id="medit-prodServ" type="text" id-display="#medit-popup-display-prodServ" action="prodServ_sat" db-id="" autocomplete="new-password">
+					          <div class="popup-list" id="medit-popup-display-prodServ" style="display:none"></div>
+                    <label for="medit-prodServ">PRODUCTO O SERVICIO SAT</label>
                   </td>
                 </tr>
               </tbody>
@@ -44,7 +54,7 @@
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a href="" id="btn">GUARDAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="#" id="medit-ctas">GUARDAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>

@@ -30,7 +30,7 @@ $usuario = $_SESSION['user_name'];
                   <input class="efecto popup-input" id="ctaSAT" type="text" id-display="#popup-display-cuentas_sat" action="cuentas_sat" db-id="" autocomplete="new-password">
                   <div class="popup-list" id="popup-display-cuentas_sat" style="display:none"></div>
                   <label for="ctaSAT" style="padding-top:.10rem">CUENTAS SAT
-                    <a href="#"><img src="/conta6/Resources/iconos/help.svg"></a>
+                    <a href='#catalogoSAT' data-toggle='modal'><img src="/conta6/Resources/iconos/help.svg"></a>
                   </label>
                 </td>
               </tr>
@@ -86,7 +86,7 @@ $usuario = $_SESSION['user_name'];
                   <input class="efecto popup-input" id="ctaSAT1" type="text" id-display="#popup-display-cuentas_sat1" action="cuentas_sat" db-id="" autocomplete="new-password">
                   <div class="popup-list" id="popup-display-cuentas_sat1" style="display:none"></div>
                   <label for="ctaSAT1" style="padding-top:.10rem">CUENTAS SAT
-                    <a href="#"><img src="/conta6/Resources/iconos/help.svg"></a>
+                    <a href="#catalogoSAT" data-toggle="modal"><img src="/conta6/Resources/iconos/help.svg"></a>
                   </label>
                 </td>
               </tr>
@@ -115,7 +115,7 @@ $usuario = $_SESSION['user_name'];
                     <option value="EJEMPLO DE BANCOS SAT"></option>
                   </datalist> -->
                   <label for="banSAT" style="padding-top:.10rem">BANCOS SAT
-                    <a href="#"><img src="/conta6/Resources/iconos/help.svg"></a>
+                    <a href="#catalogoSAT" data-toggle="modal"><img src="/conta6/Resources/iconos/help.svg"></a>
                   </label>
                 </td>
                 <td class="col-md-3 input-effect">
@@ -233,7 +233,7 @@ $usuario = $_SESSION['user_name'];
 		  <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/refresh-button.svg"></a>
         </td>
         <td class="col-md-3 offset-md-3">
-          <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." table-body="#mostrarCuentas"  action="tablacuentasDet">
+          <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." table-body="#tabla_cuentas"  action="tablacuentasDet">
        </td>
       </tr>
     </table>
@@ -251,8 +251,7 @@ $usuario = $_SESSION['user_name'];
           <td class="col-md-1">ACTIVIDAD</td>
         </tr>
       </thead>
-      <tbody id="tabla_cuentas">
-      </tbody>
+      <tbody id="tabla_cuentas"></tbody>
     </table>
     <ul class="pagination justify-content-center font16 mt-5">
       <li class="page-item">
@@ -283,14 +282,12 @@ $usuario = $_SESSION['user_name'];
 
 
 <!--***************SCRIPTS*****************-->
-<script src="/conta6/Resources/JQuery/sweetalert.min.js"></script>
-<script src="/conta6/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
-<script src="/conta6/Resources/js/Inputs.js"></script>
 <script src="/conta6/Resources/js/popup-list-plugin.js"></script>
 <script src="/conta6/Resources/js/table-fetch-plugin.js"></script>
 <script src="js/AdministracionContable.js"></script>
 <?php
 require_once('modales/EditarCatalogo.php');
+require_once('modales/catalogoSAT.php');
  ?>
 <?php
 	$db->close();
