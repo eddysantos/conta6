@@ -637,7 +637,7 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-1">
-                    <input class="noborder pt-1" type="text" value="012">
+                    <input class="border-0 pt-1" type="text" value="012">
                   </td>
                   <td class="col-md-4">
                     <input class="efecto h22" type="text" value="012821011521461544">
@@ -675,7 +675,7 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-1">
-                    <input class="noborder" type="text" value="012">
+                    <input class="border-0" type="text" value="012">
                   </td>
                   <td class="col-md-4">
                     <input class="efecto h22" type="text" value="012821011521461544">
@@ -698,7 +698,7 @@
                 </tr>
                 <tr class="row m-0">
                   <td class="col-md-1">
-                    <input class="noborder" type="text" value="012">
+                    <input class="border-0" type="text" value="012">
                   </td>
                   <td class="col-md-4">
                     <input class="efecto h22" type="text" value="012821011521461544">

@@ -455,13 +455,13 @@
                     <input class='btn-block btn-dpol' type='button' style='height:18px' value='Calcular'>
                   </td>
                   <td class='col-md-2'>
-                    <input class='inpReg noborder' type='text' value='$450.00'>
+                    <input class='inpReg border-0' type='text' value='$450.00'>
                   </td>
                   <td class='col-md-1'>
-                    <input class='inpReg noborder' type='text' value='$72.00'>
+                    <input class='inpReg border-0' type='text' value='$72.00'>
                   </td>
                   <td class='col-md-2'>
-                    <input class='inpReg noborder' type='text' value='$522.00'>
+                    <input class='inpReg border-0' type='text' value='$522.00'>
                   </td>
                 </tr>
               </tbody>

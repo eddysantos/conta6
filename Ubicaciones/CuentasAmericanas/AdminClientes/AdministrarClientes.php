@@ -334,101 +334,101 @@
       <tbody class="cuerpo">
         <tr class="row m-0">
           <td class="col-md-6 input-effect brx4">
-            <input class="efecto tiene-contenido noborder" type="text" value="BABCOCK & WILCOX POWER" disabled>
+            <input class="efecto tiene-contenido border-0" type="text" value="BABCOCK & WILCOX POWER" disabled>
             <label>Nombre</label>
           </td>
           <td class="col-md-3 input-effect brx4">
-            <input class="efecto tiene-contenido noborder" disabled type="text" disabled>
+            <input class="efecto tiene-contenido border-0" disabled type="text" disabled>
             <label>ID Cliente</label>
           </td>
           <td class="col-md-3 input-effect brx4">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>TAX ID</label>
           </td>
         </tr>
         <tr class="row m-0">
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Calle</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Num Exterior</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Num Interior</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Colonia</label>
           </td>
         </tr>
         <tr class="row m-0">
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Ciudad</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Estado</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Código</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class=" efecto  tiene-contenido noborder" disabled type="text" value="USA">
+            <input class=" efecto  tiene-contenido border-0" disabled type="text" value="USA">
             <label>País</label>
           </td>
         </tr>
         <tr class="row m-0">
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Telefono</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Fax</label>
           </td>
           <td class="col-md-6 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Vendedor</label>
           </td>
         </tr>
         <tr class="row m-0" style="border-bottom: 1px solid rgb(209, 28, 28);">
           <td class="col-md-3 input-effect brx3" style="margin-bottom:20px">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Contacto</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>E-mail</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Representante Legal</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>RFC</label>
           </td>
         </tr>
         <tr class="row m-0">
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Estatus</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Observaciones</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text" value="ESTEFANIA">
+            <input class="efecto tiene-contenido border-0" disabled type="text" value="ESTEFANIA">
             <label>Generó</label>
           </td>
           <td class="col-md-3 input-effect brx3">
-            <input class="efecto tiene-contenido noborder" disabled type="text">
+            <input class="efecto tiene-contenido border-0" disabled type="text">
             <label>Modificó</label>
           </td>
         </tr>

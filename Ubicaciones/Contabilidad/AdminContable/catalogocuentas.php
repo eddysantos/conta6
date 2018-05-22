@@ -1,14 +1,18 @@
 <?php
 #http://localhost:88/conta6/Ubicaciones/Contabilidad/AdminContable/catalogocuentas.php?usuario=admado
+#  $usuario = trim($_GET['usuario']);
+
+//session_start();
+$_SESSION['user_name'] = 'admado';
+$usuario = $_SESSION['user_name'];
+
 
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+
   require $root . '/conta6/Resources/PHP/Databases/conexion.php';
+  require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
+  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 
-  $usuario = trim($_GET['usuario']);
-
-
-  $oRst_permisos = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM conta_cu_permisos WHERE pk_usuario = '$usuario' "));
 ?>
 <div class="container-fluid">
   <div class="row submenuMed">
@@ -26,6 +30,7 @@
         <form class="form1">
           <table class="table mb-0">
             <tbody class="cuerpo">
+<<<<<<< HEAD
               <tr class="row mt-4 m-0">
                 <td class="col-md-4 input-effect">
                   <input  list="cuentasSAT" class="text-normal efecto"  id="ctaSAT">
@@ -37,22 +42,26 @@
           				  }
                   ?>
                   </datalist>
+=======
+              <tr class="row brx2">
+                <td class="col-md-12 input-effect">
+                  <input  list="cuentasSAT" class="text-normal efecto text-center" id="ctaSAT">
+                  <datalist id="cuentasSAT" href="#lst_conta_cs_cuentas_mst"></datalist>
+>>>>>>> documetacion
                   <label for="ctaSAT">CUENTAS SAT</label>
                 </td>
                 <td class="col-md-2 input-effect">
                   <input  list="NSAT" class="text-normal efecto text-center"  id="naturSAT">
-                  <datalist id="NSAT">
-      				  	<?php
-          					$sql_CuentasSAT_natur = mysqli_query($conn,"SELECT * FROM conta_cs_sat_natur_cuentas where s_activo = 'S' ORDER BY s_naturaleza");
-          					while($oRst_CuentasSAT_natur = $sql_CuentasSAT_natur->fetch_assoc()) {
-          						echo '<option value='.trim($oRst_CuentasSAT_natur['fk_id_naturaleza']).'>'.htmlentities(trim($oRst_CuentasSAT_natur['s_naturaleza'])).' ----- '.trim($oRst_CuentasSAT_natur['fk_id_naturaleza']).'</option>';
-          				  }
-                  ?>
-                  </datalist>
+                  <datalist id="NSAT" href="#lst_conta_cs_sat_natur_cuentas"></datalist>
                   <label for="naturSAT">NATURALEZA SAT</label>
                 </td>
+<<<<<<< HEAD
                 <td class="col-md-2 input-effect">
                   <input  list="cta-mtraTipo" class="text-normal efecto text-center"  id="tipo">
+=======
+                <td class="col-md-3 input-effect">
+                  <input list="cta-mtraTipo" class="text-normal efecto text-center" id="tipo">
+>>>>>>> documetacion
                   <datalist id="cta-mtraTipo">
                     <option value="A">Activo</option>
           					<option value="P">Pasivo</option>
@@ -64,11 +73,16 @@
                   <label for="tipo">TIPO</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="ctamaestra" class="efecto text-center" type="text">
+                  <input id="ctamaestra" class="efecto text-center" type="text" maxlength="10">
                   <label for="ctamaestra">CUENTA MAESTRA</label>
                 </td>
+<<<<<<< HEAD
                 <td class="col-md-2 input-effect">
                   <input id="concepto" class="efecto text-center" type="text">
+=======
+                <td class="col-md-3 input-effect">
+                  <input id="concepto" class="efecto text-center" type="text" maxlength="100">
+>>>>>>> documetacion
                   <label for="concepto">CONCEPTO</label>
                 </td>
               </tr>
@@ -107,6 +121,7 @@
                 </td>
                 <td class="col-md-6 input-effect">
                   <input  list="CuentaMaestra" class="text-normal efecto text-center"  id="tipo1">
+<<<<<<< HEAD
                   <datalist id="CuentaMaestra">
         				  <?php
         					$sql_Cuentas = mysqli_query($conn,"SELECT * FROM conta_cs_cuentas_mst
@@ -125,6 +140,10 @@
                   </datalist>
                   <label for="tipo1">CUENTA MAESTRA</label>
                 </td>
+=======
+                  <datalist id="CuentaMaestra" href="#lst_conta_cs_cuentas_mst_1niv"></datalist>
+                  <label for="tipo1">CUENTA MAESTRA</label>                </td>
+>>>>>>> documetacion
                 <td class="col-md-3 input-effect">
                   <input id="concepto1" class="efecto text-center" type="text">
                   <label for="concepto1">CONCEPTO</label>
@@ -154,7 +173,7 @@
                   <input  list="Clientes" class="text-normal efecto"  id="clt">
                   <datalist id="Clientes">
       				  	<?php
-      					  $sql_Clientes = mysqli_query($conn,"SELECT * FROM conta_replica_clientes WHERE pk_id_cliente NOT IN( SELECT DISTINCT s_cta_identificador  FROM conta_cs_cuentas_mst WHERE s_cta_identificador is not null) ORDER BY s_nombre");
+      					  $sql_Clientes = mysqli_query($db,"SELECT * FROM conta_replica_clientes WHERE pk_id_cliente NOT IN( SELECT DISTINCT s_cta_identificador  FROM conta_cs_cuentas_mst WHERE s_cta_identificador is not null) ORDER BY s_nombre");
 
         					while($oRst_Clientes = $sql_Clientes->fetch_assoc()) {
         						echo '<option value='.trim($oRst_Clientes['pk_id_cliente']).'>'.htmlentities(trim($oRst_Clientes['s_nombre'])).' ----- '.trim($oRst_Clientes['pk_id_cliente']).'</option>';
@@ -203,6 +222,7 @@
         </tr>
       </thead>
       <tbody class="text-normal">
+<<<<<<< HEAD
         <?php
         	$sql_consultaCuentas = mysqli_query($conn,"SELECT * FROM conta_cs_cuentas_mst LIMIT 5");
       		while($oRst_consultaCuentas = $sql_consultaCuentas->fetch_assoc()) {
@@ -239,6 +259,44 @@
     			  </td>
     	  	</tr>
       <?php } #while($oRst_consultaCuentas ?>
+=======
+	  	<tr class="row text-center m-0 borderojo">
+		<?php
+    	$sql_consultaCuentas = mysqli_query($db,"SELECT * FROM conta_cs_cuentas_mst");
+  		while($oRst_consultaCuentas = $sql_consultaCuentas->fetch_assoc()) {
+  			$id_cuenta = trim($oRst_consultaCuentas['pk_id_cuenta']);
+  			$actividad = trim($oRst_consultaCuentas['s_cta_actividad']);
+		?>
+			 <td class="col-md-1 text-center">
+				<a href="#EditarCatalogo" data-toggle="modal">
+				  <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
+				</a>
+			  </td>
+			  <td class="col-md-1"><?php echo $id_cuenta; ?></td>
+			  <td class="col-md-4"><?php echo trim($oRst_consultaCuentas['s_cta_desc']); ?></td>
+			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['s_cta_tipo']); ?></td>
+			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['s_cta_nivel']); ?></td>
+			  <td class="col-md-1"><?php if( $oRst_consultaCuentas['s_cta_status'] == 0 ){
+                											echo "Inactivo";
+                										}else{
+                											echo "Activo";
+                										}
+                									?>
+			  </td>
+			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['fk_codAgrup']); ?></td>
+			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['fk_id_naturaleza']); ?></td>
+			  <td class="col-md-1"><?php if($actividad == 1){
+                          					echo 'Con registros';
+                          				}else{
+                          					if( $oRst_permisos['s_modificar_ctas'] == 1){ ?>
+                          						<a style="text-decoration:none;" onClick="borrar('<?php echo $id_cuenta; ?>')">
+                          							<img border="0" src="/conta6/Resources/iconos/delete.svg" alt="Borrar">
+                          						</a><div id="borrar_<?php echo $id_cuenta; ?>"></div>
+                          				<?php }}?>
+			  </td>
+		<?php } #while($oRst_consultaCuentas ?>
+		</tr>
+>>>>>>> documetacion
       </tbody>
     </table>
     <ul class="pagination justify-content-center font16 mt-5">
@@ -270,5 +328,5 @@ require_once('modales/EditarCatalogo.php');
  ?>
 <?php
 
-	$conn->close();
+	$db->close();
 ?>

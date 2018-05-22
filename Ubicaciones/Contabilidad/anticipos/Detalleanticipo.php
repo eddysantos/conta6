@@ -32,28 +32,28 @@
       <tbody class="">
         <tr class="row m-0">
           <td class="col-md-1">
-            <input class="noborder text-center" type="text" readonly value="234567">
+            <input class="border-0 text-center" type="text" readonly value="234567">
           </td>
           <td class="col-md-1">
-            <input class="noborder text-center" type="text" readonly value="Estefania">
+            <input class="border-0 text-center" type="text" readonly value="Estefania">
           </td>
           <td class="col-md-1">
-            <input class="noborder text-center" type="text"  value="33452">
+            <input class="border-0 text-center" type="text"  value="33452">
           </td>
           <td class="col-md-2">
-            <input class="noborder text-center" type="text" value="30-06-2017">
+            <input class="border-0 text-center" type="text" value="30-06-2017">
           </td>
           <td class="col-md-2">
             <input class="efecto text-center" type="text" value="28-06-2017">
           </td>
           <td class="col-md-1">
-            <input class="noborder text-center" type="text" value="240">
+            <input class="border-0 text-center" type="text" value="240">
           </td>
           <td class="col-md-2">
-            <input class="noborder text-center" type="text" readonly value="234577">
+            <input class="border-0 text-center" type="text" readonly value="234577">
           </td>
           <td class="col-md-2">
-            <input class="noborder text-center" type="text" value="Ninguna">
+            <input class="border-0 text-center" type="text" value="Ninguna">
           </td>
         </tr>
         <tr class="row m-0">
@@ -66,11 +66,11 @@
             <label for="ant-cliente">CLIENTE</label>
           </td>
           <td class="col-md-1 brx2">
-            <input id="ant-banco" class="text-normal noborder efecto text-center tiene-contenido" value="044" type="text">
+            <input id="ant-banco" class="text-normal border-0 efecto text-center tiene-contenido" value="044" type="text">
             <label for="ant-banco">BANCO</label>
           </td>
           <td class="col-md-1 brx2">
-            <input id="ant-cuenta" class="text-normal efecto noborder text-center tiene-contenido" value="8933" type="text">
+            <input id="ant-cuenta" class="text-normal efecto border-0 text-center tiene-contenido" value="8933" type="text">
             <label for="ant-cuenta">CUENTA</label>
           </td>
           <td class="col-md-6 brx2">

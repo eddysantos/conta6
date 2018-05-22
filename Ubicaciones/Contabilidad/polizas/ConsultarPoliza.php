@@ -36,7 +36,7 @@
           </tr>
           <tr class="row m-0">
             <td class="col-md-12 mt-5">
-              <input id="concep" class="noborder efecto tiene-contenido" value="Ejemplo del contenido Ejemplo del contenido" type="text">
+              <input id="concep" class="border-0 efecto tiene-contenido" value="Ejemplo del contenido Ejemplo del contenido" type="text">
               <label for="concep">CONCEPTO</label>
             </td>
           </tr>

@@ -34,7 +34,7 @@
     <div class="row intermedio transEff" id="nReferencia">
       <div class="col-md-12" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
-        <input class="reg form-control noborder transEff" id="bRef" type="text" autocomplete="off">
+        <input class="reg form-control border-0 transEff" id="bRef" type="text" autocomplete="off">
       </form>
       </div>
     </div>
@@ -104,7 +104,7 @@
     <div class="row intermedio">
       <div class="col-md-12" id="mostrarGenerar">
         <form class="form-group" onsubmit="return false;">
-          <input class="reg form-control noborder transEff" id="gRef" type="text">
+          <input class="reg form-control border-0 transEff" id="gRef" type="text">
         </form>
       </div>
     </div>

@@ -15,7 +15,7 @@
     <div class="row intermedio transEff" id="nReferencia">
       <div class="col-12" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
-        <input class="reg form-control noborder transEff" id="bRef" type="text" autocomplete="off">
+        <input class="reg form-control border-0 transEff" id="bRef" type="text" autocomplete="off">
       </form>
       </div>
     </div>
@@ -50,8 +50,8 @@
           <td class="col-md-1">234567</td>
           <td class="col-md-1">234568</td>
           <td class="col-md-6">MOTORES ELECTRICOS SUMERGIBLES S DE RL DE CV</td>
-          <td class="col-md-2 text-right">
-            <input class="botonrow" type="button" value="Siguiente">
+          <td class="col-md-2 pt-1">
+            <a href="" class="boton h35">SIGUIENTE <img src="/conta6/Resources/iconos/right.svg"></a>
           </td>
         </tr>
       </tbody>

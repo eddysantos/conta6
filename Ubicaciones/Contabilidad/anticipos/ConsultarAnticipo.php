@@ -31,49 +31,49 @@
       <tbody>
         <tr class="row">
           <td class="col-md-1">
-            <input class="noborder text-center" type="text" readonly value="234567">
+            <input class="border-0 text-center" type="text" readonly value="234567">
           </td>
           <td class="col-md-1">
-            <input class="noborder text-center" type="text" readonly value="Estefania">
+            <input class="border-0 text-center" type="text" readonly value="Estefania">
           </td>
           <td class="col-md-1">
-            <input class="noborder text-center" type="text"  value="33452">
+            <input class="border-0 text-center" type="text"  value="33452">
           </td>
           <td class="col-md-2">
-            <input class="noborder text-center" type="text" value="30-06-2017">
+            <input class="border-0 text-center" type="text" value="30-06-2017">
           </td>
           <td class="col-md-2">
-            <input class="noborder text-center" type="text" value="28-06-2017">
+            <input class="border-0 text-center" type="text" value="28-06-2017">
           </td>
           <td class="col-md-1">
-            <input class="noborder text-center" type="text" value="240">
+            <input class="border-0 text-center" type="text" value="240">
           </td>
           <td class="col-md-2">
-            <input class="noborder text-center" type="text" readonly value="234577">
+            <input class="border-0 text-center" type="text" readonly value="234577">
           </td>
           <td class="col-md-2">
-            <input class="noborder text-center" type="text" value="Ninguna">
+            <input class="border-0 text-center" type="text" value="Ninguna">
           </td>
         </tr>
         <tr class="row">
           <td class="col-md-2 brx2">
-            <input id="ant-valor" class="noborder text-normal efecto text-center tiene-contenido" value="$21,027.00" type="text">
+            <input id="ant-valor" class="border-0 text-normal efecto text-center tiene-contenido" value="$21,027.00" type="text">
             <label for="ant-valor">VALOR</label>
           </td>
           <td class="col-md-1 brx2">
-            <input id="ant-cliente" class="noborder text-normal efecto text-center tiene-contenido" value="CLT_7634" type="text">
+            <input id="ant-cliente" class="border-0 text-normal efecto text-center tiene-contenido" value="CLT_7634" type="text">
             <label for="ant-cliente">CLIENTE</label>
           </td>
           <td class="col-md-1 brx2">
-            <input id="ant-banco" class="noborder text-normal noborder efecto text-center tiene-contenido" value="044" type="text">
+            <input id="ant-banco" class="border-0 text-normal border-0 efecto text-center tiene-contenido" value="044" type="text">
             <label for="ant-banco">BANCO</label>
           </td>
           <td class="col-md-1 brx2">
-            <input id="ant-cuenta" class="noborder text-normal efecto noborder text-center tiene-contenido" value="8933" type="text">
+            <input id="ant-cuenta" class="border-0 text-normal efecto border-0 text-center tiene-contenido" value="8933" type="text">
             <label for="ant-cuenta">CUENTA</label>
           </td>
           <td class="col-md-7 brx2">
-            <input id="ch-concep" class="noborder text-normal efecto text-center tiene-contenido" value="CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA" type="text">
+            <input id="ch-concep" class="border-0 text-normal efecto text-center tiene-contenido" value="CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA" type="text">
             <label for="ch-concep">CONCEPTO</label>
           </td>
         </tr>

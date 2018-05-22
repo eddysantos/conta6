@@ -110,7 +110,7 @@
       <div class="row intermedio transEff">
         <div class="col-12">
           <form  class="form-group" onsubmit="return false;">
-          <input class="reg form-control noborder transEff" id="afact" type="text">
+          <input class="reg form-control border-0 transEff" id="afact" type="text">
         </form>
         </div>
       </div>

@@ -300,16 +300,16 @@
             <tr class="row m-0">
               <td class="col-md-1 offset-md-7"></td>
               <td class="col-md-1">
-                <input class="efecto noborder" type="text" disabled>
+                <input class="efecto border-0" type="text" disabled>
               </td>
               <td class="col-md-1">
-                <input class="efecto noborder" type="text" disabled>
+                <input class="efecto border-0" type="text" disabled>
               </td>
               <td class="col-md-1">
-                <input class="efecto noborder" type="text" disabled>
+                <input class="efecto border-0" type="text" disabled>
               </td>
               <td class="col-md-1">
-                <input class="efecto noborder" type="text" disabled>
+                <input class="efecto border-0" type="text" disabled>
               </td>
             </tr>
 
@@ -339,7 +339,7 @@
                 <input class="btn-block botonrow" type="button" value="Calculate" style="padding:7px">
               </td>
               <td class="col-md-1 pt-1">
-                <input class="efecto noborder" type="text" disabled>
+                <input class="efecto border-0" type="text" disabled>
               </td>
             </tr>
 

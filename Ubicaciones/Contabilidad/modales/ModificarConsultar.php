@@ -20,7 +20,7 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form  class="form-group"  method="post">
-            <input class="modif text-center form-control noborder" type="text">
+            <input class="modif text-center form-control border-0" type="text">
           </form>
           </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form  class="form-group"  method="post">
-            <input class="modif text-center form-control noborder" type="text">
+            <input class="modif text-center form-control border-0" type="text">
           </form>
           </div>
         </div>
@@ -82,7 +82,7 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form  class="form-group"  method="post">
-            <input class="modif text-center form-control noborder" type="text">
+            <input class="modif text-center form-control border-0" type="text">
           </form>
           </div>
         </div>
@@ -113,7 +113,7 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form  class="form-group"  method="post">
-            <input class="modif text-center form-control noborder" type="text">
+            <input class="modif text-center form-control border-0" type="text">
           </form>
           </div>
         </div>
@@ -146,7 +146,7 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form  class="form-group"  method="post">
-            <input class="modif text-center form-control noborder" type="text">
+            <input class="modif text-center form-control border-0" type="text">
           </form>
           </div>
         </div>
@@ -177,7 +177,7 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form  class="form-group"  method="post">
-            <input class="modif text-center form-control noborder" type="text">
+            <input class="modif text-center form-control border-0" type="text">
           </form>
           </div>
         </div>
@@ -209,7 +209,7 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form  class="form-group"  method="post">
-            <input class="modif text-center form-control noborder" type="text">
+            <input class="modif text-center form-control border-0" type="text">
           </form>
           </div>
         </div>
@@ -307,7 +307,7 @@
             <div class="row intermedio-modal">
               <div class="col-12">
                 <form  class="form-group"  method="post">
-                <input class="modif text-center form-control noborder" type="text">
+                <input class="modif text-center form-control border-0" type="text">
               </form>
               </div>
             </div>

@@ -83,7 +83,7 @@
     <div class="row intermedio transEff" id="nReferencia">
       <div class="col-md-12" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
-        <input class="reg form-control noborder transEff" id="bRef" type="text">
+        <input class="reg form-control border-0 transEff" id="bRef" type="text">
       </form>
       </div>
     </div>

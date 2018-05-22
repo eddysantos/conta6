@@ -171,10 +171,10 @@
             <tr class="row m-0">
               <td class="col-md-1 offset-md-9"></td>
               <td class="col-md-1">
-                <input class="inpReg noborder noborder" type="text" disabled>
+                <input class="inpReg border-0 border-0" type="text" disabled>
               </td>
               <td class="col-md-1">
-                <input class="inpReg noborder noborder" type="text" disabled>
+                <input class="inpReg border-0 border-0" type="text" disabled>
               </td>
             </tr>
 
