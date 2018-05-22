@@ -39,12 +39,12 @@
       </thead>
       <tbody>
         <tr class="row text-normal">
-          <td class="col-md-1 text-center iap">CTA.GASTOS</td>
-          <td class="col-md-1 text-center iap">PÓLIZA</td>
-          <td class="col-md-2 text-center iap">CANCELACIÓN</td>
-          <td class="col-md-1 text-center iap">REFERENCIA</td>
-          <td class="col-md-2 text-center iap">REG.CONTABLE</td>
-          <td class="col-md-5 text-center iap">FACTURADO A: </td>
+          <td class="col-md-1 text-center backpink">CTA.GASTOS</td>
+          <td class="col-md-1 text-center backpink">PÓLIZA</td>
+          <td class="col-md-2 text-center backpink">CANCELACIÓN</td>
+          <td class="col-md-1 text-center backpink">REFERENCIA</td>
+          <td class="col-md-2 text-center backpink">REG.CONTABLE</td>
+          <td class="col-md-5 text-center backpink">FACTURADO A: </td>
         </tr>
         <tr class="row borderojo" style="font-size:18px!important">
           <td class="col-md-1 text-center">76854</td>

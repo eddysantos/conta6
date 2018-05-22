@@ -178,11 +178,11 @@
           <table class='table m0b0'>
             <tbody>
               <tr class='row brx3 ml-0 mr-0'>
-                <td class='col-md-1 text-center iap'>SERV.</td>
-                <td class='col-md-4 text-center iap'>CONCEPTO</td>
-                <td class='col-md-3 text-center iap'>DESCRIPCION</td>
-                <td class='col-md-2 text-center iap'>IMPORTE</td>
-                <td class='col-md-2 text-center iap'>SUBTOTAL</td>
+                <td class='col-md-1 text-center backpink'>SERV.</td>
+                <td class='col-md-4 text-center backpink'>CONCEPTO</td>
+                <td class='col-md-3 text-center backpink'>DESCRIPCION</td>
+                <td class='col-md-2 text-center backpink'>IMPORTE</td>
+                <td class='col-md-2 text-center backpink'>SUBTOTAL</td>
               </tr>
               <tr class='row ml-0 mr-0'>
                 <td class='col-md-1'>
@@ -272,13 +272,13 @@
           <table class='table m0b0'>
             <tbody>
               <tr class='row brx2 ml-0 mr-0'>
-                <th class='col-md-6 text-center iap'>CONCEPTO</th>
-                <th class='col-md-1 text-center iap'>IMPORTE</th>
-                <th class='col-md-1 text-center iap'></th>
-                <th class='col-md-1 text-center iap'>CUSTODIA</th>
-                <th class='col-md-1 text-center iap'>MANIOBRAS</th>
-                <th class='col-md-1 text-center iap'>ALMACENAJE</th>
-                <th class='col-md-1 text-center iap'>TOTAL</th>
+                <th class='col-md-6 text-center backpink'>CONCEPTO</th>
+                <th class='col-md-1 text-center backpink'>IMPORTE</th>
+                <th class='col-md-1 text-center backpink'></th>
+                <th class='col-md-1 text-center backpink'>CUSTODIA</th>
+                <th class='col-md-1 text-center backpink'>MANIOBRAS</th>
+                <th class='col-md-1 text-center backpink'>ALMACENAJE</th>
+                <th class='col-md-1 text-center backpink'>TOTAL</th>
               </tr>
               <tr class='row ml-0 mr-0'>
                 <td class='col-md-6'>
@@ -394,10 +394,10 @@
             <table class='table m0b0'>
               <tbody>
                 <tr class='row brx2 ml-0 mr-0'>
-                  <td class='col-md-6 text-center iap'>CONCEPTO</td>
-                  <td class='col-md-2 text-center iap'>IMPORTE</td>
-                  <td class='col-md-2 text-center iap'></td>
-                  <td class='col-md-2 text-center iap'>MINIMO DE HONORARIOS</td>
+                  <td class='col-md-6 text-center backpink'>CONCEPTO</td>
+                  <td class='col-md-2 text-center backpink'>IMPORTE</td>
+                  <td class='col-md-2 text-center backpink'></td>
+                  <td class='col-md-2 text-center backpink'>MINIMO DE HONORARIOS</td>
                 </tr>
                 <tr class='row ml-0 mr-0'>
                   <td class='col-md-6'>
