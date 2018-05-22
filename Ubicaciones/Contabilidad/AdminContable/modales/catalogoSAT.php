@@ -25,15 +25,15 @@
               </thead>
               <tbody>
                 <tr class='row borderojo'>
-                  <td class='col-md-1'>2</td>
+                  <datalist id="catCuentasSAT" href="#lst_conta_cs_cuentas_mst"></datalist>
+                  <!-- <td class='col-md-1'>2</td>
                   <td class='col-md-1'>106.01</td>
                   <td class='col-md-4'>Cuentas y documentos por cobrar a corto plazo nacional</td>
                   <td class='col-md-1'>s</td>
                   <td class='col-md-2'>05-01-2015</td>
                   <td class='col-md-2'>Activos Circulantes</td>
-                  <td class='col-md-1'>Activo</td>
+                  <td class='col-md-1'>Activo</td> -->
                 </tr>
-
               </tbody>
             </table>
           </div>
