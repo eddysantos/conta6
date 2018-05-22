@@ -103,7 +103,7 @@ $usuario = $_SESSION['user_name'];
                 </td>
               </tr>
 
-    <!-- SOLO ESTARA VISIBLE CUANDO SELECCIONEN CUENTA 0100-0   -->
+    <!-- SOLO ESTARA VISIBLE CUANDO SELECCIONEN CUENTA 0100-0 -->
 
               <tr class="row m-0 mt-4" style="display:none">
                 <td class="col-md-3 input-effect">
@@ -251,15 +251,11 @@ $usuario = $_SESSION['user_name'];
           <td class="col-md-1">ACTIVIDAD</td>
         </tr>
       </thead>
-<<<<<<< HEAD
-      <tbody id="tabla_cuentas"></tbody>
-=======
       <tbody id="tabla_cuentas">
         <tr>
           <td colspan="9">No hay resultados</td>
         </tr>
       </tbody>
->>>>>>> be-admin-contable
     </table>
     <ul class="pagination justify-content-center font16 mt-5">
       <li class="page-item">
@@ -283,9 +279,9 @@ $usuario = $_SESSION['user_name'];
 
 
 <!--***************ESTILOS*****************-->
-<link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
+<!-- <link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
 <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
+<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css"> -->
 
 
 

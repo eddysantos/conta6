@@ -8,11 +8,7 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-<<<<<<< HEAD
-$query = "SELECT * FROM conta_cs_cuentas_mst WHERE (pk_id_cuenta LIKE ? and s_cta_nivel = '1')  OR (s_cta_desc LIKE ? and s_cta_nivel = '1')";
-=======
 $query = "SELECT * FROM conta_cs_cuentas_mst WHERE (pk_id_cuenta LIKE ?)  OR (s_cta_desc LIKE ?)";
->>>>>>> be-admin-contable
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -38,28 +34,21 @@ $rslt = $stmt->get_result();
 
 if ($rslt->num_rows == 0) {
   $system_callback['code'] = 1;
-  $system_callback['data'] =
-  "<p db-id=''>No se encontraron resultados</p>";
+  $system_callback['data'] ="<p db-id=''>No se encontraron resultados</p>";
   $system_callback['message'] = "Script called successfully but there are no rows to display.";
   exit_script($system_callback);
 }
 
 while ($row = $rslt->fetch_assoc()) {
-  // $system_callback['data'] .=
-  // "<p db-id='$row[pk_id_cuenta]'>$row[pk_id_cuenta] - $row[s_cta_desc]</p>";
-<<<<<<< HEAD
-=======
+  $system_callback['data'] .=
+  "<p db-id='$row[pk_id_cuenta]'>$row[pk_id_cuenta] - $row[s_cta_desc]</p>";
   $id = $row['pk_id_cuenta'];
->>>>>>> be-admin-contable
 
   $system_callback['data'] .=
   "<tr class='row text-center m-0 borderojo'>
    <td class='col-md-1 text-center'>
-<<<<<<< HEAD
       <a href='#EditarCatalogo' data-toggle='modal'>
-=======
       <a href='#EditarCatalogo' class='editar-cuenta' db-id='$id' role='button'>
->>>>>>> be-admin-contable
         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
       </a>
     </td>
@@ -78,10 +67,4 @@ while ($row = $rslt->fetch_assoc()) {
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> be-admin-contable
  ?>
