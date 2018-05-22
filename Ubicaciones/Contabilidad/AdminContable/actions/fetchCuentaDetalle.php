@@ -6,9 +6,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
 $data = $_POST;
 
-$data['string'];
-$text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_cs_sat_cuentas WHERE pk_codAgrup LIKE ? OR s_ctaNombre LIKE ? ";
+$query = "SELECT * FROM conta_cs_cuentas_mst WHERE pk_id_cuenta = ?";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -17,7 +15,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ss', $text, $text);
+$stmt->bind_param('s', $data['dbid']);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
@@ -31,23 +29,21 @@ if (!($stmt->execute())) {
 }
 
 $rslt = $stmt->get_result();
+$rows = $rslt->num_rows;
 
-if ($rslt->num_rows == 0) {
+if ($rows == 0) {
+  $system_callback['code'] = 2;
+  $system_callback['data'] = $_POST;
+  exit_script($system_callback);
+} elseif ($rows == 1) {
   $system_callback['code'] = 1;
-  $system_callback['data'] =
-  "<p db-id=''>No se encontraron resultados</p>";
-  $system_callback['message'] = "Script called successfully but there are no rows to display.";
+  $system_callback['data'] = $rslt->fetch_assoc();
+  $system_callback['message'] = "Script called successfully!";
+  exit_script($system_callback);
+} else {
+  $system_callback = 3;
   exit_script($system_callback);
 }
-
-while ($row = $rslt->fetch_assoc()) {
-  $system_callback['data'] .=
-  "<p db-id='$row[pk_codAgrup]'>$row[pk_codAgrup] - $row[s_ctaNombre]</p>";
-}
-
-$system_callback['code'] = 1;
-$system_callback['message'] = "Script called successfully!";
-exit_script($system_callback);
 
 
 

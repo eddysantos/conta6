@@ -174,8 +174,6 @@ select{
   background-color: transparent;
   border: 1px solid #ced4da;
   border-radius: 10px!important;
-  /* height: calc(2.25rem + 2px); */
-  height: 30px
 }
 .form1{
   letter-spacing:3px;
@@ -335,7 +333,9 @@ h5.titulo-mov {
   width: -webkit-fill-available;
   border-radius: 5px;
   border: 1px solid #ced4da;
+  /* border: 1px solid rgb(020, 020, 020); */
   background-color: white;
+  /* margin-right: 30px; */
   padding: 10px;
   z-index: 9999;
 }
@@ -346,18 +346,20 @@ h5.titulo-mov {
 }
 
 .popup-list p.hovered{
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, .2);
   cursor: pointer;
   color: white;
 }
 
 .popup-list p.hovered{
   background-color: rgba(0, 0, 0, 0.2);
+  /* background-color: rgba(0, 0, 0, .2); */
   cursor: pointer;
 }
 
 .popup-list p:not(:last-child){
   border-bottom: 1px solid #ced4da;
+  /* border-bottom: 1px solid rgb(1,1,1); */
 }
 
 .popup-list p:last-child{

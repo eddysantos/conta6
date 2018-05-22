@@ -64,8 +64,8 @@
   border-top-left-radius: 8px;
   border-bottom: 1px solid  rgb(209, 28, 28);
 }
-
-/* .sGrande {
+/*
+.sGrande {
   display: block;
   background-color: transparent;
   border: 1px solid rgba(0, 0, 0, .15);
@@ -73,16 +73,16 @@
   height: 40px;
   width: 100%;
   color: black;
-} */
-/* .sChico {
+}
+.sChico {
   background-color: transparent;
   border: 1px solid rgba(0, 0, 0, .15);
   font-size: 26px!important;
   height: inherit;
   color: #aaa;
   width: inherit;
-} */
-/* .aDatosSm {
+}
+.aDatosSm {
   height: inherit;
   font-size: 22px!important;
   text-align: center!important;
@@ -150,8 +150,8 @@ div.submenuMed {
   background-color: rgba(226, 226, 226, 0.12);
   color: #8c8c8c!important;
   border-radius: 8px!important;
-} */
-/* .dropdiv {
+}
+.dropdiv {
   font-size: large;
   letter-spacing: 7px;
   margin: 10px!important;

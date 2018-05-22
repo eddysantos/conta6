@@ -1,16 +1,26 @@
-<?PHP
+<?php
+
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
 
-$query = "SELECT * FROM conta_cs_sat_natur_cuentas where s_activo = 'S' ORDER BY s_naturaleza";
+$data['string'];
+$text = "%" . $data['string'] . "%";
+$query = "SELECT * FROM conta_cs_sat_claveprodserv WHERE pk_c_ClaveProdServ LIKE ? OR s_concepto LIKE ?";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
+  exit_script($system_callback);
+}
+
+$stmt->bind_param('ss', $text, $text);
+if (!($stmt)) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
   exit_script($system_callback);
 }
 
@@ -23,18 +33,22 @@ if (!($stmt->execute())) {
 $rslt = $stmt->get_result();
 
 if ($rslt->num_rows == 0) {
-  $system_callback['code'] = 2;
+  $system_callback['code'] = 1;
+  $system_callback['data'] =
+  "<p db-id=''>No se encontraron resultados</p>";
   $system_callback['message'] = "Script called successfully but there are no rows to display.";
   exit_script($system_callback);
 }
 
 while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
-  "<option value=".trim($row['fk_id_naturaleza']).">".htmlentities(trim($row['s_naturaleza']))." ----- ".trim($row['fk_id_naturaleza'])."</option>";
+  "<p db-id='$row[pk_c_ClaveProdServ]'>$row[pk_c_ClaveProdServ] - $row[s_concepto]</p>";
 }
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
 
-?>
+
+
+ ?>

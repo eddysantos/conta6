@@ -1,21 +1,21 @@
 <?php
 
-/** PRODUCTION DATABASE **/
 
-// $datab = 'conta6';
-// $host = '10.1.4.10';
+
+
+// $servername = "localhost";
+// $db_user = "root";
+// $db_pass = "";
+// $db = "cplaa_v6";
 // $port = 3306;
-// $usr = 'prolog';
-// $pwd = 'f4Tnps.03';
 
-/** TEST DATABASE **/
-// $datab = 'conta6';
-$datab = 'conta6';
-$host = 'localhost';
+$servername = "localhost";
+$db_user = "root";
+$db_pass = "root";
+$db = "conta6";
 $port = 8889;
-$usr = 'root';
-$pwd = 'root';
 
-$db = new mysqli($host, $usr, $pwd, $datab, $port) or die ('Could not connect to the database server ' . $login->error );
 
- ?>
+$db = mysqli_connect($servername,$db_user,$db_pass,$db,$port) or die("Conexion sin exito" . mysqli_error($conn));
+
+?>

@@ -8,7 +8,7 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_cs_sat_cuentas WHERE pk_codAgrup LIKE ? OR s_ctaNombre LIKE ? ";
+$query = "SELECT * FROM conta_cs_cuentas_mst WHERE (pk_id_cuenta LIKE ? and s_cta_nivel = '1')  OR (s_cta_desc LIKE ? and s_cta_nivel = '1')";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -42,7 +42,7 @@ if ($rslt->num_rows == 0) {
 
 while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
-  "<p db-id='$row[pk_codAgrup]'>$row[pk_codAgrup] - $row[s_ctaNombre]</p>";
+  "<p db-id='$row[pk_id_cuenta]'>$row[pk_id_cuenta] - $row[s_cta_desc]</p>";
 }
 
 $system_callback['code'] = 1;

@@ -17,18 +17,18 @@
           <th class="col-md-12 text-center" style="font-weight:100">TARIFA DE $ AGENTER ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V</th>
         </tr>
         <tr class="row">
-          <th class="col-md-1 iap">CONCEPTO</th>
-          <th class="col-md-1 iap">UNIDAD</th>
-          <th class="col-md-1 iap">LIM. INF</th>
-          <th class="col-md-1 iap">LIM. SUP</th>
-          <th class="col-md-1 iap">IMPORTE 1</th>
-          <th class="col-md-1 iap">INF. DÍA</th>
-          <th class="col-md-1 iap">SUP. DÍA</th>
-          <th class="col-md-1 iap">IMPORTE 2</th>
-          <th class="col-md-1 iap">OPE.</th>
-          <th class="col-md-1 iap">FACTOR 1</th>
-          <th class="col-md-1 iap">FACTOR 2</th>
-          <th class="col-md-1 iap">FACTOR 3</th>
+          <th class="col-md-1 backpink">CONCEPTO</th>
+          <th class="col-md-1 backpink">UNIDAD</th>
+          <th class="col-md-1 backpink">LIM. INF</th>
+          <th class="col-md-1 backpink">LIM. SUP</th>
+          <th class="col-md-1 backpink">IMPORTE 1</th>
+          <th class="col-md-1 backpink">INF. DÍA</th>
+          <th class="col-md-1 backpink">SUP. DÍA</th>
+          <th class="col-md-1 backpink">IMPORTE 2</th>
+          <th class="col-md-1 backpink">OPE.</th>
+          <th class="col-md-1 backpink">FACTOR 1</th>
+          <th class="col-md-1 backpink">FACTOR 2</th>
+          <th class="col-md-1 backpink">FACTOR 3</th>
         </tr>
         <tr class="row text-normal text-center brx1">
           <td class="col-md-1">Almacenaje</td>

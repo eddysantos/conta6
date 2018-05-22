@@ -8,9 +8,6 @@
     <div class="col-md-6" role="button">
       <a  id="submenuMed" class="consultar" accion="generar" status="cerrado">GENERAR</a>
     </div>
-    <!-- <div class="col-md-4">
-      <a id="submenuMed" class="consultar" accion="modificar" status="cerrado">MODIFICAR</a>
-    </div> -->
     <div class="col-md-6">
       <a id="submenuMed" class="consultar" accion="consultar" status="cerrado">CONSULTAR</a>
     </div>
