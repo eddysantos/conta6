@@ -135,11 +135,11 @@
                 </td>
               </tr>
               <tr class="row brx2 text-center mr-0 ml-0">
-                <td class="col-md-1 iap">CANTIDAD</td>
-                <td class="col-md-1 iap">UNIDAD</td>
-                <td class="col-md-4 iap">DESCRIPCION</td>
-                <td class="col-md-3 iap">VALOR UNITARIO</td>
-                <td class="col-md-3 iap">IMPORTE</td>
+                <td class="col-md-1 backpink">CANTIDAD</td>
+                <td class="col-md-1 backpink">UNIDAD</td>
+                <td class="col-md-4 backpink">DESCRIPCION</td>
+                <td class="col-md-3 backpink">VALOR UNITARIO</td>
+                <td class="col-md-3 backpink">IMPORTE</td>
               </tr>
               <tr class="row text-center m-0">
                 <td class="col-md-1">1</td>
@@ -504,7 +504,7 @@
           <table class="table text-center">
             <tbody>
               <tr class="row brx3 ml-0 mr-0">
-                <td class="col-md-4 iap">INCAPACIDAD</td>
+                <td class="col-md-4 backpink">INCAPACIDAD</td>
                 <td class="col-md-1 input-effect">
                   <input id="tipo" class="efecto">
                   <label for="tipo">Tipo</label>

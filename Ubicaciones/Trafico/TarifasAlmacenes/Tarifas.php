@@ -120,18 +120,18 @@
           <td class="col-md-12">470 3 AEROVIAS DE MÉXICO S.A DE C.V</td>
         </tr>
         <tr class="row text-center">
-          <td class="col-md-1 iap">UNIDAD</td>
-          <td class="col-md-1 iap">LIM.INF</td>
-          <td class="col-md-1 iap">LIM.SUP</td>
-          <td class="col-md-1 iap">IMPORTE 1</td>
-          <td class="col-md-1 iap">INF.DÍA</td>
-          <td class="col-md-1 iap">SUP.DÍA</td>
-          <td class="col-md-1 iap">IMPORTE 2</td>
-          <td class="col-md-1 iap">OPE.</td>
-          <td class="col-md-1 iap">FACTOR 1</td>
-          <td class="col-md-1 iap">FACTOR 2</td>
-          <td class="col-md-1 iap">FACTOR 3</td>
-          <td class="col-md-1 iap"></td>
+          <td class="col-md-1 backpink">UNIDAD</td>
+          <td class="col-md-1 backpink">LIM.INF</td>
+          <td class="col-md-1 backpink">LIM.SUP</td>
+          <td class="col-md-1 backpink">IMPORTE 1</td>
+          <td class="col-md-1 backpink">INF.DÍA</td>
+          <td class="col-md-1 backpink">SUP.DÍA</td>
+          <td class="col-md-1 backpink">IMPORTE 2</td>
+          <td class="col-md-1 backpink">OPE.</td>
+          <td class="col-md-1 backpink">FACTOR 1</td>
+          <td class="col-md-1 backpink">FACTOR 2</td>
+          <td class="col-md-1 backpink">FACTOR 3</td>
+          <td class="col-md-1 backpink"></td>
         </tr>
       </thead>
       <tbody class="text-normal">

@@ -205,13 +205,13 @@
       </thead>
       <tbody class="text-normal">
         <tr class="row m-0">
-          <td class="col-md-1 text-center iap">PENDIENTE</td>
-          <td class="col-md-1 text-center iap">RECORRIDO</td>
-          <td class="col-md-6 text-center iap">CLIENTE</td>
-          <td class="col-md-1 text-center iap">FACTURA</td>
-          <td class="col-md-1 text-center iap">REFERENCIA</td>
-          <td class="col-md-1 text-center iap">ENTREGADO</td>
-          <td class="col-md-1 text-center iap"></td>
+          <td class="col-md-1 text-center backpink">PENDIENTE</td>
+          <td class="col-md-1 text-center backpink">RECORRIDO</td>
+          <td class="col-md-6 text-center backpink">CLIENTE</td>
+          <td class="col-md-1 text-center backpink">FACTURA</td>
+          <td class="col-md-1 text-center backpink">REFERENCIA</td>
+          <td class="col-md-1 text-center backpink">ENTREGADO</td>
+          <td class="col-md-1 text-center backpink"></td>
         </tr>
 
         <tr class="row m-0 borderojo">
