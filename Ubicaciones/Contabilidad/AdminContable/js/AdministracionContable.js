@@ -1,4 +1,19 @@
 
+function fetch_cuentas_sat(){
+    $.ajax({
+      method: 'POST',
+      url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_cuentas.php',
+      success: function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          $('#catalogo-sat-helper').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      }
+    })
+}
+
 $(document).ready(function(){
 
   $('.consultar').click(function(){
@@ -239,6 +254,181 @@ $(document).ready(function(){
       });
 
 
+
+
+      // $('#medit-ctas').click(function(){
+      //
+      //   if($('#medit-ctaSAT').attr('db-id') == ""){
+      //     alertify.error("Seleccione cuenta del SAT");
+      //     $('#medit-ctaSAT').focus();
+      //     return false;
+      //   }
+      //
+      //   if($('#medit-concepto').val() == ""){
+      //     alertify.error("Asigne un concepto");
+      //     $('#medit-concepto').focus();
+      //     return false;
+      //   }
+      //
+      //   if($('#medit-status').val() == ""){
+      //     alertify.error("Seleccione el estatutus de captura");
+      //     $('#medit-status').focus();
+      //     return false;
+      //   }
+      //
+      //
+      //   if($('#medit-naturSAT').attr('db-id') == ""){
+      //     alertify.error("Seleccione Naturaleza de la cuenta");
+      //     $('#medit-naturSAT').focus();
+      //     return false;
+      //   }
+      //
+      //   if($('#medit-prodServ').attr('db-id') == ""){
+      //     alertify.error("Seleccione clave de producto");
+      //     $('#medit-prodServ').focus();
+      //     return false;
+      //   }
+      //
+      //
+      //     var data = {
+      //       ctaSAT: $('#medit-ctaSAT').attr('db-id'),
+      //       concepto: $('#medit-concepto').val(),
+      //       status: $('#medit-status').val(),
+      //       naturSAT: $('#medit-naturSAT').attr('db-id'),
+      //       prodServ: $('#medit-prodServ').attr('db-id'),
+      //     }
+      //
+      //     $.ajax({
+      //       type: "POST",
+      //       url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/editar.php",
+      //       data: data,
+      //       success: 	function(request, settings){
+      //         //$('#respuestaCtasMST').html(request);
+      //         console.error(request);
+      //         mensaje = request;
+      //         if(mensaje.indexOf("Error") > -1){
+      //           swal("La cuenta no se actualizo");
+      //           console.error(request);
+      //           return false;
+      //         }else{
+      //           swal("La cuenta se actualizo correctamente");
+      //           console.error(request);
+      //           return true;
+      //         }
+      //       }
+      //
+      //     });
+      // });
+
+  $('tbody').on('click', '.editar-cuenta', function(){
+    var dbid = $(this).attr('db-id');
+    var tar_modal = $($(this).attr('href'));
+    var fetch_cuenta = $.ajax({
+      method: 'POST',
+      data: {dbid: dbid},
+      url: 'actions/fetchCuentaDetalle.php'
+    });
+
+    fetch_cuenta.done(function(r){
+      r = JSON.parse(r);
+      if (r.code == 1) {
+
+      for (var key in r.data) {
+        if ($('#' + key).is('select')) {
+          continue;
+        }
+
+        if (r.data.hasOwnProperty(key)) {
+          $('#' + key).html(r['data'][key]).val(r['data'][key]).addClass('tiene-contenido');
+          if ( typeof($('#'+key).attr('db-id')) != 'undefined' && $('#'+key).attr('db-id') !== false) {
+            $('#' + key).attr('db-id', r['data'][key]);
+          }
+        }
+      }
+
+      $('#s_cta_status').val(r.data.s_cta_status);
+      $('#medit-ctas').attr('db-id', r.data.pk_id_cuenta);
+
+      tar_modal.modal('show');
+      } else {
+        console.error(r);
+      }
+    })
+
+  })
+
+  $('#medit-ctas').click(function(){
+    //Código para editar el modal, declaración de variables y ajax.
+
+
+      if($('#medit-ctaSAT').attr('db-id') == ""){
+        alertify.error("Seleccione cuenta del SAT");
+        $('#medit-ctaSAT').focus();
+        return false;
+      }
+
+      if($('#medit-concepto').val() == ""){
+        alertify.error("Asigne un concepto");
+        $('#medit-concepto').focus();
+        return false;
+      }
+
+      if($('#medit-status').val() == ""){
+        alertify.error("Seleccione el estatutus de captura");
+        $('#medit-status').focus();
+        return false;
+      }
+
+
+      if($('#medit-naturSAT').attr('db-id') == ""){
+        alertify.error("Seleccione Naturaleza de la cuenta");
+        $('#medit-naturSAT').focus();
+        return false;
+      }
+
+      if($('#medit-prodServ').attr('db-id') == ""){
+        alertify.error("Seleccione clave de producto");
+        $('#medit-prodServ').focus();
+        return false;
+      }
+
+
+        var data = {
+          id_cuenta: $('#pk_id_cuenta').attr('db-id'),
+          cuenta_sat: $('#fk_codAgrup').attr('db-id'),
+          concepto: $('#s_cta_desc').val(),
+          status: $('#s_cta_status').val(),
+          naturSAT: $('#fk_id_naturaleza').attr('db-id'),
+          prodServ: $('#fk_c_ClaveProdServ').attr('db-id'),
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/editar.php",
+          data: data,
+          success: 	function(r){
+            console.log(r);
+            r = JSON.parse(r);
+            if (r.code == 1) {
+              swal("Exito", "La cuenta se actualizó correctamente.", "success");
+              $('.real-time-search').keyup();
+            } else {
+              console.error(r.message);
+            }
+          },
+          error: function(x){
+            console.error(x);
+          }
+
+        });
+
+
+    $('.modal').modal('hide');
+  })
+
+  $('.real-time-search').keyup();
+
+  fetch_cuentas_sat();
 
 });
 

@@ -15,28 +15,43 @@
               <tbody class="cuerpo">
                 <tr class="row mt-4">
                   <td class="col-md-12 input-effect">
-                    <input  list="cuentasSAT" class="text-normal efecto"  id="medit-ctaSAT">
-                    <datalist id="cuentasSAT"></datalist>
-                    <label for="medit-ctaSAT">CUENTAS SAT</label>
+        				  	<input class="efecto disabled readonly" id="pk_id_cuenta" type="text" db-id="" autocomplete="new-password" disabled>
+        					  <label for="pk_id_cuenta" style="padding-top:.10rem">CUENTA</label>
+                  </td>
+                </tr>
+                <tr class="row mt-4">
+                  <td class="col-md-12 input-effect">
+        				  	<input class="efecto popup-input" id="fk_codAgrup" type="text" id-display="#medit-popup-display-cuentas_sat" action="cuentas_sat" db-id="" autocomplete="new-password">
+        					  <div class="popup-list" id="medit-popup-display-cuentas_sat" style="display:none"></div>
+        					  <label for="pk_id_cuenta" style="padding-top:.10rem">CUENTAS SAT
+        						<a href="#"><img src="/conta6/Resources/iconos/help.svg"></a>
+        					  </label>
                   </td>
                 </tr>
                 <tr class="row mt-4">
                   <td class="col-md-6 input-effect">
-                    <input id="mconcepto" class="efecto" type="text">
-                    <label for="mconcepto">CONCEPTO</label>
+                    <!--input id="mconcepto" class="efecto" type="text"-->
+				              <input id="s_cta_desc" class="efecto" type="text" maxlength="100">
+                      <label for="s_cta_desc">CONCEPTO</label>
                   </td>
                   <td class="col-md-3 input-effect">
-                    <input  list="status" class="efecto"  id="medit-status">
-                    <datalist id="status">
-                      <option>Activa</option>
-                      <option>Inactiva</option>
-                    </datalist>
-                    <label for="medit-status">ESTATUS CAPTURA</label>
+                    <select class="custom-select" id="s_cta_status">
+                      <option selected>ESTATUS CAPTURA</option>
+                      <option value="1">Activa</option>
+                      <option value="0">Inactiva</option>
+                    </select>
                   </td>
                   <td class="col-md-3 input-effect">
-                    <input  list="NSAT" class="efecto"  id="medit-naturSAT">
-                    <datalist id="NSAT"></datalist>
-                    <label for="medit-naturSAT">NATURALEZA SAT</label>
+				  	        <input class="efecto popup-input" id="fk_id_naturaleza" type="text" id-display="#medit-popup-display-cuentas_sat_natur" action="cuentas_sat_natur" db-id="" autocomplete="new-password">
+                  	<div class="popup-list" id="medit-popup-display-cuentas_sat_natur" style="display:none"></div>
+                    <label for="fk_id_naturaleza">NATURALEZA SAT</label>
+                  </td>
+                </tr>
+				        <tr class="row mt-4">
+                  <td class="col-md-12 input-effect">
+                    <input class="efecto popup-input" id="fk_c_ClaveProdServ" type="text" id-display="#medit-popup-display-prodServ" action="prodServ_sat" db-id="" autocomplete="new-password">
+					          <div class="popup-list" id="medit-popup-display-prodServ" style="display:none"></div>
+                    <label for="medit-prodServ">PRODUCTO O SERVICIO SAT</label>
                   </td>
                 </tr>
               </tbody>
@@ -45,7 +60,7 @@
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a href="" id="btn">GUARDAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="#" id="medit-ctas">GUARDAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>
