@@ -117,75 +117,75 @@
               <tbody class="cuerpo">
                 <tr class="row mt-4">
                   <td class="col-md-12 input-effect">
-                    <input id="correponsal1" class="efecto" type="text">
+                    <input id="correponsal1" class="efecto tiene-contenido" type="text">
                     <label for="correponsal1">CORRESPOSAL</label>
                   </td>
                 </tr>
                 <tr class="row mt-4">
                   <td class="col-md-4 input-effect">
-                    <input id="calle1" class="efecto" type="text">
+                    <input id="calle1" class="efecto tiene-contenido" type="text">
                     <label for="calle1">CALLE</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input id="numext1" class="efecto" type="text">
+                    <input id="numext1" class="efecto tiene-contenido" type="text">
                     <label for="numext1">NUM.EXT</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input id="numint1" class="efecto" type="text">
+                    <input id="numint1" class="efecto tiene-contenido" type="text">
                     <label for="numint1">NUM.INT</label>
                   </td>
                   <td class="col-md-4 input-effect">
-                    <input id="colinia1" class="efecto" type="text">
+                    <input id="colinia1" class="efecto tiene-contenido" type="text">
                     <label for="colinia1">COLONIA</label>
                   </td>
                 </tr>
                 <tr class="row mt-4">
                   <td class="col-md-3 input-effect">
-                    <input id="codigo1" class="efecto" type="text">
+                    <input id="codigo1" class="efecto tiene-contenido" type="text">
                     <label for="codigo1">CODIGO</label>
                   </td>
                   <td class="col-md-3 input-effect">
-                    <input id="ciudad1" class="efecto" type="text">
+                    <input id="ciudad1" class="efecto tiene-contenido" type="text">
                     <label for="ciudad1">CIUDAD</label>
                   </td>
                   <td class="col-md-3 input-effect">
-                    <input id="estado1" class="efecto" type="text">
+                    <input id="estado1" class="efecto tiene-contenido" type="text">
                     <label for="estado1">ESTADO</label>
                   </td>
                   <td class="col-md-3 input-effect">
-                    <input id="rfc1" class="efecto" type="text">
+                    <input id="rfc1" class="efecto tiene-contenido" type="text">
                     <label for="rfc1">RFC</label>
                   </td>
                 </tr>
                 <tr class="row mt-4">
                   <td class="col-md-4 input-effect">
-                    <input id="reprlegal1" class="efecto" type="text">
+                    <input id="reprlegal1" class="efecto tiene-contenido" type="text">
                     <label for="reprlegal1">REPRESENTANTE LEGAL</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input id="repRFC1" class="efecto" type="text">
+                    <input id="repRFC1" class="efecto tiene-contenido" type="text">
                     <label for="repRFC1">RCF</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input id="contacto1" class="efecto" type="text">
+                    <input id="contacto1" class="efecto tiene-contenido" type="text">
                     <label for="contacto1">CONTACTO</label>
                   </td>
                   <td class="col-md-4 input-effect">
-                    <input id="mail1" class="efecto" type="text">
+                    <input id="mail1" class="efecto tiene-contenido" type="text">
                     <label for="mail1">CORREO ELECTRONICO</label>
                   </td>
                 </tr>
                 <tr class="row mt-4">
                   <td class="col-md-2 input-effect">
-                    <input id="telefono1" class="efecto" type="text">
+                    <input id="telefono1" class="efecto tiene-contenido" type="text">
                     <label for="telefono1">TELEFONO</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input id="fax1" class="efecto" type="text">
+                    <input id="fax1" class="efecto tiene-contenido" type="text">
                     <label for="fax1">FAX</label>
                   </td>
                   <td class="col-md-8 input-effect">
-                    <input id="observaciones1" class="efecto" type="text">
+                    <input id="observaciones1" class="efecto tiene-contenido" type="text">
                     <label for="observaciones1">OBSERVACIONES</label>
                   </td>
                 </tr>

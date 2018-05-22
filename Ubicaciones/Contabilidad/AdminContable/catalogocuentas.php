@@ -44,11 +44,11 @@ $usuario = $_SESSION['user_name'];
                   <input list="cta-mtraTipo" class="efecto" id="tipo">
                   <datalist id="cta-mtraTipo">
                     <option value="A">Activo -- A</option>
-          			<option value="P">Pasivo -- P</option>
-          			<option value="C">Capital -- C</option>
-          			<option value="G">Gastos -- G</option>
-          			<option value="I">Ingresos -- I</option>
-          			<option value="O">Cuentas de Orden -- O</option>
+              			<option value="P">Pasivo -- P</option>
+              			<option value="C">Capital -- C</option>
+              			<option value="G">Gastos -- G</option>
+              			<option value="I">Ingresos -- I</option>
+              			<option value="O">Cuentas de Orden -- O</option>
                   </datalist>
                   <label for="tipo">TIPO</label>
                 </td>

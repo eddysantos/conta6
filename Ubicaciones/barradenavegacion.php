@@ -41,18 +41,19 @@
 
     <nav class="navbar navbar-fixed-top">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-            <img  src="/conta6/Resources/iconos/menu.svg"  style="width:22px; padding-top:4px;">
-			    </button> -->
-
-
-        </div>
-        <!-- <div class="collapse navbar-collapse in" id="menu"> -->
-        <div class="navbar-collapse" id="menu">
+        <div class="navbar-header"></div>
+        <div class="navbar-collapse m-0" id="menu">
           <ul class="nav nav-pills nav-fill">
-            <li class="nav-item">
-              <img src="/conta6/Resources/imagenes/cheetah.svg"  class="logo">
+            <li class="nav-item dropdown">
+              <a href="#"><img src="/conta6/Resources/imagenes/cheetah.svg"  class="logo"></a>
+              <ul class="dropdown-menu" style="width:220px">
+                <select class="w-75 ml-5">
+                  <option value="">Aeropuerto</option>
+                  <option value="">Manzanillo</option>
+                  <option value="">Nuevo Laredo</option>
+                  <option value="">Veracruz</option>
+                </select>
+              </ul>
             </li>
 
 <!--***************MENU PROLOG  Contabilidad*****************-->
@@ -199,6 +200,7 @@
                     </li>
                   </ul>
                 </li>
+                <!-- <li class="nav-item"><a href="#">OFICINA</a></li> -->
                 <li class="nav-item"><a href="#">SOPORTE</a></li>
                 <li class="nav-item"><a href="#">CERRAR SESION</a></li>
               </ul>
