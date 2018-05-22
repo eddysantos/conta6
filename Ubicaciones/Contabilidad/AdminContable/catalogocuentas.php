@@ -277,11 +277,15 @@ $usuario = $_SESSION['user_name'];
   </div>
 </div>
 
+<?php
+require_once('modales/EditarCatalogo.php');
+require_once('modales/catalogoSAT.php');
+ ?>
 
 <!--***************ESTILOS*****************-->
-<link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
+<!-- <link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
 <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
+<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css"> -->
 
 
 
@@ -289,10 +293,7 @@ $usuario = $_SESSION['user_name'];
 <script src="/conta6/Resources/js/popup-list-plugin.js"></script>
 <script src="/conta6/Resources/js/table-fetch-plugin.js"></script>
 <script src="js/AdministracionContable.js"></script>
-<?php
-require_once('modales/EditarCatalogo.php');
-require_once('modales/catalogoSAT.php');
- ?>
+
 <?php
 	$db->close();
 ?>

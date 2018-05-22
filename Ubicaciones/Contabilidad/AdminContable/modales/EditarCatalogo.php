@@ -15,7 +15,13 @@
               <tbody class="cuerpo">
                 <tr class="row mt-4">
                   <td class="col-md-12 input-effect">
-        				  	<input class="efecto popup-input" id="pk_id_cuenta" type="text" id-display="#medit-popup-display-cuentas_sat" action="cuentas_sat" db-id="" autocomplete="new-password">
+        				  	<input class="efecto disabled readonly" id="pk_id_cuenta" type="text" db-id="" autocomplete="new-password" disabled>
+        					  <label for="pk_id_cuenta" style="padding-top:.10rem">CUENTA</label>
+                  </td>
+                </tr>
+                <tr class="row mt-4">
+                  <td class="col-md-12 input-effect">
+        				  	<input class="efecto popup-input" id="fk_codAgrup" type="text" id-display="#medit-popup-display-cuentas_sat" action="cuentas_sat" db-id="" autocomplete="new-password">
         					  <div class="popup-list" id="medit-popup-display-cuentas_sat" style="display:none"></div>
         					  <label for="pk_id_cuenta" style="padding-top:.10rem">CUENTAS SAT
         						<a href="#"><img src="/conta6/Resources/iconos/help.svg"></a>

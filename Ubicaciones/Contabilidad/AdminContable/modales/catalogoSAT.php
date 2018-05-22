@@ -23,18 +23,7 @@
                   <td class='col-md-1'>Cuenta de Balance</td>
                 </tr>
               </thead>
-              <tbody>
-                <tr class='row borderojo'>
-                  <datalist id="catCuentasSAT" href="#lst_conta_cs_cuentas_mst"></datalist>
-                  <!-- <td class='col-md-1'>2</td>
-                  <td class='col-md-1'>106.01</td>
-                  <td class='col-md-4'>Cuentas y documentos por cobrar a corto plazo nacional</td>
-                  <td class='col-md-1'>s</td>
-                  <td class='col-md-2'>05-01-2015</td>
-                  <td class='col-md-2'>Activos Circulantes</td>
-                  <td class='col-md-1'>Activo</td> -->
-                </tr>
-              </tbody>
+              <tbody id="catalogo-sat-helper"></tbody>
             </table>
           </div>
         </div><!--termina el Container-Fluid-->
