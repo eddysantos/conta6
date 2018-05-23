@@ -366,3 +366,10 @@ h5.titulo-mov {
   margin-bottom: 0px;
 }
 /* FINALIZA popup-list */
+
+
+.fixed-table tbody{
+  display: block;
+  max-height: 380px;
+  overflow-y: auto;
+}
