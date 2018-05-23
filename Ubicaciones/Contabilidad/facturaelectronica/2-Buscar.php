@@ -331,47 +331,47 @@
               <table class="" style="margin-top:-125px">
                 <tbody>
                   <tr class="row row-">
-                    <th class="col-md-4 text-center iap">Version</th>
+                    <th class="col-md-4 text-center backpink">Version</th>
                     <td class="col-md-4 text-center ">3.2</td>
                   </tr>
                   <tr class="row row-">
-                    <th class="col-md-4 text-center iap">Cta.Gastos</th>
+                    <th class="col-md-4 text-center backpink">Cta.Gastos</th>
                     <td class="col-md-4 text-center ">75681</td>
                   </tr>
                   <tr class="row row-">
-                    <th class="col-md-4 text-center iap">Factura</th>
+                    <th class="col-md-4 text-center backpink">Factura</th>
                     <td class="col-md-4 text-center  sub2">74965</td>
                   </tr>
                   <tr class="row row-">
-                    <th class="col-md-4 text-center iap">Poliza</th>
+                    <th class="col-md-4 text-center backpink">Poliza</th>
                     <td class="col-md-4 text-center ">246383</td>
                   </tr>
                   <tr class="row row-">
-                    <th class="col-md-4 text-center iap">Poliza</th>
+                    <th class="col-md-4 text-center backpink">Poliza</th>
                     <td class="col-md-4 text-center ">246383</td>
                   </tr>
                   <tr class="row row-">
-                    <th class="col-md-4 text-center iap">Cancelacion</th>
+                    <th class="col-md-4 text-center backpink">Cancelacion</th>
                     <td class="col-md-4 text-center "></td>
                   </tr>
                   <tr class="row row-">
-                    <th class="col-md-4 text-center iap">Certificado PLAA</th>
+                    <th class="col-md-4 text-center backpink">Certificado PLAA</th>
                     <td class="col-md-4 text-center ">000010000000404750920</td>
                   </tr>
                   <tr class="row row-">
-                    <th class="col-md-4 text-center iap">Certificado SAT</th>
+                    <th class="col-md-4 text-center backpink">Certificado SAT</th>
                     <td class="col-md-4 text-center ">000010000000404477432</td>
                   </tr>
                   <tr class="row row-">
-                    <th class="col-md-4 text-center iap">Generada</th>
+                    <th class="col-md-4 text-center backpink">Generada</th>
                     <td class="col-md-4 text-center ">epinales 05-05-2017 15:05:17</td>
                   </tr>
                   <tr class="row row-">
-                    <th class="col-md-4 text-center iap">Modificada</th>
+                    <th class="col-md-4 text-center backpink">Modificada</th>
                     <td class="col-md-4 text-center ">epinales 05-05-2017 15:05:17</td>
                   </tr>
                   <tr class="row row-">
-                    <th class="col-md-12 text-center iap">UUID</th>
+                    <th class="col-md-12 text-center backpink">UUID</th>
                   </tr>
                   <tr class="row row-">
                     <th class="col-md-12 text-center ">D99218FD-3755-40EF-A4BF-45B9F1DA31DD</th>
@@ -442,37 +442,37 @@
                   <tr class="row row-">
                     <td class="col-md-1"></td>
                     <td class="col-md-3 sub2">Anticipo 1</td>
-                    <td class="col-md-3 text-center iap">25662</td>
+                    <td class="col-md-3 text-center backpink">25662</td>
                     <td class="col-md-5 "><input class="input-dpol form-control  border" type="text" value="$7,833.00"></td>
                   </tr>
                   <tr class="row row-">
                     <td class="col-md-1"></td>
                     <td class="col-md-3 sub2">Anticipo 2</td>
-                    <td class="col-md-3 text-center iap"></td>
+                    <td class="col-md-3 text-center backpink"></td>
                     <td class="col-md-5 "><input class="input-dpol form-control  border" type="text" value="0.00"></td>
                   </tr>
                   <tr class="row row-">
                     <td class="col-md-1"></td>
                     <td class="col-md-3 sub2">Anticipo 3</td>
-                    <td class="col-md-3 text-center iap"></td>
+                    <td class="col-md-3 text-center backpink"></td>
                     <td class="col-md-5 "><input class="input-dpol form-control  border" type="text" value="0.00"></td>
                   </tr>
                   <tr class="row row-">
                     <td class="col-md-1"></td>
                     <td class="col-md-3 sub2">Anticipo 4</td>
-                    <td class="col-md-3 text-center iap"></td>
+                    <td class="col-md-3 text-center backpink"></td>
                     <td class="col-md-5 "><input class="input-dpol form-control  border" type="text" value="0.00"></td>
                   </tr>
                   <tr class="row row-">
                     <td class="col-md-1"></td>
                     <td class="col-md-3 sub2">Anticipo 5</td>
-                    <td class="col-md-3 text-center iap"></td>
+                    <td class="col-md-3 text-center backpink"></td>
                     <td class="col-md-5 "><input class="input-dpol form-control  border" type="text" value="0.00"></td>
                   </tr>
                   <tr class="row row-">
                     <td class="col-md-1"></td>
                     <td class="col-md-3 sub2">Anticipo 6</td>
-                    <td class="col-md-3 text-center iap"></td>
+                    <td class="col-md-3 text-center backpink"></td>
                     <td class="col-md-5 "><input class="input-dpol form-control  border" type="text" value="0.00"></td>
                   </tr>
                   <tr class="row row-">

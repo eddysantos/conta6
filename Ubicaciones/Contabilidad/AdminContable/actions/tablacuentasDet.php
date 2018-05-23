@@ -34,20 +34,20 @@ $rslt = $stmt->get_result();
 
 if ($rslt->num_rows == 0) {
   $system_callback['code'] = 1;
-  $system_callback['data'] =
-  "<p db-id=''>No se encontraron resultados</p>";
+  $system_callback['data'] ="<p db-id=''>No se encontraron resultados</p>";
   $system_callback['message'] = "Script called successfully but there are no rows to display.";
   exit_script($system_callback);
 }
 
 while ($row = $rslt->fetch_assoc()) {
-  // $system_callback['data'] .=
-  // "<p db-id='$row[pk_id_cuenta]'>$row[pk_id_cuenta] - $row[s_cta_desc]</p>";
+  $system_callback['data'] .=
+  "<p db-id='$row[pk_id_cuenta]'>$row[pk_id_cuenta] - $row[s_cta_desc]</p>";
   $id = $row['pk_id_cuenta'];
 
   $system_callback['data'] .=
   "<tr class='row text-center m-0 borderojo'>
    <td class='col-md-1 text-center'>
+      <a href='#EditarCatalogo' data-toggle='modal'>
       <a href='#EditarCatalogo' class='editar-cuenta' db-id='$id' role='button'>
         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
       </a>
@@ -67,7 +67,4 @@ while ($row = $rslt->fetch_assoc()) {
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
-
-
-
  ?>

@@ -132,12 +132,12 @@
           <td class="col-md-12 text-center">470 4 AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V</td>
         </tr>
         <tr class="row">
-          <td class="col-md-1 iap">ADUANA</td>
-          <td class="col-md-1 iap">CONCEPTO</td>
-          <td class="col-md-4 iap">OBSERVACIONES</td>
-          <td class="col-md-2 iap">REALIZA CALCULO</td>
-          <td class="col-md-3 iap">CLASIFICACIÓN DEL INGRESO</td>
-          <td class="col-md-1 iap">ACCIONES</td>
+          <td class="col-md-1 backpink">ADUANA</td>
+          <td class="col-md-1 backpink">CONCEPTO</td>
+          <td class="col-md-4 backpink">OBSERVACIONES</td>
+          <td class="col-md-2 backpink">REALIZA CALCULO</td>
+          <td class="col-md-3 backpink">CLASIFICACIÓN DEL INGRESO</td>
+          <td class="col-md-1 backpink">ACCIONES</td>
         </tr>
         <tr class="row borderojo">
           <td class="col-md-1">470</td>
