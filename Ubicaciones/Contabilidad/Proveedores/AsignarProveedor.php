@@ -3,15 +3,15 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid">
-  <div class="row cuerpo brx2">
+<div class="container-fluid text-center">
+  <div class="row font14 m-5">
     <div class="col-md-3 offset-md-9">
       <a href="#" class="boton ver" accion="mostrarDetalle" role="button" id="botondetalle"><img src= "/conta6/Resources/iconos/detalles.svg" class="icochico"> DETALLE DE PÓLIZA</a>
     </div>
   </div>
 
   <form id="MostrarDetPoliza" class="contorno" style="display:none">
-    <table class="table text-center text-normal">
+    <table class="table font14">
       <tbody>
         <tr  class="row backpink">
           <td class="col-md-1">
@@ -36,11 +36,11 @@
     </table>
   </form>
 
-  <form class="brx2">
-    <table class="table text-normal">
+  <form class="mt-5">
+    <table class="table">
       <tr class="row">
         <td class="col-md-6 offset-md-3">
-          <select class="input-dpol form-control" name="selector" id="opcion">
+          <select class="custom-select"id="opcion">
             <option>PROVEEDOR</option>
             <option value="1">7-ELEVEN MEXICO SA DE CV -- SEM980701STA -- 261</option>
             <option value="2">ABASTECEDORA Y DISTRIBUIDORA GARA SA DE CV -- ADG0802135RA</option>
@@ -52,8 +52,8 @@
     </table>
   </form>
   <form class="contorno mt-5">
-    <table class="table text-center text-normal">
-      <tr  class="row brx1 encabezado">
+    <table class="table">
+      <tr  class="row encabezado">
         <td class="col-md-1">CUENTA</td>
         <td class="col-md-4">DESCRIPCIÓN</td>
         <td class="col-md-1">CARGO</td>
@@ -69,7 +69,7 @@
         <td class="col-md-4">ABASTECEDORA Y DISTRIBUIDORA GARA SA DE CV</td>
         <td class="col-md-1">
           <a href=""><img src= "/conta6/Resources/iconos/add.svg" class="icochico"></a>
-          <a href=""><img src= "/conta6/Resources/iconos/002-trash.svg" class="icochico mleftx2"></a>
+          <a href=""><img src= "/conta6/Resources/iconos/002-trash.svg" class="icochico ml-5"></a>
         </td>
       </tr>
     </table>

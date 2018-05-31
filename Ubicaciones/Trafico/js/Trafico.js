@@ -10,7 +10,34 @@ $(document).ready(function(){
 
 // CONSULTAR SOLICITUD
     switch (accion) {
-      
+
+      case "datcliente":
+      if (status == 'cerrado') {
+        $('#contornoCliente').fadeIn();
+        $(this).attr('status', 'abierto');
+        $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
+        $(this).css('font-size', '20px');
+      } else {
+        $('#contornoCliente').fadeOut();
+        $(this).attr('status', 'cerrado');
+        $(this).css('color', "");
+        $(this).css('font-size', "");
+      }
+        break;
+      case "datinfo":
+      if (status == 'cerrado') {
+        $('#contornoInfo').fadeIn();
+        $(this).attr('status','abierto');
+        $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
+        $(this).css('font-size', '20px');
+      }else {
+        $('#contornoInfo').fadeOut();
+        $(this).attr('status','cerrado');
+        $(this).css('color', "");
+        $(this).css('font-size', "");
+      }
+        break;
+
       case "cliente":
       if (status == 'cerrado') {
         $('#contornodCliente').fadeIn();
@@ -121,6 +148,9 @@ $(document).ready(function(){
     $('#m-Remision').fadeIn();
     $('#b-notaRemision').slideUp();
   });
+
+
+
 
 
 // SOLICITUD DE ANTICIPO

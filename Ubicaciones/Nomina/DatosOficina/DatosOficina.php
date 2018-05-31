@@ -4,24 +4,24 @@
 ?>
 
 <div class="container-fluid">
-  <div class="row submenuMed m-0">
-    <div class="col-md-4 text-center" role="button">
+  <div class="row submenuMed m-0 text-center">
+    <div class="col-md-4" role="button">
       <a  id="submenuMed" class="dtosOficina" accion="dFiscal" status="cerrado">DOMICILIO FISCAL</a>
     </div>
-    <div class="col-md-4 text-center">
+    <div class="col-md-4">
       <a id="submenuMed" class="dtosOficina" accion="eDomicilio" status="cerrado">MODIFICAR DOMICILIO</a>
     </div>
-    <div class="col-md-4 text-center">
+    <div class="col-md-4">
       <a id="submenuMed" class="dtosOficina" accion="dOficina" status="cerrado">DATOS DE OFICINA</a>
     </div>
   </div>
 
   <div id="contornoDom" class="contorno" style="display:none">
-    <h5 class="titulo" style="font-size:15px">DOMICILIO FISCAL</h5>
-    <table class="table" id="DomicilioFiscal">
+    <h5 class="titulo font16">DOMICILIO FISCAL</h5>
+    <table class="table text-center" id="DomicilioFiscal">
       <thead>
         <tr class="row m-0 encabezado">
-          <td class="col-md-12 text-center">PROYECCION LOGISTICA AGENCIA ADUANAL S.A DE C.V</td>
+          <td class="col-md-12 ">PROYECCION LOGISTICA AGENCIA ADUANAL S.A DE C.V</td>
         </tr>
       </thead>
       <tbody class="cuerpo">
@@ -54,7 +54,7 @@
   </div>
 
   <div id="contornoEdit" class="contorno" style="display:none;">
-    <h5 class="titulo2" style="font-size:15px">MODIFICAR DOMICILIO FISCAL</h5>
+    <h5 class="titulo2 font16">MODIFICAR DOMICILIO FISCAL</h5>
     <table class="table text-center" id="EditarDomicilio">
       <thead>
         <tr class="row m-0 encabezado">
@@ -63,16 +63,16 @@
           <td class="col-md-3">OFICINA</td>
         </tr>
       </thead>
-      <tbody class="cuerpo">
+      <tbody class="font14">
         <tr class="row m-0">
           <td class="col-md-6">
-            <input class="inpReg" type="text" value="Proyeccion Logistica Agencia Aduanal S.A de C.V">
+            <input class="efecto" type="text" value="Proyeccion Logistica Agencia Aduanal S.A de C.V">
           </td>
           <td class="col-md-3">
-            <input class="inpReg" type="text" value="PLA090609N21">
+            <input class="efecto" type="text" value="PLA090609N21">
           </td>
           <td class="col-md-3">
-            <select class="inpReg">
+            <select class="custom-select">
               <option selected>Seleccione</option>
               <option>Nuevo Laredo</option>
               <option>Aeropuerto</option>
@@ -81,7 +81,7 @@
             </select>
           </td>
           <td class="col-md-4 offset-md-4">
-            <a href="" class="boton brx2"> <img src= "/conta6/Resources/iconos/refresh-button.svg" class="icochico"> ACTUALIZAR</a>
+            <a href="" class="boton mt-5"> <img src= "/conta6/Resources/iconos/refresh-button.svg" class="icochico"> ACTUALIZAR</a>
           </td>
         </tr>
       </tbody>
@@ -89,14 +89,14 @@
   </div>
 
   <div id="contornoDatos" class="contorno" style="display:none;">
-    <h5 class="titulo" style="font-size:15px">DATOS DE OFICINA</h5>
+    <h5 class="titulo font16">DATOS DE OFICINA</h5>
     <table class="table" id="DatosOficina">
       <thead>
         <tr class="row m-0 text-center encabezado">
           <td class="col-md-12">SUCURSAL 240 NUEVO LAREDO</td>
         </tr>
       </thead>
-      <tbody class="cuerpo">
+      <tbody class="font14">
         <tr class="row m-0">
           <td class="col-md-6 text-right">Calle :</td>
           <td class="col-md-6 text-left">Melvin Jones 4040</td>

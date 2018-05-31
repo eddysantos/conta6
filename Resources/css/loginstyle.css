@@ -7,8 +7,6 @@ input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px #fff inset!important;
 }
 
-
-
 html,
 body {
   background: #FEFEFE;
@@ -25,31 +23,6 @@ a:hover {
   font-size: 1.02em;
   text-decoration: none;
 }
-
-/* .three-text {
-    margin-top: 3em;
-}
-.three-text ul li {
-    display: inline-block;
-    float: left;
-}
-.three-text ul li:nth-child(2) {
-    float: right;
-}
-.three-text ul li a {
-    font-size: 1em;
-    color: #868686;
-		transition: 0.5s all;
-		-webkit-transition: 0.5s all;
-		-moz-transition: 0.5s all;
-		-o-transition: 0.5s all;
-		-ms-transition: 0.5s all;
-}
-.three-text ul li a:hover{
-    color: #323030;
-		font-size: 1.05em;
-} */
-
 
 /*=== Main Form ===*/
 .login-form-1 {

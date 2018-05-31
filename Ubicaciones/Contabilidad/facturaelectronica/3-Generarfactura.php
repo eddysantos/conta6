@@ -4,16 +4,16 @@
 ?>
 
 
-<div class="contenedor" id="b-ctagastos"><!--antes b-factura-->
-  <div class="row titulograndetop transEff brx2" id="referencia">
-    <div class="col-md-12 text-center">
+<div class="contenedor text-center" id="b-ctagastos"><!--antes b-factura-->
+  <div class="row titulograndetop transEff" id="referencia">
+    <div class="col-md-12">
       <label class="transEff" for="bRef" id="labelRef">Referencia o Solicitud</label>
     </div>
   </div>
   <div class="row intermedio transEff" id="nReferencia">
     <div class="col-md-12" id="mostrarConsulta">
       <form  class="form-group" onsubmit="return false;">
-        <input class="reg form-control noborder transEff" id="bRef" type="text">
+        <input class="reg border-0 transEff" id="bRef" type="text">
       </form>
     </div>
   </div>
@@ -21,15 +21,13 @@
 
 
 <!---se muestra al escribir la referencia y dar enter-->
-<div class="contenedor container-fluid cont" id="m-factura" style="display:none"><!--antes m-factura-->
+<div class="contenedor container-fluid cont" id="m-factura" style="display:none">
   <form class="form1">
     <table class="table text-center">
       <thead>
         <tr class="row">
           <td class="col-md-1 offset-md-11 p-0">
-            <a class="atras" accion="BuscarOtro">
-              <i class="back fa fa-arrow-left">Regresar</i>
-            </a>
+            <a class="atras" accion="BuscarOtro"><i class="back fa fa-arrow-left">Regresar</i></a>
           </td>
         </tr>
         <tr class="row encabezado cuerpo mt-2">
@@ -43,13 +41,13 @@
           <td class="col-md-7">CLIENTE</td>
           <td class="col-md-1"></td>
         </tr>
-        <tr class="row borderojo" style="font-size:14px!important">
+        <tr class="row borderojo font14">
           <td class="col-md-2">280380</td>
           <td class="col-md-2">N17003012</td>
           <td class="col-md-7">CLT_6548 MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L DE C.V</td>
-          <td class="col-md-1" style="padding:5px">
+          <td class="col-md-1 p-2">
             <a href=""><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
-            <a href=""><img class="icomediano mleftx2" src="/conta6/Resources/iconos/printer.svg"></a>
+            <a href=""><img class="icomediano ml-5" src="/conta6/Resources/iconos/printer.svg"></a>
           </td>
         </tr>
       </tbody>
