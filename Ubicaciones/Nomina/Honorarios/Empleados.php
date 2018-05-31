@@ -10,84 +10,84 @@
     </div>
   </div>
 
-  <div id="contorno"  class="contorno brx4">
-  <h5 class="titulo2" style="font-size:15px">REGISTRO EMPLEADOS</h5>
+  <div id="contorno"  class="contorno mt-5">
+    <h5 class="titulo2 font16">REGISTRO EMPLEADOS</h5>
     <div class="acordeon2 text-center">
-      <div class="encabezado" data-toggle="collapse" href="#collapsegenerales">
-        <a  id="bread" class="text-center">DATOS GENERALES</a>
+      <div class="encabezado font16" data-toggle="collapse" href="#collapsegenerales">
+        <a  id="bread">DATOS GENERALES</a>
       </div>
       <div id="collapsegenerales" class="card-block collapse">
-        <form style="line-height: 0.8;letter-spacing: 3px">
-          <table class="table">
+        <form class="form1">
+          <table class="table text-center">
             <tbody>
-              <tr class="row brx4 ml-0 mr-0">
+              <tr class="row mt-5 m-0">
                 <td class="col-md-3 input-effect">
-                  <input id="hon_name" class="efecto text-center">
+                  <input id="hon_name" class="efecto">
                   <label for="hon_name">Nombre</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input id="hon_ap" class="efecto text-center">
+                  <input id="hon_ap" class="efecto">
                   <label for="hon_ap">Apellido Paterno</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input id="hon_am" class="efecto text-center">
+                  <input id="hon_am" class="efecto">
                   <label for="hon_am">Apellido Materno</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input class="efecto text-center data-date" type="text" onfocus="(this.type='date')" id="hon_fn">
+                  <input class="efecto tiene-contenido" type="date" id="hon_fn">
                   <label for="hon_fn">Fecha Póliza</label>
                 </td>
               </tr>
 
-              <tr class="row brx3 ml-0 mr-0">
+              <tr class="row mt-4 m-0">
                 <td class="col-md-3 input-effect">
-                  <input id="hon_curp" class="efecto text-center">
+                  <input id="hon_curp" class="efecto">
                   <label for="hon_curp">Curp</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input id="hon_rfc" class="efecto text-center">
+                  <input id="hon_rfc" class="efecto">
                   <label for="hon_rfc">RFC</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input id="hon_tel" class="efecto text-center">
+                  <input id="hon_tel" class="efecto">
                   <label for="hon_tel">Telefono</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input id="hon_em" class="efecto text-center">
+                  <input id="hon_em" class="efecto">
                   <label for="hon_em">Correo Electronico</label>
                 </td>
               </tr>
 
-              <tr class="row brx3 ml-0 mr-0">
+              <tr class="row mt-4 m-0">
                 <td class="col-md-3 input-effect">
-                  <input id="hon_calle" class="efecto text-center">
+                  <input id="hon_calle" class="efecto">
                   <label for="hon_calle">Calle</label>
                 </td>
                 <td class="col-md-1 input-effect">
-                  <input id="hon_ne" class="efecto text-center">
+                  <input id="hon_ne" class="efecto">
                   <label for="hon_ne">No.Ext</label>
                 </td>
                 <td class="col-md-1 input-effect">
-                  <input id="hon_ni" class="efecto text-center">
+                  <input id="hon_ni" class="efecto">
                   <label for="hon_ni">No.Int</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="hon_col" class="efecto text-center">
+                  <input id="hon_col" class="efecto">
                   <label for="hon_col">Colonia</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="hon_loc" class="efecto text-center">
+                  <input id="hon_loc" class="efecto">
                   <label for="hon_loc">Localidad</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input id="hon_mun" class="efecto text-center">
+                  <input id="hon_mun" class="efecto">
                   <label for="hon_mun">Municipio o Delegación</label>
                 </td>
               </tr>
 
-              <tr class="row brx3 ml-0 mr-0">
+              <tr class="row mt-4 m-0">
                 <td class="col-md-3 input-effect">
-                  <input  list="estado" class="text-normal efecto text-center"  id="hon_edo">
+                  <input  list="estado" class="efecto" id="hon_edo">
                   <datalist id="estado">
                     <option value="Aguascalientes"></option>
                     <option value="Baja California"></option>
@@ -96,11 +96,11 @@
                   <label for="hon_edo">Seleccione un Estado</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="hon_cp" class="efecto text-center">
+                  <input id="hon_cp" class="efecto">
                   <label for="hon_cp">Codigo Postal</label>
                 </td>
                 <td class="col-md-4 input-effect">
-                  <input  list="entidad" class="text-normal efecto text-center"  id="hon_ent">
+                  <input  list="entidad" class="efecto" id="hon_ent">
                   <datalist id="entidad">
                     <option value="Colima --- COL"></option>
                     <option value="Ciudad de México --- DIF"></option>
@@ -110,7 +110,7 @@
                   <label for="hon_ent">Seleccione una Entidad</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input  list="metpago" class="text-normal efecto text-center"  id="hon_pgo">
+                  <input  list="metpago" class="efecto" id="hon_pgo">
                   <datalist id="metpago">
                     <option value="Cheque"></option>
                     <option value="Efectivo"></option>
@@ -119,13 +119,13 @@
                   <label for="hon_pgo">Metodo de Pago</label>
                 </td>
               </tr>
-              <tr class="row brx3 ml-0 mr-0">
+              <tr class="row mt-4 m-0">
                 <td class="col-md-6 input-effect">
-                  <input id="hon_cin" class="efecto text-center">
+                  <input id="hon_cin" class="efecto">
                   <label for="hon_cin">Cuenta / Clabe Interbancaria</label>
                 </td>
                 <td class="col-md-6 input-effect">
-                  <input  list="banco" class="text-normal efecto text-center"  id="hon_bco">
+                  <input  list="banco" class="efecto"  id="hon_bco">
                   <datalist id="banco">
                     <option value="Afirme --- 062"></option>
                     <option value="American Express --- 103"></option>
@@ -141,21 +141,21 @@
       </div>
     </div>
 
-    <div class="acordeon2 text-center brx1">
-      <div class="encabezado" data-toggle="collapse" href="#collapselaborales">
+    <div class="acordeon2 text-center mt-3">
+      <div class="encabezado font16" data-toggle="collapse" href="#collapselaborales">
         <a  id="bread">DATOS LABORALES</a>
       </div>
       <div id="collapselaborales" class="card-block collapse">
-        <form  style="line-height: 0.8;letter-spacing: 3px">
+        <form  class="form1">
           <table class="table">
             <tbody>
-              <tr class="row brx4 ml-0 mr-0">
+              <tr class="row mt-5 m-0">
                 <td class="col-md-2 input-effect">
-                  <input id="hon_ofi" class="efecto text-center tiene-contenido">
+                  <input id="hon_ofi" class="efecto tiene-contenido">
                   <label for="hon_ofi">Oficina</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input  list="depto" class="text-normal efecto text-center"  id="hon_dep">
+                  <input  list="depto" class="efecto" id="hon_dep">
                   <datalist id="depto">
                     <option value="Administración"></option>
                     <option value="Clasificación"></option>
@@ -174,18 +174,18 @@
                   <label for="hon_dep">Departamento</label>
                 </td>
                 <td class="col-md-4 input-effect">
-                  <input id="hon_act" class="efecto text-center">
+                  <input id="hon_act" class="efecto">
                   <label for="hon_act">Puesto o Actividades</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input class="efecto text-center data-date" type="text" onfocus="(this.type='date')" id="hon_fc">
+                  <input class="efecto tiene-contenido" type="date" id="hon_fc">
                   <label for="hon_fc">Fecha Contrato</label>
                 </td>
               </tr>
 
-              <tr class="row brx3 ml-0 mr-0">
+              <tr class="row mt-4 m-0">
                 <td class="col-md-6 input-effect">
-                  <input  list="tcontrato" class="text-normal efecto text-center"  id="hon_con">
+                  <input  list="tcontrato" class="efecto"  id="hon_con">
                   <datalist id="tcontrato">
                     <option value="01 --- Contrato de Trabajo por Tiempo Indeterminado"></option>
                     <option value="02 --- Contrato de Trabajo para Obre Determinada"></option>
@@ -203,7 +203,7 @@
                 </td>
 
                 <td class="col-md-3 input-effect">
-                  <input  list="jornada" class="text-normal efecto text-center"  id="hon_jor">
+                  <input  list="jornada" class="efecto" id="hon_jor">
                   <datalist id="jornada">
                     <option value="01 -- Diurna"></option>
                     <option value="02 -- Nocturna"></option>
@@ -218,7 +218,7 @@
                   <label for="hon_jor">Jornada</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input  list="rtrabajo" class="text-normal efecto text-center"  id="hon_rgo">
+                  <input  list="rtrabajo" class="efecto"  id="hon_rgo">
                   <datalist id="rtrabajo">
                     <option value="01 -- Clase l"></option>
                     <option value="02 -- Clase ll"></option>
@@ -230,9 +230,9 @@
                 </td>
               </tr>
 
-              <tr class="row brx3 ml-0 mr-0">
+              <tr class="row mt-4 m-0">
                 <td class="col-md-4 input-effect">
-                  <input  list="perpago" class="text-normal efecto text-center"  id="hon_pp">
+                  <input  list="perpago" class="efecto"  id="hon_pp">
                   <datalist id="perpago">
                     <option value="Diario"></option>
                     <option value="Semanal"></option>
@@ -241,18 +241,18 @@
                   <label for="hon_pp">Periodo del Págo</label>
                 </td>
                 <td class="col-md-4 input-effect">
-                  <input id="hon_ema" class="efecto text-center" type="email">
+                  <input id="hon_ema" class="efecto" type="email">
                   <label for="hon_ema">Correo Asignado</label>
                 </td>
                 <td class="col-md-4 input-effect">
-                  <input class="efecto text-center data-date" id="hon_obs">
+                  <input class="efecto" id="hon_obs">
                   <label for="hon_obs">Observaciones</label>
                 </td>
               </tr>
 
-              <tr class="row brx3 ml-0 mr-0">
+              <tr class="row mt-4 m-0">
                 <td class="col-md-4 input-effect">
-                  <input  list="estatus" class="text-normal efecto text-center"  id="hon_st">
+                  <input  list="estatus" class="efecto"  id="hon_st">
                   <datalist id="estatus">
                     <option value="Activo"></option>
                     <option value="Baja"></option>
@@ -261,12 +261,12 @@
                 </td>
 
                 <td class="col-md-4 input-effect">
-                  <input class="efecto text-center data-date" type="text" onfocus="(this.type='date')" id="hon_fb">
+                  <input class="efecto tiene-contenido" type="date" id="hon_fb">
                   <label for="hon_fb">Fecha de Baja</label>
                 </td>
 
                 <td class="col-md-4 input-effect">
-                  <input  list="Pago" class="text-normal efecto text-center"  id="hon_pagar">
+                  <input  list="Pago" class="efecto"  id="hon_pagar">
                   <datalist id="Pago">
                     <option value="Si"></option>
                     <option value="No"></option>
@@ -280,37 +280,37 @@
       </div>
     </div>
 
-    <div class="acordeon2 text-center brx1">
-      <div class="encabezado" data-toggle="collapse" href="#collapsetres">
+    <div class="acordeon2 text-center mt-3">
+      <div class="encabezado font16" data-toggle="collapse" href="#collapsetres">
         <a  id="bread">DISTRIBUCION DE SALARIO</a>
       </div>
       <div id="collapsetres" class="card-block collapse">
-        <form style="line-height: 0.4;letter-spacing: 3px">
-          <table class="table new">
+        <form class="form1">
+          <table class="table text-center">
             <tbody>
-              <tr class="row brx3 ml-0 mr-0">
+              <tr class="row mt-5 m-0">
                 <td class="col-md-2 input-effect">
-                  <input id="hon_aer" class="efecto text-center">
+                  <input id="hon_aer" class="efecto">
                   <label for="hon_aer">Aeropuerto</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="hon_mzo" class="efecto text-center">
+                  <input id="hon_mzo" class="efecto">
                   <label for="hon_mzo">Manzanillo</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="hon_nl" class="efecto text-center">
+                  <input id="hon_nl" class="efecto">
                   <label for="hon_nl">Nuevo Laredo</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="hon_vcz" class="efecto text-center">
+                  <input id="hon_vcz" class="efecto">
                   <label for="hon_vcz">Veracruz</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="hon_ldo" class="efecto text-center">
+                  <input id="hon_ldo" class="efecto">
                   <label for="hon_ldo">Laredo Texas</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="hon_tot" class="efecto text-center">
+                  <input id="hon_tot" class="efecto">
                   <label for="hon_tot">Total</label>
                 </td>
               </tr>
@@ -320,25 +320,25 @@
       </div>
     </div>
 
-    <div class="acordeon2 text-center brx1">
-      <div class="encabezado" data-toggle="collapse" href="#collapsehonasim">
+    <div class="acordeon2 text-center mt-3">
+      <div class="encabezado font16" data-toggle="collapse" href="#collapsehonasim">
         <a  id="bread">HONORARIOS ASIMILADOS A SALARIOS</a>
       </div>
       <div id="collapsehonasim" class="card-block collapse">
-        <form style="line-height: 0.4;letter-spacing: 3px">
-          <table class="table new">
+        <form class="form1">
+          <table class="table">
             <tbody>
-              <tr class="row brx3 justify-content-center">
+              <tr class="row mt-5 justify-content-center">
                 <td class="col-md-3 input-effect">
-                  <input id="hon_sal" class="efecto text-center">
+                  <input id="hon_sal" class="efecto">
                   <label for="hon_sal">Salario</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input id="hon_isr" class="efecto text-center">
+                  <input id="hon_isr" class="efecto">
                   <label for="hon_isr">ISR</label>
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input id="hon_spgo" class="efecto text-center">
+                  <input id="hon_spgo" class="efecto">
                   <label for="hon_spgo">Salario a Pagar</label>
                 </td>
               </tr>
@@ -347,38 +347,36 @@
         </form>
       </div>
     </div>
-
-    <div class="col-md-4 offset-md-4 text-center brx2" style="font-size: 16px;">
-        <a href="" class="boton "> <img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR DATOS</a><!--Guardar Datos de poliza/cuando se actualizo algun dato-->
+    <div class="col-md-4 offset-md-4 mt-5 font16 text-center">
+        <a href="" class="boton"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR DATOS</a><!--Guardar Datos de poliza/cuando se actualizo algun dato-->
     </div>
   </div>
 
-  <div id="contornoEmpHon" class="contorno brx4" style="display:none;">
-    <h5 class="titulo2" style="font-size:15px">EMPLEADOS CAPTURADOS</h5>
-    <table class="table table-hover">
+  <div id="contornoEmpHon" class="contorno mt-5" style="display:none">
+    <h5 class="titulo2 font16">EMPLEADOS CAPTURADOS</h5>
+    <table class="table text-center table-hover">
       <thead>
-        <tr class="row m-0 encabezado">
-          <td class="col-md-1 text-center">Datos</td>
-          <td class="col-md-1 text-center">Estatus</td>
-          <td class="col-md-1 text-center">Pagar</td>
-          <td class="col-md-1 text-center">No.Emp.</td>
-          <td class="col-md-6 text-center">Empleado</td>
-          <td class="col-md-2 text-center">Salario</td>
-
+        <tr class="row encabezado font16">
+          <td class="col-md-1">Datos</td>
+          <td class="col-md-1">Estatus</td>
+          <td class="col-md-1">Pagar</td>
+          <td class="col-md-1">No.Emp.</td>
+          <td class="col-md-6">Empleado</td>
+          <td class="col-md-2">Salario</td>
         </tr>
       </thead>
-      <tbody>
-        <tr class="row text-center m0b0">
+      <tbody class="font14">
+        <tr class="row text-center borderojo">
           <td class="col-md-1">
             <a href="#modDatosEmpHon" data-toggle="modal">
-              <img class="icomediano" src="/conta6/Resources/iconos/003-edit.svg">
+              <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
             </a>
           </td>
-          <td class="col-md-1 text-normal">Activo</td>
-          <td class="col-md-1 text-normal">Si</td>
-          <td class="col-md-1 text-normal">224</td>
-          <td class="col-md-6 text-normal">Adriana Mariaca Dominguez</td>
-          <td class="col-md-2 text-normal">4200.00</td>
+          <td class="col-md-1">Activo</td>
+          <td class="col-md-1">Si</td>
+          <td class="col-md-1">224</td>
+          <td class="col-md-6">Adriana Mariaca Dominguez</td>
+          <td class="col-md-2">4200.00</td>
         </tr>
       </tbody>
     </table>
