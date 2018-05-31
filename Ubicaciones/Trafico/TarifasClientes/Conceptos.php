@@ -5,10 +5,10 @@
 
 <!--//termina el breadcrumb-->
 
-<table class="text-center table brx4">
+<table class="text-center table mt-5">
   <tr class="row">
     <td class="col-md-6 offset-md-2">
-      <select class="input-dpol form-control  border">
+      <select class="custom-select">
         <option>Seleccione un Almacen</option>
         <option>Motores electricos sumergibles de México S. de R.L de C.V ---  CLT_5448</option>
         <option>Motores Franklin S.A de C.V --- CLT_6967</option>
@@ -17,7 +17,7 @@
       </select>
     </td>
     <td class="col-md-2">
-      <select class="input-dpol form-control  border">
+      <select class="custom-select">
         <option>Oficina</option>
         <option>Aeropuerto</option>
         <option>Manzanillo</option>
@@ -29,32 +29,32 @@
 </table>
 
 <div class="container-fluid">
-  <div class="contorno brx2">
+  <div class="contorno mt-5">
     <h5 class="titulo">GENERAR CONCEPTO</h5>
-    <form class="form1" method="post">
-      <table class="table text-center brx1">
-        <tbody class="cuerpo">
-          <tr class="row">
-            <td class="col-md-1 input-effect brx2">
-              <input id="aduana" class="efecto text-center text-normal" type="text" style="width:100%">
+    <form class="form1">
+      <table class="table text-center">
+        <tbody class="font14">
+          <tr class="row mt-5">
+            <td class="col-md-1 input-effect">
+              <input id="aduana" class="efecto" type="text">
               <label for="aduana">Aduana</label>
             </td>
-            <td class="col-md-1 input-effect brx2">
-              <input id="almacen" class="efecto text-center text-normal" type="text" style="width:100%">
+            <td class="col-md-1 input-effect">
+              <input id="almacen" class="efecto" type="text">
               <label for="almacen">Almacen</label>
             </td>
-            <td class="col-md-5 input-effect brx2">
-              <input id="concepto" class="efecto text-center text-normal" type="text" style="width:100%">
+            <td class="col-md-5 input-effect">
+              <input id="concepto" class="efecto" type="text">
               <label for="concepto">Concepto</label>
             </td>
-            <td class="col-md-5 input-effect brx2">
-              <input id="observaciones" class="efecto text-center text-normal" type="text" style="width:100%">
+            <td class="col-md-5 input-effect">
+              <input id="observaciones" class="efecto" type="text">
               <label for="observaciones">Observaciones</label>
             </td>
           </tr>
-          <tr class="row">
-            <td class="col-md-6 input-effect brx2">
-              <input  list="calculo-tarif" class="text-normal efecto text-center" id="tipo">
+          <tr class="row mt-4">
+            <td class="col-md-6 input-effect">
+              <input  list="calculo-tarif" class="efecto" id="tipo">
               <datalist id="calculo-tarif">
                 <option value="101 -- Varios Registros con 1 Limite Inferior, 1 Limite Superior y 1 Importe (por valor)"></option>
                 <option value="102 -- Un solo Registro y un solo Importe"></option>
@@ -66,8 +66,8 @@
               </datalist>
               <label for="tipo">Tipo</label>
             </td>
-            <td class="col-md-6 input-effect brx2" >
-              <input  list="lista-cargo" class="text-normal efecto text-center" id="cargo">
+            <td class="col-md-6 input-effect">
+              <input  list="lista-cargo" class="efecto" id="cargo">
               <datalist id="lista-cargo">
                 <option value="0400-00001 -- Honorarios"></option>
                 <option value="0400-00002 -- Tramites y Servicios"></option>
@@ -86,8 +86,8 @@
               <label for="cargo">Cargar a :</label>
             </td>
           </tr>
-          <tr class="row justify-content-center">
-            <td class="col-md-3 brx2">
+          <tr class="row justify-content-center mt-4">
+            <td class="col-md-3">
               <a role="button" class="boton">
                 <img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR CONCEPTO
               </a>
@@ -99,106 +99,96 @@
   </div>
 </div>
 
-<div class="container-fluid cont brx2">
-  <form>
-    <table class="table text-center brx1">
-      <tbody>
-        <tr class="row">
-          <td class="col-md-4">
-            <select class="input-dpol form-control border">
-              <option>Selecciona un concepto</option>
-              <option>Cambios de Regimen o R1 Imputable a la Agencia</option>
-              <option>Cruce de Puente o Arrastre</option>
-              <option>Documentación y Despacho</option>
-              <option>Documentación y Fotostaticas</option>
-              <option>Elaboración de Pedimento (R1)</option>
-              <option>Honorarios</option>
-              <option>Manifestación de Valor</option>
-              <option>Otros Gastos (Conectividad)</option>
-              <option>Reconocimiento Aduanero</option>
-              <option>Tramites y Servicios</option>
-              <option>VUCEM</option>
-            </select>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
+<div class="container-fluid cont">
+  <div class="justify-content-center w-25 mt-4 mb-4">
+    <select class="custom-select">
+      <option>Selecciona un concepto</option>
+      <option>Cambios de Regimen o R1 Imputable a la Agencia</option>
+      <option>Cruce de Puente o Arrastre</option>
+      <option>Documentación y Despacho</option>
+      <option>Documentación y Fotostaticas</option>
+      <option>Elaboración de Pedimento (R1)</option>
+      <option>Honorarios</option>
+      <option>Manifestación de Valor</option>
+      <option>Otros Gastos (Conectividad)</option>
+      <option>Reconocimiento Aduanero</option>
+      <option>Tramites y Servicios</option>
+      <option>VUCEM</option>
+    </select>
+  </div>
 
-  <form>
-    <table class="table text-center">
-      <tbody>
-        <tr class="row encabezado">
-          <td class="col-md-12 text-center">470 4 AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V</td>
-        </tr>
-        <tr class="row">
-          <td class="col-md-1 backpink">ADUANA</td>
-          <td class="col-md-1 backpink">CONCEPTO</td>
-          <td class="col-md-4 backpink">OBSERVACIONES</td>
-          <td class="col-md-2 backpink">REALIZA CALCULO</td>
-          <td class="col-md-3 backpink">CLASIFICACIÓN DEL INGRESO</td>
-          <td class="col-md-1 backpink">ACCIONES</td>
-        </tr>
-        <tr class="row borderojo">
-          <td class="col-md-1">470</td>
-          <td class="col-md-1">Almacenaje</td>
-          <td class="col-md-4">Almacenaje = KG * Factor * Dias</td>
-          <td class="col-md-2">Almacenaje (Aeropuerto)</td>
-          <td class="col-md-3">0110-00006 Almacenaje</td>
-          <td class="col-md-1">
-            <a href="Buscartarifa.php">
-              <img class="file2" src="/conta6/Resources/iconos/002-trash.svg">
-            </a>
-            <a href="Buscartarifa.php">
-              <img class="file2" src="/conta6/Resources/iconos/magnifier.svg">
-            </a>
-            <a href="#EditarTarifaCliente" data-toggle="modal">
-              <img class="file2" src="/conta6/Resources/iconos/003-edit.svg">
-            </a>
-          </td>
-        </tr>
+  <table class="table text-center">
+    <tbody>
+      <tr class="row encabezado font16">
+        <td class="col-md-12">470 4 AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V</td>
+      </tr>
+      <tr class="row backpink">
+        <td class="col-md-1">ADUANA</td>
+        <td class="col-md-1">CONCEPTO</td>
+        <td class="col-md-4">OBSERVACIONES</td>
+        <td class="col-md-2">REALIZA CALCULO</td>
+        <td class="col-md-3">CLASIFICACIÓN DEL INGRESO</td>
+        <td class="col-md-1">ACCIONES</td>
+      </tr>
+      <tr class="row borderojo">
+        <td class="col-md-1">470</td>
+        <td class="col-md-1">Almacenaje</td>
+        <td class="col-md-4">Almacenaje = KG * Factor * Dias</td>
+        <td class="col-md-2">Almacenaje (Aeropuerto)</td>
+        <td class="col-md-3">0110-00006 Almacenaje</td>
+        <td class="col-md-1">
+          <a href="Buscartarifa.php">
+            <img class="icochico" src="/conta6/Resources/iconos/002-trash.svg">
+          </a>
+          <a href="Buscartarifa.php">
+            <img class="icochico" src="/conta6/Resources/iconos/magnifier.svg">
+          </a>
+          <a href="#EditarTarifaCliente" data-toggle="modal">
+            <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
+          </a>
+        </td>
+      </tr>
 
-        <tr class="row borderojo">
-          <td class="col-md-1">470</td>
-          <td class="col-md-1">Custodia</td>
-          <td class="col-md-4">1050 + 15 pesos por cada $25000 adicionales y a partir de la segunda semana el 15% adicional a esta cuota por semana o fraccion</td>
-          <td class="col-md-2">Custodia (Aeropuerto)</td>
-          <td class="col-md-3">0110-00011 Otros Gastos Comprobados</td>
-          <td class="col-md-1">
-            <a href="Buscartarifa.php">
-              <img class="file2" src="/conta6/Resources/iconos/002-trash.svg">
-            </a>
-            <a href="Buscartarifa.php">
-              <img class="file2" src="/conta6/Resources/iconos/magnifier.svg">
-            </a>
-            <a href="#EditarTarifaCliente" data-toggle="modal">
-              <img class="file2" src="/conta6/Resources/iconos/003-edit.svg">
-            </a>
-          </td>
-        </tr>
+      <tr class="row borderojo">
+        <td class="col-md-1">470</td>
+        <td class="col-md-1">Custodia</td>
+        <td class="col-md-4">1050 + 15 pesos por cada $25000 adicionales y a partir de la segunda semana el 15% adicional a esta cuota por semana o fraccion</td>
+        <td class="col-md-2">Custodia (Aeropuerto)</td>
+        <td class="col-md-3">0110-00011 Otros Gastos Comprobados</td>
+        <td class="col-md-1">
+          <a href="Buscartarifa.php">
+            <img class="icochico" src="/conta6/Resources/iconos/002-trash.svg">
+          </a>
+          <a href="Buscartarifa.php">
+            <img class="icochico" src="/conta6/Resources/iconos/magnifier.svg">
+          </a>
+          <a href="#EditarTarifaCliente" data-toggle="modal">
+            <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
+          </a>
+        </td>
+      </tr>
 
-        <tr class="row borderojo">
-          <td class="col-md-1">470</td>
-          <td class="col-md-1">Maniobras</td>
-          <td class="col-md-4">Los Valores con Factor 1 es KG * Factor 1</td>
-          <td class="col-md-2">Manejo (Aeropuerto)</td>
-          <td class="col-md-3">0110-00009 Maniobras</td>
-          <td class="col-md-1">
-            <a href="Buscartarifa.php">
-              <img class="file2" src="/conta6/Resources/iconos/002-trash.svg">
-            </a>
-            <a href="Buscartarifa.php">
-              <img class="file2" src="/conta6/Resources/iconos/magnifier.svg">
-            </a>
-            <a href="#EditarTarifaCliente" data-toggle="modal">
-              <img class="file2" src="/conta6/Resources/iconos/003-edit.svg">
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
+      <tr class="row borderojo">
+        <td class="col-md-1">470</td>
+        <td class="col-md-1">Maniobras</td>
+        <td class="col-md-4">Los Valores con Factor 1 es KG * Factor 1</td>
+        <td class="col-md-2">Manejo (Aeropuerto)</td>
+        <td class="col-md-3">0110-00009 Maniobras</td>
+        <td class="col-md-1">
+          <a href="Buscartarifa.php">
+            <img class="icochico" src="/conta6/Resources/iconos/002-trash.svg">
+          </a>
+          <a href="Buscartarifa.php">
+            <img class="icochico" src="/conta6/Resources/iconos/magnifier.svg">
+          </a>
+          <a href="#EditarTarifaCliente" data-toggle="modal">
+            <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 
-<?php require_once('../modales/Trafico'); ?>
+<?php require_once('modales/editarTarifaCliente.php'); ?>

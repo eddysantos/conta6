@@ -15,36 +15,6 @@
 .mleftx10{
   margin-left: 100px!important;
 }
-.new td, .new th {
- padding: 0rem 1.8rem !important;
-}
-/* .data-control{
-  display: block;
-  width: 100%;
-  padding: .3rem .75rem!important;
-  font-size: 14px;
-} */
-/* .data-date{
-  display: block;
-  width: 100%;
-} */
-/* .btn-ico{
-  background-color: transparent!important;
-  color: rgb(110, 110, 110)!important;
-  padding: .5rem .5rem!important;
-  display: inline-block!important;
-  font-size: 16px!important;
-}
-.btn-ico:hover{
-  color: rgb(209, 28, 28)!important;
-  text-shadow: 2px 1px 15px rgba(173,130,150,1);
-  font-size: 17px!important;
-} */
-
-.dpol2{
-  height: 27px;
-  text-shadow: none!important;
-}
 .text-normal{
   font-size: 14px!important;
 }

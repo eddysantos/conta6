@@ -1,6 +1,8 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+
+  $id_poliza = $_GET['id_poliza'];
 ?>
 
 <div class="container-fluid">
@@ -13,12 +15,14 @@
   </div>
 </div>
 
-<div id="datospoliza" class="contorno mt-5" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
+<div id="datospoliza" class="contorno mt-5"><!--Comienza DETALLE DATOS DE POLIZA-->
+  <!-- style="display:none" -->
   <h5 class="titulo">DATOS DE LA POLIZA</h5>
   <form class="form1">
     <table class="table text-center font14">
       <thead>
         <tr class="row m-0 encabezado">
+          <td class="col-md-2">TIPO</td>
           <td class="col-md-2">POLIZA</td>
           <td class="col-md-2">USUARIO</td>
           <td class="col-md-2">FECHA POLIZA</td>
@@ -29,14 +33,13 @@
       </thead>
       <tbody>
         <tr class="row m-0">
-          <td class="col-md-2 pt-4">234567</td>
+          <td class="col-md-2 pt-4"><input class="efecto disabled readonly" id="mstpol-tipo" type="text" db-id="" autocomplete="new-password" disabled value="2"></td>
+          <td class="col-md-2 pt-4"><input class="efecto disabled readonly" id="id_poliza" type="text" db-id="" autocomplete="new-password" disabled value="<?php echo $id_poliza; ?>"></td>
           <td class="col-md-2 pt-4">Estefania</td>
-          <td class="col-md-2">
-            <input class="efecto tiene-contenido" type="date">
-          </td>
-          <td class="col-md-2 pt-4">23/05/18</td>
+          <td class="col-md-2"><input class="efecto tiene-contenido" type="date" id="mstpol-fecha"></td>
+          <td class="col-md-2 pt-4"><input class="efecto disabled readonly" id="mstpol-fechaGenera" type="text" db-id="" autocomplete="new-password" disabled value="2018-05-30"></td>
           <td class="col-md-2 pt-4">Nuevo Laredo</td>
-          <td class="col-md-2 pt-4">234567</td>
+          <td class="col-md-2 pt-4"><input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="new-password" disabled value="0"></td>
         </tr>
         <tr class="row m-0">
           <td class="col-md-11 mt-4">
@@ -60,7 +63,8 @@
         <a class="nav-link" id="pills">Captura Detalle Póliza</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="pills">Detalle de Póliza</a>
+        <!--a class="nav-link" id="pills">Detalle de Póliza</a-->
+		    <a class="nav-link" href="#" id="detallepoliza">Detalle de Póliza</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="pills">Información Adicional</a>
@@ -80,34 +84,24 @@
             <tbody class="cuerpo">
               <tr class="row m-0 font14">
                 <td class="col-md-10 input-effect mt-5">
-                  <input  list="todascuentas" class="efecto"  id="detpol-cuenta">
-                  <datalist id="todascuentas">
-                    <option value="0206-00648 -- COMITE PARA EL FOMENTO Y PROTECCION PRECUARIA DEL ESTA DE NUEVO LEON A.C"></option>
-                    <option value="0100-00011 ---- BANAMEX DLLS CTA.79033561 NLDO"></option>
-                    <option value="0100-00012 ---- BANAMEX DLLS CTA.79033561 COMPLEMENTARIA NLDO"></option>
-                    <option value="0206-00808 -- CÀMARA DE COMERCIO, SERVICIOS Y TURISMO EN PEQUEÑO DE LA CIUDAD DE MÉXICO"></option>
-                    <option value="0100-00017 ---- BANAMEX CTA.7355485 NLDO"></option>
-                  </datalist>
+                  <?php if( $oRst_permisos["s_lstCompletaCtas_polizas"] == 1 ){
+                  echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-cuentas_mst_2niv" action="cuentas_mst_2niv" db-id="" autocomplete="new-password" onchange="Actualiza_Cuenta()">';
+                  }else{
+                  echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-cuentas_mst_2niv" action="cuentas_mst_2niv_limitada" db-id="" autocomplete="new-password" onchange="Actualiza_Cuenta()">';
+                  }?>
+                  <div class="popup-list" id="popup-display-cuentas_mst_2niv" style="display:none"></div>
                   <label for="detpol-cuenta">Seleccione una Cuenta</label>
                 </td>
                 <td class="col-md-2 input-effect mt-5">
-                  <input  list="gtoficina" class="efecto"  id="detpol-gtoficina">
-                  <datalist id="gtoficina">
-                    <option value="AEROPUERTO"></option>
-                    <option value="MANZANILLO"></option>
-                    <option value="NUEVO LAREDO"></option>
-                    <option value="VERACRUZ"></option>
-                  </datalist>
+                  <input class="efecto popup-input" id="detpol-gtoficina" type="text" id-display="#popup-display-oficina" action="oficinas" db-id="" autocomplete="new-password" onChange="Actualiza_Gasto_Oficina()">
+                  <div class="popup-list" id="popup-display-oficina" style="display:none"></div>
                   <label for="detpol-gtoficina">Gasto Oficina</label>
                 </td>
               </tr>
               <tr class="row m-0 font14">
                 <td class="col-md-10 input-effect mt-4">
-                  <input  list="clientes" class="efecto"  id="detpol-cliente">
-                  <datalist id="clientes">
-                    <option value="AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V --- CLT 6109"></option>
-                    <option value="INTERNATIONAL FREIGHT FORWARDER AND ADVISOR CUSTOMS DELIVERY S.A DE C.V --- CLT_7663"></option>
-                  </datalist>
+                  <input class="efecto popup-input" id="detpol-cliente" type="text" id-display="#popup-display-clientes_sinCtaDet" action="clientes" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-clientes_sinCtaDet" style="display:none"></div>
                   <label for="detpol-cliente">Cliente</label>
                 </td>
                 <td class="col-md-2 mt-4" role="button">
@@ -116,43 +110,47 @@
               </tr>
               <tr class="row m-0 font14">
                 <td class="col-md-12 input-effect mt-4">
-                  <input  class="efecto" id="detpol-concepto">
+                  <input  class="efecto" id="detpol-concepto" onchange="descripOficina();eliminaBlancosIntermedios(this);todasMayusculas(this);">
                   <label for="detpol-concepto">Concepto</label>
                 </td>
               </tr>
               <tr class="row m-0 font14">
                 <td class="col-md-2 input-effect mt-4">
-                  <input class="efecto" id="detpol-referencia">
+                  <input class="efecto popup-input" id="detpol-referencia" type="text" id-display="#popup-display-referencia" action="referencias" db-id="" autocomplete="new-password" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaReferencia(this);">
+                  <div class="popup-list" id="popup-display-referencia" style="display:none"></div>
                   <label for="detpol-referencia">Referencia</label>
                 </td>
                 <td class="col-md-2 input-effect mt-4">
-                  <input class="efecto" id="detpol-documento">
+                  <input class="efecto" id="detpol-documento" onchange="validaSoloNumeros(this);">
                   <label for="detpol-documento">Documento</label>
                 </td>
                 <td class="col-md-2 input-effect mt-4">
-                  <input class="efecto" id="detpol-factura">
+                  <input class="efecto popup-input" id="detpol-factura" type="text" id-display="#popup-display-factura" action="facturas_cfdi" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-factura" style="display:none"></div>
                   <label for="detpol-factura">Factura</label>
                 </td>
                 <td class="col-md-1 input-effect mt-4">
-                  <input class="efecto" id="detpol-anticipo">
+                  <input class="efecto popup-input" id="detpol-anticipo" type="text" id-display="#popup-display-anticipo" action="anticipos_mst" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-anticipo" style="display:none"></div>
                   <label for="detpol-anticipo">Anticipo</label>
                 </td>
                 <td class="col-md-1 input-effect mt-4">
-                  <input class="efecto" id="detpol-cheque">
+                  <input class="efecto popup-input" id="detpol-cheque" type="text" id-display="#popup-display-cheque" action="cheques_mst" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-cheque" style="display:none"></div>
                   <label for="detpol-cheque">Cheque</label>
                 </td>
                 <td class="col-md-2 input-effect mt-4">
-                  <input class="efecto" id="detpol-cargo">
+                  <input class="efecto" id="detpol-cargo" value="0" onchange="validaIntDec(this);">
                   <label for="detpol-cargo">Cargo</label>
                 </td>
                 <td class="col-md-2 input-effect mt-4">
-                  <input class="efecto" id="detpol-abono">
+                  <input class="efecto" id="detpol-abono" value="0" onchange="validaIntDec(this);">
                   <label for="detpol-abono">Abono</label>
                 </td>
               </tr>
               <tr class="row justify-content-center">
                 <td class="col-md-2 mt-4">
-                  <a href="" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                  <a href="#" class="boton" id="detpol-btnguardar"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
                 </td>
               </tr>
             </tbody>
@@ -195,7 +193,7 @@
           </div>
         </div>
 
-        <div id="detallepoliza" class="contorno-mov mt-4">
+        <div class="contorno-mov mt-4">
           <table class="table table-hover text-center">
             <thead>
               <tr class="row encabezado m-0 font18">
@@ -220,29 +218,7 @@
                 <td class="small">ABONO</td>
                 <td class="xs"></td>
               </tr>
-              <tr class="row m-0 borderojo">
-                <td class="xs">
-                  <a href=""><img class="icochico" src="/conta6/Resources/iconos/002-trash.svg"></a>
-                </td>
-                <td class="small pt-3 p-0">0110-00001</td>
-                <td class="small pt-3 p-0">2222</td>
-                <td class="small pt-3 p-0">2222</td>
-                <td class="small pt-3 p-0">CLT_7118</td>
-                <td class="small pt-3 p-0">2222</td>
-                <td class="small pt-3 p-0">2222</td>
-                <td class="small pt-3 p-0">2222</td>
-                <td class="small pt-3 p-0">2222</td>
-                <td class="small pt-3 p-0">2222</td>
-                <td class="small pt-3 p-0">2222</td>
-                <td class="med pt-3 p-0">T.DE LA FED.PTO.7003459</td>
-                <td class="small pt-3 p-0">111,133,299</td>
-                <td class="small pt-3 p-0">33,299</td>
-                <td class="xs">
-                  <a href="#detpol-editarRegPolDiario" data-toggle="modal">
-                    <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                  </a>
-                </td>
-              </tr>
+              <tbody id="tabla_detallepoliza"></tbody>
             </tbody>
           </table>
         </div>
@@ -852,15 +828,25 @@
   </div><!--/Termina continermov-->
 </div><!--/Termina container-fluid movible-->
 
+<?php
+require_once('modales/EditarRegistro.php');
+require_once('modales/buscarFacturas.php');
+?>
 
+<!--***************ESTILOS*****************-->
+<link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
+<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
+<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
 <script src="js/Polizas.js"></script>
+<script src="/conta6/Resources/js/eliminaBlancosIntermedios.js"></script>
+<script src="/conta6/Resources/js/todasMayusculas.js"></script>
+<script src="/conta6/Resources/js/validaSoloNumeros.js"></script>
+<script src="/conta6/Resources/js/validaReferencia.js"></script>
+<script src="/conta6/Resources/js/validaIntDec.js"></script>
+
 <script src="/conta6/Ubicaciones/Contabilidad/js/contenedor-movible.js"></script>
 <script src="/conta6/Resources/bootstrap/js/bootstrap-checkbox-toggle.js"></script>
 <script src="/conta6/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
-
-
- <?php
- require_once('modales/EditarRegistro.php');
- require_once('modales/buscarFacturas.php');
-  ?>
+<script src="/conta6/Resources/js/popup-list-plugin.js"></script>
+<script src="/conta6/Resources/js/table-fetch-plugin.js"></script>

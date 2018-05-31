@@ -11,127 +11,102 @@
       </li>
     </ul>
   </div>
+<!--Comienza DETALLE DATOS DE POLIZA-->
+  <div id="datosanticipo" class="contorno" style="display:none">
+    <h5 class="titulo">DATOS DE ANTICIPO</h5>
+    <form class="form1">
+      <table class="table text-center">
+        <thead>
+          <tr class="row encabezado colorRosa">
+            <td class="col-md-1">POLIZA</td>
+            <td class="col-md-1">USUARIO</td>
+            <td class="col-md-1">ANTICIPO</td>
+            <td class="col-md-2">FECHA REGISTRO</td>
+            <td class="col-md-2">FECHA ANTICIPO</td>
+            <td class="col-md-1">OFICINA</td>
+            <td class="col-md-2">CANCELACION</td>
+            <td class="col-md-2">NOTA</td>
+          </tr>
+        </thead>
+        <tbody class="font14">
+          <tr class="row">
+            <td class="col-md-1">234567</td>
+            <td class="col-md-1">Estefania</td>
+            <td class="col-md-1">33452</td>
+            <td class="col-md-2">30-06-2017</td>
+            <td class="col-md-2">28-06-2017</td>
+            <td class="col-md-1">240</td>
+            <td class="col-md-2">234577</td>
+            <td class="col-md-2">Ninguna</td>
+          </tr>
+          <tr class="row sub2 mt-4">
+            <td class="col-md-2">Valor</td>
+            <td class="col-md-1">Cliente</td>
+            <td class="col-md-1">Banco</td>
+            <td class="col-md-1">Cuenta</td>
+            <td class="col-md-7">Concepto</td>
+          </tr>
+          <tr class="row">
+            <td class="col-md-2">$21,027.00</td>
+            <td class="col-md-1">$21,027.00</td>
+            <td class="col-md-1">044</td>
+            <td class="col-md-1">8933</td>
+            <td class="col-md-7">CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div><!--/Termina DETALLE DATOS DE POLIZA-->
 
-<div id="datosanticipo" class="contorno brx3" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
-  <h5 class="titulo">DATOS DE ANTICIPO</h5>
-  <form class="form1" method="post">
-    <table class="table text-center">
-      <thead>
-        <tr class="row encabezado colorRosa">
-          <td class="col-md-1">POLIZA</td>
-          <td class="col-md-1">USUARIO</td>
-          <td class="col-md-1">ANTICIPO</td>
-          <td class="col-md-2">FECHA REGISTRO</td>
-          <td class="col-md-2">FECHA ANTICIPO</td>
-          <td class="col-md-1">OFICINA</td>
-          <td class="col-md-2">CANCELACION</td>
-          <td class="col-md-2">NOTA</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="row">
-          <td class="col-md-1">
-            <input class="border-0 text-center" type="text" readonly value="234567">
-          </td>
-          <td class="col-md-1">
-            <input class="border-0 text-center" type="text" readonly value="Estefania">
-          </td>
-          <td class="col-md-1">
-            <input class="border-0 text-center" type="text"  value="33452">
-          </td>
-          <td class="col-md-2">
-            <input class="border-0 text-center" type="text" value="30-06-2017">
-          </td>
-          <td class="col-md-2">
-            <input class="border-0 text-center" type="text" value="28-06-2017">
-          </td>
-          <td class="col-md-1">
-            <input class="border-0 text-center" type="text" value="240">
-          </td>
-          <td class="col-md-2">
-            <input class="border-0 text-center" type="text" readonly value="234577">
-          </td>
-          <td class="col-md-2">
-            <input class="border-0 text-center" type="text" value="Ninguna">
-          </td>
-        </tr>
-        <tr class="row">
-          <td class="col-md-2 brx2">
-            <input id="ant-valor" class="border-0 text-normal efecto text-center tiene-contenido" value="$21,027.00" type="text">
-            <label for="ant-valor">VALOR</label>
-          </td>
-          <td class="col-md-1 brx2">
-            <input id="ant-cliente" class="border-0 text-normal efecto text-center tiene-contenido" value="CLT_7634" type="text">
-            <label for="ant-cliente">CLIENTE</label>
-          </td>
-          <td class="col-md-1 brx2">
-            <input id="ant-banco" class="border-0 text-normal border-0 efecto text-center tiene-contenido" value="044" type="text">
-            <label for="ant-banco">BANCO</label>
-          </td>
-          <td class="col-md-1 brx2">
-            <input id="ant-cuenta" class="border-0 text-normal efecto border-0 text-center tiene-contenido" value="8933" type="text">
-            <label for="ant-cuenta">CUENTA</label>
-          </td>
-          <td class="col-md-7 brx2">
-            <input id="ch-concep" class="border-0 text-normal efecto text-center tiene-contenido" value="CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA" type="text">
-            <label for="ch-concep">CONCEPTO</label>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
-</div><!--/Termina DETALLE DATOS DE POLIZA-->
-
-  <form style="font-size:13px" method="post">
-    <div class="row">
-      <div class="col-md-2 offset-md-7 text-center">SUMA DE CARGOS</div>
-      <div class="col-md-2 text-center">SUMA DE ABONOS</div>
+  <form class="font14">
+    <div class="row text-center mt-4">
+      <div class="col-md-2 offset-md-7">SUMA DE CARGOS</div>
+      <div class="col-md-2">SUMA DE ABONOS</div>
     </div>
     <div class="row">
       <div class="col-md-2">
-        <a href="" class="boton" style="border:none"><img class="icomediano mleftx5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+        <a href="" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
       </div>
-      <div class="col-md-2 offset-md-5 input-effect brx1">
-        <input  class="text-normal form-control efecto text-center tiene-contenido" value="$ 15, 932.08" readonly>
+      <div class="col-md-2 offset-md-5">
+        <input class="efecto" value="$ 15, 932.08" readonly>
       </div>
-      <div class="col-md-2 input-effect brx1">
-        <input  class="text-normal form-control efecto text-center tiene-contenido" value="$ 15, 932.08" readonly>
+      <div class="col-md-2">
+        <input class="efecto" value="$ 15, 932.08" readonly>
       </div>
     </div>
   </form>
-  <div id="detallepoliza" class="contorno brx1">
+  <div id="detallepoliza" class="contorno">
     <table class="table table-hover text-center">
-      <thead style="font-size: 18px;font-weight: 100;">
+      <thead class="font18">
         <tr class="row encabezado">
-          <td class="col-md-12 text-center">DETALLE POLIZA</td>
+          <td class="col-md-12">DETALLE POLIZA</td>
+        </tr>
+        <tr class="row backpink">
+          <th class="xs"></th>
+          <th class="sm">CUENTA</th>
+          <th class="sm">REFERENCIA</th>
+          <th class="sm">CLIENTE</th>
+          <th class="sm">FACTURA</th>
+          <th class="sm">NOTACRED</th>
+          <th class="sm">ANTICIPO</th>
+          <th class="med">DESCRIPCION</th>
+          <th class="sm">CARGO</th>
+          <th class="sm">ABONO</th>
+          <th class="xs"></th>
         </tr>
       </thead>
-      <tbody class="">
-        <tr class="row">
-          <td class="xs backpink"></td>
-          <td class="sm text-normal backpink">CUENTA</td>
-          <td class="sm text-normal backpink">REFERENCIA</td>
-          <td class="sm text-normal backpink">CLIENTE</td>
-          <td class="sm text-normal backpink">FACTURA</td>
-          <td class="sm text-normal backpink">NOTACRED</td>
-          <td class="sm text-normal backpink">ANTICIPO</td>
-          <td class="med backpink">DESCRIPCION</td>
-          <td class="sm text-normal backpink">CARGO</td>
-          <td class="sm text-normal backpink">ABONO</td>
-          <td class="xs backpink"></td>
-        </tr>
-
+      <tbody class="font14">
         <tr class="row borderojo">
           <td class="xs"></td>
-          <td class="sm text-normal">0110-00001</td>
-          <td class="sm text-normal">N17008098</td>
-          <td class="sm text-normal">CLT_7118</td>
-          <td class="sm text-normal">2222</td>
-          <td class="sm text-normal">2222</td>
-          <td class="sm text-normal">2222</td>
+          <td class="sm">0110-00001</td>
+          <td class="sm">N17008098</td>
+          <td class="sm">CLT_7118</td>
+          <td class="sm">2222</td>
+          <td class="sm">2222</td>
+          <td class="sm">2222</td>
           <td class="med">T.DE LA FED.PTO.7003459</td>
-          <td class="sm text-normal">111,133,299</td>
-          <td class="sm text-normal">33,299</td>
+          <td class="sm">111,133,299</td>
+          <td class="sm">33,299</td>
           <td class="xs"></td>
         </tr>
       </tbody>
@@ -139,5 +114,4 @@
   </div>
 </div>
 
-
-  <script src="js/Anticipos.js"></script>
+<script src="js/Anticipos.js"></script>
