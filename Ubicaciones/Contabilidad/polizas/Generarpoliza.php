@@ -46,7 +46,7 @@ $usuario = $_SESSION['user_name'];
             <label for="diaconcepto">Concepto</label>
           </td>
           <td class="col-md-3 input-effect">
-            <input id="diapoliza" class="efecto tiene-contenido" type="text" db-id='' readonly>
+            <input id="diapoliza" class="efecto tiene-contenido" type="text" db-id="" readonly>
             <label for="diapoliza">Póliza Generada</label>
           </td>
         </tr>
@@ -55,7 +55,10 @@ $usuario = $_SESSION['user_name'];
             <a href="#" id="genFolioPolDia" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a>
           </td>
           <td class="col-md-3">
-            <a href="DetallepolizaDiario.php" class="boton"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a><!--nueva pagina, ingresar datos en poliza-->
+            <!--a href="#" id="btn_detallePoliza" class="boton"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a--><!--nueva pagina, ingresar datos en poliza-->
+            <!--a href='#DetallepolizaDiario' data-toggle='modal'-->
+            <a href='#DetallepolizaDiario' class='consultar-polizaMST boton' db-id='' role='button'><img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a-->
+            <!--a href="DetallepolizaDiario.php" id="btn_detallePoliza" class="boton"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a--><!--nueva pagina, ingresar datos en poliza-->
             <div id="respuesta"></div>
           </td>
         </tr>
@@ -222,7 +225,9 @@ $usuario = $_SESSION['user_name'];
   </div><!--/Termina Generar Poliza de Ingreso-->
 </div><!--/Termina Container FLuid-->
 
-
+<?php
+//require_once('DetallepolizaDiario.php');
+?>
 
 <!--***************ESTILOS*****************-->
 <link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">

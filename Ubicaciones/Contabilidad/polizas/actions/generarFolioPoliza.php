@@ -10,11 +10,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
 $fecha = trim($_POST['diafecha']);
 $concepto = trim($_POST['diaconcepto']);
-
-#'**********************************************
-	#'* PERMITE GENERAR POLIZAS DE CUALQUIER FECHA *
-	#'**********************************************
-	//$oRst_permisos = mysqli_fetch_array(mysqli_query($db,"select generar_x_fecha_polizas from TBL_Empleados_Internet where usuario = '$usuario'"));
+$system_callback = [];
 
 		#*******************
 		#* FECHA DE CIERRE *
@@ -25,9 +21,10 @@ $concepto = trim($_POST['diaconcepto']);
 						  ORDER BY pk_id_cierre DESC
 						  LIMIT 1 "));
 
-		$fecha_inicial = strtotime(date_format(date_create($oRst_Cierre["fecha_inicial"]),"Y/m/d"));
-		$fecha_final = strtotime(date_format(date_create($oRst_Cierre["fecha_final"]),"Y/m/d"));
+		$fecha_inicial = strtotime(date_format(date_create($oRst_Cierre["d_fecha_inicial"]),"Y/m/d"));
+		$fecha_final = strtotime(date_format(date_create($oRst_Cierre["d_fecha_final"]),"Y/m/d"));
 		$fecha_generar = strtotime(date_format(date_create($fecha),"Y/m/d"));
+
 
 	if( $oRst_permisos["s_generar_x_fecha_polizas"] == 1 ) {
 			generarPoliza($db,$concepto,$usuario,$oficina,$fecha);
@@ -56,7 +53,7 @@ $concepto = trim($_POST['diaconcepto']);
      $folio = $nFolio;
      require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
 
-
 	}
+
 
 ?>
