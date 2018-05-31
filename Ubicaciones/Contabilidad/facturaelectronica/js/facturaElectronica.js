@@ -77,13 +77,13 @@ $(document).ready(function(){
     $('#b-ctagastos').slideUp();
   });
 
-  // $('#mostrarConsulta').submit(function(){
-  //   $('#m-factura').fadeIn();
-  //   $('#b-ctagastos').slideUp();
-  // });
-  $('#mostrar').submit(function(){
-    $('#capmod').fadeIn();
+  $('#mostrarConsulta').submit(function(){
+    $('#m-factura').fadeIn();
+    $('#b-ctagastos').slideUp();
   });
+  // $('#mostrar').submit(function(){
+  //   $('#capmod').fadeIn();
+  // });
 
   $('.visualizar').click(function(){
     var accion = $(this).attr('accion');
@@ -92,13 +92,11 @@ $(document).ready(function(){
     switch (accion) {
       case "Ver-cliente":
       if (status == 'cerrado') {
-        $('#contorno1').fadeIn();
         $('#detalleCliente').fadeIn();
         $(this).attr('status', 'abierto');
         $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
         $(this).css('font-size', '20px');
       } else {
-        $('#contorno1').fadeOut();
         $('#detalleCliente').fadeOut();
         $(this).attr('status', 'cerrado');
         $(this).css('color', "");
@@ -107,13 +105,11 @@ $(document).ready(function(){
         break;
       case "Ver-iEmbarque":
       if (status == 'cerrado') {
-        $('#contorno2').fadeIn();
         $('#detalleEmbarque').fadeIn();
         $(this).attr('status','abierto');
         $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
         $(this).css('font-size', '20px');
       }else {
-        $('#contorno2').fadeOut();
         $('#detalleEmbarque').fadeOut();
         $(this).attr('status','cerrado');
         $(this).css('color', "");
@@ -122,13 +118,11 @@ $(document).ready(function(){
         break;
         case "Ver-iUsuario":
         if (status == 'cerrado') {
-          $('#contorno3').fadeIn();
           $('#detalleUsuario').fadeIn();
           $(this).attr('status','abierto');
           $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
           $(this).css('font-size', '20px');
         }else {
-          $('#contorno3').fadeOut();
           $('#detalleUsuario').fadeOut();
           $(this).attr('status','cerrado');
           $(this).css('color', "");

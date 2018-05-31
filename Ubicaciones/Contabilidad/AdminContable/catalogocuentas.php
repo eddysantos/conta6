@@ -230,14 +230,14 @@ $usuario = $_SESSION['user_name'];
           <a href="#"><img class="icomediano" src="/conta6/Resources/iconos/005-excel.svg"></a>
           <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/printer.svg"></a>
           <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/xml.svg"></a>
-		  <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/refresh-button.svg"></a>
+		      <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/refresh-button.svg"></a>
         </td>
         <td class="col-md-3 offset-md-3">
           <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." table-body="#tabla_cuentas"  action="tablacuentasDet">
        </td>
       </tr>
     </table>
-    <table class="table table-hover" id="empleadosCap" style="display:none;">
+    <table class="table table-hover fixed-table" id="empleadosCap" style="display:none;">
       <thead>
         <tr class="row m-0 encabezado font14">
           <td class="col-md-1"></td>

@@ -11,19 +11,6 @@ input[type=date]:hover{
   color: rgb(209, 28, 28);
   font-size: 14px!important;
 }
-/* input[type=date].data-date:hover{
-  color: rgb(209, 28, 28);
-  font-size: 16px!important;
-} */
-/* input[type=date].dpol{
-  text-shadow: none;
-  font-size: 12px;
-}
-input[type=date].dpol:hover{
-  font-size: 12px!important;
-  letter-spacing: 6px!important;
-} */
-
 
 input[type=submit]{
   background-color: transparent!important;
@@ -154,11 +141,3 @@ button[type=button].btn:hover{
   color: rgb(217, 0, 0)!important;
   letter-spacing: 3px!important;
 }
-
-
-/* input.inp-nom{
-  background-color: transparent;
-  text-align: center;
-  font-size: 16px;
-  height: 22px;
-  color: rgb(136, 136, 136); */

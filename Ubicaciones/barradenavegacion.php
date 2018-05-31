@@ -1,3 +1,9 @@
+<?php
+$_SESSION['user_name'] = 'admado';
+$usuario = $_SESSION['user_name'];
+require $root . '/conta6/Resources/PHP/Databases/conexion.php';
+require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -11,9 +11,9 @@
       <div class="modal-body p-0">
         <div class="container-fluid">
           <div id="" class="contorno">
-            <table class='table text-center table-hover'>
+            <table class='table text-center table-hover fixed-table'>
               <thead>
-                <tr class='row encabezado'>
+                <tr class='row encabezado m-0'>
                   <td class='col-md-1'>Nivel</td>
                   <td class='col-md-1'>Codigo Agrupador</td>
                   <td class='col-md-4'>Nombre de la Cuenta</td>

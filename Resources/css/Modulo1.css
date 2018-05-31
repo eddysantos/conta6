@@ -31,21 +31,12 @@ input:read-only{
   font-weight: normal!important;
   color:rgb(87, 87, 87)!important;
 }
-/* th.iap, td.iap, div.iap{
-  letter-spacing: 2px!important;
-  background-color:rgba(246, 92, 92, 0.09)!important;
-  font-weight: normal!important;
-  color:rgb(87, 87, 87)!important;
-} */
 .cont{
   max-width: 1300px;
 }
 .form-control {
     padding: .1rem .7rem;
 }
-/* .table td, .table th{
-  padding: .4rem!important;
-} */
 
 .centrar{
 height: 30px;
@@ -140,17 +131,17 @@ a img.file{
 a img.file:hover{
   width:20px;
 }
-.file-icon{
+/* .file-icon{
   border:0px;
   background-color:transparent!important;
-}
+} */
 
 
-.table-center{
+/* .table-center{
   margin:0px 100px!important;
   border:0px!important;
   width:1100px!important;
-}
+} */
 .brx1{
  margin-top: 10px!important;
 }
@@ -224,7 +215,7 @@ input.reg{
   cursor: pointer;
 }
 
-.input-control {
+/* .input-control {
   display: block;
   width: 100%;
   background-image: none;
@@ -236,7 +227,7 @@ input.reg{
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-}
+} */
 
 /*CONTENEDOR MOVIBLE -- CONTENEDOR MOVIBLE*/
 .containermov {
@@ -270,14 +261,14 @@ input.reg{
 .movible{
   max-width:1400px;
 }
-h5.titulo-mov {
+/* h5.titulo-mov {
   padding-bottom: 15px;
   margin-top: -25px;
   margin-left: 10px;
   background-color: white;
   width: 160px;
   text-align: center;
-}
+} */
 
 
 /*SOLO PARA DETALLE DE POLIZA --  SOLO PARA DETALLE DE POLIZA*/
@@ -329,13 +320,10 @@ h5.titulo-mov {
 
 /* popup-list */
 .popup-list{
-  /* position: absolute; */
   width: -webkit-fill-available;
   border-radius: 5px;
   border: 1px solid #ced4da;
-  /* border: 1px solid rgb(020, 020, 020); */
   background-color: white;
-  /* margin-right: 30px; */
   padding: 10px;
   z-index: 9999;
 }
@@ -353,16 +341,21 @@ h5.titulo-mov {
 
 .popup-list p.hovered{
   background-color: rgba(0, 0, 0, 0.2);
-  /* background-color: rgba(0, 0, 0, .2); */
   cursor: pointer;
 }
 
 .popup-list p:not(:last-child){
   border-bottom: 1px solid #ced4da;
-  /* border-bottom: 1px solid rgb(1,1,1); */
 }
 
 .popup-list p:last-child{
   margin-bottom: 0px;
 }
 /* FINALIZA popup-list */
+
+
+.fixed-table tbody{
+  display: block;
+  max-height: 380px;
+  overflow-y: auto;
+}
