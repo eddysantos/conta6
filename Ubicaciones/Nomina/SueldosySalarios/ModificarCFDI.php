@@ -3,8 +3,8 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid">
-  <div class="row submenuMed m-0 text-center">
+<div class="text-center">
+  <div class="row submenuMed m-0">
     <div class="col-md-6" role="button">
       <a  id="submenuMed" class="sueldosysalarios" accion="dgenerales" status="cerrado">DATOS GENERALES</a>
     </div>
@@ -21,7 +21,7 @@
 
   <div id="contornogen" class="contorno" style="display:none">
     <h5 class="titulo font14">DATOS GENERALES</h5>
-    <table class="table text-center">
+    <table class="table">
       <thead class="font16">
         <tr class="row m-0 encabezado">
           <td class="col-md-1">No.</td>
@@ -49,7 +49,7 @@
 
   <div id="contornolab" class="contorno" style="display:none">
     <h5 class="titulo font14">DATOS LABORALES</h5>
-    <table class="table text-center">
+    <table class="table">
       <thead class="font16">
         <tr class="row m-0 encabezado">
           <td class="col-md-2">Periosidad del Pagó</td>
@@ -77,12 +77,12 @@
 
   <div id="contorno" class="contorno">
     <div class="acordeon2">
-      <div class="encabezado text-center font16" data-toggle="collapse" href="#datospago">
+      <div class="encabezado font16" data-toggle="collapse" href="#datospago">
         <a  id="bread">DATOS DEL PAGO</a>
       </div>
-      <div id="datospago" class="card-block collapse">
+      <div id="datospago" class="collapse">
         <form class="form1">
-          <table class="table text-center">
+          <table class="table">
             <tbody>
               <tr class="row mt-5 m-0">
                 <td class="col-md-2 input-effect">
@@ -134,12 +134,12 @@
                   <label for="saldiario">Salario Diario</label>
                 </td>
               </tr>
-              <tr class="row mt-4 m-0">
-                <td class="col-md-1 backpink">CANTIDAD</td>
-                <td class="col-md-1 backpink">UNIDAD</td>
-                <td class="col-md-4 backpink">DESCRIPCION</td>
-                <td class="col-md-3 backpink">VALOR UNITARIO</td>
-                <td class="col-md-3 backpink">IMPORTE</td>
+              <tr class="row mt-4  backpink m-0">
+                <td class="col-md-1">CANTIDAD</td>
+                <td class="col-md-1">UNIDAD</td>
+                <td class="col-md-4">DESCRIPCION</td>
+                <td class="col-md-3">VALOR UNITARIO</td>
+                <td class="col-md-3">IMPORTE</td>
               </tr>
               <tr class="row m-0">
                 <td class="col-md-1">1</td>
@@ -156,12 +156,12 @@
 
 <!--ACORDEON DE PERCEPCIONES-->
     <div class="acordeon2 mt-3">
-      <div class="encabezado text-center font16" data-toggle="collapse" href="#percep">
+      <div class="encabezado font16" data-toggle="collapse" href="#percep">
         <a  id="bread">PERCEPCIONES</a>
       </div>
-      <div id="percep" class="card-block collapse">
+      <div id="percep" class="collapse">
         <form class="form1">
-          <table class="table text-center">
+          <table class="table">
             <tbody>
               <tr class="row mt-5">
                 <td class="col-md-6 offset-md-3">
@@ -215,19 +215,19 @@
 
               <tr class="row mt-4 m-0">
                 <td class="col-md-1 input-effect">
-                  <input class="efecto" readonly>
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input class="efecto" readonly>
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td class="col-md-4 input-effect">
-                  <input class="efecto" readonly>
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input class="efecto" readonly>
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input class="efecto" readonly>
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td>
                   <a><img class="icomediano" src="/conta6/Resources/iconos/delete.svg"></a>
@@ -242,12 +242,12 @@
 
 <!--ACORDEON DE OTROS PAGOS-->
     <div class="acordeon2 mt-3">
-      <div class="encabezado font16 text-center" data-toggle="collapse" href="#otrospagos">
+      <div class="encabezado font16" data-toggle="collapse" href="#otrospagos">
         <a  id="bread">OTROS PAGOS</a>
       </div>
-      <div id="otrospagos" class="card-block collapse">
+      <div id="otrospagos" class="collapse">
         <form class="form1">
-          <table class="table text-center">
+          <table class="table">
             <tbody>
               <tr class="row mt-3">
                 <td class="col-md-6 offset-md-3">
@@ -297,12 +297,12 @@
 
 <!--ACORDEON HORAS EXTRAS-->
     <div class="acordeon2 mt-3">
-      <div class="encabezado font16 text-center" data-toggle="collapse" href="#horasextras">
+      <div class="encabezado font16" data-toggle="collapse" href="#horasextras">
         <a  id="bread">HORAS EXTRAS</a>
       </div>
-      <div id="horasextras" class="card-block collapse">
+      <div id="horasextras" class="collapse">
         <form class="form1">
-          <table class="table text-center">
+          <table class="table">
             <tbody>
               <tr class="row mt-3">
                 <td class="col-md-6 offset-md-3">
@@ -354,12 +354,12 @@
 
 <!--ACORDEON DEDUCCIONES-->
     <div class="acordeon2 mt-3">
-      <div class="encabezado font16 text-center" data-toggle="collapse" href="#deduc">
+      <div class="encabezado font16" data-toggle="collapse" href="#deduc">
         <a  id="bread">DEDUCCIONES</a>
       </div>
-      <div id="deduc" class="card-block collapse">
+      <div id="deduc" class="collapse">
         <form class="form1">
-          <table class="table text-center">
+          <table class="table">
             <tbody>
               <tr class="row mt-3">
                 <td class="col-md-6 offset-md-3">
@@ -404,21 +404,21 @@
                 </td>
               </tr>
 
-              <tr class="row brx3 mr-0 ml-0">
+              <tr class="row m-0 mt-5">
                 <td class="col-md-1 input-effect">
-                  <input class="efecto" readonly>
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input class="efecto" readonly>
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td class="col-md-4 input-effect">
-                  <input class="efecto" readonly>
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input class="efecto" readonly>
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input class="efecto" readonly>
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td>
                   <a><img class="icomediano" src="/conta6/Resources/iconos/delete.svg"></a>
@@ -433,12 +433,12 @@
 
 <!--ACORDEON DEDUCCIONES-->
     <div class="acordeon2 mt-3">
-      <div class="encabezado font16 text-center" data-toggle="collapse" href="#pension">
+      <div class="encabezado font16" data-toggle="collapse" href="#pension">
         <a  id="bread">PENSIÓN ALIMENTICIA</a>
       </div>
-      <div id="pension" class="card-block collapse">
+      <div id="pension" class="collapse">
         <form class="form1">
-          <table class="table text-center">
+          <table class="table">
             <tbody>
               <tr class="row mt-3">
                 <td class="col-md-6 offset-md-3">
@@ -488,16 +488,16 @@
     </div>
 
 <!--ACORDEON TOTALES-->
-    <div class="acordeon2 brx1">
-      <div class="encabezado text-center" data-toggle="collapse" href="#totales">
+    <div class="acordeon2 mt-3">
+      <div class="encabezado font16" data-toggle="collapse" href="#totales">
         <a  id="bread">TOTALES</a>
       </div>
-      <div id="totales" class="card-block collapse">
+      <div id="totales" class="collapse">
         <form class="form1">
-          <table class="table text-center">
-            <tbody>
-              <tr class="row brx3 ml-0 mr-0">
-                <td class="col-md-4 backpink">INCAPACIDAD</td>
+          <table class="table">
+            <tbody style="letter-spacing:1px">
+              <tr class="row m-0 mt-5">
+                <td class="col-md-4 sub2 font14 pt-4">INCAPACIDAD :</td>
                 <td class="col-md-1 input-effect">
                   <input id="tipo" class="efecto">
                   <label for="tipo">Tipo</label>
@@ -524,7 +524,7 @@
                 </td>
               </tr>
 
-              <tr class="row brx2 ml-0 mr-0">
+              <tr class="row mt-5 m-0">
                 <td class="col-md-2 input-effect">
                   <input id="totpagar" class="efecto">
                   <label for="totpagar">Días a Pagar</label>
@@ -545,12 +545,12 @@
                   <input id="otrosgtos" class="efecto">
                   <label for="otrosgtos">Otros Gastos</label>
                 </td>
-                <td class="col-md-1 input-effect">
+                <td class="col-md-2 input-effect">
                   <input id="totneto" class="efecto">
                   <label for="totneto">Neto</label>
                 </td>
                 <td>
-                  <a><img class="icomediano mleftx2" src="/conta6/Resources/iconos/save.svg"></a>
+                  <a><img class="icomediano ml-3" src="/conta6/Resources/iconos/save.svg"></a>
                 </td>
               </tr>
             </tbody>
@@ -560,7 +560,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4 offset-md-4 text-center brx2" style="font-size: 16px;">
+      <div class="col-md-4 offset-md-4 mt-5 font16">
           <a href="" class="boton">REGREGAR</a>
       </div>
     </div>

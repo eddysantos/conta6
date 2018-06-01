@@ -78,7 +78,7 @@
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a href="" id="btn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="" class="linkbtn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>
@@ -94,7 +94,7 @@
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">Modificar Concepto de Honorarios</h5>
+        <h5 class="modal-tittle">Modificar Datos de Tarifa</h5>
       </div>
       <div class="modal-body p-0">
         <div class="container-fluid">
@@ -157,7 +157,7 @@
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a id="btn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a class="linkbtn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>
@@ -236,7 +236,7 @@
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a href="" id="btn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="" class="linkbtn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>

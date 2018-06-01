@@ -29,8 +29,6 @@ require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
   <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
   <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
-
-
 <!--***************SCRIPTS*****************-->
   <script src="/conta6/Resources/JQuery/sweetalert.min.js"></script>
   <script src="/conta6/Resources/bootstrap/alertifyjs/alertify.min.js"></script>

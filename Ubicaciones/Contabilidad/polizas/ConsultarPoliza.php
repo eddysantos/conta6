@@ -55,10 +55,10 @@
         <a  class="boton" style="border:none"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg" style="border:none"></a>
       </div>
       <div class="col-md-2 offset-md-5 mt-3">
-        <input  class="text-normal form-control efecto" value="$ 15, 932.08" readonly>
+        <input  class="font14 form-control efecto" value="$ 15, 932.08" readonly>
       </div>
       <div class="col-md-2 input-effect mt-3">
-        <input  class="text-normal form-control efecto" value="$ 15, 932.08" readonly>
+        <input  class="font14 form-control efecto" value="$ 15, 932.08" readonly>
       </div>
     </div>
   </form>

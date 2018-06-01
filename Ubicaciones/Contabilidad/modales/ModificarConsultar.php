@@ -25,7 +25,7 @@
         </div>
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer mt-3">
-      <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+      <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>
@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php" id="btn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php" class="linkbtn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -117,7 +117,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -150,7 +150,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -181,7 +181,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -213,7 +213,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/Proveedores/AsignarProveedor.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/Proveedores/AsignarProveedor.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -278,7 +278,7 @@
       </table>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Modulo2/TarifasAlmacenes/Conceptos.php" id="btn">Aceptar<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Modulo2/TarifasAlmacenes/Conceptos.php" class="linkbtn">Aceptar<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -311,7 +311,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
