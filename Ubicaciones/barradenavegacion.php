@@ -43,9 +43,9 @@ require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
 
 
 </head>
-  <header class="container-fluid">
+  <header class="container-fluid p-0">
 
-    <nav class="navbar navbar-fixed-top">
+    <nav class="navbar navbar-fixed-top p-0">
       <div class="container-fluid">
         <div class="navbar-header"></div>
         <div class="navbar-collapse m-0" id="menu">

@@ -61,10 +61,10 @@ input:disabled{
 
 /*Comienzan estilos para Detalle poliza*/
 
-input[type=submit].btn-dpol:hover{
+/* input[type=submit].btn-dpol:hover{
   font-size: 10px!important;
   letter-spacing: 12px!important;
-}
+} */
 
 button[type=button].btn{
   height: 24px;
@@ -107,10 +107,10 @@ button[type=button].btn:hover{
   transition: 0.3s;
 }
 
-.data-date{
+/* .data-date{
   display: block;
   width: 100%;
-}
+} */
 
 /*LINKS COMO BOTONES*/
 

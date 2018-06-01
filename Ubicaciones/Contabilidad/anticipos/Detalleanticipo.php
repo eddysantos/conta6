@@ -76,10 +76,10 @@
     <nav>
       <ul class="nav nav-pills nav-fill w-100 mt-5 mb-3">
         <li class="nav-item">
-          <a class="nav-link" id="pills">Captura Detalle de Anticipo</a>
+          <a class="nav-link pills">Captura Detalle de Anticipo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills">Detalle de Anticipo</a>
+          <a class="nav-link pills">Detalle de Anticipo</a>
         </li>
       </ul>
     </nav> <!--links de desplazamiento-->

@@ -16,7 +16,7 @@
     <table class="table">
       <tr class="row">
         <td class="col-md-6 offset-md-3">
-          <select class="input-dpol form-control" name="selector" id="opcion">
+          <select class="custom-selector"id="opcion">
             <option >Selecciona</option>
             <option value="1">7-ELEVEN MEXICO SA DE CV -- SEM980701STA -- 261</option>
             <option value="2">ABASTECEDORA Y DISTRIBUIDORA GARA SA DE CV -- ADG0802135RA</option>
