@@ -3,8 +3,8 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid">
-  <div class="row submenuMed text-center m-0">
+<div class="container-fluid text-center">
+  <div class="row submenuMed">
     <div class="col-md-6" role="button">
       <a  id="submenuMed" class="consultar" accion="generar" status="cerrado">GENERAR</a>
     </div>
@@ -12,14 +12,12 @@
       <a id="submenuMed" class="consultar" accion="consultar" status="cerrado">CONSULTAR</a>
     </div>
   </div>
-</div>
 
 
-<div class="container-fluid">
   <div id="contornoGen" class="contorno" style="display:none">
     <h5 class="titulo font14">GENERAR</h5>
-    <table class="table text-center">
-      <tbody class="cuerpo">
+    <table class="table form1">
+      <tbody class="font14">
         <tr class="row m-0 mt-4">
           <td class="col-md-3 input-effect">
             <select class="custom-select" id="ofi">
@@ -60,8 +58,8 @@
 
   <div id="contornoCon" class="contorno" style="display:none;">
     <h5 class="titulo font14">CONSULTAR</h5>
-    <table class="table text-center">
-      <tbody class="cuerpo">
+    <table class="table form1">
+      <tbody class="font14">
         <tr class="row">
           <td class="col-md-3 offset-md-2">
             <select class="custom-select" id="ofi">
@@ -100,7 +98,7 @@
       </tbody>
     </table>
 
-    <table class="table text-center table-hover mt-4">
+    <table class="table table-hover mt-4">
       <thead>
         <tr class="row encabezado">
           <td class="col-md-2">ID OFICINA</td>
@@ -155,7 +153,6 @@
     </table>
   </div>
 </div>
-
 
 <script src="js/AdministracionContable.js"></script>
 <?php
