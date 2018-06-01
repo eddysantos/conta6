@@ -14,9 +14,9 @@ $usuario = $_SESSION['user_name'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 
 ?>
-<div class="container-fluid">
-  <div class="row submenuMed m-0">
-    <div class="col-md-12 text-center" role="button">
+<div class="container-fluid text-center">
+  <div class="row submenuMed">
+    <div class="col-md-12" role="button">
       <a  id="submenuMed" class="consultar" accion="eCap" status="cerrado">CATÁLOGO DE CUENTAS</a>
     </div>
   </div>
@@ -26,22 +26,10 @@ $usuario = $_SESSION['user_name'];
       <div class="encabezado font16" data-toggle="collapse" href="#CuentasMaestras">
         <a  id="bread">GENERAR CUENTAS MAESTRAS (Primer Nivel)</a>
       </div>
-      <div id="CuentasMaestras" class="card-block collapse mr-20 ml-20">
+      <!-- <div id="CuentasMaestras" class="card-block collapse"> -->
+      <div id="CuentasMaestras" class="collapse">
         <form class="form1">
-              <tr class="row brx2">
-                <td class="col-md-12 input-effect">
-                  <input  list="cuentasSAT" class="text-normal efecto text-center" id="ctaSAT">
-                  <datalist id="cuentasSAT" href="#lst_conta_cs_cuentas_mst"></datalist>
-                  <label for="ctaSAT">CUENTAS SAT</label>
-                </td>
-                <td class="col-md-2 input-effect">
-                  <input  list="NSAT" class="text-normal efecto text-center"  id="naturSAT">
-                  <datalist id="NSAT" href="#lst_conta_cs_sat_natur_cuentas"></datalist>
-                  <label for="naturSAT">NATURALEZA SAT</label>
-                </td>
-                <td class="col-md-3 input-effect">
-                  <input list="cta-mtraTipo" class="text-normal efecto text-center" id="tipo">
-          <table class="table text-center mb-0">
+          <table class="table mb-0">
             <tbody class="font14">
               <tr class="row m-0 mt-5">
                 <td class="col-md-12 input-effect">
@@ -71,11 +59,6 @@ $usuario = $_SESSION['user_name'];
                   <label for="tipo">TIPO</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input id="ctamaestra" class="efecto text-center" type="text" maxlength="10">
-                  <label for="ctamaestra">CUENTA MAESTRA</label>
-                </td>
-                <td class="col-md-2 input-effect">
-                  <input id="concepto" class="efecto text-center" type="text">
         				  <input id="ctamaestra" class="efecto" type="text" autocomplete="new-password" maxlength="10" onblur="valida_ctamaestra()">
         				  <label for="ctamaestra">CUENTA MAESTRA</label>
                 </td>
@@ -100,9 +83,9 @@ $usuario = $_SESSION['user_name'];
       <div class="encabezado font16" data-toggle="collapse" href="#collapsetwo">
         <a  id="bread">GENERAR CUENTAS DE DETALLE (Segundo Nivel)</a>
       </div>
-      <div id="collapsetwo" class="card-block collapse mr-20 ml-20">
+      <div id="collapsetwo" class="collapse">
         <form class="form1">
-          <table class="table m-0 mt-4 text-center">
+          <table class="table m-0 mt-4 ">
             <tbody class="font14">
               <tr class="row m-0 mt-4">
                 <td class="col-md-12 input-effect">
@@ -226,19 +209,19 @@ $usuario = $_SESSION['user_name'];
       <div class="encabezado font16" data-toggle="collapse" href="#collapsetres">
         <a  id="bread">GENERAR CUENTAS DE CLIENTES (Segundo Nivel)</a>
       </div>
-      <div id="collapsetres" class="card-block collapse ml-20 mr-20">
+      <div id="collapsetres" class="collapse">
         <form class="form1">
-          <table class="table text-center ">
-            <tbody class="cuerpo">
+          <table class="table">
+            <tbody class="font14">
               <tr class="row m-0 mt-4">
                 <td class="col-md-10 input-effect mt-4">
-				  <input class="efecto popup-input" id="clt" type="text" id-display="#popup-display-clientes_sinCtaDet" action="clientes_sinCtaDet" db-id="" autocomplete="new-password">
+				          <input class="efecto popup-input" id="clt" type="text" id-display="#popup-display-clientes_sinCtaDet" action="clientes_sinCtaDet" db-id="" autocomplete="new-password">
                   <div class="popup-list" id="popup-display-clientes_sinCtaDet" style="display:none"></div>
                   <label for="clt">CLIENTES</label>
                 </td>
                 <td class="col-md-2 mt-4">
-                  <a href="#" id="generarCtaCLT" class="boton btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
-				  <div id="respuestaCtasClientes"></div>
+                  <a href="#" id="generarCtaCLT" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
+				          <div id="respuestaCtasClientes"></div>
                 </td>
               </tr>
             </tbody>
@@ -252,7 +235,7 @@ $usuario = $_SESSION['user_name'];
     <h5 class="titulo font16">CATALOGO</h5>
     <table class="table mt-4">
       <tr class="row m-0">
-        <td class="col-md-6">
+        <td class="col-md-6 text-left">
           <a href="#"><img class="icomediano" src="/conta6/Resources/iconos/005-excel.svg"></a>
           <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/printer.svg"></a>
           <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/xml.svg"></a>
