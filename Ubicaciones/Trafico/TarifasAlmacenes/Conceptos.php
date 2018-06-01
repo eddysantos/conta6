@@ -6,7 +6,7 @@
 <table class="text-center table brx4">
   <tr class="row">
     <td class="col-md-6 offset-md-3">
-      <select class="input-dpol form-control  border">
+      <select class="custom-select">
         <option>Seleccione un Almacen</option>
         <option>3 --- Aerobias de Mexico S.A de C.V --- 470</option>
         <option>4 --- Agentes Aduanales Asociados para el Comercio Exterior S.A de C.V --- 470</option>
@@ -100,7 +100,7 @@
       <tbody>
         <tr class="row">
           <td class="col-md-3">
-            <select class="input-dpol form-control  border">
+            <select class="custom-select">
               <option>Filtro por Conceptos</option>
               <option>Almacenaje</option>
               <option>Custodia</option>

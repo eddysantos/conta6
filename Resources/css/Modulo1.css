@@ -1,12 +1,12 @@
 /* PARA QUITAR FONDO AMARILLO DE LOS INPUTS */
 
-input.input-dpol{
+/* input.input-dpol{
   background-color:transparent!important;
   letter-spacing:3px!important;
   text-align:center!important;
   font-size:11px!important;
   height: 22px;
-}
+} */
 input:read-only{
   background-color: #e9ecef;
 }
@@ -154,10 +154,10 @@ a img.file:hover{
 .brx4{
   margin-top: 40px!important;
 }
-.m0b0{
+/* .m0b0{
   margin: 0px!important;
   border: 0px!important;
-}
+} */
 select{
   font-size: 10pt!important;
   text-align-last:center;
@@ -204,13 +204,13 @@ input.reg{
   color: rgb(75, 74, 74)!important;
 }
 
-#pills{
+.pills{
   background-color: transparent!important;
   color: rgb(161, 160, 160)!important;
   letter-spacing: 6px!important;
   font-size: 14px;
 }
-#pills:hover, #pills:focus{
+.pills:hover, .pills:focus{
   color: rgb(209, 28, 28)!important;
   cursor: pointer;
 }
@@ -232,8 +232,8 @@ input.reg{
 /*CONTENEDOR MOVIBLE -- CONTENEDOR MOVIBLE*/
 .containermov {
   overflow: hidden;
-  width: 100%;
-  margin: 0px auto;
+  /* width: 100%;
+  margin: 0px auto; */
 }
 .containermov .contenedor-movible {
   -webkit-transition: -webkit-transform 300ms ease-in-out;
@@ -258,9 +258,11 @@ input.reg{
   border-radius: 10px;
   padding: 20px 20px 5px 20px!important;
 }
-.movible{
+/* .movible{
   max-width:1400px;
-}
+  padding-right: 15px!important;
+  padding-left: 15px!important;
+} */
 /* h5.titulo-mov {
   padding-bottom: 15px;
   margin-top: -25px;
@@ -299,10 +301,10 @@ input.reg{
 
 /* OPCIONES SELECT -- OPCIONES SELECT*/
 
-.cfdcbb {
+.cfdcbb, .cfdi, .cheque, .compext,.otro,.transferencia{
   display: none;
 }
-.cfdi {
+/* .cfdi {
   display:none;
 }
 .cheque {
@@ -316,7 +318,7 @@ input.reg{
 }
 .transferencia{
   display: none;
-}
+} */
 
 /* popup-list */
 .popup-list{
@@ -339,10 +341,10 @@ input.reg{
   color: white;
 }
 
-.popup-list p.hovered{
+/* .popup-list p.hovered{
   background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
-}
+} */
 
 .popup-list p:not(:last-child){
   border-bottom: 1px solid #ced4da;
