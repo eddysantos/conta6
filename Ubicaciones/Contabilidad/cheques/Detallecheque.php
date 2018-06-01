@@ -83,13 +83,13 @@
   <nav>
     <ul class="nav nav-pills nav-fill w-100 m-15">
       <li class="nav-item">
-        <a class="nav-link" id="pills">Captura Detalle de Cheque</a>
+        <a class="nav-link pills">Captura Detalle de Cheque</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="pills">Detalle del Cheque</a>
+        <a class="nav-link pills">Detalle del Cheque</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="pills">Información Adicional</a>
+        <a class="nav-link pills">Información Adicional</a>
       </li>
     </ul>
   </nav> <!--links de desplazamiento-->

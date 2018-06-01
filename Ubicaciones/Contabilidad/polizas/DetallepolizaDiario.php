@@ -60,14 +60,13 @@
   <nav>
     <ul class="nav nav-pills nav-fill w-100 m-15">
       <li class="nav-item">
-        <a class="nav-link" id="pills">Captura Detalle Póliza</a>
+        <a class="nav-link pills" >Captura Detalle Póliza</a>
       </li>
       <li class="nav-item">
-        <!--a class="nav-link" id="pills">Detalle de Póliza</a-->
-		    <a class="nav-link" href="#" id="detallepoliza">Detalle de Póliza</a>
+        <a class="nav-link pills" id="detallepoliza">Detalle de Póliza</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="pills">Información Adicional</a>
+        <a class="nav-link pills" >Información Adicional</a>
       </li>
     </ul>
   </nav> <!--links de desplazamiento-->
