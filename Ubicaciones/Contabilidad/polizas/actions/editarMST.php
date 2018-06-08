@@ -2,10 +2,12 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
-$partida = trim($_POST['partida']);
+$tipo = trim($_POST['tipo']);
 $id_poliza = trim($_POST['id_poliza']);
+$fecha = trim($_POST['fecha']);
+$concepto = trim($_POST['concepto']);
 
-$query = "DELETE FROM conta_t_polizas_det WHERE pk_partida = ?";
+$query = "UPDATE conta_t_polizas_mst SET d_fecha = ?, s_concepto = ? WHERE pk_id_poliza = ?";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -14,7 +16,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('s',$partida);
+$stmt->bind_param('sss',$fecha,$concepto,$id_poliza);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
@@ -37,12 +39,19 @@ if ($affected == 0) {
   exit_script($system_callback);
 }
 
+/* SE ACTUALIZA EL DETALLE DE LA POLIZA*/
+mysqli_query($db,"UPDATE conta_t_polizas_det SET d_fecha= '$fecha', fk_tipo = $tipo WHERE fk_id_poliza = $id_poliza");
 
-$descripcion = "Se elimino la Partida: $partida de la Poliza: $id_poliza";
+$descripcion = "Se Actualizo la Poliza: $id_poliza, Fecha:$fecha Concepto:$concepto Tipo:$tipo";
 
 $clave = 'polizas';
 $folio = $id_poliza;
 require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+
+
+
+
+
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";

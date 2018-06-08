@@ -3,8 +3,11 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 
   $id_poliza = $_GET['id_poliza'];
-?>
+  $tipo = $_GET['tipo'];
 
+  $sql_Select = mysqli_query($db,"Select * from conta_t_polizas_mst Where pk_id_poliza = $id_poliza AND fk_id_aduana = '$aduana'");
+  $totalRegistrosSelect = mysqli_num_rows($sql_Select);        
+?>
 <div class="container-fluid">
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
@@ -14,8 +17,34 @@
     </ul>
   </div>
 </div>
+<?PHP 
+if( $totalRegistrosSelect > 0 ){
+	$oRst_Select = mysqli_fetch_array($sql_Select);
+	$pol_cancela = trim($oRst_Select["s_cancela"]);
 
-<div id="datospoliza" class="contorno mt-5"><!--Comienza DETALLE DATOS DE POLIZA-->
+	$cancela = $oRst_Select['s_cancela'];
+
+	if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 ){ $clase = 'class="efecto tiene-contenido"'; }else{ $clase = 'class="efecto disabled readonly" disabled'; }
+	if( $oRst_permisos["s_admdor_sistema"] == 1 ){ $claseAdmin = 'class="efecto tiene-contenido"'; }else{ $claseAdmin = 'class="efecto disabled readonly" disabled'; }
+	
+	if( $cancela == 1 ){ $clase = 'class="efecto disabled readonly" disabled'; $claseAdmin = 'class="efecto disabled readonly" disabled'; }
+
+
+	$oRst_STPD_sql = mysqli_query($db,"select fk_id_poliza,SUM(n_cargo)as SUMA_CARGOS,SUM(n_abono)as SUMA_ABONOS from conta_t_polizas_det where fk_id_poliza = $id_poliza group by fk_id_poliza ");
+	$totalRegistrosSTPD = mysqli_num_rows($oRst_STPD_sql);
+	if( $totalRegistrosSTPD > 0 ){
+		$oRst_STPD = mysqli_fetch_array($oRst_STPD_sql);
+		$sumaCargos = $oRst_STPD['SUMA_CARGOS'];
+		$sumaAbonos = $oRst_STPD['SUMA_ABONOS'];
+	}else{
+		$sumaCargos = 0;
+		$sumaAbonos = 0;
+	}
+?>
+<input type="hidden" id="usuario_activo" db-id="" autocomplete="new-password" value="<?php echo $usuario; ?>">
+<input type="hidden" id="aduana_activa"  db-id="" autocomplete="new-password" value="<?php echo $aduana; ?>">
+
+<div id="datospoliza" class="contorno mt-5" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
   <!-- style="display:none" -->
   <h5 class="titulo">DATOS DE LA POLIZA</h5>
   <form class="form1">
@@ -28,26 +57,37 @@
           <td class="col-md-2">FECHA POLIZA</td>
           <td class="col-md-2">GENERACION</td>
           <td class="col-md-2">ADUANA</td>
-          <td class="col-md-2">CANCELACION</td>
+          <td class="col-md-2">ESTATUS</td>
         </tr>
       </thead>
       <tbody>
         <tr class="row m-0">
-          <td class="col-md-2 pt-4"><input class="efecto disabled readonly" id="mstpol-tipo" type="text" db-id="" autocomplete="new-password" disabled value="2"></td>
+          <td class="col-md-2 pt-4"><input <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="new-password" value="<?php echo $tipo; ?>"></td>
           <td class="col-md-2 pt-4"><input class="efecto disabled readonly" id="id_poliza" type="text" db-id="" autocomplete="new-password" disabled value="<?php echo $id_poliza; ?>"></td>
-          <td class="col-md-2 pt-4">Estefania</td>
-          <td class="col-md-2"><input class="efecto tiene-contenido" type="date" id="mstpol-fecha"></td>
-          <td class="col-md-2 pt-4"><input class="efecto disabled readonly" id="mstpol-fechaGenera" type="text" db-id="" autocomplete="new-password" disabled value="2018-05-30"></td>
-          <td class="col-md-2 pt-4">Nuevo Laredo</td>
-          <td class="col-md-2 pt-4"><input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="new-password" disabled value="0"></td>
+          <td class="col-md-2 pt-4"><?php echo trim($oRst_Select["fk_usuario"]); ?></td>
+          <td class="col-md-2 pt-4"><input <?php echo $clase; ?> type="date" id="mstpol-fecha" value="<?php echo trim($oRst_Select["d_fecha"]); ?>"></td>
+          <td class="col-md-2 pt-4"><?php echo trim($oRst_Select["d_fecha_alta"]); ?></td>
+          <td class="col-md-2 pt-4"><input class="efecto disabled readonly" id="mstpol-aduana" type="text" db-id="" autocomplete="new-password" disabled value="<?php echo trim($oRst_Select["fk_id_aduana"]); ?>"></td>
+          <td class="col-md-2 pt-4"><select size="1" name="mstpol-cancela" id="mstpol-cancela" onchange="cambiarStatus()">
+							<?php if( $cancela == 0 ){ 
+									echo "<option value='0' selected>Activo</option>";
+									echo "<option value='1'>Cancelado</option>"; 
+								  }else{
+								  	echo "<option value='0'>Activo</option>"; 
+								  	echo "<option value='1' selected>Cancelado</option>"; 
+								  } ?>
+									</select>
+		  <!--input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="new-password" disabled value="<?php echo $cancela; ?>"--></td>
         </tr>
         <tr class="row m-0">
           <td class="col-md-11 mt-4">
-            <input id="concep" class="efecto tiene-contenido" value="CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA" type="text">
+            <input id="mstpol-concepto" <?php echo $clase; ?> value="<?php echo trim($oRst_Select["s_concepto"]); ?>" type="text">
             <label for="concep">CONCEPTO</label>
           </td>
           <td class="col-md-1 mt-4 text-left">
-            <a href="" class="btn-block mt-1"> <img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
+		  	<?php if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 && $cancela == 0 ){ ?>
+            <a href="#" id="guardarPolMST" class="btn-block mt-1"> <img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
+			<?php } ?>
           </td>
         </tr>
       </tbody>
@@ -93,7 +133,7 @@
                   <label for="detpol-cuenta">Seleccione una Cuenta</label>
                 </td>
                 <td class="col-md-2 input-effect mt-5">
-                  <input class="efecto popup-input" id="detpol-gtoficina" type="text" id-display="#popup-display-oficina" action="oficinas" db-id="" autocomplete="new-password" onChange="Actualiza_Gasto_Oficina()">
+                  <input class="efecto popup-input" id="detpol-gtoficina" type="text" id-display="#popup-display-oficina" action="oficinas" db-id="" autocomplete="new-password" onChange="valDescripOficina()">
                   <div class="popup-list" id="popup-display-oficina" style="display:none"></div>
                   <label for="detpol-gtoficina">Gasto Oficina</label>
                 </td>
@@ -110,7 +150,7 @@
               </tr>
               <tr class="row m-0 font14">
                 <td class="col-md-12 input-effect mt-4">
-                  <input  class="efecto" id="detpol-concepto" onchange="descripOficina();eliminaBlancosIntermedios(this);todasMayusculas(this);">
+                  <input  class="efecto" id="detpol-concepto" onchange="valDescripOficina();eliminaBlancosIntermedios(this);todasMayusculas(this);">
                   <label for="detpol-concepto">Concepto</label>
                 </td>
               </tr>
@@ -162,10 +202,10 @@
         </div>
         <div class="row justify-content-center text-center">
           <div class="col-md-2 mt-3">
-            <input  class="font14 efecto" value="$ 15, 932.08" readonly>
+            <input class="font14 efecto" value="<?php echo $sumaCargos; ?>" readonly>
           </div>
           <div class="col-md-2 mt-3">
-            <input  class="font14 efecto" value="$ 15, 932.08" readonly>
+            <input class="font14 efecto" value="<?php echo $sumaAbonos; ?>" readonly>
           </div>
         </div>
       </div>
@@ -183,13 +223,14 @@
             <a href="#detpol-Honorarios" data-toggle="modal" class="boton"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI HONORARIOS</a>
           </div>
           <div class="col-md-2 mt-3">
-            <a class="boton" style="border:none"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+		  	<!--a href='#detpol-editarRegPolDiario?id_poliza=174&aduana=470' data-toggle='modal' class="boton" style="border:none"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg" style="border:none"></a-->
+			<a href='#detpol-editarRegPolDiario' data-toggle='modal' class="boton" style="border:none"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg" style="border:none"></a>
           </div>
           <div class="col-md-2 mt-3">
-            <input class="efecto" value="$ 15, 932.08" readonly>
+            <input class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
           </div>
           <div class="col-md-2 mt-3">
-            <input class="efecto" value="$ 15, 932.08" readonly>
+            <input class="efecto" value="<?php echo $sumaAbonos; ?>" readonly>
           </div>
         </div>
 
@@ -850,3 +891,13 @@ require_once('modales/buscarFacturas.php');
 <script src="/conta6/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
 <script src="/conta6/Resources/js/popup-list-plugin.js"></script>
 <script src="/conta6/Resources/js/table-fetch-plugin.js"></script>
+
+<?PHP 
+}else{ #$totalRegistrosSelect?>
+	<br><br>
+	<p align="center"><u>
+	<font face="Trebuchet MS" size="2" align="center" >NO HAY DATOS DE ESTA P&Oacute;LIZA, O ES P&Oacute;LIZA DE OTRA OFICINA</font></u></p>	
+	<p align="center">&nbsp;</p>	
+<?php 
+} #$totalRegistrosSelect 
+?>

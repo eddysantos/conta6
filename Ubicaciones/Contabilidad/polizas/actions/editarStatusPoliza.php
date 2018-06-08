@@ -2,10 +2,11 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
-$partida = trim($_POST['partida']);
-$id_poliza = trim($_POST['id_poliza']);
 
-$query = "DELETE FROM conta_t_polizas_det WHERE pk_partida = ?";
+$id_poliza = trim($_POST['id_poliza']);
+$statusPoliza = trim($_POST['statusPoliza']);
+
+$query = "UPDATE conta_t_polizas_mst SET s_cancela = ? WHERE pk_id_poliza = ?";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -14,7 +15,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('s',$partida);
+$stmt->bind_param('ss',$statusPoliza,$id_poliza);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
@@ -37,8 +38,7 @@ if ($affected == 0) {
   exit_script($system_callback);
 }
 
-
-$descripcion = "Se elimino la Partida: $partida de la Poliza: $id_poliza";
+$descripcion = "Se Actualizo la Poliza: $id_poliza, Estatus:$statusPoliza";
 
 $clave = 'polizas';
 $folio = $id_poliza;
@@ -47,7 +47,4 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
-
-
-
 ?>

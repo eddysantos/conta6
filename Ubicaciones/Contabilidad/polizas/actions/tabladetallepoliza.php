@@ -1,13 +1,6 @@
 <?php
-$_SESSION['user_name'] = 'admado';
-$usuario = $_SESSION['user_name'];
-
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Databases/conexion.php';
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-
-//$system_callback = [];
-//$data = $_POST;
 
 $id_poliza = trim($_POST['id_poliza']);
 $query = "SELECT * FROM conta_t_polizas_det WHERE fk_id_poliza = ?";
@@ -43,11 +36,12 @@ if ($rslt->num_rows == 0) {
 
 while ($row = $rslt->fetch_assoc()) {
   $fk_id_cuenta = trim($row['fk_id_cuenta']);
+  $partida = $row['pk_partida'];
 
   $system_callback['data'] .=
   "<tr class='row m-0 borderojo'>
     <td class='xs'>
-      <a href='#'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+      <a href='#' onclick='borrarRegistro($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
     </td>
     <td class='small pt-3 p-0'>$fk_id_cuenta</td>
     <td class='small pt-3 p-0'>gasto</td>
