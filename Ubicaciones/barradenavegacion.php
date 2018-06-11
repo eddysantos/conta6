@@ -1,8 +1,6 @@
 <?php
-$_SESSION['user_name'] = 'admado';
-$usuario = $_SESSION['user_name'];
-require $root . '/conta6/Resources/PHP/Databases/conexion.php';
-require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
+$root = $_SERVER['DOCUMENT_ROOT'];
+require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -217,7 +215,6 @@ require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
       </header>
 
   <?php
-    $root = $_SERVER['DOCUMENT_ROOT'];
     require $root . '/conta6/Ubicaciones/Contabilidad/modales/ImprimirPolizas.php';
     require $root . '/conta6/Ubicaciones/Contabilidad/Reportes/modales/ModalRepo.php';
     require $root . '/conta6/Ubicaciones/Contabilidad/modales/Modificarconsultar.php';

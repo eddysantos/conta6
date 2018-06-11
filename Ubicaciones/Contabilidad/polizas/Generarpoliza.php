@@ -1,14 +1,9 @@
 <?php
-$_SESSION['user_name'] = 'admado';
-$usuario = $_SESSION['user_name'];
-
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Databases/conexion.php';
-  require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-
+<input type="hidden" id="diausuario" value="<?php echo $usuario;?>">
 <div class="container-fluid">
   <div class="row submenuMed m-0">
     <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
@@ -27,12 +22,12 @@ $usuario = $_SESSION['user_name'];
     </ul>
   </div>
 
-  <!--Comienza Generar Poliza de Diario-->
-  <div id="polizadiario" class="contorno" style="display:none">
+  <!--Comienza Generar Poliza de Diario e Ingreso-->
+  <div id="gpoliza" class="contorno" style="display:none">
     <table class="table text-center">
       <thead>
         <tr class="row m-0 encabezado font18">
-          <td class="col-md-12">GENERAR POLIZA TIPO 4</td>
+          <td class="col-md-12">GENERAR POLIZA</td>
         </tr>
       </thead>
       <tbody class="cuerpo">
@@ -46,60 +41,19 @@ $usuario = $_SESSION['user_name'];
             <label for="diaconcepto">Concepto</label>
           </td>
           <td class="col-md-3 input-effect">
-            <input id="diapoliza" class="efecto tiene-contenido" type="text" db-id="" readonly>
-            <label for="diapoliza">Póliza Generada</label>
+		  	<input type="hidden" id="diaaduana" class="efecto tiene-contenido" type="text" db-id="" value="<?php echo $aduana;?>" readonly>
+            <input id="diatipo" class="efecto tiene-contenido" type="text" db-id="" autocomplete="new-password" readonly>
+            <label for="diatipo">Tipo</label>
           </td>
         </tr>
         <tr class="row justify-content-center mt-5">
           <td class="col-md-3">
             <a href="#" id="genFolioPolDia" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a>
           </td>
-          <td class="col-md-3">
-            <!--a href="#" id="btn_detallePoliza" class="boton"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a--><!--nueva pagina, ingresar datos en poliza-->
-            <!--a href='#DetallepolizaDiario' data-toggle='modal'-->
-            <a href='#DetallepolizaDiario' class='consultar-polizaMST boton' db-id='' role='button'><img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a-->
-            <!--a href="DetallepolizaDiario.php" id="btn_detallePoliza" class="boton"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a--><!--nueva pagina, ingresar datos en poliza-->
-            <div id="respuesta"></div>
-          </td>
         </tr>
       </tbody>
     </table>
-  </div><!--/Termina Generar Poliza de Diario-->
-
-  <!--Comienza Generar Poliza de Ingreso-->
-  <div id="polizaingresos" class="contorno" style="display:none">
-    <table class="table text-center">
-      <thead>
-        <tr class="row m-0 encabezado font18">
-          <td class="col-md-12">GENERAR POLIZA TIPO 2</td>
-        </tr>
-      </thead>
-      <tbody class="cuerpo">
-        <tr class="row m-0  mt-5">
-          <td class="col-md-3 input-effect">
-            <input class="efecto tiene-contenido" type="date" id="ingrefecha">
-            <label for="ingrefecha">Fecha Póliza</label>
-          </td>
-          <td class="col-md-6 input-effect">
-            <input id="ingreconcepto" class="efecto" type="text">
-            <label for="ingreconcepto">Concepto</label>
-          </td>
-          <td class="col-md-3 input-effect">
-            <input id="ingrepoliza" class="efecto tiene-contenido" type="text"  readonly>
-            <label for="ingrepoliza">Póliza Generada</label>
-          </td>
-        </tr>
-        <tr class="row mt-5 justify-content-center">
-          <td class="col-md-3">
-            <a href="" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a><!--nueva pagina, ingresar datos en poliza-->
-          </td>
-          <td class="col-md-3">
-            <a href="DetallepolizaIngreso.php" class="boton"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a><!--nueva pagina, ingresar datos en poliza-->
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div><!--/Termina Generar Poliza de Ingreso-->
+  </div><!--/Termina Generar Poliza de Diario e Ingreso-->
 
 
   <div id="cheques" class="contorno" style="display:none">
@@ -236,3 +190,4 @@ $usuario = $_SESSION['user_name'];
 
 <!--***************SCRIPTS*****************-->
 <script src="js/Polizas.js"></script>
+<script src="/conta6/Resources/js/validaSoloNumeros.js"></script>
