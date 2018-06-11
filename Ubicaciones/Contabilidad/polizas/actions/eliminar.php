@@ -47,7 +47,4 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
-
-
-
 ?>

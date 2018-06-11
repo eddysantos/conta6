@@ -44,8 +44,8 @@ while ($row = $rslt->fetch_assoc()) {
       <a href='#' onclick='borrarRegistro($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
     </td>
     <td class='small pt-3 p-0'>$fk_id_cuenta</td>
-    <td class='small pt-3 p-0'>gasto</td>
-    <td class='small pt-3 p-0'>proveedor</td>
+    <td class='small pt-3 p-0'>$row[fk_gastoAduana]</td>
+    <td class='small pt-3 p-0'>$row[fk_id_proveedor]</td>
     <td class='small pt-3 p-0'>$row[fk_referencia]</td>
     <td class='small pt-3 p-0'>$row[fk_id_cliente]</td>
     <td class='small pt-3 p-0'>$row[s_folioCFDIext]</td>
@@ -58,6 +58,7 @@ while ($row = $rslt->fetch_assoc()) {
     <td class='small pt-3 p-0'>$row[n_abono]</td>
     <td class='xs'>
       <a href='#detpol-editarRegPolDiario' data-toggle='modal'>
+      <a href='#detpol-editarRegPolDiario' class='editar-partidaPol' db-id='$partida' role='button'>
         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
       </a>
     </td>

@@ -1,4 +1,5 @@
 function borrarRegistro(partida){
+	if (confirm("Borrar&aacute; este Registro, "+ partida +" ¿Desea continuar?")) {
 		var data = {
 			partida: partida,
 			id_poliza: $('#id_poliza').val()
@@ -23,6 +24,9 @@ function borrarRegistro(partida){
 			}
 
 		});
+	}else {
+		return false;
+	}
 }
 function cambiarStatus(){
 	fecha = $('#mstpol-fecha').val();
@@ -114,7 +118,8 @@ function inserta(){
 			cargo: $('#detpol-cargo').val(),
 			abono: $('#detpol-abono').val(),
 			desc: $('#detpol-concepto').val(),
-			gastoOficina: $('#detpol-gtoficina').attr('db-id')
+			gastoOficina: $('#detpol-gtoficina').attr('db-id'),
+			proveedor: $('#detpol-proveedores').attr('db-id')
 		}
 
 		$.ajax({
@@ -180,6 +185,11 @@ function validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso){
 		;
 }
 
+function buscarPoliza(Accion){
+	if( Accion == 'consultar' ){ id_poliza = $('#folioPolconsulta').val(); }
+	if( Accion == 'modificar' ){ id_poliza = $('#folioPol').val(); }
+	window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/actions/buscar_poliza.php?id_poliza='+id_poliza+'&Accion='+Accion);
+}
 
 function genPol(){
 	var data = {
@@ -196,7 +206,8 @@ function genPol(){
 		data: data,
 		success: 	function(request){
 			r = JSON.parse(request);
-			window.location.replace('DetallepolizaDiario.php?id_poliza='+r+'&tipo='+tipo);
+			window.location.replace('Detallepoliza.php?id_poliza='+r+'&tipo='+tipo);
+			//window.location.replace('DetallepolizaDiario.php?id_poliza='+r+'&tipo='+tipo);
 		}
 	});
 }
@@ -207,11 +218,11 @@ function Actualiza_Cuenta(){
     nombreCta = st.split('-');
 
 		if( validarCtasGastoOficina(st) == true ){
-        //ACTIVAR GASTO OFICINA
-        $('#detpol-gtoficina').prop( 'disabled', false );
-        $('#detpol-gtoficina').val('');
-				$('#detpol-gtoficina').attr('db-id','');
-        $('#detpol-cliente').attr('db-id','')
+      //ACTIVAR GASTO OFICINA
+      $('#detpol-gtoficina').prop( 'disabled', false );
+      $('#detpol-gtoficina').val('');
+			$('#detpol-gtoficina').attr('db-id','');
+      $('#detpol-cliente').attr('db-id','')
 		}else{
       $('#detpol-gtoficina').prop( 'disabled', true );
       $('#detpol-gtoficina').val('');
@@ -226,6 +237,18 @@ function Actualiza_Cuenta(){
 		}else{
       $('#detpol-cliente').attr('action','clientes');
 		}
+
+		if(st.substring(0,4) == '0206'){
+			//ACTIVAR PROVEEDORES
+			$('#detpol-proveedores').prop( 'disabled', false );
+			$('#detpol-proveedores').val('');
+			$('#detpol-proveedores').attr('db-id','');
+		}else{
+			$('#detpol-proveedores').prop( 'disabled', true );
+			$('#detpol-proveedores').val('');
+			$('#detpol-proveedores').attr('db-id','');
+		}
+
 
     $('#detpol-concepto').val($.trim(nombreCta[2]));
 }
@@ -289,6 +312,7 @@ $(document).ready(function(){
 				abono = $('#detpol-abono').val();
 				desc = $('#detpol-concepto').val();
 				gastoOficina = $('#detpol-gtoficina').attr('db-id');
+				proveedor = $('#detpol-proveedores').attr('db-id');
 
 				if(cuenta == ""){
 					alertify.error("Seleccione una cuenta");
@@ -445,8 +469,27 @@ $(document).ready(function(){
 					return false;
 				}
 		});
+/*
+		$('#buscarFolioPol').click(function(){
 
+				if($('#folioPol').val() == ""){
+					alertify.error("Escriba una póliza");
+					$('#folioPol').focus();
+					return false;
+				}
 
+				folioPol = $('#folioPol').val();
+
+				var continuar = buscarPoliza(folioPol);
+				console.log(continuar);
+				if(continuar == true) {
+					//genPol();
+					alert("redireccionar");
+				}else{
+					return false;
+				}
+		});
+*/
 		$('#guardarPolMST').click(function(){
 			var data = {
 				tipo: $('#mstpol-tipo').val(),
@@ -497,5 +540,125 @@ $(document).ready(function(){
 
       });
     });
+
+
+
+
+		$('tbody').on('click', '.editar-partidaPol', function(){
+	    var dbid = $(this).attr('db-id');
+	    var tar_modal = $($(this).attr('href'));
+	    var fetch_cuenta = $.ajax({
+	      method: 'POST',
+	      data: {dbid: dbid},
+	      url: 'actions/fetchPartidaPol.php'
+	    });
+
+	    fetch_cuenta.done(function(r){
+	      r = JSON.parse(r);
+	      if (r.code == 1) {
+
+	      for (var key in r.data) {
+	        if ($('#' + key).is('select')) {
+	          continue;
+	        }
+
+	        if (r.data.hasOwnProperty(key)) {
+	          $('#' + key).html(r['data'][key]).val(r['data'][key]).addClass('tiene-contenido');
+	          if ( typeof($('#'+key).attr('db-id')) != 'undefined' && $('#'+key).attr('db-id') !== false) {
+	            $('#' + key).attr('db-id', r['data'][key]);
+	          }
+	        }
+	      }
+
+	      //$('#s_cta_status').val(r.data.s_cta_status);
+	      $('#medit-ctas').attr('db-id', r.data.pk_partida);
+
+	      tar_modal.modal('show');
+	      } else {
+	        console.error(r);
+	      }
+	    })
+
+	  })
+
+		$('#medit-partida').click(function(){
+		//Código para editar el modal, declaración de variables y ajax.
+
+/*
+			if($('#medit-ctaSAT').attr('db-id') == ""){
+				alertify.error("Seleccione cuenta del SAT");
+				$('#medit-ctaSAT').focus();
+				return false;
+			}
+
+			if($('#medit-concepto').val() == ""){
+				alertify.error("Asigne un concepto");
+				$('#medit-concepto').focus();
+				return false;
+			}
+
+			if($('#medit-status').val() == ""){
+				alertify.error("Seleccione el estatutus de captura");
+				$('#medit-status').focus();
+				return false;
+			}
+
+
+			if($('#medit-naturSAT').attr('db-id') == ""){
+				alertify.error("Seleccione Naturaleza de la cuenta");
+				$('#medit-naturSAT').focus();
+				return false;
+			}
+
+			if($('#medit-prodServ').attr('db-id') == ""){
+				alertify.error("Seleccione clave de producto");
+				$('#medit-prodServ').focus();
+				return false;
+			}
+*/
+			alert( $('#fk_id_poliza').val());
+				var data = {
+					partida: $('#pk_partida').val(),
+					id_poliza: $('#fk_id_poliza').val(),
+					fecha: $('#d_fecha').val(),
+					id_referencia: $('#fk_referencia').attr('db-id'),
+					tipo: $('#fk_tipo').val(),
+					cuenta: $('#fk_id_cuenta').attr('db-id'),
+					id_cliente: $('#fk_id_cliente').attr('db-id'),
+					documento: $('#s_folioCFDIext').val(),
+					factura: $('#fk_factura').attr('db-id'),
+					anticipo: $('#fk_anticipo').attr('db-id'),
+					cheque: $('#fk_cheque').attr('db-id'),
+					cargo: $('#n_cargo').val(),
+					abono: $('#n_abono').val(),
+					desc: $('#s_desc').val(),
+					$gastoOficina: $('#fk_gastoAduana').attr('db-id'),
+					$proveedor: $('#fk_id_proveedor').attr('db-id')
+
+				}
+
+				$.ajax({
+					type: "POST",
+					url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/editar.php",
+					data: data,
+					success: 	function(r){
+						console.log(r);
+						r = JSON.parse(r);
+						if (r.code == 1) {
+							swal("Exito", "La cuenta se actualizó correctamente.", "success");
+							$('.real-time-search').keyup();
+						} else {
+							console.error(r.message);
+						}
+					},
+					error: function(x){
+						console.error(x);
+					}
+
+				});
+
+
+		$('.modal').modal('hide');
+	})
 
 });

@@ -39,7 +39,7 @@ if( $totalRegistrosSTPD > 0 ){
 <?php
 	 if( $totalRegistrosSelect > 0 ){
 	 $cancela = $oRst_Select["s_cancela"];
-	 if( $cancela == 1 ){ $txt_cancela = "Póliza Cancelada";}else{$txt_cancela = "";}
+	 if( $cancela == 1 ){ $txt_cancela = "Pï¿½liza Cancelada";}else{$txt_cancela = "";}
 ?>
 <br>
 <table border="0" width="100%" id="table26">
@@ -207,7 +207,7 @@ if( $totalRegistrosSTPD > 0 ){
 <?php
 	}else{
 ?>
-	<p align="center"><b><font color="#F73A4A" face="Verdana" size="2" align="center" >NO HAY DETALLES DE ESTA PÓLIZA</font></b></p>
+	<p align="center"><b><font color="#F73A4A" face="Verdana" size="2" align="center" >NO HAY DETALLES DE ESTA Pï¿½LIZA</font></b></p>
 <?php
 	}
 ?>
@@ -215,10 +215,11 @@ if( $totalRegistrosSTPD > 0 ){
 <?php
 }else{
 ?>
-	<p align="center"><b><font color="#F73A4A" face="Verdana" size="2" align="center" >NO HAY DATOS DE ESTA PÓLIZA, O ES UNA PÓLIZA DE OTRA OFICINA</font></b></p>
+	<p align="center"><b><font color="#F73A4A" face="Verdana" size="2" align="center" >NO HAY DATOS DE ESTA Pï¿½LIZA, O ES UNA Pï¿½LIZA DE OTRA OFICINA</font></b></p>
 <?php
 }
 ?>
 	</body>
 </html>
+
 <?php mysqli_close($db); ?>

@@ -75,5 +75,4 @@ if( $oRst_permisos[$permiso] == 1){
 		$system_callback['message'] = "Script called successfully!";
 }
 exit_script($system_callback);
-
 ?>

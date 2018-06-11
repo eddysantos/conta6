@@ -9,7 +9,7 @@
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">Modificar Póliza de Diario</h5>
+        <h5 class="modal-tittle">Modificar Póliza</h5>
       </div>
       <div class="modal-body">
         <div class="row titulograndetop-modal brx2">
@@ -20,13 +20,14 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form  class="form-group"  method="post">
-            <input class="modif text-center form-control noborder" type="text">
+            <input id="folioPol" class="modif text-center form-control noborder" type="text" autocomplete="new-password" onchange="validaSoloNumeros(this);">
           </form>
           </div>
         </div>
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer brx1">
-      <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+      <!--a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
+      <a href="#" id="btn" onclick="buscarPoliza('modificar')">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>
@@ -40,7 +41,7 @@
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">Consultar Póliza de Diario</h5>
+        <h5 class="modal-tittle">Consultar Póliza</h5>
       </div>
       <div class="modal-body">
         <div class="row titulograndetop-modal brx2">
@@ -51,12 +52,13 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form  class="form-group"  method="post">
-            <input class="modif text-center form-control noborder" type="text">
+            <input id="folioPolconsulta" class="modif text-center form-control noborder" type="text">
           </form>
           </div>
         </div>
         <div class="modal-footer brx1">
-        <a href="/conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php" id="btn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <!--a href="/conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php" id="btn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
+        <a href="#" id="btn" onclick="buscarPoliza('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>

@@ -16,9 +16,10 @@ $cargo = trim($_POST['cargo']);
 $abono = trim($_POST['abono']);
 $desc = trim($_POST['desc']);
 $gastoOficina = trim($_POST['gastoOficina']);
+$proveedor = trim($_POST['proveedor']);
 
-$query = "INSERT INTO conta_t_polizas_det (fk_tipo,fk_id_poliza,d_fecha,fk_id_cuenta,fk_referencia,fk_id_cliente,s_folioCFDIext,fk_factura,fk_anticipo,fk_cheque,s_desc,n_cargo,n_abono)
-          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$query = "INSERT INTO conta_t_polizas_det (fk_tipo,fk_id_poliza,d_fecha,fk_id_cuenta,fk_referencia,fk_id_cliente,s_folioCFDIext,fk_factura,fk_anticipo,fk_cheque,s_desc,n_cargo,n_abono,fk_gastoAduana,fk_id_proveedor)
+          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -27,7 +28,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('sssssssssssss',$tipo,$id_poliza,$fecha,$cuenta,$id_referencia,$id_cliente,$documento,$factura,$anticipo,$cheque,$desc,$cargo,$abono);
+$stmt->bind_param('sssssssssssssss',$tipo,$id_poliza,$fecha,$cuenta,$id_referencia,$id_cliente,$documento,$factura,$anticipo,$cheque,$desc,$cargo,$abono,$gastoOficina,$proveedor);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
@@ -50,7 +51,7 @@ if ($affected == 0) {
   exit_script($system_callback);
 }
 
-$descripcion = "Se inserto Poliza: $id_poliza Cta: $cuenta Ref:$id_referencia Clt:$id_cliente Doc:$documento Fac:$factura Ant:$anticipo Ch:$cheque Des:$desc Cargo:$cargo Abono:$abono";
+$descripcion = "Se inserto Poliza: $id_poliza Cta: $cuenta Ref:$id_referencia Clt:$id_cliente Doc:$documento Fac:$factura Ant:$anticipo Ch:$cheque Des:$desc Cargo:$cargo Abono:$abono Gasto:$gastoOficina Prov:$proveedor";
 
 $clave = 'polizas';
 $folio = $id_poliza;

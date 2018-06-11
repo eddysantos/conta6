@@ -42,14 +42,13 @@
           </td>
           <td class="col-md-3 input-effect">
 		  	<input type="hidden" id="diaaduana" class="efecto tiene-contenido" type="text" db-id="" value="<?php echo $aduana;?>" readonly>
-            <input id="diatipo" class="efecto tiene-contenido" type="text" db-id="" readonly>
+            <input id="diatipo" class="efecto tiene-contenido" type="text" db-id="" autocomplete="new-password" readonly>
             <label for="diatipo">Tipo</label>
           </td>
         </tr>
         <tr class="row justify-content-center mt-5">
           <td class="col-md-3">
             <a href="#" id="genFolioPolDia" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a>
-			<div id="resultado"></div>
           </td>
         </tr>
       </tbody>
@@ -191,3 +190,4 @@
 
 <!--***************SCRIPTS*****************-->
 <script src="js/Polizas.js"></script>
+<script src="/conta6/Resources/js/validaSoloNumeros.js"></script>

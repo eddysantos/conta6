@@ -21,4 +21,5 @@ $descripcion = "Se Genero la Poliza: $nFolio Concepto: $concepto";
 $clave = 'polizas';
 $folio = $nFolio;
 require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+
 ?>
