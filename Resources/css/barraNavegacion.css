@@ -7,7 +7,6 @@ a:hover {
 
 } */
 
-
 header {
   font-size: 15px ;
 }
@@ -102,10 +101,10 @@ a:focus {
 .container {
   width: 750px;
 }
-.container-fluid {
+/* .container-fluid {
   padding-left: 1px !important;
   padding-right: 1px !important;
-}
+} */
 
 .dropdown:hover > .dropdown-menu {
   opacity: 1  ;

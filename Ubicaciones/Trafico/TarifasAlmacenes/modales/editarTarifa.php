@@ -11,19 +11,19 @@
       <div class="modal-body p-0">
         <div class="container-fluid">
           <div id="" class="contorno">
-            <table class="table text-center brx1">
-              <tbody class="cuerpo">
-                <tr class="row">
-                  <td class="col-md-5 input-effect brx2">
-                    <input id="m-concepto" class="efecto text-normal w-100" type="text">
+            <table class="table form1 text-center">
+              <tbody class="font14">
+                <tr class="row mt-3">
+                  <td class="col-md-5 input-effect">
+                    <input id="m-concepto" class="efecto tiene-contenido" type="text">
                     <label for="m-concepto">Concepto</label>
                   </td>
-                  <td class="col-md-2 input-effect brx2">
-                    <input id="m-cuenta" class="efecto text-normal w-100" type="text">
+                  <td class="col-md-2 input-effect">
+                    <input id="m-cuenta" class="efecto tiene-contenido" type="text">
                     <label for="m-cuenta">Cuenta</label>
                   </td>
-                  <td class="col-md-5 input-effect brx2" >
-                    <input  list="lista-cargo" class="text-normal efecto" id="m-cargo">
+                  <td class="col-md-5 input-effect" >
+                    <input  list="lista-cargo" class="efecto tiene-contenido" id="m-cargo">
                     <datalist id="lista-cargo">
                       <option value="0110-00001 -- Impuestos"></option>
                       <option value="0110-00002 -- Fletes Terrestres"></option>
@@ -44,17 +44,17 @@
                     <label for="m-cargo">Seleccione una Cuenta</label>
                   </td>
                 </tr>
-                <tr class="row">
-                  <td class="col-md-5 input-effect brx2">
-                    <input id="m-observaciones" class="efecto text-normal w-100" type="text">
+                <tr class="row mt-4">
+                  <td class="col-md-5 input-effect">
+                    <input id="m-observaciones" class="efecto tiene-contenido" type="text">
                     <label for="m-observaciones">Observaciones</label>
                   </td>
-                  <td class="col-md-2 input-effect brx2">
-                    <input id="m-tipo" class="efecto text-normal w-100" type="text">
+                  <td class="col-md-2 input-effect">
+                    <input id="m-tipo" class="efecto tiene-contenido" type="text">
                     <label for="m-tipo">Tipo</label>
                   </td>
-                  <td class="col-md-5 input-effect brx2" >
-                    <input  list="calculo-tarif" class="text-normal efecto" id="m-listipo">
+                  <td class="col-md-5 input-effect" >
+                    <input  list="calculo-tarif" class="efecto tiene-contenido" id="m-listipo">
                     <datalist id="calculo-tarif">
                       <option value="1 -- Custodia (Aeropuerto)"></option>
                       <option value="2 -- Manejo (Aeropuerto)"></option>
@@ -78,7 +78,7 @@
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a href="" id="btn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="" class="linkbtn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>
@@ -94,60 +94,60 @@
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">Modificar Concepto de Honorarios</h5>
+        <h5 class="modal-tittle">Modificar Datos de Tarifa</h5>
       </div>
       <div class="modal-body p-0">
         <div class="container-fluid">
           <div id="" class="contorno">
-            <form class="form2" >
+            <form class="form1" style="letter-spacing:0px">
               <table class="table text-center">
                 <tbody>
-                  <tr class="row">
-                    <td class="col-md-1 input-effect brx2" >
-                      <input  list="lista-uni" class="text-normal efecto" id="m-unidad">
+                  <tr class="row mt-3">
+                    <td class="col-md-1 input-effect">
+                      <input  list="lista-uni" class="efecto tiene-contenido" id="m-unidad">
                       <datalist id="lista-uni"></datalist>
-                      <label style="left:1px!important" for="m-unidad">Unidad</label>
+                      <label for="m-unidad">Unidad</label>
                     </td>
-                    <td class="col-md-1 input-effect brx2">
-                      <input id="m-liminf" class="efecto text-normal w-100" type="text">
-                      <label style="left:1px!important" for="m-liminf">Lim.Inferior</label>
+                    <td class="col-md-1 input-effect">
+                      <input id="m-liminf" class="efecto tiene-contenido" type="text">
+                      <label for="m-liminf">Lim.Inferior</label>
                     </td>
-                    <td class="col-md-2 input-effect brx2">
-                      <input id="m-limSup" class="efecto text-normal w-100" type="text">
-                      <label style="left:1px!important" for="m-limSup">Lim.Superior</label>
+                    <td class="col-md-2 input-effect">
+                      <input id="m-limSup" class="efecto tiene-contenido" type="text">
+                      <label for="m-limSup">Lim.Superior</label>
                     </td>
-                    <td class="col-md-1 input-effect brx2">
-                      <input id="m-imp1" class="efecto text-normal w-100" type="text">
-                      <label style="left:1px!important" for="m-imp1">Importe 1</label>
+                    <td class="col-md-1 input-effect">
+                      <input id="m-imp1" class="efecto tiene-contenido" type="text">
+                      <label for="m-imp1">Importe 1</label>
                     </td>
-                    <td class="col-md-1 input-effect brx2">
-                      <input id="m-infdia" class="efecto text-normal w-100" type="text">
-                      <label style="left:1px!important" for="m-infdia">Inf.Día</label>
+                    <td class="col-md-1 input-effect">
+                      <input id="m-infdia" class="efecto tiene-contenido" type="text">
+                      <label for="m-infdia">Inf.Día</label>
                     </td>
-                    <td class="col-md-1 input-effect brx2">
-                      <input id="m-supdia" class="efecto text-normal w-100" type="text">
-                      <label style="left:1px!important" for="m-supdia">Sup.Día</label>
+                    <td class="col-md-1 input-effect">
+                      <input id="m-supdia" class="efecto tiene-contenido" type="text">
+                      <label for="m-supdia">Sup.Día</label>
                     </td>
-                    <td class="col-md-1 input-effect brx2">
-                      <input id="m-imp2" class="efecto text-normal w-100" type="text">
-                      <label style="left:1px!important" for="m-imp2">Importe 2</label>
+                    <td class="col-md-1 input-effect">
+                      <input id="m-imp2" class="efecto tiene-contenido" type="text">
+                      <label for="m-imp2">Importe 2</label>
                     </td>
-                    <td class="col-md-1 input-effect brx2" >
-                      <input  list="lista-ope" class="text-normal efecto" id="m-operacion">
+                    <td class="col-md-1 input-effect">
+                      <input  list="lista-ope" class="efecto tiene-contenido" id="m-operacion">
                       <datalist id="lista-ope"></datalist>
-                      <label style="left:1px!important" for="m-operacion">Operación</label>
+                      <label for="m-operacion">Operación</label>
                     </td>
-                    <td class="col-md-1 input-effect brx2">
-                      <input id="m-fact1" class="efecto text-normal w-100" type="text">
-                      <label style="left:1px!important" for="m-fact1">Factor 1</label>
+                    <td class="col-md-1 input-effect">
+                      <input id="m-fact1" class="efecto tiene-contenido" type="text">
+                      <label for="m-fact1">Factor 1</label>
                     </td>
-                    <td class="col-md-1 input-effect brx2">
-                      <input id="m-fact2" class="efecto text-normal w-100" type="text">
-                      <label style="left:1px!important" for="m-fact2">Factor 2</label>
+                    <td class="col-md-1 input-effect">
+                      <input id="m-fact2" class="efecto tiene-contenido" type="text">
+                      <label for="m-fact2">Factor 2</label>
                     </td>
-                    <td class="col-md-1 input-effect brx2">
-                      <input id="m-fact3" class="efecto text-normal w-100" type="text">
-                      <label style="left:1px!important" for="m-fact3">Factor 3</label>
+                    <td class="col-md-1 input-effect">
+                      <input id="m-fact3" class="efecto tiene-contenido" type="text">
+                      <label for="m-fact3">Factor 3</label>
                     </td>
                   </tr>
                 </tbody>
@@ -157,7 +157,7 @@
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a id="btn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a class="linkbtn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>
@@ -176,19 +176,19 @@
       <div class="modal-body p-0">
         <div class="container-fluid">
           <div id="" class="contorno">
-            <table class="table text-center brx1">
-              <tbody class="cuerpo">
-                <tr class="row">
-                  <td class="col-md-5 input-effect brx2">
-                    <input id="m-concepto1" class="efecto text-normal w-100" type="text">
+            <table class="table form1 text-center">
+              <tbody class="font14">
+                <tr class="row mt-3">
+                  <td class="col-md-5 input-effect">
+                    <input id="m-concepto1" class="efecto tiene-contenido" type="text">
                     <label for="m-concepto1">Concepto</label>
                   </td>
-                  <td class="col-md-2 input-effect brx2">
-                    <input id="m-cuenta1" class="efecto text-normal w-100" type="text">
+                  <td class="col-md-2 input-effect">
+                    <input id="m-cuenta1" class="efecto tiene-contenido" type="text">
                     <label for="m-cuenta1">Cuenta</label>
                   </td>
-                  <td class="col-md-5 input-effect brx2" >
-                    <input  list="lista-cargo" class="text-normal  efecto" id="m-cargo1">
+                  <td class="col-md-5 input-effect" >
+                    <input  list="lista-cargo" class="efecto tiene-contenido" id="m-cargo1">
                     <datalist id="lista-cargo">
                       <option value="0400-00001 -- Honorarios"></option>
                       <option value="0400-00002 -- Tramites y Servicios"></option>
@@ -207,17 +207,17 @@
                     <label for="m-cargo1">Cargar a :</label>
                   </td>
                 </tr>
-                <tr class="row">
-                  <td class="col-md-5 input-effect brx2">
-                    <input id="m-observaciones1" class="efecto text-normal w-100" type="text">
+                <tr class="row mt-4">
+                  <td class="col-md-5 input-effect">
+                    <input id="m-observaciones1" class="efecto tiene-contenido" type="text">
                     <label for="m-observaciones1">Observaciones</label>
                   </td>
-                  <td class="col-md-2 input-effect brx2">
-                    <input id="m-tipo1" class="efecto text-normal w-100" type="text">
+                  <td class="col-md-2 input-effect">
+                    <input id="m-tipo1" class="efecto tiene-contenido" type="text">
                     <label for="m-tipo1">Tipo</label>
                   </td>
-                  <td class="col-md-5 input-effect brx2">
-                    <input  list="calculo-tarif" class="text-normal efecto" id="m-listipo1">
+                  <td class="col-md-5 input-effect">
+                    <input  list="calculo-tarif" class="efecto tiene-contenido" id="m-listipo1">
                     <datalist id="calculo-tarif">
                       <option value="101 -- Varios Registros con 1 Limite Inferior, 1 Limite Superior y 1 Importe (por valor)"></option>
                       <option value="102 -- Un solo Registro y un solo Importe"></option>
@@ -236,7 +236,7 @@
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a href="" id="btn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="" class="linkbtn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>

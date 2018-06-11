@@ -4,11 +4,11 @@
 ?>
 
 
-<div class="container-fluid">
-  <table class="text-center table brx4">
-    <tr class="row">
+<div class="container-fluid text-center">
+  <table class="table mt-5">
+    <tr class="row mb-5">
       <td class="col-md-6 offset-md-3">
-        <select class="input-dpol form-control  border">
+        <select class="custom-select">
           <option>Seleccione un Almacen</option>
           <option>3 --- Aerobias de Mexico S.A de C.V --- 470</option>
           <option>4 --- Agentes Aduanales Asociados para el Comercio Exterior S.A de C.V --- 470</option>
@@ -20,14 +20,14 @@
     </tr>
   </table>
 
-  <div class="contorno" style="margin-top:40px!important">
-    <h5 class="titulo" style="font-size:15px">REGISTRAR TARIFA</h5>
-    <form class="form2">
-      <table class="table text-center brx1">
+  <div class="contorno mt-5">
+    <h5 class="titulo font14">REGISTRAR TARIFA</h5>
+    <form class="form1" style="letter-spacing:0px">
+      <table class="table">
         <tbody>
           <tr class="row">
             <td class="col-md-4 offset-md-4">
-              <select class="input-dpol form-control border">
+              <select class="custom-select">
                 <option>Seleccione un concepto</option>
                 <option>Almacenaje</option>
                 <option>Custodia</option>
@@ -36,62 +36,61 @@
               </select>
             </td>
           </tr>
-          <tr class="row mleftx5">
-            <td class="col-md-1 input-effect brx2">
-              <input  list="lista-uni" class="text-normal efecto text-center" id="unidad">
-              <datalist id="lista-uni">
-                <option value="MN"></option>
-                <option value="DLLS"></option>
-                <option value="KG"></option>
-              </datalist>
-              <label for="unidad">Unidad</label>
+          <tr class="row ml-5 mt-5">
+            <td class="col-md-1 input-effect">
+              <select class="custom-select" id="unidad">
+                <option selected>Unidad</option>
+                <option>MN</option>
+                <option>DLLS</option>
+                <option>KG</option>
+              </select>
             </td>
-            <td class="col-md-1 input-effect brx2">
-              <input id="lim-inf" class="efecto w-100 text-normal" type="text">
+            <td class="col-md-1 input-effect">
+              <input id="lim-inf" class="efecto" type="text">
               <label for="lim-inf">Lim.Inferior</label>
             </td>
-            <td class="col-md-1 input-effect brx2">
-              <input id="lim-sup" class="efecto w-100 text-normal" type="text">
+            <td class="col-md-1 input-effect">
+              <input id="lim-sup" class="efecto" type="text">
               <label for="lim-sup">Lim.Superior</label>
             </td>
-            <td class="col-md-1 input-effect brx2">
-              <input id="imp1" class="efecto w-100 text-normal" type="text">
+            <td class="col-md-1 input-effect">
+              <input id="imp1" class="efecto" type="text">
               <label for="imp1">Importe 1</label>
             </td>
-            <td class="col-md-1 input-effect brx2">
-              <input id="infdia" class="efecto w-100 text-normal" type="text">
+            <td class="col-md-1 input-effect">
+              <input id="infdia" class="efecto" type="text">
               <label for="infdia">Inf.Día</label>
             </td>
-            <td class="col-md-1 input-effect brx2">
-              <input id="supdia" class="efecto w-100 text-normal" type="text">
+            <td class="col-md-1 input-effect">
+              <input id="supdia" class="efecto" type="text">
               <label for="supdia">Sup.Día</label>
             </td>
-            <td class="col-md-1 input-effect brx2">
-              <input id="imp2" class="efecto w-100 text-normal" type="text">
+            <td class="col-md-1 input-effect">
+              <input id="imp2" class="efecto" type="text">
               <label for="imp2">Importe 2</label>
             </td>
-            <td class="col-md-1 input-effect brx2" >
-              <input  list="lista-ope" class="text-normal efecto text-center" id="operacion">
+            <td class="col-md-1 input-effect">
+              <input  list="lista-ope" class="efecto" id="operacion">
               <datalist id="lista-ope">
                 <option value="IMP"></option>
                 <option value="EXP"></option>
               </datalist>
               <label for="operacion">Operación</label>
             </td>
-            <td class="col-md-1 input-effect brx2">
-              <input id="fac1" class="efecto w-100 text-normal" type="text">
+            <td class="col-md-1 input-effect">
+              <input id="fac1" class="efecto" type="text">
               <label for="fac1">Factor 1</label>
             </td>
-            <td class="col-md-1 input-effect brx2">
-              <input id="fac2" class="efecto w-100 text-normal" type="text">
+            <td class="col-md-1 input-effect">
+              <input id="fac2" class="efecto" type="text">
               <label for="fac2">Factor 2</label>
             </td>
-            <td class="col-md-1 input-effect brx2">
-              <input id="fac3" class="efecto w-100 text-normal" type="text">
+            <td class="col-md-1 input-effect">
+              <input id="fac3" class="efecto" type="text">
               <label for="fac3">Factor 3</label>
             </td>
-            <td class="col-md-1 brx2 text-left" style="padding:7px!important">
-              <a href="" class="btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icomediano"></a>
+            <td class="col-md-1 text-left pt-3">
+              <a href=""><img src= "/conta6/Resources/iconos/add.svg" class="icomediano"></a>
             </td>
           </tr>
         </tbody>
@@ -99,16 +98,16 @@
     </form>
   </div>
 
-  <div class="contorno" style="margin-top:40px!important">
-    <h5 class="titulo" style="font-size:15px">VISUALIZAR TARIFA</h5>
-    <table class="table brx2">
+  <div class="contorno mt-5">
+    <h5 class="titulo font14">VISUALIZAR TARIFA</h5>
+    <table class="table">
       <thead>
         <tr class="row">
           <td class="col-md-1">
-            <a href=""><img class="icomediano mleftx2" src="/conta6/Resources/iconos/printer.svg"></a>
+            <a href=""><img class="icomediano pt-3" src="/conta6/Resources/iconos/printer.svg"></a>
           </td>
-          <td class="col-md-2 offset-md-8">
-            <select class="input-dpol form-control mleftx10">
+          <td class="col-md-2 offset-md-9">
+            <select class="custom-select">
               <option>Filtro por Concepto</option>
               <option>Almacenaje</option>
               <option>Custodía</option>
@@ -116,26 +115,26 @@
             </select>
           </td>
         </tr>
-        <tr class="row text-center encabezado brx2">
+        <tr class="row encabezado font16 mt-5">
           <td class="col-md-12">470 3 AEROVIAS DE MÉXICO S.A DE C.V</td>
         </tr>
-        <tr class="row text-center">
-          <td class="col-md-1 iap">UNIDAD</td>
-          <td class="col-md-1 iap">LIM.INF</td>
-          <td class="col-md-1 iap">LIM.SUP</td>
-          <td class="col-md-1 iap">IMPORTE 1</td>
-          <td class="col-md-1 iap">INF.DÍA</td>
-          <td class="col-md-1 iap">SUP.DÍA</td>
-          <td class="col-md-1 iap">IMPORTE 2</td>
-          <td class="col-md-1 iap">OPE.</td>
-          <td class="col-md-1 iap">FACTOR 1</td>
-          <td class="col-md-1 iap">FACTOR 2</td>
-          <td class="col-md-1 iap">FACTOR 3</td>
-          <td class="col-md-1 iap"></td>
+        <tr class="row backpink">
+          <td class="col-md-1">UNIDAD</td>
+          <td class="col-md-1">LIM.INF</td>
+          <td class="col-md-1">LIM.SUP</td>
+          <td class="col-md-1">IMPORTE 1</td>
+          <td class="col-md-1">INF.DÍA</td>
+          <td class="col-md-1">SUP.DÍA</td>
+          <td class="col-md-1">IMPORTE 2</td>
+          <td class="col-md-1">OPE.</td>
+          <td class="col-md-1">FACTOR 1</td>
+          <td class="col-md-1">FACTOR 2</td>
+          <td class="col-md-1">FACTOR 3</td>
+          <td class="col-md-1"></td>
         </tr>
       </thead>
-      <tbody class="text-normal">
-        <tr class="row text-center borderojo">
+      <tbody class="font14">
+        <tr class="row borderojo">
           <td class="col-md-1">MN</td>
           <td class="col-md-1">0.01</td>
           <td class="col-md-1">2500</td>
@@ -149,13 +148,15 @@
           <td class="col-md-1">300</td>
           <td class="col-md-1">
             <a href=""><img class="icochico" src="/conta6/Resources/iconos/cross.svg"></a>
-            <a href="#EditarRegTarifa" data-toggle="modal"><img class="icochico mleftx2" src="/conta6/Resources/iconos/003-edit.svg"></a>
+            <a href="#EditarRegTarifa" data-toggle="modal"><img class="icochico ml-5" src="/conta6/Resources/iconos/003-edit.svg"></a>
           </td>
         </tr>
       </tbody>
-
     </table>
   </div>
 </div>
 
-<?php require_once('modales/editarTarifa.php'); ?>
+
+<?php
+require_once('modales/editarTarifa.php');
+?>

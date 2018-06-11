@@ -3,27 +3,27 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid">
+<div class="text-center">
   <div class="row submenuMed m-0">
-    <div class="col-md-6 text-center" role="button">
+    <div class="col-md-6" role="button">
       <a  id="submenuMed" class="sueldosysalarios" accion="dgenerales" status="cerrado">DATOS GENERALES</a>
     </div>
-    <div class="col-md-6 text-center">
+    <div class="col-md-6">
       <a id="submenuMed" class="sueldosysalarios" accion="dlaborales" status="cerrado">DATOS LABORALES</a>
     </div>
   </div>
 
-  <div class="col-md-1 brx2">
+  <div class="col-md-1 mt-4">
     <a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/GenerarNominaCFDI.php">
       <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
     </a>
   </div>
 
-  <div id="contornogen" class="contorno brx4" style="display:none">
-    <h5 class="titulo" style="font-size:15px">DATOS GENERALES</h5>
+  <div id="contornogen" class="contorno" style="display:none">
+    <h5 class="titulo font14">DATOS GENERALES</h5>
     <table class="table">
-      <thead>
-        <tr class="row m-0 encabezado text-center">
+      <thead class="font16">
+        <tr class="row m-0 encabezado">
           <td class="col-md-1">No.</td>
           <td class="col-md-2">Nombre</td>
           <td class="col-md-3">Apellidos</td>
@@ -33,8 +33,8 @@
           <td class="col-md-1">Infonavit</td>
         </tr>
       </thead>
-      <tbody style="font-size:16px">
-        <tr class="row m-0 text-center">
+      <tbody class="font14">
+        <tr class="row m-0">
           <td class="col-md-1">296</td>
           <td class="col-md-2">Azeneth Estefania</td>
           <td class="col-md-3">Pinales Avalos</td>
@@ -47,11 +47,11 @@
     </table>
   </div>
 
-  <div id="contornolab" class="contorno brx4" style="display:none">
-    <h5 class="titulo" style="font-size:15px">DATOS LABORALES</h5>
+  <div id="contornolab" class="contorno" style="display:none">
+    <h5 class="titulo font14">DATOS LABORALES</h5>
     <table class="table">
-      <thead>
-        <tr class="row m-0 encabezado text-center">
+      <thead class="font16">
+        <tr class="row m-0 encabezado">
           <td class="col-md-2">Periosidad del Pagó</td>
           <td class="col-md-2">Riesgo de Trabajo</td>
           <td class="col-md-2">Departamento</td>
@@ -61,8 +61,8 @@
           <td class="col-md-1">Puesto</td>
         </tr>
       </thead>
-      <tbody style="font-size:16px">
-        <tr class="row m-0 text-center">
+      <tbody class="font14">
+        <tr class="row m-0">
           <td class="col-md-2">Semanal</td>
           <td class="col-md-2">Clase l</td>
           <td class="col-md-2">Contabilidad</td>
@@ -75,16 +75,16 @@
     </table>
   </div>
 
-  <div id="contorno" class="contorno brx4">
+  <div id="contorno" class="contorno">
     <div class="acordeon2">
-      <div class="encabezado text-center" data-toggle="collapse" href="#datospago">
+      <div class="encabezado font16" data-toggle="collapse" href="#datospago">
         <a  id="bread">DATOS DEL PAGO</a>
       </div>
-      <div id="datospago" class="card-block collapse">
-        <form style="line-height: 0.95;letter-spacing: 3px">
-          <table class="table text-center">
+      <div id="datospago" class="collapse">
+        <form class="form1">
+          <table class="table">
             <tbody>
-              <tr class="row brx3  mr-0 ml-0">
+              <tr class="row mt-5 m-0">
                 <td class="col-md-2 input-effect">
                   <input id="nom" class="efecto">
                   <label for="nom">Nomina</label>
@@ -94,16 +94,16 @@
                   <label for="tip">Tipo</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input class="efecto text-center data-date" type="text" onfocus="(this.type='date')" id="finicial">
+                  <input class="efecto tiene-contenido" type="date" id="finicial">
                   <label for="finicial">Fecha Inicial</label>
                 </td>
                 <td class="col-md-2 input-effect">
-                  <input class="efecto text-center data-date" type="text" onfocus="(this.type='date')" id="ffin">
+                  <input class="efecto tiene-contenido" type="date" id="ffin">
                   <label for="ffin">Fecha Final</label>
                 </td>
 
                 <td class="col-md-2 input-effect">
-                  <input class="efecto text-center data-date" type="text" onfocus="(this.type='date')" id="fpago">
+                  <input class="efecto tiene-contenido" type="date" id="fpago">
                   <label for="fpago">Fecha Pago</label>
                 </td>
 
@@ -112,7 +112,7 @@
                   <label for="doc">Documento</label>
                 </td>
               </tr>
-              <tr class="row brx2  mr-0 ml-0">
+              <tr class="row mt-4 m-0">
                 <td class="col-md-3 input-effect">
                   <input id="mpago" class="efecto">
                   <label for="mpago">Método Pago</label>
@@ -134,14 +134,14 @@
                   <label for="saldiario">Salario Diario</label>
                 </td>
               </tr>
-              <tr class="row brx2 text-center mr-0 ml-0">
-                <td class="col-md-1 iap">CANTIDAD</td>
-                <td class="col-md-1 iap">UNIDAD</td>
-                <td class="col-md-4 iap">DESCRIPCION</td>
-                <td class="col-md-3 iap">VALOR UNITARIO</td>
-                <td class="col-md-3 iap">IMPORTE</td>
+              <tr class="row mt-4  backpink m-0">
+                <td class="col-md-1">CANTIDAD</td>
+                <td class="col-md-1">UNIDAD</td>
+                <td class="col-md-4">DESCRIPCION</td>
+                <td class="col-md-3">VALOR UNITARIO</td>
+                <td class="col-md-3">IMPORTE</td>
               </tr>
-              <tr class="row text-center m-0">
+              <tr class="row m-0">
                 <td class="col-md-1">1</td>
                 <td class="col-md-1">ACT</td>
                 <td class="col-md-4">Pago de Nómina</td>
@@ -155,17 +155,17 @@
     </div>
 
 <!--ACORDEON DE PERCEPCIONES-->
-    <div class="acordeon2 brx1">
-      <div class="encabezado text-center" data-toggle="collapse" href="#percep">
+    <div class="acordeon2 mt-3">
+      <div class="encabezado font16" data-toggle="collapse" href="#percep">
         <a  id="bread">PERCEPCIONES</a>
       </div>
-      <div id="percep" class="card-block collapse">
+      <div id="percep" class="collapse">
         <form class="form1">
-          <table class="table text-center">
+          <table class="table">
             <tbody>
-              <tr class="row brx3">
-                <td class="col-md-6 offset-md-3 text-center">
-                  <select class="form-control ">
+              <tr class="row mt-5">
+                <td class="col-md-6 offset-md-3">
+                  <select class="custom-select">
                     <option selected>Tipo (Agrupar) SAT</option>
                     <option>Aguinaldo Exento -- 002 -- 0530-00007</option>
                     <option>Aguinaldo Gravado -- 002 -- 0530-00008</option>
@@ -185,18 +185,15 @@
                   </select>
                 </td>
               </tr>
-
-              <tr class="row brx2  mr-0 ml-0">
+              <tr class="row mt-5 m-0">
                 <td class="col-md-1 input-effect">
                   <input id="cve" class="efecto">
                   <label for="cve">Cve.SAT</label>
                 </td>
-
                 <td class="col-md-2 input-effect">
                   <input id="ctacon" class="efecto">
                   <label for="ctacon">Cuenta Contable</label>
                 </td>
-
                 <td class="col-md-4 input-effect">
                   <input id="concdesc" class="efecto">
                   <label for="concdesc">Concepto o Descripción</label>
@@ -211,34 +208,30 @@
                 </td>
                 <td>
                   <a>
-                    <img class="icomediano mleftx3" src="/conta6/Resources/iconos/add-cuadro.svg">
+                    <img class="icomediano" src="/conta6/Resources/iconos/add-cuadro.svg">
                   </a>
                 </td>
               </tr>
 
-              <tr class="row brx3 mr-0 ml-0">
-                <td class="col-md-1 input-effect" readonly>
-                  <input class="efecto">
+              <tr class="row mt-4 m-0">
+                <td class="col-md-1 input-effect">
+                  <input class="efecto border-0" readonly>
                 </td>
-                <td class="col-md-2 input-effect" readonly>
-                  <input class="efecto">
+                <td class="col-md-2 input-effect">
+                  <input class="efecto border-0" readonly>
                 </td>
-                <td class="col-md-4 input-effect" readonly>
-                  <input class="efecto">
+                <td class="col-md-4 input-effect">
+                  <input class="efecto border-0" readonly>
                 </td>
-                <td class="col-md-2 input-effect" readonly>
-                  <input class="efecto">
+                <td class="col-md-2 input-effect">
+                  <input class="efecto border-0" readonly>
                 </td>
-                <td class="col-md-2 input-effect" readonly>
-                  <input class="efecto">
+                <td class="col-md-2 input-effect">
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td>
-                  <a>
-                    <img class="icomediano" src="/conta6/Resources/iconos/delete.svg">
-                  </a>
-                  <a>
-                    <img class="icomediano mleftx2" src="/conta6/Resources/iconos/save.svg">
-                  </a>
+                  <a><img class="icomediano" src="/conta6/Resources/iconos/delete.svg"></a>
+                  <a><img class="icomediano ml-3" src="/conta6/Resources/iconos/save.svg"></a>
                 </td>
               </tr>
             </tbody>
@@ -248,24 +241,24 @@
     </div>
 
 <!--ACORDEON DE OTROS PAGOS-->
-    <div class="acordeon2 brx1">
-      <div class="encabezado text-center" data-toggle="collapse" href="#otrospagos">
+    <div class="acordeon2 mt-3">
+      <div class="encabezado font16" data-toggle="collapse" href="#otrospagos">
         <a  id="bread">OTROS PAGOS</a>
       </div>
-      <div id="otrospagos" class="card-block collapse">
-        <form class="form1"method="post">
-          <table class="table text-center">
+      <div id="otrospagos" class="collapse">
+        <form class="form1">
+          <table class="table">
             <tbody>
-              <tr class="row brx1">
+              <tr class="row mt-3">
                 <td class="col-md-6 offset-md-3">
-                  <select class="form-control ">
+                  <select class="custom-select">
                     <option selected>Tipo (Agrupar) SAT</option>
                     <option>ISR a Favor Ejercicios Anteriores -- 004 -- 0115-00001</option>
                     <option>Subsidio al Empleo -- 002 -- 0167-00004</option>
                   </select>
                 </td>
               </tr>
-              <tr class="row brx2  mr-0 ml-0">
+              <tr class="row mt-5 m-0">
                 <td class="col-md-1 input-effect">
                   <input id="cve1" class="efecto">
                   <label for="cve1">Cve.SAT</label>
@@ -292,7 +285,7 @@
                 </td>
                 <td>
                   <a>
-                    <img class="icomediano mleftx3" src="/conta6/Resources/iconos/add-cuadro.svg">
+                    <img class="icomediano" src="/conta6/Resources/iconos/add-cuadro.svg">
                   </a>
                 </td>
               </tr>
@@ -303,17 +296,17 @@
     </div>
 
 <!--ACORDEON HORAS EXTRAS-->
-    <div class="acordeon2 brx1">
-      <div class="encabezado text-center" data-toggle="collapse" href="#horasextras">
+    <div class="acordeon2 mt-3">
+      <div class="encabezado font16" data-toggle="collapse" href="#horasextras">
         <a  id="bread">HORAS EXTRAS</a>
       </div>
-      <div id="horasextras" class="card-block collapse">
-        <form class="form1"method="post">
-          <table class="table text-center">
+      <div id="horasextras" class="collapse">
+        <form class="form1">
+          <table class="table">
             <tbody>
-              <tr class="row brx1">
+              <tr class="row mt-3">
                 <td class="col-md-6 offset-md-3">
-                  <select class="form-control">
+                  <select class="custom-select">
                     <option selected>Tipo (Agrupar) SAT</option>
                     <option>Dobles -- 019 -- 0530-00002</option>
                     <option>Triples -- 019 -- 0530-00003</option>
@@ -321,7 +314,7 @@
                 </td>
               </tr>
 
-              <tr class="row brx2  mr-0 ml-0">
+              <tr class="row mt-5 m-0">
                 <td class="col-md-1 input-effect">
                   <input id="cve2" class="efecto">
                   <label for="cve2">Cve.SAT</label>
@@ -350,7 +343,7 @@
                   <input id="exento" class="efecto">
                   <label for="exento">$ Exento</label>
                 </td>
-                <td><a><img class="icomediano mleftx3" src="/conta6/Resources/iconos/add-cuadro.svg"></a>
+                <td><a><img class="icomediano" src="/conta6/Resources/iconos/add-cuadro.svg"></a>
                 </td>
               </tr>
             </tbody>
@@ -360,17 +353,17 @@
     </div>
 
 <!--ACORDEON DEDUCCIONES-->
-    <div class="acordeon2 brx1">
-      <div class="encabezado text-center" data-toggle="collapse" href="#deduc">
+    <div class="acordeon2 mt-3">
+      <div class="encabezado font16" data-toggle="collapse" href="#deduc">
         <a  id="bread">DEDUCCIONES</a>
       </div>
-      <div id="deduc" class="card-block collapse">
-        <form class="form1"method="post">
-          <table class="table text-center">
+      <div id="deduc" class="collapse">
+        <form class="form1">
+          <table class="table">
             <tbody>
-              <tr class="row brx1">
+              <tr class="row mt-3">
                 <td class="col-md-6 offset-md-3">
-                  <select class="form-control ">
+                  <select class="custom-select">
                     <option selected>Tipo (Agrupar) SAT</option>
                     <option>Descuentos 1 -- 015 -- 0115-00001</option>
                     <option>Descuentos por Prestamo -- 015 -- 0115-00001</option>
@@ -384,7 +377,7 @@
                 </td>
               </tr>
 
-              <tr class="row brx2  mr-0 ml-0">
+              <tr class="row mt-5 m-0">
                 <td class="col-md-1 input-effect">
                   <input id="cve3" class="efecto">
                   <label for="cve3">Cve.SAT</label>
@@ -407,29 +400,29 @@
                   <label for="exento1">Importe Exento</label>
                 </td>
                 <td>
-                  <a><img class="icomediano mleftx3" src="/conta6/Resources/iconos/add-cuadro.svg"></a>
+                  <a><img class="icomediano" src="/conta6/Resources/iconos/add-cuadro.svg"></a>
                 </td>
               </tr>
 
-              <tr class="row brx3 mr-0 ml-0">
-                <td class="col-md-1 input-effect" readonly>
-                  <input class="efecto">
+              <tr class="row m-0 mt-5">
+                <td class="col-md-1 input-effect">
+                  <input class="efecto border-0" readonly>
                 </td>
-                <td class="col-md-2 input-effect" readonly>
-                  <input class="efecto">
+                <td class="col-md-2 input-effect">
+                  <input class="efecto border-0" readonly>
                 </td>
-                <td class="col-md-4 input-effect" readonly>
-                  <input class="efecto">
+                <td class="col-md-4 input-effect">
+                  <input class="efecto border-0" readonly>
                 </td>
-                <td class="col-md-2 input-effect" readonly>
-                  <input class="efecto">
+                <td class="col-md-2 input-effect">
+                  <input class="efecto border-0" readonly>
                 </td>
-                <td class="col-md-2 input-effect" readonly>
-                  <input class="efecto">
+                <td class="col-md-2 input-effect">
+                  <input class="efecto border-0" readonly>
                 </td>
                 <td>
-                  <a><img class="icomediano mleft" src="/conta6/Resources/iconos/delete.svg"></a>
-                  <a><img class="icomediano mleftx2" src="/conta6/Resources/iconos/save.svg"></a>
+                  <a><img class="icomediano" src="/conta6/Resources/iconos/delete.svg"></a>
+                  <a><img class="icomediano ml-3" src="/conta6/Resources/iconos/save.svg"></a>
                 </td>
               </tr>
             </tbody>
@@ -439,23 +432,23 @@
     </div>
 
 <!--ACORDEON DEDUCCIONES-->
-    <div class="acordeon2 brx1">
-      <div class="encabezado text-center" data-toggle="collapse" href="#pension">
+    <div class="acordeon2 mt-3">
+      <div class="encabezado font16" data-toggle="collapse" href="#pension">
         <a  id="bread">PENSIÓN ALIMENTICIA</a>
       </div>
-      <div id="pension" class="card-block collapse">
-        <form class="form1"method="post">
-          <table class="table text-center">
+      <div id="pension" class="collapse">
+        <form class="form1">
+          <table class="table">
             <tbody>
-              <tr class="row brx1">
+              <tr class="row mt-3">
                 <td class="col-md-6 offset-md-3">
-                  <select class="form-control ">
+                  <select class="custom-select">
                     <option selected>Tipo (Agrupar) SAT</option>
                     <option>Pensión Alimenticia -- 007 -- 0213-00005</option>
                   </select>
                 </td>
               </tr>
-              <tr class="row brx2  mr-0 ml-0">
+              <tr class="row mt-4 m-0">
                 <td class="col-md-1 input-effect">
                   <input id="cve4" class="efecto">
                   <label for="cve4">Cve.SAT</label>
@@ -485,7 +478,7 @@
                   <label for="exento2">$ Exento</label>
                 </td>
                 <td>
-                  <a><img class="icomediano mleftx3" src="/conta6/Resources/iconos/add-cuadro.svg"></a>
+                  <a><img class="icomediano" src="/conta6/Resources/iconos/add-cuadro.svg"></a>
                 </td>
               </tr>
             </tbody>
@@ -495,16 +488,16 @@
     </div>
 
 <!--ACORDEON TOTALES-->
-    <div class="acordeon2 brx1">
-      <div class="encabezado text-center" data-toggle="collapse" href="#totales">
+    <div class="acordeon2 mt-3">
+      <div class="encabezado font16" data-toggle="collapse" href="#totales">
         <a  id="bread">TOTALES</a>
       </div>
-      <div id="totales" class="card-block collapse">
+      <div id="totales" class="collapse">
         <form class="form1">
-          <table class="table text-center">
-            <tbody>
-              <tr class="row brx3 ml-0 mr-0">
-                <td class="col-md-4 iap">INCAPACIDAD</td>
+          <table class="table">
+            <tbody style="letter-spacing:1px">
+              <tr class="row m-0 mt-5">
+                <td class="col-md-4 sub2 font14 pt-4">INCAPACIDAD :</td>
                 <td class="col-md-1 input-effect">
                   <input id="tipo" class="efecto">
                   <label for="tipo">Tipo</label>
@@ -531,7 +524,7 @@
                 </td>
               </tr>
 
-              <tr class="row brx2 ml-0 mr-0">
+              <tr class="row mt-5 m-0">
                 <td class="col-md-2 input-effect">
                   <input id="totpagar" class="efecto">
                   <label for="totpagar">Días a Pagar</label>
@@ -552,12 +545,12 @@
                   <input id="otrosgtos" class="efecto">
                   <label for="otrosgtos">Otros Gastos</label>
                 </td>
-                <td class="col-md-1 input-effect">
+                <td class="col-md-2 input-effect">
                   <input id="totneto" class="efecto">
                   <label for="totneto">Neto</label>
                 </td>
                 <td>
-                  <a><img class="icomediano mleftx2" src="/conta6/Resources/iconos/save.svg"></a>
+                  <a><img class="icomediano ml-3" src="/conta6/Resources/iconos/save.svg"></a>
                 </td>
               </tr>
             </tbody>
@@ -567,7 +560,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4 offset-md-4 text-center brx2" style="font-size: 16px;">
+      <div class="col-md-4 offset-md-4 mt-5 font16">
           <a href="" class="boton">REGREGAR</a>
       </div>
     </div>

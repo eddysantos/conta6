@@ -8,31 +8,30 @@
         </button>
         <h5 class="modal-tittle">Imprimir Pólizass</h5>
       </div>
-      <div class="modal-body" style="padding:0px">
+      <div class="modal-body p-0">
         <div class="container-fluid">
           <div id="contorno" class="contorno-modal">
-            <form class="form1"method="post">
-              <table class="table">
-                <tbody class="cuerpo">
-                  <tr class="row m-0">
-                    <td class="col-md-4 input-effect brx2">
-                      <input class="efecto text-center data-date" type="text" onfocus="(this.type='date')" id="imp-fechaIn">
+            <form class="form1">
+              <table class="table text-center">
+                <tbody>
+                  <tr class="row m-0 mt-3">
+                    <td class="col-md-4 input-effect mt-4">
+                      <input class="efecto tiene-contenido" type="date" id="imp-fechaIn">
                       <label for="imp-fechaIn">Fecha Inicial</label>
                     </td>
-                    <td class="col-md-4 input-effect brx2">
-                      <input class="efecto text-center data-date" type="text" onfocus="(this.type='date')" id="imp-fechaFin">
+                    <td class="col-md-4 input-effect mt-4">
+                      <input class="efecto tiene-contenido" type="date" id="imp-fechaFin">
                       <label for="imp-fechaFin">Fecha Final</label>
                     </td>
-                    <td class="col-md-4 input-effect brx2">
-                      <input  list="imptipo-pol" class="text-normal efecto text-center"  id="imp-tipo">
-                      <datalist id="imptipo-pol">
-                        <option value="1 - Cheques"></option>
-                        <option value="2 - Ingresos"></option>
-                        <option value="3 - Facturas / NC"></option>
-                        <option value="4 - Diario"></option>
-                        <option value="5 - Anticipos"></option>
-                      </datalist>
-                      <label for="imp-tipo">Gasto Oficina</label>
+                    <td class="col-md-4">
+                      <label class="mb-1 font14" style="color: #d59f9f;">Gasto Oficina</label>
+                      <select class="custom-select">
+                        <option value="">1 - Cheques</option>
+                        <option value="">2 - Ingresos</option>
+                        <option value="">3 - Facturas / NC</option>
+                        <option value="">4 - Diario</option>
+                        <option value="">5 - Anticipos</option>
+                      </select>
                     </td>
                   </tr>
                 </tbody>
@@ -42,7 +41,7 @@
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a href="" id="btn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="" class="linkbtn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>

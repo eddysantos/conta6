@@ -18,34 +18,10 @@
   letter-spacing:10px;
   font-size:14px;
 }
-.modal-table{
-  border: 0!important;
-  max-width:70%!important;
-  margin: 10px 110px;
-}
-.modal-table2{
-  margin:30px 40px 0px 40px;
-  width:90%!important;
-}
 .modal-table3{
   border: 0!important;
   max-width: 90%!important;
   margin: 10px 40px;
-}
-
-button[type=button].btn-dpol{
-  font-size: 14px!important;
-  border: 1px solid #ccc!important;
-  letter-spacing: 2px!important;
-  background-color: transparent;
-  border-radius: 4px;
-  width: 180px;
-  color: #ccc;
-}
-button[type=button].btn-dpol:hover,button[type=button].btn-dpol:focus{
-  font-size: 14px!important;
-  letter-spacing: 7px!important;
-  color: rgb(209, 28, 28);
 }
 
 #submenuModal{
@@ -58,26 +34,10 @@ button[type=button].btn-dpol:hover,button[type=button].btn-dpol:focus{
   cursor: pointer;
   font-size: 14px;
 }
-#submenuModal2{
-  background-color: transparent!important;
-  color: rgb(161, 160, 160)!important;
 
-}
-#submenuModal2:hover, #submenuModal2:focus{
-  color: rgb(209, 28, 28)!important;
-  cursor: pointer;
-  font-size: 13px;
-}
 .modal-xl{
   max-width: 1200px!important;
 }
-.effect-21modal{
-  letter-spacing: 4px!important;
-}
-
-/* #centrar{
-  padding-top: 10px!important;
-} */
 
 .centrar{
   padding-top: 10px!important;
@@ -99,7 +59,6 @@ button[type=button].btn-dpol:hover,button[type=button].btn-dpol:focus{
   border-top-left-radius: 8px;
   border-bottom: 1px solid rgb(209, 28, 28);
 }
-
 
 .intermedio-modal {
     background-color: transparent;

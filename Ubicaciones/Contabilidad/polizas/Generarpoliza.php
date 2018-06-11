@@ -1,5 +1,10 @@
 <?php
+$_SESSION['user_name'] = 'admado';
+$usuario = $_SESSION['user_name'];
+
   $root = $_SERVER['DOCUMENT_ROOT'];
+  require $root . '/conta6/Resources/PHP/Databases/conexion.php';
+  require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
@@ -37,20 +42,24 @@
             <label for="diafecha">Fecha Póliza</label>
           </td>
           <td class="col-md-6 input-effect">
-            <input id="diaconcepto" class="efecto" type="text">
+            <input id="diaconcepto" class="efecto" type="text" maxlength=300>
             <label for="diaconcepto">Concepto</label>
           </td>
           <td class="col-md-3 input-effect">
-            <input id="diapoliza" class="efecto tiene-contenido" type="text" readonly>
+            <input id="diapoliza" class="efecto tiene-contenido" type="text" db-id="" readonly>
             <label for="diapoliza">Póliza Generada</label>
           </td>
         </tr>
         <tr class="row justify-content-center mt-5">
           <td class="col-md-3">
-            <a href="" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a>
+            <a href="#" id="genFolioPolDia" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a>
           </td>
           <td class="col-md-3">
-            <a href="DetallepolizaDiario.php" class="boton"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a><!--nueva pagina, ingresar datos en poliza-->
+            <!--a href="#" id="btn_detallePoliza" class="boton"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a--><!--nueva pagina, ingresar datos en poliza-->
+            <!--a href='#DetallepolizaDiario' data-toggle='modal'-->
+            <a href='#DetallepolizaDiario' class='consultar-polizaMST boton' db-id='' role='button'><img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a-->
+            <!--a href="DetallepolizaDiario.php" id="btn_detallePoliza" class="boton"> <img src= "/conta6/Resources/iconos/detalle.svg" class="icochico"> DETALLE DE POLIZA</a--><!--nueva pagina, ingresar datos en poliza-->
+            <div id="respuesta"></div>
           </td>
         </tr>
       </tbody>
@@ -208,6 +217,7 @@
           </td>
           <td class="col-md-3">
             <a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR ANTICIPO</a><!--nueva pagina, ingresar datos en poliza-->
+            <div id="respuesta"></div>
           </td>
         </tr>
       </tbody>
@@ -215,5 +225,14 @@
   </div><!--/Termina Generar Poliza de Ingreso-->
 </div><!--/Termina Container FLuid-->
 
+<?php
+//require_once('DetallepolizaDiario.php');
+?>
 
+<!--***************ESTILOS*****************-->
+<link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
+<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
+<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
+
+<!--***************SCRIPTS*****************-->
 <script src="js/Polizas.js"></script>
