@@ -406,19 +406,17 @@ $(document).ready(function(){
             $('#cheques').hide();
             $('#anticipos').hide();
             break;
-          case "gcheque":
-            $('#cheques').fadeIn();
-            $('#polizadiario').hide();
-            $('#polizaingresos').hide();
-            $('#anticipos').hide();
-            break;
-
-          case "ganticipo":
-            $('#anticipos').fadeIn();
-            $('#polizadiario').hide();
-            $('#polizaingresos').hide();
-            $('#cheques').hide();
-            break;
+          // case "gcheque":
+          //   $('#cheques').fadeIn();
+					// 	$('#gpoliza').hide();
+          //   $('#anticipos').hide();
+          //   break;
+					//
+          // case "ganticipo":
+          //   $('#anticipos').fadeIn();
+          //   $('#gpoliza').hide();
+          //   $('#cheques').hide();
+          //   break;
 
             case "dtospol":
             if (status == 'cerrado') {
