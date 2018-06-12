@@ -3,8 +3,8 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid text-center">
-  <div class="row submenuMed">
+<div class="text-center">
+  <div class="row submenuMed m-0">
     <div class="col-md-12" role="button">
       <a  id="submenuMed" class="consultar" accion="pCap" status="cerrado">PEDIMENTOS CAPTURADOS</a>
     </div>
@@ -66,8 +66,8 @@
     </div>
   </div>
   <!---se muestra al escribir la referencia y dar enter-->
-  <div class="contenedor container-fluid cont" id="repoPed" style="display:none">
-    <table class="table font18">
+  <div class="contenedor contorno" id="repoPed" style="display:none">
+    <table class="table font16">
       <thead>
         <tr class="row">
           <td class="col-md-1 offset-sm-11 p-0">

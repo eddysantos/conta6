@@ -5,7 +5,7 @@
 
 
 
-<div class="container-fluid text-center">
+<div class="text-center">
   <div class="contenedor" id="buscarRef">
     <div class="row titulograndetop transEff" id="referencia">
       <div class="col-md-12 ">
@@ -23,8 +23,8 @@
 
 
 <!---se muestra al escribir la referencia y dar enter-->
-  <div class="contenedor container-fluid cont" id="repoPed" style="display:none">
-    <table class="table font18">
+  <div class="contenedor contorno" id="repoPed" style="display:none">
+    <table class="table font16">
       <thead>
         <tr class="row">
           <td class="col-md-1 offset-sm-11 p-0">

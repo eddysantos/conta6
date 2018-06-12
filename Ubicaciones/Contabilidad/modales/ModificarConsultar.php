@@ -8,7 +8,7 @@
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">Modificar Póliza de Diario</h5>
+        <h5 class="modal-tittle">Modificar Póliza</h5>
       </div>
       <div class="modal-body">
         <div class="row titulograndetop-modal">
@@ -17,15 +17,16 @@
           </div>
         </div>
         <div class="row intermedio-modal">
-          <div class="col-md-12">
-            <form  class="form-group">
-            <input class="modif border-0 text-center" type="text">
+          <div class="col-12">
+            <form  class="form-group"  method="post">
+            <input id="folioPol" class="modif text-center form-control noborder" type="text" autocomplete="new-password" onchange="validaSoloNumeros(this);">
           </form>
           </div>
         </div>
       </div><!--termina el Cuerpo del Modal-->
-      <div class="modal-footer mt-3">
-      <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+      <div class="modal-footer brx1">
+      <!--a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
+      <a href="#" id="btn" onclick="buscarPoliza('modificar')">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>
@@ -39,7 +40,7 @@
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">Consultar Póliza de Diario</h5>
+        <h5 class="modal-tittle">Consultar Póliza</h5>
       </div>
       <div class="modal-body">
         <div class="row titulograndetop-modal">
@@ -48,14 +49,15 @@
           </div>
         </div>
         <div class="row intermedio-modal">
-          <div class="col-md-12">
-            <form  class="form-group">
-            <input class="modif text-center border-0" type="text">
+          <div class="col-12">
+            <form  class="form-group"  method="post">
+            <input id="folioPolconsulta" class="modif text-center form-control noborder" type="text">
           </form>
           </div>
         </div>
-        <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php" id="btn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <div class="modal-footer brx1">
+        <!--a href="/conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php" id="btn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
+        <a href="#" id="btn" onclick="buscarPoliza('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -86,7 +88,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -117,7 +119,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -150,7 +152,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -181,7 +183,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -213,7 +215,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/Proveedores/AsignarProveedor.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/Proveedores/AsignarProveedor.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -278,7 +280,7 @@
       </table>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Modulo2/TarifasAlmacenes/Conceptos.php" id="btn">Aceptar<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Modulo2/TarifasAlmacenes/Conceptos.php" class="linkbtn">Aceptar<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -311,7 +313,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>

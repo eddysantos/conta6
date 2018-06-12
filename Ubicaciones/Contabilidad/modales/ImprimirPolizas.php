@@ -41,7 +41,7 @@
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a href="" id="btn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="" class="linkbtn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>

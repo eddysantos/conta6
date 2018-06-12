@@ -3,8 +3,7 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="continer-fluid text-center">
-
+<div class="text-center">
 <!---se muestra al dar click en Buscar-->
   <div class="contenedor" id="b-ctagastos">
     <div class="row titulograndetop transEff" id="referencia">
@@ -21,11 +20,9 @@
     </div>
   </div>
 
-
 <!---se muestra al escribir la referencia y dar enter-->
-
-  <div class="contenedor container-fluid cont" id="m-ctagastos" style="display:none">
-    <div class="col-md-12 offset-sm-11">
+  <div class="contenedor contorno" id="m-ctagastos" style="display:none">
+    <div class="col-md-1 offset-sm-11">
       <a class="atras" accion="cuadroObservaciones">
         <i class="back fa fa-arrow-left">Regresar</i>
       </a>
@@ -63,7 +60,6 @@
             </form>
           </td>
         </tr>
-
         <tr class="row font14 backpink mt-4">
           <td class="col-md-6">CAPTURÓ</td>
           <td class="col-md-6">MODIFICÓ</td>

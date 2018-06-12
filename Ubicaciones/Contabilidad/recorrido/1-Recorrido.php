@@ -4,7 +4,7 @@
 ?>
 
 
-<div class="container-fluid">
+<div class="text-center">
   <div class="row submenuMed m-0">
     <ul class="nav nav-pills nav-fill w-100" id="AsignarEntregas">
       <li class="nav-item">
@@ -24,21 +24,19 @@
 
   <div id="otrasEntregas" style="display:none">
     <form class="opcion mt-5">
-      <table class="table text-center">
-        <tr class="row">
-          <td class="col-md-6 offset-md-3">
-            <select class="custom-select" id="opcion">
-              <option >Selecciona</option>
-              <option value="1">MOTORES FRANKLIN S.A DE C.V -- CLT_6967</option>
-              <option value="2">MOTORES ELECTRICOS SUMERGIBLES S. DE R.L DE C.V -- CLT_6548</option>
-            </select>
-          </td>
-        </tr>
-      </table>
+      <div class=" row justify-content-center">
+        <div class="col-md-6">
+          <select class="custom-select" id="opcion">
+            <option >Selecciona</option>
+            <option value="1">MOTORES FRANKLIN S.A DE C.V -- CLT_6967</option>
+            <option value="2">MOTORES ELECTRICOS SUMERGIBLES S. DE R.L DE C.V -- CLT_6548</option>
+          </select>
+        </div>
+      </div>
     </form>
     <div class="contorno">
       <form class="form1">
-        <table class="table text-center">
+        <table class="table">
           <thead class="font18">
             <tr class="row encabezado m-0">
               <td class="col-md-12">Otras Facturas</td>
@@ -100,10 +98,10 @@
   </div>
 
 
-  <div id="Afacturas"  style="display:none">
+  <div id="Afacturas" style="display:none">
     <div class="contenedor">
       <div class="row titulograndetop transEff" id="factura">
-        <div class="col-12 text-center">
+        <div class="col-12 ">
           <label class="transEff" for="afact" id="labelFact">Agregar Factura</label>
         </div>
       </div>
@@ -120,7 +118,7 @@
   <div id="Consul" style="display:none">
     <div class="contorno">
       <form class="form1">
-        <table class="table text-center">
+        <table class="table">
           <thead class="font18">
             <tr class="row encabezado">
               <td class="col-md-12">Consultas</td>
@@ -166,8 +164,8 @@
         </table>
       </form>
     </div>
-    <div class="container-fluid cont">
-      <table class="table text-center table-hover">
+    <div class="contorno">
+      <table class="table table-hover">
         <thead>
           <tr class="row sub2 font12">
             <td class="col-md-8">CLIENTE</td>
@@ -185,9 +183,7 @@
             <td class="col-md-1">Entregado</td>
             <td class="col-md-1">
               <div class="checkbox-xs">
-                <label>
-                  <input type="checkbox" data-toggle="toggle">
-                </label>
+                <label><input type="checkbox" data-toggle="toggle"></label>
               </div>
             </td>
           </tr>
@@ -196,9 +192,8 @@
     </div>
   </div>
 
-  <!-- <div id="Recor" class="contorno" style="display:none"> -->
-  <div id="Recor" class="contorno">
-    <table class="table text-center table-hover">
+  <div id="Recor" class="contorno" style="display:none">
+    <table class="table  table-hover">
       <thead class="font18">
         <tr class="row encabezado">
           <td class="col-md-12">CUENTAS PARA RECORRIDO
