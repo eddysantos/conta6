@@ -216,3 +216,18 @@ input.reg{
   text-align:center!important;
   color: rgb(75, 74, 74)!important;
 }
+
+
+.pantallaGris{
+	background-color: rgb(240, 240, 240,0.25);
+  /* margin-bottom: 0px */
+	height: 800px;
+}
+
+.tituloSinRegistros{
+	text-align: center;
+	margin-top: 260px;
+	letter-spacing: 8px;
+	color: rgb(210, 210, 210);
+	font-size: 50px
+}

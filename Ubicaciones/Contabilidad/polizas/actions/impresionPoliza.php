@@ -1,5 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
+// require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = trim($_GET['id_poliza']);

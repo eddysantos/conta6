@@ -217,6 +217,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
       </header>
 
   <?php
+
     require $root . '/conta6/Ubicaciones/Contabilidad/modales/ImprimirPolizas.php';
     require $root . '/conta6/Ubicaciones/Contabilidad/Reportes/modales/ModalRepo.php';
     require $root . '/conta6/Ubicaciones/Contabilidad/modales/Modificarconsultar.php';
