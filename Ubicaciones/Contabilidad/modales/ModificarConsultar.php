@@ -25,7 +25,6 @@
         </div>
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer brx1">
-      <!--a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
       <a href="#" id="btn" onclick="buscarPoliza('modificar')">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
@@ -51,12 +50,11 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form  class="form-group"  method="post">
-            <input id="folioPolconsulta" class="modif text-center form-control noborder" type="text">
+            <input id="folioPolconsulta" class="modif text-center form-control noborder" type="text" autocomplete="new-password" onchange="validaSoloNumeros(this)">
           </form>
           </div>
         </div>
         <div class="modal-footer brx1">
-        <!--a href="/conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php" id="btn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
         <a href="#" id="btn" onclick="buscarPoliza('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -147,12 +145,13 @@
         <div class="row intermedio-modal">
           <div class="col-md-12">
             <form class="form-group">
-            <input class="modif text-center border-0" type="text">
+            <input class="modif text-center border-0" type="text" id="folioAnt">
           </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          <a href="#" id="btn" onclick="buscarAnticipo('modificar')">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <!--a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
         </div>
       </div>
     </div>
@@ -178,12 +177,13 @@
         <div class="row intermedio-modal">
           <div class="col-md-12">
             <form  class="form-group">
-            <input class="modif text-center border-0" type="text">
+            <input class="modif text-center border-0" type="text" id="folioAntConsulta">
           </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          <a href="#" id="btn" onclick="buscarAnticipo('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <!--a href="/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
         </div>
       </div>
     </div>

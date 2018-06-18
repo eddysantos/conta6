@@ -890,6 +890,7 @@ require_once('modales/buscarFacturas.php');
 <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
 <script src="js/Polizas.js"></script>
+<script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script>
 <script src="/conta6/Resources/js/eliminaBlancosIntermedios.js"></script>
 <script src="/conta6/Resources/js/todasMayusculas.js"></script>
 <script src="/conta6/Resources/js/validaSoloNumeros.js"></script>
