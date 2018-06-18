@@ -145,13 +145,14 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form class="form-group" autocomplete="off">
-              <input class="reg border-0" type="text">
-            </form>
+            <form class="form-group">
+            <input class="modif text-center border-0" type="text" id="folioAnt">
+          </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
-          <a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          <a href="#" id="btn" onclick="buscarAnticipo('modificar')">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <!--a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
         </div>
       </div>
     </div>
@@ -176,13 +177,14 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form  class="form-group" autocomplete="off">
-            <input class="reg border-0" type="text">
+            <form  class="form-group">
+            <input class="modif text-center border-0" type="text" id="folioAntConsulta">
           </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php" class="linkbtn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          <a href="#" id="btn" onclick="buscarAnticipo('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <!--a href="/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
         </div>
       </div>
     </div>

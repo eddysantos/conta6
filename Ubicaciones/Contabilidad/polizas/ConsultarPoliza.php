@@ -171,3 +171,4 @@ if( $totalRegistrosSelect > 0 ){
 
 
 <script src="js/Polizas.js"></script>
+<script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script>
