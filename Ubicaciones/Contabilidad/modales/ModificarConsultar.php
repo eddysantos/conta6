@@ -146,7 +146,7 @@
         <div class="row intermedio-modal">
           <div class="col-md-12">
             <form class="form-group">
-            <input class="modif text-center border-0" type="text" id="folioAnt">
+            <input class="reg border-0" type="text" id="folioAnt" autocomplete="off">
           </form>
           </div>
         </div>
@@ -178,7 +178,7 @@
         <div class="row intermedio-modal">
           <div class="col-md-12">
             <form  class="form-group">
-            <input class="modif text-center border-0" type="text" id="folioAntConsulta">
+            <input class="reg border-0" type="text" id="folioAntConsulta">
           </form>
           </div>
         </div>

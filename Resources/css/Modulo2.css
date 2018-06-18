@@ -2,7 +2,8 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   border-bottom: 1px solid rgb(209, 28, 28);
-  background-color: rgba(194, 189, 189, 0.1);
+  background-color:#fbfbfb !important;
+  /* background-color: rgba(194, 189, 189, 0.1); */
   padding: .1rem!important;
   text-align: center;
 }
@@ -68,7 +69,7 @@ a img.icochico:hover {
 
 
 .submenuMed {
-  background-color: rgba(254, 113, 113, 0.04);
+  background-color: rgba(254, 113, 113, 0.03);
   height: 50px;
 }
 div.submenuMed {
