@@ -3,61 +3,45 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-  <div class="row submenuMed m-0">
-    <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
-      <li class="nav-item">
-        <a class="nav-link consultar" id="submenuMed">GENERAR ANTICIPO</a>
-      </li>
-    </ul>
-  </div>
+<div class="row submenuMed m-0">
+  <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
+    <li class="nav-item">
+      <a class="nav-link consultar" id="submenuMed">GENERAR ANTICIPO</a>
+    </li>
+  </ul>
+</div>
 
+<input type="hidden" id="txt_usuario" value="<?php echo $usuario;?>">
+<input type="hidden" id="txt_aduana" value="<?php echo $aduana;?>">
 
 <div id="anticipos" class="contorno text-center">
   <table class="table form1 font14">
-    <!-- <thead>
-      <tr class="row m-0 encabezado font18">
-        <td class="col-md-12">GENERAR ANTICIPO</td>
-      </tr>
-    </thead> -->
     <tbody>
       <tr class="row m-0 mt-5">
-        <td class="col-md-3 input-effect">
+        <td class="col-md-2 input-effect">
           <input class="efecto tiene-contenido" type="date" id="antfecha">
           <label for="antfecha">Fecha Anticipo</label>
         </td>
-        <td class="col-md-3 input-effect">
-          <input id="antimporte" class="efecto" type="text">
+        <td class="col-md-2 input-effect">
+          <input id="antimporte" class="efecto" type="text" onchange="validaSoloNumeros(this);">
           <label for="antimporte">Importe</label>
         </td>
-        <td class="col-md-6 input-effect">
-          <input  list="antcta" class="efecto"  id="antcuenta">
-          <datalist id="antcta">
-            <option value="0100-00006 ---- BANAMEX CTA.7658424 NLDO"></option>
-            <option value="0100-00011 ---- BANAMEX DLLS CTA.79033561 NLDO"></option>
-            <option value="0100-00012 ---- BANAMEX DLLS CTA.79033561 COMPLEMENTARIA NLDO"></option>
-            <option value="0100-00016 ---- BANCOMER CTA.0192655497 NLDO"></option>
-            <option value="0100-00017 ---- BANAMEX CTA.7355485 NLDO"></option>
-          </datalist>
-          <label for="antcuenta">Seleccione una Cuenta</label>
+        <td class="col-md-8 input-effect">
+          <input class="efecto popup-input" id="antcliente" type="text" id-display="#popup-display-antcliente" action="clientes" db-id="" autocomplete="new-password" onblur="Actualiza_Expedido_Cliente()">
+          <div class="popup-list" id="popup-display-antcliente" style="display:none"></div>
+          <label for="antcliente">Cliente</label>
         </td>
       </tr>
       <tr class="row m-0 mt-4">
-        <td class="col-md-8 input-effect">
-          <input  list="listaclientes" class="efecto" id="antcliente">
-          <datalist id="listaclientes">
-            <option value="SERVICIOS INTEGRALES EN LOGISTICA INTERNACIONAL, ADUANAS Y TECNOLOGIA, S.C --- CLT_7158"></option>
-            <option value="TURBO-MEX REFACCIONES,MANTENIMIENTO Y SEGURIDAD INDUSTRIAL S.A DE C.V --- CLT_7114"></option>
-          </datalist>
-          <label for="antcliente">Cliente</label>
-        </td>
         <td class="col-md-4 input-effect">
-          <input  list="listacuentacliente" class="efecto" id="antbcocliente">
-          <datalist id="listacuentacliente">
-            <option value="HSBC --- 3336"></option>
-            <option value="BANAMEX --- 0192"></option>
-            <option value="BANAMEX --- 9569"></option>
-          </datalist>
-          <label for="antbcocliente">Banco Cliente</label>
+          <select class="custom-select" size='1' name='antbcocliente' id='antbcocliente'>
+            <option selected value='0'>Seleccione Banco</option>
+          </select>
+        </td>
+        <td class="col-md-8 input-effect">
+          <select class="custom-select" size='1' name='antcuenta' id='antcuenta'>
+              <option selected value='0'>Seleccione una Cuenta</option>
+            </select>
         </td>
       </tr>
       <tr class="row  m-0 mt-4">
@@ -66,11 +50,22 @@
           <label for="antconcepto">Concepto</label>
         </td>
         <td class="col-md-3">
-          <a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR ANTICIPO</a><!--nueva pagina, ingresar datos en poliza-->
-          <div id="respuesta"></div>
+          <a href="#" id="genFolioAnticipo" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR ANTICIPO</a><!--nueva pagina, ingresar datos en poliza-->
         </td>
       </tr>
     </tbody>
   </table>
 </div><!--/Termina Generar Poliza de Ingreso-->
-</div><!--/Termina Container FLuid-->
+
+<!--***************ESTILOS*****************-->
+<link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
+<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
+<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
+
+<!--***************SCRIPTS*****************-->
+<script src="/conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
+<script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script>
+<script src="/conta6/Resources/js/validaSoloNumeros.js"></script>
+
+<script src="/conta6/Resources/js/popup-list-plugin.js"></script>
+<script src="/conta6/Resources/js/table-fetch-plugin.js"></script>

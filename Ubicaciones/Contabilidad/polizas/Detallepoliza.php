@@ -233,8 +233,8 @@ if( $totalRegistrosSelect > 0 ){
             <a href="#detpol-Honorarios" data-toggle="modal" class="boton"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI HONORARIOS</a>
           </div>
           <div class="col-md-2 mt-3">
-		  	<!--a href='#detpol-editarRegPolDiario?id_poliza=174&aduana=470' data-toggle='modal' class="boton" style="border:none"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg" style="border:none"></a-->
-          <a href='#detpol-editarRegPolDiario' data-toggle='modal' class="boton" style="border:none"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+		  	    <a href='#detpol-editarRegPolDiario?id_poliza=174&aduana=470' data-toggle='modal' class="boton" style="border:none"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg" style="border:none"></a>
+          <!-- <a href='#detpol-editarRegPolDiario' data-toggle='modal' class="boton" style="border:none"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg" style="border:none"></a> -->
           </div>
           <div class="col-md-2 mt-3">
             <input class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
@@ -890,6 +890,7 @@ require_once('modales/buscarFacturas.php');
 <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
 <script src="js/Polizas.js"></script>
+<script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script>
 <script src="/conta6/Resources/js/eliminaBlancosIntermedios.js"></script>
 <script src="/conta6/Resources/js/todasMayusculas.js"></script>
 <script src="/conta6/Resources/js/validaSoloNumeros.js"></script>

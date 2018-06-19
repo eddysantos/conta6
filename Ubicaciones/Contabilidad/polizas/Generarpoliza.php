@@ -61,4 +61,5 @@
 
 <!--***************SCRIPTS*****************-->
 <script src="js/Polizas.js"></script>
+<script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script>
 <script src="/conta6/Resources/js/validaSoloNumeros.js"></script>

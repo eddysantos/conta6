@@ -1,9 +1,62 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+
+  $id_anticipo = $_GET['id_anticipo'];
+
+  $sql_Select = "SELECT * from conta_t_anticipos_mst Where pk_id_anticipo = ? AND fk_id_aduana = ?";
+  $stmt = $db->prepare($sql_Select);
+	if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
+
+	$stmt->bind_param('ss', $id_anticipo,$aduana);
+	if (!($stmt)) { die("Error during query prepare [$stmt->errno]: $stmt->error");	}
+
+	if (!($stmt->execute())) { die("Error during query prepare [$stmt->errno]: $stmt->error"); }
+
+	$rslt = $stmt->get_result();
+	$rows = $rslt->num_rows;
+
+	if( $rows > 0 ){
+		$rowMST = $rslt->fetch_assoc();
+
+		$cancela = $rowMST['s_cancela'];
+		if( $cancela == 0 ){ $txt_cancela = "Activo"; }else{ $txt_cancela = "Cancelado"; }
+
+		if( $oRst_permisos["s_correcciones_mst_anticipos"] == 1 && $cancela == 0 ){
+			$mostrar = true;
+		}else{
+			$mostrar = false;
+		}
+
+		if( $cancela == 1 ){ $clase = 'class="efecto disabled readonly" disabled'; $claseAdmin = 'class="efecto disabled readonly" disabled'; }
+
+
+
+		$oRst_STPD_sql = "select fk_id_anticipo,SUM(n_cargo)as SUMA_CARGOS,SUM(n_abono)as SUMA_ABONOS from conta_t_anticipos_det where fk_id_anticipo = ? group by fk_id_anticipo ";
+		$stmtTotales = $db->prepare($oRst_STPD_sql);
+		if (!($stmtTotales)) { die("Error during query prepare [$db->errno]: $db->error");	}
+		$stmtTotales->bind_param('s', $id_anticipo);
+		if (!($stmtTotales)) { die("Error during query prepare [$stmtTotales->errno]: $stmtTotales->error");	}
+		if (!($stmtTotales->execute())) { die("Error during query prepare [$stmtTotales->errno]: $stmtTotales->error"); }
+		$rsltTotales = $stmtTotales->get_result();
+		$rowsTotales = $rsltTotales->num_rows;
+		if( $rowsTotales > 0 ){
+			$oRst_STPD = $rsltTotales->fetch_assoc();
+			$sumaCargos = $oRst_STPD['SUMA_CARGOS'];
+			$sumaAbonos = $oRst_STPD['SUMA_ABONOS'];
+		}else{
+			$sumaCargos = 0;
+			$sumaAbonos = 0;
+		}
+
+
+
+
+
+	}
 ?>
 
-<div class="container-fluid text-center">
+<div class="text-center mb-10">
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
@@ -11,62 +64,78 @@
       </li>
     </ul>
   </div>
+<?php
+if( $rows > 0 ){
+?>
+<input type="hidden" id="usuario_activo" value="<?php echo $usuario; ?>">
+<input type="hidden" id="aduana_activa" value="<?php echo $aduana; ?>">
 
   <!--Comienza DETALLE DATOS DE POLIZA-->
-  <div id="datosanticipo" class="contorno" style="display:none">
+  <div id="datosanticipo" class="contorno" >
+  <!--style="display:none"-->
     <h5 class="titulo">DATOS DE ANTICIPO</h5>
     <form class="form1">
       <table class="table">
         <thead>
-          <tr class="row m-0 encabezado">
+          <tr class="row encabezado">
             <td class="col-md-1">POLIZA</td>
             <td class="col-md-1">USUARIO</td>
             <td class="col-md-1">ANTICIPO</td>
             <td class="col-md-2">FECHA REGISTRO</td>
             <td class="col-md-2">FECHA ANTICIPO</td>
             <td class="col-md-1">OFICINA</td>
+            <td class="col-md-2">VALOR</td>
             <td class="col-md-2">CANCELACION</td>
-            <td class="col-md-2">NOTA</td>
           </tr>
         </thead>
         <tbody class="font14">
-          <tr class="row m-0">
-            <td class="col-md-1 pt-3">234567</td>
-            <td class="col-md-1 pt-3">Estefania</td>
-            <td class="col-md-1 pt-3">33452</td>
-            <td class="col-md-2 pt-3">30-06-2017</td>
-            <td class="col-md-2">
-              <input class="efecto h22" type="date" value="2018-06-30">
+
+          <tr class="row">
+            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_poliza']; ?>
+              <!-- <input class="h22 efecto disabled readonly" id="ant-poliza" type="text" db-id="" autocomplete="new-password" disabled value=""> -->
             </td>
-            <td class="col-md-1 pt-3">240</td>
-            <td class="col-md-2 pt-3">234577</td>
-            <td class="col-md-2 pt-3">Ninguna</td>
+            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_usuario']; ?></td>
+            <td class="col-md-1 pt-3"><?php echo $rowMST['pk_id_anticipo']; ?>
+              <!-- <input class="h22 efecto disabled readonly" id="id_anticipo" type="text" db-id="" autocomplete="new-password" disabled value=""> -->
+            </td>
+            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha_alta']; ?></td>
+            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha']; ?>
+            </td>
+            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_aduana']; ?></td>
+            <td class="col-md-2"><?php echo $rowMST['n_valor']; ?></td>
+            <td class="col-md-2 pt-1">
+      				<?php if( $mostrar == true ){ ?>
+      					<select class="custom-select-ch" size="1" name="ant-cancela" id="ant-cancela" onchange="cambiarStatus()">
+      					<?php if( $cancela == 0 ){
+    							echo "<option value='0' selected>Activo</option>";
+    							echo "<option value='1'>Cancelado</option>";
+    						  }else{
+    							echo "<option value='0'>Activo</option>";
+    							echo "<option value='1' selected>Cancelado</option>";
+    						  } ?>
+      					</select>
+      				<?php }else{ echo $txt_cancela; } ?>
+      			</td>
           </tr>
-          <tr class="row m-0 mt-5">
-            <td class="col-md-2">
-              <input id="ant-valor" class="efecto tiene-contenido h22" value="$21,027.00" type="text">
-              <label for="ant-valor">VALOR</label>
-            </td>
+
+		      <tr class="row sub2 font12">
+            <td class="col-md-2">CUENTA</td>
+			      <td class="col-md-1">CLIENTE</td>
+            <td class="col-md-2">BANCO/CUENTA</td>
+            <td class="col-md-6">CONCEPTO</td>
+          </tr>
+    		  <tr  class="row">
+			      <td class="col-md-2"><?php echo $rowMST['fk_id_cuentaMST']; ?></td>
+            <td class="col-md-1"><?php echo $rowMST['fk_id_cliente']; ?></td>
+            <td class="col-md-2"><?php echo $rowMST['s_bancoOri'].'/'.$rowMST['s_ctaOri']; ?></td>
+            <td class="col-md-6"><?php echo $rowMST['s_concepto']; ?></td>
             <td class="col-md-1">
-              <input id="ant-cliente" class="efecto tiene-contenido h22" value="CLT_7634" type="text">
-              <label for="ant-cliente">CLIENTE</label>
-            </td>
-            <td class="col-md-1">
-              <input id="ant-banco" class="efecto border-0 h22 tiene-contenido" value="044" type="text">
-              <label for="ant-banco">BANCO</label>
-            </td>
-            <td class="col-md-1">
-              <input id="ant-cuenta" class="efecto border-0 h22 tiene-contenido" value="8933" type="text">
-              <label for="ant-cuenta">CUENTA</label>
-            </td>
-            <td class="col-md-6">
-              <input id="ch-concep" class="efecto tiene-contenido h22" value="CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA" type="text">
-              <label for="ch-concep">CONCEPTO</label>
-            </td>
-            <td class="col-md-1 text-left">
-              <a href=""> <img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
+              <a href='#ant-editarRegMST' data-toggle='modal' db-id='$partida' role='button'>
+                <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+              </a>
             </td>
           </tr>
+		      <?php if( $mostrar == true ){ ?><?php }?>
         </tbody>
       </table>
     </form>
@@ -149,10 +218,10 @@
           </div>
           <div class="row">
             <div class="col-md-2 offset-md-4">
-              <input  class="efecto" value="$ 15, 932.08" readonly>
+              <input  class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
             </div>
             <div class="col-md-2">
-              <input  class="efecto" value="$ 15, 932.08" readonly>
+              <input  class="efecto" value="<?php echo $sumaAbonos; ?>" readonly>
             </div>
           </div>
         </div>
@@ -173,10 +242,10 @@
               <a href="#" class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
             </div>
             <div class="col-md-2 mt-3">
-              <input  class="efecto" value="$ 15, 932.08" readonly>
+              <input  class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
             </div>
             <div class="col-md-2 mt-3">
-              <input  class="efecto" value="$ 15, 932.08" readonly>
+              <input  class="efecto" value="<?php echo $sumaAbonos; ?>" readonly>
             </div>
           </div>
 
@@ -231,13 +300,19 @@
 </div>
 
 
-<footer>
-  <script src="js/Anticipos.js"></script>
-  <script src="/conta6/ubicaciones/Contabilidad/js/contenedor-movible.js"></script>
-  <script src="/conta6/Resources/bootstrap/js/bootstrap-checkbox-toggle.js"></script>
+<?PHP
+require $root . '/conta6/Ubicaciones/footer.php';
+  require_once('modales/editarDatosAnticipo.php');
+  require_once('modales/editarRegistroAnt.php');
+  require_once('modales/buscarFacturasAnt.php');
 
- <?php
-   require_once('modales/editarRegistro.php');
-   require_once('modales/buscarFacturas.php');
-  ?>
- </footer>
+
+
+}else{ #$rows?>
+	<br><br>
+	<p align="center"><u>
+	<font face="Trebuchet MS" size="2" align="center" >NO EXISTE EL ANTICIPO O ES DE OTRA OFICINA</font></u></p>
+	<p align="center">&nbsp;</p>
+<?php
+} #$rows
+?>
