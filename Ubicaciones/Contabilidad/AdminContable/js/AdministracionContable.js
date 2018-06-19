@@ -1,4 +1,46 @@
+function asigCorresponsal(id_corresp,id_cliente){
+  if(id_corresp > 0){
+    if($('#corp-cliente').attr('db-id') == ""){
+      alertify.error("Seleccione un cliente");
+      $('#corp-cliente').focus();
+      return false;
+    }
 
+    var data = {
+      id_cliente: $('#corp-cliente').attr('db-id'),
+      id_corresp: $('#id_corresp').val()
+    }
+
+  }else{
+    var data = {
+      id_cliente: id_cliente,
+      id_corresp: id_corresp 
+    }
+  }
+
+        $.ajax({
+          type: "POST",
+          url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/asignarCorresponsalAcliente.php",
+          data: data,
+          success: 	function(request){
+            r = JSON.parse(request);
+            console.log(r);
+            if (r.code == 1) {
+              swal("Exito", "Operación realizada correctamente.", "success");
+              location.reload();
+            } else {
+              console.error(r.message);
+            }
+
+          }
+        });
+}
+
+
+
+function correspAsignar(id_corresp){
+  window.location.replace('/conta6/Ubicaciones/Contabilidad/AdminContable/CorresponsalesAsignar.php?id_corresp='+id_corresp);
+}
 function fetch_cuentas_sat(){
     $.ajax({
       method: 'POST',
@@ -99,6 +141,47 @@ $(document).ready(function(){
               console.error("Something went terribly wrong...");
       }
     });
+
+
+    $('#genCorresponsal').click(function(){
+
+    				if($('#corp-cliente').attr('db-id') == ""){
+    					alertify.error("Seleccione un cliente");
+    					$('#corp-cliente').focus();
+    					return false;
+    				}
+
+            txt_cliente = $('#corp-cliente').val();
+            cliente = $('#corp-cliente').attr('db-id');
+
+            parte = txt_cliente.split(cliente);
+            cliente = parte[0];
+            nombre = parte[1];
+
+            var data = {
+          		id_cliente: $('#corp-cliente').attr('db-id'),
+              s_nombre: nombre
+          	}
+
+
+          	$.ajax({
+          		type: "POST",
+          		url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregarCorresponsal.php",
+          		data: data,
+          		success: 	function(request){
+          			r = JSON.parse(request);
+                if (r.code == 1) {
+        					swal("Exito", "Se guardo correctamente.", "success");
+        					location.reload();
+        				} else {
+        					console.error(r.message);
+        				}
+
+          		}
+          	});
+    });
+
+
 
 
     $('#ctamaestra').click(function(){

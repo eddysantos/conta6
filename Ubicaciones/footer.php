@@ -1,15 +1,12 @@
 <footer class="footer mt-3">
-  <h4 class="m-3">Bienvenido, Usuario</h4>
+  <h4 class="m-3">Bienvenido, <?php echo $usuario; ?></h4>
 
 
-
-
-<!--REQUERIDOS PARA ANTICIPOS-->
-  <script src="js/Anticipos.js"></script>
-
-<!--REQUERIDOS PARA CHEQUES-->
-  <script src="js/Cheques.js"></script>
-
+  <!--REQUERIDOS-->
+  <script src="/conta6/Ubicaciones/Contabilidad/AdminContable/js/AdministracionContable.js"></script>
+  <script src="/conta6/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
+  <script src="/conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
+  <script src="/conta6/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
 
   <script src="/conta6/Ubicaciones/Contabilidad/js/contenedor-movible.js"></script>
   <script src="/conta6/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
