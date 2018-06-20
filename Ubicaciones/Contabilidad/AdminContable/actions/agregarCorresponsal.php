@@ -48,5 +48,4 @@ $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
 
-
 ?>

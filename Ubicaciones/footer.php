@@ -1,7 +1,6 @@
 <footer class="footer mt-3">
   <h4 class="m-3">Bienvenido, <?php echo $usuario; ?></h4>
 
-
   <!--REQUERIDOS-->
   <script src="/conta6/Ubicaciones/Contabilidad/AdminContable/js/AdministracionContable.js"></script>
   <script src="/conta6/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>

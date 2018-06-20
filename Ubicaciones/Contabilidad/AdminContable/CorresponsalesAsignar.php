@@ -78,4 +78,4 @@
  require_once('modales/ModalCorresponsales.php');
  require $root . '/conta6/Ubicaciones/footer.php';
 
-  ?>
+?>

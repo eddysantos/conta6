@@ -1,39 +1,39 @@
 function asigCorresponsal(id_corresp,id_cliente){
-  if(id_corresp > 0){
-    if($('#corp-cliente').attr('db-id') == ""){
-      alertify.error("Seleccione un cliente");
-      $('#corp-cliente').focus();
-      return false;
+    if(id_corresp > 0){
+      if($('#corp-cliente').attr('db-id') == ""){
+        alertify.error("Seleccione un cliente");
+        $('#corp-cliente').focus();
+        return false;
+      }
+
+      var data = {
+        id_cliente: $('#corp-cliente').attr('db-id'),
+        id_corresp: $('#id_corresp').val()
+      }
+
+    }else{
+      var data = {
+        id_cliente: id_cliente,
+        id_corresp: id_corresp
+      }
     }
 
-    var data = {
-      id_cliente: $('#corp-cliente').attr('db-id'),
-      id_corresp: $('#id_corresp').val()
-    }
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/asignarCorresponsalAcliente.php",
+      data: data,
+      success: 	function(request){
+        r = JSON.parse(request);
+        console.log(r);
+        if (r.code == 1) {
+          swal("Exito", "Operación realizada correctamente.", "success");
+          location.reload();
+        } else {
+          console.error(r.message);
+        }
 
-  }else{
-    var data = {
-      id_cliente: id_cliente,
-      id_corresp: id_corresp 
-    }
-  }
-
-        $.ajax({
-          type: "POST",
-          url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/asignarCorresponsalAcliente.php",
-          data: data,
-          success: 	function(request){
-            r = JSON.parse(request);
-            console.log(r);
-            if (r.code == 1) {
-              swal("Exito", "Operación realizada correctamente.", "success");
-              location.reload();
-            } else {
-              console.error(r.message);
-            }
-
-          }
-        });
+      }
+    });
 }
 
 
