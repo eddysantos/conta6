@@ -23,7 +23,7 @@
           <label for="antfecha">Fecha Anticipo</label>
         </td>
         <td class="col-md-2 input-effect">
-          <input id="antimporte" class="efecto" type="text" onchange="validaSoloNumeros(this);">
+          <input id="antimporte" class="efecto" type="text" onchange="validaSoloNumeros(this)">
           <label for="antimporte">Importe</label>
         </td>
         <td class="col-md-8 input-effect">
@@ -57,15 +57,19 @@
   </table>
 </div><!--/Termina Generar Poliza de Ingreso-->
 
+<?php
+require $root . '/conta6/Ubicaciones/footer.php';
+?>
+
 <!--***************ESTILOS*****************-->
 <link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
 <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
 <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
 <!--***************SCRIPTS*****************-->
-<script src="/conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
-<script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script>
-<script src="/conta6/Resources/js/validaSoloNumeros.js"></script>
+<!--script src="/conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script-->
+<!--script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script>
+<script src="/conta6/Resources/js/validaSoloNumeros.js"></script-->
 
-<script src="/conta6/Resources/js/popup-list-plugin.js"></script>
-<script src="/conta6/Resources/js/table-fetch-plugin.js"></script>
+<!--script src="/conta6/Resources/js/popup-list-plugin.js"></script>
+<script src="/conta6/Resources/js/table-fetch-plugin.js"></script-->

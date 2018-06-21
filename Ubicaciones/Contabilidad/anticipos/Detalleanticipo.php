@@ -7,31 +7,58 @@
   $sql_Select = "SELECT * from conta_t_anticipos_mst Where pk_id_anticipo = ? AND fk_id_aduana = ?";
   $stmt = $db->prepare($sql_Select);
 	if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
-
 	$stmt->bind_param('ss', $id_anticipo,$aduana);
 	if (!($stmt)) { die("Error during query prepare [$stmt->errno]: $stmt->error");	}
-
 	if (!($stmt->execute())) { die("Error during query prepare [$stmt->errno]: $stmt->error"); }
-
 	$rslt = $stmt->get_result();
 	$rows = $rslt->num_rows;
 
 	if( $rows > 0 ){
 		$rowMST = $rslt->fetch_assoc();
-
 		$cancela = $rowMST['s_cancela'];
 		if( $cancela == 0 ){ $txt_cancela = "Activo"; }else{ $txt_cancela = "Cancelado"; }
-
-		if( $oRst_permisos["s_correcciones_mst_anticipos"] == 1 && $cancela == 0 ){
-			$mostrar = true;
-		}else{
-			$mostrar = false;
-		}
-
+		if( $oRst_permisos["s_correcciones_mst_anticipos"] == 1 && $cancela == 0 ){ $mostrar = true; }else{ $mostrar = false; }
+    if( $oRst_permisos["s_descancelar_anticipos"] == 1 ){ $mostrarCancela = true; }else{ $mostrarCancela = false; }
 		if( $cancela == 1 ){ $clase = 'class="efecto disabled readonly" disabled'; $claseAdmin = 'class="efecto disabled readonly" disabled'; }
 
+    //detalle
+    $sql_SelectDET = "SELECT * from conta_t_anticipos_det Where fk_id_anticipo = ?";
+    $stmtDET = $db->prepare($sql_SelectDET);
+  	if (!($stmtDET)) { die("Error during query prepare [$db->errno]: $db->error");	}
+  	$stmtDET->bind_param('s', $id_anticipo);
+  	if (!($stmtDET)) { die("Error during query prepare [$stmtDET->errno]: $stmtDET->error");	}
+  	if (!($stmtDET->execute())) { die("Error during query prepare [$stmtDET->errno]: $stmtDET->error"); }
+  	$rsltDET = $stmtDET->get_result();
+  	$rowsDET = $rsltDET->num_rows;
+    if( $rowsDET > 0 ){
+      $rowDET = $rsltDET->fetch_assoc();
 
+      $tablaDetalle = "
+      <tr class='row m-0 borderojo'>
+        <td class='xs'>
+          <a href=''><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+        </td>
+        <td class='sm'>$rowDET[fk_id_cuenta]</td>
+        <td class='sm'>$rowDET[fk_referencia]</td>
+        <td class='sm'>$rowDET[fk_id_cliente]</td>
+        <td class='sm'>$rowDET[fk_factura]</td>
+        <td class='sm'>$rowDET[fk_ctagastos]</td>
+        <td class='sm'>$rowDET[fk_pago]</td>
+        <td class='sm'>$rowDET[fk_nc]</td>
+        <td class='sm'>$rowDET[fk_anticipo]</td>
+        <td class='med'>$rowDET[s_desc]</td>
+        <td class='sm'>$rowDET[n_cargo]</td>
+        <td class='sm'>$rowDET[n_abono]</td>
+        <td class='sm'>$rowDET[d_fecha]</td>
+        <td class='xs'>
+          <a href='#detpol-editar' data-toggle='modal'>
+            <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+          </a>
+        </td>
+      </tr>";
+    }
 
+    //totales
 		$oRst_STPD_sql = "select fk_id_anticipo,SUM(n_cargo)as SUMA_CARGOS,SUM(n_abono)as SUMA_ABONOS from conta_t_anticipos_det where fk_id_anticipo = ? group by fk_id_anticipo ";
 		$stmtTotales = $db->prepare($oRst_STPD_sql);
 		if (!($stmtTotales)) { die("Error during query prepare [$db->errno]: $db->error");	}
@@ -69,10 +96,11 @@ if( $rows > 0 ){
 ?>
 <input type="hidden" id="usuario_activo" value="<?php echo $usuario; ?>">
 <input type="hidden" id="aduana_activa" value="<?php echo $aduana; ?>">
+<input type="hidden" id="mst-anticipo" value="<?php echo $rowMST['pk_id_anticipo']; ?>">
+<input type="hidden" id="mst-fecha" value="<?php echo $rowMST['d_fecha']; ?>">
 
-  <!--Comienza DETALLE DATOS DE POLIZA-->
-  <div id="datosanticipo" class="contorno" >
-  <!--style="display:none"-->
+  <!--Comienza DETALLE DATOS DE ANTICIPO-->
+  <div id="datosanticipo" class="contorno" style="display:none">
     <h5 class="titulo">DATOS DE ANTICIPO</h5>
     <form class="form1">
       <table class="table">
@@ -91,21 +119,16 @@ if( $rows > 0 ){
         <tbody class="font14">
 
           <tr class="row">
-            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_poliza']; ?>
-              <!-- <input class="h22 efecto disabled readonly" id="ant-poliza" type="text" db-id="" autocomplete="new-password" disabled value=""> -->
-            </td>
+            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_poliza']; ?></td>
             <td class="col-md-1 pt-3"><?php echo $rowMST['fk_usuario']; ?></td>
-            <td class="col-md-1 pt-3"><?php echo $rowMST['pk_id_anticipo']; ?>
-              <!-- <input class="h22 efecto disabled readonly" id="id_anticipo" type="text" db-id="" autocomplete="new-password" disabled value=""> -->
-            </td>
+            <td class="col-md-1 pt-3"><?php echo $rowMST['pk_id_anticipo']; ?></td>
             <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha_alta']; ?></td>
-            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha']; ?>
-            </td>
+            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha']; ?></td>
             <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_aduana']; ?></td>
             <td class="col-md-2"><?php echo $rowMST['n_valor']; ?></td>
             <td class="col-md-2 pt-1">
-      				<?php if( $mostrar == true ){ ?>
-      					<select class="custom-select-ch" size="1" name="ant-cancela" id="ant-cancela" onchange="cambiarStatus()">
+      				<?php if( $mostrarCancela == true ){ ?>
+      					<select class="custom-select-ch" size="1" name="ant-cancela" id="ant-cancela" onchange="cambiarStatusAnticipo()">
       					<?php if( $cancela == 0 ){
     							echo "<option value='0' selected>Activo</option>";
     							echo "<option value='1'>Cancelado</option>";
@@ -130,16 +153,19 @@ if( $rows > 0 ){
             <td class="col-md-2"><?php echo $rowMST['s_bancoOri'].'/'.$rowMST['s_ctaOri']; ?></td>
             <td class="col-md-6"><?php echo $rowMST['s_concepto']; ?></td>
             <td class="col-md-1">
-              <a href='#ant-editarRegMST' data-toggle='modal' db-id='$partida' role='button'>
+              <?php if( $mostrar == true ){ ?>
+              <a href='#ant-editarRegMST' data-toggle='modal'>
+              <a href='#ant-editarRegMST' class='editar-anticipoMST' db-id='<?php echo $id_anticipo; ?>' role='button'>
                 <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
               </a>
+              <?php }?>
             </td>
           </tr>
-		      <?php if( $mostrar == true ){ ?><?php }?>
+
         </tbody>
       </table>
     </form>
-  </div><!--/Termina DETALLE DATOS DE POLIZA-->
+  </div><!--/Termina DETALLE DATOS DE ANTICIPO-->
 
   <div class="movible container-fluid">
     <nav>
@@ -165,18 +191,32 @@ if( $rows > 0 ){
               <tbody class="font14">
                 <tr class="row m-0 mt-5">
                   <td class="col-md-2 input-effect">
-                    <input  class="efecto" id="ant-referencia">
+                    <!--input  class="efecto" id="ant-referencia">
+                    <label for="ant-referencia">Referencia</label-->
+                    <input class="efecto popup-input" id="ant-referencia" type="text" id-display="#popup-display-referencia" action="referencias" db-id=""
+                      autocomplete="new-password" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);buscarReferenciaAnt();">
+                    <div class="popup-list" id="popup-display-referencia" style="display:none"></div>
                     <label for="ant-referencia">Referencia</label>
                   </td>
                   <td class="col-md-8 input-effect">
-                    <input  list="ant-cli" class="efecto" id="ant-clientes">
+                    <div id="lstClientes">
+                      <input class="efecto popup-input" id="ant-cliente" type="text" id-display="#popup-display-clientes" action="clientes" db-id="" autocomplete="new-password">
+                      <div class="popup-list" id="popup-display-clientes" style="display:none"></div>
+                      <label for="ant-cliente">Cliente</label>
+                    </div>
+                    <div id="lstClientesCorresp">
+                      <select class="custom-select" size='1' id='ant-clienteCorresp'>
+                          <option selected value='0'>Seleccione Cliente / Corresponsal</option>
+                      </select>
+                    </div>
+                    <!--input  list="ant-cli" class="efecto" id="ant-clientes">
                     <datalist id="ant-cli">
                       <option value="REPRESENTACIONES ASESORIA MANTENIMIENTO Y SERVICIOS ANEXOS S.A DE C.V -- CLT_6921"></option>
                       <option value="SERVICIOS INTEGRALES EEN LOGISTICA INTERNACIONAL, ADUANAS Y TECNOLOGIA S.C -- CLT_7596"></option>
                       <option value="AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V --- CLT 6109"></option>
                       <option value="INTERNATIONAL FREIGHT FORWARDER AND ADVISOR CUSTOMS DELIVERY S.A DE C.V --- CLT_7663"></option>
                     </datalist>
-                    <label for="ant-clientes">Seleccione un Cliente</label>
+                    <label for="ant-clientes">Seleccione un Cliente</label-->
                   </td>
                   <td class="col-md-2" role="button">
                     <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
@@ -204,7 +244,7 @@ if( $rows > 0 ){
                 </tr>
                 <tr class="row mt-4">
                   <td class="col-md-2 offset-md-5">
-                    <a href="" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                    <a href="" class="boton" id="btn-registrar"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
                   </td>
                 </tr>
               </tbody>
@@ -263,33 +303,21 @@ if( $rows > 0 ){
                   <td class="sm">REFERENCIA</td>
                   <td class="sm">CLIENTE</td>
                   <td class="sm">FACTURA</td>
+                  <td class="sm">CTA GASTOS</td>
+		              <td class="sm">PAGO ELECT</td>
                   <td class="sm">NOTACRED</td>
                   <td class="sm">ANTICIPO</td>
                   <td class="med">DESCRIPCION</td>
                   <td class="sm">CARGO</td>
                   <td class="sm">ABONO</td>
+                  <td class="sm">FECHA</td>
                   <td class="xs"></td>
                 </tr>
-
-                <tr class="row m-0 borderojo">
-                  <td class="xs">
-                    <a href=""><img class="icochico" src="/conta6/Resources/iconos/002-trash.svg"></a>
-                  </td>
-                  <td class="sm">0110-00001</td>
-                  <td class="sm">N17008098</td>
-                  <td class="sm">CLT_7118</td>
-                  <td class="sm">2222</td>
-                  <td class="sm">2222</td>
-                  <td class="sm">2222</td>
-                  <td class="med">T.DE LA FED.PTO.7003459</td>
-                  <td class="sm">111,133,299</td>
-                  <td class="sm">33,299</td>
-                  <td class="xs">
-                    <a href="#detpol-editar" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                </tr>
+                <?php if( $rowsDET > 0 ){
+                        echo $tablaDetalle;
+                      }else{
+                        echo "<tr align=center><td colspan='14'><b>NO HAY DETALLES DE ESTE ANTICIPO</b></td></tr>";
+                      }?>
               </tbody>
             </table>
           </div>

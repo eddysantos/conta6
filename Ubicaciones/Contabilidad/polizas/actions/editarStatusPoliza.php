@@ -38,7 +38,10 @@ if ($affected == 0) {
   exit_script($system_callback);
 }
 
-$descripcion = "Se Actualizo la Poliza: $id_poliza, Estatus:$statusPoliza";
+if( $statusPoliza == 0 ){ $status_txt = "Activo"; }
+if( $statusPoliza == 1 ){ $status_txt = "Cancelado"; }
+
+$descripcion = "Se Actualizo la Poliza: $id_poliza, Estatus: $status_txt";
 
 $clave = 'polizas';
 $folio = $id_poliza;

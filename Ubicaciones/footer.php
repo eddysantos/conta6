@@ -7,6 +7,8 @@
   <script src="/conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
   <script src="/conta6/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
 
+  <script src="/conta6/Resources/js/validarFormulario.js"></script>
+
   <script src="/conta6/Ubicaciones/Contabilidad/js/contenedor-movible.js"></script>
   <script src="/conta6/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
   <script src="/conta6/Resources/bootstrap/js/bootstrap-checkbox-toggle.js"></script>

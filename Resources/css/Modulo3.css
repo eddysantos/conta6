@@ -32,7 +32,7 @@
 
 
 /* pendiente por que afecta polizas */
-/* input[type=text].modif {
+input[type=text].modif {
   height: 80px;
   -webkit-transition: height 1s ease-in-out!important;
   transition: height 1s ease-in-out!important;
@@ -41,7 +41,7 @@
 input[type=text].modif:focus {
   height: 110px;
   font-size: 45pt!important;
-} */
+}
 /* pendiente */
 
 /* button[type=button].btn{
