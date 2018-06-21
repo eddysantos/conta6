@@ -1,33 +1,84 @@
+// function borrarRegistro(partida){
+// 	if (confirm("Borrar&aacute; este Registro, "+ partida +" ¿Desea continuar?")) {
+// 		var data = {
+// 			partida: partida,
+// 			id_poliza: $('#id_poliza').val()
+// 		}
+//
+// 		$.ajax({
+// 			type: "POST",
+// 			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/eliminar.php",
+// 			data: data,
+// 			success: 	function(r){
+// 				console.log(r);
+// 				r = JSON.parse(r);
+// 				if (r.code == 1) {
+// 					swal("Exito", "Se elimino correctamente.", "success");
+// 					location.reload();
+// 				} else {
+// 					console.error(r.message);
+// 				}
+// 			},
+// 			error: function(x){
+// 				console.error(x);
+// 			}
+//
+// 		});
+// 	}else {
+// 		return false;
+// 	}
+// }
+
 function borrarRegistro(partida){
-	if (confirm("Borrar&aacute; este Registro, "+ partida +" ¿Desea continuar?")) {
-		var data = {
-			partida: partida,
-			id_poliza: $('#id_poliza').val()
-		}
-
-		$.ajax({
-			type: "POST",
-			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/eliminar.php",
-			data: data,
-			success: 	function(r){
-				console.log(r);
-				r = JSON.parse(r);
-				if (r.code == 1) {
-					swal("Exito", "Se elimino correctamente.", "success");
-					location.reload();
-				} else {
-					console.error(r.message);
-				}
-			},
-			error: function(x){
-				console.error(x);
+	swal({
+	title: "Estas Seguro?",
+	text: "Ya no se podra recuperar el registro! "+ partida +" ",
+	type: "warning",
+	showCancelButton: true,
+	confirmButtonClass: "btn-danger",
+	confirmButtonText: "Si, Eliminar",
+	cancelButtonText: "No, cancelar",
+	closeOnConfirm: false,
+	closeOnCancel: false
+	},
+	function(isConfirm) {
+		if (isConfirm) {
+			var data = {
+				partida: partida,
+				id_poliza: $('#id_poliza').val()
 			}
+			$.ajax({
+				type: "POST",
+				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/eliminar.php",
+				data: data,
 
-		});
-	}else {
-		return false;
-	}
+					success: 	function(r){
+						console.log(r);
+					if (r.code == 1) {
+						swal("Eliminado!", "Se elimino correctamente.", "success");
+						// $('#tabla_detallepoliza').html(r.data);
+						setTimeout('document.location.reload()',700);
+
+						// location.reload();
+					} else {
+						console.error(r.message);
+					}
+				},
+				error: function(x){
+					console.error(x)
+				}
+			});
+			swal("Eliminado!", "Se elimino correctamente.", "success");
+			// $('#tabla_detallepoliza').html(r.data);
+			setTimeout('document.location.reload()',700);
+			// location.reload();
+		} else {
+			swal("Cancelado", "El registro esta a salvo :)", "error");
+		}
+	});
 }
+
+
 function cambiarStatus(){
 	fecha = $('#mstpol-fecha').val();
 	aduana = $('#aduana_activa').val();
@@ -132,6 +183,7 @@ function inserta(){
 				if (r.code == 1) {
 					swal("Exito", "Se registro correctamente.", "success");
 					location.reload();
+
 					//$('.real-time-search').keyup();
 				} else {
 					console.error(r.message);
@@ -145,45 +197,6 @@ function inserta(){
 }
 
 
-function validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso){
-		var data = {
-			diatipo: tipoDoc,
-			diaaduana: aduana,
-			diafecha: fecha,
-			usuario: usuario,
-			permiso: permiso
-		}
-
-		response = false;
-
-		var validar_fecha = $.ajax({
-			type: "POST",
-			url: "/conta6/Ubicaciones/Contabilidad/actions/validarFechaCierreDoc.php",
-			data: data,
-			async: false
-		});
-
-		validar_fecha.done(function(r){
-			//console.log(r);
-			r = JSON.parse(r);
-			if (r.code == 1) {
-				if(r.data == "fechaValida"){
-					response = true;
-					//console.log(response);
-				}else{
-					swal(r.data, "Solicite cambio de fechas a Contabilidad", "info");
-					//response = false;
-			}
-		}
-			return response;
-	}).fail(function(x){
-		console.error(x);
-	})
-
-		console.log(response);
-		return response;
-		;
-}
 
 function buscarPoliza(Accion){
 	if( Accion == 'consultar' ){ id_poliza = $('#folioPolconsulta').val(); }
@@ -207,7 +220,6 @@ function genPol(){
 		success: 	function(request){
 			r = JSON.parse(request);
 			window.location.replace('Detallepoliza.php?id_poliza='+r+'&tipo='+tipo);
-			//window.location.replace('DetallepolizaDiario.php?id_poliza='+r+'&tipo='+tipo);
 		}
 	});
 }
@@ -406,17 +418,6 @@ $(document).ready(function(){
             $('#cheques').hide();
             $('#anticipos').hide();
             break;
-          // case "gcheque":
-          //   $('#cheques').fadeIn();
-					// 	$('#gpoliza').hide();
-          //   $('#anticipos').hide();
-          //   break;
-					//
-          // case "ganticipo":
-          //   $('#anticipos').fadeIn();
-          //   $('#gpoliza').hide();
-          //   $('#cheques').hide();
-          //   break;
 
             case "dtospol":
             if (status == 'cerrado') {
@@ -467,27 +468,7 @@ $(document).ready(function(){
 					return false;
 				}
 		});
-/*
-		$('#buscarFolioPol').click(function(){
 
-				if($('#folioPol').val() == ""){
-					alertify.error("Escriba una póliza");
-					$('#folioPol').focus();
-					return false;
-				}
-
-				folioPol = $('#folioPol').val();
-
-				var continuar = buscarPoliza(folioPol);
-				console.log(continuar);
-				if(continuar == true) {
-					//genPol();
-					alert("redireccionar");
-				}else{
-					return false;
-				}
-		});
-*/
 		$('#guardarPolMST').click(function(){
 			var data = {
 				tipo: $('#mstpol-tipo').val(),
@@ -518,11 +499,11 @@ $(document).ready(function(){
 
 		});
 
+
     $('#detallepoliza').click(function(){
       var data = {
         id_poliza: $('#id_poliza').val()
       }
-
       $.ajax({
         type: "POST",
         url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/tabladetallepoliza.php",
@@ -534,13 +515,8 @@ $(document).ready(function(){
 						$('#tabla_detallepoliza').html(r.data);
 					}
         }
-
-
       });
     });
-
-
-
 
 		$('tbody').on('click', '.editar-partidaPol', function(){
 	    var dbid = $(this).attr('db-id');
@@ -654,9 +630,6 @@ $(document).ready(function(){
 					}
 
 				});
-
-
-		$('.modal').modal('hide');
+		$('#detpol-editarRegPolDiario').modal('hide');
 	})
-
 });

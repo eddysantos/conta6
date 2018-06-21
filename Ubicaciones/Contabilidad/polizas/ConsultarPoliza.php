@@ -37,11 +37,11 @@ if( $totalRegistrosSelect > 0 ){
     </ul>
   </div>
 
-  <div id="datospoliza" class="contorno" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
+  <div id="datospoliza" class="contorno"><!--Comienza DETALLE DATOS DE POLIZA-->
     <h5 class="titulo">DATOS DE LA POLIZA</h5>
     <table class="table form1 font14">
       <thead>
-        <tr class="row encabezado font16">
+        <tr class="row encabezado">
           <td class="col-md-2">POLIZA</td>
           <td class="col-md-2">USUARIO</td>
           <td class="col-md-2">FECHA POLIZA</td>
@@ -50,7 +50,7 @@ if( $totalRegistrosSelect > 0 ){
           <td class="col-md-2">CANCELACIÓN</td>
         </tr>
       </thead>
-      <tbody class="font16">
+      <tbody>
         <tr class="row">
           <td class="col-md-2"><?php echo $oRst_Select['pk_id_poliza']; ?></td>
           <td class="col-md-2"><?php echo $oRst_Select['fk_usuario']; ?></td>
@@ -74,14 +74,14 @@ if( $totalRegistrosSelect > 0 ){
       <div class="col-md-2 offset-md-8">SUMA DE CARGOS</div>
       <div class="col-md-2">SUMA DE ABONOS</div>
     </div>
-    <div class="row m-0">
+    <div class="row m-0 mt-3">
       <div class="col-md-1">
         <a  class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
       </div>
-      <div class="col-md-2 offset-md-7 mt-3">
+      <div class="col-md-2 offset-md-7">
         <input  class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
       </div>
-      <div class="col-md-2 input-effect mt-3">
+      <div class="col-md-2">
         <input  class="efecto" value="<?php echo $sumaAbonos; ?>" readonly>
       </div>
     </div>
@@ -118,23 +118,23 @@ if( $totalRegistrosSelect > 0 ){
             while ($oRst_POLDET = mysqli_fetch_array($sql_POLDET)){
         ?>
         <tr class="borderojo">
-          <td class=""><?php echo $oRst_POLDET['fk_tipo']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['fk_id_cuenta']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['fk_gastoAduana']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['fk_id_proveedor']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['fk_referencia']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['fk_id_cliente']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['s_folioCFDIext']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['fk_factura']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['fk_ctagastos']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['fk_pago']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['fk_nc']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['fk_anticipo']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['fk_cheque']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['s_desc']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['n_cargo']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['n_abono']; ?></td>
-          <td class=""><?php echo $oRst_POLDET['d_fecha']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_tipo']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_id_cuenta']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_gastoAduana']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_id_proveedor']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_referencia']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_id_cliente']; ?></td>
+          <td><?php echo $oRst_POLDET['s_folioCFDIext']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_factura']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_ctagastos']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_pago']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_nc']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_anticipo']; ?></td>
+          <td><?php echo $oRst_POLDET['fk_cheque']; ?></td>
+          <td><?php echo $oRst_POLDET['s_desc']; ?></td>
+          <td><?php echo $oRst_POLDET['n_cargo']; ?></td>
+          <td><?php echo $oRst_POLDET['n_abono']; ?></td>
+          <td><?php echo $oRst_POLDET['d_fecha']; ?></td>
         </tr>
         <?php
           }
@@ -144,10 +144,14 @@ if( $totalRegistrosSelect > 0 ){
           <td colspan="15" class="">NO HAY DETALLE DE ESTA PÓLIZA</td>
         </tr> -->
 
-        <div class="row font14 mt-5 borderojo">
+        <!-- <div class="row font14 mt-5 borderojo">
           <div class="col-md-12">
             NO HAY DETALLE DE ESTA PÓLIZA
           </div>
+        </div> -->
+
+        <div class="container-fluid pantallaGris">
+          <div class="tituloSinRegistros">NO HAY DETALLE DE ESTA PÓLIZA</div>
         </div>
 
         <?php
@@ -160,14 +164,21 @@ if( $totalRegistrosSelect > 0 ){
 <?php
 }else{
 ?>
-  <div class="row font14 mt-5">
+  <!-- <div class="row font14 mt-5">
     <div class="col-md-12">
       NO EXISTE LA PÓLIZA
     </div>
+  </div> -->
+
+  <div class="container-fluid pantallaGris">
+    <div class="tituloSinRegistros">NO EXISTE LA PÓLIZA</div>
   </div>
 <?php
 }
 ?>
 
 
-<script src="js/Polizas.js"></script>
+<?php
+require $root . '/conta6/Ubicaciones/footer.php';
+ ?>
+<!-- <script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script> -->

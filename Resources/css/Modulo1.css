@@ -1,6 +1,6 @@
 
 input:read-only{
-  background-color: #e9ecef;
+  background-color: rgba(173, 173, 173, 0.1)!important;
 }
 .h35{
   height: 35px;
@@ -132,7 +132,7 @@ select{
 }
 .backpink{
   font-size: 12px!important;
-  background-color: rgba(246, 92, 92, 0.09)!important;
+  background-color: rgba(246, 92, 92, 0.04)!important;
   font-weight: normal!important;
   color: rgb(87, 87, 87)!important;
 }
@@ -230,4 +230,20 @@ input.reg{
 	letter-spacing: 8px;
 	color: rgb(210, 210, 210);
 	font-size: 50px
+}
+
+.footer{
+  border-top: 3px solid rgb(213, 213, 213);
+  box-shadow: 0 -4px 8px -5px #333;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  text-align: left;
+
+}
+
+.mb-10{
+  margin-bottom: 8rem!important;
 }

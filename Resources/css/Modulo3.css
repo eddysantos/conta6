@@ -60,11 +60,11 @@ button[type=button].btn:hover{
 } */
 
 /*pendiente quitar solo de polizas */
-input[type=text].noborder{
+/* input[type=text].noborder{
   border: 0!important;
   text-align: center;
   background-color: transparent;
-}
+} */
 /* quitar noborder  */
 
 
@@ -77,12 +77,12 @@ div.submenu {
 } */
 
 /* pendeitne solo seccion de polizas */
-.cuerpo {
+/* .cuerpo {
   font-size: 17px;
   line-height: 0.9;
   letter-spacing: 3px;
   text-align: center!important;
-}
+} */
 /* pendeitne solo seccion de polizas */
 
 
@@ -92,9 +92,9 @@ div.submenu {
 
 
 /*pendiente afecta polizas  */
-.form-control {
+/* .form-control {
     padding: .1rem .7rem;
-}
+} */
 /*pendiente afecta polizas  */
 
 /*
