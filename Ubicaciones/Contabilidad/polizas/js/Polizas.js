@@ -1,33 +1,84 @@
+// function borrarRegistro(partida){
+// 	if (confirm("Borrar&aacute; este Registro, "+ partida +" ¿Desea continuar?")) {
+// 		var data = {
+// 			partida: partida,
+// 			id_poliza: $('#id_poliza').val()
+// 		}
+//
+// 		$.ajax({
+// 			type: "POST",
+// 			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/eliminar.php",
+// 			data: data,
+// 			success: 	function(r){
+// 				console.log(r);
+// 				r = JSON.parse(r);
+// 				if (r.code == 1) {
+// 					swal("Exito", "Se elimino correctamente.", "success");
+// 					location.reload();
+// 				} else {
+// 					console.error(r.message);
+// 				}
+// 			},
+// 			error: function(x){
+// 				console.error(x);
+// 			}
+//
+// 		});
+// 	}else {
+// 		return false;
+// 	}
+// }
+
 function borrarRegistro(partida){
-	if (confirm("Borrar&aacute; este Registro, "+ partida +" ¿Desea continuar?")) {
-		var data = {
-			partida: partida,
-			id_poliza: $('#id_poliza').val()
-		}
-
-		$.ajax({
-			type: "POST",
-			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/eliminar.php",
-			data: data,
-			success: 	function(r){
-				console.log(r);
-				r = JSON.parse(r);
-				if (r.code == 1) {
-					swal("Exito", "Se elimino correctamente.", "success");
-					location.reload();
-				} else {
-					console.error(r.message);
-				}
-			},
-			error: function(x){
-				console.error(x);
+	swal({
+	title: "Estas Seguro?",
+	text: "Ya no se podra recuperar el registro! "+ partida +" ",
+	type: "warning",
+	showCancelButton: true,
+	confirmButtonClass: "btn-danger",
+	confirmButtonText: "Si, Eliminar",
+	cancelButtonText: "No, cancelar",
+	closeOnConfirm: false,
+	closeOnCancel: false
+	},
+	function(isConfirm) {
+		if (isConfirm) {
+			var data = {
+				partida: partida,
+				id_poliza: $('#id_poliza').val()
 			}
+			$.ajax({
+				type: "POST",
+				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/eliminar.php",
+				data: data,
 
-		});
-	}else {
-		return false;
-	}
+					success: 	function(r){
+						console.log(r);
+					if (r.code == 1) {
+						swal("Eliminado!", "Se elimino correctamente.", "success");
+						// $('#tabla_detallepoliza').html(r.data);
+						setTimeout('document.location.reload()',700);
+
+						// location.reload();
+					} else {
+						console.error(r.message);
+					}
+				},
+				error: function(x){
+					console.error(x)
+				}
+			});
+			swal("Eliminado!", "Se elimino correctamente.", "success");
+			// $('#tabla_detallepoliza').html(r.data);
+			setTimeout('document.location.reload()',700);
+			// location.reload();
+		} else {
+			swal("Cancelado", "El registro esta a salvo :)", "error");
+		}
+	});
 }
+
+
 function cambiarStatus(){
 	fecha = $('#mstpol-fecha').val();
 	aduana = $('#aduana_activa').val();
@@ -132,6 +183,7 @@ function inserta(){
 				if (r.code == 1) {
 					swal("Exito", "Se registro correctamente.", "success");
 					location.reload();
+
 					//$('.real-time-search').keyup();
 				} else {
 					console.error(r.message);
@@ -366,17 +418,6 @@ $(document).ready(function(){
             $('#cheques').hide();
             $('#anticipos').hide();
             break;
-          // case "gcheque":
-          //   $('#cheques').fadeIn();
-					// 	$('#gpoliza').hide();
-          //   $('#anticipos').hide();
-          //   break;
-					//
-          // case "ganticipo":
-          //   $('#anticipos').fadeIn();
-          //   $('#gpoliza').hide();
-          //   $('#cheques').hide();
-          //   break;
 
             case "dtospol":
             if (status == 'cerrado') {
@@ -458,11 +499,11 @@ $(document).ready(function(){
 
 		});
 
+
     $('#detallepoliza').click(function(){
       var data = {
         id_poliza: $('#id_poliza').val()
       }
-
       $.ajax({
         type: "POST",
         url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/tabladetallepoliza.php",
@@ -474,13 +515,8 @@ $(document).ready(function(){
 						$('#tabla_detallepoliza').html(r.data);
 					}
         }
-
-
       });
     });
-
-
-
 
 		$('tbody').on('click', '.editar-partidaPol', function(){
 	    var dbid = $(this).attr('db-id');
@@ -594,9 +630,6 @@ $(document).ready(function(){
 					}
 
 				});
-
-
-		$('.modal').modal('hide');
+		$('#detpol-editarRegPolDiario').modal('hide');
 	})
-
 });

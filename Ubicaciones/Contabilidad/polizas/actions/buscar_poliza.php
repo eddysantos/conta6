@@ -1,11 +1,9 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-// require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
 $Poliza = trim($_GET['id_poliza']);
 $Accion = trim($_GET['Accion']);
-
 ?>
 
 <script type="text/javascript">
@@ -81,21 +79,19 @@ if( $totalRegistros_POLIZA_MST > 0 ){
 						echo "<body onLoad='redirec(".$Tipo.")'></body>";
 					}else{
 						echo "
-						<center class='mt-5 font14'>
-							<font color=#E52727>La póliza no puede ser modificada por pertenecer a una <b>FACTURA ELECTRÓNICA</font>
-						</center>";
+						<div class='container-fluid pantallaGris'>
+							<div class='tituloSinRegistros font16'><font color=#E52727>La póliza no puede ser modificada por pertenecer a una </br> <b>FACTURA ELECTRÓNICA</font></div>
+						</div>";
 					}
 				}
-
 
 				if( $Tipo == 1 ){
 					#'*****************************************************************
 					#'* LAS POLIZAS DE TIPO 1 SON DE CHEQUES, NO SE PERMITE MODIFICAR *
 					#'*****************************************************************
 					echo "
-
 					<div class='container-fluid pantallaGris'>
-						<font class='tituloSinRegistros' color=#E52727>La póliza no puede ser modificada por pertenecer a un <b>CHEQUE</font>
+						<div class='tituloSinRegistros font16'><font color=#E52727>La póliza no puede ser modificada por pertenecer a un </br> <b>CHEQUE</font></div>
 					</div>";
 				}
 
@@ -104,9 +100,9 @@ if( $totalRegistros_POLIZA_MST > 0 ){
 					#'* LAS POLIZAS DE TIPO 5 SON DE ANTICIPOS, NO SE PERMITE MODIFICAR *
 					#'*****************************************************************
 					echo "
-					<center class='mt-5 font14'>
-						<font color=#E52727>La póliza no puede ser modificada por pertenecer a un <b>ANTICIPO</font>
-					</center>";
+					<div class='container-fluid pantallaGris'>
+						<div class='tituloSinRegistros font16'><font color=#E52727>La póliza no puede ser modificada por pertenecer a un </br> <b>ANTICIPO</font></div>
+					</div>";
 				}
 
 				if( $Tipo == 4 ){
@@ -121,9 +117,10 @@ if( $totalRegistros_POLIZA_MST > 0 ){
 								if( $sql_Permisos['s_modifica_polizasNomina'] == 1 && $Accion == 'proveedor' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
 									if( $sql_Permisos['s_consulta_polizasNomina'] == 1 && $Accion == 'proveedor' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
 										echo "
-										<center class='mt-5'>
-											<font color=#E52727>La póliza pertenece a una <b>NÓMINA</font>
-										</center>";
+
+										<div class='container-fluid pantallaGris'>
+								      <div class='tituloSinRegistros font16'><font color=#E52727>La póliza pertenece a una </br> <b>NÓMINA</font></div>
+								    </div>";
 									}
 								}
 							}
@@ -164,9 +161,9 @@ if( $totalRegistros_POLIZA_MST > 0 ){
   						if( $totalRegistros_POLIZA_nom > 0 ){
   							if( $sql_Permisos['s_consulta_polizasNomina'] == 1 && $Accion == 'consultar' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
   								echo "
-									<center class='mt-5'>
-										<font color=#E52727>La póliza pertenece a una <b>NÓMINA</font>
-									</center>";
+									<div class='container-fluid pantallaGris'>
+							      <div class='tituloSinRegistros font16'><font color=#E52727>La póliza pertenece a una </br> <b>NÓMINA</font></div>
+							    </div>";
 								}
 							}else{
   							echo "<body onLoad='redirec(".$Tipo.")'></body>";
@@ -177,12 +174,12 @@ if( $totalRegistros_POLIZA_MST > 0 ){
 					}
 				}else{ echo '
 					<div class="container-fluid pantallaGris">
-			      <div class="tituloSinRegistros">ESTA PÓLIZA ES DE LA OFICINA '.trim($oRst_POLIZA_MST["fk_id_aduana"]).'</div>
+			      <div class="tituloSinRegistros font16"><font color=#E52727>ESTA PÓLIZA ES DE LA OFICINA '.trim($oRst_POLIZA_MST["fk_id_aduana"]).'</font></div>
 			    </div>';
 				}
 			}
 		}else{echo '
 			<div class="container-fluid pantallaGris">
-	      <div class="tituloSinRegistros">LA PÓLIZA NO EXISTE</div>
+	      <div class="tituloSinRegistros font18"><font color=#E52727>LA PÓLIZA NO EXISTE</font></div>
 	    </div>';
 		}
