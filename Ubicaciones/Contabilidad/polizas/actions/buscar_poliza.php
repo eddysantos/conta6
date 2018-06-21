@@ -183,3 +183,6 @@ if( $totalRegistros_POLIZA_MST > 0 ){
 	      <div class="tituloSinRegistros font18"><font color=#E52727>LA PÓLIZA NO EXISTE</font></div>
 	    </div>';
 		}
+
+
+		require $root . '/conta6/Ubicaciones/footer.php';
