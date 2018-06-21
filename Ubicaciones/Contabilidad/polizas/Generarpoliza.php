@@ -51,15 +51,5 @@
 
 
 <?php
-// require_once('DetallepolizaDiario.php');
+require $root . '/conta6/Ubicaciones/footer.php';
 ?>
-
-<!--***************ESTILOS*****************-->
-<link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
-
-<!--***************SCRIPTS*****************-->
-<script src="js/Polizas.js"></script>
-<script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script>
-<script src="/conta6/Resources/js/validaSoloNumeros.js"></script>

@@ -40,29 +40,28 @@ while ($row = $rslt->fetch_assoc()) {
 
   $system_callback['data'] .=
   "<tr class='row m-0 borderojo'>
-    <td class='xs'>
-      <a href='#' onclick='borrarRegistro($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-    </td>
-    <td class='small pt-3 p-0'>$fk_id_cuenta</td>
-    <td class='small pt-3 p-0'>$row[fk_gastoAduana]</td>
-    <td class='small pt-3 p-0'>$row[fk_id_proveedor]</td>
-    <td class='small pt-3 p-0'>$row[fk_referencia]</td>
-    <td class='small pt-3 p-0'>$row[fk_id_cliente]</td>
-    <td class='small pt-3 p-0'>$row[s_folioCFDIext]</td>
-    <td class='small pt-3 p-0'>$row[fk_factura]</td>
-    <td class='small pt-3 p-0'>$row[fk_nc]</td>
-    <td class='small pt-3 p-0'>$row[fk_anticipo]</td>
-    <td class='small pt-3 p-0'>$row[fk_cheque]</td>
-    <td class='med pt-3 p-0'>$row[s_desc]</td>
-    <td class='small pt-3 p-0'>$row[n_cargo]</td>
-    <td class='small pt-3 p-0'>$row[n_abono]</td>
-    <td class='xs'>
-      <a href='#detpol-editarRegPolDiario' data-toggle='modal'>
-      <a href='#detpol-editarRegPolDiario' class='editar-partidaPol' db-id='$partida' role='button'>
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
-      </a>
-    </td>
-  </tr>";
+      <td class='xs'>
+        <a href='#' onclick='borrarRegistro($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+      </td>
+      <td class='small pt-3 p-0'>$fk_id_cuenta</td>
+      <td class='small pt-3 p-0'>$row[fk_gastoAduana]</td>
+      <td class='small pt-3 p-0'>$row[fk_id_proveedor]</td>
+      <td class='small pt-3 p-0'>$row[fk_referencia]</td>
+      <td class='small pt-3 p-0'>$row[fk_id_cliente]</td>
+      <td class='small pt-3 p-0'>$row[s_folioCFDIext]</td>
+      <td class='small pt-3 p-0'>$row[fk_factura]</td>
+      <td class='small pt-3 p-0'>$row[fk_nc]</td>
+      <td class='small pt-3 p-0'>$row[fk_anticipo]</td>
+      <td class='small pt-3 p-0'>$row[fk_cheque]</td>
+      <td class='med pt-3 p-0'>$row[s_desc]</td>
+      <td class='small pt-3 p-0'>$row[n_cargo]</td>
+      <td class='small pt-3 p-0'>$row[n_abono]</td>
+      <td class='xs'>
+        <a href='#detpol-editarRegPolDiario' class='editar-partidaPol' db-id='$partida' role='button'>
+          <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+        </a>
+      </td>
+    </tr>";
 }
 
 $system_callback['code'] = 1;
