@@ -2,15 +2,6 @@
   <h4 class="m-3">Bienvenido, <?php echo $usuario;?></h4>
 
 
-  <!--REQUERIDOS PARA POLIZAS-->
-  <script src="/conta6/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
-
-<!--REQUERIDOS PARA ANTICIPOS-->
-  <script src="/conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
-
-<!--REQUERIDOS PARA CHEQUES-->
-  <script src="/conta6/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
-
 
 <!--REQUERIDOS PARA POLIZAS-->
   <script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script>

@@ -9,8 +9,8 @@ $usuario = $_SESSION['user_name'];
   require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
-<div class="container-fluid text-center">
-  <div class="row submenuMed">
+<div class="text-center mb-10">
+  <div class="row submenuMed m-0">
     <div class="col-md-12" role="button">
       <a  id="submenuMed" class="consultar" accion="eCap" status="cerrado">CATÁLOGO DE CUENTAS</a>
     </div>
@@ -279,22 +279,8 @@ $usuario = $_SESSION['user_name'];
 </div>
 
 <?php
-require_once('modales/EditarCatalogo.php');
-require_once('modales/catalogoSAT.php');
- ?>
-
-<!--***************ESTILOS*****************-->
-<!-- <link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css"> -->
-
-
-
-<!--***************SCRIPTS*****************-->
-<script src="/conta6/Resources/js/popup-list-plugin.js"></script>
-<script src="/conta6/Resources/js/table-fetch-plugin.js"></script>
-<script src="js/AdministracionContable.js"></script>
-
-<?php
-	$db->close();
+  require_once('modales/EditarCatalogo.php');
+  require_once('modales/catalogoSAT.php');
+  require $root . '/conta6/Ubicaciones/footer.php';
+  $db->close();
 ?>

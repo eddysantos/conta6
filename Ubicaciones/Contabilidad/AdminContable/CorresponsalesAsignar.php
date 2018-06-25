@@ -41,29 +41,31 @@
 
 ?>
 
-<div class="container-fluid text-center">
+<div class="text-center mb-10 font14">
   <div class="contorno mt-5">
-    <h5 class="titulo font14">CATÁLOGO</h5>
-    <table class="table">
-      <tbody class="font14">
+    <h5 class="titulo">CATÁLOGO</h5>
+    <table class="table form1">
+      <tbody>
         <tr class="row m-0">
           <td class="col-md-1"></td>
-          <td class="col-md-3 offset-md-8">
+          <td class="col-md-3 offset-md-6 input-effect">
             <input class="efecto popup-input" id="corp-cliente" type="text" id-display="#popup-display-corp-cliente" action="clientes_NoTieneCorresponsal" db-id="" autocomplete="new-password">
             <div class="popup-list" id="popup-display-corp-cliente" style="display:none"></div>
             <label for="corp-cliente">Cliente</label>
+          </td>
+          <td class="col-md-2">
             <input id="id_corresp" type="hidden" value="<?php echo $id_corresp;?>">
-            <a href="#" onclick="asigCorresponsal(<?php echo $id_corresp;?>,0)" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico">  AGREGAR</a>
+            <a href="#" onclick="asigCorresponsal(<?php echo $id_corresp;?>,0)" class="boton border-0 text-left"><img src= "/conta6/Resources/iconos/add.svg" class="icochico">  AGREGAR</a>
           </td>
         </tr>
       </tbody>
     </table>
-    <table class="table table-hover font14">
+    <table class="table table-hover fixed-table">
       <thead>
         <tr class="row m-0 encabezado">
-          <td class="col-md-5">CLIENTES ASIGNADOS AL CORRESPONSAL <br> <?php echo $id_corresp.' '.$nombre; ?> </td>
+          <td class="col-md-12">CLIENTES ASIGNADOS AL CORRESPONSAL //   <span class="colorRosa"><?php echo $id_corresp.' '.$nombre; ?></span> </td>
         </tr>
-        <tr class="row m-0 encabezado">
+        <tr class="row m-0 sub2 font14">
           <td class="col-md-1"></td>
           <td class="col-md-4">CLIENTE</td>
           <td class="col-md-5">NOMBRE</td>
@@ -74,8 +76,7 @@
   </div>
 </div>
 
- <?php
+<?php
  require_once('modales/ModalCorresponsales.php');
  require $root . '/conta6/Ubicaciones/footer.php';
-
 ?>
