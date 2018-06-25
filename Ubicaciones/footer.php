@@ -23,6 +23,11 @@
   <script src="/conta6/Resources/js/validaSoloNumeros.js"></script> -->
 
 
+  <!--REQUERIDOS-->
+  <script src="/conta6/Ubicaciones/Contabilidad/AdminContable/js/AdministracionContable.js"></script>
+  <script src="/conta6/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
+  <script src="/conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
+  <script src="/conta6/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
 
 <!-- REQUERIDO PARA SECCION POLIZAS ANTICIPOS Y CHEQUES -->
   <script src="/conta6/Ubicaciones/Contabilidad/js/contenedor-movible.js"></script>
