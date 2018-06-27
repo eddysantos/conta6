@@ -1,21 +1,16 @@
 <?php
 #http://localhost:88/conta6/Ubicaciones/Contabilidad/AdminContable/catalogocuentas.php?usuario=admado
 #  $usuario = trim($_GET['usuario']);
-
 //session_start();
 $_SESSION['user_name'] = 'admado';
 $usuario = $_SESSION['user_name'];
-
-
   $root = $_SERVER['DOCUMENT_ROOT'];
-
   require $root . '/conta6/Resources/PHP/Databases/conexion.php';
   require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-
 ?>
-<div class="text-center mb-10">
-  <div class="row submenuMed m-0">
+<div class="container-fluid text-center">
+  <div class="row submenuMed">
     <div class="col-md-12" role="button">
       <a  id="submenuMed" class="consultar" accion="eCap" status="cerrado">CATÁLOGO DE CUENTAS</a>
     </div>
@@ -101,9 +96,6 @@ $usuario = $_SESSION['user_name'];
                   <input class="efecto popup-input" id="naturSAT1" type="text" id-display="#popup-display-cuentas_sat_natur1" action="cuentas_sat_natur" db-id="" autocomplete="new-password">
                   <div class="popup-list" id="popup-display-cuentas_sat_natur1" style="display:none"></div>
                   <label for="naturSAT1">NATURALEZA SAT</label>
-                </td>
-                  <datalist id="CuentaMaestra" href="#lst_conta_cs_cuentas_mst_1niv"></datalist>
-                  <label for="tipo1">CUENTA MAESTRA</label>
                 </td>
                 <td class="col-md-9 input-effect">
                   <input class="efecto popup-input" id="ctamaestra1" type="text" id-display="#popup-display-cuentas_mst_1niv1" action="cuentas_mst_1niv" db-id="" autocomplete="new-password">
@@ -196,7 +188,7 @@ $usuario = $_SESSION['user_name'];
               <tr class="row justify-content-center mt-5">
                 <td class="col-md-4">
                   <a href="#" id="generarCtaDet" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR CUENTA DETALLE</a>
-				           <div id="respuestaCtasDET"></div>
+				  <div id="respuestaCtasDET"></div>
                 </td>
               </tr>
             </tbody>
@@ -260,43 +252,6 @@ $usuario = $_SESSION['user_name'];
           <td class="col-md-1">ACTIVIDAD</td>
         </tr>
       </thead>
-      <tbody class="text-normal">
-        <?php
-        	$sql_consultaCuentas = mysqli_query($conn,"SELECT * FROM conta_cs_cuentas_mst LIMIT 5");
-      		while($oRst_consultaCuentas = $sql_consultaCuentas->fetch_assoc()) {
-      			$id_cuenta = trim($oRst_consultaCuentas['pk_id_cuenta']);
-      			$actividad = trim($oRst_consultaCuentas['s_cta_actividad']);
-    		?>
-	  	  <tr class="row m-0 borderojo">
-    			 <td class="col-md-1">
-    				<a href="#EditarCatalogo" data-toggle="modal">
-    				  <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-    				</a>
-    			  </td>
-    			  <td class="col-md-1"><?php echo $id_cuenta; ?></td>
-    			  <td class="col-md-4"><?php echo trim($oRst_consultaCuentas['s_cta_desc']); ?></td>
-    			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['s_cta_tipo']); ?></td>
-    			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['s_cta_nivel']); ?></td>
-    			  <td class="col-md-1"><?php if( $oRst_consultaCuentas['s_cta_status'] == 0 ){
-                    											echo "Inactivo";
-                    										}else{
-                    											echo "Activo";
-                    										}
-                    									?>
-    			  </td>
-    			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['fk_codAgrup']); ?></td>
-    			  <td class="col-md-1"><?php echo trim($oRst_consultaCuentas['fk_id_naturaleza']); ?></td>
-    			  <td class="col-md-1"><?php if($actividad == 1){
-                              					echo 'Con registros';
-                              				}else{
-                              					if( $oRst_permisos['s_modificar_ctas'] == 1){ ?>
-                              						<a style="text-decoration:none;" onClick="borrar('<?php echo $id_cuenta; ?>')">
-                              							<img border="0" src="/conta6/Resources/iconos/delete.svg" alt="Borrar">
-                              						</a><div id="borrar_<?php echo $id_cuenta; ?>"></div>
-                              				<?php }}?>
-    			  </td>
-    	  	</tr>
-      <?php } #while($oRst_consultaCuentas ?>
       <tbody id="tabla_cuentas">
         <tr>
           <td colspan="9">No hay resultados</td>
@@ -324,8 +279,9 @@ $usuario = $_SESSION['user_name'];
 </div>
 
 <?php
-  require_once('modales/EditarCatalogo.php');
-  require_once('modales/catalogoSAT.php');
-  require $root . '/conta6/Ubicaciones/footer.php';
-  $db->close();
-?>
+require_once('modales/EditarCatalogo.php');
+require_once('modales/catalogoSAT.php');
+require $root . '/conta6/Ubicaciones/footer.php';
+$db->close();
+
+ ?>

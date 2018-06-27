@@ -56,6 +56,21 @@ function fetch_cuentas_sat(){
     })
 }
 
+function cuentas_Det(){
+    $.ajax({
+      method: 'POST',
+      url: '/conta6/Ubicaciones/Contabilidad/AdminContable/actions/tablacuentasDet.php',
+      success: function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          $('#tabla_cuentas').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      }
+    })
+}
+
 $(document).ready(function(){
   $('.consultar').click(function(){
     var accion = $(this).attr('accion');
@@ -511,6 +526,7 @@ $(document).ready(function(){
   $('.real-time-search').keyup();
 
   fetch_cuentas_sat();
+  cuentas_Det();
 
 });
 
