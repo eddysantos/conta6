@@ -57,10 +57,6 @@ function fetch_cuentas_sat(){
 }
 
 $(document).ready(function(){
-  fetch_conta_cs_sat_cuentas();
-  fetch_natur_cuentas();
-  fetch_cuentas_mst_1niv();
-
   $('.consultar').click(function(){
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');
