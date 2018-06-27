@@ -3,60 +3,61 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid" id="buscarfactura">
-  <div class="col-md-1 offset-md-11 p-0 mt-5">
-    <a class="atras" href="#ConsultarFactura" data-toggle="modal">
-      <i class="back fa fa-arrow-left">Regresar</i>
-    </a>
+<!-- <div class="text-center" id="buscarfactura"> -->
+<div class="text-center">
+  <div id="buscarfactura">
+    <div class="col-md-1 offset-md-11 p-0 mt-5">
+      <a class="atras" href="#ConsultarFactura" data-toggle="modal">
+        <i class="back fa fa-arrow-left">Regresar</i>
+      </a>
+    </div>
+
+    <div class="contorno" id="m-factura">
+      <form>
+        <table class="table ">
+          <thead>
+            <tr class="row encabezado">
+              <td class="col-md-12 font18">FACTURAS</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row backpink">
+              <td class="col-md-1"></td>
+              <td class="col-md-1">FECHA</td>
+              <td class="col-md-1">FACTURA</td>
+              <td class="col-md-1">POLIZA</td>
+              <td class="col-md-1">CANCELADA</td>
+              <td class="col-md-1">CTA.GASTOS</td>
+              <td class="col-md-1">REFERENCIA</td>
+              <td class="col-md-4">CLIENTE</td>
+              <td class="col-md-1"></td>
+            </tr>
+            <tr class="row borderojo font14">
+              <td class="col-md-1">
+                <a href=""><img class="icomediano" src="/conta6/Resources/iconos/xml.svg"></a>
+                <a><img class="icomediano ml-4" src="/conta6/Resources/iconos/pdf.svg"></a>
+              </td>
+              <td class="col-md-1">17-07-2017</td>
+              <td class="col-md-1">77166</td>
+              <td class="col-md-1">252815</td>
+              <td class="col-md-1">252815</td>
+              <td class="col-md-1">77919</td>
+              <td class="col-md-1">N17003012</td>
+              <td class="col-md-4">CLT_6548 MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L DE C.V</td>
+              <td class="col-md-1">
+                <a class="ver" accion="cuadroConsultar"><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
+                <a><img class="icomediano ml-5" src="/conta6/Resources/iconos/printer.svg"></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
   </div>
 
-  <div class="contorno" id="m-factura">
-    <form>
-      <table class="table text-center">
-        <thead>
-          <tr class="row encabezado">
-            <td class="col-md-12 font18">FACTURAS</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="row backpink">
-            <td class="col-md-1"></td>
-            <td class="col-md-1">FECHA</td>
-            <td class="col-md-1">FACTURA</td>
-            <td class="col-md-1">POLIZA</td>
-            <td class="col-md-1">CANCELADA</td>
-            <td class="col-md-1">CTA.GASTOS</td>
-            <td class="col-md-1">REFERENCIA</td>
-            <td class="col-md-4">CLIENTE</td>
-            <td class="col-md-1"></td>
-          </tr>
-          <tr class="row borderojo font14">
-            <td class="col-md-1">
-              <a href=""><img class="icomediano" src="/conta6/Resources/iconos/xml.svg"></a>
-              <a><img class="icomediano ml-4" src="/conta6/Resources/iconos/pdf.svg"></a>
-            </td>
-            <td class="col-md-1">17-07-2017</td>
-            <td class="col-md-1">77166</td>
-            <td class="col-md-1">252815</td>
-            <td class="col-md-1">252815</td>
-            <td class="col-md-1">77919</td>
-            <td class="col-md-1">N17003012</td>
-            <td class="col-md-4">CLT_6548 MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L DE C.V</td>
-            <td class="col-md-1">
-              <a class="ver" accion="cuadroConsultar"><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
-              <a><img class="icomediano ml-5" src="/conta6/Resources/iconos/printer.svg"></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
-  </div>
-</div><!--/Termina Container FLuid-->
 
-
-<div id="ConsulFactura" style="display:none">
-  <div class="container-fluid">
-    <div class="row submenuMed text-center m-0">
+  <div id="ConsulFactura" style="display:none">
+    <div class="row submenuMed  m-0">
       <div class="col-md-4" role="button">
         <a  id="submenuMed" class="visualizar" accion="Ver-cliente" status="cerrado">DATOS CLIENTE</a>
       </div>
@@ -67,49 +68,47 @@
         <a id="submenuMed" class="visualizar" accion="Ver-iUsuario" status="cerrado">USUARIO</a>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-2 p-4">
-    <a href="4-Consultarfactura.php">
-      <img class="icomediano ml-4" src="/conta6/Resources/iconos/left.svg">
-    </a>
-    <a href="" class="ml-4">
-      <img class="icomediano" src="/conta6/Resources/iconos/printer.svg">
-    </a>
-  </div>
+    <div class="text-left col-md-2 p-4">
+      <a href="4-Consultarfactura.php">
+        <img class="icomediano ml-4" src="/conta6/Resources/iconos/left.svg">
+      </a>
+      <a href="" class="ml-4">
+        <img class="icomediano" src="/conta6/Resources/iconos/printer.svg">
+      </a>
+    </div>
 
-<div class="container-fluid">
-  <div id="detalleCliente" class="contorno" style="display:none">
-    <table class="table form1 text-center">
-      <thead>
-        <tr class="row encabezado font16">
-          <td class="col-md-12">MOTORES ELECTRICOS SUMERGIBLES DE MEXICO S. DE R.L DE C.V</td>
-        </tr>
-        <tr class="row backpink font16">
-          <td class="col-md-6">Direccion</td>
-          <td class="col-md-6">Proveedor</td>
-        </tr>
-      </thead>
-      <tbody class="font14">
-        <tr class="row">
-          <td class="col-md-6">Ave.Industrial Alimentaria 2001</td>
-          <td class="col-md-6">EC, DBA KECO</td>
-        </tr>
-        <tr class="row m-0">
-          <td class="col-md-6">Parque Industrial Linares</td>
-        </tr>
-        <tr class="row m-0">
-          <td class="col-md-6">Linares Nuevo Leon C.P 67735</td>
-        </tr>
-        <tr class="row m-0">
-          <td class="col-md-6">MES0204122KA</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div id="detalleCliente" class="contorno" style="display:none">
+      <table class="table form1">
+        <thead>
+          <tr class="row encabezado font16">
+            <td class="col-md-12">MOTORES ELECTRICOS SUMERGIBLES DE MEXICO S. DE R.L DE C.V</td>
+          </tr>
+          <tr class="row backpink font16">
+            <td class="col-md-6">Direccion</td>
+            <td class="col-md-6">Proveedor</td>
+          </tr>
+        </thead>
+        <tbody class="font14">
+          <tr class="row">
+            <td class="col-md-6">Ave.Industrial Alimentaria 2001</td>
+            <td class="col-md-6">EC, DBA KECO</td>
+          </tr>
+          <tr class="row m-0">
+            <td class="col-md-6">Parque Industrial Linares</td>
+          </tr>
+          <tr class="row m-0">
+            <td class="col-md-6">Linares Nuevo Leon C.P 67735</td>
+          </tr>
+          <tr class="row m-0">
+            <td class="col-md-6">MES0204122KA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
   <div id="detalleEmbarque" class="contorno" style="display:none">
-    <table class="table form1 text-center">
+    <table class="table form1 ">
       <thead>
         <tr class="row encabezado font16">
           <td class="col-md-12">INFORMACION GENERAL</td>
@@ -175,7 +174,7 @@
   </div>
 
   <div id="detalleUsuario" class="contorno" style="display:none">
-    <table  class="table form1 text-center">
+    <table  class="table form1 ">
       <thead>
         <tr class="row encabezado">
           <td class="col-md-6">GENERADO POR:</td>
@@ -194,13 +193,11 @@
       </tbody>
     </table>
   </div>
-</div>
 
-<!--Esta informacion si estara visible SOLICITUD DE ANTICIPO-->
-<div class="contorno mt-5">
-  <h5 class="titulo font14">SOLICITUD ANTICIPO</h5>
-    <div class="container-fluid">
-      <table class="table form1 mt-4 text-center">
+  <!--Esta informacion si estara visible SOLICITUD DE ANTICIPO-->
+  <div class="contorno mt-5">
+    <h5 class="titulo font14">SOLICITUD ANTICIPO</h5>
+      <table class="table form1 mt-4 ">
         <thead>
           <tr class="row encabezado font14">
             <td class="col-md-6">PAGOS O CARGOS EN USD</td>
@@ -237,7 +234,7 @@
         </tbody>
       </table>
 
-      <table class="table form1 text-center mt-5">
+      <table class="table form1  mt-5">
         <thead>
           <tr class="row encabezado font14">
             <td class="col-md-6">PAGOS POR CUENTA CLIENTE</td>
@@ -256,7 +253,7 @@
         </tbody>
       </table>
 
-      <table class="table form1 text-center mt-5">
+      <table class="table form1  mt-5">
         <thead>
           <tr class="row encabezado font14">
             <td class="col-md-6">HONORARIOS Y SERVICIOS</td>
@@ -307,5 +304,6 @@
     </div>
   </div>
 </div>
+
 
 <script src="js/facturaElectronica.js"></script>

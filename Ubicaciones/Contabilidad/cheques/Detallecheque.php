@@ -12,7 +12,7 @@
     </ul>
   </div>
 
-  <div id="datoscheque" class="contorno mt-5"><!--Comienza DETALLE DATOS DE POLIZA-->
+  <div id="datoscheque" class="contorno mt-5" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
     <!-- style="display:none" -->
     <h5 class="titulo">DATOS DEL CHEQUE
       <a href='#ch-editarRegMST' data-toggle='modal' role='button'>

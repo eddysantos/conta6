@@ -3,7 +3,7 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid text-center">
+<div class="text-center">
   <div class="row font14 m-5">
     <div class="col-md-3 offset-md-9">
       <a href="#" class="boton ver" accion="mostrarDetalle" role="button" id="botondetalle"><img src= "/conta6/Resources/iconos/detalles.svg" class="icochico"> DETALLE DE PÓLIZA</a>

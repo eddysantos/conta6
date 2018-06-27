@@ -39,38 +39,6 @@ if( $totalRegistrosSelect > 0 ){
 
   <div id="datospoliza" class="contorno"><!--Comienza DETALLE DATOS DE POLIZA-->
     <h5 class="titulo">DATOS DE LA POLIZA</h5>
-<<<<<<< HEAD
-    <form class="form1">
-      <table class="table text-center">
-        <thead>
-          <tr class="row  encabezado font16">
-            <td class="col-md-2">POLIZA</td>
-            <td class="col-md-2">USUARIO</td>
-            <td class="col-md-2">FECHA POLIZA</td>
-            <td class="col-md-2">GENERACION</td>
-            <td class="col-md-2">ADUANA</td>
-            <td class="col-md-2">CANCELACIÓN</td>
-          </tr>
-        </thead>
-        <tbody class="font16">
-          <tr class="row">
-            <td class="col-md-2">234567</td>
-            <td class="col-md-2">Estefania</td>
-            <td class="col-md-2">22/11/2017</td>
-            <td class="col-md-2">30/12/2017</td>
-            <td class="col-md-2">Nuevo Laredo</td>
-            <td class="col-md-2">234567</td>
-          </tr>
-          <tr class="row m-0">
-            <td class="col-md-12 mt-5">
-              <input id="concep" class="border-0 efecto tiene-contenido" value="Ejemplo del contenido Ejemplo del contenido" type="text">
-              <label for="concep">CONCEPTO</label>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
-=======
     <table class="table form1 font14">
       <thead>
         <tr class="row encabezado">
@@ -99,7 +67,6 @@ if( $totalRegistrosSelect > 0 ){
         </tr>
       </tbody>
     </table>
->>>>>>> CSScorresponsales
   </div><!--/Termina DETALLE DATOS DE POLIZA-->
 
   <form  class="mt-4 font14">
@@ -173,16 +140,6 @@ if( $totalRegistrosSelect > 0 ){
           }
         }else{
         ?>
-        <!-- <tr class="row borderojo">
-          <td colspan="15" class="">NO HAY DETALLE DE ESTA PÓLIZA</td>
-        </tr> -->
-
-        <!-- <div class="row font14 mt-5 borderojo">
-          <div class="col-md-12">
-            NO HAY DETALLE DE ESTA PÓLIZA
-          </div>
-        </div> -->
-
         <div class="container-fluid pantallaGris">
           <div class="tituloSinRegistros">NO HAY DETALLE DE ESTA PÓLIZA</div>
         </div>
@@ -197,12 +154,6 @@ if( $totalRegistrosSelect > 0 ){
 <?php
 }else{
 ?>
-  <!-- <div class="row font14 mt-5">
-    <div class="col-md-12">
-      NO EXISTE LA PÓLIZA
-    </div>
-  </div> -->
-
   <div class="container-fluid pantallaGris">
     <div class="tituloSinRegistros">NO EXISTE LA PÓLIZA</div>
   </div>

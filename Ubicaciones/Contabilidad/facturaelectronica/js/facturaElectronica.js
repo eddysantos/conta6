@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 
 /*Oculta todos los divs y hace visible solo el submenu*/
-  $('.atras').click(function(){
+  $('.bg').click(function(){
     var accion = $(this).attr('accion');
     switch (accion) {
       case "cuadroBusqueda":

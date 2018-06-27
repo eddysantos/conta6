@@ -23,7 +23,7 @@
 <!---se muestra al escribir la referencia y dar enter-->
   <div class="contenedor contorno" id="m-ctagastos" style="display:none">
     <div class="col-md-1 offset-sm-11">
-      <a class="atras" accion="cuadroObservaciones">
+      <a href="#" class="bg" accion="cuadroObservaciones">
         <i class="back fa fa-arrow-left">Regresar</i>
       </a>
     </div>

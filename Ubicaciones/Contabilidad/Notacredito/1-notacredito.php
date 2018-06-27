@@ -25,7 +25,7 @@
       <thead>
         <tr class="row">
           <td class="col-md-1 offset-sm-11">
-            <a href="" class="atras" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
+            <a href="#" class="atras" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
           </td>
         </tr>
         <tr class="row encabezado font18">
@@ -47,13 +47,8 @@
           <td class="col-md-1">234567</td>
           <td class="col-md-1">234568</td>
           <td class="col-md-6">MOTORES ELECTRICOS SUMERGIBLES S DE RL DE CV</td>
-<<<<<<< HEAD
-          <td class="col-md-2 pt-1">
-            <a href="" class="boton h35">SIGUIENTE <img src="/conta6/Resources/iconos/right.svg"></a>
-=======
           <td class="col-md-1 text-right">
             <a href="#"><img src="/conta6/Resources/iconos/rightred.svg"></a>
->>>>>>> CSSAdminContable
           </td>
         </tr>
       </tbody>
