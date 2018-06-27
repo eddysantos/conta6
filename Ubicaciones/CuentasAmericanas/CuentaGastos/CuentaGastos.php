@@ -4,7 +4,7 @@
 ?>
 
 
-<div class="continer-fluid text-center">
+<div class="text-center">
 
 <!---AL INGRESAR SOLO SE MOSTRARA ESTA SECCION-->
   <div class="row submenuMed m-0" id="SeleccionarAccion">
@@ -41,7 +41,7 @@
   </div>
 
 <!---se muestra al escribir la referencia y dar enter-->
-  <div class="contenedor container-fluid cont" id="repoSol" style="display:none">
+  <div class="contenedor contorno" id="repoSol" style="display:none">
     <table class="table font18">
       <tr class="row">
         <td class="col-md-1 offset-sm-11 p-0">
@@ -60,9 +60,8 @@
         <td class="col-md-2">REFERENCIA</td>
         <td class="col-md-4">CLIENTE</td>
         <td class="col-md-1"></td>
-        <!-- <td class="col-md-1"></td> -->
       </tr>
-      <tr class="row borderojo">
+      <tr class="row">
         <td class="col-md-1">
           <a href="/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/Editarcta.php">
             <img class="icomediano" src="/conta6/Resources/iconos/003-edit.svg">
@@ -78,14 +77,12 @@
           </a>
           <a><img class="icomediano ml-5" src="/conta6/Resources/iconos/printer.svg"></a>
         </td>
-        <!-- <td class="col-md-1">
-        </td> -->
       </tr>
     </table>
   </div>
 
 <!---se muestra al dar click en referencia-->
-  <div class="contenedor" id="gctaGastos" style="display:none">
+<div class="contenedor" id="gctaGastos" style="display:none">
     <div class="col-md-1 offset-sm-8 p-0">
       <a class="atras" accion="cuadroGenerar">
         <i class="back fa fa-arrow-left">Regresar</i>
@@ -107,6 +104,7 @@
       </div>
     </div>
   </div>
+<div>
 
 
 <script src="js/CuentaGastos.js"></script>

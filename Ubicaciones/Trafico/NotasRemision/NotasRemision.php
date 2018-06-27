@@ -3,26 +3,28 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
+<div class="container-fluid text-center">
+
 
   <div class="contenedor" id="b-notaRemision">
     <div class="row titulograndetop transEff" id="referencia">
-      <div class="col-md-12 text-center">
+      <div class="col-md-12">
         <label class="transEff" for="bRef" id="labelRef">Referencia</label>
       </div>
     </div>
     <div class="row intermedio transEff" id="nReferencia">
       <div class="col-md-12" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
-          <input class="reg form-control border-0 transEff" id="bRef" type="text">
+          <input class="reg border-0 transEff" id="bRef" type="text">
         </form>
       </div>
     </div>
   </div>
 
 <!---se muestra al escribir la referencia y dar enter-->
-  <div class="contenedor container-fluid cont" id="m-Remision" style="display:none">
+  <div class="contenedor contorno" id="m-Remision" style="display:none">
     <form class="form1">
-      <table class="table text-center">
+      <table class="table">
         <thead>
           <tr class="row">
             <td class="col-md-1 offset-md-11 p-0 mb-2">
@@ -35,11 +37,11 @@
             <td class="col-md-12">NOTA DE REMISIÓN</td>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="font14">
           <tr class="row backpink">
             <td class="col-md-12">CONSIGNACIÓN</td>
           </tr>
-          <tr class="row font14">
+          <tr class="row">
             <td class="col-md-12">MOTORES ELECTRICOS SUMERGIBLES DE MÉXICO, S DE R.L DE C.V</td>
             <td class="col-md-12">AVE.INDUSTRIA ALIMENTARIA, 2201</td>
             <td class="col-md-12">PARQUE INDUSTRIAL LINARES, CP 67735 LINARES</td>
@@ -53,7 +55,7 @@
             <td class="col-md-2">TALONES,GUIA</td>
             <td class="col-md-2">FLETES</td>
           </tr>
-          <tr class="row text-normal">
+          <tr class="row">
             <td class="col-md-2">N17004726</td>
             <td class="col-md-2">2070922.562</td>
             <td class="col-md-1">7005410</td>
@@ -64,11 +66,11 @@
           </tr>
           <tr class="row mt-5">
             <td class="col-md-3 input-effect">
-              <input id="cantidad" class="efecto text-normal w-100" type="text">
+              <input id="cantidad" class="efecto" type="text">
               <label for="cantidad">CANTIDAD</label>
             </td>
             <td class="col-md-8 input-effect">
-              <input id="observacion" class="efecto text-normal w-100" type="text">
+              <input id="observacion" class="efecto" type="text">
               <label for="observacion">OBSERVACIONES</label>
             </td>
             <td class="col-md-1">
@@ -79,5 +81,5 @@
       </table>
     </form>
   </div>
-
+</div>
 <script src="../js/Trafico.js"></script>

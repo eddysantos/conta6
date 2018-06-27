@@ -2,7 +2,8 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   border-bottom: 1px solid rgb(209, 28, 28);
-  background-color: rgba(194, 189, 189, 0.1);
+  background-color:#fbfbfb !important;
+  /* background-color: rgba(194, 189, 189, 0.1); */
   padding: .1rem!important;
   text-align: center;
 }
@@ -66,15 +67,9 @@ a img.icochico:hover {
   color: black!important;
 }
 
-.submenu {
-  background-color: rgba(254, 113, 113, 0.06);
-  height: 80px;
-}
-div.submenu {
-  padding:12px;
-}
+
 .submenuMed {
-  background-color: rgba(254, 113, 113, 0.04);
+  background-color: rgba(254, 113, 113, 0.03);
   height: 50px;
 }
 div.submenuMed {
@@ -86,12 +81,7 @@ div.submenuMed {
   padding: 15px 30px 10px 30px!important;
   margin: 20px!important;
 }
-.cuerpo {
-  font-size: 17px;
-  line-height: 0.9;
-  letter-spacing: 3px;
-  text-align: center!important;
-}
+
 /*Acordeon para Editar*/
 .acordeon2 {
   flex-direction: column;
@@ -119,25 +109,7 @@ div.submenuMed {
   margin-top:150px!important;
   border-radius: 20px;
 }
-.atras {
-  background-color: transparent!important;
-  color: rgb(161, 160, 160)!important;
-  letter-spacing: 3px!important;
-  font-size: 16px;
-}
-.atras:hover, .atras:focus {
-  color: rgb(209, 28, 28)!important;
-  cursor: pointer;
-  font-size: 18px;
-}
-.regresar {
-  background-color: transparent!important;
-  color: rgb(161, 160, 160)!important;
-  letter-spacing: 3px!important;
-  font-size: 16px;
-}
-.regresar:hover, .regresar:focus {
-  color: rgb(209, 28, 28)!important;
-  cursor: pointer;
-  font-size: 18px;
+
+:focus{
+  outline: none;
 }

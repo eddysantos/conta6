@@ -4,32 +4,32 @@
 ?>
 
 
-<div class="contorno brx4">
-  <h5 class="titulo" style="font-size:15px">CATÁLOGO</h5>
-  <table class="table brx2">
-    <tbody class="cuerpo">
+<div class="contorno text-center">
+  <h5 class="titulo font16">CATÁLOGO</h5>
+  <table class="table mt-4 form1">
+    <tbody class="font14">
       <tr class="row">
         <td class="col-md-1">
-          <a href=""><img class="icomediano mleftx2" src="/conta6/Resources/iconos/printer.svg"></a>
+          <a href=""><img class="icomediano ml-3" src="/conta6/Resources/iconos/printer.svg"></a>
         </td>
-        <td class="col-md-3 offset-md-7">
-          <a href="#catalogo" data-toggle="modal" class="boton mleftx10"><img class="icochico" src="/conta6/Resources/iconos/add.svg"> AGREGAR CONCEPTO</a>
+        <td class="col-md-3 offset-md-8">
+          <a href="#catalogo" data-toggle="modal" class="boton"><img class="icochico" src="/conta6/Resources/iconos/add.svg"> AGREGAR CONCEPTO</a>
         </td>
       </tr>
     </tbody>
   </table>
   <table class="table table-hover">
     <thead>
-      <tr class="row text-center m-0 encabezado">
+      <tr class="row m-0 encabezado">
         <td class="col-md-1"></td>
         <td class="col-md-5">CORRESPONSAL</td>
         <td class="col-md-4">CONTACTO</td>
         <td class="col-md-2">TELEFONO</td>
       </tr>
     </thead>
-    <tbody class="text-normal">
-      <tr class="row text-center m-0 borderojo">
-        <td class="col-md-1 text-center">
+    <tbody class="font14">
+      <tr class="row m-0 borderojo">
+        <td class="col-md-1">
           <a href="#EditarCorresponsal" data-toggle="modal"><img class="icochico" src="/conta6/Resources/iconos/003-edit.svg"></a>
           <a href=""><img class="icochico ml-4" src="/conta6/Resources/iconos/001-add.svg"></a>
         </td>
@@ -38,8 +38,8 @@
         <td class="col-md-2">62 * 11 * 1717 * 5</td>
         </td>
       </tr>
-      <tr class="row text-center m-0 borderojo">
-        <td class="col-md-1 text-center">
+      <tr class="row m-0 borderojo">
+        <td class="col-md-1">
           <a href="#EditarCorresponsal" data-toggle="modal"><img class="icochico" src="/conta6/Resources/iconos/003-edit.svg"></a>
           <a href=""><img class="icochico ml-4" src="/conta6/Resources/iconos/001-add.svg"></a>
         </td>

@@ -3,8 +3,8 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid">
-  <div class="row submenuMed m-0 text-center">
+<div class="text-center">
+  <div class="row submenuMed m-0 ">
     <div class="col-md-4" role="button">
       <a  id="submenuMed" class="dtosOficina" accion="dFiscal" status="cerrado">DOMICILIO FISCAL</a>
     </div>
@@ -18,34 +18,34 @@
 
   <div id="contornoDom" class="contorno" style="display:none">
     <h5 class="titulo font16">DOMICILIO FISCAL</h5>
-    <table class="table text-center" id="DomicilioFiscal">
+    <table class="table" id="DomicilioFiscal">
       <thead>
         <tr class="row m-0 encabezado">
-          <td class="col-md-12 ">PROYECCION LOGISTICA AGENCIA ADUANAL S.A DE C.V</td>
+          <td class="col-md-12 font16">PROYECCION LOGISTICA AGENCIA ADUANAL S.A DE C.V</td>
         </tr>
       </thead>
-      <tbody class="cuerpo">
-        <tr class="row m-0">
+      <tbody class="font14">
+        <tr class="row">
           <td class="col-md-6 text-right">RFC :</td>
           <td class="col-md-6 text-left">PLA090609N21</td>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-6 text-right">Calle :</td>
           <td class="col-md-6 text-left">Fundidora Monterrey 62 P.A</td>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-6 text-right">Colonia :</td>
           <td class="col-md-6 text-left">Peñon de los Baños</td>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-6 text-right">Ciudad :</td>
           <td class="col-md-6 text-left">México C.P 15520</td>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-6 text-right">Telefono :</td>
           <td class="col-md-6 text-left">57 85 63 85</td>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-6 text-right">Fax :</td>
           <td class="col-md-6 text-left">57 85 69 49</td>
         </tr>
@@ -55,16 +55,16 @@
 
   <div id="contornoEdit" class="contorno" style="display:none;">
     <h5 class="titulo2 font16">MODIFICAR DOMICILIO FISCAL</h5>
-    <table class="table text-center" id="EditarDomicilio">
+    <table class="table" id="EditarDomicilio">
       <thead>
-        <tr class="row m-0 encabezado">
+        <tr class="row encabezado font16">
           <td class="col-md-6">RAZON SOCIAL</td>
           <td class="col-md-3">RFC</td>
           <td class="col-md-3">OFICINA</td>
         </tr>
       </thead>
       <tbody class="font14">
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-6">
             <input class="efecto" type="text" value="Proyeccion Logistica Agencia Aduanal S.A de C.V">
           </td>
@@ -92,28 +92,28 @@
     <h5 class="titulo font16">DATOS DE OFICINA</h5>
     <table class="table" id="DatosOficina">
       <thead>
-        <tr class="row m-0 text-center encabezado">
-          <td class="col-md-12">SUCURSAL 240 NUEVO LAREDO</td>
+        <tr class="row encabezado">
+          <td class="col-md-12 font16">SUCURSAL 240 NUEVO LAREDO</td>
         </tr>
       </thead>
       <tbody class="font14">
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-6 text-right">Calle :</td>
           <td class="col-md-6 text-left">Melvin Jones 4040</td>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-6 text-right">Colonia :</td>
           <td class="col-md-6 text-left">Burocratas</td>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-6 text-right">Ciudad :</td>
           <td class="col-md-6 text-left">Nuevo Laredo Tamaulipas C.P 88280</td>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-6 text-right">Telefono :</td>
           <td class="col-md-6 text-left">867 713 4646</td>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-6 text-right">Registro Patronal :</td>
           <td class="col-md-6 text-left">E97-34803-10-4</td>
         </tr>
