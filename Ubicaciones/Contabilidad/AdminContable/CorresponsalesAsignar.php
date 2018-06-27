@@ -47,8 +47,8 @@
     <table class="table form1">
       <tbody>
         <tr class="row m-0">
-          <td class="col-md-1"></td>
-          <td class="col-md-3 offset-md-6 input-effect">
+          <td class="col-md-2 text-left"><a href="/Conta6/Ubicaciones/Contabilidad/AdminContable/Corresponsales.php"><img src= "/conta6/Resources/iconos/left.svg" class="icochico"> REGRESAR</a></td>
+          <td class="col-md-3 offset-md-5 input-effect">
             <input class="efecto popup-input" id="corp-cliente" type="text" id-display="#popup-display-corp-cliente" action="clientes_NoTieneCorresponsal" db-id="" autocomplete="new-password">
             <div class="popup-list" id="popup-display-corp-cliente" style="display:none"></div>
             <label for="corp-cliente">Cliente</label>

@@ -8,10 +8,10 @@
   <div class="row submenuMed m-0">
     <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
       <li class="nav-item">
-        <a class="nav-link consultar" id="submenuMed" accion="poldiario" status="cerrado">POLIZA DE DIARIO</a>
+        <a class="nav-link pol" id="submenuMed" accion="poldiario" status="cerrado">POLIZA DE DIARIO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link consultar" id="submenuMed" accion="polingreso" status="cerrado">POLIZA DE INGRESO</a>
+        <a class="nav-link pol" id="submenuMed" accion="polingreso" status="cerrado">POLIZA DE INGRESO</a>
       </li>
     </ul>
   </div>

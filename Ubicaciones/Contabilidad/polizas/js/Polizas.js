@@ -391,7 +391,7 @@ $(document).ready(function(){
 			}
   });
 
-  $('.consultar').click(function(){
+  $('.pol').click(function(){
         var accion = $(this).attr('accion');
         var status = $(this).attr('status');
 
@@ -407,16 +407,12 @@ $(document).ready(function(){
 						$('#gpoliza').fadeIn();
 						$('#diatipo').val('4 Diario');
 						$('#diatipo').attr('db-id','4');
-            $('#cheques').hide();
-            $('#anticipos').hide();
             break;
 
           case "polingreso":
 						$('#gpoliza').fadeIn();
 						$('#diatipo').val('2 Ingreso');
 						$('#diatipo').attr('db-id','2');
-            $('#cheques').hide();
-            $('#anticipos').hide();
             break;
 
             case "dtospol":

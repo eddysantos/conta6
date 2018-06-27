@@ -6,7 +6,7 @@
 <div class="text-center">
   <div id="buscarfactura">
     <div class="col-md-1 offset-md-11 p-0 mt-5">
-      <a class="atras" href="#ConsultarFactura" data-toggle="modal">
+      <a href="#ConsultarFactura" data-toggle="modal">
         <i class="back fa fa-arrow-left">Regresar</i>
       </a>
     </div>

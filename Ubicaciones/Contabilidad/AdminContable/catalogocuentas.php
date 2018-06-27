@@ -9,7 +9,7 @@ $usuario = $_SESSION['user_name'];
   require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
-<div class="container-fluid text-center">
+<div class="text-center mb-10">
   <div class="row submenuMed">
     <div class="col-md-12" role="button">
       <a  id="submenuMed" class="consultar" accion="eCap" status="cerrado">CATÁLOGO DE CUENTAS</a>
@@ -276,7 +276,6 @@ $usuario = $_SESSION['user_name'];
       </li>
     </ul>
   </div>
-</div>
 
 <?php
 require_once('modales/EditarCatalogo.php');
