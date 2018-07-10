@@ -6,12 +6,13 @@ function eliminaBlancosIntermedios(frmObj){
 
 function todasMayusculas(frmObj){
   texto = $(frmObj).val();
-  texto = texto.toUpperCase();
+  texto = $.trim(texto.toUpperCase());
   $(frmObj).val(texto);
 }
 
 function validaIntDec(frmObj){
 	importe = $(frmObj).val();
+  importe = $.trim(importe);
 	if( String(importe).search(/^\d+$/) != -1 || String(importe).search(/^\d+(\.\d+)?$/) != -1 ){
     $(frmObj).val(importe);
 	}else{
@@ -22,6 +23,7 @@ function validaIntDec(frmObj){
 
 function validaReferencia(frmObj){
   Referencia = $(frmObj).val();
+  Referencia = $.trim(Referencia);
 	if( (!/^([A-Za-z]\d[0-9]{6,8}|0)$/.test(Referencia)) ){
 		if (Referencia == "SN" || Referencia == "sn"){
 		    $(frmObj).val(Referencia);
@@ -36,10 +38,10 @@ function validaReferencia(frmObj){
 
 function validaSoloNumeros(frmObj){
   campo = $(frmObj).val();
+  campo = $.trim(campo);
   if( (!/^([0-9])*$/.test(campo)) || campo == "" ){
     alertify.error("Ingrese solo numeros")
 		$(frmObj).focus();
-
   }else{
 		$(frmObj).val(campo);
   }

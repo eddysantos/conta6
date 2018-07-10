@@ -15,51 +15,12 @@
 
 	if( $rows > 0 ){
 		$rowMST = $rslt->fetch_assoc();
-		$cancela = $rowMST['s_cancela'];
-		if( $cancela == 0 ){ $txt_cancela = "Activo"; }else{ $txt_cancela = "Cancelado"; }
-		if( $oRst_permisos["s_correcciones_mst_anticipos"] == 1 && $cancela == 0 ){ $mostrar = true; }else{ $mostrar = false; }
-    if( $oRst_permisos["s_descancelar_anticipos"] == 1 ){ $mostrarCancela = true; }else{ $mostrarCancela = false; }
-		if( $cancela == 1 ){ $clase = 'class="efecto disabled readonly" disabled'; $claseAdmin = 'class="efecto disabled readonly" disabled'; }
-
-    //detalle
-    $sql_SelectDET = "SELECT * from conta_t_anticipos_det Where fk_id_anticipo = ?";
-    $stmtDET = $db->prepare($sql_SelectDET);
-  	if (!($stmtDET)) { die("Error during query prepare [$db->errno]: $db->error");	}
-  	$stmtDET->bind_param('s', $id_anticipo);
-  	if (!($stmtDET)) { die("Error during query prepare [$stmtDET->errno]: $stmtDET->error");	}
-  	if (!($stmtDET->execute())) { die("Error during query prepare [$stmtDET->errno]: $stmtDET->error"); }
-  	$rsltDET = $stmtDET->get_result();
-  	$rowsDET = $rsltDET->num_rows;
-    if( $rowsDET > 0 ){
-      $rowDET = $rsltDET->fetch_assoc();
-
-      $tablaDetalle = "
-      <tr class='row m-0 borderojo'>
-        <td class='xs'>
-          <a href=''><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-        </td>
-        <td class='sm'>$rowDET[fk_id_cuenta]</td>
-        <td class='sm'>$rowDET[fk_referencia]</td>
-        <td class='sm'>$rowDET[fk_id_cliente]</td>
-        <td class='sm'>$rowDET[fk_factura]</td>
-        <td class='sm'>$rowDET[fk_ctagastos]</td>
-        <td class='sm'>$rowDET[fk_pago]</td>
-        <td class='sm'>$rowDET[fk_nc]</td>
-        <td class='sm'>$rowDET[fk_anticipo]</td>
-        <td class='med'>$rowDET[s_desc]</td>
-        <td class='sm'>$rowDET[n_cargo]</td>
-        <td class='sm'>$rowDET[n_abono]</td>
-        <td class='sm'>$rowDET[d_fecha]</td>
-        <td class='xs'>
-          <a href='#detpol-editar' data-toggle='modal'>
-            <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
-          </a>
-        </td>
-      </tr>";
-    }
+		$cancela = $rowMST['s_cancela']; // 0=Activo 1=Cancelado
+    $id_poliza = $rowMST['fk_id_poliza'];
+    $importeAnt = $rowMST['n_valor'];
 
     //totales
-		$oRst_STPD_sql = "select fk_id_anticipo,SUM(n_cargo)as SUMA_CARGOS,SUM(n_abono)as SUMA_ABONOS from conta_t_anticipos_det where fk_id_anticipo = ? group by fk_id_anticipo ";
+	 	$oRst_STPD_sql = "select fk_id_anticipo,SUM(n_cargo)as SUMA_CARGOS,SUM(n_abono)as SUMA_ABONOS from conta_t_anticipos_det where fk_id_anticipo = ? group by fk_id_anticipo ";
 		$stmtTotales = $db->prepare($oRst_STPD_sql);
 		if (!($stmtTotales)) { die("Error during query prepare [$db->errno]: $db->error");	}
 		$stmtTotales->bind_param('s', $id_anticipo);
@@ -71,15 +32,39 @@
 			$oRst_STPD = $rsltTotales->fetch_assoc();
 			$sumaCargos = $oRst_STPD['SUMA_CARGOS'];
 			$sumaAbonos = $oRst_STPD['SUMA_ABONOS'];
+      $sumaC = number_format($sumaCargos,2,'.','') + number_format($importeAnt,2,'.','') ;
+		  $Status_Anticipo =  number_format($sumaC - $sumaAbonos,2,'.','');
+      $statusGeneraPoliza = false;
+
+      if( $Status_Anticipo == 0 ){
+        $txtStatus = '<b><font face="Trebuchet MS" size="2" color="#000000">CUADRADA</font></b>';
+        $statusGeneraPoliza = true;
+		  }else{
+				$txtStatus = '<b><font color="#E52727" face="Trebuchet MS" size="2"><?php echo $Status_Anticipo; ?> ANTICIPO SIN CUADRAR</font></b>';
+        $statusGeneraPoliza = false;
+			}
 		}else{
 			$sumaCargos = 0;
 			$sumaAbonos = 0;
+      $sumaC = 0;
+      $Status_Anticipo = 0;
 		}
 
-
-
-
-
+		//validaciones
+		if( $cancela == 0 ){ $txt_cancela = "Activo"; }else{ $txt_cancela = "Cancelado"; }
+		if( $oRst_permisos["s_correcciones_mst_anticipos"] == 1 && $cancela == 0 ){ $mostrar = true; }else{ $mostrar = false; }
+		if( $oRst_permisos["s_descancelar_anticipos"] == 1 ){ $mostrarCancela = true; }else{ $mostrarCancela = false; }
+		if( $cancela == 1 ){ $clase = 'class="efecto disabled readonly" disabled'; }
+		if( $id_poliza > 0){ $tienePoliza = true; }else{ $tienePoliza = false;}
+		if( $oRst_permisos["s_editar_anticipos_det_pol"] == 1 && $cancela == 0 && $id_poliza > 0 ){
+		  $mostrarEditConPol = true;
+		}else{
+		  if( $cancela == 0 && is_null($id_poliza) ){
+			  $mostrarEditConPol = true;
+		  }else{
+			$mostrarEditConPol = false;
+		  }
+		}
 	}
 ?>
 
@@ -94,10 +79,6 @@
 <?php
 if( $rows > 0 ){
 ?>
-<input type="hidden" id="usuario_activo" value="<?php echo $usuario; ?>">
-<input type="hidden" id="aduana_activa" value="<?php echo $aduana; ?>">
-<input type="hidden" id="mst-anticipo" value="<?php echo $rowMST['pk_id_anticipo']; ?>">
-<input type="hidden" id="mst-fecha" value="<?php echo $rowMST['d_fecha']; ?>">
 
   <!--Comienza DETALLE DATOS DE ANTICIPO-->
   <div id="datosanticipo" class="contorno" style="display:none">
@@ -117,6 +98,15 @@ if( $rows > 0 ){
           </tr>
         </thead>
         <tbody class="font14">
+          <input type="hidden" id="usuario_activo" value="<?php echo $usuario; ?>">
+          <input type="hidden" id="aduana_activa" value="<?php echo $aduana; ?>">
+          <input type="hidden" id="mst-anticipo" value="<?php echo $rowMST['pk_id_anticipo']; ?>">
+          <input type="hidden" id="mst-fecha" value="<?php echo $rowMST['d_fecha']; ?>">
+          <input type="hidden" id="mst-poliza" value="<?php echo $rowMST['fk_id_poliza']; ?>">
+          <input type="hidden" id="mst-ctaMST" value="<?php echo $rowMST['fk_id_cuentaMST']; ?>">
+          <input type="hidden" id="mst-concepto" value="<?php echo $rowMST['s_concepto']; ?>">
+          <input type="hidden" id="mst-importe" value="<?php echo $rowMST['n_valor']; ?>">
+          <input type="hidden" id="mst-cliente" value="<?php echo $rowMST['fk_id_cliente']; ?>">
 
           <tr class="row">
             <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_poliza']; ?></td>
@@ -128,14 +118,14 @@ if( $rows > 0 ){
             <td class="col-md-2"><?php echo $rowMST['n_valor']; ?></td>
             <td class="col-md-2 pt-1">
       				<?php if( $mostrarCancela == true ){ ?>
-      					<select class="custom-select-ch" size="1" name="ant-cancela" id="ant-cancela" onchange="cambiarStatusAnticipo()">
-      					<?php if( $cancela == 0 ){
-    							echo "<option value='0' selected>Activo</option>";
-    							echo "<option value='1'>Cancelado</option>";
-    						  }else{
-    							echo "<option value='0'>Activo</option>";
-    							echo "<option value='1' selected>Cancelado</option>";
-    						  } ?>
+      					<select class="custom-select-ch" size="1" id="ant-cancela">
+        					<?php if( $cancela == 0 ){
+      							echo "<option value='0' selected>Activo</option>";
+      							echo "<option value='1'>Cancelado</option>";
+      						  }else{
+      							echo "<option value='0'>Activo</option>";
+      							echo "<option value='1' selected>Cancelado</option>";
+      						  } ?>
       					</select>
       				<?php }else{ echo $txt_cancela; } ?>
       			</td>
@@ -174,7 +164,7 @@ if( $rows > 0 ){
           <a class="nav-link pills">Captura Detalle de Anticipo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link pills">Detalle de Anticipo</a>
+          <a class="nav-link pills" id="detalleanticipo">Detalle de Anticipo</a>
         </li>
       </ul>
     </nav> <!--links de desplazamiento-->
@@ -191,10 +181,7 @@ if( $rows > 0 ){
               <tbody class="font14">
                 <tr class="row m-0 mt-5">
                   <td class="col-md-2 input-effect">
-                    <!--input  class="efecto" id="ant-referencia">
-                    <label for="ant-referencia">Referencia</label-->
-                    <input class="efecto popup-input" id="ant-referencia" type="text" id-display="#popup-display-referencia" action="referencias" db-id=""
-                      autocomplete="new-password" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);buscarReferenciaAnt();">
+                    <input class="efecto popup-input" id="ant-referencia" type="text" id-display="#popup-display-referencia" action="referencias" value="SN" db-id="SN" autocomplete="new-password">
                     <div class="popup-list" id="popup-display-referencia" style="display:none"></div>
                     <label for="ant-referencia">Referencia</label>
                   </td>
@@ -206,45 +193,38 @@ if( $rows > 0 ){
                     </div>
                     <div id="lstClientesCorresp">
                       <select class="custom-select" size='1' id='ant-clienteCorresp'>
-                          <option selected value='0'>Seleccione Cliente / Corresponsal</option>
+                          <option selected value='0'>Seleccione Cliente/Corresponsal</option>
                       </select>
                     </div>
-                    <!--input  list="ant-cli" class="efecto" id="ant-clientes">
-                    <datalist id="ant-cli">
-                      <option value="REPRESENTACIONES ASESORIA MANTENIMIENTO Y SERVICIOS ANEXOS S.A DE C.V -- CLT_6921"></option>
-                      <option value="SERVICIOS INTEGRALES EEN LOGISTICA INTERNACIONAL, ADUANAS Y TECNOLOGIA S.C -- CLT_7596"></option>
-                      <option value="AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V --- CLT 6109"></option>
-                      <option value="INTERNATIONAL FREIGHT FORWARDER AND ADVISOR CUSTOMS DELIVERY S.A DE C.V --- CLT_7663"></option>
-                    </datalist>
-                    <label for="ant-clientes">Seleccione un Cliente</label-->
                   </td>
                   <td class="col-md-2" role="button">
-                    <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                    <?php if( $mostrarEditConPol == true ){ ?>
+					          <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                    <?php } ?>
                   </td>
                 </tr>
                 <tr class="row m-0 mt-4">
                   <td class="col-md-8 input-effect">
-                    <input  list="ant-cta" class="efecto"  id="ant-cuenta2">
-                    <datalist id="ant-cta">
-                      <option value="0108-06967 -- MOTORES FRANKLIN S.A DE C.V"></option>
-                      <option value="0207-00004 -- CUENTAS AMERICANAS"></option>
-                      <option value="0207-00005 -- TRANSFER"></option>
-                      <option value="0208-06967 -- MOTORES FRANKLIN S.A DE CV"></option>
-                    </datalist>
-                    <label for="ant-cuenta2">Seleccione una Cuenta</label>
+                    <div id="lstClientesCorrespCtas">
+                      <select class="custom-select" size='1' id='ant-clienteCorrespCtas'>
+                          <option selected value='0'>Seleccione</option>
+                      </select>
+                    </div>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input  class="efecto"  id="ant-cargo">
+                    <input  class="efecto" id="ant-cargo">
                     <label for="ant-cargo">Cargo</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input  class="efecto"  id="ant-abono">
+                    <input  class="efecto" id="ant-abono">
                     <label for="ant-abono">Abono</label>
                   </td>
                 </tr>
                 <tr class="row mt-4">
                   <td class="col-md-2 offset-md-5">
-                    <a href="" class="boton" id="btn-registrar"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                    <?php if( $mostrarEditConPol == true ){ ?>
+                    <a href="#" id="btnRegDetAnt" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                    <?php } ?>
                   </td>
                 </tr>
               </tbody>
@@ -258,35 +238,43 @@ if( $rows > 0 ){
           </div>
           <div class="row">
             <div class="col-md-2 offset-md-4">
-              <input  class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
+              <input class="efecto" id="sumCargos2" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
             </div>
             <div class="col-md-2">
-              <input  class="efecto" value="<?php echo $sumaAbonos; ?>" readonly>
+              <input class="efecto" id="sumCargos2" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
             </div>
+            <?php echo $txtStatus; ?>
           </div>
         </div>
 
-        <div id="two" class=""><!--DETALLE DE POLIZAS-->
+        <div id="two" class=""><!--DETALLE DE ANTICIPO-->
           <div class="row">
             <div class="col-md-2 offset-md-8">SUMA DE CARGOS</div>
             <div class="col-md-2">SUMA DE ABONOS</div>
           </div>
           <div class="row font14">
             <div class="col-md-3 mt-3">
-              <a href="#" class="boton"><img src= "/conta6/Resources/iconos/refresh-button.svg"> ACTUALIZAR ANTICIPO</a>
+              <?php if( $oRst_permisos["s_reusar_anticipos"] == 1 ){ ?>
+              <a href="#" id="btn_reusarAnt" class="boton"><img src= "/conta6/Resources/iconos/refresh-button.svg"> REUSAR ANTICIPO</a>
+              <?php } ?>
             </div>
             <div class="col-md-3 mt-3">
-              <a href="#" class="boton"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR ANTICIPO</a>
+              <?php if( $tienePoliza == false && $statusGeneraPoliza == true ){ ?>
+              <a href="#" id="btn_generarPolAnt" class="boton"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR POLIZA</a>
+              <?php } ?>
             </div>
             <div class="col-md-2 mt-3">
-              <a href="#" class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
+              <?php if( $tienePoliza == true ){ ?>
+              <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
+              <?php } ?>
             </div>
             <div class="col-md-2 mt-3">
-              <input  class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
+              <input class="efecto" id="sumCargos1" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
             </div>
             <div class="col-md-2 mt-3">
-              <input  class="efecto" value="<?php echo $sumaAbonos; ?>" readonly>
+              <input class="efecto" id="sumAbonos1" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
             </div>
+            <?php echo $txtStatus; ?>
           </div>
 
           <div id="detallepoliza" class="contorno-mov mt-4">
@@ -306,18 +294,12 @@ if( $rows > 0 ){
                   <td class="sm">CTA GASTOS</td>
 		              <td class="sm">PAGO ELECT</td>
                   <td class="sm">NOTACRED</td>
-                  <td class="sm">ANTICIPO</td>
                   <td class="med">DESCRIPCION</td>
                   <td class="sm">CARGO</td>
                   <td class="sm">ABONO</td>
-                  <td class="sm">FECHA</td>
                   <td class="xs"></td>
                 </tr>
-                <?php if( $rowsDET > 0 ){
-                        echo $tablaDetalle;
-                      }else{
-                        echo "<tr align=center><td colspan='14'><b>NO HAY DETALLES DE ESTE ANTICIPO</b></td></tr>";
-                      }?>
+                <tbody id="tabla_detalleanticipo"></tbody>
               </tbody>
             </table>
           </div>
@@ -331,7 +313,7 @@ if( $rows > 0 ){
 <?PHP
 require $root . '/conta6/Ubicaciones/footer.php';
   require_once('modales/editarDatosAnticipo.php');
-  require_once('modales/editarRegistroAnt.php');
+  require_once('modales/editarRegistro.php');
   require_once('modales/buscarFacturasAnt.php');
 
 

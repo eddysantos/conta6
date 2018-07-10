@@ -1,5 +1,238 @@
 $(document).ready(function(){
+
+
+  //detalleanticipo.php
   $('#lstClientesCorresp').hide();
+  $('#ant-referencia').change(function(){
+    eliminaBlancosIntermedios(this);
+    todasMayusculas(this);
+    buscarReferenciaAnt();
+  });
+  $('#ant-referencia').change(function(){ buscarReferenciaAnt(); });
+  $('#ant-cliente').change(function(){ lstCuentasAnt(); });
+  $('#ant-clienteCorresp').change(function(){ lstCuentasAnt(); });
+  ///////////////////////
+
+  //editarRegistro.php
+  $('#lstClientesCorrespPartida').hide();
+  $('#fk_referencia').change(function(){
+    console.log($('#fk_referencia').val());
+    eliminaBlancosIntermedios(this);
+    todasMayusculas(this);
+    buscarReferenciaAnt();
+  });
+  $('#fk_referencia').change(function(){ buscarReferenciaAnt(); });
+  $('#fk_id_cliente').change(function(){ lstCuentasAnt(); });
+  //$('#ant-clienteCorresp').change(function(){ lstCuentasAnt(); });
+  ///////////////////////////
+
+
+  $('#detalleanticipo').click(function(){
+      var data = {
+        id_anticipo: $('#mst-anticipo').val(),
+      }
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/tabla_detalleanticipo.php",
+        data: data,
+        success: 	function(request){
+					r = JSON.parse(request);
+
+					if (r.code == 1) {
+						$('#tabla_detalleanticipo').html(r.data);
+					}
+        }
+      });
+  });
+
+  $('#btn_prinAnt').click(function(){
+    id_anticipo = $('#mst-anticipo').val();
+    window.location.replace('/conta6/Ubicaciones/Contabilidad/anticipos/actions/impresion_anticipo.php?id_anticipo='+id_anticipo);
+  });
+
+  $('#btn_reusarAnt').click(function(){
+    id_anticipo = $('#mst-anticipo').val();
+
+  	swal({
+  	title: "Estas Seguro?",
+  	text: "Ya no se podra recuperar los registros! "+ id_anticipo +" ",
+  	type: "warning",
+  	showCancelButton: true,
+  	confirmButtonClass: "btn-danger",
+  	confirmButtonText: "Si, Eliminar",
+  	cancelButtonText: "No, cancelar",
+  	closeOnConfirm: false,
+  	closeOnCancel: false
+  	},
+  	function(isConfirm) {
+  		if (isConfirm) {
+  			var data = {
+  				id_anticipo: id_anticipo,
+          id_poliza: $('#mst-poliza').val()
+  			}
+  			$.ajax({
+  				type: "POST",
+  				url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/reusarAnticipo.php",
+  				data: data,
+
+  					success: 	function(r){
+  						console.log(r);
+  					if (r.code == 1) {
+  						swal("Eliminado!", "Se elimino correctamente.", "success");
+  						setTimeout('document.location.reload()',700);
+  					} else {
+  						console.error(r.message);
+  					}
+  				},
+  				error: function(x){
+  					console.error(x)
+  				}
+  			});
+  			swal("Eliminado!", "Se elimino correctamente.", "success");
+  			setTimeout('document.location.reload()',700);
+  		} else {
+  			swal("Cancelado", "El registro esta a salvo :)", "error");
+  		}
+  	});
+  });
+
+  $('#btn_generarPolAnt').click(function(){
+    var data = {
+  		diafecha: $('#mst-fecha').val(),
+  		diaconcepto: $('#mst-concepto').val(),
+  		diaaduana: $('#aduana_activa').val(),
+  		diatipo: 5,
+      anticipo: $('#mst-anticipo').val(),
+      cuentaMST: $('#mst-ctaMST').val(),
+      importe: $('#mst-importe').val(),
+	    id_cliente: $('#mst-cliente').val()
+  	}
+
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/generarPolizaAnticipo.php",
+      data: data,
+      success: 	function(r){
+        console.log(r);
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          swal("Exito", "Se generó correctamente.", "success");
+          setTimeout('document.location.reload()',700);
+        } else {
+          console.error(r.message);
+        }
+      },
+      error: function(x){
+        console.error(x);
+      }
+
+    });
+  });
+
+  $('#ant-cancela').change(function(){
+  	fecha = $('#mst-fecha').val();
+  	aduana = $('#aduana_activa').val();
+  	tipoDoc = 5;
+  	usuario = $('#usuario_activo').val();
+
+  	status = $('#ant-cancela').val();
+  	if( status == 1 ){ permiso = "s_cancelar_libre_anticipos"; }
+  	if( status == 0 ){ permiso = "s_descancelar_anticipos"; }
+
+
+  	var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
+  	if(continuar == true) {
+  		var data = {
+  			id_anticipo: $('#mst-anticipo').val(),
+  			status: $('#ant-cancela').val()
+  		}
+
+  			$.ajax({
+  				type: "POST",
+  				url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/editarStatusAnticipo.php",
+  				data: data,
+  				success: 	function(r){
+  					//console.log(fecha);
+  					r = JSON.parse(r);
+  					if (r.code == 1) {
+  						swal("Exito", "Se actualizó correctamente.", "success");
+  						setTimeout('document.location.reload()',700);
+  					} else {
+  						console.error(r.message);
+  					}
+  				},
+  				error: function(x){
+  					console.error(x);
+  				}
+
+  			});
+  	}else{
+  		return false;
+  	}
+  });
+
+  $('#btnRegDetAnt').click(function(){
+  		id_anticipo = $('#mst-anticipo').val();
+  		fecha = $('#mst-fecha').val();
+  		referencia = $('#ant-referencia').attr('db-id');
+  		cuenta= $('#ant-clienteCorrespCtas').val();
+  		cargo = $('#ant-cargo').val();
+  		abono = $('#ant-abono').val();
+
+      if( referencia == 'SN' ){
+        cliente = $('#ant-cliente').attr('db-id');
+      }else{
+        cliente = $('#ant-clienteCorresp').val();
+      }
+
+  		parte_Cuenta = cuenta.split('+');
+      id_cuenta = parte_Cuenta[0];
+      id_cliente = parte_Cuenta[1];
+      descrip = parte_Cuenta[2];
+      parteCuentaMST = id_cuenta.split('-');
+
+      if( referencia == "" ){
+        alertify.error("Seleccione una Referencia");
+        $('#ant-referencia').focus();
+        return false;
+      }
+  		//VALIDO CUENTA CONTABLE
+  		if (cuenta == "" || cuenta == null || cuenta == 0){
+  			alertify.error("Seleccione una Cuenta");
+  			$('#ant-clienteCorrespCtas').focus();
+  			return false;
+  		}else{
+  			//VALIDO QUE SE HAYA CAPTURADO UN IMPORTE
+  			if ( (cargo == 0 && abono == 0)|| (cargo > 0 && abono > 0) ){
+  				alertify.error("Ingrese un importe");
+  				$('#ant-cargo').focus();
+  				if( cargo > 0 && abono > 0){ $('#ant-cargo').val('0'); $('#ant-abono').val('0'); }
+  				return false
+  			}else{
+  				// VALIDO QUE LA CUENTA CONTABLE 0108 Y 0208 SEAN DEL MISMO CLIENTE
+  				if (parteCuentaMST[0] == '0108' || parteCuentaMST[0] == '0208'){
+  					if( id_cuenta == '0208-00001'){
+  						$('#ant-cliente').attr('db-id') = 0;
+  						Inserta();
+  					}else{
+  						if (id_cliente == 0){
+  							alertify.error("Seleccione un Cliente");
+  							return false
+  						}else{
+  							if( id_cliente.search(cliente) == -1){
+  								alertify.error("Cliente Incorrecto");
+  								return false
+  							}else{
+  								Inserta();
+  							}
+  						}
+  					}
+  				}else{
+  					Inserta();
+  				}//FIN CUENTAS
+  			}//FIN IMPORTE
+  		}//FIN CUENTA
+  });
 
   $('.visualizar').click(function(){
     var accion = $(this).attr('accion');
@@ -164,7 +397,7 @@ $(document).ready(function(){
       //console.log(continuar);
       if(continuar == true) {
         modificarAntMST();
-        tar_modal.modal('show');
+        //tar_modal.modal('show');
       }else{
         //swal("Oops!", "Solicite cambio de fechas a Contabilidad", 'error');
         return false;
@@ -173,6 +406,86 @@ $(document).ready(function(){
 
   $('.modal').modal('hide');
 
+  $('tbody').on('click', '.editar-partidaAnt', function(){
+    var dbid = $(this).attr('db-id');
+    var tar_modal = $($(this).attr('href'));
+    var fetch_cuenta = $.ajax({
+      method: 'POST',
+      data: {dbid: dbid},
+      url: 'actions/fetchPartidaAnt.php'
+    });
+
+    fetch_cuenta.done(function(r){
+      r = JSON.parse(r);
+      if (r.code == 1) {
+
+      for (var key in r.data) {
+        if ($('#' + key).is('select')) {
+          continue;
+        }
+
+        if (r.data.hasOwnProperty(key)) {
+          $('#' + key).html(r['data'][key]).val(r['data'][key]).addClass('tiene-contenido');
+          if ( typeof($('#'+key).attr('db-id')) != 'undefined' && $('#'+key).attr('db-id') !== false) {
+            $('#' + key).attr('db-id', r['data'][key]);
+          }
+        }
+      }
+
+      $('#btnRegDetAntPartida').attr('db-id', r.data.pk_partida);
+
+      tar_modal.modal('show');
+      } else {
+        console.error(r);
+      }
+    })
+
+  })
+
+  $('#btnRegDetAntPartida').click(function(){
+  //Código para editar el modal, declaración de variables y ajax.
+  //falta validar formulario
+      var data = {
+        partida: $('#pk_partida').attr('db-id'),
+        id_anticipo: $('#fk_id_anticipo').val(),
+        fecha: $('#d_fecha').val(),
+        id_referencia: $('#fk_referencia').attr('db-id'),
+        tipo: $('#fk_tipo').val(),
+        cuenta: $('#fk_id_cuenta').attr('db-id'),
+        id_cliente: $('#fk_id_cliente').attr('db-id'),
+        documento: $('#s_folioCFDIext').val(),
+        factura: $('#fk_factura').attr('db-id'),
+        anticipo: $('#fk_anticipo').attr('db-id'),
+        cheque: $('#fk_cheque').attr('db-id'),
+        cargo: $('#n_cargo').val(),
+        abono: $('#n_abono').val(),
+        desc: $('#s_desc').val(),
+        $gastoOficina: $('#fk_gastoAduana').attr('db-id'),
+        $proveedor: $('#fk_id_proveedor').attr('db-id')
+
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/editar.php",
+        data: data,
+        success: 	function(r){
+          console.log(r);
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            swal("Exito", "La cuenta se actualizó correctamente.", "success");
+            $('.real-time-search').keyup();
+          } else {
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+
+      });
+  $('#detpol-editarRegPolDiario').modal('hide');
+  })
 
 
 
@@ -180,6 +493,140 @@ $(document).ready(function(){
 
 });
 
+  function Inserta(){
+    anticipo = $('#mst-anticipo').val();
+    referencia = $('#ant-referencia').attr('db-id');
+    cuenta = $('#ant-clienteCorrespCtas').val();
+    cargo = $('#ant-cargo').val();
+    abono = $('#ant-abono').val();
+
+    if( referencia == 'SN' ){
+      cliente = $('#ant-cliente').attr('db-id');
+    }else{
+      cliente = $('#ant-clienteCorresp').val();
+    }
+
+    parte_Cuenta = cuenta.split('+');
+    id_cuenta = parte_Cuenta[0];
+    id_cliente = parte_Cuenta[1];
+    descrip = parte_Cuenta[2];
+    parteCuentaMST = id_cuenta.split('-');
+
+    var data = {
+      anticipo: $('#mst-anticipo').val(),
+      fecha: $('#mst-fecha').val(),
+      referencia: $('#ant-referencia').attr('db-id'),
+      cuenta: id_cuenta,
+      cliente: id_cliente,
+      cargo: $('#ant-cargo').val(),
+      abono: $('#ant-abono').val(),
+      id_poliza: $('#mst-poliza').val(),
+      descrip: descrip
+    }
+
+    fecha = $('#mst-fecha').val();
+    aduana = $('#aduana_activa').val();
+    tipoDoc = 5;
+    usuario = $('#usuario_activo').val();
+    permiso = "s_generar_x_fecha_anticipos";
+
+    var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
+    //console.log(continuar);
+    if(continuar == true) {
+      var continuarInsert = validarRegIgualAnticipo(anticipo,id_cuenta,referencia,id_cliente,descrip,cargo,abono);
+      console.log(continuarInsert);
+      if(continuarInsert == true) {
+          $.ajax({
+            type: "POST",
+            url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/agregar.php",
+            data: data,
+            success: 	function(r){
+              console.log(r);
+              r = JSON.parse(r);
+              if (r.code == 1) {
+                swal("Exito", "Se registro correctamente.", "success");
+                setTimeout('document.location.reload()',700);
+              } else {
+                console.error(r.message);
+              }
+            },
+            error: function(x){
+              console.error(x);
+            }
+          });
+      }else{
+      	return false;
+      }
+    }else{
+    	return false;
+    }
+  }
+
+  function sumasCAanticipos(){
+    var data = {
+      anticipo: $('#mst-anticipo').val()
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/sumaCargosAbonos.php",
+      data: data,
+      success: 	function(r){
+        console.log(r);
+        r = JSON.parse(r);
+        $('#sumCargos1').val(r.cargos);
+        $('#sumAbonos1').val(r.abonos);
+        $('#sumCargos2').val(r.cargos);
+        $('#sumAbonos2').val(r.abonos);
+      },
+      error: function(x){
+        console.error(x);
+      }
+    });
+
+  }
+
+  function validarRegIgualAnticipo(anticipo,cuenta,referencia,cliente,desc,cargo,abono){
+  		var data = {
+        anticipo: anticipo,
+        cuenta: cuenta,
+        referencia: referencia,
+        cliente: cliente,
+        desc: desc,
+        cargo:cargo,
+        abono:abono
+  		}
+      //console.log(data);
+  		response = false;
+
+  		var validar_reg = $.ajax({
+  			type: "POST",
+  			url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/validarRegIgualAnticipo.php",
+  			data: data,
+  			async: false
+  		});
+
+  		validar_reg.done(function(r){
+  			//console.log(r);
+  			r = JSON.parse(r);
+  			if (r.code == 1) {
+  				if(r.data == "conceptoValido"){
+  					response = true;
+  					//console.log(response);
+  				}else{
+  					swal(r.data, "Ya existe un concepto igual", "info");
+  					//response = false;
+  			}
+  		}
+  			return response;
+  	}).fail(function(x){
+  		console.error(x);
+  	})
+
+  		console.log(response);
+  		return response;
+  		;
+  }
 
   function Actualiza_Expedido_Cliente(){
     id_cliente = $('#antcliente').attr('db-id');
@@ -318,7 +765,7 @@ function genAnt(){
   		success: 	function(r){
   			r = JSON.parse(r);
         if (r.code == 1) {
-            console.log(r.data);
+            //console.log(r.data);
             id_anticipo = r.data;
             window.location.replace('Detalleanticipo.php?id_anticipo='+id_anticipo);
           } else {
@@ -346,10 +793,11 @@ function modificarAntMST(){
     bancocta: bancocta,
     antconcepto: $('#s_concepto').val(),
     id_anticipo: $('#pk_id_anticipo').val(),
-    antcuenta: $('#fk_id_cuentaMST').val()
+    antcuenta: $('#fk_id_cuentaMST').val(),
+    id_poliza: $('#mst-poliza').val()
   }
 
-console.log(data);
+  //console.log(data);
   tipo = 5;
   $.ajax({
     type: "POST",
@@ -360,9 +808,7 @@ console.log(data);
         if (r.code == 1) {
           swal("Exito", "La cuenta se actualizó correctamente.", "success");
           $('.real-time-search').keyup();
-          location.reload();
-           //console.log(r.data);
-          //window.location.replace('Detalleanticipo.php?id_anticipo='+id_anticipo);
+          setTimeout('document.location.reload()',700);
         } else {
           console.error(r.message);
         }
@@ -377,48 +823,7 @@ console.log(data);
 
 
 
-function cambiarStatusAnticipo(){
-	fecha = $('#mst-fecha').val();
-	aduana = $('#aduana_activa').val();
-	tipoDoc = 5;
-	usuario = $('#usuario_activo').val();
 
-	status = $('#ant-cancela').val();
-	if( status == 1 ){ permiso = "s_cancelar_libre_anticipos"; }
-	if( status == 0 ){ permiso = "s_descancelar_anticipos"; }
-
-
-	var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
-	if(continuar == true) {
-		var data = {
-			id_anticipo: $('#mst-anticipo').val(),
-			status: $('#ant-cancela').val()
-		}
-
-			$.ajax({
-				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/editarStatusAnticipo.php",
-				data: data,
-				success: 	function(r){
-					console.log(fecha);
-					r = JSON.parse(r);
-					if (r.code == 1) {
-						swal("Exito", "Se actualizó correctamente.", "success");
-						location.reload();
-						//$('.real-time-search').keyup();
-					} else {
-						console.error(r.message);
-					}
-				},
-				error: function(x){
-					console.error(x);
-				}
-
-			});
-	}else{
-		return false;
-	}
-}
 
 
 function buscarAnticipo(Accion){
@@ -435,19 +840,158 @@ function buscarAnticipo(Accion){
 function buscarReferenciaAnt(){
     ref = $('#ant-referencia').val();
     Referencia = $('#ant-referencia').attr('db-id');
-    $('#btn-registrar').prop('disabled',true);
+    $('#btnRegDetAnt').prop('disabled',true);
+    $('#lstClientes').hide();
+    $('#lstClientesCorresp').val();
+    $('#lstClientesCorresp').hide();
+
 
  		if(ref == "0" || ref == "SN"){
-      $('#btn-registrar').prop('disabled',false);
+      $('#btnRegDetAnt').prop('disabled',false);
       $('#lstClientes').show();
+      $('#lstClientesCorresp').val();
       $('#lstClientesCorresp').hide();
- 			//lstClientes();
+
  		}else{
       if(Referencia != ""){
-				$('#btn-registrar').prop('disabled',false);
+        $('#lstClientesCorresp').val();
+        lstClientesReferencia();
+				$('#btnRegDetAnt').prop('disabled',false);
         $('#lstClientes').hide();
         $('#lstClientesCorresp').show();
-				//lstClientesReferencia();
+
+
 			}
 		}
+}
+
+function buscarReferenciaAntPartida(){
+    ref = $('#fk_referencia').val();
+    Referencia = $('#fk_referencia').attr('db-id');
+    $('#btnRegDetAntPartida').prop('disabled',true);
+    $('#lstClientesPartida').hide();
+    $('#lstClientesCorrespPartida').val();
+    $('#lstClientesCorrespPartida').hide();
+
+
+ 		if(ref == "0" || ref == "SN"){
+      $('#btnRegDetAnt').prop('disabled',false);
+      $('#lstClientesPartida').show();
+      $('#lstClientesCorrespPartida').val();
+      $('#lstClientesCorrespPartida').hide();
+
+ 		}else{
+      if(Referencia != ""){
+        $('#lstClientesCorrespPartida').val();
+        lstClientesReferencia();
+				$('#btnRegDetAntPartida').prop('disabled',false);
+        $('#lstClientesPartida').hide();
+        $('#lstClientesCorrespPartida').show();
+
+
+			}
+		}
+}
+
+function lstCuentasAnt(){
+  ref = $('#ant-referencia').val();
+  if(ref == "0" || ref == "SN"){
+    id_cliente = $('#ant-cliente').attr('db-id');
+  }else{
+    id_cliente = $('#ant-clienteCorresp').val();
+  }
+
+  var data = {
+    id_cliente: id_cliente
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
+    data: data,
+    success: 	function(r){
+
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        //console.log(r.data);
+        $('#ant-clienteCorrespCtas').html(r.data);
+      } else {
+        console.error(r.message);
+      }
+    },
+    error: function(x){
+      console.error(x);
+    }
+  });
+}
+
+function lstClientesReferencia(){
+  var data = {
+    referencia: $('#ant-referencia').attr('db-id')
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+    data: data,
+    success: 	function(r){
+
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        //console.log(r.data);
+        $('#ant-clienteCorresp').html(r.data);
+      } else {
+        console.error(r.message);
+      }
+    },
+    error: function(x){
+      console.error(x);
+    }
+  });
+}
+
+function borrarRegistroAnticipo(partida){
+	swal({
+	title: "Estas Seguro?",
+	text: "Ya no se podra recuperar el registro! "+ partida +" ",
+	type: "warning",
+	showCancelButton: true,
+	confirmButtonClass: "btn-danger",
+	confirmButtonText: "Si, Eliminar",
+	cancelButtonText: "No, cancelar",
+	closeOnConfirm: false,
+	closeOnCancel: false
+	},
+	function(isConfirm) {
+		if (isConfirm) {
+			var data = {
+				partida: partida,
+				id_anticipo: $('#mst-anticipo').val(),
+        id_poliza: $('#mst-poliza').val()
+			}
+			$.ajax({
+				type: "POST",
+				url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/eliminar.php",
+				data: data,
+
+					success: 	function(r){
+            r = JSON.parse(r);
+						console.log(r);
+					if (r.code == 1) {
+						swal("Eliminado!", "Se elimino correctamente.", "success");
+            //setTimeout('document.location.reload()',700);
+            $('#detalleanticipo').click();
+            sumasCAanticipos();
+					} else {
+						console.error(r.message);
+					}
+				},
+				error: function(x){
+					console.error(x)
+				}
+			});
+		} else {
+			swal("Cancelado", "El registro esta a salvo :)", "error");
+		}
+	});
 }

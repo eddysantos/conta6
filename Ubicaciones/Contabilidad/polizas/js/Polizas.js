@@ -219,7 +219,14 @@ function genPol(){
 		data: data,
 		success: 	function(request){
 			r = JSON.parse(request);
-			window.location.replace('Detallepoliza.php?id_poliza='+r+'&tipo='+tipo);
+			//window.location.replace('Detallepoliza.php?id_poliza='+r+'&tipo='+tipo);
+			if (r.code == 1) {
+				poliza = r.data;
+				window.location.replace('Detallepoliza.php?id_poliza='+poliza+'&tipo='+tipo);
+			} else {
+				swal("Error", "No se generó la póliza.", "error");
+				console.error(r.message);
+			}
 		}
 	});
 }
