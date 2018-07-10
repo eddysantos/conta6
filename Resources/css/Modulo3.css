@@ -1,5 +1,14 @@
 
-#bread{
+/*pendiente solo quitar de anticipos*/
+.contorno-modal{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0px 3px!important;
+  margin: 8px!important;
+}
+
+
+/* #bread{
   background-color: transparent!important;
   color: rgb(110, 110, 110)!important;
   letter-spacing: 5px!important;
@@ -8,17 +17,9 @@
   color: rgb(209, 28, 28)!important;
   text-shadow: 2px 1px 15px rgba(173,130,150,1);
   cursor: pointer;
-}
-button img{
-  width:20px;
-  padding-top:4px;
-}
-button img:hover{
-  width:21px;
-}
-a img{
-  width:20px;
-}
+} */
+
+
 
 /* de estas dos clases solo dejar una ya que osn iguales */
 /* .atras {
@@ -32,7 +33,7 @@ a img{
   cursor: pointer;
   font-size: 18px;
 } */
-.regresar {
+/* .regresar {
   background-color: transparent!important;
   color: rgb(161, 160, 160)!important;
   letter-spacing: 3px!important;
@@ -42,4 +43,4 @@ a img{
   color: rgb(209, 28, 28)!important;
   cursor: pointer;
   font-size: 18px;
-}
+} */

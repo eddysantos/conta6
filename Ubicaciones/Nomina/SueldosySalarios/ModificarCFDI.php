@@ -78,7 +78,7 @@
   <div id="contorno" class="contorno">
     <div class="acordeon2">
       <div class="encabezado font16" data-toggle="collapse" href="#datospago">
-        <a  id="bread">DATOS DEL PAGO</a>
+        <a href="#">DATOS DEL PAGO</a>
       </div>
       <div id="datospago" class="collapse">
         <form class="form1">
@@ -157,7 +157,7 @@
 <!--ACORDEON DE PERCEPCIONES-->
     <div class="acordeon2 mt-3">
       <div class="encabezado font16" data-toggle="collapse" href="#percep">
-        <a  id="bread">PERCEPCIONES</a>
+        <a href="#">PERCEPCIONES</a>
       </div>
       <div id="percep" class="collapse">
         <form class="form1">
@@ -243,7 +243,7 @@
 <!--ACORDEON DE OTROS PAGOS-->
     <div class="acordeon2 mt-3">
       <div class="encabezado font16" data-toggle="collapse" href="#otrospagos">
-        <a  id="bread">OTROS PAGOS</a>
+        <a href="#">OTROS PAGOS</a>
       </div>
       <div id="otrospagos" class="collapse">
         <form class="form1">
@@ -298,7 +298,7 @@
 <!--ACORDEON HORAS EXTRAS-->
     <div class="acordeon2 mt-3">
       <div class="encabezado font16" data-toggle="collapse" href="#horasextras">
-        <a  id="bread">HORAS EXTRAS</a>
+        <a href="#">HORAS EXTRAS</a>
       </div>
       <div id="horasextras" class="collapse">
         <form class="form1">
@@ -355,7 +355,7 @@
 <!--ACORDEON DEDUCCIONES-->
     <div class="acordeon2 mt-3">
       <div class="encabezado font16" data-toggle="collapse" href="#deduc">
-        <a  id="bread">DEDUCCIONES</a>
+        <a href="#">DEDUCCIONES</a>
       </div>
       <div id="deduc" class="collapse">
         <form class="form1">
@@ -434,7 +434,7 @@
 <!--ACORDEON DEDUCCIONES-->
     <div class="acordeon2 mt-3">
       <div class="encabezado font16" data-toggle="collapse" href="#pension">
-        <a  id="bread">PENSIÓN ALIMENTICIA</a>
+        <a href="#">PENSIÓN ALIMENTICIA</a>
       </div>
       <div id="pension" class="collapse">
         <form class="form1">
@@ -490,7 +490,7 @@
 <!--ACORDEON TOTALES-->
     <div class="acordeon2 mt-3">
       <div class="encabezado font16" data-toggle="collapse" href="#totales">
-        <a  id="bread">TOTALES</a>
+        <a href="#">TOTALES</a>
       </div>
       <div id="totales" class="collapse">
         <form class="form1">

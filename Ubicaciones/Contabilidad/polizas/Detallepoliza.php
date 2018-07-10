@@ -12,7 +12,7 @@
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
-        <a class="nav-link consultar" id="submenuMed" status="cerrado" accion="dtospol">DATOS DE POLIZA</a>
+        <a class="nav-link pol" id="submenuMed" status="cerrado" accion="dtospol">DATOS DE POLIZA</a>
       </li>
     </ul>
   </div>
@@ -242,7 +242,6 @@ if( $totalRegistrosSelect > 0 ){
             </div>
             <div class="col-md-2">
               <a href="" class="boton border-0"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>
-            <!-- <a href='#detpol-editarRegPolDiario' data-toggle='modal' class="boton" style="border:none"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg" style="border:none"></a> -->
             </div>
             <div class="col-md-2">
               <input class="efecto" value="<?php echo $sumaCargos; ?>" readonly>

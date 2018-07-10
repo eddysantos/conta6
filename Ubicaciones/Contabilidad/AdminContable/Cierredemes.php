@@ -6,10 +6,10 @@
 <div class="text-center font14 mb-10">
   <div class="row submenuMed">
     <div class="col-md-6" role="button">
-      <a  id="submenuMed" class="consultar" accion="generar" status="cerrado">GENERAR</a>
+      <a  id="submenuMed" class="aconta" accion="generar" status="cerrado">GENERAR</a>
     </div>
     <div class="col-md-6">
-      <a id="submenuMed" class="consultar" accion="consultar" status="cerrado">CONSULTAR</a>
+      <a id="submenuMed" class="aconta" accion="consultar" status="cerrado">CONSULTAR</a>
     </div>
   </div>
 

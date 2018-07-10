@@ -1,78 +1,8 @@
-function asigCorresponsal(id_corresp,id_cliente){
-    if(id_corresp > 0){
-      if($('#corp-cliente').attr('db-id') == ""){
-        alertify.error("Seleccione un cliente");
-        $('#corp-cliente').focus();
-        return false;
-      }
-
-      var data = {
-        id_cliente: $('#corp-cliente').attr('db-id'),
-        id_corresp: $('#id_corresp').val()
-      }
-
-    }else{
-      var data = {
-        id_cliente: id_cliente,
-        id_corresp: id_corresp
-      }
-    }
-
-    $.ajax({
-      type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/asignarCorresponsalAcliente.php",
-      data: data,
-      success: 	function(request){
-        r = JSON.parse(request);
-        console.log(r);
-        if (r.code == 1) {
-          swal("Exito", "Operación realizada correctamente.", "success");
-          location.reload();
-        } else {
-          console.error(r.message);
-        }
-
-      }
-    });
-}
-
-
-
-function correspAsignar(id_corresp){
-  window.location.replace('/conta6/Ubicaciones/Contabilidad/AdminContable/CorresponsalesAsignar.php?id_corresp='+id_corresp);
-}
-function fetch_cuentas_sat(){
-    $.ajax({
-      method: 'POST',
-      url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_cuentas.php',
-      success: function(r){
-        r = JSON.parse(r);
-        if (r.code == 1) {
-          $('#catalogo-sat-helper').html(r.data);
-        } else {
-          console.error(r.message);
-        }
-      }
-    })
-}
-
-function cuentas_Det(){
-    $.ajax({
-      method: 'POST',
-      url: '/conta6/Ubicaciones/Contabilidad/AdminContable/actions/tablacuentasDet.php',
-      success: function(r){
-        r = JSON.parse(r);
-        if (r.code == 1) {
-          $('#tabla_cuentas').html(r.data);
-        } else {
-          console.error(r.message);
-        }
-      }
-    })
-}
-
 $(document).ready(function(){
-  $('.consultar').click(function(){
+  fetch_cuentas_sat();
+  cuentas_Det();
+
+  $('.aconta').click(function(){
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');
 
@@ -160,40 +90,40 @@ $(document).ready(function(){
 
     $('#genCorresponsal').click(function(){
 
-    				if($('#corp-cliente').attr('db-id') == ""){
-    					alertify.error("Seleccione un cliente");
-    					$('#corp-cliente').focus();
-    					return false;
-    				}
+			if($('#corp-cliente').attr('db-id') == ""){
+				alertify.error("Seleccione un cliente");
+				$('#corp-cliente').focus();
+				return false;
+			}
 
-            txt_cliente = $('#corp-cliente').val();
-            cliente = $('#corp-cliente').attr('db-id');
+      txt_cliente = $('#corp-cliente').val();
+      cliente = $('#corp-cliente').attr('db-id');
 
-            parte = txt_cliente.split(cliente);
-            cliente = parte[0];
-            nombre = parte[1];
+      parte = txt_cliente.split(cliente);
+      cliente = parte[0];
+      nombre = parte[1];
 
-            var data = {
-          		id_cliente: $('#corp-cliente').attr('db-id'),
-              s_nombre: nombre
-          	}
+      var data = {
+    		id_cliente: $('#corp-cliente').attr('db-id'),
+        s_nombre: nombre
+    	}
 
 
-          	$.ajax({
-          		type: "POST",
-          		url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregarCorresponsal.php",
-          		data: data,
-          		success: 	function(request){
-          			r = JSON.parse(request);
-                if (r.code == 1) {
-        					swal("Exito", "Se guardo correctamente.", "success");
-        					location.reload();
-        				} else {
-        					console.error(r.message);
-        				}
+    	$.ajax({
+    		type: "POST",
+    		url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregarCorresponsal.php",
+    		data: data,
+    		success: 	function(request){
+    			r = JSON.parse(request);
+          if (r.code == 1) {
+  					swal("Exito", "Se guardo correctamente.", "success");
+  					location.reload();
+  				} else {
+  					console.error(r.message);
+  				}
 
-          		}
-          	});
+    		}
+    	});
     });
 
 
@@ -489,7 +419,6 @@ $(document).ready(function(){
         return false;
       }
 
-
         var data = {
           id_cuenta: $('#pk_id_cuenta').attr('db-id'),
           cuenta_sat: $('#fk_codAgrup').attr('db-id'),
@@ -507,6 +436,7 @@ $(document).ready(function(){
             console.log(r);
             r = JSON.parse(r);
             if (r.code == 1) {
+              cuentas_Det();
               swal("Exito", "La cuenta se actualizó correctamente.", "success");
               $('.real-time-search').keyup();
             } else {
@@ -516,19 +446,84 @@ $(document).ready(function(){
           error: function(x){
             console.error(x);
           }
-
         });
-
-
-    $('.modal').modal('hide');
-  })
-
+      $('.modal').modal('hide');
+    })
   $('.real-time-search').keyup();
-
-  fetch_cuentas_sat();
-  cuentas_Det();
-
 });
+
+
+function asigCorresponsal(id_corresp,id_cliente){
+    if(id_corresp > 0){
+      if($('#corp-cliente').attr('db-id') == ""){
+        alertify.error("Seleccione un cliente");
+        $('#corp-cliente').focus();
+        return false;
+      }
+
+      var data = {
+        id_cliente: $('#corp-cliente').attr('db-id'),
+        id_corresp: $('#id_corresp').val()
+      }
+
+    }else{
+      var data = {
+        id_cliente: id_cliente,
+        id_corresp: id_corresp
+      }
+    }
+
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/asignarCorresponsalAcliente.php",
+    data: data,
+    success: 	function(request){
+      r = JSON.parse(request);
+      console.log(r);
+      if (r.code == 1) {
+        swal("Exito", "Operación realizada correctamente.", "success");
+        location.reload();
+      } else {
+        console.error(r.message);
+      }
+
+    }
+  });
+}
+
+
+function correspAsignar(id_corresp){
+  window.location.replace('/conta6/Ubicaciones/Contabilidad/AdminContable/CorresponsalesAsignar.php?id_corresp='+id_corresp);
+}
+function fetch_cuentas_sat(){
+    $.ajax({
+      method: 'POST',
+      url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_cuentas.php',
+      success: function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          $('#catalogo-sat-helper').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      }
+    })
+}
+
+function cuentas_Det(){
+  $.ajax({
+    method: 'POST',
+    url: '/conta6/Ubicaciones/Contabilidad/AdminContable/actions/tablacuentasDet.php',
+    success: function(r){
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        $('#tabla_cuentas').html(r.data);
+      } else {
+        console.error(r.message);
+      }
+    }
+  })
+}
 
 function valida_ctamaestra(){
   var ctamaestra = $('#ctamaestra').val();

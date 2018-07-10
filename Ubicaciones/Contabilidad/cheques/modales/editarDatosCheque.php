@@ -9,7 +9,7 @@
         <h5 class="modal-tittle">Editar Datos de Cheque</h5>
       </div>
       <div class="modal-body">
-        <div class="contorno-modal" id="contorno">
+        <div class="contorno" id="contorno">
           <table class="table form1 font14">
             <tbody>
               <tr class="row m-0 mt-5">

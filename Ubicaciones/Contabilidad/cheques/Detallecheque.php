@@ -7,7 +7,7 @@
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
-        <a class="nav-link visualizar" id="submenuMed" status="cerrado" accion="dtosch">DATOS DEL CHEQUE</a>
+        <a class="nav-link che" id="submenuMed" status="cerrado" accion="dtosch">DATOS DEL CHEQUE</a>
       </li>
     </ul>
   </div>
@@ -66,15 +66,15 @@
 
   <div class="container-fluid movible mt-5">
     <nav>
-      <ul class="nav nav-pills nav-fill w-100 m-15">
+      <ul class="nav nav-pills nav-fill w-100 m-15 font14">
         <li class="nav-item">
-          <a class="nav-link pills">Captura Detalle de Cheque</a>
+          <a href="#" class="nav-link">Captura Detalle de Cheque</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link pills">Detalle del Cheque</a>
+          <a href="#" class="nav-link">Detalle del Cheque</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link pills">Información Adicional</a>
+          <a href="#" class="nav-link">Información Adicional</a>
         </li>
       </ul>
     </nav> <!--links de desplazamiento-->

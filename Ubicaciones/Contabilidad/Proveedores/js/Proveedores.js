@@ -1,12 +1,12 @@
 
 $(document).ready(function(){
-  $('.ver').click(function(){
+  $('.prov').click(function(){
     var accion = $(this).attr('accion');
     switch (accion) {
       case "mostrarcta":
       $('#MostrarCuenta').fadeIn();
         break;
-        
+
       case "mostrarDetalle":
       $(this).hide();
       $('#MostrarDetPoliza').fadeIn();

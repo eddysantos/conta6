@@ -6,7 +6,7 @@
 <div class="text-center">
   <div class="row font14 m-5">
     <div class="col-md-3 offset-md-9">
-      <a href="#" class="boton ver" accion="mostrarDetalle" role="button" id="botondetalle"><img src= "/conta6/Resources/iconos/detalles.svg" class="icochico"> DETALLE DE PÓLIZA</a>
+      <a href="#" class="boton prov" accion="mostrarDetalle" role="button" id="botondetalle"><img src= "/conta6/Resources/iconos/detalles.svg" class="icochico"> DETALLE DE PÓLIZA</a>
     </div>
   </div>
 
@@ -15,7 +15,7 @@
       <tbody>
         <tr  class="row backpink">
           <td class="col-md-1">
-            <a href="" class="ver" accion="cerrarDetalle" role="button"><img src= "/conta6/Resources/iconos/cross.svg" class="icochico"></a>
+            <a href="" class="prov" accion="cerrarDetalle" role="button"><img src= "/conta6/Resources/iconos/cross.svg" class="icochico"></a>
           </td>
           <td class="col-md-1">PÓLIZA</td>
           <td class="col-md-2">USUARIO</td>
@@ -76,4 +76,7 @@
   </form>
 </div>
 
-<script src="js/Proveedores.js"></script>
+
+<?php
+require $root . '/conta6/Ubicaciones/footer.php';
+ ?>

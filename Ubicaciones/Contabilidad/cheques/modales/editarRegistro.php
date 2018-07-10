@@ -9,7 +9,7 @@
         <h5 class="modal-tittle">Editar Registro</h5>
       </div>
       <div class="modal-body p-0">
-        <div id="contorno" class="contorno-modal">
+        <div id="contorno" class="contorno">
           <form class="form1">
             <table class="table text-center">
               <tbody>

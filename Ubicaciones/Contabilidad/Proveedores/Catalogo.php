@@ -23,7 +23,7 @@
       </select>
     </div>
     <div class="col-md-1 text-left">
-      <a href=""><img src= "/conta6/Resources/iconos/printer.svg" class="icomediano"></a>
+      <a href=""><img src="/conta6/Resources/iconos/printer.svg" class="icomediano"></a>
     </div>
   </div>
 
@@ -135,5 +135,8 @@
 </div>
 
 
-<script src="js/Proveedores.js"></script>
-<?php require_once('modales/Catalogo.php');?>
+
+<?php
+require $root . '/conta6/Ubicaciones/footer.php';
+require_once('modales/Catalogo.php');
+ ?>

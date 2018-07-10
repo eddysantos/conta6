@@ -1,20 +1,4 @@
 $(document).ready(function(){
-  /*selector submenu Buscar o Generar Solicitud*/
-  $('.mostrar').click(function(){
-    var accion = $(this).attr('accion');
-    switch (accion) {
-      case "generarctagastos":
-      $('#g-ctagastos').fadeIn();
-      $('#SeleccionarAccion').slideUp();
-        break;
-      case "buscarctagastos":
-      $('#b-ctagastos').fadeIn();
-      $('#SeleccionarAccion').slideUp();
-        break;
-      default:
-        console.error("Something went terribly wrong...");
-    }
-  });
 
   /*Input se hace mas grande al enfocar*/
   $('#bRef').focus(function(){
@@ -25,17 +9,35 @@ $(document).ready(function(){
 
 
 /*Oculta todos los divs y hace visible solo el submenu*/
-  $('.bg').click(function(){
+  // $('.bg').click(function(){
+  $('.fele').click(function(){
     var accion = $(this).attr('accion');
     switch (accion) {
-      case "cuadroBusqueda":
-      $('#b-ctagastos').fadeOut();
-      $('#SeleccionarAccion').slideDown();
-        break;
-      case "cuadroGenerar":
-      $('#g-ctagastos').fadeOut();
-      $('#SeleccionarAccion').slideDown();
-        break;
+
+// verificado que funciona
+    case "generarctagastos":
+    $('#g-ctagastos').fadeIn();
+    $('#SeleccionarAccion').slideUp();
+      break;
+    case "buscarctagastos":
+    $('#b-ctagastos').fadeIn();
+    $('#SeleccionarAccion').slideUp();
+      break;
+
+    case "cuadroBusqueda":
+    $('#b-ctagastos').fadeOut();
+    $('#SeleccionarAccion').slideDown();
+      break;
+    case "cuadroGenerar":
+    $('#g-ctagastos').fadeOut();
+    $('#SeleccionarAccion').slideDown();
+      break;
+
+
+
+
+// pendiente por verificar
+
       case "cuadroConsultar":
       $('#m-ctagastos').fadeOut();
       $('#SeleccionarAccion').slideDown();

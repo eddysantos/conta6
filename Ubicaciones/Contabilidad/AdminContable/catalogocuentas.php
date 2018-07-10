@@ -12,14 +12,14 @@ $usuario = $_SESSION['user_name'];
 <div class="text-center mb-10">
   <div class="row submenuMed">
     <div class="col-md-12" role="button">
-      <a  id="submenuMed" class="consultar" accion="eCap" status="cerrado">CATÁLOGO DE CUENTAS</a>
+      <a  id="submenuMed" class="aconta" accion="eCap" status="cerrado">CATÁLOGO DE CUENTAS</a>
     </div>
   </div>
 
   <div id="contorno" class="contorno">
     <div class="acordeon2">
       <div class="encabezado font16" data-toggle="collapse" href="#CuentasMaestras">
-        <a  id="bread">GENERAR CUENTAS MAESTRAS (Primer Nivel)</a>
+        <a href="#">GENERAR CUENTAS MAESTRAS (Primer Nivel)</a>
       </div>
       <!-- <div id="CuentasMaestras" class="card-block collapse"> -->
       <div id="CuentasMaestras" class="collapse">
@@ -30,8 +30,8 @@ $usuario = $_SESSION['user_name'];
                 <td class="col-md-12 input-effect">
                   <input class="efecto popup-input" id="ctaSAT" type="text" id-display="#popup-display-cuentas_sat" action="cuentas_sat" db-id="" autocomplete="new-password">
                   <div class="popup-list" id="popup-display-cuentas_sat" style="display:none"></div>
-                  <label for="ctaSAT" style="padding-top:.10rem">CUENTAS SAT
-                    <a href='#catalogoSAT' data-toggle='modal'><img src="/conta6/Resources/iconos/help.svg"></a>
+                  <label for="ctaSAT">CUENTAS SAT
+                    <a href='#catalogoSAT' data-toggle='modal'><img src="/conta6/Resources/iconos/help.svg" style="margin-top:-4px"></a>
                   </label>
                 </td>
               </tr>
@@ -76,7 +76,7 @@ $usuario = $_SESSION['user_name'];
 
     <div class="acordeon2 mt-4">
       <div class="encabezado font16" data-toggle="collapse" href="#collapsetwo">
-        <a  id="bread">GENERAR CUENTAS DE DETALLE (Segundo Nivel)</a>
+        <a href="#">GENERAR CUENTAS DE DETALLE (Segundo Nivel)</a>
       </div>
       <div id="collapsetwo" class="collapse">
         <form class="form1">
@@ -86,8 +86,8 @@ $usuario = $_SESSION['user_name'];
                 <td class="col-md-12 input-effect">
                   <input class="efecto popup-input" id="ctaSAT1" type="text" id-display="#popup-display-cuentas_sat1" action="cuentas_sat" db-id="" autocomplete="new-password">
                   <div class="popup-list" id="popup-display-cuentas_sat1" style="display:none"></div>
-                  <label for="ctaSAT1" style="padding-top:.10rem">CUENTAS SAT
-                    <a href="#catalogoSAT" data-toggle="modal"><img src="/conta6/Resources/iconos/help.svg"></a>
+                  <label for="ctaSAT1">CUENTAS SAT
+                    <a href="#catalogoSAT" data-toggle="modal" style="margin-top:-4px"><img src="/conta6/Resources/iconos/help.svg" style="margin-top:-4px"></a>
                   </label>
                 </td>
               </tr>
@@ -115,8 +115,8 @@ $usuario = $_SESSION['user_name'];
                   <datalist id="bcoSAT">
                     <option value="EJEMPLO DE BANCOS SAT"></option>
                   </datalist> -->
-                  <label for="banSAT" style="padding-top:.10rem">BANCOS SAT
-                    <a href="#catalogoSAT" data-toggle="modal"><img src="/conta6/Resources/iconos/help.svg"></a>
+                  <label for="banSAT">BANCOS SAT
+                    <a href="#catalogoSAT" data-toggle="modal" style="margin-top:-4px"><img src="/conta6/Resources/iconos/help.svg"></a>
                   </label>
                 </td>
                 <td class="col-md-3 input-effect">
@@ -199,7 +199,7 @@ $usuario = $_SESSION['user_name'];
 
     <div class="acordeon2 mt-4">
       <div class="encabezado font16" data-toggle="collapse" href="#collapsetres">
-        <a  id="bread">GENERAR CUENTAS DE CLIENTES (Segundo Nivel)</a>
+        <a href="#">GENERAR CUENTAS DE CLIENTES (Segundo Nivel)</a>
       </div>
       <div id="collapsetres" class="collapse">
         <form class="form1">
@@ -252,7 +252,7 @@ $usuario = $_SESSION['user_name'];
           <td class="col-md-1">ACTIVIDAD</td>
         </tr>
       </thead>
-      <tbody id="tabla_cuentas">
+      <tbody id="tabla_cuentas" class="font12">
         <tr>
           <td colspan="9">No hay resultados</td>
         </tr>

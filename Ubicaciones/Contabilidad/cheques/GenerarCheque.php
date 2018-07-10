@@ -6,7 +6,7 @@
   <div class="row submenuMed m-0">
     <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
       <li class="nav-item">
-        <a class="nav-link consultar" id="submenuMed">GENERAR CHEQUE</a>
+        <a class="nav-link" id="submenuMed">GENERAR CHEQUE</a>
       </li>
     </ul>
   </div>

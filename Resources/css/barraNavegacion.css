@@ -92,7 +92,7 @@ a:focus {
   min-height: 68px !important;
   background-color: #fbfbfb !important; /*fondo de la barra de navegacion*/
 }
-.container > .navbar-collapse,
+/* .container > .navbar-collapse,
 .container-fluid > .navbar-collapse {
   margin-right: -15px ;
   margin-left: -15px ;
@@ -100,7 +100,7 @@ a:focus {
 
 .container {
   width: 750px;
-}
+} */
 /* .container-fluid {
   padding-left: 1px !important;
   padding-right: 1px !important;

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('.visualizar').click(function(){
+  $('.che').click(function(){
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');
 
