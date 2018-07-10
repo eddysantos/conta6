@@ -19,8 +19,7 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form class="form-group" autocomplete="off">
-              <input id="folioPol" class="reg border-0" type="text"  onchange="validaSoloNumeros(this);">
-              <!-- <input id="folioPol" class="reg border-0" type="text" autocomplete="new-password" onchange="validaSoloNumeros(this);"> -->
+              <input id="folioPol" class="reg border-0" type="text" onchange="validaSoloNumeros(this);" autocomplete="new-password">
             </form>
           </div>
         </div>
@@ -51,7 +50,7 @@
         <div class="row intermedio-modal">
           <div class="col-12">
             <form class="form-group">
-              <input id="folioPolconsulta" class="reg border-0" type="text" autocomplete="off">
+              <input id="folioPolconsulta" class="reg border-0" type="text" onchange="validaSoloNumeros(this)" autocomplete="new-password">
             </form>
           </div>
         </div>
@@ -146,7 +145,7 @@
         <div class="row intermedio-modal">
           <div class="col-md-12">
             <form class="form-group">
-            <input class="reg border-0" type="text" id="folioAnt" autocomplete="off">
+            <input class="reg border-0" type="text" id="folioAnt" onchange="validaSoloNumeros(this)" autocomplete="new-new-password">
           </form>
           </div>
         </div>
@@ -178,7 +177,7 @@
         <div class="row intermedio-modal">
           <div class="col-md-12">
             <form  class="form-group">
-            <input class="reg border-0" type="text" id="folioAntConsulta">
+            <input class="reg border-0" type="text" id="folioAntConsulta" onchange="validaSoloNumeros(this)" autocomplete="new-password">
           </form>
           </div>
         </div>

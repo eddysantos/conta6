@@ -3,15 +3,15 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
 $fecha = trim($_POST['antfecha']);
-$valor = trim($_POST['antimporte']);
+$valor = trim($_POST['antvalor']);
 $cliente = trim($_POST['antcliente']);
-$banco = trim($_POST['banco']);
+$banco = trim($_POST['antbanco']);
 $bancocta = trim($_POST['bancocta']);
 $cta = trim($_POST['antcuenta']);
 $concepto = trim($_POST['antconcepto']);
-$aduana = trim($_POST['txt_aduana']);
-$usuario = trim($_POST['txt_usuario']);
-$tipo = trim($_POST['tipo']);
+$aduana = trim($_POST['antaduana']);
+$usuario = trim($_POST['antusuario']);
+
 
 $fechaDoc = date_format(date_create($fecha),'Y-m-d');
 
@@ -75,17 +75,19 @@ if (!($stmtInsert->execute())) {
 
 $nFolio = $db->insert_id;
 
+
+$descripcion = "Se Genero el Anticipo: $nFolio Concepto: $concepto Fecha: $fecha Valor: $valor Cuenta:$cta Cliente:$cliente";
+$clave = 'anticipos';
+$folio = $nFolio;
+require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+
+
 $system_callback['data'] .= $nFolio;
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
 
-/*
-$descripcion = "Se Genero el Anticipo: $nFolio Concepto: $concepto Fecha: $fecha Valor: $valor";
-$clave = 'anticipos';
-$folio = $nFolio;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
-*/
+
 
 
 
