@@ -1,3 +1,37 @@
+function validarCtaBancaria(Obj){
+	ctaBco = $(Obj).val();
+	if(ctaBco.match(/^([A-Z0-9_]{10,50})$/i)){
+		$(Obj).css("color", "#000000");
+		return true;
+	}else{
+		$(Obj).css("color", "#FF0000");
+		alertify.error("Ingrese mínimo 10, máximo 50 caracteres");
+		return false;
+	}
+}
+
+function validaRFC(Obj){
+	RFC = $(Obj).val();
+	if(RFC.match(/^([A-Z]{4})([0-9]{6})([A-Z0-9]{3})$/i)){
+		$(Obj).css("color", "#000000");
+		return true;
+	}else{
+		if(RFC.match(/^([A-Z]{3})([0-9]{6})([A-Z0-9]{3})$/i)){
+			$(Obj).css("color", "#000000");
+			return true;
+		}else{
+			if( RFC == 'XAXX010101000' || RFC == 'XEXX010101000' ){
+				$(Obj).css("color", "#000000");
+				return true;
+			}else{
+				$(Obj).css("color", "#FF0000");
+				alertify.error("RFC formato incorrecto");
+				return false;
+			}
+		}
+	}
+}
+
 function eliminaBlancosIntermedios(frmObj){
   texto = $(frmObj).val();
   texto = $.trim(texto.replace(/\s+/g," "));
