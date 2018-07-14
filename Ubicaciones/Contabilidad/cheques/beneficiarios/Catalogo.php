@@ -34,14 +34,18 @@
     <table class='table form1'>
       <tbody>
         <tr class='row mt-4'>
-          <td class='col-md-4 input-effect'>
+          <td class='col-md-3 input-effect'>
             <input class='efecto popup-input' id='bcoSAT' type='text' id-display='#popup-display-bcoSAT' action='bancosSAT' db-id='' autocomplete='new-password'>
             <div class='popup-list' id='popup-display-bcoSAT' style='display:none'></div>
             <label for='bcoSAT'>BANCOS
               <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
             </label>
           </td>
-          <td class='col-md-6 input-effect'>
+          <td class='col-md-3 input-effect'>
+            <input id='nomBco' class='efecto' type='text' onchange='eliminaBlancosIntermedios(this);'>
+            <label for='nomBco'>NOMBRE BANCO EXTRANJERO</label>
+          </td>
+          <td class='col-md-3 input-effect'>
             <input id='cinter' class='efecto' type='text' onchange='validarCtaBancaria(this);'>
             <label for='cinter'>CUENTA / INTERBANCARIA</label>
           </td>
@@ -59,6 +63,7 @@
         <tr  class='row backpink mt-4'>
           <td class='col-md-1'></td>
           <td class='col-md-2'>BANCO</td>
+          <td class='col-md-2'>NOMBRE BANCO EXTRANJERO</td>
           <td class='col-md-3'>CUENTA</td>
           <td class='col-md-3'>AGREGÓ</td>
         </tr>

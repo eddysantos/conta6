@@ -20,7 +20,7 @@
                 </tr>
                 <td class="col-md-4 input-effect">
                   <input id="mrfc" class="efecto" type="text">
-                  <label for="mrfc">RCF</label>
+                  <label for="mrfc">RFC</label>
                 </td>
                 <td class="col-md-4 input-effect">
                   <input id="taxid" class="efecto" type="text">

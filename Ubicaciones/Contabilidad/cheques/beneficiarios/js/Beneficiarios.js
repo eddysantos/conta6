@@ -86,6 +86,7 @@ $(document).ready(function(){
     id_ben = $('#cat-benef').attr('db-id');
     banco = $('#bcoSAT').attr('db-id');
     cuenta = $('#cinter').val();
+    nomBan = $('#nomBco').val();
 
     if( id_ben == "" ){
         alertify.error("Seleccione un Beneficiario");
@@ -99,6 +100,12 @@ $(document).ready(function(){
         return false;
       }
 
+      if( banco == "999" && nomBan == "" ){
+         alertify.error("Es requerido el nombre del banco");
+         $('#bcoSAT').focus();
+         return false;
+       }
+
       valid_cuenta = validarCtaBancaria($('#cinter'));
       if( cuenta == "" || valid_cuenta == false ){
          alertify.error("Formato Cuenta bancaria Incorrecto");
@@ -109,7 +116,8 @@ $(document).ready(function(){
       var data = {
           id_ben: id_ben,
           banco: banco,
-          cuenta: cuenta
+          cuenta: cuenta,
+          nomBan: nomBan
       }
 
       $.ajax({
