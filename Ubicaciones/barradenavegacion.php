@@ -80,7 +80,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                     <li><a href="/conta6/Ubicaciones/Contabilidad/cheques/GenerarCheque.php">Generar</a></li>
                     <li><a href="#modificar-ch" data-toggle="modal">Modificar</a></li>
                     <li><a href="#consultar-ch" data-toggle="modal">Consultar</a></li>
-                    <li><a href="#">Benefiaciarios</a></li>
+					<li><a href="/conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/Catalogo.php">Beneficiarios</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
