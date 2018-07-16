@@ -14,8 +14,8 @@
             <thead>
               <tr class='row encabezado m-0'>
                 <td class='col-md-1'>Clave</td>
-                <td class='col-md-1'>Banco</td>
-                <td class='col-md-4'>Descripción</td>
+                <td class='col-md-2'>Banco</td>
+                <td class='col-md-6'>Descripción</td>
                 <td class='col-md-1'>Activa</td>
                 <td class='col-md-2'>Publicacion Diario Oficial</td>
               </tr>

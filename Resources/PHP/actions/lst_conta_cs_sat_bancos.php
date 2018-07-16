@@ -33,10 +33,10 @@ if ($rslt->num_rows == 0) {
 while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
   '<tr class="row m-0 borderojo"><td class="col-md-1">'. utf8_encode($row[pk_id_banco]).'</td>'.
-  '<td class="col-md-1">'.utf8_encode($row[s_nombre]).'</td>'.
-  '<td class="col-md-4">'.utf8_encode($row[s_descripcion]).'</td>'.
+  '<td class="col-md-2">'.utf8_encode($row[s_nombre]).'</td>'.
+  '<td class="col-md-6 text-left">'.utf8_encode($row[s_descripcion]).'</td>'.
   '<td class="col-md-1">'.$row[s_activo].'</td>'.
-  '<td class="col-md-2">'.$row[d_fechaInicioVigencia].'</td>';
+  '<td class="col-md-2">'.$row[d_fechaInicioVigencia].'</td></tr>';
 }
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";

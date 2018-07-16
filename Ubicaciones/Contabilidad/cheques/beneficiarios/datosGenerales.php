@@ -52,18 +52,18 @@ if ($rslt->num_rows == 0) {
       <tbody>
         <tr class='row mt-4'>
           <td class='col-md-4 input-effect'>
-            <input id='nombre' class='efecto' type='text' value='$row[s_nombre]' onblur='eliminaBlancosIntermedios(this);todasMayusculas(this);'>
+            <input id='nombre' class='efecto tiene-contenido' type='text' value='$row[s_nombre]' onblur='eliminaBlancosIntermedios(this);todasMayusculas(this);'>
             <label for='nombre'>PERSONA</label>
           </td>
           <td class='col-md-4 input-effect'>
-            <input id='rfc' class='efecto' type='text' value='$row[s_rfc]' onblur='eliminaBlancosIntermedios(this);todasMayusculas(this);validaRFC(this);'>
+            <input id='rfc' class='efecto tiene-contenido' type='text' value='$row[s_rfc]' onblur='eliminaBlancosIntermedios(this);todasMayusculas(this);validaRFC(this);'>
             <label for='rfc'>RCF</label>
           </td>
-          <td class='col-md-4 input-effect'>
-            <input id='rfc' class='efecto' type='text' value='$row[s_taxid]' onblur='eliminaBlancosIntermedios(this);'>
+          <td class='col-md-3 input-effect'>
+            <input id='rfc' class='efecto tiene-contenido' type='text' value='$row[s_taxid]' onblur='eliminaBlancosIntermedios(this);'>
             <label for='taxid'>Tax ID</label>
           </td>
-          <td class='col-md-1 mt-2'>$btnguardar</td>
+          <td class='col-md-1 mt-2 text-left'>$btnguardar</td>
         </tr>
        </tbody>
       </table>

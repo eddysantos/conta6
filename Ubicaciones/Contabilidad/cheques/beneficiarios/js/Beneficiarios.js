@@ -1,5 +1,6 @@
-
 $(document).ready(function(){
+  fetch_catalogoBancosSAT();
+
   $('.prov').click(function(){
     var accion = $(this).attr('accion');
     switch (accion) {
@@ -88,6 +89,7 @@ $(document).ready(function(){
     cuenta = $('#cinter').val();
     nomBan = $('#nomBco').val();
 
+
     if( id_ben == "" ){
         alertify.error("Seleccione un Beneficiario");
         $('#cat-benef').focus();
@@ -149,6 +151,7 @@ $(document).ready(function(){
 
     if (dbid != "") {
       buscarDatosBenef(dbid);
+
       buscarCtasBenef(dbid);
     }
   });
@@ -186,6 +189,7 @@ function btn_bcben(partida,ben){
           if (r.code == 1) {
             swal("Eliminado!", "Se elimino correctamente.", "success");
             $('#cat-benef').change();
+
           } else {
             console.error(r.message);
           }
@@ -245,6 +249,7 @@ function btn_editBen(){
 }
 
 function buscarDatosBenef(id){
+
   //var data = { id_ben: $('#cat-benef').attr('db-id') }
   var data = {
     id_ben: id
@@ -268,6 +273,7 @@ function buscarDatosBenef(id){
 
   });
 }
+
 
 function buscarCtasBenef(id){
   //var data = { id_ben: $('#cat-benef').attr('db-id') }

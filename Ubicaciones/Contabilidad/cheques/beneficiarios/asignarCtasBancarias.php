@@ -48,7 +48,7 @@ while ($row = $rslt->fetch_assoc()) {
       <td class='col-md-2'>$row[fk_id_banco]</td>
       <td class='col-md-2'>$row[s_nomBanExt]</td>
       <td class='col-md-3'>$row[s_cta_banco]</td>
-      <td class='col-md-3'>$row[s_usuario_alta] $row[d_fecha_alta]</td>
+      <td class='col-md-4'>$row[s_usuario_alta] $row[d_fecha_alta]</td>
      </tr>";
 }
 

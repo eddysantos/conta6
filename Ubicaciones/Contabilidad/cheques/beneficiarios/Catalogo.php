@@ -14,17 +14,18 @@
   </div>
 <?php } ?>
 
-
-  <div class="row mt-5">
-    <div class="col-md-6 offset-md-3">
+<table class="table form1 mt-5 font14">
+  <tr class="row">
+    <td class="col-md-6 offset-md-3 input-effect">
       <input class="efecto popup-input" id="cat-benef" type="text" id-display="#popup-display-benef" action="beneficiarios" db-id="" autocomplete="new-password">
       <div class="popup-list" id="popup-display-benef" style="display:none"></div>
       <label for="cat-benef">Beneficiario</label>
-    </div>
-    <div class="col-md-1 text-left">
+    </td>
+    <td class="col-md-1 text-left">
       <a href="#" id="btn_printBenef"><img src="/conta6/Resources/iconos/printer.svg" class="icomediano"></a>
-    </div>
-  </div>
+    </td>
+  </tr>
+</table>
 
 
   <div id="datosGeneralesBen"></div>
@@ -34,19 +35,19 @@
     <table class='table form1'>
       <tbody>
         <tr class='row mt-4'>
-          <td class='col-md-3 input-effect'>
-            <input class='efecto popup-input' id='bcoSAT' type='text' id-display='#popup-display-bcoSAT' action='bancosSAT' db-id='' autocomplete='new-password'>
+          <td class='col-md-4 input-effect'>
+            <input class='efecto tiene-contenido popup-input' id='bcoSAT' type='text' id-display='#popup-display-bcoSAT' action='bancosSAT' db-id='' autocomplete='new-password'>
             <div class='popup-list' id='popup-display-bcoSAT' style='display:none'></div>
             <label for='bcoSAT'>BANCOS
               <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
             </label>
           </td>
           <td class='col-md-3 input-effect'>
-            <input id='nomBco' class='efecto' type='text' onchange='eliminaBlancosIntermedios(this);'>
+            <input id='nomBco' class='efecto tiene-contenido' type='text' onchange='eliminaBlancosIntermedios(this);'>
             <label for='nomBco'>NOMBRE BANCO EXTRANJERO</label>
           </td>
           <td class='col-md-3 input-effect'>
-            <input id='cinter' class='efecto' type='text' onchange='validarCtaBancaria(this);'>
+            <input id='cinter' class='efecto tiene-contenido' type='text' onchange='validarCtaBancaria(this);'>
             <label for='cinter'>CUENTA / INTERBANCARIA</label>
           </td>
           <td class='col-md-2 input-effect'>
@@ -65,7 +66,7 @@
           <td class='col-md-2'>BANCO</td>
           <td class='col-md-2'>NOMBRE BANCO EXTRANJERO</td>
           <td class='col-md-3'>CUENTA</td>
-          <td class='col-md-3'>AGREGÓ</td>
+          <td class='col-md-4'>AGREGÓ</td>
         </tr>
         <tr colspan="2" id="datosCtasBen"></tr>
       </table>
@@ -74,11 +75,8 @@
   </div>
 
 
-
-
-
 <?php
 require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
 require_once('modales/Catalogo.php');
-require_once('/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php');
  ?>

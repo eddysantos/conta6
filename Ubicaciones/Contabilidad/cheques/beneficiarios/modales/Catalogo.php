@@ -18,14 +18,16 @@
                     <label for="razonsocial">RAZÓN SOCIAL</label>
                   </td>
                 </tr>
-                <td class="col-md-4 input-effect">
-                  <input id="mrfc" class="efecto" type="text">
-                  <label for="mrfc">RFC</label>
-                </td>
-                <td class="col-md-4 input-effect">
-                  <input id="taxid" class="efecto" type="text">
-                  <label for="taxid">Tax ID</label>
-                </td>
+                <tr class="row mt-4">
+                  <td class="col-md-6 input-effect">
+                    <input id="mrfc" class="efecto" type="text">
+                    <label for="mrfc">RFC</label>
+                  </td>
+                  <td class="col-md-6 input-effect">
+                    <input id="taxid" class="efecto" type="text">
+                    <label for="taxid">Tax ID</label>
+                  </td>
+                </tr>
             </tbody>
           </table>
         </div>
