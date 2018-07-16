@@ -27,7 +27,7 @@ if( $parteCuenta[0] == "0100" ){
 }else{
 	$query = "SELECT a.fk_id_banco AS id_banco,a.s_cta_banco AS ctaOri
 						FROM conta_cs_bancos_clientes A, conta_cs_cuentas_mst B
-						WHERE A.fk_id_cliente = B.s_cta_identificador AND b.pk_id_cuenta = ? ";
+						WHERE A.fk_id_cliente = B.s_cta_identificador AND B.pk_id_cuenta = ? ";
 }
 
 $stmt = $db->prepare($query);
@@ -50,8 +50,18 @@ $ctaDest = $row['ctaOri'];
 $system_callback = [];
 //$data = $_POST;
 
-$queryInsert = "INSERT INTO conta_t_anticipos_mst(d_fecha,fk_usuario,n_valor,fk_id_aduana,fk_id_cliente,fk_id_cuentaMST,s_concepto,s_bancoOri,s_ctaOri,s_bancoDest,s_ctaDest)
-           		 VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+$queryInsert = "INSERT INTO conta_t_anticipos_mst(d_fecha,
+	fk_usuario,
+	n_valor,
+	fk_id_aduana,
+	fk_id_cliente_antmst,
+	fk_id_cuentaMST,
+	s_concepto,
+	s_bancoOri,
+	s_ctaOri,
+	s_bancoDest,
+	s_ctaDest)
+VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
 $stmtInsert = $db->prepare($queryInsert);
 if (!($stmtInsert)) {

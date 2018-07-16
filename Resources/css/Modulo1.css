@@ -25,6 +25,9 @@
 .font18{
   font-size: 18px!important;
 }
+.imp{
+  color : rgb(144, 144, 144);
+}
 .sub{
   letter-spacing: 7px!important;
   font-size: 12px!important;
@@ -135,6 +138,11 @@ height: 30px;
 .med{
   min-width: 24.45%;
   max-width:  24.45%;
+}
+
+.gde{
+  min-width: 42%;
+  max-width:  42%;
 }
 .backpink{
   font-size: 12px!important;

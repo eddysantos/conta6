@@ -258,41 +258,6 @@ $(document).ready(function(){
 	  })
 
 		$('#medit-partida').click(function(){
-		//Código para editar el modal, declaración de variables y ajax.
-
-/*
-			if($('#medit-ctaSAT').attr('db-id') == ""){
-				alertify.error("Seleccione cuenta del SAT");
-				$('#medit-ctaSAT').focus();
-				return false;
-			}
-
-			if($('#medit-concepto').val() == ""){
-				alertify.error("Asigne un concepto");
-				$('#medit-concepto').focus();
-				return false;
-			}
-
-			if($('#medit-status').val() == ""){
-				alertify.error("Seleccione el estatutus de captura");
-				$('#medit-status').focus();
-				return false;
-			}
-
-
-			if($('#medit-naturSAT').attr('db-id') == ""){
-				alertify.error("Seleccione Naturaleza de la cuenta");
-				$('#medit-naturSAT').focus();
-				return false;
-			}
-
-			if($('#medit-prodServ').attr('db-id') == ""){
-				alertify.error("Seleccione clave de producto");
-				$('#medit-prodServ').focus();
-				return false;
-			}
-*/
-			// alert( $('#fk_id_poliza').val());
 				var data = {
 					partida: $('#pk_partida').val(),
 					id_poliza: $('#fk_id_poliza').val(),

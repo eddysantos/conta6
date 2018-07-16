@@ -26,19 +26,24 @@
                 </td>
 
                 <td class="col-md-6 input-effect">
-          			  <select class="custom-select" size='1' id='fk_id_cuentaMST' db-id="">
+                  <input class="efecto tiene-contenido" type="text" id='fk_id_cuentaMST' db-id="">
+                  <label for="fk_id_cuentaMST">Cuenta</label>
+          			  <!-- <select class="custom-select" size='1' name='fk_id_cuentaMST' id='fk_id_cuentaMST' db-id="">
           				  <option selected value='0'>Seleccione una Cuenta</option>
-          				</select>
+                    <option value=""></option>
+          				</select> -->
           			</td>
               </tr>
               <tr class="row m-0 mt-5">
                 <td class="col-md-3">
-    			        <input class="efecto tiene-contenido popup-input" id="fk_id_cliente" type="text" id-display="#popup-display-ant-cliente" action="clientes" db-id="" autocomplete="new-password" onblur="Actualiza_Expedido_Cliente_MST()">
+                  <!-- <input type="text" id="fk_id_cliente_antmst" db-id=""> -->
+    			        <input class="efecto tiene-contenido popup-input" id="fk_id_cliente_antmst" type="text" id-display="#popup-display-ant-cliente" action="clientes" db-id="" autocomplete="new-password" onblur="Actualiza_Expedido_Cliente_MST()">
                   <div class="popup-list" id="popup-display-ant-cliente" style="display:none"></div>
-                  <label for="fk_id_cliente">Cliente</label>
+                  <label for="fk_id_cliente_antmst">Cliente</label>
                 </td>
 
                 <td class="col-md-3">
+                  <!-- <input type="text" id='s_bancoOri' db-id=""> -->
                   <select class="custom-select" size='1' id='s_bancoOri' db-id="">
                   	<option selected value='0'>Seleccione Banco</option>
                   </select>

@@ -48,10 +48,18 @@ $ctaDest = $row['ctaOri'];
 
 $system_callback = [];
 
-
 //actualizando MST
-$queryInsert = "UPDATE conta_t_anticipos_mst SET d_fecha=?,n_valor=?,fk_id_cliente=?,fk_id_cuentaMST=?,s_concepto=?,s_bancoOri=?,s_ctaOri=?,s_bancoDest=?,s_ctaDest=?
-           		 WHERE pk_id_anticipo=?";
+$queryInsert = "UPDATE conta_t_anticipos_mst
+SET d_fecha=?,
+n_valor=?,
+fk_id_cliente_antmst=?,
+fk_id_cuentaMST=?,
+s_concepto=?,
+s_bancoOri=?,
+s_ctaOri=?,
+s_bancoDest=?,
+s_ctaDest=?
+WHERE pk_id_anticipo=?";
 
 $stmtInsert = $db->prepare($queryInsert);
 if (!($stmtInsert)) {

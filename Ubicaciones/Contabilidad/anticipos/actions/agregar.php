@@ -12,7 +12,16 @@
   $id_poliza = trim($_POST['id_poliza']);
   $desc = trim($_POST['descrip']);
 
-  $query = "INSERT INTO conta_t_anticipos_det (fk_id_anticipo,d_fecha,fk_referencia,fk_id_cuenta,fk_id_cliente,s_desc,n_cargo,n_abono,fk_usuario)
+  $query = "INSERT INTO conta_t_anticipos_det (fk_id_anticipo,
+    d_fecha,
+    fk_referencia,
+    fk_id_cuenta,
+    -- fk_id_cliente,
+    fk_id_cliente_antdet,
+    s_desc,
+    n_cargo,
+    n_abono,
+    fk_usuario)
             VALUES (?,?,?,?,?,?,?,?,?)";
 
   $stmt = $db->prepare($query);
@@ -63,7 +72,7 @@
     $queryDET = "INSERT INTO conta_t_polizas_det
     (fk_id_poliza,fk_id_cuenta,d_fecha,fk_tipo,fk_referencia,fk_id_cliente,s_folioCFDIext,fk_anticipo,fk_cheque,fk_ctagastos,fk_factura,
     fk_pago,fk_nc,s_desc,n_cargo,n_abono,s_idDocumento,fk_idRegistro,fk_usuario)
-    SELECT $id_poliza,fk_id_cuenta,d_fecha,fk_tipo,fk_referencia,fk_id_cliente,s_folioCFDIext,fk_id_anticipo,fk_cheque,fk_ctagastos,fk_factura,
+    SELECT $id_poliza,fk_id_cuenta,d_fecha,fk_tipo,fk_referencia,fk_id_cliente_antdet,s_folioCFDIext,fk_id_anticipo,fk_cheque,fk_ctagastos,fk_factura,
     fk_pago,fk_nc,s_desc,n_cargo,n_abono,'$idDocumento',pk_partida,'$usuario'
     FROM conta_t_anticipos_det WHERE pk_partida = $partidaAnticipo";
     $stmtDET = $db->prepare($queryDET);

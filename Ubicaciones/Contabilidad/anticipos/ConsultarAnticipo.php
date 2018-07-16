@@ -60,16 +60,16 @@
     if( $totalRegistrosDET > 0 ){
       while ($row = mysqli_fetch_array($sql_DET)){
         $contenidoDetalle = "
-        <tr class='borderojo'>
+        <tr class='row borderojo'>
           <td class='xs'></td>
           <td class='small pt-3 p-0'>$row[fk_id_cuenta]</td>
           <td class='small pt-3 p-0'>$row[fk_referencia]</td>
-          <td class='small pt-3 p-0'>$row[fk_id_cliente]</td>
+          <td class='small pt-3 p-0'>$row[fk_id_cliente_antdet]</td>
           <td class='small pt-3 p-0'>$row[fk_factura]</td>
           <td class='small pt-3 p-0'>$row[fk_ctagastos]</td>
           <td class='small pt-3 p-0'>$row[fk_pago]</td>
           <td class='small pt-3 p-0'>$row[fk_nc]</td>
-          <td class='med pt-3 p-0'>$row[s_desc]</td>
+          <td class='gde pt-3 p-0'>$row[s_desc]</td>
           <td class='small pt-3 p-0'>$row[n_cargo]</td>
           <td class='small pt-3 p-0'>$row[n_abono]</td>
           <td class='xs'></td>
@@ -88,7 +88,7 @@
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
-        <a class="nav-link visualizar" id="submenuMed" status="cerrado" accion="dtosant">DATOS DE ANTICIPO</a>
+        <a class="nav-link dant" id="submenuMed" status="cerrado" accion="dtosant">DATOS DE ANTICIPO</a>
       </li>
     </ul>
   </div>
@@ -130,7 +130,7 @@
         </tr>
         <tr class="row">
           <td class="col-md-2"><?php echo number_format($rowMST['n_valor'],2,'.',','); ?></td>
-          <td class="col-md-1"><?php echo $rowMST['fk_id_cliente']; ?></td>
+          <td class="col-md-1"><?php echo $rowMST['fk_id_cliente_antmst']; ?></td>
           <td class="col-md-1"><?php echo $rowMST['s_bancoOri']; ?></td>
           <td class="col-md-1"><?php echo $rowMST['s_ctaOri']; ?></td>
           <td class="col-md-7"><?php echo $rowMST['s_concepto']; ?></td>
@@ -163,25 +163,26 @@
     <table class="table table-hover">
       <thead class="font18">
         <tr class="row encabezado">
-          <td class="col-md-12">DETALLE POLIZA</td>
+          <td class="">DETALLE POLIZA</td>
         </tr>
         <tr class="row backpink">
-          <th class="xs"></th>
-          <td class="sm">CUENTA</td>
-          <td class="sm">REFERENCIA</td>
-          <td class="sm">CLIENTE</td>
-          <td class="sm">FACTURA</td>
-          <td class="sm">CTA GASTOS</td>
-          <td class="sm">PAGO ELECT</td>
-          <td class="sm">NOTACRED</td>
-          <td class="med">DESCRIPCION</td>
-          <td class="sm">CARGO</td>
-          <td class="sm">ABONO</td>
+          <th class="p-0 pt-3 xs"></th>
+          <td class="p-0 pt-3 small">CUENTA</td>
+          <td class="p-0 pt-3 small">REFERENCIA</td>
+          <td class="p-0 pt-3 small">CLIENTE</td>
+          <td class="p-0 pt-3 small">FACTURA</td>
+          <td class="p-0 pt-3 small">CTA GASTOS</td>
+          <td class="p-0 pt-3 small">PAGO ELECT</td>
+          <td class="p-0 pt-3 small">NOTACRED</td>
+          <td class="p-0 pt-3 gde">DESCRIPCION</td>
+          <td class="p-0 pt-3 small">CARGO</td>
+          <td class="p-0 pt-3 small">ABONO</td>
         </tr>
       </thead>
       <tbody class="font14" id="tabla_detalleanticipoConsulta"><?php echo $contenidoDetalle; ?></tbody>
     </table>
   </div>
+
 </div>
 
 <?php

@@ -44,23 +44,20 @@ while ($row = $rslt->fetch_assoc()) {
       </td>
       <td class='small pt-3 p-0'>$row[fk_id_cuenta]</td>
       <td class='small pt-3 p-0'>$row[fk_referencia]</td>
-      <td class='small pt-3 p-0'>$row[fk_id_cliente]</td>
+      <td class='small pt-3 p-0'>$row[fk_id_cliente_antdet]</td>
       <td class='small pt-3 p-0'>$row[fk_factura]</td>
       <td class='small pt-3 p-0'>$row[fk_ctagastos]</td>
       <td class='small pt-3 p-0'>$row[fk_pago]</td>
       <td class='small pt-3 p-0'>$row[fk_nc]</td>
-      <td class='med pt-3 p-0'>$row[s_desc]</td>
+      <td class='gde pt-3 p-0'>$row[s_desc]</td>
       <td class='small pt-3 p-0'>$row[n_cargo]</td>
       <td class='small pt-3 p-0'>$row[n_abono]</td>
       <td class='xs'>
-        <a href='#detant-editar' class='editar-partidaAnt' db-id='$partida' role='button' data-toggle='modal'>
+        <a href='#detant-editar' class='editar-partidaAnt' db-id='$partida' data-toggle='modal'>
           <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
         </a>
       </td>
     </tr>";
-
-    //<a href='#detpol-editar' class='editar-partidaAnt' db-id='$partida' role='button'>
-    //<a href='#detpol-editar' data-toggle='modal'>
 }
 
 $system_callback['code'] = 1;

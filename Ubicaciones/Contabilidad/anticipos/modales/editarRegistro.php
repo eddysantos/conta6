@@ -16,31 +16,45 @@
                 <td class="col-md-4 input-effect">
                   <input id="pk_partida" type="hidden" db-id="">
                   <input id="fk_id_anticipo" type="hidden" db-id="">
-                  <input class="efecto popup-input" id="fk_referencia" type="text" id-display="#popup-display-referencia" action="referencias" value="" db-id="" autocomplete="new-password">
-                  <div class="popup-list" id="popup-display-referencia" style="display:none"></div>
+                  <!-- <input id="d_fecha" type="text" db-id=""> -->
+
+                  <input class="efecto popup-input" id="fk_referencia" type="text" id-display="#medit-popup-display-referencia" action="referencias" value="SN" db-id="SN" autocomplete="new-password">
+                  <div class="popup-list" id="medit-popup-display-referencia" style="display:none"></div>
                   <label for="fk_referencia">Referencia</label>
                 </td>
+
                 <td class="col-md-8 input-effect">
                   <div id="lstClientesPartida">
-                    <input class="efecto popup-input" id="fk_id_cliente" type="text" id-display="#popup-display-clientes" action="clientes" db-id="" autocomplete="new-password">
-                    <div class="popup-list" id="popup-display-clientes" style="display:none"></div>
-                    <label for="fk_id_cliente">Cliente</label>
+                    <input class="efecto tiene-contenido popup-input" id="fk_id_cliente_antdet" type="text" id-display="#medit-popup-display-ant-cliente" action="clientes" db-id="" autocomplete="new-password">
+                    <div class="popup-list" id="medit-popup-display-ant-cliente" style="display:none"></div>
+                    <label for="fk_id_cliente_antdet">Cliente</label>
                   </div>
+
+
                   <div id="lstClientesCorrespPartida">
-                    <select class="custom-select" size='1' id='ant-clienteCorresp'>
+                    <select class="custom-select" size='1' id='fk_id_corresp'>
                         <option selected value='0'>Seleccione Cliente/Corresponsal</option>
                     </select>
                   </div>
                 </td>
+
               </tr>
 
+
               <tr class="row m-0 mt-4">
-                <td class="col-md-8 input-effect">
-                  <div id="lstClientesCorrespCtas">
+                <td class="col-md-2 input-effect">
+                  <input class="efecto" id="fk_id_cuenta">
+                  <label for="fk_id_cuenta">Cuenta</label>
+
+                  <!-- <div id="lstClientesCorrespCtas">
                     <select class="custom-select" size='1' id='ant-clienteCorrespCtas'>
                         <option selected value='0'>Seleccione</option>
                     </select>
-                  </div>
+                  </div> -->
+                </td>
+                <td class="col-md-6">
+                  <input class="efecto" id="s_desc">
+                  <label for="s_desc">Descripcion</label>
                 </td>
                 <td class="col-md-2 input-effect">
                   <input  class="efecto" id="n_cargo">

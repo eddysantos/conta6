@@ -66,7 +66,7 @@
 					$queryConcepto = "SELECT *
 														FROM conta_t_anticipos_det
 														WHERE fk_id_anticipo = ? AND fk_id_cuenta = ? AND fk_referencia = ? and
-														      fk_id_cliente = ? AND s_desc = ? AND n_cargo = ? AND n_abono = ?";
+														      fk_id_cliente_antdet = ? AND s_desc = ? AND n_cargo = ? AND n_abono = ?";
 
 					$stmtConcepto = $db->prepare($queryConcepto);
 					if (!($stmtConcepto)) {

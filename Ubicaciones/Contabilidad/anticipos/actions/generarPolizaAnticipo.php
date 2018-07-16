@@ -21,9 +21,32 @@ $idDocumento = 'anticipoMST';
 $system_callback = [];
 
 $queryMST = "INSERT INTO conta_t_polizas_det
-(fk_id_poliza,fk_id_cuenta,d_fecha,fk_tipo,fk_id_cliente,fk_anticipo,s_desc,n_cargo,n_abono,s_idDocumento,fk_idRegistro,fk_usuario)
-SELECT $nFolio,fk_id_cuentaMST,d_fecha,$tipo,fk_id_cliente,pk_id_anticipo,s_concepto,n_valor,0,'$idDocumento',pk_id_anticipo,'$usuario'
+(fk_id_poliza,
+  fk_id_cuenta,
+  d_fecha,
+  fk_tipo,
+  fk_id_cliente,
+  fk_anticipo,
+  s_desc,
+  n_cargo,
+  n_abono,
+  s_idDocumento,
+  fk_idRegistro,
+  fk_usuario)
+SELECT $nFolio,
+fk_id_cuentaMST,
+d_fecha,
+$tipo,
+fk_id_cliente_antmst,
+pk_id_anticipo,
+s_concepto,
+n_valor,
+0,
+'$idDocumento',
+pk_id_anticipo,
+'$usuario'
 FROM conta_t_anticipos_mst WHERE pk_id_anticipo = $anticipo";
+
 $stmtMST = $db->prepare($queryMST);
 if (!($stmtMST)) {
   $system_callback['code'] = "500";
@@ -41,10 +64,44 @@ $rsltMST = $stmtMST->get_result();
 
 $idDocumento = 'anticipoDET';
 $queryDET = "INSERT INTO conta_t_polizas_det
-(fk_id_poliza,fk_id_cuenta,d_fecha,fk_tipo,fk_referencia,fk_id_cliente,s_folioCFDIext,fk_anticipo,fk_cheque,fk_ctagastos,fk_factura,
-fk_pago,fk_nc,s_desc,n_cargo,n_abono,s_idDocumento,fk_idRegistro,fk_usuario)
-SELECT $nFolio,fk_id_cuenta,d_fecha,fk_tipo,fk_referencia,fk_id_cliente,s_folioCFDIext,fk_id_anticipo,fk_cheque,fk_ctagastos,fk_factura,
-fk_pago,fk_nc,s_desc,n_cargo,n_abono,'$idDocumento',pk_partida,'$usuario'
+(fk_id_poliza,
+  fk_id_cuenta,
+  d_fecha,
+  fk_tipo,
+  fk_referencia,
+  fk_id_cliente,
+  s_folioCFDIext,
+  fk_anticipo,
+  fk_cheque,
+  fk_ctagastos,
+  fk_factura,
+  fk_pago,
+  fk_nc,
+  s_desc,
+  n_cargo,
+  n_abono,
+  s_idDocumento,
+  fk_idRegistro,
+  fk_usuario)
+SELECT $nFolio,
+fk_id_cuenta,
+d_fecha,
+fk_tipo,
+fk_referencia,
+fk_id_cliente_antdet,
+s_folioCFDIext,
+fk_id_anticipo,
+fk_cheque,
+fk_ctagastos,
+fk_factura,
+fk_pago,
+fk_nc,
+s_desc,
+n_cargo,
+n_abono,
+'$idDocumento',
+pk_partida,
+'$usuario'
 FROM conta_t_anticipos_det WHERE fk_id_anticipo = $anticipo";
 $stmtDET = $db->prepare($queryDET);
 if (!($stmtDET)) {

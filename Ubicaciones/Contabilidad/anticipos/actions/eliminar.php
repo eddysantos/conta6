@@ -34,7 +34,7 @@ $system_callback['datos'] = $_POST;
 
 if ($affected == 0) {
   $system_callback['code'] = 2;
-  $system_callback['message'] = "El query no hizo ningún cambio a la base de datos";
+  $system_callback['message'] = "primer query El query no hizo ningún cambio a la base de datos";
   exit_script($system_callback);
 }
 
@@ -102,7 +102,8 @@ if( $id_poliza > 0 ){
     exit_script($system_callback);
   }
 
-  $stmtBorrarPolDet->bind_param('s',$id_poliza,$partida);
+  // $stmtBorrarPolDet->bind_param('s',$id_poliza,$partida);
+  $stmtBorrarPolDet->bind_param('ss',$id_poliza,$partida);
   if (!($stmtBorrarPolDet)) {
     $system_callback['code'] = "500";
     $system_callback['message'] = "Error during variables binding [$stmtBorrarPolDet->errno]: $stmtBorrarPolDet->error";
