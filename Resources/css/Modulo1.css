@@ -1,7 +1,3 @@
-
-input:read-only{
-  background-color: #e9ecef;
-}
 .h35{
   height: 35px;
 }
@@ -11,15 +7,27 @@ input:read-only{
 .h22{
   height: 22px;
 }
-
 .ls0{
   letter-spacing: 0px!important;
 }
-
 .ls1{
   letter-spacing: 1px!important;
 }
-
+.font12{
+  font-size: 12px!important;
+}
+.font14{
+  font-size: 14px!important;
+}
+.font16{
+  font-size: 16px!important;
+}
+.font18{
+  font-size: 18px!important;
+}
+.imp{
+  color : rgb(144, 144, 144);
+}
 .sub{
   letter-spacing: 7px!important;
   font-size: 12px!important;
@@ -34,28 +42,6 @@ input:read-only{
   font-weight: normal!important;
   color:rgb(87, 87, 87)!important;
 }
-
-.centrar{
-height: 30px;
-}
-
-h5.titulo{
-  padding-bottom: 8px;
-  margin-top: -20px;
-  margin-left: 20px;
-  background-color: white;
-  width: 160px;
-  text-align: center;
-}
-h5.titulo2{
-  padding-bottom: 20px;
-  margin-top: -20px;
-  margin-left: 20px;
-  background-color: white;
-  width:300px;
-  text-align: center;
-}
-
 select{
   font-size: 10pt!important;
   text-align-last:center;
@@ -68,6 +54,29 @@ select{
   letter-spacing:3px;
   line-height:0.8
 }
+
+.centrar{
+height: 30px;
+}
+
+.titulo{
+  padding-bottom: 8px;
+  margin-top: -20px;
+  margin-left: 20px;
+  background-color: white;
+  width: 160px;
+  text-align: center;
+}
+.titulo2{
+  padding-bottom: 20px;
+  margin-top: -20px;
+  margin-left: 20px;
+  background-color: white;
+  width:300px;
+  text-align: center;
+}
+
+
 .borderojo{
   border-bottom:1px solid rgba(190, 91, 106, 0.33);
 }
@@ -130,6 +139,11 @@ select{
   min-width: 24.45%;
   max-width:  24.45%;
 }
+
+.gde{
+  min-width: 42%;
+  max-width:  42%;
+}
 .backpink{
   font-size: 12px!important;
   background-color: rgba(246, 92, 92, 0.09)!important;
@@ -187,7 +201,7 @@ select{
   overflow-y: auto;
 }
 
-#backpinkico{
+/* #backpinkico{
   cursor: pointer;
   font-size: 12px;
 }
@@ -195,7 +209,7 @@ select{
   color: rgb(209, 28, 28)!important;
   letter-spacing: 3px!important;
   font-size: 13px;
-}
+} */
 
 
 .linkbtn{
@@ -209,10 +223,44 @@ select{
   cursor: pointer;
 }
 
+.pantallaGris{
+	background-color: rgb(240, 240, 240,0.25);
+  /* margin-bottom: 0px */
+	height: 800px;
+}
 
-input.reg{
-  background-color:transparent!important;
-  letter-spacing:10px!important;
-  text-align:center!important;
-  color: rgb(75, 74, 74)!important;
+.tituloSinRegistros{
+	text-align: center;
+	margin-top: 260px;
+	letter-spacing: 8px;
+	color: rgb(210, 210, 210);
+	font-size: 50px
+}
+
+.footer{
+  border-top: 3px solid rgb(213, 213, 213);
+  box-shadow: 0 -4px 8px -5px #333;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  text-align: left;
+
+}
+
+.mb-10{
+  margin-bottom: 8rem!important;
+}
+
+
+button img{
+  width:20px;
+  padding-top:4px;
+}
+button img:hover{
+  width:21px;
+}
+a img{
+  width:20px;
 }

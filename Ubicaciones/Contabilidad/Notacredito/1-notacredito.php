@@ -25,7 +25,7 @@
       <thead>
         <tr class="row">
           <td class="col-md-1 offset-sm-11">
-            <a href="" class="atras" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
+            <a href="#" class="nc" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
           </td>
         </tr>
         <tr class="row encabezado font18">

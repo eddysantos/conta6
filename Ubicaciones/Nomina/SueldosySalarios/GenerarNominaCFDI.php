@@ -251,15 +251,15 @@
             <td class="col-md-2 offset-md-5 mt-5">
               <nav>
                 <ul class="pagination">
-                  <li class="page-item"><a id="bread" class="page-link" href="#">Atras</a></li>
-                  <li class="page-item"><a id="bread" class="page-link" href="#">1</a></li>
+                  <li class="page-item"><as class="page-link" href="#">Atras</a></li>
+                  <li class="page-item"><as class="page-link" href="#">1</a></li>
                   <li class="page-item active">
-                    <a  id="bread" class="page-link" href="#">2<span class="sr-only"></span></a>
+                    <a href="#" class="page-link" href="#">2<span class="sr-only"></span></a>
                   </li>
-                  <li class="page-item"><a id="bread" class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a id="bread" class="page-link" href="#">4</a></li>
-                  <li class="page-item"><a id="bread" class="page-link" href="#">5</a></li>
-                  <li class="page-item"><a id="bread" class="page-link" href="#">Sig.</a></li>
+                  <li class="page-item"><as class="page-link" href="#">3</a></li>
+                  <li class="page-item"><as class="page-link" href="#">4</a></li>
+                  <li class="page-item"><as class="page-link" href="#">5</a></li>
+                  <li class="page-item"><as class="page-link" href="#">Sig.</a></li>
                 </ul>
               </nav>
             </td>
@@ -275,7 +275,7 @@
       <h5 class="titulo font14">PARAMETROS</h5>
       <div class="acordeon2">
         <div class="encabezado font16" data-toggle="collapse" href="#colapsoArticulo80">
-          <a  id="bread">ARTICULO 80</a>
+          <a href="#">ARTICULO 80</a>
         </div>
         <div class="collapse font14" id="colapsoArticulo80" style="padding:0rem 1.5rem!important;">
           <form class="form1">
@@ -335,7 +335,7 @@
 
       <div class="acordeon2 mt-3">
         <div class="encabezado font16" data-toggle="collapse" href="#colapsoGenerales">
-          <a  id="bread">GENERALES</a>
+          <a href="#">GENERALES</a>
         </div>
         <div class="collapse font14" id="colapsoGenerales" style="padding:0rem 1.5rem!important;">
           <form class="form1">
@@ -417,7 +417,7 @@
 
       <div class="acordeon2 mt-3">
         <div class="encabezado font16" data-toggle="collapse" href="#colapsofIntegracion">
-          <a  id="bread">FACTOR DE INTEGRACION</a>
+          <a href="#">FACTOR DE INTEGRACION</a>
         </div>
         <div class="collapse font14" id="colapsofIntegracion" style="padding:0rem 1.5rem!important;">
           <form class="form1">
@@ -469,7 +469,7 @@
 
       <div class="acordeon2 mt-3">
         <div class="encabezado font16" data-toggle="collapse" href="#colapsosubsidio">
-          <a  id="bread">SUBSIDIO AL EMPLEO</a>
+          <a href="#">SUBSIDIO AL EMPLEO</a>
         </div>
         <div class="collapse font14" id="colapsosubsidio" style="padding:0rem 1.5rem!important;">
           <form class="form1">
@@ -525,7 +525,7 @@
 
       <div class="acordeon2 mt-3">
         <div class="encabezado font16" data-toggle="collapse" href="#colapsoimss">
-          <a  id="bread">IMSS</a>
+          <a href="#">IMSS</a>
         </div>
         <div class="collapse font14" id="colapsoimss" style="padding:0rem 1.5rem!important;">
           <form class="form1">

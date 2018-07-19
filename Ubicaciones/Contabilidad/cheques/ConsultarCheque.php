@@ -3,11 +3,11 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid">
+<div class="text-center">
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
-        <a class="nav-link visualizar" id="submenuMed" status="cerrado" accion="dtosch">DATOS DEL CHEQUE</a>
+        <a class="nav-link che" id="submenuMed" status="cerrado" accion="dtosch">DATOS DEL CHEQUE</a>
       </li>
     </ul>
   </div>
@@ -15,7 +15,7 @@
   <div id="datoscheque" class="contorno" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
     <h5 class="titulo">DATOS DEL CHEQUE</h5>
     <form class="form1">
-      <table class="table text-center">
+      <table class="table ">
         <thead>
           <tr class="row encabezado">
             <td class="col-md-1">POLIZA</td>
@@ -40,15 +40,14 @@
             <td class="col-md-1">234577</td>
             <td class="col-md-2">Ninguna</td>
             <td class="col-md-1">240</td>
-
           </tr>
-          <tr class="row pt-4">
-            <td class="col-md-12">
-              <input id="ch-concep" class="border-0 efecto tiene-contenido" value="CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA" type="text">
-              <label for="ch-concep">CONCEPTO</label>
-            </td>
+          <tr class="row mt-3">
+            <td class="col-md-12 colorRosa">CONCEPTO</td>
           </tr>
-          <tr class="row backpink">
+          <tr class="row">
+            <td class="col-md-12">CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA</td>
+          </tr>
+          <tr class="row backpink mt-3">
             <td class="col-md-1 pt-3">111</td>
             <td class="col-md-4 pt-3">RAER8708025X3</td>
             <td class="col-md-7">ROSENDO ISAAC RANGEL ESTRADA</td>
@@ -59,15 +58,15 @@
   </div><!--/Termina DETALLE DATOS DE POLIZA-->
 
   <form class="font14">
-    <div class="row text-center mt-4"><!--DETALLE DE POLIZAS-->
+    <div class="row  mt-4"><!--DETALLE DE POLIZAS-->
       <div class="col-md-2 offset-md-7">SUMA DE CARGOS</div>
       <div class="col-md-2">SUMA DE ABONOS</div>
     </div>
     <div class="row pt-3">
-      <div class="col-md-2">
+      <div class="col-md-1">
         <a  class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
       </div>
-      <div class="col-md-2 offset-md-5">
+      <div class="col-md-2 offset-md-6">
         <input  class="efecto" value="$ 15, 932.08" readonly>
       </div>
       <div class="col-md-2">
@@ -76,7 +75,7 @@
     </div>
   </form>
   <div id="detallepoliza" class="contorno">
-    <table class="table table-hover text-center">
+    <table class="table table-hover">
       <thead class="font18">
         <tr class="row encabezado">
           <td class="col-md-12">DETALLE DE CHEQUE</td>
@@ -123,4 +122,9 @@
   </div>
 </div><!--/Termina continermov-->
 
-<script src="js/Cheques.js"></script>
+
+<?php
+$root = $_SERVER['DOCUMENT_ROOT'];
+require $root . '/conta6/Ubicaciones/footer.php';
+
+?>

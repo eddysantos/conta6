@@ -25,7 +25,7 @@
       <thead>
         <tr class="row">
           <td class="col-md-1 offset-md-11 p-0">
-            <a class="atras" accion="BuscarOtro"><i class="back fa fa-arrow-left">Regresar</i></a>
+            <a class="bg" accion="BuscarOtro"><i class="back fa fa-arrow-left">Regresar</i></a>
           </td>
         </tr>
         <tr class="row encabezado font16 mt-2">

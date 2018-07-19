@@ -8,10 +8,10 @@
   <div class="row submenuMed m-0">
     <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
       <li class="nav-item">
-        <a class="nav-link consultar" id="submenuMed" accion="poldiario" status="cerrado">POLIZA DE DIARIO</a>
+        <a class="nav-link pol" id="submenuMed" accion="poldiario" status="cerrado">POLIZA DE DIARIO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link consultar" id="submenuMed" accion="polingreso" status="cerrado">POLIZA DE INGRESO</a>
+        <a class="nav-link pol" id="submenuMed" accion="polingreso" status="cerrado">POLIZA DE INGRESO</a>
       </li>
     </ul>
   </div>
@@ -51,14 +51,5 @@
 
 
 <?php
-// require_once('DetallepolizaDiario.php');
+require $root . '/conta6/Ubicaciones/footer.php';
 ?>
-
-<!--***************ESTILOS*****************-->
-<link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
-
-<!--***************SCRIPTS*****************-->
-<script src="js/Polizas.js"></script>
-<script src="/conta6/Resources/js/validaSoloNumeros.js"></script>

@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-  $('.consultar').click(function(){
+  $('.conPed').click(function(){
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');
 
@@ -30,16 +30,7 @@ $(document).ready(function(){
   });
 
 
-  $('.regresar').click(function(){
-    var accion = $(this).attr('accion');
-    switch (accion) {
-
-      case "datosPedimento":
-      $('#repoPed').fadeOut();
-      $('#buscarRef').slideDown();
-        break;
-      default:
-
-        console.error("Something went terribly wrong...");
-    }
+  $('.rg').click(function(){
+    $('#repoPed').fadeOut();
+    $('#buscarRef').slideDown();
   });

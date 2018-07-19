@@ -1,117 +1,199 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  $id_anticipo = $_GET['id_anticipo'];
+
+  $sql_Select = "SELECT * from conta_t_anticipos_mst Where pk_id_anticipo = ? AND fk_id_aduana = ?";
+  $stmt = $db->prepare($sql_Select);
+	if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
+	$stmt->bind_param('ss', $id_anticipo,$aduana);
+	if (!($stmt)) { die("Error during query prepare [$stmt->errno]: $stmt->error");	}
+	if (!($stmt->execute())) { die("Error during query prepare [$stmt->errno]: $stmt->error"); }
+	$rslt = $stmt->get_result();
+	$rows = $rslt->num_rows;
+
+	if( $rows > 0 ){
+    $rowMST = $rslt->fetch_assoc();
+		$cancela = $rowMST['s_cancela']; // 0=Activo 1=Cancelado
+    $id_poliza = $rowMST['fk_id_poliza'];
+    $importeAnt = $rowMST['n_valor'];
+
+    //totales
+	 	$oRst_STPD_sql = "select fk_id_anticipo,SUM(n_cargo)as SUMA_CARGOS,SUM(n_abono)as SUMA_ABONOS from conta_t_anticipos_det where fk_id_anticipo = ? group by fk_id_anticipo ";
+		$stmtTotales = $db->prepare($oRst_STPD_sql);
+		if (!($stmtTotales)) { die("Error during query prepare [$db->errno]: $db->error");	}
+		$stmtTotales->bind_param('s', $id_anticipo);
+		if (!($stmtTotales)) { die("Error during query prepare [$stmtTotales->errno]: $stmtTotales->error");	}
+		if (!($stmtTotales->execute())) { die("Error during query prepare [$stmtTotales->errno]: $stmtTotales->error"); }
+		$rsltTotales = $stmtTotales->get_result();
+		$rowsTotales = $rsltTotales->num_rows;
+		if( $rowsTotales > 0 ){
+			$oRst_STPD = $rsltTotales->fetch_assoc();
+			$sumaCargos = $oRst_STPD['SUMA_CARGOS'];
+			$sumaAbonos = $oRst_STPD['SUMA_ABONOS'];
+      $sumaC = number_format($sumaCargos,2,'.','') + number_format($importeAnt,2,'.','') ;
+		  $Status_Anticipo =  number_format($sumaC - $sumaAbonos,2,'.','');
+      $statusGeneraPoliza = false;
+
+      if( $Status_Anticipo == 0 ){
+        $txtStatus = '<b><font face="Trebuchet MS" size="2" color="#000000">CUADRADA</font></b>';
+        $statusGeneraPoliza = true;
+		  }else{
+				$txtStatus = '<b><font color="#E52727" face="Trebuchet MS" size="2"><?php echo $Status_Anticipo; ?> ANTICIPO SIN CUADRAR</font></b>';
+        $statusGeneraPoliza = false;
+			}
+		}else{
+			$sumaCargos = 0;
+			$sumaAbonos = 0;
+      $sumaC = 0;
+      $Status_Anticipo = 0;
+		}
+
+    //validaciones
+		if( $cancela == 0 ){ $txt_cancela = "Activo"; }else{ $txt_cancela = "Cancelado"; }
+    if( $id_poliza > 0){ $tienePoliza = true; }else{ $tienePoliza = false;}
+
+    //detalle anticipo
+    $sql_DET = mysqli_query($db,"SELECT * FROM conta_t_anticipos_det WHERE fk_id_anticipo = '$id_anticipo' ORDER BY pk_partida");
+    $totalRegistrosDET = mysqli_num_rows($sql_DET);
+
+    if( $totalRegistrosDET > 0 ){
+      while ($row = mysqli_fetch_array($sql_DET)){
+        $contenidoDetalle = "
+        <tr class='row borderojo'>
+          <td class='xs'></td>
+          <td class='small pt-3 p-0'>$row[fk_id_cuenta]</td>
+          <td class='small pt-3 p-0'>$row[fk_referencia]</td>
+          <td class='small pt-3 p-0'>$row[fk_id_cliente_antdet]</td>
+          <td class='small pt-3 p-0'>$row[fk_factura]</td>
+          <td class='small pt-3 p-0'>$row[fk_ctagastos]</td>
+          <td class='small pt-3 p-0'>$row[fk_pago]</td>
+          <td class='small pt-3 p-0'>$row[fk_nc]</td>
+          <td class='gde pt-3 p-0'>$row[s_desc]</td>
+          <td class='small pt-3 p-0'>$row[n_cargo]</td>
+          <td class='small pt-3 p-0'>$row[n_abono]</td>
+          <td class='xs'></td>
+        </tr>";
+      }
+    }else{
+      $contenidoDetalle = '<div class="container-fluid pantallaGris">
+        <div class="tituloSinRegistros">NO HAY DETALLE DE ESTA PÓLIZA</div>
+      </div>';
+    }
+  }
 ?>
 
-<div class="container-fluid">
+
+<div class="text-center">
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
-        <a class="nav-link visualizar" id="submenuMed" status="cerrado" accion="dtosant">DATOS DE ANTICIPO</a>
+        <a class="nav-link dant" id="submenuMed" status="cerrado" accion="dtosant">DATOS DE ANTICIPO</a>
       </li>
     </ul>
   </div>
+<?php
+  if( $rows > 0 ){
+?>
+
 <!--Comienza DETALLE DATOS DE POLIZA-->
   <div id="datosanticipo" class="contorno" style="display:none">
     <h5 class="titulo">DATOS DE ANTICIPO</h5>
-    <form class="form1">
-      <table class="table text-center">
-        <thead>
-          <tr class="row encabezado colorRosa">
-            <td class="col-md-1">POLIZA</td>
-            <td class="col-md-1">USUARIO</td>
-            <td class="col-md-1">ANTICIPO</td>
-            <td class="col-md-2">FECHA REGISTRO</td>
-            <td class="col-md-2">FECHA ANTICIPO</td>
-            <td class="col-md-1">OFICINA</td>
-            <td class="col-md-2">CANCELACION</td>
-            <td class="col-md-2">NOTA</td>
-          </tr>
-        </thead>
-        <tbody class="font14">
-          <tr class="row">
-            <td class="col-md-1">234567</td>
-            <td class="col-md-1">Estefania</td>
-            <td class="col-md-1">33452</td>
-            <td class="col-md-2">30-06-2017</td>
-            <td class="col-md-2">28-06-2017</td>
-            <td class="col-md-1">240</td>
-            <td class="col-md-2">234577</td>
-            <td class="col-md-2">Ninguna</td>
-          </tr>
-          <tr class="row sub2 mt-4">
-            <td class="col-md-2">Valor</td>
-            <td class="col-md-1">Cliente</td>
-            <td class="col-md-1">Banco</td>
-            <td class="col-md-1">Cuenta</td>
-            <td class="col-md-7">Concepto</td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-2">$21,027.00</td>
-            <td class="col-md-1">$21,027.00</td>
-            <td class="col-md-1">044</td>
-            <td class="col-md-1">8933</td>
-            <td class="col-md-7">CONCEPTO DE LA POLIZA CONCEPTO DE LA POLIZA</td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
+    <table class="table form1">
+      <thead>
+        <tr class="row encabezado colorRosa">
+          <td class="col-md-1">POLIZA</td>
+          <td class="col-md-1">USUARIO</td>
+          <td class="col-md-1">ANTICIPO</td>
+          <td class="col-md-2">FECHA REGISTRO</td>
+          <td class="col-md-2">FECHA ANTICIPO</td>
+          <td class="col-md-1">OFICINA</td>
+          <td class="col-md-2">CANCELACION</td>
+        </tr>
+      </thead>
+      <tbody class="font14">
+        <tr class="row">
+          <td class="col-md-1"><?php echo $rowMST['fk_id_poliza']; ?></td>
+          <td class="col-md-1"><?php echo $rowMST['fk_usuario']; ?></td>
+          <td class="col-md-1"><?php echo $rowMST['pk_id_anticipo']; ?></td>
+          <td class="col-md-2"><?php echo $rowMST['d_fecha_alta']; ?></td>
+          <td class="col-md-2"><?php echo $rowMST['d_fecha']; ?></td>
+          <td class="col-md-1"><?php echo $rowMST['fk_id_aduana']; ?></td>
+          <td class="col-md-2 pt-1"><?php echo $txt_cancela; ?></td>
+        </tr>
+        <tr class="row sub2 mt-4 font12">
+          <td class="col-md-2">Valor</td>
+          <td class="col-md-1">Cliente</td>
+          <td class="col-md-1">Banco</td>
+          <td class="col-md-1">Cuenta</td>
+          <td class="col-md-7">Concepto</td>
+        </tr>
+        <tr class="row">
+          <td class="col-md-2"><?php echo number_format($rowMST['n_valor'],2,'.',','); ?></td>
+          <td class="col-md-1"><?php echo $rowMST['fk_id_cliente_antmst']; ?></td>
+          <td class="col-md-1"><?php echo $rowMST['s_bancoOri']; ?></td>
+          <td class="col-md-1"><?php echo $rowMST['s_ctaOri']; ?></td>
+          <td class="col-md-7"><?php echo $rowMST['s_concepto']; ?></td>
+        </tr>
+      </tbody>
+    </table>
   </div><!--/Termina DETALLE DATOS DE POLIZA-->
 
   <form class="font14">
-    <div class="row text-center mt-4">
+    <div class="row mt-4">
       <div class="col-md-2 offset-md-7">SUMA DE CARGOS</div>
       <div class="col-md-2">SUMA DE ABONOS</div>
     </div>
     <div class="row">
+      <div class="col-md-1">
+        <?php if( $tienePoliza == true ){ ?>
+        <a href="#" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
+        <?php } ?>
+      </div>
+      <div class="col-md-2 offset-md-6">
+        <input class="efecto" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
+      </div>
       <div class="col-md-2">
-        <a href="" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
+        <input class="efecto" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
       </div>
-      <div class="col-md-2 offset-md-5">
-        <input class="efecto" value="$ 15, 932.08" readonly>
-      </div>
-      <div class="col-md-2">
-        <input class="efecto" value="$ 15, 932.08" readonly>
-      </div>
+      <?php echo $txtStatus; ?>
     </div>
   </form>
   <div id="detallepoliza" class="contorno">
-    <table class="table table-hover text-center">
+    <table class="table table-hover">
       <thead class="font18">
         <tr class="row encabezado">
-          <td class="col-md-12">DETALLE POLIZA</td>
+          <td class="">DETALLE POLIZA</td>
         </tr>
         <tr class="row backpink">
-          <th class="xs"></th>
-          <th class="sm">CUENTA</th>
-          <th class="sm">REFERENCIA</th>
-          <th class="sm">CLIENTE</th>
-          <th class="sm">FACTURA</th>
-          <th class="sm">NOTACRED</th>
-          <th class="sm">ANTICIPO</th>
-          <th class="med">DESCRIPCION</th>
-          <th class="sm">CARGO</th>
-          <th class="sm">ABONO</th>
-          <th class="xs"></th>
+          <th class="p-0 pt-3 xs"></th>
+          <td class="p-0 pt-3 small">CUENTA</td>
+          <td class="p-0 pt-3 small">REFERENCIA</td>
+          <td class="p-0 pt-3 small">CLIENTE</td>
+          <td class="p-0 pt-3 small">FACTURA</td>
+          <td class="p-0 pt-3 small">CTA GASTOS</td>
+          <td class="p-0 pt-3 small">PAGO ELECT</td>
+          <td class="p-0 pt-3 small">NOTACRED</td>
+          <td class="p-0 pt-3 gde">DESCRIPCION</td>
+          <td class="p-0 pt-3 small">CARGO</td>
+          <td class="p-0 pt-3 small">ABONO</td>
         </tr>
       </thead>
-      <tbody class="font14">
-        <tr class="row borderojo">
-          <td class="xs"></td>
-          <td class="sm">0110-00001</td>
-          <td class="sm">N17008098</td>
-          <td class="sm">CLT_7118</td>
-          <td class="sm">2222</td>
-          <td class="sm">2222</td>
-          <td class="sm">2222</td>
-          <td class="med">T.DE LA FED.PTO.7003459</td>
-          <td class="sm">111,133,299</td>
-          <td class="sm">33,299</td>
-          <td class="xs"></td>
-        </tr>
-      </tbody>
+      <tbody class="font14" id="tabla_detalleanticipoConsulta"><?php echo $contenidoDetalle; ?></tbody>
     </table>
   </div>
+
 </div>
 
-<script src="js/Anticipos.js"></script>
+<?php
+}else{ #$rows?>
+	<br><br>
+	<p align="center"><u>
+	<font face="Trebuchet MS" size="2" align="center" >NO EXISTE EL ANTICIPO O ES DE OTRA OFICINA</font></u></p>
+	<p align="center">&nbsp;</p>
+<?php
+} #$rows
+
+$root = $_SERVER['DOCUMENT_ROOT'];
+require $root . '/conta6/Ubicaciones/footer.php';
+?>

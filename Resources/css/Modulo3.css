@@ -1,117 +1,14 @@
 
-
-
-/* .mleftx2{
-  margin-left: 27px!important;
-} */
-/* .mleftx3{
-  margin-left: 30px!important;
-} */
-/* .mleftx5{
-  margin-left: 50px!important;
-} */
-/* .mleftx10{
-  margin-left: 100px!important;
-} */
-/* .text-normal{
-  font-size: 14px!important;
-} */
-
-/* .brx1{
- margin-top: 10px!important;
-} */
-/* .brx2{
-  margin-top: 20px!important;
-} */
-/* .brx3{
-  margin-top: 30px!important;
-} */
-/* .brx4{
-  margin-top: 40px!important;
-} */
-
-
-/* pendiente por que afecta polizas */
-input[type=text].modif {
-  height: 80px;
-  -webkit-transition: height 1s ease-in-out!important;
-  transition: height 1s ease-in-out!important;
-  font-size: 30pt!important;
+/*pendiente solo quitar de anticipos*/
+.contorno-modal{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0px 3px!important;
+  margin: 8px!important;
 }
-input[type=text].modif:focus {
-  height: 110px;
-  font-size: 45pt!important;
-}
-/* pendiente */
-
-/* button[type=button].btn{
-  height: 24px;
-  font-size: 14px!important;
-  border: 1px solid #ccc!important;
-  letter-spacing: 2px!important;
-  background-color: transparent;
-  border-radius: 4px;
-  width: 180px;
-  color: #ccc;
-}
-button[type=button].btn:hover{
-  letter-spacing: 5px!important;
-  color: rgb(209, 28, 28);
-} */
-
-/*pendiente quitar solo de polizas */
-input[type=text].noborder{
-  border: 0!important;
-  text-align: center;
-  background-color: transparent;
-}
-/* quitar noborder  */
 
 
-/* .submenu {
-  background-color: rgba(254, 113, 113, 0.06);
-  height: 80px;
-}
-div.submenu {
-  padding:12px;
-} */
-
-/* pendeitne solo seccion de polizas */
-.cuerpo {
-  font-size: 17px;
-  line-height: 0.9;
-  letter-spacing: 3px;
-  text-align: center!important;
-}
-/* pendeitne solo seccion de polizas */
-
-
-/* .cont{
-  max-width: 1300px;
-} */
-
-
-/*pendiente afecta polizas  */
-.form-control {
-    padding: .1rem .7rem;
-}
-/*pendiente afecta polizas  */
-
-/*
-#btn{
-  background-color: transparent!important;
-  color: rgb(110, 110, 110)!important;
-  letter-spacing: 8px!important;
-}
-#btn:hover, #btn:focus {
-  color: rgb(209, 28, 28)!important;
-  font-size: 12px;
-  cursor: pointer;
-} */
-
-
-
-#bread{
+/* #bread{
   background-color: transparent!important;
   color: rgb(110, 110, 110)!important;
   letter-spacing: 5px!important;
@@ -120,93 +17,12 @@ div.submenu {
   color: rgb(209, 28, 28)!important;
   text-shadow: 2px 1px 15px rgba(173,130,150,1);
   cursor: pointer;
-}
-/* #pag{
-  background-color: transparent!important;
-  color: rgb(110, 110, 110)!important;
-}
-#pag:hover, #pag:focus {
-  color: rgb(209, 28, 28)!important;
-  font-size: 18px;
-  cursor: pointer;
 } */
-
-
-/* .botonrow{
-  background-color: transparent!important;
-  color: rgb(110, 110, 110)!important;
-  letter-spacing: 2px!important;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-.botonrow:hover,.botonrow:focus{
-  color: rgb(217, 0, 0)!important;
-  letter-spacing: 3px!important;
-} */
-
-
-/* .container.reportes{
-  background-color: #fbfbfb;
-  height: 250px;
-  margin-top: 20px !important;
-  border-radius: 8px;
-  width: 1000px !important;
-} */
-
-
-/* button.icon{
-  background-color:transparent!important;
-  border:0px;
-  padding: 0px 8px 5px 3px;
-} */
-button img{
-  width:20px;
-  padding-top:4px;
-}
-button img:hover{
-  width:21px;
-}
-a img{
-  width:20px;
-}
-/* a img.list{
-  width: 15px;
-  padding: 0px;
-} */
-/* a img.icono{
-  width:24px;
-  margin:8px 20px;
-}
-a img.icono:hover{
-  width:28px;
-} */
-/* a img.file{
-  width:18px;
-  margin:0px 10px;
-}
-a img.file:hover{
-  width:20px;
-} */
-
-
-/* #submenu{
-  background-color: transparent!important;
-  color: rgb(161, 160, 160)!important;
-  letter-spacing: 8px!important;
-  font-size: xx-large;
-}
-#submenu:hover, #submenu:focus {
-  color: rgb(209, 28, 28)!important;
-  cursor: pointer;
-  font-size: 40px;
-} */
-
-
 
 
 
 /* de estas dos clases solo dejar una ya que osn iguales */
-.atras {
+/* .atras {
   background-color: transparent!important;
   color: rgb(161, 160, 160)!important;
   letter-spacing: 3px!important;
@@ -216,8 +32,8 @@ a img.file:hover{
   color: rgb(209, 28, 28)!important;
   cursor: pointer;
   font-size: 18px;
-}
-.regresar {
+} */
+/* .regresar {
   background-color: transparent!important;
   color: rgb(161, 160, 160)!important;
   letter-spacing: 3px!important;
@@ -227,4 +43,4 @@ a img.file:hover{
   color: rgb(209, 28, 28)!important;
   cursor: pointer;
   font-size: 18px;
-}
+} */

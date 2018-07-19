@@ -18,15 +18,14 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-12">
-            <form  class="form-group"  method="post">
-            <input id="folioPol" class="modif text-center form-control noborder" type="text" autocomplete="new-password" onchange="validaSoloNumeros(this);">
-          </form>
+            <form class="form-group" autocomplete="off">
+              <input id="folioPol" class="reg border-0" type="text" onchange="validaSoloNumeros(this);" autocomplete="new-password">
+            </form>
           </div>
         </div>
       </div><!--termina el Cuerpo del Modal-->
-      <div class="modal-footer brx1">
-      <!--a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" id="btn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
-      <a href="#" id="btn" onclick="buscarPoliza('modificar')">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+      <div class="modal-footer">
+        <a href="#" id="btn" onclick="buscarPoliza('modificar')">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>
@@ -50,14 +49,13 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-12">
-            <form  class="form-group"  method="post">
-            <input id="folioPolconsulta" class="modif text-center form-control noborder" type="text">
-          </form>
+            <form class="form-group">
+              <input id="folioPolconsulta" class="reg border-0" type="text" onchange="validaSoloNumeros(this)" autocomplete="new-password">
+            </form>
           </div>
         </div>
-        <div class="modal-footer brx1">
-        <!--a href="/conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php" id="btn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
-        <a href="#" id="btn" onclick="buscarPoliza('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <div class="modal-footer">
+          <a href="#" id="btn" onclick="buscarPoliza('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -76,15 +74,15 @@
       </div>
       <div class="modal-body">
         <div class="row titulograndetop-modal">
-          <div class="col-md-2">
+          <div class="col-md-12">
             <label>CHEQUE</label>
           </div>
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form class="form-group">
-            <input class="modif text-center border-0" type="text">
-          </form>
+            <form class="form-group" autocomplete="off">
+              <input class="reg border-0" type="text">
+            </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
@@ -113,13 +111,13 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form class="form-group">
-            <input class="modif text-center border-0" type="text">
-          </form>
+            <form class="form-group" autocomplete="off">
+              <input class="reg border-0" type="text">
+            </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          <a href="/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php" class="linkbtn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -147,12 +145,13 @@
         <div class="row intermedio-modal">
           <div class="col-md-12">
             <form class="form-group">
-            <input class="modif text-center border-0" type="text">
+            <input class="reg border-0" type="text" id="folioAnt" onchange="validaSoloNumeros(this)" autocomplete="new-new-password">
           </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          <a href="#" id="btn" onclick="buscarAnticipo('modificar')">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <!--a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
         </div>
       </div>
     </div>
@@ -178,12 +177,13 @@
         <div class="row intermedio-modal">
           <div class="col-md-12">
             <form  class="form-group">
-            <input class="modif text-center border-0" type="text">
+            <input class="reg border-0" type="text" id="folioAntConsulta" onchange="validaSoloNumeros(this)" autocomplete="new-password">
           </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          <a href="#" id="btn" onclick="buscarAnticipo('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <!--a href="/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
         </div>
       </div>
     </div>
@@ -209,8 +209,8 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form  class="form-group">
-            <input class="modif text-center border-0" type="text">
+            <form  class="form-group" autocomplete="off">
+            <input class="reg border-0" type="text">
           </form>
           </div>
         </div>
@@ -290,7 +290,7 @@
 
 <!--POLIZAS DE DIARIO-->
 <!--MODAL Contabilidad > Polizas > Modificar -->
-<div class="modal fade" id="AsignarProveedor">
+<div class="modal fade text-center" id="AsignarProveedor">
   <div class="modal-dialog modal-med">
     <div class="modal-content">
       <div class="modal-header">
@@ -301,19 +301,19 @@
       </div>
       <div class="modal-body">
         <div class="row titulograndetop-modal">
-          <div class="col-md-12 text-center">
+          <div class="col-md-12">
             <label>PÓLIZA</label>
           </div>
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form  class="form-group">
-            <input class="modif text-center border-0" type="text">
-          </form>
+            <form  class="form-group" autocomplete="off">
+              <input class="reg border-0" type="text">
+            </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>

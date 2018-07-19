@@ -8,16 +8,16 @@
 <!---AL INGRESAR SOLO SE MOSTRARA ESTA SECCION-->
   <div class="row submenuMed m-0" id="SeleccionarAccion">
     <div class="col-md-6">
-      <a  id="submenuMed" class="mostrar" accion="buscarctagastos"><i class="fa fa-search"></i>BUSCAR</a>
+      <a  id="submenuMed" class="fele" accion="buscarctagastos"><i class="fa fa-search"></i>BUSCAR</a>
     </div>
     <div class="col-md-6">
-      <a id="submenuMed" class="mostrar" accion="generarctagastos"><i class="fa fa-plus"></i>GENERAR</a>
+      <a id="submenuMed" class="fele" accion="generarctagastos"><i class="fa fa-plus"></i>GENERAR</a>
     </div>
   </div>
 
   <div class="contenedor contorno" id="g-ctagastos" style="display:none">
     <div class="col-md-1 offset-sm-11 p-0">
-      <a class="atras" accion="cuadroGenerar">
+      <a href="#" class="bg" accion="cuadroGenerar">
         <i class="back fa fa-arrow-left">Regresar</i>
       </a>
     </div>
@@ -70,7 +70,7 @@
   <div class="contenedor" id="b-ctagastos" style="display:none">
     <div class="row">
       <div class="col-md-12 offset-sm-8">
-        <a href="#" class="atras" accion="cuadroBusqueda">
+        <a href="#" class="fele" accion="cuadroBusqueda">
           <i class="back fa fa-arrow-left">Regresar</i>
         </a>
       </div>
@@ -95,7 +95,7 @@
 <!---se muestra al escribir la referencia y dar enter-->
   <div class="contenedor contorno" id="m-ctagastos" style="display:none">
     <div class="col-md-1 offset-sm-11">
-      <a class="atras" accion="cuadroConsultar">
+      <a href="#" class="fele" accion="cuadroConsultar">
         <i class="back fa fa-arrow-left">Regresar</i>
       </a>
     </div>

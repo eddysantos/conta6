@@ -99,7 +99,11 @@
     <div class="row intermedio">
       <div class="col-md-12" id="mostrarGenerar">
         <form class="form-group" onsubmit="return false;">
+<<<<<<< HEAD
+          <input class="reg form-control border-0 transEff" id="gRef" type="text">
+=======
           <input class="reg border-0 transEff" id="gRef" type="text">
+>>>>>>> CSScorresponsales
         </form>
       </div>
     </div>
