@@ -2,7 +2,7 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
-$query = "SELECT * FROM conta_cs_sat_bancos ORDER BY s_nombre";
+$query = "SELECT * FROM conta_cs_sat_bancos ORDER BY s_activo desc,s_nombre";
 
 
 $stmt = $db->prepare($query);
@@ -31,11 +31,14 @@ if ($rslt->num_rows == 0) {
 
 
 while ($row = $rslt->fetch_assoc()) {
+  $activo = $row[s_activo];
+  if( $activo == 1 ){ $txt_activo = "Si"; }else{ $txt_activo = "No"; }
+
   $system_callback['data'] .=
   '<tr class="row m-0 borderojo"><td class="col-md-1">'. utf8_encode($row[pk_id_banco]).'</td>'.
   '<td class="col-md-2">'.utf8_encode($row[s_nombre]).'</td>'.
   '<td class="col-md-6 text-left">'.utf8_encode($row[s_descripcion]).'</td>'.
-  '<td class="col-md-1">'.$row[s_activo].'</td>'.
+  '<td class="col-md-1">'.$txt_activo.'</td>'.
   '<td class="col-md-2">'.$row[d_fechaInicioVigencia].'</td></tr>';
 }
 $system_callback['code'] = 1;

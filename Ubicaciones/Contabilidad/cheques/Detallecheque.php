@@ -1,8 +1,76 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-?>
 
+  $id_cheque = $_GET['id_cheque'];
+  $id_cuentaMST = $_GET['id_cuentaMST'];
+
+  $sql_Select = "SELECT * from conta_t_cheques_mst Where pk_id_cheque = ? AND fk_id_cuentaMST = ?";
+  $stmt = $db->prepare($sql_Select);
+	if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
+	$stmt->bind_param('ss', $id_cheque,$id_cuentaMST);
+	if (!($stmt)) { die("Error during query prepare [$stmt->errno]: $stmt->error");	}
+	if (!($stmt->execute())) { die("Error during query prepare [$stmt->errno]: $stmt->error"); }
+	$rslt = $stmt->get_result();
+	$rows = $rslt->num_rows;
+
+	if( $rows > 0 ){
+		$rowMST = $rslt->fetch_assoc();
+		$cancela = $rowMST['s_cancela']; // 0=Activo 1=Cancelado
+    $id_poliza = $rowMST['fk_id_poliza'];
+    $importeChe = $rowMST['n_valor'];
+
+    //totales
+	 	$oRst_STPD_sql = "SELECT fk_id_cheque,SUM(n_cargo)as SUMA_CARGOS,SUM(n_abono)as SUMA_ABONOS
+                      from conta_t_cheques_det
+                      where fk_id_cheque = ? AND fk_id_cuenta = ?
+                      group by fk_id_cheque ";
+		$stmtTotales = $db->prepare($oRst_STPD_sql);
+		if (!($stmtTotales)) { die("Error during query prepare [$db->errno]: $db->error");	}
+		$stmtTotales->bind_param('ss', $id_cheque,$id_cuentaMST);
+		if (!($stmtTotales)) { die("Error during query prepare [$stmtTotales->errno]: $stmtTotales->error");	}
+		if (!($stmtTotales->execute())) { die("Error during query prepare [$stmtTotales->errno]: $stmtTotales->error"); }
+		$rsltTotales = $stmtTotales->get_result();
+		$rowsTotales = $rsltTotales->num_rows;
+		if( $rowsTotales > 0 ){
+			$oRst_STPD = $rsltTotales->fetch_assoc();
+			$sumaCargos = $oRst_STPD['SUMA_CARGOS'];
+			$sumaAbonos = $oRst_STPD['SUMA_ABONOS'];
+      $sumaC = number_format($sumaCargos,2,'.','') + number_format($importeChe,2,'.','') ;
+		  $Status_Cheque =  number_format($sumaC - $sumaAbonos,2,'.','');
+      $statusGeneraPoliza = false;
+
+      if( $Status_Cheque == 0 ){
+        $txtStatus = '<b><font face="Trebuchet MS" size="2" color="#000000">CUADRADA</font></b>';
+        $statusGeneraPoliza = true;
+		  }else{
+				$txtStatus = '<b><font color="#E52727" face="Trebuchet MS" size="2"><?php echo $Status_Cheque; ?> CHEQUE SIN CUADRAR</font></b>';
+        $statusGeneraPoliza = false;
+			}
+		}else{
+			$sumaCargos = 0;
+			$sumaAbonos = 0;
+      $sumaC = 0;
+      $Status_Cheque = 0;
+		}
+
+		//validaciones
+		if( $cancela == 0 ){ $txt_cancela = "Activo"; }else{ $txt_cancela = "Cancelado"; }
+		if( $oRst_permisos["s_correcciones_mst_cheques"] == 1 && $cancela == 0 ){ $mostrar = true; }else{ $mostrar = false; }
+		if( $oRst_permisos["s_descancelar_cheques"] == 1 ){ $mostrarCancela = true; }else{ $mostrarCancela = false; }
+		if( $cancela == 1 ){ $clase = 'class="efecto disabled readonly" disabled'; }
+		if( $id_poliza > 0){ $tienePoliza = true; }else{ $tienePoliza = false;}
+		if( $oRst_permisos["s_editar_cheques_det_pol"] == 1 && $cancela == 0 && $id_poliza > 0 ){
+		  $mostrarEditConPol = true;
+		}else{
+		  if( $cancela == 0 && is_null($id_poliza) ){
+			  $mostrarEditConPol = true;
+		  }else{
+			$mostrarEditConPol = false;
+		  }
+		}
+	}
+?>
 <div class="text-center mb-10">
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
@@ -15,48 +83,69 @@
   <div id="datoscheque" class="contorno mt-5" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
     <!-- style="display:none" -->
     <h5 class="titulo">DATOS DEL CHEQUE
+      <?php if( $mostrar == true ){ ?>
       <a href='#ch-editarRegMST' data-toggle='modal' role='button'>
         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
       </a>
+      <!--a href="#" id="btn_editDatosCheMST" class="boton border-0"><img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'></a-->
+      <?php }?>
     </h5>
     <form class="form1">
       <table class="table font14">
         <thead>
+          <input type="hidden" id="usuario_activo" value="<?php echo $usuario; ?>">
+          <input type="hidden" id="aduana_activa" value="<?php echo $aduana; ?>">
+          <input type="hidden" id="mst-cheque" value="<?php echo $rowMST['pk_id_cheque']; ?>">
+          <input type="hidden" id="mst-fecha" value="<?php echo $rowMST['d_fecha']; ?>">
+          <input type="hidden" id="mst-poliza" value="<?php echo $rowMST['fk_id_poliza']; ?>">
+          <input type="hidden" id="mst-ctaMST" value="<?php echo $rowMST['fk_id_cuentaMST']; ?>">
+          <input type="hidden" id="mst-concepto" value="<?php echo $rowMST['s_concepto']; ?>">
+          <input type="hidden" id="mst-importe" value="<?php echo $rowMST['n_valor']; ?>">
+          <input type="hidden" id="mst-cliente" value="<?php echo $rowMST['fk_id_cliente_antmst']; ?>">
+
           <tr class="row encabezado">
             <td class="col-md-1">POLIZA</td>
             <td class="col-md-1">USUARIO</td>
             <td class="col-md-1">NO.CHEQUE</td>
+            <td class="col-md-2">FECHA REGISTRO</td>
             <td class="col-md-2">FECHA CHEQUE</td>
-            <td class="col-md-1">IMPORTE</td>
-            <td class="col-md-2">MODIFICACION</td>
-            <td class="col-md-1">CANCELACION</td>
-            <td class="col-md-2">NOTA</td>
             <td class="col-md-1">OFICINA</td>
+            <td class="col-md-1">IMPORTE</td>
+            <td class="col-md-1">CANCELACION</td>
           </tr>
         </thead>
         <tbody>
           <tr class="row">
-            <td class="col-md-1">234567</td>
-            <td class="col-md-1">Estefania</td>
-            <td class="col-md-1">3345</td>
-            <td class="col-md-2">28-06-2017</td>
-            <td class="col-md-1">$123,456</td>
-            <td class="col-md-2">28-06-2017 14:24:58</td>
-            <td class="col-md-1">234577</td>
-            <td class="col-md-2">Ninguna</td>
-            <td class="col-md-1">240</td>
+            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_poliza']; ?></td>
+            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_usuario']; ?></td>
+            <td class="col-md-1 pt-3"><?php echo $rowMST['pk_id_cheque']; ?></td>
+            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha_alta']; ?></td>
+            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha']; ?></td>
+            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_aduana']; ?></td>
+            <td class="col-md-2"><?php echo $rowMST['n_valor']; ?></td>
+            <td class="col-md-2 pt-1">
+      				<?php if( $mostrarCancela == true ){ ?>
+      					<select class="custom-select-ch" size="1" id="che-cancela">
+        					<?php if( $cancela == 0 ){
+      							echo "<option value='0' selected>Activo</option>";
+      							echo "<option value='1'>Cancelado</option>";
+      						  }else{
+      							echo "<option value='0'>Activo</option>";
+      							echo "<option value='1' selected>Cancelado</option>";
+      						  } ?>
+      					</select>
+      				<?php }else{ echo $txt_cancela; } ?>
+      			</td>
           </tr>
           <tr class="row sub2 mt-4 font12">
             <td class="col-md-1">CUENTA</td>
             <td class="col-md-6">BENEFICIARIO</td>
-            <td class="col-md-2">RFC</td>
             <td class="col-md-3">CONCEPTO</td>
           </tr>
           <tr class="row">
-            <td class="col-md-1 p-0 pt-2">0100-00006</td>
-            <td class="col-md-6">ROSENDO ISAAC RANGEL ESTRADA</td>
-            <td class="col-md-2">RAER8708025X3</td>
-            <td class="col-md-3">CONCEPTO DE LA POLIZA</td>
+            <td class="col-md-1 p-0 pt-2"><?php echo $rowMST['fk_id_cuentaMST']; ?></td>
+            <td class="col-md-6"><?php echo $rowMST['s_nomOrd']; ?></td>
+            <td class="col-md-3"><?php echo $rowMST['s_concepto']; ?></td>
           </tr>
         </tbody>
       </table>

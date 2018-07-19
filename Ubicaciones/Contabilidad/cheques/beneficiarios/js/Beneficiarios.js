@@ -1,5 +1,6 @@
 $(document).ready(function(){
   fetch_catalogoBancosSAT();
+  fetch_catalogoBancosExt();
 
   $('.prov').click(function(){
     var accion = $(this).attr('accion');
@@ -87,7 +88,7 @@ $(document).ready(function(){
     id_ben = $('#cat-benef').attr('db-id');
     banco = $('#bcoSAT').attr('db-id');
     cuenta = $('#cinter').val();
-    nomBan = $('#nomBco').val();
+    nomBan = $('#nomBco').attr('db-id');
 
 
     if( id_ben == "" ){
@@ -298,4 +299,34 @@ function buscarCtasBenef(id){
     }
 
   });
+}
+
+function fetch_catalogoBancosSAT(){
+    $.ajax({
+      method: 'POST',
+      url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_bancos.php',
+      success: function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          $('#catalogo-bancossat-helper').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      }
+    })
+}
+
+function fetch_catalogoBancosExt(){
+    $.ajax({
+      method: 'POST',
+      url: '/conta6/Resources/PHP/actions/lst_conta_cs_bancos_extranjeros.php',
+      success: function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          $('#catalogo-bancosext-helper').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      }
+    })
 }

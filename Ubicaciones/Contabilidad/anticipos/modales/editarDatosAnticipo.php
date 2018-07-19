@@ -26,7 +26,7 @@
                 </td>
 
                 <td class="col-md-6 input-effect">
-                  <input class="efecto tiene-contenido" type="text" id='fk_id_cuentaMST' db-id="">
+                  <select class="efecto tiene-contenido" type="text" id='fk_id_cuentaMST' db-id=""></select>
                   <label for="fk_id_cuentaMST">Cuenta</label>
           			  <!-- <select class="custom-select" size='1' name='fk_id_cuentaMST' id='fk_id_cuentaMST' db-id="">
           				  <option selected value='0'>Seleccione una Cuenta</option>

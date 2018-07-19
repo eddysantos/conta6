@@ -195,37 +195,96 @@ function genAnt(){
   $('tbody').on('click', '.editar-anticipoMST', function(){
       var dbid = $(this).attr('db-id');
       var tar_modal = $($(this).attr('href'));
+
+      data_lst = {
+        modulo: 'antGenClt',
+        cliente: $('#antcliente').attr('db-id')
+      }
+
+      var lista_cuentas = $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/lst_cuentas.php",
+        data: data_lst
+      });
+
       var fetch_cuenta = $.ajax({
         method: 'POST',
         data: {dbid: dbid},
         url: 'actions/fetchAnticipoMST.php'
       });
 
-      fetch_cuenta.done(function(r){
-        r = JSON.parse(r);
-        if (r.code == 1) {
+      $.when(lista_cuentas, fetch_cuenta).done(function(r1, r2){
+        //r1 = JSON.parse(r1);
+        //console.log(r2);
+        //console.log(r1);
+        r1 = JSON.parse(r1[0]);
+        r2 = JSON.parse(r2[0]);
+        console.log(r2);
+        if (r2.code == 1) {
 
-        for (var key in r.data) {
-          if ($('#' + key).is('select')) {
-            continue;
-          }
+        $('#fk_id_cuentaMST').html(r1.data);
 
-          if (r.data.hasOwnProperty(key)) {
-            $('#' + key).html(r['data'][key]).val(r['data'][key]).addClass('tiene-contenido');
+        for (var key in r2.data) {
+
+
+          if (r2.data.hasOwnProperty(key)) {
+
+            if ($('#' + key).is('select')) {
+              if (key == 'fk_id_cuentaMST') {
+                $('#fk_id_cuentaMST').children().each(function(e){
+                  var valor = $(this).val();
+                  console.log(r2.data.fk_id_cuentaMST);
+                  if (valor == r2.data.fk_id_cuentaMST) {
+                    $(this).attr('selected', true);
+                  } else {
+                    $(this).attr('selected', false);
+                  }
+                });
+              }
+              continue;
+            }
+
+            $('#' + key).html(r2['data'][key]).val(r2['data'][key]).addClass('tiene-contenido');
             if ( typeof($('#'+key).attr('db-id')) != 'undefined' && $('#'+key).attr('db-id') !== false) {
-              $('#' + key).attr('db-id', r['data'][key]);
+              $('#' + key).attr('db-id', r2['data'][key]);
             }
           }
         }
 
         //$('#s_cta_status').val(r.data.s_cta_status);
-        $('#medit-anticipoMST').attr('db-id', r.data.pk_id_cuenta);
+        $('#medit-anticipoMST').attr('db-id', r2.data.pk_id_cuenta);
 
         tar_modal.modal('show');
         } else {
-          console.error(r);
+          console.error(r2);
         }
-      })
+      });
+
+      // fetch_cuenta.done(function(r){
+      //   r = JSON.parse(r);
+      //   if (r.code == 1) {
+      //
+      //   for (var key in r.data) {
+      //     if ($('#' + key).is('select')) {
+      //       continue;
+      //     }
+      //
+      //     if (r.data.hasOwnProperty(key)) {
+      //       $('#' + key).html(r['data'][key]).val(r['data'][key]).addClass('tiene-contenido');
+      //       if ( typeof($('#'+key).attr('db-id')) != 'undefined' && $('#'+key).attr('db-id') !== false) {
+      //         $('#' + key).attr('db-id', r['data'][key]);
+      //       }
+      //     }
+      //   }
+      //
+      //   //$('#s_cta_status').val(r.data.s_cta_status);
+      //   $('#medit-anticipoMST').attr('db-id', r.data.pk_id_cuenta);
+      //
+      //   tar_modal.modal('show');
+      //   } else {
+      //     console.error(r);
+      //   }
+      // })
   });
 
 
@@ -498,6 +557,7 @@ function genAnt(){
   $('tbody').on('click', '.editar-partidaAnt', function(){
     var dbid = $(this).attr('db-id');
     var tar_modal = $($(this).attr('href'));
+
     var fetch_cuenta = $.ajax({
       method: 'POST',
       data: {dbid: dbid},
@@ -815,6 +875,33 @@ function borrarRegistroAnticipo(partida){
         if (r.code == 1) {
           //console.log(r.data);
           $('#antcuenta').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      },
+      error: function(x){
+        console.error(x);
+      }
+    });
+  }
+
+  function lstCuentas_2(modulo,id_cliente){
+  	var data = {
+      id_cliente: id_cliente,
+      modulo: modulo
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/lst_cuentas.php",
+      data: data,
+      success: 	function(r){
+
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          //console.log(r.data);
+          console.log(r.data);
+          return r.data;
         } else {
           console.error(r.message);
         }

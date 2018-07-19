@@ -43,8 +43,13 @@
             </label>
           </td>
           <td class='col-md-3 input-effect'>
-            <input id='nomBco' class='efecto tiene-contenido' type='text' onchange='eliminaBlancosIntermedios(this);'>
-            <label for='nomBco'>NOMBRE BANCO EXTRANJERO</label>
+		  	<input class='efecto tiene-contenido popup-input' id='nomBco' type='text' id-display='#popup-display-nomBco' action='bancosExtranjeros' db-id='' autocomplete='new-password'>
+            <div class='popup-list' id='popup-display-nomBco' style='display:none'></div>
+            <label for='nomBco'>BANCOS EXTRANJEROS
+              <a href='#catalogoBancosEXT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
+            </label>
+            <!--input id='nomBco' class='efecto tiene-contenido' type='text' onchange='eliminaBlancosIntermedios(this);'>
+            <label for='nomBco'>NOMBRE BANCO EXTRANJERO</label-->
           </td>
           <td class='col-md-3 input-effect'>
             <input id='cinter' class='efecto tiene-contenido' type='text' onchange='validarCtaBancaria(this);'>
@@ -78,5 +83,6 @@
 <?php
 require $root . '/conta6/Ubicaciones/footer.php';
 require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
+require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosExt.php';
 require_once('modales/Catalogo.php');
  ?>
