@@ -468,7 +468,7 @@ $(document).ready(function(){
             }
 
 
-            $('#editar-partidaCh').modal('hide');
+            $('.modal').modal('hide');
           });
         //});
 
@@ -507,7 +507,7 @@ $(document).ready(function(){
             console.log(r);
             r = JSON.parse(r);
             if (r.code == 1) {
-console.log(r);
+              console.log(r);
               swal("Exito", "Se generó correctamente.", "success");
               setTimeout('document.location.reload()',700);
             } else {

@@ -100,30 +100,30 @@
     <!-- SOLO ESTARA VISIBLE CUANDO SELECCIONEN CUENTA 0100-0 -->
 
               <tr class="row m-0 mt-4" id="form0100" style="display:none">
-                <td class="col-md-3 input-effect">
+                <td class="col-md-4 input-effect">
                   <input class="efecto popup-input" id="banSAT" type="text" id-display="#popup-display-banSAT" action="bancosSAT" db-id="" autocomplete="new-password">
                   <div class="popup-list" id="popup-display-banSAT" style="display:none"></div>
                   <label for='banSAT'>BANCOS
                     <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
                   </label>
                 </td>
-                <td class="col-md-3 input-effect">
+                <td class="col-md-4 input-effect">
                   <input class='efecto tiene-contenido popup-input' id='nomBcoExt' type='text' id-display='#popup-display-nomBcoExt' action='bancosExtranjeros' db-id='' autocomplete='new-password'>
                   <div class='popup-list' id='popup-display-nomBcoExt' style='display:none'></div>
                   <label for='nomBcoExt'>BANCOS EXTRANJEROS
                     <a href='#catalogoBancosEXT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
                   </label>
                 </td>
-                <td class="col-md-3 input-effect">
+                <td class="col-md-4 input-effect">
                   <input id="noCuenta" class="efecto" type="text" onchange='validarCtaBancaria(this);'>
                   <label for="noCuenta">CUENTA / INTERBANCARIA</label>
                 </td>
-                <td class="col-md-3 input-effect">
+                <td class="col-md-6 input-effect mt-4">
                   <input class="efecto popup-input" id="oficina" type="text" id-display="#popup-display-oficina" action="oficinas" db-id="" autocomplete="new-password">
                   <div class="popup-list" id="popup-display-oficina" style="display:none"></div>
-                  <label for="detpol-oficina">OFICINA</label>
+                  <label for="oficina">OFICINA</label>
                 </td>
-                <td class="col-md-3 input-effect">
+                <td class="col-md-6 input-effect mt-4">
                   <input id="obser" class="efecto" type="text" onchange="eliminaBlancosIntermedios(this)">
                   <label for="obser">OBSERVACIONES</label>
                 </td>
@@ -149,7 +149,6 @@
     <!-- termina CUENTA 0115-0   -->
 
               <tr class="row justify-content-center m-0 mt-4">
-
     <!-- SOLO ESTARA VISIBLE CUANDO SELECCIONEN CUENTA 0206-0   -->
                 <td class="col-md-4 input-effect" id="form0206" style="display:none">
                   <input class="efecto popup-input" id="prov0206" type="text" id-display="#popup-display-prov0206" action="proveedores0206" db-id="" autocomplete="new-password"
@@ -245,6 +244,7 @@
 require_once('modales/EditarCatalogo.php');
 require_once('modales/catalogoSAT.php');
 require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
+require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosEXT.php';
 require $root . '/conta6/Ubicaciones/footer.php';
 $db->close();
 

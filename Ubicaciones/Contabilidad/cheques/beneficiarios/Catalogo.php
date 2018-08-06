@@ -81,8 +81,9 @@
 
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
 require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosExt.php';
+require $root . '/Conta6/Ubicaciones/Contabilidad/modales/catalogoBancosExt.php';
+require $root . '/conta6/Ubicaciones/footer.php';
+
 require_once('modales/Catalogo.php');
  ?>

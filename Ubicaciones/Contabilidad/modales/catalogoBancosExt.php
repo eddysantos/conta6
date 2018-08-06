@@ -1,5 +1,5 @@
 <!--EDITAR CATALO DE BANCOS EXTRANJEROS-->
-<div class="modal fade" id="catalogoBancosExt" style="margin-top:50px">
+<div class="modal fade" id="catalogoBancosEXT" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
@@ -13,10 +13,10 @@
           <table class='table text-center table-hover fixed-table'>
             <thead>
               <tr class='row encabezado m-0'>
-                <td class='col-md-1'>Clave</td>
-                <td class='col-md-2'>Banco</td>
+                <td class='col-md-2'>Clave</td>
+                <td class='col-md-6'>Banco</td>
                 <td class='col-md-1'>Activa</td>
-                <td class='col-md-2'>Última mofificación</td>
+                <td class='col-md-3'>Última mofificación</td>
               </tr>
             </thead>
             <tbody id="catalogo-bancosext-helper"></tbody>

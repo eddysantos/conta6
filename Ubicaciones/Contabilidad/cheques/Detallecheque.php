@@ -115,8 +115,8 @@ if( $rows > 0 ){
             <td class="col-md-2">FECHA REGISTRO</td>
             <td class="col-md-2">FECHA CHEQUE</td>
             <td class="col-md-1">OFICINA</td>
-            <td class="col-md-1">IMPORTE</td>
-            <td class="col-md-1">CANCELACION</td>
+            <td class="col-md-2">IMPORTE</td>
+            <td class="col-md-2">CANCELACION</td>
           </tr>
         </thead>
         <tbody>
@@ -167,7 +167,10 @@ if( $rows > 0 ){
         <li class="nav-item">
           <a href="#" id="detallecheque" class="nav-link">Detalle del Cheque</a>
         </li>
-        <?php if( $id_poliza > 0  ){ ?>
+        <!-- <li class="nav-item">
+          <a href="#" class="nav-link">Información Adicional</a>
+        </li> -->
+        <?php if( $id_poliza > 0){ ?>
         <li class="nav-item">
           <a href="#" class="nav-link">Información Adicional</a>
         </li>
@@ -197,7 +200,7 @@ if( $rows > 0 ){
                       <input class="efecto popup-input" id="cdchGtoficina" type="text" id-display="#popup-display-cdchGtoficina" action="oficinas" db-id="" autocomplete="new-password"
                       onChange="valDescripOficinaCapCh()">
                       <div class="popup-list" id="popup-display-cdchGtoficina" style="display:none"></div>
-                      <label for="detpol-cdchGtoficina">Gasto Oficina</label>
+                      <label for="cdchGtoficina">Gasto Oficina</label>
                     </td>
                   </tr>
                   <tr class="row m-0 mt-4">
@@ -219,7 +222,7 @@ if( $rows > 0 ){
                   </tr>
                   <tr class="row m-0 mt-4">
                     <td class="col-md-12 input-effect">
-                      <input  class="efecto" id="cdchConcepto" onchange="valDescripOficina();eliminaBlancosIntermedios(this);todasMayusculas(this);">
+                      <input  class="efecto tiene-contenido" id="cdchConcepto" onchange="valDescripOficina();eliminaBlancosIntermedios(this);todasMayusculas(this);">
                       <label for="cdchConcepto">Concepto</label>
                     </td>
                   </tr>
@@ -243,7 +246,7 @@ if( $rows > 0 ){
                     <td class="col-md-2 input-effect">
                       <input class="efecto popup-input" id="cdchAnticipo" type="text" id-display="#popup-display-cdchAnticipo" action="anticipos_mst" db-id="" autocomplete="new-password">
                       <div class="popup-list" id="popup-display-cdchAnticipo" style="display:none"></div>
-                      <label for="detpol-cdchAnticipo">Anticipo</label>
+                      <label for="cdchAnticipo">Anticipo</label>
                     </td>
                     <td class="col-md-2 input-effect">
                       <input class="efecto tiene-contenido" id="cdchCargo" value="0" onchange="validaIntDec(this);">
@@ -315,49 +318,25 @@ if( $rows > 0 ){
               </thead>
               <tbody>
                 <tr class="row m-0 backpink">
-                  <td class="xs"></td>
-                  <td class="small">CUENTA</td>
-                  <td class="small">GASTO</td>
-                  <td class="small">PROV</td>
-                  <td class="small">REFERENCIA</td>
-                  <td class="small">CLIENTE</td>
-                  <td class="small">DOCUMENTO</td>
-                  <td class="small">FACTURA</td>
-                  <td class="small">CTA GASTOS</td>
-                  <td class="small">PAGO ELECT</td>
-                  <td class="small">NOTACRED</td>
-                  <td class="small">ANTICIPO</td>
-                  <td class="med">DESCRIPCION</td>
-                  <td class="small">CARGO</td>
-                  <td class="small">ABONO</td>
-                  <td class="xs"></td>
+                  <td class="p-0 pt-1 xs"></td>
+                  <td class="p-0 pt-1 small">CUENTA</td>
+                  <td class="p-0 pt-1 ssm">GASTO</td>
+                  <td class="p-0 pt-1 ssm">PROV</td>
+                  <td class="p-0 pt-1 small">REFERENCIA</td>
+                  <td class="p-0 pt-1 small">CLIENTE</td>
+                  <td class="p-0 pt-1 small">DOC</td>
+                  <td class="p-0 pt-1 ssm">FACT</td>
+                  <td class="p-0 pt-1 ssm">CTA GASTOS</td>
+                  <td class="p-0 pt-1 ssm">PAGO ELECT</td>
+                  <td class="p-0 pt-1 small">NOTACRED</td>
+                  <td class="p-0 pt-1 small">ANTICIPO</td>
+                  <td class="p-0 pt-1 ssm">CHEQUE</td>
+                  <td class="p-0 pt-1 med">DESCRIPCION</td>
+                  <td class="p-0 pt-1 small">CARGO</td>
+                  <td class="p-0 pt-1 small">ABONO</td>
+                  <td class="p-0 pt-1 xxs"></td>
                 </tr>
                 <tbody id="tabla_detallecheque"></tbody>
-                <!--tr class="row m-0 borderojo pt-3 pb-2 p-0">
-                  <td class="xs p-0">
-                    <a href="">
-                      <img class="icochico" src="/conta6/Resources/iconos/002-trash.svg">
-                    </a>
-                  </td>
-                  <td class="small p-0">0110-00001</td>
-                  <td class="small p-0">2222</td>
-                  <td class="small p-0">2222</td>
-                  <td class="small p-0">CLT_7118</td>
-                  <td class="small p-0">2222</td>
-                  <td class="small p-0">2222</td>
-                  <td class="small p-0">2222</td>
-                  <td class="small p-0">2222</td>
-                  <td class="small p-0">2222</td>
-                  <td class="small p-0">2222</td>
-                  <td class="med p-0">T.DE LA FED.PTO.7003459</td>
-                  <td class="small p-0">111,133,299</td>
-                  <td class="small p-0">33,299</td>
-                  <td class="xs p-0">
-                    <a href="#editarRegCheque" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                </tr-->
               </tbody>
             </table>
           </div>

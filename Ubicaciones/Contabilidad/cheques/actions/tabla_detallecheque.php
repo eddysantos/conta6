@@ -42,26 +42,26 @@ while ($row = $rslt->fetch_assoc()) {
   $partida = $row['pk_partida'];
 
   $system_callback['data'] .=
-  "<tr class='row m-0 borderojo pt-3 pb-2 p-0'>
+  "<tr class='row m-0 borderojo  pb-2 p-0' style='font-size:12px!important'>
       <td class='xs'>
         <a href='#' onclick='borrarRegistroCheque($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
       </td>
-      <td class='small pt-3 p-0'>$row[fk_id_cuenta]</td>
-      <td class='small pt-3 p-0'>$row[fk_gastoAduana]</td>
-      <td class='small pt-3 p-0'>$row[fk_id_proveedor]</td>
-      <td class='small pt-3 p-0'>$row[fk_referencia]</td>
-      <td class='small pt-3 p-0'>$row[fk_id_cliente]</td>
-      <td class='small pt-3 p-0'>$row[s_folioCFDIext]</td>
-      <td class='small pt-3 p-0'>$row[fk_factura]</td>
-      <td class='small pt-3 p-0'>$row[fk_ctagastos]</td>
-      <td class='small pt-3 p-0'>$row[fk_pago]</td>
-      <td class='small pt-3 p-0'>$row[fk_nc]</td>
-      <td class='small pt-3 p-0'>$row[fk_anticipo]</td>
-      <td class='small pt-3 p-0'>$row[fk_id_cheque]</td>
-      <td class='med pt-3 p-0'>$row[s_desc]</td>
-      <td class='small pt-3 p-0'>$row[n_cargo]</td>
-      <td class='small pt-3 p-0'>$row[n_abono]</td>
-      <td class='xs'>
+      <td class='pt-3 small p-0'>$row[fk_id_cuenta]</td>
+      <td class='pt-3 ssm p-0'>$row[fk_gastoAduana]</td>
+      <td class='pt-3 ssm p-0'>$row[fk_id_proveedor]</td>
+      <td class='pt-3 small p-0'>$row[fk_referencia]</td>
+      <td class='pt-3 small p-0'>$row[fk_id_cliente]</td>
+      <td class='pt-3 small p-0'>$row[s_folioCFDIext]</td>
+      <td class='pt-3 ssm p-0'>$row[fk_factura]</td>
+      <td class='pt-3 ssm p-0'>$row[fk_ctagastos]</td>
+      <td class='pt-3 ssm p-0'>$row[fk_pago]</td>
+      <td class='pt-3 small p-0'>$row[fk_nc]</td>
+      <td class='pt-3 small p-0'>$row[fk_anticipo]</td>
+      <td class='pt-3 ssm p-0'>$row[fk_id_cheque]</td>
+      <td class='pt-3 med p-0'>$row[s_desc]</td>
+      <td class='pt-3 small p-0'>$row[n_cargo]</td>
+      <td class='pt-3 small p-0'>$row[n_abono]</td>
+      <td class='pt-3 xxs'>
         <a href='#editarRegCheque' class='editar-partidaCh' db-id='$partida' data-toggle='modal'>
           <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
         </a>

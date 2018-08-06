@@ -126,11 +126,22 @@ height: 30px;
   min-width: 2.32%;
   max-width: 2.32%;
 }
+
+.xxs{
+  min-width: 1.5%;
+  max-width: 1.5%;
+}
+.ssm{
+  max-width: 4%;
+  min-width: 4%;
+  /* font-size: 12px!important; */
+}
 .small{
   max-width: 5.9%;
   min-width: 5.9%;
   font-size: 12px!important;
 }
+
 .sm{
   min-width: 8.86%;
   max-width: 8.86%;
@@ -251,6 +262,14 @@ height: 30px;
 
 .mb-10{
   margin-bottom: 8rem!important;
+}
+.dimdiv{
+  height: 50px;
+  /* width: 80px; */
+  background-color: transparent;
+  /* display: inline; */
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 

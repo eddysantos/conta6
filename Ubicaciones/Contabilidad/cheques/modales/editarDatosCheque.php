@@ -37,32 +37,32 @@ echo $opcion;
           <div class="contorno" id="contorno">
             <table class="table form1 font14">
               <tbody>
+                <tr class="row m-0 mt-3">
+                  <td class="col-md-12 sub2" style="font-size:14px!important">Páguese a la orden de:</td>
+                </tr>
                 <tr class="row m-0 mt-5">
-                    <td class="col-md-3 input-effect">Páguese a la orden de:</td>
+                  <td class="col-md-6 input-effect">
+                    <input class="efecto popup-input tiene-contenido" id="chBen" type="text" id-display="#popup-display-chBen" action="beneficiarios" autocomplete="off"
+                      value="<?php echo $nomBen; ?>" db-id="<?php echo $idBen; ?>">
+                    <div class="popup-list" id="popup-display-chBen" style="display:none"></div>
+                    <label for="chBen">Beneficiario</label>
+                   </td>
+                   <td class="col-md-6 input-effect">
+                    <input class="efecto popup-input tiene-contenido" id="chClt" type="text" id-display="#popup-display-chClt" action="clientes" autocomplete="off"
+                      value="<?php echo $nomClt; ?>" db-id="<?php echo $idClt; ?>">
+                    <div class="popup-list" id="popup-display-chClt" style="display:none"></div>
+                    <label for="chClt">Cliente</label>
+                  </td>
                 </tr>
                 <tr class="row m-0 mt-5">
                     <td class="col-md-6 input-effect">
-                      <input class="efecto popup-input" id="chBen" type="text" id-display="#popup-display-chBen" action="beneficiarios" autocomplete="off"
-                        value="<?php echo $nomBen; ?>" db-id="<?php echo $idBen; ?>">
-                      <div class="popup-list" id="popup-display-chBen" style="display:none"></div>
-                      <label for="chBen">Beneficiario</label>
-                     </td>
-                     <td class="col-md-3 input-effect">
-                      <input class="efecto popup-input" id="chClt" type="text" id-display="#popup-display-chClt" action="clientes" autocomplete="off"
-                        value="<?php echo $nomClt; ?>" db-id="<?php echo $idClt; ?>">
-                      <div class="popup-list" id="popup-display-chClt" style="display:none"></div>
-                      <label for="chClt">Cliente</label>
-                    </td>
-                </tr>
-                <tr class="row m-0 mt-5">
-                    <td class="col-md-3 input-effect">
-                      <input class="efecto popup-input" id="chEmp" type="text" id-display="#popup-display-chEmp" action="empleados" autocomplete="off"
+                      <input class="efecto popup-input tiene-contenido" id="chEmp" type="text" id-display="#popup-display-chEmp" action="empleados" autocomplete="off"
                         value="<?php echo $nomEmp; ?>" db-id="<?php echo $idEmp; ?>">
                       <div class="popup-list" id="popup-display-chEmp" style="display:none"></div>
                       <label for="chEmp">Empleado</label>
                     </td>
                     <td class="col-md-6 input-effect">
-                      <input class="efecto popup-input" id="chProv" type="text" id-display="#popup-display-chProv" action="proveedores" autocomplete="off"
+                      <input class="efecto popup-input tiene-contenido" id="chProv" type="text" id-display="#popup-display-chProv" action="proveedores" autocomplete="off"
                         value="<?php echo $nomProv; ?>" db-id="<?php echo $idProv; ?>">
                       <div class="popup-list" id="popup-display-chProv" style="display:none"></div>
                       <label for="chProv">Proveedor</label>
@@ -85,15 +85,16 @@ echo $opcion;
                     <input id="chImporte" class="efecto tiene-contenido" type="text" value="<?php echo $rowMST['n_valor']; ?>" onchange="validaSoloNumeros(this)">
                     <label for="chImporte">Importe</label>
                   </td>
+
+                  <td class="col-md-3">
+                    <input class="efecto tiene-contenido popup-input" id="chCta" type="text" id-display="#popup-display-chCta" action="cuentas_mst_0100_oficina" autocomplete="off"
+                      value="<?php echo $rowMST['fk_id_cuentaMST']; ?>" db-id="<?php echo $rowMST['fk_id_cuentaMST']; ?>">
+                    <div class="popup-list" id="popup-display-chCta" style="display:none"></div>
+                    <label for="chCta">Cuenta</label>
+                  </td>
                 </tr>
                 <tr class="row mt-5 m-0">
-                  <td class="col-md-6">
-                      <input class="efecto tiene-contenido popup-input" id="chCta" type="text" id-display="#popup-display-chCta" action="cuentas_mst_0100_oficina" autocomplete="off"
-                        value="<?php echo $rowMST['fk_id_cuentaMST']; ?>" db-id="<?php echo $rowMST['fk_id_cuentaMST']; ?>">
-                      <div class="popup-list" id="popup-display-chCta" style="display:none"></div>
-                      <label for="chCta">Seleccione una Cuenta</label>
-                  </td>
-                  <td class="col-md-6">
+                  <td class="col-md-12">
                     <input id="chConcep" class="efecto tiene-contenido" value="<?php echo $rowMST['s_concepto']; ?>" type="text" onchange="eliminaBlancosIntermedios(this);">
                     <label for="chConcep">Concepto</label>
                   </td>

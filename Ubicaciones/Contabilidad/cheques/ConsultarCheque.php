@@ -80,18 +80,18 @@
         <tr class='row borderojo'>
           <td class='xs'></td>
           <td class='small pt-3 p-0'>$row[fk_id_cuenta]</td>
-          <td class='small pt-3 p-0'>$row[fk_gastoAduana]</td>
-          <td class='small pt-3 p-0'>$row[fk_id_proveedor]</td>
+          <td class='ssm pt-3 p-0'>$row[fk_gastoAduana]</td>
+          <td class='ssm pt-3 p-0'>$row[fk_id_proveedor]</td>
           <td class='small pt-3 p-0'>$row[fk_referencia]</td>
           <td class='small pt-3 p-0'>$row[fk_id_cliente]</td>
           <td class='small pt-3 p-0'>$row[s_folioCFDIext]</td>
-          <td class='small pt-3 p-0'>$row[fk_factura]</td>
-          <td class='small pt-3 p-0'>$row[fk_ctagastos]</td>
-          <td class='small pt-3 p-0'>$row[fk_pago]</td>
+          <td class='ssm pt-3 p-0'>$row[fk_factura]</td>
+          <td class='ssm pt-3 p-0'>$row[fk_ctagastos]</td>
+          <td class='ssm pt-3 p-0'>$row[fk_pago]</td>
           <td class='small pt-3 p-0'>$row[fk_nc]</td>
           <td class='small pt-3 p-0'>$row[fk_anticipo]</td>
-          <td class='small pt-3 p-0'>$row[fk_id_cheque]</td>
-          <td class='gde pt-3 p-0'>$row[s_desc]</td>
+          <td class='ssm pt-3 p-0'>$row[fk_id_cheque]</td>
+          <td class='med pt-3 p-0'>$row[s_desc]</td>
           <td class='small pt-3 p-0'>$row[n_cargo]</td>
           <td class='small pt-3 p-0'>$row[n_abono]</td>
           <td class='xs'></td>
@@ -125,6 +125,7 @@
           <tr class="row encabezado">
             <td class="col-md-1">POLIZA</td>
             <td class="col-md-1">USUARIO</td>
+            <td class="col-md-2">CUENTA</td>
             <td class="col-md-1">NO.CHEQUE</td>
             <td class="col-md-2">FECHA CHEQUE</td>
             <td class="col-md-1">IMPORTE</td>
@@ -136,27 +137,33 @@
         <tbody class="font14">
           <tr class="row">
             <td class="col-md-1"><?php echo $rowMST['fk_id_poliza']; ?>
-              <input type="text" id="dchPoliza" value="<?php echo $rowMST['fk_id_poliza']; ?>">
-              <input type="text" id="dchIdcheque" value="<?php echo $rowMST['pk_id_cheque']; ?>">
-              <input type="text" id="dchCtaMST" value="<?php echo $rowMST['fk_id_cuentaMST']; ?>">
+              <input type="text" class="efecto h22" id="dchPoliza" value="<?php echo $rowMST['fk_id_poliza']; ?>">
+              <!-- <input type="text" id="dchIdcheque" value="<?php echo $rowMST['pk_id_cheque']; ?>"> -->
+              <!-- <input type="text" id="dchCtaMST" value="<?php echo $rowMST['fk_id_cuentaMST']; ?>"> -->
             </td>
             <td class="col-md-1"><?php echo $rowMST['fk_usuario']; ?></td>
+            <td class="col-md-2"><?php echo $rowMST['fk_id_cuentaMST']; ?></td>
             <td class="col-md-1"><?php echo $rowMST['pk_id_cheque']; ?></td>
             <td class="col-md-2"><?php echo $rowMST['d_fechache']; ?></td>
-            <td class="col-md-2"><?php echo $rowMST['n_valor']; ?></td>
+            <td class="col-md-1"><?php echo $rowMST['n_valor']; ?></td>
             <td class="col-md-2"><?php echo $rowMST['d_fecha_alta']; ?></td>
             <td class="col-md-1"><?php echo $txt_cancela; ?></td>
             <td class="col-md-1"><?php echo $rowMST['fk_id_aduana']; ?></td>
           </tr>
-          <tr class="row mt-3">
+          <!-- <tr class="row mt-3">
             <td class="col-md-12 colorRosa">CONCEPTO</td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-12"><?php echo $rowMST['s_concepto']; ?></td>
-          </tr>
-          <tr class="row backpink mt-3">
-            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_idOrd']; ?></td>
-            <td class="col-md-7"><?php echo $rowMST['s_nomOrd']; ?></td>
+          </tr> -->
+          <!-- <tr class="row">
+            <td class="col-md-2">CONCEPTO</td>
+            <td class="col-md-10"><?php echo $rowMST['s_concepto']; ?></td>
+          </tr> -->
+          <tr class="row mt-3">
+            <td class="col-md-1">CONCEPTO:</td>
+            <td class="col-md-4 text-left "><?php echo $rowMST['s_concepto']; ?></td>
+            <td class="col-md-1"></td>
+            <td class="col-md-1 backpink">BENEFICIARIO:</td>
+            <td class="col-md-1 backpink"><?php echo $rowMST['fk_idOrd']; ?></td>
+            <td class="col-md-4 backpink text-left"><?php echo $rowMST['s_nomOrd']; ?></td>
           </tr>
         </tbody>
       </table>
@@ -174,7 +181,7 @@
         <a href="#" id="btn_printChe" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
       </div>
       <?php } ?>
-      <div class="col-md-2 offset-md-6">
+      <div class="col-md-2 offset-md-7">
         <input class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
       </div>
       <div class="col-md-2">
@@ -191,23 +198,23 @@
       </thead>
       <tbody>
         <tr class="row backpink">
-          <td class="xs"></td>
-          <td class="small">CUENTA</td>
-          <td class="small">GASTO</td>
-          <td class="small">PROV</td>
-          <td class="small">REFERENCIA</td>
-          <td class="small">CLIENTE</td>
-          <td class="small">DOCUMENTO</td>
-          <td class="small">FACTURA</td>
-          <td class="small">CTA GASTOS</td>
-          <td class="small">PAGO ELECT</td>
-          <td class="small">NOTACRED</td>
-          <td class="small">ANTICIPO</td>
-          <td class="small">CHEQUE</td>
-          <td class="med">DESCRIPCION</td>
-          <td class="small">CARGO</td>
-          <td class="small">ABONO</td>
-          <td class="xs"></td>
+          <td class="p-0 pt-1 xs"></td>
+          <td class="p-0 pt-1 small">CUENTA</td>
+          <td class="p-0 pt-1 ssm">GASTO</td>
+          <td class="p-0 pt-1 ssm">PROV</td>
+          <td class="p-0 pt-1 small">REFERENCIA</td>
+          <td class="p-0 pt-1 small">CLIENTE</td>
+          <td class="p-0 pt-1 small">DOC</td>
+          <td class="p-0 pt-1 ssm">FACT</td>
+          <td class="p-0 pt-1 ssm">CTA GASTOS</td>
+          <td class="p-0 pt-1 ssm">PAGO ELECT</td>
+          <td class="p-0 pt-1 small">NOTACRED</td>
+          <td class="p-0 pt-1 small">ANTICIPO</td>
+          <td class="p-0 pt-1 ssm">CHEQUE</td>
+          <td class="p-0 pt-1 med">DESCRIPCION</td>
+          <td class="p-0 pt-1 small">CARGO</td>
+          <td class="p-0 pt-1 small">ABONO</td>
+          <td class="p-0 pt-1 xxs"></td>
         </tr>
         <tbody class="font14"><?php echo $contenidoDetalle; ?></tbody>
       </tbody>

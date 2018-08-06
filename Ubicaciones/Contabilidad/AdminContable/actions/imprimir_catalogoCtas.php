@@ -14,23 +14,23 @@
 	while ($row = $rslt->fetch_assoc()) {
 		if( $row[s_cta_status] == 1 ){ $txt_captura = "Permitido"; }else{ $txt_captura = "Denegado"; }
 		if( $row[s_cta_actividad] == 1 ){
-			$img = '<img src="/conta6/Resources/iconos/righ.svg" style="margin-top:-4px">';
+			$img = '<img src="/conta6/Resources/iconos/check.svg" style="margin-top:-4px" class="w-25">';
 		}else{
-			$img = '<img src="/conta6/Resources/iconos/cros.svg" style="margin-top:-4px">';
+			$img = '<img src="/conta6/Resources/iconos/cross.svg" style="margin-top:-4px" class="w-25">';
 		}
 
 		$lst_cuentas .=
-	  "<tr class='row m-0 borderojo pt-3 pb-2 p-0'>
-	      <td class='small pt-3 p-0'>$row[pk_id_cuenta]</td>
-	      <td class='small pt-3 p-0'>$row[s_cta_desc]</td>
-	      <td class='small pt-3 p-0'>$row[s_cta_tipo]</td>
-	      <td class='small pt-3 p-0'>$row[s_cta_nivel]</td>
-	      <td class='small pt-3 p-0'>$txt_captura</td>
-	      <td class='small pt-3 p-0'>$row[fk_codAgrup]</td>
-	      <td class='small pt-3 p-0'>$row[fk_id_naturaleza]</td>
-	      <td class='small pt-3 p-0'>$img</td>
-	      <td class='small pt-3 p-0'>$row[s_cta_identificador_tipo]</td>
-	      <td class='small pt-3 p-0'>$row[s_cta_identificador]</td>
+	  "<tr class='row m-0 borderojo pt-2 pb-1 p-0 text-center'>
+	      <td class='sm font12 p-0'>$row[pk_id_cuenta]</td>
+	      <td class='text-left font12 gde p-0'>$row[s_cta_desc]</td>
+	      <td class='small p-0'>$row[s_cta_tipo]</td>
+	      <td class='small p-0'>$row[s_cta_nivel]</td>
+	      <td class='small p-0'>$txt_captura</td>
+	      <td class='small p-0'>$row[fk_codAgrup]</td>
+	      <td class='small p-0'>$row[fk_id_naturaleza]</td>
+	      <td class='small p-0'>$img</td>
+	      <td class='small p-0'>$row[s_cta_identificador_tipo]</td>
+	      <td class='small p-0'>$row[s_cta_identificador]</td>
 	    </tr>";
 	}
 
@@ -44,9 +44,9 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr class="row m-0 backpink">
-			<td class="small">CUENTA</td>
-			<td class="small">DESCRIPCION</td>
+		<tr class="row m-0 backpink text-center">
+			<td class="sm">CUENTA</td>
+			<td class="gde">DESCRIPCION</td>
 			<td class="small">TIPO</td>
 			<td class="small">NIVEL</td>
 			<td class="small">LINEA DE CAPTURA</td>

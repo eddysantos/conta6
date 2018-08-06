@@ -73,23 +73,21 @@
         <h5 class="modal-tittle">Modificar Cheque</h5>
       </div>
       <div class="modal-body">
-        <div class="row titulograndetop-modal">
-          <div class="col-md-12">
-            <label>CHEQUE</label>
-          </div>
-        </div>
-        <div class="row intermedio-modal">
-          <div class="col-md-12">
-            <form class="form-group" autocomplete="off">
-              <input id="mModifiChIdcheque" class="reg border-0" type="text">
-            </form>
-          </div>
-        </div>
-        <div>
-          <input class="efecto popup-input" id="mModifiChCtaMST" type="text" id-display="#popup-display-mModifiChCtaMST" action="cuentas_mst_0100_oficina" db-id="" autocomplete="off">
-          <div class="popup-list" id="popup-display-mModifiChCtaMST" style="display:none"></div>
-          <label for="mModifiChCtaMST">Seleccione una Cuenta</label>
-        </div>
+        <form class="form1">
+          <table class="table">
+            <tr class="row m-0 mt-3">
+              <td class="col-md-4 input-effect">
+                <input id="mModifiChIdcheque" class="efecto" type="text">
+                <label for="mModifiChIdcheque">Cheque</label>
+              </td>
+              <td class="col-md-8 input-effect">
+                <input class="efecto popup-input" id="mModifiChCtaMST" type="text" id-display="#popup-display-mModifiChCtaMST" action="cuentas_mst_0100_oficina" db-id="" autocomplete="off">
+                <div class="popup-list" id="popup-display-mModifiChCtaMST" style="display:none"></div>
+                <label for="mModifiChCtaMST">Seleccione una Cuenta</label>
+              </td>
+            </tr>
+          </table>
+        </form>
         <div class="modal-footer mt-3">
         <a href="#" id="btn_busCheModifi" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
@@ -109,23 +107,21 @@
         <h5 class="modal-tittle">Consultar Cheque</h5>
       </div>
       <div class="modal-body">
-        <div class="row titulograndetop-modal">
-          <div class="col-md-12">
-            <label>CHEQUE</label>
-          </div>
-        </div>
-        <div class="row intermedio-modal">
-          <div class="col-md-12">
-            <form class="form-group" autocomplete="off">
-              <input id="mConsChIdcheque" class="reg border-0" type="text">
-            </form>
-          </div>
-        </div>
-        <div>
-          <input class="efecto popup-input" id="mConsChCtaMST" type="text" id-display="#popup-display-mConsChCtaMST" action="cuentas_mst_0100_oficina" db-id="" autocomplete="off">
-          <div class="popup-list" id="popup-display-mConsChCtaMST" style="display:none"></div>
-          <label for="mConsChCtaMST">Seleccione una Cuenta</label>
-        </div>
+        <form class="form1">
+          <table class="table">
+            <tr class="row m-0 mt-3">
+              <td class="col-md-4 input-effect">
+                <input id="mConsChIdcheque" class="efecto" type="text">
+                <label for="mConsChIdcheque">Cheque</label>
+              </td>
+              <td class="col-md-8 input-effect">
+                <input class="efecto popup-input" id="mConsChCtaMST" type="text" id-display="#popup-display-mConsChCtaMST" action="cuentas_mst_0100_oficina" db-id="" autocomplete="off">
+                <div class="popup-list" id="popup-display-mConsChCtaMST" style="display:none"></div>
+                <label for="mConsChCtaMST">Seleccione una Cuenta</label>
+              </td>
+            </tr>
+          </table>
+        </form>
         <div class="modal-footer mt-3">
           <a href="#" id="btn_busCheConsulta" class="linkbtn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
