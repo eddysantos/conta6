@@ -15,70 +15,71 @@
               <tbody>
                 <tr class="row m-0 mt-4">
                   <td class="col-md-10 input-effect">
-                    <input  list="todascuentas" class="efecto"  id="ch-cuenta1">
-                    <datalist id="todascuentas">
-                      <option value="0206-00648 -- COMITE PARA EL FOMENTO Y PROTECCION PRECUARIA DEL ESTA DE NUEVO LEON A.C"></option>
-                      <option value="0100-00011 ---- BANAMEX DLLS CTA.79033561 NLDO"></option>
-                      <option value="0100-00012 ---- BANAMEX DLLS CTA.79033561 COMPLEMENTARIA NLDO"></option>
-                      <option value="0206-00808 -- CÀMARA DE COMERCIO, SERVICIOS Y TURISMO EN PEQUEÑO DE LA CIUDAD DE MÉXICO"></option>
-                      <option value="0100-00017 ---- BANAMEX CTA.7355485 NLDO"></option>
-                    </datalist>
-                    <label for="ch-cuenta1">Seleccione una Cuenta</label>
+                    <input id="che_partida" type="hidden" db-id="">
+                    <input class="efecto popup-input" id="che_cuenta" type="text" id-display="#popup-display-che_cuenta" action="cuentas_mst_2niv" db-id="" autocomplete="off"
+                    onchange="Actualiza_CuentaCapCh_modal()">
+                    <div class="popup-list" id="popup-display-che_cuenta" style="display:none"></div>
+                    <label for="che_cuenta">Seleccione una Cuenta</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input  list="gtoficina" class="efecto"  id="ch-gtoficina1">
-                    <datalist id="gtoficina">
-                      <option value="AEROPUERTO"></option>
-                      <option value="MANZANILLO"></option>
-                      <option value="NUEVO LAREDO"></option>
-                      <option value="VERACRUZ"></option>
-                    </datalist>
-                    <label for="ch-gtoficina1">Gto.Oficina</label>
+                    <input class="efecto popup-input" id="che_gastoaduana" type="text" id-display="#popup-display-che_gastoaduana" action="oficinas" db-id="" autocomplete="off"
+                    onChange="valDescripOficinaCapCh_modal()">
+                    <div class="popup-list" id="popup-display-che_gastoaduana" style="display:none"></div>
+                    <label for="detpol-che_gastoaduana">Gasto Oficina</label>
                   </td>
                 </tr>
 
                 <tr class="row m-0 mt-4">
                   <td class="col-md-12 input-effect">
-                    <input  list="clientes" class="efecto"  id="ch-cliente1">
-                    <datalist id="clientes">
-                      <option value="AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V --- CLT 6109"></option>
-                      <option value="INTERNATIONAL FREIGHT FORWARDER AND ADVISOR CUSTOMS DELIVERY S.A DE C.V --- CLT_7663"></option>
-                    </datalist>
-                    <label for="ch-cliente1">Cliente</label>
+                    <input class="efecto popup-input" id="che_cliente" type="text" id-display="#popup-display-che_cliente" action="clientes" db-id="" autocomplete="off">
+                    <div class="popup-list" id="popup-display-che_cliente" style="display:none"></div>
+                    <label for="che_cliente">Cliente</label>
                   </td>
                 </tr>
 
                 <tr class="row m-0 mt-4">
                   <td class="col-md-12 input-effect">
-                    <input  class="efecto"  id="ch-concepto1">
-                    <label for="ch-concepto1">Concepto</label>
+                    <input class="efecto popup-input" id="che_proveedor" type="text" id-display="#popup-display-che_proveedor" action="proveedores" db-id="" autocomplete="off">
+                    <div class="popup-list" id="popup-display-che_proveedor" style="display:none"></div>
+                    <label for="che_proveedor">Proveedor</label>
+                  </td>
+                </tr>
+
+                <tr class="row m-0 mt-4">
+                  <td class="col-md-12 input-effect">
+                    <input  class="efecto" id="che_desc" onchange="valDescripOficina();eliminaBlancosIntermedios(this);todasMayusculas(this);">
+                    <label for="che_desc">Concepto</label>
                   </td>
                 </tr>
 
                 <tr class="row m-0 mt-4">
                   <td class="col-md-2 input-effect">
-                    <input  class="efecto"  id="ch-referencia1">
-                    <label for="ch-referencia1">Referencia</label>
+                    <input class="efecto popup-input" id="che_referencia" type="text" id-display="#popup-display-che_referencia" action="referencias" db-id="" autocomplete="off"
+                    onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaReferencia(this);">
+                    <div class="popup-list" id="popup-display-che_referencia" style="display:none"></div>
+                    <label for="che_referencia">Referencia</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input  class="efecto"  id="ch-documento1">
-                    <label for="ch-documento1">Documento</label>
+                    <input  class="efecto" id="che_documento" onchange="validaSoloNumeros(this);">
+                    <label for="che_documento">Documento</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input  class="efecto"  id="ch-factura1">
-                    <label for="ch-factura1">Factura</label>
+                    <input class="efecto popup-input" id="che_factura" type="text" id-display="#popup-display-che_factura" action="facturas_cfdi" db-id="" autocomplete="off">
+                    <div class="popup-list" id="popup-display-che_factura" style="display:none"></div>
+                    <label for="che_factura">Factura</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input  class="efecto"  id="ch-anticipo1">
-                    <label for="ch-anticipo1">Anticipo</label>
+                    <input class="efecto popup-input" id="che_anticipo" type="text" id-display="#popup-display-che_anticipo" action="anticipos_mst" db-id="" autocomplete="off">
+                    <div class="popup-list" id="popup-display-che_anticipo" style="display:none"></div>
+                    <label for="che_anticipo">Anticipo</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input  class="efecto"  id="ch-cargo1">
-                    <label for="ch-cargo1">Cargo</label>
+                    <input class="efecto tiene-contenido" id="che_cargo" value="0" onchange="validaIntDec(this);">
+                    <label for="che_cargo">Cargo</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input  class="efecto"  id="ch-abono1">
-                    <label for="ch-abono1">Abono</label>
+                    <input class="efecto tiene-contenido" id="che_abono" value="0" onchange="validaIntDec(this);">
+                    <label for="che_abono">Abono</label>
                   </td>
                 </tr>
               </tbody>
@@ -87,7 +88,7 @@
         </div>
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a href="" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="#" id="btnRegDetChPartida" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>

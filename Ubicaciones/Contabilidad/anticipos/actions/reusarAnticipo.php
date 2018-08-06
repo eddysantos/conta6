@@ -48,7 +48,7 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 
-//********** borrando póliza en anticipo **********//
+//********** borrando póliza en el anticipo **********//
 
 $queryUpdateAnt = "UPDATE conta_t_anticipos_mst SET fk_id_poliza = null WHERE pk_id_anticipo= ?";
 
