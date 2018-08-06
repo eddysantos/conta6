@@ -13,16 +13,15 @@
   $desc = trim($_POST['descrip']);
 
   $query = "INSERT INTO conta_t_anticipos_det (fk_id_anticipo,
-    d_fecha,
-    fk_referencia,
-    fk_id_cuenta,
-    -- fk_id_cliente,
-    fk_id_cliente_antdet,
-    s_desc,
-    n_cargo,
-    n_abono,
-    fk_usuario)
-            VALUES (?,?,?,?,?,?,?,?,?)";
+                                                d_fecha,
+                                                fk_referencia,
+                                                fk_id_cuenta,
+                                                -- fk_id_cliente,
+                                                fk_id_cliente_antdet,
+                                                s_desc,
+                                                n_cargo,
+                                                n_abono,
+                                                fk_usuario)VALUES (?,?,?,?,?,?,?,?,?)";
 
   $stmt = $db->prepare($query);
   if (!($stmt)) {
@@ -44,21 +43,9 @@
     exit_script($system_callback);
   }
   $partidaAnticipo = $db->insert_id;
-/*
-  $affected = $stmt->affected_rows;
-  $system_callback['affected'] = $affected;
-  $system_callback['datos'] = $_POST;
-  $system_callback['datos'] = $partidaAnticipo;
-
-  if ($affected == 0) {
-    $system_callback['code'] = 2;
-    $system_callback['message'] = "El query no hizo ningún cambio a la base de datos";
-    exit_script($system_callback);
-  }
-*/
 
 
-  $descripcion = "Se Inserto Detalle Anticipo: $id_anticipo Cta: $cuenta Ref:$referencia Clt:$id_cliente Des:$desc Cargo:$cargo Abono:$abono";
+  $descripcion = "Se genero Partida: $partidaAnticipo Anticipo: $id_anticipo Cta: $cuenta Ref:$referencia Clt:$id_cliente Des:$desc Cargo:$cargo Abono:$abono";
 
   $clave = 'anticipos';
   $folio = $id_anticipo;

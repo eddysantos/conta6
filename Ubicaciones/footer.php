@@ -7,6 +7,7 @@
   <script src="/conta6/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
   <script src="/conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
   <script src="/conta6/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
+  <script src="/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
   <script src="/conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/js/Beneficiarios.js"></script>
 
   <script src="/conta6/Resources/js/validarFormulario.js"></script>

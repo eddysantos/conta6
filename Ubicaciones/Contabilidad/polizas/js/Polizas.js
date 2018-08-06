@@ -97,6 +97,7 @@ $(document).ready(function(){
 			}
   });
 
+
   $('.pol').click(function(){
         var accion = $(this).attr('accion');
         var status = $(this).attr('status');
@@ -365,7 +366,7 @@ function cambiarStatus(){
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/editarStatusPoliza.php",
+				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/cancelaDescancelaPoliza.php",
 				data: data,
 				success: 	function(r){
 					console.log(r);
@@ -483,8 +484,18 @@ function genPol(){
 		data: data,
 		success: 	function(request){
 			r = JSON.parse(request);
-			window.location.replace('Detallepoliza.php?id_poliza='+r+'&tipo='+tipo);
-		}
+				if (r.code == 1) {
+					console.log(r);
+					id_poliza = r.data;
+					window.location.replace('Detallepoliza.php?id_poliza='+id_poliza+'&tipo='+tipo);
+				} else {
+					console.error(r.message);
+				}
+			},
+			error: function(x){
+				console.error(x);
+			}
+
 	});
 }
 
@@ -554,3 +565,8 @@ function valDescripOficina(){
  		desc = desc + " " + descOficina;
 		$('#detpol-concepto').val(desc);
 }
+
+// BOTON IMPRIMIR
+function btn_printPoliza(id_poliza,aduana){
+	window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/actions/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
+};

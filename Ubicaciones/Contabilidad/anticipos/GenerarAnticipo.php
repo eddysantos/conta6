@@ -27,7 +27,8 @@
           <label for="antimporte">Importe</label>
         </td>
         <td class="col-md-8 input-effect">
-          <input class="efecto popup-input" id="antcliente" type="text" id-display="#popup-display-antcliente" action="clientes" db-id="" autocomplete="new-password" onblur="Actualiza_Expedido_Cliente()">
+          <input class="efecto popup-input" id="antcliente" type="text" id-display="#popup-display-antcliente" action="clientes" db-id="" autocomplete="new-password"
+            onblur="Actualiza_Expedido_Cliente()">
           <div class="popup-list" id="popup-display-antcliente" style="display:none"></div>
           <label for="antcliente">Cliente</label>
         </td>
@@ -46,7 +47,7 @@
       </tr>
       <tr class="row  m-0 mt-4">
         <td class="col-9 input-effect">
-          <input id="antconcepto" class="efecto" type="text">
+          <input id="antconcepto" class="efecto" type="text" onchange="eliminaBlancosIntermedios(this)">
           <label for="antconcepto">Concepto</label>
         </td>
         <td class="col-md-3">
@@ -60,16 +61,3 @@
 <?php
 require $root . '/conta6/Ubicaciones/footer.php';
 ?>
-
-<!--***************ESTILOS*****************-->
-<link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
-
-<!--***************SCRIPTS*****************-->
-<!--script src="/conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script-->
-<!--script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script>
-<script src="/conta6/Resources/js/validaSoloNumeros.js"></script-->
-
-<!--script src="/conta6/Resources/js/popup-list-plugin.js"></script>
-<script src="/conta6/Resources/js/table-fetch-plugin.js"></script-->

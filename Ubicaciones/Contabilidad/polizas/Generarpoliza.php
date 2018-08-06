@@ -3,7 +3,9 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
+<input type="hidden" id="diaaduana" value="<?php echo $aduana;?>">
 <input type="hidden" id="diausuario" value="<?php echo $usuario;?>">
+
 <div class="text-center">
   <div class="row submenuMed m-0">
     <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
@@ -31,11 +33,10 @@
             <label for="diafecha">Fecha Póliza</label>
           </td>
           <td class="col-md-6 input-effect">
-            <input id="diaconcepto" class="efecto" type="text" maxlength=300>
+            <input id="diaconcepto" class="efecto" type="text" maxlength="300" onchange="eliminaBlancosIntermedios(this)">
             <label for="diaconcepto">Concepto</label>
           </td>
           <td class="col-md-3 input-effect">
-		  	<input type="hidden" id="diaaduana" class="efecto tiene-contenido" type="text" db-id="" value="<?php echo $aduana;?>" readonly>
             <input id="diatipo" class="efecto tiene-contenido" type="text" db-id="" autocomplete="new-password" readonly>
             <label for="diatipo">Tipo</label>
           </td>

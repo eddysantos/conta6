@@ -95,7 +95,7 @@
 <?php
   if( $rows > 0 ){
 ?>
-
+  <input type="hidden" id="mst-anticipo" value="<?php echo $rowMST['pk_id_anticipo']; ?>">
 <!--Comienza DETALLE DATOS DE POLIZA-->
   <div id="datosanticipo" class="contorno" style="display:none">
     <h5 class="titulo">DATOS DE ANTICIPO</h5>
@@ -147,7 +147,7 @@
     <div class="row">
       <div class="col-md-1">
         <?php if( $tienePoliza == true ){ ?>
-        <a href="#" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
+        <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
         <?php } ?>
       </div>
       <div class="col-md-2 offset-md-6">
@@ -187,10 +187,9 @@
 
 <?php
 }else{ #$rows?>
-	<br><br>
-	<p align="center"><u>
-	<font face="Trebuchet MS" size="2" align="center" >NO EXISTE EL ANTICIPO O ES DE OTRA OFICINA</font></u></p>
-	<p align="center">&nbsp;</p>
+  <div class="container-fluid pantallaGris">
+    <div class="tituloSinRegistros">NO EXISTE EL ANTICIPO O ES DE OTRA OFICINA</div>
+  </div>
 <?php
 } #$rows
 

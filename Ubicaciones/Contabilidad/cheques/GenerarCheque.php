@@ -20,8 +20,8 @@
           <td class="col-md-3 input-effect">
   		  	  <input type="hidden" id="txt_aduana" value="<?php echo $aduana; ?>">
   			    <input type="hidden" id="txt_usuario" value="<?php echo $usuario; ?>">
-            <input class="efecto tiene-contenido" type="date" id="chfecha">
-            <label for="chfecha">Fecha Cheque</label>
+            <input class="efecto tiene-contenido" type="date" id="chefecha">
+            <label for="chefecha">Fecha Cheque</label>
           </td>
 		      <td class="col-md-3 input-effect">
 		  	    <input class="efecto popup-input" id="checuenta" type="text" id-display="#popup-display-checuenta" action="cuentas_mst_0100_oficina" db-id="" autocomplete="new-password">
@@ -31,11 +31,11 @@
         </tr>
         <tr class="row m-0 mt-5">
           <td class="col-md-3 input-effect">
-            <input id="chnumero" class="efecto" type="text">
+            <input id="chenumero" class="efecto" type="text" onchange="validaSoloNumeros(this)">
             <label for="chnumero">No.Cheque</label>
           </td>
           <td class="col-md-3 input-effect">
-            <input id="chimporte" class="efecto" type="text">
+            <input id="cheimporte" class="efecto" type="text" onchange="validaSoloNumeros(this)">
             <label for="chimporte">Importe</label>
           </td>
           <td class="col-md-6 input-effect"></td>
@@ -68,12 +68,12 @@
         </tr>
         <tr class="row m-0 mt-5">
           <td class="col-9 input-effect">
-            <input id="chconcepto" class="efecto" type="text">
-            <label for="chconcepto">Concepto</label>
+            <input id="checoncepto" class="efecto" type="text" onchange="eliminaBlancosIntermedios(this);">
+            <label for="checoncepto">Concepto</label>
           </td>
           <td class="col-md-3">
 		  	    <input type="hidden" id="opcionActivada" db-id>
-            <a href="/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php" class="boton" id="genFolioCheque"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR CHEQUE</a><!--nueva pagina, ingresar datos en poliza-->
+            <a href="#" class="boton" id="btn_genFolioCheque"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR CHEQUE</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>
