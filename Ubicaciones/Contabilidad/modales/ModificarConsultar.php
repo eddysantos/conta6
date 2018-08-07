@@ -152,7 +152,7 @@
         <div class="row intermedio-modal">
           <div class="col-md-12">
             <form class="form-group">
-            <input class="reg border-0" type="text" id="folioAnt" onchange="validaSoloNumeros(this)" autocomplete="new-new-password">
+            <input class="reg border-0" type="text" id="folioAnt" onchange="validaSoloNumeros(this)" autocomplete="off">
           </form>
           </div>
         </div>

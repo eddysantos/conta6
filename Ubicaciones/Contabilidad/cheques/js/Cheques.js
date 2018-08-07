@@ -212,6 +212,7 @@ $(document).ready(function(){
           url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/editarChequeMST.php",
           data: data,
           success: 	function(r){
+            console.log(r);
             r = JSON.parse(r);
             console.log(r.data);
               if (r.code == 1) {

@@ -4,7 +4,7 @@
 ?>
 
 <div class="text-center">
-  <div class="contenedor" id="buscarRef">
+  <!-- <div class="contenedor" id="buscarRef">
     <div class="row titulograndetop transEff" id="referencia">
       <div class="col-md-12">
         <label class="transEff" for="bRef" id="labelRef">Buscar</label>
@@ -15,6 +15,17 @@
         <form  class="form-group" onsubmit="return false;">
         <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
       </form>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="row text-center">
+    <div class="offset-md-3 col-md-6 titulobuscar">Buscar</div>
+    <div class="row intermedio transEff" id="nReferencia">
+      <div class="offset-md-3 col-md-6" id="mostrarConsulta">
+        <form  class="form-group" onsubmit="return false;">
+          <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
+        </form>
       </div>
     </div>
   </div>
@@ -54,6 +65,10 @@
       </tbody>
     </table>
   </div>
+
+
+
+
 </div>
 
 <script src="js/NotaCredito.js"></script>

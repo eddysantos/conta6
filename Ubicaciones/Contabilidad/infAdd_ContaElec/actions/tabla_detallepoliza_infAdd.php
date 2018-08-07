@@ -71,7 +71,7 @@ while ($row = $rslt->fetch_assoc()) {
   $rows_consulContaElect = $rslt_consulContaElect->num_rows;
 
   if ($rows_consulContaElect > 0) {
-    $partidaContaElect = "<tr class='table-bordered sub'>
+    $partidaContaElect = "<tr class='sub2'>
       <th colspan='3'></th>
       <th colspan='2'>Origen</th>
       <th colspan='2'>Destino</th>
@@ -131,7 +131,9 @@ while ($row = $rslt->fetch_assoc()) {
                         <td>$row[s_TaxID]</td>
                         <td>$row[s_moneda]</td>
                         <td>$row[n_TipCamb]</td>
-
+                        <td></td>
+                        <td></td>
+                        <td></td>
 
                       </tr>";
 

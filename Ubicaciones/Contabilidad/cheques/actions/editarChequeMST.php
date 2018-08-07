@@ -149,6 +149,13 @@ if ($rowsChequeExiste == 1) {
 		if (!($stmt_cheEditDET)) { die("Error during variables binding [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error"); }
 		if (!($stmt_cheEditDET->execute())) { die("Error during query execute [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error"); }
 		$affected = $stmt_cheEditDET->affected_rows;
+		if ($affected == 0){
+			$system_callback['stmt']=$stmt_cheEditDET;
+			$system_callback['print_r']=print_r($db, true);
+			$system_callback['db']=$db;
+			$system_callback['affected']=$stmt_cheEditDET->affected_rows;
+			exit_script($system_callback);
+		}
 		if ($affected == 0) { die("El query no hizo ningún cambio a la base de datos  [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error"); }
 
 
