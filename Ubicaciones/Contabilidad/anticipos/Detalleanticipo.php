@@ -176,7 +176,7 @@ if( $rows > 0 ){
     <div class="containermov">
       <div class="contenedor-movible">
         <div id="one"><!--CAPTURA DE POLIZAS-->
-          <div id="capturapoliza" class="contorno-mov">
+          <div id="capturaAnticipo" class="contorno-mov">
             <table class="table form1">
               <thead>
                 <tr class="row m-0 encabezado font16">

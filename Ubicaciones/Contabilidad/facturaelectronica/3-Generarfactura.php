@@ -4,28 +4,26 @@
 ?>
 
 <div class="text-center">
-  <div class="contenedor" id="b-ctagastos"><!--antes b-factura-->
-    <div class="row titulograndetop transEff" id="referencia">
-      <div class="col-md-12">
-        <label class="transEff" for="bRef" id="labelRef">Referencia o Solicitud</label>
-      </div>
+  <div class="mt10" id="b-ctagastos"><!--antes b-factura-->
+    <div class="row"  id="referencia">
+      <div class="offset-md-3 col-md-6 titulobuscar" style="font-size:30px!important">Referencia o Solicitud</div>
     </div>
-    <div class="row intermedio transEff" id="nReferencia">
-      <div class="col-md-12" id="mostrarConsulta">
+    <div class="row transEff" id="nReferencia">
+      <div class="offset-md-3 col-md-6 inputbuscar" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
-          <input class="reg border-0 transEff" id="bRef" type="text">
+          <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
         </form>
       </div>
     </div>
   </div>
 
   <!---se muestra al escribir la referencia y dar enter-->
-  <div class="contenedor contorno" id="m-factura" style="display:none">
+  <div class="mt10 contorno2" id="m-factura" style="display:none">
     <table class="table form1">
       <thead>
         <tr class="row">
-          <td class="col-md-1 offset-md-11 p-0">
-            <a class="bg" accion="BuscarOtro"><i class="back fa fa-arrow-left">Regresar</i></a>
+          <td class="col-md-1 offset-md-11 font14">
+            <a href="#" class="fele" accion="BuscarOtro"><i class="back fa fa-arrow-left">Regresar</i></a>
           </td>
         </tr>
         <tr class="row encabezado font16 mt-2">

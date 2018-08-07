@@ -448,8 +448,8 @@ function inserta(){
 				r = JSON.parse(r);
 				if (r.code == 1) {
 					swal("Exito", "Se registro correctamente.", "success");
-					// $('#capturapoliza').click();
-				location.reload();
+					$('#capturapoliza').click();
+				// location.reload();
 				} else {
 					console.error(r.message);
 				}

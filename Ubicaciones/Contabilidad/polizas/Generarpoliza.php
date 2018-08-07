@@ -20,7 +20,7 @@
 
   <!--Comienza Generar Poliza de Diario e Ingreso-->
   <div id="gpoliza" class="contorno" style="display:none">
-    <table class="table form1">
+    <table class="table form1 font14">
       <thead>
         <tr class="row m-0 encabezado font18">
           <td class="col-md-12">GENERAR POLIZA</td>
@@ -37,7 +37,7 @@
             <label for="diaconcepto">Concepto</label>
           </td>
           <td class="col-md-3 input-effect">
-            <input id="diatipo" class="efecto tiene-contenido" type="text" db-id="" autocomplete="new-password" readonly>
+            <input id="diatipo" class="efecto tiene-contenido" readonly>
             <label for="diatipo">Tipo</label>
           </td>
         </tr>

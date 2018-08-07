@@ -15,10 +15,22 @@ $idcheque_folControl = trim($_POST['idcheque_folControl']);
 $fechaDoc = date_format(date_create($fecha),'Y-m-d');
 
 //nombre y rfc correspondiente
-if( $opcion == "BEN" ){ $queryDatosOrdenante = "SELECT s_nombre,s_rfc FROM conta_cs_beneficiarios WHERE pk_id_benef = ?" ;}
-if( $opcion == "CLT" ){ $queryDatosOrdenante = "SELECT s_nombre,s_rfc FROM conta_replica_clientes WHERE pk_id_cliente = ?" ;}
-if( $opcion == "EMPL" ){ $queryDatosOrdenante = "SELECT CONCAT(s_nombre,' ',s_apellidoP,' ',s_apellidoM) AS s_nombre, s_rfc FROM conta_cs_empleados where pk_id_empleado = ?" ;}
-if( $opcion == "PROV" ){ $queryDatosOrdenante = "SELECT s_nombre,s_rfc FROM conta_cs_proveedores WHERE pk_id_proveedor = ?" ;}
+if( $opcion == "BEN" ){ $queryDatosOrdenante = "SELECT s_nombre,s_rfc
+																								FROM conta_cs_beneficiarios
+																								WHERE pk_id_benef = ?" ;}
+
+if( $opcion == "CLT" ){ $queryDatosOrdenante = "SELECT s_nombre,s_rfc
+																								FROM conta_replica_clientes
+																								WHERE pk_id_cliente = ?" ;}
+
+if( $opcion == "EMPL" ){ $queryDatosOrdenante = "SELECT CONCAT(s_nombre,' ',s_apellidoP,' ',s_apellidoM) AS s_nombre, s_rfc
+																								FROM conta_cs_empleados
+																								WHERE pk_id_empleado = ?" ;}
+
+if( $opcion == "PROV" ){ $queryDatosOrdenante = "SELECT s_nombre,s_rfc
+																								FROM conta_cs_proveedores
+																								WHERE pk_id_proveedor = ?" ;}
+																								
 $stmtDatosOrdenante = $db->prepare($queryDatosOrdenante);
 if (!($stmtDatosOrdenante)) { die("Error during query prepare [$db->errno]: $db->error");	}
 $stmtDatosOrdenante->bind_param('s',$idOrd);
@@ -110,7 +122,6 @@ if ($rowsChequeExiste == 1) {
 		s_concepto=?,
 		n_valor=?
 		where pk_idcheque_folControl = ?";
-		#WHERE pk_id_cheque=? AND fk_id_cuentaMST=? ";
 
 		$stmtUpdateMST = $db->prepare($queryUpdateMST);
 		if (!($stmtUpdateMST)) {
@@ -119,7 +130,6 @@ if ($rowsChequeExiste == 1) {
 		  exit_script($system_callback);
 		}
 
-		//$stmtUpdateMST->bind_param('ssssssssss',$cheque,$fecha,$cuenta,$opcion,$idOrd,$nomOrd,$concepto,$valor,$cheque,$cuenta);
 		$stmtUpdateMST->bind_param('sssssssss',$cheque,$fecha,$cuenta,$opcion,$idOrd,$nomOrd,$concepto,$valor,$idcheque_folControl);
 		if (!($stmtUpdateMST)) {
 			$system_callback['code'] = "500";
@@ -139,24 +149,26 @@ if ($rowsChequeExiste == 1) {
 		$folio = $cheque;
 		require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
 
-		//actualizo el detalle del cheque
-		//$query_cheEditDET = "UPDATE conta_t_cheques_det SET fk_id_cheque = ?, fk_id_cuentaM = ?, d_fecha = ? WHERE fk_id_cheque = ? AND fk_id_cuentaM = ?";
-		$query_cheEditDET = "UPDATE conta_t_cheques_det SET fk_id_cheque = ?, fk_id_cuentaM = ?, d_fecha = ? WHERE fk_idcheque_folControl = ?";
+
+		$query_cheEditDET = "UPDATE conta_t_cheques_det
+		SET fk_id_cheque = ?,
+		fk_id_cuentaM = ?,
+		d_fecha = ?
+		WHERE fk_idcheque_folControl = ?";
 		$stmt_cheEditDET = $db->prepare($query_cheEditDET);
 		if (!($stmt_cheEditDET)) { die("Error during query prepare [$db->errno]: $db->error"); }
-		//$stmt_cheEditDET->bind_param('sssss',$cheque,$cuenta,$fechaDoc,$cheque,$cuenta);
+
 		$stmt_cheEditDET->bind_param('ssss',$cheque,$cuenta,$fecha,$idcheque_folControl);
+
 		if (!($stmt_cheEditDET)) { die("Error during variables binding [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error"); }
+
 		if (!($stmt_cheEditDET->execute())) { die("Error during query execute [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error"); }
+
 		$affected = $stmt_cheEditDET->affected_rows;
-		if ($affected == 0){
-			$system_callback['stmt']=$stmt_cheEditDET;
-			$system_callback['print_r']=print_r($db, true);
-			$system_callback['db']=$db;
-			$system_callback['affected']=$stmt_cheEditDET->affected_rows;
-			exit_script($system_callback);
-		}
-		if ($affected == 0) { die("El query no hizo ningún cambio a la base de datos  [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error"); }
+
+		if ($affected == 0) {
+			die("El query no hizo ningún cambio a la base de datos  [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error");
+		 }
 
 
 
@@ -233,10 +245,5 @@ if ($rowsChequeExiste == 1) {
 		exit_script($system_callback);
 
 }
-
-
-
-
-
 
 ?>

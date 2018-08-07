@@ -45,25 +45,28 @@
                     </select>
     			      </td>
 
-                <td class="col-md-6">&nbsp;</td>
-              </tr>
-              <tr class="row m-0 mt-5">
-                <td class="col-md-3">
-                  <input id="s_bancoOri" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
-                  <label for="s_bancoOri">BANCO</label>
-                  <input id="s_ctaOri" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
-                  <label for="s_ctaOri">CUENTA/INTERBANCARIA</label>
-                </td>
-
-                <td class="col-md-3">
-                  <input id="fk_id_cuentaMST" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
-                  <label for="fk_id_cuentaMST">CUENTA</label>
-    			      </td>
-
                 <td class="col-md-6">
                   <input id="s_concepto" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off">
                   <label for="s_concepto">CONCEPTO</label>
                 </td>
+
+                <!-- <td class="col-md-6">&nbsp;</td> -->
+              </tr>
+              <tr class="row m-0 mt-5">
+                <td class="col-md-4">
+                  <input id="s_bancoOri" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
+                  <label for="s_bancoOri">BANCO</label>
+                </td>
+
+                <td class="col-md-4">
+                  <input id="s_ctaOri" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
+                  <label for="s_ctaOri">CUENTA/INTERBANCARIA</label>
+                </td>
+
+                <td class="col-md-4">
+                  <input id="fk_id_cuentaMST" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
+                  <label for="fk_id_cuentaMST">CUENTA</label>
+    			      </td>
               </tr>
             </tbody>
           </table>

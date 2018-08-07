@@ -447,7 +447,8 @@ function genAnt(){
                 r = JSON.parse(r);
                 if (r.code == 1) {
                   swal("Exito", "Se registro correctamente.", "success");
-                  //setTimeout('document.location.reload()',700);
+                  // $('#capturaAnticip').click();
+                  location.reload();
                 } else {
                   console.error(r.message);
                 }

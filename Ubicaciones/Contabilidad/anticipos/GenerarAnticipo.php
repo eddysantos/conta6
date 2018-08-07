@@ -27,7 +27,7 @@
           <label for="antimporte">Importe</label>
         </td>
         <td class="col-md-8 input-effect">
-          <input class="efecto popup-input" id="antcliente" type="text" id-display="#popup-display-antcliente" action="clientes" db-id="" autocomplete="new-password"
+          <input class="efecto popup-input" id="antcliente" type="text" id-display="#popup-display-antcliente" action="clientes" db-id="" autocomplete="off"
             onblur="Actualiza_Expedido_Cliente()">
           <div class="popup-list" id="popup-display-antcliente" style="display:none"></div>
           <label for="antcliente">Cliente</label>
@@ -41,8 +41,8 @@
         </td>
         <td class="col-md-8 input-effect">
           <select class="custom-select" size='1' name='antcuenta' id='antcuenta'>
-              <option selected value='0'>Seleccione una Cuenta</option>
-            </select>
+            <option selected value='0'>Seleccione una Cuenta</option>
+          </select>
         </td>
       </tr>
       <tr class="row  m-0 mt-4">

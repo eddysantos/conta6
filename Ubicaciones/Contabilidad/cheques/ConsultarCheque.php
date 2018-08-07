@@ -120,7 +120,7 @@
   <div id="datoscheque" class="contorno" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
     <h5 class="titulo">DATOS DEL CHEQUE</h5>
     <form class="form1">
-      <table class="table ">
+      <table class="table">
         <thead>
           <tr class="row encabezado">
             <td class="col-md-1">POLIZA</td>
@@ -182,7 +182,7 @@
       </div>
       <?php } ?>
       <div class="col-md-2 offset-md-7">
-        <input class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
+        <input class="efecto" value="<?php echo number_format($sumaCargos,2,'.',','); ?>" readonly>
       </div>
       <div class="col-md-2">
         <input class="efecto" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>

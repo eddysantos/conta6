@@ -34,7 +34,7 @@ echo $opcion;
       </div>
       <div class="modal-body">
         <div>
-          <div class="contorno" id="contorno">
+          <div class="contorno">
             <table class="table form1 font14">
               <tbody>
                 <tr class="row m-0 mt-3">

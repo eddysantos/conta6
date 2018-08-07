@@ -167,9 +167,6 @@ if( $rows > 0 ){
         <li class="nav-item">
           <a href="#" id="detallecheque" class="nav-link">Detalle del Cheque</a>
         </li>
-        <!-- <li class="nav-item">
-          <a href="#" class="nav-link">Información Adicional</a>
-        </li> -->
         <?php if( $id_poliza > 0){ ?>
         <li class="nav-item">
           <a href="#" class="nav-link">Información Adicional</a>
@@ -191,13 +188,13 @@ if( $rows > 0 ){
                 <tbody>
                   <tr class="row m-0 mt-5">
                     <td class="col-md-10 input-effect">
-                      <input class="efecto popup-input" id="cdchCuenta" type="text" id-display="#popup-display-cdchCuenta" action="cuentas_mst_2niv" db-id="" autocomplete="new-password"
+                      <input class="efecto popup-input" id="cdchCuenta" type="text" id-display="#popup-display-cdchCuenta" action="cuentas_mst_2niv" db-id="" autocomplete="off"
                       onchange="Actualiza_CuentaCapCh()">
                       <div class="popup-list" id="popup-display-cdchCuenta" style="display:none"></div>
                       <label for="cdchCuenta">Seleccione una Cuenta</label>
                     </td>
                     <td class="col-md-2 input-effect">
-                      <input class="efecto popup-input" id="cdchGtoficina" type="text" id-display="#popup-display-cdchGtoficina" action="oficinas" db-id="" autocomplete="new-password"
+                      <input class="efecto popup-input" id="cdchGtoficina" type="text" id-display="#popup-display-cdchGtoficina" action="oficinas" db-id="" autocomplete="off"
                       onChange="valDescripOficinaCapCh()">
                       <div class="popup-list" id="popup-display-cdchGtoficina" style="display:none"></div>
                       <label for="cdchGtoficina">Gasto Oficina</label>
@@ -205,7 +202,7 @@ if( $rows > 0 ){
                   </tr>
                   <tr class="row m-0 mt-4">
                     <td class="col-md-10 input-effect">
-                      <input class="efecto popup-input" id="cdchCliente" type="text" id-display="#popup-display-cdchCliente" action="clientes" db-id="" autocomplete="new-password">
+                      <input class="efecto popup-input" id="cdchCliente" type="text" id-display="#popup-display-cdchCliente" action="clientes" db-id="" autocomplete="off">
                       <div class="popup-list" id="popup-display-cdchCliente" style="display:none"></div>
                       <label for="cdchCliente">Cliente</label>
                     </td>
@@ -215,7 +212,7 @@ if( $rows > 0 ){
                   </tr>
                   <tr class="row m-0 mt-4">
                     <td class="col-md-12 input-effect">
-                      <input class="efecto popup-input" id="cdchProveedores" type="text" id-display="#popup-display-cdchProveedores" action="proveedores" db-id="" autocomplete="new-password">
+                      <input class="efecto popup-input" id="cdchProveedores" type="text" id-display="#popup-display-cdchProveedores" action="proveedores" db-id="" autocomplete="off">
                       <div class="popup-list" id="popup-display-cdchProveedores" style="display:none"></div>
                       <label for="cdchProveedores">Proveedor</label>
                     </td>
@@ -229,7 +226,7 @@ if( $rows > 0 ){
 
                   <tr class="row m-0 mt-4">
                     <td class="col-md-2 input-effect">
-                      <input class="efecto popup-input" id="cdchReferencia" type="text" id-display="#popup-display-cdchReferencia" action="referencias" db-id="" autocomplete="new-password"
+                      <input class="efecto popup-input" id="cdchReferencia" type="text" id-display="#popup-display-cdchReferencia" action="referencias" db-id="" autocomplete="off"
                       onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaReferencia(this);">
                       <div class="popup-list" id="popup-display-cdchReferencia" style="display:none"></div>
                       <label for="cdchReferencia">Referencia</label>
@@ -239,12 +236,12 @@ if( $rows > 0 ){
                       <label for="cdchDocumento">Documento</label>
                     </td>
                     <td class="col-md-2 input-effect">
-                      <input class="efecto popup-input" id="cdchFactura" type="text" id-display="#popup-display-cdchFactura" action="facturas_cfdi" db-id="" autocomplete="new-password">
+                      <input class="efecto popup-input" id="cdchFactura" type="text" id-display="#popup-display-cdchFactura" action="facturas_cfdi" db-id="" autocomplete="off">
                       <div class="popup-list" id="popup-display-cdchFactura" style="display:none"></div>
                       <label for="cdchFactura">Factura</label>
                     </td>
                     <td class="col-md-2 input-effect">
-                      <input class="efecto popup-input" id="cdchAnticipo" type="text" id-display="#popup-display-cdchAnticipo" action="anticipos_mst" db-id="" autocomplete="new-password">
+                      <input class="efecto popup-input" id="cdchAnticipo" type="text" id-display="#popup-display-cdchAnticipo" action="anticipos_mst" db-id="" autocomplete="off">
                       <div class="popup-list" id="popup-display-cdchAnticipo" style="display:none"></div>
                       <label for="cdchAnticipo">Anticipo</label>
                     </td>
@@ -272,7 +269,7 @@ if( $rows > 0 ){
           </div>
           <div class="row mt-3">
             <div class="col-md-2 offset-md-4">
-              <input class="efecto" id="sumCargos1_ch" value="<?php echo $sumaCargos; ?>" readonly>
+              <input class="efecto" id="sumCargos1_ch" value="<?php echo number_format($sumaCargos,2,'.',','); ?>" readonly>
             </div>
             <div class="col-md-2">
               <input class="efecto" id="sumAbonos1_ch" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
@@ -302,7 +299,7 @@ if( $rows > 0 ){
               <?php } ?>
             </div>
             <div class="col-md-2 mt-3">
-              <input  class="efecto" id="sumCargos2_ch" value="<?php echo $sumaCargos; ?>" readonly>
+              <input  class="efecto" id="sumCargos2_ch" value="<?php echo number_format($sumaCargos,2,'.',','); ?>" readonly>
             </div>
             <div class="col-md-2 mt-3">
               <input  class="efecto" id="sumAbonos2_ch" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>

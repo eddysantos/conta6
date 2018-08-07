@@ -211,6 +211,7 @@ $(document).ready(function(){
           type: "POST",
           url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/editarChequeMST.php",
           data: data,
+          // dataType: "json",
           success: 	function(r){
             console.log(r);
             r = JSON.parse(r);

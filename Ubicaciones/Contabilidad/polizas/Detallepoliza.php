@@ -41,8 +41,8 @@ if( $totalRegistrosSelect > 0 ){
 		$sumaAbonos = 0;
 	}
 ?>
-<input type="hidden" id="usuario_activo" db-id="" autocomplete="new-password" value="<?php echo $usuario; ?>">
-<input type="hidden" id="aduana_activa"  db-id="" autocomplete="new-password" value="<?php echo $aduana; ?>">
+<input type="hidden" id="usuario_activo" db-id="" autocomplete="off" value="<?php echo $usuario; ?>">
+<input type="hidden" id="aduana_activa"  db-id="" autocomplete="off" value="<?php echo $aduana; ?>">
 
   <div id="datospoliza" class="contorno mt-5" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
     <!-- style="display:none" -->
@@ -62,10 +62,10 @@ if( $totalRegistrosSelect > 0 ){
       <tbody>
         <tr class="row m-0">
           <td class="col-md-1">
-            <input class="efecto h22" <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="new-password" value="<?php echo $tipo; ?>">
+            <input class="efecto h22" <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="off" value="<?php echo $tipo; ?>">
           </td>
           <td class="col-md-1">
-            <input class="efecto h22 border-0" id="id_poliza" type="text" db-id="" autocomplete="new-password" disabled value="<?php echo $id_poliza; ?>">
+            <input class="efecto h22 border-0" id="id_poliza" type="text" db-id="" autocomplete="off" disabled value="<?php echo $id_poliza; ?>">
           </td>
           <td class="col-md-2 pt-4"><?php echo trim($oRst_Select["fk_usuario"]); ?></td>
           <td class="col-md-2">
@@ -73,7 +73,7 @@ if( $totalRegistrosSelect > 0 ){
           </td>
           <td class="col-md-2 pt-4"><?php echo trim($oRst_Select["d_fecha_alta"]); ?></td>
           <td class="col-md-2">
-            <input class="efecto h22 border-0" id="mstpol-aduana" type="text" db-id="" autocomplete="new-password" disabled value="<?php echo trim($oRst_Select["fk_id_aduana"]); ?>">
+            <input class="efecto h22 border-0" id="mstpol-aduana" type="text" db-id="" autocomplete="off" disabled value="<?php echo trim($oRst_Select["fk_id_aduana"]); ?>">
           </td>
           <td class="col-md-2">
             <select class="custom-select-ch" size="1" name="mstpol-cancela" id="mstpol-cancela" onchange="cambiarStatus()">
@@ -85,7 +85,7 @@ if( $totalRegistrosSelect > 0 ){
 								  	echo "<option value='1' selected>Cancelado</option>";
 								  } ?>
 						</select>
-		  <!--input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="new-password" disabled value="<?php echo $cancela; ?>"-->
+		  <!--input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="off" disabled value="<?php echo $cancela; ?>"-->
           </td>
         </tr>
         <tr class="row m-0 mt-4">
@@ -132,26 +132,26 @@ if( $totalRegistrosSelect > 0 ){
                 <tr class="row m-0 mt-5">
                   <td class="col-md-10 input-effect">
                     <?php if( $oRst_permisos["s_lstCompletaCtas_polizas"] == 1 ){
-                    echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv" db-id="" autocomplete="new-password" onchange="Actualiza_Cuenta()">';
+                    echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
                     }else{
                       if( $tipo == 2){
-                        echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv_limitada_paraTipo2" db-id="" autocomplete="new-password" onchange="Actualiza_Cuenta()">';
+                        echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv_limitada_paraTipo2" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
                       }else{
-                        echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv_limitada" db-id="" autocomplete="new-password" onchange="Actualiza_Cuenta()">';
+                        echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv_limitada" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
                       }
                     }?>
                     <div class="popup-list" id="popup-display-detpol-cuenta" style="display:none"></div>
                     <label for="detpol-cuenta">Seleccione una Cuenta</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input class="efecto popup-input" id="detpol-gtoficina" type="text" id-display="#popup-display-detpol-gtoficina" action="oficinas" db-id="" autocomplete="new-password" onChange="valDescripOficina()">
+                    <input class="efecto popup-input" id="detpol-gtoficina" type="text" id-display="#popup-display-detpol-gtoficina" action="oficinas" db-id="" autocomplete="off" onChange="valDescripOficina()">
                     <div class="popup-list" id="popup-display-detpol-gtoficina" style="display:none"></div>
                     <label for="detpol-gtoficina">Gasto Oficina</label>
                   </td>
                 </tr>
                 <tr class="row m-0 mt-4">
                   <td class="col-md-10 input-effect">
-                    <input class="efecto popup-input" id="detpol-cliente" type="text" id-display="#popup-display-detpol-cliente" action="clientes" db-id="" autocomplete="new-password">
+                    <input class="efecto popup-input" id="detpol-cliente" type="text" id-display="#popup-display-detpol-cliente" action="clientes" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-cliente" style="display:none"></div>
                     <label for="detpol-cliente">Cliente</label>
                   </td>
@@ -161,7 +161,7 @@ if( $totalRegistrosSelect > 0 ){
                 </tr>
                 <tr class="row m-0 mt-4">
                   <td class="col-md-12 input-effect">
-                    <input class="efecto popup-input" id="detpol-proveedores" type="text" id-display="#popup-display-detpol-proveedores" action="proveedores" db-id="" autocomplete="new-password">
+                    <input class="efecto popup-input" id="detpol-proveedores" type="text" id-display="#popup-display-detpol-proveedores" action="proveedores" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-proveedores" style="display:none"></div>
                     <label for="detpol-proveedores">Proveedor</label>
                   </td>
@@ -174,7 +174,7 @@ if( $totalRegistrosSelect > 0 ){
                 </tr>
                 <tr class="row m-0 mt-4">
                   <td class="col-md-2 input-effect">
-                    <input class="efecto popup-input" id="detpol-referencia" type="text" id-display="#popup-display-detpol-referencia" action="referencias" db-id="" autocomplete="new-password" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaReferencia(this);">
+                    <input class="efecto popup-input" id="detpol-referencia" type="text" id-display="#popup-display-detpol-referencia" action="referencias" db-id="" autocomplete="off" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaReferencia(this);">
                     <div class="popup-list" id="popup-display-detpol-referencia" style="display:none"></div>
                     <label for="detpol-referencia">Referencia</label>
                   </td>
@@ -183,17 +183,17 @@ if( $totalRegistrosSelect > 0 ){
                     <label for="detpol-documento">Documento</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input class="efecto popup-input" id="detpol-factura" type="text" id-display="#popup-display-detpol-factura" action="facturas_cfdi" db-id="" autocomplete="new-password">
+                    <input class="efecto popup-input" id="detpol-factura" type="text" id-display="#popup-display-detpol-factura" action="facturas_cfdi" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-factura" style="display:none"></div>
                     <label for="detpol-factura">Factura</label>
                   </td>
                   <td class="col-md-1 input-effect">
-                    <input class="efecto popup-input" id="detpol-anticipo" type="text" id-display="#popup-display-detpol-anticipo" action="anticipos_mst" db-id="" autocomplete="new-password">
+                    <input class="efecto popup-input" id="detpol-anticipo" type="text" id-display="#popup-display-detpol-anticipo" action="anticipos_mst" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-anticipo" style="display:none"></div>
                     <label for="detpol-anticipo">Anticipo</label>
                   </td>
                   <td class="col-md-1 input-effect">
-                    <input class="efecto popup-input" id="detpol-cheque" type="text" id-display="#popup-display-detpol-cheque" action="cheques_mst" db-id="" autocomplete="new-password">
+                    <input class="efecto popup-input" id="detpol-cheque" type="text" id-display="#popup-display-detpol-cheque" action="cheques_mst" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-cheque" style="display:none"></div>
                     <label for="detpol-cheque">Cheque</label>
                   </td>
@@ -285,7 +285,7 @@ if( $totalRegistrosSelect > 0 ){
         <?php if( $id_poliza > 0 ){
             require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_detallePoliza.php';
           } ?>
-          
+
       </div><!--/Termina contenedor-movible-->
     </div><!--/Termina continermov-->
   </div><!--/Termina container-fluid movible-->

@@ -9,7 +9,7 @@
         <h5 class="modal-tittle">Editar Registro</h5>
       </div>
       <div class="modal-body">
-        <div class="contorno-modal" id="contorno">
+        <div class="contorno-modal">
           <table class="table form1 font14">
             <tbody>
               <tr class="row m-0 mt-5">
@@ -29,14 +29,12 @@
                     <label for="fk_id_cliente_antdet">Cliente</label>
                   </div>
 
-
                   <div id="lstClientesCorrespPartida">
                     <select class="custom-select" size='1' id='fk_id_corresp'>
                         <option selected value='0'>Seleccione Cliente/Corresponsal</option>
                     </select>
                   </div>
                 </td>
-
               </tr>
 
 
