@@ -1,5 +1,5 @@
 <!--AGREGAR NUEVO CORRESPONSAL-->
-<div class="modal fade text-center" id="NuevoCorresponsal" style="margin-top:50px">
+<!-- <div class="modal fade text-center" id="NuevoCorresponsal" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
@@ -90,14 +90,14 @@
               </tbody>
             </table>
           </div>
-        </div><!--termina el Container-Fluid-->
-      </div><!--termina el Cuerpo del Modal-->
+        </div>
+      </div>
       <div class="modal-footer">
         <a href="" class="linkbtn">REGISTRAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
-    </div><!--termina el COntenido del Modal-->
+    </div>
   </div>
-</div>
+</div> -->
 
 
 <!--EDITAR DATOS DEL CORRESPONSAL-->

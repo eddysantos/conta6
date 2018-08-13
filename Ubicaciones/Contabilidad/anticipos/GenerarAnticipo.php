@@ -23,11 +23,12 @@
           <label for="antfecha">Fecha Anticipo</label>
         </td>
         <td class="col-md-2 input-effect">
-          <input id="antimporte" class="efecto" type="text" onchange="validaSoloNumeros(this);">
+          <input id="antimporte" class="efecto" type="text" onchange="validaSoloNumeros(this)">
           <label for="antimporte">Importe</label>
         </td>
         <td class="col-md-8 input-effect">
-          <input class="efecto popup-input" id="antcliente" type="text" id-display="#popup-display-antcliente" action="clientes" db-id="" autocomplete="new-password" onblur="Actualiza_Expedido_Cliente()">
+          <input class="efecto popup-input" id="antcliente" type="text" id-display="#popup-display-antcliente" action="clientes" db-id="" autocomplete="off"
+            onblur="Actualiza_Expedido_Cliente()">
           <div class="popup-list" id="popup-display-antcliente" style="display:none"></div>
           <label for="antcliente">Cliente</label>
         </td>
@@ -40,13 +41,13 @@
         </td>
         <td class="col-md-8 input-effect">
           <select class="custom-select" size='1' name='antcuenta' id='antcuenta'>
-              <option selected value='0'>Seleccione una Cuenta</option>
-            </select>
+            <option selected value='0'>Seleccione una Cuenta</option>
+          </select>
         </td>
       </tr>
       <tr class="row  m-0 mt-4">
         <td class="col-9 input-effect">
-          <input id="antconcepto" class="efecto" type="text">
+          <input id="antconcepto" class="efecto" type="text" onchange="eliminaBlancosIntermedios(this)">
           <label for="antconcepto">Concepto</label>
         </td>
         <td class="col-md-3">
@@ -57,15 +58,6 @@
   </table>
 </div><!--/Termina Generar Poliza de Ingreso-->
 
-<!--***************ESTILOS*****************-->
-<link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
-<link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
-
-<!--***************SCRIPTS*****************-->
-<script src="/conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
-<script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script>
-<script src="/conta6/Resources/js/validaSoloNumeros.js"></script>
-
-<script src="/conta6/Resources/js/popup-list-plugin.js"></script>
-<script src="/conta6/Resources/js/table-fetch-plugin.js"></script>
+<?php
+require $root . '/conta6/Ubicaciones/footer.php';
+?>

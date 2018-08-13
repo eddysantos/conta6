@@ -32,7 +32,7 @@ if( $totalRegistrosSelect > 0 ){
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
-        <a class="nav-link consultar" id="submenuMed" status="cerrado" accion="dtospol">DATOS DE POLIZA</a>
+        <a class="nav-link pol" id="submenuMed" status="cerrado" accion="dtospol">DATOS DE POLIZA</a>
       </li>
     </ul>
   </div>
@@ -76,7 +76,7 @@ if( $totalRegistrosSelect > 0 ){
     </div>
     <div class="row m-0 mt-3">
       <div class="col-md-1">
-        <a  class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
+        <a href="#" onclick="btn_printPoliza(<?php echo $oRst_Select['pk_id_poliza']; ?>,<?php echo $oRst_Select['fk_id_aduana']; ?>)" class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
       </div>
       <div class="col-md-2 offset-md-7">
         <input  class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
@@ -140,16 +140,6 @@ if( $totalRegistrosSelect > 0 ){
           }
         }else{
         ?>
-        <!-- <tr class="row borderojo">
-          <td colspan="15" class="">NO HAY DETALLE DE ESTA PÓLIZA</td>
-        </tr> -->
-
-        <!-- <div class="row font14 mt-5 borderojo">
-          <div class="col-md-12">
-            NO HAY DETALLE DE ESTA PÓLIZA
-          </div>
-        </div> -->
-
         <div class="container-fluid pantallaGris">
           <div class="tituloSinRegistros">NO HAY DETALLE DE ESTA PÓLIZA</div>
         </div>
@@ -164,12 +154,6 @@ if( $totalRegistrosSelect > 0 ){
 <?php
 }else{
 ?>
-  <!-- <div class="row font14 mt-5">
-    <div class="col-md-12">
-      NO EXISTE LA PÓLIZA
-    </div>
-  </div> -->
-
   <div class="container-fluid pantallaGris">
     <div class="tituloSinRegistros">NO EXISTE LA PÓLIZA</div>
   </div>

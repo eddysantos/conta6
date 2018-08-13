@@ -3,28 +3,13 @@
   border-top-right-radius: 8px;
   border-bottom: 1px solid rgb(209, 28, 28);
   background-color:#fbfbfb !important;
-  /* background-color: rgba(194, 189, 189, 0.1); */
   padding: .1rem!important;
   text-align: center;
 }
-.font12{
-  font-size: 12px!important;
-}
-.font14{
-  font-size: 14px!important;
-}
-.font16{
-  font-size: 16px!important;
-}
-.font18{
-  font-size: 18px!important;
-}
-
 .colorRosa{
   color: rgba(161, 28, 0, 0.36);
   font-size: 14px!important;
 }
-
 .titulograndetop {
   letter-spacing: 20px;
   font-size:-webkit-xxx-large!important;
@@ -36,6 +21,54 @@
   border-top-left-radius: 8px;
   border-bottom: 1px solid  rgb(209, 28, 28);
 }
+
+.titulobuscar {
+  letter-spacing: 20px;
+  /* font-size:-webkit-xxx-large!important; */
+  font-size: 50px!important;
+  color: rgba(161, 28, 0, 0.16);
+  background-color: rgba(194, 189, 189, 0.2);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom: 1px solid  rgb(209, 28, 28);
+
+}
+
+/* #buscarRef{
+margin-top:10%;
+} */
+
+.mt10{
+  margin-top:10%!important;
+
+}
+
+.inputbuscar {
+  letter-spacing: 20px;
+  font-size: xx-large!important;
+  border: 2px solid #ccc;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.contorno2{
+  margin-left: 20px;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px 30px 10px 30px!important;
+}
+
+/* .intermedio {
+  background-color:transparent;
+  width: 700px;
+  margin: 0px 370px!important;
+  border: 2px solid #ccc;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+} */
+
+
 .black {
   color: rgb(75, 74, 74);
   letter-spacing: 8px;
@@ -69,7 +102,7 @@ a img.icochico:hover {
 
 
 .submenuMed {
-  background-color: rgba(254, 113, 113, 0.03);
+  background-color: rgba(254, 113, 113, 0.04);
   height: 50px;
 }
 div.submenuMed {
@@ -96,14 +129,7 @@ div.submenuMed {
   transition-property: all;
   -webkit-transition-property: all;
 }
-.intermedio {
-  background-color:transparent;
-  width: 700px;
-  margin: 0px 370px!important;
-  border: 2px solid #ccc;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
+
 
 .contenedor {
   margin-top:150px!important;

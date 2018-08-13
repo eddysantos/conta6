@@ -14,45 +14,66 @@
             <tbody>
               <tr class="row m-0 mt-5">
                 <td class="col-md-3">
-                  <input class="efecto tiene-contenido" type="date" value="<?php echo $rowMST['d_fecha']; ?>">
+                  <input type="hidden" id="fk_id_aduana">
+                  <input type="hidden" id="pk_id_anticipo">
+                  <input class="efecto tiene-contenido" type="date" id="d_fecha" db-id="">
                   <label for="ant-cliente">Fecha Anticipo</label>
                 </td>
 
                 <td class="col-md-3">
-                  <input id="ant-valor" class="efecto tiene-contenido" value="<?php echo $rowMST['n_valor']; ?>" type="text">
-                  <label for="ant-valor">Valor</label>
+                  <input id="n_valor" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" onchange="validaSoloNumeros(this)">
+                  <label for="n_valor">Valor</label>
                 </td>
 
                 <td class="col-md-6 input-effect">
-          			  <select class="custom-select" size='1' name='ant-cuenta' id='ant-cuenta'>
-          				  <option selected value='0'>Seleccione una Cuenta</option>
-          				</select>
+    			        <input class="efecto tiene-contenido popup-input" id="fk_id_cliente_antmst" type="text" id-display="#popup-display-fk_id_cliente_antmst" action="clientes" db-id="" autocomplete="off"
+                    onchange="Actualiza_Expedido_Cliente_MST()">
+                  <div class="popup-list" id="popup-display-fk_id_cliente_antmst" style="display:none"></div>
+                  <label for="fk_id_cliente_antmst">Cliente</label>
           			</td>
               </tr>
               <tr class="row m-0 mt-5">
                 <td class="col-md-3">
-    			        <input class="efecto tiene-contenido popup-input" id="ant-cliente" type="text" id-display="#popup-display-ant-cliente" action="clientes" value="<?php echo $rowMST['fk_id_cliente']; ?>" db-id="<?php echo $rowMST['fk_id_cliente']; ?>" autocomplete="new-password" onblur="Actualiza_Expedido_Cliente_MST()">
-                  <div class="popup-list" id="popup-display-ant-cliente" style="display:none"></div>
-                  <label for="ant-cliente">Cliente</label>
+                  <select class="custom-select" size='1' id="antbcoclienteMST" onchange="asignaBCliente()">
+                    <option selected value='0'>Seleccione Banco</option>
+                  </select>
                 </td>
 
                 <td class="col-md-3">
-                  <select class="custom-select" size='1' name='ant-bcocliente' id='ant-bcocliente'>
-                  	<option selected value='0'>Seleccione Banco</option>
-                  </select>
+                  <select class="custom-select" size='1' id='antcuentaMST' onchange="asignaCtaMST()">
+                      <option selected value='0'>Seleccione una Cuenta</option>
+                    </select>
     			      </td>
 
                 <td class="col-md-6">
-                  <input id="ch-concep" class="efecto tiene-contenido" value="<?php echo $rowMST['s_concepto']; ?>" type="text">
-                  <label for="ch-concep">CONCEPTO</label>
+                  <input id="s_concepto" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off">
+                  <label for="s_concepto">CONCEPTO</label>
                 </td>
+
+                <!-- <td class="col-md-6">&nbsp;</td> -->
+              </tr>
+              <tr class="row m-0 mt-5">
+                <td class="col-md-4">
+                  <input id="s_bancoOri" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
+                  <label for="s_bancoOri">BANCO</label>
+                </td>
+
+                <td class="col-md-4">
+                  <input id="s_ctaOri" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
+                  <label for="s_ctaOri">CUENTA/INTERBANCARIA</label>
+                </td>
+
+                <td class="col-md-4">
+                  <input id="fk_id_cuentaMST" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
+                  <label for="fk_id_cuentaMST">CUENTA</label>
+    			      </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
       <div class="modal-footer">
-        <a href="" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="#" id="medit-anticipoMST">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>

@@ -80,7 +80,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                     <li><a href="/conta6/Ubicaciones/Contabilidad/cheques/GenerarCheque.php">Generar</a></li>
                     <li><a href="#modificar-ch" data-toggle="modal">Modificar</a></li>
                     <li><a href="#consultar-ch" data-toggle="modal">Consultar</a></li>
-                    <li><a href="#">Benefiaciarios</a></li>
+				          	<li><a href="/conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/Catalogo.php">Beneficiarios</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
@@ -113,14 +113,14 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                     <li><a href="/conta6/Ubicaciones/Contabilidad/Notacredito/2-Reportes.php">Reportes</a></li>
                   </ul>
                 </li>
-                <li><a href="/conta6/Ubicaciones/Contabilidad/recorrido/1-Recorrido.php">Recorrido</a></li>
-                <li><a href="/conta6/Ubicaciones/Contabilidad/controlpedimentos/PedimentosCapturados.php">Control Pedimentos Pag.</a></li>
-                <li class="dropdown">
+                <!-- <li><a href="/conta6/Ubicaciones/Contabilidad/recorrido/1-Recorrido.php">Recorrido</a></li> -->
+                <!-- <li><a href="/conta6/Ubicaciones/Contabilidad/controlpedimentos/PedimentosCapturados.php">Control Pedimentos Pag.</a></li> -->
+                <!-- <li class="dropdown">
                   <a href="#" class="">Cuenta de Gastos <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
                     <li><a href="/conta6/Ubicaciones/Contabilidad/CuentaGastos/consultarCtaGtos.php" >Consultar</a></li>
                   </ul>
-                </li>
+                </li> -->
                 <li class="dropdown">
                   <a href="#" class="">Administracion Contable <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">

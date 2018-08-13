@@ -3,21 +3,21 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid text-center">
+<div class="text-center font14 mb-10">
   <div class="row submenuMed">
     <div class="col-md-6" role="button">
-      <a  id="submenuMed" class="consultar" accion="generar" status="cerrado">GENERAR</a>
+      <a  id="submenuMed" class="aconta" accion="generar" status="cerrado">GENERAR</a>
     </div>
     <div class="col-md-6">
-      <a id="submenuMed" class="consultar" accion="consultar" status="cerrado">CONSULTAR</a>
+      <a id="submenuMed" class="aconta" accion="consultar" status="cerrado">CONSULTAR</a>
     </div>
   </div>
 
 
   <div id="contornoGen" class="contorno" style="display:none">
-    <h5 class="titulo font14">GENERAR</h5>
+    <h5 class="titulo">GENERAR</h5>
     <table class="table form1">
-      <tbody class="font14">
+      <tbody>
         <tr class="row m-0 mt-4">
           <td class="col-md-3 input-effect">
             <select class="custom-select" id="ofi">
@@ -57,9 +57,9 @@
   </div>
 
   <div id="contornoCon" class="contorno" style="display:none;">
-    <h5 class="titulo font14">CONSULTAR</h5>
+    <h5 class="titulo">CONSULTAR</h5>
     <table class="table form1">
-      <tbody class="font14">
+      <tbody>
         <tr class="row">
           <td class="col-md-3 offset-md-2">
             <select class="custom-select" id="ofi">
@@ -108,7 +108,7 @@
           <td class="col-md-2">ACCIONES</td>
         </tr>
       </thead>
-      <tbody class="font14">
+      <tbody>
         <tr class="row borderojo">
           <td class="col-md-2">240</td>
           <td class="col-md-2">1</td>
@@ -154,7 +154,8 @@
   </div>
 </div>
 
-<script src="js/AdministracionContable.js"></script>
+
 <?php
 require_once('modales/modificarCierre.php');
+require $root . '/conta6/Ubicaciones/footer.php';
  ?>

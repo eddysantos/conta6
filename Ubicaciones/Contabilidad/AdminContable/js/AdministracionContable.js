@@ -1,21 +1,32 @@
-
-function fetch_cuentas_sat(){
-    $.ajax({
-      method: 'POST',
-      url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_cuentas.php',
-      success: function(r){
-        r = JSON.parse(r);
-        if (r.code == 1) {
-          $('#catalogo-sat-helper').html(r.data);
-        } else {
-          console.error(r.message);
-        }
-      }
-    })
-}
-
 $(document).ready(function(){
-  $('.consultar').click(function(){
+  fetch_cuentas_sat();
+  cuentas_Det();
+
+  $('#ctamaestra1').change(function(){
+    id_cuenta = $('#ctamaestra1').attr('db-id');
+    parteCuentaMST = id_cuenta.split('-');
+
+    if( parteCuentaMST[0] == '0100'){
+      $('#form0100').show();
+      $('#form0115').hide();
+      $('#form0206').hide();
+    }
+
+    if( parteCuentaMST[0] == '0115'){
+      $('#form0100').hide();
+      $('#form0115').show();
+      $('#form0206').hide();
+    }
+
+    if( parteCuentaMST[0] == '0206'){
+      $('#form0100').hide();
+      $('#form0115').hide();
+      $('#form0206').show();
+    }
+
+  });
+
+  $('.aconta').click(function(){
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');
 
@@ -99,6 +110,50 @@ $(document).ready(function(){
               console.error("Something went terribly wrong...");
       }
     });
+
+    $('#printCatCuentas').click(function(){
+      window.location.replace('/conta6/Ubicaciones/Contabilidad/AdminContable/actions/imprimir_catalogoCtas.php');
+    });
+
+    $('#genCorresponsal').click(function(){
+
+			if($('#corp-cliente').attr('db-id') == ""){
+				alertify.error("Seleccione un cliente");
+				$('#corp-cliente').focus();
+				return false;
+			}
+
+      txt_cliente = $('#corp-cliente').val();
+      cliente = $('#corp-cliente').attr('db-id');
+
+      parte = txt_cliente.split(cliente);
+      cliente = parte[0];
+      nombre = parte[1];
+
+      var data = {
+    		id_cliente: $('#corp-cliente').attr('db-id'),
+        s_nombre: nombre
+    	}
+
+
+    	$.ajax({
+    		type: "POST",
+    		url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregarCorresponsal.php",
+    		data: data,
+    		success: 	function(request){
+    			r = JSON.parse(request);
+          if (r.code == 1) {
+  					swal("Exito", "Se guardo correctamente.", "success");
+  					location.reload();
+  				} else {
+  					console.error(r.message);
+  				}
+
+    		}
+    	});
+    });
+
+
 
 
     $('#ctamaestra').click(function(){
@@ -196,15 +251,92 @@ $(document).ready(function(){
         	return false;
         }
 
+        id_cuenta = $('#ctamaestra1').attr('db-id');
+        parteCuentaMST = id_cuenta.split('-');
 
-        var data = {
-          ctaSAT: $('#ctaSAT1').attr('db-id'),
-          naturSAT: $('#naturSAT1').attr('db-id'),
-          ctamaestra: $('#ctamaestra1').attr('db-id'),
-          concepto: $('#concepto1').val(),
-          accion: 'DET'
+        // cuando selecciona 0100-BANCOS
+        if (parteCuentaMST[0] == '0100'){
+          if($('#banSAT').attr('db-id') == ""){
+          	alertify.error("Seleccione un banco");
+          	$('#banSAT').focus();
+          	return false;
+          }
+          if( $('#banSAT').attr('db-id') == "999" && $('#nomBcoExt').val() == "" ){
+             alertify.error("Es requerido el nombre del banco");
+             $('#nomBcoExt').focus();
+             return false;
+           }
+
+          if( $('#noCuenta').val() == ""){
+            alertify.error("Escriba numero de cuenta");
+          	$('#noCuenta').focus();
+          	return false;
+          }
+          if($('#oficina').attr('db-id') == ""){
+          	alertify.error("Seleccione oficina");
+          	$('#oficina').focus();
+          	return false;
+          }
+
+          var data = {
+            ctaSAT: $('#ctaSAT1').attr('db-id'),
+            naturSAT: $('#naturSAT1').attr('db-id'),
+            ctamaestra: $('#ctamaestra1').attr('db-id'),
+            concepto: $('#concepto1').val(),
+            accion: 'DET',
+            banSAT: $('#banSAT').attr('db-id'),
+            nomBcoExt: $('#nomBcoExt').val(),
+            noCuenta: $('#noCuenta').val(),
+            oficinaAsignar: $('#oficina').attr('db-id'),
+            obser: $('#obser').val()
+          }
         }
 
+        // cuando selecciona 0115-DEUDORES
+        if (parteCuentaMST[0] == '0115'){
+          if($('#identID').val() == ""){
+          	alertify.error("Seleccione cliente o empleado");
+          	$('#cliente0115').focus();
+          	return false;
+          }
+
+          var data = {
+            ctaSAT: $('#ctaSAT1').attr('db-id'),
+            naturSAT: $('#naturSAT1').attr('db-id'),
+            ctamaestra: $('#ctamaestra1').attr('db-id'),
+            concepto: $('#concepto1').val(),
+            accion: 'DET',
+            identID: $('#identID').val(),
+            identTipo: $('#identTipo').val()
+          }
+        }
+
+        if (parteCuentaMST[0] == '0206'){
+          if($('#prov0206').attr('db-id') == ""){
+          	alertify.error("Seleccione proveedor");
+          	$('#prov0206').focus();
+          	return false;
+          }
+
+          var data = {
+            ctaSAT: $('#ctaSAT1').attr('db-id'),
+            naturSAT: $('#naturSAT1').attr('db-id'),
+            ctamaestra: $('#ctamaestra1').attr('db-id'),
+            concepto: $('#concepto1').val(),
+            accion: 'DET',
+            prov: $('#prov0206').attr('db-id')
+          }
+        }
+
+        if (parteCuentaMST[0] != '0100' && parteCuentaMST[0] != '0115' && parteCuentaMST[0] != '0206'){
+          var data = {
+            ctaSAT: $('#ctaSAT1').attr('db-id'),
+            naturSAT: $('#naturSAT1').attr('db-id'),
+            ctamaestra: $('#ctamaestra1').attr('db-id'),
+            concepto: $('#concepto1').val(),
+            accion: 'DET'
+          }
+        }
         $.ajax({
     			type: "POST",
     			url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregar.php",
@@ -251,72 +383,6 @@ $(document).ready(function(){
         });
 
       });
-
-
-
-  // $('#medit-ctas').click(function(){
-     //
-     //   if($('#medit-ctaSAT').attr('db-id') == ""){
-     //     alertify.error("Seleccione cuenta del SAT");
-     //     $('#medit-ctaSAT').focus();
-     //     return false;
-     //   }
-     //
-     //   if($('#medit-concepto').val() == ""){
-     //     alertify.error("Asigne un concepto");
-     //     $('#medit-concepto').focus();
-     //     return false;
-     //   }
-     //
-     //   if($('#medit-status').val() == ""){
-     //     alertify.error("Seleccione el estatutus de captura");
-     //     $('#medit-status').focus();
-     //     return false;
-     //   }
-     //
-     //
-     //   if($('#medit-naturSAT').attr('db-id') == ""){
-     //     alertify.error("Seleccione Naturaleza de la cuenta");
-     //     $('#medit-naturSAT').focus();
-     //     return false;
-     //   }
-     //
-     //   if($('#medit-prodServ').attr('db-id') == ""){
-     //     alertify.error("Seleccione clave de producto");
-     //     $('#medit-prodServ').focus();
-     //     return false;
-     //   }
-     //
-     //
-     //     var data = {
-     //       ctaSAT: $('#medit-ctaSAT').attr('db-id'),
-     //       concepto: $('#medit-concepto').val(),
-     //       status: $('#medit-status').val(),
-     //       naturSAT: $('#medit-naturSAT').attr('db-id'),
-     //       prodServ: $('#medit-prodServ').attr('db-id'),
-     //     }
-     //
-     //     $.ajax({
-     //       type: "POST",
-     //       url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/editar.php",
-     //       data: data,
-     //       success: 	function(request, settings){
-     //         //$('#respuestaCtasMST').html(request);
-     //         console.error(request);
-     //         mensaje = request;
-     //         if(mensaje.indexOf("Error") > -1){
-     //           swal("La cuenta no se actualizo");
-     //           console.error(request);
-     //           return false;
-     //         }else{
-     //           swal("La cuenta se actualizo correctamente");
-     //           console.error(request);
-     //           return true;
-     //         }
-     //       }
-     //
-     //     });
-     // });
 
 
   $('tbody').on('click', '.editar-cuenta', function(){
@@ -391,7 +457,6 @@ $(document).ready(function(){
         return false;
       }
 
-
         var data = {
           id_cuenta: $('#pk_id_cuenta').attr('db-id'),
           cuenta_sat: $('#fk_codAgrup').attr('db-id'),
@@ -409,6 +474,7 @@ $(document).ready(function(){
             console.log(r);
             r = JSON.parse(r);
             if (r.code == 1) {
+              cuentas_Det();
               swal("Exito", "La cuenta se actualizó correctamente.", "success");
               $('.real-time-search').keyup();
             } else {
@@ -418,18 +484,109 @@ $(document).ready(function(){
           error: function(x){
             console.error(x);
           }
-
         });
-
-
-    $('.modal').modal('hide');
-  })
-
+      $('.modal').modal('hide');
+    })
   $('.real-time-search').keyup();
-
-  fetch_cuentas_sat();
-
 });
+
+function CLTasignado(){
+  cliente = $('#client0115').attr('db-id');
+  $('#identTipo').val('cliente');
+  $('#identID').val(cliente);
+
+  nom = $('#client0115').val();
+  parte = nom.split('-');
+  $('#concepto1').val(parte[1]);
+}
+
+function empAsignado(){
+  empleado = $('#emp0115').attr('db-id');
+  $('#identTipo').val('empleado');
+  $('#identID').val(empleado);
+
+  nom = $('#emp0115').val();
+  parte = nom.split('-');
+  $('#concepto1').val(parte[1]);
+}
+
+function provAsignado(){
+  nom = $('#prov0206').val();
+  parte = nom.split('-');
+  $('#concepto1').val(parte[1]);
+}
+
+function asigCorresponsal(id_corresp,id_cliente){
+    if(id_corresp > 0){
+      if($('#corp-cliente').attr('db-id') == ""){
+        alertify.error("Seleccione un cliente");
+        $('#corp-cliente').focus();
+        return false;
+      }
+
+      var data = {
+        id_cliente: $('#corp-cliente').attr('db-id'),
+        id_corresp: $('#id_corresp').val()
+      }
+
+    }else{
+      var data = {
+        id_cliente: id_cliente,
+        id_corresp: id_corresp
+      }
+    }
+
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/asignarCorresponsalAcliente.php",
+    data: data,
+    success: 	function(request){
+      r = JSON.parse(request);
+      console.log(r);
+      if (r.code == 1) {
+        swal("Exito", "Operación realizada correctamente.", "success");
+        location.reload();
+      } else {
+        console.error(r.message);
+      }
+
+    }
+  });
+}
+
+
+function correspAsignar(id_corresp){
+  window.location.replace('/conta6/Ubicaciones/Contabilidad/AdminContable/CorresponsalesAsignar.php?id_corresp='+id_corresp);
+}
+function fetch_cuentas_sat(){
+    $.ajax({
+      method: 'POST',
+      url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_cuentas.php',
+      success: function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          $('#catalogo-sat-helper').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      }
+    })
+}
+
+function cuentas_Det(){
+  $.ajax({
+    method: 'POST',
+    url: '/conta6/Ubicaciones/Contabilidad/AdminContable/actions/tablacuentasDet.php',
+    success: function(r){
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        $('#tabla_cuentas').html(r.data);
+      } else {
+        console.error(r.message);
+      }
+    }
+  })
+}
 
 function valida_ctamaestra(){
   var ctamaestra = $('#ctamaestra').val();

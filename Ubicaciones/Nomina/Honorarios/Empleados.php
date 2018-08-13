@@ -14,7 +14,7 @@
     <h5 class="titulo2 font16">REGISTRO EMPLEADOS</h5>
     <div class="acordeon2 text-center">
       <div class="encabezado font16" data-toggle="collapse" href="#collapsegenerales">
-        <a  id="bread">DATOS GENERALES</a>
+        <a href="#">DATOS GENERALES</a>
       </div>
       <div id="collapsegenerales" class="card-block collapse">
         <form class="form1">
@@ -143,7 +143,7 @@
 
     <div class="acordeon2 text-center mt-3">
       <div class="encabezado font16" data-toggle="collapse" href="#collapselaborales">
-        <a  id="bread">DATOS LABORALES</a>
+        <a href="#">DATOS LABORALES</a>
       </div>
       <div id="collapselaborales" class="card-block collapse">
         <form  class="form1">
@@ -282,7 +282,7 @@
 
     <div class="acordeon2 text-center mt-3">
       <div class="encabezado font16" data-toggle="collapse" href="#collapsetres">
-        <a  id="bread">DISTRIBUCION DE SALARIO</a>
+        <a href="#">DISTRIBUCION DE SALARIO</a>
       </div>
       <div id="collapsetres" class="card-block collapse">
         <form class="form1">
@@ -322,7 +322,7 @@
 
     <div class="acordeon2 text-center mt-3">
       <div class="encabezado font16" data-toggle="collapse" href="#collapsehonasim">
-        <a  id="bread">HONORARIOS ASIMILADOS A SALARIOS</a>
+        <a href="#">HONORARIOS ASIMILADOS A SALARIOS</a>
       </div>
       <div id="collapsehonasim" class="card-block collapse">
         <form class="form1">

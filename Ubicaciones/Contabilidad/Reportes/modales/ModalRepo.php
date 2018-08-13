@@ -14,25 +14,25 @@
         <div class="row submenuMed m-0">
           <ul class="nav nav-pills nav-fill" id="selecRepoCont">
             <li class="nav-item">
-              <a class="nav-link Consul" id="backpinkico" accion="cobranza" status="cerrado">COBRANZA</a>
+              <a style="cursor:pointer" class="nav-link Consul font12" accion="cobranza" status="cerrado">COBRANZA</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link Consul" id="backpinkico" accion="conta" status="cerrado">CONTABILIDAD</a>
+              <a style="cursor:pointer" class="nav-link Consul font12" accion="conta" status="cerrado">CONTABILIDAD</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link Consul" id="backpinkico" accion="contaElec" status="cerrado">CONTABILIDAD ELECTRONICA</a>
+              <a style="cursor:pointer" class="nav-link Consul font12" accion="contaElec" status="cerrado">CONTABILIDAD ELECTRONICA</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link Consul" id="backpinkico" accion="Fact" status="cerrado">FACTURACION</a>
+              <a style="cursor:pointer" class="nav-link Consul font12" accion="Fact" status="cerrado">FACTURACION</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link Consul" id="backpinkico" accion="Finan" status="cerrado">FINANCIEROS</a>
+              <a style="cursor:pointer" class="nav-link Consul font12" accion="Finan" status="cerrado">FINANCIEROS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link Consul" id="backpinkico" accion="Impuestos" status="cerrado">IMPUESTOS</a>
+              <a style="cursor:pointer" class="nav-link Consul font12" accion="Impuestos" status="cerrado">IMPUESTOS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link Consul" id="backpinkico" accion="Revisiones" status="cerrado">REVISIONES</a>
+              <a style="cursor:pointer" class="nav-link Consul font12" accion="Revisiones" status="cerrado">REVISIONES</a>
             </li>
           </ul>
         </div>

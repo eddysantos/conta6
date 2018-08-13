@@ -11,6 +11,7 @@ include($root . '/conta6/Resources/PHP/Databases/conexion.php');
 date_default_timezone_set('America/Monterrey');
 
 require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
+require $root . '/conta6/Resources/PHP/actions/consultaDatosCIA.php';
 
 function exit_script($input_array){
   $json_string = json_encode($input_array);
@@ -18,7 +19,7 @@ function exit_script($input_array){
   global $db;
   $db->close();
   die();
-  
+
 }
 
 
