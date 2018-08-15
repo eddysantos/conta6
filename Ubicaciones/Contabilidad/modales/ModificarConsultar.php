@@ -18,7 +18,7 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-12">
-            <form class="form-group" autocomplete="off">
+            <form class="form-group">
               <input id="folioPol" class="reg border-0" type="text" onchange="validaSoloNumeros(this);" autocomplete="off">
             </form>
           </div>
@@ -30,6 +30,7 @@
     </div><!--termina el COntenido del Modal-->
   </div>
 </div>
+
 
 <!--MODAL Contabilidad > Polizas > Consultar-->
 <div class="modal fade text-center" id="consultar-pol">

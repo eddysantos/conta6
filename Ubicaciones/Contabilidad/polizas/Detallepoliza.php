@@ -130,7 +130,7 @@ if( $totalRegistrosSelect > 0 ){
               </thead>
               <tbody>
                 <tr class="row m-0 mt-5">
-                  <td class="col-md-10 input-effect">
+                  <td class="col input-effect ">
                     <?php if( $oRst_permisos["s_lstCompletaCtas_polizas"] == 1 ){
                     echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
                     }else{
@@ -143,14 +143,14 @@ if( $totalRegistrosSelect > 0 ){
                     <div class="popup-list" id="popup-display-detpol-cuenta" style="display:none"></div>
                     <label for="detpol-cuenta">Seleccione una Cuenta</label>
                   </td>
-                  <td class="col-md-2 input-effect">
+                  <td  class="gto col-md-2 input-effect " style="display:none">
                     <input class="efecto popup-input" id="detpol-gtoficina" type="text" id-display="#popup-display-detpol-gtoficina" action="oficinas" db-id="" autocomplete="off" onChange="valDescripOficina()">
                     <div class="popup-list" id="popup-display-detpol-gtoficina" style="display:none"></div>
                     <label for="detpol-gtoficina">Gasto Oficina</label>
                   </td>
                 </tr>
                 <tr class="row m-0 mt-4">
-                  <td class="col-md-10 input-effect">
+                  <td class="col-md-10 input-effect ">
                     <input class="efecto popup-input" id="detpol-cliente" type="text" id-display="#popup-display-detpol-cliente" action="clientes" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-cliente" style="display:none"></div>
                     <label for="detpol-cliente">Cliente</label>
@@ -160,7 +160,7 @@ if( $totalRegistrosSelect > 0 ){
                   </td>
                 </tr>
                 <tr class="row m-0 mt-4">
-                  <td class="col-md-12 input-effect">
+                  <td class="gto col-md-12 input-effect " style="display:none">
                     <input class="efecto popup-input" id="detpol-proveedores" type="text" id-display="#popup-display-detpol-proveedores" action="proveedores" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-proveedores" style="display:none"></div>
                     <label for="detpol-proveedores">Proveedor</label>
@@ -174,7 +174,7 @@ if( $totalRegistrosSelect > 0 ){
                 </tr>
                 <tr class="row m-0 mt-4">
                   <td class="col-md-2 input-effect">
-                    <input class="efecto popup-input" id="detpol-referencia" type="text" id-display="#popup-display-detpol-referencia" action="referencias" db-id="" autocomplete="off" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaReferencia(this);">
+                    <input class="efecto popup-input " id="detpol-referencia" type="text" id-display="#popup-display-detpol-referencia" action="referencias" db-id="" autocomplete="off" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaReferencia(this);">
                     <div class="popup-list" id="popup-display-detpol-referencia" style="display:none"></div>
                     <label for="detpol-referencia">Referencia</label>
                   </td>
@@ -183,17 +183,17 @@ if( $totalRegistrosSelect > 0 ){
                     <label for="detpol-documento">Documento</label>
                   </td>
                   <td class="col-md-2 input-effect">
-                    <input class="efecto popup-input" id="detpol-factura" type="text" id-display="#popup-display-detpol-factura" action="facturas_cfdi" db-id="" autocomplete="off">
+                    <input class="efecto popup-input " id="detpol-factura" type="text" id-display="#popup-display-detpol-factura" action="facturas_cfdi" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-factura" style="display:none"></div>
                     <label for="detpol-factura">Factura</label>
                   </td>
                   <td class="col-md-1 input-effect">
-                    <input class="efecto popup-input" id="detpol-anticipo" type="text" id-display="#popup-display-detpol-anticipo" action="anticipos_mst" db-id="" autocomplete="off">
+                    <input class="efecto popup-input " id="detpol-anticipo" type="text" id-display="#popup-display-detpol-anticipo" action="anticipos_mst" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-anticipo" style="display:none"></div>
                     <label for="detpol-anticipo">Anticipo</label>
                   </td>
                   <td class="col-md-1 input-effect">
-                    <input class="efecto popup-input" id="detpol-cheque" type="text" id-display="#popup-display-detpol-cheque" action="cheques_mst" db-id="" autocomplete="off">
+                    <input class="efecto popup-input " id="detpol-cheque" type="text" id-display="#popup-display-detpol-cheque" action="cheques_mst" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-cheque" style="display:none"></div>
                     <label for="detpol-cheque">Cheque</label>
                   </td>
@@ -226,7 +226,16 @@ if( $totalRegistrosSelect > 0 ){
               <input class="efecto" value="<?php echo $sumaAbonos; ?>" readonly>
             </div>
           </div>
+
+          <div class="contorno-mov mt-5">
+            <table class="table">
+              <tbody id="ultimosRegistros"></tbody>
+            </table>
+          </div>
         </div>
+
+
+
 
         <div id="two"><!--DETALLE DE POLIZAS-->
           <div class="row d-flex flex-row-reverse mt-4">
@@ -283,7 +292,8 @@ if( $totalRegistrosSelect > 0 ){
         </div>
 
         <?php if( $id_poliza > 0 ){
-            require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_detallePoliza.php';
+          require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
+            // require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_detallePoliza.php';
           } ?>
 
       </div><!--/Termina contenedor-movible-->

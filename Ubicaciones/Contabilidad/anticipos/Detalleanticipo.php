@@ -168,7 +168,8 @@ if( $rows > 0 ){
         </li>
         <?php if( $id_poliza > 0 ){ ?>
         <li class="nav-item">
-          <a class="nav-link pills" onclick="infAdd_detallePoliza(<?php echo $id_poliza; ?>)">Información de la Partida</a>
+          <a class="nav-link pills" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
+          <!-- <a class="nav-link pills" onclick="infAdd_detallePoliza(<?php echo $id_poliza; ?>)">Información de la Partida</a> -->
         </li>
         <?php } ?>
       </ul>
@@ -313,7 +314,8 @@ if( $rows > 0 ){
         </div>
 
         <?php if( $id_poliza > 0 ){
-            require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_detallePoliza.php';
+          // require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_detallePoliza.php';
+            require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
           } ?>
       </div><!--/Termina contenedor-movible-->
     </div><!--/Termina continermov-->

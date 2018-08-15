@@ -42,6 +42,10 @@
   font-weight: normal!important;
   color:rgb(87, 87, 87)!important;
 }
+
+.b{
+  color: rgb(89, 89, 89);
+}
 select{
   font-size: 10pt!important;
   text-align-last:center;
@@ -173,20 +177,29 @@ height: 30px;
 /* popup-list */
 .popup-list{
   width: -webkit-fill-available;
-  border-radius: 5px;
-  border: 1px solid #ced4da;
+  border-radius: 8px;
+  border: 1.5px solid #838383;
   background-color: white;
   padding: 10px;
   z-index: 9999;
+
+  /* nuevos */
+  right: 0px;
+  margin-top: 10px;
+  position: absolute;
+  max-height: 400px;
+  overflow: hidden;
 }
 
 .popup-list p{
   padding: 10px;
   margin-bottom: 0px;
+  color : #656565;
+  
 }
 
 .popup-list p.hovered{
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, 0.37);
   cursor: pointer;
   color: white;
 }
@@ -197,7 +210,7 @@ height: 30px;
 } */
 
 .popup-list p:not(:last-child){
-  border-bottom: 1px solid #ced4da;
+  border-bottom: 1px solid #656565;
 }
 
 .popup-list p:last-child{
@@ -222,6 +235,11 @@ height: 30px;
   font-size: 13px;
 } */
 
+
+/* .popup-pad{
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+} */
 
 .linkbtn{
   background-color: transparent!important;
