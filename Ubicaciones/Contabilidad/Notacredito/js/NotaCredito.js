@@ -39,18 +39,9 @@ $(document).ready(function(){
       $('#buscarRef').slideUp();
     });
 
-    $('.atras').click(function(){
-      var accion = $(this).attr('accion');
-      switch (accion) {
-
-        case "datosPedimento":
-        $('#repoPed').fadeOut();
-        $('#buscarRef').slideDown();
-          break;
-        default:
-
-          console.error("Something went terribly wrong...");
-      }
+    $('.nc').click(function(){
+      $('#repoPed').fadeOut();
+      $('#buscarRef').slideDown();
     });
 
   });

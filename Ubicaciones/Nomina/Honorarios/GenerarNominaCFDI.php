@@ -84,7 +84,7 @@
     <div  class="contorno mt-4">
       <div class="acordeon2">
         <div class="encabezado text-center font16" data-toggle="collapse" href="#collapseOne">
-          <a  id="bread">DATOS GENERALES</a>
+          <a href="#">DATOS GENERALES</a>
         </div>
         <div id="collapseOne" class="collapse">
           <form class="form1">
@@ -172,7 +172,7 @@
     <div class="contorno">
       <div class="acordeon2">
         <div class="encabezado text-center font16">
-          <a  id="bread">ARTICULO 113</a>
+          <a href="#">ARTICULO 113</a>
         </div>
           <form class="form1">
             <table class="table table-hover text-center">

@@ -1,8 +1,6 @@
 <?php
-$_SESSION['user_name'] = 'admado';
-$usuario = $_SESSION['user_name'];
-require $root . '/conta6/Resources/PHP/Databases/conexion.php';
-require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
+$root = $_SERVER['DOCUMENT_ROOT'];
+require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,8 +27,6 @@ require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
   <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
   <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
-
-
 <!--***************SCRIPTS*****************-->
   <script src="/conta6/Resources/JQuery/sweetalert.min.js"></script>
   <script src="/conta6/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
@@ -43,9 +39,9 @@ require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
 
 
 </head>
-  <header class="container-fluid">
+  <header class="container-fluid p-0">
 
-    <nav class="navbar navbar-fixed-top">
+    <nav class="navbar navbar-fixed-top p-0">
       <div class="container-fluid">
         <div class="navbar-header"></div>
         <div class="navbar-collapse m-0" id="menu">
@@ -81,14 +77,16 @@ require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
                 <li class="dropdown">
                   <a href="#" class="">Cheques <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/cheques/GenerarCheque.php">Generar</a></li>
                     <li><a href="#modificar-ch" data-toggle="modal">Modificar</a></li>
                     <li><a href="#consultar-ch" data-toggle="modal">Consultar</a></li>
-                    <li><a href="#">Benefiaciarios</a></li>
+				          	<li><a href="/conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/Catalogo.php">Beneficiarios</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
                   <a href="#" class="">Anticipos <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></i></a>
                   <ul class="dropdown-menu">
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/anticipos/GenerarAnticipo.php">Generar</a></li>
                     <li><a href="#modificar-ant" data-toggle="modal">Modificar</a></li>
                     <li><a href="#consultar-ant" data-toggle="modal">Consultar</a></li>
                   </ul>
@@ -115,14 +113,14 @@ require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
                     <li><a href="/conta6/Ubicaciones/Contabilidad/Notacredito/2-Reportes.php">Reportes</a></li>
                   </ul>
                 </li>
-                <li><a href="/conta6/Ubicaciones/Contabilidad/recorrido/1-Recorrido.php">Recorrido</a></li>
-                <li><a href="/conta6/Ubicaciones/Contabilidad/controlpedimentos/PedimentosCapturados.php">Control Pedimentos Pag.</a></li>
-                <li class="dropdown">
+                <!-- <li><a href="/conta6/Ubicaciones/Contabilidad/recorrido/1-Recorrido.php">Recorrido</a></li> -->
+                <!-- <li><a href="/conta6/Ubicaciones/Contabilidad/controlpedimentos/PedimentosCapturados.php">Control Pedimentos Pag.</a></li> -->
+                <!-- <li class="dropdown">
                   <a href="#" class="">Cuenta de Gastos <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
                     <li><a href="/conta6/Ubicaciones/Contabilidad/CuentaGastos/consultarCtaGtos.php" >Consultar</a></li>
                   </ul>
-                </li>
+                </li> -->
                 <li class="dropdown">
                   <a href="#" class="">Administracion Contable <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
@@ -219,7 +217,7 @@ require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
       </header>
 
   <?php
-    $root = $_SERVER['DOCUMENT_ROOT'];
+
     require $root . '/conta6/Ubicaciones/Contabilidad/modales/ImprimirPolizas.php';
     require $root . '/conta6/Ubicaciones/Contabilidad/Reportes/modales/ModalRepo.php';
     require $root . '/conta6/Ubicaciones/Contabilidad/modales/Modificarconsultar.php';

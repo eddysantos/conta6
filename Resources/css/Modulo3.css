@@ -1,20 +1,46 @@
 
-:focus{
-  outline: none;
+/*pendiente solo quitar de anticipos*/
+.contorno-modal{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0px 3px!important;
+  margin: 8px!important;
 }
 
-.mleftx2{
-  margin-left: 27px!important;
+
+/* #bread{
+  background-color: transparent!important;
+  color: rgb(110, 110, 110)!important;
+  letter-spacing: 5px!important;
 }
-.mleftx3{
-  margin-left: 30px!important;
+#bread:hover, #bread:focus {
+  color: rgb(209, 28, 28)!important;
+  text-shadow: 2px 1px 15px rgba(173,130,150,1);
+  cursor: pointer;
+} */
+
+
+
+/* de estas dos clases solo dejar una ya que osn iguales */
+/* .atras {
+  background-color: transparent!important;
+  color: rgb(161, 160, 160)!important;
+  letter-spacing: 3px!important;
+  font-size: 16px;
 }
-.mleftx5{
-  margin-left: 50px!important;
+.atras:hover, .atras:focus {
+  color: rgb(209, 28, 28)!important;
+  cursor: pointer;
+  font-size: 18px;
+} */
+/* .regresar {
+  background-color: transparent!important;
+  color: rgb(161, 160, 160)!important;
+  letter-spacing: 3px!important;
+  font-size: 16px;
 }
-.mleftx10{
-  margin-left: 100px!important;
-}
-.text-normal{
-  font-size: 14px!important;
-}
+.regresar:hover, .regresar:focus {
+  color: rgb(209, 28, 28)!important;
+  cursor: pointer;
+  font-size: 18px;
+} */

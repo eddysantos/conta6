@@ -4,8 +4,8 @@
 ?>
 
 
-<div class="container-fluid">
-  <table class="text-center table mt-5">
+<div class="container-fluid text-center">
+  <table class="table mt-5">
     <tr class="row mb-5">
       <td class="col-md-6 offset-md-3">
         <select class="custom-select">
@@ -23,7 +23,7 @@
   <div class="contorno mt-5">
     <h5 class="titulo font14">REGISTRAR TARIFA</h5>
     <form class="form1" style="letter-spacing:0px">
-      <table class="table text-center">
+      <table class="table">
         <tbody>
           <tr class="row">
             <td class="col-md-4 offset-md-4">
@@ -69,7 +69,7 @@
               <input id="imp2" class="efecto" type="text">
               <label for="imp2">Importe 2</label>
             </td>
-            <td class="col-md-1 input-effect" >
+            <td class="col-md-1 input-effect">
               <input  list="lista-ope" class="efecto" id="operacion">
               <datalist id="lista-ope">
                 <option value="IMP"></option>
@@ -90,7 +90,7 @@
               <label for="fac3">Factor 3</label>
             </td>
             <td class="col-md-1 text-left pt-3">
-              <a href="" class="btn-block"><img src= "/conta6/Resources/iconos/add.svg" class="icomediano"></a>
+              <a href=""><img src= "/conta6/Resources/iconos/add.svg" class="icomediano"></a>
             </td>
           </tr>
         </tbody>
@@ -100,11 +100,11 @@
 
   <div class="contorno mt-5">
     <h5 class="titulo font14">VISUALIZAR TARIFA</h5>
-    <table class="table text-center">
+    <table class="table">
       <thead>
         <tr class="row">
-          <td class="col-md-1 mt-">
-            <a href=""><img class="icomediano ml-3" src="/conta6/Resources/iconos/printer.svg"></a>
+          <td class="col-md-1">
+            <a href=""><img class="icomediano pt-3" src="/conta6/Resources/iconos/printer.svg"></a>
           </td>
           <td class="col-md-2 offset-md-9">
             <select class="custom-select">
@@ -148,18 +148,15 @@
           <td class="col-md-1">300</td>
           <td class="col-md-1">
             <a href=""><img class="icochico" src="/conta6/Resources/iconos/cross.svg"></a>
-            <a href="#EditarRegTarifa" data-toggle="modal"><img class="icochico mleftx2" src="/conta6/Resources/iconos/003-edit.svg"></a>
+            <a href="#EditarRegTarifa" data-toggle="modal"><img class="icochico ml-5" src="/conta6/Resources/iconos/003-edit.svg"></a>
           </td>
         </tr>
       </tbody>
-
     </table>
   </div>
 </div>
 
 
-
-<!-- revisar el modal -->
 <?php
-// require_once('modales/editarTarifa.php'); 
+require_once('modales/editarTarifa.php');
 ?>

@@ -14,7 +14,7 @@
       <div class="modal-body p-0">
         <form class="form1" method="post">
           <table class="table text-center">
-            <thead class="text-normal">
+            <thead class="font14">
               <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
                 <td class="col-md-3">Inferior</td>
                 <td class="col-md-3">Superior</td>
@@ -42,7 +42,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" id="btn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -98,7 +98,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" id="btn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -119,7 +119,7 @@
       <div class="modal-body p-0">
         <form class="form1" method="post">
           <table class="table text-center">
-            <thead class="text-normal">
+            <thead class="font14">
               <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
                 <td class="col-md-6">Oficina</td>
                 <td class="col-md-6">Integración</td>
@@ -139,7 +139,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" id="btn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -184,7 +184,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" id="btn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -241,7 +241,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" id="btn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>

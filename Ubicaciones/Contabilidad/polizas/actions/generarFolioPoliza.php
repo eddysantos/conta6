@@ -1,59 +1,53 @@
 <?PHP
-$_SESSION['user_name'] = 'admado';
-$usuario = $_SESSION['user_name'];
-$oficina = 470;
-
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Databases/conexion.php';
-require $root . '/conta6/Resources/PHP/actions/consultaPermisos.php';
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
+$system_callback = [];
+$data = $_POST;
+
+$tipo = trim($_POST['diatipo']);
+$aduana = trim($_POST['diaaduana']);
 $fecha = trim($_POST['diafecha']);
 $concepto = trim($_POST['diaconcepto']);
+
+$fechaDoc = date_format(date_create($fecha),'Y-m-d');
+
 $system_callback = [];
 
-		#*******************
-		#* FECHA DE CIERRE *
-		#*******************
-		$oRst_Cierre = mysqli_fetch_array(mysqli_query($db,"SELECT d_fecha_inicial,d_fecha_final
-						  FROM conta_t_documento_cierre
-						  WHERE fk_id_tipo = 4 AND fk_id_aduana = '$oficina'
-						  ORDER BY pk_id_cierre DESC
-						  LIMIT 1 "));
+$queryInsert = "INSERT INTO conta_t_polizas_mst (d_fecha,fk_usuario,fk_id_aduana,s_concepto)
+           		 VALUES (?,?,?,?)";
 
-		$fecha_inicial = strtotime(date_format(date_create($oRst_Cierre["d_fecha_inicial"]),"Y/m/d"));
-		$fecha_final = strtotime(date_format(date_create($oRst_Cierre["d_fecha_final"]),"Y/m/d"));
-		$fecha_generar = strtotime(date_format(date_create($fecha),"Y/m/d"));
+$stmtInsert = $db->prepare($queryInsert);
+if (!($stmtInsert)) {
+	$system_callback['code'] = "500";
+  $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
+  exit_script($system_callback);
+}
 
+$stmtInsert->bind_param('ssss',$fechaDoc,$usuario,$aduana,$concepto);
+if (!($stmtInsert)) {
+	$system_callback['code'] = "500";
+  $system_callback['message'] = "Error during variables binding [$stmtInsert->errno]: $stmtInsert->error";
+  exit_script($system_callback);
+}
 
-	if( $oRst_permisos["s_generar_x_fecha_polizas"] == 1 ) {
-			generarPoliza($db,$concepto,$usuario,$oficina,$fecha);
- 	}else{
-		if( $fecha_generar >= $fecha_inicial and $fecha_generar <= $fecha_final ){
-			generarPoliza($db,$concepto,$usuario,$oficina,$fecha);
-		}else{
-			$fecha_inicial = date_format(date_create($oRst_Cierre["fecha_inicial"]),"d-m-Y");
-			$fecha_final = date_format(date_create($oRst_Cierre["fecha_final"]),"d-m-Y");
-			echo "<b>Error - Fecha Incorrecta. Solo puede registrar del <br><b>".$fecha_inicial."<br>al<br>".$fecha_final;
-	 	} #* FIN VALIDAR FECHA
-	} #* FIN GENERAR CON CUALQUIER FECHA
+if (!($stmtInsert->execute())) {
+	$system_callback['code'] = "500";
+  $system_callback['message'] = "Error during query execution [$stmtInsert->errno]: $stmtInsert->error";
+  exit_script($system_callback);
+}
 
-
-	function generarPoliza($db,$concepto,$usuario,$oficina,$fecha){
-    $fechaDoc = date_format(date_create($fecha),'Y-m-d');
-
-  	mysqli_query($db,"INSERT INTO conta_t_polizas_mst (d_fecha,fk_usuario,fk_id_aduana,s_concepto)
-  			VALUES ('$fechaDoc','$usuario','$oficina','$concepto')");
-
-     echo $nFolio = mysqli_insert_id($db);
+$nFolio = $db->insert_id;
 
 
-     $descripcion = "Se Genero la Poliza: $nFolio";
-     $clave = 'polizas';
-     $folio = $nFolio;
-     require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+$descripcion = "Se Genero la Poliza: $nFolio Concepto: $concepto";
+$clave = 'polizas';
+$folio = $nFolio;
+require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
 
-	}
-
+$system_callback['data'] .= $nFolio;
+$system_callback['code'] = 1;
+$system_callback['message'] = "Script called successfully!";
+exit_script($system_callback);
 
 ?>
