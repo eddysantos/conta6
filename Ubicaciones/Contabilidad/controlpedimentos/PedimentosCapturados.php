@@ -6,7 +6,7 @@
 <div class="text-center">
   <div class="row submenuMed m-0">
     <div class="col-md-12" role="button">
-      <a  id="submenuMed" class="consultar" accion="pCap" status="cerrado">PEDIMENTOS CAPTURADOS</a>
+      <a  id="submenuMed" class="conPed" accion="pCap" status="cerrado">PEDIMENTOS CAPTURADOS</a>
     </div>
   </div>
   <div id="contornoPed" class="contorno" style="display:none">
@@ -71,7 +71,7 @@
       <thead>
         <tr class="row">
           <td class="col-md-1 offset-sm-11 p-0">
-            <a class="regresar" accion="datosPedimento">
+            <a href="#" class="rg">
               <i class="back fa fa-arrow-left">Regresar</i>
             </a>
           </td>

@@ -4,28 +4,27 @@
 ?>
 
 <div class="text-center">
-  <div class="contenedor" id="buscarRef">
-    <div class="row titulograndetop transEff" id="referencia">
-      <div class="col-md-12">
-        <label class="transEff" for="bRef" id="labelRef">Buscar</label>
-      </div>
+
+  <div class="mt10" id="buscarRef">
+    <div class="row text-center"  id="referencia">
+      <div class="offset-md-3 col-md-6 titulobuscar">Buscar</div>
     </div>
-    <div class="row intermedio transEff" id="nReferencia">
-      <div class="col-md-12" id="mostrarConsulta">
+    <div class="row transEff" id="nReferencia">
+      <div class="offset-md-3 col-md-6 inputbuscar" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
-        <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
-      </form>
+          <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
+        </form>
       </div>
     </div>
   </div>
 
 <!---se muestra al escribir la referencia y dar enter-->
-  <div class="contenedor contorno" id="repoPed" style="display:none">
+  <div class="mt10 contorno2" id="repoPed" style="display:none">
     <table class="table">
       <thead>
         <tr class="row">
-          <td class="col-md-1 offset-sm-11">
-            <a href="" class="atras" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
+          <td class="col-md-1 offset-sm-11 font14">
+            <a href="#" class="nc" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
           </td>
         </tr>
         <tr class="row encabezado font18">

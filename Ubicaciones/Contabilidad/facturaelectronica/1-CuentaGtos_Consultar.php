@@ -3,8 +3,8 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid">
-  <div class="row submenuMed m-0 text-center">
+<div class="text-center">
+  <div class="row submenuMed m-0">
     <div class="col-md-4" role="button">
       <a  id="submenuMed" class="visualizar" accion="Ver-cliente" status="cerrado">DATOS CLIENTE</a>
     </div>
@@ -25,9 +25,9 @@
     </a>
   </div>
 
-  <div id="contorno1" class="contorno" style="display:none">
+  <div class="contorno" id="detalleCliente" style="display:none">
     <form class="form1">
-      <table class="table text-center" id="detalleCliente">
+      <table class="table ">
         <thead>
           <tr class="row encabezado font16">
             <td class="col-md-12">MOTORES ELECTRICOS SUMERGIBLES DE MEXICO S. DE R.L DE C.V</td>
@@ -56,9 +56,9 @@
     </form>
   </div>
 
-  <div id="contorno2" class="contorno" style="display:none">
+  <div id="detalleEmbarque" class="contorno" style="display:none">
     <form class="form1">
-      <table class="table text-center" id="detalleEmbarque">
+      <table class="table ">
         <thead>
           <tr class="row encabezado font16">
             <td class="col-md-12">INFORMACION GENERAL</td>
@@ -124,9 +124,9 @@
     </form>
   </div>
 
-  <div id="contorno3" class="contorno" style="display:none">
+  <div id="detalleUsuario" class="contorno" style="display:none">
     <form class="form1">
-      <table  class="table text-center" id="detalleUsuario">
+      <table  class="table " >
         <thead>
           <tr class="row encabezado font16">
             <td class="col-md-6">GENERADO POR:</td>
@@ -146,117 +146,117 @@
       </table>
     </form>
   </div>
-</div>
+
 
 <!--Esta informacion si estara visible SOLICITUD DE ANTICIPO-->
 <div class="contorno">
   <h5 class="titulo font16">SOLICITUD ANTICIPO</h5>
-    <div class="container-fluid">
-      <table class="form1 table text-center">
-        <thead>
-          <tr class="row encabezado">
-            <td class="col-md-6">PAGOS O CARGOS EN USD</td>
-            <td class="col-md-2">IMPORTE</td>
-            <td class="col-md-2">AL T.C</td>
-            <td class="col-md-2">SUBTOTAL</td>
-          </tr>
-        </thead>
-        <tbody class="font14">
-          <tr class="row">
-            <td class="col-md-6">1 Reexpedicion</td>
-            <td class="col-md-2">$ 236.00</td>
-            <td class="col-md-2">$ 19.07</td>
-            <td class="col-md-2">$ 4,500.52</td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-6">1 Cruce</td>
-            <td class="col-md-2">$ 125.00</td>
-            <td class="col-md-2">$ 19.07</td>
-            <td class="col-md-2">$ 2,383.75</td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-6">2 Servicio Extraordinario</td>
-            <td class="col-md-2">$ 240.00</td>
-            <td class="col-md-2">$ 19.07</td>
-            <td class="col-md-2">$ 4,576.80</td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-6">1 Declaracion de Exportacion de USA a MEX (Shipper)</td>
-            <td class="col-md-2">$ 10.00</td>
-            <td class="col-md-2">$ 19.07</td>
-            <td class="col-md-2">$ 190.07</td>
-          </tr>
-        </tbody>
-      </table>
+    <table class="form1 table ">
+      <thead>
+        <tr class="row encabezado">
+          <td class="col-md-6">PAGOS O CARGOS EN USD</td>
+          <td class="col-md-2">IMPORTE</td>
+          <td class="col-md-2">AL T.C</td>
+          <td class="col-md-2">SUBTOTAL</td>
+        </tr>
+      </thead>
+      <tbody class="font14">
+        <tr class="row">
+          <td class="col-md-6">1 Reexpedicion</td>
+          <td class="col-md-2">$ 236.00</td>
+          <td class="col-md-2">$ 19.07</td>
+          <td class="col-md-2">$ 4,500.52</td>
+        </tr>
+        <tr class="row">
+          <td class="col-md-6">1 Cruce</td>
+          <td class="col-md-2">$ 125.00</td>
+          <td class="col-md-2">$ 19.07</td>
+          <td class="col-md-2">$ 2,383.75</td>
+        </tr>
+        <tr class="row">
+          <td class="col-md-6">2 Servicio Extraordinario</td>
+          <td class="col-md-2">$ 240.00</td>
+          <td class="col-md-2">$ 19.07</td>
+          <td class="col-md-2">$ 4,576.80</td>
+        </tr>
+        <tr class="row">
+          <td class="col-md-6">1 Declaracion de Exportacion de USA a MEX (Shipper)</td>
+          <td class="col-md-2">$ 10.00</td>
+          <td class="col-md-2">$ 19.07</td>
+          <td class="col-md-2">$ 190.07</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <table class="form1 table text-center mt-5">
-        <thead>
-          <tr class="row encabezado">
-            <td class="col-md-6">PAGOS POR CUENTA CLIENTE</td>
-            <td class="col-md-2">IMPORTE</td>
-            <td class="col-md-2">IVA</td>
-            <td class="col-md-2">SUBTOTAL</td>
-          </tr>
-        </thead>
-        <tbody class="font14">
-          <tr class="row">
-            <td class="col-md-6">Impuestos y/o Derechos Pagados o Garantizados al Com.Ext.</td>
-            <td class="col-md-2">$ 267.00</td>
-            <td class="col-md-2">$ 0.00</td>
-            <td class="col-md-2">$ 267.00</td>
-          </tr>
-        </tbody>
-      </table>
+    <table class="form1 table  mt-5">
+      <thead>
+        <tr class="row encabezado">
+          <td class="col-md-6">PAGOS POR CUENTA CLIENTE</td>
+          <td class="col-md-2">IMPORTE</td>
+          <td class="col-md-2">IVA</td>
+          <td class="col-md-2">SUBTOTAL</td>
+        </tr>
+      </thead>
+      <tbody class="font14">
+        <tr class="row">
+          <td class="col-md-6">Impuestos y/o Derechos Pagados o Garantizados al Com.Ext.</td>
+          <td class="col-md-2">$ 267.00</td>
+          <td class="col-md-2">$ 0.00</td>
+          <td class="col-md-2">$ 267.00</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <table class="table form1 text-center mt-5">
-        <thead>
-          <tr class="row encabezado">
-            <td class="col-md-6">HONORARIOS Y SERVICIOS</td>
-            <td class="col-md-2">IMPORTE</td>
-            <td class="col-md-2">IVA</td>
-            <td class="col-md-2">SUBTOTAL</td>
-          </tr>
-        </thead>
-        <tbody class="font14">
-          <tr class="row">
-            <td class="col-md-6">0.2% de Honorarios Sobre la Base de: 918,517.94</td>
-            <td class="col-md-2">$ 1,837.04</td>
-            <td class="col-md-2">$ 292.93</td>
-            <td class="col-md-2">$ 2,130.97</td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-6">Documentacion y Despacho</td>
-            <td class="col-md-2">$ 200.00</td>
-            <td class="col-md-2">$ 32.00</td>
-            <td class="col-md-2">$ 232.00</td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-6">Tramites y Servicios</td>
-            <td class="col-md-2">$ 450.00</td>
-            <td class="col-md-2">$ 72.00</td>
-            <td class="col-md-2">$ 522.00</td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-6">Manifestacion de Valor</td>
-            <td class="col-md-2">$ 150.00</td>
-            <td class="col-md-2">$ 24.00</td>
-            <td class="col-md-2">$ 174.00</td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-6">VUCEM</td>
-            <td class="col-md-2">$ 2,250.00</td>
-            <td class="col-md-2">$ 360.00</td>
-            <td class="col-md-2">$ 2,610.00</td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-6 text-right">Total</td>
-            <td class="col-md-2">$ 5,154.00</td>
-            <td class="col-md-2">$ 781.93</td>
-            <td class="col-md-2">$ 17,587.74</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table class="table form1  mt-5">
+      <thead>
+        <tr class="row encabezado">
+          <td class="col-md-6">HONORARIOS Y SERVICIOS</td>
+          <td class="col-md-2">IMPORTE</td>
+          <td class="col-md-2">IVA</td>
+          <td class="col-md-2">SUBTOTAL</td>
+        </tr>
+      </thead>
+      <tbody class="font14">
+        <tr class="row">
+          <td class="col-md-6">0.2% de Honorarios Sobre la Base de: 918,517.94</td>
+          <td class="col-md-2">$ 1,837.04</td>
+          <td class="col-md-2">$ 292.93</td>
+          <td class="col-md-2">$ 2,130.97</td>
+        </tr>
+        <tr class="row">
+          <td class="col-md-6">Documentacion y Despacho</td>
+          <td class="col-md-2">$ 200.00</td>
+          <td class="col-md-2">$ 32.00</td>
+          <td class="col-md-2">$ 232.00</td>
+        </tr>
+        <tr class="row">
+          <td class="col-md-6">Tramites y Servicios</td>
+          <td class="col-md-2">$ 450.00</td>
+          <td class="col-md-2">$ 72.00</td>
+          <td class="col-md-2">$ 522.00</td>
+        </tr>
+        <tr class="row">
+          <td class="col-md-6">Manifestacion de Valor</td>
+          <td class="col-md-2">$ 150.00</td>
+          <td class="col-md-2">$ 24.00</td>
+          <td class="col-md-2">$ 174.00</td>
+        </tr>
+        <tr class="row">
+          <td class="col-md-6">VUCEM</td>
+          <td class="col-md-2">$ 2,250.00</td>
+          <td class="col-md-2">$ 360.00</td>
+          <td class="col-md-2">$ 2,610.00</td>
+        </tr>
+        <tr class="row">
+          <td class="col-md-6 text-right">Total</td>
+          <td class="col-md-2">$ 5,154.00</td>
+          <td class="col-md-2">$ 781.93</td>
+          <td class="col-md-2">$ 17,587.74</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
+</div>
 
 <script src="js/facturaElectronica.js"></script>

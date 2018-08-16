@@ -9,7 +9,7 @@
         <h5 class="modal-tittle">Consultar Factura</h5>
       </div>
       <div class="modal-body">
-        <div id="" class="contorno">
+        <div class="contorno">
           <table class="table form1">
             <thead>
               <tr class="row encabezado">

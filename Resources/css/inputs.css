@@ -6,8 +6,8 @@ input[type=date]{
   padding-left: 40px;
   font-size: 13px!important;
 }
-input[type=date]:hover{
-  color: rgb(209, 28, 28);
+input[type=date]:hover,input[type=submit]:focus,input[type=submit]:hover{
+  color: rgb(209, 28, 28)!important;
   font-size: 14px!important;
 }
 
@@ -15,11 +15,15 @@ input[type=submit]{
   background-color: transparent!important;
   color: rgb(110, 110, 110)!important;
   letter-spacing: 8px;
+  cursor: pointer;
 }
-input[type=submit]:focus,input[type=submit]:hover{
+input:read-only{
+  background-color: rgba(173, 173, 173, 0.1)!important;
+}
+/* input[type=submit]:focus,input[type=submit]:hover{
   color: rgb(209, 28, 28)!important;
   font-size: 14px;
-}
+} */
 
 input[type=text].reg {
   height: 80px;
@@ -32,10 +36,16 @@ input[type=text].reg:focus {
   font-size: 45pt!important;
 }
 
+input.reg{
+  background-color:transparent!important;
+  letter-spacing:10px!important;
+  text-align:center!important;
+  color: rgb(75, 74, 74)!important;
+}
+
 
 
 input[type="text"]{
-  /* font: 15px/24px "Lato", Arial, sans-serif; */
   color: #333;
   width: 100%;
   box-sizing: border-box;
@@ -66,15 +76,17 @@ input:disabled{
   position: absolute;
   left: 3px;
   width: 100%;
-  top: 12px;
-  color: #afacac;
+  top: 17px;
+  font-size: 14px;
+  /* color: #afacac;
   transition: 0.3s;
   z-index: 1;
-  font-size: 14px;
-  padding-top: 4px;
+
+  padding-top: 4px; */
 }
 .efecto:focus ~ label, .tiene-contenido.efecto ~ label{
-  top: -12px;
+  /* top: -12px; */
+  top: -9px;
   font-size: 14px;
   color: #d59f9f;
   transition: 0.3s;

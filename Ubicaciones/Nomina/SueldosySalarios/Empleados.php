@@ -17,7 +17,7 @@
 
 <!-- COMIENZA DATOS GENERALES  -->
     <div class="encabezado font16" data-toggle="collapse" href="#datosGen">
-      <a  id="bread">DATOS GENERALES</a>
+      <a href="#">DATOS GENERALES</a>
     </div>
     <div id="datosGen" class="card-block collapse">
       <form class="form1">
@@ -145,7 +145,7 @@
 
 <!--COMIENZA DATOS LABORALES  -->
     <div class="encabezado font16 mt-3" data-toggle="collapse" href="#datosLaborales">
-      <a  id="bread">DATOS LABORALES</a>
+      <a href="#">DATOS LABORALES</a>
     </div>
     <div id="datosLaborales" class="card-block collapse">
       <form class="form1">
@@ -284,7 +284,7 @@
 
 <!--COMIENZA DISTRIBUCION DE SALARIO  -->
     <div class="encabezado font16 mt-3" data-toggle="collapse" href="#distSalario">
-      <a  id="bread">DISTRIBUCION DE SALARIO</a>
+      <a href="#">DISTRIBUCION DE SALARIO</a>
     </div>
     <div id="distSalario" class="card-block collapse">
       <form class="form1">
@@ -323,7 +323,7 @@
 
 <!--COMIENZA SUELDOS Y SALARIOS  -->
     <div class="encabezado font16 mt-3" data-toggle="collapse" href="#suelysal">
-      <a  id="bread">SUELDOS Y SALARIOS</a>
+      <a href="#">SUELDOS Y SALARIOS</a>
     </div>
     <div id="suelysal" class="card-block collapse">
       <form class="form1">

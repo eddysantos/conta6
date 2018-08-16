@@ -4,7 +4,7 @@
 ?>
 
 
-<div class="container-fluid">
+<div class="text-center">
   <div class="row submenuMed m-0">
     <ul class="nav nav-pills nav-fill w-100" id="selecRepo">
       <li class="nav-item">
@@ -19,7 +19,7 @@
   <!--Comienza Generar Poliza de Diario-->
   <div id="RepoxOficina" class="contorno" style="display:none">
     <form class="form1">
-      <table class="table text-center">
+      <table class="table">
         <thead class="font18">
           <tr class="row m-0 encabezado">
             <td class="col-md-12">Aplización de Condiciones</td>
@@ -61,7 +61,7 @@
   <!--Comienza Generar Poliza de Ingreso-->
   <div id="RepoxCliente" class="contorno" style="display:none">
     <form class="form1">
-      <table class="table text-center">
+      <table class="table">
         <thead class="font18">
           <tr class="row m-0 encabezado">
             <td class="col-md-12">Aplización de Condiciones</td>
@@ -98,7 +98,7 @@
       </table>
     </form>
   </div><!--/Termina Generar Poliza de Ingreso-->
-</div><!--/Termina Container FLuid-->
+</div>
 
 
 <script src="/conta6/Resources/js/Inputs.js"></script>
