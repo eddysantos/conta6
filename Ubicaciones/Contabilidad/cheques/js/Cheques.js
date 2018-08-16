@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+  ultReg_DetChe();
   $('.che').click(function(){
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');
@@ -9,7 +9,7 @@ $(document).ready(function(){
       if (status == 'cerrado') {
         $('#datoscheque').fadeIn();
         $(this).attr('status', 'abierto');
-        $(this).css('cssText', 'color: rgb(209, 28, 28) !importche');
+        $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
         $(this).css('font-size', '20px');
       } else {
         $('#datoscheque').fadeOut();
@@ -22,6 +22,37 @@ $(document).ready(function(){
           console.error("Something went terribly wrong...");
       }
     });
+
+
+    $('.chebeneficiario').click(function(){
+      $('#chebeneficiario1').show();
+      $('#checliente1').hide();
+      $('#cheempleado1').hide();
+      $('#cheproveedor1').hide();
+    });
+
+    $('.checliente').click(function(){
+      $('#chebeneficiario1').hide();
+      $('#checliente1').show();
+      $('#cheempleado1').hide();
+      $('#cheproveedor1').hide();
+    });
+
+    $('.cheempleado').click(function(){
+      $('#chebeneficiario1').hide();
+      $('#checliente1').hide();
+      $('#cheempleado1').show();
+      $('#cheproveedor1').hide();
+    });
+
+    $('.cheproveedor').click(function(){
+      $('#chebeneficiario1').hide();
+      $('#checliente1').hide();
+      $('#cheempleado1').hide();
+      $('#cheproveedor1').show();
+    });
+
+
 
 //******************************************************************************
 //                             GENERAR CHEQUE
@@ -634,8 +665,11 @@ $(document).ready(function(){
     						console.log(r);
     					  if (r.code == 1) {
       						swal("Eliminado!", "Se elimino correctamente.", "success");
-                  $('#detallecheque').click();
+                  setTimeout('document.location.reload()',700);
+                  
+                  // $('#detallecheque').click();
                   sumasCAcheques();
+                  ultReg_DetChe();
     					  } else {
     					 	       console.error(r.message);
     					  }
@@ -682,9 +716,10 @@ $(document).ready(function(){
             r = JSON.parse(r);
             if (r.code == 1) {
               swal("Exito", "Se actualizó correctamente.", "success");
-              //setTimeout('document.location.reload()',700);
-              $('#detallecheque').click();
+              setTimeout('document.location.reload()',700);
+              // $('#detallecheque').click();
               sumasCAcheques();
+              ultReg_DetChe();
             } else {
               console.error(r.message);
             }
@@ -768,12 +803,14 @@ function Actualiza_CuentaCapCh(){
 
 		if( validarCtasGastoOficina(st) == true ){ //function en Polizas.js
       //ACTIVAR GASTO OFICINA
-      $('#cdchGtoficina').prop( 'disabled', false );
+      // $('#cdchGtoficina').prop( 'disabled', false );
+      $('.cdchGtoficina').show();
       $('#cdchGtoficina').val('');
 			$('#cdchGtoficina').attr('db-id','');
       $('#cdchCliente').attr('db-id','')
 		}else{
-      $('#cdchGtoficina').prop( 'disabled', true );
+      // $('#cdchGtoficina').prop( 'disabled', true );
+      $('.cdchGtoficina').hide();
       $('#cdchGtoficina').val('');
 			$('#cdchGtoficina').attr('db-id','');
 		}
@@ -790,11 +827,13 @@ function Actualiza_CuentaCapCh(){
 
 		if(st.substring(0,4) == '0206'){
 			//ACTIVAR PROVEEDORES
-			$('#cdchProveedores').prop( 'disabled', false );
+      // $('#cdchProveedores').prop( 'disabled', false );
+			$('.cdchProveedores').show();
 			$('#cdchProveedores').val('');
 			$('#cdchProveedores').attr('db-id','');
 		}else{
-			$('#cdchProveedores').prop( 'disabled', true );
+      // $('.cdchProveedores').prop( 'disabled', true );
+			$('.cdchProveedores').hide();
 			$('#cdchProveedores').val('');
 			$('#cdchProveedores').attr('db-id','');
 		}
@@ -808,12 +847,12 @@ function Actualiza_CuentaCapCh_modal(){
 
 		if( validarCtasGastoOficina(st) == true ){ //function en Polizas.js
       //ACTIVAR GASTO OFICINA
-      $('#che_gastoaduana').prop( 'disabled', false );
+      $('.che_gastoaduana').show();
       $('#che_gastoaduana').val('');
 			$('#che_gastoaduana').attr('db-id','');
       $('#che_cliente').attr('db-id','')
 		}else{
-      $('#che_gastoaduana').prop( 'disabled', true );
+      $('.che_gastoaduana').hide();
       $('#che_gastoaduana').val('');
 			$('#che_gastoaduana').attr('db-id','');
 		}
@@ -830,11 +869,11 @@ function Actualiza_CuentaCapCh_modal(){
 
 		if(st.substring(0,4) == '0206'){
 			//ACTIVAR PROVEEDORES
-			$('#che_proveedor').prop( 'disabled', false );
+			$('.che_proveedor').show();
 			$('#che_proveedor').val('');
 			$('#che_proveedor').attr('db-id','');
 		}else{
-			$('#che_proveedor').prop( 'disabled', true );
+			$('.che_proveedor').hide();
 			$('#che_proveedor').val('');
 			$('#che_proveedor').attr('db-id','');
 		}
@@ -925,6 +964,7 @@ function insertaDetCh(){
 				if (r.code == 1) {
 					swal("Exito", "Se registro correctamente.", "success");
 				  setTimeout('document.location.reload()',700);
+          ultReg_DetChe();
 				} else {
 					console.error(r.message);
 				}
@@ -934,4 +974,27 @@ function insertaDetCh(){
 			}
 
 		});
+}
+
+
+
+function ultReg_DetChe(){
+  var data = {
+    idcheque_folControl: $('#dchIdcheque_folControl').val(),
+    id_cheque: $('#dchIdcheque').val(),
+    id_ctaMST: $('#dchCtaMST').val()
+
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/ultimosRegistros.php",
+    data: data,
+    success: 	function(request){
+      r = JSON.parse(request);
+      if (r.code == 1) {
+        $('#ultimosRegistrosCheque').html(r.data);
+      }
+    }
+  });
 }

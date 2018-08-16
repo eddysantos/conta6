@@ -13,14 +13,14 @@
           <table class="table form1 text-center">
             <tbody>
               <tr class="row m-0 mt-4">
-                <td class="col-md-10 input-effect">
+                <td class="col input-effect">
                   <input id="che_partida" type="hidden" db-id="">
                   <input class="efecto popup-input" id="che_cuenta" type="text" id-display="#popup-display-che_cuenta" action="cuentas_mst_2niv" db-id="" autocomplete="off"
                   onchange="Actualiza_CuentaCapCh_modal()">
                   <div class="popup-list" id="popup-display-che_cuenta" style="display:none"></div>
                   <label for="che_cuenta">Seleccione una Cuenta</label>
                 </td>
-                <td class="col-md-2 input-effect">
+                <td class="che_gastoaduana col-md-2 input-effect" style="display:none">
                   <input class="efecto popup-input" id="che_gastoaduana" type="text" id-display="#popup-display-che_gastoaduana" action="oficinas" db-id="" autocomplete="off"
                   onChange="valDescripOficinaCapCh_modal()">
                   <div class="popup-list" id="popup-display-che_gastoaduana" style="display:none"></div>
@@ -36,7 +36,7 @@
                 </td>
               </tr>
 
-              <tr class="row m-0 mt-4">
+              <tr class="che_proveedor row m-0 mt-4" style="display:none">
                 <td class="col-md-12 input-effect">
                   <input class="efecto popup-input" id="che_proveedor" type="text" id-display="#popup-display-che_proveedor" action="proveedores" db-id="" autocomplete="off">
                   <div class="popup-list" id="popup-display-che_proveedor" style="display:none"></div>

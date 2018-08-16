@@ -187,13 +187,13 @@ if( $rows > 0 ){
                 </thead>
                 <tbody>
                   <tr class="row m-0 mt-5">
-                    <td class="col-md-10 input-effect">
+                    <td class="col input-effect">
                       <input class="efecto popup-input" id="cdchCuenta" type="text" id-display="#popup-display-cdchCuenta" action="cuentas_mst_2niv" db-id="" autocomplete="off"
                       onchange="Actualiza_CuentaCapCh()">
                       <div class="popup-list" id="popup-display-cdchCuenta" style="display:none"></div>
                       <label for="cdchCuenta">Seleccione una Cuenta</label>
                     </td>
-                    <td class="col-md-2 input-effect">
+                    <td class="cdchGtoficina col-md-2 input-effect" style="display:none">
                       <input class="efecto popup-input" id="cdchGtoficina" type="text" id-display="#popup-display-cdchGtoficina" action="oficinas" db-id="" autocomplete="off"
                       onChange="valDescripOficinaCapCh()">
                       <div class="popup-list" id="popup-display-cdchGtoficina" style="display:none"></div>
@@ -210,7 +210,7 @@ if( $rows > 0 ){
                       <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
                     </td>
                   </tr>
-                  <tr class="row m-0 mt-4">
+                  <tr class="cdchProveedores row m-0 mt-4" style="display:none">
                     <td class="col-md-12 input-effect">
                       <input class="efecto popup-input" id="cdchProveedores" type="text" id-display="#popup-display-cdchProveedores" action="proveedores" db-id="" autocomplete="off">
                       <div class="popup-list" id="popup-display-cdchProveedores" style="display:none"></div>
@@ -263,17 +263,45 @@ if( $rows > 0 ){
               </table>
             </form>
           </div>
-          <div class="row mt-3">
-            <div class="col-md-2 offset-md-4">SUMA DE CARGOS</div>
+          <div class="row mt-3 justify-content-center">
+            <div class="col-md-2">SUMA DE CARGOS</div>
             <div class="col-md-2">SUMA DE ABONOS</div>
           </div>
-          <div class="row mt-3">
-            <div class="col-md-2 offset-md-4">
+          <div class="row justify-content-center mt-3 font14">
+            <div class="col-md-2">
               <input class="efecto" id="sumCargos1_ch" value="<?php echo number_format($sumaCargos,2,'.',','); ?>" readonly>
             </div>
             <div class="col-md-2">
               <input class="efecto" id="sumAbonos1_ch" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
             </div>
+          </div>
+
+
+          <div class="contorno-mov mt-5">
+            <table class="table">
+              <thead>
+                <tr class="row m-0 backpink">
+                  <td class="p-0 pt-1 xs"></td>
+                  <td class="p-0 pt-1 small">CUENTA</td>
+                  <td class="p-0 pt-1 ssm">GASTO</td>
+                  <td class="p-0 pt-1 ssm">PROV</td>
+                  <td class="p-0 pt-1 small">REFERENCIA</td>
+                  <td class="p-0 pt-1 small">CLIENTE</td>
+                  <td class="p-0 pt-1 small">DOC</td>
+                  <td class="p-0 pt-1 ssm">FACT</td>
+                  <td class="p-0 pt-1 ssm">CTA GASTOS</td>
+                  <td class="p-0 pt-1 ssm">PAGO ELECT</td>
+                  <td class="p-0 pt-1 small">NOTACRED</td>
+                  <td class="p-0 pt-1 small">ANTICIPO</td>
+                  <td class="p-0 pt-1 ssm">CHEQUE</td>
+                  <td class="p-0 pt-1 med">DESCRIPCION</td>
+                  <td class="p-0 pt-1 small">CARGO</td>
+                  <td class="p-0 pt-1 small">ABONO</td>
+                  <td class="p-0 pt-1 xxs"></td>
+                </tr>
+              </thead>
+              <tbody id="ultimosRegistrosCheque"></tbody>
+            </table>
           </div>
         </div>
 
@@ -340,7 +368,8 @@ if( $rows > 0 ){
         </div>
 
         <?php if( $id_poliza > 0 ){
-            require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_detallePoliza.php';
+          require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
+            // require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_detallePoliza.php';
           } ?>
 
       </div><!--/Termina contenedor-movible-->

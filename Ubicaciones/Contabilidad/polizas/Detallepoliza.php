@@ -229,6 +229,25 @@ if( $totalRegistrosSelect > 0 ){
 
           <div class="contorno-mov mt-5">
             <table class="table">
+              <thead>
+                <tr class="row m-0 backpink">
+                  <td class="xs"></td>
+                  <td class="small">CUENTA</td>
+                  <td class="small">GASTO</td>
+                  <td class="small">PROV</td>
+                  <td class="small">REFERENCIA</td>
+                  <td class="small">CLIENTE</td>
+                  <td class="small">DOC</td>
+                  <td class="small">FACTURA</td>
+                  <td class="small">NOTACRED</td>
+                  <td class="small">ANTICIPO</td>
+                  <td class="small">CHEQUE</td>
+                  <td class="med">DESCRIPCION</td>
+                  <td class="small">CARGO</td>
+                  <td class="small">ABONO</td>
+                  <td class="xs"></td>
+                </tr>
+              </thead>
               <tbody id="ultimosRegistros"></tbody>
             </table>
           </div>
