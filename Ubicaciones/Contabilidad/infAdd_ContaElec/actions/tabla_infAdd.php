@@ -38,21 +38,12 @@ while ($row = $rslt->fetch_assoc()) {
   $fk_id_cuenta = trim($row['fk_id_cuenta']);
   $partida = $row['pk_partida'];
 
-  $partidaPoliza = "<div class='row sub ml-0 mr-0'>
-    <div class='col-md-7'>Descripcion</div>
-    <div class='col-md-1'>Tipo</div>
-    <div class='col-md-1'>Cuenta</div>
-    <div class='col-md-1'>Cargo</div>
-    <div class='col-md-1'>Abono</div>
-
-    <div class='col-md-1'></div>
-  </div>
-  <div class='row ml-0 mr-0 mb-2 mt-2'>
-    <div class='col-md-7'>$row[s_desc]</div>
-    <div class='col-md-1'>$row[fk_tipo]</div>
-    <div class='col-md-1'>$fk_id_cuenta</div>
-    <div class='col-md-1'>$row[n_cargo]</div>
-    <div class='col-md-1'>$row[n_abono]</div>
+  $partidaPoliza = "<div class='row infsub ml-0 mr-0 pt-2 pb-2'>
+    <div class='col-md-4 p-0 text-left'>Desc : <black class='b'>$row[s_desc]</black></div>
+    <div class='col-md-1'>Tipo : <black class='b'>$row[fk_tipo]</black></div>
+    <div class='col-md-2'>Cuenta : <black class='b'>$fk_id_cuenta</black></div>
+    <div class='col-md-2'>Cargo : <black class='b'>$row[n_cargo]</black></div>
+    <div class='col-md-2'>Abono : <black class='b'>$row[n_abono]</black></div>
 
     <div class='col-md-1'>
       <a href=''>
@@ -60,6 +51,7 @@ while ($row = $rslt->fetch_assoc()) {
       </a>
     </div>
   </div>
+
   ";
 
   $query_consulContaElect = "SELECT * FROM conta_t_polizas_det_contaelec WHERE fk_id_poliza = ? AND fk_partidaPol = ?";
@@ -90,7 +82,7 @@ while ($row = $rslt->fetch_assoc()) {
     while ($row = $rslt_consulContaElect->fetch_assoc()) {
       $partidaContaElect .= "
 
-      
+
                     <div class='row ml-0 mr-0 borderojo'>
                       <div class='col-md-1'></div>
                       <div class='col-md-1 text-right b'>UUID :</div>

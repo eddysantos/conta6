@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  ultReg_DetAnt();
+
   //detalleanticipo.php
   $('#lstClientesCorresp').hide();
   $('#ant-referencia').change(function(){
@@ -449,6 +451,7 @@ function genAnt(){
                   swal("Exito", "Se registro correctamente.", "success");
                   // $('#capturaAnticip').click();
                   location.reload();
+
                 } else {
                   console.error(r.message);
                 }
@@ -489,6 +492,28 @@ function genAnt(){
         }
       });
   });
+
+
+  function ultReg_DetAnt(){
+    var data = {
+      id_anticipo: $('#mst-anticipo').val(),
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/ultimosRegistros.php",
+      data: data,
+      success: 	function(request){
+        r = JSON.parse(request);
+
+        if (r.code == 1) {
+          $('#ultimosRegistrosAnticipo').html(r.data);
+        }
+      }
+    });
+  }
+
+
 
 // MOSTRAR EN MODAL DATOS DE PARTIDA ANTICIPO
   $('tbody').on('click', '.editar-partidaAnt', function(){
@@ -556,8 +581,9 @@ function genAnt(){
         if (r.code == 1) {
           swal("Exito", "La cuenta se actualizó correctamente.", "success");
           $('.real-time-search').keyup();
-          $('#detalleanticipo').click();
+          // $('#detalleanticipo').click();
           sumasCAanticipos();
+          ultReg_DetAnt();
         } else {
           console.error(r.message);
         }
@@ -711,8 +737,11 @@ function borrarRegistroAnticipo(partida){
             r = JSON.parse(r);
 						//console.log(r);
 						swal("Eliminado!", "Se elimino correctamente.", "success");
-            $('#detalleanticipo').click();
+            // $('#capturaAnticipo').click();
+            setTimeout('document.location.reload()',700);
+
             sumasCAanticipos();
+            ultReg_DetAnt();
 				},
 				error: function(x){
 					console.error(x)

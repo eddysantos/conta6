@@ -251,6 +251,28 @@ if( $rows > 0 ){
              echo $txtStatus;
              ?>
           </div>
+
+          <div class="contorno-mov mt-5">
+            <table class="table">
+              <thead>
+                <tr class="row backpink m-0">
+                  <td class="p-0 pt-2 xs"></td>
+                  <td class="p-0 pt-2 small">CUENTA</td>
+                  <td class="p-0 pt-2 small">REFERENCIA</td>
+                  <td class="p-0 pt-2 small">CLIENTE</td>
+                  <td class="p-0 pt-2 small">FACTURA</td>
+                  <td class="p-0 pt-2 small">CTA GASTOS</td>
+		              <td class="p-0 pt-2 small">PAGO ELECT</td>
+                  <td class="p-0 pt-2 small">NOTACRED</td>
+                  <td class="p-0 pt-2 gde">DESCRIPCION</td>
+                  <td class="p-0 pt-2 small">CARGO</td>
+                  <td class="p-0 pt-2 small">ABONO</td>
+                  <td class="p-0 pt-2 xs"></td>
+                </tr>
+              </thead>
+              <tbody id="ultimosRegistrosAnticipo"></tbody>
+            </table>
+          </div>
         </div>
 
         <div id="two"><!--DETALLE DE ANTICIPO-->

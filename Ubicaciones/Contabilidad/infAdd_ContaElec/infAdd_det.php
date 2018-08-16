@@ -1,5 +1,3 @@
-
-
 <div id="three"><!--INFORMACION DE LA PARTIDA-->
   <form class="opcion">
     <table class="table">
