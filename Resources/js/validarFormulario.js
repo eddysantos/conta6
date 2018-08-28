@@ -1,3 +1,29 @@
+function cortarDecimalesObj(frmObj,truncar){
+	num = $(frmObj).val();
+	n = num.toString();
+
+	if(n.indexOf('.') != -1){
+		elem = n.split('.');
+		entero = elem[0];
+		decimal = elem[1];
+		decimal = decimal.substr(0,truncar);
+		$(frmObj).val(entero+"."+decimal);
+	}
+}
+
+function cortarDecimales(num,truncar){
+	n = num.toString();
+
+	if(n.indexOf('.') != -1){
+		elem = n.split('.');
+		entero = elem[0];
+		decimal = elem[1];
+		decimal = decimal.substr(0,truncar);
+		valor = entero+"."+decimal;
+		return valor
+	}else{return num}
+}
+
 function validarCtaBancaria(Obj){
 	ctaBco = $(Obj).val();
 	if(ctaBco.match(/^([A-Z0-9_]{10,50})$/i)){
@@ -70,6 +96,21 @@ function validaReferencia(frmObj){
   }
 }
 
+/*
+function validaReferenciaBlanco(frmObj){
+  Referencia = $(frmObj).val();
+  Referencia = $.trim(Referencia);
+
+	if( (!/^([A-Za-z]\d[0-9]{6,8}|0)$/.test(Referencia)) ){
+		return true;
+	}else{
+			alertify.error("Referencia: Z12345678");
+			$(frmObj).focus();
+			$(frmObj).val(Referencia);
+	}
+}
+*/
+
 function validaSoloNumeros(frmObj){
   campo = $(frmObj).val();
   campo = $.trim(campo);
@@ -120,3 +161,86 @@ function validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso){
 		return response;
 		;
 }
+
+function validarRFCfac(frmObj){
+		RFC_1 = $(frmObj).val();
+		if( RFC_1 == 'XEXX010101000' || RFC_1 == 'XAXX010101000' ){
+			$('T_usoCFDI').val('P01');
+			swal('Alerta','Cuándo sea el caso de un RFC genérico\n(XEXX010101000, XAXX010101000),\nel uso de CFDI siempre será -P01 Por definir','info');
+		}else if( RFC_1.indexOf('XEXX') != -1 && RFC_1 != 'XEXX010101000' ){
+				$(frmObj).css("color", "#FF0000");
+				swal("Error", "RFC INCORRECTO\nVerifique con el ejecutivo de Tráfico\nRFC extrangeros: XEXX010101000", "error");
+			}else if( RFC_1.indexOf('XAXX') != -1 && RFC_1 != 'XAXX010101000' ){
+					$(frmObj).css("color", "#FF0000");
+					swal("Error", "RFC INCORRECTO\nVerifique con el ejecutivo de Tráfico\nRFC generico: XAXX010101000", "error");
+				}else{
+					minimo = 12;
+					maximo = 13;
+					RFC =  $(frmObj).val().length;
+					if(RFC < minimo || RFC > maximo){
+						$(frmObj).css("color", "#FF0000");
+						$('#guardar').prop( 'disabled',true );
+						swal("Error", "RFC potencialmente INCORRECTO\nVerifique con el ejecutivo de Trafico\nRFC generico: XAXX010101000\nRFC extrangeros: XEXX010101000\nPersonas Fisicas: 13 caracteres\nPesonas Morales: 12 caracteres", "error");
+					}
+				}
+}
+
+function quitarNoUsar(frmObj){
+		var str = $(frmObj).val();
+		var nuevaCadena = str.replace("NO USAR", "");
+		var nuevaCadena = str.replace("()", "");
+		$(frmObj).val(nuevaCadena);
+}
+
+/****************************************************************
+	VALIDA CARACTERES PERMITIDOS POR EL SAT ANEXO20 VERSION 3.3
+*****************************************************************/
+
+				/* Valida input*/
+				function validarStringSAT(frmObj){
+					var cadenaAnalizar = $(frmObj).val();
+					var nuevaCadena='';
+					letras = " \"áéíóúÁÉÍÓÚüÜabcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789!%&'´-:;>=<@_,{}`~";
+					for (var i = 0; i< $(frmObj).val().length; i++) {
+						 var caracter = $(frmObj).val().charAt(i);
+
+						 if(letras.indexOf(caracter) == -1 ){ }else{
+							nuevaCadena=nuevaCadena.concat(caracter);
+						  }
+
+					}
+					$(frmObj).val(nuevaCadena);
+				}
+
+				/****************************************************************
+				VALIDA TECLA PULSADA
+				EN FORMULARIO ESCRIBA
+				onkeypress="return validarStringSATteclaPulsada(event);" onblur="limpia()"
+				*****************************************************************/
+				function validarStringSATteclaPulsada(e) {
+				    key = e.keyCode || e.which;
+				    tecla = String.fromCharCode(key).toLowerCase();
+				    letras = " \"áéíóúÁÉÍÓÚüÜabcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789!%&'´-:;>=<@_,{}`~";
+				    especiales = [8, 37, 39, 46];
+
+				    tecla_especial = false
+				    for(var i in especiales) {
+				        if(key == especiales[i]) {
+				            tecla_especial = true;
+				            break;
+				        }
+				    }
+
+				    if(letras.indexOf(tecla) == -1 && !tecla_especial)
+				        return false;
+				}
+
+				function limpia(frmObj) {
+				    var val = $(frmObj).val();
+				    var tam = $(frmObj).val().length;
+				    for(i = 0; i < tam; i++) {
+				        if(!isNaN($(frmObj)[i]))
+				            $(frmObj).val('');
+				    }
+				}
+// TERMINA VALIDA CARACTERES PERMITIDOS POR EL SAT ANEXO20 VERSION 3.3 **************************************************************

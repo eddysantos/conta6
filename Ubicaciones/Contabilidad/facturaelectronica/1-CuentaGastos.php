@@ -21,6 +21,7 @@
         <i class="back fa fa-arrow-left">Regresar</i>
       </a>
     </div>
+<<<<<<< HEAD
     <table class="table form1">
       <thead>
         <tr class="row encabezado font18">
@@ -61,6 +62,52 @@
         </tr>
       </tbody>
     </table>
+=======
+    <form class="form1">
+      <table class="table">
+        <thead>
+          <tr class="row encabezado font18">
+            <td class="col-md-12">GENERAR CUENTA DE GASTOS</td>
+          </tr>
+        </thead>
+        <tbody class="font18">
+          <tr class="row mt-5">
+            <td class="col-md-4 offset-md-3 input-effect">
+              <input class="efecto tiene-contenido popup-input" maxlength="9" id="ctagatos-cReferencia" type="text" id-display="#popup-display-ctagatos-cReferencia" action="referencias" db-id="" autocomplete="off">
+              <div class="popup-list" id="popup-display-ctagatos-cReferencia" style="display:none"></div>
+              <label for="ctagatos-cReferencia">CON REFERENCIA</label>
+            </td>
+            <td class="col-md-2">
+              <a href="#" id="btn_buscarDatosEmbarque" class="boton"> <i class="fa fa-search "></i> Consultar</a>
+            </td>
+          </tr>
+          <tr class="row mt-4">
+            <td class="col-md-7 input-effect">
+              <input  list="ctagtos-cli" class="efecto" id="ctagatos-sReferencia">
+              <datalist id="ctagtos-cli">
+                <option value="Tecnologias Relacionadas con Energia y Servicios Especializado S.A de C.V --- CLT_7517"></option>
+                <option value="Servicios Integrales en Logistica Internacional, Aduanas y Tecnologias, S.C (NO USAR) -- CLT_7158"></option>
+                <option value="Cliente Numero 1 Cliente Numero 1"></option>
+                <option value="Cliente Numero 1 Cliente Numero 1"></option>
+              </datalist>
+              <label for="ctagatos-sReferencia">SELECCIONAR CLIENTE (Sin Referencia)</label>
+            </td>
+            <td class="col-md-2">
+              <a href="" class="boton">Siguiente <i class="fa fa-angle-double-right fa-lg"></i></a>
+            </td>
+            <td class="col-md-3">
+              <a href="" class="boton">Generar Tasa Cero <i class="fa fa-angle-double-right fa-lg"></i></a>
+            </td>
+          </tr>
+          <tr class="row backpink mt-3">
+            <td class="col-md-3">Expedir Cuenta de Gastos a: </td>
+            <td class="col-md-9">Tecnologias Relacionadas con Energia y Servicios Especializado S.A de C.V --- CLT_7517</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="datosEmbarque"></div>
+    </form>
+>>>>>>> be_facturaElectronica
   </div>
 
 
@@ -119,5 +166,9 @@
   </div>
 </div>
 
-<script src="js/facturaElectronica.js"></script>
-<script src="/conta6/Resources/js/Inputs.js"></script>
+<!--script src="js/facturaElectronica.js"></script>
+<script src="/conta6/Resources/js/Inputs.js"></script-->
+
+<?php
+  require $root . '/conta6/Ubicaciones/footer.php';
+?>
