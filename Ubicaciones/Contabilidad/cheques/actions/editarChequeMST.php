@@ -98,7 +98,10 @@ if ($rowsChequeExiste > 1) {
 	exit_script($system_callback);
 }
 
-if ($rowsChequeExiste == 1) {
+if ($rowsChequeExiste == 1){
+	try {
+	  $db->beginTransaction();
+
 		//actualizando MST
 		$queryUpdateMST = "UPDATE conta_t_cheques_mst
 		SET pk_id_cheque=?,
@@ -225,7 +228,17 @@ if ($rowsChequeExiste == 1) {
 		$system_callback['message'] = "Script called successfully!";
 		exit_script($system_callback);
 
-}
+		$db->commit();
+	  $system_callback['code'] = 1;
+	} catch (\Exception $e) {
+	  $db->rollback();
+	  $system_callback['e'] = $e;
+	  $system_callback['query']['code'] = "2";
+	  $system_callback['query']['message'] = "There was a problem executing the query[$db->errno]: $db->error";
+	  exit_script($system_callback);
+	}//try
+
+}// termina $rowsChequeExiste == 1
 
 
 

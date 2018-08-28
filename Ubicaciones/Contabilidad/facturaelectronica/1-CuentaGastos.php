@@ -31,11 +31,12 @@
         <tbody class="font18">
           <tr class="row mt-5">
             <td class="col-md-4 offset-md-3 input-effect">
-              <input class="efecto"  id="ctagatos-cReferencia">
+              <input class="efecto tiene-contenido popup-input" maxlength="9" id="ctagatos-cReferencia" type="text" id-display="#popup-display-ctagatos-cReferencia" action="referencias" db-id="" autocomplete="off">
+              <div class="popup-list" id="popup-display-ctagatos-cReferencia" style="display:none"></div>
               <label for="ctagatos-cReferencia">CON REFERENCIA</label>
             </td>
             <td class="col-md-2">
-              <a href="" class="boton"> <i class="fa fa-search "></i> Consultar</a>
+              <a href="#" id="btn_buscarDatosEmbarque" class="boton"> <i class="fa fa-search "></i> Consultar</a>
             </td>
           </tr>
           <tr class="row mt-4">
@@ -62,6 +63,7 @@
           </tr>
         </tbody>
       </table>
+      <div id="datosEmbarque"></div>
     </form>
   </div>
 
@@ -125,5 +127,9 @@
   </div>
 </div>
 
-<script src="js/facturaElectronica.js"></script>
-<script src="/conta6/Resources/js/Inputs.js"></script>
+<!--script src="js/facturaElectronica.js"></script>
+<script src="/conta6/Resources/js/Inputs.js"></script-->
+
+<?php
+  require $root . '/conta6/Ubicaciones/footer.php';
+?>

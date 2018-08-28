@@ -18,7 +18,14 @@
     exit_script($system_callback);
   }
   $rslt_datosCLT = $stmt_datosCLT->get_result();
-  $row_datosCLT = $rslt_datosCLT->fetch_assoc();
-  $rfcOri = trim($row_datosCLT["s_rfc"]);
-  $benefOri = trim($row_datosCLT["s_nombre"]);
+  $rows_datosCLT = $rslt_datosCLT->num_rows;
+  if( $rows_datosCLT > 0 ){
+    $row_datosCLT = $rslt_datosCLT->fetch_assoc();
+    $rfcOri = trim($row_datosCLT["s_rfc"]);
+    $benefOri = trim($row_datosCLT["s_nombre"]);
+    $nom_cliente = $row_datosCLT['s_nombre'];
+    $id_corresponsal = $row_datosCLT['fk_id_corresp'];
+    $s_status = $row_datosCLT['s_status'];
+  }
+
 ?>
