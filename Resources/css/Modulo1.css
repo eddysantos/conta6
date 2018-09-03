@@ -309,3 +309,11 @@ button img:hover{
 a img{
   width:20px;
 }
+
+.mb-100{
+  margin-bottom: 20rem!important;
+}
+
+.bt{
+  background-color: transparent!important;
+}

@@ -124,11 +124,11 @@ $aduana = 240;
       //consulto si ya tiene cuentas capturadas
       require $root . '/conta6/Resources/PHP/actions/consultaFacturaCapturaReferencia.php';
       if( $rows_facCaptRef > 0 ){
-        $statusReferencia = "<input type='text' id='Txt_ExistenCuentas' size='65' style='font-family: Trebuchet MS; font-size: 10pt; border: 0px solid #C0C0C0; background-color:#F73A4A; color:#ffffff;' db-id='$rows_status' value='Ya existe cuenta de gastos con esta referencia' readonly";
+        $statusReferencia = "<input type='text' id='Txt_ExistenCuentas' size='65' class='b border-0 font14' db-id='$rows_status' value='Ya existe cuenta de gastos con esta referencia' readonly";
       }
 
       if( $rows_facCaptRef == 0 ){
-        $statusReferencia = "<input type='text' id='Txt_ExistenCuentas' size='65' style='font-family: Trebuchet MS; font-size: 10pt; border: 0px solid #C0C0C0;'  db-id='$rows_status' value='No existe cuenta de gastos con esta referencia' readonly";
+        $statusReferencia = "<input type='text' id='Txt_ExistenCuentas' size='65' class='b border-0 font14'  db-id='$rows_status' value='No existe cuenta de gastos con esta referencia' readonly";
       }
 
       //si tiene corresponsal
@@ -138,14 +138,15 @@ $aduana = 240;
         require $root . '/conta6/Resources/PHP/actions/consultaDatosCorresponsal.php';
 
         $tr_corresponsal = "
-        <tr>
-        <td align='right'>Facturar a:</td>
-        <td colspan='8'>
-          <select size='1' id='DGE_Lst_Datos' style='font-family: Trebuchet MS; font-size: 10pt' onchange='asignar_facturarA()'>
-        				<option selected value='0'>Cliente / Corresponsal</option>
-        				<option value='$id_cliente'>$nom_cliente</option>
-        				<option value='$idcliente_corresp'>$nom_corresp</option>
-        	</select></td>
+        <tr class='row'>
+          <td class='col-md-2 text-right b mt-3'>Facturar a:</td>
+          <td class='col-md-10'>
+            <select class='custom-select' id='DGE_Lst_Datos' onchange='asignar_facturarA()'>
+          				<option selected value='0'>Cliente / Corresponsal</option>
+          				<option value='$id_cliente'>$nom_cliente</option>
+          				<option value='$idcliente_corresp'>$nom_corresp</option>
+          	</select>
+          </td>
         </tr>";
       }
 
@@ -154,15 +155,13 @@ $aduana = 240;
       require $root . '/conta6/Resources/PHP/actions/facturas_ctaAme_referencia.php';
       if ($rslt_ctaAme->num_rows > 0) {
         $tr_ctaAme = "
-        <tr bgcolor='#FFFFFF'>
-      		<td align='right'>Extraer POCME:</td>
-      		<td colspan='8' >
+        <tr class='row'>
+      		<td class='col-md-6'>
             <select class='custom-select' size='1' id='DGEctaAme' onchange='cargarCtaAme()'>
               <option selected value='0'>Cuenta Americana</option>
               $facCtaAme
             </select>
-  		    </td>
-      	</tr>";
+  		    </td>";
       }
 
 
@@ -170,9 +169,7 @@ $aduana = 240;
       require $root . '/conta6/Resources/PHP/actions/proforma_referencia.php';
       if ($rslt_proforma->num_rows > 0) {
         $tr_proforma = "
-        <tr bgcolor='#FFFFFF'>
-          <td align='right'>Extraer POCME:</td>
-          <td colspan='8' >
+          <td class='col-md-6'>
           <select class='custom-select' size='1' id='DGEproforma' onchange='cargarSolicitudAnticipo()'>
             <option selected value='0'>Proforma</option>
             $proforma
@@ -183,16 +180,23 @@ $aduana = 240;
 
       # CON ESTE PERMISO, SE PUEDE GENERAR UNA CUANTA DE GASTOS CON INFORMACION INCOMPLETA.
       if($oRst_permisos['CFDI_cta_gastos_generarCR'] == 1){
-        $btn_cambioRegimen = "<input type='button' value='Generar con cambio de régimen' id='Btn_cambioRegimen'
-        onclick='validaDatosReferencia()'
-        style='font-family: Trebuchet MS; font-size: 10pt; color: #000000;'/>";
+        $btn_cambioRegimen = "
+        <tr class='row justify-content-center font14'>
+          <td class='col-md-3'>
+            <a href='#' id='Btn_cambioRegimen' onclick='validaDatosReferencia()' class='boton'> Generar con cambio de régimen</a>
+          </td>";
+
+
         //onclick='validaDatosReferencia('$id_referencia','$consolidado',$entradas,$shipper,'$inbond',$flete)'
       }
 
       // solo cuando la informacion este completa se muestra el boton siguiente
-      $btn = "<input type='button' value='Siguiente' id='Btn_conReferencia'
-          onclick='validaDatosReferencia()'
-					style='font-family: Trebuchet MS; font-size: 10pt; color: #000000;'>";
+      $btn = "
+          <td class='col-md-1'>
+            <a href='#' id='Btn_conReferencia' onclick='validaDatosReferencia()' class='boton'> Siguiente</a>
+          </td>
+        </tr>";
+
           //onclick='validaDatosReferencia('$id_referencia','$consolidado',$entradas,$shipper,'$inbond',$flete)'
 
 
@@ -210,162 +214,125 @@ $aduana = 240;
       #$nombre_cliente = '';
 
       $datosEmbarque .= "
-        <tr>
-          <td bgcolor='#C0C0C0' colspan='8' align='center'>I N F O R M A C I &Oacute; N &nbsp;&nbsp; G E N E R A L &nbsp;&nbsp;  D E L &nbsp;&nbsp; E M B A R Q U E </td>
+        <tr class='row'>
+          <td class='col-md-12 sub'>INFORMACIÓN GENERAL DEL EMBARQUE</td>
         </tr>
-        <tr>
-          <td bgcolor='#C0C0C0'>Cliente:</td>
-          <td colspan='5'>$nom_cliente</td>
-          <td bgcolor='#C0C0C0'>ID Cliente: </td>
-          <td>$id_cliente</td>
+
+        <tr class='row'>
+          <td class='col-md-1 text-right b'>Cliente:</td>
+          <td class='col-md-5 text-left'>$nom_cliente -- $id_cliente</td>
+          <td class='col-md-1 text-right b'>Proveedor:</td>
+          <td class='col-md-5 text-left'>$nom_proveedor --  $id_prov</td>
         </tr>
-        <tr>
-          <td bgcolor='#C0C0C0'>Proveedor:</td>
-          <td colspan='5'>$nom_proveedor</td>
-          <td bgcolor='#C0C0C0'>ID Proveedor:</td>
-          <td>$id_prov</td>
+        <tr class='row borderojo'>
+           <td class='col-md-1 text-right b'>Almacén:</td>
+           <td class='col-md-5 text-left'>$nom_almacen -- Id: $id_almacen</td>
+           <td class='col-md-1 text-right b'>Descripción: </td>
+           <td class='col-md-5 text-left'>$descripcion</td>
         </tr>
-        <tr>
-           <td bgcolor='#C0C0C0'>Almac&eacute;n:</td>
-           <td colspan='5'>$nom_almacen</td>
-           <td bgcolor='#C0C0C0'>ID Almacen: </td>
-           <td>$id_almacen</td>
+
+        <tr class='row'>
+          <td class='col-md-2 text-right b'>Aduana:</td>
+          <td class='col-md-2 text-left'>$id_aduanaReferencia</td>
+          <td class='col-md-2 text-right b'>Procedencia o destino:</td>
+          <td class='col-md-2 text-left'>$row_buscaRef[procedencia]</td>
+          <td class='col-md-2 text-right b'>Tipo de operación:</td>
+      	  <td class='col-md-2 text-left'>$row_buscaRef[s_tipo]</td>
         </tr>
-        <tr>
-          <td bgcolor='#C0C0C0'>Aduana:</td>
-          <td>$id_aduanaReferencia</td>
-          <td bgcolor='#C0C0C0'>Tipo:</td>
-          <td>$txt_tipo</td>
-          <td bgcolor='#C0C0C0'>Nuestra referencia: </td>
-      	  <td><input type='text' id='DGE_referencia' value='$id_referencia' readonly></td>
-          <td bgcolor='#C0C0C0'>Su Referencia:</td>
-          <td>$refCli</td>
+
+        <tr class='row'>
+          <td class='col-md-2 text-right b'>Tipo:</td>
+          <td class='col-md-2 text-left'>$txt_tipo</td>
+          <td class='col-md-2 text-right b p-0 pt-3'>Fecha de arribo o salida:</td>
+          <td class='col-md-2 text-left'>$fecha_entrada</td>
+          <td class='col-md-2 text-right b'>Talones, Guia o B/Ls:</td>
+      	  <td class='col-md-2 text-left'>$row_buscaRef[s_guia_master]</td>
         </tr>
-        <tr>
-          <td bgcolor='#C0C0C0'>Descripci&oacute;n general: </td>
-          <td colspan='7'>$descripcion</td>
+
+        <tr class='row'>
+          <td class='col-md-2 text-right b pt-4'>Nuestra referencia:</td>
+          <td class='col-md-2 text-left'>
+            <input class='efecto h22 border-0 bt text-left p-0' type='text' id='DGE_referencia' value='$id_referencia' readonly>
+          </td>
+          <td class='col-md-2 text-right b pt-4'>Peso en Kg.:</td>
+          <td class='col-md-2 text-left pt-4'>$peso</td>
+          <td class='col-md-2 text-right b pt-4'>Valor Aduana M.N.:</td>
+      	  <td class='col-md-2 text-left pt-4'>$valor</td>
         </tr>
-        <tr>
-           <td bgcolor='#C0C0C0'>Procedencia o destino: </td>
-           <td>$row_buscaRef[procedencia]</td>
-           <td bgcolor='#C0C0C0'>Fecha de arribo o salida: </td>
-           <td>$fecha_entrada</td>
-           <td bgcolor='#C0C0C0'>Peso en Kg.: </td>
-         <td>$peso</td>
-           <td bgcolor='#C0C0C0'>No. Pedimento: </td>
-           <td>$row_buscaRef[s_pedimento]</td>
-         </tr>
-         <tr>
-            <td bgcolor='#C0C0C0'>Tipo de operaci&oacute;n:</td>
-            <td>$row_buscaRef[s_tipo]</td>
-            <td bgcolor='#C0C0C0'>Talones, Guia o B/Ls: </td>
-            <td>$row_buscaRef[s_guia_master]</td>
-            <td bgcolor='#C0C0C0'>Valor Aduana M.N.: </td>
-        	  <td>$valor</td>
-            <td bgcolor='#C0C0C0'>Tipo de cambio: </td>
-            <td>$tipoCambio</td>
-          </tr>
-          <tr>
-            <td bgcolor='#C0C0C0'>D&iacute;as en almacen: </td>
-            <td><input type='text' id='T_Dias' name='T_Dias' size='5' style='border-style:inset; border-width:3px; font-family: Trebuchet MS; font-size:10pt; text-align:center; font-weight:bold;' tabindex='<?php echo $tabindex = $tabindex+1; ?>'></td>
-            <td bgcolor='#C0C0C0'>N&uacute;m. de Facturas: </td>
-        	<td colspan='5'>$facturas</td>
-          </tr>
-          <tr bgcolor='#FFFFFF'>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
-         </tr>
-         <tr>
-            <td bgcolor='#C0C0C0'>Shipper:</td>
-            <td><input type='text' id='DGE_shipper' value='$shipper' readonly></td>
-            <td bgcolor='#C0C0C0'>InBond:</td>
-            <td><input type='text' id='DGE_inbond' value='$inbond' readonly></td>
-            <td bgcolor='#C0C0C0'>Trailer de Salida:</td>
-            <td>$row_buscaRef[s_trailerOut]</td>
-            <td bgcolor='#C0C0C0'>Reexpedici&oacute;n:</td>
-            <td bgcolor='#C0C0C0'>$row_buscaRef[reexpedicion]</td>
-          </tr>
-          <tr>
-            <td bgcolor='#C0C0C0'>Consolidado:</td>
-            <td><input type='text' id='DGE_consolidado' value='$consolidado' readonly></td>
-            <td bgcolor='#C0C0C0'>Entradas:</td>
-            <td><input type='text' id='DGE_entradas' value='$entradas' readonly></td>
-            <td bgcolor='#C0C0C0'>Flete: $status_flete</td>
-            <td><input type='text' id='DGE_flete' value='$flete' readonly></td>
-            <td>Cobrar</td>
-            <td>$fleteOption</td>
-          </tr>
-          <tr bgcolor='#FFFFFF'>
-        	  <td>&nbsp;</td>
-        	  <td>&nbsp;</td>
-        	  <td>&nbsp;</td>
-        	  <td>&nbsp;</td>
-        	  <td>&nbsp;</td>
-        	  <td>&nbsp;</td>
-        	  <td>&nbsp;</td>
-        	  <td>&nbsp;</td>
-          </tr>
-          <tr bgcolor='#FFFFFF'>
-        		<td align='right'>Estatus:</td>
-        		<td colspan='8'>$statusReferencia</td>
-        	</tr>
-          $tr_corresponsal
-          <tr bgcolor='#FFFFFF'>
-        		<td align='right'>Facturar a otro:</td>
-            <td class='col-md-2 input-effect' colspan='8'>
-              <input class='efecto popup-input' id='DGEcliente' type='text' id-display='#popup-display-DGEcliente' action='clientes' db-id='' autocomplete='off' onchange='cargarOtroCliente()'>
-              <div class='popup-list' id='popup-display-DGEcliente' style='display:none'></div>
-              <label for='DGEcliente'>Cliente</label>
-            </td>
-        	</tr>
-          $tr_ctaAme
-          $tr_proforma
-          <tr bgcolor='#FFFFFF'>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td colspan='6'>&nbsp;</td>
-          </tr>
-          <tr bgcolor='#FFFFFF'>
-            <td align='right' colspan='2'>
-              Expedir cuenta de gastos a:
-              <input type='text' id='opcion' size='12' value='cliente' readonly>
-              <input type='text' id='docto' size='12' value='ctagastos' readonly>
-              <input id='DGE_idcliente' type='text' size='10' value='$id_cliente' readonly style='font-family: Trebuchet MS; font-size: 10pt; border: 0px solid #7F7F7F; background-color: #7F7F7F;>
-              <input id='no_cliente_oculto' type='hidden' size='10' value='$id_cliente'>
-              <input id='nombre_cliente_oculto' type='hidden' size='10' value='$nom_cliente'>
-            </td>
-            <td colspan='6'>
-              <div id='nombreCliente'>$nom_cliente</div>
-              <input type='hidden' name='folio' id='folio'  size='10' value='0' readonly>
-            </td>
-          </tr>
-          <tr bgcolor='#FFFFFF'>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td colspan='6'>&nbsp;</td>
-          </tr>
-          <tr bgcolor='#FFFFFF'>
-            <td colspan='8'>
-                $btn_cambioRegimen
-                $btn_siguiente
-            </td>
-          </tr>
-          <tr bgcolor='#FFFFFF'>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td colspan='6'>&nbsp;</td>
-          </tr>
-          <tr bgcolor='#FFFFFF'>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td colspan='6'>&nbsp;</td>
-          </tr>
-          ";
+
+        <tr class='row borderojo'>
+          <td class='col-md-2 text-right b'>Su Referencia:</td>
+          <td class='col-md-2 text-left'>$refCli</td>
+          <td class='col-md-2 text-right b'>No. Pedimento:</td>
+          <td class='col-md-2 text-left'>$row_buscaRef[s_pedimento]</td>
+          <td class='col-md-2 text-right b'>Tipo de cambio:</td>
+      	  <td class='col-md-2 text-left'>$tipoCambio</td>
+        </tr>
+
+        <tr class='row'>
+          <td class='col-md-2 text-right b pt-4'>Días en almacen: </td>
+          <td class='col-md-1'><input type='text' id='T_Dias' name='T_Dias' class='efecto h22' tabindex='<?php echo $tabindex = $tabindex+1; ?>'></td>
+          <td class='col-md-1'></td>
+          <td class='col-md-2 text-right b'>Núm. de Facturas: </td>
+      	  <td class='col-md-6 text-left'>$facturas</td>
+        </tr>
+
+       <tr class='row'>
+          <td class='col-md-2 text-right b pt-3'>Shipper:</td>
+          <td class='col-md-1'><input class='text-left bt border-0' type='text' id='DGE_shipper' value='$shipper' readonly></td>
+          <td class='col-md-2 text-right b pt-3'>InBond:</td>
+          <td class='col-md-1'><input class='text-left bt border-0' type='text' id='DGE_inbond' value='$inbond' readonly></td>
+          <td class='col-md-2 text-right b'>Trailer de Salida:</td>
+          <td class='col-md-1 text-left'>$row_buscaRef[s_trailerOut]</td>
+          <td class='col-md-2 text-right b'>Reexpedición:</td>
+          <td class='col-md-1 text-left'>$row_buscaRef[reexpedicion]</td>
+        </tr>
+        <tr class='row'>
+          <td class='col-md-2 text-right b pt-3'>Consolidado:</td>
+          <td class='col-md-1'><input class='text-left bt border-0' type='text' id='DGE_consolidado' value='$consolidado' readonly></td>
+          <td class='col-md-2 text-right b pt-3'>Entradas:</td>
+          <td class='col-md-1'><input class='text-left bt border-0' type='text' id='DGE_entradas' value='$entradas' readonly></td>
+          <td class='col-md-2 text-right b pt-3'>Flete: $status_flete</td>
+          <td class='col-md-1'><input class='text-left bt border-0' type='text' id='DGE_flete' value='$flete' readonly></td>
+          <td class='col-md-2 text-right b pt-4'>Cobrar:</td>
+          <td class='col-md-1 text-left'>$fleteOption</td>
+        </tr>
+        <tr class='row'>
+      		<td class='col-md-2 text-right b pt-3'>Estatus:</td>
+      		<td class='col-md-10 text-left'>$statusReferencia</td>
+      	</tr>
+        $tr_corresponsal
+        <tr class='row mt-3'>
+      		<td class='col-md-2 text-right b mt-3'>Facturar a otro:</td>
+          <td class='col-md-10 input-effect'>
+            <input class='efecto popup-input' id='DGEcliente' type='text' id-display='#popup-display-DGEcliente' action='clientes' db-id='' autocomplete='off' onchange='cargarOtroCliente()'>
+            <div class='popup-list' id='popup-display-DGEcliente' style='display:none'></div>
+            <label for='DGEcliente'>Cliente</label>
+          </td>
+      	</tr>
+        $tr_ctaAme
+        $tr_proforma
+        <tr class='row'>
+          <td class='col-md-2 text-right b pt-4 p-0'>
+            Expedir cta de gastos a:
+            <input type='hidden' id='opcion' value='cliente' readonly>
+            <input type='hidden' id='docto' value='ctagastos' readonly>
+            <input id='no_cliente_oculto' type='hidden' value='$id_cliente'>
+            <input id='nombre_cliente_oculto' type='hidden' value='$nom_cliente'>
+          </td'>
+          <td class='col-md-1 text-left'>
+            <input id='DGE_idcliente' type='text' value='$id_cliente' readonly class='efecto h22 border-0'>
+          </td>
+          <td class='col-md-9 text-left pt-4'>
+            <div id='nombreCliente'>$nom_cliente</div>
+            <input type='hidden' name='folio' id='folio' value='0' readonly>
+          </td>
+        </tr>
+        <tr class='row'>
+          <td class='col-md-12'>
+              $btn_cambioRegimen
+              $btn_siguiente
+          </td>
+        </tr>";
 
 ?>

@@ -38,7 +38,7 @@ if( $rows_buscaRef > 0 ){
 
   if ($id_aduanaReferencia == $aduana){ //VALIDO QUE LA ADUANA EN LA REFERENCIA CORRESPONDA A LA OFICINA ACTIVA
 
-      $datosEmbarque = "<table width='100%' border='0' style='border-collapse:collapse; font-family: Trebuchet MS; font-size: 10pt;' bgcolor='#DCDCDC'>";
+      $datosEmbarque = "<table class='table font12'>";
         require $root . '/conta6/Resources/PHP/actions/datosGeneralesEmbarque.php';
       $datosEmbarque .= "</table>";
 

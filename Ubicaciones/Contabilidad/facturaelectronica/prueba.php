@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 
@@ -1411,4 +1411,4 @@ if($referencia != "SN"){
 
 <?php
   require $root . '/conta6/Ubicaciones/footer.php';
-?>
+?> -->

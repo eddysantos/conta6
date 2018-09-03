@@ -5,9 +5,6 @@ $(document).ready(function(){
   $('#T_Nombre_Cliente').change();
 
 
-
-
-
 /**********************************************************************************************/
 
 
@@ -128,7 +125,21 @@ $(document).ready(function(){
         $(this).css('color', "");
         $(this).css('font-size', "");
       }
-        break;
+      break;
+
+      case "datinfo":
+      if (status == 'cerrado') {
+        $('#contornoInfo').fadeIn();
+        $(this).attr('status','abierto');
+        $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
+        $(this).css('font-size', '20px');
+      }else {
+        $('#contornoInfo').fadeOut();
+        $(this).attr('status','cerrado');
+        $(this).css('color', "");
+        $(this).css('font-size', "");
+      }
+      break;
         case "Ver-iUsuario":
         if (status == 'cerrado') {
           $('#detalleUsuario').fadeIn();
