@@ -223,7 +223,7 @@ if($referencia != "SN"){
             <a href='javascript:limpiarCampos(1,$idFila)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
           </td>
           <td class='col-md-2 p-2'>
-            <input type='text' id='T_POCME_Importe$idFila' value='$importe' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(this.form.T_POCME_Concepto$idFila,this.form.T_POCME_Importe$idFila);importe_POCME();cortarDecimalesObj(this.form.T_POCME_Importe$idFila,2);' size='17'>
+            <input type='text' id='T_POCME_Importe$idFila' value='$importe' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17'>
           </td>
           <td class='col-md-2 p-2'>
             <input type='text' id='T_POCME_Subtotal$idFila' value='$subtotal' class='T_POCME_SUBTOTALES efecto h22' size='17' readonly/>
@@ -252,13 +252,14 @@ if($referencia != "SN"){
           <a href='javascript:limpiarCampos(1,$idFilaBlanco)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
         </td>
         <td class='col-md-2 p-2'>
-          <input type='text' id='T_POCME_Importe$idFilaBlanco' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(this.form.T_POCME_Concepto$idFilaBlanco,this.form.T_POCME_Importe$idFilaBlanco);importe_POCME();cortarDecimalesObj(this.form.T_POCME_Importe$idFilaBlanco,2);' size='17' tabindex='$tabindex = $tabindex+1'>
+          <input type='text' id='T_POCME_Importe$idFilaBlanco' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17' tabindex='$tabindex = $tabindex+1'>
         </td>
         <td class='col-md-2 p-2'>
           <input type='text' id='T_POCME_Subtotal$idFilaBlanco' class='T_POCME_SUBTOTALES efecto h22' size='17' readonly>
         </td>
       </tr>";
     }
+
 
 
 
@@ -298,13 +299,18 @@ if($referencia != "SN"){
     $tabindex = 0;
 ?>
 
-<input type="hidden" id="T_ID_Cliente_Oculto" value="<?php echo $id_cliente; ?>">
+
 <input type="hidden" id="T_ID_Aduana_Oculto" value="<?php echo $aduana; ?>">
 <input type="hidden" id="Txt_Usuario" value="<?php echo $usuario; ?>">
 <input type="hidden" id="T_ID_Almacen_Oculto" value="<?php echo $almacen;?>">
 <input type="hidden" id="T_No_calculoTarifa" value="<?php echo $calculoTarifa;?>">
 <input type="hidden" id="docto_tipo" value="<?php echo $opcion;?>">
-<input type="hidden" id="docto_id=" value="<?php echo $extraerfolio;?>">
+<input type="hidden" id="docto_id" value="<?php echo $extraerfolio;?>">
+<input type="hidden" id="IVA" value="<?PHP echo $iva;?>">
+<input type="hidden" id="IVARETENIDO" value="<?PHP echo $retencion;?>">
+<input type="hidden" id="IVA_MENOS_RETENCION" value="<?PHP echo $iva_menos_retencion;?>">
+<input type="hidden" id="IVA_GRAL" value="<?PHP echo $ivaGral;?>">
+
 
 <div class='text-center'>
   <div class='row m-0 submenuMed '>
@@ -324,7 +330,8 @@ if($referencia != "SN"){
       <thead>
         <tr class='row encabezado font16'>
           <td class='col-md-12 p-0'>
-            <input class="efecto h22 border-0 bt" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
+            <input class="eff h22 border-0 bt p-0" type="text" id="T_ID_Cliente_Oculto" value="<?php echo $id_cliente; ?>">
+            <input class="eff h22 border-0 bt" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
           </td>
         </tr>
         <tr class='row backpink' style="font-size:14px!important">
@@ -358,7 +365,10 @@ if($referencia != "SN"){
           </td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0'><input class="efecto h22 border-0 bt" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>"></td>
+          <td class='col-md-6 p-0'>
+            <input class="eff h22 border-0 bt p-0" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
+            Pais :<input class="eff h22 border-0 bt" id="T_Cliente_Pais">
+          </td>
         </tr>
       </tbody>
     </table>
@@ -550,11 +560,11 @@ if($referencia != "SN"){
                     <input type="hidden" id="T_POCME_Cta">
                   </td>
                   <td class='col-md-6'>
-                    <input class="efecto h22" type="text" id="T_POCME" size="60">
+                    <input class="efecto h22" type="text" id="T_POCME" size="60" readonly>
                	    <input type="hidden" id="T_POCME_Eng"></td>
                   </td>
                   <td class='col-md-2'>
-                    <input class="efecto h22" type="text" id="T_POCME_Valor" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15">
+                    <input class="efecto h22" type="text" id="T_POCME_Valor" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15" readonly>
                   </td>
                   <td class='col-md-1 text-left'>
                     <a onclick="agregarImporte()" id="Btn_agregar">
@@ -609,7 +619,7 @@ if($referencia != "SN"){
                 <tr class='row m-0'>
                   <td class='col-md-1 text-right pt-4 b'>Almacen :</td>
                   <td class='col-md-4'>
-                    <select size="1" id="Lst_Conceptos" onchange ="document.Proforma_1.T_Valor_Concepto_Gral.value= document.Proforma_1.Lst_Conceptos.value; document.Proforma_1.T_CA.value = document.Proforma_1.Lst_Conceptos.options[document.Proforma_1.Lst_Conceptos.selectedIndex].text;">
+                    <select size="1" id="Lst_Conceptos" onchange ="tarifaAlmacen()">
                     <?php echo $ConceptosAlmacen; ?>
                     </select>
                   </td>
@@ -623,19 +633,19 @@ if($referencia != "SN"){
                 <tr class='row m-0'>
                   <td class='col-md-1 text-right b'>Libres :</td>
                   <td class='col-md-4 pt-0'>
-                    <select size="1" id="Lst_CA" onchange="document.Proforma_1.T_CA.value = document.Proforma_1.Lst_CA.options[document.Proforma_1.Lst_CA.selectedIndex].text; document.Proforma_1.T_Valor_Concepto_Gral.value=0;">
+                    <select size="1" id="Lst_CA" onchange="tarifaAlmacenLibre()">
                       <?php echo $conceptosLibresAlmacen; ?>
                     </select>
                   </td>
                   <td class='col-md-3'></td>
                   <td class='col-md-1 pt-0'>
-                    <input class="h22 efecto" type="text" id="T_Valor_Custodia_Aer" size="13" onblur="cortarDecimalesObj(this.form.T_Valor_Custodia_Aer,2);this.form.T_Valor_Manejo_Aer.focus();totalManiobras();" value="<?php echo $custodia; ?>">
+                    <input class="h22 efecto" type="text" id="T_Valor_Custodia_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $custodia; ?>">
                   </td>
                   <td class='col-md-1 pt-0'>
-                    <input class="h22 efecto" type="text" id="T_Valor_Manejo_Aer" size="13" onblur="cortarDecimalesObj(this.form.T_Valor_Manejo_Aer,2);this.form.T_Valor_Almacenaje_Aer.focus();totalManiobras();" value="<?php echo $manejo; ?>" />
+                    <input class="h22 efecto" type="text" id="T_Valor_Manejo_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $manejo; ?>" />
                   </td>
                   <td class='col-md-1 pt-0'>
-                    <input class="h22 efecto" type="text" id="T_Valor_Almacenaje_Aer" size="13" onblur="cortarDecimalesObj(this.form.T_Valor_Almacenaje_Aer,2);this.form.T_Valor_Total_Maniobras.focus();totalManiobras();" value="<?php echo $almacenaje; ?>" />
+                    <input class="h22 efecto" type="text" id="T_Valor_Almacenaje_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $almacenaje; ?>" />
                   </td>
                   <td class='col-md-1 pt-0'>
                     <input class="h22 efecto border-0" type="text" id="T_Valor_Total_Maniobras" onblur="Pasa_Valor_Maniobras()" size="13" value="0" readonly>
@@ -656,11 +666,10 @@ if($referencia != "SN"){
                     <input class="efecto" type="text" id="T_CA" size="60" readonly>
                   </td>
                   <td class='col-md-1'>
-                    <input class="efecto" type="text" id="T_Valor_Concepto_Gral" onblur="cortarDecimalesObj(this.form.T_Valor_Concepto_Gral,2)" size="15">
+                    <input class="efecto" type="text" id="T_Valor_Concepto_Gral" onblur="cortarDecimalesObj(this,2)" size="15">
                   </td>
                   <td class='col-md-1 text-left'>
-                    <!-- <input type=button value="Add" id="Btn_Cargo" onclick="agregarCargo();sumaGeneral();"> -->
-                    <a href='#' id="Btn_Cargo" onclick="agregarCargo();sumaGeneral();">
+                    <a href='#' id="Btn_Cargo" onclick="agregarCargo();">
                       <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
                     </a>
                   </td>
@@ -684,97 +693,97 @@ if($referencia != "SN"){
 
                 <tr id="10" class='row m-0'>
                   <td class='col-md-6 p-1'>
-                    <input class='efecto h22' type="text" id="T_Cargo_1" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_1);eliminaBlancoFin(this.form.T_Cargo_1);eliminaBlancosIntermedios(this.form.T_Cargo_1);" class="T_Cargo" readonly value="Impuestos y/o derechos pagados o garantizados al Com. Ext." readonly>
+                    <input class='efecto h22 T_Cargo' type="text" id="T_Cargo_1" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" value="Impuestos y/o derechos pagados o garantizados al Com. Ext." readonly>
                   </td>
                   <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos('C1')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                    <a href="javascript:limpiarCampos(2,1)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                   </td>
                   <td class='col-md-2 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_13" size="20" onblur="validaIntDec(this);cortarDecimalesObj(this.form.T_Cargo_13,2);Suma_Subtotales();" class="T_Cargo_Subtotal" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_13" size="20" onblur="validaIntDec(this);validaDescImporte(2,1);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
                 </tr>
 
                 <tr id="11" class='row m-0'>
                   <td class='col-md-6 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_2" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_2);eliminaBlancoFin(this.form.T_Cargo_2);eliminaBlancosIntermedios(this.form.T_Cargo_2);" class="T_Cargo" readonly>
+                    <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_2" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
                   </td>
                   <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos('C2')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                    <a href="javascript:limpiarCampos(2,2)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                   </td>
                   <td class='col-md-2 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_23" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_2,this.form.T_Cargo_23);cortarDecimalesObj(this.form.T_Cargo_23,2);Suma_Subtotales();" class="T_Cargo_Subtotal" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_23" size="20" onblur="validaIntDec(this);validaDescImporte(2,2);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
                 </tr>
 
                 <tr id="12" class='row m-0'>
                   <td class='col-md-6 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_3" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_3);eliminaBlancoFin(this.form.T_Cargo_3);eliminaBlancosIntermedios(this.form.T_Cargo_3);" class="T_Cargo" readonly>
+                    <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_3" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
                   </td>
                   <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos('C3')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                    <a href="javascript:limpiarCampos(2,3)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                   </td>
                   <td class='col-md-2 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_33" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_3,this.form.T_Cargo_33);cortarDecimalesObj(this.form.T_Cargo_33,2);Suma_Subtotales();" class="T_Cargo_Subtotal" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_33" size="20" onblur="validaIntDec(this);validaDescImporte(2,3);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
                 </tr>
 
                 <tr id="13" class='row m-0'>
                   <td class='col-md-6 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_4" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_4);eliminaBlancoFin(this.form.T_Cargo_4);eliminaBlancosIntermedios(this.form.T_Cargo_4);" class="T_Cargo" readonly>
+                    <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_4" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
                   </td>
                   <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos('C4')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                    <a href="javascript:limpiarCampos(2,4)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                   </td>
                   <td class='col-md-2 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_43" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_4,this.form.T_Cargo_43);cortarDecimalesObj(this.form.T_Cargo_43,2);Suma_Subtotales();" class="T_Cargo_Subtotal" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_43" size="20" onblur="validaIntDec(this);validaDescImporte(2,4);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
                 </tr>
 
                 <tr id="14" class='row m-0'>
                   <td class='col-md-6 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_5" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_5);eliminaBlancoFin(this.form.T_Cargo_5);eliminaBlancosIntermedios(this.form.T_Cargo_5);" class="T_Cargo" readonly>
+                    <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_5" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
                   </td>
                   <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos('C5')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                    <a href="javascript:limpiarCampos(2,5)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                   </td>
                   <td class='col-md-2 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_53" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_5,this.form.T_Cargo_53);cortarDecimalesObj(this.form.T_Cargo_53,2);Suma_Subtotales();" class="T_Cargo_Subtotal" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_53" size="20" onblur="validaIntDec(this);validaDescImporte(2,5);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
                 </tr>
 
                 <tr id="15" class='row m-0'>
                   <td class='col-md-6 p-1'>
-                    <input class="efecto h22" id="T_Cargo_6" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_6);eliminaBlancoFin(this.form.T_Cargo_6);eliminaBlancosIntermedios(this.form.T_Cargo_6);" class="T_Cargo" readonly>
+                    <input class="efecto h22 T_Cargo" id="T_Cargo_6" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
                   </td>
                   <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos('C6')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                    <a href="javascript:limpiarCampos(2,6)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                   </td>
                   <td class='col-md-2 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_63" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_6,this.form.T_Cargo_63);cortarDecimalesObj(this.form.T_Cargo_63,2);Suma_Subtotales();" class="T_Cargo_Subtotal" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_63" size="20" onblur="validaIntDec(this);validaDescImporte(2,6);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
                 </tr>
 
                 <tr id="16" class='row m-0'>
                   <td class='col-md-6 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_7" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_7);eliminaBlancoFin(this.form.T_Cargo_7);eliminaBlancosIntermedios(this.form.T_Cargo_7);" class="T_Cargo" readonly>
+                    <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_7" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
                   </td>
                   <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos('C7')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                    <a href="javascript:limpiarCampos(2,7)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                   </td>
                   <td class='col-md-2 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_73" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_7,this.form.T_Cargo_73);cortarDecimalesObj(this.form.T_Cargo_73,2);Suma_Subtotales();" class="T_Cargo_Subtotal" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_73" size="20" onblur="validaIntDec(this);validaDescImporte(2,7);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
                 </tr>
 
                 <tr id="17" class='row m-0'>
                   <td class='col-md-6 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_8" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_8);eliminaBlancoFin(this.form.T_Cargo_8);eliminaBlancosIntermedios(this.form.T_Cargo_8);" class="T_Cargo" readonly>
+                    <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_8" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
                   </td>
                   <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos('C8')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                    <a href="javascript:limpiarCampos(2,8)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                   </td>
                   <td class='col-md-2 p-1'>
-                    <input class="efecto h22" type="text" id="T_Cargo_83" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_8,this.form.T_Cargo_83);cortarDecimalesObj(this.form.T_Cargo_83,2);Suma_Subtotales();" class="T_Cargo_Subtotal" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_83" size="20" onblur="validaIntDec(this);validaDescImporte(2,8);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
                 </tr>
               </tbody>
@@ -830,10 +839,10 @@ if($referencia != "SN"){
                       </td>
 
                       <td class='col-md-4'>
-                        <input class="efecto" type="text" id="T_CH" size="42" onchange="validarStringSAT(this.form.T_CH);" onkeypress="return validarStringSATteclaPulsada(event);" onblur="limpia()"/>
+                        <input class="efecto" type="text" id="T_CH" size="42" onchange="validarStringSAT(this);" onkeypress="return validarStringSATteclaPulsada(event);" onblur="limpia()"/>
                       </td>
                       <td class='col-md-1'>
-                        <input class="efecto" type="text" id="T_Valor_Concepto_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this.form.T_Valor_Concepto_Honorarios,2);" size="15">
+                        <input class="efecto" type="text" id="T_Valor_Concepto_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15">
                       </td>
                       <td class='col-md-1 text-left'>
                         <!-- <input type=button value="Add" id="Btn_Honorarios" onclick="agregarHonorarios()"> -->
@@ -845,7 +854,7 @@ if($referencia != "SN"){
                       </td>
 
                       <td class='col-md-2'>
-                        <input class="efecto" type= text id="T_Honorarios_Minimo_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this.form.T_Honorarios_Minimo_Honorarios,2);" size="7" tabindex="<?php echo $tabindex = $tabindex+1;?>" value="<?php echo $honorarios; ?>">
+                        <input class="efecto" type= text id="T_Honorarios_Minimo_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="7" tabindex="<?php echo $tabindex = $tabindex+1;?>" value="<?php echo $honorarios; ?>">
                       </td>
                     </tr>
 
@@ -868,7 +877,7 @@ if($referencia != "SN"){
                         <input class="efecto h22" type="text" id="T_Honorarios_Porcentaje" onblur="Suma_Valor_Honorarios()" size="10" value="<?php echo cortarDecimales($factor_honorarios); ?>" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </td>
                       <td class="col-md-1 p-1">
-                        <input class="efecto h22" type="text" id="Txt_Honorarios" class="T_Honorarios" readonly size="32" value="% de Honorarios sobre la base de:" readonly>
+                        <input class="efecto h22 T_Honorarios" type="text" id="Txt_Honorarios" size="32" value="% de Honorarios sobre la base de:" readonly>
                       </td>
                       <td class="col-md-1 p-1">
                         <input class="efecto h22" type="text" id="T_Honorarios_Base_Honorarios" onblur="calculoHonorarios();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
@@ -880,215 +889,215 @@ if($referencia != "SN"){
                         <input class="efecto h22" type="text" id="Txt_Descuento" size="32" value="% de Descuento" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hcta0" class="T_Honorarios_idcta" size="15" value="0400-00001" readonly>
+                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta0" size="15" value="0400-00001" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hps0" class="T_Honorarios_idps" size="15" value="<?php echo $cveProdHon;?>" readonly>
+                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps0" size="15" value="<?php echo $cveProdHon;?>" readonly>
                       </td>
                       <td class="col-md-1 p-1">
-                        <input class="efecto h22" type="text" id="T_Honorarios_Importe" onblur="validaIntDec(this);cortarDecimalesObj(this.form.T_Honorarios_Importe,2);Iva_Importe_Hon();" size="18" class="T_Honorarios_Importe" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_Importe" onblur="validaIntDec(this);cortarDecimalesObj(this,2);Iva_Importe_Hon(0);" size="18" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </td>
 
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_IVA" size="20" class="T_Honorarios_IVA" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_IVA" size="20" value="0" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_RET" size="20" class="T_Honorarios_RET" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_RET" size="20" value="0" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_Total" size="20" class="T_Honorarios_Subtotal" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_Total" size="20" value="0"  readonly>
                       </td>
                     </tr>
 
                     <tr id="19" class='row m-0'>
                       <td class='col-md-4 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_1" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_1);eliminaBlancoFin(this.form.T_Honorarios_1);eliminaBlancosIntermedios(this.form.T_Honorarios_1);validarStringSAT(this.form.T_Honorarios_1);" class="T_Honorarios" readonly tabindex="75">
+                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_1" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="75">
                       </td>
                       <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos('H1')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                        <a href="javascript:limpiarCampos(3,1)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hcta1" class="T_Honorarios_idcta" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta1" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hps1" class="T_Honorarios_idps" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps1" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_11" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_1,this.form.T_Honorarios_11);cortarDecimalesObj(this.form.T_Honorarios_11,2);Iva_Importe_Hon1()" size="18" class="T_Honorarios_Importe" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_11" onblur="validaIntDec(this);validaDescImporte(3,1);cortarDecimalesObj(this,2);Iva_Importe_Hon(1)" size="18" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </td>
                       <td class="col-md-1 p-1">
-                        <input class="efecto h22" type="text" id="T_Honorarios_12" size="20" class="T_Honorarios_IVA" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_12" size="20" value="0" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_14" size="20" class="T_Honorarios_RET" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_14" size="20" value="0" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_13" size="20" class="T_Honorarios_Subtotal" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_13" size="20" value="0" readonly>
                       </td>
                     </tr>
 
 
                     <tr id="20" class='row m-0'>
                       <td class='col-md-4 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_2" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_2);eliminaBlancoFin(this.form.T_Honorarios_2);eliminaBlancosIntermedios(this.form.T_Honorarios_2);validarStringSAT(this.form.T_Honorarios_2);" class="T_Honorarios" readonly tabindex="79">
+                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_2" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="79">
                       </td>
                       <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos('H2')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                        <a href="javascript:limpiarCampos(3,2)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hcta2" class="T_Honorarios_idcta" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta2" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hps2" class="T_Honorarios_idps" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps2" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_21" size="18" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_2,this.form.T_Honorarios_21);cortarDecimalesObj(this.form.T_Honorarios_21,2);Iva_Importe_Hon2();" class="T_Honorarios_Importe"  value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_21" size="18" onblur="validaIntDec(this);validaDescImporte(3,2);cortarDecimalesObj(this,2);Iva_Importe_Hon(2);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </td>
                       <td class="col-md-1 p-1">
-                        <input class="efecto h22" type="text" id="T_Honorarios_22" size="20" class="T_Honorarios_IVA" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_22" size="20" value="0" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_24" size="20" class="T_Honorarios_RET" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_24" size="20" value="0"  readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_23" size="20" class="T_Honorarios_Subtotal" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_23" size="20" value="0" readonly>
                       </td>
                     </tr>
 
                     <tr id="21" class='row m-0'>
                       <td class='col-md-4 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_3" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_3);eliminaBlancoFin(this.form.T_Honorarios_3);eliminaBlancosIntermedios(this.form.T_Honorarios_3);validarStringSAT(this.form.T_Honorarios_3);" class="T_Honorarios" readonly tabindex="83">
+                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_3" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="83">
                       </td>
                       <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos('H3')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                        <a href="javascript:limpiarCampos(3,3)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hcta3" class="T_Honorarios_idcta" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta3" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hps3" class="T_Honorarios_idps" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps3" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_31" size="18" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_3,this.form.T_Honorarios_31);cortarDecimalesObj(this.form.T_Honorarios_31,2);Iva_Importe_Hon3();" class="T_Honorarios_Importe"  value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_31" size="18" onblur="validaIntDec(this);validaDescImporte(3,3);cortarDecimalesObj(this,2);Iva_Importe_Hon(3);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </td>
                       <td class="col-md-1 p-1">
-                        <input class="efecto h22" type="text" id="T_Honorarios_32" size="20" class="T_Honorarios_IVA" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_32" size="20" value="0" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_34" size="20" class="T_Honorarios_RET" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_34" size="20" value="0"  readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_33" size="20" class="T_Honorarios_Subtotal" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_33" size="20" value="0" readonly>
                       </td>
                     </tr>
 
 
                     <tr id="22" class='row m-0'>
                       <td class='col-md-4 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_4" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_4);eliminaBlancoFin(this.form.T_Honorarios_4);eliminaBlancosIntermedios(this.form.T_Honorarios_4);validarStringSAT(this.form.T_Honorarios_4);" class="T_Honorarios" readonly tabindex="87">
+                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_4" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="87">
                       </td>
                       <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos('H4')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                        <a href="javascript:limpiarCampos(3,4)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hcta4" class="T_Honorarios_idcta" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta4" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hps4" class="T_Honorarios_idps" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps4" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_41" size="18" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_4,this.form.T_Honorarios_41);cortarDecimalesObj(this.form.T_Honorarios_41,2);Iva_Importe_Hon4();" class="T_Honorarios_Importe"  value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_41" size="18" onblur="validaIntDec(this);validaDescImporte(3,4);cortarDecimalesObj(this,2);Iva_Importe_Hon(4);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </td>
                       <td class="col-md-1 p-1">
-                        <input class="efecto h22" type="text" id="T_Honorarios_42" size="20" class="T_Honorarios_IVA" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_42" size="20" value="0"  readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_44" size="20" class="T_Honorarios_RET" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_44" size="20" value="0"  readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_43" size="20" class="T_Honorarios_Subtotal" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_43" size="20" value="0"  readonly>
                       </td>
                     </tr>
 
 
                     <tr id="23" class='row m-0'>
                       <td class='col-md-4 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_5" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_5);eliminaBlancoFin(this.form.T_Honorarios_5);eliminaBlancosIntermedios(this.form.T_Honorarios_5);validarStringSAT(this.form.T_Honorarios_5);" class="T_Honorarios" readonly  tabindex="91">
+                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_5" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="91">
                       </td>
                       <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos('H5')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                        <a href="javascript:limpiarCampos(3,5)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hcta5" class="T_Honorarios_idcta" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta5" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hps5" class="T_Honorarios_idps" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps5" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_51" size="18" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_5,this.form.T_Honorarios_51);cortarDecimalesObj(this.form.T_Honorarios_51,2);Iva_Importe_Hon5();" class="T_Honorarios_Importe" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_51" size="18" onblur="validaIntDec(this);validaDescImporte(3,5);cortarDecimalesObj(this,2);Iva_Importe_Hon(5);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </td>
                       <td class="col-md-1 p-1">
-                        <input class="efecto h22" type="text" id="T_Honorarios_52" size="20" class="T_Honorarios_IVA" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_52" size="20" value="0"  readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_54" size="20" class="T_Honorarios_RET" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_54" size="20" value="0"  readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_53" size="20" class="T_Honorarios_Subtotal" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_53" size="20" value="0" readonly>
                       </td>
                     </tr>
 
                     <tr id="24" class='row m-0'>
                       <td class='col-md-4 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_6" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_6);eliminaBlancoFin(this.form.T_Honorarios_6);eliminaBlancosIntermedios(this.form.T_Honorarios_6);validarStringSAT(this.form.T_Honorarios_6);" class="T_Honorarios" readonly tabindex="95">
+                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_6" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="95">
                       </td>
                       <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos('H6')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                        <a href="javascript:limpiarCampos(3,6)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hcta6" class="T_Honorarios_idcta" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta6" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hps6" class="T_Honorarios_idps" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps6" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_61" size="18" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_6,this.form.T_Honorarios_61);cortarDecimalesObj(this.form.T_Honorarios_61,2);Iva_Importe_Hon6();" class="T_Honorarios_Importe" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_61" size="18" onblur="validaIntDec(this);validaDescImporte(3,6);cortarDecimalesObj(this,2);Iva_Importe_Hon(6);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </td>
                       <td class="col-md-1 p-1">
-                        <input class="efecto h22" type="text" id="T_Honorarios_62" size="20" class="T_Honorarios_IVA" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_62" size="20" value="0"  readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_64" size="20" class="T_Honorarios_RET" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_64" size="20" value="0"  readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_63" size="20" class="T_Honorarios_Subtotal" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_63" size="20" value="0" readonly>
                       </td>
                     </tr>
 
                     <tr id="25" class='row m-0 borderojo'>
                       <td class='col-md-4 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_7" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_7);eliminaBlancoFin(this.form.T_Honorarios_7);eliminaBlancosIntermedios(this.form.T_Honorarios_7);validarStringSAT(this.form.T_Honorarios_7);" class="T_Honorarios" readonly tabindex="99">
+                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_7" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="99">
                       </td>
                       <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos('H7')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                        <a href="javascript:limpiarCampos(3,7)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hcta7" class="T_Honorarios_idcta" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta7" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Hps7" class="T_Honorarios_idps" size="15" readonly>
+                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps7" size="15" readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_71" size="18" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_7,this.form.T_Honorarios_71);cortarDecimalesObj(this.form.T_Honorarios_71,2);Iva_Importe_Hon7();" class="T_Honorarios_Importe" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_71" size="18" onblur="validaIntDec(this);validaDescImporte(3,7);cortarDecimalesObj(this,2);Iva_Importe_Hon(7);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </td>
                       <td class="col-md-1 p-1">
-                        <input class="efecto h22" type="text" id="T_Honorarios_72" size="20" class="T_Honorarios_IVA" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_72" size="20" value="0"  readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_74" size="20" class="T_Honorarios_RET" value="0"  readonly>
+                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_74" size="20" value="0"  readonly>
                       </td>
                       <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_73" size="20" class="T_Honorarios_Subtotal" value="0" readonly>
+                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_73" size="20" value="0" readonly>
                       </td>
                     </tr>
 
@@ -1160,7 +1169,9 @@ if($referencia != "SN"){
                                 <?php echo $datosCLTformaPago; ?>
                             </select>
                           </td>
-                          <td class="col-md-3">
+                          <td class="col-md-3"><select class="custom-select" size='1' id='Lst_cuentaPago' onChange="asignarCtaBanco()">
+                        		<option selected value='0'>Seleccione Banco</option>
+                      		  </select>
                             <div id="numerosCuenta"></div>
                           </td>
                           <td class="col-md-3">
@@ -1288,12 +1299,12 @@ if($referencia != "SN"){
                             <a href="javascript:Btn_Busca_Anticipo('1')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                               <img class='mr-3 icochico' src='/conta6/Resources/iconos/magnifier.svg'>
                             </a>
-                            <a href="javascript:limpiarCampos('A1')">
+                            <a href="javascript:limpiarCampos(4,1)">
                               <img class='mr-3 icochico' src='/conta6/Resources/iconos/002-trash.svg'>
                             </a>
                           </td>
                           <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_1" size="20">
+                            <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_1" size="20" readonly>
                           </td>
                           <td class="p-1 col-md-2">
                             <input class="w-100 efecto h22" type="text" id="T_Anticipo_1" size="20" value="0" readonly>
@@ -1305,12 +1316,12 @@ if($referencia != "SN"){
                             Anticipo 2 :
                             <a href="javascript:Btn_Busca_Anticipo('2')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                               <img class='mr-3 icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a>
-                            <a href="javascript:limpiarCampos('A2')">
+                            <a href="javascript:limpiarCampos(4,2)">
                               <img class='mr-3 icochico' src='/conta6/Resources/iconos/002-trash.svg'>
                             </a>
                           </td>
                           <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_2" size="20">
+                            <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_2" size="20" readonly>
                           </td>
                           <td class="p-1 col-md-2">
                             <input class="w-100 efecto h22" type="text" id="T_Anticipo_2" size="20" value="0" readonly>
@@ -1323,12 +1334,12 @@ if($referencia != "SN"){
                             <a href="javascript:Btn_Busca_Anticipo('3')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                               <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
                             </a>
-                            <a href="javascript:limpiarCampos('A3')">
+                            <a href="javascript:limpiarCampos(4,3)">
                               <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
                             </a>
                           </td>
                           <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_3" size="20">
+                            <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_3" size="20" readonly>
                           </td>
                           <td class="p-1 col-md-2">
                             <input class="w-100 efecto h22" type="text" id="T_Anticipo_3" size="20" value="0" readonly>
@@ -1341,12 +1352,12 @@ if($referencia != "SN"){
                             <a href="javascript:Btn_Busca_Anticipo('4')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                               <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
                             </a>
-                            <a href="javascript:limpiarCampos('A4')">
+                            <a href="javascript:limpiarCampos(4,4)">
                               <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
                             </a>
                           </td>
                           <td class="p-1 col-md-2">
-                          <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_4" size="20">
+                          <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_4" size="20" readonly>
                           </td>
                           <td class="p-1 col-md-2">
                             <input class="w-100 efecto h22" type="text" id="T_Anticipo_4" size="20" value="0" readonly>
@@ -1359,12 +1370,12 @@ if($referencia != "SN"){
                             <a href="javascript:Btn_Busca_Anticipo('5')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                               <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
                             </a>
-                            <a href="javascript:limpiarCampos('A5')">
+                            <a href="javascript:limpiarCampos(4,5)">
                               <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
                             </a>
                           </td>
                           <td class="p-1 col-md-2">
-                          <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_5" size="20">
+                          <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_5" size="20" readonly>
                           </td>
                           <td class="p-1 col-md-2">
                             <input class="w-100 efecto h22" type="text" id="T_Anticipo_5" size="20" value="0" readonly>
@@ -1377,12 +1388,12 @@ if($referencia != "SN"){
                             <a href="javascript:Btn_Busca_Anticipo('6')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                               <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
                             </a>
-                            <a href="javascript:limpiarCampos('A6')">
+                            <a href="javascript:limpiarCampos(4,6)">
                               <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
                             </a>
                           </td>
                           <td class="p-1 col-md-2">
-                          <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_6" size="20">
+                          <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_6" size="20" readonly>
                           </td>
                           <td class="p-1 col-md-2">
                             <input class="w-100 efecto h22" type="text" id="T_Anticipo_6" size="20" value="0" readonly>
@@ -1398,7 +1409,7 @@ if($referencia != "SN"){
           </div>
           <div class="row justify-content-center">
             <div class="col-md-3">
-              <input class="efecto boton" type='button' value="GUARDAR" onclick="guardarCta('Guardar');validarStringSAT(this.form.T_Nombre_Cliente);quitarNoUsar(this.form.T_Nombre_Cliente);" id="guardar" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
+              <input class="efecto boton" type='button' value="GUARDAR" onclick="guardarCta('Guardar');validarStringSAT(this);quitarNoUsar(this);" id="guardar" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
             </div>
             <div id="mensaje"></div>
           </div>

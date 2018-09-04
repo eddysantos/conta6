@@ -24,8 +24,8 @@ if ($rslt_ConceptosAlmacen->num_rows > 0) {
     $ConceptosAlmacen = "<option selected value='0'>Seleccione un concepto</option>";
   while ($row_ConceptosAlmacen = $rslt_ConceptosAlmacen->fetch_assoc()) {
     $s_descripcion = trim(utf8_encode($row_ConceptosAlmacen[s_descripcion]));
-
-    $ConceptosAlmacen .= "<option value='$s_descripcion'>$s_descripcion</option>";
+    $n_importe = $row_ConceptosAlmacen[n_importe];
+    $ConceptosAlmacen .= "<option value='$s_descripcion+$n_importe'>$s_descripcion $n_importe</option>";
   }
 }
 
