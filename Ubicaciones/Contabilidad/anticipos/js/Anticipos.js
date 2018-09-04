@@ -962,7 +962,7 @@ function borrarRegistroAnticipo(partida){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/lst_bancos_clientes.php",
+      url: "/conta6/Resources/PHP/actions/lst_bancos_clientes.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);

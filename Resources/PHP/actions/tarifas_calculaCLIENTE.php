@@ -19,7 +19,7 @@ $honorarios = 0;
 $factor_honorarios = 0;
 $descuento = 0;
 
-$query_consultaConcCLT = "SELECT DISTINCT A.pk_id_concepto,A.fk_id_cliente,A.s_descripcion,A.fk_id_tipo,fk_c_ClaveProdServ,fk_id_cuenta
+$query_consultaConcCLT = "SELECT DISTINCT A.pk_id_concepto,A.fk_id_cliente,A.s_descripcion,A.fk_id_tipo,A.fk_c_ClaveProdServ,A.fk_id_cuenta
 FROM conta_tarifas_conceptos A, conta_tarifas B
 WHERE A.pk_id_concepto = B.fk_id_concepto AND A.fk_id_cliente  = ? AND A.fk_id_aduana = ?  AND B.s_imp_exp = ? ";
 
@@ -29,7 +29,7 @@ if (!($stmt_consultaConcCLT)) {
 	$system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
 	exit_script($system_callback);
 }
-$stmt_consultaConcCLT->bind_param('sss',$cliente,$oficina,$tipo);
+$stmt_consultaConcCLT->bind_param('sss',$cliente,$aduana,$tipo);
 if (!($stmt_consultaConcCLT)) {
 	$system_callback['code'] = "500";
 	$system_callback['message'] = "Error during variables binding [$stmt_consultaConcCLT->errno]: $stmt_consultaConcCLT->error";
@@ -47,6 +47,8 @@ while ($row_consultaConcCLT = $rslt_consultaConcCLT->fetch_assoc()) {
   $ID_CONCEPTO_CURSOR = $row_consultaConcCLT["pk_id_concepto"];
   $descripcion = $row_consultaConcCLT["s_descripcion"];
 	$tipo_CURSOR = $row_consultaConcCLT["fk_id_tipo"];
+	$ClaveProdServ = $row_consultaConcCLT["fk_c_ClaveProdServ"];
+	$fk_id_cuenta = $row_consultaConcCLT["fk_id_cuenta"];
 
   #--Busca... los conceptos con Varios Registros con 1 Limite Inferior, 1 Limite Superior y 1 Importe
 	if( $tipo_CURSOR == 101 ){
@@ -70,7 +72,7 @@ while ($row_consultaConcCLT = $rslt_consultaConcCLT->fetch_assoc()) {
 
 		$BASEHONORAIOS = ($valor * $FACTOR_1)/100;
 		if( $BASEHONORAIOS > $IMPORTE ){ $IMPORTE = $BASEHONORAIOS; }
-
+		//echo $ID_CONCEPTO_CURSOR;
 		#usado en el formato de captura
 		$honorarios = $consul['n_importe_1'];
 		$factor_honorarios = $consul['n_factor_1'];
@@ -160,8 +162,10 @@ while ($row_consultaConcCLT = $rslt_consultaConcCLT->fetch_assoc()) {
                                             fk_id_tarifa,
                                             fk_usuario,
                                             s_seccion,
-                                            n_importe
-                                          )values(?,?,?,?,?,?,?,?)";
+                                            n_importe,
+																						fk_c_ClaveProdServ,
+																						fk_id_cuenta
+                                          )values(?,?,?,?,?,?,?,?,?,?)";
 
     $stmt_insertConcepCLT = $db->prepare($query_insertConcepCLT);
     if (!($stmt_insertConcepCLT)) {
@@ -170,14 +174,16 @@ while ($row_consultaConcCLT = $rslt_consultaConcCLT->fetch_assoc()) {
       exit_script($system_callback);
     }
 
-    $stmt_insertConcepCLT->bind_param('ssssssss',$id_concepto,
-                                                  $tipoCalculo,
+    $stmt_insertConcepCLT->bind_param('ssssssssss',$id_concepto,
+                                                  $tipo_CURSOR,
                                                   $descripcion,
                                                   $cliente,
                                                   $calculoTarifa,
                                                   $usuario,
                                                   $s_seccion,
-                                                  $IMPORTE);
+                                                  $IMPORTE,
+																									$ClaveProdServ,
+																									$fk_id_cuenta);
     if (!($stmt_insertConcepCLT)) {
       $system_callback['code'] = "500";
       $system_callback['message'] = "Error during variables binding [$stmt_insertConcepCLT->errno]: $stmt_insertConcepCLT->error";
