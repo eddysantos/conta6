@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 
@@ -223,7 +223,7 @@ if($referencia != "SN"){
             <a href='javascript:limpiarCampos(1,$idFila)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
           </td>
           <td class='col-md-2 p-2'>
-            <input type='text' id='T_POCME_Importe$idFila' value='$importe' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(this.form.T_POCME_Concepto$idFila,this.form.T_POCME_Importe$idFila);importe_POCME();cortarDecimalesObj(this.form.T_POCME_Importe$idFila,2);' size='17'>
+            <input type='text' id='T_POCME_Importe$idFila' value='$importe' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17'>
           </td>
           <td class='col-md-2 p-2'>
             <input type='text' id='T_POCME_Subtotal$idFila' value='$subtotal' class='T_POCME_SUBTOTALES efecto h22' size='17' readonly/>
@@ -252,13 +252,14 @@ if($referencia != "SN"){
           <a href='javascript:limpiarCampos(1,$idFilaBlanco)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
         </td>
         <td class='col-md-2 p-2'>
-          <input type='text' id='T_POCME_Importe$idFilaBlanco' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(this.form.T_POCME_Concepto$idFilaBlanco,this.form.T_POCME_Importe$idFilaBlanco);importe_POCME();cortarDecimalesObj(this.form.T_POCME_Importe$idFilaBlanco,2);' size='17' tabindex='$tabindex = $tabindex+1'>
+          <input type='text' id='T_POCME_Importe$idFilaBlanco' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17' tabindex='$tabindex = $tabindex+1'>
         </td>
         <td class='col-md-2 p-2'>
           <input type='text' id='T_POCME_Subtotal$idFilaBlanco' class='T_POCME_SUBTOTALES efecto h22' size='17' readonly>
         </td>
       </tr>";
     }
+
 
 
 
@@ -298,13 +299,17 @@ if($referencia != "SN"){
     $tabindex = 0;
 ?>
 
-<input type="hidden" id="T_ID_Cliente_Oculto" value="<?php echo $id_cliente; ?>">
+
 <input type="hidden" id="T_ID_Aduana_Oculto" value="<?php echo $aduana; ?>">
 <input type="hidden" id="Txt_Usuario" value="<?php echo $usuario; ?>">
 <input type="hidden" id="T_ID_Almacen_Oculto" value="<?php echo $almacen;?>">
 <input type="hidden" id="T_No_calculoTarifa" value="<?php echo $calculoTarifa;?>">
 <input type="hidden" id="docto_tipo" value="<?php echo $opcion;?>">
-<input type="hidden" id="docto_id=" value="<?php echo $extraerfolio;?>">
+<input type="hidden" id="docto_id" value="<?php echo $extraerfolio;?>">
+<input type="hidden" id="IVA" value="<?PHP echo $iva;?>">
+<input type="hidden" id="IVARETENIDO" value="<?PHP echo $retencion;?>">
+<input type="hidden" id="IVA_MENOS_RETENCION" value="<?PHP echo $iva_menos_retencion;?>">
+<input type="hidden" id="IVA_GRAL" value="<?PHP echo $ivaGral;?>">
 
 <div class='text-center'>
   <div class='row m-0 submenuMed '>
@@ -1411,4 +1416,4 @@ if($referencia != "SN"){
 
 <?php
   require $root . '/conta6/Ubicaciones/footer.php';
-?> -->
+?>

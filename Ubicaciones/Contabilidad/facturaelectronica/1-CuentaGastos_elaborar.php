@@ -206,58 +206,13 @@ if($referencia != "SN"){
           $subtotal = number_format($cantidad * $importe, 2, '.', '');
         }
 
-        $POCME_automatico .= "
-        <tr class='row m-0' id='$idFila'>
-          <td class='col-md-1 p-2'>
-            <input type='text' id='T_POCME_Cantidad$idFila' value='$cantidad' class='T_POCME_CANTIDAD efecto h22' onblur='validaSoloNumeros(this);importe_POCME();' size='4'>
-          </td>
-          <td class='col-md-3 p-2'>
-            <input type='hidden' id='T_POCME_idTipoCta$idFila' value='$ID_CONCEPTOcta' class='T_POCME_CUENTAS'>
-            <input type='text' id='T_POCME_Concepto$idFila' value='$CONCEPTOcta' class='T_POCME_CONCEPTOS efecto h22' size='45' readonly>
-            <input type='hidden' id='T_POCME_ConceptoEng$idFila' value='$CONCEPTOctaEng' class='T_POCME_CONCEPTOS_ENG'/>
-          </td>
-          <td class='col-md-3 p-2'>
-            <input type='text' id='T_POCME_Descripcion$idFila' value='$descripcion' maxlength='40' class='T_POCME_DESCRIPCION efecto h22' size='45'>
-          </td>
-          <td class='col-md-1 p-2 text-left'>
-            <a href='javascript:limpiarCampos(1,$idFila)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-          </td>
-          <td class='col-md-2 p-2'>
-            <input type='text' id='T_POCME_Importe$idFila' value='$importe' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17'>
-          </td>
-          <td class='col-md-2 p-2'>
-            <input type='text' id='T_POCME_Subtotal$idFila' value='$subtotal' class='T_POCME_SUBTOTALES efecto h22' size='17' readonly/>
-          </td>
-        </tr>
-         ";
+        $POCME_automatico .= "";
       }
     }
 
     $idFila = $idFila + 1;
     for ($idFilaBlanco = $idFila;  $idFilaBlanco <= 8; $idFilaBlanco++) {
-      $POCME_lineas .= "
-      <tr class='row m-0' id='$idFilaBlanco'>
-        <td class='col-md-1 p-2'>
-          <input type='text' id='T_POCME_Cantidad$idFilaBlanco' class='T_POCME_CANTIDAD efecto h22' onblur='validaSoloNumeros(this);importe_POCME();' size='4' tabindex='$tabindex = $tabindex+1'/>
-        </td>
-        <td class='col-md-3 p-2'>
-          <input type='hidden' id='T_POCME_idTipoCta$idFilaBlanco' class='T_POCME_CUENTAS'>
-          <input type='text' id='T_POCME_Concepto$idFilaBlanco' class='T_POCME_CONCEPTOS efecto h22' size='45' readonly/>
-          <input type='hidden' id='T_POCME_ConceptoEng$idFilaBlanco' class='T_POCME_CONCEPTOS_ENG'>
-        </td>
-        <td class='col-md-3 p-2'>
-          <input type='text' id='T_POCME_Descripcion$idFilaBlanco' class='T_POCME_DESCRIPCION efecto h22' onblur='this.form.T_POCME_Subtotal$idFilaBlanco.focus();' size='45' maxlength='40' tabindex='$tabindex = $tabindex+1'>
-        </td>
-        <td class='col-md-1 p-2 text-left'>
-          <a href='javascript:limpiarCampos(1,$idFilaBlanco)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-        </td>
-        <td class='col-md-2 p-2'>
-          <input type='text' id='T_POCME_Importe$idFilaBlanco' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17' tabindex='$tabindex = $tabindex+1'>
-        </td>
-        <td class='col-md-2 p-2'>
-          <input type='text' id='T_POCME_Subtotal$idFilaBlanco' class='T_POCME_SUBTOTALES efecto h22' size='17' readonly>
-        </td>
-      </tr>";
+      $POCME_lineas .= "";
     }
 
 
@@ -401,6 +356,52 @@ if($referencia != "SN"){
         </tr>
       </tbody>
     </table>
+
+
+    <table class='table mt-5' id='eInfo'>
+      <thead>
+        <tr class='row encabezado font16'>
+          <td class='col-md-12 p-0'>INFORMACION DEL USUARIO</td>
+        </tr>
+        <tr class="row backpink">
+          <td class="col-md-3"></td>
+          <td class="col-md-3">Póliza</td>
+          <td class="col-md-3">Usuario</td>
+          <td class="col-md-3">Fecha</td>
+        </tr>
+      </thead>
+      <tbody class='font14'>
+        <tr class="row">
+          <td class="p-1 col-md-3 text-left"> Cta. generada</td>
+          <td class="p-1 col-md-3"></td>
+          <td class="p-1 col-md-3">
+            <input class="h22 bt border-0" type="text" id="T_Usuario" size="20"value="<?php echo $usuario; ?>" readonly>
+          </td>
+          <td class="p-1 col-md-3">
+            <input class="h22 bt border-0" type="text" id="T_Fecha_Cta" size="20" value="<?php $fecha = time (); echo date ( "d-m-Y h:i:s" , $fecha );?>" readonly>
+          </td>
+        </tr>
+
+        <tr class="row">
+          <td class="p-1 col-md-3 text-left"> Cta. modificada</td>
+          <td class="p-1 col-md-3"></td>
+          <td class="p-1 col-md-3"></td>
+          <td class="p-1 col-md-3"></td>
+        </tr>
+        <tr class="row">
+          <td class="p-1 col-md-3 text-left"> Factura generada</td>
+          <td class="p-1 col-md-3"></td>
+          <td class="p-1 col-md-3"></td>
+          <td class="p-1 col-md-3"></td>
+        </tr>
+        <tr class="row borderojo">
+          <td class="p-1 col-md-3 text-left"> Factura cancelada</td>
+          <td class="p-1 col-md-3"></td>
+          <td class="p-1 col-md-3"></td>
+          <td class="p-1 col-md-3"></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <div id="detalleEmbarque" class="contorno" style="display:none">
@@ -530,7 +531,7 @@ if($referencia != "SN"){
   </div>
 
 
-  <div class='contorno' style="margin-bottom:100px!important">
+  <div class='contorno'>
     <h5 class='titulo font14'>CTA. GASTOS</h5>
     <div class=''>
       <div class='acordeon2'>
@@ -538,46 +539,43 @@ if($referencia != "SN"){
           <a href="#" id='bread'>PAGOS O CARGOS EN MONEDA EXTRANJERA</a>
         </div>
         <div id='collapseOne' class='card-block collapse'>
+          <div>
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <select class="custom-select" size="1" id="Lst_tarifa_cliente" onChange="tarifaCliente()">
+                  <?php echo $tarifaPOCMEcliente; ?>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <select class="custom-select" size="1" id="Lst_tarifa_general" onchange="tarifaGeneral()">
+                  <?php echo $tarifaPOCMEgeneral; ?>
+                </select>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-md-1"></div>
+              <div class='col-md-1'>
+                <input class="efecto h22" type="text" id="T_no_calculo" onBlur="validaSoloNumeros(this);" size="4">
+                <input type="hidden" id="T_POCME_Cta">
+              </div>
+              <div class='col-md-6'>
+                <input class="efecto h22" type="text" id="T_POCME" size="60" readonly>
+                <input type="hidden" id="T_POCME_Eng">
+              </div>
+              <div class='col-md-2'>
+                <input class="efecto h22" type="text" id="T_POCME_Valor" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15" readonly>
+              </div>
+              <div class='col-md-1 text-left'>
+                <a onclick="agregarImporte()" id="Btn_agregar">
+                  <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                </a>
+              </div>
+              <div class='col-md-1'></div>
+            </div>
+          </div>
           <form class='form1' onsubmit="return false">
             <table class='table'>
-              <tbody>
-                <tr class='row mt-3 m-0'>
-                  <td class='col-md-6'>
-                    <select class="custom-select" size="1" id="Lst_tarifa_cliente" onChange="tarifaCliente()">
-                      <?php echo $tarifaPOCMEcliente; ?>
-                    </select>
-                  </td>
-                  <td class='col-md-6 '>
-                    <select class="custom-select" size="1" id="Lst_tarifa_general" onchange="tarifaGeneral()">
-                      <?php echo $tarifaPOCMEgeneral; ?>
-                    </select>
-                  </td>
-                </tr>
-                <tr class='row mt-3 m-0'>
-                  <td class='col-md-1'></td>
-                  <td class='col-md-1'>
-                    <input class="efecto h22" type="text" id="T_no_calculo" onBlur="validaSoloNumeros(this);" size="4">
-                    <input type="hidden" id="T_POCME_Cta">
-                  </td>
-                  <td class='col-md-6'>
-                    <input class="efecto h22" type="text" id="T_POCME" size="60" readonly>
-               	    <input type="hidden" id="T_POCME_Eng"></td>
-                  </td>
-                  <td class='col-md-2'>
-                    <input class="efecto h22" type="text" id="T_POCME_Valor" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15" readonly>
-                  </td>
-                  <td class='col-md-1 text-left'>
-                    <a onclick="agregarImporte()" id="Btn_agregar">
-                      <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
-                    </a>
-                  </td>
-                  <td class='col-md-1'></td>
-                </tr>
-              </tbody>
-            </table>
-
-            <table class='table '>
-              <tbody>
+              <thead>
                 <tr class='row mt-4 m-0 backpink'>
                   <td class='col-md-1'>SERV.</td>
                   <td class='col-md-3'>CONCEPTO</td>
@@ -586,8 +584,12 @@ if($referencia != "SN"){
                   <td class='col-md-2'>IMPORTE</td>
                   <td class='col-md-2'>SUBTOTAL</td>
                 </tr>
+              </thead>
+              <tbody>
                 <?php echo $POCME_automatico; ?>
                 <?php echo $POCME_lineas; ?>
+              </tbody>
+              <tbody>
                 <tr class='row mt-4 m-0 sub2'>
                   <th class='col-md-2 pt-4'>Total</th>
                   <td class='col-md-2'>
@@ -614,96 +616,89 @@ if($referencia != "SN"){
         </div>
         <div id='collapseTwo' class='card-block collapse'>
           <form class='form1' onsubmit="return false">
+            <div>
+              <div class="row mt-3">
+                <div class='col-md-1 text-right pt-2 b'>Almacen :</div>
+                <div class='col-md-4'>
+                  <select size="1" id="Lst_Conceptos" onchange ="tarifaAlmacen()">
+                  <?php echo $ConceptosAlmacen; ?>
+                  </select>
+                </div>
+                <div class='col-md-3'></div>
+                <div class='col-md-1 pt-2'>CUSTODIA</div>
+                <div class='col-md-1 pt-2'>MANIOBRAS</div>
+                <div class='col-md-1 pt-2'>ALMACENAJE</div>
+                <div class='col-md-1 pt-2'>TOTAL</div>
+              </div>
+              <div class='row mt-3'>
+                <div class='col-md-1 text-right pt-2 b'>Libres :</div>
+                <div class='col-md-4 pt-0'>
+                  <select size="1" id="Lst_CA" onchange="tarifaAlmacenLibre()">
+                    <?php echo $conceptosLibresAlmacen; ?>
+                  </select>
+                </div>
+                <div class='col-md-3'></div>
+                <div class='col-md-1 pt-0'>
+                  <input class="h22 efecto" type="text" id="T_Valor_Custodia_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $custodia; ?>">
+                </div>
+                <div class='col-md-1 pt-0'>
+                  <input class="h22 efecto" type="text" id="T_Valor_Manejo_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $manejo; ?>" />
+                </div>
+                <div class='col-md-1 pt-0'>
+                  <input class="h22 efecto" type="text" id="T_Valor_Almacenaje_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $almacenaje; ?>" />
+                </div>
+                <div class='col-md-1 pt-0'>
+                  <input class="h22 efecto border-0" type="text" id="T_Valor_Total_Maniobras" onblur="Pasa_Valor_Maniobras()" size="13" value="0" readonly>
+                </div>
+              </div>
+              <div class='row mt-4 sub2 justify-content-center m-0 p-2'>
+                <div class='col-md-6 font12'>CONCEPTO</div>
+                <div class='col-md-1 font12'>IMPORTE</div>
+                <div class='col-md-1'></div>
+              </div>
+
+              <div class='row m-0 justify-content-center mt-3 mb-3'>
+                <div class='col-md-6'>
+                  <input class="efecto" type="text" id="T_CA" size="60" readonly>
+                </div>
+                <div class='col-md-1'>
+                  <input class="efecto" type="text" id="T_Valor_Concepto_Gral" onblur="cortarDecimalesObj(this,2)" size="15">
+                </div>
+                <div class='col-md-1 text-left'>
+                  <a href='#' id="Btn_Cargo" onclick="agregarCargo();">
+                    <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                  </a>
+                </div>
+              </div>
+            </div>
+
             <table class='table'>
-              <tbody>
-                <tr class='row m-0'>
-                  <td class='col-md-1 text-right pt-4 b'>Almacen :</td>
-                  <td class='col-md-4'>
-                    <select size="1" id="Lst_Conceptos" onchange ="tarifaAlmacen()">
-                    <?php echo $ConceptosAlmacen; ?>
-                    </select>
-                  </td>
-                  <td class='col-md-3'></td>
-                  <th class='col-md-1 pt-4'>CUSTODIA</th>
-                  <th class='col-md-1 pt-4'>MANIOBRAS</th>
-                  <th class='col-md-1 pt-4'>ALMACENAJE</th>
-                  <th class='col-md-1 pt-4'>TOTAL</th>
-                </tr>
-
-                <tr class='row m-0'>
-                  <td class='col-md-1 text-right b'>Libres :</td>
-                  <td class='col-md-4 pt-0'>
-                    <select size="1" id="Lst_CA" onchange="tarifaAlmacenLibre()">
-                      <?php echo $conceptosLibresAlmacen; ?>
-                    </select>
-                  </td>
-                  <td class='col-md-3'></td>
-                  <td class='col-md-1 pt-0'>
-                    <input class="h22 efecto" type="text" id="T_Valor_Custodia_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $custodia; ?>">
-                  </td>
-                  <td class='col-md-1 pt-0'>
-                    <input class="h22 efecto" type="text" id="T_Valor_Manejo_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $manejo; ?>" />
-                  </td>
-                  <td class='col-md-1 pt-0'>
-                    <input class="h22 efecto" type="text" id="T_Valor_Almacenaje_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $almacenaje; ?>" />
-                  </td>
-                  <td class='col-md-1 pt-0'>
-                    <input class="h22 efecto border-0" type="text" id="T_Valor_Total_Maniobras" onblur="Pasa_Valor_Maniobras()" size="13" value="0" readonly>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table class='table'>
-              <tbody>
-                <tr class='row mt-4 m-0 sub2 justify-content-center'>
-                  <th class='col-md-6'>CONCEPTO</th>
-                  <th class='col-md-1'>IMPORTE</th>
-                  <th class='col-md-1'></th>
-                </tr>
-
-                <tr class='row m-0 justify-content-center'>
-                  <td class='col-md-6'>
-                    <input class="efecto" type="text" id="T_CA" size="60" readonly>
-                  </td>
-                  <td class='col-md-1'>
-                    <input class="efecto" type="text" id="T_Valor_Concepto_Gral" onblur="cortarDecimalesObj(this,2)" size="15">
-                  </td>
-                  <td class='col-md-1 text-left'>
-                    <a href='#' id="Btn_Cargo" onclick="agregarCargo();">
-                      <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
-                    </a>
-                  </td>
-                </tr>
-
-                <tr class='row borderojo m-0'></tr>
-
-                <tr class='row mt-3 m-0 sub'>
+              <thead>
+                <tr class='row mt-3 m-0 sub backpink'>
                   <th class='col-md-6'>CONCEPTOS</th>
                   <th class='col-md-4'></th>
                   <th class='col-md-2'>SUBTOTAL</th>
                 </tr>
-
+              </thead>
+              <tbody>
                 <tr id="9" class="row m-0">
-                  <td class='col-md-6 p-1 pt-3'><b>Impuestos Afianzados o Subsidiados</b></td>
+                  <td class='col-md-6 p-1 pt-3 b font12 ls1'>Impuestos Afianzados o Subsidiados</td>
                   <td class='col-md-4 p-1'></td>
                   <td class='col-md-2 p-1'>
                     <input class="efecto h22" type="text" id="T_Subsidio" size="20" onblur="validaIntDec(this);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
                 </tr>
-
                 <tr id="10" class='row m-0'>
                   <td class='col-md-6 p-1'>
-                    <input class='efecto h22 T_Cargo' type="text" id="T_Cargo_1" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" value="Impuestos y/o derechos pagados o garantizados al Com. Ext." readonly>
+                    <input class='font12 border-0 bt efecto h22 T_Cargo' type="text" id="T_Cargo_1" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" value="Impuestos y/o derechos pagados o garantizados al Com. Ext." readonly>
                   </td>
-                  <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos(2,1)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                  </td>
+                  <td class='col-md-4 p-1 text-left'></td>
                   <td class='col-md-2 p-1'>
                     <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_13" size="20" onblur="validaIntDec(this);validaDescImporte(2,1);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
                 </tr>
 
-                <tr id="11" class='row m-0'>
+                <!-- <tr id="11" class='row m-0'> // COMENTADO SOLO PARA GUARDAR EL DISEÑO
                   <td class='col-md-6 p-1'>
                     <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_2" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
                   </td>
@@ -713,79 +708,9 @@ if($referencia != "SN"){
                   <td class='col-md-2 p-1'>
                     <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_23" size="20" onblur="validaIntDec(this);validaDescImporte(2,2);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
-                </tr>
+                </tr> -->
 
-                <tr id="12" class='row m-0'>
-                  <td class='col-md-6 p-1'>
-                    <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_3" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
-                  </td>
-                  <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos(2,3)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                  </td>
-                  <td class='col-md-2 p-1'>
-                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_33" size="20" onblur="validaIntDec(this);validaDescImporte(2,3);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                  </td>
-                </tr>
 
-                <tr id="13" class='row m-0'>
-                  <td class='col-md-6 p-1'>
-                    <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_4" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
-                  </td>
-                  <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos(2,4)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                  </td>
-                  <td class='col-md-2 p-1'>
-                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_43" size="20" onblur="validaIntDec(this);validaDescImporte(2,4);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                  </td>
-                </tr>
-
-                <tr id="14" class='row m-0'>
-                  <td class='col-md-6 p-1'>
-                    <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_5" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
-                  </td>
-                  <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos(2,5)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                  </td>
-                  <td class='col-md-2 p-1'>
-                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_53" size="20" onblur="validaIntDec(this);validaDescImporte(2,5);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                  </td>
-                </tr>
-
-                <tr id="15" class='row m-0'>
-                  <td class='col-md-6 p-1'>
-                    <input class="efecto h22 T_Cargo" id="T_Cargo_6" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
-                  </td>
-                  <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos(2,6)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                  </td>
-                  <td class='col-md-2 p-1'>
-                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_63" size="20" onblur="validaIntDec(this);validaDescImporte(2,6);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                  </td>
-                </tr>
-
-                <tr id="16" class='row m-0'>
-                  <td class='col-md-6 p-1'>
-                    <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_7" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
-                  </td>
-                  <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos(2,7)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                  </td>
-                  <td class='col-md-2 p-1'>
-                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_73" size="20" onblur="validaIntDec(this);validaDescImporte(2,7);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                  </td>
-                </tr>
-
-                <tr id="17" class='row m-0'>
-                  <td class='col-md-6 p-1'>
-                    <input class="efecto h22 T_Cargo" type="text" id="T_Cargo_8" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" readonly>
-                  </td>
-                  <td class='col-md-4 p-1 text-left'>
-                    <a href="javascript:limpiarCampos(2,8)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                  </td>
-                  <td class='col-md-2 p-1'>
-                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_83" size="20" onblur="validaIntDec(this);validaDescImporte(2,8);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                  </td>
-                </tr>
               </tbody>
             </table>
           </form>
@@ -799,67 +724,92 @@ if($referencia != "SN"){
         <div id='collapseThree' class='panel-collapse collapse'>
           <div class='card-block'>
             <form class='form1'>
-              <table class='table  font14'>
-                <tbody>
-                  <tr class='row m-0'>
-                    <td class='col-md-1 pt-4'>Honorarios</td>
-                    <td class='col-md-4'>
-                      <select size="1" id="Lst_Conceptos_Honorarios" onchange ="asignarTarifaH()">
-                        <?php echo $ConceptosCliente; ?>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr class='row m-0'>
-                    <td class='col-md-1 pt-4'>Libres</td>
-                    <td class='col-md-4'>
-                      <select size="1"  onchange="asignarTarifaHlibres()" id="Lst_CHL">
-                        <?php echo $conceptosLibresCliente; ?>
-                      </select>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="">
+
+
+                <div class="row mt-3">
+                  <div class='col-md-1 pt-2  p-0 text-right b'>Honorarios :</div>
+                  <div class='col-md-4'>
+                    <select size="1" id="Lst_Conceptos_Honorarios" onchange="asignarTarifaH()">
+                      <?php echo $ConceptosCliente; ?>
+                    </select>
+                  </div>
+                  <div class="col-md-3"></div>
+                  <div class="col-md-2 pt-2 text-right b p-0">% de Honorarios :</div>
+                  <div class="col-md-2">
+                    <input class="efecto h22" type="text" id="T_Honorarios_Porcentaje" onblur="Suma_Valor_Honorarios()" size="10" value="<?php echo cortarDecimales($factor_honorarios); ?>" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                  </div>
+                </div>
+
+                <div class='row mt-3'>
+                  <div class='col-md-1 pt-2 p-0 text-right b'>Libres :</div>
+                  <div class='col-md-4'>
+                    <select size="1" onchange="asignarTarifaHlibres()" id="Lst_CHL">
+                      <?php echo $conceptosLibresCliente; ?>
+                    </select>
+                  </div>
+                  <div class="col-md-3"></div>
+                  <div class="col-md-2 pt-2 text-right b p-0">Base :</div>
+                  <div class="col-md-2">
+                    <input class="efecto h22" type="text" id="T_Honorarios_Base_Honorarios" onblur="calculoHonorarios();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                  </div>
+                </div>
+
+                <div class='row mt-3'>
+                  <div class='col-md-8'></div>
+                  <div class="col-md-2 pt-2 text-right b p-0">% Descuento :</div>
+                  <div class="col-md-2">
+                    <input class="efecto h22" type="text" id="T_Honorarios_Descuento" onblur="calculoHonorarios();" size="10" value="<?php echo cortarDecimales($descuento); ?>" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                  </div>
+                </div>
+
+                <div class='row mt-3'>
+                  <div class='col-md-8'></div>
+                  <div class="col-md-2 pt-2 text-right b p-0">Minimo de Hon :</div>
+                  <div class="col-md-2">
+                    <input class="efecto h22" type= text id="T_Honorarios_Minimo_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="7" tabindex="<?php echo $tabindex = $tabindex+1;?>" value="<?php echo $honorarios; ?>">
+                  </div>
+                </div>
+
+                <div class='row m-0 mt-4 backpink p-2 justify-content-center'>
+                  <div class='col-md-2'></div>
+                  <div class='col-md-4'>CONCEPTO</div>
+                  <div class='col-md-1'>IMPORTE</div>
+                  <div class='col-md-1'></div>
+                  <div class='col-md-2'></div>
+                  <!-- <div class='col-md-2'>MINIMO DE HON</div> -->
+                </div>
+                <div class='row m-0 mt-3 mb-3 justify-content-center'>
+                  <div class='col-md-1'>
+                    <input class="efecto" type="text" id="T_Hcta" size="15" readonly>
+                  </div>
+                  <div class='col-md-1'>
+                    <input class="efecto" type="text" id="T_Hps" size="15" readonly>
+                  </div>
+
+                  <div class='col-md-4'>
+                    <input class="efecto" type="text" id="T_CH" size="42" onchange="validarStringSAT(this);" onkeypress="return validarStringSATteclaPulsada(event);" onblur="limpia()">
+                  </div>
+                  <div class='col-md-1'>
+                    <input class="efecto" type="text" id="T_Valor_Concepto_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15">
+                  </div>
+                  <div class='col-md-1 text-left'>
+                    <a href='#' id="Btn_Honorarios" onclick="agregarHonorarios()"><img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'></a>
+                  </div>
+
+                  <div class='col-md-2 p-0 pt-2'>
+                    <a href="javascript:ayudaPermitidos();">Caracteres permitidos <img class='icochico' src='/conta6/Resources/iconos/help.svg'></a>
+                  </div>
+
+                  <!-- <div class='col-md-2'>
+                    <input class="efecto" type= text id="T_Honorarios_Minimo_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="7" tabindex="<?php echo $tabindex = $tabindex+1;?>" value="<?php echo $honorarios; ?>">
+                  </div> -->
+                </div>
+              </div>
+
               <form onsubmit="return false">
                 <table class='table'>
-                  <tbody>
-                    <tr class='row m-0 mt-4 backpink'>
-                      <td class='col-md-2'></td>
-                      <td class='col-md-4'>CONCEPTO</td>
-                      <td class='col-md-1'>IMPORTE</td>
-                      <td class='col-md-1'></td>
-                      <td class='col-md-2'></td>
-                      <td class='col-md-2'>MINIMO DE HON</td>
-                    </tr>
-                    <tr class='row m-0'>
-                      <td class='col-md-1'>
-                        <input class="efecto" type="text" id="T_Hcta" size="15" readonly>
-                      </td>
-                      <td class='col-md-1'>
-                        <input class="efecto" type="text" id="T_Hps" size="15" readonly>
-                      </td>
-
-                      <td class='col-md-4'>
-                        <input class="efecto" type="text" id="T_CH" size="42" onchange="validarStringSAT(this);" onkeypress="return validarStringSATteclaPulsada(event);" onblur="limpia()"/>
-                      </td>
-                      <td class='col-md-1'>
-                        <input class="efecto" type="text" id="T_Valor_Concepto_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15">
-                      </td>
-                      <td class='col-md-1 text-left'>
-                        <!-- <input type=button value="Add" id="Btn_Honorarios" onclick="agregarHonorarios()"> -->
-                        <a href='#' id="Btn_Honorarios" onclick="agregarHonorarios()"><img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'></a>
-                      </td>
-
-                      <td class='col-md-2 p-0 pt-4'>
-                        <a href="javascript:ayudaPermitidos();">Caracteres permitidos <img class='icochico' src='/conta6/Resources/iconos/help.svg'></a>
-                      </td>
-
-                      <td class='col-md-2'>
-                        <input class="efecto" type= text id="T_Honorarios_Minimo_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="7" tabindex="<?php echo $tabindex = $tabindex+1;?>" value="<?php echo $honorarios; ?>">
-                      </td>
-                    </tr>
-
-                    <tr class='row borderojo m-0'></tr>
-
+                  <thead>
                     <tr class='row m-0 mt-4 sub2'>
                       <th class='col-md-4 p-1'>CONCEPTOS</th>
                       <th class='col-md-2 p-1'></th>
@@ -872,22 +822,13 @@ if($referencia != "SN"){
                       <th class='col-md-1 p-1'>Retención 4%</th>
                       <th class='col-md-1 p-1'>SUBTOTAL</th>
                     </tr>
+                  </thead>
+                  <tbody>
                     <tr id="18" class='row m-0'>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22" type="text" id="T_Honorarios_Porcentaje" onblur="Suma_Valor_Honorarios()" size="10" value="<?php echo cortarDecimales($factor_honorarios); ?>" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                      </td>
-                      <td class="col-md-1 p-1">
-                        <input class="efecto h22 T_Honorarios" type="text" id="Txt_Honorarios" size="32" value="% de Honorarios sobre la base de:" readonly>
-                      </td>
-                      <td class="col-md-1 p-1">
-                        <input class="efecto h22" type="text" id="T_Honorarios_Base_Honorarios" onblur="calculoHonorarios();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                      </td>
-                      <td class="col-md-1 p-1">
-                        <input class="efecto h22" type="text" id="T_Honorarios_Descuento" onblur="calculoHonorarios();" size="10" value="<?php echo cortarDecimales($descuento); ?>" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                      </td>
-                      <td class='col-md-2 p-1'>
-                        <input class="efecto h22" type="text" id="Txt_Descuento" size="32" value="% de Descuento" readonly>
-                      </td>
+                      <td class="col-md-4 pt-3 b">Honorarios :</td>
+                      <td class="col-md-2"></td>
+
+
                       <td class='col-md-1 p-1'>
                         <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta0" size="15" value="0400-00001" readonly>
                       </td>
@@ -909,7 +850,7 @@ if($referencia != "SN"){
                       </td>
                     </tr>
 
-                    <tr id="19" class='row m-0'>
+                    <!-- <tr id="19" class='row m-0'>  // SE COMENTA PARA MANTENER DISEÑO
                       <td class='col-md-4 p-1'>
                         <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_1" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="75">
                       </td>
@@ -934,492 +875,252 @@ if($referencia != "SN"){
                       <td class='col-md-1 p-1'>
                         <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_13" size="20" value="0" readonly>
                       </td>
-                    </tr>
-
-
-                    <tr id="20" class='row m-0'>
-                      <td class='col-md-4 p-1'>
-                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_2" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="79">
-                      </td>
-                      <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos(3,2)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta2" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps2" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_21" size="18" onblur="validaIntDec(this);validaDescImporte(3,2);cortarDecimalesObj(this,2);Iva_Importe_Hon(2);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                      </td>
-                      <td class="col-md-1 p-1">
-                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_22" size="20" value="0" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_24" size="20" value="0"  readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_23" size="20" value="0" readonly>
-                      </td>
-                    </tr>
-
-                    <tr id="21" class='row m-0'>
-                      <td class='col-md-4 p-1'>
-                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_3" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="83">
-                      </td>
-                      <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos(3,3)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta3" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps3" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_31" size="18" onblur="validaIntDec(this);validaDescImporte(3,3);cortarDecimalesObj(this,2);Iva_Importe_Hon(3);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                      </td>
-                      <td class="col-md-1 p-1">
-                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_32" size="20" value="0" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_34" size="20" value="0"  readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_33" size="20" value="0" readonly>
-                      </td>
-                    </tr>
-
-
-                    <tr id="22" class='row m-0'>
-                      <td class='col-md-4 p-1'>
-                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_4" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="87">
-                      </td>
-                      <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos(3,4)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta4" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps4" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_41" size="18" onblur="validaIntDec(this);validaDescImporte(3,4);cortarDecimalesObj(this,2);Iva_Importe_Hon(4);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                      </td>
-                      <td class="col-md-1 p-1">
-                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_42" size="20" value="0"  readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_44" size="20" value="0"  readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_43" size="20" value="0"  readonly>
-                      </td>
-                    </tr>
-
-
-                    <tr id="23" class='row m-0'>
-                      <td class='col-md-4 p-1'>
-                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_5" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="91">
-                      </td>
-                      <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos(3,5)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta5" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps5" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_51" size="18" onblur="validaIntDec(this);validaDescImporte(3,5);cortarDecimalesObj(this,2);Iva_Importe_Hon(5);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                      </td>
-                      <td class="col-md-1 p-1">
-                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_52" size="20" value="0"  readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_54" size="20" value="0"  readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_53" size="20" value="0" readonly>
-                      </td>
-                    </tr>
-
-                    <tr id="24" class='row m-0'>
-                      <td class='col-md-4 p-1'>
-                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_6" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="95">
-                      </td>
-                      <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos(3,6)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta6" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps6" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_61" size="18" onblur="validaIntDec(this);validaDescImporte(3,6);cortarDecimalesObj(this,2);Iva_Importe_Hon(6);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                      </td>
-                      <td class="col-md-1 p-1">
-                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_62" size="20" value="0"  readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_64" size="20" value="0"  readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_63" size="20" value="0" readonly>
-                      </td>
-                    </tr>
-
-                    <tr id="25" class='row m-0 borderojo'>
-                      <td class='col-md-4 p-1'>
-                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_7" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="99">
-                      </td>
-                      <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos(3,7)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta7" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps7" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_71" size="18" onblur="validaIntDec(this);validaDescImporte(3,7);cortarDecimalesObj(this,2);Iva_Importe_Hon(7);" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                      </td>
-                      <td class="col-md-1 p-1">
-                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_72" size="20" value="0"  readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_74" size="20" value="0"  readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_73" size="20" value="0" readonly>
-                      </td>
-                    </tr>
+                    </tr> -->
 
                   </tbody>
                 </table>
-                <table class="table w-100">
-                  <tr>
-                    <td class="w-50">
-                      <table class="table">
-                        <tr class="row sub2">
-                          <td class="col-md-3"></td>
-                          <td class="col-md-3">Póliza</td>
-                          <td class="col-md-3">Usuario</td>
-                          <td class="col-md-3">Fecha</td>
-                        </tr>
-                        <tr class="row">
-                          <td class="col-md-3 text-left"> Cta. generada</td>
-                          <td class="p-1 col-md-3"></td>
-                          <td class="p-1 col-md-3">
-                            <input class="h22 bt border-0" type="text" id="T_Usuario" size="20"value="<?php echo $usuario; ?>" readonly>
-                          </td>
-                          <td class="p-1 col-md-3">
-                            <input class="h22 bt border-0" type="text" id="T_Fecha_Cta" size="20" value="<?php $fecha = time (); echo date ( "d-m-Y h:i:s" , $fecha );?>" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="col-md-3 text-left"> Cta. modificada</td>
-                          <td class="col-md-3"></td>
-                          <td class="col-md-3"></td>
-                          <td class="col-md-3"></td>
-                        </tr>
-                        <tr class="row">
-                          <td class="col-md-3 text-left"> Factura generada</td>
-                          <td class="col-md-3"></td>
-                          <td class="col-md-3"></td>
-                          <td class="col-md-3"></td>
-                        </tr>
-                        <tr class="row borderojo">
-                          <td class="col-md-3 text-left"> Factura cancelada</td>
-                          <td class="col-md-3"></td>
-                          <td class="col-md-3"></td>
-                          <td class="col-md-3"></td>
-                        </tr>
-
-
-                        <tr class="row">
-                          <td class="col-md-3 text-left pt-4"> CUSTOMS DC </td>
-                          <td class="col-md-3">
-                            <select id="CUSTOMS" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                      					<option value='1'>Si</option>
-                      					<option value='0' selected>No</option>
-                      		  </select>
-                          </td>
-                          <td class="col-md-6">
-                            <select id="Lst_metodoPago" onchange="asignarMetodoPago()">
-                              <option value="PUE" selected>Seleccione método de pago</option>
-                              <option value="PUE">Pago en una sola exhibición --- PUE</option>
-                              <option value="PPD">Pago en parcialidades o diferido --- PPD</option>
-                            </select>
-                          </td>
-                        </tr>
-                        <tr class="row">
-                          <td class="col-md-12 backpink">Seleccione forma y cuenta de pago</td>
-                        </tr>
-                        <tr class="row">
-                          <td class="col-md-3">
-                            <select id="Lst_formaPago" onchange="asignarFormaPago()">
-                                <?php echo $datosCLTformaPago; ?>
-                            </select>
-                          </td>
-                          <td class="col-md-3"><select class="custom-select" size='1' id='Lst_cuentaPago' onChange="asignarCtaBanco()">
-                        		<option selected value='0'>Seleccione Banco</option>
-                      		  </select>
-                            <div id="numerosCuenta"></div>
-                          </td>
-                          <td class="col-md-3">
-                            <?php if( $oRst_permisos["CFD_cta_gastos_generarT0"] == 0){ ?>
-                              <select id"Lst_moneda" onchange="asignarMoneda()">
-                                <?php echo $consultaMoneda; ?>
-                              </select>
-                            <?php } ?></td>
-                          </td>
-                          <td class="col-md-3">
-                            <select id"Lst_usoCFDI" onchange="asignarUsoCFDI()">
-                              <?php echo $consultaUsoCFDIfac; ?>
-                            </select>
-                          </td>
-                        </tr>
-
-                        <tr class="row sub2">
-                          <td class="col-md-3">Forma de pago</td>
-                          <td class="col-md-3">N&uacute;mero de cuenta</td>
-                          <td class="col-md-3">Moneda</td>
-                          <td class="col-md-3 p-0 pt-3">Tipo Cambio (4 dec.)</td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="col-md-3">
-                            <input class="efecto h22" type="text" id="T_FormaPago" size="20" readonly>
-                          </td>
-                          <td class="col-md-3">
-                            <input class="efecto h22" type="text" id="T_CuentaPago" size="20" readonly>
-                          </td>
-                          <td class="col-md-3">
-                            <input class="efecto h22" type="text" id="T_Moneda" size="6" value="MXN" readonly>
-                          </td>
-                          <td class="col-md-3">
-                            <input class="efecto h22" type="text" id="T_usoCFDI" size="20" readonly>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                    <td class="w-50">
-                      <table class="table font14">
-                        <tr class="row">
-                          <td class="p-1 col-md-8">
-                            <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Importe" size="40"readonly value="Total Honorarios y Servicios :">
-                          </td>
-                          <td class="col-md-2"></td>
-                          <td class="p-1 col-md-2">
-                            <input class="efecto h22" type="text" id="T_Total_Importes" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-                        <tr class="row">
-                          <td class="p-1 col-md-8">
-                            <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_IVA" size="40" readonly value="<?PHP echo $iva*100?>% IVA sobre Honorarios y Servicios :">
-                          </td>
-                          <td class="col-md-2"></td>
-                          <td class="p-1 col-md-2">
-                            <input class="efecto h22" type="text" id="T_Total_IVA" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8">
-                            <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_SUBTOTAL_HON" size="40" readonly value="Subtotal Honorarios y Servicios :">
-                          </td>
-                          <td class="col-md-2"></td>
-                          <td class="p-1 col-md-2">
-                            <input class="efecto h22" type="text" id="T_SUBTOTAL_HON" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8">
-                            <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_IVA_RETENIDO" size="40" readonly value="Retenci&oacute;n (4%) Impto. IVA :">
-                          </td>
-                          <td class="col-md-2"></td>
-                          <td class="p-1 col-md-2">
-                            <input class="efecto h22" type="text" id="T_IVA_RETENIDO" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8">
-                            <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Gral" size="40" readonly value="Total :">
-                          </td>
-                          <td class="col-md-2"></td>
-                          <td class="p-1 col-md-2">
-                            <input class="efecto h22" type="text" id="T_Total_Gral" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8">
-                            <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_MN_Extranjera" size="48" readonly value="Total Pagos o Cargos en Moneda Extranjera :">
-                          </td>
-                          <td class="col-md-2"></td>
-                          <td class="p-1 col-md-2">
-                            <input class="efecto h22" type="text" id="T_Total_MN_Extranjera" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8">
-                            <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Pagos" size="45" readonly value="Total Pagos Realizados por su Cuenta :">
-                          </td>
-                          <td class="col-md-2"></td>
-                          <td class="p-1 col-md-2">
-                            <input class="efecto h22" type="text" id="T_Total_Pagos" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8">
-                            <div id="total_CuentaGastos"></div>
-                            <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Cta_Gastos" size="40" readonly value="Total Cuenta de Gastos :">
-                          </td>
-                          <td class="col-md-2"></td>
-                          <td class="p-1 col-md-2">
-                            <input class="h22 w-100 efecto" type="text" id="T_Cta_Gastos" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8 text-right">
-                            Anticipo 1 :
-                            <a href="javascript:Btn_Busca_Anticipo('1')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                              <img class='mr-3 icochico' src='/conta6/Resources/iconos/magnifier.svg'>
-                            </a>
-                            <a href="javascript:limpiarCampos(4,1)">
-                              <img class='mr-3 icochico' src='/conta6/Resources/iconos/002-trash.svg'>
-                            </a>
-                          </td>
-                          <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_1" size="20" readonly>
-                          </td>
-                          <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_Anticipo_1" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8 text-right">
-                            Anticipo 2 :
-                            <a href="javascript:Btn_Busca_Anticipo('2')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                              <img class='mr-3 icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a>
-                            <a href="javascript:limpiarCampos(4,2)">
-                              <img class='mr-3 icochico' src='/conta6/Resources/iconos/002-trash.svg'>
-                            </a>
-                          </td>
-                          <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_2" size="20" readonly>
-                          </td>
-                          <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_Anticipo_2" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8 text-right">
-                            Anticipo 3 :
-                            <a href="javascript:Btn_Busca_Anticipo('3')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                              <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
-                            </a>
-                            <a href="javascript:limpiarCampos(4,3)">
-                              <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
-                            </a>
-                          </td>
-                          <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_3" size="20" readonly>
-                          </td>
-                          <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_Anticipo_3" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8 text-right">
-                            Anticipo 4 :
-                            <a href="javascript:Btn_Busca_Anticipo('4')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                              <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
-                            </a>
-                            <a href="javascript:limpiarCampos(4,4)">
-                              <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
-                            </a>
-                          </td>
-                          <td class="p-1 col-md-2">
-                          <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_4" size="20" readonly>
-                          </td>
-                          <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_Anticipo_4" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8 text-right">
-                            Anticipo 5 :
-                            <a href="javascript:Btn_Busca_Anticipo('5')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                              <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
-                            </a>
-                            <a href="javascript:limpiarCampos(4,5)">
-                              <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
-                            </a>
-                          </td>
-                          <td class="p-1 col-md-2">
-                          <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_5" size="20" readonly>
-                          </td>
-                          <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_Anticipo_5" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-
-                        <tr class="row">
-                          <td class="p-1 col-md-8 text-right">
-                            Anticipo 6 :
-                            <a href="javascript:Btn_Busca_Anticipo('6')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                              <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
-                            </a>
-                            <a href="javascript:limpiarCampos(4,6)">
-                              <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
-                            </a>
-                          </td>
-                          <td class="p-1 col-md-2">
-                          <input class="w-100 efecto h22" type="text" id="T_No_Anticipo_6" size="20" readonly>
-                          </td>
-                          <td class="p-1 col-md-2">
-                            <input class="w-100 efecto h22" type="text" id="T_Anticipo_6" size="20" value="0" readonly>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-
-                </table>
-
               </form>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-md-3">
-              <input class="efecto boton" type='button' value="GUARDAR" onclick="guardarCta('Guardar');validarStringSAT(this);quitarNoUsar(this);" id="guardar" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
-            </div>
-            <div id="mensaje"></div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="contorno" style="margin-bottom:100px!important">
+    <table class="table w-100">
+      <tr>
+        <td class="w-50">
+          <table class="table">
+            <!-- <tr class="row sub2">
+              <td class="col-md-3"></td>
+              <td class="col-md-3">Póliza</td>
+              <td class="col-md-3">Usuario</td>
+              <td class="col-md-3">Fecha</td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-3 text-left"> Cta. generada</td>
+              <td class="p-1 col-md-3"></td>
+              <td class="p-1 col-md-3">
+                <input class="h22 bt border-0" type="text" id="T_Usuario" size="20"value="<?php echo $usuario; ?>" readonly>
+              </td>
+              <td class="p-1 col-md-3">
+                <input class="h22 bt border-0" type="text" id="T_Fecha_Cta" size="20" value="<?php $fecha = time (); echo date ( "d-m-Y h:i:s" , $fecha );?>" readonly>
+              </td>
+            </tr>
+
+            <tr class="row">
+              <td class="col-md-3 text-left"> Cta. modificada</td>
+              <td class="col-md-3"></td>
+              <td class="col-md-3"></td>
+              <td class="col-md-3"></td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-3 text-left"> Factura generada</td>
+              <td class="col-md-3"></td>
+              <td class="col-md-3"></td>
+              <td class="col-md-3"></td>
+            </tr>
+            <tr class="row borderojo">
+              <td class="col-md-3 text-left"> Factura cancelada</td>
+              <td class="col-md-3"></td>
+              <td class="col-md-3"></td>
+              <td class="col-md-3"></td>
+            </tr> -->
+
+
+            <tr class="row">
+              <td class="col-md-3 text-left pt-4"> CUSTOMS DC </td>
+              <td class="col-md-3">
+                <select id="CUSTOMS" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                    <option value='1'>Si</option>
+                    <option value='0' selected>No</option>
+                </select>
+              </td>
+              <td class="col-md-6">
+                <select id="Lst_metodoPago" onchange="asignarMetodoPago()">
+                  <option value="PUE" selected>Seleccione método de pago</option>
+                  <option value="PUE">Pago en una sola exhibición --- PUE</option>
+                  <option value="PPD">Pago en parcialidades o diferido --- PPD</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-12 backpink">Seleccione forma y cuenta de pago</td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-3">
+                <select id="Lst_formaPago" onchange="asignarFormaPago()">
+                    <?php echo $datosCLTformaPago; ?>
+                </select>
+              </td>
+              <td class="col-md-3"><select size='1' id='Lst_cuentaPago' onChange="asignarCtaBanco()">
+                <option selected value='0'>Seleccione Banco</option>
+                </select>
+                <div id="numerosCuenta"></div>
+              </td>
+              <td class="col-md-3">
+                <?php if( $oRst_permisos["CFD_cta_gastos_generarT0"] == 0){ ?>
+                  <select id"Lst_moneda" onchange="asignarMoneda()">
+                    <?php echo $consultaMoneda; ?>
+                  </select>
+                <?php } ?></td>
+              </td>
+              <td class="col-md-3">
+                <select id"Lst_usoCFDI" onchange="asignarUsoCFDI()">
+                  <?php echo $consultaUsoCFDIfac; ?>
+                </select>
+              </td>
+            </tr>
+
+            <tr class="row sub2">
+              <td class="col-md-3">Forma de pago</td>
+              <td class="col-md-3">Número de cuenta</td>
+              <td class="col-md-3">Moneda</td>
+              <td class="col-md-3 p-0 pt-3">Tipo Cambio (4 dec.)</td>
+            </tr>
+
+            <tr class="row">
+              <td class="col-md-3">
+                <input class="efecto h22" type="text" id="T_FormaPago" size="20" readonly>
+              </td>
+              <td class="col-md-3">
+                <input class="efecto h22" type="text" id="T_CuentaPago" size="20" readonly>
+              </td>
+              <td class="col-md-3">
+                <input class="efecto h22" type="text" id="T_Moneda" size="6" value="MXN" readonly>
+              </td>
+              <td class="col-md-3">
+                <input class="efecto h22" type="text" id="T_usoCFDI" size="20" readonly>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td class="w-50">
+          <table class="table font14">
+            <tbody>
+              <tr class="row">
+                <td class="p-1 col-md-8">
+                  <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Importe" size="40"readonly value="Total Honorarios y Servicios :">
+                </td>
+                <td class="col-md-2"></td>
+                <td class="p-1 col-md-2">
+                  <input class="efecto h22" type="text" id="T_Total_Importes" size="20" value="0" readonly>
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="p-1 col-md-8">
+                  <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_IVA" size="40" readonly value="<?PHP echo $iva*100?>% IVA sobre Honorarios y Servicios :">
+                </td>
+                <td class="col-md-2"></td>
+                <td class="p-1 col-md-2">
+                  <input class="efecto h22" type="text" id="T_Total_IVA" size="20" value="0" readonly>
+                </td>
+              </tr>
+
+              <tr class="row">
+                <td class="p-1 col-md-8">
+                  <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_SUBTOTAL_HON" size="40" readonly value="Subtotal Honorarios y Servicios :">
+                </td>
+                <td class="col-md-2"></td>
+                <td class="p-1 col-md-2">
+                  <input class="efecto h22" type="text" id="T_SUBTOTAL_HON" size="20" value="0" readonly>
+                </td>
+              </tr>
+
+              <tr class="row">
+                <td class="p-1 col-md-8">
+                  <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_IVA_RETENIDO" size="40" readonly value="Retenci&oacute;n (4%) Impto. IVA :">
+                </td>
+                <td class="col-md-2"></td>
+                <td class="p-1 col-md-2">
+                  <input class="efecto h22" type="text" id="T_IVA_RETENIDO" size="20" value="0" readonly>
+                </td>
+              </tr>
+
+              <tr class="row">
+                <td class="p-1 col-md-8">
+                  <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Gral" size="40" readonly value="Total :">
+                </td>
+                <td class="col-md-2"></td>
+                <td class="p-1 col-md-2">
+                  <input class="efecto h22" type="text" id="T_Total_Gral" size="20" value="0" readonly>
+                </td>
+              </tr>
+
+              <tr class="row">
+                <td class="p-1 col-md-8">
+                  <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_MN_Extranjera" size="48" readonly value="Total Pagos o Cargos en Moneda Extranjera :">
+                </td>
+                <td class="col-md-2"></td>
+                <td class="p-1 col-md-2">
+                  <input class="efecto h22" type="text" id="T_Total_MN_Extranjera" size="20" value="0" readonly>
+                </td>
+              </tr>
+
+              <tr class="row">
+
+                <td class="p-1 col-md-8">
+                  <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Pagos" size="45" readonly value="Total Pagos Realizados por su Cuenta :">
+                </td>
+                <td class="col-md-2"></td>
+                <td class="p-1 col-md-2">
+                  <input class="efecto h22" type="text" id="T_Total_Pagos" size="20" value="0" readonly>
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="col-md-12">
+                  <div id="total_CuentaGastos"></div>
+                </td>
+              </tr>
+
+              <tr class="row">
+                <td class="p-1 col-md-8">
+                  <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Cta_Gastos" size="40" readonly value="Total Cuenta de Gastos :">
+                </td>
+                <td class="col-md-2"></td>
+                <td class="p-1 col-md-2">
+                  <input class="h22 w-100 efecto" type="text" id="T_Cta_Gastos" size="20" value="0" readonly>
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="p-1 col-md-8">
+                  <input class="h22 bt border-0 text-right efecto" type="text" id="Txt_Total_Anticipos" size="40" readonly value="Total Depósitos :">
+                </td>
+                <td class="col-md-2 p-1 text-right">
+                  <a href="#agregarDepositos" data-toggle="modal">
+                    <img src="/conta6/Resources/iconos/002-plus.svg" class="icochico">
+                  </a>
+                </td>
+                <td class="p-1 col-md-2">
+                  <input class="h22 w-100 efecto" type="text" id="T_Total_Anticipos" size="20" value="0" readonly>
+                </td>
+              </tr>
+
+              <tr class="row">
+                <td class="p-1 col-md-8">
+                  <input class="h22 bt border-0 text-right efecto" type="text" id="Txt_Saldo_Gral" size="10" readonly value="Saldo :">
+                </td>
+                <td class="col-md-2 p-1 text-right"></td>
+                <td class="p-1 col-md-2">
+                  <input class="h22 efecto" type="text" id="T_SALDO_GRAL" size="20" value="0" readonly>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+        <input class="efecto boton" type='button' value="GUARDAR" onclick="guardarCta('Guardar');validarStringSAT(this);quitarNoUsar(this);" id="guardar" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
+      </div>
+      <div id="mensaje"></div>
     </div>
   </div>
 </div>
 
 
 <?php
+  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/modales/depositos.php';
   require $root . '/conta6/Ubicaciones/footer.php';
 ?>
