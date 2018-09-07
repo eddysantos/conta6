@@ -360,7 +360,7 @@ function agregarImporte(){
   newtr = newtr + "        <input type='text' id='T_POCME_Descripcion"+element+"' class='T_POCME_DESCRIPCION efecto h22' size='45' maxlength='40'>";
   newtr = newtr + "      </td>";
   newtr = newtr + "      <td class='col-md-1 p-2 text-left'>";
-  newtr = newtr + "        <a href='#'><img class='icochico remove-POCME' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+  newtr = newtr + "        <a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
   newtr = newtr + "      </td>";
   newtr = newtr + "      <td class='col-md-2 p-2'>";
   newtr = newtr + "        <input type='text' id='T_POCME_Importe"+element+"' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(1,"+element+");importe_POCME();cortarDecimalesObj(this,2);' size='17' >";
@@ -372,12 +372,29 @@ function agregarImporte(){
 
   $('#trPOCME').append(newtr);
 
-  $('.remove-POCME').off().click(function(e) {
-    console.log('llego');
-    $(this).parent('tr').remove();
-    //if ($('#trPOCME tr.TRPOCME').length == 0)
-      //$('#trPOCME .no-TRPOCME').slideDown(300);
-  });
+  // $('.remove-POCME').off().click(function(e) {
+  //   console.log('llego');
+  //   $(this).parent('tr').remove();
+  //   //if ($('#trPOCME tr.TRPOCME').length == 0)
+  //     //$('#trPOCME .no-TRPOCME').slideDown(300);
+  // });
+
+
+$(".remove-POCME").click(function(e){
+  $(this).closest("tr").remove();
+  alertify.success('Se elimino correctamente');
+  if ($('#trPOCME tr.TRPOCME').length == 0)
+  $('#trPOCME .no-TRPOCME').slideDown(300);
+  sumaGeneral();
+});
+
+
+  // $('.remove-POCME').click(function(e) {
+  //   console.log('e');
+  //   $(this).parent('tr').remove();
+  //   //if ($('#trPOCME tr.TRPOCME').length == 0)
+  //     //$('#trPOCME .no-TRPOCME').slideDown(300);
+  // });
 
   var element = $('.T_POCME_CONCEPTOS').length;
   $( ".T_POCME_CONCEPTOS" ).each(function( x ) {

@@ -640,8 +640,7 @@ if($referencia != "SN"){
               <tbody id='trPOCME'>
                 <?php echo $POCME_automatico; ?>
               </tbody>
-              <br><br><br><br><br><br>
-              <tbody>
+              <tfoot>
                 <tr class='row mt-4 m-0 sub2'>
                   <th class='col-md-2 pt-4'>Total</th>
                   <td class='col-md-2'>
@@ -656,10 +655,9 @@ if($referencia != "SN"){
                     <input class="efecto h22 bt" type="text" id="T_POCME_Total_MN" size="17" onBlur="validaIntDec(this);" value="0" readonly>
                   </td>
                 </tr>
-              </tbody>
+              </tfoot>
             </table>
           </form>
-          <br><br><br>
         </div>
       </div>
 
