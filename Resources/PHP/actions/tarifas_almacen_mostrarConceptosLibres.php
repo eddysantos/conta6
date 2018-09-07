@@ -23,9 +23,11 @@ if ($rslt_ConceptosLibresAlmacen->num_rows == 0) {
 if ($rslt_ConceptosLibresAlmacen->num_rows > 0) {
     $conceptosLibresAlmacen = "<option selected value='0'>Seleccione un concepto</option>";
   while ($row_ConceptosLibresAlmacen = $rslt_ConceptosLibresAlmacen->fetch_assoc()) {
-    $s_descripcion = trim(utf8_encode($row_ConceptosLibresAlmacen[s_descripcion]));
+    $pk_id_conceptolibre = trim($row_ConceptosLibresAlmacen['pk_id_conceptolibre']);
+    $fk_id_cuenta = trim($row_ConceptosLibresAlmacen['fk_id_cuenta']);
+    $s_descripcion = trim(utf8_encode($row_ConceptosLibresAlmacen['s_descripcion']));
 
-    $conceptosLibresAlmacen .= "<option value='$s_descripcion'>$s_descripcion</option>";
+    $conceptosLibresAlmacen .= "<option value='$s_descripcion+$pk_id_conceptolibre+$fk_id_cuenta'>$s_descripcion</option>";
   }
 }
 

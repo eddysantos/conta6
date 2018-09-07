@@ -43,32 +43,33 @@ if( $Total_POCME > 0 ){
       $concepPOCME = '';
 
       if( $POCME_concepto1 <> "" && $POCME_valor1 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad1.",'".$POCME_idTipoCta1."','".$POCME_concepto1."','".$POCME_conceptoEng1."','".$POCME_desc1."',".$POCME_importe1.",".$POCME_valor1."),";
+        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad1.",'".$POCME_idTipoCta1."','".$POCME_concepto1."','".$POCME_conceptoEng1."','".$POCME_desc1."',".$POCME_importe1.",".$POCME_valor1.",'".$T_POCME_idConcep1"'),";
       }
       if( $POCME_concepto2 <> "" && $POCME_valor2 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad2.",'".$POCME_idTipoCta2."','".$POCME_concepto2."','".$POCME_conceptoEng2."','".$POCME_desc2."',".$POCME_importe2.",".$POCME_valor2."),";
+        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad2.",'".$POCME_idTipoCta2."','".$POCME_concepto2."','".$POCME_conceptoEng2."','".$POCME_desc2."',".$POCME_importe2.",".$POCME_valor2.",'".$T_POCME_idConcep2"'),";
       }
       if( $POCME_concepto3 <> "" && $POCME_valor3 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad3.",'".$POCME_idTipoCta3."','".$POCME_concepto3."','".$POCME_conceptoEng3."','".$POCME_desc3."',".$POCME_importe3.",".$POCME_valor3."),";
+        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad3.",'".$POCME_idTipoCta3."','".$POCME_concepto3."','".$POCME_conceptoEng3."','".$POCME_desc3."',".$POCME_importe3.",".$POCME_valor3.",'".$T_POCME_idConcep3"'),";
       }
       if( $POCME_concepto4 <> "" && $POCME_valor4 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad4.",'".$POCME_idTipoCta4."','".$POCME_concepto4."','".$POCME_conceptoEng4."','".$POCME_desc4."',".$POCME_importe4.",".$POCME_valor4."),";
+        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad4.",'".$POCME_idTipoCta4."','".$POCME_concepto4."','".$POCME_conceptoEng4."','".$POCME_desc4."',".$POCME_importe4.",".$POCME_valor4.",'".$T_POCME_idConcep4"'),";
       }
       if( $POCME_concepto5 <> "" && $POCME_valor5 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad5.",'".$POCME_idTipoCta5."','".$POCME_concepto5."','".$POCME_conceptoEng5."','".$POCME_desc5."',".$POCME_importe5.",".$POCME_valor5."),";
+        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad5.",'".$POCME_idTipoCta5."','".$POCME_concepto5."','".$POCME_conceptoEng5."','".$POCME_desc5."',".$POCME_importe5.",".$POCME_valor5.",'".$T_POCME_idConcep5"'),";
       }
       if( $POCME_concepto6 <> "" && $POCME_valor6 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad6.",'".$POCME_idTipoCta6."','".$POCME_concepto6."','".$POCME_conceptoEng6."','".$POCME_desc6."',".$POCME_importe6.",".$POCME_valor6."),";
+        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad6.",'".$POCME_idTipoCta6."','".$POCME_concepto6."','".$POCME_conceptoEng6."','".$POCME_desc6."',".$POCME_importe6.",".$POCME_valor6.",'".$T_POCME_idConcep6"'),";
       }
       if( $POCME_concepto7 <> "" && $POCME_valor7 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad7.",'".$POCME_idTipoCta7."','".$POCME_concepto7."','".$POCME_conceptoEng7."','".$POCME_desc7."',".$POCME_importe7.",".$POCME_valor7."),";
+        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad7.",'".$POCME_idTipoCta7."','".$POCME_concepto7."','".$POCME_conceptoEng7."','".$POCME_desc7."',".$POCME_importe7.",".$POCME_valor7.",'".$T_POCME_idConcep7"'),";
       }
       if( $POCME_concepto8 <> "" && $POCME_valor8 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad8.",'".$POCME_idTipoCta8."','".$POCME_concepto8."','".$POCME_conceptoEng8."','".$POCME_desc8."',".$POCME_importe8.",".$POCME_valor8."),";
+        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad8.",'".$POCME_idTipoCta8."','".$POCME_concepto8."','".$POCME_conceptoEng8."','".$POCME_desc8."',".$POCME_importe8.",".$POCME_valor8.",'".$T_POCME_idConcep8"'),";
       }
       $concepPOCME = rtrim($concepPOCME,',');
 
-      $query_POCME="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,n_cantidad,fk_id_concepto,s_conceptoEsp,s_conceptoEnglish,s_descripcion,n_importe,n_total)                VALUES $concepPOCME";
+      $query_POCME="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,n_cantidad,fk_id_concepto,s_conceptoEsp,s_conceptoEnglish,s_descripcion,n_importe,n_total,fk_id_concepto)
+                          VALUES $concepPOCME";
 
       $stmt_POCME = $db->prepare($query_POCME);
       if (!($stmt_POCME)) {
@@ -90,33 +91,33 @@ if( $Total_Pagos <> 0 ){
     $seccion = 'cargos';
     $conceptosCargos = '';
 
-    $conceptosCargos .= "(".$nfolio.",'".$seccion."','Impuestos Afianzados o Subsidiados',".$Total_Subsidiado."),";
-    $conceptosCargos .= "(".$nfolio.",'".$seccion."','Impuestos y/o derechos pagados o garantizados al Com. Ext.',".$Cargo_Total_1."),";
+    $conceptosCargos .= "(".$nfolio.",'".$seccion."','a','---','Impuestos Afianzados o Subsidiados',".$Total_Subsidiado."),";
+    $conceptosCargos .= "(".$nfolio.",'".$seccion."','b','0110-00001','Impuestos y/o derechos pagados o garantizados al Com. Ext.',".$Cargo_Total_1."),";
 
     if( $Cargo_Desc_2 <> '' && $Cargo_Total_2 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$Cargo_Desc_2."',".$Cargo_Total_2."),";
+      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_2."','".$T_Cargo_idcuenta_2."','".$Cargo_Desc_2."',".$Cargo_Total_2."),";
     }
     if( $Cargo_Desc_3 <> '' && $Cargo_Total_3 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$Cargo_Desc_3."',".$Cargo_Total_3."),";
+      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_3."','".$T_Cargo_idcuenta_3."','".$Cargo_Desc_3."',".$Cargo_Total_3."),";
     }
     if( $Cargo_Desc_4 <> '' && $Cargo_Total_4 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$Cargo_Desc_4."',".$Cargo_Total_4."),";
+      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_4."','".$T_Cargo_idcuenta_4."','".$Cargo_Desc_4."',".$Cargo_Total_4."),";
     }
     if( $Cargo_Desc_5 <> '' && $Cargo_Total_5 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$Cargo_Desc_5."',".$Cargo_Total_5."),";
+      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_5."','".$T_Cargo_idcuenta_5."','".$Cargo_Desc_5."',".$Cargo_Total_5."),";
     }
     if( $Cargo_Desc_6 <> '' && $Cargo_Total_6 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$Cargo_Desc_6."',".$Cargo_Total_6."),";
+      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_6."','".$T_Cargo_idcuenta_6."','".$Cargo_Desc_6."',".$Cargo_Total_6."),";
     }
     if( $Cargo_Desc_7 <> '' && $Cargo_Total_7 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$Cargo_Desc_7."',".$Cargo_Total_7."),";
+      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_7."','".$T_Cargo_idcuenta_7."','".$Cargo_Desc_7."',".$Cargo_Total_7."),";
     }
     if( $Cargo_Desc_8 <> '' && $Cargo_Total_8 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$Cargo_Desc_8."',".$Cargo_Total_8."),";
+      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_8."','".$T_Cargo_idcuenta_8."','".$Cargo_Desc_8."',".$Cargo_Total_8."),";
     }
 
     $conceptosCargos = rtrim($conceptosCargos,',');
-    $query_cargos="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,s_conceptoEsp,n_total)
+    $query_cargos="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,fk_id_concepto,fk_id_cuenta,s_conceptoEsp,n_total)
                                                         VALUES $conceptosCargos ";
 
     $stmt_cargos = $db->prepare($query_cargos);

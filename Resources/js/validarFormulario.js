@@ -237,7 +237,7 @@ function quitarNoUsar(frmObj){
 
 				function limpia(frmObj) {
 				    var val = $(frmObj).val();
-				    var tam = $(frmObj).length;
+				    var tam = $(frmObj).val().length;
 				    for(i = 0; i < tam; i++) {
 				        if(!isNaN($(frmObj)[i]))
 				            $(frmObj).val('');

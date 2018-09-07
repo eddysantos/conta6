@@ -6,7 +6,7 @@
     $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
     exit_script($system_callback);
   }
-  $stmt_datosAlmacen->bind_param('s',$id_almacen);
+  $stmt_datosAlmacen->bind_param('s',$almacen);
   if (!($stmt_datosAlmacen)) {
     $system_callback['code'] = "500";
     $system_callback['message'] = "Error during variables binding [$stmt_datosAlmacen->errno]: $stmt_datosAlmacen->error";

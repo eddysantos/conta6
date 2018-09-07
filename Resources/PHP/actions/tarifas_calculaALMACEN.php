@@ -18,7 +18,7 @@ $manejo = 0;
 $almacenaje = 0;
 $maniobras = 0;
 
-$query_consultaConcALMACEN = "SELECT pk_id_concepto,fk_id_almacen,s_descripcion,fk_id_tipo
+$query_consultaConcALMACEN = "SELECT pk_id_concepto,fk_id_almacen,s_descripcion,fk_id_tipo,fk_id_cuenta
                               from conta_tarifas_conceptos
                               where fk_id_almacen = ? ";
 
@@ -46,6 +46,7 @@ while ($row_consultaConcALMACEN = $rslt_consultaConcALMACEN->fetch_assoc()) {
   $id_concepto = $row_consultaConcALMACEN["pk_id_concepto"];
   $descripcion = $row_consultaConcALMACEN["s_descripcion"];
 	$tipoCalculo = $row_consultaConcALMACEN["fk_id_tipo"];
+  $fk_id_cuenta = $row_consultaConcALMACEN['fk_id_cuenta'];
 
   #--Custodia de Aeropuerto
 	if( $tipoCalculo == 1 ){
@@ -388,8 +389,9 @@ while ($row_consultaConcALMACEN = $rslt_consultaConcALMACEN->fetch_assoc()) {
                                             fk_id_tarifa,
                                             fk_usuario,
                                             s_seccion,
-                                            n_importe
-                                          )values(?,?,?,?,?,?,?,?)";
+                                            n_importe,
+                                            fk_id_cuenta
+                                          )values(?,?,?,?,?,?,?,?,?)";
 
     $stmt_insertConcepAlmacen = $db->prepare($query_insertConcepAlmacen);
     if (!($stmt_insertConcepAlmacen)) {
@@ -398,14 +400,15 @@ while ($row_consultaConcALMACEN = $rslt_consultaConcALMACEN->fetch_assoc()) {
       exit_script($system_callback);
     }
 
-    $stmt_insertConcepAlmacen->bind_param('ssssssss',$id_concepto,
+    $stmt_insertConcepAlmacen->bind_param('sssssssss',$id_concepto,
                                                   $tipoCalculo,
                                                   $descripcion,
                                                   $almacen,
                                                   $calculoTarifa,
                                                   $usuario,
                                                   $s_seccion,
-                                                  $IMPORTE);
+                                                  $IMPORTE,
+                                                  $fk_id_cuenta);
     if (!($stmt_insertConcepAlmacen)) {
       $system_callback['code'] = "500";
       $system_callback['message'] = "Error during variables binding [$stmt_insertConcepAlmacen->errno]: $stmt_insertConcepAlmacen->error";

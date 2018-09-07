@@ -21,7 +21,7 @@ $s_seccion = 'POCME';
 $ADICIONAL = 0;
 
 //$system_callback = [];
-$query_consultaConcPOCME = "SELECT DISTINCT b.fk_id_conceptoHon,b.fk_id_tipoCalculo, B.s_concepto_esp,B.s_concepto_eng, A.fk_id_cliente
+$query_consultaConcPOCME = "SELECT DISTINCT b.fk_id_conceptoHon,b.fk_id_tipoCalculo, B.s_concepto_esp,B.s_concepto_eng, A.fk_id_cliente , B.fk_id_conceptoCta
 														FROM contame_tarifas a, contame_tarifas_conceptos b
 														WHERE A.FK_ID_ConceptoHon = B.FK_ID_ConceptoHon AND a.fk_id_cliente = ? and a.s_consolidado = ? AND A.s_operacion = ? ";
 
@@ -52,6 +52,7 @@ while ($row_consultaConcPOCME = $rslt_consultaConcPOCME->fetch_assoc()) {
 	$TIPO_CURSOR = $row_consultaConcPOCME['fk_id_tipoCalculo'];
 	$s_concepto_esp = $row_consultaConcPOCME['s_concepto_esp'];
 	$s_concepto_eng = $row_consultaConcPOCME['s_concepto_eng'];
+	$fk_id_conceptoCta = $row_consultaConcPOCME['fk_id_conceptoCta'];
 
 	$IMPORTE = 0;
 
@@ -130,7 +131,9 @@ while ($row_consultaConcPOCME = $rslt_consultaConcPOCME->fetch_assoc()) {
 																					fk_id_tarifa,
 																					fk_usuario,
 																					s_seccion,
-																					n_importe)values(?,?,?,?,?,?,?,?,?)";
+																					n_importe,
+																					fk_id_cuenta
+																					)values(?,?,?,?,?,?,?,?,?,?)";
 
 		$stmt_insertConcPOCME = $db->prepare($query_insertConcPOCME);
 		if (!($stmt_insertConcPOCME)) {
@@ -139,7 +142,7 @@ while ($row_consultaConcPOCME = $rslt_consultaConcPOCME->fetch_assoc()) {
 			exit_script($system_callback);
 		}
 
-		$stmt_insertConcPOCME->bind_param('sssssssss',$ID_CONCEPTO_CURSOR,
+		$stmt_insertConcPOCME->bind_param('ssssssssss',$ID_CONCEPTO_CURSOR,
 																									$TIPO_CURSOR,
 																									$s_concepto_esp,
 																									$s_concepto_eng,
@@ -147,7 +150,8 @@ while ($row_consultaConcPOCME = $rslt_consultaConcPOCME->fetch_assoc()) {
 																									$calculoTarifa,
 																									$usuario,
 																									$s_seccion,
-																									$IMPORTE);
+																									$IMPORTE,
+																									$fk_id_conceptoCta);
 		if (!($stmt_insertConcPOCME)) {
 			$system_callback['code'] = "500";
 			$system_callback['message'] = "Error during variables binding [$stmt_insertConcPOCME->errno]: $stmt_insertConcPOCME->error";

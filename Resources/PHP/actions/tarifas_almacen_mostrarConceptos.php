@@ -1,5 +1,8 @@
 <?PHP
-$query_ConceptosAlmacen = "SELECT * FROM conta_tem_tarifas_calculodetalle where s_seccion = 'almacen' and fk_id_tarifa = $calculoTarifa ORDER BY s_descripcion";
+$query_ConceptosAlmacen = "SELECT s_descripcion,n_importe,fk_id_concepto,fk_id_cuenta
+                          FROM conta_tem_tarifas_calculodetalle
+                          where s_seccion = 'almacen' and fk_id_tarifa = $calculoTarifa
+                          ORDER BY s_descripcion";
 
 $stmt_ConceptosAlmacen = $db->prepare($query_ConceptosAlmacen);
 if (!($stmt_ConceptosAlmacen)) {
@@ -21,11 +24,16 @@ if ($rslt_ConceptosAlmacen->num_rows == 0) {
 }
 
 if ($rslt_ConceptosAlmacen->num_rows > 0) {
-    $ConceptosAlmacen = "<option selected value='0'>Seleccione un concepto</option>";
+  $ConceptosAlmacen = "<option selected value='0'>Seleccione un concepto</option>";
+
   while ($row_ConceptosAlmacen = $rslt_ConceptosAlmacen->fetch_assoc()) {
-    $s_descripcion = trim(utf8_encode($row_ConceptosAlmacen[s_descripcion]));
-    $n_importe = $row_ConceptosAlmacen[n_importe];
-    $ConceptosAlmacen .= "<option value='$s_descripcion+$n_importe'>$s_descripcion $n_importe</option>";
+
+    $s_descripcion = trim(utf8_encode($row_ConceptosAlmacen['s_descripcion']));
+    $n_importe = $row_ConceptosAlmacen['n_importe'];
+    $fk_id_concepto = trim($row_ConceptosAlmacen['fk_id_concepto']);
+    $fk_id_cuenta = trim($row_ConceptosAlmacen['fk_id_cuenta']);
+
+    $ConceptosAlmacen .= "<option value='$s_descripcion+$n_importe+$fk_id_concepto+$fk_id_cuenta'>$s_descripcion $n_importe $fk_id_concepto $fk_id_cuenta</option>";
   }
 }
 
