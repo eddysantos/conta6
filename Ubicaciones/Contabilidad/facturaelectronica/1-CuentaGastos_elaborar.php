@@ -336,7 +336,7 @@ if($referencia != "SN"){
         <tr class='row encabezado font16'>
           <td class='col-md-12 p-0'>
             <input class="eff h22 border-0 bt p-0" type="text" id="T_ID_Cliente_Oculto" value="<?php echo $id_cliente; ?>">
-            <input class="eff h22 border-0 bt" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
+            <input class="eff h22 border-0 bt" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" size="100" onchange="validarStringSAT(this);quitarNoUsar(this);">
           </td>
         </tr>
         <tr class='row backpink' style="font-size:14px!important">
@@ -372,7 +372,7 @@ if($referencia != "SN"){
         <tr class='row'>
           <td class='col-md-6 p-0'>
             <input class="eff h22 border-0 bt p-0" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
-            Pais :<input class="eff h22 border-0 bt" id="T_Cliente_Pais">
+            Pais :<input class="eff h22 border-0 bt" id="T_Cliente_Pais" value="<?php echo $CLT_pais;?>">
           </td>
         </tr>
       </tbody>
@@ -637,7 +637,7 @@ if($referencia != "SN"){
                   <td class='col-md-2'>SUBTOTAL</td>
                 </tr>
               </thead>
-              <tbody id='trPOCME'>
+              <tbody id='trPOCME' class="tablaPOCME">
                 <?php echo $POCME_automatico; ?>
               </tbody>
               <br><br><br><br><br><br>
@@ -764,15 +764,15 @@ if($referencia != "SN"){
         <div class='encabezado font16' data-toggle='collapse' href='#collapseThree'>
           <a href="#" id='bread'>HONORARIOS Y SERVICIOS AL COMERCIO EXTERIOR</a>
         </div>
-        <!--div id='collapseThree' class='panel-collapse collapse'-->
-		<div id='collapseThree'>
+        <div id='collapseThree' class='panel-collapse collapse'>
+		    <!--div id='collapseThree'-->
           <div class='card-block'>
             <form class='form1'>
               <div class="">
 
 
                 <div class="row mt-3">
-				  <div class='col-md-1 pt-2  p-0 text-right b'>Honorarios :</div>
+				          <div class='col-md-1 pt-2  p-0 text-right b'>Honorarios :</div>
                   <div class='col-md-4'>
                     <select size="1" id="Lst_Conceptos_Honorarios" onchange="asignarTarifaH()">
                       <?php echo $ConceptosCliente; ?>

@@ -1,4 +1,31 @@
 $(document).ready(function(){
+
+
+  $(function () {
+      $(document).on('click', '.remove_POCME', function (event) {
+          event.preventDefault();
+          $(this).closest('tr').remove();
+      });
+  });
+
+  
+
+
+
+  /*
+  $( "tr.remove-POCME" ).on("click", function(event) {
+      $(this).closest('tr').remove();
+  });*/
+
+  //var wrapper  = $("#trPOCME");
+  /*
+  $(".tablaPOCME").on("click",".remove_POCME", function(e){ //user click on remove text
+    console.log("llego");
+        e.preventDefault();
+        $(this).closest('tr').remove();
+        //$(this).parent('img').remove();
+        //x--;
+  })*/
   /*
   $('.remove-POCME').off().click(function(e) {
     console.log('llego');
@@ -371,14 +398,14 @@ function agregarImporte(){
   newtr = newtr + "    </tr>";
 
   $('#trPOCME').append(newtr);
-
+/*
   $('.remove-POCME').off().click(function(e) {
     console.log('llego');
     $(this).parent('tr').remove();
     //if ($('#trPOCME tr.TRPOCME').length == 0)
       //$('#trPOCME .no-TRPOCME').slideDown(300);
   });
-
+*/
   var element = $('.T_POCME_CONCEPTOS').length;
   $( ".T_POCME_CONCEPTOS" ).each(function( x ) {
 	  if( $('.T_POCME_CONCEPTOS').eq(x).val() == "" ){
@@ -1421,4 +1448,25 @@ function guardarCta(){
         });
 		}
 
+}
+
+function agregarAnticipo(anticipo,importe){
+	nomCliente = $('#T_Nombre_Cliente').val();
+
+  var element = $('.noAnt').length;
+
+  newtr = "<tr class='row'>";
+  newtr = newtr + "  <td class='col-md-6 nomCLT'>"+nomCliente+"</td>";
+  newtr = newtr + "  <td class='col-md-2 noAnt'>"+anticipo+"</td>";
+  newtr = newtr + "  <td class='col-md-2 impAnt'>"+importe+"</td>";
+  newtr = newtr + "  <td class='col-md-2'>";
+  newtr = newtr + "    <div class='checkbox-xs'>";
+  newtr = newtr + "      <label>";
+  newtr = newtr + "        <input type='checkbox' data-toggle='toggle' onclick='agregarAnticipo($anticipo,$importe)'>";
+  newtr = newtr + "      </label>";
+  newtr = newtr + "    </div>";
+  newtr = newtr + "  </td>";
+  newtr = newtr + "</tr>";
+
+  $('#tbodyDepAplic').append(newtr);
 }

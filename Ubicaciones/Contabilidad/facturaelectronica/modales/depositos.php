@@ -1,3 +1,55 @@
+<?php
+$query_anticiposCliente = "SELECT *
+                          FROM CONTA_T_POLIZAS_DET
+                          WHERE fk_tipo = 5 and fk_id_cuenta like '0208%' and fk_referencia = ? and fk_id_cliente = ?
+                          ORDER BY fk_anticipo desc";
+
+$stmt_anticiposCliente = $db->prepare($query_anticiposCliente);
+if (!($stmt_anticiposCliente)) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
+  exit_script($system_callback);
+}
+$stmt_anticiposCliente->bind_param('ss',$id_referencia,$id_cliente);
+if (!($stmt_anticiposCliente)) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during variables binding [$stmt_anticiposCliente->errno]: $stmt_anticiposCliente->error";
+  exit_script($system_callback);
+}
+if (!($stmt_anticiposCliente->execute())) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during query execution [$stmt_anticiposCliente->errno]: $stmt_anticiposCliente->error";
+  exit_script($system_callback);
+}
+$rslt_anticiposCliente = $stmt_anticiposCliente->get_result();
+$rows_anticiposCliente = $rslt_anticiposCliente->num_rows;
+
+
+if( $rows_anticiposCliente > 0 ){
+  while ($row_anticiposCliente = $rslt_anticiposCliente->fetch_assoc()) {
+    $anticipo = $row_anticiposCliente[fk_anticipo];
+    $importe = $row_anticiposCliente[n_abono];
+
+    $anticiposSinAplicar .= "<tr class='row'>
+      <td class='col-md-6 nomCLT'>$CLT_nombre</td>
+      <td class='col-md-2 noAnt'>$anticipo</td>
+      <td class='col-md-2 impAnt'>$importe</td>
+      <td class='col-md-2'>
+        <div class='checkbox-xs' onclick='agregarAnticipo($anticipo,$importe)'>
+          <label>
+            <input type='checkbox' data-toggle='toggle'>
+          </label>
+        </div>
+      </td>
+    </tr>";
+  }
+}else{
+  $anticiposSinAplicar = "<tr class='row'>
+    <td colspan='4'>NO HAY ANTICIPOS PARA ESTA REFRENCIA</td>
+  </tr>";
+}
+?>
+
 <!--Buscar Facturas en Captura detalle de poliza-->
 <div class="modal fade text-center" id="agregarDepositos" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
@@ -23,18 +75,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="row">
-                <td class="col-md-6">LIBRERIA GANDHI, SA DE CV</td>
-                <td class="col-md-2">22222</td>
-                <td class="col-md-2">$34,640</td>
-                <td class="col-md-2">
-                  <div class="checkbox-xs">
-                    <label>
-                      <input type="checkbox" data-toggle="toggle">
-                    </label>
-                  </div>
-                </td>
-              </tr>
+              <?php echo $anticiposSinAplicar; ?>
             </tbody>
           </table>
 
@@ -51,8 +92,8 @@
                 <td class="col-md-2"></td>
               </tr>
             </thead>
-            <tbody>
-              <tr class="row">
+            <tbody id="tbodyDepAplic">
+              <!--tr class="row">
                 <td class="col-md-6">LIBRERIA GANDHI, SA DE CV</td>
                 <td class="col-md-2">22222</td>
                 <td class="col-md-2">$34,640</td>
@@ -61,7 +102,7 @@
                     <img class='mr-3 icochico' src='/conta6/Resources/iconos/002-trash.svg'>
                   </a>
                 </td>
-              </tr>
+              </tr-->
             </tbody>
           </table>
 
