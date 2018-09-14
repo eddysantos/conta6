@@ -1,43 +1,4 @@
 $(document).ready(function(){
-
-
-  $(function () {
-      $(document).on('click', '.remove_POCME', function (event) {
-          event.preventDefault();
-          $(this).closest('tr').remove();
-      });
-  });
-
-  
-
-
-
-  /*
-  $( "tr.remove-POCME" ).on("click", function(event) {
-      $(this).closest('tr').remove();
-  });*/
-
-  //var wrapper  = $("#trPOCME");
-  /*
-  $(".tablaPOCME").on("click",".remove_POCME", function(e){ //user click on remove text
-    console.log("llego");
-        e.preventDefault();
-        $(this).closest('tr').remove();
-        //$(this).parent('img').remove();
-        //x--;
-  })*/
-  /*
-  $('.remove-POCME').off().click(function(e) {
-    console.log('llego');
-    $(this).parent('tr').remove();
-  });
-  */
-/*
-  $("img.remove-POCME" ).live(click, function(){
-    alert("llego");
-       $(this).closest("tr").remove();
-  });
-*/
   //IMPUESTOS
   IVA = $('#IVA').val();
   IVARETENIDO = $('#IVARETENIDO').val();
@@ -61,7 +22,6 @@ $(document).ready(function(){
 
 
 /*Oculta todos los divs y hace visible solo el submenu*/
-  // $('.bg').click(function(){
   $('.fele').click(function(){
     var accion = $(this).attr('accion');
     switch (accion) {
@@ -135,9 +95,6 @@ $(document).ready(function(){
     $('#m-factura').fadeIn();
     $('#b-ctagastos').slideUp();
   });
-  // $('#mostrar').submit(function(){
-  //   $('#capmod').fadeIn();
-  // });
 
   $('.visualizar').click(function(){
     var accion = $(this).attr('accion');
@@ -229,13 +186,6 @@ $(document).ready(function(){
 
   });
 
-  //generar cuenta de gastos
-  //$('#Btn_cambioRegimen').click(function(){
-
-
-  //});
-
-
 });
 
 // ******************** DATOS DEL EMBARQUE ************************************************************
@@ -244,8 +194,6 @@ function asignar_facturarA(){
   nombre = $('#DGE_Lst_Datos option:selected').text();
   $('#id_cliente').val(idcliente);
   $('#nombreCliente').html(nombre);
-  //idcliente = $('#DGEcliente').attr('db-id','');
-  //nombre = $('#DGEcliente').val('');
   buscaCuentascontables('ref',idcliente);
 }
 
@@ -290,7 +238,6 @@ function cargarSolicitudAnticipo(){
   $('select#DGEctaAme').val(0);
 }
 
-//function validaDatosReferencia(referencia,consolidado,entradas,shipper,inbond,flete){
 function validaDatosReferencia(){
 
       id_cliente = $('#DGE_idcliente').val();
@@ -319,8 +266,6 @@ function validaDatosReferencia(){
 
       if( opcion = 'ctagastos'){ }
       window.location.replace('1-CuentaGastos_elaborar.php?referencia='+referencia+'&consolidado='+consolidado+'&entradas='+entradas+'&shipper='+shipper+'&inbond='+inbond+'&flete='+flete+'&id_cliente='+id_cliente+'&opcion='+opcion+'&extraerfolio='+extraerfolio+'&cobrarFlete='+cobrarFlete+'&dias='+dias+'&tasa=IVA');
-
-      //parent.contenidoFrame.location.href='elabora_Cuenta_Gastos_Referencia.php?referencia='+referencia+'&consolidado='+consolidado+'&entradas='+entradas+'&shipper='+shipper+'&inbond='+inbond+'&flete='+flete+'&id_cliente='+id_cliente+'&opcion='+opcion+'&extraerfolio='+extraerfolio+'&cobrarFlete='+cobrarFlete+'&dias='+dias+'&tasa=IVA';
 }
 
 
@@ -371,83 +316,89 @@ function agregarImporte(){
 	importe = $('#T_POCME_Valor').val();
 	total =  cortarDecimales(CalcMUL(unidades,importe),2);
 
-  var element = $('.T_POCME_CONCEPTOS').length;
+  if( cta == "" ){
+    alertify.success('Seleccione un concepto');
+  }else {
 
-  newtr = "<tr class='row m-0 TRPOCME' id='"+element+"'>";
-  newtr = newtr + "    <td class='col-md-1 p-2'>";
-  newtr = newtr + "        <input type='text' id='T_POCME_Cantidad"+element+"' class='T_POCME_CANTIDAD efecto h22' onblur='validaSoloNumeros(this);importe_POCME();' size='4'/>";
-  newtr = newtr + "      </td>";
-  newtr = newtr + "      <td class='col-md-3 p-2'>";
-  newtr = newtr + "        <input type='hidden' id='T_POCME_idTipoCta"+element+"' class='T_POCME_CUENTAS'>";
-  newtr = newtr + "        <input type='hidden' id='T_POCME_idConcep"+element+"' class='T_POCME_idCONCEPTOS'>";
-  newtr = newtr + "        <input type='text' id='T_POCME_Concepto"+element+"' class='T_POCME_CONCEPTOS efecto h22' size='45' readonly='readOnly'/>";
-  newtr = newtr + "        <input type='hidden' id='T_POCME_ConceptoEng"+element+"' class='T_POCME_CONCEPTOS_ENG'>";
-  newtr = newtr + "      </td>";
-  newtr = newtr + "      <td class='col-md-3 p-2'>";
-  newtr = newtr + "        <input type='text' id='T_POCME_Descripcion"+element+"' class='T_POCME_DESCRIPCION efecto h22' size='45' maxlength='40'>";
-  newtr = newtr + "      </td>";
-  newtr = newtr + "      <td class='col-md-1 p-2 text-left'>";
-  newtr = newtr + "        <a href='#'><img class='icochico remove-POCME' src='/conta6/Resources/iconos/002-trash.svg'></a>";
-  newtr = newtr + "      </td>";
-  newtr = newtr + "      <td class='col-md-2 p-2'>";
-  newtr = newtr + "        <input type='text' id='T_POCME_Importe"+element+"' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(1,"+element+");importe_POCME();cortarDecimalesObj(this,2);' size='17' >";
-  newtr = newtr + "      </td>";
-  newtr = newtr + "      <td class='col-md-2 p-2'>";
-  newtr = newtr + "        <input type='text' id='T_POCME_Subtotal"+element+"' class='T_POCME_SUBTOTALES efecto h22' size='17' readonly>";
-  newtr = newtr + "      </td>";
-  newtr = newtr + "    </tr>";
+      var element = $('.T_POCME_CONCEPTOS').length;
 
-  $('#trPOCME').append(newtr);
-/*
-  $('.remove-POCME').off().click(function(e) {
-    console.log('llego');
-    $(this).parent('tr').remove();
-    //if ($('#trPOCME tr.TRPOCME').length == 0)
-      //$('#trPOCME .no-TRPOCME').slideDown(300);
-  });
-*/
-  var element = $('.T_POCME_CONCEPTOS').length;
-  $( ".T_POCME_CONCEPTOS" ).each(function( x ) {
-	  if( $('.T_POCME_CONCEPTOS').eq(x).val() == "" ){
+      newtr = "<tr class='row m-0 trPOCME elemento-pocme' id='"+element+"'>";
+      newtr = newtr + "    <td class='col-md-1 p-2'>";
+      newtr = newtr + "        <input type='text' id='T_POCME_Cantidad"+element+"' class='T_POCME_CANTIDAD cantidad efecto h22' onblur='validaSoloNumeros(this);importe_POCME();' size='4'/>";
+      newtr = newtr + "      </td>";
+      newtr = newtr + "      <td class='col-md-3 p-2 datos-transferibles'>";
+      newtr = newtr + "        <input type='hidden' id='T_POCME_idTipoCta"+element+"' class='T_POCME_CUENTAS id-cuenta'>";
+      newtr = newtr + "        <input type='hidden' id='T_POCME_idConcep"+element+"' class='T_POCME_idCONCEPTOS id-concepto'>";
+      newtr = newtr + "        <input type='text' id='T_POCME_Concepto"+element+"' class='T_POCME_CONCEPTOS efecto h22 concepto-espanol' size='45' readonly='readOnly'/>";
+      newtr = newtr + "        <input type='hidden' id='T_POCME_ConceptoEng"+element+"' class='T_POCME_CONCEPTOS_ENG concepto-ingles'>";
+      newtr = newtr + "      </td>";
+      newtr = newtr + "      <td class='col-md-3 p-2'>";
+      newtr = newtr + "        <input type='text' id='T_POCME_Descripcion"+element+"' class='T_POCME_DESCRIPCION descripcion efecto h22' size='45' maxlength='40'>";
+      newtr = newtr + "      </td>";
+      newtr = newtr + "      <td class='col-md-1 p-2 text-left'>";
+      newtr = newtr + "        <a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+      newtr = newtr + "      </td>";
+      newtr = newtr + "      <td class='col-md-2 p-2'>";
+      newtr = newtr + "        <input type='text' id='T_POCME_Importe"+element+"' class='T_POCME_IMPORTES importe efecto h22' onblur='validaIntDec(this);validaDescImporte(1,"+element+");importe_POCME();cortarDecimalesObj(this,2);' size='17' >";
+      newtr = newtr + "      </td>";
+      newtr = newtr + "      <td class='col-md-2 p-2'>";
+      newtr = newtr + "        <input type='text' id='T_POCME_Subtotal"+element+"' class='T_POCME_SUBTOTALES subtotal efecto h22' size='17' readonly>";
+      newtr = newtr + "      </td>";
+      newtr = newtr + "    </tr>";
 
-  		if( $('.T_POCME_CONCEPTOS').eq(x).val() == "Otros"){
-  		  $('.T_POCME_CONCEPTOS').eq(x).prop('readOnly',true);
-  		  $('.T_POCME_CONCEPTOS').eq(x).css('background-color','#FFFFFF');
-  		}else{
-  		  $('.T_POCME_CONCEPTOS').eq(x).prop('readOnly',false);
-  		  $('.T_POCME_CONCEPTOS').eq(x).css('background-color','#DCDCDC');
-  		}
+      $('#tbodyPOCME').append(newtr);
 
-  		$('.T_POCME_CUENTAS').eq(x).val(cta);
-      $('.T_POCME_idCONCEPTOS').eq(x).val(idConcepto);
-      $('.T_POCME_CONCEPTOS').eq(x).val(concepto);
-  		$('.T_POCME_CONCEPTOS_ENG').eq(x).val(concepto_eng);
+      $(".remove-POCME").click(function(e){
+        $(this).closest("tr").remove();
+        alertify.success('Se elimino correctamente');
+        sumaGeneral();
+      });
 
-  		if(importe == 0 || importe == ""){
-  		  $('.T_POCME_CANTIDAD').eq(x).val(0);
-  		  $('.T_POCME_IMPORTES').eq(x).val(0);
-  		  $('.T_POCME_SUBTOTALES').eq(x).val(0);
-  		  alertify.error("Ingrese un Importe");
-  			$('.T_POCME_IMPORTES').eq(x).focus();
-  		}else{
-  		  $('.T_POCME_CANTIDAD').eq(x).val(unidades);
-  		  $('.T_POCME_IMPORTES').eq(x).val(importe);
-  		  $('.T_POCME_SUBTOTALES').eq(x).val(total);
-  		}
 
-		  $('#Lst_tarifa_cliente').val(0);
-			$('#Lst_tarifa_general').val(0);
-			$('#T_no_calculo').val("");
-      $('#T_POCME_Cta').val("");
-      $('#T_POCME_idConcep').val("");
-			$('#T_POCME').val("");
-			$('#T_POCME_Eng').val("");
-			$('#T_POCME_Valor').val("");
-			sumaGeneral();
+      var element = $('.T_POCME_CONCEPTOS').length;
+      $( ".T_POCME_CONCEPTOS" ).each(function( x ) {
+    	  if( $('.T_POCME_CONCEPTOS').eq(x).val() == "" ){
 
-		  return false;
-	  }
-});
+      		if( $('.T_POCME_CONCEPTOS').eq(x).val() == "Otros"){
+      		  $('.T_POCME_CONCEPTOS').eq(x).prop('readOnly',true);
+      		  $('.T_POCME_CONCEPTOS').eq(x).css('background-color','#FFFFFF');
+      		}else{
+      		  $('.T_POCME_CONCEPTOS').eq(x).prop('readOnly',false);
+      		  $('.T_POCME_CONCEPTOS').eq(x).css('background-color','#DCDCDC');
+      		}
+
+      		$('.T_POCME_CUENTAS').eq(x).val(cta);
+          $('.T_POCME_idCONCEPTOS').eq(x).val(idConcepto);
+          $('.T_POCME_CONCEPTOS').eq(x).val(concepto);
+      		$('.T_POCME_CONCEPTOS_ENG').eq(x).val(concepto_eng);
+
+      		if(importe == 0 || importe == ""){
+      		  $('.T_POCME_CANTIDAD').eq(x).val(0);
+      		  $('.T_POCME_IMPORTES').eq(x).val(0);
+      		  $('.T_POCME_SUBTOTALES').eq(x).val(0);
+      		  alertify.error("Ingrese un Importe");
+      			$('.T_POCME_IMPORTES').eq(x).focus();
+      		}else{
+      		  $('.T_POCME_CANTIDAD').eq(x).val(unidades);
+      		  $('.T_POCME_IMPORTES').eq(x).val(importe);
+      		  $('.T_POCME_SUBTOTALES').eq(x).val(total);
+      		}
+
+    		  $('#Lst_tarifa_cliente').val(0);
+    			$('#Lst_tarifa_general').val(0);
+    			$('#T_no_calculo').val("");
+          $('#T_POCME_Cta').val("");
+          $('#T_POCME_idConcep').val("");
+    			$('#T_POCME').val("");
+    			$('#T_POCME_Eng').val("");
+    			$('#T_POCME_Valor').val("");
+    			sumaGeneral();
+
+    		  return false;
+    	  }
+      });
+
+    }
 }
 
 //CANTIDAD * IMPORTE = SUBTOTAL DE POCME
@@ -465,7 +416,7 @@ function importe_POCME(){
       if( cantidad == "" ){ cantidad = 0; }
 
       subtotal = cortarDecimales(CalcMUL(importe,cantidad),2);
-      $('.T_POCME_SUBTOTALES').eq(x).val(subtotal);
+      $('.T_POCME_SUBTOTALES').eq(x).val(subtotal).attr('value',subtotal);
   });
 	sumaGeneral();
 }
@@ -486,7 +437,7 @@ function Suma_POCME(){
       Suma_Totales = cortarDecimales(CalcADD(Suma_Totales,importe),2);
   });
 
-  $('#T_POCME_Total').val(Suma_Totales);
+  $('#T_POCME_Total').val(Suma_Totales).attr('value',Suma_Totales);
 	Conversion_Tipo_Cambio();
 	Suma_Subtotales();
 }
@@ -495,7 +446,7 @@ function Conversion_Tipo_Cambio(){
 	POCME_Total = $('#T_POCME_Total').val();
   POCME_Tipo_Cambio = $('#T_POCME_Tipo_Cambio').val();
 	Total_POCME_MN =  cortarDecimales(CalcMUL(POCME_Total,POCME_Tipo_Cambio),2);
-	$('#T_POCME_Total_MN').val(Total_POCME_MN);
+	$('#T_POCME_Total_MN').val(Total_POCME_MN).attr('value',Total_POCME_MN);
 	Suma_Subtotales();
 }
 
@@ -503,7 +454,6 @@ function Suma_Subtotales(){
 		var Suma_Importes = 0;
     var Suma_IVA = 0;
 		var Suma_Totales_Cargos = 0;
-		var Suma_Anticipos = 0;
 		var Suma_Saldo = 0;
 		var Iva_Retenido = 0;
 		var Subtotal_Hon = 0;
@@ -516,7 +466,7 @@ function Suma_Subtotales(){
         if( importe == "" ){ importe = 0; }
         Suma_Importes = cortarDecimales(CalcADD(Suma_Importes,importe),2);
     });
-    $('#T_Total_Importes').val(Suma_Importes);
+    $('#T_Total_Importes').val(Suma_Importes).attr('value',Suma_Importes);
 
     //SUMA DE IVA DE HONORARIOS
     $('.T_Honorarios_IVA').each(function( x ) {
@@ -532,18 +482,19 @@ function Suma_Subtotales(){
         if( importe == "" ){ importe = 0; }
         Iva_Retenido = cortarDecimales(CalcADD(Iva_Retenido,importe),2);
     });
-    $('#T_IVA_RETENIDO').val(Iva_Retenido);
+    $('#T_IVA_RETENIDO').val(Iva_Retenido).attr('value',Iva_Retenido);
 
     //SUBTOTAL DE HONORARIOS
 		Subtotal_Hon = cortarDecimales(CalcADD(Suma_Importes,Suma_IVA),2);
-		$('#T_SUBTOTAL_HON').val(Subtotal_Hon);
+		$('#T_SUBTOTAL_HON').val(Subtotal_Hon).attr('value',Subtotal_Hon);
 
 		//TOTAL
 		Total_Hon = cortarDecimales(CalcSUB(Subtotal_Hon,Iva_Retenido),2);
-		$('#T_Total_Gral').val(Total_Hon);
+		$('#T_Total_Gral').val(Total_Hon).attr('value',Total_Hon);
 
 		//TOTAL PAGOS O CARGOS EN MONEDA EXTRANJERA
-		$('#T_Total_MN_Extranjera').val( $('#T_POCME_Total_MN').val() );
+    totalPOCME = $('#T_POCME_Total_MN').val();
+		$('#T_Total_MN_Extranjera').val(totalPOCME).attr('value',totalPOCME);
 
     //SUMA TOTALES PAGOS REALIZADOS POR SU CUENTA
     $('.T_Cargo_Subtotal').each(function( x ) {
@@ -551,29 +502,27 @@ function Suma_Subtotales(){
         if( importe == "" ){ importe = 0; }
         Suma_Totales_Cargos = cortarDecimales(CalcADD(Suma_Totales_Cargos,importe),2);
     });
-    $('#T_Total_Pagos').val(Suma_Totales_Cargos);
+    derechosPagados = $('#T_derechosPagados').val();
+    Suma_Totales_Cargos = cortarDecimales(CalcADD(Suma_Totales_Cargos,derechosPagados),2);
+    $('#T_Total_Pagos').val(Suma_Totales_Cargos).attr('value',Suma_Totales_Cargos);
 
     //TOTAL CUENTA DE GASTOS
 		Total_Cta = cortarDecimales(CalcADD(Total_Hon, $('#T_POCME_Total_MN').val() ),2);
 		Total_Cta = cortarDecimales(CalcADD(Total_Cta,Suma_Totales_Cargos),2);
-		$('#T_Cta_Gastos').val(Total_Cta);
+		$('#T_Cta_Gastos').val(Total_Cta).attr('value',Total_Cta);
 
     //SUMA ANTICIPOS
-    $('.T_Anticipo').each(function( x ) {
-        importe = $(this).val();
-        if( importe == "" ){ importe = 0; }
-        Suma_Anticipos = cortarDecimales(CalcADD(Suma_Anticipos,importe),2);
-    });
-    $('#T_Total_Anticipos').val(Suma_Anticipos);
+    Suma_Anticipos = $('#T_Total_Anticipos').val();
 
     //SALDO DE LA CUENTA
 		Suma_Saldo = cortarDecimales(CalcSUB(Total_Cta,Suma_Anticipos),2)
-		$('#T_SALDO_GRAL').val(Suma_Saldo);
+		$('#T_SALDO_GRAL').val(Suma_Saldo).attr('value',Suma_Saldo);
 
-    //TOTAL DE CUENTA DE GASTOS EN LETRE
+    //TOTAL DE CUENTA DE GASTOS EN LETRA
     totalLetra();
 
 }// fin Suma_Subtotales()
+
 
 function totalLetra(){
   var data = {
@@ -605,9 +554,7 @@ function limpiarCampos(seccion,posicion){
 
   //POCME
   if( seccion == '1'){
-    //var elementosImporte = $('.T_POCME_SUBTOTALES').length;
     $( ".T_POCME_SUBTOTALES" ).each(function( x ) {
-      //$('.trPOCME').eq(posicion).parent('td').parent('tr').remove();
 
       posicion = posicion - 1;
       if( posicion == x ){
@@ -701,79 +648,88 @@ function agregarCargo(){
 	oficina = $('#T_ID_Aduana_Oculto').val();
 	id_cliente = $('#T_ID_Cliente_Oculto').val();
 
-  var element = $('.T_Cargo').length;
+  if( id_cuenta == "" ){
+    alertify.success('Seleccione un concepto');
+  }else {
 
-  newtr = "<tr class='row m-0 TRCARGOS' id='"+element+"'>";
-  newtr = newtr + "                <td class='col-md-6 p-1'>";
-  newtr = newtr + "                  <input class='T_Cargo_idconcepto' type='hidden' id='T_Cargo_idconcepto_"+element+"'>";
-  newtr = newtr + "                  <input class='T_Cargo_idcuenta' type='hidden' id='T_Cargo_idcuenta_"+element+"'>";
-  newtr = newtr + "                  <input class='efecto h22 T_Cargo' type='text' id='T_Cargo_"+element+"' size='60' maxlength='60' onchange='javascript:eliminaBlancosIntermedios(this);' readonly>";
-  newtr = newtr + "                </td>";
-  newtr = newtr + "                <td class='col-md-4 p-1 text-left'>";
-  newtr = newtr + "                  <a href='javascript:limpiarCampos(2,"+element+")'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
-  newtr = newtr + "                </td>";
-  newtr = newtr + "                <td class='col-md-2 p-1'>";
-  newtr = newtr + "                  <input class='efecto h22 T_Cargo_Subtotal' type='text' id='T_Cargo_3"+element+"' size='20' onblur='validaIntDec(this);validaDescImporte(2,"+element+");cortarDecimalesObj(this,2);Suma_Subtotales();' value='0'>";
-  newtr = newtr + "                </td>";
-  newtr = newtr + "              </tr>";
+      var element = $('.T_Cargo').length;
 
-  $('#trCargos').append(newtr);
+      newtr = "<tr class='row m-0 trCargos elemento-cargos' id='"+element+"'>";
+      newtr = newtr + "                <td class='col-md-6 p-1'>";
+      newtr = newtr + "                  <input class='T_Cargo_idconcepto id-concepto' type='hidden' id='T_Cargo_idconcepto_"+element+"'>";
+      newtr = newtr + "                  <input class='T_Cargo_idcuenta id-cuenta' type='hidden' id='T_Cargo_idcuenta_"+element+"'>";
+      newtr = newtr + "                  <input class='efecto h22 T_Cargo concepto-espanol' type='text' id='T_Cargo_"+element+"' size='60' maxlength='60' onchange='javascript:eliminaBlancosIntermedios(this);' readonly>";
+      newtr = newtr + "                </td>";
+      newtr = newtr + "                <td class='col-md-4 p-1 text-left'>";
+      newtr = newtr + "                  <a href='#' class='remove-Cargos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+      newtr = newtr + "                </td>";
+      newtr = newtr + "                <td class='col-md-2 p-1'>";
+      newtr = newtr + "                  <input class='efecto h22 T_Cargo_Subtotal subtotal' type='text' id='T_Cargo_3"+element+"' size='20' onblur='validaIntDec(this);validaDescImporte(2,"+element+");cortarDecimalesObj(this,2);Suma_Subtotales();' value='0'>";
+      newtr = newtr + "                </td>";
+      newtr = newtr + "              </tr>";
 
-//  var element = $('.T_Cargo').length;
-  $(".T_Cargo").each(function( x ) {
-  	//for (x=0; x < element; x++){
-      if( $('.T_Cargo').eq(x).val() == "" ){
+      $('#tbodyCargos').append(newtr);
 
-        if( $('.T_Cargo').eq(x).val() == "Otros Gastos Comprobados" || $('.T_Cargo').eq(x).val() == "Venta de activos fijos" ){
-    		  $('.T_Cargo').eq(x).prop('readOnly',true);
-    		  $('.T_Cargo').eq(x).css('background-color','#FFFFFF');
-    		}else{
-    		  $('.T_Cargo').eq(x).prop('readOnly',false);
-    		  $('.T_Cargo').eq(x).css('background-color','#DCDCDC');
-    		}
+      $(".remove-Cargos").click(function(e){
+        $(this).closest("tr").remove();
+        alertify.success('Se elimino correctamente');
+        sumaGeneral();
+      });
 
-        $('.T_Cargo_idconcepto').eq(x).val(id_concepto);
-        $('.T_Cargo_idcuenta').eq(x).val(id_cuenta);
-        $('.T_Cargo').eq(x).val(concepto);
+      $(".T_Cargo").each(function( x ) {
 
-        if(importe == 0 || importe == ""){
-    		  $('.T_Cargo_Subtotal').eq(x).val(0);
-    		  alertify.error("Ingrese un Importe");
-    			$('.T_Cargo_Subtotal').eq(x).focus();
-    		}else{
-    		  $('.T_Cargo_Subtotal').eq(x).val(importe);
+          if( $('.T_Cargo').eq(x).val() == "" ){
 
-          if(concepto == "Flete Terrestre" || concepto == "Flete Terrestre Franja Fronteriza"){
-            // CLT_06050 Industrias Alimenticias FABP S.A. 5-Julio-13 pide que en el concepto Flete terrestre se sumen otros conceptos.
-  						if(concepto == "Flete Terrestre" && oficina == 430 && id_cliente == "CLT_06050"){
-  							impuesto = cortarDecimales(CalcMUL(importe,IVA),2);
-  						}else{
-  							impuesto = cortarDecimales(CalcMUL(importe,IVA_GRAL),2);
-  						}
-          }else{
-            impuesto = cortarDecimales(CalcMUL(importe,IVA),2);
+            if( $('.T_Cargo').eq(x).val() == "Otros Gastos Comprobados" || $('.T_Cargo').eq(x).val() == "Venta de activos fijos" ){
+        		  $('.T_Cargo').eq(x).prop('readOnly',true);
+        		  $('.T_Cargo').eq(x).css('background-color','#FFFFFF');
+        		}else{
+        		  $('.T_Cargo').eq(x).prop('readOnly',false);
+        		  $('.T_Cargo').eq(x).css('background-color','#DCDCDC');
+        		}
+
+            $('.T_Cargo_idconcepto').eq(x).val(id_concepto);
+            $('.T_Cargo_idcuenta').eq(x).val(id_cuenta);
+            $('.T_Cargo').eq(x).val(concepto);
+
+            if(importe == 0 || importe == ""){
+        		  $('.T_Cargo_Subtotal').eq(x).val(0);
+        		  alertify.error("Ingrese un Importe");
+        			$('.T_Cargo_Subtotal').eq(x).focus();
+        		}else{
+        		  $('.T_Cargo_Subtotal').eq(x).val(importe);
+
+              if(concepto == "Flete Terrestre" || concepto == "Flete Terrestre Franja Fronteriza"){
+                // CLT_06050 Industrias Alimenticias FABP S.A. 5-Julio-13 pide que en el concepto Flete terrestre se sumen otros conceptos.
+      						if(concepto == "Flete Terrestre" && oficina == 430 && id_cliente == "CLT_06050"){
+      							impuesto = cortarDecimales(CalcMUL(importe,IVA),2);
+      						}else{
+      							impuesto = cortarDecimales(CalcMUL(importe,IVA_GRAL),2);
+      						}
+              }else{
+                impuesto = cortarDecimales(CalcMUL(importe,IVA),2);
+              }
+
+              if(concepto == "GANANCIA CAMBIARIA" || concepto == "Ganancia Cambiaria"){
+      						signo = "-";
+      						$('.T_Cargo_Subtotal').eq(x).prop('readOnly',false);
+      						$('.T_Cargo_Subtotal').eq(x).css('background-color','#DCDCDC');
+      					}else{ signo = ""; }
+
+      					total = cortarDecimales(CalcADD(importe,impuesto),2);
+      					$('.T_Cargo_Subtotal').eq(x).val(signo+total);
+        		}
+            $('#Lst_CA').eq(x).val(0);
+      			$('#Lst_Conceptos').eq(x).val(0);
+            $('#T_CA_idconcepto').val("");
+            $('#T_CA_idcuenta').val("");
+      			$('#T_CA').val("");
+      			$('#T_Valor_Concepto_Gral').val("");
+      			sumaGeneral();
+      			return false;
           }
-
-          if(concepto == "GANANCIA CAMBIARIA" || concepto == "Ganancia Cambiaria"){
-  						signo = "-";
-  						$('.T_Cargo_Subtotal').eq(x).prop('readOnly',false);
-  						$('.T_Cargo_Subtotal').eq(x).css('background-color','#DCDCDC');
-  					}else{ signo = ""; }
-
-  					total = cortarDecimales(CalcADD(importe,impuesto),2);
-  					$('.T_Cargo_Subtotal').eq(x).val(signo+total);
-    		}
-        $('#Lst_CA').eq(x).val(0);
-  			$('#Lst_Conceptos').eq(x).val(0);
-        $('#T_CA_idconcepto').val("");
-        $('#T_CA_idcuenta').val("");
-  			$('#T_CA').val("");
-  			$('#T_Valor_Concepto_Gral').val("");
-  			sumaGeneral();
-  			return false;
-      }
-    //}
-  });
+      });
+  }
 }
 
 //HONORARIOS
@@ -809,75 +765,86 @@ function agregarHonorarios(){
     oficina = $('#T_ID_Aduana_Oculto').val();
   	id_cliente = $('#T_ID_Cliente_Oculto').val();
 
-    var element = $('.T_Honorarios').length;
+    if( id_prodServ == "" ){
+      alertify.success('Seleccione un concepto');
+    }else {
 
-    newtr = "<tr class='row m-0 TRHONORARIOS' id='"+element+"'>";
-    newtr = newtr + "<td class='col-md-4 p-1'>";
-    newtr = newtr + "  <input class='efecto h22 T_Honorarios' type='text' id='T_Honorarios_"+element+"' size='60' maxlength='60' onchange='javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);' readonly tabindex='75'>";
-    newtr = newtr + "</td>";
-    newtr = newtr + "<td class='col-md-2 p-1 text-left'>";
-    newtr = newtr + "  <a href='javascript:limpiarCampos(3,1)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
-    newtr = newtr + "</td>";
-    newtr = newtr + "<td class='col-md-1 p-1'>";
-    newtr = newtr + "  <input class='efecto h22 T_Honorarios_idcta' type='text' id='T_Hcta_"+element+"' size='15' readonly>";
-    newtr = newtr + "</td>";
-    newtr = newtr + "<td class='col-md-1 p-1'>";
-    newtr = newtr + "  <input class='efecto h22 T_Honorarios_idps' type='text' id='T_Hps_"+element+"' size='15' readonly>";
-    newtr = newtr + "</td>";
-    newtr = newtr + "<td class='col-md-1 p-1'>";
-    newtr = newtr + "  <input class='efecto h22 T_Honorarios_Importe' type='text' id='T_Honorarios_Importe_"+element+"' onblur='validaIntDec(this);validaDescImporte(3,"+element+");cortarDecimalesObj(this,2);Iva_Importe_Hon("+element+")' size='18' value='0'>";
-    newtr = newtr + "</td>";
-    newtr = newtr + "<td class='col-md-1 p-1'>";
-    newtr = newtr + "  <input class='efecto h22 T_Honorarios_IVA' type='text' id='T_Honorarios_IVA_"+element+"' size='20' value='0' readonly>";
-    newtr = newtr + "</td>";
-    newtr = newtr + "<td class='col-md-1 p-1'>";
-    newtr = newtr + "  <input class='efecto h22 T_Honorarios_RET' type='text' id='T_Honorarios_RET_"+element+"' size='20' value='0' readonly>";
-    newtr = newtr + "</td>";
-    newtr = newtr + "<td class='col-md-1 p-1'>";
-    newtr = newtr + "  <input class='efecto h22 T_Honorarios_Subtotal' type='text' id='T_Honorarios_Subtotal_"+element+"' size='20' value='0' readonly>";
-    newtr = newtr + "</td>";
-    newtr = newtr + "</tr>";
+        var element = $('.T_Honorarios').length;
 
-    $('#trHonorarios').append(newtr);
+        newtr = "<tr class='row m-0 trHonorarios elemento-honorarios' id='"+element+"'>";
+        newtr = newtr + "<td class='col-md-4 p-1'>";
+        newtr = newtr + "  <input class='efecto h22 T_Honorarios concepto-espanol' type='text' id='T_Honorarios_"+element+"' size='60' maxlength='60' onchange='javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);' readonly tabindex='75'>";
+        newtr = newtr + "</td>";
+        newtr = newtr + "<td class='col-md-2 p-1 text-left'>";
+        newtr = newtr + "  <a href='#' class='remove-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        newtr = newtr + "</td>";
+        newtr = newtr + "<td class='col-md-1 p-1'>";
+        newtr = newtr + "  <input class='efecto h22 T_Honorarios_idcta id-cuenta' type='text' id='T_Hcta_"+element+"' size='15' readonly>";
+        newtr = newtr + "</td>";
+        newtr = newtr + "<td class='col-md-1 p-1'>";
+        newtr = newtr + "  <input class='efecto h22 T_Honorarios_idps id-cveProd' type='text' id='T_Hps_"+element+"' size='15' readonly>";
+        newtr = newtr + "</td>";
+        newtr = newtr + "<td class='col-md-1 p-1'>";
+        newtr = newtr + "  <input class='efecto h22 T_Honorarios_Importe importe' type='text' id='T_Honorarios_Importe_"+element+"' onblur='validaIntDec(this);validaDescImporte(3,"+element+");cortarDecimalesObj(this,2);Iva_Importe_Hon("+element+")' size='18' value='0'>";
+        newtr = newtr + "</td>";
+        newtr = newtr + "<td class='col-md-1 p-1'>";
+        newtr = newtr + "  <input class='efecto h22 T_Honorarios_IVA iva' type='text' id='T_Honorarios_IVA_"+element+"' size='20' value='0' readonly>";
+        newtr = newtr + "</td>";
+        newtr = newtr + "<td class='col-md-1 p-1'>";
+        newtr = newtr + "  <input class='efecto h22 T_Honorarios_RET ret' type='text' id='T_Honorarios_RET_"+element+"' size='20' value='0' readonly>";
+        newtr = newtr + "</td>";
+        newtr = newtr + "<td class='col-md-1 p-1'>";
+        newtr = newtr + "  <input class='efecto h22 T_Honorarios_Subtotal subtotal' type='text' id='T_Honorarios_Subtotal_"+element+"' size='20' value='0' readonly>";
+        newtr = newtr + "</td>";
+        newtr = newtr + "</tr>";
 
-    $(".T_Honorarios").each(function( x ) {
-        if( $('.T_Honorarios').eq(x).val() == "" ){
-          if( $('.T_Honorarios').eq(x).val() == "Otros Gastos Comprobados"){
-      		  $('.T_Honorarios').eq(x).prop('readOnly',true);
-      		  $('.T_Honorarios').eq(x).css('background-color','#FFFFFF');
-      		}else{
-      		  $('.T_Honorarios').eq(x).prop('readOnly',false);
-      		  $('.T_Honorarios').eq(x).css('background-color','#DCDCDC');
-      		}
+        $('#tbodyHonorarios').append(newtr);
 
-          $('.T_Honorarios').eq(x).val(concepto);
-  				$('.T_Honorarios_idcta').eq(x).val(id_cuenta);
-  				$('.T_Honorarios_idps').eq(x).val(id_prodServ);
+        $(".remove-Honorarios").click(function(e){
+          $(this).closest("tr").remove();
+          alertify.success('Se elimino correctamente');
+          sumaGeneral();
+        });
 
-          if(importe == 0 || importe == ""){
-      		  $('.T_Honorarios_Importe').eq(x).val(0);
-      		  alertify.error("Ingrese un Importe");
-      			$('.T_Honorarios_Importe').eq(x).focus();
-      		}else{
-            ret = iva_retenido(concepto,importe);
-  					impuesto = cortarDecimales(CalcMUL(importe,IVA),2);
-  					total = cortarDecimales(parseFloat(importe) + parseFloat(impuesto),2);
+        $(".T_Honorarios").each(function( x ) {
+            if( $('.T_Honorarios').eq(x).val() == "" ){
+              if( $('.T_Honorarios').eq(x).val() == "Otros Gastos Comprobados"){
+          		  $('.T_Honorarios').eq(x).prop('readOnly',true);
+          		  $('.T_Honorarios').eq(x).css('background-color','#FFFFFF');
+          		}else{
+          		  $('.T_Honorarios').eq(x).prop('readOnly',false);
+          		  $('.T_Honorarios').eq(x).css('background-color','#DCDCDC');
+          		}
 
-  					$('.T_Honorarios_Importe').eq(x).val(importe);
-  					$('.T_Honorarios_IVA').eq(x).val(impuesto);
-  					$('.T_Honorarios_RET').eq(x).val(ret);
-  					$('.T_Honorarios_Subtotal').eq(x).val(total);
-          }
-          $('#Lst_CHL').val(0);
-  				$('#Lst_Conceptos_Honorarios').val(0);
-  				$('#T_CH').val("");
-  				$('#T_Hcta').val("");
-  				$('#T_Hps').val("");
-  				$('#T_Valor_Concepto_Honorarios').val("");
-  				sumaGeneral();
-  				return false;
-        }
-    });
+              $('.T_Honorarios').eq(x).val(concepto);
+      				$('.T_Honorarios_idcta').eq(x).val(id_cuenta);
+      				$('.T_Honorarios_idps').eq(x).val(id_prodServ);
+
+              if(importe == 0 || importe == ""){
+          		  $('.T_Honorarios_Importe').eq(x).val(0);
+          		  alertify.error("Ingrese un Importe");
+          			$('.T_Honorarios_Importe').eq(x).focus();
+          		}else{
+                ret = iva_retenido(concepto,importe);
+      					impuesto = cortarDecimales(CalcMUL(importe,IVA),2);
+      					total = cortarDecimales(parseFloat(importe) + parseFloat(impuesto),2);
+
+      					$('.T_Honorarios_Importe').eq(x).val(importe);
+      					$('.T_Honorarios_IVA').eq(x).val(impuesto);
+      					$('.T_Honorarios_RET').eq(x).val(ret);
+      					$('.T_Honorarios_Subtotal').eq(x).val(total);
+              }
+              $('#Lst_CHL').val(0);
+      				$('#Lst_Conceptos_Honorarios').val(0);
+      				$('#T_CH').val("");
+      				$('#T_Hcta').val("");
+      				$('#T_Hps').val("");
+      				$('#T_Valor_Concepto_Honorarios').val("");
+      				sumaGeneral();
+      				return false;
+            }
+        });
+    }
 }
 
 function iva_retenido(concepto,importe){
@@ -930,6 +897,8 @@ function calculoHonorarios(){
 		$('#T_Honorarios_IVA').val(total_hon_iva);
     total = cortarDecimales(CalcADD(total_hon_iva,hon),2)
 		$('#T_Honorarios_Total').val(total);
+
+    Iva_Importe_Hon(0);
 }
 
 function Iva_Importe_Hon(posicion){
@@ -1015,24 +984,46 @@ function validaDescImporte(seccion,posicion){
   }
 }
 
+//AGREGAR DEPOSITO
+$('#depositos-disponibles, #tbodyDepAplic').on('click', '.agregar-deposito', function(){
+  var tr = $(this).parents('tr');
+  var destino = $(this).attr('destino');
+  var valor = $('.T_Anticipo').val();
+  var totalAnticipos = $('#T_Total_Anticipos').val();
+
+  if (destino == '#tbodyDepAplic') {
+    $(this).attr('destino', '#depositos-disponibles');
+    tr.addClass('elemento-depositos');
+    totalAnticipos = cortarDecimales(CalcADD(totalAnticipos,valor),2);
+  } else {
+    $(this).attr('destino', '#tbodyDepAplic');
+    tr.removeClass('elemento-depositos');
+    totalAnticipos = cortarDecimales(CalcSUB(totalAnticipos,valor),2);
+  }
+
+  tr.appendTo(destino);
+  $('#T_Total_Anticipos').val(totalAnticipos);
+  sumaGeneral();
+});
 
 function asignarMetodoPago(){
 	metodoPago = $('#Lst_metodoPago').val();
-	$('#T_metodoPago').val(metodoPago);
+	$('#T_metodoPago').attr('value',metodoPago).val(metodoPago);
 
 	if( metodoPago == 'PPD' ){
-		$('#T_FormaPago').val('99');
-		$('#T_CuentaPago').val('');
+    $('#T_FormaPago').val('99').attr('value','99');
+    $('#T_CuentaPago').val('').attr('value','');
 		$('#Lst_formaPago').prop( 'disabled',true );
 	}else{
-		$('#T_FormaPago').val('');
-		$('#T_CuentaPago').val('');
+    $('#T_FormaPago').val('').attr('value','');
+    $('#T_CuentaPago').val('').attr('value','');
 		$('#Lst_formaPago').prop( 'disabled',false );
 	}
 }
 
 function asignarFormaPago(){
   metodoPago = $('#Lst_formaPago').val();
+  $('#T_FormaPago').attr('value',metodoPago);
   $('#T_FormaPago').val(metodoPago);
 
   if(metodoPago == "02" || metodoPago == "03" ){
@@ -1043,6 +1034,7 @@ function asignarFormaPago(){
     $('#Lst_cuentaPago').val(0);
     $('#Lst_cuentaPago').prop( 'disabled',true );
     $('#numerosCuenta').html('');
+    $('#T_CuentaPago').attr('value',"");
     $('#T_CuentaPago').val("");
   }
 }
@@ -1074,26 +1066,28 @@ function buscarNumeroCuentaBanco(id_cliente){
 function asignarCtaBanco(){
   cadena = $('#Lst_cuentaPago').val();
   parteCadena = cadena.split("+");
-  $('#T_CuentaPago').val(parteCadena[1]);
+  $('#T_CuentaPago').val(parteCadena[1]).attr('value',parteCadena[1]);
 }
 
 function asignarMoneda(){
-		moneda = $('#Lst_moneda').val();
+		moneda = $('#lst_moneda').val();
 		$('#T_Moneda').val(moneda);
+    $('#T_Moneda').attr('value',moneda);
 
 		if( moneda == 'MXN' ){
-			$('#T_monedaTipoCambio').val("");
-			$('#T_monedaTipoCambio').prop('readOnly',true);
-			$('#T_monedaTipoCambio').css('background-color','#DCDCDC');
+			$('#T_monedaTipoCambio').val('')
+                              .attr('value','')
+			                        .prop('readOnly',true)
+			                        .css('background-color','#DCDCDC');
 		}else{
 			$('#T_monedaTipoCambio').prop('readOnly',false)
-			$('#T_monedaTipoCambio').css('background-color','#FFFFFF');
+			                        .css('background-color','#FFFFFF');
 		}
 }
 
 function asignarUsoCFDI(){
 	usoCFDI = $('#Lst_usoCFDI').val();
-	$('#T_usoCFDI').val(usoCFDI);
+	$('#T_usoCFDI').val(usoCFDI).attr('value',usoCFDI);
 }
 
 function valFormaPago(){
@@ -1132,341 +1126,154 @@ function valUsoCFDI(){
 			return true;
 		}
 }
-/*
-function guardarCta(){
-		Suma_Subtotales();
-		if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
-				//$('#guardar').prop('disabled',true);
-				$('#mensaje').html("Guardando . . .");
 
-        var data = {
-          pocme: {},
-          pacme: {},
-          picme:{},
+$('#guardar-cta').click(function(){
+  Suma_Subtotales();
+  if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
+      $('#guardar').prop('disabled',true);
+      $('#mensaje').html("Guardando . . .");
+
+      var data = {
+        depositos: {},
+        honorarios: {},
+        cargos: {},
+        pocme: {},
+        T_No_calculoTarifa : $('#T_No_calculoTarifa').val(),
+        Txt_Usuario : $('#Txt_Usuario').val(),
+        T_IGED_1 : $('#T_IGED_1').val(),
+        T_ID_Aduana_Oculto : $('#T_ID_Aduana_Oculto').val(),
+        T_ID_Almacen_Oculto : $('#T_ID_Almacen_Oculto').val(),
+        T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
+        T_Nombre_Cliente : $('#T_Nombre_Cliente').val(),
+        T_Cliente_Calle : $('#T_Cliente_Calle').val(),
+        T_Cliente_No_Ext : $('#T_Cliente_No_Ext').val(),
+        T_Cliente_No_Int : $('#T_Cliente_No_Int').val(),
+        T_Cliente_Colonia : $('#T_Cliente_Colonia').val(),
+        T_Cliente_CP : $('#T_Cliente_CP').val(),
+        T_Cliente_Ciudad : $('#T_Cliente_Ciudad').val(),
+        T_Cliente_Estado : $('#T_Cliente_Estado').val(),
+        T_Cliente_Pais : $('#T_Cliente_Pais').val(),
+        T_Cliente_taxid : $('#T_Cliente_taxid').val(),
+        T_Cliente_RFC : $('#T_Cliente_RFC').val(),
+        T_Proveedor_Destinatario : $('#T_Proveedor_Destinatario').val(),
+        T_Tipo : $('#T_Tipo').val(),
+        T_Valor : $('#T_Valor').val(),
+        T_Peso : $('#T_Peso').val(),
+        T_Dias : $('#T_Dias').val(),
+        T_Valor_Custodia_Aer : $('#T_Valor_Custodia_Aer').val(),
+        T_Valor_Manejo_Aer : $('#T_Valor_Manejo_Aer').val(),
+        T_Valor_Almacenaje_Aer : $('#T_Valor_Almacenaje_Aer').val(),
+        T_Valor_Total_Maniobras : $('#T_Valor_Total_Maniobras').val(),
+        T_Subsidio : $('#T_Subsidio').val(),
+        T_derechosPagados : $('#T_derechosPagados').val(),
+        T_Honorarios_Porcentaje : $('#T_Honorarios_Porcentaje').val(),
+        T_Honorarios_Base_Honorarios : $('#T_Honorarios_Base_Honorarios').val(),
+        T_Honorarios_Descuento : $('#T_Honorarios_Descuento').val(),
+        T_Honorarios_Minimo : $('#T_Honorarios_Minimo_Honorarios').val(),
+        T_Honorarios_0 : $('#T_Honorarios_0').val(),
+        T_Hcta_0 : $('#T_Hcta_0').val(),
+        T_Hps_0 : $('#T_Hps_0').val(),
+        T_Honorarios_Importe_0 : $('#T_Honorarios_Importe_0').val(),
+        T_Honorarios_IVA_0 : $('#T_Honorarios_IVA_0').val(),
+        T_Honorarios_RET_0 : $('#T_Honorarios_RET_0').val(),
+        T_Honorarios_Subtotal_0 : $('#T_Honorarios_Subtotal_0').val(),
+        T_Total_Importes : $('#T_Total_Importes').val(),
+        T_Total_IVA : $('#T_Total_IVA').val(),
+        T_IVA_RETENIDO : $('#T_IVA_RETENIDO').val(),
+        T_Total_Gral : $('#T_Total_Gral').val(),
+        T_Total_MN_Extranjera : $('#T_Total_MN_Extranjera').val(),
+        T_SALDO_GRAL : $('#T_SALDO_GRAL').val(),
+        CUSTOMS : $('#CUSTOMS').val(),
+        T_IVA_Porcentaje : $('#T_IVA_Porcentaje').val(),
+        T_SUBTOTAL_HON : $('#T_SUBTOTAL_HON').val(),
+        Txt_Total_MN_Extranjera : $('#Txt_Total_MN_Extranjera').val(),
+        T_Cta_Gastos : $('#T_Cta_Gastos').val(),
+        T_Total_Anticipos : $('#T_Total_Anticipos').val(),
+        Txt_Total_Importe : $('#Txt_Total_Importe').val(),
+        Txt_Total_IVA : $('#Txt_Total_IVA').val(),
+        Txt_SUBTOTAL_HON : $('#Txt_SUBTOTAL_HON').val(),
+        Txt_IVA_RETENIDO : $('#Txt_IVA_RETENIDO').val(),
+        Txt_Total_Gral : $('#Txt_Total_Gral').val(),
+        Txt_Cta_Gastos : $('#Txt_Cta_Gastos').val(),
+        Txt_Total_Anticipos : $('#Txt_Total_Anticipos').val(),
+        Txt_Saldo_Gral : $('#Txt_Saldo_Gral').val(),
+        Txt_Total_Pagos : $('#Txt_Total_Pagos').val(),
+        T_Total_Pagos : $('#T_Total_Pagos').val(),
+        Txt_Honorarios : $('#Txt_Honorarios').val(),
+        T_POCME_Total : $('#T_POCME_Total').val(),
+        T_POCME_Tipo_Cambio : $('#T_POCME_Tipo_Cambio').val(),
+        T_POCME_Total_MN : $('#T_POCME_Total_MN').val(),
+        Total_Letra : $('#Total_Letra').val(),
+        T_FormaPago : $('#T_FormaPago').val(),
+        T_metodoPago : $('#T_metodoPago').val(),
+        T_CuentaPago : $('#T_CuentaPago').val(),
+        T_Moneda : $('#T_Moneda').val(),
+        T_monedaTipoCambio : $('#T_monedaTipoCambio').val()
+      };
+
+      $( ".elemento-pocme" ).each(function(i) {
+        var parsed_data = {
+          cantidad: $(this).find('.cantidad').val(),
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idconcepto: $(this).find('.id-concepto').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          concepto_ing: $(this).find('.concepto-ingles').val(),
+          descripcion: $(this).find('.descripcion').val(),
+          importe: $(this).find('.importe').val(),
+          subtotal: $(this).find('.subtotal').val()
         }
+        data.pocme[i] = parsed_data;
+      });
 
-        $('#POCME_body tr').each(function(i){
-          $(this).find('td').each(function(e){
-            var campo = $(this).attr('name');
-            data.pocme[i][campo] = $(this).val();
-          })
-        });
+      $( ".elemento-cargos" ).each(function(i) {
+        var parsed_data = {
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idconcepto: $(this).find('.id-concepto').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.cargos[i] = parsed_data;
+      });
 
-        var data = {
-*/
-function guardarCta(){
-		Suma_Subtotales();
-		if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
-				//$('#guardar').prop('disabled',true);
-				$('#mensaje').html("Guardando . . .");
+      $( ".elemento-honorarios" ).each(function(i) {
+        var parsed_data = {
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idcveprod: $(this).find('.id-cveProd').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          importe: $(this).find('.importe').val(),
+          iva: $(this).find('.iva').val(),
+          ret: $(this).find('.ret').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.honorarios[i] = parsed_data;
+      });
 
-        var data = {
-            T_No_calculoTarifa : $('#T_No_calculoTarifa').val(),
-            Txt_Usuario : $('#Txt_Usuario').val(),
-            T_IGED_1 : $('#T_IGED_1').val(),
-            T_ID_Aduana_Oculto : $('#T_ID_Aduana_Oculto').val(),
-            T_ID_Almacen_Oculto : $('#T_ID_Almacen_Oculto').val(),
-            T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
-            T_Nombre_Cliente : $('#T_Nombre_Cliente').val(),
-            T_Cliente_Calle : $('#T_Cliente_Calle').val(),
-            T_Cliente_No_Ext : $('#T_Cliente_No_Ext').val(),
-            T_Cliente_No_Int : $('#T_Cliente_No_Int').val(),
-            T_Cliente_Colonia : $('#T_Cliente_Colonia').val(),
-            T_Cliente_CP : $('#T_Cliente_CP').val(),
-            T_Cliente_Ciudad : $('#T_Cliente_Ciudad').val(),
-            T_Cliente_Estado : $('#T_Cliente_Estado').val(),
-            T_Cliente_Pais : $('#T_Cliente_Pais').val(),
-            T_Cliente_RFC : $('#T_Cliente_RFC').val(),
-            T_Proveedor_Destinatario : $('#T_Proveedor_Destinatario').val(),
-            T_Tipo : $('#T_Tipo').val(),
-            T_Valor : $('#T_Valor').val(),
-            T_Peso : $('#T_Peso').val(),
-            T_Dias : $('#T_Dias').val(),
-            T_Valor_Custodia_Aer : $('#T_Valor_Custodia_Aer').val(),
-            T_Valor_Manejo_Aer : $('#T_Valor_Manejo_Aer').val(),
-            T_Valor_Almacenaje_Aer : $('#T_Valor_Almacenaje_Aer').val(),
-            T_Valor_Total_Maniobras : $('#T_Valor_Total_Maniobras').val(),
-            T_Subsidio : $('#T_Subsidio').val(),
-            T_IGET_0 : $('#T_IGET_0').val(),
-            T_IGED_0 : $('#T_IGED_0').val(),
-            T_IGET_1 : $('#T_IGET_1').val(),
-            T_IGED_1 : $('#T_IGED_1').val(),
-            T_IGET_2 : $('#T_IGET_2').val(),
-            T_IGED_2 : $('#T_IGED_2').val(),
-            T_IGET_3 : $('#T_IGET_3').val(),
-            T_IGED_3 : $('#T_IGED_3').val(),
-            T_IGET_4 : $('#T_IGET_4').val(),
-            T_IGED_4 : $('#T_IGED_4').val(),
-            T_IGET_5 : $('#T_IGET_5').val(),
-            T_IGED_5 : $('#T_IGED_5').val(),
-            T_IGET_6 : $('#T_IGET_6').val(),
-            T_IGED_6 : $('#T_IGED_6').val(),
-            T_IGET_7 : $('#T_IGET_7').val(),
-            T_IGED_7 : $('#T_IGED_7').val(),
-            T_IGET_8 : $('#T_IGET_8').val(),
-            T_IGED_8 : $('#T_IGED_8').val(),
-            T_IGET_9 : $('#T_IGET_9').val(),
-            T_IGED_9 : $('#T_IGED_9').val(),
-            T_IGET_10 : $('#T_IGET_10').val(),
-            T_IGED_10 : $('#T_IGED_10').val(),
-            T_IGET_11 : $('#T_IGET_11').val(),
-            T_IGED_11 : $('#T_IGED_11').val(),
-            T_IGET_12 : $('#T_IGET_12').val(),
-            T_IGED_12 : $('#T_IGED_12').val(),
-            T_IGET_13 : $('#T_IGET_13').val(),
-            T_IGED_13 : $('#T_IGED_13').val(),
-            T_POCME_Cantidad1 : $('#T_POCME_Cantidad1').val(),
-            T_POCME_idTipoCta1 : $('#T_POCME_idTipoCta1').val(),
-            T_POCME_Concepto1 : $('#T_POCME_Concepto1').val(),
-            T_POCME_ConceptoEng1 : $('#T_POCME_ConceptoEng1').val(),
-            T_POCME_Descripcion1 : $('#T_POCME_Descripcion1').val(),
-            T_POCME_Importe1 : $('#T_POCME_Importe1').val(),
-            T_POCME_Subtotal1 : $('#T_POCME_Subtotal1').val(),
-            T_POCME_Cantidad2 : $('#T_POCME_Cantidad2').val(),
-            T_POCME_idTipoCta2 : $('#T_POCME_idTipoCta2').val(),
-            T_POCME_Concepto2 : $('#T_POCME_Concepto2').val(),
-            T_POCME_ConceptoEng2 : $('#T_POCME_ConceptoEng2').val(),
-            T_POCME_Descripcion2 : $('#T_POCME_Descripcion2').val(),
-            T_POCME_Importe2 : $('#T_POCME_Importe2').val(),
-            T_POCME_Subtotal2 : $('#T_POCME_Subtotal2').val(),
-            T_POCME_Cantidad3 : $('#T_POCME_Cantidad3').val(),
-            T_POCME_idTipoCta3 : $('#T_POCME_idTipoCta3').val(),
-            T_POCME_Concepto3 : $('#T_POCME_Concepto3').val(),
-            T_POCME_ConceptoEng3 : $('#T_POCME_ConceptoEng3').val(),
-            T_POCME_Descripcion3 : $('#T_POCME_Descripcion3').val(),
-            T_POCME_Importe3 : $('#T_POCME_Importe3').val(),
-            T_POCME_Subtotal3 : $('#T_POCME_Subtotal3').val(),
-            T_POCME_Cantidad4 : $('#T_POCME_Cantidad4').val(),
-            T_POCME_idTipoCta4 : $('#T_POCME_idTipoCta4').val(),
-            T_POCME_Concepto4 : $('#T_POCME_Concepto4').val(),
-            T_POCME_ConceptoEng4 : $('#T_POCME_ConceptoEng4').val(),
-            T_POCME_Descripcion4 : $('#T_POCME_Descripcion4').val(),
-            T_POCME_Importe4 : $('#T_POCME_Importe4').val(),
-            T_POCME_Subtotal4 : $('#T_POCME_Subtotal4').val(),
-            T_POCME_Cantidad5 : $('#T_POCME_Cantidad5').val(),
-            T_POCME_idTipoCta5 : $('#T_POCME_idTipoCta5').val(),
-            T_POCME_Concepto5 : $('#T_POCME_Concepto5').val(),
-            T_POCME_ConceptoEng5 : $('#T_POCME_ConceptoEng5').val(),
-            T_POCME_Descripcion5 : $('#T_POCME_Descripcion5').val(),
-            T_POCME_Importe5 : $('#T_POCME_Importe5').val(),
-            T_POCME_Subtotal5 : $('#T_POCME_Subtotal5').val(),
-            T_POCME_Cantidad6 : $('#T_POCME_Cantidad6').val(),
-            T_POCME_idTipoCta6 : $('#T_POCME_idTipoCta6').val(),
-            T_POCME_Concepto6 : $('#T_POCME_Concepto6').val(),
-            T_POCME_ConceptoEng6 : $('#T_POCME_ConceptoEng6').val(),
-            T_POCME_Descripcion6 : $('#T_POCME_Descripcion6').val(),
-            T_POCME_Importe6 : $('#T_POCME_Importe6').val(),
-            T_POCME_Subtotal6 : $('#T_POCME_Subtotal6').val(),
-            T_POCME_Cantidad7 : $('#T_POCME_Cantidad7').val(),
-            T_POCME_idTipoCta7 : $('#T_POCME_idTipoCta7').val(),
-            T_POCME_Concepto7 : $('#T_POCME_Concepto7').val(),
-            T_POCME_ConceptoEng7 : $('#T_POCME_ConceptoEng7').val(),
-            T_POCME_Descripcion7 : $('#T_POCME_Descripcion7').val(),
-            T_POCME_Importe7 : $('#T_POCME_Importe7').val(),
-            T_POCME_Subtotal7 : $('#T_POCME_Subtotal7').val(),
-            T_POCME_Cantidad8 : $('#T_POCME_Cantidad8').val(),
-            T_POCME_idTipoCta8 : $('#T_POCME_idTipoCta8').val(),
-            T_POCME_Concepto8 : $('#T_POCME_Concepto8').val(),
-            T_POCME_ConceptoEng8 : $('#T_POCME_ConceptoEng8').val(),
-            T_POCME_Descripcion8 : $('#T_POCME_Descripcion8').val(),
-            T_POCME_Importe8 : $('#T_POCME_Importe8').val(),
-            T_POCME_Subtotal8 : $('#T_POCME_Subtotal8').val(),
-            T_POCME_idConcep1 : $('#T_POCME_idConcep1').val(),
-            T_POCME_idConcep2 : $('#T_POCME_idConcep2').val(),
-            T_POCME_idConcep3 : $('#T_POCME_idConcep3').val(),
-            T_POCME_idConcep4 : $('#T_POCME_idConcep4').val(),
-            T_POCME_idConcep5 : $('#T_POCME_idConcep5').val(),
-            T_POCME_idConcep6 : $('#T_POCME_idConcep6').val(),
-            T_POCME_idConcep7 : $('#T_POCME_idConcep7').val(),
-            T_POCME_idConcep8 : $('#T_POCME_idConcep8').val(),
-            T_POCME_Total : $('#T_POCME_Total').val(),
-            T_POCME_Tipo_Cambio : $('#T_POCME_Tipo_Cambio').val(),
-            T_POCME_Total_MN : $('#T_POCME_Total_MN').val(),
-            T_Cargo_1 : $('#T_Cargo_1').val(),
-            T_Cargo_13 : $('#T_Cargo_13').val(),
-            T_Cargo_2 : $('#T_Cargo_2').val(),
-            T_Cargo_23 : $('#T_Cargo_23').val(),
-            T_Cargo_3 : $('#T_Cargo_3').val(),
-            T_Cargo_33 : $('#T_Cargo_33').val(),
-            T_Cargo_4 : $('#T_Cargo_4').val(),
-            T_Cargo_43 : $('#T_Cargo_43').val(),
-            T_Cargo_5 : $('#T_Cargo_5').val(),
-            T_Cargo_53 : $('#T_Cargo_53').val(),
-            T_Cargo_6 : $('#T_Cargo_6').val(),
-            T_Cargo_63 : $('#T_Cargo_63').val(),
-            T_Cargo_7 : $('#T_Cargo_7').val(),
-            T_Cargo_73 : $('#T_Cargo_73').val(),
-            T_Cargo_8 : $('#T_Cargo_8').val(),
-            T_Cargo_83 : $('#T_Cargo_83').val(),
-            T_Cargo_idconcepto_1 : $('#T_Cargo_idconcepto_1').val(),
-            T_Cargo_idconcepto_2 : $('#T_Cargo_idconcepto_2').val(),
-            T_Cargo_idconcepto_3 : $('#T_Cargo_idconcepto_3').val(),
-            T_Cargo_idconcepto_4 : $('#T_Cargo_idconcepto_4').val(),
-            T_Cargo_idconcepto_5 : $('#T_Cargo_idconcepto_5').val(),
-            T_Cargo_idconcepto_6 : $('#T_Cargo_idconcepto_6').val(),
-            T_Cargo_idconcepto_7 : $('#T_Cargo_idconcepto_7').val(),
-            T_Cargo_idconcepto_8 : $('#T_Cargo_idconcepto_8').val(),
-            T_Cargo_idcuenta_1 : $('#T_Cargo_idcuenta_1').val(),
-            T_Cargo_idcuenta_2 : $('#T_Cargo_idcuenta_2').val(),
-            T_Cargo_idcuenta_3 : $('#T_Cargo_idcuenta_3').val(),
-            T_Cargo_idcuenta_4 : $('#T_Cargo_idcuenta_4').val(),
-            T_Cargo_idcuenta_5 : $('#T_Cargo_idcuenta_5').val(),
-            T_Cargo_idcuenta_6 : $('#T_Cargo_idcuenta_6').val(),
-            T_Cargo_idcuenta_7 : $('#T_Cargo_idcuenta_7').val(),
-            T_Cargo_idcuenta_8 : $('#T_Cargo_idcuenta_8').val(),
-            T_Hps0 : $('#T_Hps0').val(),
-            T_Hps1 : $('#T_Hps1').val(),
-            T_Hps2 : $('#T_Hps2').val(),
-            T_Hps3 : $('#T_Hps3').val(),
-            T_Hps4 : $('#T_Hps4').val(),
-            T_Hps5 : $('#T_Hps5').val(),
-            T_Hps6 : $('#T_Hps6').val(),
-            T_Hps7 : $('#T_Hps7').val(),
-            T_Hps8 : $('#T_Hps8').val(),
-            T_Hcta0 : $('#T_Hcta0').val(),
-            T_Hcta1 : $('#T_Hcta1').val(),
-            T_Hcta2 : $('#T_Hcta2').val(),
-            T_Hcta3 : $('#T_Hcta3').val(),
-            T_Hcta4 : $('#T_Hcta4').val(),
-            T_Hcta5 : $('#T_Hcta5').val(),
-            T_Hcta6 : $('#T_Hcta6').val(),
-            T_Hcta7 : $('#T_Hcta7').val(),
-            T_Hcta8 : $('#T_Hcta8').val(),
-            T_Honorarios_RET : $('#T_Honorarios_RET').val(),
-            T_Honorarios_14 : $('#T_Honorarios_14').val(),
-            T_Honorarios_24 : $('#T_Honorarios_24').val(),
-            T_Honorarios_34 : $('#T_Honorarios_34').val(),
-            T_Honorarios_44 : $('#T_Honorarios_44').val(),
-            T_Honorarios_54 : $('#T_Honorarios_54').val(),
-            T_Honorarios_64 : $('#T_Honorarios_64').val(),
-            T_Honorarios_74 : $('#T_Honorarios_74').val(),
-            T_Honorarios_84 : $('#T_Honorarios_84').val(),
-            T_usoCFDI : $('#T_usoCFDI').val(),
-            T_Honorarios_Porcentaje : $('#T_Honorarios_Porcentaje').val(),
-            T_Honorarios_Base_Honorarios : $('#T_Honorarios_Base_Honorarios').val(),
-            T_Honorarios_Descuento : $('#T_Honorarios_Descuento').val(),
-            Txt_Descuento : $('#Txt_Descuento').val(),
-            T_Honorarios_Importe : $('#T_Honorarios_Importe_0').val(),
-            T_Honorarios_IVA : $('#T_Honorarios_IVA_0').val(),
-            T_Honorarios_Total : $('#T_Honorarios_Total_0').val(),
-            T_Honorarios_1 : $('#T_Honorarios_1').val(),
-            T_Honorarios_11 : $('#T_Honorarios_11').val(),
-            T_Honorarios_12 : $('#T_Honorarios_12').val(),
-            T_Honorarios_13 : $('#T_Honorarios_13').val(),
-            T_Honorarios_2 : $('#T_Honorarios_2').val(),
-            T_Honorarios_21 : $('#T_Honorarios_21').val(),
-            T_Honorarios_22 : $('#T_Honorarios_22').val(),
-            T_Honorarios_23 : $('#T_Honorarios_23').val(),
-            T_Honorarios_3 : $('#T_Honorarios_3').val(),
-            T_Honorarios_31 : $('#T_Honorarios_31').val(),
-            T_Honorarios_32 : $('#T_Honorarios_32').val(),
-            T_Honorarios_33 : $('#T_Honorarios_33').val(),
-            T_Honorarios_4 : $('#T_Honorarios_4').val(),
-            T_Honorarios_41 : $('#T_Honorarios_41').val(),
-            T_Honorarios_42 : $('#T_Honorarios_42').val(),
-            T_Honorarios_43 : $('#T_Honorarios_43').val(),
-            T_Honorarios_5 : $('#T_Honorarios_5').val(),
-            T_Honorarios_51 : $('#T_Honorarios_51').val(),
-            T_Honorarios_52 : $('#T_Honorarios_52').val(),
-            T_Honorarios_53 : $('#T_Honorarios_53').val(),
-            T_Honorarios_6 : $('#T_Honorarios_6').val(),
-            T_Honorarios_61 : $('#T_Honorarios_61').val(),
-            T_Honorarios_62 : $('#T_Honorarios_62').val(),
-            T_Honorarios_63 : $('#T_Honorarios_63').val(),
-            T_Honorarios_7 : $('#T_Honorarios_7').val(),
-            T_Honorarios_71 : $('#T_Honorarios_71').val(),
-            T_Honorarios_72 : $('#T_Honorarios_72').val(),
-            T_Honorarios_73 : $('#T_Honorarios_73').val(),
-            T_Honorarios_8 : $('#T_Honorarios_8').val(),
-            T_Honorarios_81 : $('#T_Honorarios_81').val(),
-            T_Honorarios_82 : $('#T_Honorarios_82').val(),
-            T_Honorarios_83 : $('#T_Honorarios_83').val(),
-            T_No_Anticipo_1 : $('#T_No_Anticipo_1').val(),
-            T_Anticipo_1 : $('#T_Anticipo_1').val(),
-            T_No_Anticipo_2 : $('#T_No_Anticipo_2').val(),
-            T_Anticipo_2 : $('#T_Anticipo_2').val(),
-            T_No_Anticipo_3 : $('#T_No_Anticipo_3').val(),
-            T_Anticipo_3 : $('#T_Anticipo_3').val(),
-            T_No_Anticipo_4 : $('#T_No_Anticipo_4').val(),
-            T_Anticipo_4 : $('#T_Anticipo_4').val(),
-            T_No_Anticipo_5 : $('#T_No_Anticipo_5').val(),
-            T_Anticipo_5 : $('#T_Anticipo_5').val(),
-            T_No_Anticipo_6 : $('#T_No_Anticipo_6').val(),
-            T_Anticipo_6 : $('#T_Anticipo_6').val(),
-            T_Total_Importes : $('#T_Total_Importes').val(),
-            T_Total_IVA : $('#T_Total_IVA').val(),
-            T_IVA_RETENIDO : $('#T_IVA_RETENIDO').val(),
-            T_Total_Gral : $('#T_Total_Gral').val(),
-            T_Total_MN_Extranjera : $('#T_Total_MN_Extranjera').val(),
-            T_SALDO_GRAL : $('#T_SALDO_GRAL').val(),
-            CUSTOMS : $('#CUSTOMS').val(),
-            T_IVA_Porcentaje : $('#T_IVA_Porcentaje').val(),
-            T_SUBTOTAL_HON : $('#T_SUBTOTAL_HON').val(),
-            Txt_Total_MN_Extranjera : $('#Txt_Total_MN_Extranjera').val(),
-            T_Cta_Gastos : $('#T_Cta_Gastos').val(),
-            T_Total_Anticipos : $('#T_Total_Anticipos').val(),
-            Txt_Total_Importe : $('#Txt_Total_Importe').val(),
-            Txt_Total_IVA : $('#Txt_Total_IVA').val(),
-            Txt_SUBTOTAL_HON : $('#Txt_SUBTOTAL_HON').val(),
-            Txt_IVA_RETENIDO : $('#Txt_IVA_RETENIDO').val(),
-            Txt_Total_Gral : $('#Txt_Total_Gral').val(),
-            Txt_Cta_Gastos : $('#Txt_Cta_Gastos').val(),
-            Txt_Total_Anticipos : $('#Txt_Total_Anticipos').val(),
-            Txt_Saldo_Gral : $('#Txt_Saldo_Gral').val(),
-            Txt_Total_Pagos : $('#Txt_Total_Pagos').val(),
-            T_Total_Pagos : $('#T_Total_Pagos').val(),
-            Txt_Honorarios : $('#Txt_Honorarios').val(),
-            Txt_POCME_Total : $('#Txt_POCME_Total').val(),
-            Txt_POCME_Tipo_Cambio : $('#Txt_POCME_Tipo_Cambio').val(),
-            Total_Letra : $('#Total_Letra').val(),
-            T_FormaPago : $('#T_FormaPago').val(),
-            T_metodoPago : $('#T_metodoPago').val(),
-            T_CuentaPago : $('#T_CuentaPago').val(),
-            T_Moneda : $('#T_Moneda').val(),
-            T_monedaTipoCambio : $('#T_monedaTipoCambio').val()
-        }//fin data
+      $( ".elemento-depositos" ).each(function(i) {
+        var parsed_data = {
+          idDeposito: $(this).find('.id-deposito').val(),
+          importe: $(this).find('.importe').val(),
+        }
+        data.depositos[i] = parsed_data;
+      });
+      console.log(data);
 
-        $.ajax({
-          type: "POST",
-          url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_agregar.php",
-          data: data,
-          success: 	function(r){
-            //console.log(r);
-            r = JSON.parse(r);
-            if (r.code == 1) {
-              //console.log(r.hon);
-              folio = r.data;
-              swal("Folio: "+folio, "generado correctamente", "success");
-              //setTimeout('document.location.reload()',700);
-            } else {
-              console.error(r.message);
-            }
-          },
-          error: function(x){
-            console.error(x);
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_agregar.php",
+        data: data,
+        success: 	function(r){
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            folio = r.data;
+            swal("Folio: "+folio, "generado correctamente", "success");
+            //setTimeout('document.location.reload()',700);
+          } else {
+            console.error(r.message);
           }
-        });
-		}
-
-}
-
-function agregarAnticipo(anticipo,importe){
-	nomCliente = $('#T_Nombre_Cliente').val();
-
-  var element = $('.noAnt').length;
-
-  newtr = "<tr class='row'>";
-  newtr = newtr + "  <td class='col-md-6 nomCLT'>"+nomCliente+"</td>";
-  newtr = newtr + "  <td class='col-md-2 noAnt'>"+anticipo+"</td>";
-  newtr = newtr + "  <td class='col-md-2 impAnt'>"+importe+"</td>";
-  newtr = newtr + "  <td class='col-md-2'>";
-  newtr = newtr + "    <div class='checkbox-xs'>";
-  newtr = newtr + "      <label>";
-  newtr = newtr + "        <input type='checkbox' data-toggle='toggle' onclick='agregarAnticipo($anticipo,$importe)'>";
-  newtr = newtr + "      </label>";
-  newtr = newtr + "    </div>";
-  newtr = newtr + "  </td>";
-  newtr = newtr + "</tr>";
-
-  $('#tbodyDepAplic').append(newtr);
-}
+        },
+        error: function(x){
+          console.error(x);
+        }
+      });
+  }
+});

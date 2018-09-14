@@ -120,7 +120,7 @@ if($referencia != "SN"){
       $CLT_estado = limpiarBlancos($row_datosCLT["s_estado"]);
       $CLT_pais = limpiarBlancos($row_datosCLT["s_pais"]);
       $CLT_rfc = limpiarBlancos($row_datosCLT["s_rfc"]);
-
+      $CLT_taxid = limpiarBlancos($row_datosCLT["s_taxid"]);
     }
 
     //IVA
@@ -207,27 +207,27 @@ if($referencia != "SN"){
         }
 
 		$POCME_automatico .= "
-        <tr class='row m-0' id='$idFila'>
+        <tr class='row m-0 trPOCME elemento-pocme' id='$idFila'>
           <td class='col-md-1 p-2'>
-            <input type='text' id='T_POCME_Cantidad$idFila' value='$cantidad' class='T_POCME_CANTIDAD efecto h22' onblur='validaSoloNumeros(this);importe_POCME();' size='4'>
+            <input type='text' id='T_POCME_Cantidad$idFila' value='$cantidad' class='T_POCME_CANTIDAD cantidad efecto h22' onblur='validaSoloNumeros(this);importe_POCME();' size='4'>
           </td>
           <td class='col-md-3 p-2'>
-            <input type='hidden' id='T_POCME_idTipoCta$idFila' value='$ID_CUENTA' class='T_POCME_CUENTAS'>
-            <input type='hidden' id='T_POCME_idConcep$idFilaBlanco' class='T_POCME_idCONCEPTOS'>
-            <input type='text' id='T_POCME_Concepto$idFila' value='$CONCEPTOcta' class='T_POCME_CONCEPTOS efecto h22' size='45' readonly>
-            <input type='hidden' id='T_POCME_ConceptoEng$idFila' value='$CONCEPTOctaEng' class='T_POCME_CONCEPTOS_ENG'/>
+            <input type='hidden' id='T_POCME_idTipoCta$idFila' value='$ID_CUENTA' class='T_POCME_CUENTAS id-cuenta'>
+            <input type='hidden' id='T_POCME_idConcep$idFilaBlanco' class='T_POCME_idCONCEPTOS id_concepto'>
+            <input type='text' id='T_POCME_Concepto$idFila' value='$CONCEPTOcta' class='T_POCME_CONCEPTOS concepto-espanol efecto h22' size='45' readonly>
+            <input type='hidden' id='T_POCME_ConceptoEng$idFila' value='$CONCEPTOctaEng' class='T_POCME_CONCEPTOS_ENG concepto-ingles'/>
           </td>
           <td class='col-md-3 p-2'>
-            <input type='text' id='T_POCME_Descripcion$idFila' value='$descripcion' maxlength='40' class='T_POCME_DESCRIPCION efecto h22' size='45'>
+            <input type='text' id='T_POCME_Descripcion$idFila' value='$descripcion' maxlength='40' class='T_POCME_DESCRIPCION descripcion efecto h22' size='45'>
           </td>
           <td class='col-md-1 p-2 text-left'>
-            <a href='javascript:limpiarCampos(1,$idFila)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+            <a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
           </td>
           <td class='col-md-2 p-2'>
-            <input type='text' id='T_POCME_Importe$idFila' value='$importe' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17'>
+            <input type='text' id='T_POCME_Importe$idFila' value='$importe' class='T_POCME_IMPORTES importe efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17'>
           </td>
           <td class='col-md-2 p-2'>
-            <input type='text' id='T_POCME_Subtotal$idFila' value='$subtotal' class='T_POCME_SUBTOTALES efecto h22' size='17' readonly/>
+            <input type='text' id='T_POCME_Subtotal$idFila' value='$subtotal' class='T_POCME_SUBTOTALES subtotal efecto h22' size='17' readonly/>
           </td>
         </tr>
          ";
@@ -336,7 +336,7 @@ if($referencia != "SN"){
         <tr class='row encabezado font16'>
           <td class='col-md-12 p-0'>
             <input class="eff h22 border-0 bt p-0" type="text" id="T_ID_Cliente_Oculto" value="<?php echo $id_cliente; ?>">
-            <input class="eff h22 border-0 bt" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" size="100" onchange="validarStringSAT(this);quitarNoUsar(this);">
+            <input class="eff h22 border-0 bt" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
           </td>
         </tr>
         <tr class='row backpink' style="font-size:14px!important">
@@ -372,7 +372,8 @@ if($referencia != "SN"){
         <tr class='row'>
           <td class='col-md-6 p-0'>
             <input class="eff h22 border-0 bt p-0" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
-            Pais :<input class="eff h22 border-0 bt" id="T_Cliente_Pais" value="<?php echo $CLT_pais;?>">
+            Pais :<input class="eff h22 border-0 bt" id="T_Cliente_Pais" value="<?php echo $CLT_pais; ?>">
+            Tax ID :<input class="eff h22 border-0 bt" id="T_Cliente_taxid" value="<?php echo $CLT_taxid; ?>">
           </td>
         </tr>
       </tbody>
@@ -607,7 +608,7 @@ if($referencia != "SN"){
               <div class="col-md-1"></div>
               <div class='col-md-1'>
                 <input class="efecto h22" type="text" id="T_no_calculo" onBlur="validaSoloNumeros(this);" size="4">
-				<input type="hidden" id="T_POCME_idConcep">
+				        <input type="hidden" id="T_POCME_idConcep">
                 <input type="hidden" id="T_POCME_Cta">
               </div>
               <div class='col-md-6'>
@@ -637,11 +638,10 @@ if($referencia != "SN"){
                   <td class='col-md-2'>SUBTOTAL</td>
                 </tr>
               </thead>
-              <tbody id='trPOCME' class="tablaPOCME">
+              <tbody id='tbodyPOCME'>
                 <?php echo $POCME_automatico; ?>
               </tbody>
-              <br><br><br><br><br><br>
-              <tbody>
+              <tfoot>
                 <tr class='row mt-4 m-0 sub2'>
                   <th class='col-md-2 pt-4'>Total</th>
                   <td class='col-md-2'>
@@ -656,10 +656,9 @@ if($referencia != "SN"){
                     <input class="efecto h22 bt" type="text" id="T_POCME_Total_MN" size="17" onBlur="validaIntDec(this);" value="0" readonly>
                   </td>
                 </tr>
-              </tbody>
+              </tfoot>
             </table>
           </form>
-          <br><br><br>
         </div>
       </div>
 
@@ -736,7 +735,7 @@ if($referencia != "SN"){
                   <th class='col-md-2'>SUBTOTAL</th>
                 </tr>
               </thead>
-              <tbody id="trCargos">
+              <tbody id="tbodyCargos">
                 <tr id="9" class="row m-0">
                   <td class='col-md-6 p-1 pt-3 b font12 ls1'>Impuestos Afianzados o Subsidiados</td>
                   <td class='col-md-4 p-1'></td>
@@ -744,15 +743,13 @@ if($referencia != "SN"){
                     <input class="efecto h22" type="text" id="T_Subsidio" size="20" onblur="validaIntDec(this);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
                 </tr>
-                <!--tr id="10" class='row m-0'>
-                  <td class='col-md-6 p-1'>
-                    <input class='font12 border-0 bt efecto h22 T_Cargo' type="text" id="T_Cargo_1" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);" value="Impuestos y/o derechos pagados o garantizados al Com. Ext." readonly>
-                  </td>
-                  <td class='col-md-4 p-1 text-left'></td>
+                <tr id="10" class="row m-0">
+                  <td class='col-md-6 p-1 pt-3 b font12 ls1'>Impuestos y/o derechos pagados o garantizados al Com. Ext.</td>
+                  <td class='col-md-4 p-1'></td>
                   <td class='col-md-2 p-1'>
-                    <input class="efecto h22 T_Cargo_Subtotal" type="text" id="T_Cargo_13" size="20" onblur="validaIntDec(this);validaDescImporte(2,1);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                    <input class="efecto h22" type="text" id="T_derechosPagados" size="20" onblur="validaIntDec(this);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   </td>
-                </tr-->
+                </tr>
               </tbody>
             </table>
           </form>
@@ -764,13 +761,11 @@ if($referencia != "SN"){
         <div class='encabezado font16' data-toggle='collapse' href='#collapseThree'>
           <a href="#" id='bread'>HONORARIOS Y SERVICIOS AL COMERCIO EXTERIOR</a>
         </div>
-        <div id='collapseThree' class='panel-collapse collapse'>
-		    <!--div id='collapseThree'-->
+        <!--div id='collapseThree' class='panel-collapse collapse'-->
+		<div id='collapseThree'>
           <div class='card-block'>
             <form class='form1'>
               <div class="">
-
-
                 <div class="row mt-3">
 				          <div class='col-md-1 pt-2  p-0 text-right b'>Honorarios :</div>
                   <div class='col-md-4'>
@@ -867,10 +862,10 @@ if($referencia != "SN"){
                       <th class='col-md-1 p-1'>SUBTOTAL</th>
                     </tr>
                   </thead>
-                  <tbody id="trHonorarios">
+                  <tbody id="tbodyHonorarios">
                     <tr id="18" class='row m-0'>
                       <td class="col-md-4 pt-3 b">
-					  	<input class='efecto h22 T_Honorarios' type='text' id='T_Honorarios_0' size='60' onchange='javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);' value="Honorarios" readonly tabindex='75'></td>
+					  	          <input class='efecto h22 T_Honorarios' type='text' id='T_Honorarios_0' size='60' onchange='javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);' value="Honorarios" readonly tabindex='75'></td>
                       <td class="col-md-2"></td>
                       <td class='col-md-1 p-1'>
                         <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta_0" size="15" value="0400-00001" readonly>
@@ -892,34 +887,6 @@ if($referencia != "SN"){
                         <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_Subtotal_0" size="20" value="0"  readonly>
                       </td>
                     </tr>
-
-                    <!-- <tr id="19" class='row m-0'>  // SE COMENTA PARA MANTENER DISEÑO
-                      <td class='col-md-4 p-1'>
-                        <input class="efecto h22 T_Honorarios" type="text" id="T_Honorarios_1" size="60" maxlength="60" onchange="javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);" readonly tabindex="75">
-                      </td>
-                      <td class='col-md-2 p-1 text-left'>
-                        <a href="javascript:limpiarCampos(3,1)"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idcta" type="text" id="T_Hcta1" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_idps" type="text" id="T_Hps1" size="15" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Importe" type="text" id="T_Honorarios_11" onblur="validaIntDec(this);validaDescImporte(3,1);cortarDecimalesObj(this,2);Iva_Importe_Hon(1)" size="18" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                      </td>
-                      <td class="col-md-1 p-1">
-                        <input class="efecto h22 T_Honorarios_IVA" type="text" id="T_Honorarios_12" size="20" value="0" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_RET" type="text" id="T_Honorarios_14" size="20" value="0" readonly>
-                      </td>
-                      <td class='col-md-1 p-1'>
-                        <input class="efecto h22 T_Honorarios_Subtotal" type="text" id="T_Honorarios_13" size="20" value="0" readonly>
-                      </td>
-                    </tr> -->
-
                   </tbody>
                 </table>
               </form>
@@ -978,13 +945,20 @@ if($referencia != "SN"){
                     <option value='0' selected>No</option>
                 </select>
               </td>
-              <td class="col-md-6">
+              <td class="col-md-3">
                 <select id="Lst_metodoPago" onchange="asignarMetodoPago()">
                   <option value="PUE" selected>Seleccione método de pago</option>
                   <option value="PUE">Pago en una sola exhibición --- PUE</option>
                   <option value="PPD">Pago en parcialidades o diferido --- PPD</option>
                 </select>
-              </td>
+                <input class="efecto h22" type="text" id="T_metodoPago" value="PUE" readonly>
+             </td>
+			       <td class="col-md-3">
+               <select name="select" id="Lst_usoCFDI" onchange="asignarUsoCFDI()">
+                <?php echo $consultaUsoCFDIfac; ?>
+              </select>
+			        <input class="efecto h22" type="text" id="T_usoCFDI" size="20" readonly>
+            </td>
             </tr>
             <tr class="row">
               <td class="col-md-12 backpink">Seleccione forma y cuenta de pago</td>
@@ -993,25 +967,18 @@ if($referencia != "SN"){
               <td class="col-md-3">
                 <select id="Lst_formaPago" onchange="asignarFormaPago()">
                     <?php echo $datosCLTformaPago; ?>
-                </select>
-              </td>
+                </select>              </td>
               <td class="col-md-3"><select size='1' id='Lst_cuentaPago' onChange="asignarCtaBanco()">
                 <option selected value='0'>Seleccione Banco</option>
                 </select>
-                <div id="numerosCuenta"></div>
-              </td>
+                <div id="numerosCuenta"></div>              </td>
               <td class="col-md-3">
                 <?php if( $oRst_permisos["CFD_cta_gastos_generarT0"] == 0){ ?>
-                  <select id"Lst_moneda" onchange="asignarMoneda()">
-                    <?php echo $consultaMoneda; ?>
-                  </select>
-                <?php } ?></td>
-              </td>
-              <td class="col-md-3">
-                <select id="Lst_usoCFDI" onchange="asignarUsoCFDI()">
-                  <?php echo $consultaUsoCFDIfac; ?>
+                <select name="select2" id="lst_moneda" onchange="asignarMoneda()">
+                  <?php echo $consultaMoneda; ?>
                 </select>
-              </td>
+                <?php } ?>              </td>
+              <td class="col-md-3">              </td>
             </tr>
 
             <tr class="row sub2">
@@ -1032,7 +999,7 @@ if($referencia != "SN"){
                 <input class="efecto h22" type="text" id="T_Moneda" size="6" value="MXN" readonly>
               </td>
               <td class="col-md-3">
-                <input class="efecto h22" type="text" id="T_usoCFDI" size="20" readonly>
+                <input type="text" id="T_monedaTipoCambio" class="efecto h22" readonly size="18" onBlur="validaIntDec(this);" />
               </td>
             </tr>
           </table>
@@ -1071,7 +1038,7 @@ if($referencia != "SN"){
 
               <tr class="row">
                 <td class="p-1 col-md-8">
-                  <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_IVA_RETENIDO" size="40" readonly value="Retenci&oacute;n (4%) Impto. IVA :">
+                  <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_IVA_RETENIDO" size="40" readonly value="Retención (4%) Impto. IVA :">
                 </td>
                 <td class="col-md-2"></td>
                 <td class="p-1 col-md-2">
@@ -1095,7 +1062,7 @@ if($referencia != "SN"){
                 </td>
                 <td class="col-md-2"></td>
                 <td class="p-1 col-md-2">
-                  <input class="efecto h22" type="text" id="T_Total_MN_Extranjera" size="20" value="0" readonly>
+                  <input class="efecto h22" type="text" id="T_Total_MN_Extranjera" size="20" readonly>
                 </td>
               </tr>
 
@@ -1155,7 +1122,7 @@ if($referencia != "SN"){
 
     <div class="row justify-content-center">
       <div class="col-md-3">
-        <input class="efecto boton" type='button' value="GUARDAR" onclick="guardarCta('Guardar');validarStringSAT(this);quitarNoUsar(this);" id="guardar" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
+        <input class="efecto boton validarstring" type='button' value="GUARDAR" onclick="validarStringSAT(this);quitarNoUsar(this);" id="guardar-cta" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
       </div>
       <div id="mensaje"></div>
     </div>
