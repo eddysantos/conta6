@@ -1,6 +1,6 @@
 <?PHP
 
-//DATOS DEL EMBARQUE
+//DATOS DEL EMBARQUE ***********************************************************
 $seccion = 'DatGnEmbarq';
 $query_DatGnEmbarq="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,s_conceptoEsp,s_descripcion)
                                                     VALUES($nfolio,'$seccion','$IGET_0','$IGED_0'),
@@ -30,46 +30,14 @@ if (!($stmt_DatGnEmbarq->execute())) {
 }
 
 
-
-
-
-
-
+//PAGOS O COBROS EN MONEDA EXTRANJERA ******************************************
 if( $Total_POCME > 0 ){
-    //PAGOS O COBROS EN MONEDA EXTRANJERA
     $seccion = 'POCME';
-    if( $POCME_Total_Gral > 0 ){
 
-      $concepPOCME = '';
+      $pocmes = $_POST['pocme'];
 
-      if( $POCME_concepto1 <> "" && $POCME_valor1 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad1.",'".$POCME_idTipoCta1."','".$POCME_concepto1."','".$POCME_conceptoEng1."','".$POCME_desc1."',".$POCME_importe1.",".$POCME_valor1.",'".$T_POCME_idConcep1"'),";
-      }
-      if( $POCME_concepto2 <> "" && $POCME_valor2 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad2.",'".$POCME_idTipoCta2."','".$POCME_concepto2."','".$POCME_conceptoEng2."','".$POCME_desc2."',".$POCME_importe2.",".$POCME_valor2.",'".$T_POCME_idConcep2"'),";
-      }
-      if( $POCME_concepto3 <> "" && $POCME_valor3 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad3.",'".$POCME_idTipoCta3."','".$POCME_concepto3."','".$POCME_conceptoEng3."','".$POCME_desc3."',".$POCME_importe3.",".$POCME_valor3.",'".$T_POCME_idConcep3"'),";
-      }
-      if( $POCME_concepto4 <> "" && $POCME_valor4 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad4.",'".$POCME_idTipoCta4."','".$POCME_concepto4."','".$POCME_conceptoEng4."','".$POCME_desc4."',".$POCME_importe4.",".$POCME_valor4.",'".$T_POCME_idConcep4"'),";
-      }
-      if( $POCME_concepto5 <> "" && $POCME_valor5 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad5.",'".$POCME_idTipoCta5."','".$POCME_concepto5."','".$POCME_conceptoEng5."','".$POCME_desc5."',".$POCME_importe5.",".$POCME_valor5.",'".$T_POCME_idConcep5"'),";
-      }
-      if( $POCME_concepto6 <> "" && $POCME_valor6 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad6.",'".$POCME_idTipoCta6."','".$POCME_concepto6."','".$POCME_conceptoEng6."','".$POCME_desc6."',".$POCME_importe6.",".$POCME_valor6.",'".$T_POCME_idConcep6"'),";
-      }
-      if( $POCME_concepto7 <> "" && $POCME_valor7 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad7.",'".$POCME_idTipoCta7."','".$POCME_concepto7."','".$POCME_conceptoEng7."','".$POCME_desc7."',".$POCME_importe7.",".$POCME_valor7.",'".$T_POCME_idConcep7"'),";
-      }
-      if( $POCME_concepto8 <> "" && $POCME_valor8 > 0 ){
-        $concepPOCME .= "(".$nfolio.",'".$seccion."',".$POCME_cantidad8.",'".$POCME_idTipoCta8."','".$POCME_concepto8."','".$POCME_conceptoEng8."','".$POCME_desc8."',".$POCME_importe8.",".$POCME_valor8.",'".$T_POCME_idConcep8"'),";
-      }
-      $concepPOCME = rtrim($concepPOCME,',');
-
-      $query_POCME="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,n_cantidad,fk_id_concepto,s_conceptoEsp,s_conceptoEnglish,s_descripcion,n_importe,n_total,fk_id_concepto)
-                          VALUES $concepPOCME";
+      $query_POCME="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,n_cantidad,fk_id_cuenta,s_conceptoEsp,s_conceptoEnglish,s_descripcion,n_importe,n_total,fk_id_concepto)
+                          VALUES (?,?,?,?,?,?,?,?,?,?)";
 
       $stmt_POCME = $db->prepare($query_POCME);
       if (!($stmt_POCME)) {
@@ -77,48 +45,67 @@ if( $Total_POCME > 0 ){
         $system_callback['message'] = "Error during query prepare POCME [$db->errno]: $db->error";
         exit_script($system_callback);
       }
-      if (!($stmt_POCME->execute())) {
-        $system_callback['code'] = "500";
-        $system_callback['message'] = "Error during query execution POCME [$stmt_POCME->errno]: $stmt_DatGnEmbarq->error";
+
+      foreach ($pocmes as $pocme) {
+        $POCME_cantidad = $pocme['cantidad'];
+        $POCME_idTipoCta = $pocme['idcuenta'];
+        $POCME_idConcep = $pocme['idconcepto'];
+        $POCME_concepto = $pocme['concepto_esp'];
+        $POCME_conceptoEng = $pocme['concepto_ing'];
+        $POCME_desc = $pocme['descripcion'];
+        $POCME_importe = $pocme['importe'];
+        $POCME_valor = $pocme['subtotal'];
+
+        $stmt_POCME->bind_param('ssssssssss',$nfolio,$seccion,$POCME_cantidad,$POCME_idTipoCta,$POCME_concepto,$POCME_conceptoEng,$POCME_desc,$POCME_importe,$POCME_valor,$POCME_idConcep);
+        if (!($stmt_POCME)) {
+          $system_callback['code'] = "500";
+          $system_callback['message'] = "Error during variables binding POCME [$stmt_POCME->errno]: $stmt_POCME->error";
+          exit_script($system_callback);
+        }
+
+        if (!($stmt_POCME->execute())) {
+          $system_callback['code'] = "500";
+          $system_callback['message'] = "Error during query execution POCME [$stmt_POCME->errno]: $stmt_DatGnEmbarq->error";
+        }
       }
-    }
 }
 
-
-
+//PAGOS REALIZADOS POR SU CUENTA ***********************************************
 if( $Total_Pagos <> 0 ){
-    //PAGOS REALIZADOS POR SU CUENTA
+
     $seccion = 'cargos';
-    $conceptosCargos = '';
+    $cargos = $_POST['cargos'];
+    $cargo_idTipoCta = '0110-00001';
+    $cargo_concepto = 'Impuestos y/o derechos pagados o garantizados al Com. Ext.';
 
-    $conceptosCargos .= "(".$nfolio.",'".$seccion."','a','---','Impuestos Afianzados o Subsidiados',".$Total_Subsidiado."),";
-    $conceptosCargos .= "(".$nfolio.",'".$seccion."','b','0110-00001','Impuestos y/o derechos pagados o garantizados al Com. Ext.',".$Cargo_Total_1."),";
+    #Impuestos y/o derechos pagados o garantizados al Com. Ext.
+    $query_cargos1="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,fk_id_cuenta,s_conceptoEsp,n_total)
+                                                    VALUES (?,?,?,?,?) ";
 
-    if( $Cargo_Desc_2 <> '' && $Cargo_Total_2 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_2."','".$T_Cargo_idcuenta_2."','".$Cargo_Desc_2."',".$Cargo_Total_2."),";
-    }
-    if( $Cargo_Desc_3 <> '' && $Cargo_Total_3 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_3."','".$T_Cargo_idcuenta_3."','".$Cargo_Desc_3."',".$Cargo_Total_3."),";
-    }
-    if( $Cargo_Desc_4 <> '' && $Cargo_Total_4 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_4."','".$T_Cargo_idcuenta_4."','".$Cargo_Desc_4."',".$Cargo_Total_4."),";
-    }
-    if( $Cargo_Desc_5 <> '' && $Cargo_Total_5 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_5."','".$T_Cargo_idcuenta_5."','".$Cargo_Desc_5."',".$Cargo_Total_5."),";
-    }
-    if( $Cargo_Desc_6 <> '' && $Cargo_Total_6 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_6."','".$T_Cargo_idcuenta_6."','".$Cargo_Desc_6."',".$Cargo_Total_6."),";
-    }
-    if( $Cargo_Desc_7 <> '' && $Cargo_Total_7 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_7."','".$T_Cargo_idcuenta_7."','".$Cargo_Desc_7."',".$Cargo_Total_7."),";
-    }
-    if( $Cargo_Desc_8 <> '' && $Cargo_Total_8 > 0){
-      $conceptosCargos .= "(".$nfolio.",'".$seccion."','".$T_Cargo_idconcepto_8."','".$T_Cargo_idcuenta_8."','".$Cargo_Desc_8."',".$Cargo_Total_8."),";
+    $stmt_cargos1 = $db->prepare($query_cargos1);
+    if (!($stmt_cargos1)) {
+      $system_callback['code'] = "500";
+      $system_callback['message'] = "Error during query prepare cargos1 [$db->errno]: $db->error";
+      exit_script($system_callback);
     }
 
-    $conceptosCargos = rtrim($conceptosCargos,',');
+
+    $stmt_cargos1->bind_param('sssss',$nfolio,$seccion,$cargo_idTipoCta,$cargo_concepto,$Total_derechosPagados);
+    if (!($stmt_cargos1)) {
+    $system_callback['code'] = "500";
+    $system_callback['message'] = "Error during variables binding cargos1 [$stmt_cargos1->errno]: $stmt_cargos1->error";
+    exit_script($system_callback);
+    }
+
+    if (!($stmt_cargos1->execute())) {
+    $system_callback['code'] = "500";
+    $system_callback['message'] = "Error during query execution cargos1 [$stmt_cargos1->errno]: $stmt_DatGnEmbarq->error";
+    }
+
+
+    #cargos
     $query_cargos="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,fk_id_concepto,fk_id_cuenta,s_conceptoEsp,n_total)
-                                                        VALUES $conceptosCargos ";
+                                                    VALUES (?,?,?,?,?,?) ";
 
     $stmt_cargos = $db->prepare($query_cargos);
     if (!($stmt_cargos)) {
@@ -126,14 +113,158 @@ if( $Total_Pagos <> 0 ){
       $system_callback['message'] = "Error during query prepare cargos [$db->errno]: $db->error";
       exit_script($system_callback);
     }
-    if (!($stmt_cargos->execute())) {
+
+    foreach ($cargos as $cargo) {
+      $cargo_idTipoCta = $cargo['idcuenta'];
+      $cargo_idConcep = $cargo['idconcepto'];
+      $cargo_concepto = $cargo['concepto_esp'];
+      $cargo_valor = $cargo['subtotal'];
+
+      $stmt_cargos->bind_param('ssssss',$nfolio,$seccion,$cargo_idConcep,$cargo_idTipoCta,$cargo_concepto,$cargo_valor);
+      if (!($stmt_cargos)) {
+        $system_callback['code'] = "500";
+        $system_callback['message'] = "Error during variables binding cargos [$stmt_cargos->errno]: $stmt_cargos->error";
+        exit_script($system_callback);
+      }
+
+      if (!($stmt_cargos->execute())) {
+        $system_callback['code'] = "500";
+        $system_callback['message'] = "Error during query execution cargos [$stmt_cargos->errno]: $stmt_DatGnEmbarq->error";
+      }
+    }
+
+}
+
+//HONORARIOS Y SERVICIOS *******************************************************
+if( $Total_Gral_Importe > 0 ){
+  $seccion = 'honorarios';
+  $hon_cantidad = '1';
+  $hon_cve_unidad = 'E48';
+  $hon_unidad = 'Servicio';
+
+  $query_hon1="INSERT INTO conta_t_facturas_captura_det( fk_id_cuenta_captura,
+                                                          s_tipoDetalle,
+                                                          n_cantidad,
+                                                          fk_c_claveUnidad,
+                                                          s_Unidad,
+                                                          s_conceptoEsp,
+                                                          fk_id_cuenta,
+                                                          fk_c_ClaveProdServ,
+                                                          n_importe,
+                                                          n_IVA,
+                                                          n_ret,
+                                                          n_total,
+                                                          n_porcentaje,
+                                                          n_base,
+                                                          n_descuento)
+                                                  VALUES( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+  $stmt_hon1 = $db->prepare($query_hon1);
+  if (!($stmt_hon1)) {
+    $system_callback['code'] = "500";
+    $system_callback['message'] = "Error during query prepare hon1 [$db->errno]: $db->error";
+    exit_script($system_callback);
+  }
+
+  $stmt_hon1->bind_param('sssssssssssssss',$nfolio,$seccion,$hon_cantidad,$hon_cve_unidad,$hon_unidad,
+  $Honorarios_0,$Hcta_0,$Hps_0,$Honorarios_Importe_0,$Honorarios_IVA_0,
+  $Honorarios_RET_0,$Honorarios_Subtotal_0,$Honorarios_Porcentaje,$Honorarios_Base_Honorarios,$Honorarios_Descuento);
+
+  if (!($stmt_hon1)) {
       $system_callback['code'] = "500";
-      $system_callback['message'] = "Error during query execution cargos [$stmt_cargos->errno]: $stmt_cargos->error";
+      $system_callback['message'] = "Error during variables binding hon1 [$stmt_hon1->errno]: $stmt_hon1->error";
+      exit_script($system_callback);
+  }
+
+  if (!($stmt_hon1->execute())) {
+      $system_callback['code'] = "500";
+      $system_callback['message'] = "Error during query execution hon1 [$stmt_hon1->errno]: $stmt_DatGnEmbarq->error";
+  }
+
+  $honorarios = $_POST['honorarios'];
+  $query_hon="INSERT INTO conta_t_facturas_captura_det( fk_id_cuenta_captura,
+                                                            s_tipoDetalle,
+                                                            n_cantidad,
+                                                            fk_c_claveUnidad,
+                                                            s_Unidad,
+                                                            s_conceptoEsp,
+                                                            fk_id_cuenta,
+                                                            fk_c_ClaveProdServ,
+                                                            n_importe,
+                                                            n_IVA,
+                                                            n_ret,
+                                                            n_total)
+                                                    VALUES( ?,?,?,?,?,?,?,?,?,?,?,?)";
+
+    $stmt_hon = $db->prepare($query_hon);
+    if (!($stmt_hon)) {
+      $system_callback['code'] = "500";
+      $system_callback['message'] = "Error during query prepare hon [$db->errno]: $db->error";
+      exit_script($system_callback);
+    }
+
+    foreach ($honorarios as $hon) {
+      $hon_idTipoCta = $hon['idcuenta'];
+      $hon_cveProd = $hon['idcveprod'];
+      $hon_concepto = $hon['concepto_esp'];
+      $hon_importe = $hon['importe'];
+      $hon_iva = $hon['iva'];
+      $hon_ret = $hon['ret'];
+      $hon_valor = $hon['subtotal'];
+
+      $stmt_hon->bind_param('ssssssssssss',$nfolio,$seccion,$hon_cantidad,$hon_cve_unidad,$hon_unidad,$hon_concepto,$hon_idTipoCta,$hon_cveProd,$hon_importe,$hon_iva,$hon_ret,$hon_valor);
+      if (!($stmt_hon)) {
+        $system_callback['code'] = "500";
+        $system_callback['message'] = "Error during variables binding hon [$stmt_hon->errno]: $stmt_hon->error";
+        exit_script($system_callback);
+      }
+
+      if (!($stmt_hon->execute())) {
+        $system_callback['code'] = "500";
+        $system_callback['message'] = "Error during query execution hon [$stmt_hon->errno]: $stmt_DatGnEmbarq->error";
+      }
     }
 }
 
 
+//DEPOSITOS ********************************************************************
+if( $Total_Anticipos > 0 ){
+    $seccion = 'depositos';
+    $depositos = $_POST['depositos'];
 
+
+
+    $query_depositos="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,n_noDeposito,n_total)
+                                                        VALUES (?,?,?,?) ";
+
+    $stmt_depositos = $db->prepare($query_depositos);
+    if (!($stmt_depositos)) {
+      $system_callback['code'] = "500";
+      $system_callback['message'] = "Error during query prepare anticipos [$db->errno]: $db->error";
+      exit_script($system_callback);
+    }
+
+    foreach ($depositos as $deposito) {
+      $dep_id = $deposito['idDeposito'];
+      $dep_importe = $deposito['importe'];
+
+
+      $stmt_depositos->bind_param('ssss',$nfolio,$seccion,$dep_id,$dep_importe);
+      if (!($stmt_depositos)) {
+        $system_callback['code'] = "500";
+        $system_callback['message'] = "Error during variables binding hon [$stmt_depositos->errno]: $stmt_depositos->error";
+        exit_script($system_callback);
+      }
+
+      if (!($stmt_depositos->execute())) {
+        $system_callback['code'] = "500";
+        $system_callback['message'] = "Error during query execution hon [$stmt_depositos->errno]: $stmt_DatGnEmbarq->error";
+      }
+    }
+}
+
+
+/*
 if( $Total_Gral_Importe > 0 ){
     //HONORARIOS Y SERVICIOS
     $seccion = 'honorarios';
@@ -159,7 +290,7 @@ if( $Total_Gral_Importe > 0 ){
                                                             1,
                                                             'E48',
                                                             'Servicio',
-                                                            $Porcentaje_Descuento,
+                                                            $Porcentaje_Honorarios,
                                                             '$Honorarios_Txt',
                                                             $Honorarios_Base,
                                                             $Porcentaje_Descuento,
@@ -181,105 +312,5 @@ if( $Total_Gral_Importe > 0 ){
       $system_callback['code'] = "500";
       $system_callback['message'] = "Error during query execution hon1 [$stmt_hon1->errno]: $stmt_hon1->error";
     }
-
-
-
-    $conceptosHon = "";
-    if( $Honorarios_Desc_1 <> '' && $Honorarios_Total_1 <> 0 ){
-      $conceptosHon .= "(".$nfolio.",'".$seccion."',1,'E48','Servicio','".$Honorarios_Desc_1."','".$noIdentificacion1."','".$c_claveprodserv1."',".$Honorarios_Importe_1.",".$Honorarios_Iva_1.",".$Honorarios_ret_1.",".$Honorarios_Total_1."),";
-    }
-    if( $Honorarios_Desc_2 <> '' && $Honorarios_Total_2 <> 0 ){
-      $conceptosHon .= "(".$nfolio.",'".$seccion."',1,'E48','Servicio','".$Honorarios_Desc_2."','".$noIdentificacion2."','".$c_claveprodserv2."',".$Honorarios_Importe_2.",".$Honorarios_Iva_2.",".$Honorarios_ret_2.",".$Honorarios_Total_2."),";
-    }
-
-    if( $Honorarios_Desc_3 <> '' && $Honorarios_Total_3 <> 0 ){
-      $conceptosHon .= "(".$nfolio.",'".$seccion."',1,'E48','Servicio','".$Honorarios_Desc_3."','".$noIdentificacion3."','".$c_claveprodserv3."',".$Honorarios_Importe_3.",".$Honorarios_Iva_3.",".$Honorarios_ret_3.",".$Honorarios_Total_3."),";
-    }
-
-    if( $Honorarios_Desc_4 <> '' && $Honorarios_Total_4 <> 0 ){
-      $conceptosHon .= "(".$nfolio.",'".$seccion."',1,'E48','Servicio','".$Honorarios_Desc_4."','".$noIdentificacion4."','".$c_claveprodserv4."',".$Honorarios_Importe_4.",".$Honorarios_Iva_4.",".$Honorarios_ret_4.",".$Honorarios_Total_4."),";
-    }
-    if( $Honorarios_Desc_5 <> '' && $Honorarios_Total_5 <> 0 ){
-      $conceptosHon .= "(".$nfolio.",'".$seccion."',1,'E48','Servicio','".$Honorarios_Desc_5."','".$noIdentificacion5."','".$c_claveprodserv5."',".$Honorarios_Importe_5.",".$Honorarios_Iva_5.",".$Honorarios_ret_5.",".$Honorarios_Total_5."),";
-    }
-    if( $Honorarios_Desc_6 <> '' && $Honorarios_Total_6 <> 0 ){
-      $conceptosHon .= "(".$nfolio.",'".$seccion."',1,'E48','Servicio','".$Honorarios_Desc_6."','".$noIdentificacion6."','".$c_claveprodserv6."',".$Honorarios_Importe_6.",".$Honorarios_Iva_6.",".$Honorarios_ret_6.",".$Honorarios_Total_6."),";
-    }
-    if( $Honorarios_Desc_7 <> '' && $Honorarios_Total_7 <> 0 ){
-      $conceptosHon .= "(".$nfolio.",'".$seccion."',1,'E48','Servicio','".$Honorarios_Desc_7."','".$noIdentificacion7."','".$c_claveprodserv7."',".$Honorarios_Importe_7.",".$Honorarios_Iva_7.",".$Honorarios_ret_7.",".$Honorarios_Total_7."),";
-    }
-    if( $Honorarios_Desc_8 <> '' && $Honorarios_Total_8 <> 0 ){
-      $conceptosHon .= "(".$nfolio.",'".$seccion."',1,'E48','Servicio','".$Honorarios_Desc_8."','".$noIdentificacion8."','".$c_claveprodserv8."',".$Honorarios_Importe_8.",".$Honorarios_Iva_8.",".$Honorarios_ret_8.",".$Honorarios_Total_8."),";
-    }
-
-    $query_hon="INSERT INTO conta_t_facturas_captura_det(  fk_id_cuenta_captura,
-                                                            s_tipoDetalle,
-                                                            n_cantidad,
-                                                            fk_c_claveUnidad,
-                                                            s_Unidad,
-                                                            s_conceptoEsp,
-                                                            fk_id_cuenta,
-                                                            fk_c_ClaveProdServ,
-                                                            n_importe,
-                                                            n_IVA,
-                                                            n_ret,
-                                                            n_total)
-                                                    VALUES $conceptosHon";
-
-    $query_hon = rtrim($query_hon,',');
-    $stmt_hon = $db->prepare($query_hon);
-    if (!($stmt_hon)) {
-      $system_callback['code'] = "500";
-      $system_callback['message'] = "Error during query prepare hon [$db->errno]: $db->error";
-      exit_script($system_callback);
-    }
-    if (!($stmt_hon->execute())) {
-      $system_callback['code'] = "500";
-      $system_callback['message'] = "Error during query execution hon [$stmt_hon->errno]: $stmt_hon->error";
-    }
-}
-
-
-
-
-
-if( $Total_Anticipos > 0 ){
-    //ANTICIPOS
-    $seccion = 'anticipos';
-    $conceptosAnticipos = '';
-
-    if( $No_Anticipo_1 <> '' && $Val_Anticipo_1 > 0){
-      $conceptosAnticipos .= "(".$nfolio.",'".$seccion."',".$No_Anticipo_1.",".$Val_Anticipo_1."),";
-    }
-    if( $No_Anticipo_2 <> '' && $Val_Anticipo_2 > 0){
-      $conceptosAnticipos .= "(".$nfolio.",'".$seccion."',".$No_Anticipo_2.",".$Val_Anticipo_2."),";
-    }
-    if( $No_Anticipo_3 <> '' && $Val_Anticipo_3 > 0){
-      $conceptosAnticipos .= "(".$nfolio.",'".$seccion."',".$No_Anticipo_3.",".$Val_Anticipo_3."),";
-    }
-    if( $No_Anticipo_4 <> '' && $Val_Anticipo_4 > 0){
-      $conceptosAnticipos .= "(".$nfolio.",'".$seccion."',".$No_Anticipo_4.",".$Val_Anticipo_4."),";
-    }
-    if( $No_Anticipo_5 <> '' && $Val_Anticipo_5 > 0){
-      $conceptosAnticipos .= "(".$nfolio.",'".$seccion."',".$No_Anticipo_5.",".$Val_Anticipo_5."),";
-    }
-    if( $No_Anticipo_6 <> '' && $Val_Anticipo_6 > 0){
-      $conceptosAnticipos .= "(".$nfolio.",'".$seccion."',".$No_Anticipo_6.",".$Val_Anticipo_6."),";
-    }
-
-    $conceptosAnticipos = rtrim($conceptosAnticipos,',');
-    $query_cargos="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,n_noDeposito,n_total)
-                                                        VALUES $conceptosAnticipos ";
-
-    $stmt_cargos = $db->prepare($query_cargos);
-    if (!($stmt_cargos)) {
-      $system_callback['code'] = "500";
-      $system_callback['message'] = "Error during query prepare anticipos [$db->errno]: $db->error";
-      exit_script($system_callback);
-    }
-    if (!($stmt_cargos->execute())) {
-      $system_callback['code'] = "500";
-      $system_callback['message'] = "Error during query execution anticipos [$stmt_cargos->errno]: $stmt_cargos->error";
-    }
-}
+*/
 ?>

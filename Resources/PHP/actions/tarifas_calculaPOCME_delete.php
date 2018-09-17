@@ -5,9 +5,16 @@
     if( $cobrarFlete == 'no'){
       $query_deleteHNS12 = "DELETE FROM conta_tem_tarifas_calculodetalle
                             WHERE fk_id_tarifa = $calculoTarifa AND fk_id_concepto IN(
-                                        SELECT fk_id_conceptoHon
-                                        FROM contame_tarifas_conceptos
-                                        WHERE fk_id_conceptoCta = 'HNS_12' AND fk_id_cliente = '$cliente' AND s_concepto_esp LIKE '%FLETE%')";
+                                SELECT pk_id_concepto
+                                FROM conta_tarifas_conceptos
+                                WHERE fk_id_cuenta = 'HNS_12' AND fk_id_cliente = '$cliente' AND s_descripcion LIKE '%FLETE%')";
+
+      // $query_deleteHNS12 = "DELETE FROM conta_tem_tarifas_calculodetalle
+      //                       WHERE fk_id_tarifa = $calculoTarifa AND fk_id_concepto IN(
+      //                                     SELECT fk_id_conceptoHon
+      //                                     FROM contame_tarifas_conceptos
+      //                                     WHERE fk_id_conceptoCta = 'HNS_12' AND fk_id_cliente = '$cliente' AND s_concepto_esp LIKE '%FLETE%')";
+
 
       $stmt_deleteHNS12 = $db->prepare($query_deleteHNS12);
       if (!($stmt_deleteHNS12)) {
@@ -28,9 +35,15 @@
       # HNS_8 ENTRADAS ADICIONALES
       $query_deleteHNS8 = "DELETE FROM conta_tem_tarifas_calculodetalle
                           WHERE fk_id_tarifa = $calculoTarifa AND fk_id_concepto IN(
-                                    SELECT fk_id_conceptoHon
-                                    FROM contame_tarifas_conceptos
-                                    WHERE fk_id_conceptoCta = 'HNS_8' AND fk_id_cliente = '$cliente')";
+                              SELECT pk_id_concepto
+                              FROM conta_tarifas_conceptos
+                              WHERE fk_id_cuenta = 'HNS_8' AND fk_id_cliente = '$cliente')";
+
+      // $query_deleteHNS8 = "DELETE FROM conta_tem_tarifas_calculodetalle
+      //                     WHERE fk_id_tarifa = $calculoTarifa AND fk_id_concepto IN(
+      //                               SELECT fk_id_conceptoHon
+      //                               FROM contame_tarifas_conceptos
+      //                               WHERE fk_id_conceptoCta = 'HNS_8' AND fk_id_cliente = '$cliente')";
 
       $stmt_deleteHNS8 = $db->prepare($query_deleteHNS8);
       if (!($stmt_deleteHNS8)) {
@@ -51,8 +64,14 @@
     if( $inbond == 'NO' ){
       $query_deleteHNS4 = "DELETE FROM conta_tem_tarifas_calculodetalle
                           WHERE fk_id_tarifa = $calculoTarifa AND fk_id_concepto IN(
-                                SELECT fk_id_conceptoHon FROM contame_tarifas_conceptos
-                                WHERE fk_id_conceptoCta = 'HNS_4' AND fk_id_cliente = '$cliente')";
+                              SELECT pk_id_concepto
+                              FROM conta_tarifas_conceptos
+                              WHERE fk_id_cuenta = 'HNS_4' AND fk_id_cliente = '$cliente')";
+
+      // $query_deleteHNS4 = "DELETE FROM conta_tem_tarifas_calculodetalle
+      //                     WHERE fk_id_tarifa = $calculoTarifa AND fk_id_concepto IN(
+      //                           SELECT fk_id_conceptoHon FROM contame_tarifas_conceptos
+      //                           WHERE fk_id_conceptoCta = 'HNS_4' AND fk_id_cliente = '$cliente')";
 
       $stmt_deleteHNS4 = $db->prepare($query_deleteHNS4);
       if (!($stmt_deleteHNS4)) {
@@ -71,8 +90,15 @@
     if( $shipper == '0' ){
       $query_deleteHNS7 = "DELETE FROM conta_tem_tarifas_calculodetalle
                           WHERE fk_id_tarifa = $calculoTarifa AND fk_id_concepto IN(
-                                  SELECT fk_id_conceptoHon FROM contame_tarifas_conceptos
-                                  WHERE fk_id_conceptoCta = 'HNS_7' AND fk_id_cliente = '$cliente')";
+                            SELECT pk_id_concepto
+                            FROM conta_tarifas_conceptos
+                            WHERE fk_id_cuenta = 'HNS_7' AND fk_id_cliente = '$cliente')";
+
+
+      // $query_deleteHNS7 = "DELETE FROM conta_tem_tarifas_calculodetalle
+      //                     WHERE fk_id_tarifa = $calculoTarifa AND fk_id_concepto IN(
+      //                             SELECT fk_id_conceptoHon FROM contame_tarifas_conceptos
+      //                             WHERE fk_id_conceptoCta = 'HNS_7' AND fk_id_cliente = '$cliente')";
 
       $stmt_deleteHNS7 = $db->prepare($query_deleteHNS7);
       if (!($stmt_deleteHNS7)) {

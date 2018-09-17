@@ -1,9 +1,15 @@
 <?php
 #fk_id_conceptoCta,s_concepto_eng,s_concepto_esp,n_cantidad,n_importe
-$query_conTarifaPOCMEcliente = "SELECT fk_id_concepto,s_concepto_eng,s_concepto_esp,n_cantidad,n_importe,fk_id_cuenta
-                                FROM conta_tem_tarifas_calculodetalle A, contame_tarifas_conceptos B
-                                WHERE A.fk_id_concepto = B.fk_id_conceptoHon AND A.fk_id_tarifa=$calculoTarifa AND A.s_seccion = 'POCME' and A.fk_id_cliente = '$id_cliente_usar'
-                                ORDER BY B.s_Concepto_esp";
+// $query_conTarifaPOCMEcliente = "SELECT fk_id_concepto,s_concepto_eng,s_concepto_esp,n_cantidad,n_importe,fk_id_cuenta
+//                                 FROM conta_tem_tarifas_calculodetalle A, contame_tarifas_conceptos B
+//                                 WHERE A.fk_id_concepto = B.fk_id_conceptoHon AND A.fk_id_tarifa=$calculoTarifa AND A.s_seccion = 'POCME' and A.fk_id_cliente = '$id_cliente_usar'
+//                                 ORDER BY B.s_Concepto_esp";
+
+$query_conTarifaPOCMEcliente = "SELECT A.fk_id_concepto,b.s_concepto_eng,s_conceptoesp,n_cantidad,n_importe,A.fk_id_cuenta
+                                FROM conta_tem_tarifas_calculodetalle A, conta_tarifas_conceptos B
+                                WHERE A.fk_id_concepto = B.pk_id_concepto AND A.fk_id_tarifa=$calculoTarifa AND A.s_seccion = 'POCME' and A.fk_id_cliente = '$id_cliente_usar'
+                                ORDER BY A.s_Conceptoesp";
+
 
 $stmt_conTarifaPOCMEcliente = $db->prepare($query_conTarifaPOCMEcliente);
 if (!($stmt_conTarifaPOCMEcliente)) {
@@ -28,7 +34,7 @@ if ($rslt_conTarifaPOCMEcliente->num_rows > 0) {
   while ($row_conTarifaPOCMEcliente = $rslt_conTarifaPOCMEcliente->fetch_assoc()) {
     $fk_id_concepto = $row_conTarifaPOCMEcliente[fk_id_concepto];
     $s_concepto_eng = trim(utf8_encode($row_conTarifaPOCMEcliente[s_concepto_eng]));
-    $s_concepto_esp = trim(utf8_encode($row_conTarifaPOCMEcliente[s_concepto_esp]));
+    $s_concepto_esp = trim(utf8_encode($row_conTarifaPOCMEcliente[s_conceptoesp]));
     $n_cantidad = $row_conTarifaPOCMEcliente[n_cantidad];
     $n_importe = number_format($row_conTarifaPOCMEcliente[n_importe],2);
     $fk_id_cuenta = $row_conTarifaPOCMEcliente[fk_id_cuenta];
