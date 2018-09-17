@@ -21,9 +21,13 @@ $s_seccion = 'POCME';
 $ADICIONAL = 0;
 
 //$system_callback = [];
-$query_consultaConcPOCME = "SELECT DISTINCT b.fk_id_conceptoHon,b.fk_id_tipoCalculo, B.s_concepto_esp,B.s_concepto_eng, A.fk_id_cliente , B.fk_id_conceptoCta
-														FROM contame_tarifas a, contame_tarifas_conceptos b
-														WHERE A.FK_ID_ConceptoHon = B.FK_ID_ConceptoHon AND a.fk_id_cliente = ? and a.s_consolidado = ? AND A.s_operacion = ? ";
+$query_consultaConcPOCME = "SELECT DISTINCT b.pk_id_concepto,b.fk_id_tipo, B.s_descripcion,B.s_concepto_eng, A.fk_id_cliente , B.fk_id_cuenta
+													FROM conta_tarifas a, conta_tarifas_conceptos b
+													WHERE A.fk_id_concepto = B.pk_id_concepto AND a.fk_id_cliente = 'clt_5900' and a.s_consolidado = 'LTL/FTL' AND A.s_imp_exp = 'imp'";
+
+// $query_consultaConcPOCME = "SELECT DISTINCT b.fk_id_conceptoHon,b.fk_id_tipoCalculo, B.s_concepto_esp,B.s_concepto_eng, A.fk_id_cliente , B.fk_id_conceptoCta
+// 														FROM contame_tarifas a, contame_tarifas_conceptos b
+// 														WHERE A.FK_ID_ConceptoHon = B.FK_ID_ConceptoHon AND a.fk_id_cliente = ? and a.s_consolidado = ? AND A.s_operacion = ? ";
 
 $stmt_consultaConcPOCME = $db->prepare($query_consultaConcPOCME);
 if (!($stmt_consultaConcPOCME)) {
@@ -48,19 +52,22 @@ if (!($stmt_consultaConcPOCME->execute())) {
 $rslt_consultaConcPOCME = $stmt_consultaConcPOCME->get_result();
 
 while ($row_consultaConcPOCME = $rslt_consultaConcPOCME->fetch_assoc()) {
-	$ID_CONCEPTO_CURSOR = $row_consultaConcPOCME['fk_id_conceptoHon'];
-	$TIPO_CURSOR = $row_consultaConcPOCME['fk_id_tipoCalculo'];
-	$s_concepto_esp = $row_consultaConcPOCME['s_concepto_esp'];
+	$ID_CONCEPTO_CURSOR = $row_consultaConcPOCME['fk_id_concepto'];
+	$TIPO_CURSOR = $row_consultaConcPOCME['fk_id_tipo'];
+	$s_concepto_esp = $row_consultaConcPOCME['s_descripcion'];
 	$s_concepto_eng = $row_consultaConcPOCME['s_concepto_eng'];
-	$fk_id_conceptoCta = $row_consultaConcPOCME['fk_id_conceptoCta'];
+	$fk_id_conceptoCta = $row_consultaConcPOCME['fk_id_cuenta'];
 
 	$IMPORTE = 0;
 
 	#-- Un solo registro con un solo importe
 	if( $TIPO_CURSOR == 301 ){
-	 	$query_calc301 = "SELECT n_importe_1
-											FROM contame_tarifas
-											WHERE fk_id_cliente = ? AND s_operacion = ? and fk_id_conceptoHon = ? AND s_consolidado = ?";
+		$query_calc301 = "SELECT n_importe_1
+											FROM conta_tarifas
+											WHERE fk_id_cliente = ? AND s_imp_exp = ? and fk_id_concepto = ? AND s_consolidado = ?";
+		// $query_calc301 = "SELECT n_importe_1
+		// 									FROM contame_tarifas
+		// 									WHERE fk_id_cliente = ? AND s_operacion = ? and fk_id_conceptoHon = ? AND s_consolidado = ?";
 
 		$stmt_calc301 = $db->prepare($query_calc301);
 		if (!($stmt_calc301)) {
@@ -90,9 +97,13 @@ while ($row_consultaConcPOCME = $rslt_consultaConcPOCME->fetch_assoc()) {
 
 	#-- Varios registros con 1 limite inferior, 1 limite superior y 1 importe ( por peso )
 	if( $TIPO_CURSOR == 302 ){
-	 	$query_calc302 = "SELECT n_importe_1
-											FROM contame_tarifas
-											WHERE fk_id_cliente = ? AND s_operacion = ? and fk_id_conceptoHon = ? AND s_consolidado = ? AND n_lim_inferior <= ? and n_lim_superior >= ?";
+		$query_calc302 = "SELECT n_importe_1
+											FROM conta_tarifas
+											WHERE fk_id_cliente = ? AND s_imp_exp = ? and fk_id_concepto = ? AND s_consolidado = ? AND n_lim_inferior <= ? and n_lim_superior >= ?";
+
+		// $query_calc302 = "SELECT n_importe_1
+		// 									FROM contame_tarifas
+		// 									WHERE fk_id_cliente = ? AND s_operacion = ? and fk_id_conceptoHon = ? AND s_consolidado = ? AND n_lim_inferior <= ? and n_lim_superior >= ?";
 
 		$stmt_calc302 = $db->prepare($query_calc302);
 		if (!($stmt_calc302)) {
