@@ -335,6 +335,47 @@ function tarifaGeneral(){
   $('#Lst_tarifa_cliente').val(0);
 }
 
+// funciones TAB
+$('#Lst_tarifa_general').change(function(){
+  $('#T_POCME_Valor').focus();
+})
+
+$('#T_POCME_Valor').keydown(function(e){
+ if (e.keyCode == 9) {
+   agregarImporte();
+ }
+})
+
+
+$('#Lst_CA').change(function(){
+  $('#T_Valor_Concepto_Gral').focus();
+})
+
+$('#T_Valor_Concepto_Gral').keydown(function(e){
+ if (e.keyCode == 9) {
+   agregarCargo();
+ }
+})
+
+$('#Lst_CHL').change(function(){
+  $('#T_Valor_Concepto_Honorarios').focus();
+})
+
+$('#T_Valor_Concepto_Honorarios').keydown(function(e){
+ if (e.keyCode == 9) {
+   agregarHonorarios();
+ }
+})
+
+$(document).keydown(function(e){
+  if (e.keyCode == 9) {
+    Suma_Valor_Honorarios();
+  }
+})
+// ---Aqui acaba funciones TAB
+
+
+
 function agregarImporte(){
 	unidades = $('#T_no_calculo').val();
 	cta =  $('#T_POCME_Cta').val();

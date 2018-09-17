@@ -5,7 +5,8 @@ error_reporting(0);
 require $root . '/conta6/Resources/PHP/Utilities/session.php';
 $_SESSION['user_name'] = 'admado';
 $usuario = $_SESSION['user_name'];
-$aduana = 470;
+$aduana = 240;
+// $aduana = 470;
 
 include($root . '/conta6/Resources/PHP/Databases/conexion.php');
 date_default_timezone_set('America/Monterrey');

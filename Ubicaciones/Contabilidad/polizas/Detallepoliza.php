@@ -120,7 +120,7 @@ if( $totalRegistrosSelect > 0 ){
     </nav> <!--links de desplazamiento-->
     <div class="containermov">
       <div class="contenedor-movible">
-        <div id="one"><!--CAPTURA DE POLIZAS-->
+        <div><!--CAPTURA DE POLIZAS-->
           <div id="capturapoliza" class="contorno-mov">
             <table class="table form1 font14">
               <thead>

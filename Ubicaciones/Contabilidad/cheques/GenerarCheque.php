@@ -23,16 +23,16 @@
             <input class="efecto tiene-contenido" type="date" id="chefecha">
             <label for="chefecha">Fecha Cheque</label>
           </td>
-		      <td class="col-md-4 input-effect">
+		      <td class="col-md-6 input-effect">
 		  	    <input class="efecto popup-input" id="checuenta" type="text" id-display="#popup-display-checuenta" action="cuentas_mst_0100_oficina" db-id="" autocomplete="off">
           	<div class="popup-list" id="popup-display-checuenta" style="display:none"></div>
           	<label for="checuenta">Seleccione una Cuenta</label>
 		      </td>
-          <td class="col-md-2 input-effect">
+          <td class="col-md-1 input-effect ls1">
             <input id="chenumero" class="efecto" type="text" onchange="validaSoloNumeros(this)">
             <label for="chenumero">No.Cheque</label>
           </td>
-          <td class="col-md-3 input-effect">
+          <td class="col-md-2 input-effect">
             <input id="cheimporte" class="efecto" type="text" onchange="validaSoloNumeros(this)">
             <label for="cheimporte">Importe</label>
           </td>
@@ -42,16 +42,16 @@
         </tr>
 		    <tr class="row m-0 mt-1">
           <td class="col-md-3">
-            <input  class="chebeneficiario efecto" type="submit" value="Beneficiario">
+            <input class="chebeneficiario efecto" type="submit" value="Beneficiario">
 		      </td>
           <td class="col-md-3">
-            <input  class="checliente efecto" type="submit" value="Cliente">
+            <input class="checliente efecto" type="submit" value="Cliente">
 		      </td>
           <td class="col-md-3">
-            <input  class="cheempleado efecto" type="submit" value="Empleado">
+            <input class="cheempleado efecto" type="submit" value="Empleado">
           </td>
           <td class="col-md-3">
-            <input  class="cheproveedor efecto" type="submit" value="Proveedor">
+            <input class="cheproveedor efecto" type="submit" value="Proveedor">
 		      </td>
         </tr>
         <tr class="row m-0 mt-4">

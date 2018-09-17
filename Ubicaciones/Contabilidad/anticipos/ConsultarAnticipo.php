@@ -59,6 +59,23 @@
 
     if( $totalRegistrosDET > 0 ){
       while ($row = mysqli_fetch_array($sql_DET)){
+
+        $headDetalle ="<tr class='row encabezado'>
+          <td class='>DETALLE POLIZA</td>
+        </tr>
+        <tr class='row backpink'>
+          <th class='p-0 pt-3 xs'></th>
+          <td class='p-0 pt-3 small'>CUENTA</td>
+          <td class='p-0 pt-3 small'>REFERENCIA</td>
+          <td class='p-0 pt-3 small'>CLIENTE</td>
+          <td class='p-0 pt-3 small'>FACTURA</td>
+          <td class='p-0 pt-3 small'>CTA GASTOS</td>
+          <td class='p-0 pt-3 small'>PAGO ELECT</td>
+          <td class='p-0 pt-3 small'>NOTACRED</td>
+          <td class='p-0 pt-3 gde'>DESCRIPCION</td>
+          <td class='p-0 pt-3 small'>CARGO</td>
+          <td class='p-0 pt-3 small'>ABONO</td>
+        </tr>";
         $contenidoDetalle = "
         <tr class='row borderojo'>
           <td class='xs'></td>
@@ -76,13 +93,14 @@
         </tr>";
       }
     }else{
-      $contenidoDetalle = '<div class="container-fluid pantallaGris">
-        <div class="tituloSinRegistros">NO HAY DETALLE DE ESTA PÓLIZA</div>
-      </div>';
+      $headDetalle = "";
+      $contenidoDetalle = '<div class="font18" style="color:red">ESTE ANTICIPO NO TIENE DETALLE</div>';
     }
   }
 ?>
-
+<?php
+  if( $rows > 0 ){
+?>
 
 <div class="text-center">
   <div class="row m-0 submenuMed">
@@ -92,9 +110,7 @@
       </li>
     </ul>
   </div>
-<?php
-  if( $rows > 0 ){
-?>
+
   <input type="hidden" id="mst-anticipo" value="<?php echo $rowMST['pk_id_anticipo']; ?>">
 <!--Comienza DETALLE DATOS DE POLIZA-->
   <div id="datosanticipo" class="contorno" style="display:none">
@@ -162,22 +178,7 @@
   <div id="detallepoliza" class="contorno">
     <table class="table table-hover">
       <thead class="font18">
-        <tr class="row encabezado">
-          <td class="">DETALLE POLIZA</td>
-        </tr>
-        <tr class="row backpink">
-          <th class="p-0 pt-3 xs"></th>
-          <td class="p-0 pt-3 small">CUENTA</td>
-          <td class="p-0 pt-3 small">REFERENCIA</td>
-          <td class="p-0 pt-3 small">CLIENTE</td>
-          <td class="p-0 pt-3 small">FACTURA</td>
-          <td class="p-0 pt-3 small">CTA GASTOS</td>
-          <td class="p-0 pt-3 small">PAGO ELECT</td>
-          <td class="p-0 pt-3 small">NOTACRED</td>
-          <td class="p-0 pt-3 gde">DESCRIPCION</td>
-          <td class="p-0 pt-3 small">CARGO</td>
-          <td class="p-0 pt-3 small">ABONO</td>
-        </tr>
+        <?php echo $headDetalle ?>
       </thead>
       <tbody class="font14" id="tabla_detalleanticipoConsulta"><?php echo $contenidoDetalle; ?></tbody>
     </table>

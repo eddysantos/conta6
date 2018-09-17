@@ -260,17 +260,20 @@ height: 30px;
 }
 
 .pantallaGris{
-	background-color: rgb(240, 240, 240,0.25);
-  /* margin-bottom: 0px */
-	height: 800px;
+  /* background-color: rgb(240, 240, 240,0.25); */
+	background-color: white;
+  height: calc(100vh - 200px)!important;
+  /* height: calc(100vh - 150px)!important; */
 }
 
 .tituloSinRegistros{
 	text-align: center;
 	margin-top: 260px;
 	letter-spacing: 8px;
-	color: rgb(210, 210, 210);
-	font-size: 50px
+	/* color: rgb(210, 210, 210); */
+  color: red;
+	/* font-size: 50px */
+  font-size: 20px
 }
 
 .footer{
@@ -297,8 +300,6 @@ height: 30px;
   border-radius: 8px;
 }
 
-
-
 button img{
   width:20px;
   padding-top:4px;
@@ -316,4 +317,48 @@ a img{
 
 .bt{
   background-color: transparent!important;
+}
+
+.inputId{
+  color: #989898!important;
+  border: none;
+  letter-spacing: 2px;
+}
+
+
+
+.custom-select-mod {
+  display: inline-block;
+  width: 100%;
+  padding: .375rem 1.75rem .375rem .75rem;
+  line-height: 1.5;
+  color: #495057;
+  vertical-align: middle;
+  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+  background-size: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: .25rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
+}
+
+.h20{
+  height: 20px;
+}
+
+.h25{
+  height: 25px;
+}
+.h18{
+  height: 18px;
+}
+
+
+.divisor{
+  border: 1px solid #ccc;
+  border-top: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 10px;
 }

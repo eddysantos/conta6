@@ -313,7 +313,7 @@ function genAnt(){
         console.log(r);
           if (r.code == 1) {
             swal("Exito", "La cuenta se actualizó correctamente.", "success");
-            $('.real-time-search').keyup();
+            $('.modal').modal('hide');
             setTimeout('document.location.reload()',700);
           } else {
             console.error(r.message);
@@ -1015,8 +1015,20 @@ function asignaBCliente(){
   $('#s_bancoOri').attr('db-id',banco);
   $('#s_ctaOri').val(bancocta);
   $('#s_ctOri').attr('db-id',bancocta);
-
 }
+
+
+$('#folioAnt').keydown(function(e){
+	if (e.keyCode === 13 || e.keyCode === 9) {
+		buscarAnticipo('modificar');
+	}
+})
+
+$('#folioAntConsulta').keydown(function(e){
+	if (e.keyCode === 13 || e.keyCode === 9) {
+		buscarAnticipo('consultar');
+	}
+})
 
 
 // BUSCAR ANTICIPO

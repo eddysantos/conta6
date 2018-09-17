@@ -18,8 +18,8 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-12">
-            <form class="form-group">
-              <input id="folioPol" class="reg border-0" type="text" onchange="validaSoloNumeros(this);" autocomplete="off">
+            <form class="form-group" onsubmit="return false;">
+              <input id="folioPol" class="reg border-0 w-100" type="text" onchange="validaSoloNumeros(this);" autocomplete="off">
             </form>
           </div>
         </div>
@@ -50,8 +50,8 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-12">
-            <form class="form-group">
-              <input id="folioPolconsulta" class="reg border-0" type="text" onchange="validaSoloNumeros(this)" autocomplete="off">
+            <form class="form-group" onsubmit="return false;">
+              <input id="folioPolconsulta" class="reg border-0 w-100" type="text" onchange="validaSoloNumeros(this)" autocomplete="off">
             </form>
           </div>
         </div>
@@ -75,6 +75,7 @@
       </div>
       <div class="modal-body">
         <form class="form1">
+        <!-- <form class="form1" onsubmit="return false;"> -->
           <table class="table">
             <tr class="row m-0 mt-3">
               <td class="col-md-4 input-effect">
@@ -109,6 +110,7 @@
       </div>
       <div class="modal-body">
         <form class="form1">
+        <!-- <form class="form1" onsubmit="return false;"> -->
           <table class="table">
             <tr class="row m-0 mt-3">
               <td class="col-md-4 input-effect">
@@ -152,8 +154,8 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form class="form-group">
-            <input class="reg border-0" type="text" id="folioAnt" onchange="validaSoloNumeros(this)" autocomplete="off">
+            <form class="form-group" onsubmit="return false;">
+            <input class="reg border-0 w-100" type="text" id="folioAnt" onchange="validaSoloNumeros(this)" autocomplete="off">
           </form>
           </div>
         </div>
@@ -183,8 +185,8 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form  class="form-group">
-            <input class="reg border-0" type="text" id="folioAntConsulta" onchange="validaSoloNumeros(this)" autocomplete="off">
+            <form  class="form-group" onsubmit="return false;">
+            <input class="reg border-0 w-100" type="text" id="folioAntConsulta" onchange="validaSoloNumeros(this)" autocomplete="off">
           </form>
           </div>
         </div>
@@ -215,9 +217,9 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form  class="form-group" autocomplete="off">
-            <input class="reg border-0" type="text">
-          </form>
+            <form  class="form-group" autocomplete="off" onsubmit="return false;">
+              <input class="reg border-0 w-100" type="text">
+            </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
@@ -313,8 +315,8 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form  class="form-group" autocomplete="off">
-              <input class="reg border-0" type="text">
+            <form  class="form-group" autocomplete="off" onsubmit="return false;">
+              <input class="reg border-0 w-100" type="text">
             </form>
           </div>
         </div>

@@ -57,10 +57,6 @@
               <a href="" class="boton">Generar Tasa Cero <i class="fa fa-angle-double-right fa-lg"></i></a>
             </td>
           </tr>
-          <!-- <tr class="row backpink mt-3">
-            <td class="col-md-3">Expedir Cuenta de Gastos a: </td>
-            <td class="col-md-9">Tecnologias Relacionadas con Energia y Servicios Especializado S.A de C.V --- CLT_7517</td>
-          </tr> -->
         </tbody>
       </table>
       <div id="datosEmbarque"></div>

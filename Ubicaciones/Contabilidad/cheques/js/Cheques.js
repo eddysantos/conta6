@@ -26,30 +26,26 @@ $(document).ready(function(){
 
     $('.chebeneficiario').click(function(){
       $('#chebeneficiario1').show();
-      $('#checliente1').hide();
-      $('#cheempleado1').hide();
-      $('#cheproveedor1').hide();
+      $('#chebeneficiario').focus();
+      $('#checliente1,#cheempleado1,#cheproveedor1').hide();
     });
 
     $('.checliente').click(function(){
-      $('#chebeneficiario1').hide();
       $('#checliente1').show();
-      $('#cheempleado1').hide();
-      $('#cheproveedor1').hide();
+      $('#checliente').focus();
+      $('#chebeneficiario1,#cheempleado1,#cheproveedor1').hide();
     });
 
     $('.cheempleado').click(function(){
-      $('#chebeneficiario1').hide();
-      $('#checliente1').hide();
       $('#cheempleado1').show();
-      $('#cheproveedor1').hide();
+      $('#cheempleado').focus();
+      $('#checliente1,#chebeneficiario1,#cheproveedor1').hide();
     });
 
     $('.cheproveedor').click(function(){
-      $('#chebeneficiario1').hide();
-      $('#checliente1').hide();
-      $('#cheempleado1').hide();
       $('#cheproveedor1').show();
+      $('#cheproveedor').focus();
+      $('#chebeneficiario1,#checliente1,#cheempleado1').hide();
     });
 
 
@@ -57,6 +53,24 @@ $(document).ready(function(){
 //******************************************************************************
 //                             GENERAR CHEQUE
 //******************************************************************************
+
+$('#mModifiChCtaMST').keydown(function(e){
+  // if (e.keyCode === 13 || e.keyCode === 9) {
+	if (e.keyCode === 9) {
+    id_cheque = $('#mModifiChIdcheque').val();
+    id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
+    window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+	}
+})
+
+$('#mConsChCtaMST').keydown(function(e){
+  if (e.keyCode === 9) {
+	// if (e.keyCode === 13 || e.keyCode === 9) {
+    id_cheque = $('#mConsChIdcheque').val();
+    id_cuentaMST = $('#mConsChCtaMST').attr('db-id');
+    window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+	}
+})
 
     $('#chebeneficiario').change(function(){
         $('#opcionActivada').val("BEN");
@@ -621,13 +635,7 @@ $(document).ready(function(){
       id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
       window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
     });
-
-
-
-
 });
-
-
 
     //*******************************************************************************
     //                        PARTIDA DE CHEQUE
@@ -666,7 +674,7 @@ $(document).ready(function(){
     					  if (r.code == 1) {
       						swal("Eliminado!", "Se elimino correctamente.", "success");
                   setTimeout('document.location.reload()',700);
-                  
+
                   // $('#detallecheque').click();
                   sumasCAcheques();
                   ultReg_DetChe();

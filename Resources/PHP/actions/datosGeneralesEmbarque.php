@@ -75,7 +75,7 @@ $aduana = 240;
 			}else{
         $flete = number_format($flete,2,'.',',');
       }
-      $fleteOption = "<select id='cobrarFlete'>
+      $fleteOption = "<select id='cobrarFlete' class='custom-select-mod h18 p-0'>
                         <option value='si' selected>Si</option>
                         <option value='no'>No</option>
                       </select>";
@@ -124,11 +124,11 @@ $aduana = 240;
       //consulto si ya tiene cuentas capturadas
       require $root . '/conta6/Resources/PHP/actions/consultaFacturaCapturaReferencia.php';
       if( $rows_facCaptRef > 0 ){
-        $statusReferencia = "<input type='text' id='Txt_ExistenCuentas' size='65' class='b border-0 font14' db-id='$rows_status' value='Ya existe cuenta de gastos con esta referencia' readonly";
+        $statusReferencia = "<input type='text' id='Txt_ExistenCuentas' size='65' class='p-0 b inputId font14' db-id='$rows_status' value='Ya existe cuenta de gastos con esta referencia' readonly";
       }
 
       if( $rows_facCaptRef == 0 ){
-        $statusReferencia = "<input type='text' id='Txt_ExistenCuentas' size='65' class='b border-0 font14'  db-id='$rows_status' value='No existe cuenta de gastos con esta referencia' readonly";
+        $statusReferencia = "<input type='text' id='Txt_ExistenCuentas' size='65' class='p-0 b inputId font14'  db-id='$rows_status' value='No existe cuenta de gastos con esta referencia' readonly";
       }
 
       //si tiene corresponsal
@@ -138,10 +138,10 @@ $aduana = 240;
         require $root . '/conta6/Resources/PHP/actions/consultaDatosCorresponsal.php';
 
         $tr_corresponsal = "
-        <tr class='row'>
-          <td class='col-md-2 text-right b mt-3'>Facturar a:</td>
-          <td class='col-md-10'>
-            <select class='custom-select' id='DGE_Lst_Datos' onchange='asignar_facturarA()'>
+        <tr class='row mt-2 align-items-center'>
+          <td class='col-md-2 text-right b p-0'><b>Facturar a:</b></td>
+          <td class='col-md-7 p-0'>
+            <select class='custom-select-mod h25' id='DGE_Lst_Datos' onchange='asignar_facturarA()'>
           				<option selected value='0'>Cliente / Corresponsal</option>
           				<option value='$id_cliente'>$nom_cliente</option>
           				<option value='$idcliente_corresp'>$nom_corresp</option>
@@ -155,13 +155,15 @@ $aduana = 240;
       require $root . '/conta6/Resources/PHP/actions/facturas_ctaAme_referencia.php';
       if ($rslt_ctaAme->num_rows > 0) {
         $tr_ctaAme = "
-        <tr class='row'>
-      		<td class='col-md-6'>
-            <select class='custom-select' size='1' id='DGEctaAme' onchange='cargarCtaAme()'>
+        <tr class='row mt-2 align-items-center'>
+          <td class='col-md-2 b text-right p-0'><b>Cuenta Americana:</b></td>
+      		<td class='p-0 col-md-4'>
+            <select class='custom-select-mod h25' size='1' id='DGEctaAme' onchange='cargarCtaAme()'>
               <option selected value='0'>Cuenta Americana</option>
               $facCtaAme
             </select>
-  		    </td>";
+  		    </td>
+        </tr>";
       }
 
 
@@ -169,8 +171,10 @@ $aduana = 240;
       require $root . '/conta6/Resources/PHP/actions/proforma_referencia.php';
       if ($rslt_proforma->num_rows > 0) {
         $tr_proforma = "
-          <td class='col-md-6'>
-          <select class='custom-select' size='1' id='DGEproforma' onchange='cargarSolicitudAnticipo()'>
+        <tr class='row mt-2 align-items-center'>
+          <td class='col-md-2 b text-right p-0'><b>Proforma:</b></td>
+          <td class='p-0 col-md-4'>
+          <select class='custom-select-mod h25' size='1' id='DGEproforma' onchange='cargarSolicitudAnticipo()'>
             <option selected value='0'>Proforma</option>
             $proforma
           </select>
@@ -219,102 +223,118 @@ $aduana = 240;
         </tr>
 
         <tr class='row'>
-          <td class='col-md-1 text-right b'>Cliente:</td>
+          <td class='col-md-1 text-right b'><b>Cliente:</b></td>
           <td class='col-md-5 text-left'>$nom_cliente -- $id_cliente</td>
-          <td class='col-md-1 text-right b'>Proveedor:</td>
+          <td class='col-md-1 text-right b'><b>Proveedor:</b></td>
           <td class='col-md-5 text-left'>$nom_proveedor --  $id_prov</td>
         </tr>
         <tr class='row borderojo'>
-           <td class='col-md-1 text-right b'>Almacén:</td>
+           <td class='col-md-1 text-right b'><b>Almacén:</b></td>
            <td class='col-md-5 text-left'>$nom_almacen -- Id: $id_almacen</td>
-           <td class='col-md-1 text-right b'>Descripción: </td>
+           <td class='col-md-1 text-right b'><b>Descripción:</b></td>
            <td class='col-md-5 text-left'>$descripcion</td>
         </tr>
 
-        <tr class='row'>
-          <td class='col-md-2 text-right b'>Aduana:</td>
-          <td class='col-md-2 text-left'>$id_aduanaReferencia</td>
-          <td class='col-md-2 text-right b'>Procedencia o destino:</td>
-          <td class='col-md-2 text-left'>$row_buscaRef[procedencia]</td>
-          <td class='col-md-2 text-right b'>Tipo de operación:</td>
-      	  <td class='col-md-2 text-left'>$row_buscaRef[s_tipo]</td>
+        <tr class='row pt-4'>
+          <td class='p-0 col-md-2 text-right b'><b>Aduana:</b></td>
+          <td class='p-0 col-md-2 text-left'>$id_aduanaReferencia</td>
+          <td class='p-0 col-md-2 text-right b'><b>Procedencia o destino:</b></td>
+          <td class='p-0 col-md-2 text-left'>$row_buscaRef[procedencia]</td>
+          <td class='p-0 col-md-2 text-right b'><b>Tipo de operación:</b></td>
+      	  <td class='p-0 col-md-2 text-left'>$row_buscaRef[s_tipo]</td>
         </tr>
 
-        <tr class='row'>
-          <td class='col-md-2 text-right b'>Tipo:</td>
-          <td class='col-md-2 text-left'>$txt_tipo</td>
-          <td class='col-md-2 text-right b p-0 pt-3'>Fecha de arribo o salida:</td>
-          <td class='col-md-2 text-left'>$fecha_entrada</td>
-          <td class='col-md-2 text-right b'>Talones, Guia o B/Ls:</td>
-      	  <td class='col-md-2 text-left'>$row_buscaRef[s_guia_master]</td>
+        <tr class='row pt-3'>
+          <td class='p-0 col-md-2 text-right b'><b>Tipo:</b></td>
+          <td class='p-0 col-md-2 text-left'>$txt_tipo</td>
+          <td class='p-0 col-md-2 text-right b pl-0'><b>Fecha arribo o salida:</b></td>
+          <td class='p-0 col-md-2 text-left'>$fecha_entrada</td>
+          <td class='p-0 col-md-2 text-right b'><b>Talones, Guia o B/Ls:</b></td>
+      	  <td class='p-0 col-md-2 text-left'>$row_buscaRef[s_guia_master]</td>
         </tr>
 
-        <tr class='row'>
-          <td class='col-md-2 text-right b pt-4'>Nuestra referencia:</td>
-          <td class='col-md-2 text-left'>
-            <input class='efecto h22 border-0 bt text-left p-0' type='text' id='DGE_referencia' value='$id_referencia' readonly>
+        <tr class='row align-items-center' style='padding-top: .7rem!important;'>
+          <td class='p-0 col-md-2 text-right b'><b>Nuestra referencia:</b></td>
+          <td class='p-0 col-md-2 text-left'>
+            <input class='inputId bt text-left p-0' type='text' id='DGE_referencia' value='$id_referencia' readonly>
           </td>
-          <td class='col-md-2 text-right b pt-4'>Peso en Kg.:</td>
-          <td class='col-md-2 text-left pt-4'>$peso</td>
-          <td class='col-md-2 text-right b pt-4'>Valor Aduana M.N.:</td>
-      	  <td class='col-md-2 text-left pt-4'>$valor</td>
+          <td class='p-0 col-md-2 text-right b'><b>Peso en Kg:</b></td>
+          <td class='p-0 col-md-2 text-left'>$peso</td>
+          <td class='p-0 col-md-2 text-right b'><b>Valor Aduana M.N.:</b></td>
+      	  <td class='p-0 col-md-2 text-left'>$valor</td>
         </tr>
 
-        <tr class='row borderojo'>
-          <td class='col-md-2 text-right b'>Su Referencia:</td>
-          <td class='col-md-2 text-left'>$refCli</td>
-          <td class='col-md-2 text-right b'>No. Pedimento:</td>
-          <td class='col-md-2 text-left'>$row_buscaRef[s_pedimento]</td>
-          <td class='col-md-2 text-right b'>Tipo de cambio:</td>
-      	  <td class='col-md-2 text-left'>$tipoCambio</td>
+        <tr class='row borderojo pb-4 pt-3'>
+          <td class='p-0 col-md-2 text-right b'><b>Su Referencia:</b></td>
+          <td class='p-0 col-md-2 text-left'>$refCli</td>
+          <td class='p-0 col-md-2 text-right b'><b>No. Pedimento:</b></td>
+          <td class='p-0 col-md-2 text-left'>$row_buscaRef[s_pedimento]</td>
+          <td class='p-0 col-md-2 text-right b'><b>Tipo de cambio:</b></td>
+      	  <td class='p-0 col-md-2 text-left'>$tipoCambio</td>
         </tr>
 
-        <tr class='row'>
-          <td class='col-md-2 text-right b pt-4'>Días en almacen: </td>
-          <td class='col-md-1'><input type='text' id='T_Dias' name='T_Dias' class='efecto h22' tabindex='<?php echo $tabindex = $tabindex+1; ?>'></td>
-          <td class='col-md-1'></td>
-          <td class='col-md-2 text-right b'>Núm. de Facturas: </td>
-      	  <td class='col-md-6 text-left'>$facturas</td>
+        <tr class='row mt-4 align-items-center'>
+          <td class='p-0 col-md-2 text-right b'><b>Días en almacen:</b></td>
+          <td class='p-0 col-md-1'>
+            <input type='text' id='T_Dias' name='T_Dias' class='efecto h18' tabindex='<?php echo $tabindex = $tabindex+1; ?>'>
+          </td>
+
+          <td class='p-0 col-md-2 offset-md-1 text-right b'><b>Shipper:</b></td>
+          <td class='p-0 col-md-1'>
+            <input class='text-left bt inputId p-0' type='text' id='DGE_shipper' value='$shipper' readonly>
+          </td>
+
+          <td class='p-0 col-md-2 offset-md-1 text-right b'><b>Núm. de Facturas:</b></td>
+      	  <td class='p-0 col-md-2 text-left'>$facturas</td>
         </tr>
 
-       <tr class='row'>
-          <td class='col-md-2 text-right b pt-3'>Shipper:</td>
-          <td class='col-md-1'><input class='text-left bt border-0' type='text' id='DGE_shipper' value='$shipper' readonly></td>
-          <td class='col-md-2 text-right b pt-3'>InBond:</td>
-          <td class='col-md-1'><input class='text-left bt border-0' type='text' id='DGE_inbond' value='$inbond' readonly></td>
-          <td class='col-md-2 text-right b'>Trailer de Salida:</td>
-          <td class='col-md-1 text-left'>$row_buscaRef[s_trailerOut]</td>
-          <td class='col-md-2 text-right b'>Reexpedición:</td>
-          <td class='col-md-1 text-left'>$row_buscaRef[reexpedicion]</td>
+         <tr class='row mt-2 align-items-center'>
+           <td class='p-0 col-md-2 text-right b'><b>Flete: $status_flete</b></td>
+           <td class='p-0 col-md-1'><input class='text-left bt inputId p-0' type='text' id='DGE_flete' value='$flete' readonly></td>
+
+           <td class='p-0 col-md-2 offset-md-1 text-right b'><b>InBond:</b></td>
+           <td class='p-0 col-md-1'><input class='text-left bt inputId p-0' type='text' id='DGE_inbond' value='$inbond' readonly></td>
+
+           <td class='p-0 col-md-2 offset-md-1 text-right b'><b>Trailer de Salida:</b></td>
+           <td class='p-0 col-md-1 text-left'>$row_buscaRef[s_trailerOut]</td>
         </tr>
-        <tr class='row'>
-          <td class='col-md-2 text-right b pt-3'>Consolidado:</td>
-          <td class='col-md-1'><input class='text-left bt border-0' type='text' id='DGE_consolidado' value='$consolidado' readonly></td>
-          <td class='col-md-2 text-right b pt-3'>Entradas:</td>
-          <td class='col-md-1'><input class='text-left bt border-0' type='text' id='DGE_entradas' value='$entradas' readonly></td>
-          <td class='col-md-2 text-right b pt-3'>Flete: $status_flete</td>
-          <td class='col-md-1'><input class='text-left bt border-0' type='text' id='DGE_flete' value='$flete' readonly></td>
-          <td class='col-md-2 text-right b pt-4'>Cobrar:</td>
-          <td class='col-md-1 text-left'>$fleteOption</td>
+
+
+        <tr class='row pt-2 align-items-center'>
+          <td class='p-0 col-md-2 text-right b'><b>Cobrar:</b></td>
+          <td class='p-0 col-md-1 text-left'>$fleteOption</td>
+
+          <td class='p-0 col-md-2 offset-md-1 text-right b'><b>Reexpedición:</b></td>
+          <td class='p-0 col-md-1 text-left'>$row_buscaRef[reexpedicion]</td>
+
+          <td class='p-0 col-md-2 offset-md-1 text-right b'><b>Entradas:</b></td>
+          <td class='p-0 col-md-1'><input class='text-left bt inputId p-0' type='text' id='DGE_entradas' value='$entradas' readonly></td>
         </tr>
-        <tr class='row'>
-      		<td class='col-md-2 text-right b pt-3'>Estatus:</td>
-      		<td class='col-md-10 text-left'>$statusReferencia</td>
+
+        <tr class='row pt-2 align-items-center'>
+          <td class='p-0 col-md-2 text-right b'><b>Consolidado:</b></td>
+          <td class='p-0 col-md-1'>
+            <input class='text-left bt inputId p-0' type='text' id='DGE_consolidado' value='$consolidado' readonly>
+          </td>
       	</tr>
+
+        <tr class='row mt-5 align-items-center'>
+          <td class='p-0 col-md-2 text-right b'><b>Estatus:</b></td>
+          <td class='p-0 col-md-4 text-left'>$statusReferencia</td>
+        </tr>
         $tr_corresponsal
-        <tr class='row mt-3'>
-      		<td class='col-md-2 text-right b mt-3'>Facturar a otro:</td>
-          <td class='col-md-10 input-effect'>
-            <input class='efecto popup-input' id='DGEcliente' type='text' id-display='#popup-display-DGEcliente' action='clientes' db-id='' autocomplete='off' onchange='cargarOtroCliente()'>
+        <tr class='row mt-2 align-items-center'>
+      		<td class='col-md-2 text-right b p-0'><b>Facturar a otro:</b></td>
+          <td class='col-md-7 p-0'>
+            <input class='efecto font14 h25 popup-input' id='DGEcliente' type='text' id-display='#popup-display-DGEcliente' action='clientes' db-id='' autocomplete='off' onchange='cargarOtroCliente()' placeholder='Cliente'>
             <div class='popup-list' id='popup-display-DGEcliente' style='display:none'></div>
-            <label for='DGEcliente'>Cliente</label>
           </td>
       	</tr>
         $tr_ctaAme
         $tr_proforma
-        <tr class='row'>
-          <td class='col-md-2 text-right b pt-4 p-0'>
-            Expedir cta de gastos a:
+        <tr class='row align-items-center mt-3'>
+          <td class='col-md-2 text-right b p-0'>
+            <b>Expedir cta de gastos a:</b>
             <input type='hidden' id='opcion' value='cliente' readonly>
             <input type='hidden' id='docto' value='ctagastos' readonly>
             <input id='no_cliente_oculto' type='hidden' value='$id_cliente'>
@@ -323,7 +343,7 @@ $aduana = 240;
           <td class='col-md-1 text-left'>
             <input id='DGE_idcliente' type='text' value='$id_cliente' readonly class='efecto h22 border-0'>
           </td>
-          <td class='col-md-9 text-left pt-4'>
+          <td class='col-md-9 text-left'>
             <div id='nombreCliente'>$nom_cliente</div>
             <input type='hidden' name='folio' id='folio' value='0' readonly>
           </td>

@@ -491,10 +491,22 @@ function inserta(){
 		});
 }
 
+$('#folioPol').keydown(function(e){
+	if (e.keyCode === 13 || e.keyCode === 9) {
+		 buscarPoliza('modificar');
+	}
+})
+
+$('#folioPolconsulta').keydown(function(e){
+	if (e.keyCode === 13 || e.keyCode === 9) {
+		 buscarPoliza('consultar');
+	}
+})
 
 
 
 function buscarPoliza(Accion){
+
 	if( Accion == 'consultar'){ id_poliza = $('#folioPolconsulta').val(); }
 	if( Accion == 'modificar'){ id_poliza = $('#folioPol').val(); }
 	window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/actions/buscar_poliza.php?id_poliza='+id_poliza+'&Accion='+Accion);
