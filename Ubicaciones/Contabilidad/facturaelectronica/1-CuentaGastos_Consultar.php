@@ -161,21 +161,26 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
 
 
   <div class="row encabezado m-0 mt-5 font14">
-    <div class="col-lg-6">
+    <div class="col-lg-4">
       <div class="row">
         <div class="col-md-12">METODO DE PAGO</div>
       </div>
-
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-4">
       <div class="row">
-        <div class="col-md-6 offset-md-3">CONCEPTO</div>
+        <div class="col-md-12">DEPOSITOS</div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="row">
+        <div class="col-md-9">CONCEPTO</div>
         <div class="col-md-3 pl-0">TOTALES</div>
       </div>
     </div>
   </div>
   <div class="row divisor font12 b ls1 m-0">
-    <div class="col-lg-6">
+    <div class="col-lg-4">
       <div class="row">
         <div class="col-md-6 text-right">Metodo de pago :</div>
         <div class="col-md-6 text-left"><?php echo $fk_c_MetodoPago; ?></div>
@@ -203,49 +208,56 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
 
     </div>
 
-
-
-    <div class="col-lg-6">
+    <div class="col-lg-4">
       <?php echo $datosDepositos; ?>
+    </div>
+
+
+
+    <div class="col-lg-4">
       <div class="row">
-        <div class="col-md-6 offset-md-3 text-right"><?php echo $s_txt_gral_importe; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_gral_importe; ?> :</div>
         <div class="col-md-3">$ <?php echo $n_total_gral_importe; ?></div>
       </div>
 
       <div class="row">
-        <div class="col-md-6 offset-md-3 text-right"><?php echo $n_txt_gral_IVA; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $n_txt_gral_IVA; ?> :</div>
         <div class="col-md-3">$ <?php echo $n_total_gral_IVA; ?></div>
       </div>
 
       <div class="row">
-        <div class="col-md-6 offset-md-3 text-right"><?php echo $s_txt_total_honorarios; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_total_honorarios; ?> :</div>
         <div class="col-md-3">$ <?php echo $n_total_honorarios; ?></div>
       </div>
   		<div class="row">
-        <div class="col-md-6 offset-md-3 text-right"><?php echo $s_txt_fac_IVA_retenido; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_fac_IVA_retenido; ?> :</div>
         <div class="col-md-3">$ <?php echo $s_fac_IVA_retenido; ?></div>
       </div>
       <div class="row">
-        <div class="col-md-6 offset-md-3 text-right"><?php echo $s_txt_total_gral; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_total_gral; ?> :</div>
         <div class="col-md-3">$ <?php echo $n_total_gral; ?></div>
       </div>
   		<div class="row">
-        <div class="col-md-6 offset-md-3 text-right ls0"><?php echo $s_POCME_descripcion_gral; ?> :</div>
+        <div class="col-md-9 text-right ls0"><?php echo $s_POCME_descripcion_gral; ?> :</div>
         <div class="col-md-3">$ <?php echo $n_total_POCME; ?></div>
       </div>
   		<div class="row">
-        <!-- <div class="col-md-6"></div> -->
-        <div class="col-md-6 offset-md-3 text-right"><?php echo $s_txt_total_pagos; ?> :</div>
+        <!-- <div class="col-md-9"></div> -->
+        <div class="col-md-9 text-right"><?php echo $s_txt_total_pagos; ?> :</div>
         <div class="col-md-3">$ <?php echo $n_total_pagos; ?></div>
       </div>
   		<div class="row">
-        <!-- <div class="col-md-6"></div> -->
-        <div class="col-md-6 offset-md-3 text-right"><?php echo $s_txt_cta_gastos; ?> :</div>
+        <!-- <div class="col-md-9"></div> -->
+        <div class="col-md-9 text-right"><?php echo $s_txt_cta_gastos; ?> :</div>
         <div class="col-md-3">$ <?php echo $n_total_cta_gastos; ?></div>
       </div>
+      <div class="row">
+        <div class="col-md-9 text-right">Depositos :</div>
+        <div class="col-md-3">$ <?php echo $n_total_depositos; ?></div>
+      </div>
   		<div class="row">
-        <!-- <div class="col-md-6"></div> -->
-        <div class="col-md-6 offset-md-3 text-right"><?php echo $s_txt_fac_saldo; ?> :</div>
+        <!-- <div class="col-md-9"></div> -->
+        <div class="col-md-9 text-right"><?php echo $s_txt_fac_saldo; ?> :</div>
         <div class="col-md-3">$ <?php echo $n_fac_saldo; ?></div>
       </div>
     </div>
