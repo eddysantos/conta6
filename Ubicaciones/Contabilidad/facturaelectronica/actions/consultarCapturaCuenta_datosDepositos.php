@@ -29,10 +29,11 @@ if( $total_consultaDepositos > 0 ) {
 		$n_noDeposito = $row_consultaDepositos['n_noDeposito'];
 		$n_total = number_format($row_consultaDepositos['n_total'],2,'.',',');
 
-		$datosDepositos = $datosDepositos."<tr class='row'>
-	            <td class='col-md-6 text-right'>$n_noDeposito</td>
-	            <td class='col-md-2 text-left'>$n_total</td>
-	          </tr>";
+		$datosDepositos = $datosDepositos."<div class='row ls1'>
+							<div class='col-md-6'></div>
+							<div class='col-md-4 text-right'>Deposito $n_noDeposito :</div>
+							<div class='col-md-2'>$ $n_total</div>
+						</div>";
 	}
 }
 

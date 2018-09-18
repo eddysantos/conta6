@@ -32,11 +32,11 @@ if( $total_consultaPOCME > 0 ) {
 		$n_importe = number_format($row_consultaPOCME['n_importe'],2,'.',',');
 		$n_total = number_format($row_consultaPOCME['n_total'],2,'.',',');
 
-		$datosPOCME = $datosPOCME."<tr class='row'>
-          <td class='col-md-6'>$n_cantidad $s_conceptoEsp $s_descripcion</td>
-          <td class='col-md-2'>$ $n_importe</td>
-          <td class='col-md-2'>$ $n_total</td>
-        </tr>";
+		$datosPOCME = $datosPOCME."<div class='row font12 b'>
+					<div class='col-md-6 text-left ls1'>$n_cantidad $s_conceptoEsp $s_descripcion</div>
+					<div class='col-md-2 offset-md-2'>$ $n_importe</div>
+					<div class='col-md-2'>$ $n_total</div>
+				</div>";
 	}
 }
 

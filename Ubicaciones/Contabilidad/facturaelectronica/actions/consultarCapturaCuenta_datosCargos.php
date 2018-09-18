@@ -29,12 +29,11 @@ if( $total_consultaCargos > 0 ) {
 		$s_conceptoEsp = utf8_encode($row_consultaCargos['s_conceptoEsp']);
 		$n_total = number_format($row_consultaCargos['n_total'],2,'.',',');
 
-		$datosCargos = $datosCargos."<tr class='row'>
-          <td class='col-md-6'>$s_conceptoEsp</td>
-          <td class='col-md-2'></td>
-					<td class='col-md-2'></td>
-          <td class='col-md-2'>$ $n_total</td>
-        </tr>";
+		$datosCargos = $datosCargos."<div class='row b font12'>
+					<div class='col-md-6 text-left ls1'>$s_conceptoEsp</div>
+					<div class='col-md-4'></div>
+					<div class='col-md-2'>$ $n_total</div>
+				</div>";
 	}
 }
 

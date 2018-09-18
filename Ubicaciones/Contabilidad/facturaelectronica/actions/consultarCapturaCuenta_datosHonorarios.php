@@ -35,13 +35,13 @@ if( $total_consultaHonorarios > 0 ) {
 		$n_ret = number_format($row_consultaHonorarios['n_ret'],2,'.',',');
 		$n_total = number_format($row_consultaHonorarios['n_total'],2,'.',',');
 
-		$datosHonorarios = $datosHonorarios."<tr class='row'>
-          <td class='col-md-6'>$s_conceptoEsp</td>
-          <td class='col-md-2'>$n_importe</td>
-					<td class='col-md-2'>$n_IVA</td>
-					<td class='col-md-2'>$n_ret</td>
-          <td class='col-md-2'>$ $n_total</td>
-        </tr>";
+		$datosHonorarios = $datosHonorarios."<div class='row b font12 ls1'>
+          <div class='col-md-4 text-left'>$s_conceptoEsp</div>
+          <div class='col-md-2'>$n_importe</div>
+          <div class='col-md-2'>$n_IVA</div>
+          <div class='col-md-2'>$n_ret</div>
+          <div class='col-md-2'>$ $n_total</div>
+        </div>";
 	}
 }
 

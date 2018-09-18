@@ -29,10 +29,10 @@ if( $total_consultaEmbarque > 0 ) {
 		$s_conceptoEsp = utf8_encode($row_consultaEmbarque['s_conceptoEsp']);
 		$s_descripcion = utf8_encode($row_consultaEmbarque['s_descripcion']);
 
-		$datosEmbarque = $datosEmbarque."<tr class='row'>
-	            <td class='col-md-6 text-right'>$s_conceptoEsp</td>
-	            <td class='col-md-6 text-left'>$s_descripcion</td>
-	          </tr>";
+		$datosEmbarque = $datosEmbarque."<div class='row'>
+							<div class='col-md-6 text-right'>$s_conceptoEsp</div>
+							<div class='col-md-6 text-left p-0'>$s_descripcion</div>
+						</div>";
 	}
 }
 
