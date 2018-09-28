@@ -1,5 +1,5 @@
 <?PHP
-$aduana = 240;
+//$aduana = 240;
 
       $refCli = $row_buscaRef['s_referencia_cliente'];
       $descripcion = $row_buscaRef['s_descripcion'];
@@ -276,7 +276,7 @@ $aduana = 240;
         <tr class='row mt-4 align-items-center'>
           <td class='p-0 col-md-2 text-right b'><b>Días en almacen:</b></td>
           <td class='p-0 col-md-1'>
-            <input type='text' id='T_Dias' name='T_Dias' class='efecto h18' tabindex='<?php echo $tabindex = $tabindex+1; ?>'>
+            <input type='text' id='T_Dias' name='T_Dias' class='efecto h18' tabindex='<?php echo $tabindex = $tabindex+1; ?>' autocomplete='off'>
           </td>
 
           <td class='p-0 col-md-2 offset-md-1 text-right b'><b>Shipper:</b></td>
@@ -326,7 +326,7 @@ $aduana = 240;
         <tr class='row mt-2 align-items-center'>
       		<td class='col-md-2 text-right b p-0'><b>Facturar a otro:</b></td>
           <td class='col-md-7 p-0'>
-            <input class='efecto font14 h25 popup-input' id='DGEcliente' type='text' id-display='#popup-display-DGEcliente' action='clientes' db-id='' autocomplete='off' onchange='cargarOtroCliente()' placeholder='Cliente'>
+            <input class='efecto popup-input' id='DGEcliente' type='text' id-display='#popup-display-DGEcliente' action='clientes' db-id='' autocomplete='off'>
             <div class='popup-list' id='popup-display-DGEcliente' style='display:none'></div>
           </td>
       	</tr>
@@ -335,8 +335,8 @@ $aduana = 240;
         <tr class='row align-items-center mt-3'>
           <td class='col-md-2 text-right b p-0'>
             <b>Expedir cta de gastos a:</b>
-            <input type='hidden' id='opcion' value='cliente' readonly>
-            <input type='hidden' id='docto' value='ctagastos' readonly>
+            <input type='hidden' id='docto' value='cliente'>
+            <input type='hidden' id='opcionDoc' value='ctagastos'>
             <input id='no_cliente_oculto' type='hidden' value='$id_cliente'>
             <input id='nombre_cliente_oculto' type='hidden' value='$nom_cliente'>
           </td'>

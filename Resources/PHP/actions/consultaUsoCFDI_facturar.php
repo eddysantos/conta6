@@ -18,12 +18,13 @@
       $consultaUsoCFDIfac = "<option selected value='0'>Uso CDFI</option>";
       while ($row_consultaUsoCFDIfac = $rslt_consultaUsoCFDIfac->fetch_assoc()) {
         $c_UsoCFDI = $row_consultaUsoCFDIfac['pk_c_UsoCFDI'];
+        if($pk_c_UsoCFDI == $c_UsoCFDI){ $selected_usoCFDI = 'selected';}else{ $selected_usoCFDI = '';}
         $descripcion = utf8_encode($row_consultaUsoCFDIfac['s_descripcion']);
-        $consultaUsoCFDIfac .= '<option value="'.$c_UsoCFDI.'">'.$descripcion.' --- '.$c_UsoCFDI.'</option>';
+        $consultaUsoCFDIfac .= '<option value="'.$c_UsoCFDI.'"  '.$selected_usoCFDI.'>'.$descripcion.' --- '.$c_UsoCFDI.'</option>';
       }
   }
   $c_UsoCFDI = $oRst_usoCFDI['c_UsoCFDI'];
-  						$descripcion = $oRst_usoCFDI['descripcion'];
+  $descripcion = $oRst_usoCFDI['descripcion'];
   /*
   <select id=" ">
       <?php echo $consultaUsoCFDIfac; ?>

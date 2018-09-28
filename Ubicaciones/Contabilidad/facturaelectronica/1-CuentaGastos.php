@@ -41,20 +41,22 @@
           </tr>
           <tr class="row mt-4">
             <td class="col-md-7 input-effect">
-              <input  list="ctagtos-cli" class="efecto" id="ctagatos-sReferencia">
-              <datalist id="ctagtos-cli">
-                <option value="Tecnologias Relacionadas con Energia y Servicios Especializado S.A de C.V --- CLT_7517"></option>
-                <option value="Servicios Integrales en Logistica Internacional, Aduanas y Tecnologias, S.C (NO USAR) -- CLT_7158"></option>
-                <option value="Cliente Numero 1 Cliente Numero 1"></option>
-                <option value="Cliente Numero 1 Cliente Numero 1"></option>
-              </datalist>
+              <input class="efecto popup-input" id="ctagatos-sReferencia" type="text" id-display="#popup-display-ctagatos-sReferencia" action="clientes" db-id="" autocomplete="off" onchange="cargarClienteSinReferencia()">
+              <div class="popup-list" id="popup-display-ctagatos-sReferencia" style="display:none"></div>
               <label for="ctagatos-sReferencia">SELECCIONAR CLIENTE (Sin Referencia)</label>
             </td>
             <td class="col-md-2">
-              <a href="" class="boton">Siguiente <i class="fa fa-angle-double-right fa-lg"></i></a>
+              <a href="#" class="boton" id="Btn_Busca_Ref_Cta_Gtos_2" onclick="cargarCuentaSinReferencia('IVA')">Siguiente <i class="fa fa-angle-double-right fa-lg"></i></a>
             </td>
             <td class="col-md-3">
-              <a href="" class="boton">Generar Tasa Cero <i class="fa fa-angle-double-right fa-lg"></i></a>
+              <?PHP if($oRst_permisos['CFDI_cta_gastos_generarT0'] == 1){ ?>
+              <a href="#" class="boton" id="Btn_Busca_Ref_Cta_Gtos_3" onclick="cargarCuentaSinReferencia('sinIVA')">Generar Tasa Cero <i class="fa fa-angle-double-right fa-lg"></i></a>
+              <?PHP } ?>
+            </td>
+          </tr>
+          <tr class="row mt-4">
+            <td class='col-md-9 text-left'>
+              <div id="nombreCliente_sinReferencia"></div>
             </td>
           </tr>
         </tbody>
@@ -81,7 +83,7 @@
     <div class="row intermedio transEff" id="nReferencia">
       <div class="col-md-12" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
-        <input class="reg border-0 transEff" id="bRef" type="text">
+        <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
       </form>
       </div>
     </div>
@@ -100,7 +102,7 @@
     <table class="table font16">
       <thead>
         <tr class="row encabezado">
-          <td class="col-md-12">Solicitud de Anticipo</td>
+          <td class="col-md-12">Cuentas de Gastos Capturadas</td>
         </tr>
       </thead>
       <tbody>
@@ -110,21 +112,14 @@
           <td class="col-md-7">Cliente</td>
           <td class="col-md-1"></td>
         </tr>
-        <tr class="row borderojo">
-          <td class="col-md-2">280380</td>
-          <td class="col-md-2">N17003012</td>
-          <td class="col-md-7">CLT_6548 MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L DE C.V</td>
-          <td class="col-md-1">
-            <a href="1-CuentaGtos_Consultar.php"><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
-            <a><img class="icomediano ml-5" src="/conta6/Resources/iconos/printer.svg"></a>
-        </tr>
+        <div id="lst_cuentasGastos_capturadas"></div>
       </tbody>
     </table>
   </div>
 </div>
 
-<!--script src="js/facturaElectronica.js"></script>
-<script src="/conta6/Resources/js/Inputs.js"></script-->
+<script src="js/facturaElectronica.js"></script>
+<script src="/conta6/Resources/js/Inputs.js"></script>
 
 <?php
   require $root . '/conta6/Ubicaciones/footer.php';

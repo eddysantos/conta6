@@ -33,7 +33,7 @@ if ($rslt_ConceptosAlmacen->num_rows > 0) {
     $fk_id_concepto = trim($row_ConceptosAlmacen['fk_id_concepto']);
     $fk_id_cuenta = trim($row_ConceptosAlmacen['fk_id_cuenta']);
 
-    $ConceptosAlmacen .= "<option value='$s_descripcion+$n_importe+$fk_id_concepto+$fk_id_cuenta'>$s_descripcion $n_importe $fk_id_concepto $fk_id_cuenta</option>";
+    $ConceptosAlmacen .= "<option value='$s_descripcion+$n_importe+$fk_id_concepto+$fk_id_cuenta'>$s_descripcion $n_importe</option>";
   }
 }
 

@@ -23,7 +23,7 @@ $ADICIONAL = 0;
 //$system_callback = [];
 $query_consultaConcPOCME = "SELECT DISTINCT b.pk_id_concepto,b.fk_id_tipo, B.s_descripcion,B.s_concepto_eng, A.fk_id_cliente , B.fk_id_cuenta
 													FROM conta_tarifas a, conta_tarifas_conceptos b
-													WHERE A.fk_id_concepto = B.pk_id_concepto AND a.fk_id_cliente = 'clt_5900' and a.s_consolidado = 'LTL/FTL' AND A.s_imp_exp = 'imp'";
+													WHERE A.fk_id_concepto = B.pk_id_concepto AND a.fk_id_cliente = ? and a.s_consolidado = ? AND A.s_imp_exp = ?";
 
 // $query_consultaConcPOCME = "SELECT DISTINCT b.fk_id_conceptoHon,b.fk_id_tipoCalculo, B.s_concepto_esp,B.s_concepto_eng, A.fk_id_cliente , B.fk_id_conceptoCta
 // 														FROM contame_tarifas a, contame_tarifas_conceptos b
@@ -52,7 +52,7 @@ if (!($stmt_consultaConcPOCME->execute())) {
 $rslt_consultaConcPOCME = $stmt_consultaConcPOCME->get_result();
 
 while ($row_consultaConcPOCME = $rslt_consultaConcPOCME->fetch_assoc()) {
-	$ID_CONCEPTO_CURSOR = $row_consultaConcPOCME['fk_id_concepto'];
+	$ID_CONCEPTO_CURSOR = $row_consultaConcPOCME['pk_id_concepto'];
 	$TIPO_CURSOR = $row_consultaConcPOCME['fk_id_tipo'];
 	$s_concepto_esp = $row_consultaConcPOCME['s_descripcion'];
 	$s_concepto_eng = $row_consultaConcPOCME['s_concepto_eng'];
