@@ -3,8 +3,7 @@
 //DATOS DEL EMBARQUE ***********************************************************
 $seccion = 'DatGnEmbarq';
 $query_DatGnEmbarq="INSERT INTO conta_t_facturas_captura_det(fk_id_cuenta_captura,s_tipoDetalle,s_conceptoEsp,s_descripcion)
-                                                    VALUES($nfolio,'$seccion','$IGET_0','$IGED_0'),
-                                                          ($nfolio,'$seccion','$IGET_1','$IGED_1'),
+                                                    VALUES($nfolio,'$seccion','$IGET_1','$IGED_1'),
                                                           ($nfolio,'$seccion','$IGET_2','$IGED_2'),
                                                           ($nfolio,'$seccion','$IGET_3','$IGED_3'),
                                                           ($nfolio,'$seccion','$IGET_4','$IGED_4'),
@@ -65,7 +64,7 @@ if( $Total_POCME > 0 ){
 
         if (!($stmt_POCME->execute())) {
           $system_callback['code'] = "500";
-          $system_callback['message'] = "Error during query execution POCME [$stmt_POCME->errno]: $stmt_DatGnEmbarq->error";
+          $system_callback['message'] = "Error during query execution POCME [$stmt_POCME->errno]: $stmt_POCME->error";
         }
       }
 }
@@ -99,7 +98,7 @@ if( $Total_Pagos <> 0 ){
 
     if (!($stmt_cargos1->execute())) {
     $system_callback['code'] = "500";
-    $system_callback['message'] = "Error during query execution cargos1 [$stmt_cargos1->errno]: $stmt_DatGnEmbarq->error";
+    $system_callback['message'] = "Error during query execution cargos1 [$stmt_cargos1->errno]: $stmt_cargos1->error";
     }
 
 
@@ -129,7 +128,7 @@ if( $Total_Pagos <> 0 ){
 
       if (!($stmt_cargos->execute())) {
         $system_callback['code'] = "500";
-        $system_callback['message'] = "Error during query execution cargos [$stmt_cargos->errno]: $stmt_DatGnEmbarq->error";
+        $system_callback['message'] = "Error during query execution cargos [$stmt_cargos->errno]: $stmt_cargos->error";
       }
     }
 
@@ -178,7 +177,7 @@ if( $Total_Gral_Importe > 0 ){
 
   if (!($stmt_hon1->execute())) {
       $system_callback['code'] = "500";
-      $system_callback['message'] = "Error during query execution hon1 [$stmt_hon1->errno]: $stmt_DatGnEmbarq->error";
+      $system_callback['message'] = "Error during query execution hon1 [$stmt_hon1->errno]: $stmt_hon1->error";
   }
 
   $honorarios = $_POST['honorarios'];
@@ -221,7 +220,7 @@ if( $Total_Gral_Importe > 0 ){
 
       if (!($stmt_hon->execute())) {
         $system_callback['code'] = "500";
-        $system_callback['message'] = "Error during query execution hon [$stmt_hon->errno]: $stmt_DatGnEmbarq->error";
+        $system_callback['message'] = "Error during query execution hon [$stmt_hon->errno]: $stmt_hon->error";
       }
     }
 }
@@ -258,59 +257,9 @@ if( $Total_Anticipos > 0 ){
 
       if (!($stmt_depositos->execute())) {
         $system_callback['code'] = "500";
-        $system_callback['message'] = "Error during query execution hon [$stmt_depositos->errno]: $stmt_DatGnEmbarq->error";
+        $system_callback['message'] = "Error during query execution hon [$stmt_depositos->errno]: $stmt_depositos->error";
       }
     }
 }
 
-
-/*
-if( $Total_Gral_Importe > 0 ){
-    //HONORARIOS Y SERVICIOS
-    $seccion = 'honorarios';
-
-    $query_hon1="INSERT INTO conta_t_facturas_captura_det(  fk_id_cuenta_captura,
-                                                            s_tipoDetalle,
-                                                            n_cantidad,
-                                                            fk_c_claveUnidad,
-                                                            s_Unidad,
-                                                            n_porcentaje,
-                                                            s_conceptoEsp,
-                                                            n_base,
-                                                            n_descuento,
-                                                            s_descripcion,
-                                                            fk_id_cuenta,
-                                                            fk_c_ClaveProdServ,
-                                                            n_importe,
-                                                            n_IVA,
-                                                            n_ret,
-                                                            n_total)
-                                                    VALUES( $nfolio,
-                                                            '$seccion',
-                                                            1,
-                                                            'E48',
-                                                            'Servicio',
-                                                            $Porcentaje_Honorarios,
-                                                            '$Honorarios_Txt',
-                                                            $Honorarios_Base,
-                                                            $Porcentaje_Descuento,
-                                                            '$Descuento_Txt',
-                                                            '$noIdentificacion0',
-                                                            '$c_claveprodserv0',
-                                                            $Honorarios_Importe,
-                                                            $Honorarios_Iva,
-                                                            $Honorarios_ret,
-                                                            $Honorarios_Total)";
-
-    $stmt_hon1 = $db->prepare($query_hon1);
-    if (!($stmt_hon1)) {
-      $system_callback['code'] = "500";
-      $system_callback['message'] = "Error during query prepare hon1 [$db->errno]: $db->error";
-      exit_script($system_callback);
-    }
-    if (!($stmt_hon1->execute())) {
-      $system_callback['code'] = "500";
-      $system_callback['message'] = "Error during query execution hon1 [$stmt_hon1->errno]: $stmt_hon1->error";
-    }
-*/
 ?>

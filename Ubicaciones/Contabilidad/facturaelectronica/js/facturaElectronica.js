@@ -89,6 +89,30 @@ $(document).ready(function(){
   $('#mostrarConsulta').submit(function(){
     $('#m-ctagastos').fadeIn();
     $('#b-ctagastos').slideUp();
+
+    var data = {
+      id_captura: $('#bRef').val()
+    }
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_lstCapturadas.php",
+      data: data,
+      success: 	function(r){
+        console.log(r);
+      r = JSON.parse(r);
+        if (r.code == 1) {
+          console.log(r);
+          $('#lst_cuentasGastos_capturadas').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      },
+      error: function(x){
+        console.error(x);
+      }
+    });
+
+
   });
 
   $('#mostrarConsulta').submit(function(){
@@ -175,6 +199,7 @@ $(document).ready(function(){
         if (r.code == 1) {
           console.log(r);
           $('#datosEmbarque').html(r.data);
+          $('#T_Dias').focus();
         } else {
           console.error(r.message);
         }
@@ -197,6 +222,11 @@ function asignar_facturarA(){
   buscaCuentascontables('ref',idcliente);
 }
 
+function cargarClienteSinReferencia(){
+		$('#ctagatos-cReferencia').val("").attr('db-id',"");
+    idcliente = $('#ctagatos-sReferencia').attr('db-id');
+		buscaCuentascontables('sinref',idcliente);
+}
 function cargarOtroCliente(){
   idcliente = $('#DGEcliente').attr('db-id');
   nombre = $('#DGEcliente').val();
@@ -218,54 +248,93 @@ function buscaCuentascontables(opcion,id_cliente){
       success: 	function(request){
         r = JSON.parse(request);
         console.log(r);
-        if (r.code == 1) {
-          if(opcion == 'ref'){ $('#nombreCliente').html(r.data); }
-          if(opcion == 'ref'){ $('#nombreCliente_sinReferencia').html(r.data); }
+        if(opcion == 'ref'){
+          $('#nombreCliente').html(r.data);
+          if (r.code == 1) { $('#Btn_conReferencia').show(); }
+          if (r.code == 2) { $('#Btn_conReferencia').hide(); }
         }
+        if(opcion == 'sinref'){
+          $('#nombreCliente_sinReferencia').html("");
+          $('#nombreCliente_sinReferencia').html(r.data);
+
+          if (r.code == 1) {
+            $('#Btn_Busca_Ref_Cta_Gtos_2').show();
+            $('#Btn_Busca_Ref_Cta_Gtos_3').show();
+          }
+
+          if (r.code == 2) {
+            $('#Btn_Busca_Ref_Cta_Gtos_2').hide();
+            $('#Btn_Busca_Ref_Cta_Gtos_3').hide();
+          }
+
+        }
+
       }
     });
 }
 
 function cargarCtaAme(){
+  $('#docto').val('ctaAme');
   folioNo = $('#DGEctaAme').val();
   $('#folio').val(folioNo);
   $('select#DGEproforma').val(0);
 }
 
 function cargarSolicitudAnticipo(){
+  $('#docto').val('Proforma');
   folioNo = $('#DGEproforma').val();
   $('#folio').val(folioNo);
   $('select#DGEctaAme').val(0);
 }
 
 function validaDatosReferencia(){
+  id_cliente = $('#DGE_idcliente').val();
+  dias = $('#T_Dias').val();
+  extraerfolio = $('#folio').val();
+  opcionDoc = $('#opcionDoc').val();
+  docto = $('#docto').val();
+  cobrarFlete = $('#cobrarFlete').val();
 
-      id_cliente = $('#DGE_idcliente').val();
-      dias = $('#T_Dias').val();
-      extraerfolio = $('#folio').val();
-      opcion = $('#opcion').val();
-      cobrarFlete = $('#cobrarFlete').val();
+  if ( id_cliente == ""){
+    alertify.error("seleccione Cliente o Corresponsal");
+    return false;
+  }
 
-      if ( id_cliente == ""){
-        alertify.error("seleccione Cliente o Corresponsal");
-        return false;
-      }
+  if( dias == ""){
+    alertify.error("asigne un numero de dias");
+    $('#T_Dias').focus();
+    return false;
+  }
 
-      if( dias == ""){
-        alertify.error("asigne un numero de dias");
-        $('#T_Dias').focus();
-        return false;
-      }
+  referencia = $('#DGE_referencia').val();
+  consolidado = $('#DGE_consolidado').val();
+  entradas = $('#DGE_entradas').val();
+  shipper = $('#DGE_shipper').val();
+  inbond = $('#DGE_inbond').val();
+  flete = $('#DGE_flete').val();
 
-      referencia = $('#DGE_referencia').val();
-      consolidado = $('#DGE_consolidado').val();
-      entradas = $('#DGE_entradas').val();
-      shipper = $('#DGE_shipper').val();
-      inbond = $('#DGE_inbond').val();
-      flete = $('#DGE_flete').val();
+  window.location.replace('1-CuentaGastos_elaborar.php?referencia='+referencia+'&consolidado='+consolidado+'&entradas='+entradas+'&shipper='+shipper+'&inbond='+inbond+'&flete='+flete+'&id_cliente='+id_cliente+'&docto='+docto+'&opcionDoc='+opcionDoc+'&extraerfolio='+extraerfolio+'&cobrarFlete='+cobrarFlete+'&dias='+dias+'&tasa=IVA');
+}
 
-      if( opcion = 'ctagastos'){ }
-      window.location.replace('1-CuentaGastos_elaborar.php?referencia='+referencia+'&consolidado='+consolidado+'&entradas='+entradas+'&shipper='+shipper+'&inbond='+inbond+'&flete='+flete+'&id_cliente='+id_cliente+'&opcion='+opcion+'&extraerfolio='+extraerfolio+'&cobrarFlete='+cobrarFlete+'&dias='+dias+'&tasa=IVA');
+function cargarCuentaSinReferencia(tasa){
+    referencia = "SN";
+    consolidado = "FTL";
+    entradas = 0;
+    shipper = 0;
+    inbond = 0;
+    flete = 0;
+    id_cliente = $('#ctagatos-sReferencia').attr('db-id');
+    dias = 1;
+    extraerfolio = 0;
+    docto = "cliente";
+    opcionDoc = 'ctagastos';
+    cobrarFlete = "no";
+
+    if ( id_cliente == ""){
+      alertify.console.error("seleccione Cliente o Corresponsal");
+      return false;
+    }
+    window.location.replace('1-CuentaGastos_elaborar.php?referencia='+referencia+'&consolidado='+consolidado+'&entradas='+entradas+'&shipper='+shipper+'&inbond='+inbond+'&flete='+flete+'&id_cliente='+id_cliente+'&docto='+docto+'&opcionDoc='+opcionDoc+'&extraerfolio='+extraerfolio+'&cobrarFlete='+cobrarFlete+'&dias='+dias+'&tasa='+tasa);
 }
 
 
@@ -281,6 +350,12 @@ function cambiar_color_over(fila){
 function cambiar_color_out(fila){
 	fila.style.backgroundColor="#FFFFFF"
 }
+
+//INFORMACION DEL EMBARQUE
+$('#T_IGED_1').prop('readonly',true);
+$('#T_IGED_2,#T_IGED_3,#T_IGED_4,#T_IGED_5,#T_IGED_6,#T_IGED_7,#T_IGED_8,#T_IGED_9,#T_IGED_10,#T_IGED_11,#T_IGED_12,#T_IGET_1,#T_IGET_2,#T_IGET_3,#T_IGET_4,#T_IGET_5,#T_IGET_6,#T_IGET_7,#T_IGET_8,#T_IGET_9,#T_IGET_10,#T_IGET_11,#T_IGET_12,#T_IGET_13')
+  .change(function(){ eliminaBlancosIntermedios(this); });
+$('#T_IGED_13').change(function(){ validaIntDec(this); });
 
 //PAGOS O COBROS EN MONEDA EXTRANJERA
 function tarifaCliente(){
@@ -349,6 +424,7 @@ $(document).keydown(function(e){
 
 
 function agregarImporte(){
+  tipoDocumento = $('#tipoDocumento').val();
 	unidades = $('#T_no_calculo').val();
 	cta =  $('#T_POCME_Cta').val();
   idConcepto = $('#T_POCME_idConcep').val();
@@ -360,24 +436,33 @@ function agregarImporte(){
   if( cta == "" ){
     alertify.success('Seleccione un concepto');
   }else {
+      if(tipoDocumento == 'elaborar'){
+        btnEliminar = "<a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        inputPartida = "";
+      }
+      if(tipoDocumento == 'modificar'){
+        btnEliminar = "<a href='#' class='eliminar-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
+      }
 
       var element = $('.T_POCME_CONCEPTOS').length;
 
       newtr = "<tr class='row m-0 trPOCME elemento-pocme' id='"+element+"'>";
       newtr = newtr + "    <td class='col-md-1 p-2'>";
+      newtr = newtr + inputPartida;
       newtr = newtr + "        <input type='text' id='T_POCME_Cantidad"+element+"' class='T_POCME_CANTIDAD cantidad efecto h22' onblur='validaSoloNumeros(this);importe_POCME();' size='4'/>";
       newtr = newtr + "      </td>";
       newtr = newtr + "      <td class='col-md-3 p-2 datos-transferibles'>";
       newtr = newtr + "        <input type='hidden' id='T_POCME_idTipoCta"+element+"' class='T_POCME_CUENTAS id-cuenta'>";
       newtr = newtr + "        <input type='hidden' id='T_POCME_idConcep"+element+"' class='T_POCME_idCONCEPTOS id-concepto'>";
-      newtr = newtr + "        <input type='text' id='T_POCME_Concepto"+element+"' class='T_POCME_CONCEPTOS efecto h22 concepto-espanol' size='45' readonly='readOnly'/>";
+      newtr = newtr + "        <input type='text' id='T_POCME_Concepto"+element+"' class='T_POCME_CONCEPTOS efecto h22 concepto-espanol' size='45' readonly/>";
       newtr = newtr + "        <input type='hidden' id='T_POCME_ConceptoEng"+element+"' class='T_POCME_CONCEPTOS_ENG concepto-ingles'>";
       newtr = newtr + "      </td>";
       newtr = newtr + "      <td class='col-md-3 p-2'>";
       newtr = newtr + "        <input type='text' id='T_POCME_Descripcion"+element+"' class='T_POCME_DESCRIPCION descripcion efecto h22' size='45' maxlength='40'>";
       newtr = newtr + "      </td>";
       newtr = newtr + "      <td class='col-md-1 p-2 text-left'>";
-      newtr = newtr + "        <a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+      newtr = newtr + btnEliminar;
       newtr = newtr + "      </td>";
       newtr = newtr + "      <td class='col-md-2 p-2'>";
       newtr = newtr + "        <input type='text' id='T_POCME_Importe"+element+"' class='T_POCME_IMPORTES importe efecto h22' onblur='validaIntDec(this);validaDescImporte(1,"+element+");importe_POCME();cortarDecimalesObj(this,2);' size='17' >";
@@ -395,23 +480,19 @@ function agregarImporte(){
         sumaGeneral();
       });
 
-
       var element = $('.T_POCME_CONCEPTOS').length;
       $( ".T_POCME_CONCEPTOS" ).each(function( x ) {
     	  if( $('.T_POCME_CONCEPTOS').eq(x).val() == "" ){
 
-      		if( $('.T_POCME_CONCEPTOS').eq(x).val() == "Otros"){
-      		  $('.T_POCME_CONCEPTOS').eq(x).prop('readOnly',true);
-      		  $('.T_POCME_CONCEPTOS').eq(x).css('background-color','#FFFFFF');
-      		}else{
-      		  $('.T_POCME_CONCEPTOS').eq(x).prop('readOnly',false);
-      		  $('.T_POCME_CONCEPTOS').eq(x).css('background-color','#DCDCDC');
-      		}
-
-      		$('.T_POCME_CUENTAS').eq(x).val(cta);
+          $('.T_POCME_CUENTAS').eq(x).val(cta);
           $('.T_POCME_idCONCEPTOS').eq(x).val(idConcepto);
           $('.T_POCME_CONCEPTOS').eq(x).val(concepto);
-      		$('.T_POCME_CONCEPTOS_ENG').eq(x).val(concepto_eng);
+          $('.T_POCME_CONCEPTOS_ENG').eq(x).val(concepto_eng);
+
+      		if( $('.T_POCME_CONCEPTOS').eq(x).val() == "Otros"){
+      		  $('.T_POCME_CONCEPTOS').eq(x).prop('readonly',false);
+      		  $('.T_POCME_CONCEPTOS').eq(x).css('background-color','#FFFFFF');
+      		}
 
       		if(importe == 0 || importe == ""){
       		  $('.T_POCME_CANTIDAD').eq(x).val(0);
@@ -441,6 +522,41 @@ function agregarImporte(){
 
     }
 }
+
+$("#tbodyPOCME").on('click', '.eliminar-POCME',function(e){
+  $(this).closest("tr").hide();
+  $(this).parents('tr')
+    .removeClass('elemento-pocme')
+    .addClass('elemento-pocme-eliminar');
+  var subtotal = $(this).parents('tr').find('.T_POCME_SUBTOTALES');
+  subtotal.removeClass('T_POCME_SUBTOTALES');
+  sumaGeneral();
+});
+
+$("#tbodyCargos").on('click', '.eliminar-Cargos',function(e){
+  $(this).closest("tr").hide();
+  $(this).parents('tr')
+    .removeClass('elemento-Cargos')
+    .addClass('elemento-cargos-eliminar');
+  var subtotal = $(this).parents('tr').find('.T_Cargo_Subtotal');
+  subtotal.removeClass('T_Cargo_Subtotal');
+  sumaGeneral();
+});
+
+$("#tbodyHonorarios").on('click', '.eliminar-Honorarios',function(e){
+  $(this).closest("tr").hide();
+  $(this).parents('tr')
+    .removeClass('elemento-Honorarios')
+    .addClass('elemento-honorarios-eliminar');
+  var importe = $(this).parents('tr').find('.T_Honorarios_Importe');
+  importe.removeClass('T_Honorarios_Importe');
+  var iva = $(this).parents('tr').find('.T_Honorarios_IVA');
+  iva.removeClass('T_Honorarios_IVA');
+  var ret = $(this).parents('tr').find('.T_Honorarios_RET');
+  ret.removeClass('T_Honorarios_RET');
+  sumaGeneral();
+});
+
 
 //CANTIDAD * IMPORTE = SUBTOTAL DE POCME
 function importe_POCME(){
@@ -489,6 +605,27 @@ function Conversion_Tipo_Cambio(){
 	Total_POCME_MN =  cortarDecimales(CalcMUL(POCME_Total,POCME_Tipo_Cambio),2);
 	$('#T_POCME_Total_MN').val(Total_POCME_MN).attr('value',Total_POCME_MN);
 	Suma_Subtotales();
+}
+
+function totalManiobras(){
+  custodia = $('#T_Valor_Custodia_Aer').val();
+  manejo = $('#T_Valor_Manejo_Aer').val();
+  almacenaje = $('#T_Valor_Almacenaje_Aer').val();
+  suma = cortarDecimales(CalcADD(custodia,manejo),2);
+  suma = cortarDecimales(CalcADD(suma,almacenaje),2)
+  $('#T_Valor_Total_Maniobras').val(suma);
+}
+
+function Pasa_Valor_Maniobras(){
+		if($('#T_ID_Aduana_Oculto').val() == 470){
+      $('#T_CA_idconcepto').val('7').attr('value','7');
+      $('#T_CA_idcuenta').val('0110-00009').attr('value','0110-00009');
+      $('#T_CA').val('MANIOBRAS. (CUSTODIA, MANEJO Y ALMACENAJE)').attr('value','MANIOBRAS. (CUSTODIA, MANEJO Y ALMACENAJE)');
+
+      total = $('#T_Valor_Total_Maniobras').val();
+			$('#T_Valor_Concepto_Gral').val(total).attr('value',total);
+      $('#Btn_Cargo').click();
+		}
 }
 
 function Suma_Subtotales(){
@@ -578,7 +715,7 @@ function totalLetra(){
       r = JSON.parse(r);
 
       if (r.code == 1) {
-        $('#total_CuentaGastos').html(r.data);
+        $('#total_CuentaGastos').val(r.data).attr('value',r.data);
       } else {
         console.error(r.message);
       }
@@ -682,6 +819,7 @@ function tarifaAlmacenLibre(){
 }
 
 function agregarCargo(){
+  tipoDocumento = $('#tipoDocumento').val();
   id_concepto = $('#T_CA_idconcepto').val();
   id_cuenta = $('#T_CA_idcuenta').val();
   concepto = $('#T_CA').val();
@@ -692,17 +830,26 @@ function agregarCargo(){
   if( id_cuenta == "" ){
     alertify.success('Seleccione un concepto');
   }else {
+      if(tipoDocumento == 'elaborar'){
+        btnEliminar = "<a href='#' class='remove-Cargos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        inputPartida = "";
+      }
+      if(tipoDocumento == 'modificar'){
+        btnEliminar = "<a href='#' class='eliminar-Cargos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
+      }
 
       var element = $('.T_Cargo').length;
 
       newtr = "<tr class='row m-0 trCargos elemento-cargos' id='"+element+"'>";
       newtr = newtr + "                <td class='col-md-6 p-1'>";
+      newtr = newtr + inputPartida;
       newtr = newtr + "                  <input class='T_Cargo_idconcepto id-concepto' type='hidden' id='T_Cargo_idconcepto_"+element+"'>";
       newtr = newtr + "                  <input class='T_Cargo_idcuenta id-cuenta' type='hidden' id='T_Cargo_idcuenta_"+element+"'>";
-      newtr = newtr + "                  <input class='efecto h22 T_Cargo concepto-espanol' type='text' id='T_Cargo_"+element+"' size='60' maxlength='60' onchange='javascript:eliminaBlancosIntermedios(this);' readonly>";
+      newtr = newtr + "                  <input class='efecto h22 T_Cargo concepto-espanol' type='text' id='T_Cargo_"+element+"' size='60' onchange='javascript:eliminaBlancosIntermedios(this);' readonly>";
       newtr = newtr + "                </td>";
       newtr = newtr + "                <td class='col-md-4 p-1 text-left'>";
-      newtr = newtr + "                  <a href='#' class='remove-Cargos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+      newtr = newtr + btnEliminar;
       newtr = newtr + "                </td>";
       newtr = newtr + "                <td class='col-md-2 p-1'>";
       newtr = newtr + "                  <input class='efecto h22 T_Cargo_Subtotal subtotal' type='text' id='T_Cargo_3"+element+"' size='20' onblur='validaIntDec(this);validaDescImporte(2,"+element+");cortarDecimalesObj(this,2);Suma_Subtotales();' value='0'>";
@@ -721,17 +868,19 @@ function agregarCargo(){
 
           if( $('.T_Cargo').eq(x).val() == "" ){
 
-            if( $('.T_Cargo').eq(x).val() == "Otros Gastos Comprobados" || $('.T_Cargo').eq(x).val() == "Venta de activos fijos" ){
-        		  $('.T_Cargo').eq(x).prop('readOnly',true);
-        		  $('.T_Cargo').eq(x).css('background-color','#FFFFFF');
-        		}else{
-        		  $('.T_Cargo').eq(x).prop('readOnly',false);
-        		  $('.T_Cargo').eq(x).css('background-color','#DCDCDC');
-        		}
-
             $('.T_Cargo_idconcepto').eq(x).val(id_concepto);
             $('.T_Cargo_idcuenta').eq(x).val(id_cuenta);
             $('.T_Cargo').eq(x).val(concepto);
+
+            if( $('.T_Cargo').eq(x).val() == "Otros Gastos Comprobados" || $('.T_Cargo').eq(x).val() == "Venta de activos fijos" ){
+        		  $('.T_Cargo').eq(x).prop('readonly',false);
+        		  $('.T_Cargo').eq(x).css('background-color','#FFFFFF');
+        		}
+            //else{
+        		  //$('.T_Cargo').eq(x).prop('readOnly',false);
+        		  //$('.T_Cargo').eq(x).css('background-color','#DCDCDC');
+        		//}
+
 
             if(importe == 0 || importe == ""){
         		  $('.T_Cargo_Subtotal').eq(x).val(0);
@@ -799,6 +948,7 @@ function asignarTarifaH(){
 }
 
 function agregarHonorarios(){
+    tipoDocumento = $('#tipoDocumento').val();
 		id_cuenta = $('#T_Hcta').val();
 		id_prodServ = $('#T_Hps').val();
 		concepto = $('#T_CH').val();
@@ -809,15 +959,24 @@ function agregarHonorarios(){
     if( id_prodServ == "" ){
       alertify.success('Seleccione un concepto');
     }else {
+        if(tipoDocumento == 'elaborar'){
+          btnEliminar = "<a href='#' class='remove-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+          inputPartida = "";
+        }
+        if(tipoDocumento == 'modificar'){
+          btnEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+          inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
+        }
 
         var element = $('.T_Honorarios').length;
 
         newtr = "<tr class='row m-0 trHonorarios elemento-honorarios' id='"+element+"'>";
         newtr = newtr + "<td class='col-md-4 p-1'>";
-        newtr = newtr + "  <input class='efecto h22 T_Honorarios concepto-espanol' type='text' id='T_Honorarios_"+element+"' size='60' maxlength='60' onchange='javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);' readonly tabindex='75'>";
+        newtr = newtr + inputPartida;
+        newtr = newtr + "  <input class='efecto h22 T_Honorarios concepto-espanol' type='text' id='T_Honorarios_"+element+"' size='60' onchange='javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);' readonly>";
         newtr = newtr + "</td>";
         newtr = newtr + "<td class='col-md-2 p-1 text-left'>";
-        newtr = newtr + "  <a href='#' class='remove-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        newtr = newtr + btnEliminar;
         newtr = newtr + "</td>";
         newtr = newtr + "<td class='col-md-1 p-1'>";
         newtr = newtr + "  <input class='efecto h22 T_Honorarios_idcta id-cuenta' type='text' id='T_Hcta_"+element+"' size='15' readonly>";
@@ -849,17 +1008,20 @@ function agregarHonorarios(){
 
         $(".T_Honorarios").each(function( x ) {
             if( $('.T_Honorarios').eq(x).val() == "" ){
-              if( $('.T_Honorarios').eq(x).val() == "Otros Gastos Comprobados"){
-          		  $('.T_Honorarios').eq(x).prop('readOnly',true);
-          		  $('.T_Honorarios').eq(x).css('background-color','#FFFFFF');
-          		}else{
-          		  $('.T_Honorarios').eq(x).prop('readOnly',false);
-          		  $('.T_Honorarios').eq(x).css('background-color','#DCDCDC');
-          		}
 
               $('.T_Honorarios').eq(x).val(concepto);
-      				$('.T_Honorarios_idcta').eq(x).val(id_cuenta);
-      				$('.T_Honorarios_idps').eq(x).val(id_prodServ);
+              $('.T_Honorarios_idcta').eq(x).val(id_cuenta);
+              $('.T_Honorarios_idps').eq(x).val(id_prodServ);
+
+              if( $('.T_Honorarios').eq(x).val() == "Otros Gastos Comprobados"){
+          		  $('.T_Honorarios').eq(x).prop('readonly',false);
+          		  $('.T_Honorarios').eq(x).css('background-color','#FFFFFF');
+          		}
+              // else{
+          		//   $('.T_Honorarios').eq(x).prop('readOnly',false);
+          		//   $('.T_Honorarios').eq(x).css('background-color','#DCDCDC');
+          		// }
+
 
               if(importe == 0 || importe == ""){
           		  $('.T_Honorarios_Importe').eq(x).val(0);
@@ -904,7 +1066,7 @@ function iva_retenido(concepto,importe){
 
 function Suma_Valor_Honorarios(){
   total_POCME_MN = $('#T_POCME_Total_MN').val();
-  total_mercancias = $('#T_IGED_11').val();
+  total_mercancias = $('#T_IGED_13').val();
   subsidio = $('#T_Subsidio').val();
   total_cargos = $('#T_Total_Pagos').val();
   Suma_Totales = 0;
@@ -1035,10 +1197,12 @@ $('#depositos-disponibles, #tbodyDepAplic').on('click', '.agregar-deposito', fun
   if (destino == '#tbodyDepAplic') {
     $(this).attr('destino', '#depositos-disponibles');
     tr.addClass('elemento-depositos');
+    tr.removeClass('elemento-depositos-disponibles');
     totalAnticipos = cortarDecimales(CalcADD(totalAnticipos,valor),2);
   } else {
     $(this).attr('destino', '#tbodyDepAplic');
     tr.removeClass('elemento-depositos');
+    tr.addClass('elemento-depositos-disponibles');
     totalAnticipos = cortarDecimales(CalcSUB(totalAnticipos,valor),2);
   }
 
@@ -1046,10 +1210,24 @@ $('#depositos-disponibles, #tbodyDepAplic').on('click', '.agregar-deposito', fun
   $('#T_Total_Anticipos').val(totalAnticipos);
   sumaGeneral();
 });
-
+/*
 function asignarMetodoPago(){
 	metodoPago = $('#Lst_metodoPago').val();
 	$('#T_metodoPago').attr('value',metodoPago).val(metodoPago);
+
+	if( metodoPago == 'PPD' ){
+    $('#T_FormaPago').val('99').attr('value','99');
+    $('#T_CuentaPago').val('').attr('value','');
+		$('#Lst_formaPago').prop( 'disabled',true );
+	}else{
+    $('#T_FormaPago').val('').attr('value','');
+    $('#T_CuentaPago').val('').attr('value','');
+		$('#Lst_formaPago').prop( 'disabled',false );
+	}
+}*/
+function asignarMetodoPago(){
+	metodoPago = $('#T_metodoPago').val();
+	//$('#T_metodoPago').attr('value',metodoPago).val(metodoPago);
 
 	if( metodoPago == 'PPD' ){
     $('#T_FormaPago').val('99').attr('value','99');
@@ -1125,12 +1303,12 @@ function asignarMoneda(){
 			                        .css('background-color','#FFFFFF');
 		}
 }
-
+/*
 function asignarUsoCFDI(){
 	usoCFDI = $('#Lst_usoCFDI').val();
 	$('#T_usoCFDI').val(usoCFDI).attr('value',usoCFDI);
 }
-
+*/
 function valFormaPago(){
 		if( $('#T_FormaPago').val() == "" && $('#T_FormaPago').val() == "" ){
       swal("Forma de pago", "Es requerido", "error");
@@ -1168,6 +1346,193 @@ function valUsoCFDI(){
 		}
 }
 
+$('#modificar-cta').click(function(){
+  folio = $('#id_cuenta_captura').val();
+
+  Suma_Subtotales();
+  if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
+      //$('#guardar').prop('disabled',true);
+      $('#mensaje').html("Guardando . . .");
+
+      var data = {
+        folio: folio,
+        T_No_calculoTarifa : $('#T_No_calculoTarifa').val(),
+        Txt_Usuario : $('#Txt_Usuario').val(),
+        T_IGED_1 : $('#T_IGED_1').val(),
+        T_ID_Aduana_Oculto : $('#T_ID_Aduana_Oculto').val(),
+        T_ID_Almacen_Oculto : $('#T_ID_Almacen_Oculto').val(),
+        T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
+        T_Nombre_Cliente : $('#T_Nombre_Cliente').val(),
+        T_Cliente_Calle : $('#T_Cliente_Calle').val(),
+        T_Cliente_No_Ext : $('#T_Cliente_No_Ext').val(),
+        T_Cliente_No_Int : $('#T_Cliente_No_Int').val(),
+        T_Cliente_Colonia : $('#T_Cliente_Colonia').val(),
+        T_Cliente_CP : $('#T_Cliente_CP').val(),
+        T_Cliente_Ciudad : $('#T_Cliente_Ciudad').val(),
+        T_Cliente_Estado : $('#T_Cliente_Estado').val(),
+        T_Cliente_Pais : $('#T_Cliente_Pais').val(),
+        T_Cliente_taxid : $('#T_Cliente_taxid').val(),
+        T_Cliente_RFC : $('#T_Cliente_RFC').val(),
+        T_Proveedor_Destinatario : $('#T_Proveedor_Destinatario').val(),
+        T_Tipo : $('#T_Tipo').val(),
+        T_Valor : $('#T_Valor').val(),
+        T_Peso : $('#T_Peso').val(),
+        T_Dias : $('#T_Dias').val(),
+        T_Valor_Custodia_Aer : $('#T_Valor_Custodia_Aer').val(),
+        T_Valor_Manejo_Aer : $('#T_Valor_Manejo_Aer').val(),
+        T_Valor_Almacenaje_Aer : $('#T_Valor_Almacenaje_Aer').val(),
+        T_Valor_Total_Maniobras : $('#T_Valor_Total_Maniobras').val(),
+        T_Subsidio : $('#T_Subsidio').val(),
+        T_derechosPagados : $('#T_derechosPagados').val(),
+        T_Honorarios_Porcentaje : $('#T_Honorarios_Porcentaje').val(),
+        T_Honorarios_Base_Honorarios : $('#T_Honorarios_Base_Honorarios').val(),
+        T_Honorarios_Descuento : $('#T_Honorarios_Descuento').val(),
+        T_Honorarios_Minimo : $('#T_Honorarios_Minimo_Honorarios').val(),
+
+        T_Total_Importes : $('#T_Total_Importes').val(),
+        T_Total_IVA : $('#T_Total_IVA').val(),
+        T_IVA_RETENIDO : $('#T_IVA_RETENIDO').val(),
+        T_Total_Gral : $('#T_Total_Gral').val(),
+        T_Total_MN_Extranjera : $('#T_Total_MN_Extranjera').val(),
+        T_SALDO_GRAL : $('#T_SALDO_GRAL').val(),
+        CUSTOMS : $('#CUSTOMS').val(),
+        T_IVA_Porcentaje : $('#T_IVA_Porcentaje').val(),
+        T_SUBTOTAL_HON : $('#T_SUBTOTAL_HON').val(),
+        Txt_Total_MN_Extranjera : $('#Txt_Total_MN_Extranjera').val(),
+        T_Cta_Gastos : $('#T_Cta_Gastos').val(),
+        T_Total_Anticipos : $('#T_Total_Anticipos').val(),
+        Txt_Total_Importe : $('#Txt_Total_Importe').val(),
+        Txt_Total_IVA : $('#Txt_Total_IVA').val(),
+        Txt_SUBTOTAL_HON : $('#Txt_SUBTOTAL_HON').val(),
+        Txt_IVA_RETENIDO : $('#Txt_IVA_RETENIDO').val(),
+        Txt_Total_Gral : $('#Txt_Total_Gral').val(),
+        Txt_Cta_Gastos : $('#Txt_Cta_Gastos').val(),
+        Txt_Total_Anticipos : $('#Txt_Total_Anticipos').val(),
+        Txt_Saldo_Gral : $('#Txt_Saldo_Gral').val(),
+        Txt_Total_Pagos : $('#Txt_Total_Pagos').val(),
+        T_Total_Pagos : $('#T_Total_Pagos').val(),
+        Txt_Honorarios : $('#Txt_Total_Importe').val(),
+        T_POCME_Total : $('#T_POCME_Total').val(),
+        T_POCME_Tipo_Cambio : $('#T_POCME_Tipo_Cambio').val(),
+        T_POCME_Total_MN : $('#T_POCME_Total_MN').val(),
+        Total_Letra : $('#total_CuentaGastos').val(),
+        T_FormaPago : $('#T_FormaPago').val(),
+        T_metodoPago : $('#T_metodoPago').val(),
+        T_CuentaPago : $('#T_CuentaPago').val(),
+        T_Moneda : $('#T_Moneda').val(),
+        T_monedaTipoCambio : $('#T_monedaTipoCambio').val(),
+        T_usoCFDI: $('#T_usoCFDI').val(),
+        dge: {},
+        pocme: {},
+        cargos: {},
+        honorarios: {},
+        pocmeDelete: {},
+        cargoDelete: {},
+        honDelete: {},
+        depositos: {},
+        depositosDisponibles: {}
+      }
+
+      $( ".elementos-dge" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          descripcion: $(this).find('.descripcion').val()
+        }
+        data.dge[i] = parsed_data;
+      });
+
+      $( ".elemento-pocme" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          cantidad: $(this).find('.cantidad').val(),
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idconcepto: $(this).find('.id-concepto').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          concepto_ing: $(this).find('.concepto-ingles').val(),
+          descripcion: $(this).find('.descripcion').val(),
+          importe: $(this).find('.importe').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.pocme[i] = parsed_data;
+      });
+
+      $( ".elemento-pocme-eliminar" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val()
+        }
+        data.pocmeDelete[i] = parsed_data;
+      });
+
+      $( ".elemento-cargos" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idconcepto: $(this).find('.id-concepto').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.cargos[i] = parsed_data;
+      });
+
+      $( ".elemento-honorarios" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idcveprod: $(this).find('.id-cveProd').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          importe: $(this).find('.importe').val(),
+          iva: $(this).find('.iva').val(),
+          ret: $(this).find('.ret').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.honorarios[i] = parsed_data;
+      });
+
+      $( ".elemento-depositos" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idDeposito: $(this).find('.id-deposito').val(),
+          importe: $(this).find('.importe').val(),
+        }
+        data.depositos[i] = parsed_data;
+      });
+
+      $( ".elemento-depositos-disponibles" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idDeposito: $(this).find('.id-deposito').val(),
+          importe: $(this).find('.importe').val(),
+        }
+        data.depositosDisponibles[i] = parsed_data;
+      });
+
+      console.log(data);
+
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar.php",
+        data: data,
+        success: 	function(r){
+          r = JSON.parse(r);
+          if (r.code == 1) {
+
+            console.log(r);
+            //folio = r.data;
+            swal("Folio: "+folio, "actualizado correctamente", "success");
+            //setTimeout('document.location.reload()',700);
+          } else {
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+      });
+  }
+});
+
+
 $('#guardar-cta').click(function(){
   Suma_Subtotales();
   if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
@@ -1182,6 +1547,31 @@ $('#guardar-cta').click(function(){
         T_No_calculoTarifa : $('#T_No_calculoTarifa').val(),
         Txt_Usuario : $('#Txt_Usuario').val(),
         T_IGED_1 : $('#T_IGED_1').val(),
+        T_IGED_2 : $('#T_IGED_2').val(),
+        T_IGED_3 : $('#T_IGED_3').val(),
+        T_IGED_4 : $('#T_IGED_4').val(),
+        T_IGED_5 : $('#T_IGED_5').val(),
+        T_IGED_6 : $('#T_IGED_6').val(),
+        T_IGED_7 : $('#T_IGED_7').val(),
+        T_IGED_8 : $('#T_IGED_8').val(),
+        T_IGED_9 : $('#T_IGED_9').val(),
+        T_IGED_10 : $('#T_IGED_10').val(),
+        T_IGED_11 : $('#T_IGED_11').val(),
+        T_IGED_12 : $('#T_IGED_12').val(),
+        T_IGED_13 : $('#T_IGED_13').val(),
+        T_IGET_1 : $('#T_IGET_1').val(),
+        T_IGET_2 : $('#T_IGET_2').val(),
+        T_IGET_3 : $('#T_IGET_3').val(),
+        T_IGET_4 : $('#T_IGET_4').val(),
+        T_IGET_5 : $('#T_IGET_5').val(),
+        T_IGET_6 : $('#T_IGET_6').val(),
+        T_IGET_7 : $('#T_IGET_7').val(),
+        T_IGET_8 : $('#T_IGET_8').val(),
+        T_IGET_9 : $('#T_IGET_9').val(),
+        T_IGET_10 : $('#T_IGET_10').val(),
+        T_IGET_11 : $('#T_IGET_11').val(),
+        T_IGET_12 : $('#T_IGET_12').val(),
+        T_IGET_13 : $('#T_IGET_13').val(),
         T_ID_Aduana_Oculto : $('#T_ID_Aduana_Oculto').val(),
         T_ID_Almacen_Oculto : $('#T_ID_Almacen_Oculto').val(),
         T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
@@ -1240,16 +1630,17 @@ $('#guardar-cta').click(function(){
         Txt_Saldo_Gral : $('#Txt_Saldo_Gral').val(),
         Txt_Total_Pagos : $('#Txt_Total_Pagos').val(),
         T_Total_Pagos : $('#T_Total_Pagos').val(),
-        Txt_Honorarios : $('#Txt_Honorarios').val(),
+        Txt_Honorarios : $('#Txt_Total_Importe').val(),
         T_POCME_Total : $('#T_POCME_Total').val(),
         T_POCME_Tipo_Cambio : $('#T_POCME_Tipo_Cambio').val(),
         T_POCME_Total_MN : $('#T_POCME_Total_MN').val(),
-        Total_Letra : $('#Total_Letra').val(),
+        Total_Letra : $('#total_CuentaGastos').val(),
         T_FormaPago : $('#T_FormaPago').val(),
         T_metodoPago : $('#T_metodoPago').val(),
         T_CuentaPago : $('#T_CuentaPago').val(),
         T_Moneda : $('#T_Moneda').val(),
-        T_monedaTipoCambio : $('#T_monedaTipoCambio').val()
+        T_monedaTipoCambio : $('#T_monedaTipoCambio').val(),
+        T_usoCFDI: $('#T_usoCFDI').val()
       };
 
       $( ".elemento-pocme" ).each(function(i) {
@@ -1318,3 +1709,18 @@ $('#guardar-cta').click(function(){
       });
   }
 });
+
+
+//BUSCAR CUANTA DE GASTOS
+function ctaGastosCapturaModificar(referencia,dias,cliente,almacen,tipo,valor,peso,cuenta,shipper,consolidado,inbond,entradas,flete,reexpedicion,cobrarFlete,status_flete,entradasAdicionales){
+  window.location.replace('1-CuentaGastos_modificar.php?referencia='+referencia+'&dias='+dias+'&id_cliente='+cliente+'&almacen='+almacen+'&tipo='+tipo+'&valor='+valor+'&peso='+peso+'&cuenta='+cuenta+'&shipper='+shipper+'&consolidado='+consolidado+'&inbond='+inbond+'&entradas='+entradas+'&flete='+flete+'&reexpedicion='+reexpedicion+'&cobrarFlete='+cobrarFlete
+    +'&status_flete='+status_flete+'&entradasAdicionales='+entradasAdicionales);
+}
+
+function ctaGastosCapturaConsultar(cuenta){
+  window.location.replace('1-CuentaGastos_Consultar.php?cuenta='+cuenta);
+}
+function ctaGastosCapturaImprimir(cuenta){
+  window.location.replace('1-CuentaGastos_imprimir.php?cuenta='+cuenta);
+}
+function ctaGastosCapturaEliminar($id_captura){}

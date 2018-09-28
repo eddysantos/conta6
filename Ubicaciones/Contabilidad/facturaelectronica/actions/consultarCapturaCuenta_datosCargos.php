@@ -1,6 +1,6 @@
 <?PHP
 
-$query_consultaCargos = "SELECT s_conceptoEsp,n_total FROM conta_t_facturas_captura_det WHERE fk_id_cuenta_captura = ? and s_tipoDetalle = 'cargos' ";
+$query_consultaCargos = "SELECT pk_id_partida,n_cantidad,fk_id_cuenta, fk_id_concepto, s_conceptoEsp,n_total FROM conta_t_facturas_captura_det WHERE fk_id_cuenta_captura = ? and s_tipoDetalle = 'cargos' ";
 
 $stmt_consultaCargos = $db->prepare($query_consultaCargos);
 if (!($stmt_consultaCargos)) {
@@ -24,8 +24,13 @@ $rslt_consultaCargos = $stmt_consultaCargos->get_result();
 $total_consultaCargos = $rslt_consultaCargos->num_rows;
 
 if( $total_consultaCargos > 0 ) {
+	$idFila = 0;
 	while( $row_consultaCargos = $rslt_consultaCargos->fetch_assoc() ){
-
+		++$idFila;
+		$pk_id_partida = $row_consultaCargos['pk_id_partida'];
+		$n_cantidad = $row_consultaCargos['n_cantidad'];
+		$fk_id_cuenta = $row_consultaCargos['fk_id_cuenta'];
+		$fk_id_concepto = $row_consultaCargos['fk_id_concepto'];
 		$s_conceptoEsp = utf8_encode($row_consultaCargos['s_conceptoEsp']);
 		$n_total = number_format($row_consultaCargos['n_total'],2,'.',',');
 
@@ -34,6 +39,21 @@ if( $total_consultaCargos > 0 ) {
 					<div class='col-md-4'></div>
 					<div class='col-md-2'>$ $n_total</div>
 				</div>";
+
+		if( $idFila > 1 ){ $botonEliminar = "<a href='#' class='eliminar-Cargos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";}
+		$datosCargosModifi = $datosCargosModifi."<tr class='row m-0 trCargos elemento-cargos' id='$idFila'>
+		                <td class='col-md-6 p-1'>
+											<input class='id-partida' type='hidden' id='T_partida_$pk_id_partida' value='$pk_id_partida'>
+		                  <input class='T_Cargo_idconcepto id-concepto' type='hidden' id='T_Cargo_idconcepto_$idFila' value='$fk_id_concepto'>
+		                  <input class='T_Cargo_idcuenta id-cuenta' type='hidden' id='T_Cargo_idcuenta_$idFila' value='$fk_id_cuenta'>
+		                  <input class='efecto h22 T_Cargo concepto-espanol' type='text' id='T_Cargo_$idFila' size='60' maxlength='60' value='$s_conceptoEsp'  onchange='javascript:eliminaBlancosIntermedios(this);' readonly>
+		                </td>
+		                <td class='col-md-4 p-1 text-left'>".$botonEliminar."</td>
+		                <td class='col-md-2 p-1'>
+		                  <input class='efecto h22 T_Cargo_Subtotal subtotal' type='text' id='T_Cargo_3$idFila' size='20' value='$n_total' onblur='validaIntDec(this);validaDescImporte(2,$idFila);cortarDecimalesObj(this,2);Suma_Subtotales();'>
+		                </td>
+		              </tr>
+						</div>";
 	}
 }
 

@@ -3,13 +3,14 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 
   $cuenta = trim($_GET['cuenta']);
+  $txt_id_asoc = 'No';
 
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php';
+  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
+  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
+  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
+  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
+  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
+  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
 
 
 ?>
@@ -52,8 +53,8 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
       <div class="col-md-3 text-left p-0"><?PHP echo $s_proveedor_destinatario; ?></div>
     </div>
     <div class="row">
-      <div class="col-md-3 text-right">Num. Ext e Int :</div>
-      <div class="col-md-3 text-left p-0"># <?PHP echo $s_no_ext.' -- '.$s_no_int; ?></div>
+      <div class="col-md-3 text-right">Num. Ext / Int :</div>
+      <div class="col-md-3 text-left p-0"><?PHP echo $s_no_ext.' / '.$s_no_int; ?></div>
     </div>
     <div class="row">
       <div class="col-md-3 text-right">Colonia :</div>
@@ -67,7 +68,7 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
 
     <div class="row">
       <div class="col-md-3 text-right">CP :</div>
-      <div class="col-md-3 text-left p-0"><?PHP echo $s_codigo.' PAIS : '.$s_pais; ?></div>
+      <div class="col-md-3 text-left p-0"><?PHP echo $s_codigo; ?></div>
     </div>
     <div class="row">
       <div class="col-md-3 text-right">Pais :</div>
@@ -96,7 +97,7 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
     <div class="row borderojo">
       <div class="col-md-4"><?php echo $fk_id_aduana; ?></div>
       <div class="col-md-4"><?php echo	$pk_id_cuenta_captura; ?></div>
-      <div class="col-md-4"><?php echo date_format(date_create($d_fecha_cta),"d-m-Y "); ?></div>
+      <div class="col-md-4"><?php echo date_format(date_create($d_fecha_cta),"d-m-Y"); ?></div>
     </div>
     <?php echo $datosEmbarque; ?>
   </div>
@@ -163,12 +164,12 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
   <div class="row encabezado m-0 mt-5 font14">
     <div class="col-lg-4">
       <div class="row">
-        <div class="col-md-12">METODO DE PAGO</div>
+        <div class="col-md-12">MÉTODO DE PAGO</div>
       </div>
     </div>
     <div class="col-lg-4">
       <div class="row">
-        <div class="col-md-12">DEPOSITOS</div>
+        <div class="col-md-12">DEPÓSITOS</div>
       </div>
     </div>
 
@@ -182,7 +183,7 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
   <div class="row divisor font12 b ls1 m-0">
     <div class="col-lg-4">
       <div class="row">
-        <div class="col-md-6 text-right">Metodo de pago :</div>
+        <div class="col-md-6 text-right">Método de pago :</div>
         <div class="col-md-6 text-left"><?php echo $fk_c_MetodoPago; ?></div>
       </div>
       <div class="row">
@@ -203,7 +204,7 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
       </div>
       <div class="row">
         <div class="col-md-6 text-right">CUSTOMS :</div>
-        <div class="col-md-6 text-left"><?php echo $fk_id_asoc; ?></div>
+        <div class="col-md-6 text-left"><?php echo $txt_id_asoc; ?></div>
       </div>
 
     </div>
@@ -252,7 +253,7 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
         <div class="col-md-3">$ <?php echo $n_total_cta_gastos; ?></div>
       </div>
       <div class="row">
-        <div class="col-md-9 text-right">Depositos :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_total_depositos; ?></div>
         <div class="col-md-3">$ <?php echo $n_total_depositos; ?></div>
       </div>
   		<div class="row">

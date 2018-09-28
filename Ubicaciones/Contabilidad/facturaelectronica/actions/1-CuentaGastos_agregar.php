@@ -36,8 +36,6 @@ $Total_Maniobras = trim($_POST['T_Valor_Total_Maniobras']);
 $Total_Subsidiado = trim($_POST['T_Subsidio']);
 $Total_derechosPagados = trim($_POST['T_derechosPagados']);
 
-$IGET_0 = utf8_decode(trim($_POST['T_IGET_0']));
-$IGED_0 = utf8_decode(trim($_POST['T_IGED_0']));
 $IGET_1 = utf8_decode(trim($_POST['T_IGET_1']));
 $IGED_1 = utf8_decode(trim($_POST['T_IGED_1']));
 $IGET_2 = utf8_decode(trim($_POST['T_IGET_2']));
@@ -70,7 +68,7 @@ $usoCFDI = trim($_POST['T_usoCFDI']);
 
 $Honorarios_Porcentaje = trim($_POST['T_Honorarios_Porcentaje']);
 $Honorarios_Base_Honorarios = trim($_POST['T_Honorarios_Base_Honorarios']);
-$Honorarios_Descuent = trim($_POST['T_Honorarios_Descuento']);
+$Honorarios_Descuento = trim($_POST['T_Honorarios_Descuento']);
 $Honorarios_Minimo = trim($_POST['T_Honorarios_Minimo']);
 $Honorarios_0 = trim($_POST['T_Honorarios_0']);
 $Hcta_0 = trim($_POST['T_Hcta_0']);
@@ -180,7 +178,7 @@ $tipoCambio = trim($_POST['T_monedaTipoCambio']);
                         ?,?,?,?,?,?,?,?,?,?,
                         ?,?,?,?,?,?,?,?,?,?,
                         ?,?,?,?,?,?,?,?,?,?,
-                        ?,?,?,?,?,?,?,?)";
+                        ?,?,?,?,?,?,?)";
 
     $stmt_mst = $db->prepare($query_mst);
     if (!($stmt_mst)) {
@@ -189,7 +187,7 @@ $tipoCambio = trim($_POST['T_monedaTipoCambio']);
       exit_script($system_callback);
     }
 
-    $stmt_mst->bind_param('ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
+    $stmt_mst->bind_param('sssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
                           $Usuario_Cta,
                           $ID_Referencia,
                           $ID_Aduana,
@@ -263,6 +261,7 @@ $tipoCambio = trim($_POST['T_monedaTipoCambio']);
     $nfolio = $db->insert_id;
 
     require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_agregar_detalle.php';
+    require $root . '/conta6/Resources/PHP/actions/tarifas_calcula_borrar.php';
 
   //$db->commit();
     $system_callback['hon'] = $query_hon;

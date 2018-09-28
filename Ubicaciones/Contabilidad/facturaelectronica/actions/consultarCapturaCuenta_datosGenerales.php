@@ -30,6 +30,7 @@ if( $total_consultaGenerales > 0 ) {
 	$d_fecha_cta = $row_consultaGenerales['d_fecha_cta'];
 	$fk_usuario = $row_consultaGenerales['fk_usuario'];
 	$d_fecha_modifi = $row_consultaGenerales['d_fecha_modifi'];
+	if (!is_null($d_fecha_modifi)){ $d_fecha_modifi = date_format(date_create($d_fecha_modifi),"d-m-Y H:i:s"); }
 	$s_usuario_modifi = $row_consultaGenerales['s_usuario_modifi'];
 	$fk_referencia = $row_consultaGenerales['fk_referencia'];
 	$fk_id_aduana = $row_consultaGenerales['fk_id_aduana'];
@@ -60,14 +61,14 @@ if( $total_consultaGenerales > 0 ) {
 	$n_total_maniobras = $row_consultaGenerales['n_total_maniobras'];
 	$n_total_subsidiado = $row_consultaGenerales['n_total_subsidiado'];
 	$n_IVA_aplicado = $row_consultaGenerales['n_IVA_aplicado'];
-	$n_total_depositos = $row_consultaGenerales['n_total_depositos'];
+
 	$s_txt_gral_importe = $row_consultaGenerales['s_txt_gral_importe'];
 	$n_total_gral_importe = $row_consultaGenerales['n_total_gral_importe'];
 	$n_txt_gral_IVA = $row_consultaGenerales['n_txt_gral_IVA'];
 	$n_total_gral_IVA = $row_consultaGenerales['n_total_gral_IVA'];
 	$s_txt_total_honorarios = $row_consultaGenerales['s_txt_total_honorarios'];
 	$n_total_honorarios = $row_consultaGenerales['n_total_honorarios'];
-	$s_txt_fac_IVA_retenido = $row_consultaGenerales['s_txt_fac_IVA_retenido'];
+	$s_txt_fac_IVA_retenido = utf8_encode($row_consultaGenerales['s_txt_fac_IVA_retenido']);
 	$s_fac_IVA_retenido = $row_consultaGenerales['s_fac_IVA_retenido'];
 	$s_txt_total_gral = $row_consultaGenerales['s_txt_total_gral'];
 	$n_total_gral = $row_consultaGenerales['n_total_gral'];
@@ -78,12 +79,15 @@ if( $total_consultaGenerales > 0 ) {
 	$s_txt_cta_gastos = $row_consultaGenerales['s_txt_cta_gastos'];
 	$n_total_cta_gastos = $row_consultaGenerales['n_total_cta_gastos'];
 	$s_total_cta_gastos_letra = $row_consultaGenerales['s_total_cta_gastos_letra'];
+	$s_txt_total_depositos = utf8_encode($row_consultaGenerales['s_txt_total_depositos']);
+	$n_total_depositos = $row_consultaGenerales['n_total_depositos'];
+
 	$s_txt_fac_saldo = $row_consultaGenerales['s_txt_fac_saldo'];
 	$n_fac_saldo = $row_consultaGenerales['n_fac_saldo'];
 	$s_total_letra = $row_consultaGenerales['s_total_letra'];
 	$n_tipoCambio = $row_consultaGenerales['n_tipoCambio'];
 	$fk_id_moneda = $row_consultaGenerales['fk_id_moneda'];
-	$pk_c_UsoCFDI = $row_consultaGenerales['pk_c_UsoCFDI'];
+	$pk_c_UsoCFDI = trim($row_consultaGenerales['pk_c_UsoCFDI']);
 	$fk_id_asoc = $row_consultaGenerales['fk_id_asoc'];
 	$s_tipoDeComprobante = $row_consultaGenerales['s_tipoDeComprobante'];
 	$fk_id_formapago = $row_consultaGenerales['fk_id_formapago'];
@@ -95,6 +99,8 @@ if( $total_consultaGenerales > 0 ) {
 	$s_emisor_rfc = $row_consultaGenerales['s_emisor_rfc'];
 	$s_regimenFiscal = $row_consultaGenerales['s_regimenFiscal'];
 	$n_statuspagada = $row_consultaGenerales['n_statuspagada'];
+
+	if( $fk_id_asoc == 1 ){ $txt_id_asoc = 'Si'; }
 }
 
 ?>
