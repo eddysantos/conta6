@@ -46,6 +46,13 @@ if( $total_consultaPOCME > 0 ) {
 					<div class='col-md-2'>$ $n_total</div>
 				</div>";
 
+		$datosPOCMEImprimir = $datosPOCMEImprimir.'<tr>
+					<td width="5%">'.$n_cantidad.' </td>
+					<td width="45%">'.$s_conceptoEsp.' </td>
+					<td width="25%">'.$n_importe.' </td>
+					<td width="25%"> '.$n_total.'</td>
+				</tr>';
+
 		$datosPOCMEmodifi = $datosPOCMEmodifi."
 		<tr class='row m-0 trPOCME elemento-pocme' id='$idFila'>
 			<td class='col-md-1 p-2'>

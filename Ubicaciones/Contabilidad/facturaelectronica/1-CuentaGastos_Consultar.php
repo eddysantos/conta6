@@ -29,7 +29,7 @@
   </div>
 
   <div class="col-md-2 p-3 text-left">
-    <a href="#">
+    <a href="/Conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php">
       <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
     </a>
     <a href="" class="ml-4">

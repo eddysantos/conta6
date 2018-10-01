@@ -26,7 +26,7 @@ $total_consultaHonorarios = $rslt_consultaHonorarios->num_rows;
 
 if( $total_consultaHonorarios > 0 ) {
   $idFila = 0;
-	while( $row_consultaHonorarios = $rslt_consultaHonorarios->fetch_assoc() ){
+	while( $row_consultaHonorarios = $rslt_consultaHonorarios->fetch_assoc()){
     ++$idFila;
     if( $idfila == 1 ){
       $porcentajeModifi = $row_consultaHonorarios['n_porcentaje'];
@@ -63,6 +63,15 @@ if( $total_consultaHonorarios > 0 ) {
           <div class='col-md-2'>$n_ret</div>
           <div class='col-md-2'>$ $n_total</div>
         </div>";
+
+
+    $datosHonorariosImprimir = $datosHonorariosImprimir.'<tr>
+          <td width="52%">'.$s_conceptoEsp.'</td>
+          <td width="12%">'.$n_importe.'</td>
+          <td width="12%">'.$n_IVA.'</td>
+          <td width="12%">'.$n_ret.'</td>
+          <td width="12%">$ '.$n_total.'</td>
+        </tr>';
 
     if( $idFila > 1 ){ $botonEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";}
     $datosHonorariosModifi = $datosHonorariosModifi."

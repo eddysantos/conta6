@@ -112,8 +112,8 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
 	}
 
 	if( $oRst_permisos['CFDI_cta_gastos_consultar'] == 1 ){
-		$consultar = "<a href='#' onclick='ctaGastosCapturaConsultar($id_captura)'><img class='icomediano' src='/conta6/Resources/iconos/magnifier.svg'></a>
-									<a href='#' onclick='ctaGastosCapturaImprimir($id_captura)'><img class='icomediano ml-5' src='/conta6/Resources/iconos/printer.svg'></a>";
+		$consultar = "<a href='#' onclick='ctaGastosCapturaConsultar($id_captura)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/magnifier.svg'></a>
+									<a href='#' onclick='ctaGastosCapturaImprimir($id_captura)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'></a>";
 	}
 	if( $oRst_permisos['CFDI_cta_gastos_cancelar'] == 1 && $row_ctaGastos[fk_id_aduana] == $aduana &&
 		  $id_factura == 0 && $id_poliza == 0 && $cancela == 0 ){
@@ -122,10 +122,12 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
 
   $system_callback['data'] .="
 	<tr class='row borderojo'>
+		<td class='col-md-1'>$id_captura</td>
+		<td class='col-md-1'></td>
 		<td class='col-md-1'>$cancelar</td>
-		<td class='col-md-2'>$id_captura</td>
+		<td class='col-md-1'></td>
 		<td class='col-md-2'>$row_ctaGastos[fk_referencia]</td>
-		<td class='col-md-7'>$row_ctaGastos[fk_id_cliente] $row_ctaGastos[s_nombre]</td>
+		<td class='col-md-5'>$row_ctaGastos[fk_id_cliente] $row_ctaGastos[s_nombre]</td>
 		<td class='col-md-1'>$modificar $consultar</td>
 	</tr>";
 

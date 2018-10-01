@@ -34,6 +34,12 @@ if( $total_consultaDepositos > 0 ) {
 							<div class='col-md-6 text-left'>$ $n_total</div>
 						</div>";
 
+
+		$datosDepositosImprimir = $datosDepositosImprimir.'<tr>
+				<td width ="50%">'.$n_noDeposito.':</td>
+				<td width ="50%">$ '.$n_total.'</td>
+			</tr>';
+
 		$depositosAplicados .= "<tr class='row elemento-depositos'>
       <td class='col-md-6 nomCLT'>$CLT_nombre</td>
       <td class='col-md-2 noAnt'>

@@ -1721,6 +1721,6 @@ function ctaGastosCapturaConsultar(cuenta){
   window.location.replace('1-CuentaGastos_Consultar.php?cuenta='+cuenta);
 }
 function ctaGastosCapturaImprimir(cuenta){
-  window.location.replace('1-CuentaGastos_imprimir.php?cuenta='+cuenta);
+  window.location.replace('impresionCuentaGastos.php?cuenta='+cuenta);
 }
 function ctaGastosCapturaEliminar($id_captura){}

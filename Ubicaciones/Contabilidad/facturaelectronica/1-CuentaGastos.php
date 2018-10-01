@@ -93,7 +93,7 @@
 
 
 <!---se muestra al escribir la referencia y dar enter-->
-  <div class="contenedor contorno" id="m-ctagastos" style="display:none">
+  <div class="mt-5 contorno" id="m-ctagastos" style="display:none;margin-bottom: 8rem!important;">
     <div class="col-md-1 offset-sm-11">
       <a href="#" class="fele" accion="cuadroConsultar">
         <i class="back fa fa-arrow-left">Regresar</i>
@@ -104,16 +104,17 @@
         <tr class="row encabezado">
           <td class="col-md-12">Cuentas de Gastos Capturadas</td>
         </tr>
-      </thead>
-      <tbody>
-        <tr class="row backpink font16">
-          <td class="col-md-2">Solicitud</td>
+        <tr class="row backpink" style="font-size:16px!important">
+          <td class="col-md-1">Cta. de Gtos</td>
+          <td class="col-md-1">Poliza</td>
+          <td class="col-md-1">Cancelar</td>
+          <td class="col-md-1">Factura</td>
           <td class="col-md-2">Referencia</td>
-          <td class="col-md-7">Cliente</td>
+          <td class="col-md-5">Cliente</td>
           <td class="col-md-1"></td>
         </tr>
-        <div id="lst_cuentasGastos_capturadas"></div>
-      </tbody>
+      </thead>
+      <tbody id="lst_cuentasGastos_capturadas"></tbody>
     </table>
   </div>
 </div>

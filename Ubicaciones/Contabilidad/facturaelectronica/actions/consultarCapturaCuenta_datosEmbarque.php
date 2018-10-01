@@ -37,6 +37,11 @@ if( $total_consultaEmbarque > 0 ) {
 							<div class='col-md-6 text-left p-0'>$s_descripcion</div>
 						</div>";
 
+		$impresionDatosEmbarque = $impresionDatosEmbarque.'<tr>
+			<td width="50%" align="right">'.$s_conceptoEsp.' </td>
+			<td width="50%" align="left"> '.$s_descripcion.'</td>
+		</tr>' ;
+
 		$datosEmbarqueModifi = $datosEmbarqueModifi."
 			<tr class='row elementos-dge'>
 				<td class='col-md-6 p-1'>

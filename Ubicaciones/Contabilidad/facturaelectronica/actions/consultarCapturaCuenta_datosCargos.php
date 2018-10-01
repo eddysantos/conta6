@@ -40,6 +40,35 @@ if( $total_consultaCargos > 0 ) {
 					<div class='col-md-2'>$ $n_total</div>
 				</div>";
 
+		$datosCargosImpresion = $datosCargosImpresion.'<tr>
+					<td width="10%"></td>
+					<td width="65%">'.$s_conceptoEsp.'</td>
+					<td width="15%">$ '.$n_total.'</td>
+					<td width="10%"></td>
+				</tr>';
+
+		// $pagosCuentaCliente = '<style>
+		//    .border{
+		//      border-top:1px solid black;
+		//      border-left:1px solid black;
+		//      border-right:1px solid black;
+		//      border-bottom:1px solid black;
+		//     }
+		// </style>
+		// <table class="border">
+		//   <thead>
+		//     <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
+		//       <td width="10%"></td>
+		//       <td width="65%">PAGOS REALIZADOS POR SU CUENTA</td>
+		//       <td width="15%">SUBTOTAL</td>
+		//       <td width="10%"></td>
+		//     </tr>
+		//   </thead>
+		//   <tbody>
+		//     '.$datosCargosImpresion .'
+		//   </tbody>
+		// </table>'
+
 		if( $idFila > 1 ){ $botonEliminar = "<a href='#' class='eliminar-Cargos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";}
 		$datosCargosModifi = $datosCargosModifi."<tr class='row m-0 trCargos elemento-cargos' id='$idFila'>
 		                <td class='col-md-6 p-1'>

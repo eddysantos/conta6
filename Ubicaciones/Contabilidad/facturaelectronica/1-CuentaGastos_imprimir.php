@@ -93,8 +93,8 @@ function Imprime(){
 				<td align="right">R.F.C. <?php echo $s_rfc;?></td>
 			  </tr>
 	  </table>
-		<br>	
-<!--************************ PROVEEDOR ***************** -->			 
+		<br>
+<!--************************ PROVEEDOR ***************** -->
 			<table width="100%" border="0" cellspacing="0" style="border-collapse:collapse; font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;" >
 			  <tr align="center">
 				<td colspan="3" bgcolor="#7F7F7F" style="color:#FFFFFF">PROVEEDOR (IMP) O DESTINATARIO (EXP)</td>
@@ -103,9 +103,9 @@ function Imprime(){
 				<td colspan="3"><?PHP echo $s_proveedor_destinatario; ?></td>
 			  </tr>
 			</table>
-			
+
 			<br>
-<!-- ********************** PAGOS EN MONEDA EXTRANJERA ***************** --> 			
+<!-- ********************** PAGOS EN MONEDA EXTRANJERA ***************** -->
 			<table border="0" width="100%" id="table111" cellspacing="1" cellpadding="0" style="border-collapse:collapse; font-family: Trebuchet MS; font-size:6pt;  border: 1px solid #000000;">
 				<tr>
 					<td colspan="2" bgcolor="#808080" align="center" style="color:#FFFFFF;">PAGOS O CARGOS EN MONEDA EXTRANJERA</td>
@@ -115,7 +115,7 @@ function Imprime(){
 
 	</td>
     <td valign="top">
-<!--****************** FOLIO DE LA FACTURA ********************* -->	
+<!--****************** FOLIO DE LA FACTURA ********************* -->
 				<table width="100%" border="0" cellspacing="0" style="border-collapse: collapse;  font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;">
 				  <tr style="color:#FFFFFF" bgcolor="#808080" align="center">
 					<td>CUENTA DE GASTOS </td>
@@ -135,7 +135,7 @@ function Imprime(){
 				  </tr>
 			</table>
 
-<!--******************* DATOS REFERENCIA ******************* -->	
+<!--******************* DATOS REFERENCIA ******************* -->
 				<table border='0' width='100%' id='table81' cellspacing='0' style='border-collapse: collapse;  font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;'>
 					<tr>
 						<td align='center' bgcolor='#C0C0C0' style='color:#000000;'>INFORMACI&Oacute;N GENERAL DEL EMBARQUE</td>
@@ -154,7 +154,7 @@ function Imprime(){
 				</table>
 
 
-<!-- ******************** TIPO DE CAMBIO ***************-->	    
+<!-- ******************** TIPO DE CAMBIO ***************-->
 				<table width="100%" border="0" style="border-collapse:collapse; font-family: Trebuchet MS; font-size:6pt;  border: 1px solid #000000;" >
 					<tr style="color:#FFFFFF;">
 						<td bgcolor="#808080" align="center" width="33%">TOTAL</td>
@@ -182,8 +182,8 @@ function Imprime(){
 		<?php echo $datosCargos; ?>
 </table>
 
-	
-	
+
+
 <!-- COBRO DE HONORARIOS -->
 <table border="0" width="100%" style="font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;" cellspacing="0">
 		<tr bgcolor="#808080" style="color:#FFFFFF" align="center">
@@ -263,8 +263,8 @@ function Imprime(){
 					<td>Importe</td>
 				  </tr>
 				  <?php echo $datosDepositos; ?>
-				</table>			
-				 
+				</table>
+
 			</td>
 			<td></td>
 		    <td></td>
@@ -278,7 +278,7 @@ function Imprime(){
 </table>
 
 
-	
-	
+
+
 </body>
 </html>
