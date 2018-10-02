@@ -3,7 +3,6 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<!-- <div class="text-center" id="buscarfactura"> -->
 <div class="text-center">
   <div id="buscarfactura">
     <div class="col-md-1 offset-md-11 p-0 mt-5">
@@ -14,7 +13,7 @@
 
     <div class="contorno" id="m-factura">
       <form>
-        <table class="table ">
+        <table class="table">
           <thead>
             <tr class="row encabezado">
               <td class="col-md-12 font18">FACTURAS</td>

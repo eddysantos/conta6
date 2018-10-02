@@ -59,6 +59,23 @@
 
     if( $totalRegistrosDET > 0 ){
       while ($row = mysqli_fetch_array($sql_DET)){
+
+        $headDetalle ="<tr class='row encabezado'>
+          <td class='>DETALLE POLIZA</td>
+        </tr>
+        <tr class='row backpink'>
+          <th class='p-0 pt-3 xs'></th>
+          <td class='p-0 pt-3 small'>CUENTA</td>
+          <td class='p-0 pt-3 small'>REFERENCIA</td>
+          <td class='p-0 pt-3 small'>CLIENTE</td>
+          <td class='p-0 pt-3 small'>FACTURA</td>
+          <td class='p-0 pt-3 small'>CTA GASTOS</td>
+          <td class='p-0 pt-3 small'>PAGO ELECT</td>
+          <td class='p-0 pt-3 small'>NOTACRED</td>
+          <td class='p-0 pt-3 gde'>DESCRIPCION</td>
+          <td class='p-0 pt-3 small'>CARGO</td>
+          <td class='p-0 pt-3 small'>ABONO</td>
+        </tr>";
         $contenidoDetalle = "
         <tr class='row borderojo'>
           <td class='xs'></td>
@@ -76,13 +93,14 @@
         </tr>";
       }
     }else{
-      $contenidoDetalle = '<div class="container-fluid pantallaGris">
-        <div class="tituloSinRegistros">NO HAY DETALLE DE ESTA PÓLIZA</div>
-      </div>';
+      $headDetalle = "";
+      $contenidoDetalle = '<div class="font18" style="color:red">ESTE ANTICIPO NO TIENE DETALLE</div>';
     }
   }
 ?>
-
+<?php
+  if( $rows > 0 ){
+?>
 
 <div class="text-center">
   <div class="row m-0 submenuMed">
@@ -92,10 +110,8 @@
       </li>
     </ul>
   </div>
-<?php
-  if( $rows > 0 ){
-?>
 
+  <input type="hidden" id="mst-anticipo" value="<?php echo $rowMST['pk_id_anticipo']; ?>">
 <!--Comienza DETALLE DATOS DE POLIZA-->
   <div id="datosanticipo" class="contorno" style="display:none">
     <h5 class="titulo">DATOS DE ANTICIPO</h5>
@@ -147,7 +163,7 @@
     <div class="row">
       <div class="col-md-1">
         <?php if( $tienePoliza == true ){ ?>
-        <a href="#" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
+        <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
         <?php } ?>
       </div>
       <div class="col-md-2 offset-md-6">
@@ -162,22 +178,7 @@
   <div id="detallepoliza" class="contorno">
     <table class="table table-hover">
       <thead class="font18">
-        <tr class="row encabezado">
-          <td class="">DETALLE POLIZA</td>
-        </tr>
-        <tr class="row backpink">
-          <th class="p-0 pt-3 xs"></th>
-          <td class="p-0 pt-3 small">CUENTA</td>
-          <td class="p-0 pt-3 small">REFERENCIA</td>
-          <td class="p-0 pt-3 small">CLIENTE</td>
-          <td class="p-0 pt-3 small">FACTURA</td>
-          <td class="p-0 pt-3 small">CTA GASTOS</td>
-          <td class="p-0 pt-3 small">PAGO ELECT</td>
-          <td class="p-0 pt-3 small">NOTACRED</td>
-          <td class="p-0 pt-3 gde">DESCRIPCION</td>
-          <td class="p-0 pt-3 small">CARGO</td>
-          <td class="p-0 pt-3 small">ABONO</td>
-        </tr>
+        <?php echo $headDetalle ?>
       </thead>
       <tbody class="font14" id="tabla_detalleanticipoConsulta"><?php echo $contenidoDetalle; ?></tbody>
     </table>
@@ -187,10 +188,9 @@
 
 <?php
 }else{ #$rows?>
-	<br><br>
-	<p align="center"><u>
-	<font face="Trebuchet MS" size="2" align="center" >NO EXISTE EL ANTICIPO O ES DE OTRA OFICINA</font></u></p>
-	<p align="center">&nbsp;</p>
+  <div class="container-fluid pantallaGris">
+    <div class="tituloSinRegistros">NO EXISTE EL ANTICIPO O ES DE OTRA OFICINA</div>
+  </div>
 <?php
 } #$rows
 

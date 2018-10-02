@@ -39,12 +39,12 @@ if( $totalRegistrosSTPD > 0 ){
 
 		<table class="table text-center mt-4">
 			<thead class="">
-				<tr class="row encabezado">
-					<th class="col-md-2">Fecha de Póliza</th>
-					<th class="col-md-2">Usuario que Capturo</th>
-					<th class="col-md-2">Fecha de Captura</th>
-					<th class="col-md-5">Concepto</th>
-					<th class="col-md-1">Póliza</th>
+				<tr class="row font14">
+					<td class="encabezado col-md-2">Fecha de Póliza</td>
+					<td class="encabezado col-md-2">Usuario que Capturo</td>
+					<td class="encabezado col-md-2">Fecha de Captura</td>
+					<td class="encabezado col-md-5">Concepto</td>
+					<td class="encabezado col-md-1">Póliza</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -62,7 +62,7 @@ if( $totalRegistrosSTPD > 0 ){
 	<div class="contorno mt-5 text-center">
 		<table class="table">
 			<thead>
-				<tr class="sub2 font12">
+				<tr class="sub2" style="font-size:12px!important">
 					<th>Tipo</th>
 					<th>Cuenta</th>
 					<th>Ref.</th>

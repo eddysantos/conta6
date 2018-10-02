@@ -15,9 +15,14 @@ input[type=submit]{
   background-color: transparent!important;
   color: rgb(110, 110, 110)!important;
   letter-spacing: 8px;
+  cursor: pointer;
 }
 input:read-only{
   background-color: rgba(173, 173, 173, 0.1)!important;
+}
+
+input:read-only.bt{
+  background-color: transparent!important;
 }
 /* input[type=submit]:focus,input[type=submit]:hover{
   color: rgb(209, 28, 28)!important;
@@ -46,7 +51,7 @@ input.reg{
 
 input[type="text"]{
   color: #333;
-  width: 100%;
+  /* width: 100%; */
   box-sizing: border-box;
   padding: 0px 10px;
 }
@@ -61,6 +66,12 @@ input:disabled{
   letter-spacing: 12px!important;
 } */
 
+.eff{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: 30px;
+  text-align: center!important;
+}
 
 
 .efecto{

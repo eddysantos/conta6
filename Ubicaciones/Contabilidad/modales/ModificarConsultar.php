@@ -18,8 +18,8 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-12">
-            <form class="form-group" autocomplete="off">
-              <input id="folioPol" class="reg border-0" type="text" onchange="validaSoloNumeros(this);" autocomplete="new-password">
+            <form class="form-group" onsubmit="return false;">
+              <input id="folioPol" class="reg border-0 w-100" type="text" onchange="validaSoloNumeros(this);" autocomplete="off">
             </form>
           </div>
         </div>
@@ -30,6 +30,7 @@
     </div><!--termina el COntenido del Modal-->
   </div>
 </div>
+
 
 <!--MODAL Contabilidad > Polizas > Consultar-->
 <div class="modal fade text-center" id="consultar-pol">
@@ -49,8 +50,8 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-12">
-            <form class="form-group">
-              <input id="folioPolconsulta" class="reg border-0" type="text" onchange="validaSoloNumeros(this)" autocomplete="new-password">
+            <form class="form-group" onsubmit="return false;">
+              <input id="folioPolconsulta" class="reg border-0 w-100" type="text" onchange="validaSoloNumeros(this)" autocomplete="off">
             </form>
           </div>
         </div>
@@ -73,20 +74,24 @@
         <h5 class="modal-tittle">Modificar Cheque</h5>
       </div>
       <div class="modal-body">
-        <div class="row titulograndetop-modal">
-          <div class="col-md-12">
-            <label>CHEQUE</label>
-          </div>
-        </div>
-        <div class="row intermedio-modal">
-          <div class="col-md-12">
-            <form class="form-group" autocomplete="off">
-              <input class="reg border-0" type="text">
-            </form>
-          </div>
-        </div>
+        <form class="form1">
+        <!-- <form class="form1" onsubmit="return false;"> -->
+          <table class="table">
+            <tr class="row m-0 mt-3">
+              <td class="col-md-4 input-effect">
+                <input id="mModifiChIdcheque" class="efecto" type="text">
+                <label for="mModifiChIdcheque">Cheque</label>
+              </td>
+              <td class="col-md-8 input-effect">
+                <input class="efecto popup-input" id="mModifiChCtaMST" type="text" id-display="#popup-display-mModifiChCtaMST" action="cuentas_mst_0100_oficina" db-id="" autocomplete="off">
+                <div class="popup-list" id="popup-display-mModifiChCtaMST" style="display:none"></div>
+                <label for="mModifiChCtaMST">Seleccione una Cuenta</label>
+              </td>
+            </tr>
+          </table>
+        </form>
         <div class="modal-footer mt-3">
-        <a href="/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="#" id="btn_busCheModifi" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -101,30 +106,35 @@
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">Modificar Cheque</h5>
+        <h5 class="modal-tittle">Consultar Cheque</h5>
       </div>
       <div class="modal-body">
-        <div class="row titulograndetop-modal">
-          <div class="col-md-12">
-            <label>CHEQUE</label>
-          </div>
-        </div>
-        <div class="row intermedio-modal">
-          <div class="col-md-12">
-            <form class="form-group" autocomplete="off">
-              <input class="reg border-0" type="text">
-            </form>
-          </div>
-        </div>
+        <form class="form1">
+        <!-- <form class="form1" onsubmit="return false;"> -->
+          <table class="table">
+            <tr class="row m-0 mt-3">
+              <td class="col-md-4 input-effect">
+                <input id="mConsChIdcheque" class="efecto" type="text">
+                <label for="mConsChIdcheque">Cheque</label>
+              </td>
+              <td class="col-md-8 input-effect">
+                <input class="efecto popup-input" id="mConsChCtaMST" type="text" id-display="#popup-display-mConsChCtaMST" action="cuentas_mst_0100_oficina" db-id="" autocomplete="off">
+                <div class="popup-list" id="popup-display-mConsChCtaMST" style="display:none"></div>
+                <label for="mConsChCtaMST">Seleccione una Cuenta</label>
+              </td>
+            </tr>
+          </table>
+        </form>
         <div class="modal-footer mt-3">
-          <a href="/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php" class="linkbtn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          <a href="#" id="btn_busCheConsulta" class="linkbtn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <!--//TERMINO DE CHEQUES-->
+
+
 <!--ANTICIPO-->
 <!--MODAL Contabilidad > Anticipos > Modificar -->
 <div class="modal fade text-center" id="modificar-ant">
@@ -144,14 +154,13 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form class="form-group">
-            <input class="reg border-0" type="text" id="folioAnt" onchange="validaSoloNumeros(this)" autocomplete="new-new-password">
+            <form class="form-group" onsubmit="return false;">
+            <input class="reg border-0 w-100" type="text" id="folioAnt" onchange="validaSoloNumeros(this)" autocomplete="off">
           </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
           <a href="#" id="btn" onclick="buscarAnticipo('modificar')">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-        <!--a href="/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
         </div>
       </div>
     </div>
@@ -176,14 +185,13 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form  class="form-group">
-            <input class="reg border-0" type="text" id="folioAntConsulta" onchange="validaSoloNumeros(this)" autocomplete="new-password">
+            <form  class="form-group" onsubmit="return false;">
+            <input class="reg border-0 w-100" type="text" id="folioAntConsulta" onchange="validaSoloNumeros(this)" autocomplete="off">
           </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
           <a href="#" id="btn" onclick="buscarAnticipo('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-        <!--a href="/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
         </div>
       </div>
     </div>
@@ -209,9 +217,9 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form  class="form-group" autocomplete="off">
-            <input class="reg border-0" type="text">
-          </form>
+            <form  class="form-group" autocomplete="off" onsubmit="return false;">
+              <input class="reg border-0 w-100" type="text">
+            </form>
           </div>
         </div>
         <div class="modal-footer mt-3">
@@ -307,8 +315,8 @@
         </div>
         <div class="row intermedio-modal">
           <div class="col-md-12">
-            <form  class="form-group" autocomplete="off">
-              <input class="reg border-0" type="text">
+            <form  class="form-group" autocomplete="off" onsubmit="return false;">
+              <input class="reg border-0 w-100" type="text">
             </form>
           </div>
         </div>

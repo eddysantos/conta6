@@ -7,6 +7,7 @@
   $data = $_POST;
 
   $id_anticipo = $_POST['id_anticipo'];
+  $importeAnt = $_POST['importeAnt'];
 
   //totales
   $oRst_STPD_sql = "select fk_id_anticipo,SUM(n_cargo)as SUMA_CARGOS, SUM(n_abono)as SUMA_ABONOS from conta_t_anticipos_det where fk_id_anticipo = ? group by fk_id_anticipo ";
@@ -25,11 +26,12 @@
     $Status_Anticipo =  number_format($sumaC - $sumaAbonos,2,'.','');
     $statusGeneraPoliza = false;
 
+    $txtStatus = 'DESCUADRADA';
     if( $Status_Anticipo == 0 ){
-      $txtStatus = '<b><font face="Trebuchet MS" size="2" color="#000000">CUADRADA</font></b>';
+      $txtStatus = 'CUADRADA';
       $statusGeneraPoliza = true;
     }else{
-      $txtStatus = '<b><font color="#E52727" face="Trebuchet MS" size="2"><?php echo $Status_Anticipo; ?> ANTICIPO SIN CUADRAR</font></b>';
+      $txtStatus = 'DESCUADRADA';
       $statusGeneraPoliza = false;
     }
   }else{
@@ -39,6 +41,7 @@
     $Status_Anticipo = 0;
   }
 
+  $system_callback['statusGeneraPoliza'] = $txtStatus;
   $system_callback['cargos'] = $sumaC;
   $system_callback['abonos'] = $sumaAbonos;
   exit_script($system_callback);

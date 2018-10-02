@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div class="contenedor contorno" id="g-ctagastos" style="display:none">
+  <div class="contorno" id="g-ctagastos" style="display:none; margin-bottom:100px!important">
     <div class="col-md-1 offset-sm-11 p-0">
       <a href="#" class="bg" accion="cuadroGenerar">
         <i class="back fa fa-arrow-left">Regresar</i>
@@ -31,37 +31,37 @@
         <tbody class="font18">
           <tr class="row mt-5">
             <td class="col-md-4 offset-md-3 input-effect">
-              <input class="efecto"  id="ctagatos-cReferencia">
+              <input class="efecto tiene-contenido popup-input" maxlength="9" id="ctagatos-cReferencia" type="text" id-display="#popup-display-ctagatos-cReferencia" action="referencias" db-id="" autocomplete="off">
+              <div class="popup-list" id="popup-display-ctagatos-cReferencia" style="display:none"></div>
               <label for="ctagatos-cReferencia">CON REFERENCIA</label>
             </td>
             <td class="col-md-2">
-              <a href="" class="boton"> <i class="fa fa-search "></i> Consultar</a>
+              <a href="#" id="btn_buscarDatosEmbarque" class="boton"> <i class="fa fa-search "></i> Consultar</a>
             </td>
           </tr>
           <tr class="row mt-4">
             <td class="col-md-7 input-effect">
-              <input  list="ctagtos-cli" class="efecto" id="ctagatos-sReferencia">
-              <datalist id="ctagtos-cli">
-                <option value="Tecnologias Relacionadas con Energia y Servicios Especializado S.A de C.V --- CLT_7517"></option>
-                <option value="Servicios Integrales en Logistica Internacional, Aduanas y Tecnologias, S.C (NO USAR) -- CLT_7158"></option>
-                <option value="Cliente Numero 1 Cliente Numero 1"></option>
-                <option value="Cliente Numero 1 Cliente Numero 1"></option>
-              </datalist>
+              <input class="efecto popup-input" id="ctagatos-sReferencia" type="text" id-display="#popup-display-ctagatos-sReferencia" action="clientes" db-id="" autocomplete="off" onchange="cargarClienteSinReferencia()">
+              <div class="popup-list" id="popup-display-ctagatos-sReferencia" style="display:none"></div>
               <label for="ctagatos-sReferencia">SELECCIONAR CLIENTE (Sin Referencia)</label>
             </td>
             <td class="col-md-2">
-              <a href="" class="boton">Siguiente <i class="fa fa-angle-double-right fa-lg"></i></a>
+              <a href="#" class="boton" id="Btn_Busca_Ref_Cta_Gtos_2" onclick="cargarCuentaSinReferencia('IVA')">Siguiente <i class="fa fa-angle-double-right fa-lg"></i></a>
             </td>
             <td class="col-md-3">
-              <a href="" class="boton">Generar Tasa Cero <i class="fa fa-angle-double-right fa-lg"></i></a>
+              <?PHP if($oRst_permisos['CFDI_cta_gastos_generarT0'] == 1){ ?>
+              <a href="#" class="boton" id="Btn_Busca_Ref_Cta_Gtos_3" onclick="cargarCuentaSinReferencia('sinIVA')">Generar Tasa Cero <i class="fa fa-angle-double-right fa-lg"></i></a>
+              <?PHP } ?>
             </td>
           </tr>
-          <tr class="row backpink mt-3">
-            <td class="col-md-3">Expedir Cuenta de Gastos a: </td>
-            <td class="col-md-9">Tecnologias Relacionadas con Energia y Servicios Especializado S.A de C.V --- CLT_7517</td>
+          <tr class="row mt-4">
+            <td class='col-md-9 text-left'>
+              <div id="nombreCliente_sinReferencia"></div>
+            </td>
           </tr>
         </tbody>
       </table>
+      <div id="datosEmbarque"></div>
     </form>
   </div>
 
@@ -83,7 +83,7 @@
     <div class="row intermedio transEff" id="nReferencia">
       <div class="col-md-12" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
-        <input class="reg border-0 transEff" id="bRef" type="text">
+        <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
       </form>
       </div>
     </div>
@@ -93,7 +93,7 @@
 
 
 <!---se muestra al escribir la referencia y dar enter-->
-  <div class="contenedor contorno" id="m-ctagastos" style="display:none">
+  <div class="mt-5 contorno" id="m-ctagastos" style="display:none;margin-bottom: 8rem!important;">
     <div class="col-md-1 offset-sm-11">
       <a href="#" class="fele" accion="cuadroConsultar">
         <i class="back fa fa-arrow-left">Regresar</i>
@@ -102,28 +102,26 @@
     <table class="table font16">
       <thead>
         <tr class="row encabezado">
-          <td class="col-md-12">Solicitud de Anticipo</td>
+          <td class="col-md-12">Cuentas de Gastos Capturadas</td>
         </tr>
-      </thead>
-      <tbody>
-        <tr class="row backpink font16">
-          <td class="col-md-2">Solicitud</td>
+        <tr class="row backpink" style="font-size:16px!important">
+          <td class="col-md-1">Cta. de Gtos</td>
+          <td class="col-md-1">Poliza</td>
+          <td class="col-md-1">Cancelar</td>
+          <td class="col-md-1">Factura</td>
           <td class="col-md-2">Referencia</td>
-          <td class="col-md-7">Cliente</td>
+          <td class="col-md-5">Cliente</td>
           <td class="col-md-1"></td>
         </tr>
-        <tr class="row borderojo">
-          <td class="col-md-2">280380</td>
-          <td class="col-md-2">N17003012</td>
-          <td class="col-md-7">CLT_6548 MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L DE C.V</td>
-          <td class="col-md-1">
-            <a href="1-CuentaGtos_Consultar.php"><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
-            <a><img class="icomediano ml-5" src="/conta6/Resources/iconos/printer.svg"></a>
-        </tr>
-      </tbody>
+      </thead>
+      <tbody id="lst_cuentasGastos_capturadas"></tbody>
     </table>
   </div>
 </div>
 
 <script src="js/facturaElectronica.js"></script>
 <script src="/conta6/Resources/js/Inputs.js"></script>
+
+<?php
+  require $root . '/conta6/Ubicaciones/footer.php';
+?>

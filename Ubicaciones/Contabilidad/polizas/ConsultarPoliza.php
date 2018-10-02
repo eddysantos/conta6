@@ -76,7 +76,7 @@ if( $totalRegistrosSelect > 0 ){
     </div>
     <div class="row m-0 mt-3">
       <div class="col-md-1">
-        <a  class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
+        <a href="#" onclick="btn_printPoliza(<?php echo $oRst_Select['pk_id_poliza']; ?>,<?php echo $oRst_Select['fk_id_aduana']; ?>)" class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
       </div>
       <div class="col-md-2 offset-md-7">
         <input  class="efecto" value="<?php echo $sumaCargos; ?>" readonly>

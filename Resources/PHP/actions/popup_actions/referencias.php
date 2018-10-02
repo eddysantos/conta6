@@ -8,7 +8,7 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_replica_referencias WHERE pk_referencia LIKE ? ";
+$query = "SELECT * FROM conta_replica_referencias WHERE pk_referencia LIKE ? limit 5";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {

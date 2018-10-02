@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  ultReg_DetAnt();
+
   //detalleanticipo.php
   $('#lstClientesCorresp').hide();
   $('#ant-referencia').change(function(){
@@ -191,102 +193,42 @@ function genAnt(){
   });
 
 
-// MOSTRAR EN MODAL DATOS DE ANTICIPO
+// MOSTRAR EN MODAL DATOS DE PARTIDA ANTICIPO
   $('tbody').on('click', '.editar-anticipoMST', function(){
-      var dbid = $(this).attr('db-id');
-      var tar_modal = $($(this).attr('href'));
+    var dbid = $(this).attr('db-id');
+    var tar_modal = $($(this).attr('href'));
 
-      data_lst = {
-        modulo: 'antGenClt',
-        cliente: $('#antcliente').attr('db-id')
-      }
+    var fetch_cuenta = $.ajax({
+      method: 'POST',
+      data: {dbid: dbid},
+      url: 'actions/fetchAnticipoMST.php'
+    });
 
-      var lista_cuentas = $.ajax({
-        type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/lst_cuentas.php",
-        data: data_lst
-      });
+    fetch_cuenta.done(function(r){
+      r = JSON.parse(r);
+      if (r.code == 1) {
 
-      var fetch_cuenta = $.ajax({
-        method: 'POST',
-        data: {dbid: dbid},
-        url: 'actions/fetchAnticipoMST.php'
-      });
+      for (var key in r.data) {
+        if ($('#' + key).is('select')) {
+          continue;
+        }
 
-      $.when(lista_cuentas, fetch_cuenta).done(function(r1, r2){
-        //r1 = JSON.parse(r1);
-        //console.log(r2);
-        //console.log(r1);
-        r1 = JSON.parse(r1[0]);
-        r2 = JSON.parse(r2[0]);
-        console.log(r2);
-        if (r2.code == 1) {
-
-        $('#fk_id_cuentaMST').html(r1.data);
-
-        for (var key in r2.data) {
-
-
-          if (r2.data.hasOwnProperty(key)) {
-
-            if ($('#' + key).is('select')) {
-              if (key == 'fk_id_cuentaMST') {
-                $('#fk_id_cuentaMST').children().each(function(e){
-                  var valor = $(this).val();
-                  console.log(r2.data.fk_id_cuentaMST);
-                  if (valor == r2.data.fk_id_cuentaMST) {
-                    $(this).attr('selected', true);
-                  } else {
-                    $(this).attr('selected', false);
-                  }
-                });
-              }
-              continue;
-            }
-
-            $('#' + key).html(r2['data'][key]).val(r2['data'][key]).addClass('tiene-contenido');
-            if ( typeof($('#'+key).attr('db-id')) != 'undefined' && $('#'+key).attr('db-id') !== false) {
-              $('#' + key).attr('db-id', r2['data'][key]);
-            }
+        if (r.data.hasOwnProperty(key)) {
+          $('#' + key).html(r['data'][key]).val(r['data'][key]).addClass('tiene-contenido');
+          if ( typeof($('#'+key).attr('db-id')) != 'undefined' && $('#'+key).attr('db-id') !== false) {
+            $('#' + key).attr('db-id', r['data'][key]);
           }
         }
+      }
 
-        //$('#s_cta_status').val(r.data.s_cta_status);
-        $('#medit-anticipoMST').attr('db-id', r2.data.pk_id_cuenta);
-
-        tar_modal.modal('show');
-        } else {
-          console.error(r2);
-        }
-      });
-
-      // fetch_cuenta.done(function(r){
-      //   r = JSON.parse(r);
-      //   if (r.code == 1) {
-      //
-      //   for (var key in r.data) {
-      //     if ($('#' + key).is('select')) {
-      //       continue;
-      //     }
-      //
-      //     if (r.data.hasOwnProperty(key)) {
-      //       $('#' + key).html(r['data'][key]).val(r['data'][key]).addClass('tiene-contenido');
-      //       if ( typeof($('#'+key).attr('db-id')) != 'undefined' && $('#'+key).attr('db-id') !== false) {
-      //         $('#' + key).attr('db-id', r['data'][key]);
-      //       }
-      //     }
-      //   }
-      //
-      //   //$('#s_cta_status').val(r.data.s_cta_status);
-      //   $('#medit-anticipoMST').attr('db-id', r.data.pk_id_cuenta);
-      //
-      //   tar_modal.modal('show');
-      //   } else {
-      //     console.error(r);
-      //   }
-      // })
+      $('#medit-anticipoMST').attr('db-id', r.data.pk_partida);
+      tar_modal.modal('show');
+      Actualiza_Expedido_Cliente_MST();
+      } else {
+        console.error(r);
+      }
+    });
   });
-
 
 // VALIDACION DATOS DE ANTICIPO EN MODAL
   $('#medit-anticipoMST').click(function(){
@@ -347,25 +289,20 @@ function genAnt(){
 
 // ACTUALIZAR DATOS DE ANTICIPO
   function modificarAntMST(){
-    bancoclinte = $('#s_bancoOri').val();
-    parte = bancoclinte.split('+');
-    banco = parte[0];
-    bancocta = parte[1];
-    id_anticipo: $('#pk_id_anticipo').val();
 
     var data = {
       antfecha: $('#d_fecha').val(),
       antvalor: $('#n_valor').val(),
       antcliente: $('#fk_id_cliente_antmst').attr('db-id'),
-      antbanco: banco,
-      bancocta: bancocta,
+      antbanco: $('#s_bancoOri').val(),
+      bancocta: $('#s_ctaOri').val(),
       antconcepto: $('#s_concepto').val(),
       id_anticipo: $('#pk_id_anticipo').val(),
       antcuenta: $('#fk_id_cuentaMST').val(),
       id_poliza: $('#mst-poliza').val()
     }
 
-    //console.log(data);
+    console.log(data);
     tipo = 5;
     $.ajax({
       type: "POST",
@@ -373,9 +310,10 @@ function genAnt(){
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
+        console.log(r);
           if (r.code == 1) {
             swal("Exito", "La cuenta se actualizó correctamente.", "success");
-            $('.real-time-search').keyup();
+            $('.modal').modal('hide');
             setTimeout('document.location.reload()',700);
           } else {
             console.error(r.message);
@@ -500,7 +438,7 @@ function genAnt(){
       //console.log(continuar);
       if(continuar == true) {
         var continuarInsert = validarRegIgualAnticipo(anticipo,id_cuenta,referencia,id_cliente,descrip,cargo,abono);
-        console.log(continuarInsert);
+        //console.log(continuarInsert);
         if(continuarInsert == true) {
             $.ajax({
               type: "POST",
@@ -511,7 +449,9 @@ function genAnt(){
                 r = JSON.parse(r);
                 if (r.code == 1) {
                   swal("Exito", "Se registro correctamente.", "success");
-                  setTimeout('document.location.reload()',700);
+                  // $('#capturaAnticip').click();
+                  location.reload();
+
                 } else {
                   console.error(r.message);
                 }
@@ -553,6 +493,28 @@ function genAnt(){
       });
   });
 
+
+  function ultReg_DetAnt(){
+    var data = {
+      id_anticipo: $('#mst-anticipo').val(),
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/ultimosRegistros.php",
+      data: data,
+      success: 	function(request){
+        r = JSON.parse(request);
+
+        if (r.code == 1) {
+          $('#ultimosRegistrosAnticipo').html(r.data);
+        }
+      }
+    });
+  }
+
+
+
 // MOSTRAR EN MODAL DATOS DE PARTIDA ANTICIPO
   $('tbody').on('click', '.editar-partidaAnt', function(){
     var dbid = $(this).attr('db-id');
@@ -585,8 +547,8 @@ function genAnt(){
       } else {
         console.error(r);
       }
-    })
-  })
+    });
+  });
 
 // EDITAR DATOS DE PARTIDA
   $('#btnRegDetAntPartida').click(function(){
@@ -598,6 +560,7 @@ function genAnt(){
     }
 
     var data = {
+      id_poliza: $('#mst-poliza').val(),
       partida: $('#pk_partida').attr('db-id'),
       id_anticipo: $('#fk_id_anticipo').val(),
       id_referencia: $('#fk_referencia').attr('db-id'),
@@ -605,16 +568,7 @@ function genAnt(){
       cuenta: $('#fk_id_cuenta').val(),
       desc: $('#s_desc').val(),
       cargo: $('#n_cargo').val(),
-      abono: $('#n_abono').val(),
-
-      // fecha: $('#d_fecha').val(),
-      // tipo: $('#fk_tipo').val(),
-      // documento: $('#s_folioCFDIext').val(),
-      // factura: $('#fk_factura').attr('db-id'),
-      // anticipo: $('#fk_anticipo').attr('db-id'),
-      // cheque: $('#fk_cheque').attr('db-id'),
-      // $gastoOficina: $('#fk_gastoAduana').attr('db-id'),
-      // $proveedor: $('#fk_id_proveedor').attr('db-id')
+      abono: $('#n_abono').val()
     }
 
     $.ajax({
@@ -627,8 +581,9 @@ function genAnt(){
         if (r.code == 1) {
           swal("Exito", "La cuenta se actualizó correctamente.", "success");
           $('.real-time-search').keyup();
-          $('#detalleanticipo').click();
-          // sumasCAanticipos();
+          // $('#detalleanticipo').click();
+          sumasCAanticipos();
+          ultReg_DetAnt();
         } else {
           console.error(r.message);
         }
@@ -718,13 +673,14 @@ $('#ant-cancela').change(function(){
 	var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
 	if(continuar == true) {
 		var data = {
+      id_poliza: $('#mst-poliza').val(),
 			id_anticipo: $('#mst-anticipo').val(),
 			status: $('#ant-cancela').val()
 		}
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/editarStatusAnticipo.php",
+				url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/cancelaDescancelaAnticipo.php",
 				data: data,
 				success: 	function(r){
 					//console.log(fecha);
@@ -771,6 +727,7 @@ function borrarRegistroAnticipo(partida){
 				id_anticipo: $('#mst-anticipo').val(),
         id_poliza: $('#mst-poliza').val()
 			}
+
 			$.ajax({
 				type: "POST",
 				url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/eliminar.php",
@@ -778,15 +735,13 @@ function borrarRegistroAnticipo(partida){
 
 					success: 	function(r){
             r = JSON.parse(r);
-						console.log(r);
-					// if (r.code == 1) {
+						//console.log(r);
 						swal("Eliminado!", "Se elimino correctamente.", "success");
-            // setTimeout('document.location.reload()',700);
-            $('#detalleanticipo').click();
+            // $('#capturaAnticipo').click();
+            setTimeout('document.location.reload()',700);
+
             sumasCAanticipos();
-					// } else {
-					// 	console.error(r.message);
-					// }
+            ultReg_DetAnt();
 				},
 				error: function(x){
 					console.error(x)
@@ -927,7 +882,7 @@ function borrarRegistroAnticipo(partida){
           r = JSON.parse(r);
           if (r.code == 1) {
             //console.log(r.data);
-            $('#fk_id_cuentaMST').html(r.data);
+            $('#antcuentaMST').html(r.data);
           } else {
             console.error(r.message);
           }
@@ -936,6 +891,11 @@ function borrarRegistroAnticipo(partida){
           console.error(x);
         }
       });
+  }
+
+  function asignaCtaMST(){
+    cuentaMST = $('#antcuentaMST').val();
+    $('#fk_id_cuentaMST').val(cuentaMST);
   }
 
   function lstCuentasAnt(){
@@ -1002,7 +962,7 @@ function borrarRegistroAnticipo(partida){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/lst_bancos_clientes.php",
+      url: "/conta6/Resources/PHP/actions/lst_bancos_clientes.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -1034,7 +994,7 @@ function bcosClientes_MST(id_cliente){
       r = JSON.parse(r);
       if (r.code == 1) {
         //console.log(r.data);
-        $('#s_bancoOri').html(r.data);
+        $('#antbcoclienteMST').html(r.data);
       } else {
         console.error(r.message);
       }
@@ -1045,6 +1005,30 @@ function bcosClientes_MST(id_cliente){
   });
 }
 
+function asignaBCliente(){
+  bancoclinte = $('#antbcoclienteMST').val();
+  parte = bancoclinte.split('+');
+  banco = parte[0];
+  bancocta = parte[1];
+
+  $('#s_bancoOri').val(banco);
+  $('#s_bancoOri').attr('db-id',banco);
+  $('#s_ctaOri').val(bancocta);
+  $('#s_ctOri').attr('db-id',bancocta);
+}
+
+
+$('#folioAnt').keydown(function(e){
+	if (e.keyCode === 13 || e.keyCode === 9) {
+		buscarAnticipo('modificar');
+	}
+})
+
+$('#folioAntConsulta').keydown(function(e){
+	if (e.keyCode === 13 || e.keyCode === 9) {
+		buscarAnticipo('consultar');
+	}
+})
 
 
 // BUSCAR ANTICIPO
@@ -1116,7 +1100,8 @@ function buscarReferenciaAntPartida(){
 //SUMA DE CARGOS Y ABONOS
 function sumasCAanticipos(){
   var data = {
-    anticipo: $('#mst-anticipo').val()
+    id_anticipo: $('#mst-anticipo').val(),
+    importeAnt: $('#mst-importe').val()
   }
 
   $.ajax({
@@ -1126,6 +1111,11 @@ function sumasCAanticipos(){
     success: 	function(r){
       r = JSON.parse(r);
       console.log(r);
+      if(r.statusGeneraPoliza == "DESCUADRADA"){
+        $('btn_generarPolAnt').hide();
+      }else {
+        $('btn_generarPolAnt').show();
+      }
       $('#sumCargos1').val(r.cargos);
       $('#sumAbonos1').val(r.abonos);
       $('#sumCargos2').val(r.cargos);

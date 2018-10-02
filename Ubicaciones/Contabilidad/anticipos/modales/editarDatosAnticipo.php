@@ -21,38 +21,52 @@
                 </td>
 
                 <td class="col-md-3">
-                  <input id="n_valor" class="efecto tiene-contenido" type="text" db-id="" autocomplete="new-password" onchange="validaSoloNumeros(this)">
+                  <input id="n_valor" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" onchange="validaSoloNumeros(this)">
                   <label for="n_valor">Valor</label>
                 </td>
 
                 <td class="col-md-6 input-effect">
-                  <select class="efecto tiene-contenido" type="text" id='fk_id_cuentaMST' db-id=""></select>
-                  <label for="fk_id_cuentaMST">Cuenta</label>
-          			  <!-- <select class="custom-select" size='1' name='fk_id_cuentaMST' id='fk_id_cuentaMST' db-id="">
-          				  <option selected value='0'>Seleccione una Cuenta</option>
-                    <option value=""></option>
-          				</select> -->
+    			        <input class="efecto tiene-contenido popup-input" id="fk_id_cliente_antmst" type="text" id-display="#popup-display-fk_id_cliente_antmst" action="clientes" db-id="" autocomplete="off"
+                    onchange="Actualiza_Expedido_Cliente_MST()">
+                  <div class="popup-list" id="popup-display-fk_id_cliente_antmst" style="display:none"></div>
+                  <label for="fk_id_cliente_antmst">Cliente</label>
           			</td>
               </tr>
               <tr class="row m-0 mt-5">
                 <td class="col-md-3">
-                  <!-- <input type="text" id="fk_id_cliente_antmst" db-id=""> -->
-    			        <input class="efecto tiene-contenido popup-input" id="fk_id_cliente_antmst" type="text" id-display="#popup-display-ant-cliente" action="clientes" db-id="" autocomplete="new-password" onblur="Actualiza_Expedido_Cliente_MST()">
-                  <div class="popup-list" id="popup-display-ant-cliente" style="display:none"></div>
-                  <label for="fk_id_cliente_antmst">Cliente</label>
+                  <select class="custom-select" size='1' id="antbcoclienteMST" onchange="asignaBCliente()">
+                    <option selected value='0'>Seleccione Banco</option>
+                  </select>
                 </td>
 
                 <td class="col-md-3">
-                  <!-- <input type="text" id='s_bancoOri' db-id=""> -->
-                  <select class="custom-select" size='1' id='s_bancoOri' db-id="">
-                  	<option selected value='0'>Seleccione Banco</option>
-                  </select>
+                  <select class="custom-select" size='1' id='antcuentaMST' onchange="asignaCtaMST()">
+                      <option selected value='0'>Seleccione una Cuenta</option>
+                    </select>
     			      </td>
 
                 <td class="col-md-6">
-                  <input id="s_concepto" class="efecto tiene-contenido" type="text" db-id="" autocomplete="new-password">
+                  <input id="s_concepto" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off">
                   <label for="s_concepto">CONCEPTO</label>
                 </td>
+
+                <!-- <td class="col-md-6">&nbsp;</td> -->
+              </tr>
+              <tr class="row m-0 mt-5">
+                <td class="col-md-4">
+                  <input id="s_bancoOri" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
+                  <label for="s_bancoOri">BANCO</label>
+                </td>
+
+                <td class="col-md-4">
+                  <input id="s_ctaOri" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
+                  <label for="s_ctaOri">CUENTA/INTERBANCARIA</label>
+                </td>
+
+                <td class="col-md-4">
+                  <input id="fk_id_cuentaMST" class="efecto tiene-contenido" type="text" db-id="" autocomplete="off" disabled>
+                  <label for="fk_id_cuentaMST">CUENTA</label>
+    			      </td>
               </tr>
             </tbody>
           </table>

@@ -17,7 +17,7 @@
 <table class="table form1 mt-5 font14">
   <tr class="row">
     <td class="col-md-6 offset-md-3 input-effect">
-      <input class="efecto popup-input" id="cat-benef" type="text" id-display="#popup-display-benef" action="beneficiarios" db-id="" autocomplete="new-password">
+      <input class="efecto popup-input" id="cat-benef" type="text" id-display="#popup-display-benef" action="beneficiarios" db-id="" autocomplete="off">
       <div class="popup-list" id="popup-display-benef" style="display:none"></div>
       <label for="cat-benef">Beneficiario</label>
     </td>
@@ -36,14 +36,14 @@
       <tbody>
         <tr class='row mt-4'>
           <td class='col-md-4 input-effect'>
-            <input class='efecto tiene-contenido popup-input' id='bcoSAT' type='text' id-display='#popup-display-bcoSAT' action='bancosSAT' db-id='' autocomplete='new-password'>
+            <input class='efecto tiene-contenido popup-input' id='bcoSAT' type='text' id-display='#popup-display-bcoSAT' action='bancosSAT' db-id='' autocomplete='off'>
             <div class='popup-list' id='popup-display-bcoSAT' style='display:none'></div>
             <label for='bcoSAT'>BANCOS
               <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
             </label>
           </td>
           <td class='col-md-3 input-effect'>
-		  	<input class='efecto tiene-contenido popup-input' id='nomBco' type='text' id-display='#popup-display-nomBco' action='bancosExtranjeros' db-id='' autocomplete='new-password'>
+		  	<input class='efecto tiene-contenido popup-input' id='nomBco' type='text' id-display='#popup-display-nomBco' action='bancosExtranjeros' db-id='' autocomplete='off'>
             <div class='popup-list' id='popup-display-nomBco' style='display:none'></div>
             <label for='nomBco'>BANCOS EXTRANJEROS
               <a href='#catalogoBancosEXT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
@@ -81,8 +81,9 @@
 
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
 require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosExt.php';
+require $root . '/Conta6/Ubicaciones/Contabilidad/modales/catalogoBancosExt.php';
+require $root . '/conta6/Ubicaciones/footer.php';
+
 require_once('modales/Catalogo.php');
  ?>

@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+
+	ultReg_Det();
 	if( $('#mstpol-cancela') == 0){ $('#detpol-btnguardar').prop( 'disabled', false ); }
 
 	$('#detpol-btnguardar').click(function(){
@@ -96,6 +99,7 @@ $(document).ready(function(){
 				return false;
 			}
   });
+
 
   $('.pol').click(function(){
         var accion = $(this).attr('accion');
@@ -220,6 +224,8 @@ $(document).ready(function(){
       });
     });
 
+
+
 		$('tbody').on('click', '.editar-partidaPol', function(){
 	    var dbid = $(this).attr('db-id');
 	    var tar_modal = $($(this).attr('href'));
@@ -286,7 +292,9 @@ $(document).ready(function(){
 						r = JSON.parse(r);
 						if (r.code == 1) {
 							swal("Exito", "La cuenta se actualizó correctamente.", "success");
-							$('#detallepoliza').click();
+							// $('#detallepoliza').click();
+							ultReg_Det();
+							location.reload();
 							$('.real-time-search').keyup();
 						} else {
 							console.error(r.message);
@@ -300,6 +308,26 @@ $(document).ready(function(){
 	})
 });
 
+
+
+// MOSTRAR ULTIMOS 3 REGISTROS
+function ultReg_Det(){
+	var data = {
+    id_poliza: $('#id_poliza').val()
+  }
+	$.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/ultimosRegistros.php",
+    data: data,
+    success: 	function(request){
+			r = JSON.parse(request);
+
+			if (r.code == 1) {
+				$('#ultimosRegistros').html(r.data);
+			}
+    }
+  });
+}
 
 function borrarRegistro(partida){
 	swal({
@@ -329,7 +357,9 @@ function borrarRegistro(partida){
 						console.log(r);
 					if (r.code == 1) {
 						swal("Eliminado!", "Se elimino correctamente.", "success");
-						$('#detallepoliza').click();
+						// $('#detallepoliza').click();
+						ultReg_Det();
+						location.reload();
 					} else {
 						console.error(r.message);
 					}
@@ -365,7 +395,7 @@ function cambiarStatus(){
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/editarStatusPoliza.php",
+				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/cancelaDescancelaPoliza.php",
 				data: data,
 				success: 	function(r){
 					console.log(r);
@@ -448,7 +478,8 @@ function inserta(){
 				if (r.code == 1) {
 					swal("Exito", "Se registro correctamente.", "success");
 					// $('#capturapoliza').click();
-				location.reload();
+					ultReg_Det();
+					location.reload();
 				} else {
 					console.error(r.message);
 				}
@@ -460,13 +491,28 @@ function inserta(){
 		});
 }
 
+$('#folioPol').keydown(function(e){
+	if (e.keyCode === 13 || e.keyCode === 9) {
+		 buscarPoliza('modificar');
+	}
+})
+
+$('#folioPolconsulta').keydown(function(e){
+	if (e.keyCode === 13 || e.keyCode === 9) {
+		 buscarPoliza('consultar');
+	}
+})
+
 
 
 function buscarPoliza(Accion){
-	if( Accion == 'consultar' ){ id_poliza = $('#folioPolconsulta').val(); }
-	if( Accion == 'modificar' ){ id_poliza = $('#folioPol').val(); }
+
+	if( Accion == 'consultar'){ id_poliza = $('#folioPolconsulta').val(); }
+	if( Accion == 'modificar'){ id_poliza = $('#folioPol').val(); }
 	window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/actions/buscar_poliza.php?id_poliza='+id_poliza+'&Accion='+Accion);
 }
+
+
 
 function genPol(){
 	var data = {
@@ -483,8 +529,18 @@ function genPol(){
 		data: data,
 		success: 	function(request){
 			r = JSON.parse(request);
-			window.location.replace('Detallepoliza.php?id_poliza='+r+'&tipo='+tipo);
-		}
+				if (r.code == 1) {
+					console.log(r);
+					id_poliza = r.data;
+					window.location.replace('Detallepoliza.php?id_poliza='+id_poliza+'&tipo='+tipo);
+				} else {
+					console.error(r.message);
+				}
+			},
+			error: function(x){
+				console.error(x);
+			}
+
 	});
 }
 
@@ -495,12 +551,12 @@ function Actualiza_Cuenta(){
 
 		if( validarCtasGastoOficina(st) == true ){
       //ACTIVAR GASTO OFICINA
-      $('#detpol-gtoficina').prop( 'disabled', false );
+      $('.gto').show();
       $('#detpol-gtoficina').val('');
 			$('#detpol-gtoficina').attr('db-id','');
       $('#detpol-cliente').attr('db-id','')
 		}else{
-      $('#detpol-gtoficina').prop( 'disabled', true );
+      $('.gto').hide();
       $('#detpol-gtoficina').val('');
 			$('#detpol-gtoficina').attr('db-id','');
 		}
@@ -516,11 +572,11 @@ function Actualiza_Cuenta(){
 
 		if(st.substring(0,4) == '0206'){
 			//ACTIVAR PROVEEDORES
-			$('#detpol-proveedores').prop( 'disabled', false );
+			$('.gto').show();
 			$('#detpol-proveedores').val('');
 			$('#detpol-proveedores').attr('db-id','');
 		}else{
-			$('#detpol-proveedores').prop( 'disabled', true );
+			// $('#detpol-proveedores').prop( 'disabled', true );
 			$('#detpol-proveedores').val('');
 			$('#detpol-proveedores').attr('db-id','');
 		}
@@ -554,3 +610,9 @@ function valDescripOficina(){
  		desc = desc + " " + descOficina;
 		$('#detpol-concepto').val(desc);
 }
+
+// BOTON IMPRIMIR
+function btn_printPoliza(id_poliza,aduana){
+	// window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/actions/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
+	window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
+};

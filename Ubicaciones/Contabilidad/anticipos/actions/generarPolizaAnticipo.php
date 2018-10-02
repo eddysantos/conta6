@@ -20,6 +20,21 @@ $idDocumento = 'anticipoMST';
 
 $system_callback = [];
 
+//consulto el nombre de la cuenta contable
+$querynomCta = "SELECT ifnull(s_cta_identificador,'0') as id_cliente,s_cta_desc
+                                from conta_cs_cuentas_mst
+                                where pk_id_cuenta = ? ";
+$stmtnomCta = $db->prepare($querynomCta);
+if (!($stmtnomCta)) { die("Error during query prepare nomCta [$db->errno]: $db->error"); }
+$stmtnomCta->bind_param('s',$cuentaMST);
+if (!($stmtnomCta)) { die("Error during query prepare nomCta [$stmtnomCta->errno]: $stmtnomCta->error"); }
+if (!($stmtnomCta->execute())) { die("Error during query execute nomCta [$stmtnomCta->errno]: $stmtnomCta->error"); }
+$rsltnomCta = $stmtnomCta->get_result();
+$rownomCta = $rsltnomCta->fetch_assoc();
+$cta_desc = trim($rownomCta['s_cta_desc']);
+
+
+
 $queryMST = "INSERT INTO conta_t_polizas_det
 (fk_id_poliza,
   fk_id_cuenta,
@@ -39,7 +54,7 @@ d_fecha,
 $tipo,
 fk_id_cliente_antmst,
 pk_id_anticipo,
-s_concepto,
+'$cta_desc',
 n_valor,
 0,
 '$idDocumento',
@@ -141,28 +156,8 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
 
 #'**************** DETALLE EN PARTIDAS DE LA POLIZA - CONTABILIDAD ELECTRONICA *******************************
 
-  $queryCLT = "SELECT * FROM conta_replica_clientes WHERE pk_id_cliente = ?";
-  $stmtCLT = $db->prepare($queryCLT);
-  if (!($stmtCLT)) {
-    $system_callback['code'] = "500";
-    $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
-    exit_script($system_callback);
-  }
-  $stmtCLT->bind_param('s',$id_cliente);
-  if (!($stmtCLT)) {
-    $system_callback['code'] = "500";
-    $system_callback['message'] = "Error during variables binding [$stmtCLT->errno]: $stmtCLT->error";
-    exit_script($system_callback);
-  }
-  if (!($stmtCLT->execute())) {
-    $system_callback['code'] = "500";
-    $system_callback['message'] = "Error during query execution [$stmtCLT->errno]: $stmtCLT->error";
-    exit_script($system_callback);
-  }
-  $rsltCLT = $stmtCLT->get_result();
-  $rowCLT = $rsltCLT->fetch_assoc();
-	$rfcOri = trim($rowCLT["s_rfc"]);
-	$benefOri = trim($rowCLT["s_nombre"]);
+  require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
+
 
 
   $queryANT = "SELECT * FROM conta_t_anticipos_mst WHERE pk_id_anticipo = ?";
@@ -212,36 +207,36 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
   }
   $rsltPOL = $stmtPOL->get_result();
   while($rowPOL = $rsltPOL->fetch_assoc()){
-    $partidaDoc = $rowPOL['pk_partida'];
-    $tipo = $rowPOL['fk_tipo'];
-		$factura = $rowPOL['fk_factura'];
+    $factura = $rowPOL['fk_factura'];
 		$notaCred = $rowPOL['fk_nc'];
 		$referencia = $rowPOL['fk_referencia'];
 		$poliza = $rowPOL['fk_id_poliza'];
-    $tipoDetalle = 'Transferencia';
+
 
 		// Transferencia
-    $queryTRANSFER = "INSERT INTO conta_t_polizas_det_contaelec
-    (fk_id_poliza,fk_partidaPol,fk_tipo,s_tipoDetalle,s_BancoOri,s_ctaOri,s_BancoDest,s_CtaDest,d_fecha,s_Beneficiario,s_RFC,n_monto,s_usuario_modifi,s_BeneficiarioOpc,s_RFCopc)
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    $stmtTRANSFER = $db->prepare($queryTRANSFER);
-    if (!($stmtTRANSFER)) {
-      $system_callback['code'] = "500";
-      $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
-      exit_script($system_callback);
-    }
-    $stmtTRANSFER->bind_param('sssssssssssssss',$poliza,$partidaDoc, $tipo,$tipoDetalle,$bcoOri,$ctaOri,$bcoDest,$ctaDest,$fecha,$benefOri,$rfcOri,$importe,$usuario,$nombreCIA,$rfcCIA);
-    if (!($stmtTRANSFER)) {
-      $system_callback['code'] = "500";
-      $system_callback['message'] = "Error during variables binding [$stmtTRANSFER->errno]: $stmtTRANSFER->error";
-      exit_script($system_callback);
-    }
-    if (!($stmtTRANSFER->execute())) {
-      $system_callback['code'] = "500";
-      $system_callback['message'] = "Error during query execution [$stmtTRANSFER->errno]: $stmtTRANSFER->error";
-      exit_script($system_callback);
-    }
-    $rsltTRANSFER = $stmtTRANSFER->get_result();
+    require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
+
+    $fk_id_poliza = $poliza;
+    $partidaPol = $rowPOL['pk_partida'];
+    $tipo = $rowPOL['fk_tipo'];
+    $tipoDetalle = 'Transferencia';
+    $ctaOri = $ctaOri;
+    $BancoOri = $bcoOri;
+    $BancoOriExt = '';
+    $CtaDest = $ctaDest;
+    $BancoDest = $bcoDest;
+    $BancoDestExt = '';
+    $fecha = $fecha;
+    $Beneficiario = $benefOri;
+    $RFC = $rfcOri;
+    $monto = $importe;
+    $moneda = 'MXN';
+    $TipCamb = 1;
+    $BeneficiarioOpc = $nombreCIA;
+    $RFCopc = $rfcCIA;
+    $usuario_modifi = $usuario;
+
+    require $root . '/conta6/Resources/PHP/actions/contaElect_insertaTransferencia.php';
 
     /* FALTA TERMINAR
   		// CFDI CompNal
