@@ -531,7 +531,7 @@ $('#mConsChCtaMST').keydown(function(e){
       id_cheque = $('#dchIdcheque').val();
       id_cuentaMST = $('#dchCtaMST').val();
       id_poliza = $('#dchPoliza').val();
-      window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/actions/impresion_cheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST+'&id_poliza='+id_poliza);
+      window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/actions/impresionCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST+'&id_poliza='+id_poliza);
     });
 
     //BOTON GENERAR POLIZA DE CHEQUE

@@ -189,10 +189,10 @@ $datosGeneralesAnticipo = '<style>
       <td class="bg" width="9.8%">Abono</td>
     </tr>';
 
-    // if ($rsltPOL->num_rows == 0) {
-    //   $stmtPOL['query']['code'] = 2;
-    //   $stmtPOL['query']['message'] = "Llamada al script exitosa, pero no hay resultados que arrojar.";
-    // }else {
+    if ($rsltPOL->num_rows == 0) {
+      $stmtPOL['query']['code'] = 2;
+      $stmtPOL['query']['message'] = "Llamada al script exitosa, pero no hay resultados que arrojar.";
+    }else {
     while( $rowPOL = $rsltPOL->fetch_assoc()){
       $idPolizasAnt = $rowPOL["fk_id_poliza"];
       $cuentaAnt = trim($rowPOL["fk_id_cuenta"]);
@@ -246,42 +246,14 @@ $datosGeneralesAnticipo = '<style>
         </tr>';
 
   }
+}
   $detalleRegistrosAnticipo .='</tfoot></table>';
 
 
 
 
-  $pdf->writeHTML($datosGeneralesAnticipo, true, false, true, false, 'C');
-  $pdf->writeHTML($detalleRegistrosAnticipo, true, false, true, false, 'C');
-
-
-
-
-  // $detalleAnticipo .='</table><br><br>';
-  //   $detalleAnticipo .='</tbody>
-  //   <tfoot>
-  //     <tr>
-  //       <td width="3%"></td>
-  //       <td width="10%"></td>
-  //       <td width="9%"></td>
-  //       <td width="6%"></td>
-  //       <td width="6%"></td>
-  //       <td width="6%"></td>
-  //       <td width="6%"></td>
-  //       <td width="6%"></td>
-  //       <td width="6%"></td>
-  //       <td width="38" align="right">Total : </td>
-  //       <td width="13%">'.number_format($sumaCargos,2,'.',',').'</td>
-  //       <td width="13%">'.number_format($sumaAbonos,2,'.',',').'</td>
-  //     </tr>
-  //   </tfoot>
-  // </table>';
-
-// }else {
-//   $detalleAnticipo .='<div>
-//     <font color="#F73A4A" face="Verdana" size="2" align="center" >NO HAY DETALLES EN ESTE ANTICIPO</font>
-//   </div>';
-// }
+$pdf->writeHTML($datosGeneralesAnticipo, true, false, true, false, 'C');
+$pdf->writeHTML($detalleRegistrosAnticipo, true, false, true, false, 'C');
 
 $pdf->lastPage();
 $pdf->Output('ImpresionPoliza.pdf', 'I');
