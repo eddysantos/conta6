@@ -1,10 +1,10 @@
 <?php
-$_SESSION['user_name'] = 'admado';
-$usuario = $_SESSION['user_name'];
+// $_SESSION['user_name'] = 'admado';
+// $usuario = $_SESSION['user_name'];
 
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Databases/conexion.php';
+// require $root . '/conta6/Resources/PHP/Databases/conexion.php';
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
 $pk_id_cuenta = trim($_POST['id_cuenta']);
