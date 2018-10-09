@@ -4,16 +4,18 @@ require $root . '/Conta6/Resources/vendor/autoload.php';
 require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
 
 
-
 class MYPDF extends TCPDF {
   public function Header() {
+
+    $nombreCIA = 'Proyección Logistica Agencia Aduanal S.A de C.V';
+
     $image_file = 'cheetah.svg';
     $this->ImageSVG($image_file, 5, 10, '', 10, '', '','', 0,false);
     $this->setTextColor(102);
     $this->SetFont('helvetica', '', 10);
     $this->Cell(0, 0, date('m-d-Y', strtotime('today')) , 0, 1, 'R', 0, '', 0, false, 'T', 'C');
     $this->SetFont('helvetica', '', 12);
-    $this->Cell(0, 12, 'PROYECCION LOGISTICA AGENCIA ADUANAL S.A de C.V', 0, 1, 'C', 0, '', 0, false, 'T', 'C');
+    $this->Cell(0, 12, $nombreCIA , 0, 1, 'C', 0, '', 0, false, 'T', 'C');
   }
 
   public function Footer() {
@@ -23,18 +25,8 @@ class MYPDF extends TCPDF {
 }
 
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-// $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 $pdf->SetMargins(8, 30, 8);
 $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-// $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-// $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-// $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-// if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-//     require_once(dirname(__FILE__).'/lang/eng.php');
-//     $pdf->setLanguageArray($l);
-// }
-
-
 
 
 // QUERY Y TABLA DE ENCABEZADO DE POLIZA
@@ -81,7 +73,7 @@ $contentEncabezado .= '
 
   if ($rslt->num_rows == 0) {
     $cb['query']['code'] = 2;
-    $cb['query']['message'] = "Script called successfully but there are no rows to display. For trailer query.";
+    $cb['query']['message'] = "Script called successfully but there are no rows to display.";
   } else {
     while ($row = $rslt->fetch_assoc()) {
       if ((!is_null($row["d_fecha"]))) {
@@ -179,7 +171,7 @@ $contenidobody .='<style>
 
 if ($rslt->num_rows == 0) {
   $cb1['query']['code'] = 2;
-  $cb1['query']['message'] = "Script called successfully but there are no rows to display. For trailer query.";
+  $cb1['query']['message'] = "Script called successfully but there are no rows to display.";
 }else {
   while ($row = $rslt->fetch_assoc()) {
     $tipo = $row["fk_tipo"];
@@ -196,9 +188,9 @@ if ($rslt->num_rows == 0) {
     $cargo = number_format($row['n_cargo'],2,'.',',');
     $abono = number_format($row['n_abono'],2,'.',',');
 
-    if ($folioCFDI == "" || $folioCFDI == null) {
-      $display ="display:none";
-    }
+    // if ($folioCFDI == "" || $folioCFDI == null) {
+    //   $display ="display:none";
+    // }
     $contenidobody .='<tbody><tr color="black">
       <td width="0.2%"></td>
       <td width="5%">'.$tipo.'</td>

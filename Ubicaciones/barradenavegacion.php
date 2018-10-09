@@ -206,7 +206,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                 </li>
                 <!-- <li class="nav-item"><a href="#">OFICINA</a></li> -->
                 <li class="nav-item"><a href="#">SOPORTE</a></li>
-                <li class="nav-item"><a href="#">CERRAR SESION</a></li>
+                <li class="nav-item"><a href="/conta6/Resources/PHP/Utilities/cerrarSesion.php">CERRAR SESION</a></li>
               </ul>
               </li>
               </li>

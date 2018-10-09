@@ -105,7 +105,7 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
 
 	require $root . '/conta6/Resources/PHP/actions/consultaFacturaTimbrada.php';
 
-	if( $oRst_permisos['CFDI_cta_gastos_modificar'] == 1 && $row_ctaGastos[fk_id_aduana] == $aduana &&
+	if( $oRst_permisos['CFDI_cta_gastos_modificar'] == 1 && $row_ctaGastos['fk_id_aduana'] == $aduana &&
 			$id_factura == 0 && $id_poliza == 0 && $cancela == 0 ){
 			$cadena = "ctaGastosCapturaModificar(".$dias.",&#39;".$id_referencia."&#39;,&#39;".$id_cliente."&#39;,".$id_almacen.",&#39;".$tipo."&#39;,".$valor.",".$peso.",".$id_captura.",".$shipper.",&#39;".$consolidado."&#39;,&#39;".$inbond."&#39;,".$entradas.",".$flete.",&#39;".$reexpedicion."&#39;,&#39;".$cobrarFlete."&#39;,&#39;".$status_Flete."&#39;,".$entradasAdicionales.")";
 			$modificar = "<a href='#' onclick='".$cadena."'><img class='icomediano' src='/conta6/Resources/iconos/003-edit.svg'></a>";
@@ -115,21 +115,21 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
 		$consultar = "<a href='#' onclick='ctaGastosCapturaConsultar($id_captura)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/magnifier.svg'></a>
 									<a href='#' onclick='ctaGastosCapturaImprimir($id_captura)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'></a>";
 	}
-	if( $oRst_permisos['CFDI_cta_gastos_cancelar'] == 1 && $row_ctaGastos[fk_id_aduana] == $aduana &&
+	if( $oRst_permisos['CFDI_cta_gastos_cancelar'] == 1 && $row_ctaGastos['fk_id_aduana'] == $aduana &&
 		  $id_factura == 0 && $id_poliza == 0 && $cancela == 0 ){
 		$cancelar = "<a href='#' onclick='ctaGastosCapturaEliminar($id_captura)'><img class='icomediano' src='/conta6/Resources/iconos/002-trash.svg'></a>";
 	}
 
-  $system_callback['data'] .="
-	<tr class='row borderojo'>
-		<td class='col-md-1'>$id_captura</td>
-		<td class='col-md-1'></td>
-		<td class='col-md-1'>$cancelar</td>
-		<td class='col-md-1'></td>
-		<td class='col-md-2'>$row_ctaGastos[fk_referencia]</td>
-		<td class='col-md-5'>$row_ctaGastos[fk_id_cliente] $row_ctaGastos[s_nombre]</td>
-		<td class='col-md-1'>$modificar $consultar</td>
-	</tr>";
+  $system_callback['data'] .='
+	<tr class="row borderojo">
+		<td class="col-md-1">'.$id_captura.'</td>
+		<td class="col-md-1"></td>
+		<td class="col-md-1">'.$cancelar.'</td>
+		<td class="col-md-1"></td>
+		<td class="col-md-2">'.$row_ctaGastos['fk_referencia'].'</td>
+		<td class="col-md-5">'.$row_ctaGastos['fk_id_cliente'].$row_ctaGastos['s_nombre'].'</td>
+		<td class="col-md-1">'.$modificar.$consultar.'</td>
+	</tr>';
 
 
 

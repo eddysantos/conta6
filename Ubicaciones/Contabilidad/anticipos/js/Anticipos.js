@@ -606,7 +606,7 @@ function genAnt(){
 // BOTON IMPRIMIR ANTICIPO
 $('#btn_prinAnt').click(function(){
   id_anticipo = $('#mst-anticipo').val();
-  window.location.replace('/conta6/Ubicaciones/Contabilidad/anticipos/actions/impresion_anticipo.php?id_anticipo='+id_anticipo);
+  window.location.replace('/conta6/Ubicaciones/Contabilidad/anticipos/actions/ImprimirAnticipo.php?id_anticipo='+id_anticipo);
 });
 
 
