@@ -32,7 +32,7 @@
     <a href="/Conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php">
       <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
     </a>
-    <a href="" class="ml-4">
+    <a href="#" class="ml-4" onclick='ctaGastosCapturaImprimir(<?php echo $cuenta ?>)'>
       <img class="icomediano" src="/conta6/Resources/iconos/printer.svg">
     </a>
   </div>
@@ -206,7 +206,6 @@
         <div class="col-md-6 text-right">CUSTOMS :</div>
         <div class="col-md-6 text-left"><?php echo $txt_id_asoc; ?></div>
       </div>
-
     </div>
 
     <div class="col-lg-4">

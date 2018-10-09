@@ -1,10 +1,8 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-
 $pk_c_UsoCFDI = '';
 $selected_usoCFDI = '';
-
 $cliente = trim($_GET['id_cliente']);
 $dias = trim($_GET['dias']);
 $referencia = trim($_GET['referencia']);
@@ -18,10 +16,8 @@ $cobrarFlete = trim($_GET['cobrarFlete']);
 $opcion = trim($_GET['opcionDoc']);
 $docto = trim($_GET['docto']);
 $tasa = trim($_GET['tasa']);
-
 $id_cliente = trim($_GET['id_cliente']);
 $id_referencia = trim($_GET['referencia']);
-
 $PME_1 = 0;
 $PME_2 = 0;
 $PME_3 = 0;
@@ -32,16 +28,11 @@ $custodia = 0;
 $manejo = 0;
 $almacenaje = 0;
 $maniobras = 0;
-
 require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
-
-
 if($referencia != "SN"){
       require $root . '/conta6/Resources/PHP/actions/consultaDatosReferenciaProveedor.php';
-
       if( $rows_datosRefProv > 0 ){
         $row_datosRefProv = $rslt_datosRefProv->fetch_assoc();
-
           $id_clienteReferencia = $row_datosRefProv['fk_id_cliente'];
           $status_Flete = $row_datosRefProv['s_status_flete'];
           $valor = limpiarBlancos($row_datosRefProv['n_valor_aduana']);
@@ -58,7 +49,6 @@ if($referencia != "SN"){
           $tipo = limpiarBlancos($row_datosRefProv['s_imp_exp']);
           $almacen = limpiarBlancos($row_datosRefProv['fk_almacen_seccion']);
           $nomProv = $row_datosRefProv['s_NOMBRE'];
-
           $fechaEntrada =  $row_datosRefProv['d_fecha_entrada'];
           if (!is_null($fechaEntrada)){
             $fechaEntrada = date_format(date_create($fechaEntrada),"d-m-Y");
@@ -66,22 +56,17 @@ if($referencia != "SN"){
             $fechaEntrada = '';
           }
       }
-
       if(!is_null($fechaEntrada)){
         $fechaEntrada = date_format(date_create($fechaEntrada),"d-m-Y");
       }else{
         $fechaEntrada = "";
       }
-
       if( trim($tipo) == 'E'){ $tipo = "EXP"; }else{ $tipo = "IMP"; }
-
       if( $almacen > 0 ){
         require $root . '/conta6/Resources/PHP/actions/consultaDatosAlmacen.php';
         $almacenNombre = trim($row_datosAlmacen['s_almacen']);
       }else{ $almacen = 0; $almacenNombre = "SIN NOMBRE";}
-
       $nomProv = limpiarBlancos($nomProv);
-
     }else{
       $id_clienteReferencia =  $cliente;
       $status_Flete = "P";
@@ -102,13 +87,11 @@ if($referencia != "SN"){
       $pedimento = "";
       $tipoCambio = 0;
     }
-
     $entradasAdicionales = 0;
     if($entradas > 1){
       $entradasAdicionales = $entradas - 1;
       $entradas = 1;
     }
-
     //datos del cliente
     require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
     if( $rows_datosCLT > 0 ){
@@ -124,7 +107,6 @@ if($referencia != "SN"){
       $CLT_rfc = limpiarBlancos($row_datosCLT["s_rfc"]);
       $CLT_taxid = limpiarBlancos($row_datosCLT["s_taxid"]);
     }
-
     //IVA
     require $root . '/conta6/Resources/PHP/actions/consultaDatosIVA.php';
     if( $rows_datosIVA > 0 ){
@@ -133,67 +115,51 @@ if($referencia != "SN"){
       $iva_menos_retencion = $row_datosIVA['n_IVA_menos_retencion'];
       $ivaGral = $row_datosIVA['n_IVA_general'] - $retencion; //IMPUESTO GENERAL - APLICADO AL CONCEPTO Flete Terrestre cuando es la oficina de Nuevo Laredo
     }
-
     if( $tasa == "sinIVA" ){
       $iva = 0;
       $retencion = 0;
       $iva_menos_retencion = 0;
     }
-
     /* SACO UN FOLIO DE CALCULO DE TARIFA, ESTE FOLIO ME SERVIRA PARA PODER IDENTIFICAR LOS FILTROS DE LAS TARIFAS */
     $s_tipoDoc = 'ctaGastos';
     //require $root . '/conta6/Resources/PHP/actions/tarifas_generarFolio.php';
     $calculoTarifa = 45;
-
-
     #******************** PAGOS O COBROS EN MONEDA EXTRANJERA ********************
     //CALCULO TARIFA DEL CLIENTE - SECCION: POCME
     $id_cliente_usar = $id_cliente;
     require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME.php';
     require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente.php'; #$tarifaPOCMEcliente
-
     //CALCULO TARIFA GENERAL - SECCION: POCME
     $id_cliente_usar = 'CLT_5900'; #CLIENTES DIVERSOS
     $consolidado = 'LTL/FTL';
     require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME.php';
     require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_general.php'; #$tarifaPOCMEgeneral
-
     //EXTRAER PROFORMA - SECCION: POCME
     if($docto == "Proforma"){
       require $root . '/conta6/Resources/PHP/actions/consulta_proforma_det.php'; #$proforma_POCME
     }
-
     //EXTRAER CTA AME - SECCION: POCME
     if($docto == "ctaAme"){
       require $root . '/conta6/Resources/PHP/actions/consulta_ctaAme_det.php'; #$ctaAme_POCME
     }
-
     if($docto == "cliente" || $docto == "clt_ame" ){
       require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME_delete.php';
     }
-
     //PARA LA OFICINA DE NUEVO LAREDO ESTOS CONCEPTOS SE CARGAN EN AUTOMATICO
     if( $aduana == 240 ){
       #require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente_cobroAutomatico.php';  #$POCME_automatico
     }
-
     //CALCULO TARIFA ALMACEN - SECCION: PAGOS REALIZADOS POR SU CUENTA
     require $root . '/conta6/Resources/PHP/actions/tarifas_calculaALMACEN.php'; #$custodia,$manejo,$almacenaje
       $maniobras = redondear_dos_decimal($custodia + $manejo + $almacenaje);
-
     require $root . '/conta6/Resources/PHP/actions/tarifas_almacen_mostrarConceptos.php'; #$ConceptosAlmacen
     require $root . '/conta6/Resources/PHP/actions/tarifas_almacen_mostrarConceptosLibres.php'; #$conceptosLibresAlmacen
-
-
     //CALCULO TARIFA CLIENTE - SECCION: HONORARIOS Y SERVICIOS AL COMERCIO EXTERIOR
     require $root . '/conta6/Resources/PHP/actions/tarifas_calculaCLIENTE.php'; #$honorarios,$factor_honorarios,$descuento
     require $root . '/conta6/Resources/PHP/actions/tarifas_cliente_mostrarConceptos.php'; #$ConceptosCliente
     require $root . '/conta6/Resources/PHP/actions/tarifas_cliente_mostrarConceptosLibres.php'; #$conceptosLibresCliente
-
     $oRst_consultaCve = mysqli_fetch_array(mysqli_query($db,"select fk_c_ClaveProdServ from conta_cs_cuentas_mst where pk_id_cuenta = '0400-00001'"));
     $cveProdHon = $oRst_consultaCve['fk_c_ClaveProdServ'];
-
-
     //forma de pago del cliente
     require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
     if ($rows_datosCLTformaPago > 0) {
@@ -204,16 +170,11 @@ if($referencia != "SN"){
         $datosCLTformaPago .= '<option value="'.$id_formaPago.'">'.$concepto.' --- '.$id_formaPago.'</option>';
       }
     }
-
     //LISTA DE MONEDAS
     require $root . '/conta6/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
     //LISTA DE USO DE CFDI
     require $root . '/conta6/Resources/PHP/actions/consultaUsoCFDI_facturar.php'; #$consultaUsoCFDIfac
-
     $tabindex = 0;
-
-
-
 ?>
 
     <input type="hidden" id="tipoDocumento" value="elaborar">
@@ -230,69 +191,94 @@ if($referencia != "SN"){
 
 
     <div class='text-center'>
-      <div class='row m-0 submenuMed '>
+      <div class='row m-0 submenuMed'>
         <div class='col-md-4' role='button'>
-          <a  id='submenuMed' class='visualizar' accion='Ver-cliente' status='cerrado'>DATOS CLIENTE</a>
+          <a  id="submenuMed" class="visualizar" accion="Ver-cliente" status="cerrado">DATOS CLIENTE</a>
         </div>
         <div class='col-md-4'>
-          <a id='submenuMed' class='visualizar' accion='datinfo' status='cerrado'>INFO. GENERAL</a>
+          <a id="submenuMed" class="visualizar" accion="datinfo" status="cerrado">INFO. GENERAL</a>
         </div>
-        <div class='col-md-4'>
+        <div class="col-md-4">
           <a id="submenuMed" class="visualizar" accion="Ver-iEmbarque" status="cerrado">INFO. DEL EMBARQUE</a>
         </div>
       </div>
-      <div id='detalleCliente' class='contorno' style='display:none'>
+      <div id="detalleCliente" class="contorno" style="display:none">
         <h5 class='titulo font14'>DATOS CLIENTES</h5>
-        <table class='table ' id='eCliente'>
+        <table class='table' id='eCliente'>
           <thead>
-            <tr class='row encabezado font16'>
-              <td class='col-md-12 p-0'>
-                <input class="eff h22 text-right border-0 bt p-0" type="text" id="T_ID_Cliente_Oculto" value="<?php echo $id_cliente; ?>">
-                <input class="eff w-50 h22 text-left border-0 bt" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
+            <tr class='row justify-content-center encabezado font16'>
+              <td class="col-md-2 text-right">
+                <input class="h22 text-right border-0 bt" type="text" id="T_ID_Cliente_Oculto" readonly value="<?php echo $id_cliente; ?>">
+              </td>
+              <td class="col-md-6 text-left">
+                <input class="h22 text-left border-0 bt w-100" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
               </td>
             </tr>
             <tr class='row backpink' style="font-size:14px!important">
-              <td class='col-md-6'>Direccion</td>
+              <td class='col-md-6'>Direccion Cliente</td>
               <td class='col-md-6'>Proveedor</td>
             </tr>
           </thead>
           <tbody class='font14'>
             <tr class='row'>
-              <td class="col-md-3 p-0">
-                <input class="w-100 border-0 bt text-right" id="T_Cliente_Calle" type="text" readonly value="<?php echo $CLT_calle;?>">
-              </td>
-              <td class="col-md-3 p-0">
-                Ext. #<input class="border-0 bt" id="T_Cliente_No_Ext" type="text" readonly value="<?php echo $CLT_no_ext;?>" size="5">
-                Int: <input class="border-0 bt" id="T_Cliente_No_Int" type="text" readonly value="<?php echo $CLT_no_int;?>" size="25">
+              <td class="col-md-2 text-right b p-0"><b>Calle y No :</b></td>
+              <td class="col-md-4 p-0">
+                <input class="w-100 border-0 bt text-left" id="T_Cliente_Calle" type="text" readonly value="<?php echo $CLT_calle;?>">
               </td>
               <td class='col-md-6 p-0'>
                 <input class="border-0 bt text-center w-100" type="text" id="T_Proveedor_Destinatario" value="<?php echo $nomProv;?>" readonly>
               </td>
             </tr>
-            <tr class='row'>
-              <td class='col-md-6 p-0'>
-                <input class="efecto h22 border-0 bt" id="T_Cliente_Colonia" type="text" readonly value="<?php echo $CLT_colonia;?>">
+            <tr class="row">
+              <td class="col-md-2 p-0 text-right b"> <b># Ext :</b></td>
+              <td class="text-left p-0">
+                <input class="h22 border-0 bt" id="T_Cliente_No_Ext" type="text" readonly value="<?php echo $CLT_no_ext;?>" size="5">
+              </td>
+              <td class="text-right p-0 b"><b># Int :</b></td>
+              <td class="col-md-2 text-left p-0">
+                <input class="h22 border-0 bt" id="T_Cliente_No_Int" type="text" readonly value="<?php echo $CLT_no_int;?>" size="25">
               </td>
             </tr>
             <tr class='row'>
-              <td class='col-md-6 p-0'>
-                <input class="eff h22 border-0 bt text-right p-0" id="T_Cliente_Ciudad" type="text" readonly value="<?php echo $CLT_ciudad;?>">,
-                <input class="eff h22 border-0 bt p-0" id="T_Cliente_Estado" type="text" readonly value="<?php echo $CLT_estado;?>">
-                C.P :<input class="eff h22 border-0 bt p-0 text-left" id="T_Cliente_CP" type="text" readonly value="<?php echo $CLT_codigo;?>">
+              <td class="col-md-2 text-right b p-0"><b>Colonia :</b></td>
+              <td class='col-md-4 p-0 text-left'>
+                <input class="h22 border-0 bt" id="T_Cliente_Colonia" type="text" readonly value="<?php echo $CLT_colonia;?>">
               </td>
             </tr>
             <tr class='row'>
-              <td class='col-md-6 p-0'>
-                <input class="eff h22 border-0 bt p-0" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
-                Pais :<input class="eff h22 border-0 bt" id="T_Cliente_Pais" value="<?php echo $CLT_pais; ?>">
-                Tax ID :<input class="eff h22 border-0 bt" id="T_Cliente_taxid" value="<?php echo $CLT_taxid; ?>">
+              <td class="col-md-2 p-0 b text-right"><b>Ciudad/Estado :</b> </td>
+              <td class='col-md-3 p-0 text-left'>
+                <input class="h22 border-0 bt" id="T_Cliente_Estado" type="text" readonly value="<?php echo $CLT_estado;?>">,
+                <input class="h22 border-0 bt text-left p-0" id="T_Cliente_Ciudad" type="text" readonly value="<?php echo $CLT_ciudad;?>">
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-2 p-0 b text-right"><b>País :</b></td>
+              <td class="col-md-4 p-0 text-left">
+                <input  type="text" class="h22 border-0 bt" id="T_Cliente_Pais" value="<?php echo $CLT_pais; ?>">
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-2 p-0 b text-right"><b>CP :</b></td>
+              <td class="p-0 text-left">
+                <input class="h22 border-0 bt" id="T_Cliente_CP" type="text" readonly value="<?php echo $CLT_codigo;?>" size="6"></td>
+              </td>
+              <td class="p-0 b text-right"><b>Tax ID :</b></td>
+              <td class="col-md-1 p-0 text-left">
+                <input type="text" class="h22 border-0 bt" id="T_Cliente_taxid" value="<?php echo $CLT_taxid; ?>">
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-2 p-0 b text-right"><b>RFC :</b></td>
+              <td class="col-md-4 p-0 text-left">
+                <input class="h22 border-0 bt" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
               </td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div id='contornoInfo' class='contorno' style='display:none'>
+      <div id='contornoInfo' class='contorno' style="display:none">
         <h5 class='titulo font16'>INFO GENERAL</h5>
         <table class='table' id='eInfo'>
           <thead>
@@ -335,30 +321,30 @@ if($referencia != "SN"){
           </thead>
           <tbody class='font14'>
             <tr class="row">
-              <td class="p-1 col-md-3 text-left"> Cta. generada</td>
+              <td class="p-1 col-md-3 text-left b"><b>Cta. generada</b></td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3">
-                <input class="h22 bt border-0" type="text" id="T_Usuario" size="20"value="<?php echo $usuario; ?>" readonly>
+                <input class="h22 bt border-0 text-center" type="text" id="T_Usuario" size="20"value="<?php echo $usuario; ?>" readonly>
               </td>
               <td class="p-1 col-md-3">
-                <input class="h22 bt border-0" type="text" id="T_Fecha_Cta" size="20" value="<?php $fecha = time (); echo date ( "d-m-Y h:i:s" , $fecha );?>" readonly>
+                <input class="h22 bt border-0 text-center" type="text" id="T_Fecha_Cta" size="20" value="<?php $fecha = time (); echo date ( "d-m-Y h:i:s" , $fecha );?>" readonly>
               </td>
             </tr>
 
             <tr class="row">
-              <td class="p-1 col-md-3 text-left"> Cta. modificada</td>
+              <td class="p-1 col-md-3 text-left b"><b>Cta. modificada</b></td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
             </tr>
             <tr class="row">
-              <td class="p-1 col-md-3 text-left"> Factura generada</td>
+              <td class="p-1 col-md-3 text-left b"><b>Factura generada</b></td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
             </tr>
             <tr class="row borderojo">
-              <td class="p-1 col-md-3 text-left"> Factura cancelada</td>
+              <td class="p-1 col-md-3 text-left b"><b>Factura cancelada</b></td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
@@ -501,8 +487,8 @@ if($referencia != "SN"){
             <div class='encabezado font16' data-toggle='collapse' href='#collapseOne'>
               <a href="#" id='bread'>PAGOS O CARGOS EN MONEDA EXTRANJERA</a>
             </div>
-            <div id='collapseOne' class='card-block collapse'>
-    		<!--div div id='collapseOne' -->
+            <div id='collapseOne' class='card-block collapse divisor'>
+    		    <!--div div id='collapseOne' -->
               <div>
                 <div class="row mt-3">
                   <div class="col-md-6">
@@ -574,11 +560,11 @@ if($referencia != "SN"){
             </div>
           </div>
 
-          <div class='acordeon2 mt-3'>
+          <div class='acordeon2 mt-4'>
             <div class='encabezado font16' data-toggle='collapse' href='#collapseTwo'>
               <a href="#" id='bread'>PAGOS REALIZADOS POR SU CUENTA</a>
             </div>
-            <div id='collapseTwo' class='card-block collapse'>
+            <div id='collapseTwo' class='card-block collapse divisor'>
     		<!--div id='collapseTwo'-->
               <form class='form1' onsubmit="return false">
                 <div>
@@ -669,11 +655,11 @@ if($referencia != "SN"){
     		</div>
           </div>
 
-          <div class='acordeon2 mt-3'>
+          <div class='acordeon2 mt-4'>
             <div class='encabezado font16' data-toggle='collapse' href='#collapseThree'>
               <a href="#" id='bread'>HONORARIOS Y SERVICIOS AL COMERCIO EXTERIOR</a>
             </div>
-            <div id='collapseThree' class='panel-collapse collapse'>
+            <div id='collapseThree' class='panel-collapse collapse divisor'>
     		    <!--div id='collapseThree'-->
               <div class='card-block'>
                 <form class='form1'>
@@ -1012,7 +998,3 @@ if($referencia != "SN"){
       require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/modales/depositos.php';
       require $root . '/conta6/Ubicaciones/footer.php';
     ?>
-
-
-
-?>

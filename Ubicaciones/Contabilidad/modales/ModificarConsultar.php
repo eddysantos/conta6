@@ -1,4 +1,3 @@
-
 <!--POLIZAS DE DIARIO-->
 <!--MODAL Contabilidad > Polizas > Modificar -->
 <div class="modal fade text-center" id="modificar-pol">
@@ -11,13 +10,13 @@
         <h5 class="modal-tittle">Modificar Póliza</h5>
       </div>
       <div class="modal-body">
-        <div class="row titulograndetop-modal">
-          <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-md-8 titulograndetop">
             <label>POLIZA</label>
           </div>
         </div>
-        <div class="row intermedio-modal">
-          <div class="col-12">
+        <div class="row justify-content-center">
+          <div class="col-md-8 intermedio">
             <form class="form-group" onsubmit="return false;">
               <input id="folioPol" class="reg border-0 w-100" type="text" onchange="validaSoloNumeros(this);" autocomplete="off">
             </form>
@@ -43,21 +42,21 @@
         <h5 class="modal-tittle">Consultar Póliza</h5>
       </div>
       <div class="modal-body">
-        <div class="row titulograndetop-modal">
-          <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-md-8 titulograndetop">
             <label>POLIZA</label>
           </div>
         </div>
-        <div class="row intermedio-modal">
-          <div class="col-12">
+        <div class="row justify-content-center">
+          <div class="col-md-8 intermedio">
             <form class="form-group" onsubmit="return false;">
               <input id="folioPolconsulta" class="reg border-0 w-100" type="text" onchange="validaSoloNumeros(this)" autocomplete="off">
             </form>
           </div>
         </div>
-        <div class="modal-footer">
-          <a href="#" id="btn" onclick="buscarPoliza('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" id="btn" onclick="buscarPoliza('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -147,13 +146,13 @@
         <h5 class="modal-tittle">Modificar Anticipo</h5>
       </div>
       <div class="modal-body">
-        <div class="row titulograndetop-modal">
-          <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-md-8 titulograndetop">
             <label>ANTICIPO</label>
           </div>
         </div>
-        <div class="row intermedio-modal">
-          <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-md-8 intermedio">
             <form class="form-group" onsubmit="return false;">
             <input class="reg border-0 w-100" type="text" id="folioAnt" onchange="validaSoloNumeros(this)" autocomplete="off">
           </form>
@@ -178,13 +177,13 @@
         <h5 class="modal-tittle">Consultar Anticipo</h5>
       </div>
       <div class="modal-body">
-        <div class="row titulograndetop-modal">
-          <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-md-8 titulograndetop">
             <label>ANTICIPO</label>
           </div>
         </div>
-        <div class="row intermedio-modal">
-          <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-md-8 intermedio">
             <form  class="form-group" onsubmit="return false;">
             <input class="reg border-0 w-100" type="text" id="folioAntConsulta" onchange="validaSoloNumeros(this)" autocomplete="off">
           </form>
@@ -210,15 +209,15 @@
         <h5 class="modal-tittle">Asignar Proveedor</h5>
       </div>
       <div class="modal-body">
-        <div class="row titulograndetop-modal">
-          <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-md-8 titulograndetop">
             <label>POLIZA</label>
           </div>
         </div>
-        <div class="row intermedio-modal">
-          <div class="col-md-12">
-            <form  class="form-group" autocomplete="off" onsubmit="return false;">
-              <input class="reg border-0 w-100" type="text">
+        <div class="row justify-content-center">
+          <div class="col-md-8 intermedio">
+            <form class="form-group" onsubmit="return false;">
+              <input class="reg border-0 w-100" type="text" autocomplete="off">
             </form>
           </div>
         </div>
@@ -308,15 +307,15 @@
         <h5 class="modal-tittle">Asignar Proveedor</h5>
       </div>
       <div class="modal-body">
-        <div class="row titulograndetop-modal">
-          <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-md-8 titulograndetop">
             <label>PÓLIZA</label>
           </div>
         </div>
-        <div class="row intermedio-modal">
-          <div class="col-md-12">
-            <form  class="form-group" autocomplete="off" onsubmit="return false;">
-              <input class="reg border-0 w-100" type="text">
+        <div class="row justify-content-center">
+          <div class="col-md-8 intermedio">
+            <form  class="form-group" onsubmit="return false;">
+              <input class="reg border-0 w-100" type="text" autocomplete="off">
             </form>
           </div>
         </div>

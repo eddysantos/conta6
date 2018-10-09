@@ -17,7 +17,7 @@
 
   <div class="contorno" id="g-ctagastos" style="display:none; margin-bottom:100px!important">
     <div class="col-md-1 offset-sm-11 p-0">
-      <a href="#" class="bg" accion="cuadroGenerar">
+      <a href="#" class="fele" accion="cuadroGenerar">
         <i class="back fa fa-arrow-left">Regresar</i>
       </a>
     </div>
@@ -67,21 +67,21 @@
 
 
 <!---se muestra al dar click en Buscar-->
-  <div class="contenedor" id="b-ctagastos" style="display:none">
-    <div class="row">
-      <div class="col-md-12 offset-sm-8">
+  <div id="b-ctagastos" style="display:none;margin-top:150px!important">
+    <div class="row m-0">
+      <div class="col-md-1 offset-sm-8 ">
         <a href="#" class="fele" accion="cuadroBusqueda">
           <i class="back fa fa-arrow-left">Regresar</i>
         </a>
       </div>
     </div>
-    <div class="row titulograndetop transEff" id="referencia">
-      <div class="col-md-12 ">
+    <div class="row justify-content-center" id="referencia">
+      <div class="col-md-6 titulograndetop transEff">
         <label class="transEff" for="bRef" id="labelRef">Referencia o Solicitud</label>
       </div>
     </div>
-    <div class="row intermedio transEff" id="nReferencia">
-      <div class="col-md-12" id="mostrarConsulta">
+    <div class="row justify-content-center" id="nReferencia">
+      <div class="col-md-6 intermedio transEff" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
         <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
       </form>

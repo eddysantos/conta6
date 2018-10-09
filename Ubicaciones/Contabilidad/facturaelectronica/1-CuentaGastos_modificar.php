@@ -373,34 +373,57 @@ if($referencia != "SN"){
           </thead>
           <tbody class='font14'>
             <tr class='row'>
-              <td class="col-md-3 p-0">
-                <input class="w-100 border-0 bt text-right" id="T_Cliente_Calle" type="text" readonly value="<?php echo $CLT_calle;?>">
-              </td>
-              <td class="col-md-3 p-0">
-                Ext. #<input class="border-0 bt" id="T_Cliente_No_Ext" type="text" readonly value="<?php echo $CLT_no_ext;?>" size="5">
-                Int: <input class="border-0 bt" id="T_Cliente_No_Int" type="text" readonly value="<?php echo $CLT_no_int;?>" size="25">
+              <td class="col-md-2 text-right b p-0"><b>Calle y No :</b></td>
+              <td class="col-md-4 p-0">
+                <input class="w-100 border-0 bt text-left" id="T_Cliente_Calle" type="text" readonly value="<?php echo $CLT_calle;?>">
               </td>
               <td class='col-md-6 p-0'>
                 <input class="border-0 bt text-center w-100" type="text" id="T_Proveedor_Destinatario" value="<?php echo $nomProv;?>" readonly>
               </td>
             </tr>
-            <tr class='row'>
-              <td class='col-md-6 p-0'>
-                <input class="efecto h22 border-0 bt" id="T_Cliente_Colonia" type="text" readonly value="<?php echo $CLT_colonia;?>">
+            <tr class="row">
+              <td class="col-md-2 p-0 text-right b"> <b># Ext :</b></td>
+              <td class="text-left p-0">
+                <input class="h22 border-0 bt" id="T_Cliente_No_Ext" type="text" readonly value="<?php echo $CLT_no_ext;?>" size="5">
+              </td>
+              <td class="text-right p-0 b"><b># Int :</b></td>
+              <td class="col-md-2 text-left p-0">
+                <input class="h22 border-0 bt" id="T_Cliente_No_Int" type="text" readonly value="<?php echo $CLT_no_int;?>" size="25">
               </td>
             </tr>
             <tr class='row'>
-              <td class='col-md-6 p-0'>
-                <input class="eff h22 border-0 bt text-right p-0" id="T_Cliente_Ciudad" type="text" readonly value="<?php echo $CLT_ciudad;?>">,
-                <input class="eff h22 border-0 bt p-0" id="T_Cliente_Estado" type="text" readonly value="<?php echo $CLT_estado;?>">
-                C.P :<input class="eff h22 border-0 bt p-0 text-left" id="T_Cliente_CP" type="text" readonly value="<?php echo $CLT_codigo;?>">
+              <td class="col-md-2 text-right b p-0"><b>Colonia :</b></td>
+              <td class='col-md-4 p-0 text-left'>
+                <input class="h22 border-0 bt" id="T_Cliente_Colonia" type="text" readonly value="<?php echo $CLT_colonia;?>">
               </td>
             </tr>
             <tr class='row'>
-              <td class='col-md-6 p-0'>
-                <input class="eff h22 border-0 bt p-0" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
-                Pais :<input class="eff h22 border-0 bt" id="T_Cliente_Pais" value="<?php echo $CLT_pais; ?>">
-                Tax ID :<input class="eff h22 border-0 bt" id="T_Cliente_taxid" value="<?php echo $CLT_taxid; ?>">
+              <td class="col-md-2 p-0 b text-right"><b>Ciudad/Estado :</b> </td>
+              <td class='col-md-3 p-0 text-left'>
+                <input class="h22 border-0 bt" id="T_Cliente_Estado" type="text" readonly value="<?php echo $CLT_estado;?>">,
+                <input class="h22 border-0 bt text-left p-0" id="T_Cliente_Ciudad" type="text" readonly value="<?php echo $CLT_ciudad;?>">
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-2 p-0 b text-right"><b>País :</b></td>
+              <td class="col-md-4 p-0 text-left">
+                <input  type="text" class="h22 border-0 bt" id="T_Cliente_Pais" value="<?php echo $CLT_pais; ?>">
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-2 p-0 b text-right"><b>CP :</b></td>
+              <td class="p-0 text-left">
+                <input class="h22 border-0 bt" id="T_Cliente_CP" type="text" readonly value="<?php echo $CLT_codigo;?>" size="6"></td>
+              </td>
+              <td class="p-0 b text-right"><b>Tax ID :</b></td>
+              <td class="col-md-1 p-0 text-left">
+                <input type="text" class="h22 border-0 bt" id="T_Cliente_taxid" value="<?php echo $CLT_taxid; ?>">
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-2 p-0 b text-right"><b>RFC :</b></td>
+              <td class="col-md-4 p-0 text-left">
+                <input class="h22 border-0 bt" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
               </td>
             </tr>
           </tbody>
@@ -448,32 +471,32 @@ if($referencia != "SN"){
               <td class="col-md-3">Fecha</td>
             </tr>
           </thead>
-          <tbody class='font14'>
+          <tbody class='font14 text-center'>
             <tr class="row">
-              <td class="p-1 col-md-3 text-left"> Cta. generada <?php echo $pk_id_cuenta_captura; ?></td>
+              <td class="p-1 col-md-3 text-left b"><b>Cta. generada <?php echo $pk_id_cuenta_captura; ?></b> </td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3">
-                <input class="h22 bt border-0" type="text" id="T_Usuario" size="20"value="<?php echo $fk_usuario; ?>" readonly>
+                <input class="h22 bt border-0 text-center" type="text" id="T_Usuario" size="20"value="<?php echo $fk_usuario; ?>" readonly>
               </td>
               <td class="p-1 col-md-3">
-                <input class="h22 bt border-0" type="text" id="T_Fecha_Cta" size="20" value="<?php echo date_format(date_create($d_fecha_cta),"d-m-Y h:i:s");?>" readonly>
+                <input class="h22 bt border-0 text-center" type="text" id="T_Fecha_Cta" size="20" value="<?php echo date_format(date_create($d_fecha_cta),"d-m-Y h:i:s");?>" readonly>
               </td>
             </tr>
 
-            <tr class="row">
-              <td class="p-1 col-md-3 text-left"> Cta. modificada</td>
+            <tr class="row b">
+              <td class="p-1 col-md-3 text-left b"><b>Cta. modificada</b> </td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"><?php echo $s_usuario_modifi; ?></td>
               <td class="p-1 col-md-3"><?php echo $d_fecha_modifi; ?></td>
             </tr>
-            <tr class="row">
-              <td class="p-1 col-md-3 text-left"> Factura generada</td>
+            <tr class="row b">
+              <td class="p-1 col-md-3 text-left b"><b>Factura generada</b> </td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
             </tr>
-            <tr class="row borderojo">
-              <td class="p-1 col-md-3 text-left"> Factura cancelada</td>
+            <tr class="row b borderojo">
+              <td class="p-1 col-md-3 text-left b"><b></b> </td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
@@ -496,9 +519,9 @@ if($referencia != "SN"){
           </thead>
           <tbody class="font14" id='tbodyDGE'>
             <tr class="row borderojo">
-              <td class="col-md-4"><?php echo $fk_id_aduana;?></td>
+              <td class="col-md-4 b"><?php echo $fk_id_aduana;?></td>
               <td class="col-md-4"><input class="efecto h22 border-0" type="text" id="id_cuenta_captura" value="<?php echo $pk_id_cuenta_captura; ?>"></td>
-              <td class="col-md-4"><?php echo date_format(date_create($d_fecha_cta),"d-m-Y h:i:s");?></td>
+              <td class="col-md-4 b"><?php echo date_format(date_create($d_fecha_cta),"d-m-Y h:i:s");?></td>
             </tr>
             <?php echo $datosEmbarqueModifi; ?>
             <!--tr class="row">
@@ -617,7 +640,7 @@ if($referencia != "SN"){
             <div class='encabezado font16' data-toggle='collapse' href='#collapseOne'>
               <a href="#" id='bread'>PAGOS O CARGOS EN MONEDA EXTRANJERA</a>
             </div>
-            <div id='collapseOne' class='card-block collapse'>
+            <div id='collapseOne' class='card-block collapse divisor'>
     		<!--div div id='collapseOne' -->
               <div>
                 <div class="row mt-3">
@@ -690,11 +713,11 @@ if($referencia != "SN"){
             </div>
           </div>
 
-          <div class='acordeon2 mt-3'>
+          <div class='acordeon2 mt-4'>
             <div class='encabezado font16' data-toggle='collapse' href='#collapseTwo'>
               <a href="#" id='bread'>PAGOS REALIZADOS POR SU CUENTA</a>
             </div>
-            <div id='collapseTwo' class='card-block collapse'>
+            <div id='collapseTwo' class='card-block collapse divisor'>
     		<!--div id='collapseTwo'-->
               <form class='form1' onsubmit="return false">
                 <div>
@@ -740,7 +763,7 @@ if($referencia != "SN"){
 
                   <div class='row m-0 justify-content-center mt-3 mb-3'>
                     <div class='col-md-6'>
-    				  <input type="hidden" id="T_CA_idconcepto">
+    				          <input type="hidden" id="T_CA_idconcepto">
                       <input type="hidden" id="T_CA_idcuenta">
                       <input class="efecto" type="text" id="T_CA" size="60" readonly>
                     </div>
@@ -773,19 +796,18 @@ if($referencia != "SN"){
                       </td>
                     </tr>
                       <?php echo $datosCargosModifi; ?>
-                    </tr>
                   </tbody>
                 </table>
               </form>
-              <br><br><br>
+              <br>
     		</div>
           </div>
 
-          <div class='acordeon2 mt-3'>
+          <div class='acordeon2 mt-4'>
             <div class='encabezado font16' data-toggle='collapse' href='#collapseThree'>
               <a href="#" id='bread'>HONORARIOS Y SERVICIOS AL COMERCIO EXTERIOR</a>
             </div>
-            <div id='collapseThree' class='panel-collapse collapse'>
+            <div id='collapseThree' class='panel-collapse collapse divisor mb-4'>
     		    <!--div id='collapseThree'-->
               <div class='card-block'>
                 <form class='form1'>
@@ -900,7 +922,7 @@ if($referencia != "SN"){
         <table class="table w-100">
           <tr>
             <td class="w-50">
-              <table class="table">            
+              <table class="table">
                 <tr class="row">
                   <td class="col-md-3 text-left pt-4"> CUSTOMS DC </td>
                   <td class="col-md-3">
