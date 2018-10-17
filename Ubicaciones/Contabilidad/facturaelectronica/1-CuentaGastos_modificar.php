@@ -167,8 +167,8 @@ if($referencia != "SN"){
 
     /* SACO UN FOLIO DE CALCULO DE TARIFA, ESTE FOLIO ME SERVIRA PARA PODER IDENTIFICAR LOS FILTROS DE LAS TARIFAS */
     $s_tipoDoc = 'ctaGastos';
-    //require $root . '/conta6/Resources/PHP/actions/tarifas_generarFolio.php';
-    $calculoTarifa = 45;
+    require $root . '/conta6/Resources/PHP/actions/tarifas_generarFolio.php';
+    //$calculoTarifa = 45;
 
 
     #******************** PAGOS O COBROS EN MONEDA EXTRANJERA ********************

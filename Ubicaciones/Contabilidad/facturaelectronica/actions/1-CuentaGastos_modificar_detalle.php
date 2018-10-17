@@ -239,16 +239,16 @@ if( $Total_Gral_Importe > 0 ){
 
       if( $hon_idpartida > 0 ){
         if( $hon_idTipoCta == '0400-00001' ){
-          $query_hon="UPDATE conta_t_facturas_captura_det SET    s_conceptoEsp = ?,
-                                                                  fk_id_cuenta = ?,
-                                                                  fk_c_ClaveProdServ = ?,
-                                                                  n_importe = ?,
-                                                                  n_IVA = ?,
-                                                                  n_ret = ?,
-                                                                  n_total = ?,
-                                                                  n_porcentaje = ?,
-                                                                  n_base = ?,
-                                                                  n_descuento = ?
+          $query_hon="UPDATE conta_t_facturas_captura_det SET s_conceptoEsp = ?,
+                                                              fk_id_cuenta = ?,
+                                                              fk_c_ClaveProdServ = ?,
+                                                              n_importe = ?,
+                                                              n_IVA = ?,
+                                                              n_ret = ?,
+                                                              n_total = ?,
+                                                              n_porcentaje = ?,
+                                                              n_base = ?,
+                                                              n_descuento = ?
                             WHERE pk_id_partida = ?";
 
             $stmt_hon = $db->prepare($query_hon);

@@ -24,7 +24,13 @@
     while( $row_facTimbrada = $rslt_facTimbrada->fetch_assoc() ){
       $id_factura = $row_facTimbrada['pk_id_factura'];
       $id_poliza = $row_facTimbrada['fk_id_poliza'];
-      $cancela = $row_facTimbrada['s_cancela_factura'];
+      $s_UUID = $row_facTimbrada['s_UUID'];
+      $usuario_timbra = $row_facTimbrada['fk_usuario'];
+      $fechaTimbre = $row_facTimbrada['d_fechaTimbrado'];
+
+      $s_cancela_factura = $row_facTimbrada['s_cancela_factura'];
+      $fechaTimbreCancela = $row_facTimbrada['d_fechaTimbradoCancela'];
+      $usuario_Cancela = $row_facTimbrada['s_usuario_cancela'];
     }
   }
 
