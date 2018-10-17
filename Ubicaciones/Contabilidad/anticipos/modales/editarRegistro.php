@@ -17,19 +17,19 @@
                   <input id="pk_partida" type="hidden" db-id="">
                   <input id="fk_id_anticipo" type="hidden" db-id="">
 
-                  <input class="efecto popup-input" id="fk_referencia" type="text" id-display="#medit-popup-display-fk_referencia" action="referencias" value="SN" db-id="SN" autocomplete="new-password">
+                  <input class="efecto popup-input" id="fk_referencia" type="text" id-display="#medit-popup-display-fk_referencia" action="referencias" value="SN" db-id="SN" autocomplete="off">
                   <div class="popup-list" id="medit-popup-display-fk_referencia" style="display:none"></div>
                   <label for="fk_referencia">Referencia</label>
                 </td>
 
                 <td class="col-md-8 input-effect">
-                  <div id="lstClientesPartida">
-                    <input class="efecto tiene-contenido popup-input" id="fk_id_cliente_antdet" type="text" id-display="#medit-popup-display-fk_id_cliente_antdet" action="clientes" db-id="" autocomplete="new-password">
+                  <div id="lstClientesPartida" style="display:none">
+                    <input class="efecto tiene-contenido popup-input" id="fk_id_cliente_antdet" type="text" id-display="#medit-popup-display-fk_id_cliente_antdet" action="clientes" db-id="" autocomplete="off" readonly>
                     <div class="popup-list" id="medit-popup-display-fk_id_cliente_antdet" style="display:none"></div>
                     <label for="fk_id_cliente_antdet">Cliente</label>
                   </div>
 
-                  <div id="lstClientesCorrespPartida">
+                  <div id="lstClientesCorrespPartida" style="display:none">
                     <select class="custom-select" size='1' id='fk_id_corresp'>
                         <option selected value='0'>Seleccione Cliente/Corresponsal</option>
                     </select>
@@ -40,8 +40,11 @@
 
               <tr class="row m-0 mt-4">
                 <td class="col-md-2 input-effect">
-                  <input class="efecto" id="fk_id_cuenta">
-                  <label for="fk_id_cuenta">Cuenta</label>
+                  <div id="lstClientesCorrespCtas-ModalAnt">
+                    <select class="custom-select" size='1' id="fk_id_cuenta">
+                      <option selected value='0'>Seleccione</option>
+                    </select>
+                  </div>
                 </td>
                 <td class="col-md-6">
                   <input class="efecto" id="s_desc" onchange="eliminaBlancosIntermedios(this)">

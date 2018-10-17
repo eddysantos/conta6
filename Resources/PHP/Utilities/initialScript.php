@@ -5,7 +5,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/session.php';
 
 
-session_start();
+// session_start();
 if (!isset($_SESSION['user'])) {
   header("Location: /conta6/index.php");
 }

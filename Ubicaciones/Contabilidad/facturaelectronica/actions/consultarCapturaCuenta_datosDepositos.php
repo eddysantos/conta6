@@ -27,7 +27,7 @@ if( $total_consultaDepositos > 0 ) {
 	while( $row_consultaDepositos = $rslt_consultaDepositos->fetch_assoc() ){
 		$pk_id_partida = $row_consultaDepositos['pk_id_partida'];
 		$n_noDeposito = $row_consultaDepositos['n_noDeposito'];
-		$n_total = number_format($row_consultaDepositos['n_total'],2,'.',',');
+		$n_total = number_format($row_consultaDepositos['n_total'],2,'.','');
 
 		$datosDepositos = $datosDepositos."<div class='row ls1'>
 							<div class='col-md-6 text-right'>$n_noDeposito :</div>
@@ -48,7 +48,7 @@ if( $total_consultaDepositos > 0 ) {
 			</td>
       <td class='col-md-2 impAnt'><input class='efecto h22 T_Anticipo importe' importe='$importe' type='text' id='T_Anticipo_$n_noDeposito' value='$n_total' readonly></td>
       <td class='col-md-2'>
-        <div class='checkbox-xs agregar-deposito' destino='#tbodyDepAplic'>
+        <div class='checkbox-xs agregar-deposito' destino='#depositos-disponibles'>
           <label>
             <input type='checkbox' data-toggle='toggle'>
           </label>
@@ -57,5 +57,7 @@ if( $total_consultaDepositos > 0 ) {
     </tr>";
 	}
 }
+
+//prueba modificar
 
 ?>

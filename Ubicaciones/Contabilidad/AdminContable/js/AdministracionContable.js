@@ -112,7 +112,7 @@ $(document).ready(function(){
     });
 
     $('#printCatCuentas').click(function(){
-      window.location.replace('/conta6/Ubicaciones/Contabilidad/AdminContable/actions/imprimir_catalogoCtas.php');
+      window.open('/conta6/Ubicaciones/Contabilidad/AdminContable/actions/imprimir_catalogoCtas.php');
     });
 
     $('#genCorresponsal').click(function(){
@@ -209,20 +209,20 @@ $(document).ready(function(){
     			success: 	function(request, settings){
             //$('#respuestaCtasMST').html(request);
             mensaje = request;
-            if(mensaje.indexOf("Error during query execution [1062]") > -1){
-  						swal("La cuenta ya existe");
-              console.error(request);
+            if (mensaje.indexOf("Error") > -1) {
+              swal("Error", mensaje, "error");
+
+            // if(mensaje.indexOf("Error during query execution [1062]") > -1){
+  					// 	swal("La cuenta ya existe");
+              // console.error(request);
   						return false;
   					}else{
               swal("Exito", "La cuenta se agrego correctamente.", "success");
-              console.error(request);
+              setTimeout('document.location.reload()',700);
               return true;
     		    }
           }
-
-    		});
-
-
+    	});
     });
 
 
@@ -342,21 +342,24 @@ $(document).ready(function(){
     			url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregar.php",
     			data: data,
     			success: 	function(request, settings){
-            //$('#respuestaCtasDET').html(request);
             mensaje = request;
             if(mensaje.indexOf("Error") > -1){
-  						$('#respuestaCtasDET').html(request);
-              console.error(request);
+              swal("Error", mensaje, "error");
+  						// $('#respuestaCtasDET').html(request);
+              // console.error(request);
   						return false;
   					}else{
-              swal("La cuenta se guardo correctamente");
-              console.error(request);
+              swal("Exito", "La cuenta se guardo correctamente.", "success");
+              // cuentas_Det();
+              setTimeout('document.location.reload()',700);
               return true;
     		    }
     		  }
         });
 
       });
+
+
 
 
       $('#generarCtaCLT').click(function(){
@@ -376,10 +379,15 @@ $(document).ready(function(){
     			url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregar.php",
     			data: data,
     			success: 	function(request, settings){
-            $('#respuestaCtasClientes').html(request);
+            mensaje = request;
+            if (mensaje.indexOf("Error") > -1) {
+              swal("Error", mensaje, "error");
+            }else {
+              swal("Exito", "La cuenta se agrego correctamente.", "success");
+              setTimeout('document.location.reload()',700);
+              // return true;
+            }
     		  }
-
-
         });
 
       });

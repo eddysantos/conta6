@@ -7,14 +7,26 @@
   background-color: white;
   -webkit-box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 2px;
+  border-radius: 10px;
 }
 .alertify .ajs-header {
-  color: black;
-  font-weight: bold;
-  background: #fafafa;
-  border-bottom: #eee 1px solid;
-  border-radius: 2px 2px 0 0;
+  /* color: black;
+  font-weight: bold; */
+  /* background: #fafafa;
+  border-bottom: #eee 1px solid; */
+  /* border-radius: 10px 10px 0 0; */
+
+
+  color: #575757;
+  font-size: 30px;
+  text-align: center;
+  font-weight: 600;
+  text-transform: none;
+  position: relative;
+  margin: 25px 0;
+  padding: 0;
+  line-height: 40px;
+  display: block;
 }
 .alertify .ajs-body {
   color: black;
@@ -31,9 +43,9 @@
   margin: 0;
 }
 .alertify .ajs-footer {
-  background: #fbfbfb;
+  /* background: #fbfbfb;
   border-top: #eee 1px solid;
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 2px 2px; */
 }
 .alertify .ajs-footer .ajs-buttons .ajs-button {
   background-color: transparent;
@@ -44,8 +56,25 @@
   text-transform: uppercase;
 }
 .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-ok {
-  color: #3593D2;
+  /* color: #3593D2; */
+  /*agregados  */
+  text-align: center;
+  background-color: #8CD4F5;
+  color: white;
+  border: none;
+  box-shadow: none;
+  font-size: 17px;
+  font-weight: 500;
+  -webkit-border-radius: 4px;
+  border-radius: 5px;
+  padding: 10px 32px;
+  /* margin: 26px 5px 0 5px; */
+  cursor: pointer;
 }
+
+
+
+
 .alertify-notifier .ajs-message {
   background: rgba(255, 255, 255, 0.95);
   color: #000;

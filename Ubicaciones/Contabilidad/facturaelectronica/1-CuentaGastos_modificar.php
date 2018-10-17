@@ -524,110 +524,6 @@ if($referencia != "SN"){
               <td class="col-md-4 b"><?php echo date_format(date_create($d_fecha_cta),"d-m-Y h:i:s");?></td>
             </tr>
             <?php echo $datosEmbarqueModifi; ?>
-            <!--tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto bt border-0 h22 text-right" type="text" id="T_IGET_1" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" value="Nuestra Referencia:">
-              </td>
-              <td class="col-md-4 p-1">
-                <input class="efecto bt border-0 h22 text-left" type="text" id="T_IGED_1" size="30" maxlength="60" value="<?php echo $id_referencia;?>" readonly>
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_2" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" value="Descripción General:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" type="text" id="T_IGED_2" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $descripcion; ?>...">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_3" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" value="Peso en Kg.:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" type="text" id="T_IGED_3" size="30" maxlength="150" onchange="eliminaBlancosIntermedios(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $peso; ?>">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_4" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" value="Tipo de Operación:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" type="text" id="T_IGED_4" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $tipo;?>">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_5" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" value="Talones, Guía o B/Ls:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" id="T_IGED_5" type="text" onchange="eliminaBlancosIntermedios(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $guiaMaster;?>" size="30" maxlength="60">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_6" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);"  value="Facturas:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" id="T_IGED_6" type="text" onchange="eliminaBlancosIntermedios(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $facturas;?>..." size="30" maxlength="60">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_7" size="30" maxlength="100" onchange="eliminaBlancosIntermedios(this);" value="Fecha Arribo o Salida:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" id="T_IGED_7" type="text" onchange="eliminaBlancosIntermedios(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $fechaEntrada; ?>" size="30" maxlength="100">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_8" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);"  value="Procedencia o Destino:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" id="T_IGED_8" type="text" onchange="eliminaBlancosIntermedios(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $procedencia;?>" size="30" maxlength="60">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_9" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" value="No. Pedimento:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" id="T_IGED_9" type="text" onchange="eliminaBlancosIntermedios(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $pedimento;?>" size="30" maxlength="250">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_10" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" value="Su Referencia:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" id="T_IGED_10" type="text" onchange="eliminaBlancosIntermedios(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $referenciaCliente;?>" size="30" maxlength="250">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_12" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" value="Clase de Mercancía:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" id="T_IGED_12" type="text" onchange="eliminaBlancosIntermedios(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="" size="30" maxlength="250">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_13" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" value="Bill of lading:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" id="T_IGED_13" type="text" onchange="eliminaBlancosIntermedios(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="" size="30" maxlength="250">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                <input class="efecto border-0 h22 text-right" type="text" id="T_IGET_11" size="30" maxlength="60" onchange="eliminaBlancosIntermedios(this);" value="Valor en M.N.:">
-              </td>
-              <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" id="T_IGED_11" type="text" onblur="validaIntDec(this);" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $valor;?>" size="30" maxlength="60">
-              </td>
-            </tr-->
           </tbody>
         </table>
       </div>
@@ -931,19 +827,15 @@ if($referencia != "SN"){
                     </select>
                   </td>
                   <td class="col-md-3">
-                    <!--select id="Lst_metodoPago" onchange="asignarMetodoPago()"-->
                     <select id="T_metodoPago" onchange="asignarMetodoPago()">
                       <option value="PUE">Seleccione método de pago</option>
                       <?php echo $datosMetodoPago; ?>
                     </select>
-                    <!--input class="efecto h22" type="text" id="T_metodoPago" value="PUE" readonly-->
                  </td>
     			       <td class="col-md-3">
-                   <!--select name="select" id="Lst_usoCFDI" onchange="asignarUsoCFDI()"-->
                    <select name="select" id="T_usoCFDI">
                     <?php echo $consultaUsoCFDIfac; ?>
                   </select>
-    			        <!--input class="efecto h22" type="text" id="T_usoCFDI" size="20" readonly-->
                 </td>
                 </tr>
                 <tr class="row">
@@ -1108,7 +1000,7 @@ if($referencia != "SN"){
 
         <div class="row justify-content-center">
           <div class="col-md-3">
-            <input class="efecto boton validarstring" type='button' value="MODIFICAR" onclick="validarStringSAT(this);quitarNoUsar(this);" id="modificar-cta" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
+            <input class="efecto boton validarstring" type='button' value="MODIFICAR" onclick="validarStringSAT(this);quitarNoUsar(this);" id="modificar-cta" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
           </div>
           <div id="mensaje"></div>
         </div>
@@ -1123,6 +1015,4 @@ if($referencia != "SN"){
       require $root . '/conta6/Ubicaciones/footer.php';
     ?>
 
-
-
-?>
+<!-- prueba modificar -->

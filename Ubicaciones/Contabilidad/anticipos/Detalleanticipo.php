@@ -4,7 +4,7 @@
 
   $id_anticipo = $_GET['id_anticipo'];
 
-  $sql_Select = "SELECT * from conta_t_anticipos_mst Where pk_id_anticipo = ? AND fk_id_aduana = ?";
+  $sql_Select = "SELECT * FROM conta_t_anticipos_mst WHERE pk_id_anticipo = ? AND fk_id_aduana = ?";
   $stmt = $db->prepare($sql_Select);
 	if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
 	$stmt->bind_param('ss', $id_anticipo,$aduana);
@@ -20,7 +20,7 @@
     $importeAnt = $rowMST['n_valor'];
 
     //totales
-	 	$oRst_STPD_sql = "select fk_id_anticipo,SUM(n_cargo)as SUMA_CARGOS,SUM(n_abono)as SUMA_ABONOS from conta_t_anticipos_det where fk_id_anticipo = ? group by fk_id_anticipo ";
+	 	$oRst_STPD_sql = "SELECT fk_id_anticipo, SUM(n_cargo) AS SUMA_CARGOS, SUM(n_abono) AS SUMA_ABONOS FROM conta_t_anticipos_det WHERE fk_id_anticipo = ? GROUP BY fk_id_anticipo ";
 		$stmtTotales = $db->prepare($oRst_STPD_sql);
 		if (!($stmtTotales)) { die("Error during query prepare [$db->errno]: $db->error");	}
 		$stmtTotales->bind_param('s', $id_anticipo);
@@ -40,7 +40,7 @@
         $txtStatus = '<b><font face="Trebuchet MS" size="2" color="#000000">CUADRADA</font></b>';
         $statusGeneraPoliza = true;
 		  }else{
-				$txtStatus = '<b><font color="#E52727" face="Trebuchet MS" size="2"><?php echo $Status_Anticipo; ?> ANTICIPO SIN CUADRAR</font></b>';
+				$txtStatus = '<b class="pt-2"><font color="#E52727" face="Trebuchet MS" size="2">'. $Status_Anticipo.' ANTICIPO SIN CUADRAR</font></b>';
         $statusGeneraPoliza = false;
 			}
 		}else{
@@ -144,8 +144,7 @@ if( $rows > 0 ){
             <td class="col-md-6"><?php echo $rowMST['s_concepto']; ?></td>
             <td class="col-md-1">
               <?php if( $mostrar == true ){ ?>
-              <!-- <a href='#ant-editarRegMST' data-toggle='modal'> -->
-              <a href='#ant-editarRegMST' data-toggle='modal' class='editar-anticipoMST' db-id='<?php echo $id_anticipo; ?>' role='button'>
+              <a href='#ant-editarRegMST' class='editar-anticipoMST' db-id='<?php echo $id_anticipo; ?>'>
                 <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
               </a>
               <?php }?>
@@ -197,7 +196,7 @@ if( $rows > 0 ){
                       <div class="popup-list" id="popup-display-ant-cliente" style="display:none"></div>
                       <label for="ant-cliente">Cliente</label>
                     </div>
-                    <div id="lstClientesCorresp">
+                    <div id="lstClientesCorresp" style="display:none">
                       <select class="custom-select" size='1' id="ant-clienteCorresp">
                           <option selected value='0'>Seleccione Cliente/Corresponsal</option>
                       </select>
@@ -211,7 +210,7 @@ if( $rows > 0 ){
                 </tr>
                 <tr class="row m-0 mt-4">
                   <td class="col-md-8 input-effect">
-                    <div id="lstClientesCorrespCtas">
+                    <div id="lstClientesCorrespCtas-detpol">
                       <select class="custom-select" size='1' id="ant-clienteCorrespCtas">
                           <option selected value='0'>Seleccione</option>
                       </select>
@@ -240,12 +239,14 @@ if( $rows > 0 ){
             <div class="col-md-2 offset-md-4">SUMA DE CARGOS</div>
             <div class="col-md-2">SUMA DE ABONOS</div>
           </div>
-          <div class="row">
+          <div class="row" id="totalesAnticipo2">
             <div class="col-md-2 offset-md-4">
               <input class="efecto" id="sumCargos2" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
             </div>
             <div class="col-md-2">
-              <input class="efecto" id="sumCargos2" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
+              <input class="efecto" id="sumAbonos2" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
+
+              <!-- <input type="text" id="txtStatus2" value="<?php echo $txtStatus ?>"> -->
             </div>
             <?php
              echo $txtStatus;
@@ -253,9 +254,23 @@ if( $rows > 0 ){
           </div>
 
           <div class="contorno-mov mt-5">
-            <table class="table">
+            <table class="table font12 table-hover">
               <thead>
-                <tr class="row backpink m-0">
+                <tr class="row sub3 b m-0">
+                  <td width="4%"></td>
+                  <td width="10%">CUENTA</td>
+                  <td width="10%">REFERENCIA</td>
+                  <td width="10%">CLIENTE</td>
+                  <td width="10%">FACTURA</td>
+                  <td width="10%">CTA GASTOS</td>
+		              <td width="10%">PAGO ELECT</td>
+                  <td width="10%">NOTACRED</td>
+                  <td width="11%">CARGO</td>
+                  <td width="11%">ABONO</td>
+                  <td width="4%"></td>
+                </tr>
+
+                <!-- <tr class="row backpink m-0">
                   <td class="p-0 pt-2 xs"></td>
                   <td class="p-0 pt-2 small">CUENTA</td>
                   <td class="p-0 pt-2 small">REFERENCIA</td>
@@ -268,7 +283,7 @@ if( $rows > 0 ){
                   <td class="p-0 pt-2 small">CARGO</td>
                   <td class="p-0 pt-2 small">ABONO</td>
                   <td class="p-0 pt-2 xs"></td>
-                </tr>
+                </tr> -->
               </thead>
               <tbody id="ultimosRegistrosAnticipo"></tbody>
             </table>
@@ -314,8 +329,21 @@ if( $rows > 0 ){
                   <td class="col-md-12">DETALLE ANTICIPO</td>
                 </tr>
               </thead>
-              <tbody class="font16">
-                <tr class="row backpink m-0">
+              <thead class="font12">
+                <tr class="row sub3 b m-0">
+                  <td width="4%"></td>
+                  <td width="10%">CUENTA</td>
+                  <td width="10%">REFERENCIA</td>
+                  <td width="10%">CLIENTE</td>
+                  <td width="10%">FACTURA</td>
+                  <td width="10%">CTA GASTOS</td>
+		              <td width="10%">PAGO ELECT</td>
+                  <td width="10%">NOTACRED</td>
+                  <td width="11%">CARGO</td>
+                  <td width="11%">ABONO</td>
+                  <td width="4%"></td>
+                </tr>
+                <!-- <tr class="row backpink m-0">
                   <td class="p-0 pt-2 xs"></td>
                   <td class="p-0 pt-2 small">CUENTA</td>
                   <td class="p-0 pt-2 small">REFERENCIA</td>
@@ -328,9 +356,9 @@ if( $rows > 0 ){
                   <td class="p-0 pt-2 small">CARGO</td>
                   <td class="p-0 pt-2 small">ABONO</td>
                   <td class="p-0 pt-2 xs"></td>
-                </tr>
-                <tbody id="tabla_detalleanticipo" class="font12"></tbody>
-              </tbody>
+                </tr> -->
+              </thead>
+              <tbody id="tabla_detalleanticipo" class="font12"></tbody>
             </table>
           </div>
         </div>

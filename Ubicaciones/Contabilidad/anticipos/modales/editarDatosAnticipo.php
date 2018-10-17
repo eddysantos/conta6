@@ -26,23 +26,22 @@
                 </td>
 
                 <td class="col-md-6 input-effect">
-    			        <input class="efecto tiene-contenido popup-input" id="fk_id_cliente_antmst" type="text" id-display="#popup-display-fk_id_cliente_antmst" action="clientes" db-id="" autocomplete="off"
-                    onchange="Actualiza_Expedido_Cliente_MST()">
+    			        <input class="efecto tiene-contenido popup-input" id="fk_id_cliente_antmst" type="text" id-display="#popup-display-fk_id_cliente_antmst" action="clientes" db-id="" autocomplete="off">
                   <div class="popup-list" id="popup-display-fk_id_cliente_antmst" style="display:none"></div>
                   <label for="fk_id_cliente_antmst">Cliente</label>
           			</td>
               </tr>
               <tr class="row m-0 mt-5">
                 <td class="col-md-3">
-                  <select class="custom-select" size='1' id="antbcoclienteMST" onchange="asignaBCliente()">
+                  <select class="custom-select" size='1' id="antbcoclienteMST">
                     <option selected value='0'>Seleccione Banco</option>
                   </select>
                 </td>
 
                 <td class="col-md-3">
-                  <select class="custom-select" size='1' id='antcuentaMST' onchange="asignaCtaMST()">
-                      <option selected value='0'>Seleccione una Cuenta</option>
-                    </select>
+                  <select class="custom-select" size='1' id='antcuentaMST'>
+                    <option selected value='0'>Seleccione una Cuenta</option>
+                  </select>
     			      </td>
 
                 <td class="col-md-6">

@@ -1,35 +1,35 @@
 <?php
-$root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-
-
-$id_poliza = trim($_GET['id_poliza']);
-$aduana = trim($_GET['aduana']);
-
-$oRst_Select = mysqli_query($db,"Select * from conta_t_polizas_mst Where pk_id_poliza = $id_poliza AND fk_id_aduana = $aduana");
-$totalRegistrosSelect = mysqli_num_rows($oRst_Select);
-$oRst_Select = mysqli_fetch_array($oRst_Select);
-
-$oRst_POLDET_sql = mysqli_query($db,"select * from conta_t_polizas_det where fk_id_poliza = $id_poliza order by pk_partida");
-$totalRegistrosPOLDET = mysqli_num_rows($oRst_POLDET_sql);
-
-$oRst_STPD = mysqli_query($db,"select fk_id_poliza,SUM(n_cargo)as SUMA_CARGOS,SUM(n_abono)as SUMA_ABONOS from conta_t_polizas_det where fk_id_poliza = $id_poliza group by fk_id_poliza ");
-$totalRegistrosSTPD = mysqli_num_rows($oRst_STPD);
-$oRst_STPD = mysqli_fetch_array($oRst_STPD);
-
-if( $totalRegistrosSTPD > 0 ){
-	$Status_Poliza = number_format($oRst_STPD["SUMA_CARGOS"] - $oRst_STPD["SUMA_ABONOS"],2,'.',',');
-}
+// $root = $_SERVER['DOCUMENT_ROOT'];
+// require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+//
+//
+// $id_poliza = trim($_GET['id_poliza']);
+// $aduana = trim($_GET['aduana']);
+//
+// $oRst_Select = mysqli_query($db,"Select * from conta_t_polizas_mst Where pk_id_poliza = $id_poliza AND fk_id_aduana = $aduana");
+// $totalRegistrosSelect = mysqli_num_rows($oRst_Select);
+// $oRst_Select = mysqli_fetch_array($oRst_Select);
+//
+// $oRst_POLDET_sql = mysqli_query($db,"select * from conta_t_polizas_det where fk_id_poliza = $id_poliza order by pk_partida");
+// $totalRegistrosPOLDET = mysqli_num_rows($oRst_POLDET_sql);
+//
+// $oRst_STPD = mysqli_query($db,"select fk_id_poliza,SUM(n_cargo)as SUMA_CARGOS,SUM(n_abono)as SUMA_ABONOS from conta_t_polizas_det where fk_id_poliza = $id_poliza group by fk_id_poliza ");
+// $totalRegistrosSTPD = mysqli_num_rows($oRst_STPD);
+// $oRst_STPD = mysqli_fetch_array($oRst_STPD);
+//
+// if( $totalRegistrosSTPD > 0 ){
+// 	$Status_Poliza = number_format($oRst_STPD["SUMA_CARGOS"] - $oRst_STPD["SUMA_ABONOS"],2,'.',',');
+// }
 ?>
 
 <?php
-	 if( $totalRegistrosSelect > 0 ){
-
-	 $cancela = $oRst_Select["s_cancela"];
-	 if( $cancela == 1 ){ $txt_cancela = "Póliza Cancelada";}else{$txt_cancela = "";}
+	 // if( $totalRegistrosSelect > 0 ){
+	 //
+	 // $cancela = $oRst_Select["s_cancela"];
+	 // if( $cancela == 1 ){ $txt_cancela = "Póliza Cancelada";}else{$txt_cancela = "";}
 ?>
 
-<div class="text-center mb-10">
+<!-- <div class="text-center mb-10">
 	<div class="contorno mt-5">
 		<div class="row">
 			<div class="col-md-12">
@@ -79,12 +79,12 @@ if( $totalRegistrosSTPD > 0 ){
 				</tr>
 			</thead>
 
-			<tbody>
+			<tbody> -->
 				<?php
 					if( $totalRegistrosPOLDET > 0 ){
 						while ($oRst_POLDET = mysqli_fetch_array($oRst_POLDET_sql)){
 				?>
-				<tr class="borderojo">
+				<!-- <tr class="borderojo">
 					<td ><?php echo $oRst_POLDET["fk_tipo"]; ?></td>
 					<td><?php echo $oRst_POLDET["fk_id_cuenta"]; ?></td>
 					<td ><?php echo $oRst_POLDET["fk_referencia"]; ?></td>
@@ -98,11 +98,11 @@ if( $totalRegistrosSTPD > 0 ){
 					<td class="text-left"><?php echo $oRst_POLDET["s_desc"]; ?></td>
 					<td><?php echo number_format($oRst_POLDET['n_cargo'],2,'.',',');?></td>
 					<td><?php echo number_format($oRst_POLDET['n_abono'],2,'.',',');?></td>
-				</tr>
+				</tr> -->
 			<?php }
 				mysqli_free_result($oRst_POLDET_sql);
 				?>
-			</tbody>
+			<!-- </tbody>
 			<tfoot>
 				<tr class="font14">
 					<td class="text-right" colspan="11">Totales : </td>
@@ -111,36 +111,38 @@ if( $totalRegistrosSTPD > 0 ){
 				</tr>
 			</tfoot>
 		</table>
-	</div>
+	</div> -->
 
 	<?php
-	}else{
+	// }else{
 		?>
-	<div class="container-fluid pantallaGris">
+	<!-- <div class="container-fluid pantallaGris">
 		<div class="tituloSinRegistros">
 			<font color="#F73A4A" face="Verdana" size="2" align="center" >NO HAY DETALLES DE ESTA PÓLIZA</font>
 		</div>
-	</div>
+	</div> -->
 	<?php
 		}
 	?>
 
 	<?php
-	}else{
+	// }else{
 	?>
-
+<!--
 	<div class="container-fluid pantallaGris">
 		<div class="tituloSinRegistros">
 			<font color="#F73A4A" face="Verdana" size="2" align="center" >NO HAY DATOS DE ESTA PÓLIZA, O ES UNA PÓLIZA DE OTRA OFICINA</font>
 		</div>
 	</div>
-</div>
+</div> -->
 <?php
-}
+// }
 ?>
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+// require $root . '/conta6/Ubicaciones/footer.php';
 ?>
 
-<?php mysqli_close($db); ?>
+<?php
+ // mysqli_close($db); 
+?>

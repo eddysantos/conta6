@@ -187,7 +187,7 @@ if( $rows_CHEDET > 0 ){
     $anticipoCheque = $row_CHEDET["fk_anticipo"];
     $descripcionCheque = $row_CHEDET["s_desc"];
 
-  	$detalleCheque .= '<tbody><tr>
+  	$detalleCheque .= '<tbody><tr color="black">
         <td width="12.5%">'.$cuentaCheque.'</td>
         <td width="12.5%">'.$referenciaCheque.'</td>
         <td width="12.5%">'.$clienteCheque.'</td>

@@ -1,29 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Documento sin t&iacute;tulo</title>
-<SCRIPT type="text/javascript">
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
+<!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
+<!-- <head> -->
+<!-- <title>Documento sin t&iacute;tulo</title> -->
+<!-- <SCRIPT type="text/javascript">
 function Imprime(){
-	//window.print()
 }
-</SCRIPT>
+</SCRIPT> -->
 <?php
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-
-  $cuenta = trim($_GET['cuenta']);
-  $txt_id_asoc = 'No';
-
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
+  // $root = $_SERVER['DOCUMENT_ROOT'];
+  // require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  //
+  // $cuenta = trim($_GET['cuenta']);
+  // $txt_id_asoc = 'No';
+  //
+  // require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
+  // require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
+  // require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
+  // require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
+  // require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
+  // require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
 
 
 ?>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body onload="Imprime()" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="1" marginwidth="1" marginheight="1">
 <table width="100%" border="0">
@@ -71,9 +70,9 @@ function Imprime(){
 </table>
 <table width="100%">
   <tr>
-	<td valign="top">
+	<td valign="top"> -->
 <!-- ******************** CLIENTE *****************-->
-		<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;">
+		<!-- <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;">
 			  <tr>
 				<td align="center" bgcolor="#7F7F7F" style="color:#FFFFFF;">CLIENTE</td>
 	      </tr>
@@ -93,9 +92,9 @@ function Imprime(){
 				<td align="right">R.F.C. <?php echo $s_rfc;?></td>
 			  </tr>
 	  </table>
-		<br>
+		<br> -->
 <!--************************ PROVEEDOR ***************** -->
-			<table width="100%" border="0" cellspacing="0" style="border-collapse:collapse; font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;" >
+			<!-- <table width="100%" border="0" cellspacing="0" style="border-collapse:collapse; font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;" >
 			  <tr align="center">
 				<td colspan="3" bgcolor="#7F7F7F" style="color:#FFFFFF">PROVEEDOR (IMP) O DESTINATARIO (EXP)</td>
 			  </tr>
@@ -104,9 +103,9 @@ function Imprime(){
 			  </tr>
 			</table>
 
-			<br>
+			<br> -->
 <!-- ********************** PAGOS EN MONEDA EXTRANJERA ***************** -->
-			<table border="0" width="100%" id="table111" cellspacing="1" cellpadding="0" style="border-collapse:collapse; font-family: Trebuchet MS; font-size:6pt;  border: 1px solid #000000;">
+			<!-- <table border="0" width="100%" id="table111" cellspacing="1" cellpadding="0" style="border-collapse:collapse; font-family: Trebuchet MS; font-size:6pt;  border: 1px solid #000000;">
 				<tr>
 					<td colspan="2" bgcolor="#808080" align="center" style="color:#FFFFFF;">PAGOS O CARGOS EN MONEDA EXTRANJERA</td>
 				</tr>
@@ -114,9 +113,9 @@ function Imprime(){
 			</table>
 
 	</td>
-    <td valign="top">
+    <td valign="top"> -->
 <!--****************** FOLIO DE LA FACTURA ********************* -->
-				<table width="100%" border="0" cellspacing="0" style="border-collapse: collapse;  font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;">
+				<!-- <table width="100%" border="0" cellspacing="0" style="border-collapse: collapse;  font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;">
 				  <tr style="color:#FFFFFF" bgcolor="#808080" align="center">
 					<td>CUENTA DE GASTOS </td>
 					<td>&nbsp;</td>
@@ -133,10 +132,10 @@ function Imprime(){
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 				  </tr>
-			</table>
+			</table> -->
 
 <!--******************* DATOS REFERENCIA ******************* -->
-				<table border='0' width='100%' id='table81' cellspacing='0' style='border-collapse: collapse;  font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;'>
+				<!-- <table border='0' width='100%' id='table81' cellspacing='0' style='border-collapse: collapse;  font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;'>
 					<tr>
 						<td align='center' bgcolor='#C0C0C0' style='color:#000000;'>INFORMACI&Oacute;N GENERAL DEL EMBARQUE</td>
 					</tr>
@@ -151,11 +150,11 @@ function Imprime(){
 
 						</td>
 					</tr>
-				</table>
+				</table> -->
 
 
 <!-- ******************** TIPO DE CAMBIO ***************-->
-				<table width="100%" border="0" style="border-collapse:collapse; font-family: Trebuchet MS; font-size:6pt;  border: 1px solid #000000;" >
+				<!-- <table width="100%" border="0" style="border-collapse:collapse; font-family: Trebuchet MS; font-size:6pt;  border: 1px solid #000000;" >
 					<tr style="color:#FFFFFF;">
 						<td bgcolor="#808080" align="center" width="33%">TOTAL</td>
 						<td bgcolor="#808080" align="center" width="33%">AL TIPO DE CAMBIO</td>
@@ -180,12 +179,12 @@ function Imprime(){
 		    <td width="10%">&nbsp;</td>
 		</tr>
 		<?php echo $datosCargos; ?>
-</table>
+</table> -->
 
 
 
 <!-- COBRO DE HONORARIOS -->
-<table border="0" width="100%" style="font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;" cellspacing="0">
+<!-- <table border="0" width="100%" style="font-family: Trebuchet MS; font-size:6pt; border: 1px solid #000000;" cellspacing="0">
 		<tr bgcolor="#808080" style="color:#FFFFFF" align="center">
 		  <td width="10%">&nbsp;</td>
 			<td width="65%">HONORARIOS Y SERVICIOS AL COMERCIO EXTERIOR</td>
@@ -281,4 +280,4 @@ function Imprime(){
 
 
 </body>
-</html>
+</html> -->

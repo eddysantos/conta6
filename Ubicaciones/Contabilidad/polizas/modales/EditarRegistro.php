@@ -26,7 +26,6 @@
                     }?>
                     <div class="popup-list" id="medit-popup-display-cuentas_mst_2niv" style="display:none"></div>
                     <label for="fk_id_cuenta" style="padding-top:.10rem">Seleccione una Cuenta</label>
-
                   </td>
                   <td class="col-md-2">
                     <!-- PRUEBA -->
@@ -52,15 +51,23 @@
                 </tr>
 
                 <tr class="row m-0 mt-4">
-                  <td class="col-md-10">
-                    <input class="efecto popup-input tiene-contenido" id="fk_id_cliente" type="text" id-display="#popup-display-clientes_sinCtaDet" action="clientes" db-id="" autocomplete="off">
-                    <div class="popup-list" id="popup-display-clientes_sinCtaDet" style="display:none"></div>
-                    <label for="fk_id_cliente">Cliente</label>
-                  </td>
                   <td class="col-md-2">
-                    <input class="efecto popup-input tiene-contenido" id="fk_referencia" type="text" id-display="#popup-display-referencia" action="referencias" db-id="" autocomplete="off" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaReferencia(this);">
+                    <input class="efecto popup-input tiene-contenido" id="fk_referencia" type="text" id-display="#popup-display-referencia" action="referencias" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-referencia" style="display:none"></div>
                     <label for="fk_referencia">Referencia</label>
+                  </td>
+
+                  <td class="col-md-10">
+                    <div id="modalpol-lstClientes">
+                      <input class="efecto popup-input tiene-contenido" id="fk_id_cliente" type="text" id-display="#popup-display-clientes_sinCtaDet" action="clientes" db-id="" autocomplete="off" readonly>
+                      <div class="popup-list" id="popup-display-clientes_sinCtaDet" style="display:none"></div>
+                      <label for="fk_id_cliente">Cliente</label>
+                    </div>
+                    <div id="modalpol-lstClientesCorresp" style="display:none">
+                      <select class="custom-select" size='1' id="modalpol-clienteCorresp">
+                        <option selected value='0'>Seleccione Cliente/Corresponsal</option>
+                      </select>
+                    </div>
                   </td>
                 </tr>
 
@@ -123,7 +130,7 @@
 
 <!--Editar Registro de Polizas Ingreso-->
 <!-- no se usa -->
-<div class="modal fade" id="detpol-editarRegPolIngreso" style="margin-top:50px">
+<!-- <div class="modal fade" id="detpol-editarRegPolIngreso" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
@@ -200,10 +207,10 @@
             </table>
           </form>
         </div>
-      </div><!--termina el Cuerpo del Modal-->
+      </div>
       <div class="modal-footer">
         <a href="" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
-    </div><!--termina el COntenido del Modal-->
+    </div>
   </div>
-</div>
+</div> -->

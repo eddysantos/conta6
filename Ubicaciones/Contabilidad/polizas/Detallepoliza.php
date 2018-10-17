@@ -85,7 +85,7 @@ if( $totalRegistrosSelect > 0 ){
 								  	echo "<option value='1' selected>Cancelado</option>";
 								  } ?>
 						</select>
-		  <!--input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="off" disabled value="<?php echo $cancela; ?>"-->
+		        <!--input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="off" disabled value="<?php echo $cancela; ?>"-->
           </td>
         </tr>
         <tr class="row m-0 mt-4">
@@ -150,15 +150,40 @@ if( $totalRegistrosSelect > 0 ){
                   </td>
                 </tr>
                 <tr class="row m-0 mt-4">
-                  <td class="col-md-10 input-effect ">
-                    <input class="efecto popup-input" id="detpol-cliente" type="text" id-display="#popup-display-detpol-cliente" action="clientes" db-id="" autocomplete="off">
-                    <div class="popup-list" id="popup-display-detpol-cliente" style="display:none"></div>
-                    <label for="detpol-cliente">Cliente</label>
+                  <td class="col-md-2 input-effect">
+                    <input class="efecto popup-input" id="detpol-referencia" type="text" id-display="#popup-display-detpol-referencia" action="referencias" db-id="" autocomplete="off">
+                    <div class="popup-list" id="popup-display-detpol-referencia" style="display:none"></div>
+                    <label for="detpol-referencia">Referencia</label>
                   </td>
+
+                  <td class="col-md-8 input-effect">
+                    <div id="detpol-lstClientes">
+                      <input class="efecto popup-input" id="detpol-cliente" type="text" id-display="#popup-display-detpol-cliente" action="clientes" db-id="" autocomplete="off">
+                      <div class="popup-list" id="popup-display-detpol-cliente" style="display:none"></div>
+                      <label for="detpol-cliente">Cliente</label>
+                    </div>
+                    <div id="detpol-lstClientesCorresp" style="display:none">
+                      <select class="custom-select" size='1' id="detpol-clienteCorresp">
+                        <option selected value='0'>Seleccione Cliente/Corresponsal</option>
+                      </select>
+                    </div>
+                  </td>
+
                   <td class="col-md-2" role="button">
                     <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
                   </td>
                 </tr>
+
+                <!-- funcionando  pendiente saber si se utiliza-->
+                <!-- <tr class="row m-0">
+                  <td class="col-md-12 input-effect">
+                    <div id="lstClientesCorrespCtas">
+                      <select class="custom-select" size='1' id="detpol-clienteCorrespCtas">
+                          <option selected value='0'>Seleccione</option>
+                      </select>
+                    </div>
+                  </td>
+                </tr> -->
                 <tr class="row m-0 mt-4">
                   <td class="gto col-md-12 input-effect " style="display:none">
                     <input class="efecto popup-input" id="detpol-proveedores" type="text" id-display="#popup-display-detpol-proveedores" action="proveedores" db-id="" autocomplete="off">
@@ -174,11 +199,6 @@ if( $totalRegistrosSelect > 0 ){
                 </tr>
                 <tr class="row m-0 mt-4">
                   <td class="col-md-2 input-effect">
-                    <input class="efecto popup-input " id="detpol-referencia" type="text" id-display="#popup-display-detpol-referencia" action="referencias" db-id="" autocomplete="off" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaReferencia(this);">
-                    <div class="popup-list" id="popup-display-detpol-referencia" style="display:none"></div>
-                    <label for="detpol-referencia">Referencia</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
                     <input class="efecto" id="detpol-documento" onchange="validaSoloNumeros(this);">
                     <label for="detpol-documento">Documento</label>
                   </td>
@@ -187,12 +207,12 @@ if( $totalRegistrosSelect > 0 ){
                     <div class="popup-list" id="popup-display-detpol-factura" style="display:none"></div>
                     <label for="detpol-factura">Factura</label>
                   </td>
-                  <td class="col-md-1 input-effect">
+                  <td class="col-md-2 input-effect">
                     <input class="efecto popup-input " id="detpol-anticipo" type="text" id-display="#popup-display-detpol-anticipo" action="anticipos_mst" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-anticipo" style="display:none"></div>
                     <label for="detpol-anticipo">Anticipo</label>
                   </td>
-                  <td class="col-md-1 input-effect">
+                  <td class="col-md-2 input-effect">
                     <input class="efecto popup-input " id="detpol-cheque" type="text" id-display="#popup-display-detpol-cheque" action="cheques_mst" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-detpol-cheque" style="display:none"></div>
                     <label for="detpol-cheque">Cheque</label>
@@ -228,9 +248,9 @@ if( $totalRegistrosSelect > 0 ){
           </div>
 
           <div class="contorno-mov mt-5">
-            <table class="table">
+            <table class="table font12 table-hover">
               <thead>
-                <tr class="row m-0 backpink">
+                <!-- <tr class="row m-0 backpink">
                   <td class="xs"></td>
                   <td class="small">CUENTA</td>
                   <td class="small">GASTO</td>
@@ -246,6 +266,22 @@ if( $totalRegistrosSelect > 0 ){
                   <td class="small">CARGO</td>
                   <td class="small">ABONO</td>
                   <td class="xs"></td>
+                </tr> -->
+                <tr class="row m-0 sub3 b">
+                  <td width="3%"></td>
+                  <td width="8%">CUENTA</td>
+                  <td width="8%">GASTO</td>
+                  <td width="8%">PROV</td>
+                  <td width="8%">REFERENCIA</td>
+                  <td width="8%">CLIENTE</td>
+                  <td width="8%">DOCUMENTO</td>
+                  <td width="8%">FACTURA</td>
+                  <td width="8%">NOTACRED</td>
+                  <td width="8%">ANTICIPO</td>
+                  <td width="6%">CHEQUE</td>
+                  <td width="8%">CARGO</td>
+                  <td width="8%">ABONO</td>
+                  <td width="3%"></td>
                 </tr>
               </thead>
               <tbody id="ultimosRegistros"></tbody>
@@ -286,8 +322,8 @@ if( $totalRegistrosSelect > 0 ){
                   <td class="col-md-12">DETALLE POLIZA</td>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="row m-0 backpink">
+              <thead>
+                <!-- <tr class="row m-0 backpink">
                   <td class="xs"></td>
                   <td class="small">CUENTA</td>
                   <td class="small">GASTO</td>
@@ -303,18 +339,33 @@ if( $totalRegistrosSelect > 0 ){
                   <td class="small">CARGO</td>
                   <td class="small">ABONO</td>
                   <td class="xs"></td>
+                </tr> -->
+
+                <tr class="row m-0 sub3 font12 b">
+                  <td width="3%"></td>
+                  <td width="8%">CUENTA</td>
+                  <td width="8%">GASTO</td>
+                  <td width="8%">PROV</td>
+                  <td width="8%">REFERENCIA</td>
+                  <td width="8%">CLIENTE</td>
+                  <td width="8%">DOCUMENTO</td>
+                  <td width="8%">FACTURA</td>
+                  <td width="8%">NOTACRED</td>
+                  <td width="8%">ANTICIPO</td>
+                  <td width="6%">CHEQUE</td>
+                  <td width="8%">CARGO</td>
+                  <td width="8%">ABONO</td>
+                  <td width="3%"></td>
                 </tr>
-                <tbody id="tabla_detallepoliza"></tbody>
-              </tbody>
+              </thead>
+              <tbody id="tabla_detallepoliza" class="font12"></tbody>
             </table>
           </div>
         </div>
 
         <?php if( $id_poliza > 0 ){
           require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
-            // require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_detallePoliza.php';
           } ?>
-
       </div><!--/Termina contenedor-movible-->
     </div><!--/Termina continermov-->
   </div><!--/Termina container-fluid movible-->

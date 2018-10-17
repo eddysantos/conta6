@@ -1,5 +1,17 @@
 $(document).ready(function(){
   ultReg_DetChe();
+
+
+  $('#cdchReferencia' || '#che_referencia').change(function(){
+    eliminaBlancosIntermedios(this);
+    todasMayusculas(this);
+    validaReferencia(this);
+  });
+
+  $('#cdchReferencia').change(function(){ buscarReferenciaCh(); });
+  $('#che_referencia').change(function(){ buscarReferenciaChModal(); });
+
+
   $('.che').click(function(){
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');
@@ -54,9 +66,10 @@ $(document).ready(function(){
 //                             GENERAR CHEQUE
 //******************************************************************************
 
-$('#mModifiChCtaMST').keydown(function(e){
-  // if (e.keyCode === 13 || e.keyCode === 9) {
-	if (e.keyCode === 9) {
+// $('#mModifiChCtaMST').keydown(function(e){
+$('#mModifiChIdcheque').keydown(function(e){
+  if (e.keyCode === 13 || e.keyCode === 9) {
+	// if (e.keyCode === 13) {
     id_cheque = $('#mModifiChIdcheque').val();
     id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
     window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
@@ -64,8 +77,8 @@ $('#mModifiChCtaMST').keydown(function(e){
 })
 
 $('#mConsChCtaMST').keydown(function(e){
-  if (e.keyCode === 9) {
-	// if (e.keyCode === 13 || e.keyCode === 9) {
+  // if (e.keyCode === 13) {
+	if (e.keyCode === 13 || e.keyCode === 9) {
     id_cheque = $('#mConsChIdcheque').val();
     id_cuentaMST = $('#mConsChCtaMST').attr('db-id');
     window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
@@ -234,10 +247,18 @@ $('#mConsChCtaMST').keydown(function(e){
     // ACTUALIZAR DATOS
 
       function modificarChequeMST(){
-        if($('#opcAct').val() == "BEN"){ id_expedidor = $('#chBen').attr('db-id'); }
-        if($('#opcAct').val() == "CLT"){ id_expedidor = $('#chClt').attr('db-id'); }
-        if($('#opcAct').val() == "EMPL"){ id_expedidor = $('#chEmp').attr('db-id'); }
-        if($('#opcAct').val() == "PROV"){ id_expedidor = $('#chProv').attr('db-id'); }
+        if($('#opcAct').val() == "BEN"){
+          id_expedidor = $('#chBen').attr('db-id');
+        }
+        if($('#opcAct').val() == "CLT"){
+          id_expedidor = $('#chClt').attr('db-id');
+        }
+        if($('#opcAct').val() == "EMPL"){
+          id_expedidor = $('#chEmp').attr('db-id');
+        }
+        if($('#opcAct').val() == "PROV"){
+          id_expedidor = $('#chProv').attr('db-id');
+        }
 
         var data = {
       		fecha: $('#chFecha').val(),
@@ -250,21 +271,26 @@ $('#mConsChCtaMST').keydown(function(e){
           id_poliza: $('#dchPoliza').val(),
           idcheque_folControl: $('#idcheque_folControl').val()
       	}
-        console.log(data);
         tipo = 1;
+        console.log(data);
+
         $.ajax({
           type: "POST",
           url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/editarChequeMST.php",
           data: data,
           // dataType: "json",
-          success: 	function(r){
+          success: function(r){
             console.log(r);
             r = JSON.parse(r);
-            console.log(r.data);
               if (r.code == 1) {
-                console.log(r.data);
-                swal("Exito", "El cheque se actualizó correctamente.", "success");
-                //setTimeout('document.location.reload()',700);
+              console.log(r.data);
+                $('.modal').modal('hide');
+                // swal('Exito', 'Los cambios fueron realizados exitosamente').then(function(){
+                //   console.log("Something needs to happen.");
+                // });
+                alertify.alert('Exito!', 'Los cambios fueron realizados exitosamente', function(){
+                  document.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque=' + data.cheque + '&id_cuentaMST=' + data.cuenta);
+                });
               } else {
                 console.error(r.message);
               }
@@ -295,7 +321,6 @@ $('#mConsChCtaMST').keydown(function(e){
             id_referencia = $('#cdchReferencia').attr('db-id');
             tipo = 1;
             cuenta = $('#cdchCuenta').attr('db-id');
-            id_cliente = $('#cdchCliente').attr('db-id');
             documento = $('#cdchDocumento').val();
             factura = $('#cdchFactura').attr('db-id');
             anticipo = $('#cdchAnticipo').attr('db-id');
@@ -305,6 +330,12 @@ $('#mConsChCtaMST').keydown(function(e){
             desc = $('#cdchConcepto').val();
             gastoOficina = $('#cdchGtoficina').attr('db-id');
             proveedor = $('#cdchProveedores').attr('db-id');
+
+            if (id_referencia == 'SN' || id_referencia == '') {
+    					id_cliente = $('#cdchCliente').attr('db-id');
+    				}else {
+    					id_cliente = $('#cdch-ClienteCorresp').val();
+    				}
 
             if(cuenta == ""){
               alertify.error("Seleccione una cuenta");
@@ -334,6 +365,33 @@ $('#mConsChCtaMST').keydown(function(e){
                         insertaDetCh();
                       }
                     }
+
+                    if (validarCtasPagosCliente(st) == true) {
+                      if (id_referencia == 0){
+                        alertify.error("Ingrese n\u00FAmero de Referencia");
+                        $('#cdchReferencia').focus();
+                        return false;
+                      }else{
+                        //SIEMPRE VALIDAR QUE LA REFERENCIA EXISTA EN LA TABLA DE REFERENCIAS
+                        if (id_referencia != "SN" ){
+                          if (id_cliente == 0){
+                            alertify.error("Seleccione un Cliente");
+                            $('#cdchCliente').focus();
+                            return false
+                          }else{
+                            insertaDetCh();
+                          }
+                        }else{
+                          if (id_cliente == 0){
+                            alertify.error("Seleccione un Cliente");
+                            $('#cdchCliente').focus();
+                            return false
+                          }else{
+                            insertaDetCh();
+                          }
+                        }
+                      }
+    								}
 
                     if( validarCtasCliente(st) == true ){
                       if( cuenta == '0208-00001'){
@@ -425,6 +483,10 @@ $('#mConsChCtaMST').keydown(function(e){
                 }
               }
             }
+
+            if (r.data.che_referencia == "" || r.data.che_referencia == "0" || r.data.che_referencia == "SN") {
+              $('#che_cliente').removeAttr("readonly");
+            }
             $('#btnRegDetChPartida').attr('db-id', r.data.pk_partida);
             tar_modal.modal('show');
             } else {
@@ -442,7 +504,7 @@ $('#mConsChCtaMST').keydown(function(e){
             id_referencia = $('#che_referencia').attr('db-id');
             tipo = 1;
             cuenta = $('#che_cuenta').attr('db-id');
-            id_cliente = $('#che_cliente').attr('db-id');
+            // id_cliente = $('#che_cliente').attr('db-id');
             documento = $('#che_documento').val();
             factura = $('#che_factura').attr('db-id');
             anticipo = $('#che_anticipo').attr('db-id');
@@ -452,6 +514,12 @@ $('#mConsChCtaMST').keydown(function(e){
             desc = $('#che_desc').val();
             gastoOficina = $('#che_gastoaduana').attr('db-id');
             proveedor = $('#che_proveedor').attr('db-id');
+
+            if (id_referencia == 'SN' || id_referencia == '') {
+      		    id_cliente = $('#che_cliente').attr('db-id');
+      		  }else {
+      		    id_cliente = $('#modalCh-clienteCorresp').val();
+      		  }
 
             if(cuenta == ""){
               alertify.error("Seleccione una cuenta");
@@ -531,7 +599,7 @@ $('#mConsChCtaMST').keydown(function(e){
       id_cheque = $('#dchIdcheque').val();
       id_cuentaMST = $('#dchCtaMST').val();
       id_poliza = $('#dchPoliza').val();
-      window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/actions/impresionCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST+'&id_poliza='+id_poliza);
+      window.open('/conta6/Ubicaciones/Contabilidad/cheques/actions/impresionCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST+'&id_poliza='+id_poliza);
     });
 
     //BOTON GENERAR POLIZA DE CHEQUE
@@ -635,6 +703,35 @@ $('#mConsChCtaMST').keydown(function(e){
       id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
       window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
     });
+
+
+    // $('#mConsChCtaMST').keydown(function(e){
+    //   // id_cheque = $('#mConsChIdcheque').val();
+    //   // id_cuentaMST = $('#mConsChCtaMST').attr('db-id');
+    //   //
+    //   // if($('#mConsChIdcheque').val() == "" || $('#mConsChCtaMST').attr('db-id') == ""){
+    //   //   return false;
+    //   // }
+    // 	if (e.keyCode === 13) {
+    //     id_cheque = $('#mConsChIdcheque').val();
+    //     id_cuentaMST = $('#mConsChCtaMST').attr('db-id');
+    //     window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+    // 	}
+    // });
+    //
+    // $('#btn_busCheModifi').keydown(function(e){
+    //   // id_cheque = $('#mModifiChIdcheque').val();
+    //   // id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
+    //   //
+    //   // if($('#mModifiChIdcheque').val() == "" || $('#mModifiChCtaMST').attr('db-id') == ""){
+    //   //   return false;
+    //   // }
+    // 	if (e.keyCode === 13) {
+    //     id_cheque = $('#mModifiChIdcheque').val();
+    //     id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
+    //     window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+    // 	}
+    // });
 });
 
     //*******************************************************************************
@@ -695,13 +792,21 @@ $('#mConsChCtaMST').keydown(function(e){
 
     // ACTUALIZAR PARTIDA REGISTRO DE CHEQUE
     function actualizaPartCh(){
+      var id_referencia = $('#che_referencia').attr('db-id');
+
+  		if (id_referencia == 'SN' || id_referencia == '') {
+  			cliente = $('#che_cliente').attr('db-id');
+  		}else {
+  			cliente = $('#modalCh-clienteCorresp').val();
+  		}
+
         var data = {
           id_poliza: $('#dchPoliza').val(),
           fecha: $('#dchFecha').val(),
-          id_referencia: $('#che_referencia').attr('db-id'),
+          id_referencia: id_referencia,
           tipo: 1,
           cuenta: $('#che_cuenta').attr('db-id'),
-          id_cliente: $('#che_cliente').attr('db-id'),
+          id_cliente: cliente,
           documento: $('#che_documento').val(),
           factura: $('#che_factura').attr('db-id'),
           anticipo: $('#che_anticipo').attr('db-id'),
@@ -942,13 +1047,20 @@ function valDescripOficinaCapCh_modal(){
 }
 
 function insertaDetCh(){
+  var id_referencia = $('#cdchReferencia').attr('db-id');
+
+  if (id_referencia == 'SN' || id_referencia == '') {
+    cliente = $('#cdchCliente').attr('db-id');
+  }else {
+    cliente = $('#cdch-ClienteCorresp').val();
+  }
 		var data = {
 			id_poliza: $('#dchPoliza').val(),
 			fecha: $('#dchFecha').val(),
-			id_referencia: $('#cdchReferencia').attr('db-id'),
+			id_referencia: id_referencia,
 			tipo: 1,
 			cuenta: $('#cdchCuenta').attr('db-id'),
-			id_cliente: $('#cdchCliente').attr('db-id'),
+			id_cliente: cliente,
 			documento: $('#cdchDocumento').val(),
 			factura: $('#cdchFactura').attr('db-id'),
 			anticipo: $('#cdchAnticipo').attr('db-id'),
@@ -985,13 +1097,12 @@ function insertaDetCh(){
 }
 
 
-
+// ultimos
 function ultReg_DetChe(){
   var data = {
     idcheque_folControl: $('#dchIdcheque_folControl').val(),
     id_cheque: $('#dchIdcheque').val(),
     id_ctaMST: $('#dchCtaMST').val()
-
   }
 
   $.ajax({
@@ -1005,4 +1116,130 @@ function ultReg_DetChe(){
       }
     }
   });
+}
+
+
+// $('#detallecheque').click(function(){
+//   var data = {
+//     idcheque_folControl: $('#dchIdcheque_folControl').val(),
+//     id_cheque: $('#dchIdcheque').val(),
+//     id_ctaMST: $('#dchCtaMST').val()
+//
+//   }
+//
+//   $.ajax({
+//     type: "POST",
+//     url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/tabla_detallecheque.php",
+//     data: data,
+//     success: 	function(request){
+//       r = JSON.parse(request);
+//       if (r.code == 1) {
+//         $('#tabla_detallecheque').html(r.data);
+//       }
+//     }
+//   });
+// });
+
+function lstClientesReferenciaChe(){
+	var data = {
+		referencia: $('#cdchReferencia').attr('db-id')
+	}
+
+	$.ajax({
+		type: "POST",
+		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+		data: data,
+		success: 	function(r){
+
+			r = JSON.parse(r);
+			if (r.code == 1) {
+				//console.log(r.data);
+				$('#cdch-ClienteCorresp').html(r.data);
+			} else {
+				console.error(r.message);
+			}
+		},
+		error: function(x){
+			console.error(x);
+		}
+	});
+}
+
+function lstClientesReferenciaChModal(){
+	var data = {
+		referencia: $('#che_referencia').attr('db-id')
+	}
+
+	$.ajax({
+		type: "POST",
+		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+		data: data,
+		success: 	function(r){
+
+			r = JSON.parse(r);
+			if (r.code == 1) {
+				//console.log(r.data);
+				$('#modalCh-clienteCorresp').html(r.data);
+			} else {
+				console.error(r.message);
+			}
+		},
+		error: function(x){
+			console.error(x);
+		}
+	});
+}
+
+function buscarReferenciaCh(){
+  ref = $('#cdchReferencia').val();
+  Referencia = $('#cdchReferencia').attr('db-id');
+  $('#cdch_btnRegistrar').prop('disabled',true);
+  $('#Ch-lstClientes').hide();
+  $('#Ch-lstClientesCorresp').val();
+  $('#Ch-lstClientesCorresp').hide();
+
+
+		if(ref == "0" || ref == "SN" || ref  == ""){
+    $('#cdch_btnRegistrar').prop('disabled',false);
+    $('#Ch-lstClientes').show();
+    $('#Ch-lstClientesCorresp').val();
+    $('#Ch-lstClientesCorresp').hide();
+
+		}else{
+    if(Referencia != ""){
+      $('#Ch-lstClientesCorresp').val();
+      lstClientesReferenciaChe();
+			$('#cdch_btnRegistrar').prop('disabled',false);
+      $('#Ch-lstClientes').hide();
+      $('#Ch-lstClientesCorresp').show();
+		}
+	}
+}
+
+function buscarReferenciaChModal(){
+  ref = $('#che_referencia').val();
+  Referencia = $('#che_referencia').attr('db-id');
+  $('#btnRegDetChPartida').prop('disabled',true);
+  $('#modalCh-lstClientes').hide();
+  $('#modalCh-lstClientesCorresp').val();
+  $('#modalCh-lstClientesCorresp').hide();
+
+
+		if(ref == "0" || ref == "SN" || ref  == ""){
+    $('#btnRegDetChPartida').prop('disabled',false);
+    $('#modalCh-lstClientes').show();
+    $('#modalCh-lstClientesCorresp').val();
+    $('#modalCh-lstClientesCorresp').hide();
+    $('#che_cliente').removeAttr("readonly").focus().val("");
+
+
+		}else{
+    if(Referencia != ""){
+      $('#modalCh-lstClientesCorresp').val();
+      lstClientesReferenciaChModal();
+			$('#btnRegDetChPartida').prop('disabled',false);
+      $('#modalCh-lstClientes').hide();
+      $('#modalCh-lstClientesCorresp').show();
+		}
+	}
 }

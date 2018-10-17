@@ -14,11 +14,11 @@
             <tbody class="font14">
               <tr class="row mt-4">
                 <td class="col-md-3 input-effect">
-      				  	<input class="efecto tiene-contenido disabled readonly" id="pk_id_cuenta" type="text" db-id="" autocomplete="new-password" disabled>
+      				  	<input class="efecto tiene-contenido disabled readonly" id="pk_id_cuenta" type="text" db-id="" autocomplete="off" disabled>
       					  <label for="pk_id_cuenta" style="padding-top:.10rem">CUENTA</label>
                 </td>
                 <td class="col-md-4 input-effect">
-      				  	<input class="efecto tiene-contenido popup-input" id="fk_codAgrup" type="text" id-display="#medit-popup-display-cuentas_sat" action="cuentas_sat" db-id="" autocomplete="new-password">
+      				  	<input class="efecto tiene-contenido popup-input" id="fk_codAgrup" type="text" id-display="#medit-popup-display-cuentas_sat" action="cuentas_sat" db-id="" autocomplete="off">
       					  <div class="popup-list" id="medit-popup-display-cuentas_sat" style="display:none"></div>
       					  <label for="fk_codAgrup" style="padding-top:.10rem">CUENTAS SAT
       					  </label>
@@ -30,7 +30,7 @@
               </tr>
               <tr class="row">
                 <td class="col-md-3 input-effect mt-4">
-			  	        <input class="efecto tiene-contenido popup-input" id="fk_id_naturaleza" type="text" id-display="#medit-popup-display-cuentas_sat_natur" action="cuentas_sat_natur" db-id="" autocomplete="new-password">
+			  	        <input class="efecto tiene-contenido popup-input" id="fk_id_naturaleza" type="text" id-display="#medit-popup-display-cuentas_sat_natur" action="cuentas_sat_natur" db-id="" autocomplete="off">
                 	<div class="popup-list" id="medit-popup-display-cuentas_sat_natur" style="display:none"></div>
                   <label for="fk_id_naturaleza">NATURALEZA SAT</label>
                 </td>
@@ -43,7 +43,7 @@
                   </select>
                 </td>
                 <td class="col-md-5 input-effect mt-4">
-                  <input class="efecto tiene-contenido popup-input" id="fk_c_ClaveProdServ" type="text" id-display="#medit-popup-display-prodServ" action="prodServ_sat" db-id="" autocomplete="new-password">
+                  <input class="efecto tiene-contenido popup-input" id="fk_c_ClaveProdServ" type="text" id-display="#medit-popup-display-prodServ" action="prodServ_sat" db-id="" autocomplete="off">
 				          <div class="popup-list" id="medit-popup-display-prodServ" style="display:none"></div>
                   <label for="fk_c_ClaveProdServ">PRODUCTO O SERVICIO SAT</label>
                 </td>

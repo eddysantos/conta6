@@ -28,9 +28,9 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
   <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
 <!--***************SCRIPTS*****************-->
-  <script src="/conta6/Resources/JQuery/sweetalert.min.js"></script>
-  <script src="/conta6/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
   <script src="/conta6/Resources/JQuery/jquery.min.js"></script>
+  <script src="/conta6/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
+  <script src="/conta6/Resources/JQuery/sweetalert.min.js"></script>
   <script src="/conta6/Resources/JQuery/popper.min.js"></script>
   <script src="/conta6/Resources/JQuery/tether.min.js"></script>
   <script src="/conta6/Resources/bootstrap/js/bootstrap.min.js"></script>
@@ -87,6 +87,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                   <a href="#" class="">Anticipos <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></i></a>
                   <ul class="dropdown-menu">
                     <li><a href="/conta6/Ubicaciones/Contabilidad/anticipos/GenerarAnticipo.php">Generar</a></li>
+                    <!-- <li><a href="#modificar-ant" data-toggle="modal" id="modificar-ant">Modificar</a></li> -->
                     <li><a href="#modificar-ant" data-toggle="modal">Modificar</a></li>
                     <li><a href="#consultar-ant" data-toggle="modal">Consultar</a></li>
                   </ul>

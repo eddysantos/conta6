@@ -36,7 +36,7 @@ $(document).ready(function(){
 
 
   $('#btn_printBenef').click(function(){
-    window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/actions/impresion_lstBeneficiarios.php');
+    window.open('/conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/actions/impresionBeneficiarios.php');
   });
 
   $('#btn_genBen').click(function(){

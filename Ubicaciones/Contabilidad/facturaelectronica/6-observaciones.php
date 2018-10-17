@@ -6,15 +6,15 @@
 <div class="text-center">
 <!---se muestra al dar click en Buscar-->
   <div class="contenedor" id="b-ctagastos">
-    <div class="row titulograndetop transEff" id="referencia">
-      <div class="col-md-12 ">
+    <div class="row justify-content-center" id="referencia">
+      <div class="col-md-6 titulograndetop">
         <label class="transEff" for="bRef" id="labelRef">Buscar CFD/CFI</label>
       </div>
     </div>
-    <div class="row intermedio transEff" id="nReferencia">
-      <div class="col-md-12" id="mostrarConsulta">
+    <div class="row justify-content-center" id="nReferencia">
+      <div class="col-md-6 intermedio transEff" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
-          <input class="reg border-0 transEff" id="bRef" type="text">
+          <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
         </form>
       </div>
     </div>
@@ -23,7 +23,7 @@
 <!---se muestra al escribir la referencia y dar enter-->
   <div class="contenedor contorno" id="m-ctagastos" style="display:none">
     <div class="col-md-1 offset-sm-11">
-      <a href="#" class="bg" accion="cuadroObservaciones">
+      <a href="#" class="fele" accion="cuadroObservaciones">
         <i class="back fa fa-arrow-left">Regresar</i>
       </a>
     </div>
@@ -75,3 +75,5 @@
 
 <script src="js/facturaElectronica.js"></script>
 <script src="/conta6/Resources/js/Inputs.js"></script>
+
+<!-- prueba modificar  -->

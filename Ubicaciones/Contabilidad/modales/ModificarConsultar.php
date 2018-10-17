@@ -77,14 +77,15 @@
         <!-- <form class="form1" onsubmit="return false;"> -->
           <table class="table">
             <tr class="row m-0 mt-3">
-              <td class="col-md-4 input-effect">
-                <input id="mModifiChIdcheque" class="efecto" type="text">
-                <label for="mModifiChIdcheque">Cheque</label>
-              </td>
               <td class="col-md-8 input-effect">
                 <input class="efecto popup-input" id="mModifiChCtaMST" type="text" id-display="#popup-display-mModifiChCtaMST" action="cuentas_mst_0100_oficina" db-id="" autocomplete="off">
                 <div class="popup-list" id="popup-display-mModifiChCtaMST" style="display:none"></div>
                 <label for="mModifiChCtaMST">Seleccione una Cuenta</label>
+              </td>
+
+              <td class="col-md-4 input-effect">
+                <input id="mModifiChIdcheque" class="efecto" type="text">
+                <label for="mModifiChIdcheque">Cheque</label>
               </td>
             </tr>
           </table>
@@ -112,14 +113,15 @@
         <!-- <form class="form1" onsubmit="return false;"> -->
           <table class="table">
             <tr class="row m-0 mt-3">
-              <td class="col-md-4 input-effect">
-                <input id="mConsChIdcheque" class="efecto" type="text">
-                <label for="mConsChIdcheque">Cheque</label>
-              </td>
               <td class="col-md-8 input-effect">
                 <input class="efecto popup-input" id="mConsChCtaMST" type="text" id-display="#popup-display-mConsChCtaMST" action="cuentas_mst_0100_oficina" db-id="" autocomplete="off">
                 <div class="popup-list" id="popup-display-mConsChCtaMST" style="display:none"></div>
                 <label for="mConsChCtaMST">Seleccione una Cuenta</label>
+              </td>
+
+              <td class="col-md-4 input-effect">
+                <input id="mConsChIdcheque" class="efecto" type="text">
+                <label for="mConsChIdcheque">Cheque</label>
               </td>
             </tr>
           </table>

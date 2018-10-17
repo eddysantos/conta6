@@ -49,8 +49,8 @@ while ($row = $rslt->fetch_assoc()) {
 
   $system_callback['data'] .=
   // se utilizan para registrar
-  		"<option value='$row[pk_id_cuenta]+$row[s_cta_identificador]+$row[s_cta_desc]'>$row[pk_id_cuenta] -- $row[s_cta_desc]</option>";
-		// "<option value='$row[pk_id_cuenta]'>$row[pk_id_cuenta] -- $row[s_cta_desc]</option>";
+  		// "<option value='$row[pk_id_cuenta]+$row[s_cta_identificador]+$row[s_cta_desc]'>$row[pk_id_cuenta] -- $row[s_cta_desc]</option>";
+		"<option value='$row[pk_id_cuenta]'>$row[pk_id_cuenta] -- $row[s_cta_desc]</option>";
 }
 
 $system_callback['code'] = 1;

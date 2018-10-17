@@ -496,9 +496,11 @@
   </div>
 
 <!-- DETALLE DE LA POLIZA -->
-  <div class="contorno-mov">
+  <div class="contorno-mov mt-4">
     <div class="table table-hover mt-4">
       <div id="infAddtabla_detallePoliza" class="font12"></div>
     </div>
   </div>
 </div><!--Termina desplazamiento numero 3-->
+
+ <!-- prueba modificar -->

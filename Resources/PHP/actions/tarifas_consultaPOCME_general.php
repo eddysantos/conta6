@@ -32,12 +32,12 @@ if ($rslt_conTarifaPOCMEgeneral->num_rows == 0) {
 if ($rslt_conTarifaPOCMEgeneral->num_rows > 0) {
     $tarifaPOCMEgeneral = "<option selected value='0'>Tarifa General</option>";
   while ($row_conTarifaPOCMEgeneral = $rslt_conTarifaPOCMEgeneral->fetch_assoc()) {
-    $fk_id_concepto = $row_conTarifaPOCMEgeneral[fk_id_concepto];
-    $s_concepto_eng = trim(utf8_encode($row_conTarifaPOCMEgeneral[s_concepto_eng]));
-    $s_concepto_esp = trim(utf8_encode($row_conTarifaPOCMEgeneral[s_conceptoesp]));
-    $n_cantidad = $row_conTarifaPOCMEgeneral[n_cantidad];
-    $n_importe = number_format($row_conTarifaPOCMEgeneral[n_importe],2);
-    $fk_id_cuenta = $row_conTarifaPOCMEgeneral[fk_id_cuenta];
+    $fk_id_concepto = $row_conTarifaPOCMEgeneral['fk_id_concepto'];
+    $s_concepto_eng = trim(utf8_encode($row_conTarifaPOCMEgeneral['s_concepto_eng']));
+    $s_concepto_esp = trim(utf8_encode($row_conTarifaPOCMEgeneral['s_conceptoesp']));
+    $n_cantidad = $row_conTarifaPOCMEgeneral['n_cantidad'];
+    $n_importe = number_format($row_conTarifaPOCMEgeneral['n_importe'],2);
+    $fk_id_cuenta = $row_conTarifaPOCMEgeneral['fk_id_cuenta'];
 
     $tarifaPOCMEgeneral .= "<option value='$fk_id_concepto+$s_concepto_eng+$n_cantidad+$n_importe+$s_concepto_esp+$fk_id_cuenta'>$s_concepto_esp $n_importe</option>";
   }

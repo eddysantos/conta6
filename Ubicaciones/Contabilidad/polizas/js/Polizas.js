@@ -1,7 +1,20 @@
 $(document).ready(function(){
-
-
 	ultReg_Det();
+
+
+	// $('#detpol-lstClientesCorresp').hide();
+	$('#detpol-referencia' || '#fk_referencia').change(function(){
+    eliminaBlancosIntermedios(this);
+		todasMayusculas(this);
+    validaReferencia(this);
+  });
+
+	$('#detpol-referencia').change(function(){ buscarReferenciaPol(); });
+	$('#fk_referencia').change(function(){ buscarReferenciaPolModal(); });
+  $('#detpol-cliente').change(function(){ lstCuentasPol(); });
+  $('#detpol-clienteCorresp').change(function(){ lstCuentasPol(); });
+
+
 	if( $('#mstpol-cancela') == 0){ $('#detpol-btnguardar').prop( 'disabled', false ); }
 
 	$('#detpol-btnguardar').click(function(){
@@ -24,7 +37,6 @@ $(document).ready(function(){
 				id_referencia = $('#detpol-referencia').attr('db-id');
 				tipo = $('#mstpol-tipo').val();
 				cuenta = $('#detpol-cuenta').attr('db-id');
-				id_cliente = $('#detpol-cliente').attr('db-id');
 				documento = $('#detpol-documento').val();
 				factura = $('#detpol-factura').attr('db-id');
 				anticipo = $('#detpol-anticipo').attr('db-id');
@@ -34,6 +46,11 @@ $(document).ready(function(){
 				desc = $('#detpol-concepto').val();
 				gastoOficina = $('#detpol-gtoficina').attr('db-id');
 				proveedor = $('#detpol-proveedores').attr('db-id');
+				if (id_referencia == 'SN' || id_referencia == '') {
+					id_cliente = $('#detpol-cliente').attr('db-id');
+				}else {
+					id_cliente = $('#detpol-clienteCorresp').val();
+				}
 
 				if(cuenta == ""){
 					alertify.error("Seleccione una cuenta");
@@ -52,7 +69,10 @@ $(document).ready(function(){
 							return false
 						}else{
 							st = $('#detpol-cuenta').val();
-							if( validarCtasGastoOficina(st) == true || validarCtasCliente(st) || validarCtasPagosCliente(st) ){
+							console.log(validarCtasGastoOficina(st));
+							console.log(validarCtasCliente(st));
+							console.log(validarCtasPagosCliente(st));
+							if( validarCtasGastoOficina(st) == true || validarCtasCliente(st) == true || validarCtasPagosCliente(st) == true ){
 
 								if( validarCtasGastoOficina(st) == true ){
 									if( gastoOficina == ''){
@@ -61,6 +81,33 @@ $(document).ready(function(){
 										return false
 									}else{
 										inserta();
+									}
+								}
+
+								if (validarCtasPagosCliente(st) == true) {
+									if (id_referencia == 0){
+										alertify.error("Ingrese n\u00FAmero de Referencia");
+										$('#detpol-referencia').focus();
+										return false;
+									}else{
+										//SIEMPRE VALIDAR QUE LA REFERENCIA EXISTA EN LA TABLA DE REFERENCIAS
+										if (id_referencia != "SN" ){
+											if (id_cliente == 0){
+												alertify.error("Seleccione un Cliente");
+												$('#detpol-cliente').focus();
+												return false
+											}else{
+												inserta();
+											}
+										}else{
+											if (id_cliente == 0){
+												alertify.error("Seleccione un Cliente");
+												$('#detpol-cliente').focus();
+												return false
+											}else{
+												inserta();
+											}
+										}
 									}
 								}
 
@@ -83,7 +130,7 @@ $(document).ready(function(){
 												$('#detpol-cliente').focus();
 												return false
 											}else{
-												Inserta();
+												inserta();
 											}
 										}
 									}
@@ -225,10 +272,11 @@ $(document).ready(function(){
     });
 
 
-
+//
 		$('tbody').on('click', '.editar-partidaPol', function(){
 	    var dbid = $(this).attr('db-id');
 	    var tar_modal = $($(this).attr('href'));
+
 	    var fetch_cuenta = $.ajax({
 	      method: 'POST',
 	      data: {dbid: dbid},
@@ -237,6 +285,7 @@ $(document).ready(function(){
 
 	    fetch_cuenta.done(function(r){
 	      r = JSON.parse(r);
+
 	      if (r.code == 1) {
 
 	      for (var key in r.data) {
@@ -252,9 +301,7 @@ $(document).ready(function(){
 	        }
 	      }
 
-	      //$('#s_cta_status').val(r.data.s_cta_status);
-	      $('#medit-ctas').attr('db-id', r.data.pk_partida);
-
+	      $('#medit-partida').attr('db-id', r.data.pk_partida);
 	      tar_modal.modal('show');
 	      } else {
 	        console.error(r);
@@ -264,14 +311,23 @@ $(document).ready(function(){
 	  })
 
 		$('#medit-partida').click(function(){
+			var id_referencia = $('#fk_referencia').attr('db-id');
+
+		  if (id_referencia == 'SN' || id_referencia == '') {
+		    cliente = $('#fk_id_cliente').attr('db-id');
+		  }else {
+		    cliente = $('#modalpol-clienteCorresp').val();
+		  }
+
+
 				var data = {
 					partida: $('#pk_partida').val(),
 					id_poliza: $('#fk_id_poliza').val(),
 					fecha: $('#d_fecha').val(),
-					id_referencia: $('#fk_referencia').attr('db-id'),
+					id_referencia: id_referencia,
 					tipo: $('#fk_tipo').val(),
 					cuenta: $('#fk_id_cuenta').attr('db-id'),
-					id_cliente: $('#fk_id_cliente').attr('db-id'),
+					id_cliente: cliente,
 					documento: $('#s_folioCFDIext').val(),
 					factura: $('#fk_factura').attr('db-id'),
 					anticipo: $('#fk_anticipo').attr('db-id'),
@@ -309,6 +365,55 @@ $(document).ready(function(){
 });
 
 
+function inserta(){
+
+		var id_referencia = $('#detpol-referencia').attr('db-id');
+
+		if (id_referencia == 'SN' || id_referencia == '') {
+			cliente = $('#detpol-cliente').attr('db-id');
+		}else {
+			cliente = $('#detpol-clienteCorresp').val();
+		}
+		var data = {
+			id_poliza: $('#id_poliza').val(),
+			fecha: $('#mstpol-fecha').val(),
+			id_referencia: id_referencia,
+			tipo: $('#mstpol-tipo').val(),
+			cuenta: $('#detpol-cuenta').attr('db-id'),
+			id_cliente: cliente,
+			documento: $('#detpol-documento').val(),
+			factura: $('#detpol-factura').attr('db-id'),
+			anticipo: $('#detpol-anticipo').attr('db-id'),
+			cheque: $('#detpol-cheque').attr('db-id'),
+			cargo: $('#detpol-cargo').val(),
+			abono: $('#detpol-abono').val(),
+			desc: $('#detpol-concepto').val(),
+			gastoOficina: $('#detpol-gtoficina').attr('db-id'),
+			proveedor: $('#detpol-proveedores').attr('db-id')
+		}
+
+		$.ajax({
+			type: "POST",
+			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/agregar.php",
+			data: data,
+			success: 	function(r){
+				console.log(r);
+				r = JSON.parse(r);
+				if (r.code == 1) {
+					swal("Exito", "Se registro correctamente.", "success");
+					// $('#capturapoliza').click();
+					ultReg_Det();
+					location.reload();
+				} else {
+					console.error(r.message);
+				}
+			},
+			error: function(x){
+				console.error(x);
+			}
+
+		});
+}
 
 // MOSTRAR ULTIMOS 3 REGISTROS
 function ultReg_Det(){
@@ -449,47 +554,7 @@ function validarCtasPagosCliente(st){
 	}
 }
 
-function inserta(){
-		var data = {
-			id_poliza: $('#id_poliza').val(),
-			fecha: $('#mstpol-fecha').val(),
-			id_referencia: $('#detpol-referencia').attr('db-id'),
-			tipo: $('#mstpol-tipo').val(),
-			cuenta: $('#detpol-cuenta').attr('db-id'),
-			id_cliente: $('#detpol-cliente').attr('db-id'),
-			documento: $('#detpol-documento').val(),
-			factura: $('#detpol-factura').attr('db-id'),
-			anticipo: $('#detpol-anticipo').attr('db-id'),
-			cheque: $('#detpol-cheque').attr('db-id'),
-			cargo: $('#detpol-cargo').val(),
-			abono: $('#detpol-abono').val(),
-			desc: $('#detpol-concepto').val(),
-			gastoOficina: $('#detpol-gtoficina').attr('db-id'),
-			proveedor: $('#detpol-proveedores').attr('db-id')
-		}
 
-		$.ajax({
-			type: "POST",
-			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/agregar.php",
-			data: data,
-			success: 	function(r){
-				console.log(r);
-				r = JSON.parse(r);
-				if (r.code == 1) {
-					swal("Exito", "Se registro correctamente.", "success");
-					// $('#capturapoliza').click();
-					ultReg_Det();
-					location.reload();
-				} else {
-					console.error(r.message);
-				}
-			},
-			error: function(x){
-				console.error(x);
-			}
-
-		});
-}
 
 $('#folioPol').keydown(function(e){
 	if (e.keyCode === 13 || e.keyCode === 9) {
@@ -561,11 +626,12 @@ function Actualiza_Cuenta(){
 			$('#detpol-gtoficina').attr('db-id','');
 		}
 
-		if(st.substring(0,4) == '0110'){
+		if(st.substring(0,4) == '0110' && $('#detpol-referencia').val() == ""){
 			$('#detpol-referencia').focus();
       alertify.error("Referencia es requerido");
       $('#detpol-cliente').val('');
       $('#detpol-cliente').attr('db-id','');
+			$('#detpol-clienteCorresp').val('');
 		}else{
       $('#detpol-cliente').attr('action','clientes');
 		}
@@ -614,5 +680,147 @@ function valDescripOficina(){
 // BOTON IMPRIMIR
 function btn_printPoliza(id_poliza,aduana){
 	// window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/actions/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
-	window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
+	window.open('/conta6/Ubicaciones/Contabilidad/polizas/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
 };
+
+function lstClientesReferenciaPol(){
+	var data = {
+		referencia: $('#detpol-referencia').attr('db-id')
+	}
+
+	$.ajax({
+		type: "POST",
+		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+		data: data,
+		success: 	function(r){
+
+			r = JSON.parse(r);
+			if (r.code == 1) {
+				//console.log(r.data);
+				$('#detpol-clienteCorresp').html(r.data);
+			} else {
+				console.error(r.message);
+			}
+		},
+		error: function(x){
+			console.error(x);
+		}
+	});
+}
+
+
+function lstClientesReferenciaPolModal(){
+	var data = {
+		referencia: $('#fk_referencia').attr('db-id')
+	}
+
+	$.ajax({
+		type: "POST",
+		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+		data: data,
+		success: 	function(r){
+
+			r = JSON.parse(r);
+			if (r.code == 1) {
+				//console.log(r.data);
+				$('#modalpol-clienteCorresp').html(r.data);
+			} else {
+				console.error(r.message);
+			}
+		},
+		error: function(x){
+			console.error(x);
+		}
+	});
+}
+
+
+
+function buscarReferenciaPol(){
+  ref = $('#detpol-referencia').val();
+  Referencia = $('#detpol-referencia').attr('db-id');
+  $('#detpol-btnguardar').prop('disabled',true);
+  $('#detpol-lstClientes').hide();
+  $('#detpol-lstClientesCorresp').val();
+  $('#detpol-lstClientesCorresp').hide();
+
+
+		if(ref == "0" || ref == "SN" || ref  == ""){
+    $('#detpol-btnguardar').prop('disabled',false);
+    $('#detpol-lstClientes').show();
+    $('#detpol-lstClientesCorresp').val();
+    $('#detpol-lstClientesCorresp').hide();
+
+		}else{
+    if(Referencia != ""){
+      $('#detpol-lstClientesCorresp').val();
+      lstClientesReferenciaPol();
+			$('#detpol-btnguardar').prop('disabled',false);
+      $('#detpol-lstClientes').hide();
+      $('#detpol-lstClientesCorresp').show();
+		}
+	}
+}
+
+
+function buscarReferenciaPolModal(){
+  ref = $('#fk_referencia').val();
+  Referencia = $('#fk_referencia').attr('db-id');
+  $('#medit-partida').prop('disabled',true);
+  $('#modalpol-lstClientes').hide();
+  $('#modalpol-lstClientesCorresp').val();
+  $('#modalpol-lstClientesCorresp').hide();
+
+
+		if(ref == "0" || ref == "SN" || ref  == ""){
+
+    $('#medit-partida').prop('disabled',false);
+    $('#modalpol-lstClientes').show();
+    $('#modalpol-lstClientesCorresp').val();
+    $('#modalpol-lstClientesCorresp').hide();
+		$('#fk_id_cliente').removeAttr("readonly").focus().val("");
+
+
+		}else{
+    if(Referencia != ""){
+      $('#modalpol-lstClientesCorresp').val();
+      lstClientesReferenciaPolModal();
+			$('#medit-partida').prop('disabled',false);
+      $('#modalpol-lstClientes').hide();
+      $('#modalpol-lstClientesCorresp').show();
+		}
+	}
+}
+
+
+function lstCuentasPol(){
+	ref = $('#detpol-referencia').val();
+	if(ref == "0" || ref == "SN" || ref == ""){
+		id_cliente = $('#detpol-cliente').attr('db-id');
+	}else{
+		id_cliente = $('#detpol-clienteCorresp').val();
+	}
+
+	var data = {
+		id_cliente: id_cliente
+	}
+
+	$.ajax({
+		type: "POST",
+		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
+		data: data,
+		success: 	function(r){
+
+			r = JSON.parse(r);
+			if (r.code == 1) {
+				//console.log(r.data);
+				$('#detpol-clienteCorrespCtas').html(r.data);
+			} else {
+				console.error(r.message);
+			}
+		},
+		error: function(x){
+			console.error(x);
+		}
+	});
+}

@@ -34,29 +34,62 @@ if ($rslt->num_rows == 0) {
   exit_script($system_callback);
 }
 
+// while ($row = $rslt->fetch_assoc()) {
+//   $partida = $row['pk_partida'];
+//
+//   $system_callback['data'] .=
+//   "<tr class='row m-0 borderojo'>
+//       <td class='xs'>
+//         <a href='#' onclick='borrarRegistroAnticipo($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+//       </td>
+//       <td class='small pt-3 p-0'>$row[fk_id_cuenta]</td>
+//       <td class='small pt-3 p-0'>$row[fk_referencia]</td>
+//       <td class='small pt-3 p-0'>$row[fk_id_cliente_antdet]</td>
+//       <td class='small pt-3 p-0'>$row[fk_factura]</td>
+//       <td class='small pt-3 p-0'>$row[fk_ctagastos]</td>
+//       <td class='small pt-3 p-0'>$row[fk_pago]</td>
+//       <td class='small pt-3 p-0'>$row[fk_nc]</td>
+//       <td class='gde pt-3 p-0'>$row[s_desc]</td>
+//       <td class='small pt-3 p-0'>$row[n_cargo]</td>
+//       <td class='small pt-3 p-0'>$row[n_abono]</td>
+//       <td class='xs'>
+//         <a href='#detant-editar' class='editar-partidaAnt' db-id='$partida' data-toggle='modal'>
+//           <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+//         </a>
+//       </td>
+//     </tr>";
+// }
+
+
 while ($row = $rslt->fetch_assoc()) {
   $partida = $row['pk_partida'];
+  $cargo = number_format($row['n_cargo'],2);
+  $abono = number_format($row['n_abono'],2);
+
 
   $system_callback['data'] .=
   "<tr class='row m-0 borderojo'>
-      <td class='xs'>
+      <td width='4%' class='p-0 pt-2'>
         <a href='#' onclick='borrarRegistroAnticipo($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
       </td>
-      <td class='small pt-3 p-0'>$row[fk_id_cuenta]</td>
-      <td class='small pt-3 p-0'>$row[fk_referencia]</td>
-      <td class='small pt-3 p-0'>$row[fk_id_cliente_antdet]</td>
-      <td class='small pt-3 p-0'>$row[fk_factura]</td>
-      <td class='small pt-3 p-0'>$row[fk_ctagastos]</td>
-      <td class='small pt-3 p-0'>$row[fk_pago]</td>
-      <td class='small pt-3 p-0'>$row[fk_nc]</td>
-      <td class='gde pt-3 p-0'>$row[s_desc]</td>
-      <td class='small pt-3 p-0'>$row[n_cargo]</td>
-      <td class='small pt-3 p-0'>$row[n_abono]</td>
-      <td class='xs'>
+      <td width='10%' class='p-0'>$row[fk_id_cuenta]</td>
+      <td width='10%' class='p-0'>$row[fk_referencia]</td>
+      <td width='10%' class='p-0'>$row[fk_id_cliente_antdet]</td>
+      <td width='10%' class='p-0'>$row[fk_factura]</td>
+      <td width='10%' class='p-0'>$row[fk_ctagastos]</td>
+      <td width='10%' class='p-0'>$row[fk_pago]</td>
+      <td width='10%' class='p-0'>$row[fk_nc]</td>
+      <td width='11%' class='p-0'>$ $cargo</td>
+      <td width='11%' class='p-0'>$ $abono</td>
+      <td width='4%' class='p-0 pt-2'>
         <a href='#detant-editar' class='editar-partidaAnt' db-id='$partida' data-toggle='modal'>
           <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
         </a>
       </td>
+
+      <td class='p-0' width='4%'></td>
+      <td class='p-0' width='10%'><b class='b'>Descripción:</b></td>
+      <td class='p-0 text-left' width='70%'>$row[s_desc]</td>
     </tr>";
 }
 

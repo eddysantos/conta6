@@ -201,11 +201,30 @@ if( $rows > 0 ){
                     </td>
                   </tr>
                   <tr class="row m-0 mt-4">
-                    <td class="col-md-10 input-effect">
+                    <!-- <td class="col-md-10 input-effect">
                       <input class="efecto popup-input" id="cdchCliente" type="text" id-display="#popup-display-cdchCliente" action="clientes" db-id="" autocomplete="off">
                       <div class="popup-list" id="popup-display-cdchCliente" style="display:none"></div>
                       <label for="cdchCliente">Cliente</label>
+                    </td> -->
+                    <td class="col-md-2 input-effect">
+                      <input class="efecto popup-input" id="cdchReferencia" type="text" id-display="#popup-display-cdchReferencia" action="referencias" db-id="" autocomplete="off">
+                      <div class="popup-list" id="popup-display-cdchReferencia" style="display:none"></div>
+                      <label for="cdchReferencia">Referencia</label>
                     </td>
+
+                    <td class="col-md-8 input-effect">
+                      <div id="Ch-lstClientes">
+                        <input class="efecto popup-input" id="cdchCliente" type="text" id-display="#popup-display-cdchCliente" action="clientes" db-id="" autocomplete="off">
+                        <div class="popup-list" id="popup-display-cdchCliente" style="display:none"></div>
+                        <label for="cdchCliente">Cliente</label>
+                      </div>
+                      <div id="Ch-lstClientesCorresp" style="display:none">
+                        <select class="custom-select" size='1' id="cdch-ClienteCorresp">
+                            <option selected value='0'>Seleccione Cliente/Corresponsal</option>
+                        </select>
+                      </div>
+                    </td>
+
                     <td class="col-md-2" role="button">
                       <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
                     </td>
@@ -226,12 +245,6 @@ if( $rows > 0 ){
 
                   <tr class="row m-0 mt-4">
                     <td class="col-md-2 input-effect">
-                      <input class="efecto popup-input" id="cdchReferencia" type="text" id-display="#popup-display-cdchReferencia" action="referencias" db-id="" autocomplete="off"
-                      onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaReferencia(this);">
-                      <div class="popup-list" id="popup-display-cdchReferencia" style="display:none"></div>
-                      <label for="cdchReferencia">Referencia</label>
-                    </td>
-                    <td class="col-md-2 input-effect">
                       <input  class="efecto"  id="cdchDocumento" onchange="validaSoloNumeros(this);">
                       <label for="cdchDocumento">Documento</label>
                     </td>
@@ -245,11 +258,11 @@ if( $rows > 0 ){
                       <div class="popup-list" id="popup-display-cdchAnticipo" style="display:none"></div>
                       <label for="cdchAnticipo">Anticipo</label>
                     </td>
-                    <td class="col-md-2 input-effect">
+                    <td class="col-md-3 input-effect">
                       <input class="efecto tiene-contenido" id="cdchCargo" value="0" onchange="validaIntDec(this);">
                       <label for="cdchCargo">Cargo</label>
                     </td>
-                    <td class="col-md-2 input-effect">
+                    <td class="col-md-3 input-effect">
                       <input class="efecto tiene-contenido" id="cdchAbono" value="0" onchange="validaIntDec(this);">
                       <label for="cdchAbono">Abono</label>
                     </td>
@@ -278,9 +291,9 @@ if( $rows > 0 ){
 
 
           <div class="contorno-mov mt-5">
-            <table class="table">
+            <table class="table table-hover">
               <thead>
-                <tr class="row m-0 backpink">
+                <!-- <tr class="row m-0 backpink">
                   <td class="p-0 pt-1 xs"></td>
                   <td class="p-0 pt-1 small">CUENTA</td>
                   <td class="p-0 pt-1 ssm">GASTO</td>
@@ -298,6 +311,24 @@ if( $rows > 0 ){
                   <td class="p-0 pt-1 small">CARGO</td>
                   <td class="p-0 pt-1 small">ABONO</td>
                   <td class="p-0 pt-1 xxs"></td>
+                </tr> -->
+                <tr class="row m-0 sub3 font12 b">
+                  <td width="3%"></td>
+                  <td width="7%">CUENTA</td>
+                  <td width="6%">GASTO</td>
+                  <td width="6%">PROV</td>
+                  <td width="7%">REFERENCIA</td>
+                  <td width="7%">CLIENTE</td>
+                  <td width="7%">DOC</td>
+                  <td width="6%">FACTURA</td>
+                  <td width="7%">CTA GASTOS</td>
+                  <td width="7%">PAGO ELECT</td>
+                  <td width="6%">NOTACRED</td>
+                  <td width="7%">ANTICIPO</td>
+                  <td width="7%">CHEQUE</td>
+                  <td width="7%">CARGO</td>
+                  <td width="7%">ABONO</td>
+                  <td width="3%"></td>
                 </tr>
               </thead>
               <tbody id="ultimosRegistrosCheque"></tbody>
@@ -311,17 +342,17 @@ if( $rows > 0 ){
             <div class="col-md-2">SUMA DE ABONOS</div>
           </div>
           <div class="row font14">
-            <div class="col-md-3 pt-3">
+            <!-- <div class="col-md-3 pt-3">
               <?php if( $oRst_permisos["s_reusar_cheques"] == 1 ){ ?>
               <a href="#detpol-Sueldos" data-toggle="modal" class="boton"><img src= "/conta6/Resources/iconos/refresh-button.svg"> REUSAR CHEQUE</a>
               <?php } ?>
-            </div>
+            </div> -->
             <div class="col-md-3 pt-3">
               <?php if( $tienePoliza == false && $statusGeneraPoliza == true ){ ?>
               <a href="#" id="btn_generarPolChe" data-toggle="modal" class="boton"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR POLIZA DE CHEQUE</a>
               <?php } ?>
             </div>
-            <div class="col-md-2 pt-3">
+            <div class="col-md-2 offset-md-3 pt-3">
               <?php if( $tienePoliza == true ){ ?>
               <a href="#" id="btn_printChe"  class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
               <?php } ?>
@@ -336,13 +367,11 @@ if( $rows > 0 ){
 
           <div id="detallepoliza" class="contorno-mov mt-3">
             <table class="table table-hover">
-              <thead class="font18">
-                <tr class="row encabezado m-0">
+              <thead>
+                <tr class="row encabezado font18 m-0">
                   <td class="col-md-12">DETALLE CHEQUE</td>
                 </tr>
-              </thead>
-              <tbody>
-                <tr class="row m-0 backpink">
+                <!-- <tr class="row m-0 backpink">
                   <td class="p-0 pt-1 xs"></td>
                   <td class="p-0 pt-1 small">CUENTA</td>
                   <td class="p-0 pt-1 ssm">GASTO</td>
@@ -360,16 +389,35 @@ if( $rows > 0 ){
                   <td class="p-0 pt-1 small">CARGO</td>
                   <td class="p-0 pt-1 small">ABONO</td>
                   <td class="p-0 pt-1 xxs"></td>
+                </tr> -->
+
+
+                <tr class="row m-0 sub3 font12 b">
+                  <td width="3%"></td>
+                  <td width="7%">CUENTA</td>
+                  <td width="6%">GASTO</td>
+                  <td width="6%">PROV</td>
+                  <td width="7%">REFERENCIA</td>
+                  <td width="7%">CLIENTE</td>
+                  <td width="7%">DOC</td>
+                  <td width="6%">FACTURA</td>
+                  <td width="7%">CTA GASTOS</td>
+                  <td width="7%">PAGO ELECT</td>
+                  <td width="6%">NOTACRED</td>
+                  <td width="7%">ANTICIPO</td>
+                  <td width="7%">CHEQUE</td>
+                  <td width="7%">CARGO</td>
+                  <td width="7%">ABONO</td>
+                  <td width="3%"></td>
                 </tr>
-                <tbody id="tabla_detallecheque"></tbody>
-              </tbody>
+              </thead>
+              <tbody id="tabla_detallecheque"></tbody>
             </table>
           </div>
         </div>
 
         <?php if( $id_poliza > 0 ){
           require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
-            // require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_detallePoliza.php';
           } ?>
 
       </div><!--/Termina contenedor-movible-->

@@ -6,11 +6,11 @@
 <div class="text-center">
 
   <div class="mt10" id="buscarRef">
-    <div class="row text-center"  id="referencia">
-      <div class="offset-md-3 col-md-6 titulobuscar">Buscar</div>
+    <div class="row justify-content-center"  id="referencia">
+      <div class="col-md-6 transEff titulograndetop">Buscar</div>
     </div>
-    <div class="row transEff" id="nReferencia">
-      <div class="offset-md-3 col-md-6 inputbuscar" id="mostrarConsulta">
+    <div class="row justify-content-center" id="nReferencia">
+      <div class="col-md-6 transEff intermedio" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
           <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
         </form>
@@ -19,7 +19,7 @@
   </div>
 
 <!---se muestra al escribir la referencia y dar enter-->
-  <div class="mt10 contorno2" id="repoPed" style="display:none">
+  <div class="mt10 contorno" id="repoPed" style="display:none">
     <table class="table">
       <thead>
         <tr class="row">

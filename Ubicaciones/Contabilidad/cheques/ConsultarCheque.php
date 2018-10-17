@@ -138,8 +138,8 @@
           <tr class="row">
             <td class="col-md-1"><?php echo $rowMST['fk_id_poliza']; ?>
               <input type="text" class="efecto h22" id="dchPoliza" value="<?php echo $rowMST['fk_id_poliza']; ?>">
-              <!-- <input type="text" id="dchIdcheque" value="<?php echo $rowMST['pk_id_cheque']; ?>"> -->
-              <!-- <input type="text" id="dchCtaMST" value="<?php echo $rowMST['fk_id_cuentaMST']; ?>"> -->
+              <!-- <input type="hide" id="dchIdcheque" value="<?php echo $rowMST['pk_id_cheque']; ?>">
+              <input type="hide" id="dchCtaMST" value="<?php echo $rowMST['fk_id_cuentaMST']; ?>"> -->
             </td>
             <td class="col-md-1"><?php echo $rowMST['fk_usuario']; ?></td>
             <td class="col-md-2"><?php echo $rowMST['fk_id_cuentaMST']; ?></td>

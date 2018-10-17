@@ -1742,4 +1742,10 @@ function ctaGastosCapturaImprimir(cuenta){
 function ctaGastosCapturaEliminar($id_captura){}
 
 
-// prueba modificar
+
+
+
+// swal({
+//   text: 'Los Cambios se realizaron con exito'
+// })
+// .then()

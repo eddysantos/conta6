@@ -5,11 +5,11 @@
 
 <div class="text-center">
   <div class="mt10" id="b-ctagastos"><!--antes b-factura-->
-    <div class="row"  id="referencia">
-      <div class="offset-md-3 col-md-6 titulobuscar" style="font-size:30px!important">Referencia o Solicitud</div>
+    <div class="row justify-content-center"  id="referencia">
+      <div class="col-md-6 titulograndetop transEff" style="font-size:30px!important">Referencia o Solicitud</div>
     </div>
-    <div class="row transEff" id="nReferencia">
-      <div class="offset-md-3 col-md-6 inputbuscar" id="mostrarConsulta">
+    <div class="row justify-content-center" id="nReferencia">
+      <div class="col-md-6 intermedio transEff" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
           <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
         </form>
@@ -18,7 +18,7 @@
   </div>
 
   <!---se muestra al escribir la referencia y dar enter-->
-  <div class="mt10 contorno2" id="m-factura" style="display:none">
+  <div class="mt-5 contorno" id="m-factura" style="display:none">
     <table class="table form1">
       <thead>
         <tr class="row">
@@ -51,3 +51,5 @@
   </div>
 </div>
 <script src="js/facturaElectronica.js"></script>
+
+<!-- prueba modificar -->
