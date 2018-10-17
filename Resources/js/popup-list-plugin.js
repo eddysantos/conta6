@@ -22,6 +22,7 @@ $(document).ready(function(){
     });
 
     db_query.done(function(r){
+      //console.log(r);
       r = JSON.parse(r);
       if (r.code == 1) {
         display.html(r.data).slideDown();

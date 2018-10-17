@@ -91,7 +91,8 @@ $(document).ready(function(){
     $('#b-ctagastos').slideUp();
 
     var data = {
-      id_captura: $('#bRef').val()
+      id_captura: $('#bRef').val(),
+      accion: 'consulMod'
     }
     $.ajax({
       type: "POST",
@@ -118,6 +119,30 @@ $(document).ready(function(){
   $('#mostrarConsulta').submit(function(){
     $('#m-factura').fadeIn();
     $('#b-ctagastos').slideUp();
+
+    var data = {
+      id_captura: $('#bRef').val(),
+      accion: 'timbrar'
+    }
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_lstCapturadas.php",
+      data: data,
+      success: 	function(r){
+        console.log(r);
+      r = JSON.parse(r);
+        if (r.code == 1) {
+          console.log(r);
+          $('#lst_cuentasGastos_capturadas_timbrar').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      },
+      error: function(x){
+        console.error(x);
+      }
+    });
+
   });
 
   $('.visualizar').click(function(){
@@ -1351,7 +1376,7 @@ $('#modificar-cta').click(function(){
 
   Suma_Subtotales();
   if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
-      //$('#guardar').prop('disabled',true);
+
       $('#mensaje').html("Guardando . . .");
 
       var data = {
@@ -1520,6 +1545,8 @@ $('#modificar-cta').click(function(){
             console.log(r);
             //folio = r.data;
             swal("Folio: "+folio, "actualizado correctamente", "success");
+            $('#modificar-cta').prop('disabled',true);
+            $('#mensaje').html("actualizado correctamente");
             //setTimeout('document.location.reload()',700);
           } else {
             console.error(r.message);
@@ -1717,10 +1744,94 @@ function ctaGastosCapturaModificar(referencia,dias,cliente,almacen,tipo,valor,pe
     +'&status_flete='+status_flete+'&entradasAdicionales='+entradasAdicionales);
 }
 
-function ctaGastosCapturaConsultar(cuenta){
-  window.location.replace('1-CuentaGastos_Consultar.php?cuenta='+cuenta);
+function ctaGastosCapturaConsultar(cuenta,accion){
+  if( accion == 'consulta'){
+    window.location.replace('1-CuentaGastos_Consultar.php?cuenta='+cuenta+'&accion='+accion);
+  }
+  if( accion == 'timbrar'){
+    window.location.replace('1-CuentaGastos_Consultar.php?cuenta='+cuenta+'&accion='+accion);
+  }
 }
 function ctaGastosCapturaImprimir(cuenta){
-  window.location.replace('impresionCuentaGastos.php?cuenta='+cuenta);
+  window.open('impresionCuentaGastos.php?cuenta='+cuenta);
 }
-function ctaGastosCapturaEliminar($id_captura){}
+function ctaGastosCapturaEliminar(partida){
+  swal({
+  title: "Estas Seguro?",
+  text: "Ya no se podra recuperar el registro! "+ partida +" ",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonClass: "btn-danger",
+  confirmButtonText: "Si, Eliminar",
+  cancelButtonText: "No, cancelar",
+  closeOnConfirm: false,
+  closeOnCancel: false
+  },
+  function(isConfirm) {
+    if (isConfirm) {
+      var data = {
+        partida: partida
+      }
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_eliminar.php",
+        data: data,
+
+          success: 	function(r){
+            r = JSON.parse(r);
+            console.log(r);
+            if (r.code == 1) {
+              swal("Eliminado!", "Se elimino correctamente.", "success");
+              setTimeout('document.location.reload()',700);
+            } else {
+                   console.error(r.message);
+            }
+        },
+        error: function(x){
+          console.error(x)
+        }
+      });
+    } else {
+      swal("Cancelado", "El registro esta a salvo :)", "error");
+    }
+  });
+}
+
+// Timbrar factura electronica
+function timbrarFactura(cuenta,referencia,cliente){
+  var data = {
+    cuenta: cuenta,
+    referencia: referencia,
+    cliente: cliente
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura.php",
+    data: data,
+    beforeSend: function(){
+        $('body').append('<div class="overlay"><div class="overlay-loading">Timbrando Factura ... Porfavor espere.</div></div>');
+    },
+
+      success: 	function(r){
+        r = JSON.parse(r);
+        console.log(r);
+        if (r.code == 1) {
+          $('#respTimbrado').val(r);
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Timbrar Factura",resp, "success");
+          console.error(r.message);
+        } else {
+          //$('#respTimbrado2').val(r.message);
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Error",resp, "error");
+          console.error(r.message);
+        }
+    },
+    error: function(x){
+      console.error(x)
+    }
+  });
+}

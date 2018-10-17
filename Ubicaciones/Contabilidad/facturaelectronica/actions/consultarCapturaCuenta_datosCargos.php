@@ -33,6 +33,8 @@ if( $total_consultaCargos > 0 ) {
 		$fk_id_concepto = $row_consultaCargos['fk_id_concepto'];
 		$s_conceptoEsp = utf8_encode($row_consultaCargos['s_conceptoEsp']);
 		$n_total = number_format($row_consultaCargos['n_total'],2,'.',',');
+		
+		$detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',0,".$n_total."),";
 
 		$datosCargos = $datosCargos."<div class='row b font12'>
 					<div class='col-md-6 text-left ls1'>$s_conceptoEsp</div>

@@ -27,26 +27,21 @@
           </td>
         </tr>
         <tr class="row encabezado font16 mt-2">
-          <td class="col-md-12">SOLICITUD DE ANTICIPO</td>
+          <td class="col-md-12">Cuentas de Gastos Capturadas</td>
         </tr>
       </thead>
       <tbody class="font14">
-        <tr class="row backpink">
-          <td class="col-md-2">SOLICITUD</td>
-          <td class="col-md-2">REFERENCIA</td>
-          <td class="col-md-7">CLIENTE</td>
+        <tr class="row backpink" style="font-size:16px!important">
+          <td class="col-md-1">Solicitud</td>
+          <td class="col-md-1">Poliza</td>
+          <td class="col-md-1">&nbsp;</td>
+          <td class="col-md-1">Factura</td>
+          <td class="col-md-2">Referencia</td>
+          <td class="col-md-5">Cliente</td>
           <td class="col-md-1"></td>
         </tr>
-        <tr class="row borderojo">
-          <td class="col-md-2">280380</td>
-          <td class="col-md-2">N17003012</td>
-          <td class="col-md-7">CLT_6548 MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L DE C.V</td>
-          <td class="col-md-1 p-2">
-            <a href=""><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
-            <a href=""><img class="icomediano ml-5" src="/conta6/Resources/iconos/printer.svg"></a>
-          </td>
-        </tr>
       </tbody>
+      <tbody id="lst_cuentasGastos_capturadas_timbrar"></tbody>
     </table>
   </div>
 </div>

@@ -1,6 +1,7 @@
 <?PHP
 
-$query_consultaHonorarios = "SELECT pk_id_partida,n_porcentaje,n_base,n_descuento,n_cantidad,fk_c_ClaveProdServ,fk_id_cuenta,s_conceptoEsp,n_importe,n_IVA,n_ret,n_total
+$query_consultaHonorarios = "SELECT pk_id_partida,fk_c_claveUnidad,s_unidad,fk_c_ClaveProdServ,fk_id_cuenta,s_conceptoEsp,
+                                    n_porcentaje,n_base,n_descuento,n_cantidad,n_importe,n_IVA,n_ret,n_total
  															FROM conta_t_facturas_captura_det WHERE fk_id_cuenta_captura = ? and s_tipoDetalle = 'honorarios' ";
 
 $stmt_consultaHonorarios = $db->prepare($query_consultaHonorarios);
@@ -26,13 +27,8 @@ $total_consultaHonorarios = $rslt_consultaHonorarios->num_rows;
 
 if( $total_consultaHonorarios > 0 ) {
   $idFila = 0;
-	while( $row_consultaHonorarios = $rslt_consultaHonorarios->fetch_assoc()){
+	while( $row_consultaHonorarios = $rslt_consultaHonorarios->fetch_assoc() ){
     ++$idFila;
-    if( $idfila == 1 ){
-      $porcentajeModifi = $row_consultaHonorarios['n_porcentaje'];
-      $baseModifi = $row_consultaHonorarios['n_base'];
-      $descuentoModifi = $row_consultaHonorarios['n_descuento'];
-    }
 		$n_cantidad = $row_consultaHonorarios['n_cantidad'];
 		$fk_c_ClaveProdServ = $row_consultaHonorarios['fk_c_ClaveProdServ'];
 		$fk_id_cuenta = $row_consultaHonorarios['fk_id_cuenta'];
@@ -42,6 +38,20 @@ if( $total_consultaHonorarios > 0 ) {
 		$n_ret = number_format($row_consultaHonorarios['n_ret'],2,'.',',');
 		$n_total = number_format($row_consultaHonorarios['n_total'],2,'.',',');
     $pk_id_partida = $row_consultaHonorarios['pk_id_partida'];
+    $fk_c_claveUnidad = $row_consultaHonorarios['fk_c_claveUnidad'];
+    $s_unidad = $row_consultaHonorarios['s_unidad'];
+
+    if( $fk_id_cuenta == '0400-00001' ){
+      $porcentajeModifi = $row_consultaHonorarios['n_porcentaje'];
+      $baseModifi = $row_consultaHonorarios['n_base'];
+      $descuentoModifi = $row_consultaHonorarios['n_descuento'];
+    }
+
+    if( $moneda <> 'MXN' ){
+    	$Hono_Total = $n_importe * $tipoCambio;
+    }else{ $Hono_Total = $n_importe;}
+    
+    $detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',0,".$Hono_Total."),";
 
 		$datosHonorarios = $datosHonorarios."<div class='row b font12 ls1'>
           <div class='col-md-4 text-left'>$s_conceptoEsp</div>
@@ -51,11 +61,15 @@ if( $total_consultaHonorarios > 0 ) {
           <div class='col-md-2'>$ $n_total</div>
         </div>";
 
-    if( $idFila == 1 ){
-      $s_conceptoEspPrint = number_format($porcentajeModifi,4,'.','').' '.$s_conceptoEsp.' '.number_format($baseModifi,2,'.',',');
+    if( $idFila == 1 && $s_conceptoEsp == 'Honorarios' ){
+      if( $porcentajeModifi > 0 ){ $porcentajeModifi = number_format($porcentajeModifi,4,'.',''); }else{ $porcentajeModifi = "0.00"; }
+      $s_conceptoEspPrint = '% de Honorarios sobre la base de:';
+      $s_conceptoEspPrint = $porcentajeModifi.' '.$s_conceptoEspPrint.' '.number_format($baseModifi,2,'.',',');
     }else{
       $s_conceptoEspPrint = $s_conceptoEsp;
     }
+
+
     $datosHonorariosPrint = $datosHonorariosPrint."<div class='row b font12 ls1'>
           <div class='col-md-4 text-left'>$s_conceptoEspPrint</div>
           <div class='col-md-2'>$n_importe</div>
