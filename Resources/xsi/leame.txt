@@ -1,0 +1,6 @@
+
+2018-10-17 >>> Todos los archivos con extencion xslt fueron modificados a la version 1.0, debido a que PHP no soporta la version 2.0
+
+<!-- Modificado a la version 1.0 Adriana Mariaca
+<xsl:stylesheet version="2.0" 
+-->

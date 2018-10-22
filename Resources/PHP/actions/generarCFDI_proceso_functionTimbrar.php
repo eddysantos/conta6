@@ -1,29 +1,29 @@
 <?PHP
-// #Datos generales
-// function xmlV33_generales($array,$nodo){
-//   global $comprobante, $xml;
-// 	$comprobante = $xml->createElement("cfdi:Comprobante");
-// 	$comprobante = $xml->appendChild($comprobante);
-//   xmlV33_cargaAtt($comprobante, array("xmlns:cfdi"=>"http://www.sat.gob.mx/cfd/3",
-// 							  "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
-// 							  "xsi:schemaLocation"=>"http://www.sat.gob.mx/cfd/3  http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd"
-// 	));
-//
-//   xmlV33_cargaAtt($comprobante, array("Version"=>$array['Version'],
-//                             						  "Folio"=>$array['Folio'],
-//                             						  "Fecha"=>$array['Fecha'],
-//                             						  "Sello"=>"@",
-//                             						  "FormaPago"=>$array['FormaPago'],
-//                             						  "MetodoPago"=>$array['MetodoPago'],
-//                             						  "NoCertificado"=>$array['NoCertificado'],
-//                             						  "Certificado"=>$array['Certificado'],
-//                             						  "SubTotal"=>$array['SubTotal'],
-//                             						  "Total"=>$array['Total'],
-//                             						  "Moneda"=>$array['Moneda'],
-//                             						  "TipoCambio"=>$array['TipoCambio'],
-//                             						  "TipoDeComprobante"=>$array['TipoDeComprobante'],
-//                             						  "LugarExpedicion"=>$array['LugarExpedicion'] ));
-// }
+#Datos generales
+function xmlV33_generales($array,$nodo){
+  global $comprobante, $xml;
+	$comprobante = $xml->createElement("cfdi:Comprobante");
+	$comprobante = $xml->appendChild($comprobante);
+  xmlV33_cargaAtt($comprobante, array("xmlns:cfdi"=>"http://www.sat.gob.mx/cfd/3",
+							  "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
+							  "xsi:schemaLocation"=>"http://www.sat.gob.mx/cfd/3  http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd"
+	));
+
+  xmlV33_cargaAtt($comprobante, array("Version"=>$array['Version'],
+                            						  "Folio"=>$array['Folio'],
+                            						  "Fecha"=>$array['Fecha'],
+                            						  "Sello"=>"@",
+                            						  "FormaPago"=>$array['FormaPago'],
+                            						  "MetodoPago"=>$array['MetodoPago'],
+                            						  "NoCertificado"=>$array['NoCertificado'],
+                            						  "Certificado"=>$array['Certificado'],
+                            						  "SubTotal"=>$array['SubTotal'],
+                            						  "Total"=>$array['Total'],
+                            						  "Moneda"=>$array['Moneda'],
+                            						  "TipoCambio"=>$array['TipoCambio'],
+                            						  "TipoDeComprobante"=>$array['TipoDeComprobante'],
+                            						  "LugarExpedicion"=>$array['LugarExpedicion'] ));
+}
 
 #Datos del emisor
 function xmlV33_emisor($array,$nodo) {
@@ -61,12 +61,12 @@ function xmlV33_conceptos($array,$nodo) {
             "Cantidad"=>$array['Conceptos'][$i]['cantidad'],
             "ClaveUnidad"=>$array['Conceptos'][$i]['claveUnidad'],
   				  "Unidad"=>$array['Conceptos'][$i]['unidad'],
-  				  "NoIdentificacion"=>$array['Conceptos'][$i]['noIdentificacion'],
   				  "Descripcion"=>$descripcion,
   				  "ValorUnitario"=>$array['Conceptos'][$i]['valorUnitario'],
   				  "Importe"=>$array['Conceptos'][$i]['importe'],
 				 )
 			);
+      #"NoIdentificacion"=>$array['Conceptos'][$i]['NoIdentificacion'],
 		$impuestos = $xml->createElement("cfdi:Impuestos");
 		$impuestos = $concepto->appendChild($impuestos);
 
@@ -158,10 +158,10 @@ function xmlV33_genera_cadena_original() {
 
 #Calculo de sello
 function xmlV33_sella($array) {
-  global $comprobante, $cadena_original;
+  global $comprobante, $cadena_original, $root;
   #ruta
   $fileKey = $root . '/conta6/Resources/clavesKeyCer/key2017.pem';
-  $certificado = $array['noCertificado'];
+  $certificado = $array['NoCertificado'];
   $pkeyid = openssl_get_privatekey(file_get_contents($fileKey));
   openssl_sign($cadena_original, $crypttext, $pkeyid, OPENSSL_ALGO_SHA256);
   openssl_free_key($pkeyid);
@@ -209,7 +209,7 @@ function xmlV33_saveTempXML($array) {
 
 #timbrar xml en modo TEST
 function timbrarTest(){
-  global $rutaTempFile,$rutaRepFileZipTest,$rutaRep,$fileXMLtest;
+  global $rutaTempFile,$rutaRepFileZipTest,$rutaRep,$fileXMLtest,$rutaCLT;
 
   $XMLtemp = fopen($rutaTempFile,"rb");
   $str = stream_get_contents($XMLtemp);
@@ -217,11 +217,15 @@ function timbrarTest(){
 
   $usuario = 'PLA090609N21';
   $pswd = 'eqwlpoolt';
-  $client = new SoapClient("https://cfdiws.sedeb2b.com/EdiwinWS/services/CFDi?wsdl");
 
   #PRUEBAS
-  $result = $client->getCfdiTest(array('user' => 'PLA090609N21','password' => 'eqwlpoolt','file' => $str ));
-  $result2 = $result->getCfdiTestReturn;
+  try {
+    $client = new SoapClient("https://cfdiws.sedeb2b.com/EdiwinWS/services/CFDi?wsdl");
+    $result = $client->getCfdiTest(array('user' => 'PLA090609N21','password' => 'eqwlpoolt','file' => $str ));
+    $result2 = $result->getCfdiTestReturn;
+  } catch (SoapFault $exception) {
+    return $exception->getMessage();
+  }
 
   file_put_contents($rutaRepFileZipTest,$result2);//se escribe en un archivo
   $zip = new ZipArchive;
@@ -229,11 +233,12 @@ function timbrarTest(){
     $zip->renameIndex(0,$fileXMLtest); #Asigno nombre al archivo XML
     if ($zip->open($rutaRepFileZipTest) === TRUE) {
       $zip->extractTo($rutaRep.'/');
+      $zip->extractTo($rutaCLT.'/');
       $zip->close();
-      return('Recibiendo XML TEST correctamente');
+      return('correcto');
     }
   }else{
-    return('No se recibio respuesta del PAC');
+    return('Error');
   }
 
 }
@@ -262,19 +267,19 @@ function abrirTimbrado(){
       $versionTimbre = $tfd['Version'];
       $SelloSAT = $tfd['SelloCFD'];
   }
-  generarQR($e_rfc,$r_rfc,$total,$UUID,$selloParte);
-  $respGuardar = guardarDatosTimbrado($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura);
+  $respQR = generarQR($e_rfc,$r_rfc,$total,$UUID,$selloParte);
+  $respGuardar = guardarDatosTimbrado($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura );
 
-  return $respGuardar;
+  return $UUID."\n".$respQR.$respGuardar;
 }
 
 function generarQR($e_rfc,$r_rfc,$total,$UUID,$selloParte){
   global $root,$rutaQRFile;
   require $root . '/conta6/Resources/phpqrcode/qrlib.php';
 
-  /* re=RFC_emisor  rr=RFC_receptor  id=UUID
-  fe=$selloParte -> 8 ultimos digitos
-  tt=Total_CFDI -> 18 digitos para enteros, 1 digito para ".", 6 digitos para decimales*/
+        /* re=RFC_emisor  rr=RFC_receptor  id=UUID
+        fe=$selloParte -> 8 ultimos digitos
+        tt=Total_CFDI -> 18 digitos para enteros, 1 digito para ".", 6 digitos para decimales*/
   $parteValor=explode('.', $total);
   $ent = str_pad((int)$parteValor[0],18,"0",STR_PAD_LEFT);
   $dec = str_pad((int)$parteValor[1],6,"0",STR_PAD_RIGHT);
@@ -282,6 +287,7 @@ function generarQR($e_rfc,$r_rfc,$total,$UUID,$selloParte){
   $datos='https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?&id='.$UUID.'&re='.$e_rfc.'&rr='.$r_rfc.'&tt='.$TT.'&fe='.$selloParte;
 
   QRcode::png($datos,$rutaQRFile,QR_ECLEVEL_H,4);
+  return("✓ QR generado correctamente\n");
 }
 
 ?>

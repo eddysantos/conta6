@@ -1844,8 +1844,13 @@ function timbrarFactura(cuenta,referencia,cliente){
           $('.overlay').remove();
           swal("Timbrar Factura",resp, "success");
           console.error(r.message);
-        } else {
-          //$('#respTimbrado2').val(r.message);
+          //setTimeout('document.location.reload()',700);
+        }else if( r.code == 3 ) {
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Respuesta del PAC:",resp, "error");
+          console.error(r.message);
+        }else{
           resp = r.message;
           $('.overlay').remove();
           swal("Error",resp, "error");

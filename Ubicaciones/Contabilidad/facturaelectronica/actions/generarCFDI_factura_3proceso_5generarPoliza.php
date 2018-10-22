@@ -4,8 +4,8 @@ $tipo = 3;
 $fecha = $fechaTimbre;
 $concepto = "FACTURA ELECTRONICA - ".$r_razon_social;
 require $root . '/conta6/Resources/PHP/actions/generarFolioPoliza.php';
-echo $poliza = $nFolio;
-
+$poliza = $nFolio;
+$detallePoliza = '';
 
 require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
 if( $rows_ctasCliente > 0 ){
@@ -44,8 +44,8 @@ if( $IVAretenido <> 0 ){
 	$detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'0216-00001',3,'IVA Retenido (4%)','".$id_cliente."','".$referencia."',".$IVAretenido.",0),";
 }
 
-echo "<br>poliza factura: <br>";
-echo $detallePoliza = rtrim($detallePoliza,',');
+//echo "<br>poliza factura: <br>";
+$detallePoliza = rtrim($detallePoliza,',');
 
 $query_polDet = "INSERT INTO conta_t_polizas_det(fk_id_poliza,d_fecha,fk_factura,fk_id_cuenta,fk_tipo,s_desc,fk_id_cliente,fk_referencia,n_cargo,n_abono)
           VALUES $detallePoliza";
@@ -53,16 +53,14 @@ $query_polDet = "INSERT INTO conta_t_polizas_det(fk_id_poliza,d_fecha,fk_factura
 $stmt_polDet = $db->prepare($query_polDet);
 if (!($stmt_polDet)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during query prepare polDet [$db->errno]: $db->error";
-  exit_script($system_callback);
+  $system_callback['message'] = "X No guardo el detalle de poliza de factura - Error during query prepare polDetFac [$db->errno]: $db->error";
+  //exit_script($system_callback);
 }
 
 if (!($stmt_polDet->execute())) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during query execution polDet [$stmt_polDet->errno]: $stmt_polDet->error";
-  exit_script($system_callback);
+  $system_callback['message'] = "X No guardo el detalle de poliza de factura - Error during query execution polDetFac [$stmt_polDet->errno]: $stmt_polDet->error";
+  //exit_script($system_callback);
 }
-
-#falta guardar poliza
 
 ?>

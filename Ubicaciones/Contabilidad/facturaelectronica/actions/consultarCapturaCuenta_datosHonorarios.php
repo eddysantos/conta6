@@ -25,6 +25,13 @@ if (!($stmt_consultaHonorarios->execute())) {
 $rslt_consultaHonorarios = $stmt_consultaHonorarios->get_result();
 $total_consultaHonorarios = $rslt_consultaHonorarios->num_rows;
 
+$datosHonorarios = '';
+$datosHonorariosPrint = '';
+$datosHonorariosImprimir = '';
+$datosHonorariosXML = '';
+$datosHonorariosModifi = '';
+$botonEliminar = '';
+
 if( $total_consultaHonorarios > 0 ) {
   $idFila = 0;
 	while( $row_consultaHonorarios = $rslt_consultaHonorarios->fetch_assoc() ){
@@ -50,7 +57,7 @@ if( $total_consultaHonorarios > 0 ) {
     if( $moneda <> 'MXN' ){
     	$Hono_Total = $n_importe * $tipoCambio;
     }else{ $Hono_Total = $n_importe;}
-    
+
     $detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',0,".$Hono_Total."),";
 
 		$datosHonorarios = $datosHonorarios."<div class='row b font12 ls1'>
@@ -79,6 +86,13 @@ if( $total_consultaHonorarios > 0 ) {
         </div>";
 
 
+    $datosHonorariosXML = $datosHonorariosXML.'<tr align="center">
+          <td>'.$n_cantidad.'</td>
+          <td>'.$fk_c_claveUnidad.' '.$s_unidad.'</td>
+          <td>'.$fk_c_ClaveProdServ.'</td>
+          <td align="left">'.$s_conceptoEsp.'</td>
+          <td align="right">'.$n_importe.'</td>
+        </tr>';
     $datosHonorariosImprimir = $datosHonorariosImprimir.'<tr>
           <td width="52%">'.$s_conceptoEsp.'</td>
           <td width="12%">'.$n_importe.'</td>
