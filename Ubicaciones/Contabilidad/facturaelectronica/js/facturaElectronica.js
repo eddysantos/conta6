@@ -732,6 +732,7 @@ function Suma_Subtotales(){
 
     //SALDO DE LA CUENTA
 		Suma_Saldo = cortarDecimales(CalcSUB(Total_Cta,Suma_Anticipos),2)
+    Suma_Saldo = parseFloat(Suma_Saldo).toFixed(2);
 		$('#T_SALDO_GRAL').val(Suma_Saldo).attr('value',Suma_Saldo);
 
     //TOTAL DE CUENTA DE GASTOS EN LETRA
@@ -1236,13 +1237,17 @@ $('#depositos-disponibles, #tbodyDepAplic').on('click', '.agregar-deposito', fun
     $(this).attr('destino', '#depositos-disponibles');
     tr.addClass('elemento-depositos');
     tr.removeClass('elemento-depositos-disponibles');
-    // totalAnticipos = totalAnticipos + valor;
+    $(this).parents('.row').find('.dep_aplic').val(1);
+
+
     totalAnticipos = CalcADD(totalAnticipos,valor);
   } else {
     $(this).attr('destino', '#tbodyDepAplic');
     tr.removeClass('elemento-depositos');
     tr.addClass('elemento-depositos-disponibles');
-    // totalAnticipos = totalAnticipos - valor;
+    // $('#dep_aplic').val(sinAplic);
+
+    $(this).parents('.row').find('.dep_aplic').val(0);
     totalAnticipos = CalcSUB(totalAnticipos,valor);
   }
 
@@ -1398,8 +1403,8 @@ $('#modificar-cta').click(function(){
         folio: folio,
         T_No_calculoTarifa : $('#T_No_calculoTarifa').val(),
         Txt_Usuario : $('#Txt_Usuario').val(),
-        // T_IGED_1 : $('#T_IGED_1').val(),
-        T_IGED_2 : $('#T_IGED_2').val(),
+        T_IGED_1 : $('#T_IGED_1').val(),
+        // T_IGED_2 : $('#T_IGED_2').val(),
         T_ID_Aduana_Oculto : $('#T_ID_Aduana_Oculto').val(),
         T_ID_Almacen_Oculto : $('#T_ID_Almacen_Oculto').val(),
         T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
@@ -1548,8 +1553,6 @@ $('#modificar-cta').click(function(){
         data.depositosDisponibles[i] = parsed_data;
       });
 
-      console.log(data);
-
       $.ajax({
         type: "POST",
         url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar.php",
@@ -1557,13 +1560,11 @@ $('#modificar-cta').click(function(){
         success: 	function(r){
           r = JSON.parse(r);
           if (r.code == 1) {
-
             console.log(r);
-            //folio = r.data;
-            swal("Folio: "+folio, "actualizado correctamente", "success");
-            $('#modificar-cta').prop('disabled',true);
-            $('#mensaje').html("actualizado correctamente");
-            //setTimeout('document.location.reload()',700);
+            alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
+              setTimeout('document.location.reload()',700);
+            });
+
           } else {
             console.error(r.message);
           }
@@ -1727,6 +1728,7 @@ $('#guardar-cta').click(function(){
         var parsed_data = {
           idDeposito: $(this).find('.id-deposito').val(),
           importe: $(this).find('.importe').val(),
+          dep_aplic: $(this).find('.dep_aplic').val(),
         }
         data.depositos[i] = parsed_data;
       });
@@ -1740,8 +1742,12 @@ $('#guardar-cta').click(function(){
           r = JSON.parse(r);
           if (r.code == 1) {
             folio = r.data;
-            swal("Folio: "+folio, "generado correctamente", "success");
-            //setTimeout('document.location.reload()',700);
+            // swal("Folio: "+folio, "generado correctamente", "success");
+
+            alertify.alert('Folio: '+folio, 'Generado correctamente' , function(){
+              setTimeout('document.location.reload()',700);
+            });
+
           } else {
             console.error(r.message);
           }

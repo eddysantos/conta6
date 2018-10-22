@@ -38,7 +38,7 @@ if( $IVAretenido <> 0 ){
 	$detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'0216-00002',3,'CARGO IVA RETENIDO (4%)','".$id_cliente."','".$referencia."',0,".$IVAretenido."),";
 	$detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'0216-00001',3,'ABONO IVA RETENIDO (4%)','".$id_cliente."','".$referencia."',0,".$IVAretenido.",0),";
 }
-echo "<br>poliza aplicado:<br>"
+echo "<br>poliza aplicado:<br>";
 echo $detallePolizaAplicado = rtrim($detallePolizaAplicado,',');
 
 $query_polDetAplicado = "INSERT INTO conta_t_polizas_det(fk_id_poliza,d_fecha,fk_factura,fk_id_cuenta,fk_tipo,s_desc,fk_id_cliente,fk_referencia,n_cargo,n_abono)

@@ -108,7 +108,7 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
 
 	if( $oRst_permisos['CFDI_cta_gastos_modificar'] == 1 && $row_ctaGastos['fk_id_aduana'] == $aduana &&
 			$id_factura == 0 && $id_poliza == 0 && $s_cancela_factura == 0 ){
-			$cadena = "ctaGastosCapturaModificar(".$dias.",&#39;".$id_referencia."&#39;,&#39;".$id_cliente."&#39;,".$id_almacen.",&#39;".$tipo."&#39;,".$valor.",".$peso.",".$id_captura.",".$shipper.",&#39;".$consolidado."&#39;,&#39;".$inbond."&#39;,".$entradas.",".$flete.",&#39;".$reexpedicion."&#39;,&#39;".$cobrarFlete."&#39;,&#39;".$status_Flete."&#39;,".$entradasAdicionales.")";
+			$cadena = "ctaGastosCapturaModificar(&#39;".$id_referencia."&#39;,".$dias.",&#39;".$id_cliente."&#39;,".$id_almacen.",&#39;".$tipo."&#39;,".$valor.",".$peso.",".$id_captura.",".$shipper.",&#39;".$consolidado."&#39;,&#39;".$inbond."&#39;,".$entradas.",".$flete.",&#39;".$reexpedicion."&#39;,&#39;".$cobrarFlete."&#39;,&#39;".$status_Flete."&#39;,".$entradasAdicionales.")";
 			$hrefmodificar = "<a href='#' onclick='".$cadena."'><img class='icomediano' src='/conta6/Resources/iconos/003-edit.svg'></a>";
 	}
 

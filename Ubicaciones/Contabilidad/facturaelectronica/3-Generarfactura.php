@@ -19,18 +19,16 @@
 
   <!---se muestra al escribir la referencia y dar enter-->
   <div class="mt-5 contorno" id="m-factura" style="display:none">
-    <table class="table form1">
+    <table class="table form1 font14">
       <thead>
         <tr class="row">
-          <td class="col-md-1 offset-md-11 font14">
+          <td class="col-md-1 offset-md-11 ">
             <a href="#" class="fele" accion="BuscarOtro"><i class="back fa fa-arrow-left">Regresar</i></a>
           </td>
         </tr>
         <tr class="row encabezado font16 mt-2">
           <td class="col-md-12">Cuentas de Gastos Capturadas</td>
         </tr>
-      </thead>
-      <tbody class="font14">
         <tr class="row backpink" style="font-size:16px!important">
           <td class="col-md-1">Solicitud</td>
           <td class="col-md-1">Poliza</td>
@@ -40,7 +38,7 @@
           <td class="col-md-5">Cliente</td>
           <td class="col-md-1"></td>
         </tr>
-      </tbody>
+      </thead>
       <tbody id="lst_cuentasGastos_capturadas_timbrar"></tbody>
     </table>
   </div>

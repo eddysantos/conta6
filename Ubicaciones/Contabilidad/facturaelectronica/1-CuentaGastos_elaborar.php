@@ -989,7 +989,7 @@ if($referencia != "SN"){
           <div class="col-md-3">
             <input class="efecto boton validarstring" type='button' value="GUARDAR" onclick="validarStringSAT(this);quitarNoUsar(this);" id="guardar-cta" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
           </div>
-          <div id="mensaje"></div>
+          <!-- <div id="mensaje"></div> -->
         </div>
       </div>
     </div>

@@ -71,7 +71,7 @@
     </div>
   </div>
 
-  <div class="col-md-2 p-3 text-left">
+  <div class="col-md-12 p-3 text-left">
     <?php if( $accion == 'consulta' ){ ?>
     <a href="/Conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php">
       <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
@@ -202,19 +202,19 @@
         <td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
         <td class="p-1 col-md-3"><?php echo $fechaTimbre; ?></td>
       </tr>
-      <tr class="row borderojo">
+      <tr class="row">
         <td class="p-1 col-md-3 text-left"> Factura cancelada</td>
         <td class="p-1 col-md-3"></td>
         <td class="p-1 col-md-3"><?php echo $usuario_Cancela; ?></td>
         <td class="p-1 col-md-3"><?php echo $fechaTimbreCancela; ?></td>
       </tr>
-      <tr class="row borderojo">
+      <tr class="row">
         <td class="p-1 col-md-3 text-left"> Cuenta de gastos: <?php echo '<b>'.$id_ctagastos.'</b>'; ?></td>
         <td class="p-1 col-md-3"><?php echo $id_polctagastos; ?></td>
         <td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
         <td class="p-1 col-md-3"><?php echo $fecha_genera; ?></td>
       </tr>
-      <tr class="row borderojo">
+      <tr class="row">
         <td class="p-1 col-md-3 text-left"> Pago aplicado</td>
         <td class="p-1 col-md-3"><?php echo $id_polpagoaplic; ?></td>
         <td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>

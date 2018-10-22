@@ -47,6 +47,8 @@ $tasa = trim($_GET['tasa']);
 $id_cliente = trim($_GET['id_cliente']);
 $id_referencia = trim($_GET['referencia']);
 
+
+
 $PME_1 = 0;
 $PME_2 = 0;
 $PME_3 = 0;
@@ -1002,7 +1004,7 @@ if($referencia != "SN"){
           <div class="col-md-3">
             <input class="efecto boton validarstring" type='button' value="MODIFICAR" onclick="validarStringSAT(this);quitarNoUsar(this);" id="modificar-cta" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
           </div>
-          <div id="mensaje"></div>
+          <!-- <div id="mensaje"></div> -->
         </div>
       </div>
     </div>
