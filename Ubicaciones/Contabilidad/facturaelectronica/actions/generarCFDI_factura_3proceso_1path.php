@@ -24,12 +24,14 @@ $fileXML = $nombre_archivo.'.xml';
 $rutaTempFile = $rutaTemp.'/'.$fileXML;
 $rutaRepFileZip = $rutaRep.'/'.$nombre_archivo.'.zip';
 $rutaRepFileXML = $rutaRep.'/'.$nombre_archivo.'.xml';
+$rutaRepFileHTML = $rutaCLT.'/'.$nombre_archivo.'.html';
+$rutaRepFilePDF = $rutaCLT.'/'.$nombre_archivo.'.pdf';
 $rutaQRFile = $rutaQR.'/'.$nombre_archivo.'.png';
 
 #nombre archivo modo timbrado_test
 $nombre_archivoTest = $nombre_archivo.'_TEST';
 $fileXMLtest = $nombre_archivoTest.'.xml';
-$rutaRepFileZipTest = $rutaRep.'/'.$nombre_archivoTest.'zip';
+$rutaRepFileZipTest = $rutaRep.'/'.$nombre_archivoTest.'.zip';
 $rutaRepFileXMLTest = $rutaRep.'/'.$nombre_archivoTest.'.xml';
 
 ?>

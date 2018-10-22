@@ -25,6 +25,10 @@ $total_consultaEmbarque = $rslt_consultaEmbarque->num_rows;
 
 if( $total_consultaEmbarque > 0 ) {
 	$count = 0;
+	$datosEmbarque = '';
+	$impresionDatosEmbarque = '';
+	$datosEmbarqueModifi = '';
+	
 	while( $row_consultaEmbarque = $rslt_consultaEmbarque->fetch_assoc() ){
 		++$count;
 

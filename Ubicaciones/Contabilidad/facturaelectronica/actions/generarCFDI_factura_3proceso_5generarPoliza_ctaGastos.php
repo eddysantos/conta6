@@ -4,8 +4,8 @@ $tipo = 3;
 $fecha = $fechaTimbre;
 $concepto = "CUENTA DE GASTOS - ".$r_razon_social;
 require $root . '/conta6/Resources/PHP/actions/generarFolioPoliza.php';
-echo $poliza_CtaGastos = $nFolio;
-
+$poliza_CtaGastos = $nFolio;
+$detPolCtaGastos = '';
 
 require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
 if( $rows_ctasCliente > 0 ){
@@ -80,8 +80,8 @@ if( $Total_Anticipos > 0 && $Total_Anticipos < $Total_Gral){#CASO2
   #VALUES ($poliza,'$Fecha',$idFactura,'$CUENTA_106',3,'SALDO POR COBRAR','$ID_Cliente','$idReferencia',$saldoPorCobrar,0,0,$id_ctagastos)");
   $detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$cta106."',3,'DOCUMENTOS POR COBRAR','".$id_cliente."','".$referencia."',".$id_ctagastos.",0,".$saldoPorCobrar."),";
 }
-echo "<br>CG: ";
-echo $detPolCtaGastos = rtrim($detPolCtaGastos,',');
+
+$detPolCtaGastos = rtrim($detPolCtaGastos,',');
 
 $query_polDetCG = "INSERT INTO conta_t_polizas_det(fk_id_poliza,d_fecha,fk_factura,fk_id_cuenta,fk_tipo,s_desc,fk_id_cliente,fk_referencia,fk_ctagastos,n_cargo,n_abono)
           VALUES $detPolCtaGastos";
@@ -98,9 +98,5 @@ if (!($stmt_polDetCG->execute())) {
   $system_callback['message'] = "Error during query execution polDetCG [$stmt_polDetCG->errno]: $stmt_polDetCG->error";
   exit_script($system_callback);
 }
-
-#falta guardar poliza
-
-
 
 ?>

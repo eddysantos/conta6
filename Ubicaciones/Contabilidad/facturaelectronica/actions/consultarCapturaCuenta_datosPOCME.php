@@ -25,8 +25,12 @@ if (!($stmt_consultaPOCME->execute())) {
 $rslt_consultaPOCME = $stmt_consultaPOCME->get_result();
 $total_consultaPOCME = $rslt_consultaPOCME->num_rows;
 
+$datosPOCME = '';
+$datosPOCMEImprimir = '';
+$datosPOCMEmodifi;
 if( $total_consultaPOCME > 0 ) {
 	$idFila = 0;
+
 	while( $row_consultaPOCME = $rslt_consultaPOCME->fetch_assoc() ){
 		++$idFila;
 

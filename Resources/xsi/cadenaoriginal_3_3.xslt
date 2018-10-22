@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Modificado a la version 1.0 Adriana Mariaca
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
+-->
+
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:cce11="http://www.sat.gob.mx/ComercioExterior11" xmlns:donat="http://www.sat.gob.mx/donat" xmlns:divisas="http://www.sat.gob.mx/divisas" xmlns:implocal="http://www.sat.gob.mx/implocal" xmlns:leyendasFisc="http://www.sat.gob.mx/leyendasFiscales" xmlns:pfic="http://www.sat.gob.mx/pfic" xmlns:tpe="http://www.sat.gob.mx/TuristaPasajeroExtranjero" xmlns:nomina12="http://www.sat.gob.mx/nomina12" xmlns:registrofiscal="http://www.sat.gob.mx/registrofiscal" xmlns:pagoenespecie="http://www.sat.gob.mx/pagoenespecie" xmlns:aerolineas="http://www.sat.gob.mx/aerolineas" xmlns:valesdedespensa="http://www.sat.gob.mx/valesdedespensa" xmlns:consumodecombustibles="http://www.sat.gob.mx/consumodecombustibles" xmlns:notariospublicos="http://www.sat.gob.mx/notariospublicos" xmlns:vehiculousado="http://www.sat.gob.mx/vehiculousado" xmlns:servicioparcial="http://www.sat.gob.mx/servicioparcialconstruccion" xmlns:decreto="http://www.sat.gob.mx/renovacionysustitucionvehiculos" xmlns:destruccion="http://www.sat.gob.mx/certificadodestruccion" xmlns:obrasarte="http://www.sat.gob.mx/arteantiguedades" xmlns:ine="http://www.sat.gob.mx/ine" xmlns:iedu="http://www.sat.gob.mx/iedu" xmlns:ventavehiculos="http://www.sat.gob.mx/ventavehiculos" xmlns:terceros="http://www.sat.gob.mx/terceros" xmlns:pago10="http://www.sat.gob.mx/Pagos" xmlns:detallista="http://www.sat.gob.mx/detallista" xmlns:ecc12="http://www.sat.gob.mx/EstadoDeCuentaCombustible12" xmlns:consumodecombustibles11="http://www.sat.gob.mx/ConsumoDeCombustibles11" xmlns:gceh="http://www.sat.gob.mx/GastosHidrocarburos10" xmlns:ieeh="http://www.sat.gob.mx/IngresosHidrocarburos10">
 
   <!-- Con el siguiente método se establece que la salida deberá ser en texto -->
@@ -6,12 +11,42 @@
   <!--
 		En esta sección se define la inclusión de las plantillas de utilerías para colapsar espacios
 	-->
-  <xsl:include href="http://www.sat.gob.mx/sitio_internet/cfd/2/cadenaoriginal_2_0/utilerias.xslt"/>
+  <xsl:include href="cadenaoriginal_2_0/utilerias.xslt"/>
   <!--
 		En esta sección se define la inclusión de las demás plantillas de transformación para
 		la generación de las cadenas originales de los complementos fiscales
 	-->
-  <xsl:include href="http://www.sat.gob.mx/sitio_internet/cfd/EstadoDeCuentaCombustible/ecc11.xslt"/>
+  <xsl:include href="EstadoDeCuentaCombustible/ecc11.xslt"/>
+  <xsl:include href="donat/donat11.xslt"/>
+  <xsl:include href="divisas/divisas.xslt"/>
+  <xsl:include href="implocal/implocal.xslt"/>
+  <xsl:include href="leyendasFiscales/leyendasFisc.xslt"/>
+  <xsl:include href="pfic/pfic.xslt"/>
+  <xsl:include href="TuristaPasajeroExtranjero/TuristaPasajeroExtranjero.xslt"/>
+  <xsl:include href="nomina/nomina12.xslt"/>
+  <xsl:include href="cfdiregistrofiscal/cfdiregistrofiscal.xslt"/>
+  <xsl:include href="pagoenespecie/pagoenespecie.xslt"/>
+  <xsl:include href="aerolineas/aerolineas.xslt"/>
+  <xsl:include href="valesdedespensa/valesdedespensa.xslt"/>
+  <xsl:include href="consumodecombustibles/consumodecombustibles.xslt"/>
+  <xsl:include href="notariospublicos/notariospublicos.xslt"/>
+  <xsl:include href="vehiculousado/vehiculousado.xslt"/>
+  <xsl:include href="servicioparcialconstruccion/servicioparcialconstruccion.xslt"/>
+  <xsl:include href="renovacionysustitucionvehiculos/renovacionysustitucionvehiculos.xslt"/>
+  <xsl:include href="certificadodestruccion/certificadodedestruccion.xslt"/>
+  <xsl:include href="arteantiguedades/obrasarteantiguedades.xslt"/>
+  <xsl:include href="ComercioExterior11/ComercioExterior11.xslt"/>
+  <xsl:include href="ine/ine11.xslt"/>
+  <xsl:include href="iedu/iedu.xslt"/>
+  <xsl:include href="ventavehiculos/ventavehiculos11.xslt"/>
+  <xsl:include href="terceros/terceros11.xslt"/>
+  <xsl:include href="Pagos/Pagos10.xslt"/>
+  <xsl:include href="detallista/detallista.xslt"/>
+  <xsl:include href="EstadoDeCuentaCombustible/ecc12.xslt"/>
+  <xsl:include href="consumodecombustibles/consumodeCombustibles11.xslt"/>
+  <xsl:include href="GastosHidrocarburos10/GastosHidrocarburos10.xslt"/>
+  <xsl:include href="IngresosHidrocarburos10/IngresosHidrocarburos.xslt"/>
+  <!-- <xsl:include href="http://www.sat.gob.mx/sitio_internet/cfd/EstadoDeCuentaCombustible/ecc11.xslt"/>
   <xsl:include href="http://www.sat.gob.mx/sitio_internet/cfd/donat/donat11.xslt"/>
   <xsl:include href="http://www.sat.gob.mx/sitio_internet/cfd/divisas/divisas.xslt"/>
   <xsl:include href="http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xslt"/>
@@ -40,7 +75,7 @@
   <xsl:include href="http://www.sat.gob.mx/sitio_internet/cfd/EstadoDeCuentaCombustible/ecc12.xslt"/>
   <xsl:include href="http://www.sat.gob.mx/sitio_internet/cfd/consumodecombustibles/consumodeCombustibles11.xslt"/>
   <xsl:include href="http://www.sat.gob.mx/sitio_internet/cfd/GastosHidrocarburos10/GastosHidrocarburos10.xslt"/>
-  <xsl:include href="http://www.sat.gob.mx/sitio_internet/cfd/IngresosHidrocarburos10/IngresosHidrocarburos.xslt"/>
+  <xsl:include href="http://www.sat.gob.mx/sitio_internet/cfd/IngresosHidrocarburos10/IngresosHidrocarburos.xslt"/> -->
 
 
   <!-- Aquí iniciamos el procesamiento de la cadena original con su | inicial y el terminador || -->

@@ -1726,6 +1726,7 @@ $('#guardar-cta').click(function(){
             folio = r.data;
             swal("Folio: "+folio, "generado correctamente", "success");
             //setTimeout('document.location.reload()',700);
+            //setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
           } else {
             console.error(r.message);
           }
@@ -1822,8 +1823,13 @@ function timbrarFactura(cuenta,referencia,cliente){
           $('.overlay').remove();
           swal("Timbrar Factura",resp, "success");
           console.error(r.message);
-        } else {
-          //$('#respTimbrado2').val(r.message);
+          //setTimeout('document.location.reload()',700);
+        }else if( r.code == 3 ) {
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Respuesta del PAC:",resp, "error");
+          console.error(r.message);
+        }else{
           resp = r.message;
           $('.overlay').remove();
           swal("Error",resp, "error");

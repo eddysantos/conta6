@@ -4,8 +4,8 @@ $tipo = 3;
 $fecha = $fechaTimbre;
 $concepto = "PAGO APLICADO A FACTURA - ".$r_razon_social;
 require $root . '/conta6/Resources/PHP/actions/generarFolioPoliza.php';
-echo "<br>poliza aplicada: ";
-echo $polizaAplicado = $nFolio;
+//echo "<br>poliza aplicada: ";
+$polizaAplicado = $nFolio;
 
 
 require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
@@ -38,7 +38,7 @@ if( $IVAretenido <> 0 ){
 	$detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'0216-00002',3,'CARGO IVA RETENIDO (4%)','".$id_cliente."','".$referencia."',0,".$IVAretenido."),";
 	$detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'0216-00001',3,'ABONO IVA RETENIDO (4%)','".$id_cliente."','".$referencia."',0,".$IVAretenido.",0),";
 }
-echo "<br>poliza aplicado:<br>"
+//echo "<br>poliza aplicado:<br>"
 echo $detallePolizaAplicado = rtrim($detallePolizaAplicado,',');
 
 $query_polDetAplicado = "INSERT INTO conta_t_polizas_det(fk_id_poliza,d_fecha,fk_factura,fk_id_cuenta,fk_tipo,s_desc,fk_id_cliente,fk_referencia,n_cargo,n_abono)
@@ -56,7 +56,5 @@ if (!($stmt_polDetAplicado->execute())) {
   $system_callback['message'] = "Error during query execution polDet [$stmt_polDetAplicado->errno]: $stmt_polDetAplicado->error";
   exit_script($system_callback);
 }
-
-#falta guardar poliza
 
 ?>
