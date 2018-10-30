@@ -31,6 +31,7 @@
       $s_cancela_factura = $row_facTimbrada['s_cancela_factura'];
       $fechaTimbreCancela = $row_facTimbrada['d_fechaTimbradoCancela'];
       $usuario_Cancela = $row_facTimbrada['s_usuario_cancela'];
+      $s_selloSATcancela = $row_facTimbrada['s_selloSATcancela'];
     }
   }
 
