@@ -44,5 +44,6 @@
   </div>
 </div>
 <script src="js/facturaElectronica.js"></script>
-
-<!-- prueba modificar -->
+<?php
+require $root . '/conta6/Ubicaciones/footer.php';
+ ?>

@@ -26,6 +26,7 @@
     $s_cancela_factura = '';
     $fechaTimbreCancela = '';
     $usuario_Cancela = '';
+    $s_selloSATcancela = '';
   }
 
   require $root . '/conta6/Resources/PHP/actions/consultaFactura_ctaGastos.php';
@@ -40,7 +41,8 @@
   }
 
 
-  if( $s_UUID == '' && $oRst_permisos['CFDI_generar'] ){
+  #if( $s_UUID == '' && $oRst_permisos['CFDI_generar'] && $accion == 'consultar' ){
+  if( $s_UUID == '' && $oRst_permisos['CFDI_generar'] && $accion == 'timbrar' ){
       if( $fk_c_MetodoPago == 'PPD' && $fk_id_formapago != 99 ){
         $hrefTimbrar = "Error: Para método de pago 'PPD' use forma de pago '99'";
       }elseif( $fk_id_formapago == 'No Identificado' ){
@@ -56,6 +58,32 @@
             }
   }
 
+  if( $s_UUID != '' && $s_selloSATcancela == '' && $accion == 'cancelar'){
+    if( $fk_id_aduana == $aduana ){
+      if( $oRst_permisos['CFDI_cancelar_libre'] == 1 ){
+
+      }else if( $oRst_permisos['CFDI_cancelar'] == 1 ){
+
+      }
+
+      if( $fk_c_MetodoPago == 'PPD' && $fk_id_formapago != 99 ){
+        $hrefTimbrar = "Error: Para método de pago 'PPD' use forma de pago '99'";
+      }elseif( $fk_id_formapago == 'No Identificado' ){
+          $hrefTimbrar = "Error: Use forma de pago 99";
+        }elseif( ($fk_id_formapago == '02' || $fk_id_formapago == '03') && $s_numCtaPago == "" ){
+            $hrefTimbrar = "Error: Asigne un número de cuenta bancaria";
+          }elseif( $n_total_gral_importe <= 0 ){
+              $hrefTimbrar = "Error: Es requerido cobro de honorarios";
+            }else{
+              $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarFactura($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
+                <img class='icomediano' src='/conta6/Resources/iconos/timbrar.svg'>
+              </a>";
+            }
+    }
+
+
+  }
+  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarEstadoCFDI_factura.php'; #$datosEdoCancela
 ?>
 
 <div class="text-center">
@@ -156,20 +184,6 @@
     <?php echo $datosEmbarque; ?>
   </div>
 
-  <!--div id="detalleUsuario" class="contorno b font12" style="display:none">
-    <div class="row encabezado font16">
-      <div class="col-md-6">GENERADO POR:</div>
-      <div class="col-md-6">MODIFICADO POR:</div>
-    </div>
-    <div class="row">
-      <div class="col-md-6"><?php echo $fk_usuario; ?></div>
-      <div class="col-md-6"><?php echo $s_usuario_modifi; ?></div>
-    </div>
-    <div class="row">
-      <div class="col-md-6"><?php echo $d_fecha_cta; ?></div>
-      <div class="col-md-6"><?php echo $d_fecha_modifi; ?></div>
-    </div>
-  </div-->
   <div id="detalleUsuario" class="contorno b font12" style="display:none">
   <table class='table mt-5' id='eInfo'>
     <thead>
@@ -224,7 +238,54 @@
   </table>
 </div>
 
-<!--Esta informacion si estara visible SOLICITUD DE ANTICIPO-->
+<!--Esta informacion si estara visible SOLICITUD-->
+<?php
+if( $s_UUID != '' ){ ?>
+<div class="contorno">
+  <h5 class="titulo font14 b">ESTADO DEL COMPROBANTE</h5>
+
+  <div class="row encabezado mt-5 m-0 font14">
+    <div class="col-md-4">Total Factura</div>
+    <div class="col-md-2">Estado</div>
+    <div class="col-md-2">Es cancelable</div>
+    <div class="col-md-2">Estatus</div>
+    <div class="col-md-2">Fecha</div>
+  </div>
+  <div class="divisor">
+    <div class='row b font12 ls1'>
+      <div class='col-md-4 text-center'>$ <?php echo number_format($n_total_gral,2,'.',','); ?></div>
+      <div class='col-md-2'>Vigente</div>
+      <div class='col-md-2'></div>
+      <div class='col-md-2'></div>
+      <div class='col-md-2'><?php echo $fechaTimbre; ?></div>
+    </div>
+
+    <?php
+    if( $s_selloSATcancela == '' ){
+        $fechaTimbrado = date_format(date_create($fechaTimbre),"Y-m-d");
+        $fechaActual = date("Y/m", time());
+        $fechaActual2 = date("Y/m/d h:m:s", time());
+        $txt_evaluar = evaluarCancelarFactura($fechaTimbrado,$n_total_gral);
+        $hrefcancela = "<a href='#' onclick='cancelarFactura($id_factura)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
+
+      if( $total_estadoCancela == 0 ){
+        echo "
+          <div class='row b font12 ls1'>
+            <div class='col-md-4 text-center'></div>
+            <div class='col-md-2'>Vigente</div>
+            <div class='col-md-2'>$hrefcancela</div>
+            <div class='col-md-2'></div>
+            <div class='col-md-2'>$fechaActual2</div>
+          </div>";
+      }
+      echo $datosEdoCancela;
+    } ?>
+
+
+  </div>
+</div>
+<?php } ?>
+
 <div class="contorno">
   <h5 class="titulo font14 b">CUENTA DE GASTOS</h5>
   <div class="row encabezado font14 m-0">
@@ -327,39 +388,39 @@
 
     <div class="col-lg-4">
       <div class="row">
-        <div class="col-md-9 text-right"><?php echo $s_txt_gral_importe; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_gral_importe; ?></div>
         <div class="col-md-3">$ <?php echo $n_total_gral_importe; ?></div>
       </div>
 
       <div class="row">
-        <div class="col-md-9 text-right"><?php echo $n_txt_gral_IVA; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $n_txt_gral_IVA; ?></div>
         <div class="col-md-3">$ <?php echo $n_total_gral_IVA; ?></div>
       </div>
 
       <div class="row">
-        <div class="col-md-9 text-right"><?php echo $s_txt_total_honorarios; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_total_honorarios; ?></div>
         <div class="col-md-3">$ <?php echo $n_total_honorarios; ?></div>
       </div>
   		<div class="row">
-        <div class="col-md-9 text-right"><?php echo $s_txt_fac_IVA_retenido; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_fac_IVA_retenido; ?></div>
         <div class="col-md-3">$ <?php echo $s_fac_IVA_retenido; ?></div>
       </div>
       <div class="row">
-        <div class="col-md-9 text-right"><?php echo $s_txt_total_gral; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_total_gral; ?></div>
         <div class="col-md-3">$ <?php echo $n_total_gral; ?></div>
       </div>
   		<div class="row">
-        <div class="col-md-9 text-right ls0"><?php echo $s_POCME_descripcion_gral; ?> :</div>
+        <div class="col-md-9 text-right ls0"><?php echo $s_POCME_descripcion_gral; ?></div>
         <div class="col-md-3">$ <?php echo $n_total_POCME; ?></div>
       </div>
   		<div class="row">
         <!-- <div class="col-md-9"></div> -->
-        <div class="col-md-9 text-right"><?php echo $s_txt_total_pagos; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_total_pagos; ?></div>
         <div class="col-md-3">$ <?php echo $n_total_pagos; ?></div>
       </div>
   		<div class="row">
         <!-- <div class="col-md-9"></div> -->
-        <div class="col-md-9 text-right"><?php echo $s_txt_cta_gastos; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_cta_gastos; ?></div>
         <div class="col-md-3">$ <?php echo $n_total_cta_gastos; ?></div>
       </div>
       <div class="row">
@@ -368,7 +429,7 @@
       </div>
   		<div class="row">
         <!-- <div class="col-md-9"></div> -->
-        <div class="col-md-9 text-right"><?php echo $s_txt_fac_saldo; ?> :</div>
+        <div class="col-md-9 text-right"><?php echo $s_txt_fac_saldo; ?></div>
         <div class="col-md-3">$ <?php echo $n_fac_saldo; ?></div>
       </div>
     </div>
@@ -378,4 +439,19 @@
 
 </div>
 
-<script src="js/facturaElectronica.js"></script>
+<!--script src="js/facturaElectronica.js"></script-->
+<?php
+function evaluarCancelarFactura($d_fechaTimbrado,$n_total_gral){
+	#falta validar que no tenga NotaCredito o PagosElectronicos. -- NO CANCELABLE
+	$fechaTimbrado = date_format(date_create($d_fechaTimbrado),"Y/m/d");
+	$fachaSinAceptar = date("Y/m/d",strtotime ( '+3 day' , strtotime ( $d_fechaTimbrado ) ));
+	#El total de la factura debe ser maximo 5,000 y se otorgan 3 dias despues del timbrado para cancelar -- SIN ACEPTACION por parte del cliente
+	if( $fechaTimbrado <= $fechaSinAceptar && $n_total_gral <= 5000 ){
+		return "Sin aceptación";
+	}else{
+		return "Con aceptación";
+	}
+}
+
+require $root . '/conta6/Ubicaciones/footer.php';
+ ?>

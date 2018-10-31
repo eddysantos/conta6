@@ -34,4 +34,19 @@ $fileXMLtest = $nombre_archivoTest.'.xml';
 $rutaRepFileZipTest = $rutaRep.'/'.$nombre_archivoTest.'.zip';
 $rutaRepFileXMLTest = $rutaRep.'/'.$nombre_archivoTest.'.xml';
 
+#nombre archivo modo cancela
+$nombre_archivoCancela = $nombre_archivo.'_cancelado';
+$fileXMLCancela = $nombre_archivoCancela.'.xml';
+//$rutaRepFileZipCancela = $rutaRep.'/'.$nombre_archivoCancela.'.zip';
+$rutaRepFileXMLCancela = $rutaRep.'/'.$nombre_archivoCancela.'.xml';
+$rutaCLTFileXMLCancela = $rutaCLT.'/'.$nombre_archivoCancela.'.xml';
+$rutaCLTFileHTMLCancela = $rutaCLT.'/'.$nombre_archivoCancela.'.html';
+
+#nombre archivo modo cancela_test
+$SHCP = $root . '/conta6/Resources/imagenes/SHCP.png';
+$nombre_archivoCancelaTest = $nombre_archivo.'cancelado_TEST';
+$fileXMLCancelaTest = $nombre_archivoCancelaTest.'.xml';
+$rutaRepFileZipCancelaTest = $rutaRep.'/'.$nombre_archivoCancelaTest.'.zip';
+$rutaRepFileXMLCancelaTest = $rutaRep.'/'.$nombre_archivoCancelaTest.'.xml';
+
 ?>

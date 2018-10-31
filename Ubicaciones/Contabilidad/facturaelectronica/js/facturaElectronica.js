@@ -81,6 +81,13 @@ $(document).ready(function(){
         $('#buscarfactura').fadeOut();
         $('#CancelFactura').fadeIn();
           break;
+
+        case "cuadroCancelar2":
+        $('#buscarfactura').fadeOut();
+        $('#CancelFactura').fadeIn();
+          break;
+
+
         default:
           console.error("Something went terribly wrong...");
       }
@@ -1773,12 +1780,7 @@ function ctaGastosCapturaModificar(referencia,dias,cliente,almacen,tipo,valor,pe
 }
 
 function ctaGastosCapturaConsultar(cuenta,accion){
-  if( accion == 'consulta'){
     window.location.replace('1-CuentaGastos_Consultar.php?cuenta='+cuenta+'&accion='+accion);
-  }
-  if( accion == 'timbrar'){
-    window.location.replace('1-CuentaGastos_Consultar.php?cuenta='+cuenta+'&accion='+accion);
-  }
 }
 function ctaGastosCapturaImprimir(cuenta){
   window.open('impresionCuentaGastos.php?cuenta='+cuenta);
@@ -1867,4 +1869,115 @@ function timbrarFactura(cuenta,referencia,cliente){
       console.error(x)
     }
   });
+}
+
+function cancelarFactura(cuenta,referencia,cliente){
+  var data = {
+    cuenta: cuenta,
+    referencia: referencia,
+    cliente: cliente
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/cancelarCFDI_factura.php",
+    data: data,
+    beforeSend: function(){
+        $('body').append('<div class="overlay"><div class="overlay-loading">Cancelando Factura ... Porfavor espere.</div></div>');
+    },
+
+      success: 	function(r){
+        r = JSON.parse(r);
+        console.log(r);
+        if (r.code == 1) {
+          $('#respTimbrado').val(r);
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Timbrar Factura",resp, "success");
+          console.error(r.message);
+          setTimeout('document.location.reload()',700);
+        }else if( r.code == 3 ) {
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Respuesta del PAC:",resp, "error");
+          console.error(r.message);
+        }else{
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Error",resp, "error");
+          console.error(r.message);
+        }
+    },
+    error: function(x){
+      console.error(x)
+    }
+  });
+}
+
+//buscar Facturas Timbradas
+$('#b-referencia').click(function(){
+  $('#b-factura').attr('db-id','').val('');
+  $('#b-cliente').attr('db-id','').val('');
+});
+$('#b-factura').click(function(){
+  $('#b-referencia').attr('db-id','').val('');
+  $('#b-cliente').attr('db-id','').val('');
+});
+$('#b-cliente').click(function(){
+  $('#b-factura').attr('db-id','').val('');
+  $('#b-referencia').attr('db-id','').val('');
+});
+
+$('#b-referencia1').click(function(){
+  $('#b-factura1').attr('db-id','').val('');
+  $('#b-cliente1').attr('db-id','').val('');
+});
+$('#b-factura1').click(function(){
+  $('#b-referencia1').attr('db-id','').val('');
+  $('#b-cliente1').attr('db-id','').val('');
+});
+$('#b-cliente1').click(function(){
+  $('#b-factura1').attr('db-id','').val('');
+  $('#b-referencia1').attr('db-id','').val('');
+});
+
+$('#btn_buscarFacturasTimbradas').click(function(){
+  id_referencia = $('#b-referencia').attr('db-id');
+  id_factura = $('#b-factura').attr('db-id');
+  id_cliente = $('#b-cliente').attr('db-id');
+  if( id_referencia != "" ){
+    buscar = id_referencia;
+  }else if( id_factura != "" ){
+      buscar = id_factura;
+    }else if( id_cliente != "" ){
+      buscar = id_cliente;
+    }else{
+      alertify.error("No hay resultados");
+    }
+  accion = 'consultar';
+  window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
+});
+
+$('#btn_buscarFacturasTimbradas_cancela').click(function(){
+  id_referencia = $('#b-referencia1').attr('db-id');
+  id_factura = $('#b-factura1').attr('db-id');
+  id_cliente = $('#b-cliente1').attr('db-id');
+  if( id_referencia != "" ){
+    buscar = id_referencia;
+  }else if( id_factura != "" ){
+      buscar = id_factura;
+    }else if( id_cliente != "" ){
+      buscar = id_cliente;
+    }else{
+      alertify.error("No hay resultados");
+    }
+  accion = 'cancelar';
+  window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
+});
+
+function docTimbrado_download(nombreArchivo,ruta){
+  window.open('/conta6/Resources/PHP/actions/docTimbrado_download.php?nombreArchivo='+nombreArchivo+'&ruta='+ruta);
+}
+function docTimbrado_ver(){
+  window.open('/conta6/Resources/PHP/actions/docTimbrado_ver.php?nombreArchivo='+nombreArchivo+'&ruta='+ruta);
 }

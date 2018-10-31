@@ -38,6 +38,18 @@
     $float_redondeado=round($valor * 100) / 100;
     return $float_redondeado;
   }
+  
+  function evaluarCancelarFactura($d_fechaTimbrado,$n_total_gral){
+    #falta validar que no tenga NotaCredito o PagosElectronicos. -- NO CANCELABLE
+    $fechaTimbrado = date_format(date_create($d_fechaTimbrado),"Y/m/d");
+    $fachaSinAceptar = date("Y/m/d",strtotime ( '+3 day' , strtotime ( $d_fechaTimbrado ) ));
+    #El total de la factura debe ser maximo 5,000 y se otorgan 3 dias despues del timbrado para cancelar -- SIN ACEPTACION por parte del cliente
+    if( $fechaTimbrado <= $fechaSinAceptar && $n_total_gral <= 5000 ){
+      return "Sin aceptación";
+    }else{
+      return "Con aceptación";
+    }
+  }
 /* no borrar
   function TildesHtml($cadena)
      {
@@ -54,4 +66,5 @@
      	}
 
 */
+
 ?>

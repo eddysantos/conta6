@@ -160,7 +160,8 @@ function xmlV33_genera_cadena_original() {
 function xmlV33_sella($array) {
   global $comprobante, $cadena_original, $root;
   #ruta
-  $fileKey = $root . '/conta6/Resources/clavesKeyCer/key2017.pem';
+  #$fileKey = $root . '/conta6/Resources/clavesKeyCer/key2017.pem';
+  require $root . '/conta6/Resources/PHP/actions/generarCFDI_proceso_rutaKeyCer.php'; #$fileKey,$fileCer
   $certificado = $array['NoCertificado'];
   $pkeyid = openssl_get_privatekey(file_get_contents($fileKey));
   openssl_sign($cadena_original, $crypttext, $pkeyid, OPENSSL_ALGO_SHA256);
@@ -290,4 +291,144 @@ function generarQR($e_rfc,$r_rfc,$total,$UUID,$selloParte){
   return("✓ QR generado correctamente\n");
 }
 
+
+
+
+/* CANCLACION DE CFDI */
+function estadoCFDI($rfcR,$s_UUID,$totalFac,$modo){
+  global $s_userPAC,$s_pwdPAC,$s_rfcE;
+  $client = new SoapClient("https://cfdiws.sedeb2b.com/EdiwinWS/services/CFDi?wsdl");
+  $result = $client->getCFDiStatus(array('user' => $s_userPAC,
+                                            'password' => $s_pwdPAC,
+                                            'rfcE' => $s_rfcE,
+                                            'rfcR' => $rfcR,
+                                            'uuid' => $s_UUID,
+                                            'total' => $totalFac,
+                                            'test' => $modo ));
+
+  $cancelStatus = $result->getCFDiStatusReturn->cancelStatus;
+  $isCancelable = $result->getCFDiStatusReturn->isCancelable;
+  $status = $result->getCFDiStatusReturn->status;
+  $statusCode = $result->getCFDiStatusReturn->statusCode;
+
+  if( $cancelStatus != '' ){ $respuesta = 'ESTATUS DE CANCELACION: '.$cancelStatus.'<br>'; }
+  if( $isCancelable != '' ){ $respuesta .= 'CANCELABLE: '.$isCancelable.'<br>'; }
+  if( $status != '' ){ $respuesta .= 'ESTATUS: '.$status.'<br>'; }
+  if( $statusCode != '' ){ $respuesta .= 'CODIGO RESPUESTA: '.$statusCode.'<br>'; }
+
+  return $respuesta;
+}
+
+
+function cancelarCFDI($rfcR,$s_UUID,$totalFac,$modo){
+  global $db,$usuario,$root,$s_userPAC,$s_pwdPAC,$s_rfcE,$pswdCerts,$s_rfcR,$id_factura,$fileCer,$fileKey,
+         $rutaRepFileXMLCancela;
+
+  $certificado = file_get_contents($fileCer);
+  $key = file_get_contents($fileKey);
+  // Se crea el certificado PKCS12 -> .PFX
+  openssl_pkcs12_export($certificado,$CertPKCS12,$key,$pswdCerts);
+
+  try{
+    $client = new SoapClient("https://cfdiws.sedeb2b.com/EdiwinWS/services/CFDi?wsdl");
+    $result = $client->cancelCFDiAsync(array('user' => $s_userPAC,
+                                              'password' => $s_pwdPAC,
+                                              'rfcE' => $s_rfcE,
+                                              'rfcR' => $rfcR,
+                                              'uuid' => $s_UUID,
+                                              'total' => $totalFac,
+                                              'pfx' => $CertPKCS12,
+                                              'pxfPassword' => $pswdCerts,
+                                              'test' => $modo ));
+    $resultACK->cancelCFDiAsyncReturn->ack; #xml sellado
+    if( $resultACK != '' ){
+      file_put_contents($rutaRepFileXMLCancela,base64_decode($resultACK));//se escribe en un archivo
+      file_put_contents($rutaCLTFileXMLCancela,base64_decode($resultACK));//se escribe en un archivo
+
+      #GENERO HTML
+      $xml = simplexml_load_file($rutaRepFileXMLCancela);
+      $xml->Body->CancelaCFDResponse->CancelaCFDResult[0]['Fecha'];
+
+      $ns = $xml->getNamespaces(true);
+      $xml->registerXPathNamespace('s',$ns['s']);
+
+      #falta reconocer los estados del cfdi
+      $edoCancelacion = '';
+      foreach ($xml->xpath('//s:Body') as $cfdiComprobante){
+  		  $fecha = $cfdiComprobante->CancelaCFDResponse->CancelaCFDResult[0]['Fecha'];
+  		  $RFC = $cfdiComprobante->CancelaCFDResponse->CancelaCFDResult[0]['RfcEmisor'];
+  		  $UUID = $cfdiComprobante->CancelaCFDResponse->CancelaCFDResult->Folios->UUID;
+  		  $status = $cfdiComprobante->CancelaCFDResponse->CancelaCFDResult->Folios->EstatusUUID;
+  		  $sello = $cfdiComprobante->CancelaCFDResponse->CancelaCFDResult->Signature->SignatureValue;
+  	   }
+
+       #genero acuse de cancelacion en formato html
+       require $root . '/conta6/Resources/PHP/actions/acuse_cancelacion_CFDI.php';
+
+       $control = fopen($rutaFileClienteHTML,"w+");
+       if($control == false){
+         $imgError07 = "<img src='../../../imagenes/cancel.png' width='12' height='12'>";
+         $obs07 = $imgError07." XML no encontrado";
+       }
+
+       $fp = fopen($rutaCLTFileHTMLCancela,'w');
+       fwrite($fp,$html);
+       fclose($fp);
+
+       $fechaCancela = str_replace('T',' ',$fecha);
+       $fechaCancela = date_format(date_create($fechaCancela),"d-m-Y H:i:s");
+
+       #guardo los datos de la cancelacion
+       require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5guardarDatosCancelacion.php';
+
+       # Cancelo pólizas de la cuenta de gastos
+       require $root . '/conta6/Resources/PHP/actions/consultaFactura_ctaGastos.php';
+       if( $rows_ctaGastos > 0 ){
+         if( $id_polctagastos > 0 ){
+           cancelarPoliza($id_polctagastos, 0);
+           mysqli_query($db,"UPDATE conta_t_facturas_ctagastos SET
+															s_cancela_ctagastos = 1
+														WHERE fk_id_cuenta_captura = $id_captura");
+         }
+         if( $id_polpagoaplic > 0 ){
+           cancelarPoliza($id_polpagoaplic, 0);
+           mysqli_query($db,"UPDATE conta_t_facturas_ctagastos SET
+															s_cancela_pagoaplicado = 1
+														WHERE fk_id_cuenta_captura = $id_captura");
+
+         }
+       }
+       # Cancelo pólizas de la factura
+       require $root . '/conta6/Resources/PHP/actions/consultaFacturaTimbrada.php';
+       if( $rows_facTimbrada > 0 ){
+         if( $id_poliza > 0 ){
+           cancelarPoliza($id_poliza, 0);
+           mysqli_query($db,"UPDATE conta_t_facturas_cfdi SET
+															s_cancela_factura = 1
+														WHERE fk_id_poliza = $id_poliza");
+         }
+       }
+
+    }
+    guardarRespuestaTimbrado('factura',$id_factura,'Cancelado',$edoCancelacion);
+    return("✓ Cancelado correctamente\n");
+
+  } catch (SoapFault $e) {
+    $e->getMessage();
+    guardarRespuestaTimbrado('factura',$id_factura,'Vigente',$e);
+    return $e;
+
+  }
+
+}
+
+function cancelarPoliza($id_poliza, $status){
+  global $db,$root;
+  require $root . '/conta6/Resources/PHP/actions/cancelarPoliza.php';
+}
+
+function guardarRespuestaTimbrado($tipoDoc,$folio,$estado,$statusPAC){
+  global $db;
+  require $root . '/conta6/Resources/PHP/actions/acuse_cancelacion_CFDI_bitacora.php';
+}
 ?>

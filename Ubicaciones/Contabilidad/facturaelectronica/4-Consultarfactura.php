@@ -1,10 +1,14 @@
 <?php
-  // $root = $_SERVER['DOCUMENT_ROOT'];
-  // require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+
+  $buscar = trim($_GET['buscar']);
+  $accion = trim($_GET['accion']);
+
+  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/4-Consultarfactura_lstFacturasTimbradas.php';
 ?>
 
-<!-- <div class="text-center">
-  <div id="buscarfactura">
+  <div id="buscarfactura" class="text-center">
     <div class="col-md-1 offset-md-11 p-0 mt-5">
       <a  href="#ConsultarFactura" data-toggle="modal">
         <i class="back fa fa-arrow-left">Regresar</i>
@@ -26,28 +30,12 @@
               <td class="col-md-1">FACTURA</td>
               <td class="col-md-1">POLIZA</td>
               <td class="col-md-1">CANCELADA</td>
-              <td class="col-md-1">CTA.GASTOS</td>
+              <td class="col-md-1">SOLICITUD</td>
               <td class="col-md-1">REFERENCIA</td>
               <td class="col-md-4">CLIENTE</td>
               <td class="col-md-1"></td>
             </tr>
-            <tr class="row borderojo font14">
-              <td class="col-md-1">
-                <a href=""><img class="icomediano" src="/conta6/Resources/iconos/xml.svg"></a>
-                <a><img class="icomediano ml-4" src="/conta6/Resources/iconos/pdf.svg"></a>
-              </td>
-              <td class="col-md-1">17-07-2017</td>
-              <td class="col-md-1">77166</td>
-              <td class="col-md-1">252815</td>
-              <td class="col-md-1">252815</td>
-              <td class="col-md-1">77919</td>
-              <td class="col-md-1">N17003012</td>
-              <td class="col-md-4">CLT_6548 MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L DE C.V</td>
-              <td class="col-md-1">
-                <a class="ver" accion="cuadroConsultar"><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
-                <a><img class="icomediano ml-5" src="/conta6/Resources/iconos/printer.svg"></a>
-              </td>
-            </tr>
+            <?php echo $listaFacturas; ?>
           </tbody>
         </table>
       </form>
@@ -55,7 +43,7 @@
   </div>
 
 
-  <div id="ConsulFactura" style="display:none">
+  <!-- <div id="ConsulFactura" style="display:none">
     <div class="row submenuMed  m-0">
       <div class="col-md-4" role="button">
         <a  id="submenuMed" class="visualizar" accion="Ver-cliente" status="cerrado">DATOS CLIENTE</a>
@@ -191,11 +179,10 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div> -->
 
-  <!Esta informacion si estara visible SOLICITUD DE ANTICIPO -->
   <!-- <div class="contorno mt-5">
-    <h5 class="titulo font14">SOLICITUD ANTICIPO</h5>
+    <h5 class="titulo font14">SOLICITUD</h5>
       <table class="table form1 mt-4 ">
         <thead>
           <tr class="row encabezado font14">
@@ -302,10 +289,10 @@
       </table>
     </div>
   </div>
-</div>
+</div> -->
 
 
-<script src="js/facturaElectronica.js"></script> -->
+<script src="js/facturaElectronica.js"></script>
 <?php
-// require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/conta6/Ubicaciones/footer.php';
  ?>
