@@ -1742,12 +1742,18 @@ $('#guardar-cta').click(function(){
           r = JSON.parse(r);
           if (r.code == 1) {
             folio = r.data;
+// <<<<<<< HEAD
             // swal("Folio: "+folio, "generado correctamente", "success");
 
             alertify.alert('Folio: '+folio, 'Generado correctamente' , function(){
               setTimeout('document.location.reload()',700);
             });
 
+// =======
+//             swal("Folio: "+folio, "generado correctamente", "success");
+//             //setTimeout('document.location.reload()',700);
+//             //setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
+// >>>>>>> origin/be_facturaElectronica
           } else {
             console.error(r.message);
           }

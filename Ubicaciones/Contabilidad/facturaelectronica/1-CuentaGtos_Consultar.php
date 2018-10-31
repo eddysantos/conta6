@@ -3,7 +3,7 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="text-center">
+<!-- <div class="text-center">
   <div class="row submenuMed m-0">
     <div class="col-md-4" role="button">
       <a  id="submenuMed" class="visualizar" accion="Ver-cliente" status="cerrado">DATOS CLIENTE</a>
@@ -259,4 +259,4 @@
 
 </div>
 
-<script src="js/facturaElectronica.js"></script>
+<script src="js/facturaElectronica.js"></script> -->

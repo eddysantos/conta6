@@ -86,13 +86,14 @@ if( $total_consultaHonorarios > 0 ) {
         </div>";
 
 
-    $datosHonorariosXML = $datosHonorariosXML.'<tr align="center">
-          <td>'.$n_cantidad.'</td>
-          <td>'.$fk_c_claveUnidad.' '.$s_unidad.'</td>
-          <td>'.$fk_c_ClaveProdServ.'</td>
-          <td align="left">'.$s_conceptoEsp.'</td>
-          <td align="right">'.$n_importe.'</td>
+    $datosHonorariosXML = $datosHonorariosXML.'<tr>
+          <td width="10%">'.$n_cantidad.'</td>
+          <td width="15%">'.$fk_c_claveUnidad.' '.$s_unidad.'</td>
+          <td width="10%">'.$fk_c_ClaveProdServ.'</td>
+          <td width="45%" align="left">'.$s_conceptoEsp.'</td>
+          <td width="20%" align="right">'.$n_importe.'</td>
         </tr>';
+
     $datosHonorariosImprimir = $datosHonorariosImprimir.'<tr>
           <td width="52%">'.$s_conceptoEsp.'</td>
           <td width="12%">'.$n_importe.'</td>

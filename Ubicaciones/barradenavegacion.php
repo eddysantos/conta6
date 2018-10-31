@@ -151,7 +151,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                   <li class="dropdown">
                     <a href="" class="">Sueldos y Salarios CFDI <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                     <ul class="dropdown-menu">
-                      <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/Empleados.php">Empleados</a></li>
+                      <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/empleados/Empleados.php">Empleados</a></li>
                       <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/GenerarNominaCFDI.php">Nomina</a></li>
                     </ul>
                   </li>

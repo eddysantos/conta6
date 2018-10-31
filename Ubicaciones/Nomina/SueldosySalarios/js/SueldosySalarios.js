@@ -7,33 +7,33 @@ $(document).ready(function () {
 /*Comienza Editar Datos Generales*/
 		switch (accion) {
 			//SUELDOS Y SALARIOS-- EMPLEADOS
-      case "eCap":
-      if (status == 'cerrado') {
-        $('#contornoEmp').fadeIn();
-        $(this).attr('status', 'abierto');
-        $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-        $(this).css('font-size', '20px');
-      } else {
-        $('#contornoEmp').fadeOut();
-        $(this).attr('status', 'cerrado');
-        $(this).css('color', "");
-        $(this).css('font-size', "");
-      }
-        break;
+      // case "eCap":
+      // if (status == 'cerrado') {
+      //   $('#contornoEmp').fadeIn();
+      //   $(this).attr('status', 'abierto');
+      //   $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
+      //   $(this).css('font-size', '20px');
+      // } else {
+      //   $('#contornoEmp').fadeOut();
+      //   $(this).attr('status', 'cerrado');
+      //   $(this).css('color', "");
+      //   $(this).css('font-size', "");
+      // }
+      //   break;
 
-			case "dgen":
-      if (status == 'cerrado') {
-        $('#contorno1').fadeIn();
-        $(this).attr('status', 'abierto');
-        $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-        $(this).css('font-size', '20px');
-      } else {
-        $('#contorno1').fadeOut();
-        $(this).attr('status', 'cerrado');
-        $(this).css('color', "");
-        $(this).css('font-size', "");
-      }
-        break;
+			// case "dgen":
+      // if (status == 'cerrado') {
+      //   $('#contorno1').fadeIn();
+      //   $(this).attr('status', 'abierto');
+      //   $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
+      //   $(this).css('font-size', '20px');
+      // } else {
+      //   $('#contorno1').fadeOut();
+      //   $(this).attr('status', 'cerrado');
+      //   $(this).css('color', "");
+      //   $(this).css('font-size', "");
+      // }
+      //   break;
 /*Comienza Editar Datos Laborales*/
 			case "dlab":
 			if (status == 'cerrado') {

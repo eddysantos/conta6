@@ -3,7 +3,7 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="text-center">
+<!-- <div class="text-center">
   <div id="buscarfactura">
     <div class="col-md-1 offset-md-11 p-0 mt-5">
       <a href="#ConsultarFactura" data-toggle="modal">
@@ -191,7 +191,7 @@
       </table>
     </div>
 
-  <!--Esta informacion si estara visible SOLICITUD DE ANTICIPO-->
+
   <div class="contorno mt-5">
     <h5 class="titulo font14">SOLICITUD ANTICIPO</h5>
       <table class="table form1 mt-4 ">
@@ -302,4 +302,4 @@
   </div>
 </div>
 
-<script src="js/facturaElectronica.js"></script>
+<script src="js/facturaElectronica.js"></script> -->

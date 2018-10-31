@@ -209,9 +209,6 @@
       <tr class="row m-0">
         <td class="col-md-6 text-left pt-4">
           <a href="#" id="printCatCuentas"><img class="icomediano ml-4" src="/conta6/Resources/iconos/printer.svg"></a>
-          <!-- <a href="#"><img class="icomediano" src="/conta6/Resources/iconos/005-excel.svg"></a> -->
-          <!-- <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/xml.svg"></a>
-		      <a href="#"><img class="icomediano ml-4" src="/conta6/Resources/iconos/refresh-button.svg"></a> -->
         </td>
         <td class="col-md-3 offset-md-3">
           <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." table-body="#tabla_cuentas"  action="tablacuentasDet">

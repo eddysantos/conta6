@@ -16,7 +16,7 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
 
 class MYPDF extends TCPDF {
   public function Header() {
-    $image_file = 'cheetah.svg';
+    $image_file = 'imagenes/cheetah.svg';
     $this->ImageSVG($image_file, 5, 10, '', 10, '', '','', 0,false);
     $this->setTextColor(102);
     $this->SetFont('helvetica', '', 10);

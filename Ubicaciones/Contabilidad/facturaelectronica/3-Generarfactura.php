@@ -4,7 +4,7 @@
 ?>
 
 <div class="text-center">
-  <div class="mt10" id="b-ctagastos"><!--antes b-factura-->
+  <div class="mt10" id="b-ctagastos">
     <div class="row justify-content-center"  id="referencia">
       <div class="col-md-6 titulograndetop transEff" style="font-size:30px!important">Referencia o Solicitud</div>
     </div>
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <!---se muestra al escribir la referencia y dar enter-->
+
   <div class="mt-5 contorno" id="m-factura" style="display:none">
     <table class="table form1 font14">
       <thead>
