@@ -2,7 +2,7 @@
 <!-- PENDIENTES SOLO SELECT  -->
 <div class="modal fade" id="modDatosEmp" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
+    <div class="modal-content text-center">
       <div class="modal-header">
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
@@ -12,58 +12,57 @@
       <div class="modal-body p-0">
         <div class="container-fluid">
       <!--********************************Submenu*******************************-->
-          <div class="row submenuMed text-center">
+          <div class="row submenuMed ">
             <div class="col-md-3" role="button">
-              <a  id="submenuModal" class="emp" accion="dgen" status="cerrado">Datos Generales</a>
+              <a  id="submenuModal" class="emp dgen" accion="dgen">Datos Generales</a>
             </div>
             <div class="col-md-3">
-              <a id="submenuModal" class="emp" accion="dlab" status="cerrado">Datos Laborales</a>
+              <a id="submenuModal" class="emp dlab" accion="dlab">Datos Laborales</a>
             </div>
             <div class="col-md-3">
-              <a id="submenuModal" class="emp" accion="dsal" status="cerrado">Distr. Salario</a>
+              <a id="submenuModal" class="emp dsal" accion="dsal">Distr. Salario</a>
             </div>
-            <div class="col-md-3 suelysal">
-              <a id="submenuModal" class="emp" accion="suelysal" status="cerrado">Sueldos y Salarios</a>
+            <div class="col-md-3 suelysal-1">
+              <a id="submenuModal" class="emp suel" accion="dsuel">Sueldos y Salarios</a>
             </div>
-            <div class="col-md-3 honorariosAsim">
-              <!-- <a id="submenuModal" class="emp" accion="honAsim" status="cerrado">Honorarios Asimilados</a> -->
-              <a id="submenuModal" class="honorarios" accion="Hon" status="cerrado">Honorarios Asimilados a Salarios</a>
+            <div class="col-md-3 honorariosAsim-1">
+              <a id="submenuModal" class="emp hon" accion="hon">Honorarios Asimilados</a>
             </div>
           </div><!--Termina el Submenu-->
 
             <div id="contorno1" class="contorno" style="display:none">
               <form class="form1">
-                <table class="table text-center" id="dtosgenerales">
+                <table class="table " id="dtosgenerales">
                   <tbody>
                     <tr class="row mt-4">
                       <td class="col-md-3 input-effect">
                         <input type="hidden" id="pk_id_empleado" db-id="">
                         <input type="hidden" id="fk_usuario_modifi" usuario="<?php echo $usuario; ?>">
                         <input id="s_nombre" class="efecto">
-                        <label for="s_nombre">Nombre</label>
+                        <label for="s_nombre">Nombre <span>*</span></label>
                       </td>
                       <td class="col-md-3 input-effect">
                         <input id="s_apellidoP" class="efecto">
-                        <label for="s_apellidoP">Apellido Paterno</label>
+                        <label for="s_apellidoP">Apellido Paterno <span>*</span></label>
                       </td>
                       <td class="col-md-3 input-effect">
                         <input id="s_apellidoM" class="efecto">
-                        <label for="s_apellidoM">Apellido Materno</label>
+                        <label for="s_apellidoM">Apellido Materno <span>*</span></label>
                       </td>
                       <td class="col-md-3 input-effect">
                         <input id="d_fechaNacido" class="efecto" type="date">
-                        <label for="d_fechaNacido">Fecha Nacimiento</label>
+                        <label for="d_fechaNacido">Fecha Nacimiento <span>*</span></label>
                       </td>
                     </tr>
 
                     <tr class="row mt-4">
                       <td class="col-md-3 input-effect">
-                        <input id="s_CURP" class="efecto">
-                        <label for="s_CURP">Curp</label>
+                        <input id="s_CURP" class="efecto" onchange="validaCURP(this)">
+                        <label for="s_CURP">Curp <span>*</span></label>
                       </td>
                       <td class="col-md-3 input-effect">
-                        <input id="s_RFC" class="efecto">
-                        <label for="s_RFC">RFC</label>
+                        <input id="s_RFC" class="efecto" onchange="validaRFC(this)">
+                        <label for="s_RFC">RFC <span>*</span></label>
                       </td>
                       <td class="col-md-3 input-effect">
                         <input id="s_telefono" class="efecto">
@@ -71,18 +70,18 @@
                       </td>
                       <td class="col-md-3 input-effect">
                         <input id="s_email_personal" class="efecto">
-                        <label for="s_email_personal">Correo Electronico</label>
+                        <label for="s_email_personal">Correo Electronico <span>*</span></label>
                       </td>
                     </tr>
 
                     <tr class="row mt-4">
                       <td class="col-md-3 input-effect">
                         <input id="s_calle" class="efecto">
-                        <label for="s_calle">Calle</label>
+                        <label for="s_calle">Calle <span>*</span></label>
                       </td>
                       <td class="col-md-1 input-effect">
                         <input id="s_no_ext" class="efecto">
-                        <label for="s_no_ext">No.Ext</label>
+                        <label for="s_no_ext">No.Ext <span>*</span></label>
                       </td>
                       <td class="col-md-1 input-effect">
                         <input id="s_no_int" class="efecto">
@@ -90,7 +89,7 @@
                       </td>
                       <td class="col-md-2 input-effect">
                         <input id="s_colonia" class="efecto">
-                        <label for="s_colonia">Colonia</label>
+                        <label for="s_colonia">Colonia <span>*</span></label>
                       </td>
                       <td class="col-md-2 input-effect">
                         <input id="s_localidad" class="efecto">
@@ -98,7 +97,7 @@
                       </td>
                       <td class="col-md-3 input-effect">
                         <input id="s_municipio" class="efecto">
-                        <label for="s_municipio">Municipio o Delegación</label>
+                        <label for="s_municipio">Municipio o Delegación <span>*</span></label>
                       </td>
                     </tr>
 
@@ -110,7 +109,7 @@
                       </td>
                       <td class="col-md-2 input-effect">
                         <input id="s_codigo" class="efecto">
-                        <label for="s_codigo">Codigo Postal</label>
+                        <label for="s_codigo">Codigo Postal <span>*</span></label>
                       </td>
                       <td class="col-md-4 input-effect">
                         <select class="custom-select" id="s_id_entfed">
@@ -143,7 +142,7 @@
 
             <div id="contorno2" class="contorno" style="display:none">
               <form class="form1">
-                <table class="table text-center" id="dtoslaborales">
+                <table class="table " id="dtoslaborales">
                   <tbody>
                     <tr class="row mt-4">
                       <td class="col-md-2 input-effect">
@@ -157,11 +156,11 @@
                       </td>
                       <td class="col-md-4 input-effect">
                         <input id="s_puesto_actividad" class="efecto">
-                        <label for="s_puesto_actividad">Puesto o Actividades</label>
+                        <label for="s_puesto_actividad">Puesto o Actividades <span>*</span></label>
                       </td>
                       <td class="col-md-3 input-effect">
                         <input class="efecto tiene-contenido" type="date" id="d_fechaContrato">
-                        <label for="d_fechaContrato">Fecha Contrato</label>
+                        <label for="d_fechaContrato">Fecha Contrato <span>*</span></label>
                       </td>
                     </tr>
                     <tr class="row mt-4">
@@ -186,7 +185,6 @@
                         <select class="custom-select" id="fk_id_pago">
                           <?php echo $periodoPago ?>
                         </select>
-                        <input type="hidden" id="fk_id_regimen" value="2">
                       </td>
                       <td class="col-md-4 input-effect">
                         <input id="s_email_laboral" class="efecto" type="email">
@@ -222,9 +220,9 @@
               </form>
             </div>
 
-            <div id="contorno3" class="contorno text-center" style="display:none">
+            <div id="contorno3" class="contorno" style="display:none">
               <form class="form1">
-                <table class="table text-center" id="distsalarios">
+                <table class="table " id="distsalarios">
                   <tbody>
                     <tr class="row mt-5" id="distSalarioModal">
                       <td class="col-md-2 input-effect">
@@ -257,14 +255,14 @@
               </form>
             </div>
 
-            <div id="contorno4" class="contorno text-center suelysal" style="display:none">
+            <div id="sueldos" class="contorno suelysal" style="display:none">
               <form class="form1" style="letter-spacing:2px">
-                <table class="table text-center" id="sueldosysalarios">
+                <table class="table " id="sueldosysalarios">
                   <tbody>
                     <tr class="row mt-5">
                       <td class="col-md-3 input-effect">
                         <input id="s_IMSS" class="efecto">
-                        <label for="s_IMSS">IMSS</label>
+                        <label for="s_IMSS">IMSS <span>*</span></label>
                       </td>
                       <td class="col-md-3 input-effect">
                         <input id="s_INFONAVIT" class="efecto">
@@ -304,8 +302,6 @@
                       <td class="col-md-2 input-effect">
                         <input id="n_salario_integrado" class="efecto" readonly>
                         <label for="n_salario_integrado">Salario Integral</label>
-
-                        <!-- <input type="hidden" id="n_ISR" value="0"> -->
                       </td>
                     </tr>
                   </tbody>
@@ -313,13 +309,14 @@
               </form>
             </div>
 
-            <div id="hon_has" class="contorno text-center">
+            <div id="hon_has" class="contorno  honorariosAsim" style="display:none">
               <form class="form1">
                 <table class="table">
                   <tbody>
                     <tr class="row mt-4 justify-content-center">
                       <td class="col-md-3 offset-md-1 input-effect">
-                        <input id="h_salario_mensual" class="efecto tiene-contenido">
+                        <input type="hidden" id="fk_id_regimen">
+                        <input id="h_salario_mensual" class="efecto tiene-contenido" onchange="calcularISRmodal()">
                         <label for="h_salario_mensual">Salario</label>
                       </td>
                       <td class="col-md-3 input-effect">
@@ -336,19 +333,18 @@
               </form>
             </div>
 
-          </div><!--termina el Cuerpo del Modal-->
+          </div>
         <div class="modal-footer">
           <a href="#" id="medit-empleado" class="medit-empleado linkbtn">Aceptar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
-      </div><!--termina el COntenido del Modal-->
+      </div>
     </div>
   </div>
 
 
-<!--Sección de Empleados Capturados SueldosySalarios/GenerarNominaCFDI.php-->
 <div class="modal fade" id="permanentes" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
+    <div class="modal-content text-center">
       <div class="modal-header">
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
@@ -358,17 +354,17 @@
       <div class="modal-body p-0">
         <div class="container-fluid">
       <!--********************************Submenu*******************************-->
-          <div class="row submenuMed text-center">
+          <div class="row submenuMed">
             <div class="col-md-6" role="button">
-              <a  id="submenuModal" class="emp" accion="perc" status="cerrado">Percepciones</a>
+              <a  id="submenuModal" class="emp perc" accion="perc">Percepciones</a>
             </div>
             <div class="col-md-6">
-              <a id="submenuModal" class="emp" accion="deduc" status="cerrado">Deducciones</a>
+              <a id="submenuModal" class="emp deduc" accion="deduc">Deducciones</a>
             </div>
           </div><!--Termina el Submenu-->
             <div id="contorno5" class="contorno" style="display:none">
               <form class="form1" style="letter-spacing:2px">
-                <table class="table mb-0 text-center" id="percepciones">
+                <table class="table mb-0 " id="percepciones">
                   <tbody>
 
                     <tr class="row">
@@ -612,7 +608,7 @@
 
             <div id="contorno6" class="contorno" style="display:none">
               <form class="form1">
-                <table class="table mb-0 text-center" id="deducciones">
+                <table class="table mb-0 " id="deducciones">
                   <tbody>
                     <tr class="row">
                       <td class="col-md-2 input-effect mt-3">
@@ -674,7 +670,6 @@
             </div>
           </div><!--termina el Cuerpo del Modal-->
         <div class="modal-footer">
-          <!-- <button id="validarDtosGenerales" type="button" class="btn btn-primary" style="display:none">Siguiente</button> -->
           <a href="#" id="medit-empleado" class="medit-empleado linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div><!--termina el COntenido del Modal-->

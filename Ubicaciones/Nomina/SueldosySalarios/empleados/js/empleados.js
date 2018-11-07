@@ -4,100 +4,50 @@ listaEmpleados();
 // MOSTRAR / OCULTAR DIVS
   $('.emp').click(function(){
     var accion = $(this).attr('accion');
-    var status = $(this).attr('status');
 
   switch (accion) {
-    case "eCap":
-     if (status == 'cerrado') {
-       $('#contornoEmp').fadeIn();
-       $(this).attr('status','abierto')
-       .css('cssText','color:rgb(209, 28, 28) !important')
-       .css('font-size','20px');
-     } else {
-        $('#contornoEmp').fadeOut();
-        $(this).attr('status','cerrado')
-        .css('color',"")
-        .css('font-size',"");
-     }
-      break;
       case "dgen":
-      if (status == 'cerrado') {
         $('#contorno1').fadeIn();
-        $(this).attr('status', 'abierto');
-        $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-        $(this).css('font-size', '20px');
-      } else {
-        $('#contorno1').fadeOut();
-        $(this).attr('status', 'cerrado');
-        $(this).css('color', "");
-        $(this).css('font-size', "");
-      }
+        $('#contorno2,#contorno3,#sueldos,#hos_has').hide();
+        $('.dlab, .dsal, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
+        $(this).css('cssText', 'color: #d11c1c !important');
         break;
-  			case "dlab":/*Comienza Editar Datos Laborales*/
-  			if (status == 'cerrado') {
-  				$('#contorno2').fadeIn();
-  				$(this).attr('status', 'abierto');
-  				$(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-  				$(this).css('font-size', '20px');
-  			} else {
-  				$('#contorno2').fadeOut();
-  				$(this).attr('status', 'cerrado');
-  				$(this).css('color', "");
-  				$(this).css('font-size', "");
-  			}
-  				break;
-  			case "dsal":/*Comienza Editar Distribucion de Salario*/
-  			if (status == 'cerrado') {
-  				$('#contorno3').fadeIn();
-  				$(this).attr('status', 'abierto');
-  				$(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-  				$(this).css('font-size', '20px');
-  			} else {
-  				$('#contorno3').fadeOut();
-  				$(this).attr('status', 'cerrado');
-  				$(this).css('color', "");
-  				$(this).css('font-size', "");
-  			}
-  				break;
-  			case "suelysal": /*Comienza Editar Distribucion de Salario*/
-  			if (status == 'cerrado') {
-  				$('#contorno4').fadeIn();
-  				$(this).attr('status', 'abierto');
-  				$(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-  				$(this).css('font-size', '20px');
-  			} else {
-  				$('#contorno4').fadeOut();
-  				$(this).attr('status', 'cerrado');
-  				$(this).css('color', "");
-  				$(this).css('font-size', "");
-  			}
-  				break;
-    			case "perc":// ******** PERMANENTES *********** ///*Comienza Editar percepciones*/
-    			if (status == 'cerrado') {
-    				$('#contorno5').fadeIn();
-    				$(this).attr('status', 'abierto');
-    				$(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-    				$(this).css('font-size', '20px');
-    			} else {
-    				$('#contorno5').fadeOut();
-    				$(this).attr('status', 'cerrado');
-    				$(this).css('color', "");
-    				$(this).css('font-size', "");
-    			}
-    				break;
-    			case "deduc":/*Comienza Editar Deducciones*/
-    			if (status == 'cerrado') {
-    				$('#contorno6').fadeIn();
-    				$(this).attr('status', 'abierto');
-    				$(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-    				$(this).css('font-size', '20px');
-    			} else {
-    				$('#contorno6').fadeOut();
-    				$(this).attr('status', 'cerrado');
-    				$(this).css('color', "");
-    				$(this).css('font-size', "");
-    			}
-    				break;
+			case "dlab":/*Comienza Editar Datos Laborales*/
+        $('#contorno2').fadeIn();
+        $('#contorno1, #contorno3,#sueldos,#hos_has').hide();
+        $('.dgen, .dsal, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
+        $(this).css('cssText', 'color: #d11c1c !important');
+        break;
+			case "dsal":/*Comienza Editar Distribucion de Salario*/
+        $('#contorno3').fadeIn();
+        $('#contorno1, #contorno2,#sueldos,#hos_has').hide();
+        $('.dlab, .dgen, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
+        $(this).css('cssText', 'color: #d11c1c !important');
+				break;
+			case "dsuel": /*Comienza Editar Distribucion de Salario*/
+        $('#sueldos').fadeIn();
+        $('#contorno1, #contorno2,#contorno3,#hos_has').hide();
+        $('.dlab, .dgen, .dsal, .hon').css('cssText', 'color: #a1a0a0 !important');
+        $(this).css('cssText', 'color: #d11c1c !important');
+				break;
+      case "hon":
+         $('#hon_has').fadeIn();
+         $('#contorno1, #contorno2, #contorno3, #sueldos').hide();
+         $('.dlab, .dgen, .dsal, .suel').css('cssText', 'color: #a1a0a0 !important');
+         $(this).css('cssText', 'color: #d11c1c !important');
+         break;
+			case "perc":// ******** PERMANENTES *********** ///*Comienza Editar percepciones*/
+        $('#contorno5').fadeIn();
+        $('#contorno6').hide();
+        $('.deduc').css('cssText', 'color: #a1a0a0 !important');
+        $(this).css('cssText', 'color: #d11c1c !important');
+				break;
+			case "deduc":/*Comienza Editar Deducciones*/
+        $('#contorno6').fadeIn();
+        $('#contorno5').hide();
+        $('.perc').css('cssText', 'color: #a1a0a0 !important');
+        $(this).css('cssText', 'color: #d11c1c !important');
+				break;
       default:
       console.error("Something went terribly wrong...");
     }
@@ -176,6 +126,7 @@ $('#fk_id_regimen_add').change(function(){
 });
 
 
+// VALIDACIONES
 $('#validarDtosGenerales').click(function(){
 
   validacionDatosGenerales =   $('#s_nombre_add').val() == "" ||
@@ -251,8 +202,6 @@ $('#validarDistSalarios').click(function(){
     }
   }
 });
-
-
 
 
 // function agregarEmpleado(){
@@ -352,11 +301,19 @@ $('#validarDistSalarios').click(function(){
     });
   });
 
-
 // PASAR VARIABLES A MODAL
   $('tbody').on('click', '.editar-empleado', function(){
     var dbid = $(this).attr('db-id');
+    var regimen  = $(this).attr('regimen');
     var tar_modal = $($(this).attr('href'));
+
+    if (regimen == 2) {
+      $('.suelysal-1').show();
+      $('.honorariosAsim-1').hide();
+    }else if (regimen == 9) {
+      $('.suelysal-1').hide();
+      $('.honorariosAsim-1').show();
+    }
 
     var fetch_empleado = $.ajax({
       method: 'POST',
@@ -386,7 +343,6 @@ $('#validarDistSalarios').click(function(){
       }
       $('#h_salario_mensual').val(r.data.n_salario_semanal);
       $('#n_salario_pago').val(r.data.n_salario_semanal - r.data.n_ISR);
-      $('.medit-empleado').attr('db-id', r.data.pk_id_empleado);
       tar_modal.modal('show');
       } else {
         console.error(r);
@@ -396,6 +352,72 @@ $('#validarDistSalarios').click(function(){
 
 // Editar Empleado
   $('.medit-empleado').click(function(){
+
+    var regimen = $('#fk_id_regimen').val();
+    if (regimen ==  2) {
+      if ($('#s_IMSS').val() == "") {
+        alertify.error("IMSS es requerido");
+        $('#s_IMSS').focus();
+        return false;
+      }else if ($('#n_salario_mensual').val() == "") {
+        alertify.error("Salario Mensual es requerido");
+        $('#n_salario_mensual').focus();
+        return false;
+      }
+      isr = 0;
+      salario_semanal = $('#n_salario_semanal').val();
+    }else if (regimen == 9) {
+      if ($('#h_salario_mensual').val() == "") {
+        alertify.error("Salario es requerido");
+        $('#h_salario_mensual').focus();
+        return false;
+      }
+      isr = $('#n_ISR').val();
+      salario_semanal = $('#h_salario_mensual').val();
+    }
+
+    validacionDatosGenerales =   $('#s_nombre').val() == "" ||
+                                 $('#s_apellidoP').val() == "" ||
+                                 $('#s_apellidoM').val() == "" ||
+                                 $('#d_fechaNacido').val() == "" ||
+                                 $('#s_CURP').val() == "" ||
+                                 $('#s_RFC').val() == "" ||
+                                 $('#s_email_personal').val() == "" ||
+                                 $('#s_calle').val() == "" ||
+                                 $('#s_no_ext').val() == "" ||
+                                 $('#s_colonia').val() == "" ||
+                                 $('#s_municipio').val() == "" ||
+                                 $('#s_estado').val() == 0 ||
+                                 $('#s_codigo').val() == "" ||
+                                 $('#s_id_entfed').val() == 0 ||
+                                 $('#fk_id_formapago').val() == 0;
+   if ($('#fk_id_formapago').val() == "03" && ($('#s_cta_banco').val() == "" || $('#fk_id_banco').val() == 0)) {
+     alertify.error("Banco y número de cuenta es requerido");
+      return false;
+   }
+
+   validacionDatosLaborales =  $('#fk_id_depto').val() == "" ||
+                               $('#s_puesto_actividad').val() == "" ||
+                               $('#d_fechaContrato').val() == "" ||
+                               $('#fk_id_contrato').val() == "" ||
+                               $('#fk_id_jornada').val() == "" ||
+                               $('#fk_id_riesgo').val() == 0 ||
+                               $('#fk_id_pago').val() == 0 ||
+                               $('#s_activo').val() == 0 ||
+                               $('#s_pagar').val() == 0 ;
+
+    if ($('#s_activo').val() == "N" && $('#d_fechaBaja').val() == "") {
+     alertify.error("La fecha de baja es requerida");
+     return false;
+    }
+    if ($('#s_activo').val() == "S" && $('#d_fechaContrato').val() == "") {
+     alertify.error("La fecha de contrato es requerida");
+     return false;
+    }
+
+     validarDistSalarios = $('#n_porcentajeTotal').val() == "" ||
+                           $('#n_porcentajeTotal').val() != "100";
+
     var data = {
       pk_id_empleado: $('#pk_id_empleado').attr('db-id'),
       s_nombre: $('#s_nombre').val(),
@@ -426,7 +448,7 @@ $('#validarDistSalarios').click(function(){
       fk_id_jornada: $('#fk_id_jornada').val(),
       fk_id_riesgo: $('#fk_id_riesgo').val(),
       fk_id_pago: $('#fk_id_pago').val(),
-      fk_id_regimen: $('#fk_id_regimen').val(),
+      fk_id_regimen: regimen,
       s_email_laboral: $('#s_email_laboral').val(),
       s_observaciones: $('#s_observaciones').val(),
       s_activo: $('#s_activo').val(),
@@ -442,12 +464,12 @@ $('#validarDistSalarios').click(function(){
       n_desc_infonavit_porcent: $('#n_desc_infonavit_porcent').val(),
       n_desc_infonavit_cuota: $('#n_desc_infonavit_cuota').val(),
       n_desc_infonavit_VSM: $('#n_desc_infonavit_VSM').val(),
-      n_salario_mensual: $('#n_salario_mensual').val(),
+      n_salario_mensual: salario_semanal,
       n_salario_semanal: $('#n_salario_semanal').val(),
       n_factor_integracion: $('#n_factor_integracion').val(),
       n_cuota_integral_salario: $('#n_cuota_integral_salario').val(),
       n_salario_integrado: $('#n_salario_integrado').val(),
-      n_ISR: $('#n_ISR').val(),
+      n_ISR: isr,
       s_incapacidad_pgo: $('#s_incapacidad_pgo').val(),
       n_incapacidad_dias: $('#n_incapacidad_dias').val(),
       fk_tipoIncapacidad: $('#fk_tipoIncapacidad').val(),
@@ -486,24 +508,35 @@ $('#validarDistSalarios').click(function(){
       s_desc_pensionAlim_entregado: $('#s_desc_pensionAlim_entregado').val()
     }
 
-    $.ajax({
-      type: "POST",
-      url: "/conta6/Ubicaciones/Nomina/SueldosySalarios/empleados/actions/editar.php",
-      data: data,
-      success: 	function(r){
-        r = JSON.parse(r);
-        if (r.code == 1) {
-          listaEmpleados();
-          swal("Exito", "La cuenta se actualizó correctamente.", "success");
-        } else {
-          console.error(r.message);
+
+    if (validacionDatosGenerales) {
+      swal("Error","Los campos marcados con (*) en Datos Generales, son obligatorios","error");
+    }else if (validacionDatosLaborales) {
+      swal("Error","Los campos marcados con (*) en Datos Laborales, son obligatorios","error");
+    }else if (validarDistSalarios) {
+      swal("Error","Favor de verificar el campo total debe ser 100%","error");
+    }
+    else{
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Nomina/SueldosySalarios/empleados/actions/editar.php",
+        data: data,
+        success: 	function(r){
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            listaEmpleados();
+            swal("Exito", "La cuenta se actualizó correctamente.", "success");
+            $('.modal').modal('hide');
+
+          } else {
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
         }
-      },
-      error: function(x){
-        console.error(x);
-      }
-    });
-    $('.modal').modal('hide');
+      });
+    }
   })
 });
 
@@ -525,42 +558,10 @@ function Salario_Int(){
 }
 
 
-function validaCURP(){
-   curp =  $('#s_CURP_add').val();
-    if (curp.match(/^([a-z]{4})([0-9]{6})([a-z]{6})([0-9]{2})$/i)) {
-      $('#s_CURP_add').css('cssText','color:rgb(255, 255, 255) !important');
-     return true;
-   }else {
-     $('#s_CURP_add').css('cssText','color:rgb(255, 0, 0) !important');
-     alertify.error("CURP incorrecto");
-     return false;
-   }
-}
-
-
-
-// $('#fk_id_regimen_add').change(function(){
-//   if ($('#fk_id_regimen_add').val() == 2) {
-//     $('#regimen').show();
-//     $('#txtSueldos').show();
-//     $('#txtHon').hide();
-//   }else if ($('#fk_id_regimen_add').val() == 9) {
-//     $('#regimen').show();
-//     $('#txtHon').show();
-//     $('#txtSueldos').hide();
-//   }
-// });
-
-
 $('#filtroRegimen').change(function(){
   listaEmpleados();
   regimen = $('#filtroRegimen').val();
-
-  if (regimen == 2) {
-// datos del modal sueldos
-  }else if (regimen == 9) {
-// datos del modal honorarios
-  }
+  $('#empleados_rt_search').data('regimen', regimen);
 });
 
 function listaEmpleados(){
@@ -595,10 +596,31 @@ function calcularISR(){
         r = JSON.parse(r);
         if (r.code == 1) {
           $('#n_ISR_add').val(r.data);
-
-          // calcular Sueldo a Pagar
           salarioSemanal =  $('#n_salario_semanal_hon').val();
           isr_add = $('#n_ISR_add').val();
+          salario_dia = salarioSemanal - isr_add;
+          $('#hon_spgo').val(salario_dia);
+        }
+      }
+    });
+  }
+}
+
+function calcularISRmodal(){
+  var data = {
+    salario_diario: $('#h_salario_mensual').val()
+  }
+  if (data.salario_diario > 0) {
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Nomina/SueldosySalarios/empleados/actions/calculoISR.php",
+      data: data,
+      success: 	function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          $('#n_ISR').val(r.data);
+          salarioSemanal =  $('#h_salario_mensual').val();
+          isr_add = $('#n_ISR').val();
           salario_dia = salarioSemanal - isr_add;
           $('#hon_spgo').val(salario_dia);
         }

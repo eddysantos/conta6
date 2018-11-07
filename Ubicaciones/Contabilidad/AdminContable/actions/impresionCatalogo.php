@@ -71,29 +71,7 @@ $catalogoCuentas .='<style>
     <td class="bg" width="10%">CodAgrup SAT</td>
     <td class="bg" width="8%">NATUR SAT</td>
   </tr>';
-
-  // <tr>
-  //     <td>CUENTA</td>
-  //     <td>DESCRIPCION</td>
-  //     <td>TIPO</td>
-  //     <td>NIVEL</td>
-  //     <td>LINEA DE CAPTURA</td>
-  //     <td>CodAgrup SAT</td>
-  //     <td>NATUR SAT</td>
-  //     <td>CON DATOS</td>
-  //     <td>PERTENECE A:</td>
-  //     <td>IDENTIDICADOR</td>
-  //   </tr>
 while ($row = $rslt->fetch_assoc()) {
-  // if( $row['s_cta_status'] == 1 ){ $txt_captura = "Permitido"; }else{ $txt_captura = "Denegado"; }
-  // if( $row['s_cta_actividad'] == 1 ){
-  //   $img = '';
-  //   // $img = '<img src="/conta6/Resources/iconos/check.svg" style="margin-top:-4px" class="w-25">';
-  // }else{
-  //   $img = '';
-  //   // $img = '<img src="/conta6/Resources/iconos/cross.svg" style="margin-top:-4px" class="w-25">';
-  // }
-
   $cuenta = $row['pk_id_cuenta'];
   $desc = $row['s_cta_desc'];
   $tipo =  $row['s_cta_tipo'];
@@ -112,19 +90,6 @@ while ($row = $rslt->fetch_assoc()) {
       <td class="bbottom" width="8%">'.$natur.'</td>
     </tr>';
 }
-
-// <tr>
-//     <td>'.$cuenta.'</td>
-//     <td>'.$desc.'</td>
-//     <td>'.$tipo.'</td>
-//     <td>'.$nivel.'</td>
-//     <td>'.$txt_captura.'</td>
-//     <td>'.$codAgrup.'</td>
-//     <td>'.$natur.'</td>
-//     <td>'.$img.'</td>
-//     <td>'.$tipo_ident.'</td>
-//     <td>'.$cta_ident.'</td>
-//   </tr>
 $catalogoCuentas .='</tbody></table><br>';
 
 

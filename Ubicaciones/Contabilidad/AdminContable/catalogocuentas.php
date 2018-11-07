@@ -14,7 +14,6 @@
       <div class="encabezado font16" data-toggle="collapse" href="#CuentasMaestras">
         <a href="#">GENERAR CUENTAS MAESTRAS (Primer Nivel)</a>
       </div>
-      <!-- <div id="CuentasMaestras" class="card-block collapse"> -->
       <div id="CuentasMaestras" class="collapse">
         <form class="form1" id="LimpiezaCuentasMaestras">
           <table class="table mb-0">

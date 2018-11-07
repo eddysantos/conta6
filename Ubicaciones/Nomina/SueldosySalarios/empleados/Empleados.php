@@ -37,7 +37,7 @@
         </select>
        </td>
       <td class="col-md-3">
-        <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." table-body="#registrosEmpleados"  action="mostrar">
+        <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." id='empleados_rt_search' table-body="#registrosEmpleados"  action="mostrar" data-fk_id_aduana="<?php echo $aduana ?>" data-regimen="2">
      </td>
     </tr>
   </table>

@@ -61,19 +61,19 @@ $(document).ready(function () {
 	}
 		break;
 /*Comienza Editar Honorarios*/
-	case "Hon":
-	if (status == 'cerrado') {
-		$('#hon_has').fadeIn();
-		$(this).attr('status', 'abierto');
-		$(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-		$(this).css('font-size', '15px');
-	} else {
-		$('#hon_has').fadeOut();
-		$(this).attr('status', 'cerrado');
-		$(this).css('color', "");
-		$(this).css('font-size', "");
-	}
-		break;
+	// case "Hon":
+	// if (status == 'cerrado') {
+	// 	$('#hon_has').fadeIn();
+	// 	$(this).attr('status', 'abierto');
+	// 	$(this).css('cssText', 'color: rgb(209, 28, 28) !important');
+	// 	$(this).css('font-size', '15px');
+	// } else {
+	// 	$('#hon_has').fadeOut();
+	// 	$(this).attr('status', 'cerrado');
+	// 	$(this).css('color', "");
+	// 	$(this).css('font-size', "");
+	// }
+	// 	break;
 
 		case "gnominaHon":
     if (status == 'cerrado') {

@@ -58,6 +58,18 @@ function validaRFC(Obj){
 	}
 }
 
+function validaCURP(Obj){
+   CURP =  $(Obj).val();
+    if (CURP.match(/^([a-z]{4})([0-9]{6})([a-z]{6})([0-9]{2})$/i)) {
+      $(Obj).css('cssText','color:rgb(0, 0, 0) !important');
+     return true;
+   }else {
+     $(Obj).css('cssText','color:rgb(255, 0, 0) !important');
+     alertify.error("CURP incorrecto");
+     return false;
+   }
+}
+
 function eliminaBlancosIntermedios(frmObj){
   texto = $(frmObj).val();
   texto = $.trim(texto.replace(/\s+/g," "));

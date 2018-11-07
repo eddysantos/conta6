@@ -34,6 +34,11 @@ $(document).ready(function(){
     });
 
 
+    $('.mostrarbusqueda').click(function(){
+      $('#repoPed').fadeIn();
+      $('#buscarRef').slideUp();
+    });
+
     $('#mostrarConsulta').submit(function(){
       $('#repoPed').fadeIn();
       $('#buscarRef').slideUp();

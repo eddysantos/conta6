@@ -249,7 +249,6 @@
               <tr class="row justify-content-end mt-5">
                 <td class="col-md-2">
                   <a href="#" id="validarDtosLaborales" class="linkbtn">Siguiente <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                  <!-- <button id="validarDtosLaborales" type="button" class="btn btn-primary">Siguiente</button> -->
                 </td>
               </tr>
             </tfoot>
@@ -360,7 +359,7 @@
         </form>
       </div>
 
-      <div class="contorno pb-0 mt-0" id="honorariosAsim" style="display:none">
+      <div class="contorno pb-0 mt-0" id="honorariosAsim">
         <form class="form1">
           <table class="table">
             <tbody>
