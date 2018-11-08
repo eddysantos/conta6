@@ -6,14 +6,14 @@ require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
 
 $cuenta = trim($_GET['cuenta']);
 $txt_id_asoc = 'No';
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
+require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosGenerales.php';
+require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
+require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
+require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
+require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
+require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
 
-$nombreArchivo = $fk_referencia.'_'.$pk_id_cuenta_captura.'profCtaGastos.pdf';
+$nombreArchivo = $fk_referencia.'_'.$pk_id_cuenta_captura.'_profNC.pdf';
 
 class MYPDF extends TCPDF {
   public function Header() {
@@ -23,7 +23,7 @@ class MYPDF extends TCPDF {
     $this->SetFont('helvetica', '', 10);
     $this->Cell(0, 0, date('m-d-Y', strtotime('today')) , 0, 1, 'R', 0, '', 0, false, 'T', 'C');
     $this->SetFont('helvetica', '', 12);
-    $this->Cell(0, 12, 'CUENTA DE GASTOS', 0, 1, 'C', 0, '', 0, false, 'T', 'C');
+    $this->Cell(0, 12,'PROFORMA NOTA DE CRÉDITO', 0, 1, 'C', 0, '', 0, false, 'T', 'C');
   }
 
   public function Footer() {
@@ -84,16 +84,14 @@ $EmbarqueYCliente = '<style>
     </td>
     <td width="50%">
       <table class="border">
-        <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)"><td width="100%" align="center">PROFORMA CUENTA DE GASTOS</td></tr>
+        <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)"><td width="100%" align="center">PROFORMA NOTA DE CREDITO</td></tr>
         <tr><td width="100%" align="center">'.$pk_id_cuenta_captura.'</td></tr>
       </table>
       <br/>
       <br/>
       <table class="border">
         <thead>
-          <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
-            <td width="100%" align="center">INFORMACIÓN GENERAL DEL EMBARQUE</td>
-          </tr>
+          <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)"><td width="100%" align="center">INFORMACIÓN GENERAL DEL EMBARQUE</td></tr>
         </thead>
         <tbody>
           '.$impresionDatosEmbarque.'

@@ -19,6 +19,8 @@
   $id_cliente = $fk_id_cliente;
   require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago
 
+  $nombreArchivo = $fk_referencia.'_'.$pk_id_factura.'facturaElectronica.pdf';
+
   if ($rows_datosCLTformaPago > 0 ) {
     while ($row_datosCLTformaPago = $rslt_datosCLTformaPago->fetch_assoc()) {
       $fk_id_formaPago = $row_datosCLTformaPago['fk_id_formapago'];
@@ -55,7 +57,7 @@ class MYPDF extends TCPDF {
     $this->SetFont('helvetica', '', 10);
     $this->Cell(0, 0, date('m-d-Y', strtotime('today')) , 0, 1, 'R', 0, '', 0, false, 'T', 'C');
     $this->SetFont('helvetica', '', 12);
-    $this->Cell(0, 12, 'FACTURA ELECTRONICA', 0, 1, 'C', 0, '', 0, false, 'T', 'C');
+    $this->Cell(0, 12, 'FACTURA ELECTRÓNICA', 0, 1, 'C', 0, '', 0, false, 'T', 'C');
   }
 
   public function Footer() {
@@ -69,6 +71,14 @@ $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 $pdf->SetFont('courier', '', 9);
 $pdf->AddPage();
 
+if( !is_null($d_fechaVencimiento) ){
+  $txt_fechaVencimiento = '<tr bgcolor="#e00000" color="rgb(255, 255, 255)" align="center">
+                              <td width="100%"><b>FECHA VENCIMIENTO</b></td>
+                            </tr>
+                            <tr>
+                              <td width="100%">'.$d_fechaVencimiento.'</td>
+                            </tr>';
+}else{ $txt_fechaVencimiento = ""; }
 
 $ClienteYFactura = '<style>
    .border{
@@ -103,12 +113,7 @@ $ClienteYFactura = '<style>
     <td width="55%">
       <table class="border">
         <thead>
-          <tr bgcolor="#e00000" color="rgb(255, 255, 255)" align="center">
-            <td width="100%"><b>FECHA VENCIMIENTO</b></td>
-          </tr>
-          <tr>
-            <td width="100%">'.$d_fechaVencimiento.'</td>
-          </tr>
+          '.$txt_fechaVencimiento.'
           <tr bgcolor="#e00000" color="rgb(255, 255, 255)" align="center">
             <td width="20%"><b>FACTURA</b></td>
             <td width="45%"><b>NO.CERTIFICADO</b></td>
@@ -419,7 +424,7 @@ $pdf->writeHTML($pgosxCuentaCliente, true, false, true, false, 'C');
 $pdf->writeHTML($conceptosYtot, true, false, true, false, '');
 
 
-$pdf->Output('ImpresionCuentaGtos.pdf', 'I');
+$pdf->Output($nombreArchivo, 'I');
 
 
 ?>

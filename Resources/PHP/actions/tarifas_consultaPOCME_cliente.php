@@ -5,7 +5,7 @@
 //                                 WHERE A.fk_id_concepto = B.fk_id_conceptoHon AND A.fk_id_tarifa=$calculoTarifa AND A.s_seccion = 'POCME' and A.fk_id_cliente = '$id_cliente_usar'
 //                                 ORDER BY B.s_Concepto_esp";
 
-$query_conTarifaPOCMEcliente = "SELECT A.fk_id_concepto,b.s_concepto_eng,s_conceptoesp,n_cantidad,n_importe,A.fk_id_cuenta
+$query_conTarifaPOCMEcliente = "SELECT A.fk_id_concepto,B.s_concepto_eng,s_conceptoesp,n_cantidad,n_importe,A.fk_id_cuenta
                                 FROM conta_tem_tarifas_calculodetalle A, conta_tarifas_conceptos B
                                 WHERE A.fk_id_concepto = B.pk_id_concepto AND A.fk_id_tarifa=$calculoTarifa AND A.s_seccion = 'POCME' and A.fk_id_cliente = '$id_cliente_usar'
                                 ORDER BY A.s_Conceptoesp";
