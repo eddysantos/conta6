@@ -29,7 +29,9 @@ if( $total_consultaDepositos > 0 ) {
 	while( $row_consultaDepositos = $rslt_consultaDepositos->fetch_assoc() ){
 		$pk_id_partida = $row_consultaDepositos['pk_id_partida'];
 		$n_noDeposito = $row_consultaDepositos['n_noDeposito'];
-		$n_total = number_format($row_consultaDepositos['n_total'],2,'.','');
+		$n_total = $row_consultaDepositos['n_total'];
+
+		$n_total_2 = number_format($row_consultaDepositos['n_total'],2,'.',',');
 
 		$datosDepositos .= "<div class='row ls1'>
 							<div class='col-md-6 text-right'>$n_noDeposito :</div>
@@ -39,7 +41,7 @@ if( $total_consultaDepositos > 0 ) {
 
 		$datosDepositosImprimir .= '<tr>
 				<td width ="50%">'.$n_noDeposito.':</td>
-				<td width ="50%">$ '.$n_total.'</td>
+				<td width ="50%">$ '.$n_total_2.'</td>
 			</tr>';
 
 		$depositosAplicados .= "<tr class='row elemento-depositos'>

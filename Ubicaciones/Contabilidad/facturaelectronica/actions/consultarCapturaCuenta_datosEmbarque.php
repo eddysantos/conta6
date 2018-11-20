@@ -28,7 +28,7 @@ if( $total_consultaEmbarque > 0 ) {
 	$datosEmbarque = '';
 	$impresionDatosEmbarque = '';
 	$datosEmbarqueModifi = '';
-	
+
 	while( $row_consultaEmbarque = $rslt_consultaEmbarque->fetch_assoc() ){
 		++$count;
 

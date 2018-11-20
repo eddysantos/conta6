@@ -154,9 +154,34 @@ $(document).ready(function(){
 
 
 // SOLICITUD DE ANTICIPO
-  $('#mostrarConsulta').submit(function(){
+  $('#mostrarConsulta-trafico').submit(function(){
     $('#repoSol').fadeIn();
     $('#buscarRef').slideUp();
+
+    var data = {
+      id_captura: $('#bRef').val(),
+      accion: 'consulMod'
+    }
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_lstCapturadas.php",
+      data: data,
+      success: 	function(r){
+        console.log(r);
+      r = JSON.parse(r);
+        if (r.code == 1) {
+          console.log(r);
+          $('#lst_proformas').html(r.data);
+        } else {
+          swal("Error", "La cuenta o Referencia no existen", "error");
+          console.error(r.message);
+        }
+      },
+      error: function(x){
+        console.error(x);
+      }
+    });
+
   });
 
   $('#mostrarGenerar').submit(function(){

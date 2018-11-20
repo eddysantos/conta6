@@ -73,7 +73,7 @@ if( $total_ctaGastos > 0 ){
 				<tr class='row borderojo font14'>
 					<td class='col-md-1'>
 						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFileXML&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/xml.svg'></a>
-						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>
+						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.pdf&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>
 					</td>
 					<td class='col-md-1'>$d_fechaTimbrado</td>
 					<td class='col-md-1'>$id_factura</td>
@@ -91,7 +91,8 @@ if( $total_ctaGastos > 0 ){
 
 		if( $accion == 'cancelar' ){
 			if( $s_cancela_factura == 1){ #si la factura esta cancelada, download Acuse de cancelacion
-				$hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>";
+				$hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFileXMLcancela&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/xml.svg'></a>";
+				$hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.pdf&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>";
 			}
 
 			if( $s_cancela_factura == 0 ){ #si la factura esta activa

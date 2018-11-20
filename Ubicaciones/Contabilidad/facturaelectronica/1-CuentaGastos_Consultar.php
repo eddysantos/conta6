@@ -240,7 +240,7 @@
 
 <!--Esta informacion si estara visible SOLICITUD-->
 <?php
-if( $s_UUID != '' ){ ?>
+if( $s_UUID != '' && $accion == 'cancelar' ){ ?>
 <div class="contorno">
   <h5 class="titulo font14 b">ESTADO DEL COMPROBANTE</h5>
 
@@ -266,7 +266,7 @@ if( $s_UUID != '' ){ ?>
         $fechaActual = date("Y/m", time());
         $fechaActual2 = date("Y/m/d h:m:s", time());
         $txt_evaluar = evaluarCancelarFactura($fechaTimbrado,$n_total_gral);
-        $hrefcancela = "<a href='#' onclick='cancelarFactura($id_factura)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
+          $hrefcancela = "<a href='#' onclick='cancelarFactura($id_factura)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
 
       if( $total_estadoCancela == 0 ){
         echo "
