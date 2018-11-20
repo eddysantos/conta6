@@ -1567,9 +1567,11 @@ $('#modificar-cta').click(function(){
         success: 	function(r){
           r = JSON.parse(r);
           if (r.code == 1) {
-            console.log(r);
+            //console.log(r);
+            folio = r.data;
             alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
-              setTimeout('document.location.reload()',700);
+              //setTimeout('document.location.reload()',700);
+              setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
             });
 
           } else {
@@ -1749,18 +1751,10 @@ $('#guardar-cta').click(function(){
           r = JSON.parse(r);
           if (r.code == 1) {
             folio = r.data;
-// <<<<<<< HEAD
-            // swal("Folio: "+folio, "generado correctamente", "success");
-
             alertify.alert('Folio: '+folio, 'Generado correctamente' , function(){
-              setTimeout('document.location.reload()',700);
+              //setTimeout('document.location.reload()',700);
+              setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
             });
-
-// =======
-//             swal("Folio: "+folio, "generado correctamente", "success");
-//             //setTimeout('document.location.reload()',700);
-//             //setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
-// >>>>>>> origin/be_facturaElectronica
           } else {
             console.error(r.message);
           }
@@ -1847,12 +1841,18 @@ function timbrarFactura(cuenta,referencia,cliente){
         r = JSON.parse(r);
         console.log(r);
         if (r.code == 1) {
-          $('#respTimbrado').val(r);
+          //$('#respTimbrado').val(r);
           resp = r.message;
           $('.overlay').remove();
-          swal("Timbrar Factura",resp, "success");
-          console.error(r.message);
-          //setTimeout('document.location.reload()',700);
+
+          swal({
+            title: 'Timbrar Factura',
+            text: resp,
+            type: 'success'
+            }, function() {
+                setTimeout('document.location.reload()',700);
+            });
+
         }else if( r.code == 3 ) {
           resp = r.message;
           $('.overlay').remove();

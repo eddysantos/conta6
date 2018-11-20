@@ -22,7 +22,7 @@
 
   if( $rows_facTimbrada > 0 ){
     while( $row_facTimbrada = $rslt_facTimbrada->fetch_assoc() ){
-      $id_factura = $row_facTimbrada['pk_id_factura'];
+      $id_factura = $row_facTimbrada['pk_id_notacredito'];
       $id_poliza = $row_facTimbrada['fk_id_poliza'];
       $s_UUID = $row_facTimbrada['s_UUID'];
       $usuario_timbra = $row_facTimbrada['fk_usuario'];

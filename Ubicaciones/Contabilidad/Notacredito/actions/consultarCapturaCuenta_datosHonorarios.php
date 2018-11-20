@@ -40,13 +40,19 @@ if( $total_consultaHonorarios > 0 ) {
 		$fk_c_ClaveProdServ = $row_consultaHonorarios['fk_c_ClaveProdServ'];
 		$fk_id_cuenta = $row_consultaHonorarios['fk_id_cuenta'];
 		$s_conceptoEsp = utf8_encode($row_consultaHonorarios['s_conceptoEsp']);
-		$n_importe = number_format($row_consultaHonorarios['n_importe'],2,'.',',');
-		$n_IVA = number_format($row_consultaHonorarios['n_IVA'],2,'.',',');
-		$n_ret = number_format($row_consultaHonorarios['n_ret'],2,'.',',');
-		$n_total = number_format($row_consultaHonorarios['n_total'],2,'.',',');
+		$n_importe = $row_consultaHonorarios['n_importe'];
+		$n_IVA = $row_consultaHonorarios['n_IVA'];
+		$n_ret = $row_consultaHonorarios['n_ret'];
+		$n_total = $row_consultaHonorarios['n_total'];
     $pk_id_partida = $row_consultaHonorarios['pk_id_partida'];
     $fk_c_claveUnidad = $row_consultaHonorarios['fk_c_claveUnidad'];
     $s_unidad = $row_consultaHonorarios['s_unidad'];
+
+
+    $n_importe_2 = number_format($row_consultaHonorarios['n_importe'],2,'.',',');
+		$n_IVA_2 = number_format($row_consultaHonorarios['n_IVA'],2,'.',',');
+		$n_ret_2 = number_format($row_consultaHonorarios['n_ret'],2,'.',',');
+		$n_total_2 = number_format($row_consultaHonorarios['n_total'],2,'.',',');
 
     if( $fk_id_cuenta == '0400-00001' ){
       $porcentajeModifi = $row_consultaHonorarios['n_porcentaje'];
@@ -58,7 +64,7 @@ if( $total_consultaHonorarios > 0 ) {
     	$Hono_Total = $n_importe * $tipoCambio;
     }else{ $Hono_Total = $n_importe;}
 
-    $detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',0,".$Hono_Total."),";
+    $detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',".$id_facturaRelacionada.",0,".$Hono_Total.",0),";
 
 		$datosHonorarios = $datosHonorarios."<div class='row b font12 ls1'>
           <div class='col-md-4 text-left'>$s_conceptoEsp</div>
@@ -79,10 +85,10 @@ if( $total_consultaHonorarios > 0 ) {
 
     $datosHonorariosPrint = $datosHonorariosPrint."<div class='row b font12 ls1'>
           <div class='col-md-4 text-left'>$s_conceptoEspPrint</div>
-          <div class='col-md-2'>$n_importe</div>
-          <div class='col-md-2'>$n_IVA</div>
-          <div class='col-md-2'>$n_ret</div>
-          <div class='col-md-2'>$ $n_total</div>
+          <div class='col-md-2'>$n_importe_2</div>
+          <div class='col-md-2'>$n_IVA_2</div>
+          <div class='col-md-2'>$n_ret_2</div>
+          <div class='col-md-2'>$ $n_total_2</div>
         </div>";
 
 
@@ -96,10 +102,10 @@ if( $total_consultaHonorarios > 0 ) {
 
     $datosHonorariosImprimir = $datosHonorariosImprimir.'<tr>
           <td width="52%">'.$s_conceptoEsp.'</td>
-          <td width="12%">'.$n_importe.'</td>
-          <td width="12%">'.$n_IVA.'</td>
-          <td width="12%">'.$n_ret.'</td>
-          <td width="12%">$ '.$n_total.'</td>
+          <td width="12%">'.$n_importe_2.'</td>
+          <td width="12%">'.$n_IVA_2.'</td>
+          <td width="12%">'.$n_ret_2.'</td>
+          <td width="12%">$ '.$n_total_2.'</td>
         </tr>';
 
     if( $idFila > 1 ){ $botonEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";}

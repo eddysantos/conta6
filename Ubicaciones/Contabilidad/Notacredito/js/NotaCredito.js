@@ -45,6 +45,40 @@ $(document).ready(function(){
     });
 
 
+
+
+    $('#b-facturas').click(function(){
+      buscar = $('#bRef').val();
+      accion = 'facturas';
+      if( buscar != "" ){
+        window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_buscar.php?buscar='+buscar+'&accion='+accion);
+      }else{
+        alertify.error("No hay resultados");
+      }
+    });
+
+    $('#b-proforma').click(function(){
+      buscar = $('#bRef').val();
+      accion = 'proformaNC';
+      if( buscar != "" ){
+        window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_buscar.php?buscar='+buscar+'&accion='+accion);
+      }else{
+        alertify.error("No hay resultados");
+      }
+    });
+
+    $('#b-notacredito').click(function(){
+      buscar = $('#bRef').val();
+      accion = 'notacredito';
+      if( buscar != "" ){
+        window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_buscar.php?buscar='+buscar+'&accion='+accion);
+      }else{
+        alertify.error("No hay resultados");
+      }
+    });
+
+
+
     $('#guardar-cta-NC').click(function(){
       Suma_Subtotales();
       if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
@@ -213,18 +247,10 @@ $(document).ready(function(){
               r = JSON.parse(r);
               if (r.code == 1) {
                 folio = r.data;
-    // <<<<<<< HEAD
-                // swal("Folio: "+folio, "generado correctamente", "success");
-
-                alertify.alert('Folio: '+folio, 'Generado correctamente' , function(){
+                alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
                   //setTimeout('document.location.reload()',700);
+                  setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php')",700);
                 });
-
-    // =======
-    //             swal("Folio: "+folio, "generado correctamente", "success");
-    //             //setTimeout('document.location.reload()',700);
-    //             //setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
-    // >>>>>>> origin/be_facturaElectronica
               } else {
                 console.error(r.message);
               }
@@ -400,7 +426,7 @@ $(document).ready(function(){
             data.depositosDisponibles[i] = parsed_data;
           });
 
-          console.log(data);
+          //console.log(data);
 
           $.ajax({
             type: "POST",
@@ -409,11 +435,12 @@ $(document).ready(function(){
             success: 	function(r){
               r = JSON.parse(r);
               if (r.code == 1) {
-
-                console.log(r);
-                //folio = r.data;
-                swal("Folio: "+folio, "actualizado correctamente", "success");
-                //setTimeout('document.location.reload()',700);
+                //console.log(r);
+                folio = r.data;
+                alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
+                  //setTimeout('document.location.reload()',700);
+                  setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php')",700);
+                });
               } else {
                 console.error(r.message);
               }
@@ -428,6 +455,112 @@ $(document).ready(function(){
 
   });
 
-  function notacreditoCapturaImprimir(cuenta){
+
+  function genProfNC(cuenta,id_cliente){
+    window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_elaborar.php?cuenta='+cuenta+'&id_cliente='+id_cliente);
+  }
+
+  function imprimeProfNC(cuenta){
     window.open('impresionProformaNotacredito.php?cuenta='+cuenta);
+  }
+
+  function modificaProfNC(cuenta,id_cliente){
+    window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_modificar.php?cuenta='+cuenta+'&id_cliente='+id_cliente);
+  }
+
+  function consultaProfNC(cuenta,accion){
+    window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_consultar.php?cuenta='+cuenta+'&accion='+accion);
+  }
+  function cancelaProfNC(partida){
+    swal({
+    title: "Estas Seguro?",
+    text: "Ya no se podra recuperar el registro! "+ partida +" ",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonClass: "btn-danger",
+    confirmButtonText: "Si, Eliminar",
+    cancelButtonText: "No, cancelar",
+    closeOnConfirm: false,
+    closeOnCancel: false
+    },
+    function(isConfirm) {
+      if (isConfirm) {
+        var data = {
+          partida: partida
+        }
+        $.ajax({
+          type: "POST",
+          url: "/conta6/Ubicaciones/Contabilidad/Notacredito/actions/1-notacredito_eliminar.php",
+          data: data,
+
+            success: 	function(r){
+              r = JSON.parse(r);
+              console.log(r);
+              if (r.code == 1) {
+                swal("Eliminado!", "Se elimino correctamente.", "success");
+                setTimeout('document.location.reload()',700);
+              } else {
+                     console.error(r.message);
+              }
+          },
+          error: function(x){
+            console.error(x)
+          }
+        });
+      } else {
+        swal("Cancelado", "El registro esta a salvo :)", "error");
+      }
+    });
+  }
+
+  // Timbrar nota de crédito
+  function timbrarNC(cuenta,referencia,cliente){
+    var data = {
+      cuenta: cuenta,
+      referencia: referencia,
+      cliente: cliente
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito.php",
+      data: data,
+      beforeSend: function(){
+          $('body').append('<div class="overlay"><div class="overlay-loading">Timbrando Nota de Crédito ... Porfavor espere.</div></div>');
+      },
+
+        success: 	function(r){
+          r = JSON.parse(r);
+          console.log(r);
+          if (r.code == 1) {
+            $('#respTimbrado').val(r);
+            resp = r.message;
+            $('.overlay').remove();
+            // swal("Timbrar Factura",resp, "success");
+            console.error(r.message);
+            //setTimeout('document.location.reload()',700);
+            swal({
+              title: 'Timbrar Nota de crédito',
+              text: resp,
+              type: 'success'
+              }, function() {
+                  setTimeout('document.location.reload()',700);
+              });
+
+          }else if( r.code == 3 ) {
+            resp = r.message;
+            $('.overlay').remove();
+            swal("Respuesta del PAC:",resp, "error");
+            console.error(r.message);
+          }else{
+            resp = r.message;
+            $('.overlay').remove();
+            swal("Error",resp, "error");
+            console.error(r.message);
+          }
+      },
+      error: function(x){
+        console.error(x)
+      }
+    });
   }

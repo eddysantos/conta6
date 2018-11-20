@@ -20,12 +20,36 @@
   <div class="contenedor "id="buscarRef" style="display:none">
     <div class="row">
       <div class="col-md-1 offset-sm-8 p-0">
-        <a href="#" class="atras" accion="cuadroBusqueda">
+        <a href="#" class="fele" accion="cuadroBusqueda">
           <i class="back fa fa-arrow-left">Regresar</i>
         </a>
       </div>
     </div>
-    <div class="row titulograndetop transEff" id="referencia">
+<!-- INTENTO FALLIDO
+    <form class="form1">
+      <table class="table">
+        <thead>
+          <tr class="row encabezado font18">
+            <td class="col-md-12">GENERAR SOLICITUD DE ANTICIPO</td>
+          </tr>
+        </thead>
+        <tbody class="font18">
+          <tr class="row mt-5">
+            <td class="col-md-4 offset-md-3 input-effect">
+              <input class="efecto tiene-contenido popup-input" maxlength="9" id="bRef" type="text" id-display="#popup-display-solAnt-cReferencia" action="referencias" db-id="" autocomplete="off">
+              <div class="popup-list" id="popup-display-solAnt-cReferencia" style="display:none"></div>
+              <label for="solAnt-cReferencia">CON REFERENCIA</label>
+            </td>
+            <td class="col-md-2">
+              <a href="#" id="btn_buscarDatosEmbarque-solAnt" class="boton"> <i class="fa fa-search "></i> Consultar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="datosEmbarque-solAnt"></div>
+    </form>
+-->
+    <!--div class="row titulograndetop transEff" id="referencia">
       <div class="col-md-12">
         <label class="transEff" for="bRef" id="labelRef">Referencia o Solicitud</label>
       </div>
@@ -34,6 +58,20 @@
       <div class="col-md-12" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
         <input class="reg border-0 transEff" id="bRef" type="text">
+      </form>
+      </div>
+    </div>
+  </div-->
+
+  <div class="row justify-content-center" id="referencia">
+      <div class="col-md-6 titulograndetop transEff">
+        <label class="transEff" for="bRef" id="labelRef">Referencia o Proforma</label>
+      </div>
+    </div>
+    <div class="row justify-content-center" id="nReferencia">
+      <div class="col-md-6 intermedio transEff" id="mostrarConsulta-trafico">
+        <form  class="form-group" onsubmit="return false;">
+        <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
       </form>
       </div>
     </div>
@@ -53,7 +91,7 @@
       </thead>
       <tbody class="font16">
         <tr class="row encabezado font18">
-          <td class="col-md-12">Solicitud de Anticipo</td>
+          <td class="col-md-12">Solicitud de Anticipo llego</td>
         </tr>
         <tr class="row backpink">
           <td class="col-md-1"></td>
@@ -63,21 +101,8 @@
           <td class="col-md-1"></td>
           <td class="col-md-1"></td>
         </tr>
-        <tr class="row borderojo">
-          <td class="col-md-1">
-            <a href="SolEditar.php">
-              <img class="icomediano" src="/conta6/Resources/iconos/003-edit.svg">
-            </a>
-          </td>
-          <td class="col-md-2">280380</td>
-          <td class="col-md-2">N17003012</td>
-          <td class="col-md-6">CLT_6548 MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L DE C.V</td>
-          <td class="col-md-1">
-            <a href="SolConsultar.php"><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
-            <a href="#"><img class="icomediano ml-5" src="/conta6/Resources/iconos/printer.svg"></a>
-          </td>
-        </tr>
       </tbody>
+      <tbody id="lst_proformas"></tbody>
     </table>
   </div>
 
@@ -178,4 +203,6 @@
   </div>
 </div>
 
-<script src="../js/Trafico.js"></script>
+<?php
+require $root . '/conta6/Ubicaciones/footer.php';
+?>

@@ -84,7 +84,7 @@ $contentEncabezado .= '
       }
       $usuario = $row["fk_usuario"];
       $concepto = $row["s_concepto"];
-      $idpoliza = $row['id_poliza'];
+      $idpoliza = $row['pk_id_poliza'];
 
 
       $contentEncabezado .='<tr>

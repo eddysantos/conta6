@@ -42,7 +42,7 @@
           }elseif( $n_total_gral_importe <= 0 ){
               $hrefTimbrar = "Error: Es requerido cobro de honorarios";
             }else{
-              $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarFactura($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
+              $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarNC($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
                 <img class='icomediano' src='/conta6/Resources/iconos/timbrar.svg'>
               </a>";
             }
@@ -65,7 +65,7 @@
           }elseif( $n_total_gral_importe <= 0 ){
               $hrefTimbrar = "Error: Es requerido cobro de honorarios";
             }else{
-              $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarFactura($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
+              $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarNC($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
                 <img class='icomediano' src='/conta6/Resources/iconos/timbrar.svg'>
               </a>";
             }
@@ -94,7 +94,7 @@
     <a href="/Conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php">
       <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
     </a>
-    <a href='#' class="ml-4" onclick='notacreditoCapturaImprimir(<?php echo $cuenta; ?>)'>
+    <a href='#' class="ml-4" onclick='imprimeProfNC(<?php echo $cuenta; ?>)'>
       <img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'>
     </a>
     <?php } ?>
@@ -103,7 +103,7 @@
     <a href="/Conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php">
       <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
     </a>
-    <a href="#" class="ml-4" onclick='ctaGastosCapturaImprimir(<?php echo $cuenta ?>)'>
+    <a href="#" class="ml-4" onclick='imprimeProfNC(<?php echo $cuenta ?>)'>
       <img class="icomediano" src="/conta6/Resources/iconos/printer.svg">
     </a>
     <?php echo $hrefTimbrar; } ?>
@@ -201,13 +201,13 @@
         <td class="p-1 col-md-3"><?php echo $d_fecha_modifi; ?></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-3 text-left"> Nota credito generada: <?php echo '<b>'.$id_factura.'</b> --- '.$s_UUID; ?></td>
+        <td class="p-1 col-md-3 text-left"> Nota crédito generada: <?php echo '<b>'.$id_factura.'</b> --- '.$s_UUID; ?></td>
         <td class="p-1 col-md-3"><?php echo $id_poliza; ?></td>
         <td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
         <td class="p-1 col-md-3"><?php echo $fechaTimbre; ?></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-3 text-left"> Nota credito cancelada</td>
+        <td class="p-1 col-md-3 text-left"> Nota crédito cancelada</td>
         <td class="p-1 col-md-3"></td>
         <td class="p-1 col-md-3"><?php echo $usuario_Cancela; ?></td>
         <td class="p-1 col-md-3"><?php echo $fechaTimbreCancela; ?></td>
@@ -223,7 +223,7 @@ if( $s_UUID != '' ){ ?>
   <h5 class="titulo font14 b">ESTADO DEL COMPROBANTE</h5>
 
   <div class="row encabezado mt-5 m-0 font14">
-    <div class="col-md-4">Total Factura</div>
+    <div class="col-md-4">Total Nota Crédito</div>
     <div class="col-md-2">Estado</div>
     <div class="col-md-2">Es cancelable</div>
     <div class="col-md-2">Estatus</div>
@@ -243,8 +243,8 @@ if( $s_UUID != '' ){ ?>
         $fechaTimbrado = date_format(date_create($fechaTimbre),"Y-m-d");
         $fechaActual = date("Y/m", time());
         $fechaActual2 = date("Y/m/d h:m:s", time());
-        $txt_evaluar = evaluarCancelarFactura($fechaTimbrado,$n_total_gral);
-        $hrefcancela = "<a href='#' onclick='cancelarFactura($id_factura)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
+        $txt_evaluar = evaluarCancelarNC($fechaTimbrado,$n_total_gral);
+        $hrefcancela = "<a href='#' onclick='cancelarNC($id_factura)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
 
       if( $total_estadoCancela == 0 ){
         echo "
@@ -265,7 +265,7 @@ if( $s_UUID != '' ){ ?>
 <?php } ?>
 
 <div class="contorno">
-  <h5 class="titulo font14 b">NOTA DE CREDITO</h5>
+  <h5 class="titulo font14 b">NOTA DE CRÉDITO</h5>
   <div class="row encabezado font14 m-0">
     <div class="col-md-6">PAGOS O CARGOS EN USD</div>
     <div class="col-md-2 offset-md-2">IMPORTE</div>
@@ -342,15 +342,15 @@ if( $s_UUID != '' ){ ?>
      <tr bgcolor="#C0C0C0" align="center">
        <td>&nbsp;</td>
        <td>&nbsp;</td>
-       <td>Folio</td>
-       <td>Factura Relacionada </td>
+       <td>Factura</td>
+       <td>CFDI Relacionado </td>
        <td>Total</td>
        <td>&nbsp;</td>
        </tr>
      <tr align="center">
        <td>&nbsp;</td>
        <td>&nbsp;</td>
-       <td><input class="efecto h22" type="text" id="T_idFactura" size="14" value="<?php echo $pk_id_factura;?>" readonly></td>
+       <td><input class="efecto h22" type="text" id="T_idFactura" size="14" value="<?php echo $id_factura;?>" readonly></td>
        <td><input class="efecto h22" type="text" id="T_UUIDFactura" size="60" value="<?php echo $s_UUID;?>" readonly></td>
        <td><input class="efecto h22" type="text" id="T_totalFactura" size="20" value="<?php echo $n_total_factura;?>" readonly /></td>
        <td>&nbsp;</td>
@@ -466,7 +466,7 @@ if( $s_UUID != '' ){ ?>
 
 <!--script src="js/facturaElectronica.js"></script-->
 <?php
-function evaluarCancelarFactura($d_fechaTimbrado,$n_total_gral){
+function evaluarCancelarNC($d_fechaTimbrado,$n_total_gral){
 	#falta validar que no tenga NotaCredito o PagosElectronicos. -- NO CANCELABLE
 	$fechaTimbrado = date_format(date_create($d_fechaTimbrado),"Y/m/d");
 	$fachaSinAceptar = date("Y/m/d",strtotime ( '+3 day' , strtotime ( $d_fechaTimbrado ) ));

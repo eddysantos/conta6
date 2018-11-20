@@ -141,6 +141,7 @@ if( $Total_Gral_Importe > 0 ){
   $hon_cve_unidad = 'E48';
   $hon_unidad = 'Servicio';
 
+/*
   $query_hon1="INSERT INTO conta_t_notacredito_captura_det( fk_id_cuenta_captura_nc,
                                                           s_tipoDetalle,
                                                           n_cantidad,
@@ -179,7 +180,7 @@ if( $Total_Gral_Importe > 0 ){
       $system_callback['code'] = "500";
       $system_callback['message'] = "Error during query execution hon1 [$stmt_hon1->errno]: $stmt_hon1->error";
   }
-
+*/
   $honorarios = $_POST['honorarios'];
   $query_hon="INSERT INTO conta_t_notacredito_captura_det( fk_id_cuenta_captura_nc,
                                                             s_tipoDetalle,

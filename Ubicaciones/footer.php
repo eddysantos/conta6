@@ -11,7 +11,11 @@
   <script src="/conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/js/Beneficiarios.js"></script>
   <script src="/conta6/Ubicaciones/Contabilidad/facturaelectronica/js/facturaElectronica.js"></script>
   <script src="/conta6/Ubicaciones/Contabilidad/Notacredito/js/NotaCredito.js"></script>
-  
+
+  <script src="/conta6/Ubicaciones/Trafico/js/Trafico.js"></script>
+  <script src="/conta6/Ubicaciones/Trafico/SolicitudAnticipo/js/SolicitudAnticipo.js"></script>
+
+
 
   <script src="/conta6/Resources/js/validarFormulario.js"></script>
   <script src="/conta6/Resources/js/calculadora.js"></script>

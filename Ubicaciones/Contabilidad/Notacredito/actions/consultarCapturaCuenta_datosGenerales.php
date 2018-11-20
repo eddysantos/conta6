@@ -104,8 +104,8 @@ if( $total_consultaGenerales > 0 ) {
 	if( $fk_id_asoc == 1 ){ $txt_id_asoc = 'Si'; }
 
 	//datos de la factura a la que le corresponde
-	$pk_id_factura = $row_consultaGenerales['fk_id_factura'];
-	$s_UUID = $row_consultaGenerales['s_UUID_factura'];
+	$id_facturaRelacionada = $row_consultaGenerales['fk_id_factura'];
+	$s_UUID_factura = $row_consultaGenerales['s_UUID_factura'];
 	$n_total_factura = $row_consultaGenerales['n_total_factura'];
 }
 

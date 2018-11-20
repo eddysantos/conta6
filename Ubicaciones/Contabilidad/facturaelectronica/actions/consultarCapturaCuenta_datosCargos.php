@@ -36,7 +36,9 @@ if( $total_consultaCargos > 0 ) {
 		$fk_id_cuenta = $row_consultaCargos['fk_id_cuenta'];
 		$fk_id_concepto = $row_consultaCargos['fk_id_concepto'];
 		$s_conceptoEsp = utf8_encode($row_consultaCargos['s_conceptoEsp']);
-		$n_total = number_format($row_consultaCargos['n_total'],2,'.',',');
+		$n_total = $row_consultaCargos['n_total'];
+
+		$n_total_2 = number_format($row_consultaCargos['n_total'],2,'.',',');
 
 		$detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',0,".$n_total."),";
 
@@ -49,7 +51,7 @@ if( $total_consultaCargos > 0 ) {
 		$datosCargosImpresion .= '<tr>
 					<td width="10%"></td>
 					<td width="65%">'.$s_conceptoEsp.'</td>
-					<td width="15%">$ '.$n_total.'</td>
+					<td width="15%">$ '.$n_total_2.'</td>
 					<td width="10%"></td>
 				</tr>';
 

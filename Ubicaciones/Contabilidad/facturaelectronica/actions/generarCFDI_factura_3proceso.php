@@ -2,6 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors',1);
 
+$tipoProceso = "factura";
+
 # nombre de carpetas y rutas de almacenamiento
 require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_1path.php';
 
@@ -72,7 +74,7 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
          $root,$usuario,$db,$aduana,
          $moneda,$tipoCambio,$totalGralImporte,$totalGral,$IVAretenido,$totaGralIVA,$Total_Anticipos,$folioCtaGastos,
          $r_razon_social,$total_cta_gastos,$c_MetodoPago,$POCME_Total_MN,$fac_saldo,
-         $rutaRepFileHTML,$rutaRepFilePDF,$fileQR;
+         $rutaRepFileHTML,$rutaRepFilePDF,$rutaQRFile;
 
   require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_diasCredito.php';
   //$vencimiento = '0000-00-00';

@@ -1,6 +1,8 @@
 <?PHP
 
-$query_consultaCargos = "SELECT pk_id_partida,n_cantidad,fk_id_cuenta, fk_id_concepto, s_conceptoEsp,n_total FROM conta_t_notacredito_captura_det WHERE fk_id_cuenta_captura_nc = ? and s_tipoDetalle = 'cargos' ";
+$query_consultaCargos = "SELECT pk_id_partida,n_cantidad,fk_id_cuenta, fk_id_concepto, s_conceptoEsp,n_total
+												FROM conta_t_notacredito_captura_det
+												WHERE fk_id_cuenta_captura_nc = ? and s_tipoDetalle = 'cargos' ";
 
 $stmt_consultaCargos = $db->prepare($query_consultaCargos);
 if (!($stmt_consultaCargos)) {
@@ -36,9 +38,11 @@ if( $total_consultaCargos > 0 ) {
 		$fk_id_cuenta = $row_consultaCargos['fk_id_cuenta'];
 		$fk_id_concepto = $row_consultaCargos['fk_id_concepto'];
 		$s_conceptoEsp = utf8_encode($row_consultaCargos['s_conceptoEsp']);
-		$n_total = number_format($row_consultaCargos['n_total'],2,'.',',');
+		$n_total = $row_consultaCargos['n_total'];
 
-		$detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',0,".$n_total."),";
+		$n_total_2 = number_format($row_consultaCargos['n_total'],2,'.',',');
+
+		$detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',".$id_facturaRelacionada.",0,".$n_total.",0),";
 
 		$datosCargos .= "<div class='row b font12'>
 					<div class='col-md-6 text-left ls1'>$s_conceptoEsp</div>
@@ -49,7 +53,7 @@ if( $total_consultaCargos > 0 ) {
 		$datosCargosImpresion .= '<tr>
 					<td width="10%"></td>
 					<td width="65%">'.$s_conceptoEsp.'</td>
-					<td width="15%">$ '.$n_total.'</td>
+					<td width="15%">$ '.$n_total_2.'</td>
 					<td width="10%"></td>
 				</tr>';
 

@@ -447,13 +447,13 @@ if($referencia != "SN"){
           </thead>
           <tbody class='font14 text-center'>
             <tr class="row">
-              <td class="p-1 col-md-3 text-left b"><b>Cta. generada <?php echo $pk_id_cuenta_captura; ?></b> </td>
+              <td class="p-1 col-md-3 text-left b"><b>Cta. generada</b> </td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3">
                 <input class="h22 bt border-0 text-center" type="text" id="T_Usuario" size="20"value="<?php echo $fk_usuario; ?>" readonly>
               </td>
               <td class="p-1 col-md-3">
-                <input class="h22 bt border-0 text-center" type="text" id="T_Fecha_Cta" size="20" value="<?php echo date_format(date_create($d_fecha_cta),"d-m-Y h:i:s");?>" readonly>
+                <input class="h22 bt border-0 text-center" type="text" id="T_Fecha_Cta" size="20" value="" readonly>
               </td>
             </tr>
 
@@ -494,8 +494,8 @@ if($referencia != "SN"){
           <tbody class="font14" id='tbodyDGE'>
             <tr class="row borderojo">
               <td class="col-md-4 b"><?php echo $fk_id_aduana;?></td>
-              <td class="col-md-4"><input class="efecto h22 border-0" type="text" id="id_cuenta_captura" value="<?php echo $pk_id_cuenta_captura; ?>"></td>
-              <td class="col-md-4 b"><?php echo date_format(date_create($d_fecha_cta),"d-m-Y h:i:s");?></td>
+              <td class="col-md-4"><input class="efecto h22 border-0" type="text" id="id_cuenta_captura" value=""></td>
+              <td class="col-md-4 b"></td>
             </tr>
             <?php echo $datosEmbarqueModifi; ?>
           </tbody>
@@ -821,10 +821,11 @@ if($referencia != "SN"){
                     </select>
                   </td>
                   <td class="col-md-3">
-                    <select id="T_metodoPago" onchange="asignarMetodoPago()">
+                    <input class="efecto h22" type="text" id="T_metodoPago" value="PUE" size="20" readonly>
+                    <!--select id="T_metodoPago" onchange="asignarMetodoPago()">
                       <option value="PUE">Seleccione método de pago</option>
-                      <?php echo $datosMetodoPago; ?>
-                    </select>
+                      <?php #echo $datosMetodoPago; ?>
+                    </select-->
                  </td>
     			       <td class="col-md-3">
                    <select name="select" id="T_usoCFDI">

@@ -170,8 +170,8 @@ if($referencia != "SN"){
 
     /* SACO UN FOLIO DE CALCULO DE TARIFA, ESTE FOLIO ME SERVIRA PARA PODER IDENTIFICAR LOS FILTROS DE LAS TARIFAS */
     $s_tipoDoc = 'ctaGastos';
-    require $root . '/conta6/Resources/PHP/actions/tarifas_generarFolio.php';
-    echo "calculoTarifa: ".$calculoTarifa;
+    require $root . '/conta6/Resources/PHP/actions/tarifas_generarFolio.php'; #$calculoTarifa
+    //echo "calculoTarifa: ".$calculoTarifa;
     //$calculoTarifa = 45;
 
     //EXTRAER CONCEPTOS DE LA FACTURA
@@ -821,10 +821,11 @@ if($referencia != "SN"){
                     </select>
                   </td>
                   <td class="col-md-3">
-                    <select id="T_metodoPago" onchange="asignarMetodoPago()">
+                    <input class="efecto h22" type="text" id="T_metodoPago" value="PUE" size="20" readonly>
+                    <!--select id="T_metodoPago" onchange="asignarMetodoPago()">
                       <option value="PUE">Seleccione método de pago</option>
-                      <?php echo $datosMetodoPago; ?>
-                    </select>
+                      <?php #echo $datosMetodoPago; ?>
+                    </select-->
                  </td>
     			       <td class="col-md-3">
                    <select name="select" id="T_usoCFDI">

@@ -25,6 +25,18 @@ function xmlV33_generales($array,$nodo){
                             						  "LugarExpedicion"=>$array['LugarExpedicion'] ));
 }
 
+# CFDI Relacionados
+function xmlV33_cfdi_relacionados($array,$nodo) {
+	global $comprobante, $xml;
+	$relacionados = $xml->createElement("cfdi:CfdiRelacionados");
+	$relacionados = $comprobante->appendChild($relacionados);
+  $relacionados->SetAttribute("TipoRelacion",$array['CfdiRelacionados']['TipoRelacion']);
+
+  	$relacionado = $xml->createElement("cfdi:CfdiRelacionado");
+  	$relacionado = $relacionados->appendChild($relacionado);
+    $relacionado->SetAttribute("UUID",$array['CfdiRelacionado']['UUID']);
+}
+
 #Datos del emisor
 function xmlV33_emisor($array,$nodo) {
 	global $comprobante, $xml;
@@ -61,6 +73,58 @@ function xmlV33_conceptos($array,$nodo) {
             "Cantidad"=>$array['Conceptos'][$i]['cantidad'],
             "ClaveUnidad"=>$array['Conceptos'][$i]['claveUnidad'],
   				  "Unidad"=>$array['Conceptos'][$i]['unidad'],
+  				  "Descripcion"=>$descripcion,
+  				  "ValorUnitario"=>$array['Conceptos'][$i]['valorUnitario'],
+  				  "Importe"=>$array['Conceptos'][$i]['importe'],
+				 )
+			);
+      #"NoIdentificacion"=>$array['Conceptos'][$i]['NoIdentificacion'],
+		$impuestos = $xml->createElement("cfdi:Impuestos");
+		$impuestos = $concepto->appendChild($impuestos);
+
+		$traslados = $xml->createElement("cfdi:Traslados");
+		$traslados = $impuestos->appendChild($traslados);
+		$traslado = $xml->createElement("cfdi:Traslado");
+		$traslado = $traslados->appendChild($traslado);
+		xmlV33_cargaAtt($traslado,
+			array("Base"=>$array['Conceptos'][$i]['importe'],
+            "Impuesto"=>"002",
+            "TipoFactor"=>"Tasa",
+				    "TasaOCuota"=>$array['Conceptos'][$i]['TasaOCuota'],
+            "Importe"=>$array['Conceptos'][$i]['impuesto']
+				 )
+			);
+
+      if( $array['Conceptos'][$i]['retenido'] > 0 ){
+        $retenciones = $xml->createElement("cfdi:Retenciones");
+        $retenciones = $impuestos->appendChild($retenciones);
+        $retencion = $xml->createElement("cfdi:Retencion");
+        $retencion = $retenciones->appendChild($retencion);
+        xmlV33_cargaAtt($retencion,
+    			array("Base"=>$array['Conceptos'][$i]['importe'],
+                "Impuesto"=>"002",
+                "TipoFactor"=>"Tasa",
+    				    "TasaOCuota"=>"0.040000",
+    				    "Importe"=>$array['Conceptos'][$i]['retenido'] )
+    			);
+      }
+	}
+}
+
+#Detalle de los concepto/producto de la nota de credito
+function xmlV33_conceptos_NC($array,$nodo) {
+	global $comprobante, $xml;
+	$conceptos = $xml->createElement("cfdi:Conceptos");
+	$conceptos = $comprobante->appendChild($conceptos);
+	for ($i=1; $i<=sizeof($array['Conceptos']); $i++) {
+		$concepto = $xml->createElement("cfdi:Concepto");
+		$concepto = $conceptos->appendChild($concepto);
+		$prun = $array['Conceptos'][$i]['valorUnitario'];
+		$descripcion = xmlV33_fix_chr($array['Conceptos'][$i]['descripcion']);
+		xmlV33_cargaAtt($concepto,
+			array("ClaveProdServ"=>$array['Conceptos'][$i]['claveProdServ'],
+            "Cantidad"=>$array['Conceptos'][$i]['cantidad'],
+            "ClaveUnidad"=>$array['Conceptos'][$i]['claveUnidad'],
   				  "Descripcion"=>$descripcion,
   				  "ValorUnitario"=>$array['Conceptos'][$i]['valorUnitario'],
   				  "Importe"=>$array['Conceptos'][$i]['importe'],
@@ -136,7 +200,6 @@ function xmlV33_impuestos($array,$nodo) {
 	}
   $impuestos->SetAttribute("TotalImpuestosTrasladados",$array['Traslados']['importe']);
 }
-
 
 
 #genera_cadena_original
@@ -244,8 +307,44 @@ function timbrarTest(){
 
 }
 
+#timbrar xml en modo PRODUCCION
+function timbrar(){
+  global $rutaTempFile,$rutaRepFileZip,$rutaRep,$fileXML,$rutaCLT;
+
+  $XMLtemp = fopen($rutaTempFile,"rb");
+  $str = stream_get_contents($XMLtemp);
+  fclose($XMLtemp);
+
+  $usuario = 'PLA090609N21';
+  $pswd = 'eqwlpoolt';
+
+  #PRODUCCION
+  try {
+    $client = new SoapClient("https://cfdiws.sedeb2b.com/EdiwinWS/services/CFDi?wsdl");
+    $result = $client->getCfdi(array('user' => 'PLA090609N21','password' => 'eqwlpoolt','file' => $str ));
+    $result2 = $result->getCfdiReturn;
+  } catch (SoapFault $exception) {
+    return $exception->getMessage();
+  }
+
+  file_put_contents($rutaRepFileZip,$result2);//se escribe en un archivo
+  $zip = new ZipArchive;
+  if ($zip->open($rutaRepFileZip) === TRUE) {
+    $zip->renameIndex(0,$fileXML); #Asigno nombre al archivo XML
+    if ($zip->open($rutaRepFileZip) === TRUE) {
+      $zip->extractTo($rutaRep.'/');
+      $zip->extractTo($rutaCLT.'/');
+      $zip->close();
+      return('correcto');
+    }
+  }else{
+    return('Error');
+  }
+
+}
+
 function abrirTimbrado(){
-  global $rutaRepFileXMLTest; #para produccion quitar a variable 'Test'
+  global $rutaRepFileXMLTest,$tipoProceso; #para produccion quitar a variable 'Test'
   $xml = simplexml_load_file($rutaRepFileXMLTest);
   $ns = $xml->getNamespaces(true);
   $xml->registerXPathNamespace('t', $ns['tfd']);
@@ -269,7 +368,13 @@ function abrirTimbrado(){
       $SelloSAT = $tfd['SelloCFD'];
   }
   $respQR = generarQR($e_rfc,$r_rfc,$total,$UUID,$selloParte);
-  $respGuardar = guardarDatosTimbrado($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura );
+
+  if( $tipoProceso == "factura" ){
+    $respGuardar = guardarDatosTimbrado($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura );
+  }
+  if( $tipoProceso == "notaCredito" ){
+    $respGuardar = guardarDatosTimbrado_NC($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura );
+  }
 
   return $UUID."\n".$respQR.$respGuardar;
 }
