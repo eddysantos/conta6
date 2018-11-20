@@ -290,44 +290,7 @@
                   <td class="col-md-3">Ultima Modificación</td>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="row">
-                  <td class="col-md-1">
-                    <a href="#articulo80" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-2">0.01</td>
-                  <td class="col-md-2"></td>
-                  <td class="col-md-2">0.00</td>
-                  <td class="col-md-2">1.92</td>
-                  <td class="col-md-3"></td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-1">
-                    <a href="" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-2">114.25</td>
-                  <td class="col-md-2">969.50</td>
-                  <td class="col-md-2">2.17</td>
-                  <td class="col-md-2">6.40</td>
-                  <td class="col-md-3"></td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-1">
-                    <a href="" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-2">969.51</td>
-                  <td class="col-md-2">1,703.80</td>
-                  <td class="col-md-2">56.91</td>
-                  <td class="col-md-2">10.88</td>
-                  <td class="col-md-3"></td>
-                </tr>
-              </tbody>
+              <tbody id="tablaArticulo80"></tbody>
             </table>
           </form>
         </div>
@@ -352,64 +315,7 @@
                   <td class="col-md-2">Ultima Modificación</td>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="row">
-                  <td class="col-md-1">
-                    <a href="#paramgenerales" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-1">470</td>
-                  <td class="col-md-2">73.04</td>
-                  <td class="col-md-1">1.05</td>
-                  <td class="col-md-1">0.00</td>
-                  <td class="col-md-2">6</td>
-                  <td class="col-md-2">7</td>
-                  <td class="col-md-2"></td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-1">
-                    <a href="" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-1">160</td>
-                  <td class="col-md-2">73.04</td>
-                  <td class="col-md-1">1.05</td>
-                  <td class="col-md-1">0.00</td>
-                  <td class="col-md-2">6</td>
-                  <td class="col-md-2">7</td>
-                  <td class="col-md-2"></td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-1">
-                    <a href="" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-1">430</td>
-                  <td class="col-md-2">73.04</td>
-                  <td class="col-md-1">1.05</td>
-                  <td class="col-md-1">0.00</td>
-                  <td class="col-md-2">6</td>
-                  <td class="col-md-2">7</td>
-                  <td class="col-md-2"></td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-1">
-                    <a href="" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-1">240</td>
-                  <td class="col-md-2">73.04</td>
-                  <td class="col-md-1">1.05</td>
-                  <td class="col-md-1">0.00</td>
-                  <td class="col-md-2">6</td>
-                  <td class="col-md-2">7</td>
-                  <td class="col-md-2"></td>
-                </tr>
-              </tbody>
+              <tbody id="tablaGenerales"></tbody>
             </table>
           </form>
         </div>
@@ -430,38 +336,7 @@
                   <td class="col-md-3">Ultima Modificación</td>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="row">
-                  <td class="col-md-3">
-                    <a href="#factorintegracion" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-3">1</td>
-                  <td class="col-md-3">1.05</td>
-                  <td class="col-md-3"></td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-3">
-                    <a href="" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-3">2</td>
-                  <td class="col-md-3">1.05</td>
-                  <td class="col-md-3"></td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-3">
-                    <a href="" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-3">3</td>
-                  <td class="col-md-3">1.05</td>
-                  <td class="col-md-3"></td>
-                </tr>
-              </tbody>
+              <tbody id="f-integracion"></tbody>
             </table>
           </form>
         </div>
@@ -483,41 +358,7 @@
                   <td class="col-md-3">Ultima Modificación</td>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="row">
-                  <td class="col-md-2">
-                    <a href="#subsidio" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-2">0.01</td>
-                  <td class="col-md-3">407.32</td>
-                  <td class="col-md-2">93.73</td>
-                  <td class="col-md-3"></td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-2">
-                    <a href="" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-2">407.32</td>
-                  <td class="col-md-3">610.97</td>
-                  <td class="col-md-2">93.66</td>
-                  <td class="col-md-3"></td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-2">
-                    <a href="" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-2">610.97</td>
-                  <td class="col-md-3">799.66</td>
-                  <td class="col-md-2">93.66</td>
-                  <td class="col-md-3"></td>
-                </tr>
-              </tbody>
+              <tbody id="tablaSubsidio"></tbody>
             </table>
           </form>
         </div>
@@ -542,50 +383,7 @@
                   <td class="col-md-2">Ultima Modificación</td>
                 </tr>
               </thead>
-              <tbody style="letter-spacing:0px">
-                <tr class="row">
-                  <td class="col-md-1">
-                    <a href="#imss" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-1">1</td>
-                  <td class="col-md-2">EM-Prestaciones en Dinero</td>
-                  <td class="col-md-1">1</td>
-                  <td class="col-md-1">99</td>
-                  <td class="col-md-2">0.699999988079071</td>
-                  <td class="col-md-2">0.25</td>
-                  <td class="col-md-2"></td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-1">
-                    <a href="" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-1">2</td>
-                  <td class="col-md-2">EM-Especie-Adicional</td>
-                  <td class="col-md-1">3.009999990463257</td>
-                  <td class="col-md-1">23</td>
-                  <td class="col-md-2">1.100000023841858</td>
-                  <td class="col-md-2">0.400000059604645</td>
-                  <td class="col-md-2"></td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-1">
-                    <a href="" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
-                    </a>
-                  </td>
-                  <td class="col-md-1">1</td>
-                  <td class="col-md-2">EM-Prestaciones en Dinero</td>
-                  <td class="col-md-1">1</td>
-                  <td class="col-md-1">99</td>
-                  <td class="col-md-2">0.699999988079071</td>
-                  <td class="col-md-2">0.25</td>
-                  <td class="col-md-2"></td>
-                </tr>
-              </tbody>
+              <tbody class="ls0" id="tablaImss"></tbody>
             </table>
           </form>
         </div>
@@ -596,9 +394,10 @@
 
 
 <script src="js/SueldosySalarios.js"></script>
+<script src="/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/js/parametros.js"></script>
 <script src="/conta6/Resources/bootstrap/js/bootstrap-toggle.js"></script><!--para los switchs-->
 <script src="/conta6/Resources/js/Inputs.js"></script>
 <?php
-include_once('modales/Empleados.php');
-include_once('modales/Parametros.php');
+// include_once('modales/Empleados.php');
+require $root .'/conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/modales/Parametros.php';
  ?>

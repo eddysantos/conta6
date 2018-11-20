@@ -25,16 +25,17 @@
             <tbody>
               <tr class="row m-0 text-center">
                 <td class="col-md-3 input-effect">
-                  <input  class="efecto">
+                  <input type="hidden" db-id="" id="pk_id_partida">
+                  <input  class="efecto" id="n_inferior">
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_superior">
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_cuota">
                 </td>
                 <td class="col-md-3 input-effect">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_porcentaje">
                 </td>
               </tr>
             </tbody>
@@ -42,7 +43,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="#" class="linkbtn m-editar">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -51,7 +52,7 @@
 <!--Sección Parametros para Modificar Generales-->
 
 <div class="modal fade" id="paramgenerales">
-  <div class="modal-dialog modal-med" style="margin-top:150px">
+  <div class="modal-dialog modal-lg" style="margin-top:150px">
     <div class="modal-content">
       <div class="modal-header">
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
@@ -75,22 +76,23 @@
             <tbody>
               <tr class="row m-0">
                 <td class="col-md-2">
-                  <input  class="efecto" value="240">
+                  <input type="hidden" id="pk_id_partida">
+                  <input  class="efecto" id="fk_id_aduana">
                 </td>
                 <td class="col-md-2">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_salarioMinimo">
                 </td>
                 <td class="col-md-2">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_IMSS">
                 </td>
                 <td class="col-md-2">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_subsidio">
                 </td>
                 <td class="col-md-2">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_diasTrabajados">
                 </td>
                 <td class="col-md-2">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_diasPagar">
                 </td>
               </tr>
             </tbody>
@@ -98,7 +100,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="#" class="linkbtn m-editar">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -128,10 +130,11 @@
             <tbody>
               <tr class="row m-0">
                 <td class="col-md-6">
-                  <input  class="efecto">
+                  <input  type="hidden" id="pk_id_partida">
+                  <input  class="efecto" id="n_anio">
                 </td>
                 <td class="col-md-6">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_integrado">
                 </td>
               </tr>
             </tbody>
@@ -139,7 +142,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="#" class="linkbtn m-editar">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -158,7 +161,7 @@
         <h5 class="modal-tittle">Modificar</h5>
       </div>
       <div class="modal-body p-0">
-        <form class="form1" method="post">
+        <form class="form1">
           <table class="table text-center">
             <thead style="font-size:16px">
               <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
@@ -170,13 +173,14 @@
             <tbody>
               <tr class="row m-0">
                 <td class="col-md-4">
-                  <input  class="efecto">
+                  <input type="hidden" id="pk_id_partida">
+                  <input  class="efecto" id="n_inferior_b">
                 </td>
                 <td class="col-md-4">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_superior_b">
                 </td>
                 <td class="col-md-4">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_cuota_b">
                 </td>
               </tr>
             </tbody>
@@ -184,7 +188,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="#" class="linkbtn m-editar">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -218,22 +222,23 @@
             <tbody>
               <tr class="row m-0">
                 <td class="col-md-1">
-                  <input  class="efecto">
+                  <input type="hidden" id="pk_id_partida">
+                  <input  class="efecto" id="n_ramo">
                 </td>
                 <td class="col-md-3">
-                  <input  class="efecto">
+                  <input  class="efecto" id="s_descripcion">
                 </td>
                 <td class="col-md-2">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_baseSalarial">
                 </td>
                 <td class="col-md-1">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_topeSalarial">
                 </td>
                 <td class="col-md-3">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_patron">
                 </td>
                 <td class="col-md-2">
-                  <input  class="efecto">
+                  <input  class="efecto" id="n_trabajador">
                 </td>
               </tr>
             </tbody>
@@ -241,7 +246,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Nomina/sueldosySalarios/GenerarNominaCFDI.php" class="linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="#" class="linkbtn m-editar">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>

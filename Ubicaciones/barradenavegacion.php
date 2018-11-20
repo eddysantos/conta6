@@ -87,7 +87,6 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                   <a href="#" class="">Anticipos <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></i></a>
                   <ul class="dropdown-menu">
                     <li><a href="/conta6/Ubicaciones/Contabilidad/anticipos/GenerarAnticipo.php">Generar</a></li>
-                    <!-- <li><a href="#modificar-ant" data-toggle="modal" id="modificar-ant">Modificar</a></li> -->
                     <li><a href="#modificar-ant" data-toggle="modal">Modificar</a></li>
                     <li><a href="#consultar-ant" data-toggle="modal">Consultar</a></li>
                   </ul>
@@ -147,8 +146,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
               <li class="nav-item dropdown">
                 <a href="#" class="">NOMINA <img src="/conta6/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/conta6/Ubicaciones/Nomina/DatosOficina/DatosOficina.php">Datos de Oficina</a></li>
-                  <li class="dropdown">
+                  <!-- <li class="dropdown">
                     <a href="" class="">Sueldos y Salarios CFDI <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                     <ul class="dropdown-menu">
                       <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/empleados/Empleados.php">Empleados</a></li>
@@ -161,8 +159,13 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                       <li><a href="/conta6/Ubicaciones/Nomina/Honorarios/Empleados.php">Empleados</a></li>
                       <li><a href="/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">Nomina</a></li>
                     </ul>
-                  </li>
+                  </li> -->
+                  <li><a href="/Conta6/Ubicaciones/Nomina/empleados/Empleados.php">Empleados</a></li>
+                  <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/GenerarNominaCFDI.php">Nomina Sueldos y Salarios CFDI</a></li>
+                  <li><a href="/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">Nomina Honorarios Asimilados CFDI</a></li>
+                  <li><a href="/conta6/Ubicaciones/Nomina/DatosOficina/DatosOficina.php">Datos de Oficina</a></li>
                   <li><a href="/conta6/Ubicaciones/Nomina/Reportes/Reporte.php">Reportes</a></li>
+
                 </ul>
 <!--******************************MENU PROLOG  Indice TRAFICO******************************-->
                <li class="nav-item dropdown">

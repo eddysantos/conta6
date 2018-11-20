@@ -124,8 +124,6 @@ $('#fk_id_regimen_add').change(function(){
     $('#txtSueldos').hide();
   }
 });
-
-
 // VALIDACIONES
 $('#validarDtosGenerales').click(function(){
 
@@ -202,7 +200,6 @@ $('#validarDistSalarios').click(function(){
     }
   }
 });
-
 
 // function agregarEmpleado(){
   $('.agregarEmpleado').click(function(){
@@ -287,7 +284,7 @@ $('#validarDistSalarios').click(function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Nomina/SueldosySalarios/empleados/actions/agregar.php",
+      url: "actions/agregar.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -519,7 +516,7 @@ $('#validarDistSalarios').click(function(){
     else{
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Nomina/SueldosySalarios/empleados/actions/editar.php",
+        url: "actions/editar.php",
         data: data,
         success: 	function(r){
           r = JSON.parse(r);
@@ -557,7 +554,6 @@ function Salario_Int(){
   $('#n_salario_integrado').val(sal_int_m + parseFloat($('#n_cuota_integral_salario').val()));
 }
 
-
 $('#filtroRegimen').change(function(){
   listaEmpleados();
   regimen = $('#filtroRegimen').val();
@@ -571,7 +567,7 @@ function listaEmpleados(){
   }
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Nomina/SueldosySalarios/empleados/actions/mostrar.php",
+    url: "actions/mostrar.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);

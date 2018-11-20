@@ -3,7 +3,7 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row submenuMed m-0">
     <div class="col-md-12 text-center" role="button">
       <a  id="submenuMed" class="honorarios" accion="eCapHon" status="cerrado">EMPLEADOS CAPTURADOS</a>
@@ -102,10 +102,10 @@
                 <td class="col-md-4 input-effect">
                   <input  list="entidad" class="efecto" id="hon_ent">
                   <datalist id="entidad">
-                    <option value="Colima --- COL"></option>
-                    <option value="Ciudad de México --- DIF"></option>
-                    <option value="Tamaulipas --- TAM"></option>
-                    <option value="Veracruz --- VER"></option>
+                    <option value="Colima - COL"></option>
+                    <option value="Ciudad de México - DIF"></option>
+                    <option value="Tamaulipas - TAM"></option>
+                    <option value="Veracruz - VER"></option>
                   </datalist>
                   <label for="hon_ent">Seleccione una Entidad</label>
                 </td>
@@ -127,10 +127,10 @@
                 <td class="col-md-6 input-effect">
                   <input  list="banco" class="efecto"  id="hon_bco">
                   <datalist id="banco">
-                    <option value="Afirme --- 062"></option>
-                    <option value="American Express --- 103"></option>
-                    <option value="Azteca --- 127"></option>
-                    <option value="Bajio --- 030"></option>
+                    <option value="Afirme - 062"></option>
+                    <option value="American Express - 103"></option>
+                    <option value="Azteca - 127"></option>
+                    <option value="Bajio - 030"></option>
                   </datalist>
                   <label for="hon_bco">Banco</label>
                 </td>
@@ -187,17 +187,17 @@
                 <td class="col-md-6 input-effect">
                   <input  list="tcontrato" class="efecto"  id="hon_con">
                   <datalist id="tcontrato">
-                    <option value="01 --- Contrato de Trabajo por Tiempo Indeterminado"></option>
-                    <option value="02 --- Contrato de Trabajo para Obre Determinada"></option>
-                    <option value="03 --- Contrato de Trabajo por Tiempo Determinado"></option>
-                    <option value="04 --- Contrato de Trabajo por Temporada"></option>
-                    <option value="05 --- Contrato de Trabajo Sujeto a Prueba"></option>
-                    <option value="06 --- Contrato de Trabajo con Capatización Inicial"></option>
-                    <option value="07 --- Modalidad de Contratación por Pago de Hora Laborada"></option>
-                    <option value="08 --- Modalidad de Trabajo por Comision Laboral"></option>
-                    <option value="09 --- Modalidades de Contratación donde no Existe Relacion de Trabajo"></option>
-                    <option value="10 --- Jubilación, Pensión, Retiro"></option>
-                    <option value="99 ---  Otro Contrato"></option>
+                    <option value="01- Contrato de Trabajo por Tiempo Indeterminado"></option>
+                    <option value="02- Contrato de Trabajo para Obre Determinada"></option>
+                    <option value="03- Contrato de Trabajo por Tiempo Determinado"></option>
+                    <option value="04- Contrato de Trabajo por Temporada"></option>
+                    <option value="05- Contrato de Trabajo Sujeto a Prueba"></option>
+                    <option value="06- Contrato de Trabajo con Capatización Inicial"></option>
+                    <option value="07- Modalidad de Contratación por Pago de Hora Laborada"></option>
+                    <option value="08- Modalidad de Trabajo por Comision Laboral"></option>
+                    <option value="09- Modalidades de Contratación donde no Existe Relacion de Trabajo"></option>
+                    <option value="10- Jubilación, Pensión, Retiro"></option>
+                    <option value="99-  Otro Contrato"></option>
                   </datalist>
                   <label for="hon_con">Tipo de Contrato</label>
                 </td>
@@ -205,26 +205,26 @@
                 <td class="col-md-3 input-effect">
                   <input  list="jornada" class="efecto" id="hon_jor">
                   <datalist id="jornada">
-                    <option value="01 -- Diurna"></option>
-                    <option value="02 -- Nocturna"></option>
-                    <option value="03 -- Mixta"></option>
-                    <option value="04 -- Por Hora"></option>
-                    <option value="05 -- Reducida"></option>
-                    <option value="06 -- Continuada"></option>
-                    <option value="07 -- Partida"></option>
-                    <option value="08 -- Por Turnos"></option>
-                    <option value="99 -- Otra Jornada"></option>
+                    <option value="01 Diurna"></option>
+                    <option value="02 Nocturna"></option>
+                    <option value="03 Mixta"></option>
+                    <option value="04 Por Hora"></option>
+                    <option value="05 Reducida"></option>
+                    <option value="06 Continuada"></option>
+                    <option value="07 Partida"></option>
+                    <option value="08 Por Turnos"></option>
+                    <option value="99 Otra Jornada"></option>
                   </datalist>
                   <label for="hon_jor">Jornada</label>
                 </td>
                 <td class="col-md-3 input-effect">
                   <input  list="rtrabajo" class="efecto"  id="hon_rgo">
                   <datalist id="rtrabajo">
-                    <option value="01 -- Clase l"></option>
-                    <option value="02 -- Clase ll"></option>
-                    <option value="03 -- Clase lll"></option>
-                    <option value="04 -- Clase lV"></option>
-                    <option value="05 -- Clase V"></option>
+                    <option value="01 - Clase l"></option>
+                    <option value="02 - Clase ll"></option>
+                    <option value="03 - Clase lll"></option>
+                    <option value="04 - Clase lV"></option>
+                    <option value="05 - Clase V"></option>
                   </datalist>
                   <label for="hon_rgo">Riesgo de Trabajo</label>
                 </td>
@@ -348,8 +348,8 @@
       </div>
     </div>
     <div class="col-md-4 offset-md-4 mt-5 font16 text-center">
-        <a href="" class="boton"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR DATOS</a><!--Guardar Datos de poliza/cuando se actualizo algun dato-->
-    </div>
+        <a href="" class="boton"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR DATOS</a><!-Guardar Datos de poliza/cuando se actualizo algun dato-->
+    <!-- </div>
   </div>
 
   <div id="contornoEmpHon" class="contorno mt-5" style="display:none">
@@ -381,7 +381,7 @@
       </tbody>
     </table>
   </div>
-</div>
+</div>  -->
 
 
 

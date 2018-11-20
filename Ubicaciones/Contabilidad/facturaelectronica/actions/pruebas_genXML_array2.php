@@ -44,17 +44,17 @@ try {
     $response = $client -> crearComprobante(array("usuario" => $usuario, "password" => $password, "comprobante" => $cfdi));
 }
 catch (SoapFault $fault) {
-    echo "SOAPFault: ".$fault - > faultcode.
-    "-".$fault - > faultstring.
+    echo "SOAPFault: ".$fault -> faultcode.
+    "-".$fault -> faultstring.
     "\n";
 }
 
-$ret = $response - >
+$ret = $response ->
     return;
 print_r($ret);
-print_r("Estatus: ".$ret - > estatus.PHP_EOL);
-print_r("Mensaje: ".$ret - > mensaje.PHP_EOL);
+print_r("Estatus: ".$ret -> estatus.PHP_EOL);
+print_r("Mensaje: ".$ret -> mensaje.PHP_EOL);
 
-print_r("Folio:  ".$ret - > folio.PHP_EOL);
-print_r("UUID:   ".$ret - > uuid.PHP_EOL);
+print_r("Folio:  ".$ret -> folio.PHP_EOL);
+print_r("UUID:   ".$ret -> uuid.PHP_EOL);
 ?>

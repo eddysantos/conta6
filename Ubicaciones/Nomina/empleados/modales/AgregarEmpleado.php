@@ -359,7 +359,7 @@
         </form>
       </div>
 
-      <div class="contorno pb-0 mt-0" id="honorariosAsim">
+      <div class="contorno pb-0 mt-0" id="honorariosAsim" style="display:none">
         <form class="form1">
           <table class="table">
             <tbody>
