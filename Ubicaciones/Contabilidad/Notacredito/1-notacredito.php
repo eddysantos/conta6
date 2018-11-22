@@ -5,7 +5,7 @@
 
 <div class="text-center">
   <div class="mt10" id="buscarRef">
-    <div class="row justify-content-center"  id="referencia">
+    <div class="row justify-content-center" id="referencia">
       <div class="col-md-6 transEff titulograndetop">Buscar</div>
     </div>
     <div class="row justify-content-center" id="nReferencia">
@@ -17,35 +17,23 @@
     </div>
 
     <div class="row justify-content-center mt-5">
-<<<<<<< HEAD
-      <div class="col-md-2">
-        <a href="#" id="b-facturas" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> FACTURAS</a>
-      </div>
-      <div class="col-md-2">
-        <a href="#" id="b-proforma" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> PROFORMAS</a>
-      </div>
-      <div class="col-md-2">
-        <a href="#" id="b-notacredito" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> NOTA CREDITO</a>
-      </div>
-=======
       <?php if( $oRst_permisos["CFDI_NC_Proforma"] == 1){ ?>
         <div class="col-md-2">
           <a href="#" id="b-facturas" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> FACTURAS</a>
         </div>
       <?php } ?>
-      
+
         <div class="col-md-2">
           <a href="#" id="b-proforma" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> PROFORMAS NC</a>
         </div>
         <div class="col-md-2">
           <a href="#" id="b-notacredito" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> NOTA CREDITO</a>
         </div>
->>>>>>> origin/be_notaCredito_nov
     </div>
   </div>
 
-<!---se muestra al escribir la referencia y dar enter-->
-  <div class="mt10 contorno" id="repoPed" style="display:none">
+<!-- -se muestra al escribir la referencia y dar enter-->
+  <!-- <div class="mt10 contorno" id="repoPed" style="display:none">
     <table class="table">
       <thead>
         <tr class="row">
@@ -78,7 +66,7 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div>-->
 </div>
 
 <?php

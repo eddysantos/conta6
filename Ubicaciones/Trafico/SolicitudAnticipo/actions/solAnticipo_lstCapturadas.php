@@ -4,8 +4,9 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 
-$id_captura = trim($_GET['id_captura']);
-$accion = trim($_GET['accion']);
+$id_captura = trim($_POST['id_captura']);
+$accion = trim($_POST['accion']);
+
 
 if(is_numeric($id_captura)) {
 	$query_proforma = "SELECT * FROM conta_t_proforma WHERE pk_id_proforma = ? and fk_id_aduana = ? ";
@@ -65,7 +66,7 @@ while( $row_proforma = $rslt_proforma->fetch_assoc() ){
 
 	      $consolidado = trim($row_buscaRef['s_consolidado']);
 	      $entradas = trim($row_buscaRef['s_bodegaIn']);
-	      $shipper = trim( preg_replace('[a-zA-Z]', '', $row_buscaRef['s_shipper'] ) );
+	      $shipper = trim( preg_replace('[a-zA-Z]', '', $row_buscaRef['s_shipper']));
 	      $inbond = trim($row_buscaRef['s_inBond']);
 	      $flete = $row_buscaRef['n_valor_flete'];
 	      $entradasAdicionales = 0;
@@ -111,8 +112,8 @@ while( $row_proforma = $rslt_proforma->fetch_assoc() ){
 	}
 
 	if( $oRst_permisos['s_solAnt_consultar'] == 1 ){
-	  $hrefconsultar = "<a href='#' onclick='solAntConsultar($id_captura,&#39;consulta&#39;)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/magnifier.svg'></a>
-	                <a href='#' onclick='solAntImprimir($id_captura)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'></a>";
+	  $hrefconsultar = "<a href='#' onclick='solAntConsultar($id_captura,&#39;consulta&#39;)' class='ml-3'><img class='icomediano ml-2' src='/conta6/Resources/iconos/magnifier.svg'></a>
+	                <a href='#' onclick='solAntImprimir($id_captura)' class='ml-3'><img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'></a>";
 	}
 	if( $oRst_permisos['s_solAnt_cancelar'] == 1 ){
 	  $hrefcancelar = "<a href='#' onclick='solAntEliminar($id_captura)'><img class='icomediano' src='/conta6/Resources/iconos/002-trash.svg'></a>";
@@ -120,12 +121,12 @@ while( $row_proforma = $rslt_proforma->fetch_assoc() ){
 
 	//if( $accion == 'consulMod' ){
 	  $system_callback['data'] .="
-	  <tr class='row borderojo'>
+	  <tr class='row borderojo font14'>
 	    <td class='col-md-1'>$hrefcancelar</td>
-	    <td class='col-md-1'>$id_captura</td>
+	    <td class='col-md-2'>$id_captura</td>
 	    <td class='col-md-2'>$row_proforma[fk_referencia]</td>
 	    <td class='col-md-5'>$row_proforma[fk_id_cliente] $row_proforma[s_nombre]</td>
-	    <td class='col-md-1'>$hrefmodificar $hrefconsultar</td>
+	    <td class='col-md-2'>$hrefmodificar $hrefconsultar</td>
 	  </tr>";
 	//}
 

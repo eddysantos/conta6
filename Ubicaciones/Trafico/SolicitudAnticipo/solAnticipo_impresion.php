@@ -63,12 +63,12 @@
   </style>
   <table>
   <tr>
-    <td width="45%">
+    <td width="50%">
     <br />
       <table class="border">
         <thead>
           <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
-            <td width="100%" align="center"><b>CLIENTE</b></td>
+            <td width="100%" align="center"><b>Cliente</b></td>
           </tr>
         </thead>
         <tbody>
@@ -80,7 +80,7 @@
         </tbody>
       </table>
     </td>
-    <td width="55%">
+    <td width="50%">
       <table class="border">
         <thead>
           <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)" align="center">
@@ -97,6 +97,18 @@
           </tr>
         </tbody>
       </table>
+      <br />
+      <br />
+      <table class="border">
+        <thead>
+          <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
+            <td width="100%" align="center">INFORMACIÓN GENERAL DEL EMBARQUE</td>
+          </tr>
+        </thead>
+        <tbody>
+          '.$impresionDatosEmbarque.'
+        </tbody>
+      </table><br>
     </td>
   </tr>
   </table>';
@@ -139,8 +151,8 @@
   <div border="1">
   <table>
   <tr>
-    <td width="45%"> </td>
-    <td width="55%">
+    <td width="50%"> </td>
+    <td width="50%">
       <table>
         <tr>
           <td width="60%" align="right"><b>'.$s_txt_gral_importe.'</b></td>
@@ -272,16 +284,7 @@
         </tbody>
       </table>
     </td>
-    <td width="50%">
-      <table class="border">
-        <thead>
-          <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)"><td width="100%" align="center">INFORMACIÓN GENERAL DEL EMBARQUE</td></tr>
-        </thead>
-        <tbody>
-          '.$impresionDatosEmbarque.'
-        </tbody>
-      </table><br>
-    </td>
+
   </tr>
   </table>';
 

@@ -105,6 +105,10 @@ $(document).ready(function(){
         $('#gSolicitud').fadeIn();
         $('#SeleccionarAccion').slideUp();
           break;
+        case "generarST":
+        $('#generarSinDatos').fadeIn();
+        $('#SeleccionarAccion').slideUp();
+          break;
 
         default:
           console.error("Something went terribly wrong...");
@@ -132,11 +136,11 @@ $(document).ready(function(){
       $('#SeleccionarAccion').slideDown();
         break;
       case "cuadroConsultar":
-      $('#repoSol').fadeOut();
+      $('#repoSol-trafico').fadeOut();
       $('#SeleccionarAccion').slideDown();
         break;
       case "cuadroDatosSol":
-      $('#datosSol').fadeOut();
+      $('#generarSinDatos').fadeOut();
       $('#SeleccionarAccion').slideDown();
         break;
       default:
@@ -155,12 +159,13 @@ $(document).ready(function(){
 
 // SOLICITUD DE ANTICIPO
   $('#mostrarConsulta-trafico').submit(function(){
-    $('#repoSol').fadeIn();
+    $('#repoSol-trafico').fadeIn();
     $('#buscarRef').slideUp();
 
     var data = {
-      id_captura: $('#bRef').val(),
-      accion: 'consulMod'
+      id_captura: $('#bRef-trafico').val(),
+      accion: 'consulMod',
+      aduana: '240'
     }
     $.ajax({
       type: "POST",
@@ -184,9 +189,9 @@ $(document).ready(function(){
 
   });
 
+
   $('#mostrarGenerar').submit(function(){
     $('#datosSol').fadeIn();
-    $('#gSolicitud').slideUp();
   });
 
 

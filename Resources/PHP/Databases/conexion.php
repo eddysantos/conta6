@@ -9,17 +9,17 @@
 // $pwd = 'f4Tnps.03';
 
 /** TEST DATABASE **/
-$datab = 'cplaa_v6';
-$host = 'localhost';
-$port = 3306;
-$usr = 'root';
-$pwd = '';
-
-// $datab = 'conta6';
+// $datab = 'cplaa_v6';
 // $host = 'localhost';
-// $port = 8886;
+// $port = 3306;
 // $usr = 'root';
-// $pwd = 'root';
+// $pwd = '';
+
+$datab = 'conta6';
+$host = 'localhost';
+$port = 8886;
+$usr = 'root';
+$pwd = 'root';
 
 $db = new mysqli($host, $usr, $pwd, $datab, $port) or die ('Could not connect to the database server ' . $login->error );
 

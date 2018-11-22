@@ -57,7 +57,7 @@ while ($row = $rslt->fetch_assoc()) {
   }else{ $href = ""; }
 
   $resultadoConsulta .=
-  "<tr class='row borderojo font18'>
+  "<tr class='row borderojo font14'>
     <td class='col-md-1'>$id_factura</td>
     <td class='col-md-2'>$row[fk_referencia]</td>
     <td class='col-md-1'>$row[fk_id_poliza]</td>
