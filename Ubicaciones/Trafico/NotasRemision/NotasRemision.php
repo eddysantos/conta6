@@ -7,15 +7,13 @@
 
 
   <div class="contenedor" id="b-notaRemision">
-    <div class="row titulograndetop transEff" id="referencia">
-      <div class="col-md-12">
-        <label class="transEff" for="bRef" id="labelRef">Referencia</label>
-      </div>
+    <div class="row justify-content-center" id="referencia">
+      <div class="col-md-6 transEff titulograndetop" id="labelRef">Referencia</div>
     </div>
-    <div class="row intermedio transEff" id="nReferencia">
-      <div class="col-md-12" id="mostrarConsulta">
+    <div class="row justify-content-center" id="nReferencia">
+      <div class="col-md-6 transEff intermedio" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
-          <input class="reg border-0 transEff" id="bRef" type="text">
+          <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
         </form>
       </div>
     </div>
@@ -28,7 +26,7 @@
         <thead>
           <tr class="row">
             <td class="col-md-1 offset-md-11 p-0 mb-2">
-              <a class="atras" accion="BuscarOtro">
+              <a href="#" class="atras" accion="BuscarOtro">
                 <i class="back fa fa-arrow-left">Regresar</i>
               </a>
             </td>
@@ -82,4 +80,7 @@
     </form>
   </div>
 </div>
-<script src="../js/Trafico.js"></script>
+<!-- <script src="../js/Trafico.js"></script> -->
+<?php
+require $root . '/conta6/Ubicaciones/footer.php';
+?>
