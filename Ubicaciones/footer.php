@@ -12,6 +12,8 @@
   <script src="/conta6/Ubicaciones/Contabilidad/facturaelectronica/js/facturaElectronica.js"></script>
   <script src="/conta6/Ubicaciones/Contabilidad/Notacredito/js/NotaCredito.js"></script>
 
+  <script src="/conta6/Ubicaciones/Contabilidad/pagoelectronico/js/pagoelectronico.js"></script>
+
   <script src="/conta6/Ubicaciones/Trafico/js/Trafico.js"></script>
   <script src="/conta6/Ubicaciones/Trafico/SolicitudAnticipo/js/SolicitudAnticipo.js"></script>
 
