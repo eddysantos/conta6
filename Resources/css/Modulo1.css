@@ -301,6 +301,12 @@ a img{
   letter-spacing: 2px;
 }
 
+.inputId-red{
+  color: #FF0000!important;
+  border: none;
+  letter-spacing: 2px;
+}
+
 .custom-select-mod {
   display: inline-block;
   width: 100%;

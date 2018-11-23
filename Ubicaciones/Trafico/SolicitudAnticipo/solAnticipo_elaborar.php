@@ -105,7 +105,7 @@ if($referencia != "SN"){
 
     //datos del cliente
     if( $cliente == 'CLT_5900' ){
-      $CLT_nombre = "Escriba un Nombre";
+      $CLT_nombre = "Escriba un Nombre y Dirección";
       $CLT_calle = "";
       $CLT_no_ext = "";
       $CLT_no_int = "";
@@ -236,7 +236,7 @@ if($referencia != "SN"){
         </div>
       </div>
 
-<?php if( $cliente == "CLT_5900" ){ ?>
+<?php if( $cliente == "CLT_5900" ){?>
       <div id="detalleCliente" class="contorno" style="display:none">
         <h5 class='titulo font14'>DATOS CLIENTES</h5>
         <table class='table' id='eCliente'>
@@ -245,8 +245,8 @@ if($referencia != "SN"){
               <td class="col-md-2 text-right">
                 <input class="h22 text-right border-0 bt" type="text" id="T_ID_Cliente_Oculto" readonly value="<?php echo $id_cliente; ?>">
               </td>
-              <td class="col-md-6 text-left">
-                <input class="h22 text-left border-0 bt w-100" type="text" id="T_Nombre_Cliente" value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
+              <td class="col-md-6 text-left p-1">
+                <input class="efecto border-0 h22 text-left inputId-red" type="text" id="T_Nombre_Cliente" value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
               </td>
             </tr>
             <tr class='row backpink' style="font-size:14px!important">
@@ -258,45 +258,45 @@ if($referencia != "SN"){
             <tr class='row'>
               <td class="col-md-2 text-right b p-0"><b>Calle y No :</b></td>
               <td class="col-md-4 p-0">
-                <input class="w-100 border-0 bt text-left" id="T_Cliente_Calle" type="text" value="<?php echo $CLT_calle;?>">
+                <input class="efecto border-0 h22 text-left inputId-red" id="T_Cliente_Calle" type="text" value="<?php echo $CLT_calle;?>">
               </td>
               <td class='col-md-6 p-0'>
-                <input class="border-0 bt text-center w-100" type="text" id="T_Proveedor_Destinatario" value="<?php echo $nomProv;?>">
+                <input class="efecto border-0 h22 text-center inputId-red" type="text" id="T_Proveedor_Destinatario" value="<?php echo $nomProv;?>">
               </td>
             </tr>
             <tr class="row">
               <td class="col-md-2 p-0 text-right b"> <b># Ext :</b></td>
               <td class="text-left p-0">
-                <input class="h22 border-0 bt" id="T_Cliente_No_Ext" type="text" value="<?php echo $CLT_no_ext;?>" size="5">
+                <input class="efecto border-0 h22 text-center inputId-red" id="T_Cliente_No_Ext" type="text" value="<?php echo $CLT_no_ext;?>" size="5">
               </td>
               <td class="text-right p-0 b"><b># Int :</b></td>
               <td class="col-md-2 text-left p-0">
-                <input class="h22 border-0 bt" id="T_Cliente_No_Int" type="text" value="<?php echo $CLT_no_int;?>" size="25">
+                <input class="efecto border-0 h22 text-left inputId-red" id="T_Cliente_No_Int" type="text" value="<?php echo $CLT_no_int;?>" size="25">
               </td>
             </tr>
             <tr class='row'>
               <td class="col-md-2 text-right b p-0"><b>Colonia :</b></td>
               <td class='col-md-4 p-0 text-left'>
-                <input class="h22 border-0 bt" id="T_Cliente_Colonia" type="text" value="<?php echo $CLT_colonia;?>">
+                <input class="efecto border-0 h22 text-left inputId-red" id="T_Cliente_Colonia" type="text" value="<?php echo $CLT_colonia;?>">
               </td>
             </tr>
             <tr class='row'>
               <td class="col-md-2 p-0 b text-right"><b>Ciudad/Estado :</b> </td>
               <td class='col-md-3 p-0 text-left'>
-                <input class="h22 border-0 bt" id="T_Cliente_Estado" type="text" value="<?php echo $CLT_estado;?>">,
-                <input class="h22 border-0 bt text-left p-0" id="T_Cliente_Ciudad" type="text" value="<?php echo $CLT_ciudad;?>">
+                <input class="efecto border-0 h22 text-left inputId-red" id="T_Cliente_Estado" type="text" value="<?php echo $CLT_estado;?>">,
+                <input class="efecto border-0 h22 text-left inputId-red" id="T_Cliente_Ciudad" type="text" value="<?php echo $CLT_ciudad;?>">
               </td>
             </tr>
             <tr class="row">
               <td class="col-md-2 p-0 b text-right"><b>País :</b></td>
               <td class="col-md-4 p-0 text-left">
-                <input  type="text" class="h22 border-0 bt" id="T_Cliente_Pais" value="<?php echo $CLT_pais; ?>">
+                <input  type="text" class="efecto border-0 h22 text-left inputId-red" id="T_Cliente_Pais" value="<?php echo $CLT_pais; ?>">
               </td>
             </tr>
             <tr class="row">
               <td class="col-md-2 p-0 b text-right"><b>CP :</b></td>
               <td class="p-0 text-left">
-                <input class="h22 border-0 bt" id="T_Cliente_CP" type="text" value="<?php echo $CLT_codigo;?>" size="6"></td>
+                <input class="efecto border-0 h22 text-left inputId-red" id="T_Cliente_CP" type="text" value="<?php echo $CLT_codigo;?>" size="6"></td>
               </td>
               <td class="p-0 b text-right"><b>Tax ID :</b></td>
               <td class="col-md-1 p-0 text-left">
@@ -306,7 +306,7 @@ if($referencia != "SN"){
             <tr class="row">
               <td class="col-md-2 p-0 b text-right"><b>RFC :</b></td>
               <td class="col-md-4 p-0 text-left">
-                <input class="h22 border-0 bt" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
+                <input class="efecto border-0 h22 text-left inputId-red" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
               </td>
             </tr>
           </tbody>
