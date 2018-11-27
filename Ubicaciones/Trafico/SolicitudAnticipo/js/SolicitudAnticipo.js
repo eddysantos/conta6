@@ -318,9 +318,37 @@ $(document).ready(function(){
         });
   });
 
-  $('#btn_buscarDatosEmbarque_solAnt').click(function(){
+  // $('#btn_buscarDatosEmbarque_solAnt').click(function(){
+  //   var data = {
+  //     id_referencia: $('#gRef').attr('db-id')
+  //   }
+  //
+  //   validacion = $('#gRef').attr('db-id') == "";
+  //
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "/conta6/Ubicaciones/Trafico/SolicitudAnticipo/solAnticipo_datosReferencia.php",
+  //     data: data,
+  //     success: 	function(r){
+  //     r = JSON.parse(r);
+  //       if (r.code == 1) {
+  //         //console.log(r);
+  //         $('#datosSol').html(r.data);
+  //         $('#T_Dias').focus();
+  //       } else {
+  //         console.error(r.message);
+  //       }
+  //     },
+  //     error: function(x){
+  //       console.error(x);
+  //     }
+  //   });
+  //
+  // });
+
+  $('.btn_buscarDatos').submit(function(){
     var data = {
-      id_referencia: $('#gRef').attr('db-id')
+      id_referencia: $('#btn_buscarDatosEmbarque_solAnt').attr('db-id')
     }
 
     $.ajax({
@@ -341,8 +369,8 @@ $(document).ready(function(){
         console.error(x);
       }
     });
-
   });
+
 
 });
 

@@ -113,7 +113,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                     <li><a href="/conta6/Ubicaciones/Contabilidad/Notacredito/2-Reportes.php">Reportes</a></li>
                   </ul>
                 </li>
-                <!-- <li><a href="/conta6/Ubicaciones/Contabilidad/recorrido/1-Recorrido.php">Recorrido</a></li> -->
+                <li><a href="/conta6/Ubicaciones/Contabilidad/Pagos/pagos.php">Pagos</a></li>
                 <!-- <li><a href="/conta6/Ubicaciones/Contabilidad/controlpedimentos/PedimentosCapturados.php">Control Pedimentos Pag.</a></li> -->
                 <!-- <li class="dropdown">
                   <a href="#" class="">Cuenta de Gastos <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
