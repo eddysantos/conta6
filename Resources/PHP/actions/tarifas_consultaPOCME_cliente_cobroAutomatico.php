@@ -1,38 +1,45 @@
 <?php
-$query_conTarifaPOCMEclienteAutom = "SELECT A.fk_id_concepto,b.s_concepto_eng,s_conceptoesp,n_cantidad,n_importe,A.fk_id_cuenta,B.s_desc_cobros
+$query_conTarifaAutom = "SELECT A.fk_id_concepto,B.s_concepto_eng,A.s_conceptoesp,A.n_cantidad,A.n_importe,A.fk_id_cuenta,B.s_desc_cobros
                                 FROM conta_tem_tarifas_calculodetalle A, conta_tarifas_conceptos B
-                                WHERE A.fk_id_concepto = B.pk_id_concepto AND A.fk_id_tarifa=$calculoTarifa AND A.s_seccion = 'POCME' and A.fk_id_cliente = '$id_cliente'
-                                and B.s_cobro_automatico = 1
+                                WHERE A.fk_id_concepto = B.pk_id_concepto AND A.fk_id_tarifa=? AND A.s_seccion = 'POCME' and A.fk_id_cliente = ?
+                                and B.s_cobro_automatico = '1'
                                 ORDER BY A.s_Conceptoesp";
 
 
-$stmt_conTarifaPOCMEclienteAutom = $db->prepare($query_conTarifaPOCMEclienteAutom);
-if (!($stmt_conTarifaPOCMEclienteAutom)) {
+
+$stmt_conTarifaAutom = $db->prepare($query_conTarifaAutom);
+if (!($stmt_conTarifaAutom)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
+  $system_callback['message'] = "Error during query prepare conTarifaAutom [$db->errno]: $db->error";
   exit_script($system_callback);
 }
 
-if (!($stmt_conTarifaPOCMEclienteAutom->execute())) {
-  $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during query execution [$stmt_conTarifaPOCMEclienteAutom->errno]: $stmt_conTarifaPOCMEclienteAutom->error";
-  exit_script($system_callback);
+$stmt_conTarifaAutom->bind_param('ss',$calculoTarifa,$id_cliente);
+if (!($stmt_conTarifaAutom)) {
+	$system_callback['code'] = "500";
+	$system_callback['message'] = "Error during variables binding conTarifaAutom [$stmt_conTarifaAutom->errno]: $stmt_conTarifaAutom->error";
+	exit_script($system_callback);
 }
 
-$idFila=0;
+if (!($stmt_conTarifaAutom->execute())) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during query execution conTarifaAutom [$stmt_conTarifaAutom->errno]: $stmt_conTarifaAutom->error";
+  exit_script($system_callback);
+}
+//$idFila=0;
 /*
-while ($oRst_conTarifaPOCMEclienteAutom = $stmt_conTarifaPOCMEclienteAutom->fetch_assoc()) {
+while ($oRst_conTarifaAutom = $stmt_conTarifaAutom->fetch_assoc()) {
     ++$idFila;
-    $ID_CONCEPTOcta = $oRst_conTarifaPOCMEclienteAutom['fk_id_cuenta'];
-    $fk_id_concepto = $oRst_conTarifaPOCMEclienteAutom['fk_id_concepto'];
-    $CONCEPTOcta = trim($oRst_conTarifaPOCMEclienteAutom['s_conceptoesp']);
-    $CONCEPTOctaEng = trim($oRst_conTarifaPOCMEclienteAutom['s_concepto_eng']);
-    $cantidad = $oRst_conTarifaPOCMEclienteAutom['n_cantidad'];
+    $ID_CONCEPTOcta = $oRst_conTarifaAutom['fk_id_cuenta'];
+    $fk_id_concepto = $oRst_conTarifaAutom['fk_id_concepto'];
+    $CONCEPTOcta = trim($oRst_conTarifaAutom['s_conceptoesp']);
+    $CONCEPTOctaEng = trim($oRst_conTarifaAutom['s_concepto_eng']);
+    $cantidad = $oRst_conTarifaAutom['n_cantidad'];
     $buscar = 'flete';
     $parteBuscar = strripos($CONCEPTOcta,$buscar);
-    $importe = number_format($oRst_conTarifaPOCMEclienteAutom['n_importe'], 2, '.', '');
+    $importe = number_format($oRst_conTarifaAutom['n_importe'], 2, '.', '');
     $subtotal = number_format($cantidad * $importe, 2, '.', '');
-    $descripcion = trim($oRst_conTarifaPOCMEclienteAutom['s_desc_cobros']);
+    $descripcion = trim($oRst_conTarifaAutom['s_desc_cobros']);
 
     #if ($parteBuscar !== false) { $descripcion = $transporteUS; }
     if( (is_null($descripcion) || $descripcion == '' ) && $importe == 0 ){ $descripcion = ""; }
