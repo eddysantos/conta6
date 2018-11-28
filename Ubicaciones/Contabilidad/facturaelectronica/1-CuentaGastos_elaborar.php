@@ -669,7 +669,7 @@ if($referencia != "SN"){
                     <div class="row mt-3">
     				          <div class='col-md-1 pt-2  p-0 text-right b'>Honorarios :</div>
                       <div class='col-md-4'>
-                        <select size="1" id="Lst_Conceptos_Honorarios" onchange="asignarTarifaH()">
+                        <select class="custom-select-s" size="1" id="Lst_Conceptos_Honorarios" onchange="asignarTarifaH()">
                           <?php echo $ConceptosCliente; ?>
                         </select>
                       </div>
@@ -683,7 +683,7 @@ if($referencia != "SN"){
                     <div class='row mt-3'>
                       <div class='col-md-1 pt-2 p-0 text-right b'>Libres :</div>
                       <div class='col-md-4'>
-                        <select size="1" onchange="asignarTarifaHlibres()" id="Lst_CHL">
+                        <select class="custom-select-s" size="1" onchange="asignarTarifaHlibres()" id="Lst_CHL">
                           <?php echo $conceptosLibresCliente; ?>
                         </select>
                       </div>
@@ -803,14 +803,14 @@ if($referencia != "SN"){
                 <tr class="row">
                   <td class="col-md-3 text-left pt-4"> CUSTOMS DC </td>
                   <td class="col-md-3">
-                    <select id="CUSTOMS" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                    <select class="custom-select-s" id="CUSTOMS" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                         <option value='1'>Si</option>
                         <option value='0' selected>No</option>
                     </select>
                   </td>
                   <td class="col-md-3">
                     <!--select id="Lst_metodoPago" onchange="asignarMetodoPago()"-->
-                    <select id="T_metodoPago" onchange="asignarMetodoPago()">
+                    <select class="custom-select-s" id="T_metodoPago" onchange="asignarMetodoPago()">
                       <option value="PUE" selected>Seleccione método de pago</option>
                       <option value="PUE">Pago en una sola exhibición --- PUE</option>
                       <option value="PPD">Pago en parcialidades o diferido --- PPD</option>
@@ -819,7 +819,7 @@ if($referencia != "SN"){
                  </td>
     			       <td class="col-md-3">
                    <!--select name="select" id="Lst_usoCFDI" onchange="asignarUsoCFDI()"-->
-                   <select name="select" id="T_usoCFDI">
+                   <select class="custom-select-s" name="select" id="T_usoCFDI">
                     <?php echo $consultaUsoCFDIfac; ?>
                   </select>
     			        <!--input class="efecto h22" type="text" id="T_usoCFDI" size="20" readonly-->
@@ -830,16 +830,17 @@ if($referencia != "SN"){
                 </tr>
                 <tr class="row">
                   <td class="col-md-3">
-                    <select id="Lst_formaPago" onchange="asignarFormaPago()">
+                    <select class="custom-select-s" id="Lst_formaPago" onchange="asignarFormaPago()">
                         <?php echo $datosCLTformaPago; ?>
                     </select>              </td>
-                  <td class="col-md-3"><select size='1' id='Lst_cuentaPago' onChange="asignarCtaBanco()">
-                    <option selected value='0'>Seleccione Banco</option>
+                  <td class="col-md-3">
+                    <select class="custom-select-s" size='1' id='Lst_cuentaPago' onChange="asignarCtaBanco()">
+                      <option selected value='0'>Seleccione Banco</option>
                     </select>
                     <div id="numerosCuenta"></div>              </td>
                   <td class="col-md-3">
                     <?php if( $oRst_permisos["CFD_cta_gastos_generarT0"] == 0){ ?>
-                    <select name="select2" id="lst_moneda" onchange="asignarMoneda()">
+                    <select class="custom-select-s" name="select2" id="lst_moneda" onchange="asignarMoneda()">
                       <?php echo $consultaMoneda; ?>
                     </select>
                     <?php } ?>              </td>
