@@ -23,7 +23,8 @@ $ADICIONAL = 0;
 //$system_callback = [];
 $query_consultaConcPOCME = "SELECT DISTINCT b.pk_id_concepto,b.fk_id_tipo, B.s_descripcion,B.s_concepto_eng, A.fk_id_cliente , B.fk_id_cuenta
 													FROM conta_tarifas a, conta_tarifas_conceptos b
-													WHERE A.fk_id_concepto = B.pk_id_concepto AND a.fk_id_cliente = ? and a.s_consolidado = ? AND A.s_imp_exp = ?";
+													WHERE A.fk_id_concepto = B.pk_id_concepto AND a.fk_id_cliente = ? AND A.s_imp_exp = ?";
+#and a.s_consolidado = ?
 
 // $query_consultaConcPOCME = "SELECT DISTINCT b.fk_id_conceptoHon,b.fk_id_tipoCalculo, B.s_concepto_esp,B.s_concepto_eng, A.fk_id_cliente , B.fk_id_conceptoCta
 // 														FROM contame_tarifas a, contame_tarifas_conceptos b
@@ -36,7 +37,8 @@ if (!($stmt_consultaConcPOCME)) {
 	exit_script($system_callback);
 }
 
-$stmt_consultaConcPOCME->bind_param('sss',$id_cliente_usar,$consolidado,$tipo);
+#$consolidado,
+$stmt_consultaConcPOCME->bind_param('ss',$id_cliente_usar,$tipo);
 if (!($stmt_consultaConcPOCME)) {
 	$system_callback['code'] = "500";
 	$system_callback['message'] = "Error during variables binding [$stmt_consultaConcPOCME->errno]: $stmt_consultaConcPOCME->error";
