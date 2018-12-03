@@ -23,7 +23,7 @@ if( $rows_buscaRef > 0 ){
     }
 
 
-      $datosEmbarque = "<table class='table font12'>";
+      $datosEmbarque = "<div class='contorno'><table class='table font12'>";
         require $root . '/conta6/Resources/PHP/actions/datosGeneralesEmbarque.php';
 
         // solo cuando la informacion este completa se muestra el boton siguiente
@@ -61,7 +61,7 @@ if( $rows_buscaRef > 0 ){
                           <td class='col-md-12'>
                               $btn_siguiente
                           </td>
-                        </tr></table>";
+                        </tr></table></div>";
 
       $system_callback['code'] = 1;
       $system_callback['data'] = $datosEmbarque;

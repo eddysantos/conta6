@@ -58,7 +58,7 @@ if($referencia != "SN"){
           }else{
             $fechaEntrada = '';
           }
-		  
+
 		  $idProv = $row_datosRefProv['pk_id_prov'];
 		  $nomProv = $row_datosRefProv['s_nombre'];
 		  $calleProv = $row_datosRefProv['s_calle'];
@@ -107,9 +107,9 @@ if($referencia != "SN"){
       $entradasAdicionales = $entradas - 1;
       $entradas = 1;
     }
-	
+
 	$parteCliente = trim( preg_replace('/[0-9]/', '', $cliente ) );
-	
+
 	if( $parteCliente == "CLT_" ){
 		//datos del cliente
 		require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
@@ -141,8 +141,8 @@ if($referencia != "SN"){
 		  $CLT_rfc = limpiarBlancos($row_datosCLT["s_tax_id"]);
 		}
 	}
-	
-/*    
+
+/*
     //IVA
     require $root . '/conta6/Resources/PHP/actions/consultaDatosIVA.php';
     if( $rows_datosIVA > 0 ){
@@ -156,7 +156,7 @@ if($referencia != "SN"){
       $retencion = 0;
       $iva_menos_retencion = 0;
     }
-*/	
+*/
     /* SACO UN FOLIO DE CALCULO DE TARIFA, ESTE FOLIO ME SERVIRA PARA PODER IDENTIFICAR LOS FILTROS DE LAS TARIFAS */
     $s_tipoDoc = 'ctaGastos';
     require $root . '/conta6/Resources/PHP/actions/tarifas_generarFolio.php';
@@ -245,96 +245,112 @@ if($referencia != "SN"){
         <h5 class='titulo font14'>DATOS CLIENTES</h5>
         <table class='table' id='eCliente'>
           <thead>
-            <tr class='row justify-content-center encabezado font16'>
-              <td class="col-md-2 text-right w-50">
-                <input class="h22 text-right border-0 bt" type="text" id="T_ID_Cliente_Oculto" readonly value="<?php echo $id_cliente; ?>">
-                <input class="h22 text-left border-0 bt w-50" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
+            <tr class='row font14 encabezado'>
+              <td class="col-md-1">
+                <input class="w-100 h22  border-0 bt" type="text" id="T_ID_Cliente_Oculto" readonly value="<?php echo $id_cliente; ?>">
               </td>
-              <td class="col-md-6 text-left w-50">
-                <input class="h22 text-right border-0 bt" type="text" id="T_ID_Proveedor" readonly value="<?php echo $idProv; ?>">
-                <input class="border-0 bt text-center w-100" type="text" id="T_Proveedor_Destinatario" value="<?php echo $nomProv;?>" readonly>
+              <td class="col-md-5">
+                <input class="w-100 h22 border-0 bt" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
+              </td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1">
+                <input class="w-100 h22 border-0 bt" type="text" id="T_ID_Proveedor" readonly value="<?php echo $idProv; ?>">
+              </td>
+              <td class="col-md-4">
+                <input class="w-100 h22 border-0 bt" type="text" id="T_Proveedor_Destinatario" value="<?php echo $nomProv;?>" readonly>
               </td>
             </tr>
             <tr class='row backpink' style="font-size:14px!important">
-              <td class='col-md-6'>Direccion Cliente</td>
-              <td class='col-md-6'>Direccion Proveedor</td>
+              <td class='col-md-6 p-1'>Direccion Cliente</td>
+              <td class="col-md-1 p-1"></td>
+              <td class='col-md-5 p-1'>Direccion Proveedor</td>
             </tr>
           </thead>
           <tbody class='font14'>
-		  	<table>
-			<tr class='row'>
-              <td class="w-50">
-			  	<table>
-					<tr class='row'>
-					  <td class="col-md-4 p-0">
-						<input class="w-100 border-0 bt text-left" id="T_Cliente_Calle" type="text" readonly value="<?php echo $CLT_calle;?>">
-						<input class="h22 border-0 bt" id="T_Cliente_No_Ext" type="text" readonly value="<?php echo $CLT_no_ext;?>" size="5">
-						<input class="h22 border-0 bt" id="T_Cliente_No_Int" type="text" readonly value="<?php echo $CLT_no_int;?>" size="25">
-					  </td>
-					</tr>
-					</tr>
-					<tr class='row'>
-					  <td class='col-md-4 p-0 text-left'>
-						<input class="h22 border-0 bt" id="T_Cliente_Colonia" type="text" readonly value="<?php echo $CLT_colonia;?>">
-					  </td>
-					</tr>
-					<tr class="row">
-					  <td class="p-0 text-left">
-						<input class="h22 border-0 bt" id="T_Cliente_CP" type="text" readonly value="<?php echo $CLT_codigo;?>" size="6"></td>
-					  </td>
-					  <td class="col-md-1 p-0 text-left"><input class="h22 border-0 bt text-left p-0" id="T_Cliente_Ciudad" type="text" readonly value="<?php echo $CLT_ciudad;?>"></td>
-					</tr>
-					<tr class='row'>					  
-					  <td class='col-md-3 p-0 text-left'>
-						<input class="h22 border-0 bt" id="T_Cliente_Estado" type="text" readonly value="<?php echo $CLT_estado;?>">,
-					  </td>
-					</tr>
-					<tr class="row">
-					  <td class="col-md-4 p-0 text-left">
-						<input class="h22 border-0 bt" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
-					  </td>
-					</tr>
-				</table>
-			  </td>
-              <td class="w-50">
-			  	<table>
-					<tr class='row'>
-					  <td class="col-md-4 p-0">
-						<input class="w-100 border-0 bt text-left" id="T_Proveedor_Calle" type="text" readonly value="<?php echo $calleProv;?>">
-					  </td>
-					</tr>
-					<tr class="row">
-					  <td class="text-left p-0">
-						<input class="h22 border-0 bt" id="T_Proveedor_No_Ext" type="text" readonly value="<?php echo $noExtProv;?>" size="5">
-					  	<input class="h22 border-0 bt" id="T_Proveedor_No_Int" type="text" readonly value="<?php echo $noIntProv;?>" size="25">
-						<input class="h22 border-0 bt" id="T_Proveedor_Colonia" type="text" readonly value="<?php echo $codProv;?>">
-						<input class="h22 border-0 bt" id="T_Proveedor_Pais" type="text" value="<?php echo $paisProv; ?>">
-						<input class="h22 border-0 bt" id="T_Proveedor_Entidad" type="text" value="<?php echo $entidadProv; ?>">
-					  </td>
-					  <td class="col-md-2 text-left p-0">
-						<input class="h22 border-0 bt text-left p-0" id="T_Proveedor_Ciudad" type="text" readonly value="<?php echo $ciudadProv;?>">
-					  </td>
-					</tr>
-					<tr>
-					  <td class="p-0 b text-right"><b>Phone: </b></td>
-					  <td class="col-md-1 p-0 text-left">
-						<input type="text" class="h22 border-0 bt" id="T_Proveedor_tel" value="<?php echo $telProv; ?>">
-					  </td>
-					</tr>
-					<tr>
-					  <td class="p-0 b text-right"><b>Fax: </b></td>
-					  <td class="col-md-1 p-0 text-left">
-						<input type="text" class="h22 border-0 bt" id="T_Proveedor_fax" value="<?php echo $faxProv; ?>">
-					  </td>
-					</tr>
-				</table>
-			  </td>
+            <tr class="row">
+              <!-- cliente -->
+              <td class="col-md-4 p-1">
+                <input class="efecto h22 bt text-left" id="T_Cliente_Calle" type="text" readonly value="<?php echo $CLT_calle;?>">
+              </td>
+              <td class="col-md-1 p-1">
+                <input class="efecto h22 bt" id="T_Cliente_No_Ext" type="text" readonly value="<?php echo $CLT_no_ext;?>" size="5" placeholder="#Ext">
+              </td>
+              <td class="col-md-1 p-1">
+                <input class="efecto h22 bt" id="T_Cliente_No_Int" type="text" readonly value="<?php echo $CLT_no_int;?>" size="25" placeholder="#Int">
+              </td>
+
+              <!-- Proveedor -->
+              <td class="col-md-1 p-1"></td>
+              <td class="col-md-5 p-1">
+  						  <input class="efecto h22 bt text-left" id="T_Proveedor_Calle" type="text" readonly value="<?php echo $calleProv;?>">
+  					  </td>
             </tr>
-			
-            
-			</table>
+
+            <tr class="row">
+              <td class="col-md-6 p-1">
+                <input class="h22 efecto bt" id="T_Cliente_Colonia" type="text" readonly value="<?php echo $CLT_colonia;?>">
+              </td>
+
+              <td class="col-md-1 p-1 offset-md-1 ">
+    						<input class="h22 efecto bt" id="T_Proveedor_No_Ext" type="text" readonly value="<?php echo $noExtProv;?>" size="5" placeholder="#Ext">
+  					  </td>
+              <td class="col-md-1 p-1">
+                <input class="h22 efecto bt" id="T_Proveedor_No_Int" type="text" readonly value="<?php echo $noIntProv;?>" size="25" placeholder="#Int">
+              </td>
+              <td class="col-md-1 p-1">
+                <input class="h22 efecto bt" id="T_Proveedor_Colonia" type="text" readonly value="<?php echo $codProv;?>" placeholder="C.P">
+              </td>
+              <td class="col-md-1 p-1">
+                <input class="h22 efecto bt" id="T_Proveedor_Pais" type="text" value="<?php echo $paisProv; ?>" placeholder="País">
+              </td>
+              <td class="col-md-1 p-1">
+                <input class="h22 efecto bt" id="T_Proveedor_Entidad" type="text" value="<?php echo $entidadProv; ?>" placeholder="Entidad">
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-6 p-1">
+                <input class="h22 efecto bt" id="T_Cliente_CP" type="text" readonly value="<?php echo $CLT_codigo;?>" size="6">
+              </td>
+
+              <td class="col-md-5 p-1 offset-md-1">
+                <input class="h22 efecto bt" id="T_Proveedor_Ciudad" type="text" readonly value="<?php echo $ciudadProv;?>">
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="col-md-6 p-1">
+                <input class="h22 efecto bt" id="T_Cliente_Ciudad" type="text" readonly value="<?php echo $CLT_ciudad;?>">
+              </td>
+
+              <td class="col-md-1 p-1 b text-right"><b>Phone: </b></td>
+  					  <td class="col-md-5 p-1">
+  						<input type="text" class="h22 efecto bt" id="T_Proveedor_tel" value="<?php echo $telProv; ?>">
+  					  </td>
+            </tr>
+
+            <tr class="row">
+              <td class="col-md-6 p-1">
+                <input class="h22 efecto bt" id="T_Cliente_Estado" type="text" readonly value="<?php echo $CLT_estado;?>">
+              </td>
+
+              <td class="col-md-1 p-1 b text-right"><b>Fax: </b></td>
+  					  <td class="col-md-5 p-1">
+  						<input type="text" class="h22 efecto bt" id="T_Proveedor_fax" value="<?php echo $faxProv; ?>">
+  					  </td>
+            </tr>
+
+            <tr class="row">
+              <td class="col-md-3 p-1">
+                <input class="h22 efecto bt" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
+              </td>
+
+              <td class="col-md-3 p-1">
+                <input class="h22 efecto bt" type="text" id="" readonly value="<?php echo $id_cliente; ?>">
+              </td>
+            </tr>
           </tbody>
-        </table>
+		  	</table>
       </div>
 
       <div id='contornoInfo' class='contorno' style="display:none">
@@ -391,34 +407,39 @@ if($referencia != "SN"){
             <tr class="row encabezado font16">
               <td class="col-md-12">INFORMACION DEL EMBARQUE</td>
             </tr>
-            
+
           </thead>
           <tbody class="font14" id='tbodyDGE'>
-            
-            <tr class="row">
-              <td class="col-md-6 p-1">Referencia: </td>
-              <td class="col-md-4 p-1">
+
+            <tr class="row justify-content-center">
+              <td class="col-md-1 text-right pt-3 ls0 b">Referencia: </td>
+              <td class="col-md-2 p-1">
                 <input class="efecto h22 text-left" type="text" id="T_Referencia" size="30" maxlength="60" value="<?php echo $id_referencia;?>" readonly>
-				<input class="efecto h22 text-left" type="text" id="T_Tipo" size="4" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $tipo;?>" readonly>
+              </td>
+              <td class="col-md-1 p-1">
+                <input class="efecto h22 text-left" type="text" id="T_Tipo" size="4" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $tipo;?>" readonly>
               </td>
             </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">Freight Bill: </td>
+
+            <tr class="row justify-content-center">
+              <td class="col-md-1 text-right pt-3 ls0 b">Freight Bill : </td>
               <td class="col-md-3 p-1">
                 <input class="efecto h22 text-left" type="text" id="T_Freight" maxlength="40" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $guiaMaster; ?>">
               </td>
             </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">Quantity:</td>
-              <td class="col-md-3 p-1">
+            <tr class="row justify-content-center">
+              <td class="col-md-1 text-right pt-3 ls0 b">Quantity : </td>
+              <td class="col-md-1 p-1">
                 <input class="efecto h22 text-left" type="text" id="T_Quantity" size="30" maxlength="150" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php $entradas; ?>">
-				Type: <input class="efecto h22 text-left" type="text" id="T_Type" size="30" maxlength="60" value="<?php echo $s_tipo; ?>" readonly>
               </td>
+              <td class="col-md-1 pt-3 ls0 b text-right">Type : </td>
+              <td class="col-md-1">
+                <input class="efecto h22 text-left" type="text" id="T_Type" size="30" maxlength="60" value="<?php echo $s_tipo; ?>" readonly>
+              </td>
+
             </tr>
-            <tr class="row">
-              <td class="col-md-6 p-1">
-                Description:
-              </td>
+            <tr class="row justify-content-center">
+              <td class="col-md-1 text-right pt-3 ls0 b">Description : </td>
               <td class="col-md-3 p-1">
                 <input class="efecto h22 text-left" id="T_Descripction" type="text" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $descripcion;?>" size="40" readonly>
               </td>
@@ -430,39 +451,40 @@ if($referencia != "SN"){
 
       <div class='contorno'>
         <h5 class='titulo font14'>CTA. GASTOS</h5>
-		
-		<table width="100%" border="0" style="font-family: Trebuchet MS; font-size: 10pt; border-style: solid; border-width: 1px" bordercolor="#000000" cellspacing="0" bgcolor="#DCDCDC">
-		  <tr bgcolor="#C0C0C0">
-			<td colspan="3" align="center">General</td>
-		  </tr>
-		  <tr>
-			<td>Invoice No:</td>
-			<td>Invoice Value: </td>
-			<td align="right"><input type="text" name="T_Invoice_Value" size="15" style="border:1px inset #808080; font-family: Trebuchet MS; font-size:10pt; text-align:right; " value="<?php echo $valor;?>" tabindex="2"></td>
-		  </tr>
-		  <tr>
-			<td><input type="text" name="T_Invoice_No" size="15" style="border:1px solid #808080; font-family: Trebuchet MS; font-size:10pt; text-align:center; color:#FFFFFF; background-color:#808080" readonly></td>
-			<td>Date:</td>
-			<td align="right">dd-mm-yyyy <input type="text" name="T_Date" size="15" style="border:1px inset #808080; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="<?php echo $fechaActual;?>" tabindex="3" required></td>
-		  </tr>
-		  <tr>
-			<td><?php if( $opcion == "CFD" or $opcion == "Proforma" ){ echo $opcion.": ".$extraerfolio; }?></td>
-			<td>Weight:</td>
-			<td align="right"><input type="text" name="T_Weight" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; color:#000000; background-color:#DCDCDC" value="<?php echo number_format($peso,2,'.','');?>" readonly></td>
-		  </tr>
-		  <tr>
-			<td>Customer Invoice:</td>
-			<td colspan="2"><input type="text" name="T_Customer_Order" size="40" style="border:1px inset #808080; font-family: Trebuchet MS; font-size:10pt; text-align:left;" tabindex="4" value="<?php echo $facturas;?>"></td>
-		  </tr>
-		</table>
-		
-        <div class=''>
+        <div class="row encabezado font16 m-0">
+          <div class="col-md-12">GENERAL</div>
+        </div>
+        <div class="sub2 row m-0" style="font-size:12px!important">
+          <div class="col-md-2"><b>Inovice No</b> </div>
+          <div class="col-md-2"><b>Inovice Value</b></div>
+          <div class="col-md-2"><b>Date</b></div>
+          <div class="col-md-2"><b>Weight</b></div>
+          <div class="col-md-4"><b>Customer Invoice</b></div>
+        </div>
+        <div class="row m-0 mt-3">
+          <div class="col-md-2">
+            <input class="efecto h22" type="text" name="T_Invoice_No" size="15" readonly>
+          </div>
+          <div class="col-md-2">
+            <input class="efecto h22" type="text" name="T_Invoice_Value" size="15"  value="<?php echo $valor;?>" readonly>
+          </div>
+          <div class="col-md-2">
+            <input class="efecto h22" type="date" name="T_Date" size="15" value="<?php echo $fechaActual;?>" required>
+          </div>
+          <div class="col-md-2">
+            <?php if( $opcion == "CFD" or $opcion == "Proforma" ){ echo $opcion.": ".$extraerfolio; }?>
+            <input class="efecto h22" type="text" name="T_Weight" size="15" value="<?php echo number_format($peso,2,'.','');?>" readonly>
+          </div>
+          <div class="col-md-4">
+            <input class="efecto h22" type="text" name="T_Customer_Order" size="40" value="<?php echo $facturas;?>">
+          </div>
+        </div>
+
+
+        <div class='mt-5'>
           <div class='acordeon2'>
-            <div class='encabezado font16' data-toggle='collapse' href='#collapseOne'>
-              <a href="#" id='bread'>ACCOUNT CHARGES</a>
-            </div>
-            <div id='collapseOne' class='card-block collapse divisor'>
-    		    <!--div div id='collapseOne' -->
+            <div class='encabezado font16' href='#collapseOne'>ACCOUNT CHARGES</div>
+            <div id='collapseOne' class='card-block  divisor mb-4'>
               <div>
                 <div class="row mt-3">
                   <div class="col-md-6">
@@ -519,157 +541,151 @@ if($referencia != "SN"){
               </form>
             </div>
           </div>
-
     		</div>
-          </div>
-
-
-
-
-        </div>
-      </div>
-      <div class="contorno" style="margin-bottom:100px!important">
-        <table class="table w-100">
-          <tr>
-            <td class="w-50">
-              <table class="table">
-                <tr class="row">
-                  <td class="col-md-3 text-left pt-4"> PAGADA </td>
-                  <td class="col-md-3">
-                    <select id="CUSTOMS" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                        <option value='1'>Si</option>
-                        <option value='0' selected>No</option>
-                    </select>
-                  </td>
-                  <td class="col-md-3"></td>
-    			       <td class="col-md-3"></td>
-                </tr>
-              </table>
-            </td>
-            <td class="w-50">
-              <table class="table font14">
-                <tbody>
-                  <tr class="row">
-                    <td class="p-1 col-md-8">
-                      <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Importe" size="40"readonly value="Total Honorarios y Servicios :">
-                    </td>
-                    <td class="col-md-2"></td>
-                    <td class="p-1 col-md-2">
-                      <input class="efecto h22" type="text" id="T_Total_Importes" size="20" value="0" readonly>
-                    </td>
-                  </tr>
-                  <tr class="row">
-                    <td class="p-1 col-md-8">
-                      <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_IVA" size="40" readonly value="<?PHP echo $iva*100?>% IVA sobre Honorarios y Servicios :">
-                    </td>
-                    <td class="col-md-2"></td>
-                    <td class="p-1 col-md-2">
-                      <input class="efecto h22" type="text" id="T_Total_IVA" size="20" value="0" readonly>
-                    </td>
-                  </tr>
-
-                  <tr class="row">
-                    <td class="p-1 col-md-8">
-                      <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_SUBTOTAL_HON" size="40" readonly value="Subtotal Honorarios y Servicios :">
-                    </td>
-                    <td class="col-md-2"></td>
-                    <td class="p-1 col-md-2">
-                      <input class="efecto h22" type="text" id="T_SUBTOTAL_HON" size="20" value="0" readonly>
-                    </td>
-                  </tr>
-
-                  <tr class="row">
-                    <td class="p-1 col-md-8">
-                      <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_IVA_RETENIDO" size="40" readonly value="Retención (4%) Impto. IVA :">
-                    </td>
-                    <td class="col-md-2"></td>
-                    <td class="p-1 col-md-2">
-                      <input class="efecto h22" type="text" id="T_IVA_RETENIDO" size="20" value="0" readonly>
-                    </td>
-                  </tr>
-
-                  <tr class="row">
-                    <td class="p-1 col-md-8">
-                      <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Gral" size="40" readonly value="Total :">
-                    </td>
-                    <td class="col-md-2"></td>
-                    <td class="p-1 col-md-2">
-                      <input class="efecto h22" type="text" id="T_Total_Gral" size="20" value="0" readonly>
-                    </td>
-                  </tr>
-
-                  <tr class="row">
-                    <td class="p-1 col-md-8">
-                      <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_MN_Extranjera" size="48" readonly value="Total Pagos o Cargos en Moneda Extranjera :">
-                    </td>
-                    <td class="col-md-2"></td>
-                    <td class="p-1 col-md-2">
-                      <input class="efecto h22" type="text" id="T_Total_MN_Extranjera" size="20" readonly>
-                    </td>
-                  </tr>
-
-                  <tr class="row">
-
-                    <td class="p-1 col-md-8">
-                      <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Pagos" size="45" readonly value="Total Pagos Realizados por su Cuenta :">
-                    </td>
-                    <td class="col-md-2"></td>
-                    <td class="p-1 col-md-2">
-                      <input class="efecto h22" type="text" id="T_Total_Pagos" size="20" value="0" readonly>
-                    </td>
-                  </tr>
-                  <tr class="row">
-                    <td class="col-md-12">
-                      <input class="h22 w-100 bt text-center border-0" type="text" id="total_CuentaGastos" readonly value="<?php echo $s_total_cta_gastos_letra; ?>">
-                    </td>
-                  </tr>
-
-                  <tr class="row">
-                    <td class="p-1 col-md-8">
-                      <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Cta_Gastos" size="40" readonly value="Total Cuenta de Gastos :">
-                    </td>
-                    <td class="col-md-2"></td>
-                    <td class="p-1 col-md-2">
-                      <input class="h22 w-100 efecto" type="text" id="T_Cta_Gastos" size="20" value="0" readonly>
-                    </td>
-                  </tr>
-                  <tr class="row">
-                    <td class="p-1 col-md-8">
-                      <input class="h22 bt border-0 text-right efecto" type="text" id="Txt_Total_Anticipos" size="40" readonly value="Total Depósitos :">
-                    </td>
-                    <td class="col-md-2 p-1 text-right">
-                      <a href="#agregarDepositos" data-toggle="modal">
-                        <img src="/conta6/Resources/iconos/002-plus.svg" class="icochico">
-                      </a>
-                    </td>
-                    <td class="p-1 col-md-2">
-                      <input class="h22 w-100 efecto" type="text" id="T_Total_Anticipos" size="20" value="0" readonly>
-                    </td>
-                  </tr>
-
-                  <tr class="row">
-                    <td class="p-1 col-md-8">
-                      <input class="h22 bt border-0 text-right efecto" type="text" id="Txt_Saldo_Gral" size="10" readonly value="Saldo :">
-                    </td>
-                    <td class="col-md-2 p-1 text-right"></td>
-                    <td class="p-1 col-md-2">
-                      <input class="h22 efecto" type="text" id="T_SALDO_GRAL" size="20" value="0" readonly>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </table>
-
-        <div class="row justify-content-center">
-          <div class="col-md-3">
-            <input class="efecto boton validarstring" type='button' value="GUARDAR" onclick="validarStringSAT(this);quitarNoUsar(this);" id="guardar-cta" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
-          </div>
-          <!-- <div id="mensaje"></div> -->
-        </div>
       </div>
     </div>
+    <div class="contorno" style="margin-bottom:100px!important">
+      <table class="table w-100">
+        <tr>
+          <td class="w-50">
+            <table class="table">
+              <tr class="row">
+                <td class="col-md-3 text-right pt-3 font12 b"> PAGADA :</td>
+                <td class="col-md-3">
+                  <select class="custom-select-s" id="CUSTOMS" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                      <option value='1'>Si</option>
+                      <option value='0' selected>No</option>
+                  </select>
+                </td>
+                <td class="col-md-3"></td>
+  			       <td class="col-md-3"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="w-50">
+            <table class="table font14">
+              <tbody>
+                <tr class="row">
+                  <td class="p-1 col-md-8">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Importe" size="40"readonly value="Total Honorarios y Servicios :">
+                  </td>
+                  <td class="col-md-2"></td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22" type="text" id="T_Total_Importes" size="20" value="0" readonly>
+                  </td>
+                </tr>
+                <tr class="row">
+                  <td class="p-1 col-md-8">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_IVA" size="40" readonly value="<?PHP echo $iva*100?>% IVA sobre Honorarios y Servicios :">
+                  </td>
+                  <td class="col-md-2"></td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22" type="text" id="T_Total_IVA" size="20" value="0" readonly>
+                  </td>
+                </tr>
+
+                <tr class="row">
+                  <td class="p-1 col-md-8">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_SUBTOTAL_HON" size="40" readonly value="Subtotal Honorarios y Servicios :">
+                  </td>
+                  <td class="col-md-2"></td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22" type="text" id="T_SUBTOTAL_HON" size="20" value="0" readonly>
+                  </td>
+                </tr>
+
+                <tr class="row">
+                  <td class="p-1 col-md-8">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_IVA_RETENIDO" size="40" readonly value="Retención (4%) Impto. IVA :">
+                  </td>
+                  <td class="col-md-2"></td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22" type="text" id="T_IVA_RETENIDO" size="20" value="0" readonly>
+                  </td>
+                </tr>
+
+                <tr class="row">
+                  <td class="p-1 col-md-8">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Gral" size="40" readonly value="Total :">
+                  </td>
+                  <td class="col-md-2"></td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22" type="text" id="T_Total_Gral" size="20" value="0" readonly>
+                  </td>
+                </tr>
+
+                <tr class="row">
+                  <td class="p-1 col-md-8">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_MN_Extranjera" size="48" readonly value="Total Pagos o Cargos en Moneda Extranjera :">
+                  </td>
+                  <td class="col-md-2"></td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22" type="text" id="T_Total_MN_Extranjera" size="20" readonly>
+                  </td>
+                </tr>
+
+                <tr class="row">
+
+                  <td class="p-1 col-md-8">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Pagos" size="45" readonly value="Total Pagos Realizados por su Cuenta :">
+                  </td>
+                  <td class="col-md-2"></td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22" type="text" id="T_Total_Pagos" size="20" value="0" readonly>
+                  </td>
+                </tr>
+                <tr class="row">
+                  <td class="col-md-12">
+                    <input class="h22 w-100 bt text-center border-0" type="text" id="total_CuentaGastos" readonly value="<?php echo $s_total_cta_gastos_letra; ?>">
+                  </td>
+                </tr>
+
+                <tr class="row">
+                  <td class="p-1 col-md-8">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Cta_Gastos" size="40" readonly value="Total Cuenta de Gastos :">
+                  </td>
+                  <td class="col-md-2"></td>
+                  <td class="p-1 col-md-2">
+                    <input class="h22 w-100 efecto" type="text" id="T_Cta_Gastos" size="20" value="0" readonly>
+                  </td>
+                </tr>
+                <tr class="row">
+                  <td class="p-1 col-md-8">
+                    <input class="h22 bt border-0 text-right efecto" type="text" id="Txt_Total_Anticipos" size="40" readonly value="Total Depósitos :">
+                  </td>
+                  <td class="col-md-2 p-1 text-right">
+                    <a href="#agregarDepositos" data-toggle="modal">
+                      <img src="/conta6/Resources/iconos/002-plus.svg" class="icochico">
+                    </a>
+                  </td>
+                  <td class="p-1 col-md-2">
+                    <input class="h22 w-100 efecto" type="text" id="T_Total_Anticipos" size="20" value="0" readonly>
+                  </td>
+                </tr>
+
+                <tr class="row">
+                  <td class="p-1 col-md-8">
+                    <input class="h22 bt border-0 text-right efecto" type="text" id="Txt_Saldo_Gral" size="10" readonly value="Saldo :">
+                  </td>
+                  <td class="col-md-2 p-1 text-right"></td>
+                  <td class="p-1 col-md-2">
+                    <input class="h22 efecto" type="text" id="T_SALDO_GRAL" size="20" value="0" readonly>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <div class="row justify-content-center">
+        <div class="col-md-3">
+          <input class="efecto boton validarstring" type='button' value="GUARDAR" onclick="validarStringSAT(this);quitarNoUsar(this);" id="guardar-cta" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
+        </div>
+        <!-- <div id="mensaje"></div> -->
+      </div>
+    </div>
+  </div>
 
 
     <?php
