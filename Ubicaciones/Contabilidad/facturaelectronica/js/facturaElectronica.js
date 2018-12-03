@@ -423,6 +423,7 @@ $('#Lst_tarifa_general').change(function(){
 $('#T_POCME_Valor').keydown(function(e){
  if (e.keyCode == 9) {
    agregarImporte();
+   agregarImporte_CtaAme();
  }
 })
 
@@ -497,6 +498,7 @@ function agregarImporte(){
       newtr = newtr + "      <td class='col-md-1 p-2 text-left'>";
       newtr = newtr + btnEliminar;
       newtr = newtr + "      </td>";
+
       newtr = newtr + "      <td class='col-md-2 p-2'>";
       newtr = newtr + "        <input type='text' id='T_POCME_Importe"+element+"' class='T_POCME_IMPORTES importe efecto h22' onblur='validaIntDec(this);validaDescImporte(1,"+element+");importe_POCME();cortarDecimalesObj(this,2);' size='17' >";
       newtr = newtr + "      </td>";
@@ -504,6 +506,127 @@ function agregarImporte(){
       newtr = newtr + "        <input type='text' id='T_POCME_Subtotal"+element+"' class='T_POCME_SUBTOTALES subtotal efecto h22' size='17' readonly>";
       newtr = newtr + "      </td>";
       newtr = newtr + "    </tr>";
+
+      $('#tbodyPOCME').append(newtr);
+
+      $(".remove-POCME").click(function(e){
+        $(this).closest("tr").remove();
+        alertify.success('Se elimino correctamente');
+        sumaGeneral();
+      });
+
+      var element = $('.T_POCME_CONCEPTOS').length;
+      $( ".T_POCME_CONCEPTOS" ).each(function( x ) {
+    	  if( $('.T_POCME_CONCEPTOS').eq(x).val() == "" ){
+
+          $('.T_POCME_CUENTAS').eq(x).val(cta);
+          $('.T_POCME_idCONCEPTOS').eq(x).val(idConcepto);
+          $('.T_POCME_CONCEPTOS').eq(x).val(concepto);
+          $('.T_POCME_CONCEPTOS_ENG').eq(x).val(concepto_eng);
+
+      		if( $('.T_POCME_CONCEPTOS').eq(x).val() == "Otros"){
+      		  $('.T_POCME_CONCEPTOS').eq(x).prop('readonly',false);
+      		  $('.T_POCME_CONCEPTOS').eq(x).css('background-color','#FFFFFF');
+      		}
+
+      		if(importe == 0 || importe == ""){
+      		  $('.T_POCME_CANTIDAD').eq(x).val(0);
+      		  $('.T_POCME_IMPORTES').eq(x).val(0);
+      		  $('.T_POCME_SUBTOTALES').eq(x).val(0);
+      		  alertify.error("Ingrese un Importe");
+      			$('.T_POCME_IMPORTES').eq(x).focus();
+      		}else{
+      		  $('.T_POCME_CANTIDAD').eq(x).val(unidades);
+      		  $('.T_POCME_IMPORTES').eq(x).val(importe);
+      		  $('.T_POCME_SUBTOTALES').eq(x).val(total);
+      		}
+
+    		  $('#Lst_tarifa_cliente').val(0);
+    			$('#Lst_tarifa_general').val(0);
+    			$('#T_no_calculo').val("");
+          $('#T_POCME_Cta').val("");
+          $('#T_POCME_idConcep').val("");
+    			$('#T_POCME').val("");
+    			$('#T_POCME_Eng').val("");
+    			$('#T_POCME_Valor').val("");
+    			sumaGeneral();
+
+    		  return false;
+    	  }
+      });
+
+    }
+}
+
+
+
+function agregarImporte_CtaAme(){
+  tipoDocumento = $('#tipoDocumento').val();
+	unidades = $('#T_no_calculo').val();
+	cta =  $('#T_POCME_Cta').val();
+  idConcepto = $('#T_POCME_idConcep').val();
+	concepto = $('#T_POCME').val();
+	concepto_eng = $('#T_POCME_Eng').val();
+	importe = $('#T_POCME_Valor').val();
+	total =  cortarDecimales(CalcMUL(unidades,importe),2);
+
+  if( cta == "" ){
+    alertify.success('Seleccione un concepto');
+  }else {
+      if(tipoDocumento == 'elaborar'){
+        btnEliminar = "<a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        inputPartida = "";
+      }
+      if(tipoDocumento == 'modificar'){
+        btnEliminar = "<a href='#' class='eliminar-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
+      }
+
+      var element = $('.T_POCME_CONCEPTOS').length;
+
+// en la linea 588 solo agregue la clase justify-content-center para centrar los inputs
+      newtr = "<tr class='row m-0 trPOCME elemento-pocme justify-content-center' id='"+element+"'>";
+      newtr = newtr + "    <td class='col-md-1 p-2'>";
+      newtr = newtr + inputPartida;
+      newtr = newtr + "        <input type='text' id='T_POCME_Cantidad"+element+"' class='T_POCME_CANTIDAD cantidad efecto h22' onblur='validaSoloNumeros(this);importe_POCME();' size='4'/>";
+      newtr = newtr + "      </td>";
+      newtr = newtr + "      <td class='col-md-3 p-2 datos-transferibles'>";
+      newtr = newtr + "        <input type='hidden' id='T_POCME_idTipoCta"+element+"' class='T_POCME_CUENTAS id-cuenta'>";
+      newtr = newtr + "        <input type='hidden' id='T_POCME_idConcep"+element+"' class='T_POCME_idCONCEPTOS id-concepto'>";
+      newtr = newtr + "        <input type='text' id='T_POCME_Concepto"+element+"' class='T_POCME_CONCEPTOS efecto h22 concepto-espanol' size='45' readonly/>";
+      newtr = newtr + "        <input type='hidden' id='T_POCME_ConceptoEng"+element+"' class='T_POCME_CONCEPTOS_ENG concepto-ingles'>";
+      newtr = newtr + "      </td>";
+      newtr = newtr + "      <td class='col-md-3 p-2'>";
+      newtr = newtr + "        <input type='text' id='T_POCME_Descripcion"+element+"' class='T_POCME_DESCRIPCION descripcion efecto h22' size='45' maxlength='40'>";
+      newtr = newtr + "      </td>";
+
+  //AQUI COMIENZA LO QUE AGREGUE O MODIFIQUE  03 DIC 2018
+      newtr = newtr + "      <td class=' p-2 text-left'>";
+      newtr = newtr + btnEliminar;
+      newtr = newtr + "      </td>";
+
+      newtr = newtr + "      <td class='pt-2 mt-2'>";
+      newtr = newtr + "        <input type='checkbox'>";
+      newtr = newtr + "      </td>";
+
+      newtr = newtr + "      <td class='col-md-1 p-2 text-left' id='spend_ctaAme'>";
+      newtr = newtr + "        <input type='text' class='efecto h22'>";
+      newtr = newtr + "      </td>";
+
+      newtr = newtr + "      <td class='col-md-1 p-2 text-left' id='gain_ctaAme'>";
+      newtr = newtr + "        <input type='text' class='efecto h22'>";
+      newtr = newtr + "      </td>";
+
+
+      newtr = newtr + "      <td class='col-md-1 p-2'>";
+      newtr = newtr + "        <input type='text' id='T_POCME_Importe"+element+"' class='T_POCME_IMPORTES importe efecto h22' onblur='validaIntDec(this);validaDescImporte(1,"+element+");importe_POCME();cortarDecimalesObj(this,2);' size='17' >";
+      newtr = newtr + "      </td>";
+      newtr = newtr + "      <td class='col-md-1 p-2'>";
+      newtr = newtr + "        <input type='text' id='T_POCME_Subtotal"+element+"' class='T_POCME_SUBTOTALES subtotal efecto h22' size='17' readonly>";
+      newtr = newtr + "      </td>";
+      newtr = newtr + "    </tr>";
+
+      // AQUI ACABA --- 03 DIC 2018
 
       $('#tbodyPOCME').append(newtr);
 

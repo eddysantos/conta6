@@ -513,7 +513,7 @@ if($referencia != "SN"){
                     <input class="efecto h22" type="text" id="T_POCME_Valor" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15" >
                   </div>
                   <div class='col-md-1 text-left'>
-                    <a onclick="agregarImporte()" id="Btn_agregar">
+                    <a onclick="agregarImporte_CtaAme()" id="Btn_agregar">
                       <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
                     </a>
                   </div>
@@ -523,13 +523,16 @@ if($referencia != "SN"){
               <form class='form1' onsubmit="return false">
                 <table class='table'>
                   <thead>
-                    <tr class='row mt-4 m-0 backpink'>
+                    <tr class='row mt-4 m-0 backpink justify-content-center'>
                       <td class='col-md-1'>SERV.</td>
                       <td class='col-md-3'>CONCEPTO</td>
                       <td class='col-md-3'>DESCRIPCION</td>
-                      <td class='col-md-1'></td>
-                      <td class='col-md-2'>IMPORTE</td>
-                      <td class='col-md-2'>SUBTOTAL</td>
+                      <td class=''></td>
+                      <td class=''></td>
+                      <td class='col-md-1 sub ml-4'>SPEND</td>
+                      <td class='col-md-1 sub'>GAIN</td>
+                      <td class='col-md-1'>IMPORTE</td>
+                      <td class='col-md-1'>SUBTOTAL</td>
                     </tr>
                   </thead>
                   <tbody id='tbodyPOCME'>
@@ -565,6 +568,56 @@ if($referencia != "SN"){
           <td class="w-50">
             <table class="table font14">
               <tbody>
+                <tr class="row">
+                  <!-- totales de SPEND y GAIN -->
+                  <td class="p-1 col-md-2 offset-md-3">
+                    <input class="efecto h22 ml-5" type="text" id="" size="20" value="0" readonly>
+                  </td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22 ml-5" type="text" id="" size="20" value="0" readonly>
+                  </td>
+
+                  <td class="p-1 col-md-3">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_SubCtaAme" size="40"readonly value="Subtotal :">
+                  </td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22" type="text" id="" size="20" value="0" readonly>
+                  </td>
+                </tr>
+
+                <tr class="row">
+                  <td class="p-1 col-md-3 offset-md-7">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Advance1" size="40"readonly value="Less Advance 1 :">
+                  </td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22" type="text" id="" size="20" value="0" readonly>
+                  </td>
+                </tr>
+
+                <tr class="row">
+                  <td class="p-1 col-md-3 offset-md-7">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Advance2" size="40"readonly value="Less Advance 2 :">
+                  </td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22" type="text" id="" size="20" value="0" readonly>
+                  </td>
+                </tr>
+
+
+                <tr class="row">
+                  <td class="p-1 col-md-3 offset-md-7">
+                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_TotCtaAme" size="40"readonly value="Total :">
+                  </td>
+                  <td class="p-1 col-md-2">
+                    <input class="efecto h22" type="text" id="" size="20" value="0" readonly>
+                  </td>
+                </tr>
+              </tbody>
+
+
+
+              <!-- SUBTOTALES ANTERIORES -->
+              <!-- <tbody>
                 <tr class="row">
                   <td class="p-1 col-md-8">
                     <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Importe" size="40"readonly value="Total Honorarios y Servicios :">
@@ -672,7 +725,7 @@ if($referencia != "SN"){
                     <input class="h22 efecto" type="text" id="T_SALDO_GRAL" size="20" value="0" readonly>
                   </td>
                 </tr>
-              </tbody>
+              </tbody> -->
             </table>
           </td>
         </tr>
