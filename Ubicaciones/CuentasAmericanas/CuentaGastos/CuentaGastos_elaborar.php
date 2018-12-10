@@ -1,4 +1,6 @@
 <?php
+# http://localhost:88/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos_elaborar.php?referencia=N13003039&consolidado=LTL&entradas=9&shipper=0&inbond=NO&flete=0.00&id_cliente=CLT_7345&docto=cliente&opcionDoc=ctagastos&extraerfolio=0&cobrarFlete=si&dias=5&tasa=IVA#
+# http://localhost:88/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos_elaborar.php?referencia=N13003036&id_cliente=CLT_6548
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 $pk_c_UsoCFDI = '';

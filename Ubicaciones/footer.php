@@ -1,5 +1,11 @@
 <footer class="footer mt-3">
-  <h4 class="m-3">Bienvenido, <?php echo $usuario;?></h4>
+  <table class="w-100">
+    <tr>
+      <td><h4 class="m-3 w-30">Bienvenido, <?php echo $usuario;?></h4></td>
+      <td><h4 class="m-3 w-30">Oficina Activa: <?php echo $aduana;?></h4></td>
+      <td><h4 class="m-3 w-40"></td>
+    </tr>
+  </table>
 
   <!--REQUERIDOS-->
   <script src="/conta6/Ubicaciones/Contabilidad/js/helperContabilidad.js"></script>
@@ -12,7 +18,7 @@
   <script src="/conta6/Ubicaciones/Contabilidad/facturaelectronica/js/facturaElectronica.js"></script>
   <script src="/conta6/Ubicaciones/Contabilidad/Notacredito/js/NotaCredito.js"></script>
 
-  <script src="/conta6/Ubicaciones/Contabilidad/pagoelectronico/js/pagoelectronico.js"></script>
+  <script src="/conta6/Ubicaciones/Contabilidad/pagos/js/pagos.js"></script>
 
   <script src="/conta6/Ubicaciones/Trafico/js/Trafico.js"></script>
   <script src="/conta6/Ubicaciones/Trafico/SolicitudAnticipo/js/SolicitudAnticipo.js"></script>
