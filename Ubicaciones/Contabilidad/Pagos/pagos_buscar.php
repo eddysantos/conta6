@@ -9,7 +9,7 @@ require $root . '/conta6/Resources/PHP/actions/facturas_cfdi_PPD.php';
 
 
 ?>
-<div class="contorno text-center">
+<div class="contorno text-center" style="margin-bottom:100px!important">
   <table class="table">
     <thead>
       <tr class="row">

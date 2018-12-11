@@ -270,15 +270,33 @@ if ($rows_datosCLTformaPago > 0) {
       </thead>
       <tbody class='font14 text-center'>
         <tr class="row borderojo text-center">
-          <td class="col-md-1"><input class="h22 bt border-0 text-center" type="text" id="aduana_DR" size="20" value="<?php echo $fk_id_aduana; ?>" readonly></td>
-          <td class="col-md-1"><input class="h22 bt border-0 text-center" type="text" id="referencia_DR" size="20" value="<?php echo $fk_referencia; ?>" readonly></td>
-          <td class="col-md-1"><input class="h22 bt border-0 text-center" type="text" id="UUID_DR" size="20" value="<?php echo $s_UUID; ?>" readonly></td>
-          <td class="col-md-2"><input class="h22 bt border-0 text-center" type="text" id="factura_DR" size="20" value="<?php echo $pk_id_factura; ?>" readonly></td>
-          <td class="col-md-1"><input class="h22 bt border-0 text-center" type="text" id="moneda_DR" size="20" value="<?php echo $fk_id_moneda; ?>" readonly></td>
-          <td class="col-md-1"><input class="h22 bt border-0 text-center" type="text" id="tipoCambio_DR" size="20" value="<?php echo $n_tipoCambio; ?>" readonly></td>
-          <td class="col-md-2"><input class="h22 bt border-0 text-center" type="text" id="totalHon_DR" size="20" value="<?php echo $n_total_gral; ?>" readonly></td>
-          <td class="col-md-1"><input class="h22 bt border-0 text-center" type="text" id="metPago_DR" size="20" value="<?php echo $fk_c_MetodoPago; ?>" readonly></td>
-          <td class="col-md-2"><input class="h22 bt border-0 text-center" type="text" id="parcialidad" size="20" value="<?php echo $parcialidad; ?>" readonly></td>
+          <td class="col-md-1">
+            <input class="h22 bt border-0 efecto" type="text" id="aduana_DR" size="20" value="<?php echo $fk_id_aduana; ?>" readonly>
+          </td>
+          <td class="col-md-1">
+            <input class="h22 bt border-0 efecto" type="text" id="referencia_DR" size="20" value="<?php echo $fk_referencia; ?>" readonly>
+          </td>
+          <td class="col-md-1">
+            <input class="h22 bt border-0 efecto" type="text" id="UUID_DR" size="20" value="<?php echo $s_UUID; ?>" readonly>
+          </td>
+          <td class="col-md-2">
+            <input class="h22 bt border-0 efecto" type="text" id="factura_DR" size="20" value="<?php echo $pk_id_factura; ?>" readonly>
+          </td>
+          <td class="col-md-1">
+            <input class="h22 bt border-0 efecto" type="text" id="moneda_DR" size="20" value="<?php echo $fk_id_moneda; ?>" readonly>
+          </td>
+          <td class="col-md-1">
+            <input class="h22 bt border-0 efecto" type="text" id="tipoCambio_DR" size="20" value="<?php echo $n_tipoCambio; ?>" readonly>
+          </td>
+          <td class="col-md-2">
+            <input class="h22 bt border-0 efecto" type="text" id="totalHon_DR" size="20" value="<?php echo $n_total_gral; ?>" readonly>
+          </td>
+          <td class="col-md-1">
+            <input class="h22 bt border-0 efecto" type="text" id="metPago_DR" size="20" value="<?php echo $fk_c_MetodoPago; ?>" readonly>
+          </td>
+          <td class="col-md-2">
+            <input class="h22 bt border-0 efecto" type="text" id="parcialidad" size="20" value="<?php echo $parcialidad; ?>" readonly>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -289,23 +307,27 @@ if ($rows_datosCLTformaPago > 0) {
           <td class="col-md-12">Captura detalle de pago</td>
         </tr>
         <tr class="row backpink justify-content-center">
-          <td class="col-md-2 p-1"><span>*</span> Fecha y Hr.</td>
+          <td class="col-md-3 p-1"><span>*</span> Fecha y Hr.</td>
           <td class="col-md-2 p-1"><span>*</span> Forma de Pago</td>
           <td class="col-md-1 p-1"># Autorización</td>
           <td class="col-md-2 p-1"><span>*</span> Moneda</td>
-          <td class="col-md-2 p-1"><span>*</span> Tipo de Cambio</td>
+          <td class="col-md-1 p-1"><span>*</span> Tipo de Cambio</td>
           <td class="col-md-1 p-1"><span>*</span> Importe</td>
           <td class="col-md-1 p-1">IVA</td>
+          <td class="col-md-1 p-1 pl-3"></td>
         </tr>
       </thead>
       <tbody class='font14 text-center'>
         <tr class="row borderojo pb-3 mt-3 justify-content-center">
           <td class="col-md-2 p-1">
-            <input type="date" class="efecto h22" id="fecha" size="10"><input type="time" class="efecto h22" id="hora" min="12:00">
+            <input type="date" class="efecto h22" id="fecha" size="10">
+          </td>
+          <td class="col-md-1 p-1">
+            <input type="time" class="efecto h22" id="hora" min="12:00">
           </td>
           <td class="col-md-2 p-1">
-            <select id="Lst_formaPago">
-                <?php echo $datosCLTformaPago; ?>
+            <select id="Lst_formaPago" class="custom-select-s">
+              <?php echo $datosCLTformaPago; ?>
             </select>
           </td>
           <td class="col-md-1 p-1">
@@ -316,7 +338,7 @@ if ($rows_datosCLTformaPago > 0) {
               <?php echo $consultaMoneda; ?>
             </select>
           </td>
-          <td class="col-md-2 p-1">
+          <td class="col-md-1 p-1">
             <input type="text" id="T_monedaTipoCambio" class="efecto h22" onchange=""="validaIntDec(this);" value="1" />
           </td>
           <td class="col-md-1 p-1">
@@ -326,7 +348,7 @@ if ($rows_datosCLTformaPago > 0) {
             <input class="efecto h22" type="text" id="T_iva" onchange="validaIntDec(this)" value="0">
             <input class="efecto h22" type="hidden" id="T_deposito" value="0">
           </td>
-          <td class="p-1 pl-3">
+          <td class="col-md-1 p-1 pl-3">
             <a href="#" id="Btn_agregarPago" onclick="Btn_agregarPago()"><img class="icochico" src="/conta6/Resources/iconos/001-add.svg"></a>
           </td>
         </tr>
@@ -339,27 +361,26 @@ if ($rows_datosCLTformaPago > 0) {
           <td class="p-1 col-md-4">Cuenta (min 10 dig)</td>
         </tr>
         <tr class="row font12">
-          <td class="col-md-1"><input class="efecto h22" type="text" id="T_RFCemisor" value="<?php echo $s_rfc;?>" readonly></td>
-          <td class="col-md-3">
-            <select size='1' id='Lst_cuentaPago'>
+          <td class="col-md-1 p-1">
+            <input class="efecto h22 p-0" type="text" id="T_RFCemisor" value="<?php echo $s_rfc;?>" readonly>
+          </td>
+          <td class="col-md-3 p-1">
+            <select size='1' id='Lst_cuentaPago' class="custom-select-s">
               <option selected value='0'>Seleccione Banco</option>
             </select>
           </td>
-          <td class="col-md-3">
+          <td class="col-md-3 p-1">
             <input class="efecto h22" type="text" id="T_nomBancoExt" onchange="eliminaBlancosIntermedios(this);validarStringSAT(this);">
           </td>
-          <td class="col-md-1">
-            <input class="efecto h22" type="text" id="T_RFCreceptor" value="<?php echo $rfcCIA; ?>" readonly>
+          <td class="col-md-1 p-1">
+            <input class="efecto h22 p-0" type="text" id="T_RFCreceptor" value="<?php echo $rfcCIA; ?>" readonly>
           </td>
-          <td class="col-md-4">
+          <td class="col-md-4 p-1">
             <select class="custom-select-s" id="lst_bancoCIA">
               <option value="0">Bancos PLAA</option>
               <?php echo $ctasCIA; ?>
             </select>
           </td>
-          <!--td class="col-md-2">
-            <input class="efecto h22" type="text">
-          </td-->
         </tr>
 
 
@@ -406,14 +427,14 @@ if ($rows_datosCLTformaPago > 0) {
       <table class='table'>
         <thead>
           <tr class='row m-0 mt-4 sub2'>
-            <th class='col-md-2 p-1'></th>
-            <th class='col-md-4 p-1'></th>
+            <th class='col-md-12 p-1 font14'>Detalle de Pagos</th>
+            <!-- <th class='col-md-4 p-1'></th>
             <th class='col-md-1 p-1'>Detalle de Pagos</th>
             <th class='col-md-1 p-1'></th>
             <th class='col-md-1 p-1'></th>
             <th class='col-md-1 p-1'></th>
             <th class='col-md-1 p-1'></th>
-            <th class='col-md-1 p-1'></th>
+            <th class='col-md-1 p-1'></th> -->
           </tr>
         </thead>
         <tbody id="tbodyPagos">
@@ -496,7 +517,7 @@ if ($rows_datosCLTformaPago > 0) {
 
 
 
-<script src="/Conta6/Ubicaciones/Contabilidad/Pagos/js/pagos.js" charset="utf-8"></script>
+<!-- <script src="/Conta6/Ubicaciones/Contabilidad/Pagos/js/pagos.js" charset="utf-8"></script> -->
 
 <?php
 require_once('modales/buscar_factura.php');
