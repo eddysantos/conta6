@@ -59,11 +59,8 @@
 }
 
 .sub3{
-  /* letter-spacing: 3px!important; */
-  /* font-size: 12px!important; */
   background-color: rgba(138,138,138,0.2)!important;
   font-weight: bold;
-
 }
 
 .b{
@@ -269,6 +266,8 @@ select{
 .mb-10{
   margin-bottom: 8rem!important;
 }
+
+/* rectangulo para firma de cheque */
 .dimdiv{
   height: 50px;
   background-color: transparent;
@@ -310,6 +309,11 @@ a img{
 .red{
   color: #FF0000!important;
   letter-spacing: 2px;
+}
+
+.subrojo{
+  color: rgb(209, 28, 28);
+  font-size: 14px;
 }
 
 .custom-select-mod {
@@ -470,9 +474,4 @@ div.submenuMed {
   color: #fff;
   background-color: rgb(184, 184, 184)!important;
   border-color: rgb(184, 184, 184)!important;
-}
-
-.subrojo{
-  color: rgb(209, 28, 28);
-  font-size: 14px;
 }

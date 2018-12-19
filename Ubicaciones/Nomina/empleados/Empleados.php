@@ -49,7 +49,7 @@
 
 
 
-<script src="/conta6/Resources/js/Inputs.js"></script>
+<!-- <script src="/conta6/Resources/js/Inputs.js"></script> -->
 <script src="js/empleados.js"></script>
 <?php
   include_once('modales/Empleados.php');

@@ -15,8 +15,8 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
   <link rel="stylesheet" href="/conta6/Resources/fontAwesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="/conta6/Resources/css/inputs.css">
   <link rel="stylesheet" href="/conta6/Resources/css/Modulo1.css">
-  <link rel="stylesheet" href="/conta6/Resources/css/Modulo2.css">
-  <link rel="stylesheet" href="/conta6/Resources/css/Modulo3.css">
+  <!-- <link rel="stylesheet" href="/conta6/Resources/css/Modulo2.css">
+  <link rel="stylesheet" href="/conta6/Resources/css/Modulo3.css"> -->
   <link rel="stylesheet" href="/conta6/Resources/css/barraNavegacion.css">
   <link rel="stylesheet" href="/conta6/Resources/css/modals.css">
   <link rel="stylesheet" href="/conta6/Resources/bootstrap/css/reset.css">
@@ -161,7 +161,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                     </ul>
                   </li> -->
                   <li><a href="/Conta6/Ubicaciones/Nomina/empleados/Empleados.php">Empleados</a></li>
-                  <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/GenerarNominaCFDI.php">Nomina Sueldos y Salarios CFDI</a></li>
+                  <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php">Nomina Sueldos y Salarios CFDI</a></li>
                   <li><a href="/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">Nomina Honorarios Asimilados CFDI</a></li>
                   <li><a href="/conta6/Ubicaciones/Nomina/DatosOficina/DatosOficina.php">Datos de Oficina</a></li>
                   <li><a href="/conta6/Ubicaciones/Nomina/Reportes/Reporte.php">Reportes</a></li>
