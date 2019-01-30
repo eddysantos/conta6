@@ -413,71 +413,137 @@ function Btn_agregarPago(){
 
         var element = $('.t-factura').length;
 
+        // newtr = "<tr class='row m-0 font12 elemento-pagos borderojo remove_"+element+"'' id='"+element+"'>";
+        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b>Tipo Cadena:</b> </td>";
+        //   newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 text-left t-tipoCadena efecto border-0 bt' type='text' id='tipoCadena_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Cuenta Emisor:</b> </td>";
+        //   newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-ctaE' type='text' id='ctaE_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Fecha: </b></td>";
+        //   newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-fecha' type='text' id='fecha_"+element+"' readonly>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //   newtr = newtr + " <td class='p-1'>";
+        //   newtr = newtr + btnEliminar;
+        //   newtr = newtr + " </td>";
+        //
+        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b> Certificado: </b></td>";
+        //   newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-certificado' type='text' id='certificado_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Banco Ext.: </b></td>";
+        //   newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-bcoExt' type='text' id='bcoExt_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Forma Pago:</b> </td>";
+        //   newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-formaPago' type='text' id='formaPago_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //
+        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b> Cadena Original:</b> </td>";
+        //   newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-cadenaOrig' type='text' id='cadenaOrig_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'> <b>Cta Receptor:</b> </td>";
+        //   newtr = newtr + " <td class='col-md-2 p-1 mb-3'> <input class='h22 efecto border-0 bt text-left t-ctaR' type='text' id='ctaR_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> # Autorización:</b></td>";
+        //   newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-operacion' type='text' id='operacion_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //
+        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b> Sello:</b></td>";
+        //   newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-sello' type='text' id='sello_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1'> <input class=' t-rfcE' type='hidden' id='rfcE_"+element+"'></td>";
+        //   newtr = newtr + " <td class='col-md-1'> <input class=' t-rfcR' type='hidden' id='rfcR_"+element+"'></td>";
+        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-4'><b> Importe: </b></td>";
+        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-importe' type='text' id='importe_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //
+        //   newtr = newtr + " <td class='p-1'>REf.</td>";
+        //   newtr = newtr + " <td class='p-1'>Fac.</td>";
+        //   newtr = newtr + " <td class='p-1'>Parc.</td>";
+        //   newtr = newtr + " <td class='p-1'>S. Anterior</td>";
+        //   newtr = newtr + " <td class='p-1'>Imp. Pagado</td>";
+        //   newtr = newtr + " <td class='p-1'>IVA</td>";
+        //   newtr = newtr + " <td class='p-1'>S.Insoluto</td>";
+        //   newtr = newtr + " <td class='p-1'></td>";
+        //
+        //   newtr = newtr + " <td class='col-md-1 ml-2'> <input class=' t-referencia' type='text' id='referencia_"+element+"'></td>";
+        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-factura' type='text' id='factura_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-parcialidad' type='text' id='parcialidad_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-saldoAnterior' type='text' id='saldoAnterior_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-pagado' type='text' id='pagado_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-iva' type='text' id='iva_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-saldoInsoluto' type='text' id='saldoInsoluto_"+element+"' readonly></td>";
+        //   newtr = newtr + " <td class='p-1'>";
+        //
+        //   newtr = newtr + " <input class='h22 efecto border-0 bt text-left t-tipoCambio' type='hidden' id='tipoCambio_"+element+"' readonly>";
+        //   newtr = newtr + " <input type='hidden' class='h22 efecto border-0 bt text-left t-monedaDR' id='monedaDR_&quot;+element+&quot;' readonly />";
+        //   newtr = newtr + " <input class='h22 efecto border-0 bt text-left t-uuid' type='hidden' id='uuid_"+element+"' readonly>";
+        //   newtr = newtr + " <input name='text' type='hidden' class='h22 efecto border-0 bt text-left t-total' id='total_"+element+"' readonly />";
+        //   newtr = newtr + " <input class=' t-tipoCambioDR' type='hidden' id='tipoCambioDR_"+element+"'>";
+        //   newtr = newtr + " <input class=' t-moneda' type='hidden' id='moneda_"+element+"'><input class=' t-deposito' type='hidden' id='deposito_"+element+"'>";
+        //   newtr = newtr + " <input class=' t-metodoPagoDR' type='hidden' id='metodoPagoDR_"+element+"'><input class=' t-aduanaDR' type='hidden' id='aduanaDR_"+element+"'>";
+        //   newtr = newtr + " </td>";
+        //
+        // newtr = newtr + "</tr> ";
+
+
+
+        newdiv = "<div class='row m-0 font12 elemento-pagos remove_"+element+"'' id='"+element+"'>";
+          newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b>Tipo Cadena:</b> </div>";
+          newdiv = newdiv + " <div class='col-md-3 p-1'><input class='h22 efecto text-left t-tipoCadena border-0 bt' type='text' id='tipoCadena_"+element+"' readonly></div>";
+          newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Cuenta Emisor:</b> </div>";
+          newdiv = newdiv + " <div class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-ctaE' type='text' id='ctaE_"+element+"' readonly></div>";
+          newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Fecha: </b></div>";
+          newdiv = newdiv + " <div class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-fecha' type='text' id='fecha_"+element+"' readonly></div>";
+          newdiv = newdiv + " <div class='col-md-1 p-1'>";
+          newdiv = newdiv + btnEliminar;
+          newdiv = newdiv + " </div>";
+
+          newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Certificado: </b></div>";
+          newdiv = newdiv + " <div class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-certificado' type='text' id='certificado_"+element+"' readonly></div>";
+          newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Banco Ext.: </b></div>";
+          newdiv = newdiv + " <div class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-bcoExt' type='text' id='bcoExt_"+element+"' readonly></div>";
+          newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Forma Pago:</b> </div>";
+          newdiv = newdiv + " <div class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-formaPago' type='text' id='formaPago_"+element+"' readonly></div>";
+          newdiv = newdiv + " <div class='col-md-1'></div>";
+
+
+
+          newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Cadena Original:</b> </div>";
+          newdiv = newdiv + " <div class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-cadenaOrig' type='text' id='cadenaOrig_"+element+"' readonly></div>";
+          newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'> <b>Cta Receptor:</b> </div>";
+          newdiv = newdiv + " <div class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-ctaR' type='text' id='ctaR_"+element+"' readonly></div>";
+          newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> # Autorización:</b></div>";
+          newdiv = newdiv + " <div class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-operacion' type='text' id='operacion_"+element+"' readonly></div>";
+          newdiv = newdiv + " <div class='col-md-1'></div>";
+
+
+          newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Sello:</b></div>";
+          newdiv = newdiv + " <div class='col-md-3 p-1'><input class='h22 efecto border-0 bt text-left t-sello' type='text' id='sello_"+element+"' readonly></div>";
+          newdiv = newdiv + " <div class='col-md-1'> <input class=' t-rfcE' type='hidden' id='rfcE_"+element+"'></div>";
+          newdiv = newdiv + " <div class='col-md-3'> <input class=' t-rfcR' type='hidden' id='rfcR_"+element+"'></div>";
+          newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Importe: </b></div>";
+          newdiv = newdiv + " <div class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-importe' type='text' id='importe_"+element+"' readonly></div>";
+          newdiv = newdiv + " <div class='col-md-1 p-1'></div>";
+        newdiv = newdiv + " </div>"; //termino del registro pago
+
+
+
+
+
         newtr = "<tr class='row m-0 font12 elemento-pagos borderojo remove_"+element+"'' id='"+element+"'>";
-          newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b>Tipo Cadena:</b> </td>";
-          newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 text-left t-tipoCadena efecto border-0 bt' type='text' id='tipoCadena_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Cuenta Emisor:</b> </td>";
-          newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-ctaE' type='text' id='ctaE_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Fecha: </b></td>";
-          newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-fecha' type='text' id='fecha_"+element+"' readonly>";
-          newtr = newtr + " <td class='p-1'></td>";
-          newtr = newtr + " <td class='p-1'>";
-          newtr = newtr + btnEliminar;
-          newtr = newtr + " </td>";
-
-          newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b> Certificado: </b></td>";
-          newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-certificado' type='text' id='certificado_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Banco Ext.: </b></td>";
-          newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-bcoExt' type='text' id='bcoExt_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Forma Pago:</b> </td>";
-          newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-formaPago' type='text' id='formaPago_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-
-          newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b> Cadena Original:</b> </td>";
-          newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-cadenaOrig' type='text' id='cadenaOrig_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'> <b>Cta Receptor:</b> </td>";
-          newtr = newtr + " <td class='col-md-2 p-1 mb-3'> <input class='h22 efecto border-0 bt text-left t-ctaR' type='text' id='ctaR_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> # Autorización:</b></td>";
-          newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-operacion' type='text' id='operacion_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-
-          newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b> Sello:</b></td>";
-          newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-sello' type='text' id='sello_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1'> <input class=' t-rfcE' type='hidden' id='rfcE_"+element+"'></td>";
-          newtr = newtr + " <td class='col-md-1'> <input class=' t-rfcR' type='hidden' id='rfcR_"+element+"'></td>";
-          newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-4'><b> Importe: </b></td>";
-          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-importe' type='text' id='importe_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-
-          newtr = newtr + " <td class='p-1'></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-          newtr = newtr + " <td class='p-1'></td>";
-
-          newtr = newtr + " <td class='p-1'>REf.</td>";
-          newtr = newtr + " <td class='p-1'>Fac.</td>";
-          newtr = newtr + " <td class='p-1'>Parc.</td>";
-          newtr = newtr + " <td class='p-1'>S. Anterior</td>";
-          newtr = newtr + " <td class='p-1'>Imp. Pagado</td>";
-          newtr = newtr + " <td class='p-1'>IVA</td>";
-          newtr = newtr + " <td class='p-1'>S.Insoluto</td>";
-          newtr = newtr + " <td class='p-1'></td>";
-
-          newtr = newtr + " <td class='col-md-1 ml-2'> <input class=' t-referencia' type='text' id='referencia_"+element+"'></td>";
-          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-factura' type='text' id='factura_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-parcialidad' type='text' id='parcialidad_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-saldoAnterior' type='text' id='saldoAnterior_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-pagado' type='text' id='pagado_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-iva' type='text' id='iva_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-saldoInsoluto' type='text' id='saldoInsoluto_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='p-1'>";
+          newtr = newtr + " <td class='col-md-2 p-1'> <input class='efecto h22 border-0 bt t-referencia' type='text' id='referencia_"+element+"'></td>";
+          newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt t-factura' type='text' id='factura_"+element+"' readonly></td>";
+          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt t-parcialidad' type='text' id='parcialidad_"+element+"' readonly></td>";
+          newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt t-saldoAnterior' type='text' id='saldoAnterior_"+element+"' readonly></td>";
+          newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt t-pagado' type='text' id='pagado_"+element+"' readonly></td>";
+          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt t-iva' type='text' id='iva_"+element+"' readonly></td>";
+          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt t-saldoInsoluto' type='text' id='saldoInsoluto_"+element+"' readonly></td>";
+          // newtr = newtr + " <td class='p-1'>";
 
           newtr = newtr + " <input class='h22 efecto border-0 bt text-left t-tipoCambio' type='hidden' id='tipoCambio_"+element+"' readonly>";
           newtr = newtr + " <input type='hidden' class='h22 efecto border-0 bt text-left t-monedaDR' id='monedaDR_&quot;+element+&quot;' readonly />";
@@ -486,14 +552,21 @@ function Btn_agregarPago(){
           newtr = newtr + " <input class=' t-tipoCambioDR' type='hidden' id='tipoCambioDR_"+element+"'>";
           newtr = newtr + " <input class=' t-moneda' type='hidden' id='moneda_"+element+"'><input class=' t-deposito' type='hidden' id='deposito_"+element+"'>";
           newtr = newtr + " <input class=' t-metodoPagoDR' type='hidden' id='metodoPagoDR_"+element+"'><input class=' t-aduanaDR' type='hidden' id='aduanaDR_"+element+"'>";
-          newtr = newtr + " </td>";
-
+          newtr = newtr + "</td>";
         newtr = newtr + "</tr> ";
 
-        $('#tbodyPagos').append(newtr);
+        // $('#tbodyPagos').append(newtr);
+
+        $('#tbodyPagos').append(newdiv);
+        $('#tbodyPagosDesglose').append(newtr);
+
+        // $(".remove-Pagos").click(function(e){
+        //   $(this).closest("tr").remove();
+        //   alertify.success('Se elimino correctamente');
+        // });
 
         $(".remove-Pagos").click(function(e){
-          $(this).closest("tr").remove();
+          $(this).closest(".row").remove();
           alertify.success('Se elimino correctamente');
         });
 

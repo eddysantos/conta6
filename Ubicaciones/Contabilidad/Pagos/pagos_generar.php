@@ -422,7 +422,7 @@ if ($rows_datosCLTformaPago > 0) {
 
   </div>
 
-  <div class="contorno mt-5" >
+  <!-- <div class="contorno mt-5" >
     <form onsubmit="return false">
       <table class='table'>
         <thead>
@@ -432,6 +432,32 @@ if ($rows_datosCLTformaPago > 0) {
         </thead>
         <tbody id="tbodyPagos">
         </tbody>
+      </table>
+    </form>
+  </div> -->
+
+
+
+  <div class="contorno mt-5">
+    <form onsubmit="return false">
+      <div class="row sub2 m-0 mt-4">
+        <div class="col-md-12 p-1 font14"><b>Detalle de Pagos</b></div>
+      </div>
+      <div id="tbodyPagos"></div>
+      <table class="table">
+        <thead>
+          <tr class="row sub2 m-0">
+            <td class='col-md-2 p-1'>Referencia</td>
+            <td class='col-md-2 p-1'>Factura</td>
+            <td class='col-md-1 p-1'>Parc.</td>
+            <td class='col-md-2 p-1'>S. Anterior</td>
+            <td class='col-md-2 p-1'>Imp. Pagado</td>
+            <td class='col-md-1 p-1'>IVA</td>
+            <td class='col-md-1 p-1'>S.Insoluto</td>
+            <td class='col-md-1 p-1'></td>
+          </tr>
+        </thead>
+        <tbody id="tbodyPagosDesglose"></tbody>
       </table>
     </form>
   </div>
