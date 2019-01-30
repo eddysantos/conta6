@@ -73,7 +73,7 @@ if ($rows_datosCLTformaPago > 0) {
         </tr>
         <tr class="row sub3 font12 b" style="background-color:rgba(173, 173, 173, 0.1)!important">
           <td class='col-md-6 p-1'>Direccion</td>
-          <td class='col-md-6 p-1'>Proveedor</td>
+          <td class='col-md-6 p-1'></td>
         </tr>
       </thead>
       <tbody class='font14'>
@@ -197,9 +197,9 @@ if ($rows_datosCLTformaPago > 0) {
       </thead>
       <tbody class='font14 text-center'>
         <tr class="row">
-          <td class="p-1 col-md-4"></td>
-          <td class="p-1 col-md-4"></td>
-          <td class="p-1 col-md-4"></td>
+          <td class="p-1 col-md-4"><input class="h22 bt border-0 efecto" type="text" id="idPago_sust" size="20" value="" readonly></td>
+          <td class="p-1 col-md-4"><input class="h22 bt border-0 efecto" type="text" id="uuid_sust" size="20" value="" readonly></td>
+          <td class="p-1 col-md-4"><input class="h22 bt border-0 efecto" type="text" id="tipoRel_sust" size="20" value="" readonly></td>
         </tr>
       </tbody>
     </table>
@@ -250,6 +250,106 @@ if ($rows_datosCLTformaPago > 0) {
   <div class="contorno mt-5">
     <h5 class='titulo font16'>Captura</h5>
 
+    <table class='table '>
+      <thead>
+        <tr class='row encabezado font14'>
+          <td class="col-md-12">Captura detalle de pago</td>
+        </tr>
+        <tr class="row backpink justify-content-center">
+          <td class="col-md-3 p-1"><span>*</span> Fecha y Hr.</td>
+          <td class="col-md-2 p-1"><span>*</span> Forma de Pago</td>
+          <td class="col-md-1 p-1"># Autorización</td>
+          <td class="col-md-2 p-1"><span>*</span> Moneda</td>
+          <td class="col-md-1 p-1"><span>*</span> Tipo de Cambio</td>
+          <td class="col-md-1 p-1"><span>*</span> Importe</td>
+          <td class="col-md-1 p-1">&nbsp;</td>
+          <td class="col-md-1 p-1 pl-3"></td>
+        </tr>
+      </thead>
+      <tbody class='font14 text-center'>
+        <tr class="row borderojo pb-3 mt-3 justify-content-center">
+          <td class="col-md-2 p-1">
+            <input type="date" class="efecto h22" id="fecha" size="10">
+          </td>
+          <td class="col-md-1 p-1">
+            <input type="time" class="efecto h22" id="hora" min="12:00">
+          </td>
+          <td class="col-md-2 p-1">
+            <select id="Lst_formaPago" class="custom-select-s">
+              <?php echo $datosCLTformaPago; ?>
+            </select>
+          </td>
+          <td class="col-md-1 p-1">
+            <input type="text" class="efecto h22" id="Txt_numOper">
+          </td>
+          <td class="col-md-2 p-1">
+            <select class="custom-select-s" name="select2" id="lst_moneda" onchange="asignarMonedaPago()">
+              <?php echo $consultaMoneda; ?>
+            </select>
+          </td>
+          <td class="col-md-1 p-1">
+            <input type="text" id="T_monedaTipoCambio" class="efecto h22" onchange=""="validaIntDec(this);" value="1" />
+          </td>
+          <td class="col-md-1 p-1">
+            <input class="efecto h22" type="text" id="T_importe" value="0" onchange="buscarNumeroCuentaBanco('<?php echo $id_cliente; ?>')">
+          </td>
+          <td class="col-md-1 p-1">&nbsp;</td>
+          <td class="col-md-1 p-1 pl-3">
+            <a href="#" id="Btn_agregarPago" onclick="Btn_agregarPago()"><img class="icochico" src="/conta6/Resources/iconos/001-add.svg"></a>
+          </td>
+        </tr>
+
+        <tr class="row sub2 mt-3">
+          <td class="p-1 col-md-1 ls1">RFC Emisor</td>
+          <td class="p-1 col-md-3">Cuenta Emisor (min 10 dig.)</td>
+          <td class="p-1 col-md-3">Banco Emisor Extranjero</td>
+          <td class="p-1 col-md-1 ls1">RFC Receptor</td>
+          <td class="p-1 col-md-4">Cuenta (min 10 dig)</td>
+        </tr>
+        <tr class="row font12">
+          <td class="col-md-1 p-1">
+            <input class="efecto h22 p-0" type="text" id="T_RFCemisor" value="<?php echo $s_rfc;?>" readonly>
+          </td>
+          <td class="col-md-3 p-1">
+            <select class="custom-select-s" size='1' id='Lst_cuentaPago'>
+              <option selected value='0'>Seleccione Banco</option>
+            </select>
+          </td>
+          <td class="col-md-3 p-1">
+            <input class="efecto h22" type="text" id="T_nomBancoExt" onchange="eliminaBlancosIntermedios(this);validarStringSAT(this);">
+          </td>
+          <td class="col-md-1 p-1">
+            <input class="efecto h22 p-0" type="text" id="T_RFCreceptor" value="<?php echo $rfcCIA; ?>" readonly>
+          </td>
+          <td class="col-md-4 p-1">
+            <select class="custom-select-s" id="lst_bancoCIA">
+              <option value="0">Bancos PLAA</option>
+              <?php echo $ctasCIA; ?>
+            </select>
+          </td>
+        </tr>
+
+
+        <tr class="row sub2 mt-3">
+          <td class="col-md-3 p-1">Tipo Cadena</td>
+          <td class="col-md-3 p-1">Certificado</td>
+          <td class="col-md-3 p-1">Cadena Original</td>
+          <td class="col-md-3 p-1">Sello</td>
+        </tr>
+        <tr class="row font12">
+          <td class="col-md-3">
+            <select class="custom-select-s" id="Lst_tipoCadena">
+              <option value="">Tipo Cadena</option>
+			        <option value="01">SPEI</option>
+            </select>
+          </td>
+          <td class="col-md-3"><input class="efecto h22" type="text" id="Txt_cert"></td>
+          <td class="col-md-3"><input class="efecto h22" type="text" id="Txt_cadOrig"></td>
+          <td class="col-md-3"><input class="efecto h22" type="text" id="Txt_sello"></td>
+        </tr>
+      </tbody>
+    </table>
+
     <table class='table'>
       <thead>
         <tr class='row encabezado font14'>
@@ -298,143 +398,36 @@ if ($rows_datosCLTformaPago > 0) {
             <input class="h22 bt border-0 efecto" type="text" id="parcialidad" size="20" value="<?php echo $parcialidad; ?>" readonly>
           </td>
         </tr>
-      </tbody>
-    </table>
-
-    <table class='table '>
-      <thead>
-        <tr class='row encabezado font14'>
-          <td class="col-md-12">Captura detalle de pago</td>
-        </tr>
-        <tr class="row backpink justify-content-center">
-          <td class="col-md-3 p-1"><span>*</span> Fecha y Hr.</td>
-          <td class="col-md-2 p-1"><span>*</span> Forma de Pago</td>
-          <td class="col-md-1 p-1"># Autorización</td>
-          <td class="col-md-2 p-1"><span>*</span> Moneda</td>
-          <td class="col-md-1 p-1"><span>*</span> Tipo de Cambio</td>
-          <td class="col-md-1 p-1"><span>*</span> Importe</td>
-          <td class="col-md-1 p-1">IVA</td>
-          <td class="col-md-1 p-1 pl-3"></td>
-        </tr>
-      </thead>
-      <tbody class='font14 text-center'>
-        <tr class="row borderojo pb-3 mt-3 justify-content-center">
-          <td class="col-md-2 p-1">
-            <input type="date" class="efecto h22" id="fecha" size="10">
+        <tr class='row mt-4 sub2'>
+          <th class='col-md-1 pt-2'>Saldo Anterior</th>
+          <td class='col-md-2'>
+            <input class="efecto h22" type="text" id="T_saldoAnterior" size="10" onBlur="validaIntDec(this);suma_saldoInsoluto();" value="<?php echo $n_total_gral; ?>" <?php if( $oRst_permisos["s_rPgo_editSaldoAnterior"] == 0){ echo "readonly"; }?>>
           </td>
-          <td class="col-md-1 p-1">
-            <input type="time" class="efecto h22" id="hora" min="12:00">
+          <th class='col-md-1 pt-2'>Importe Pagado</th>
+          <td class='col-md-2'>
+            <input class="efecto h22" id="T_importePagado" onchange="validaIntDec(this);calculaDepIVA()" type="text" size="10" value="0">
           </td>
-          <td class="col-md-2 p-1">
-            <select id="Lst_formaPago" class="custom-select-s">
-              <?php echo $datosCLTformaPago; ?>
-            </select>
-          </td>
-          <td class="col-md-1 p-1">
-            <input type="text" class="efecto h22" id="Txt_numOper">
-          </td>
-          <td class="col-md-2 p-1">
-            <select class="custom-select-s" name="select2" id="lst_moneda" onchange="asignarMonedaPago()">
-              <?php echo $consultaMoneda; ?>
-            </select>
-          </td>
-          <td class="col-md-1 p-1">
-            <input type="text" id="T_monedaTipoCambio" class="efecto h22" onchange=""="validaIntDec(this);" value="1" />
-          </td>
-          <td class="col-md-1 p-1">
-            <input class="efecto h22" type="text" id="T_importe" onchange="validaIntDec(this);calculaDepIVA()" value="0">
-          </td>
-          <td class="col-md-1 p-1">
-            <input class="efecto h22" type="text" id="T_iva" onchange="validaIntDec(this)" value="0">
+          <th class='col-md-1 pt-2'>IVA</th>
+          <td class='col-md-2'>
+            <input class="efecto h22" type="text" id="T_iva" onchange="validaIntDec(this)" value="0" readonly>
             <input class="efecto h22" type="hidden" id="T_deposito" value="0">
           </td>
-          <td class="col-md-1 p-1 pl-3">
-            <a href="#" id="Btn_agregarPago" onclick="Btn_agregarPago()"><img class="icochico" src="/conta6/Resources/iconos/001-add.svg"></a>
+          <th class='col-md-1 pt-2'>Saldo Insoluto</th>
+          <td class='col-md-2'>
+            <input class="efecto h22" type="text" id="T_saldoInsoluto" size="10" onBlur="validaIntDec(this);" value="0" readonly>
           </td>
-        </tr>
-
-        <tr class="row sub2 mt-3">
-          <td class="p-1 col-md-1 ls1">RFC Emisor</td>
-          <td class="p-1 col-md-3">Cuenta Emisor (min 10 dig.)</td>
-          <td class="p-1 col-md-3">Banco Emisor Extranjero</td>
-          <td class="p-1 col-md-1 ls1">RFC Receptor</td>
-          <td class="p-1 col-md-4">Cuenta (min 10 dig)</td>
-        </tr>
-        <tr class="row font12">
-          <td class="col-md-1 p-1">
-            <input class="efecto h22 p-0" type="text" id="T_RFCemisor" value="<?php echo $s_rfc;?>" readonly>
-          </td>
-          <td class="col-md-3 p-1">
-            <select size='1' id='Lst_cuentaPago' class="custom-select-s">
-              <option selected value='0'>Seleccione Banco</option>
-            </select>
-          </td>
-          <td class="col-md-3 p-1">
-            <input class="efecto h22" type="text" id="T_nomBancoExt" onchange="eliminaBlancosIntermedios(this);validarStringSAT(this);">
-          </td>
-          <td class="col-md-1 p-1">
-            <input class="efecto h22 p-0" type="text" id="T_RFCreceptor" value="<?php echo $rfcCIA; ?>" readonly>
-          </td>
-          <td class="col-md-4 p-1">
-            <select class="custom-select-s" id="lst_bancoCIA">
-              <option value="0">Bancos PLAA</option>
-              <?php echo $ctasCIA; ?>
-            </select>
-          </td>
-        </tr>
-
-
-        <tr class="row sub2 mt-3">
-          <td class="col-md-3 p-1">Tipo Cadena</td>
-          <td class="col-md-3 p-1">Certificado</td>
-          <td class="col-md-3 p-1">Cadena Original</td>
-          <td class="col-md-3 p-1">Sello</td>
-        </tr>
-        <tr class="row font12">
-          <td class="col-md-3">
-            <select class="custom-select-s" id="Lst_tipoCadena">
-              <option value="">Tipo Cadena</option>
-			        <option value="01">SPEI</option>
-            </select>
-          </td>
-          <td class="col-md-3"><input class="efecto h22" type="text" id="Txt_cert"></td>
-          <td class="col-md-3"><input class="efecto h22" type="text" id="Txt_cadOrig"></td>
-          <td class="col-md-3"><input class="efecto h22" type="text" id="Txt_sello"></td>
         </tr>
       </tbody>
-      <tfoot>
-        <tr class='row mt-4 sub2'>
-          <th class='col-md-2 pt-3'>Saldo Anterior</th>
-          <td class='col-md-2'>
-            <input class="efecto h22" type="text" id="T_saldoAnterior" size="17" onBlur="validaIntDec(this);suma_saldoInsoluto();" value="<?php echo $n_total_gral; ?>" <?php if( $oRst_permisos["s_rPgo_editSaldoAnterior"] == 0){ echo "readonly"; }?>>
-          </td>
-          <th class='col-md-2 pt-3'>Importe Pagado</th>
-          <td class='col-md-2'>
-            <input class="efecto h22" id="T_importePagado" onBlur="validaIntDec(this);" type="text" size="17" value="0" readonly>
-          </td>
-          <th class='col-md-2 pt-3'>Saldo Insoluto</th>
-          <td class='col-md-2'>
-            <input class="efecto h22" type="text" id="T_saldoInsoluto" size="17" onBlur="validaIntDec(this);" value="0" readonly>
-          </td>
-        </tr>
-      </tfoot>
     </table>
+
   </div>
 
-
-  <div class="contorno mt-5" style="margin-bottom: 100px!important;">
+  <div class="contorno mt-5" >
     <form onsubmit="return false">
       <table class='table'>
         <thead>
           <tr class='row m-0 mt-4 sub2'>
             <th class='col-md-12 p-1 font14'>Detalle de Pagos</th>
-            <!-- <th class='col-md-4 p-1'></th>
-            <th class='col-md-1 p-1'>Detalle de Pagos</th>
-            <th class='col-md-1 p-1'></th>
-            <th class='col-md-1 p-1'></th>
-            <th class='col-md-1 p-1'></th>
-            <th class='col-md-1 p-1'></th>
-            <th class='col-md-1 p-1'></th> -->
           </tr>
         </thead>
         <tbody id="tbodyPagos">
@@ -443,81 +436,15 @@ if ($rows_datosCLTformaPago > 0) {
     </form>
   </div>
 
-<!--
-    <div class="row encabezado font16">
-      <div class="col-md-12">Detalle de Pagos</div>
-    </div>
-    <div class="row sub2" style="font-size:12px!important">
-      <div class="col-md-2">Fecha :</div>
-      <div class="col-md-2"></div>
-      <div class="col-md-2">Forma :</div>
-      <div class="col-md-2"></div>
-      <div class="col-md-2">#Operación :</div>
-      <div class="col-md-2"></div>
-
-    </div>
-    <div class="row font12 borderojo">
-      <div class='col-md-1'></div>
-      <div class='col-md-1 text-right b'>T.Cadena :</div>
-      <div class='col-md-4 text-left'></div>
-      <div class='col-md-1 text-right b p-0'>T.Cambio :</div>
-      <div class='col-md-2 text-left'></div>
-      <div class='col-md-1 text-right b'>Emisor :</div>
-      <div class='col-md-2 text-left'></div>
-
-
-      <div class='col-md-1'></div>
-      <div class='col-md-1 text-right b'>Certificado :</div>
-      <div class='col-md-4 text-left'></div>
-      <div class='col-md-1 text-right b p-0'>Importe :</div>
-      <div class='col-md-2 text-left'></div>
-      <div class='col-md-1 text-right b'>Cuenta :</div>
-      <div class='col-md-2 text-left'></div>
-
-
-      <div class='col-md-1'><a href=''>
-        <img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'>
-      </a></div>
-      <div class='col-md-1 text-right b'>Cadena O. :</div>
-      <div class='col-md-4 text-left'></div>
-      <div class='col-md-1 text-right b p-0'>IVA :</div>
-      <div class='col-md-2 text-left'></div>
-      <div class='col-md-1 text-right b'>Banco Ext :</div>
-      <div class='col-md-2 text-left'></div>
-
-      <div class='col-md-1'></div>
-      <div class='col-md-1 text-right b'>Sello :</div>
-      <div class='col-md-4 text-left'></div>
-      <div class='col-md-1 text-right b p-0'>No.Parcialidad :</div>
-      <div class='col-md-2 text-left'></div>
-      <div class='col-md-1 text-right b'>Cta.Receptor :</div>
-      <div class='col-md-2 text-left'></div>
-
-      <div class='col-md-1'></div>
-      <div class='col-md-1 text-right b'>UUID :</div>
-      <div class='col-md-4 text-left'></div>
-      <div class='col-md-1 text-right b p-0'>Factura :</div>
-      <div class='col-md-2 text-left'></div>
-
-    </div>
--->
-
 
   </div>
-</div>
+  <div class="row justify-content-center" style="margin-bottom:100px!important">
+    <div class="col-md-3">
+      <input class="efecto boton" type='button' value="GUARDAR" id="guardar-pago" />
+    </div>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-<!-- <script src="/Conta6/Ubicaciones/Contabilidad/Pagos/js/pagos.js" charset="utf-8"></script> -->
+<!--/div-->
 
 <?php
 require_once('modales/buscar_factura.php');

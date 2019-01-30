@@ -23,6 +23,33 @@ function xmlV33_generales($array,$nodo){
                             						  "TipoCambio"=>$array['TipoCambio'],
                             						  "TipoDeComprobante"=>$array['TipoDeComprobante'],
                             						  "LugarExpedicion"=>$array['LugarExpedicion'] ));
+
+}
+
+function xmlV33_generales_pago($array,$nodo){
+  global $comprobante, $xml;
+	$comprobante = $xml->createElement("cfdi:Comprobante");
+	$comprobante = $xml->appendChild($comprobante);
+  xmlV33_cargaAtt($comprobante, array("xmlns:cfdi"=>"http://www.sat.gob.mx/cfd/3",
+							  "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
+                "xmlns:pago10"=>"http://www.sat.gob.mx/Pagos",
+							  "xsi:schemaLocation"=>"http://www.sat.gob.mx/cfd/3  http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/Pagos http://www.sat.gob.mx/sitio_internet/cfd/Pagos/Pagos10.xsd"
+	));
+
+  xmlV33_cargaAtt($comprobante, array("Version"=>$array['Version'],
+                            						  "Folio"=>$array['Folio'],
+                            						  "Fecha"=>$array['Fecha'],
+                            						  "Sello"=>"@",
+
+                            						  "NoCertificado"=>$array['NoCertificado'],
+                            						  "Certificado"=>$array['Certificado'],
+                            						  "SubTotal"=>$array['SubTotal'],
+                                          "Moneda"=>$array['Moneda'],
+
+                            						  "Total"=>$array['Total'],
+                            						  "TipoDeComprobante"=>$array['TipoDeComprobante'],
+                            						  "LugarExpedicion"=>$array['LugarExpedicion'] ));
+
 }
 
 # CFDI Relacionados
@@ -162,6 +189,79 @@ function xmlV33_conceptos_NC($array,$nodo) {
       }
 	}
 }
+
+#Detalle de los concepto/producto de pagos
+function xmlV33_concepto_pago($array,$nodo) {
+	global $comprobante, $xml;
+	$conceptos = $xml->createElement("cfdi:Conceptos");
+	$conceptos = $comprobante->appendChild($conceptos);
+	for ($i=1; $i<=sizeof($array['Conceptos']); $i++) {
+		$concepto = $xml->createElement("cfdi:Concepto");
+		$concepto = $conceptos->appendChild($concepto);
+		$prun = $array['Conceptos'][$i]['valorUnitario'];
+		$descripcion = xmlV33_fix_chr($array['Conceptos'][$i]['descripcion']);
+		xmlV33_cargaAtt($concepto,
+			array("ClaveProdServ"=>$array['Conceptos'][$i]['claveProdServ'],
+            "Cantidad"=>$array['Conceptos'][$i]['cantidad'],
+            "ClaveUnidad"=>$array['Conceptos'][$i]['claveUnidad'],
+  				  "Descripcion"=>$descripcion,
+  				  "ValorUnitario"=>$array['Conceptos'][$i]['valorUnitario'],
+  				  "Importe"=>$array['Conceptos'][$i]['importe'],
+				 )
+			);
+	}
+}
+
+# Complemento --------------------------------------------------------------------------------------------------------------
+function xmlV33_complemento_pago($array,$nodo) {
+	global $comprobante, $xml;
+	$complemento = $xml->createElement("cfdi:Complemento");
+	$complemento = $comprobante->appendChild($complemento);
+
+	for ($i=1; $i<=sizeof($array['Pagos']); $i++) {
+		$pagos = $xml->createElement("pago10:Pagos");
+		$pagos = $complemento->appendChild($pagos);
+		xmlV33_cargaAtt($pagos,array("Version"=>$array['Pagos']['Version']));
+
+    for ($i=1; $i<=sizeof($array['Pago']); $i++) {
+  		$pago = $xml->createElement("pago10:Pago");
+  		$pago = $pagos->appendChild($pago);
+  		xmlV33_cargaAtt($pago,array("FechaPago"=>$array['Pago'][$i]['FechaPago'],
+                                  "FormaDePagoP"=>$array['Pago'][$i]['FormaDePagoP'],
+                                  "MonedaP"=>$array['Pago'][$i]['MonedaP'],
+                                  "Monto"=>$array['Pago'][$i]['Monto'],
+                                  "NumOperacion"=>$array['Pago'][$i]['NumOperacion'],
+                                  "RfcEmisorCtaOrd"=>$array['Pago'][$i]['RfcEmisorCtaOrd'],
+                                  "NomBancoOrdExt"=>$array['Pago'][$i]['NomBancoOrdExt'],
+                                  "CtaOrdenante"=>$array['Pago'][$i]['CtaOrdenante'],
+                                  "RfcEmisorCtaBen"=>$array['Pago'][$i]['RfcEmisorCtaBen'],
+                                  "CtaBeneficiario"=>$array['Pago'][$i]['CtaBeneficiario'],
+                                  "TipoCadPago"=>$array['Pago'][$i]['TipoCadPago'],
+                                  "CertPago"=>$array['Pago'][$i]['CertPago'],
+                                  "CadPago"=>$array['Pago'][$i]['CadPago'],
+                                  "SelloPago"=>$array['Pago'][$i]['SelloPago']
+        )
+      );
+
+
+      $DR = $xml->createElement("pago10:DoctoRelacionado");
+      $DR = $pago->appendChild($DR);
+      xmlV33_cargaAtt($DR,array("IdDocumento"=>$array['DoctoRelacionado'][$i]['IdDocumento'],
+                                "Folio"=>$array['DoctoRelacionado'][$i]['Folio'],
+                                "MonedaDR"=>$array['DoctoRelacionado'][$i]['MonedaDR'],
+                                "TipoCambioDR"=>$array['DoctoRelacionado'][$i]['TipoCambioDR'],
+                                "MetodoDePagoDR"=>$array['DoctoRelacionado'][$i]['MetodoDePagoDR'],
+                                "NumParcialidad"=>$array['DoctoRelacionado'][$i]['NumParcialidad'],
+                                "ImpSaldoAnt"=>$array['DoctoRelacionado'][$i]['ImpSaldoAnt'],
+                                "ImpPagado"=>$array['DoctoRelacionado'][$i]['ImpPagado'],
+                                "ImpSaldoInsoluto"=>$array['DoctoRelacionado'][$i]['ImpSaldoInsoluto']
+        )
+      );
+
+    }#fin pago
+	}
+}
+# Complemento/ --------------------------------------------------------------------------------------------------------------
 
 # Totales Impuestos
 function xmlV33_impuestos($array,$nodo) {
@@ -375,7 +475,9 @@ function abrirTimbrado(){
   if( $tipoProceso == "notaCredito" ){
     $respGuardar = guardarDatosTimbrado_NC($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura );
   }
-
+  if( $tipoProceso == "pago" ){
+    $respGuardar = guardarDatosTimbrado_Pago($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura );
+  }
   return $UUID."\n".$respQR.$respGuardar;
 }
 

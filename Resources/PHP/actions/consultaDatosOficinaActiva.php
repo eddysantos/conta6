@@ -12,7 +12,7 @@
     $ex_no_int = limpiarBlancos($row_oficinaActiva['s_No_Int']);
     $ex_colonia = limpiarBlancos($row_oficinaActiva['s_colonia']);
     $ex_municipio = limpiarBlancos($row_oficinaActiva['s_municipio']);
-    $ex_estado = limpiarBlancos($row_oficinaActiva['estado']);
+    $ex_estado = limpiarBlancos($row_oficinaActiva['s_estado']);
     $ex_pais = limpiarBlancos($row_oficinaActiva['s_Pais']);
     $ex_cp = limpiarBlancos($row_oficinaActiva['s_codigo']);
     $lugarExpedicion = $ex_cp;
