@@ -6,6 +6,39 @@ $buscar = trim($_GET['bRef']);
 $accion = trim($_GET['accion']);
 ?>
 
+
+<?php
+if( $accion == 'pagosElect' ){
+  require $root . '/conta6/Resources/PHP/actions/consultaPagoTimbrada2.php';
+?>
+<div class="contorno text-center" style="margin-bottom:100px!important">
+  <table class="table">
+    <thead>
+      <tr class="row">
+        <td class="col-md-1 offset-sm-11 font14">
+          <a href="/conta6/Ubicaciones/Contabilidad/Pagos/pagos.php"><i class="fa fa-arrow-left">Regresar</i></a>
+        </td>
+      </tr>
+      <tr class="row encabezado font18">
+        <td class="col-md-12">Pagos Electrónicos con la misma Referencia</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row font14 backpink">
+        <td class="col-md-1"></td>
+        <td class="col-md-1">FECHA</td>
+        <td class="col-md-1">PAGO CFDI</td>
+        <td class="col-md-1">PÓLIZA</td>
+        <td class="col-md-1">CANCELA</td>
+        <td class="col-md-4">CLIENTE</td>
+        <td class="col-md-1"></td>
+      </tr>
+      <?php echo $pagosCFDI; ?>
+    </tbody>
+  </table>
+</div>
+<?php } ?>
+
 <?php
 if( $accion == 'facturas' ){
   require $root . '/conta6/Resources/PHP/actions/facturas_cfdi_PPD.php';

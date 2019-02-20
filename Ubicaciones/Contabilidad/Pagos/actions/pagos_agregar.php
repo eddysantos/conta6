@@ -100,6 +100,7 @@ require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar_de
 $system_callback['hon'] = $query_mst;
 $system_callback['code'] = 1;
 $system_callback['data'] = $nfolio;
+$system_callback['DR'] = $pk_rowPago.'/'.$fk_rowPago;
 $system_callback['message'] = "Script called successfully!";
 
 exit_script($system_callback);

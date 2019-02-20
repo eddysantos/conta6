@@ -27,28 +27,28 @@ if (!($stmt_facCaptura->execute())) {
 
 
 
-$queryfacDet = "UPDATE conta_t_pagos_cfdi
+$queryPagoCFDI = "UPDATE conta_t_pagos_cfdi
                 SET s_UUID = ?, fk_id_certificado = ?, s_id_certificadoSAT = ?, s_selloCFDI = ?,
                     s_selloSAT = ?, s_timbradoVersion = ?, d_fechaTimbrado = ?, fk_usuario_generaUUID = ?, fk_id_poliza = ?
-                WHERE fk_id_pago_captura = ? and pk_id_factura = ?";
+                WHERE fk_id_pago_captura = ? and pk_id_pago = ?";
 
-$stmtfacDet = $db->prepare($queryfacDet);
-if (!($stmtfacDet)) {
+$stmtPagoCFDI = $db->prepare($queryPagoCFDI);
+if (!($stmtPagoCFDI)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during query prepare facDet [$db->errno]: $db->error";
+  $system_callback['message'] = "Error during query prepare PagoCFDI [$db->errno]: $db->error";
   exit_script($system_callback);
 }
 
-$stmtfacDet->bind_param('sssssssssss',$UUID,$noCertificado,$certSAT,$selloCFDI,$SelloSAT,$versionTimbre,$fechaTimbre,$usuario,$poliza,$cuenta,$id_factura);
-if (!($stmtfacDet)) {
+$stmtPagoCFDI->bind_param('sssssssssss',$UUID,$noCertificado,$certSAT,$selloCFDI,$SelloSAT,$versionTimbre,$fechaTimbre,$usuario,$poliza,$cuenta,$id_factura);
+if (!($stmtPagoCFDI)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during variables binding facDet [$stmtfacDet->errno]: $stmtfacDet->error";
+  $system_callback['message'] = "Error during variables binding PagoCFDI [$stmtPagoCFDI->errno]: $stmtPagoCFDI->error";
   exit_script($system_callback);
 }
 
-if (!($stmtfacDet->execute())) {
+if (!($stmtPagoCFDI->execute())) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during query execution facDet [$stmtfacDet->errno]: $stmtfacDet->error";
+  $system_callback['message'] = "Error during query execution PagoCFDI [$stmtPagoCFDI->errno]: $stmtPagoCFDI->error";
   exit_script($system_callback);
 }
 

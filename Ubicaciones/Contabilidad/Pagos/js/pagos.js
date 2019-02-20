@@ -116,22 +116,16 @@ $(document).ready(function(){
     $('#tipoCambio_DR').val(tipoCambio);
     $('#totalHon_DR').val(total_gral);
     $('#metPago_DR').val(metodoPago);
-    //$('#parcialidad').val(0);
 
     buscarParcSalInsoluto(id_factura);
-      parcialidad = $('#pagos-factura-parcialidad').attr('value');
-      saldoAnterior = $('#pagos-factura-saldoAnterior').attr('value');
-      if( parcialidad == 1 ){ saldoAnterior = total_gral; }
-      $('#parcialidad').val(parcialidad);
-      $('#T_saldoAnterior').val(saldoAnterior);
 
-      // console.log(parcialidad);
-      // console.log(saldoAnterior);
-
-    //$('#buscar_factura').hide(); //ocultar modal
-
-
+    parcialidad = $('#pagos-factura-parcialidad').attr('value');
+    saldoAnterior = $('#pagos-factura-saldoAnterior').attr('value');
+    if( parcialidad == 1 ){ saldoAnterior = total_gral; }
+    $('#parcialidad').val(parcialidad).attr('value',parcialidad);
+    $('#T_saldoAnterior').val(saldoAnterior).attr('value',saldoAnterior);
   });
+
 
   $('#guardar-pago').click(function(){
     var element = $('.t-factura').length;
@@ -142,6 +136,7 @@ $(document).ready(function(){
 
     var data = {
       pagos: {},
+      pagosDR: {},
       T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
       T_Nombre_Cliente : $('#T_Nombre_Cliente').val(),
       T_Cliente_Calle : $('#T_Cliente_Calle').val(),
@@ -160,25 +155,19 @@ $(document).ready(function(){
       tipoRel_sust : $('#tipoRel_sust').val()
     }
 
+    var elementpagosTotal = $('.elemento-pagos').length;
+    var elementpagosDRTotal = $('.elemento-pagosDR').length;
+    console.log(elementpagosTotal);
+    console.log(elementpagosDRTotal);
+
     $( ".elemento-pagos" ).each(function(i) {
       var parsed_data = {
-        aduanaDR: $(this).find('.t-aduanaDR').val(),
-        referenciaDR: $(this).find('.t-referencia').val(),
-        uuidDR: $(this).find('.t-uuid').val(),
-        facturaDR: $(this).find('.t-factura').val(),
-        monedaDR: $(this).find('.t-monedaDR').val(),
-        totalDR: $(this).find('.t-total').val(),
-        metPagoDR: $(this).find('.t-metodoPagoDR').val(),
-        tipoCambioDR: $(this).find('.t-tipoCambioDR').val(),
-        parcialidad: $(this).find('.t-parcialidad').val(),
         fecha: $(this).find('.t-fecha').val(),
         formaPago: $(this).find('.t-formaPago').val(),
         operacion: $(this).find('.t-operacion').val(),
         moneda: $(this).find('.t-moneda').val(),
         tipoCambio: $(this).find('.t-tipoCambio').val(),
         importe: $(this).find('.t-importe').val(),
-        iva: $(this).find('.t-iva').val(),
-        deposito: $(this).find('.t-deposito').val(),
         rfcE: $(this).find('.t-rfcE').val(),
         ctaE: $(this).find('.t-ctaE').val(),
         bcoExt: $(this).find('.t-bcoExt').val(),
@@ -188,12 +177,32 @@ $(document).ready(function(){
         certificado: $(this).find('.t-certificado').val(),
         cadenaOrig: $(this).find('.t-cadenaOrig').val(),
         sello: $(this).find('.t-sello').val(),
-        saldoAnterior: $(this).find('.t-saldoAnterior').val(),
-        pagado: $(this).find('.t-pagado').val(),
-        saldoInsoluto: $(this).find('.t-saldoInsoluto').val()
+        pk_rowPago: $(this).find('.t-pagosDET').val()
       }
       data.pagos[i] = parsed_data;
     });
+
+    $( ".elemento-pagosDR" ).each(function(i) {
+      var parsed_data = {
+        aduanaDR: $(this).find('.t-aduanaDR').val(),
+        referenciaDR: $(this).find('.t-referencia').val(),
+        uuidDR: $(this).find('.t-uuid').val(),
+        facturaDR: $(this).find('.t-factura').val(),
+        monedaDR: $(this).find('.t-monedaDR').val(),
+        tipoCambioDR: $(this).find('.t-tipoCambioDR').val(),
+        totalDR: $(this).find('.t-total').val(),
+        metPagoDR: $(this).find('.t-metodoPagoDR').val(),
+        parcialidad: $(this).find('.t-parcialidad').val(),
+        saldoAnterior: $(this).find('.t-saldoAnterior').val(),
+        pagado: $(this).find('.t-pagado').val(),
+        iva: $(this).find('.t-iva').val(),
+        deposito: $(this).find('.t-deposito').val(),
+        saldoInsoluto: $(this).find('.t-saldoInsoluto').val(),
+        fk_rowPago: $(this).find('.t-idDR').val()
+      }
+      data.pagosDR[i] = parsed_data;
+    });
+
 
     console.log(data);
 
@@ -221,9 +230,122 @@ $(document).ready(function(){
 
   });
 
+  // Borrar PAGOS y facturas relacionadas
+  $("#tbodyPagos").on('click', '.eliminar-Pagos',function(e){
+    $(this).closest('.elemento-pagDet').hide();
+    $(this).parents('.borrar-pago')
+      .removeClass('elemento-pagos')
+      .addClass('elemento-pagos-eliminar');
+
+    $(this).parents('.elemento-pagDet')
+      .find('.elemento-pagosDR')
+      .addClass('elemento-pagosDR-eliminar')
+      .removeClass('elemento-pagosDR');
+  });
+
+  $("#tbodyPagos").on('click', '.eliminar-pagosDR',function(e){
+    $(this).closest("tr").hide();
+    $(this).parents('tr')
+      .removeClass('elemento-pagosDR')
+      .addClass('elemento-pagosDR-eliminar');
+  });
 
 
 
+
+  $('#modificar-pago').click(function(){
+    folio = $('#id_pago_captura').val();
+
+    var data = {
+      folio: folio,
+      pagos: {},
+      pagosDR: {},
+      pagosDelete: {},
+      pagosDRDelete: {}
+    }
+
+    $( ".elemento-pagos" ).each(function(i) {
+      var parsed_data = {
+        fecha: $(this).find('.t-fecha').val(),
+        formaPago: $(this).find('.t-formaPago').val(),
+        operacion: $(this).find('.t-operacion').val(),
+        moneda: $(this).find('.t-moneda').val(),
+        tipoCambio: $(this).find('.t-tipoCambio').val(),
+        importe: $(this).find('.t-importe').val(),
+        rfcE: $(this).find('.t-rfcE').val(),
+        ctaE: $(this).find('.t-ctaE').val(),
+        bcoExt: $(this).find('.t-bcoExt').val(),
+        rfcR: $(this).find('.t-rfcR').val(),
+        ctaR: $(this).find('.t-ctaR').val(),
+        tipoCadena: $(this).find('.t-tipoCadena').val(),
+        certificado: $(this).find('.t-certificado').val(),
+        cadenaOrig: $(this).find('.t-cadenaOrig').val(),
+        sello: $(this).find('.t-sello').val(),
+        pk_id_pago_det: $(this).find('.t-pagosDET').val(),
+        pk_rowPago: $(this).find('.t-idPago').val()
+      }
+      data.pagos[i] = parsed_data;
+    });
+
+    $( ".elemento-pagosDR" ).each(function(i) {
+      var parsed_data = {
+        aduanaDR: $(this).find('.t-aduanaDR').val(),
+        referenciaDR: $(this).find('.t-referencia').val(),
+        uuidDR: $(this).find('.t-uuid').val(),
+        facturaDR: $(this).find('.t-factura').val(),
+        monedaDR: $(this).find('.t-monedaDR').val(),
+        tipoCambioDR: $(this).find('.t-tipoCambioDR').val(),
+        totalDR: $(this).find('.t-total').val(),
+        metPagoDR: $(this).find('.t-metodoPagoDR').val(),
+        parcialidad: $(this).find('.t-parcialidad').val(),
+        saldoAnterior: $(this).find('.t-saldoAnterior').val(),
+        pagado: $(this).find('.t-pagado').val(),
+        iva: $(this).find('.t-iva').val(),
+        deposito: $(this).find('.t-deposito').val(),
+        saldoInsoluto: $(this).find('.t-saldoInsoluto').val(),
+        fk_rowPago: $(this).find('.t-idPago').val(),
+        pk_id_DR: $(this).find('.t-idDR').val()
+      }
+      data.pagosDR[i] = parsed_data;
+    });
+
+    $( ".elemento-pagos-eliminar" ).each(function(i) {
+      var parsed_data = {
+        idpartida: $(this).find('.t-pagosDET').val()
+      }
+      data.pagosDelete[i] = parsed_data;
+    });
+
+    $( ".elemento-pagosDR-eliminar" ).each(function(i) {
+      var parsed_data = {
+        idpartidaDR: $(this).find('.t-idDR').val()
+      }
+      data.pagosDRDelete[i] = parsed_data;
+    });
+
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_modificar.php",
+      data: data,
+      success: 	function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          console.log(r);
+          console.log(data);
+          alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
+            //setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/Pagos/Pagos.php')",700);
+          });
+
+        } else {
+          console.error(r.message);
+        }
+      },
+      error: function(x){
+        console.error(x);
+      }
+    });
+
+  });
 
 
 
@@ -268,24 +390,18 @@ function asignarMonedaPago(){
 }
 
 function calculaDepIVA(){
+  sacarIVA = $('#T_sacarIVA').val(); //1.16
   importe = $('#T_importePagado').val();
-  deposito = cortarDecimales( cortarDecimales(importe,2) / 1.16 ,2);
+  deposito = cortarDecimales( cortarDecimales(importe,2) / sacarIVA ,2);
   ivaDep = cortarDecimales(CalcSUB(importe,deposito) ,2); //resta
 
   $('#T_deposito').val(deposito);
   $('#T_iva').val(ivaDep);
-  //$('#T_importePagado').val(importe);
 
-  //id_cliente = $('#T_ID_Cliente_Oculto').val();
-  suma_saldoInsoluto();
-  //buscarNumeroCuentaBanco(id_cliente);
-}
-
-function suma_saldoInsoluto(){
-    saldoAnterior = $('#T_saldoAnterior').val();
-    importePagado = $('#T_importe').val();
-		saldoInsoluto = cortarDecimales(CalcSUB( saldoAnterior , importePagado ),2);
-		$('#T_saldoInsoluto').val( Math.abs(saldoInsoluto) );
+  saldoAnterior = $('#T_saldoAnterior').val();
+  importePagado = $('#T_importePagado').val();
+	saldoInsoluto = cortarDecimales(CalcSUB(saldoAnterior,importePagado),2);
+	$('#T_saldoInsoluto').val( Math.abs(saldoInsoluto) );
 }
 
 function valFecha(){
@@ -351,8 +467,42 @@ function valrfcOrd(){
   }
 }
 
+function valImportePago(){
+  impPago = $('#T_importe').val(); //MST
+  impPagoFac = $('#T_importePagado').val(); //DET
+
+  //alert( parseFloat(impPago) ); alert(parseFloat(impPagoFac));
+  if( parseFloat(impPago) >= parseFloat(impPagoFac) && parseFloat(impPagoFac) > 0  ){
+    $('#T_importe').css("background-color", "#FFFFFF").css("color", "#000000");
+    $('#T_importePagado').css("background-color", "#FFFFFF").css("color", "#000000");
+    return true;
+  }else{
+    alertify.error("El importe debe ser mayor o igual al importe pagado");
+    $('#T_importe').css("background-color", "#FF0000");
+    $('#T_importePagado').css("background-color", "#FF0000");
+    return false;
+  }
+}
+
+function valImportePagoFactura(){
+  impPago = $('#T_importePagado').val();
+  saldoAnterior = $('#T_saldoAnterior').val();
+
+  if( parseFloat(impPago) <= parseFloat(saldoAnterior) ){
+    $('#T_saldoAnterior').css("background-color", "#FFFFFF").css("color", "#000000");
+    $('#T_importePagado').css("background-color", "#FFFFFF").css("color", "#000000");
+    return true;
+  }else{
+    alertify.error("El importe pagado debe ser menor o igual al saldo anterior");
+    $('#T_saldoAnterior').css("background-color", "#FF0000");
+    $('#T_importePagado').css("background-color", "#FF0000");
+    return false;
+  }
+}
+
+
+
 function Btn_agregarPago(){
-  tipoDocumento = $('#tipoDocumento').val();
   aduana_DR = $('#aduana_DR').val();
   referencia_DR = $('#referencia_DR').val();
   UUID_DR = $('#UUID_DR').val();
@@ -362,6 +512,13 @@ function Btn_agregarPago(){
   totalHon_DR = $('#totalHon_DR').val();
   metPago_DR = $('#metPago_DR').val();
   parcialidad = $('#parcialidad').val();
+  salAnt = $('#T_saldoAnterior').val();
+  impPago = $('#T_importePagado').val();
+  iva = $('#T_iva').val();
+  deposito = $('#T_deposito').val();
+  salInsoluto = $('#T_saldoInsoluto').val();
+
+  tipoDocumento = $('#tipoDocumento').val();
 
   fecha = $('#fecha').val();
   hora = $('#hora').val();
@@ -373,8 +530,7 @@ function Btn_agregarPago(){
   moneda = $('#lst_moneda').val();
   tipoCambio = $('#T_monedaTipoCambio').val();
   importe = $('#T_importe').val();
-  iva = $('#T_iva').val();
-  deposito = $('#T_deposito').val();
+
   rfcE = $('#T_RFCemisor').val();
 
   cadena = $('#Lst_cuentaPago').val();
@@ -388,111 +544,28 @@ function Btn_agregarPago(){
   cert = $('#Txt_cert').val();
   cadenaOrig = $('#Txt_cadOrig').val();
   sello = $('#Txt_sello').val();
-  salAnt = $('#T_saldoAnterior').val();
-  impPago = $('#T_importePagado').val();
-  salInsoluto = $('#T_saldoInsoluto').val();
 
-  //if( valFecha()== true && valFormaPago()==true && valMoneda()==true && valImporte()==true ){
-    //valrfcOrd();
+
+  if( valFecha()== true && valFormaPago()==true && valMoneda()==true && valImporte()==true && valImportePago()==true && valImportePagoFactura()==true ){
 
       importe = $('#T_importe').val();
       totalHon = $('#totalHon_DR').val();
 
-      // if( parseFloat(importe) >  parseFloat(totalHon)  ){
-      //  alertify.error("El pago debe ser menor o igual al total de honorarios");
-      // }else{
 
         if(tipoDocumento == 'elaborar'){
           btnEliminar = " <a href='#' class='remove-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
           inputPartida = "";
+          btnEliminarDR = " <a href='#' class='remove-DR'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
         }
         if(tipoDocumento == 'modificar'){
-          btnEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+          btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
           inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
+          btnEliminarDR = "<a href='#' class='eliminar-pagosDR'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
         }
 
-        var element = $('.t-factura').length;
+        var element = $('.t-pagosDET').length;
 
-        // newtr = "<tr class='row m-0 font12 elemento-pagos borderojo remove_"+element+"'' id='"+element+"'>";
-        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b>Tipo Cadena:</b> </td>";
-        //   newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 text-left t-tipoCadena efecto border-0 bt' type='text' id='tipoCadena_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Cuenta Emisor:</b> </td>";
-        //   newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-ctaE' type='text' id='ctaE_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Fecha: </b></td>";
-        //   newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-fecha' type='text' id='fecha_"+element+"' readonly>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //   newtr = newtr + " <td class='p-1'>";
-        //   newtr = newtr + btnEliminar;
-        //   newtr = newtr + " </td>";
-        //
-        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b> Certificado: </b></td>";
-        //   newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-certificado' type='text' id='certificado_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Banco Ext.: </b></td>";
-        //   newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-bcoExt' type='text' id='bcoExt_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> Forma Pago:</b> </td>";
-        //   newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-formaPago' type='text' id='formaPago_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //
-        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b> Cadena Original:</b> </td>";
-        //   newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-cadenaOrig' type='text' id='cadenaOrig_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'> <b>Cta Receptor:</b> </td>";
-        //   newtr = newtr + " <td class='col-md-2 p-1 mb-3'> <input class='h22 efecto border-0 bt text-left t-ctaR' type='text' id='ctaR_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-5'><b> # Autorización:</b></td>";
-        //   newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-operacion' type='text' id='operacion_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //
-        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b'><b> Sello:</b></td>";
-        //   newtr = newtr + " <td class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-sello' type='text' id='sello_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1'> <input class=' t-rfcE' type='hidden' id='rfcE_"+element+"'></td>";
-        //   newtr = newtr + " <td class='col-md-1'> <input class=' t-rfcR' type='hidden' id='rfcR_"+element+"'></td>";
-        //   newtr = newtr + " <td class='col-md-1 text-right p-2 b ml-4'><b> Importe: </b></td>";
-        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-importe' type='text' id='importe_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //
-        //   newtr = newtr + " <td class='p-1'>REf.</td>";
-        //   newtr = newtr + " <td class='p-1'>Fac.</td>";
-        //   newtr = newtr + " <td class='p-1'>Parc.</td>";
-        //   newtr = newtr + " <td class='p-1'>S. Anterior</td>";
-        //   newtr = newtr + " <td class='p-1'>Imp. Pagado</td>";
-        //   newtr = newtr + " <td class='p-1'>IVA</td>";
-        //   newtr = newtr + " <td class='p-1'>S.Insoluto</td>";
-        //   newtr = newtr + " <td class='p-1'></td>";
-        //
-        //   newtr = newtr + " <td class='col-md-1 ml-2'> <input class=' t-referencia' type='text' id='referencia_"+element+"'></td>";
-        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-factura' type='text' id='factura_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-parcialidad' type='text' id='parcialidad_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-saldoAnterior' type='text' id='saldoAnterior_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-pagado' type='text' id='pagado_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-iva' type='text' id='iva_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt text-left t-saldoInsoluto' type='text' id='saldoInsoluto_"+element+"' readonly></td>";
-        //   newtr = newtr + " <td class='p-1'>";
-        //
-        //   newtr = newtr + " <input class='h22 efecto border-0 bt text-left t-tipoCambio' type='hidden' id='tipoCambio_"+element+"' readonly>";
-        //   newtr = newtr + " <input type='hidden' class='h22 efecto border-0 bt text-left t-monedaDR' id='monedaDR_&quot;+element+&quot;' readonly />";
-        //   newtr = newtr + " <input class='h22 efecto border-0 bt text-left t-uuid' type='hidden' id='uuid_"+element+"' readonly>";
-        //   newtr = newtr + " <input name='text' type='hidden' class='h22 efecto border-0 bt text-left t-total' id='total_"+element+"' readonly />";
-        //   newtr = newtr + " <input class=' t-tipoCambioDR' type='hidden' id='tipoCambioDR_"+element+"'>";
-        //   newtr = newtr + " <input class=' t-moneda' type='hidden' id='moneda_"+element+"'><input class=' t-deposito' type='hidden' id='deposito_"+element+"'>";
-        //   newtr = newtr + " <input class=' t-metodoPagoDR' type='hidden' id='metodoPagoDR_"+element+"'><input class=' t-aduanaDR' type='hidden' id='aduanaDR_"+element+"'>";
-        //   newtr = newtr + " </td>";
-        //
-        // newtr = newtr + "</tr> ";
-
-
-
-        newdiv = "<div class='row m-0 font12 elemento-pagos remove_"+element+"'' id='"+element+"'>";
+        newdiv = "<div class='row m-0 font12 elemento-pagos remove_"+element+"' id='"+element+"'>";
           newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b>Tipo Cadena:</b> </div>";
           newdiv = newdiv + " <div class='col-md-3 p-1'><input class='h22 efecto text-left t-tipoCadena border-0 bt' type='text' id='tipoCadena_"+element+"' readonly></div>";
           newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Cuenta Emisor:</b> </div>";
@@ -501,6 +574,7 @@ function Btn_agregarPago(){
           newdiv = newdiv + " <div class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-fecha' type='text' id='fecha_"+element+"' readonly></div>";
           newdiv = newdiv + " <div class='col-md-1 p-1'>";
           newdiv = newdiv + btnEliminar;
+          newdiv = newdiv + " <input class=' t-pagosDET' type='text' id='pagosDET_"+element+"' value='-'>";
           newdiv = newdiv + " </div>";
 
           newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Certificado: </b></div>";
@@ -524,50 +598,75 @@ function Btn_agregarPago(){
 
           newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Sello:</b></div>";
           newdiv = newdiv + " <div class='col-md-3 p-1'><input class='h22 efecto border-0 bt text-left t-sello' type='text' id='sello_"+element+"' readonly></div>";
-          newdiv = newdiv + " <div class='col-md-1'> <input class=' t-rfcE' type='hidden' id='rfcE_"+element+"'></div>";
-          newdiv = newdiv + " <div class='col-md-3'> <input class=' t-rfcR' type='hidden' id='rfcR_"+element+"'></div>";
+          newdiv = newdiv + " <div class='col-md-1'> <input class='t-rfcE' type='hidden' id='rfcE_"+element+"'></div>";
+          newdiv = newdiv + " <div class='col-md-3'> <input class='t-rfcR' type='hidden' id='rfcR_"+element+"'></div>";
           newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Importe: </b></div>";
           newdiv = newdiv + " <div class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-importe' type='text' id='importe_"+element+"' readonly></div>";
-          newdiv = newdiv + " <div class='col-md-1 p-1'></div>";
+          newdiv = newdiv + " <div class='col-md-1 p-1'>";
+          newdiv = newdiv + "   <input class='t-tipoCambio' type='hidden' id='tipoCambio_"+element+"'>";
+          newdiv = newdiv + "   <input class='t-moneda' type='hidden' id='moneda_"+element+"'>";
+          newdiv = newdiv + "   <input class='t-idPago' type='text' id='idPago_"+element+"' value='"+element+"'>";
+          newdiv = newdiv + " </div>";
         newdiv = newdiv + " </div>"; //termino del registro pago
 
 
+        var elementDesglose = $('.tbodyDesglose').length;
+        var elementDesglose2 = $('.tbodyDesglose'+elementDesglose).length;
+        var nombreElementDesglose2 = $('tbodyDesglose'+elementDesglose);
+        var idElementDesglose = 'tbodyPagosDesglose'+element;
+        var idElementDesglose2 = '#tbodyPagosDesglose'+element;
 
+        if( elementDesglose2 == 0 ){
+          newdiv = newdiv + " <table class='table'>";
+          newdiv = newdiv + "   <thead>";
+          newdiv = newdiv + "     <tr class='row sub2 m-0'>";
+          newdiv = newdiv + "       <td class='col-md-2 p-1'>Referencia</td>";
+          newdiv = newdiv + "       <td class='col-md-2 p-1'>Factura</td>";
+          newdiv = newdiv + "       <td class='col-md-1 p-1'>Parc.</td>";
+          newdiv = newdiv + "       <td class='col-md-2 p-1'>S. Anterior</td>";
+          newdiv = newdiv + "       <td class='col-md-2 p-1'>Imp. Pagado</td>";
+          newdiv = newdiv + "       <td class='col-md-1 p-1'>IVA</td>";
+          newdiv = newdiv + "       <td class='col-md-1 p-1'>S.Insoluto</td>";
+          newdiv = newdiv + "       <td class='col-md-1 p-1'><a href='#' id='Btn_agregarDR' onclick='Btn_agregarDR(&#39;"+idElementDesglose+"&#39;,"+element+")'><img class='icochico' src='/conta6/Resources/iconos/002-plus.svg'></a></td>";
+          newdiv = newdiv + "     </tr>";
+          newdiv = newdiv + "   </thead>";
+          newdiv = newdiv + "   <tbody id='"+idElementDesglose+"' class='"+nombreElementDesglose2+"'></tbody>";
+        }
 
-
-        newtr = "<tr class='row m-0 font12 elemento-pagos borderojo remove_"+element+"'' id='"+element+"'>";
+        newtr = "<tr class='row m-0 font12 elemento-pagosDR borderojo remove_"+element+"' id='"+element+"'>";
           newtr = newtr + " <td class='col-md-2 p-1'> <input class='efecto h22 border-0 bt t-referencia' type='text' id='referencia_"+element+"'></td>";
           newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt t-factura' type='text' id='factura_"+element+"' readonly></td>";
           newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt t-parcialidad' type='text' id='parcialidad_"+element+"' readonly></td>";
           newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt t-saldoAnterior' type='text' id='saldoAnterior_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt t-pagado' type='text' id='pagado_"+element+"' readonly></td>";
-          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt t-iva' type='text' id='iva_"+element+"' readonly></td>";
+          newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt t-pagado t-pagado"+element+"' type='text' id='pagado_"+element+"' readonly></td>";
+          newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt t-iva' type='text' id='iva_"+element+"' readonly> <input class='t-deposito' type='hidden' id='deposito_"+element+"'></td>";
           newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt t-saldoInsoluto' type='text' id='saldoInsoluto_"+element+"' readonly></td>";
-          // newtr = newtr + " <td class='p-1'>";
-
-          newtr = newtr + " <input class='h22 efecto border-0 bt text-left t-tipoCambio' type='hidden' id='tipoCambio_"+element+"' readonly>";
-          newtr = newtr + " <input type='hidden' class='h22 efecto border-0 bt text-left t-monedaDR' id='monedaDR_&quot;+element+&quot;' readonly />";
-          newtr = newtr + " <input class='h22 efecto border-0 bt text-left t-uuid' type='hidden' id='uuid_"+element+"' readonly>";
-          newtr = newtr + " <input name='text' type='hidden' class='h22 efecto border-0 bt text-left t-total' id='total_"+element+"' readonly />";
-          newtr = newtr + " <input class=' t-tipoCambioDR' type='hidden' id='tipoCambioDR_"+element+"'>";
-          newtr = newtr + " <input class=' t-moneda' type='hidden' id='moneda_"+element+"'><input class=' t-deposito' type='hidden' id='deposito_"+element+"'>";
-          newtr = newtr + " <input class=' t-metodoPagoDR' type='hidden' id='metodoPagoDR_"+element+"'><input class=' t-aduanaDR' type='hidden' id='aduanaDR_"+element+"'>";
+          newtr = newtr + " <td class='p-1'>";
+          newtr = newtr +     btnEliminarDR;
+          newtr = newtr + "   <input class='t-uuid' type='hidden' id='uuid_"+element+"' readonly>";
+          newtr = newtr + "   <input class='t-total' type='hidden' id='total_"+element+"' readonly />";
+          newtr = newtr + "   <input class='t-monedaDR' type='hidden' id='monedaDR_&quot;+element+&quot;' readonly />";
+          newtr = newtr + "   <input class='t-tipoCambioDR' type='hidden' id='tipoCambioDR_"+element+"'>";
+          newtr = newtr + "   <input class='t-metodoPagoDR' type='hidden' id='metodoPagoDR_"+element+"'>";
+          newtr = newtr + "   <input class='t-aduanaDR' type='hidden' id='aduanaDR_"+element+"'>";
+          newtr = newtr + "   <input class='t-idDR' type='hidden' id='idDR_"+element+"' value='-'>";
+          newtr = newtr + "   <input class='t-idPago' type='hidden' id='idPago_"+element+"' value='"+element+"'>";
           newtr = newtr + "</td>";
         newtr = newtr + "</tr> ";
 
-        // $('#tbodyPagos').append(newtr);
 
         $('#tbodyPagos').append(newdiv);
-        $('#tbodyPagosDesglose').append(newtr);
+        $(idElementDesglose2).append(newtr);
 
-        // $(".remove-Pagos").click(function(e){
-        //   $(this).closest("tr").remove();
-        //   alertify.success('Se elimino correctamente');
-        // });
 
         $(".remove-Pagos").click(function(e){
           $(this).closest(".row").remove();
           alertify.success('Se elimino correctamente');
+        });
+
+        $(".remove-DR").click(function(e){
+          $(this).closest(".row").remove();
+          alertify.success('Se elimino correctamente1');
         });
 
         var element = $('.t-factura').length;
@@ -603,8 +702,7 @@ function Btn_agregarPago(){
             $('.t-saldoAnterior').eq(x).val(salAnt);
             $('.t-pagado').eq(x).val(impPago);
             $('.t-saldoInsoluto').eq(x).val(salInsoluto);
-
-             $('#T_saldoAnterior').val(salInsoluto);
+            $('#T_saldoAnterior').val(salInsoluto);
             return false;
           }
         });
@@ -612,12 +710,114 @@ function Btn_agregarPago(){
         parcialidad = parseInt(parcialidad) + parseInt(1);
         $('#parcialidad').val(parcialidad);
 
-  //}
+  }
+}
+
+function Btn_agregarDR(idElementDesglose,element){
+
+  aduana_DR = $('#aduana_DR').val();
+  referencia_DR = $('#referencia_DR').val();
+  UUID_DR = $('#UUID_DR').val();
+  factura_DR = $('#factura_DR').val();
+  moneda_DR = $('#moneda_DR').val();
+  tipoCambio_DR = $('#tipoCambio_DR').val();
+  totalHon_DR = $('#totalHon_DR').val();
+  metPago_DR = $('#metPago_DR').val();
+  parcialidad = $('#parcialidad').val();
+  salAnt = $('#T_saldoAnterior').val();
+  impPago = $('#T_importePagado').val();
+  iva = $('#T_iva').val();
+  deposito = $('#T_deposito').val();
+  salInsoluto = $('#T_saldoInsoluto').val();
+  tipoDocumento = $('#tipoDocumento').val();
+
+  if(tipoDocumento == 'elaborar'){
+    btnEliminar = " <a href='#' class='remove-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+    inputPartida = "";
+    btnEliminarDR = " <a href='#' class='remove-DR'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
+  }
+  if(tipoDocumento == 'modificar'){
+    btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+    inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
+    btnEliminarDR = "<a href='#' class='eliminar-pagosDR'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
+  }
+
+  var idElementDesglose2 = '#'+idElementDesglose;
+  elementID = element;
+  element++;
+
+  newtr = "<tr class='row m-0 font12 elemento-pagosDR borderojo remove_"+element+"' id='"+element+"'>";
+    newtr = newtr + " <td class='col-md-2 p-1'> <input class='efecto h22 border-0 bt t-referencia' type='text' id='referencia_"+element+"'></td>";
+    newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt t-factura' type='text' id='factura_"+element+"' readonly></td>";
+    newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt t-parcialidad' type='text' id='parcialidad_"+element+"' readonly></td>";
+    newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt t-saldoAnterior' type='text' id='saldoAnterior_"+element+"' readonly></td>";
+    newtr = newtr + " <td class='col-md-2 p-1'> <input class='h22 efecto border-0 bt t-pagado t-pagado"+elementID+"' type='text' id='pagado_"+element+"' readonly></td>";
+    newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt t-iva' type='text' id='iva_"+element+"' readonly><input class='t-deposito' type='hidden' id='deposito_"+element+"'></td>";
+    newtr = newtr + " <td class='col-md-1 p-1'> <input class='h22 efecto border-0 bt t-saldoInsoluto' type='text' id='saldoInsoluto_"+element+"' readonly></td>";
+    newtr = newtr + " <td class='p-1'>";
+    newtr = newtr + btnEliminarDR;
+    newtr = newtr + "   <input class='t-tipoCambio' type='hidden' id='tipoCambio_"+element+"' readonly>";
+    newtr = newtr + "   <input class='t-monedaDR' type='hidden' id='monedaDR_&quot;+element+&quot;' readonly />";
+    newtr = newtr + "   <input class='t-uuid' type='hidden' id='uuid_"+element+"' readonly>";
+    newtr = newtr + "   <input class='t-total' type='hidden' id='total_"+element+"' readonly />";
+    newtr = newtr + "   <input class='t-tipoCambioDR' type='hidden' id='tipoCambioDR_"+element+"'>";
+    newtr = newtr + "   <input class='t-moneda' type='hidden' id='moneda_"+element+"'>";
+    newtr = newtr + "   <input class='t-metodoPagoDR' type='hidden' id='metodoPagoDR_"+element+"'><input class=' t-aduanaDR' type='hidden' id='aduanaDR_"+element+"'>";
+    newtr = newtr + "   <input class='t-idDR' type='hidden' id='idDR_"+element+"' value='-'>";
+    newtr = newtr + "   <input class='t-idPago' type='hidden' id='idPago_"+element+"'>";
+    newtr = newtr + "</td>";
+  newtr = newtr + "</tr> ";
+
+
+  var elementPagado_importe = $('.t-pagado'+elementID).length;
+  sumar_importes = 0;
+  if( elementPagado_importe > 0){
+    $('.t-pagado'+elementID).each(function( x ) {
+      sumar_importes = parseInt(sumar_importes) + parseInt($('.t-pagado'+elementID).eq(x).val()) + parseInt(impPago);
+    });
+  }
+  totalPago = parseInt($('#importe_'+elementID).val());
+  if( sumar_importes <= totalPago && impPago > 0 ){
+    $(idElementDesglose2).append(newtr);
+  }else{
+    alertify.success('El importe debe ser menor o igual al pago');
+    $('#T_importePagado').css('background-color','#FF0000');
+    $('#T_importePagado').focus();
+    return false;
+  }
+
+  // $(".remove-DR").click(function(e){
+  //   $(this).closest(".row").remove();
+  //   alertify.success('Se elimino correctamenteDR');
+  // });
+
+  var element = $('.t-factura').length;
+  $( ".t-factura" ).each(function( x ) {
+    if( $('.t-factura').eq(x).val() == "" ){
+
+      $('.t-aduanaDR').eq(x).val(aduana_DR);
+      $('.t-referencia').eq(x).val(referencia_DR);
+      $('.t-uuid').eq(x).val(UUID_DR);
+      $('.t-factura').eq(x).val(factura_DR);
+      $('.t-monedaDR').eq(x).val(moneda_DR);
+      $('.t-tipoCambioDR').eq(x).val(tipoCambio_DR);
+      $('.t-total').eq(x).val(totalHon_DR);
+      $('.t-metodoPagoDR').eq(x).val(metPago_DR);
+      $('.t-parcialidad').eq(x).val(parcialidad);
+      $('.t-iva').eq(x).val(iva);
+      $('.t-deposito').eq(x).val(deposito);
+      $('.t-saldoAnterior').eq(x).val(salAnt);
+      $('.t-pagado').eq(x).val(impPago);
+      $('.t-saldoInsoluto').eq(x).val(salInsoluto);
+
+      return false;
+    }
+  });
 }
 
 function buscarParcSalInsoluto(id_factura){
   var data = {
-    id_cliente: id_factura
+    id_factura: id_factura
   }
 
   $.ajax({
@@ -627,7 +827,7 @@ function buscarParcSalInsoluto(id_factura){
     success: 	function(r){
       r = JSON.parse(r);
       if (r.code == 1) {
-        console.log(r.data);
+        //console.log(r);
         cadena2 = r.data;
         parteCadena2 = cadena2.split("+");
         parcialidad = parteCadena2[0];

@@ -8,7 +8,7 @@
   $txt_id_asoc = 'No';
 
   require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
-  require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle.php'; # $pagosDetalle
+  require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle.php'; # $pagosDetalle_consulta
 
 
   $id_captura = $cuenta;
@@ -261,8 +261,17 @@
 #}
 ?>
 
-
-  <div class="contorno mt-5" >
+<div class="contorno mt-5">
+  <form onsubmit="return false">
+    <div class="row sub2 m-0 mt-4">
+      <div class="col-md-12 p-1 font14"><b>Detalle de Pagos</b></div>
+    </div>
+    <div id="tbodyPagos">
+      <?php echo $pagosDetalle_consulta; ?>
+    </div>
+  </form>
+</div>
+  <!--div class="contorno mt-5" >
     <form onsubmit="return false">
       <table class='table'>
         <thead>
@@ -271,11 +280,11 @@
           </tr>
         </thead>
         <tbody id="tbodyPagos">
-          <?php echo $pagosDetalle; ?>
+          <?php #echo $pagosDetalle_consulta; ?>
         </tbody>
       </table>
     </form>
-  </div>
+  </div-->
 
 
 

@@ -2101,6 +2101,6 @@ $('#btn_buscarFacturasTimbradas_cancela').click(function(){
 function docTimbrado_download(nombreArchivo,ruta){
   window.open('/conta6/Resources/PHP/actions/docTimbrado_download.php?nombreArchivo='+nombreArchivo+'&ruta='+ruta);
 }
-function docTimbrado_ver(){
+function docTimbrado_ver(nombreArchivo,ruta){
   window.open('/conta6/Resources/PHP/actions/docTimbrado_ver.php?nombreArchivo='+nombreArchivo+'&ruta='+ruta);
 }

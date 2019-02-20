@@ -25,8 +25,8 @@
         </div>
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <input id="pagos-factura-parcialidad" type="text" value="" >
-        <input id="pagos-factura-saldoAnterior" type="text" value="" >
+        Parcialidad <input id="pagos-factura-parcialidad" type="text" class="efecto h22 p-0" size="5" value="" readonly>
+        Saldo Anterior <input id="pagos-factura-saldoAnterior" type="text" class="efecto h22 p-0" value="" readonly >
         <a href="#" id="btn_buscarFactura_pagos" onclick="">Buscar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->

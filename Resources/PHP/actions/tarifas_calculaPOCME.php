@@ -12,7 +12,7 @@ $calculoTarifa=1;
 */
 $s_tipoDoc = 'ctaGastos';
 $s_seccion = 'POCME';
-
+$consolidado = 'LTL/FTL';
 
 #-- * * * * * * * * * * ESTE CALCULA LOS IMPORTES QUE SE AGREGAN  SI SON FTL O LTL, SEGUN SE ESPECIFIQUE EN LA REFERENCIA * * * * * * * * * *
 #-- * * * * * * * * * * LTL :: CARGA SUELTA
@@ -23,7 +23,7 @@ $ADICIONAL = 0;
 //$system_callback = [];
 $query_consultaConcPOCME = "SELECT DISTINCT b.pk_id_concepto,b.fk_id_tipo, B.s_descripcion,B.s_concepto_eng, A.fk_id_cliente , B.fk_id_cuenta
 													FROM conta_tarifas a, conta_tarifas_conceptos b
-													WHERE A.fk_id_concepto = B.pk_id_concepto AND a.fk_id_cliente = ? AND A.s_imp_exp = ?";
+													WHERE A.fk_id_concepto = B.pk_id_concepto AND a.fk_id_cliente = ? AND A.s_imp_exp = ? AND fk_id_cuenta like 'HNS%'";
 #and a.s_consolidado = ?
 
 // $query_consultaConcPOCME = "SELECT DISTINCT b.fk_id_conceptoHon,b.fk_id_tipoCalculo, B.s_concepto_esp,B.s_concepto_eng, A.fk_id_cliente , B.fk_id_conceptoCta
@@ -61,6 +61,7 @@ while ($row_consultaConcPOCME = $rslt_consultaConcPOCME->fetch_assoc()) {
 	$fk_id_conceptoCta = $row_consultaConcPOCME['fk_id_cuenta'];
 
 	$IMPORTE = 0;
+	//echo $id_cliente_usar.'/'.$tipo.'//'.$ID_CONCEPTO_CURSOR.'///'.$consolidado.'<br>';
 
 	#-- Un solo registro con un solo importe
 	if( $TIPO_CURSOR == 301 ){

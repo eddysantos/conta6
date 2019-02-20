@@ -216,7 +216,7 @@ if( is_null($s_UUIDpagoSustituir) ){
 		<td><?php echo $fk_c_ClaveProdServ;?></td>
 		<td><?php echo $s_descripcion;?></td>
 		<td><?php echo $n_valor_unitario;?></td>
-		<td><?php echo $n_importe;?></td>
+		<td><?php echo $n_valor_importe;?></td>
 	</tr>
 </table>
 <?php if( $mostrarSustituir == true ){ ?>

@@ -8,9 +8,7 @@ $data = $_POST;
 
 $id_factura = trim($_POST['id_factura']);
 //$id_factura = 25;
-$query = "SELECT MAX(n_numParcialidad) AS n_numParcialidad, n_importeSaldoInsoluto from conta_t_pagos_captura_det where fk_id_facturaDR = ?";
-
-//$query = "SELECT n_numParcialidad, n_importeSaldoInsoluto from conta_t_pagos_captura_det where fk_id_facturaDR = ?";
+$query = "SELECT MAX(n_numParcialidad) AS n_numParcialidad, n_importeSaldoInsoluto from conta_t_pagos_captura_det_dr where fk_id_facturaDR = ?";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -41,17 +39,17 @@ if ($rslt->num_rows == 0) {
   exit_script($system_callback);
 }
 
-if ($rslt->num_rows > 0) {
+if ($rslt->num_rows > 0) {console.log("llego1");
   while ($row = $rslt->fetch_assoc() ) {
-    //$row = $rslt->fetch_assoc();
     $parcialidad = $row[n_numParcialidad];
     $saldoInsoluto = $row[n_importeSaldoInsoluto];
-    // if( $parcialidad >= 1 ){
-    //   $parcialidad++ ;
-    // }else{
-    //   $parcialidad = 1;
-    //   $saldoInsoluto = 0;
-    // }
+    if( $parcialidad >= 1 ){
+      $parcialidad++ ;
+    }else{
+      $parcialidad = 1;
+      require $root . '/conta6/Resources/PHP/actions/consultarFactura_idFactura.php'; #$n_total_honorarios
+      $saldoInsoluto = $n_total_honorarios;
+    }
     $system_callback['data'] = $parcialidad."+".$saldoInsoluto."+".$id_factura;
   }
 }

@@ -53,7 +53,8 @@ if( $total_consultaGenerales > 0 ) {
 	$fk_c_ClaveProdServ = $row_consultaGenerales['fk_c_ClaveProdServ'];
 	$s_descripcion = $row_consultaGenerales['s_descripcion'];
 	$n_valor_unitario = $row_consultaGenerales['n_valor_unitario'];
-	$n_importe = $row_consultaGenerales['n_importe'];
+	#$n_importe = $row_consultaGenerales['n_importe'];
+	$n_valor_importe = $row_consultaGenerales['n_importe'];
 
 	$fk_c_TipoRelacion = $row_consultaGenerales['fk_c_TipoRelacion'];
 	$n_folioPagoSustituir = $row_consultaGenerales['n_folioPagoSustituir'];
