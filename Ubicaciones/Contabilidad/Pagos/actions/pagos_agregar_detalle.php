@@ -1,6 +1,7 @@
 <?php
 
 $pagos = $_POST['pagos'];
+$pagosDR = $_POST['pagosDR'];
 
 $query_PAGOS="INSERT INTO conta_t_pagos_captura_det(
                                                       fk_id_pago_captura,
@@ -10,8 +11,6 @@ $query_PAGOS="INSERT INTO conta_t_pagos_captura_det(
                                                       fk_id_moneda,
                                                       n_tipoCambio,
                                                       n_importe,
-                                                      n_deposito,
-                                                      n_iva,
                                                       s_rfcOrd,
                                                       s_nomBancoOrdExt,
                                                       s_ctaOrd,
@@ -21,23 +20,11 @@ $query_PAGOS="INSERT INTO conta_t_pagos_captura_det(
                                                       s_certPago,
                                                       s_cadPago,
                                                       s_selloPago,
-                                                      fk_id_aduanaDR,
-                                                      fk_referenciaDR,
-                                                      fk_id_facturaDR,
-                                                      s_UUID_DR,
-                                                      fk_c_MetodoPagoDR,
-                                                      fk_id_monedaDR,
-                                                      n_tipoCambioDR,
-                                                      totalDR,
-                                                      n_numParcialidad,
-                                                      n_importeSaldoAnterior,
-                                                      n_importePagado,
-                                                      n_importeSaldoInsoluto,
-                                                      s_usuario_alta
+                                                      s_usuario_alta,
+                                                      n_pk_rowPago
                                                     )VALUES ( ?,?,?,?,?,?,?,?,?,?,
-                                                              ?,?,?,?,?,?,?,?,?,?,
-                                                              ?,?,?,?,?,?,?,?,?,?,
-                                                              ?)";
+                                                              ?,?,?,?,?,?,?,?
+                                                            )";
 
 $stmt_PAGOS = $db->prepare($query_PAGOS);
 if (!($stmt_PAGOS)) {
@@ -47,23 +34,12 @@ if (!($stmt_PAGOS)) {
 }
 
 foreach ($pagos as $pago) {
-  $aduanaDR = $pago['aduanaDR'];
-  $referenciaDR = $pago['referenciaDR'];
-  $uuidDR = $pago['uuidDR'];
-  $facturaDR = $pago['facturaDR'];
-  $monedaDR = $pago['monedaDR'];
-  $tipoCambioDR = $pago['tipoCambioDR'];
-  $totalDR = $pago['totalDR'];
-  $metPagoDR = $pago['metPagoDR'];
-  $parcialidad = $pago['parcialidad'];
   $fecha = $pago['fecha'];
   $formaPago = $pago['formaPago'];
   $operacion = $pago['operacion'];
   $moneda = $pago['moneda'];
   $tipoCambio = $pago['tipoCambio'];
   $importe = $pago['importe'];
-  $iva = $pago['iva'];
-  $deposito = $pago['deposito'];
   $rfcE = $pago['rfcE'];
   $ctaE = $pago['ctaE'];
   $bcoExt = $pago['bcoExt'];
@@ -73,44 +49,31 @@ foreach ($pagos as $pago) {
   $certificado = $pago['certificado'];
   $cadenaOrig = $pago['cadenaOrig'];
   $sello = $pago['sello'];
-  $saldoAnterior = $pago['saldoAnterior'];
-  $pagado = $pago['pagado'];
-  $saldoInsoluto = $pago['saldoInsoluto'];
+  $pk_rowPago = $pago['pk_rowPago'];
 
 
 
 
-  $stmt_PAGOS->bind_param('sssssssssssssssssssssssssssssss',$nfolio,
-                                                            $fecha,
-                                                            $formaPago,
-                                                            $operacion,
-                                                            $moneda,
-                                                            $tipoCambio,
-                                                            $importe,
-                                                            $deposito,
-                                                            $iva,
-                                                            $rfcE,
-                                                            $bcoExt,
-                                                            $ctaE,
-                                                            $rfcR,
-                                                            $ctaR,
-                                                            $tipoCadena,
-                                                            $certificado,
-                                                            $cadenaOrig,
-                                                            $sello,
-                                                            $aduanaDR,
-                                                            $referenciaDR,
-                                                            $facturaDR,
-                                                            $uuidDR,
-                                                            $metPagoDR,
-                                                            $monedaDR,
-                                                            $tipoCambioDR,
-                                                            $totalDR,
-                                                            $parcialidad,
-                                                            $saldoAnterior,
-                                                            $pagado,
-                                                            $saldoInsoluto,
-                                                            $usuario);
+  $stmt_PAGOS->bind_param('ssssssssssssssssss',$nfolio,
+                                              $fecha,
+                                              $formaPago,
+                                              $operacion,
+                                              $moneda,
+                                              $tipoCambio,
+                                              $importe,
+                                              $rfcE,
+                                              $bcoExt,
+                                              $ctaE,
+                                              $rfcR,
+                                              $ctaR,
+                                              $tipoCadena,
+                                              $certificado,
+                                              $cadenaOrig,
+                                              $sello,
+                                              $usuario,
+                                              $pk_rowPago
+
+                            );
   if (!($stmt_PAGOS)) {
     $system_callback['code'] = "500";
     $system_callback['message'] = "Error during variables binding PAGOS [$stmt_PAGOS->errno]: $stmt_PAGOS->error";
@@ -121,6 +84,9 @@ foreach ($pagos as $pago) {
     $system_callback['code'] = "500";
     $system_callback['message'] = "Error during query execution PAGOS [$stmt_PAGOS->errno]: $stmt_PAGOS->error";
   }
+
+  require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar_detalle_docRel.php';
+  
 }
 
 ?>

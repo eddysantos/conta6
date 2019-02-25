@@ -9,7 +9,7 @@ $tipoProceso = "pago";
 require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_1path.php';
 
 # array con todos los datos a timbrar
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_2array.php';
+require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_2array.php'; #$nodo
 
 # funciones para timbrar cfdi
 require_once $root . '/conta6/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
@@ -86,7 +86,7 @@ function guardarDatosTimbrado_Pago($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versi
 
 
   require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_5generarPoliza.php';#prepare polDetFac
-  $respGuardarDatos = "✓ Póliza de Factura: ".$poliza."\n";
+  $respGuardarDatos = "✓ Póliza de Pago Electrónico: ".$poliza."\n";
   require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_4guardarDatosTimbrado.php';
 
   #require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_5impresoHTML.php';

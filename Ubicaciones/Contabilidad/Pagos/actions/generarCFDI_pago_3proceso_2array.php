@@ -6,7 +6,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
 #$cuenta = 14;
-$cuenta = 15; #dos reg
+$cuenta = 33; #dos reg
 */
 
 
@@ -90,53 +90,30 @@ if( $total_consultaDatosCaptura > 0 ){
       while(  $row_consultaDetalle = $rslt_consultaDetalle->fetch_assoc() ){
         ++$idFila;
 
-        $pk_id_partida = $row_consultaDetalle['pk_id_partida'];
+        $pk_rowPago = $row_consultaDetalle['n_pk_rowPago'];
     		$d_fecha_docPago = $row_consultaDetalle['d_fecha_docPago'];
         $d_fecha_docPago = date_format(date_create($d_fecha_docPago),"Y-m-d\TH:i:s");
     		$fk_id_formapago = trim($row_consultaDetalle['fk_id_formapago']);
     		$s_numOperacion = $row_consultaDetalle['s_numOperacion'];
     		$fk_id_moneda = $row_consultaDetalle['fk_id_moneda'];
     		$n_tipoCambio = $row_consultaDetalle['n_tipoCambio'];
-    		$n_importe = $row_consultaDetalle['n_importe'];
-    		$n_deposito = $row_consultaDetalle['n_deposito'];
-    		$n_iva = $row_consultaDetalle['n_iva'];
-    		$s_rfcOrd = $row_consultaDetalle['s_rfcOrd'];
-    		$s_nomBancoOrdExt = $row_consultaDetalle['s_nomBancoOrdExt'];
-    		$s_ctaOrd = $row_consultaDetalle['s_ctaOrd'];
-    		$s_rfcBen = $row_consultaDetalle['s_rfcBen'];
-    		$s_ctaBen = $row_consultaDetalle['s_ctaBen'];
-    		$s_tipoCadPago = $row_consultaDetalle['s_tipoCadPago'];
-    		$s_certPago = $row_consultaDetalle['s_certPago'];
-    		$s_cadPago = $row_consultaDetalle['s_cadPago'];
-    		$s_selloPago = $row_consultaDetalle['s_selloPago'];
-    		$fk_id_aduanaDR = $row_consultaDetalle['fk_id_aduanaDR'];
-    		$fk_referenciaDR = $row_consultaDetalle['fk_referenciaDR'];
-    		$fk_id_facturaDR = $row_consultaDetalle['fk_id_facturaDR'];
-    		$s_UUID_DR = $row_consultaDetalle['s_UUID_DR'];
-    		$fk_c_MetodoPagoDR = $row_consultaDetalle['fk_c_MetodoPagoDR'];
-    		$fk_id_monedaDR = $row_consultaDetalle['fk_id_monedaDR'];
-    		$n_tipoCambioDR = $row_consultaDetalle['n_tipoCambioDR'];
-    		$totalDR = $row_consultaDetalle['totalDR'];
-    		$n_numParcialidad = $row_consultaDetalle['n_numParcialidad'];
-    		$n_importeSaldoAnterior = $row_consultaDetalle['n_importeSaldoAnterior'];
-    		$n_importePagado = $row_consultaDetalle['n_importePagado'];
-    		$n_importeSaldoInsoluto = $row_consultaDetalle['n_importeSaldoInsoluto'];
-    		$s_usuario_alta = $row_consultaDetalle['s_usuario_alta'];
-    		$d_fecha_alta = $row_consultaDetalle['d_fecha_alta'];
-    		$n_CFDIrelacionado = $row_consultaDetalle['n_CFDIrelacionado'];
-    		$s_tipoDetalle = $row_consultaDetalle['s_tipoDetalle'];
-
-        $n_importeSaldoAnterior2 = $n_importeSaldoAnterior;
-    		$n_importePagado2 = $n_importePagado;
-    		$n_importeSaldoInsoluto2 = $n_importeSaldoInsoluto;
-
+        $s_rfcOrd = $row_consultaDetalle['s_rfcOrd'];
+        $s_nomBancoOrdExt = $row_consultaDetalle['s_nomBancoOrdExt'];
+        $s_ctaOrd = $row_consultaDetalle['s_ctaOrd'];
+        $s_rfcBen = $row_consultaDetalle['s_rfcBen'];
+        $s_ctaBen = $row_consultaDetalle['s_ctaBen'];
+        $s_tipoCadPago = $row_consultaDetalle['s_tipoCadPago'];
+        $s_certPago = $row_consultaDetalle['s_certPago'];
+        $s_cadPago = $row_consultaDetalle['s_cadPago'];
+        $s_selloPago = $row_consultaDetalle['s_selloPago'];
+        $n_importePago = $row_consultaDetalle['n_importe'];
 
         #Pago
         $array['Pago'][$idFila]['FechaPago'] = $d_fecha_docPago;
         $array['Pago'][$idFila]['FormaDePagoP'] = $fk_id_formapago;
         $array['Pago'][$idFila]['MonedaP'] = $fk_id_moneda;
         $array['Pago'][$idFila]['TipoCambioP'] = $n_tipoCambio;
-        $array['Pago'][$idFila]['Monto'] = $n_importe;
+        $array['Pago'][$idFila]['Monto'] = $n_importePago;
         $array['Pago'][$idFila]['NumOperacion'] = $s_numOperacion;
         $array['Pago'][$idFila]['RfcEmisorCtaOrd'] = $s_rfcOrd;
         $array['Pago'][$idFila]['CtaOrdenante'] = $s_ctaOrd;
@@ -147,19 +124,54 @@ if( $total_consultaDatosCaptura > 0 ){
         $array['Pago'][$idFila]['CertPago'] = $s_certPago;
         $array['Pago'][$idFila]['CadPago'] = $s_cadPago;
         $array['Pago'][$idFila]['SelloPago'] = $s_selloPago;
+        $array['Pago'][$idFila]['pk_rowPago'] = $pk_rowPago;
+
+        #echo '<br>pago'.$idFila.'row'.$pk_rowPago.'/';
 
 
+      }
+    }
+
+    require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_DR.php';
+    if( $total_consultaDetalle_DR > 0 ) {
+      $idFilaDR = 0;
+      while(  $row_consultaDetalle_DR = $rslt_consultaDetalle_DR->fetch_assoc() ){
+        ++$idFilaDR;
+
+        $fk_rowPago = $row_consultaDetalle_DR['n_fk_rowPago'];
+        $n_deposito = $row_consultaDetalle_DR['n_deposito'];
+        $n_iva = $row_consultaDetalle_DR['n_iva'];
+        $fk_id_aduanaDR = $row_consultaDetalle_DR['fk_id_aduanaDR'];
+        $fk_referenciaDR = $row_consultaDetalle_DR['fk_referenciaDR'];
+        $fk_id_facturaDR = $row_consultaDetalle_DR['fk_id_facturaDR'];
+        $s_UUID_DR = $row_consultaDetalle_DR['s_UUID_DR'];
+        $fk_c_MetodoPagoDR = $row_consultaDetalle_DR['fk_c_MetodoPagoDR'];
+        $fk_id_monedaDR = $row_consultaDetalle_DR['fk_id_monedaDR'];
+        $n_tipoCambioDR = $row_consultaDetalle_DR['n_tipoCambioDR'];
+        $totalDR = $row_consultaDetalle_DR['totalDR'];
+        $n_numParcialidad = $row_consultaDetalle_DR['n_numParcialidad'];
+        $n_importeSaldoAnterior = $row_consultaDetalle_DR['n_importeSaldoAnterior'];
+        $n_importePagado = $row_consultaDetalle_DR['n_importePagado'];
+        $n_importeSaldoInsoluto = $row_consultaDetalle_DR['n_importeSaldoInsoluto'];
+        $s_usuario_alta = $row_consultaDetalle_DR['s_usuario_alta'];
+        $d_fecha_alta = $row_consultaDetalle_DR['d_fecha_alta'];
+
+        $n_importeSaldoAnterior2 = $n_importeSaldoAnterior;
+        $n_importePagado2 = $n_importePagado;
+        $n_importeSaldoInsoluto2 = $n_importeSaldoInsoluto;
+
+        #echo 'DR'.$idFilaDR.'row'.$fk_rowPago;
         #DoctoRelacionado
-        $array['DoctoRelacionado'][$idFila]['IdDocumento'] = $s_UUID_DR;
-        $array['DoctoRelacionado'][$idFila]['Folio'] = $fk_id_facturaDR;
-        $array['DoctoRelacionado'][$idFila]['MonedaDR'] = $fk_id_monedaDR;
-        $array['DoctoRelacionado'][$idFila]['TipoCambioDR'] = $n_tipoCambioDR;
-        $array['DoctoRelacionado'][$idFila]['MetodoDePagoDR'] = $fk_c_MetodoPagoDR;
-        $array['DoctoRelacionado'][$idFila]['NumParcialidad'] = $n_numParcialidad;
-        $array['DoctoRelacionado'][$idFila]['ImpSaldoAnt'] = $n_importeSaldoAnterior;
-        $array['DoctoRelacionado'][$idFila]['ImpPagado'] = $n_importePagado;
-        $array['DoctoRelacionado'][$idFila]['ImpSaldoInsoluto'] = $n_importeSaldoInsoluto;
-
+        $array['DoctoRelacionado'][$idFilaDR]['IdDocumento'] = $s_UUID_DR;
+        $array['DoctoRelacionado'][$idFilaDR]['Folio'] = $fk_id_facturaDR;
+        $array['DoctoRelacionado'][$idFilaDR]['MonedaDR'] = $fk_id_monedaDR;
+        $array['DoctoRelacionado'][$idFilaDR]['TipoCambioDR'] = $n_tipoCambioDR;
+        $array['DoctoRelacionado'][$idFilaDR]['MetodoDePagoDR'] = $fk_c_MetodoPagoDR;
+        $array['DoctoRelacionado'][$idFilaDR]['NumParcialidad'] = $n_numParcialidad;
+        $array['DoctoRelacionado'][$idFilaDR]['ImpSaldoAnt'] = $n_importeSaldoAnterior;
+        $array['DoctoRelacionado'][$idFilaDR]['ImpPagado'] = $n_importePagado;
+        $array['DoctoRelacionado'][$idFilaDR]['ImpSaldoInsoluto'] = $n_importeSaldoInsoluto;
+        $array['DoctoRelacionado'][$idFilaDR]['fk_rowPago'] = $fk_rowPago;
       }
     }
 

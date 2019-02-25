@@ -468,7 +468,7 @@ if($referencia != "SN"){
             <input class="efecto h22" type="text" name="T_Invoice_No" size="15" readonly>
           </div>
           <div class="col-md-2">
-            <input class="efecto h22" type="text" name="T_Invoice_Value" size="15"  value="<?php echo $valor;?>" readonly>
+            <input class="efecto h22" type="text" name="T_Invoice_Value" size="15"  value="<?php echo $valor;?>">
           </div>
           <div class="col-md-2">
             <input class="efecto h22" type="date" name="T_Date" size="15" value="<?php echo $fechaActual;?>" required>

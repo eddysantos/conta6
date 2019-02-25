@@ -12,6 +12,9 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
 require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorariosModifi
 require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php'; #$pk_id_factura
 
+require $root . '/conta6/Resources/PHP/actions/consultaDatosIVA.php';
+$sacarIVA = $row_datosIVA['n_IVA_calculo'];
+
 //LISTA DE MONEDAS
 require $root . '/conta6/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
 
@@ -295,7 +298,7 @@ if ($rows_datosCLTformaPago > 0) {
           </td>
           <td class="col-md-1 p-1">&nbsp;</td>
           <td class="col-md-1 p-1 pl-3">
-            <a href="#" id="Btn_agregarPago" onclick="Btn_agregarPago()"><img class="icochico" src="/conta6/Resources/iconos/001-add.svg"></a>
+            <a href="#" id="Btn_agregarPago" onclick="Btn_agregarPago()"><img class="icochico" src="/conta6/Resources/iconos/add.svg"></a>
           </td>
         </tr>
 
@@ -395,22 +398,27 @@ if ($rows_datosCLTformaPago > 0) {
             <input class="h22 bt border-0 efecto" type="text" id="metPago_DR" size="20" value="<?php echo $fk_c_MetodoPago; ?>" readonly>
           </td>
           <td class="col-md-2">
-            <input class="h22 bt border-0 efecto" type="text" id="parcialidad" size="20" value="<?php echo $parcialidad; ?>" readonly>
+            <input type="text" id="parcialidad" size="20" value="<?php echo $parcialidad; ?>"
+                <?php if( $oRst_permisos["s_rPgo_editParcialidad"] == 0){ echo "class='h22 bt border-0 efecto' readonly"; }else{ echo "class='efecto h22' "; }?>
+            >
           </td>
         </tr>
         <tr class='row mt-4 sub2'>
           <th class='col-md-1 pt-2'>Saldo Anterior</th>
           <td class='col-md-2'>
-            <input class="efecto h22" type="text" id="T_saldoAnterior" size="10" onBlur="validaIntDec(this);suma_saldoInsoluto();" value="<?php echo $n_total_gral; ?>" <?php if( $oRst_permisos["s_rPgo_editSaldoAnterior"] == 0){ echo "readonly"; }?>>
+            <input class="efecto h22" type="text" id="T_saldoAnterior" size="10" onBlur="validaIntDec(this);suma_saldoInsoluto();" value="<?php echo $n_total_gral; ?>"
+                <?php if( $oRst_permisos["s_rPgo_editSaldoAnterior"] == 0){ echo "readonly"; }?>
+            >
           </td>
           <th class='col-md-1 pt-2'>Importe Pagado</th>
           <td class='col-md-2'>
-            <input class="efecto h22" id="T_importePagado" onchange="validaIntDec(this);calculaDepIVA()" type="text" size="10" value="0">
+            <input class="efecto h22" id="T_importePagado" onchange="validaIntDec(this);valImportePagoFactura();calculaDepIVA()" type="text" size="10" value="0">
           </td>
           <th class='col-md-1 pt-2'>IVA</th>
           <td class='col-md-2'>
             <input class="efecto h22" type="text" id="T_iva" onchange="validaIntDec(this)" value="0" readonly>
-            <input class="efecto h22" type="hidden" id="T_deposito" value="0">
+            <input type="hidden" id="T_deposito" value="0">
+            <input type="hidden" id="T_sacarIVA" value="<?php echo $sacarIVA;?>">
           </td>
           <th class='col-md-1 pt-2'>Saldo Insoluto</th>
           <td class='col-md-2'>
@@ -444,21 +452,6 @@ if ($rows_datosCLTformaPago > 0) {
         <div class="col-md-12 p-1 font14"><b>Detalle de Pagos</b></div>
       </div>
       <div id="tbodyPagos"></div>
-      <table class="table">
-        <thead>
-          <tr class="row sub2 m-0">
-            <td class='col-md-2 p-1'>Referencia</td>
-            <td class='col-md-2 p-1'>Factura</td>
-            <td class='col-md-1 p-1'>Parc.</td>
-            <td class='col-md-2 p-1'>S. Anterior</td>
-            <td class='col-md-2 p-1'>Imp. Pagado</td>
-            <td class='col-md-1 p-1'>IVA</td>
-            <td class='col-md-1 p-1'>S.Insoluto</td>
-            <td class='col-md-1 p-1'></td>
-          </tr>
-        </thead>
-        <tbody id="tbodyPagosDesglose"></tbody>
-      </table>
     </form>
   </div>
 

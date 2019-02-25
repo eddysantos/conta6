@@ -8,21 +8,21 @@ require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
 #limpiarBlancos($txt) <-- eliminaBlancos($cadena)
 
 #SEGUN LAS ESPECIFICICAIONES DEL ANEXO20 VERSION 3.3 SE TIENE QUE USAR EL CATALOGO DE MONEDA PARA LOS DECIMALES, PERO COMO SOLO EXPEDIMOS EN MXN,USD Y AMBOS TIENEN DOS DECIMALES, POR LO TANTO, NUESTROS CALCULOS SE HARAN A DOS DECIMALES.
-// $cuenta = $_POST['cuenta'];
-// $referencia = $_POST['referencia'];
-// $id_cliente = $_POST['cliente'];
-// $fechaActual = date("Y-m-d H:i:s");
-// $fechaFactura = date("Y-m-d\TH:i:s");
-// $id_referencia = $_POST['referencia'];
+$cuenta = $_POST['cuenta'];
+$referencia = $_POST['referencia'];
+$id_cliente = $_POST['cliente'];
+$fechaActual = date("Y-m-d H:i:s");
+$fechaFactura = date("Y-m-d\TH:i:s");
+$id_referencia = $_POST['referencia'];
 
-
+/*
 $cuenta =15;
 $referencia = 'N13003036';
 $id_cliente = 'CLT_6548';
 $fechaActual = date("Y-m-d H:i:s");
 $fechaFactura = date("Y-m-d\TH:i:s");
 $id_referencia = 'N13003039';
-
+*/
 
 #PRUEBAS
 #EJECUTA SAT

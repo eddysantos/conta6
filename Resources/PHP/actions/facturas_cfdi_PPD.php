@@ -34,13 +34,13 @@ if ($rslt->num_rows == 0) {
 }
 
 while ($row = $rslt->fetch_assoc()) {
-  $cuenta = $row[fk_id_cuenta_captura];
-  $id_factura = $row[pk_id_factura];
-  $id_referencia = $row[fk_referencia];
-  $id_cliente = $row[fk_id_cliente];
-  $nombre = $row[s_nombre];
-  $metodo_pago = $row[fk_c_MetodoPago];
-  $cancela = $row[s_selloSATcancela];
+  $cuenta = $row['fk_id_cuenta_captura'];
+  $id_factura = $row['pk_id_factura'];
+  $id_referencia = $row['fk_referencia'];
+  $id_cliente = $row['fk_id_cliente'];
+  $nombre = $row['s_nombre'];
+  $metodo_pago = $row['fk_c_MetodoPago'];
+  $cancela = $row['s_selloSATcancela'];
 
   if( $cancela <> "" ){ $status = "Cancelado"; }else{ $status = "Activo"; }
   if( $metodo_pago == "PPD" && $cancela == "" ){

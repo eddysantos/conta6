@@ -218,7 +218,6 @@ function xmlV33_complemento_pago($array,$nodo) {
 	$complemento = $xml->createElement("cfdi:Complemento");
 	$complemento = $comprobante->appendChild($complemento);
 
-	for ($i=1; $i<=sizeof($array['Pagos']); $i++) {
 		$pagos = $xml->createElement("pago10:Pagos");
 		$pagos = $complemento->appendChild($pagos);
 		xmlV33_cargaAtt($pagos,array("Version"=>$array['Pagos']['Version']));
@@ -226,6 +225,8 @@ function xmlV33_complemento_pago($array,$nodo) {
     for ($i=1; $i<=sizeof($array['Pago']); $i++) {
   		$pago = $xml->createElement("pago10:Pago");
   		$pago = $pagos->appendChild($pago);
+      $pk_rowPago = $array['Pago'][$i]['pk_rowPago'];
+
   		xmlV33_cargaAtt($pago,array("FechaPago"=>$array['Pago'][$i]['FechaPago'],
                                   "FormaDePagoP"=>$array['Pago'][$i]['FormaDePagoP'],
                                   "MonedaP"=>$array['Pago'][$i]['MonedaP'],
@@ -244,23 +245,35 @@ function xmlV33_complemento_pago($array,$nodo) {
       );
 
 
-      $DR = $xml->createElement("pago10:DoctoRelacionado");
-      $DR = $pago->appendChild($DR);
-      xmlV33_cargaAtt($DR,array("IdDocumento"=>$array['DoctoRelacionado'][$i]['IdDocumento'],
-                                "Folio"=>$array['DoctoRelacionado'][$i]['Folio'],
-                                "MonedaDR"=>$array['DoctoRelacionado'][$i]['MonedaDR'],
-                                "TipoCambioDR"=>$array['DoctoRelacionado'][$i]['TipoCambioDR'],
-                                "MetodoDePagoDR"=>$array['DoctoRelacionado'][$i]['MetodoDePagoDR'],
-                                "NumParcialidad"=>$array['DoctoRelacionado'][$i]['NumParcialidad'],
-                                "ImpSaldoAnt"=>$array['DoctoRelacionado'][$i]['ImpSaldoAnt'],
-                                "ImpPagado"=>$array['DoctoRelacionado'][$i]['ImpPagado'],
-                                "ImpSaldoInsoluto"=>$array['DoctoRelacionado'][$i]['ImpSaldoInsoluto']
-        )
-      );
+
+
+      for ($dr=1; $dr<=sizeof($array['DoctoRelacionado']); $dr++) {
+        $tipoCambioDR = $array['DoctoRelacionado'][$dr]['TipoCambioDR'];
+        if( $tipoCambioDR == 0 or $tipoCambioDR == 1 ){ $tipoCambioDR = ''; }
+
+        $fk_rowPago = $array['DoctoRelacionado'][$dr]['fk_rowPago'];
+        if( $pk_rowPago === $fk_rowPago ){
+          $DR = $xml->createElement("pago10:DoctoRelacionado");
+          $DR = $pago->appendChild($DR);
+          xmlV33_cargaAtt($DR,array("IdDocumento"=>$array['DoctoRelacionado'][$dr]['IdDocumento'],
+                                    "Folio"=>$array['DoctoRelacionado'][$dr]['Folio'],
+                                    "MonedaDR"=>$array['DoctoRelacionado'][$dr]['MonedaDR'],
+                                    "TipoCambioDR"=>$tipoCambioDR,
+                                    "MetodoDePagoDR"=>$array['DoctoRelacionado'][$dr]['MetodoDePagoDR'],
+                                    "NumParcialidad"=>$array['DoctoRelacionado'][$dr]['NumParcialidad'],
+                                    "ImpSaldoAnt"=>$array['DoctoRelacionado'][$dr]['ImpSaldoAnt'],
+                                    "ImpPagado"=>$array['DoctoRelacionado'][$dr]['ImpPagado'],
+                                    "ImpSaldoInsoluto"=>$array['DoctoRelacionado'][$dr]['ImpSaldoInsoluto']
+            )
+          );
+        }
+      }#fin DoctoRelacionado
+
 
     }#fin pago
-	}
-}
+
+}# fin complemento pago
+
 # Complemento/ --------------------------------------------------------------------------------------------------------------
 
 # Totales Impuestos
@@ -488,10 +501,15 @@ function generarQR($e_rfc,$r_rfc,$total,$UUID,$selloParte){
         /* re=RFC_emisor  rr=RFC_receptor  id=UUID
         fe=$selloParte -> 8 ultimos digitos
         tt=Total_CFDI -> 18 digitos para enteros, 1 digito para ".", 6 digitos para decimales*/
-  $parteValor=explode('.', $total);
-  $ent = str_pad((int)$parteValor[0],18,"0",STR_PAD_LEFT);
-  $dec = str_pad((int)$parteValor[1],6,"0",STR_PAD_RIGHT);
-  $TT = $ent.".".$dec;
+
+  if( $total == 0 ){
+    $TT = "000000000000000000.000000";
+  }else{
+    $parteValor=explode('.', $total);
+    $ent = str_pad((int)$parteValor[0],18,"0",STR_PAD_LEFT);
+    $dec = str_pad((int)$parteValor[1],6,"0",STR_PAD_RIGHT);
+    $TT = $ent.".".$dec;
+  }
   $datos='https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?&id='.$UUID.'&re='.$e_rfc.'&rr='.$r_rfc.'&tt='.$TT.'&fe='.$selloParte;
 
   QRcode::png($datos,$rutaQRFile,QR_ECLEVEL_H,4);
