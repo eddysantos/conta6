@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="row justify-content-center" id="nReferencia">
-      <div class="col-md-6 intermedio transEff" id="mostrarConsulta">
+      <div class="col-md-6 intermedio transEff" id="mostrarConsulta_ame">
         <form  class="form-group" onsubmit="return false;">
         <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
       </form>
@@ -41,7 +41,30 @@
   </div>
 
 <!---se muestra al escribir la referencia y dar enter-->
-  <div class="contenedor contorno" id="repoSol" style="display:none">
+  <div class="mt-5 contenedor contorno" id="repoSol" style="display:none;margin-bottom: 8rem!important;">
+    <div class="col-md-1 offset-sm-11">
+      <a href="#" class="fele" accion="cuadroConsultar">
+        <i class="back fa fa-arrow-left">Regresar</i>
+      </a>
+    </div>
+    <table class="table font16">
+      <thead>
+        <tr class="row encabezado">
+          <td class="col-md-12">Cuentas de Gastos</td>
+        </tr>
+        <tr class="row backpink" style="font-size:16px!important">
+          <td class="col-md-1"></td>
+          <td class="col-md-2">CTA AMERICANA</td>
+          <td class="col-md-2">Estatus</td>
+          <td class="col-md-2">REFERENCIA</td>
+          <td class="col-md-4">CLIENTE</td>
+          <td class="col-md-1"></td>
+        </tr>
+      </thead>
+      <tbody id="lst_cuentasGastos_ame"></tbody>
+    </table>
+  </div>
+  <!--div class="contenedor contorno" id="repoSol" style="display:none">
     <table class="table font18">
       <tr class="row">
         <td class="col-md-1 offset-sm-11 p-0">
@@ -79,7 +102,7 @@
         </td>
       </tr>
     </table>
-  </div>
+  </div-->
 
 
 
@@ -103,12 +126,17 @@
     <div class="row justify-content-center m-0 mb-5">
       <div class="col-md-6 transEff intermedio">
         <form class="form-group btn_buscarDatos">
-          <input class="reg border-0 transEff popup-input" maxlength="9" id="btn_ctaAme" type="text" id-display="#popup-display-ctaAme" action="referencias" db-id="" autocomplete="off">
-          <div class="popup-list" id="popup-display-ctaAme" style="display:none"></div>
+          <!--input class="reg border-0 transEff popup-input" maxlength="9" id="btn_ctaAme" type="text" id-display="#popup-display-ctaAme" action="referencias" db-id="" autocomplete="off">
+          <div class="popup-list" id="popup-display-ctaAme" style="display:none"></div-->
+
+          <input class="efecto tiene-contenido popup-input" maxlength="9" id="btn_ctaAme" type="text" id-display="#popup-display-btn_ctaAme" action="referencias" db-id="" autocomplete="off">
+          <div class="popup-list" id="popup-display-btn_ctaAme" style="display:none"></div>
+          <a href="#" id="btn_buscarDatosEmbarque_ctaAme" class="boton"> <i class="fa fa-search "></i> Consultar</a>
+
         </form>
       </div>
     </div>
-    <div class="contorno" id="">
+    <!--div class="contorno" id="">
         <form class="form1">
           <table class="table font12">
             <tr class='row'>
@@ -162,16 +190,8 @@
           	  <td class='p-0 col-md-2 text-left'>12.00</td>
             </tr>
 
-            <!-- <tr class="row borderojo pb-4 pt-3"> -->
-
-            <!-- </tr> -->
 
             <tr class='row mt-4 align-items-center'>
-              <!-- <td class='p-0 col-md-2 text-right b'><b>Días en almacen:</b></td>
-              <td class='p-0 col-md-1'>
-                <input type='text' id='' class='efecto h18' autocomplete='off'>
-              </td> -->
-
               <td class='p-0 col-md-1 offset-md-1 text-right b'><b>Shipper:</b></td>
               <td class='p-0 col-md-1'>
                 <input class='text-left bt inputId p-0' type='text' id='' readonly>
@@ -208,17 +228,7 @@
 
              <td class='p-0 col-md-2 offset-md-1 text-right b'><b>Reexpedición:</b></td>
              <td class='p-0 col-md-1 text-left'></td>
-
-
            </tr>
-
-           <!-- <tr class='row pt-2 align-items-center'>
-             <td class='p-0 col-md-2 text-right b'><b>Consolidado:</b></td>
-             <td class='p-0 col-md-1'>
-               <input class='text-left bt inputId p-0' type='text' id='' value="LTL" readonly>
-             </td>
-           </tr> -->
-
            <tr class='row mt-5 align-items-center'>
              <td class='p-0 col-md-2 text-right b'><b>Estatus:</b></td>
              <td class='p-0 col-md-4 text-left'><span>Ya existe cuenta de gastos con esta referencia</span></td>
@@ -265,17 +275,13 @@
            </tr>
           </table>
         </form>
-      </div>
+    </div-->
   </div>
-
-
-
-
   </div>
 <div>
+<div id="datosEmbarque"></div>
 
 
-<script src="js/CuentaGastos.js"></script>
 <?php
 require $root . '/conta6/Ubicaciones/footer.php';
 ?>

@@ -41,10 +41,11 @@ if($referencia != "SN"){
           $id_clienteReferencia = $row_datosRefProv['fk_id_cliente'];
           $status_Flete = $row_datosRefProv['s_status_flete'];
           $valor = limpiarBlancos($row_datosRefProv['n_valor_aduana']);
+          $valor_usd = $row_datosRefProv['n_valor_USD'];
           $peso = limpiarBlancos($row_datosRefProv['n_peso']);
           $volumen = $row_datosRefProv['n_volumen'];
           #$aduana = $row_datosRefProv['fk_id_aduana'];
-          $descripcion = cortarCadena($row_datosRefProv['s_descripcion'],25);
+          $descripcionRef = cortarCadena($row_datosRefProv['s_descripcion'],25);
           $guiaMaster = limpiarBlancos($row_datosRefProv['s_guia_master']);
           $facturas = cortarCadena($row_datosRefProv['s_facturas'],25);
           $procedencia = limpiarBlancos($row_datosRefProv['s_procedencia']);
@@ -52,7 +53,7 @@ if($referencia != "SN"){
           $pedimento = limpiarBlancos($row_datosRefProv['s_pedimento']);
           $tipoCambio = $row_datosRefProv['n_tipo_cambio'];
           $tipo = limpiarBlancos($row_datosRefProv['s_imp_exp']);
-		  $s_tipo = limpiarBlancos($row_datosRefProv['s_tipo']);
+		      $s_tipo = limpiarBlancos($row_datosRefProv['s_tipo']);
           $almacen = limpiarBlancos($row_datosRefProv['fk_almacen_seccion']);
           $fechaEntrada =  $row_datosRefProv['d_fecha_entrada'];
           if (!is_null($fechaEntrada)){
@@ -84,7 +85,7 @@ if($referencia != "SN"){
         $almacenNombre = trim($row_datosAlmacen['s_almacen']);
       }else{ $almacen = 0; $almacenNombre = "SIN NOMBRE";}
       $nomProv = limpiarBlancos($nomProv);
-    }else{
+}else{
       $id_clienteReferencia =  $cliente;
       $status_Flete = "P";
       $almacen = 0;
@@ -95,7 +96,7 @@ if($referencia != "SN"){
       #$aduana = $oficina;
       $almacenNombre = "SIN ALMACEN";
       $nomProv = "";
-      $descripcion = "";
+      $descripcionRef = "";
       $guiaMaster = "";
       $facturas = "";
       $fechaEntrada = date ( "d-m-Y h:i:s" , time () );
@@ -103,16 +104,17 @@ if($referencia != "SN"){
       $referenciaCliente = "";
       $pedimento = "";
       $tipoCambio = 0;
-    }
-    $entradasAdicionales = 0;
-    if($entradas > 1){
-      $entradasAdicionales = $entradas - 1;
-      $entradas = 1;
-    }
+}
 
-	$parteCliente = trim( preg_replace('/[0-9]/', '', $cliente ) );
+$entradasAdicionales = 0;
+if($entradas > 1){
+  $entradasAdicionales = $entradas - 1;
+  $entradas = 1;
+}
 
-	if( $parteCliente == "CLT_" ){
+$parteCliente = trim( preg_replace('/[0-9]/', '', $cliente ) );
+
+if( $parteCliente == "CLT_" ){
 		//datos del cliente
 		require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
 		if( $rows_datosCLT > 0 ){
@@ -128,7 +130,7 @@ if($referencia != "SN"){
 		  $CLT_rfc = limpiarBlancos($row_datosCLT["s_rfc"]);
 		  $CLT_taxid = limpiarBlancos($row_datosCLT["s_taxid"]);
 		}
-	}else{
+}else{
 		require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_americano.php';
 		if( $rows_datosCLT > 0 ){
 		  $CLT_nombre = htmlentities(limpiarNOUSAR($row_datosCLT["s_nombre"]));
@@ -142,28 +144,14 @@ if($referencia != "SN"){
 		  $CLT_pais = limpiarBlancos($row_datosCLT["s_pais"]);
 		  $CLT_rfc = limpiarBlancos($row_datosCLT["s_tax_id"]);
 		}
-	}
+}
 
-/*
-    //IVA
-    require $root . '/conta6/Resources/PHP/actions/consultaDatosIVA.php';
-    if( $rows_datosIVA > 0 ){
-      $iva = trim($row_datosIVA["n_IVA"]);
-      $retencion = trim($row_datosIVA["n_IVA_retencion"]);
-      $iva_menos_retencion = $row_datosIVA['n_IVA_menos_retencion'];
-      $ivaGral = $row_datosIVA['n_IVA_general'] - $retencion; //IMPUESTO GENERAL - APLICADO AL CONCEPTO Flete Terrestre cuando es la oficina de Nuevo Laredo
-    }
-    if( $tasa == "sinIVA" ){
-      $iva = 0;
-      $retencion = 0;
-      $iva_menos_retencion = 0;
-    }
-*/
     /* SACO UN FOLIO DE CALCULO DE TARIFA, ESTE FOLIO ME SERVIRA PARA PODER IDENTIFICAR LOS FILTROS DE LAS TARIFAS */
-    $s_tipoDoc = 'ctaGastos';
-    require $root . '/conta6/Resources/PHP/actions/tarifas_generarFolio.php';
+    $tipoDocumento == 'elaborar';
+    $s_tipoDoc = 'ctaGastosAME';
+    require $root . '/conta6/Resources/PHP/actions/tarifas_generarFolio.php'; #$calculoTarifa
     //$calculoTarifa = 45;
-	echo $calculoTarifa;
+	  //echo $calculoTarifa;
 
     #******************** PAGOS O COBROS EN MONEDA EXTRANJERA ********************
     //CALCULO TARIFA DEL CLIENTE - SECCION: POCME
@@ -188,7 +176,8 @@ if($referencia != "SN"){
     }
     //PARA LA OFICINA DE NUEVO LAREDO ESTOS CONCEPTOS SE CARGAN EN AUTOMATICO
     if( $aduana == 240 ){
-      #require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente_cobroAutomatico.php';  #$POCME_automatico
+      //echo $id_cliente.'/'.$calculoTarifa;
+      require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente_cobroAutomatico.php';  #$POCME_automatico
     }
     //CALCULO TARIFA ALMACEN - SECCION: PAGOS REALIZADOS POR SU CUENTA
     require $root . '/conta6/Resources/PHP/actions/tarifas_calculaALMACEN.php'; #$custodia,$manejo,$almacenaje
@@ -229,6 +218,10 @@ if($referencia != "SN"){
     <input type="hidden" id="IVARETENIDO" value="<?PHP echo $retencion;?>">
     <input type="hidden" id="IVA_MENOS_RETENCION" value="<?PHP echo $iva_menos_retencion;?>">
     <input type="hidden" id="IVA_GRAL" value="<?PHP echo $ivaGral;?>">
+
+    <input type="hidden" id="cta_ame_marcarPagada" value="<?PHP echo $oRst_permisos['s_cta_ame_marcarPagada'];?>">
+    <input type="hidden" id="cta_ame_verGstoGana" value="<?PHP echo $oRst_permisos['s_cta_ame_verGstoGana'];?>">
+    <input type="hidden" id="cta_ame_editGstoGana" value="<?PHP echo $oRst_permisos['s_cta_ame_editGstoGana'];?>">
 
 
     <div class='text-center'>
@@ -346,10 +339,7 @@ if($referencia != "SN"){
               <td class="col-md-3 p-1">
                 <input class="h22 efecto bt" id="T_Cliente_RFC" type="text" readonly onchange="validarRFCfac(this);" value="<?php echo $CLT_rfc;?>">
               </td>
-
-              <td class="col-md-3 p-1">
-                <input class="h22 efecto bt" type="text" id="" readonly value="<?php echo $id_cliente; ?>">
-              </td>
+              <td class="col-md-3 p-1"></td>
             </tr>
           </tbody>
 		  	</table>
@@ -364,7 +354,7 @@ if($referencia != "SN"){
             </tr>
             <tr class="row backpink">
               <td class="col-md-3"></td>
-              <td class="col-md-3">Póliza</td>
+              <td class="col-md-3"></td>
               <td class="col-md-3">Usuario</td>
               <td class="col-md-3">Fecha</td>
             </tr>
@@ -387,14 +377,8 @@ if($referencia != "SN"){
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
             </tr>
-            <tr class="row">
-              <td class="p-1 col-md-3 text-left b"><b>Factura generada</b></td>
-              <td class="p-1 col-md-3"></td>
-              <td class="p-1 col-md-3"></td>
-              <td class="p-1 col-md-3"></td>
-            </tr>
             <tr class="row borderojo">
-              <td class="p-1 col-md-3 text-left b"><b>Factura cancelada</b></td>
+              <td class="p-1 col-md-3 text-left b"><b>cta. cancelada</b></td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"></td>
@@ -432,7 +416,7 @@ if($referencia != "SN"){
             <tr class="row justify-content-center">
               <td class="col-md-1 text-right pt-3 ls0 b">Quantity : </td>
               <td class="col-md-1 p-1">
-                <input class="efecto h22 text-left" type="text" id="T_Quantity" size="30" maxlength="150" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php $entradas; ?>">
+                <input class="efecto h22 text-left" type="text" id="T_Quantity" size="30" maxlength="150" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $entradas; ?>">
               </td>
               <td class="col-md-1 pt-3 ls0 b text-right">Type : </td>
               <td class="col-md-1">
@@ -443,7 +427,7 @@ if($referencia != "SN"){
             <tr class="row justify-content-center">
               <td class="col-md-1 text-right pt-3 ls0 b">Description : </td>
               <td class="col-md-3 p-1">
-                <input class="efecto h22 text-left" id="T_Descripction" type="text" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $descripcion;?>" size="40" readonly>
+                <input class="efecto h22 text-left" id="T_Descripction" type="text" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $descripcionRef;?>" size="40" readonly>
               </td>
             </tr>
           </tbody>
@@ -465,20 +449,20 @@ if($referencia != "SN"){
         </div>
         <div class="row m-0 mt-3">
           <div class="col-md-2">
-            <input class="efecto h22" type="text" name="T_Invoice_No" size="15" readonly>
+            <input class="efecto h22" type="text" id="T_Invoice_No" size="15" readonly>
           </div>
           <div class="col-md-2">
-            <input class="efecto h22" type="text" name="T_Invoice_Value" size="15"  value="<?php echo $valor;?>">
+            <input class="efecto h22" type="text" id="T_Invoice_Value" size="15"  value="<?php echo $valor_usd;?>">
           </div>
           <div class="col-md-2">
-            <input class="efecto h22" type="date" name="T_Date" size="15" value="<?php echo $fechaActual;?>" required>
+            <input class="efecto h22" type="date" id="T_Date" size="15" required>
           </div>
           <div class="col-md-2">
             <?php if( $opcion == "CFD" or $opcion == "Proforma" ){ echo $opcion.": ".$extraerfolio; }?>
-            <input class="efecto h22" type="text" name="T_Weight" size="15" value="<?php echo number_format($peso,2,'.','');?>" readonly>
+            <input class="efecto h22" type="text" id="T_Weight" size="15" value="<?php echo number_format($peso,2,'.','');?>" readonly>
           </div>
           <div class="col-md-4">
-            <input class="efecto h22" type="text" name="T_Customer_Order" size="40" value="<?php echo $facturas;?>">
+            <input class="efecto h22" type="text" id="T_Customer_Order" size="40" value="<?php echo $facturas;?>">
           </div>
         </div>
 
@@ -515,7 +499,7 @@ if($referencia != "SN"){
                     <input class="efecto h22" type="text" id="T_POCME_Valor" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15" >
                   </div>
                   <div class='col-md-1 text-left'>
-                    <a onclick="agregarImporte_CtaAme()" id="Btn_agregar">
+                    <a onclick="agregarImporte_ctaAme()" id="Btn_agregar">
                       <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
                     </a>
                   </div>
@@ -531,14 +515,14 @@ if($referencia != "SN"){
                       <td class='col-md-3'>DESCRIPCION</td>
                       <td class=''></td>
                       <td class=''></td>
-                      <td class='col-md-1 sub ml-4'>SPEND</td>
-                      <td class='col-md-1 sub'>GAIN</td>
+                      <td class='col-md-1 sub ml-4 spend'>SPEND</td>
+                      <td class='col-md-1 sub gain'>GAIN</td>
                       <td class='col-md-1'>IMPORTE</td>
                       <td class='col-md-1'>SUBTOTAL</td>
                     </tr>
                   </thead>
                   <tbody id='tbodyPOCME'>
-                    <?php echo $proforma_POCME.$ctaAme_POCME.$POCME_automatico; ?>
+                    <?php echo $proforma_POCME.$ctaAme_POCME.$POCME_automatico_ctaAme; ?>
                   </tbody>
                   <tfoot>
                   </tfoot>
@@ -557,7 +541,7 @@ if($referencia != "SN"){
               <tr class="row">
                 <td class="col-md-3 text-right pt-3 font12 b"> PAGADA :</td>
                 <td class="col-md-3">
-                  <select class="custom-select-s" id="CUSTOMS" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                  <select class="custom-select-s" id="T_pagada" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       <option value='1'>Si</option>
                       <option value='0' selected>No</option>
                   </select>
@@ -573,35 +557,37 @@ if($referencia != "SN"){
                 <tr class="row">
                   <!-- totales de SPEND y GAIN -->
                   <td class="p-1 col-md-2 offset-md-3">
-                    <input class="efecto h22 ml-5" type="text" id="" size="20" value="0" readonly>
+                    <input class="efecto h22 ml-5" type="text" id="T_gasto_Total" size="20" value="0" readonly>
                   </td>
                   <td class="p-1 col-md-2">
-                    <input class="efecto h22 ml-5" type="text" id="" size="20" value="0" readonly>
+                    <input class="efecto h22 ml-5" type="text" id="T_gana_Total" size="20" value="0" readonly>
                   </td>
 
                   <td class="p-1 col-md-3">
                     <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_SubCtaAme" size="40"readonly value="Subtotal :">
                   </td>
                   <td class="p-1 col-md-2">
-                    <input class="efecto h22" type="text" id="" size="20" value="0" readonly>
+                    <input class="efecto h22" type="text" id="T_Sub_Total" size="20" value="0" readonly>
                   </td>
                 </tr>
 
-                <tr class="row">
+                <tr class="row elemento-advance">
                   <td class="p-1 col-md-3 offset-md-7">
                     <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Advance1" size="40"readonly value="Less Advance 1 :">
                   </td>
                   <td class="p-1 col-md-2">
-                    <input class="efecto h22" type="text" id="" size="20" value="0" readonly>
+                    <input class="advanceNum" type="hidden" id="T_Advance1_Num" value="1">
+                    <input class="efecto h22 advanceImporte" type="text" id="T_Advance1_Total" size="20" value="0" onblur="Suma_POCME_ctaAme()">
                   </td>
                 </tr>
 
-                <tr class="row">
+                <tr class="row elemento-advance">
                   <td class="p-1 col-md-3 offset-md-7">
                     <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Advance2" size="40"readonly value="Less Advance 2 :">
                   </td>
                   <td class="p-1 col-md-2">
-                    <input class="efecto h22" type="text" id="" size="20" value="0" readonly>
+                    <input class="advanceNum" type="hidden" id="T_Advance2_Num" value="2">
+                    <input class="efecto h22 advanceImporte" type="text" id="T_Advance2_Total" size="20" value="0" onblur="Suma_POCME_ctaAme()">
                   </td>
                 </tr>
 
@@ -611,123 +597,10 @@ if($referencia != "SN"){
                     <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_TotCtaAme" size="40"readonly value="Total :">
                   </td>
                   <td class="p-1 col-md-2">
-                    <input class="efecto h22" type="text" id="" size="20" value="0" readonly>
+                    <input class="efecto h22" type="text" id="T_Total" size="20" value="0" readonly>
                   </td>
                 </tr>
               </tbody>
-
-
-
-              <!-- SUBTOTALES ANTERIORES -->
-              <!-- <tbody>
-                <tr class="row">
-                  <td class="p-1 col-md-8">
-                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Importe" size="40"readonly value="Total Honorarios y Servicios :">
-                  </td>
-                  <td class="col-md-2"></td>
-                  <td class="p-1 col-md-2">
-                    <input class="efecto h22" type="text" id="T_Total_Importes" size="20" value="0" readonly>
-                  </td>
-                </tr>
-                <tr class="row">
-                  <td class="p-1 col-md-8">
-                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_IVA" size="40" readonly value="<?PHP echo $iva*100?>% IVA sobre Honorarios y Servicios :">
-                  </td>
-                  <td class="col-md-2"></td>
-                  <td class="p-1 col-md-2">
-                    <input class="efecto h22" type="text" id="T_Total_IVA" size="20" value="0" readonly>
-                  </td>
-                </tr>
-
-                <tr class="row">
-                  <td class="p-1 col-md-8">
-                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_SUBTOTAL_HON" size="40" readonly value="Subtotal Honorarios y Servicios :">
-                  </td>
-                  <td class="col-md-2"></td>
-                  <td class="p-1 col-md-2">
-                    <input class="efecto h22" type="text" id="T_SUBTOTAL_HON" size="20" value="0" readonly>
-                  </td>
-                </tr>
-
-                <tr class="row">
-                  <td class="p-1 col-md-8">
-                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_IVA_RETENIDO" size="40" readonly value="Retención (4%) Impto. IVA :">
-                  </td>
-                  <td class="col-md-2"></td>
-                  <td class="p-1 col-md-2">
-                    <input class="efecto h22" type="text" id="T_IVA_RETENIDO" size="20" value="0" readonly>
-                  </td>
-                </tr>
-
-                <tr class="row">
-                  <td class="p-1 col-md-8">
-                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Gral" size="40" readonly value="Total :">
-                  </td>
-                  <td class="col-md-2"></td>
-                  <td class="p-1 col-md-2">
-                    <input class="efecto h22" type="text" id="T_Total_Gral" size="20" value="0" readonly>
-                  </td>
-                </tr>
-
-                <tr class="row">
-                  <td class="p-1 col-md-8">
-                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_MN_Extranjera" size="48" readonly value="Total Pagos o Cargos en Moneda Extranjera :">
-                  </td>
-                  <td class="col-md-2"></td>
-                  <td class="p-1 col-md-2">
-                    <input class="efecto h22" type="text" id="T_Total_MN_Extranjera" size="20" readonly>
-                  </td>
-                </tr>
-
-                <tr class="row">
-
-                  <td class="p-1 col-md-8">
-                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Total_Pagos" size="45" readonly value="Total Pagos Realizados por su Cuenta :">
-                  </td>
-                  <td class="col-md-2"></td>
-                  <td class="p-1 col-md-2">
-                    <input class="efecto h22" type="text" id="T_Total_Pagos" size="20" value="0" readonly>
-                  </td>
-                </tr>
-                <tr class="row">
-                  <td class="col-md-12">
-                    <input class="h22 w-100 bt text-center border-0" type="text" id="total_CuentaGastos" readonly value="<?php echo $s_total_cta_gastos_letra; ?>">
-                  </td>
-                </tr>
-
-                <tr class="row">
-                  <td class="p-1 col-md-8">
-                    <input class="h22 w-100 bt text-right border-0" type="text" id="Txt_Cta_Gastos" size="40" readonly value="Total Cuenta de Gastos :">
-                  </td>
-                  <td class="col-md-2"></td>
-                  <td class="p-1 col-md-2">
-                    <input class="h22 w-100 efecto" type="text" id="T_Cta_Gastos" size="20" value="0" readonly>
-                  </td>
-                </tr>
-                <tr class="row">
-                  <td class="p-1 col-md-8">
-                    <input class="h22 bt border-0 text-right efecto" type="text" id="Txt_Total_Anticipos" size="40" readonly value="Total Depósitos :">
-                  </td>
-                  <td class="col-md-2 p-1 text-right">
-                    <a href="#agregarDepositos" data-toggle="modal">
-                      <img src="/conta6/Resources/iconos/002-plus.svg" class="icochico">
-                    </a>
-                  </td>
-                  <td class="p-1 col-md-2">
-                    <input class="h22 w-100 efecto" type="text" id="T_Total_Anticipos" size="20" value="0" readonly>
-                  </td>
-                </tr>
-
-                <tr class="row">
-                  <td class="p-1 col-md-8">
-                    <input class="h22 bt border-0 text-right efecto" type="text" id="Txt_Saldo_Gral" size="10" readonly value="Saldo :">
-                  </td>
-                  <td class="col-md-2 p-1 text-right"></td>
-                  <td class="p-1 col-md-2">
-                    <input class="h22 efecto" type="text" id="T_SALDO_GRAL" size="20" value="0" readonly>
-                  </td>
-                </tr>
-              </tbody> -->
             </table>
           </td>
         </tr>
@@ -735,16 +608,17 @@ if($referencia != "SN"){
 
       <div class="row justify-content-center">
         <div class="col-md-3">
-          <input class="efecto boton validarstring" type='button' value="GUARDAR" onclick="validarStringSAT(this);quitarNoUsar(this);" id="guardar-cta" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
+          <input class="efecto boton validarstring" type='button' value="GUARDAR" id="guardar-ctaAme" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
         </div>
-        <!-- <div id="mensaje"></div> -->
+        <div id="print" style="display:none">
+          <a id="Btn_print_ctaAme"><img src='/conta6/Resources/iconos/printer.svg' class='icomediano'></a>
+          <a id="Btn_new_ctaAme"><img src='/conta6/Resources/iconos/hoja2.svg' class='icomediano'></a>
+        </div>
       </div>
     </div>
   </div>
 
 
     <?php
-      require $root . '/conta6/Resources/PHP/actions/depositos_sinAplicar.php';
-      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/modales/depositos.php';
       require $root . '/conta6/Ubicaciones/footer.php';
     ?>

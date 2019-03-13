@@ -23,7 +23,7 @@
   <script src="/conta6/Ubicaciones/Trafico/js/Trafico.js"></script>
   <script src="/conta6/Ubicaciones/Trafico/SolicitudAnticipo/js/SolicitudAnticipo.js"></script>
 
-
+  <script src="/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/js/CuentaGastos.js"></script>
 
   <script src="/conta6/Resources/js/validarFormulario.js"></script>
   <script src="/conta6/Resources/js/calculadora.js"></script>

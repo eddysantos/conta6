@@ -1,5 +1,5 @@
 <?PHP
-  $query_diasCredCLT = "SELECT * FROM conta_cs_diasCredito_clientes WHERE fk_id_cliente = ?";
+  $query_diasCredCLT = "SELECT * FROM conta_cs_diasCredito_clientes WHERE fk_id_cliente = ? AND s_credito = 'MEX' ";
   $stmt_diasCredCLT = $db->prepare($query_diasCredCLT);
   if (!($stmt_diasCredCLT)) {
     $system_callback['code'] = "500";
