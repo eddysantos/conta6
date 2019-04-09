@@ -29,25 +29,29 @@ if ($rslt->num_rows == 0) {
 }
 
 while ($row = $rslt->fetch_assoc()) {
-  echo $id_pago_captura = $row['pk_id_pago_captura'];
+  $id_pago_captura = $row['pk_id_pago_captura'];
   $id_cliente = $row['fk_id_cliente'];
   $nombre = $row['s_nombre'];
 
+  $hrefTimbrar = ''; $hrefEliminar = ''; $hrefMod = '';
 
   require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_lst_timbrados.php';
   if ($rslt_cfdi->num_rows == 0) {
-    $hrefSig = "<a href='#' onclick='pagosModificar($id_pago_captura,&#39;$id_cliente&#39;)'><img src='/conta6/Resources/iconos/003-edit.svg'></a>";
-    $hrefEliminar = "<a href='#' onclick='pagosCapturaEliminar($id_pago_captura)'><img src='/conta6/Resources/iconos/002-trash.svg'></a>";
-    $hrefTimbrar = "<a href='#' onclick='pagosTimbrar($id_pago_captura,&#39;$id_cliente&#39;)'><img src='/conta6/Resources/iconos/timbrar.svg'></a>";
+    if( $oRst_permisos['s_rPgo_modificar'] == 1 ){ $hrefMod = "<a href='#' onclick='pagosModificar($id_pago_captura,&#39;$id_cliente&#39;)'><img src='/conta6/Resources/iconos/003-edit.svg'></a>"; }
+    if( $oRst_permisos['s_rPElect_timbrar'] == 1 ){ $hrefTimbrar = "<a href='#' onclick='pagosTimbrar($id_pago_captura,&#39;$id_cliente&#39;)'><img src='/conta6/Resources/iconos/timbrar.svg'></a>"; }
+    if( $oRst_permisos['s_rPgo_cancelar'] == 1 ){ $hrefEliminar = "<a href='#' onclick='pagosCapturaEliminar($id_pago_captura)'><img src='/conta6/Resources/iconos/002-trash.svg'></a>"; }
   }
-  $hrefConsulta = "<a href='#' onclick='pagosConsultar($id_pago_captura,&#39;$id_cliente&#39;)'><img src='/conta6/Resources/iconos/magnifier.svg'></a>
-  <a href='#' onclick='pagosImprimir($id_pago_captura)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'></a>";
+
+  if( $oRst_permisos['s_rPgo_consultar'] == 1 ){
+    $hrefConsulta = "<a href='#' onclick='pagosConsultar($id_pago_captura,&#39;$id_cliente&#39;)'><img src='/conta6/Resources/iconos/magnifier.svg'></a>
+    <a href='#' onclick='pagosImprimir($id_pago_captura)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'></a>";
+  }
 
   $pagosCaptura .= "<tr class='row font14 borderojo'>
     <td class='col-md-1 text-right'>$hrefEliminar</td>
     <td class='col-md-1'>$id_pago_captura</td>
     <td class='col-md-4'>$id_cliente $nombre</td>
-    <td class='col-md-1 text-right'>$hrefSig $hrefConsulta $hrefTimbrar</td>
+    <td class='col-md-1 text-right'>$hrefMod $hrefConsulta $hrefTimbrar</td>
   </tr>";
 }
 

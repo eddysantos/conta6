@@ -9,8 +9,8 @@ $data = $_POST;
 $data['string'];
 $text = "%" . $data['string'] . "%";
 $query = "SELECT pk_id_cuenta, s_cta_desc
-		FROM conta_cs_cuentas_mst 
-		WHERE pk_id_cuenta LIKE '0100%' AND fk_id_aduana = 470 AND NOT pk_ID_CUENTA = '0100-00010' AND 
+		FROM conta_cs_cuentas_mst
+		WHERE pk_id_cuenta LIKE '0100%' AND fk_id_aduana = $aduana AND NOT pk_ID_CUENTA = '0100-00010' AND 
 		( pk_id_cuenta like ? OR s_cta_desc like ?)";
 
 $stmt = $db->prepare($query);

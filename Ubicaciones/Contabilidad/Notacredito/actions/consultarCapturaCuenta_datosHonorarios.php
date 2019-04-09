@@ -66,7 +66,7 @@ if( $total_consultaHonorarios > 0 ) {
 
     $detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',".$id_facturaRelacionada.",0,".$Hono_Total.",0),";
 
-		$datosHonorarios = $datosHonorarios."<div class='row b font12 ls1'>
+		$datosHonorarios .= "<div class='row b font12 ls1'>
           <div class='col-md-4 text-left'>$s_conceptoEsp</div>
           <div class='col-md-2'>$n_importe</div>
           <div class='col-md-2'>$n_IVA</div>
@@ -83,7 +83,7 @@ if( $total_consultaHonorarios > 0 ) {
     }
 
 
-    $datosHonorariosPrint = $datosHonorariosPrint."<div class='row b font12 ls1'>
+    $datosHonorariosPrint .= "<div class='row b font12 ls1'>
           <div class='col-md-4 text-left'>$s_conceptoEspPrint</div>
           <div class='col-md-2'>$n_importe_2</div>
           <div class='col-md-2'>$n_IVA_2</div>
@@ -92,7 +92,7 @@ if( $total_consultaHonorarios > 0 ) {
         </div>";
 
 
-    $datosHonorariosXML = $datosHonorariosXML.'<tr>
+    $datosHonorariosXML .= '<tr>
           <td width="10%">'.$n_cantidad.'</td>
           <td width="15%">'.$fk_c_claveUnidad.' '.$s_unidad.'</td>
           <td width="10%">'.$fk_c_ClaveProdServ.'</td>
@@ -100,7 +100,7 @@ if( $total_consultaHonorarios > 0 ) {
           <td width="20%" align="right">'.$n_importe.'</td>
         </tr>';
 
-    $datosHonorariosImprimir = $datosHonorariosImprimir.'<tr>
+    $datosHonorariosImprimir .= '<tr>
           <td width="52%">'.$s_conceptoEsp.'</td>
           <td width="12%">'.$n_importe_2.'</td>
           <td width="12%">'.$n_IVA_2.'</td>
@@ -109,7 +109,7 @@ if( $total_consultaHonorarios > 0 ) {
         </tr>';
 
     if( $idFila > 1 ){ $botonEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";}
-    $datosHonorariosModifi = $datosHonorariosModifi."
+    $datosHonorariosModifi .= "
     <tr class='row m-0 trHonorarios elemento-honorarios' id='$idFila'>
       <td class='col-md-4 p-1'>
         <input class='id-partida' type='hidden' id='T_partida_$pk_id_partida' value='$pk_id_partida'>

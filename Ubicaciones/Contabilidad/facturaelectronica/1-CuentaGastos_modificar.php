@@ -853,7 +853,7 @@ if($referencia != "SN"){
                     </select>
                     <div id="numerosCuenta"></div>              </td>
                   <td class="col-md-3">
-                    <?php if( $oRst_permisos["CFD_cta_gastos_generarT0"] == 0){ ?>
+                    <?php if( $oRst_permisos["s_cta_gastos_generarT0"] == 0){ ?>
                     <select name="select2" id="lst_moneda" onchange="asignarMoneda()">
                       <?php echo $consultaMoneda; ?>
                     </select>

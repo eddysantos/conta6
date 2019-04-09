@@ -11,7 +11,9 @@
       <a  id="submenuMed" class="fele" accion="buscarctagastos"><i class="fa fa-search"></i>BUSCAR</a>
     </div>
     <div class="col-md-6">
+      <?PHP if($oRst_permisos['s_cta_gastos_generar'] == 1){ ?>
       <a id="submenuMed" class="fele" accion="generarctagastos"><i class="fa fa-plus"></i>GENERAR</a>
+      <?PHP } ?>
     </div>
   </div>
 
@@ -49,7 +51,7 @@
               <a href="#" class="boton" id="Btn_Busca_Ref_Cta_Gtos_2" onclick="cargarCuentaSinReferencia('IVA')">Siguiente <i class="fa fa-angle-double-right fa-lg"></i></a>
             </td>
             <td class="col-md-3">
-              <?PHP if($oRst_permisos['CFDI_cta_gastos_generarT0'] == 1){ ?>
+              <?PHP if($oRst_permisos['s_cta_gastos_generarT0'] == 1){ ?>
               <a href="#" class="boton" id="Btn_Busca_Ref_Cta_Gtos_3" onclick="cargarCuentaSinReferencia('sinIVA')">Generar Tasa Cero <i class="fa fa-angle-double-right fa-lg"></i></a>
               <?PHP } ?>
             </td>
@@ -118,9 +120,6 @@
     </table>
   </div>
 </div>
-
-<script src="js/facturaElectronica.js"></script>
-<script src="/conta6/Resources/js/Inputs.js"></script>
 
 <?php
   require $root . '/conta6/Ubicaciones/footer.php';

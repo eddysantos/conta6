@@ -79,7 +79,7 @@ if( $rows_buscaRef > 0 ){
       }
 
       # CON ESTE PERMISO, SE PUEDE GENERAR UNA CUANTA DE GASTOS CON INFORMACION INCOMPLETA.
-      if($oRst_permisos['CFDI_cta_gastos_generarCR'] == 1){
+      if($oRst_permisos['s_cta_gastos_generarCR'] == 1){
         $btn_cambioRegimen = "
         <tr class='row justify-content-center font14'>
           <td class='col-md-3'>

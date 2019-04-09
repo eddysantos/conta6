@@ -41,10 +41,10 @@
       $statusGeneraPoliza = false;
 
       if( $Status_Cheque == 0 ){
-        $txtStatus = '<b><font face="Trebuchet MS" size="2" color="#000000">CUADRADA</font></b>';
+        $txtStatus = '';
         $statusGeneraPoliza = true;
       }else{
-        $txtStatus = '<b><font color="#E52727" face="Trebuchet MS" size="2"><?php echo $Status_Cheque; ?> CHEQUE SIN CUADRAR</font></b>';
+        $txtStatus = '<b><font color="#E52727">SIN CUADRAR</font></b>';
         $statusGeneraPoliza = false;
       }
     }else{
@@ -136,10 +136,11 @@
         </thead>
         <tbody class="font14">
           <tr class="row">
-            <td class="col-md-1"><?php echo $rowMST['fk_id_poliza']; ?>
-              <input type="text" class="efecto h22" id="dchPoliza" value="<?php echo $rowMST['fk_id_poliza']; ?>">
-              <!-- <input type="hide" id="dchIdcheque" value="<?php echo $rowMST['pk_id_cheque']; ?>">
-              <input type="hide" id="dchCtaMST" value="<?php echo $rowMST['fk_id_cuentaMST']; ?>"> -->
+            <td class="col-md-1"><?php echo trim($rowMST['fk_id_poliza']); ?>
+              <!-- No borrar, necesarios para imprimir -->
+              <input type="hidden" class="efecto h22" id="dchPoliza" value="<?php echo $rowMST['fk_id_poliza']; ?>">
+              <input type="hidden" id="dchIdcheque" value="<?php echo $rowMST['pk_id_cheque']; ?>">
+              <input type="hidden" id="dchCtaMST" value="<?php echo $rowMST['fk_id_cuentaMST']; ?>">
             </td>
             <td class="col-md-1"><?php echo $rowMST['fk_usuario']; ?></td>
             <td class="col-md-2"><?php echo $rowMST['fk_id_cuentaMST']; ?></td>
@@ -187,6 +188,9 @@
       <div class="col-md-2">
         <input class="efecto" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 offset-md-8"><?PHP echo $txtStatus; ?></div>
     </div>
   </form>
   <div id="detallepoliza" class="contorno">

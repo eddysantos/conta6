@@ -102,6 +102,31 @@ while ($oRst_tarifaAutom = $rslt_tarifaAutom->fetch_assoc()) {
             <input type='text' id='T_POCME_Subtotal$idFila' value='$subtotal' class='T_POCME_SUBTOTALES subtotal efecto h22' size='17' readonly>
           </td>
         </tr>";
+
+        $POCME_automatico .= "<tr class='row m-0 trPOCME elemento-pocme' id='$idFila'>
+    			<td class='col-md-1 p-2'>
+    		    <input type='text' id='T_POCME_Cantidad$idFila' class='T_POCME_CANTIDAD cantidad efecto h22' value='$cantidad' onblur='validaSoloNumeros(this);importe_POCME();' size='4'/>
+    				<input class='id-partida' type='hidden' id='T_partida_' value='0'>
+    		  </td>
+    		  <td class='col-md-3 p-2 datos-transferibles'>
+    		    <input type='hidden' id='T_POCME_idTipoCta$idFila' class='T_POCME_CUENTAS id-cuenta' value='$ID_CONCEPTOcta'>
+    		    <input type='hidden' id='T_POCME_idConcep$idFila' class='T_POCME_idCONCEPTOS id-concepto' value='$fk_id_concepto'>
+    		    <input type='text' id='T_POCME_Concepto$idFila' class='T_POCME_CONCEPTOS efecto h22 concepto-espanol' size='45' value='$CONCEPTOcta' readonly/>
+    		    <input type='hidden' id='T_POCME_ConceptoEng$idFila' class='T_POCME_CONCEPTOS_ENG concepto-ingles' value='$CONCEPTOctaEng'>
+    		  </td>
+    		  <td class='col-md-3 p-2'>
+    		    <input type='text' id='T_POCME_Descripcion$idFila' class='T_POCME_DESCRIPCION descripcion efecto h22' size='45' maxlength='40' value='$descripcion'>
+    		  </td>
+    		  <td class='col-md-1 p-2 text-left'>
+    		    <a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+    		  </td>
+    		  <td class='col-md-2 p-2'>
+    		    <input type='text' id='T_POCME_Importe$idFila' class='T_POCME_IMPORTES importe efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17' value='$importe' >
+    		  </td>
+    		  <td class='col-md-2 p-2'>
+    		    <input type='text' id='T_POCME_Subtotal$idFila' class='T_POCME_SUBTOTALES subtotal efecto h22' size='17' readonly value='$subtotal'>
+    		  </td>
+    		</tr>";
 }
 
 ?>

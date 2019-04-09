@@ -27,10 +27,19 @@ if( $moneda <> 'MXN' ){
   $Total_Gral = $totalGral;
 }
 
+  if( $iva_aplicado_2 == 8 ){
+		$ctaIVA_porPagar = '0202-00008';
+		$ctaIVA_noCobrado = '0202-00009';
+	}
+	if( $iva_aplicado_2 == 16 ){
+		$ctaIVA_porPagar = '0202-00002';
+		$ctaIVA_noCobrado = '0202-00007';
+	}
+
   $detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'".$cta203."',3,'CARGO A LA CUENTA POR PAGAR','".$id_cliente."','".$referencia."',".$Total_Gral.",0),";
-	$detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'0202-00007',3,'IVA TRASLADADO NO COBRADO','".$id_cliente."','".$referencia."',".$totaGralIVA.",0),";
+	$detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'".$ctaIVA_noCobrado."',3,'IVA TRASLADADO NO COBRADO','".$id_cliente."','".$referencia."',".$totaGralIVA.",0),";
   $detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'".$cta108."',3,'ABONO A LA CUENTA POR ANTICIPO','".$id_cliente."','".$referencia."',0,".$Total_Gral."),";
-  $detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'0202-00002',3,'IVA POR PAGAR','".$id_cliente."','".$referencia."',0,".$totaGralIVA."),";
+  $detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'".$ctaIVA_porPagar."',3,'IVA POR PAGAR','".$id_cliente."','".$referencia."',0,".$totaGralIVA."),";
 
 
 #--Movimiento Contable RETENIDO

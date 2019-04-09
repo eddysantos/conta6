@@ -36,10 +36,10 @@
       $statusGeneraPoliza = false;
 
       if( $Status_Anticipo == 0 ){
-        $txtStatus = '<b><font face="Trebuchet MS" size="2" color="#000000">CUADRADA</font></b>';
+        $txtStatus = '';
         $statusGeneraPoliza = true;
 		  }else{
-				$txtStatus = '<b><font color="#E52727" face="Trebuchet MS" size="2"><?php echo $Status_Anticipo; ?> ANTICIPO SIN CUADRAR</font></b>';
+        $txtStatus = '<b><font color="#E52727">SIN CUADRAR</font></b>';
         $statusGeneraPoliza = false;
 			}
 		}else{
@@ -172,7 +172,9 @@
       <div class="col-md-2">
         <input class="efecto" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
       </div>
-      <?php echo $txtStatus; ?>
+      <div class="row">
+        <div class="col-md-4 offset-md-8"><?PHP echo $txtStatus; ?></div>
+      </div>
     </div>
   </form>
   <div id="detallepoliza" class="contorno">

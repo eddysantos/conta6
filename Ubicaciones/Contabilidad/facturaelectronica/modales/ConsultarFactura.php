@@ -28,7 +28,7 @@
                   <div class="popup-list" id="popup-display-b-factura" style="display:none"></div>
                   <label for="b-factura">Por Factura</label>
                 </td>
-                <?php if( $oRst_permisos['CFDI_lista_facturas'] == 1) {?>
+                <?php if( $oRst_permisos['s_facturas_lista'] == 1) {?>
                 <td class="col-md-8 input-effect">
                   <input class="efecto popup-input" id="b-cliente" type="text" id-display="#popup-display-b-cliente" action="facturas_cfdi_cliente" db-id="" autocomplete="off">
                   <div class="popup-list" id="popup-display-b-cliente" style="display:none"></div>

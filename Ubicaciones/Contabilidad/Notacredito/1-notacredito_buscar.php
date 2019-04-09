@@ -6,6 +6,40 @@ $buscar = trim($_GET['buscar']);
 $accion = trim($_GET['accion']);
 
 
+if( $accion == 'notacredito' ){
+  require $root . '/conta6/Resources/PHP/actions/consultaNotaCreditoTimbrada2.php';
+
+?>
+    <div class="contorno text-center">
+      <table class="table">
+        <thead>
+          <tr class="row">
+            <td class="col-md-1 offset-sm-11 font14">
+              <a href="/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php" class="nc" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
+            </td>
+          </tr>
+          <tr class="row encabezado font18">
+            <td class="col-md-12">Notas de Crédito con la misma Referencia</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row font14 backpink">
+            <td class="col-md-1"></td>
+            <td class="col-md-2">Nota de Crédito</td>
+            <td class="col-md-1">Referencia</td>
+            <td class="col-md-1">Proforma</td>
+            <td class="col-md-1">Póliza</td>
+            <td class="col-md-1">Cancela</td>
+            <td class="col-md-4">CLIENTE</td>
+            <td class="col-md-1"></td>
+          </tr>
+          <?php echo $resultadoConsulta; ?>
+        </tbody>
+      </table>
+    </div>
+<?php
+}
+
 
 if( $accion == 'facturas' ){
   require $root . '/conta6/Resources/PHP/actions/consultaFactura_timbradas.php';

@@ -570,3 +570,7 @@ $(document).ready(function(){
       }
     });
   }
+
+  function ncConsultar(cuenta,id_cliente){
+    window.location.replace('1-notacredito_consultar.php?cuenta='+cuenta+'&id_cliente='+id_cliente+'&accion=consulta');
+  }

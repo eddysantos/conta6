@@ -46,14 +46,19 @@
       $rutaFilePDF = $rutaCLT.'/'.$nombre_archivo.'.pdf';
       $rutaFilePDFcancela = $rutaCLT.'/'.$nombre_archivoCancela.'.pdf';
 
+      $hrefSig = ''; $hrefcancela = ''; $hrefSustituir = '';
+
       if( $cancela <> "" ){
         $hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>";
         $status = $hrefcancela;
       }else{ $status = "Activo"; }
+      $hrefSustituir = '<input class="efecto boton" type="button" value="SUSTITUIR" id="sustituir-pago" />';
 
-      $hrefSig = "
-      <a href='#' class='ver' accion='cuadroConsultar' onclick='pagosConsultar($id_pago_captura,&#39;$id_cliente&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/magnifier.svg'></a>
-      <a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-5' src='/conta6/Resources/iconos/printer.svg'></a>";
+      if( $oRst_permisos['s_rPElect_consultar'] == 1 ){
+        $hreConsultaCFDI = "
+        <a href='#' class='ver' accion='cuadroConsultar' onclick='pagosConsultar($id_pago_captura,&#39;$id_cliente&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/magnifier.svg'></a>
+        <a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-5' src='/conta6/Resources/iconos/printer.svg'></a>";
+      }
 
       $pagosCFDI .= "<tr class='row font14 borderojo'>
         <td class='col-md-1'>
@@ -65,7 +70,7 @@
         <td class='col-md-1'>$id_poliza</td>
         <td class='col-md-1'>$status</td>
         <td class='col-md-4'>$id_cliente $nombre</td>
-        <td class='col-md-1 text-right'>$hrefSig</td>
+        <td class='col-md-1 text-right'>$hreConsultaCFDI $hrefSustituir</td>
       </tr>";
     }
   }
