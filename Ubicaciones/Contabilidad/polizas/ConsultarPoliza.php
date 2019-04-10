@@ -22,6 +22,11 @@ if( $totalRegistrosSelect > 0 ){
     	$oRst_STPD = mysqli_fetch_array($oRst_STPD);
 
     	$Status_Poliza = number_format($oRst_STPD["SUMA_CARGOS"] - $oRst_STPD["SUMA_ABONOS"],2,'.','');
+      if( $Status_Poliza == 0 ){
+        $txt_status = '';
+      }else {
+        $txt_status = '<b><font color="#E52727">SIN CUADRAR</font></b>';
+      }
     	$sumaCargos = $oRst_STPD["SUMA_CARGOS"];
       $sumaAbonos = $oRst_STPD["SUMA_ABONOS"];
   }
@@ -84,6 +89,9 @@ if( $totalRegistrosSelect > 0 ){
       <div class="col-md-2">
         <input  class="efecto" value="<?php echo $sumaAbonos; ?>" readonly>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 offset-md-8"><?PHP echo $txt_status; ?></div>
     </div>
   </form>
 

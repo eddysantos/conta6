@@ -55,7 +55,13 @@
 		if( $oRst_permisos["s_correcciones_mst_anticipos"] == 1 && $cancela == 0 ){ $mostrar = true; }else{ $mostrar = false; }
 		if( $oRst_permisos["s_descancelar_anticipos"] == 1 ){ $mostrarCancela = true; }else{ $mostrarCancela = false; }
 		if( $cancela == 1 ){ $clase = 'class="efecto disabled readonly" disabled'; }
-		if( $id_poliza > 0){ $tienePoliza = true; }else{ $tienePoliza = false;}
+		if( $id_poliza > 0){
+      $tienePoliza = true;
+      $txt_disabled = '';
+    }else{
+      $tienePoliza = false;
+      $txt_disabled = 'disabled';
+    }
 		if( $oRst_permisos["s_editar_anticipos_det_pol"] == 1 && $cancela == 0 && $id_poliza > 0 ){
 		  $mostrarEditConPol = true;
 		}else{
@@ -118,7 +124,7 @@ if( $rows > 0 ){
             <td class="col-md-2"><?php echo number_format($rowMST['n_valor'],2,'.',','); ?></td>
             <td class="col-md-2 pt-1">
       				<?php if( $mostrarCancela == true ){ ?>
-      					<select class="custom-select-ch" size="1" id="ant-cancela">
+      					<select class="custom-select-ch" size="1" id="ant-cancela" <?php echo $txt_disabled; ?>>
         					<?php if( $cancela == 0 ){
       							echo "<option value='0' selected>Activo</option>";
       							echo "<option value='1'>Cancelado</option>";

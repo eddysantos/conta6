@@ -19,6 +19,7 @@ if( $total_consultaDatosCaptura > 0 ){
   $r_razon_social = utf8_encode($row_consultaDatosCaptura['s_nombre']);
   $usoCFDI = $row_consultaDatosCaptura['pk_c_UsoCFDI'];
   $iva_aplicado = number_format($row_consultaDatosCaptura['n_IVA_aplicado']/100,6,'.','');
+  $iva_aplicado_2 = $row_consultaDatosCaptura['n_IVA_aplicado'];
   $IVAretenido = $row_consultaDatosCaptura['s_fac_IVA_retenido'];
   $totaGralIVA = $row_consultaDatosCaptura['n_total_gral_IVA'];
   $total_cta_gastos = $row_consultaDatosCaptura['n_total_cta_gastos'];

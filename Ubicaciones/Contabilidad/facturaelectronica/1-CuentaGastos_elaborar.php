@@ -148,8 +148,8 @@ if($referencia != "SN"){
       require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME_delete.php';
     }
     //PARA LA OFICINA DE NUEVO LAREDO ESTOS CONCEPTOS SE CARGAN EN AUTOMATICO
-    if( $aduana == 240 ){
-      #require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente_cobroAutomatico.php';  #$POCME_automatico
+    if( $aduana == 240 && $oRst_permisos["s_cta_gastos_POCME_automatico"] == 1 ){
+      require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente_cobroAutomatico.php';  #$POCME_automatico
     }
     //CALCULO TARIFA ALMACEN - SECCION: PAGOS REALIZADOS POR SU CUENTA
     require $root . '/conta6/Resources/PHP/actions/tarifas_calculaALMACEN.php'; #$custodia,$manejo,$almacenaje
@@ -839,7 +839,7 @@ if($referencia != "SN"){
                     </select>
                     <div id="numerosCuenta"></div>              </td>
                   <td class="col-md-3">
-                    <?php if( $oRst_permisos["CFD_cta_gastos_generarT0"] == 0){ ?>
+                    <?php if( $oRst_permisos["s_cta_gastos_generarT0"] == 0){ ?>
                     <select class="custom-select-s" name="select2" id="lst_moneda" onchange="asignarMoneda()">
                       <?php echo $consultaMoneda; ?>
                     </select>
@@ -865,7 +865,7 @@ if($referencia != "SN"){
                     <input class="efecto h22" type="text" id="T_Moneda" size="6" value="MXN" readonly>
                   </td>
                   <td class="col-md-3">
-                    <input type="text" id="T_monedaTipoCambio" class="efecto h22" readonly size="18" onBlur="validaIntDec(this);" />
+                    <input type="text" id="T_monedaTipoCambio" class="efecto h22" readonly size="18" onBlur="validaIntDec(this);" value='1' />
                   </td>
                 </tr>
               </table>

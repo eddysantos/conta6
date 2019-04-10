@@ -143,6 +143,7 @@ $(document).ready(function(){
           console.log(r);
           $('#lst_cuentasGastos_capturadas_timbrar').html(r.data);
         } else {
+          swal("Error", "La cuenta o Referencia no existen", "error");
           console.error(r.message);
         }
       },
@@ -306,6 +307,13 @@ function buscaCuentascontables(opcion,id_cliente){
     });
 }
 
+function cargarFactura(){
+  $('#docto').val('CFDIfac');
+  folioNo = $('#DGEfacturas').val();
+  $('#folio').val(folioNo);
+  $('select#DGEproforma').val(0);
+}
+
 function cargarCtaAme(){
   $('#docto').val('ctaAme');
   folioNo = $('#DGEctaAme').val();
@@ -347,6 +355,35 @@ function validaDatosReferencia(){
   flete = $('#DGE_flete').val();
 
   window.location.replace('1-CuentaGastos_elaborar.php?referencia='+referencia+'&consolidado='+consolidado+'&entradas='+entradas+'&shipper='+shipper+'&inbond='+inbond+'&flete='+flete+'&id_cliente='+id_cliente+'&docto='+docto+'&opcionDoc='+opcionDoc+'&extraerfolio='+extraerfolio+'&cobrarFlete='+cobrarFlete+'&dias='+dias+'&tasa=IVA');
+}
+
+function validaDatosReferencia_ctaAme(){
+  id_cliente = $('#DGE_idcliente').val();
+  dias = $('#T_Dias').val();
+  extraerfolio = $('#folio').val();
+  opcionDoc = $('#opcionDoc').val();
+  docto = $('#docto').val();
+  cobrarFlete = $('#cobrarFlete').val();
+
+  if ( id_cliente == ""){
+    alertify.error("seleccione Cliente o Corresponsal");
+    return false;
+  }
+
+  if( dias == ""){
+    alertify.error("asigne un numero de dias");
+    $('#T_Dias').focus();
+    return false;
+  }
+
+  referencia = $('#DGE_referencia').val();
+  consolidado = $('#DGE_consolidado').val();
+  entradas = $('#DGE_entradas').val();
+  shipper = $('#DGE_shipper').val();
+  inbond = $('#DGE_inbond').val();
+  flete = $('#DGE_flete').val();
+
+  window.location.replace('CuentaGastos_elaborar.php?referencia='+referencia+'&consolidado='+consolidado+'&entradas='+entradas+'&shipper='+shipper+'&inbond='+inbond+'&flete='+flete+'&id_cliente='+id_cliente+'&docto='+docto+'&opcionDoc='+opcionDoc+'&extraerfolio='+extraerfolio+'&cobrarFlete='+cobrarFlete+'&dias='+dias+'&tasa=IVA');
 }
 
 function cargarCuentaSinReferencia(tasa){
@@ -559,126 +596,6 @@ function agregarImporte(){
 }
 
 
-
-function agregarImporte_CtaAme(){
-  tipoDocumento = $('#tipoDocumento').val();
-	unidades = $('#T_no_calculo').val();
-	cta =  $('#T_POCME_Cta').val();
-  idConcepto = $('#T_POCME_idConcep').val();
-	concepto = $('#T_POCME').val();
-	concepto_eng = $('#T_POCME_Eng').val();
-	importe = $('#T_POCME_Valor').val();
-	total =  cortarDecimales(CalcMUL(unidades,importe),2);
-
-  if( cta == "" ){
-    alertify.success('Seleccione un concepto');
-  }else {
-      if(tipoDocumento == 'elaborar'){
-        btnEliminar = "<a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
-        inputPartida = "";
-      }
-      if(tipoDocumento == 'modificar'){
-        btnEliminar = "<a href='#' class='eliminar-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
-        inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
-      }
-
-      var element = $('.T_POCME_CONCEPTOS').length;
-
-// en la linea 588 solo agregue la clase justify-content-center para centrar los inputs
-      newtr = "<tr class='row m-0 trPOCME elemento-pocme justify-content-center' id='"+element+"'>";
-      newtr = newtr + "    <td class='col-md-1 p-2'>";
-      newtr = newtr + inputPartida;
-      newtr = newtr + "        <input type='text' id='T_POCME_Cantidad"+element+"' class='T_POCME_CANTIDAD cantidad efecto h22' onblur='validaSoloNumeros(this);importe_POCME();' size='4'/>";
-      newtr = newtr + "      </td>";
-      newtr = newtr + "      <td class='col-md-3 p-2 datos-transferibles'>";
-      newtr = newtr + "        <input type='hidden' id='T_POCME_idTipoCta"+element+"' class='T_POCME_CUENTAS id-cuenta'>";
-      newtr = newtr + "        <input type='hidden' id='T_POCME_idConcep"+element+"' class='T_POCME_idCONCEPTOS id-concepto'>";
-      newtr = newtr + "        <input type='text' id='T_POCME_Concepto"+element+"' class='T_POCME_CONCEPTOS efecto h22 concepto-espanol' size='45' readonly/>";
-      newtr = newtr + "        <input type='hidden' id='T_POCME_ConceptoEng"+element+"' class='T_POCME_CONCEPTOS_ENG concepto-ingles'>";
-      newtr = newtr + "      </td>";
-      newtr = newtr + "      <td class='col-md-3 p-2'>";
-      newtr = newtr + "        <input type='text' id='T_POCME_Descripcion"+element+"' class='T_POCME_DESCRIPCION descripcion efecto h22' size='45' maxlength='40'>";
-      newtr = newtr + "      </td>";
-
-  //AQUI COMIENZA LO QUE AGREGUE O MODIFIQUE  03 DIC 2018
-      newtr = newtr + "      <td class=' p-2 text-left'>";
-      newtr = newtr + btnEliminar;
-      newtr = newtr + "      </td>";
-
-      newtr = newtr + "      <td class='pt-2 mt-2'>";
-      newtr = newtr + "        <input type='checkbox'>";
-      newtr = newtr + "      </td>";
-
-      newtr = newtr + "      <td class='col-md-1 p-2 text-left' id='spend_ctaAme'>";
-      newtr = newtr + "        <input type='text' class='efecto h22'>";
-      newtr = newtr + "      </td>";
-
-      newtr = newtr + "      <td class='col-md-1 p-2 text-left' id='gain_ctaAme'>";
-      newtr = newtr + "        <input type='text' class='efecto h22'>";
-      newtr = newtr + "      </td>";
-
-
-      newtr = newtr + "      <td class='col-md-1 p-2'>";
-      newtr = newtr + "        <input type='text' id='T_POCME_Importe"+element+"' class='T_POCME_IMPORTES importe efecto h22' onblur='validaIntDec(this);validaDescImporte(1,"+element+");importe_POCME();cortarDecimalesObj(this,2);' size='17' >";
-      newtr = newtr + "      </td>";
-      newtr = newtr + "      <td class='col-md-1 p-2'>";
-      newtr = newtr + "        <input type='text' id='T_POCME_Subtotal"+element+"' class='T_POCME_SUBTOTALES subtotal efecto h22' size='17' readonly>";
-      newtr = newtr + "      </td>";
-      newtr = newtr + "    </tr>";
-
-      // AQUI ACABA --- 03 DIC 2018
-
-      $('#tbodyPOCME').append(newtr);
-
-      $(".remove-POCME").click(function(e){
-        $(this).closest("tr").remove();
-        alertify.success('Se elimino correctamente');
-        sumaGeneral();
-      });
-
-      var element = $('.T_POCME_CONCEPTOS').length;
-      $( ".T_POCME_CONCEPTOS" ).each(function( x ) {
-    	  if( $('.T_POCME_CONCEPTOS').eq(x).val() == "" ){
-
-          $('.T_POCME_CUENTAS').eq(x).val(cta);
-          $('.T_POCME_idCONCEPTOS').eq(x).val(idConcepto);
-          $('.T_POCME_CONCEPTOS').eq(x).val(concepto);
-          $('.T_POCME_CONCEPTOS_ENG').eq(x).val(concepto_eng);
-
-      		if( $('.T_POCME_CONCEPTOS').eq(x).val() == "Otros"){
-      		  $('.T_POCME_CONCEPTOS').eq(x).prop('readonly',false);
-      		  $('.T_POCME_CONCEPTOS').eq(x).css('background-color','#FFFFFF');
-      		}
-
-      		if(importe == 0 || importe == ""){
-      		  $('.T_POCME_CANTIDAD').eq(x).val(0);
-      		  $('.T_POCME_IMPORTES').eq(x).val(0);
-      		  $('.T_POCME_SUBTOTALES').eq(x).val(0);
-      		  alertify.error("Ingrese un Importe");
-      			$('.T_POCME_IMPORTES').eq(x).focus();
-      		}else{
-      		  $('.T_POCME_CANTIDAD').eq(x).val(unidades);
-      		  $('.T_POCME_IMPORTES').eq(x).val(importe);
-      		  $('.T_POCME_SUBTOTALES').eq(x).val(total);
-      		}
-
-    		  $('#Lst_tarifa_cliente').val(0);
-    			$('#Lst_tarifa_general').val(0);
-    			$('#T_no_calculo').val("");
-          $('#T_POCME_Cta').val("");
-          $('#T_POCME_idConcep').val("");
-    			$('#T_POCME').val("");
-    			$('#T_POCME_Eng').val("");
-    			$('#T_POCME_Valor').val("");
-    			sumaGeneral();
-
-    		  return false;
-    	  }
-      });
-
-    }
-}
-
 $("#tbodyPOCME").on('click', '.eliminar-POCME',function(e){
   $(this).closest("tr").hide();
   $(this).parents('tr')
@@ -730,8 +647,9 @@ function importe_POCME(){
 
       subtotal = cortarDecimales(CalcMUL(importe,cantidad),2);
       $('.T_POCME_SUBTOTALES').eq(x).val(subtotal).attr('value',subtotal);
+      //console.log(subtotal);
   });
-	sumaGeneral();
+	Suma_POCME();
 }
 
 function sumaGeneral(){
@@ -1708,6 +1626,142 @@ $('#modificar-cta').click(function(){
   }
 });
 
+$('#modificar-cta-cfdi').click(function(){ // editar un CFDI - solo en la parte de la cuenta de gastos
+  folio = $('#id_cuenta_captura').val();
+
+  Suma_Subtotales();
+  if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
+
+      $('#mensaje').html("Guardando . . .");
+
+      var data = {
+        folio: folio,
+        T_No_calculoTarifa : $('#T_No_calculoTarifa').val(),
+        Txt_Usuario : $('#Txt_Usuario').val(),
+        T_IGED_1 : $('#T_IGED_1').val(),
+        T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
+        T_Nombre_Cliente : $('#T_Nombre_Cliente').val(),
+        T_ID_Aduana_Oculto : $('#T_ID_Aduana_Oculto').val(),
+        T_ID_Almacen_Oculto : $('#T_ID_Almacen_Oculto').val(),
+        T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
+        T_Proveedor_Destinatario : $('#T_Proveedor_Destinatario').val(),
+        T_Tipo : $('#T_Tipo').val(),
+        T_Valor : $('#T_Valor').val(),
+        T_Peso : $('#T_Peso').val(),
+        T_Dias : $('#T_Dias').val(),
+        T_Valor_Custodia_Aer : $('#T_Valor_Custodia_Aer').val(),
+        T_Valor_Manejo_Aer : $('#T_Valor_Manejo_Aer').val(),
+        T_Valor_Almacenaje_Aer : $('#T_Valor_Almacenaje_Aer').val(),
+        T_Valor_Total_Maniobras : $('#T_Valor_Total_Maniobras').val(),
+        T_Subsidio : $('#T_Subsidio').val(),
+        T_derechosPagados : $('#T_derechosPagados').val(),
+
+        T_Total_MN_Extranjera : $('#T_Total_MN_Extranjera').val(),
+        T_SALDO_GRAL : $('#T_SALDO_GRAL').val(),
+        Txt_Total_MN_Extranjera : $('#Txt_Total_MN_Extranjera').val(),
+        T_Cta_Gastos : $('#T_Cta_Gastos').val(),
+        T_Total_Anticipos : $('#T_Total_Anticipos').val(),
+
+        Txt_Cta_Gastos : $('#Txt_Cta_Gastos').val(),
+        Txt_Total_Anticipos : $('#Txt_Total_Anticipos').val(),
+        Txt_Saldo_Gral : $('#Txt_Saldo_Gral').val(),
+        Txt_Total_Pagos : $('#Txt_Total_Pagos').val(),
+        T_Total_Pagos : $('#T_Total_Pagos').val(),
+        T_POCME_Total : $('#T_POCME_Total').val(),
+        T_POCME_Tipo_Cambio : $('#T_POCME_Tipo_Cambio').val(),
+        T_POCME_Total_MN : $('#T_POCME_Total_MN').val(),
+        Total_Letra : $('#total_CuentaGastos').val(),
+        dge: {},
+        pocme: {},
+        cargos: {},
+        pocmeDelete: {},
+        cargoDelete: {},
+        depositos: {},
+        depositosDisponibles: {}
+      }
+
+      $( ".elementos-dge" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          descripcion: $(this).find('.descripcion').val()
+        }
+        data.dge[i] = parsed_data;
+      });
+
+      $( ".elemento-pocme" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          cantidad: $(this).find('.cantidad').val(),
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idconcepto: $(this).find('.id-concepto').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          concepto_ing: $(this).find('.concepto-ingles').val(),
+          descripcion: $(this).find('.descripcion').val(),
+          importe: $(this).find('.importe').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.pocme[i] = parsed_data;
+      });
+
+      $( ".elemento-pocme-eliminar" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val()
+        }
+        data.pocmeDelete[i] = parsed_data;
+      });
+
+      $( ".elemento-cargos" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idconcepto: $(this).find('.id-concepto').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.cargos[i] = parsed_data;
+      });
+
+      $( ".elemento-depositos" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idDeposito: $(this).find('.id-deposito').val(),
+          importe: $(this).find('.importe').val(),
+        }
+        data.depositos[i] = parsed_data;
+      });
+
+      $( ".elemento-depositos-disponibles" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idDeposito: $(this).find('.id-deposito').val(),
+          importe: $(this).find('.importe').val(),
+        }
+        data.depositosDisponibles[i] = parsed_data;
+      });
+
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar_cfdi.php",
+        data: data,
+        success: 	function(r){
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            folio = r.data;
+            alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
+              //setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
+            });
+
+          } else {
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+      });
+  }
+});
 
 $('#guardar-cta').click(function(){
   Suma_Subtotales();
@@ -1895,7 +1949,10 @@ function ctaGastosCapturaModificar(referencia,dias,cliente,almacen,tipo,valor,pe
   window.location.replace('1-CuentaGastos_modificar.php?referencia='+referencia+'&dias='+dias+'&id_cliente='+cliente+'&almacen='+almacen+'&tipo='+tipo+'&valor='+valor+'&peso='+peso+'&cuenta='+cuenta+'&shipper='+shipper+'&consolidado='+consolidado+'&inbond='+inbond+'&entradas='+entradas+'&flete='+flete+'&reexpedicion='+reexpedicion+'&cobrarFlete='+cobrarFlete
     +'&status_flete='+status_flete+'&entradasAdicionales='+entradasAdicionales);
 }
-
+function ctaGastosModificarCFDI(referencia,dias,cliente,almacen,tipo,valor,peso,cuenta,shipper,consolidado,inbond,entradas,flete,reexpedicion,cobrarFlete,status_flete,entradasAdicionales){
+  window.location.replace('1-CuentaGastos_modificar_CFDI.php?referencia='+referencia+'&dias='+dias+'&id_cliente='+cliente+'&almacen='+almacen+'&tipo='+tipo+'&valor='+valor+'&peso='+peso+'&cuenta='+cuenta+'&shipper='+shipper+'&consolidado='+consolidado+'&inbond='+inbond+'&entradas='+entradas+'&flete='+flete+'&reexpedicion='+reexpedicion+'&cobrarFlete='+cobrarFlete
+    +'&status_flete='+status_flete+'&entradasAdicionales='+entradasAdicionales);
+}
 function ctaGastosCapturaConsultar(cuenta,accion){
     window.location.replace('1-CuentaGastos_Consultar.php?cuenta='+cuenta+'&accion='+accion);
 }

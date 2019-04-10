@@ -40,6 +40,10 @@
       $n_valorUnitNC = $row_facTimbrada['n_valorUnitNC'];
       $n_importeNC = $row_facTimbrada['n_importeNC'];
 
+      $fk_id_cuenta_captura_nc = $row_facTimbrada['fk_id_cuenta_captura_nc'];
+      $id_poliza_nc = $row['fk_id_poliza'];
+
+
 
     }
   }

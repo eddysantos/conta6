@@ -30,6 +30,7 @@ $datosHonorariosPrint = '';
 $datosHonorariosImprimir = '';
 $datosHonorariosXML = '';
 $datosHonorariosModifi = '';
+$datosHonorariosModifi_CFDI = '';
 $botonEliminar = '';
 
 if( $total_consultaHonorarios > 0 ) {
@@ -65,7 +66,7 @@ if( $total_consultaHonorarios > 0 ) {
 
     $detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',0,".$Hono_Total."),";
 
-		$datosHonorarios = $datosHonorarios."<div class='row b font12 ls1'>
+		$datosHonorarios .= "<div class='row b font12 ls1'>
           <div class='col-md-4 text-left'>$s_conceptoEsp</div>
           <div class='col-md-2'>$n_importe</div>
           <div class='col-md-2'>$n_IVA</div>
@@ -82,7 +83,7 @@ if( $total_consultaHonorarios > 0 ) {
     }
 
 
-    $datosHonorariosPrint = $datosHonorariosPrint."<div class='row b font12 ls1'>
+    $datosHonorariosPrint .= "<div class='row b font12 ls1'>
           <div class='col-md-4 text-left'>$s_conceptoEspPrint</div>
           <div class='col-md-2'>$n_importe_2</div>
           <div class='col-md-2'>$n_IVA_2</div>
@@ -91,7 +92,7 @@ if( $total_consultaHonorarios > 0 ) {
         </div>";
 
 
-    $datosHonorariosXML = $datosHonorariosXML.'<tr>
+    $datosHonorariosXML .= '<tr>
           <td width="10%">'.$n_cantidad.'</td>
           <td width="15%">'.$fk_c_claveUnidad.' '.$s_unidad.'</td>
           <td width="10%">'.$fk_c_ClaveProdServ.'</td>
@@ -99,7 +100,7 @@ if( $total_consultaHonorarios > 0 ) {
           <td width="20%" align="right">'.$n_importe.'</td>
         </tr>';
 
-    $datosHonorariosImprimir = $datosHonorariosImprimir.'<tr>
+    $datosHonorariosImprimir .= '<tr>
           <td width="52%">'.$s_conceptoEsp.'</td>
           <td width="12%">'.$n_importe_2.'</td>
           <td width="12%">'.$n_IVA_2.'</td>
@@ -108,7 +109,7 @@ if( $total_consultaHonorarios > 0 ) {
         </tr>';
 
     if( $idFila > 1 ){ $botonEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";}
-    $datosHonorariosModifi = $datosHonorariosModifi."
+    $datosHonorariosModifi .= "
     <tr class='row m-0 trHonorarios elemento-honorarios' id='$idFila'>
       <td class='col-md-4 p-1'>
         <input class='id-partida' type='hidden' id='T_partida_$pk_id_partida' value='$pk_id_partida'>
@@ -123,6 +124,33 @@ if( $total_consultaHonorarios > 0 ) {
       </td>
       <td class='col-md-1 p-1'>
         <input class='efecto h22 T_Honorarios_Importe importe' type='text' id='T_Honorarios_Importe_$idFila' value='$n_importe' onblur='validaIntDec(this);validaDescImporte(3,$idFila);cortarDecimalesObj(this,2);Iva_Importe_Hon($idFila)' size='18' value='0'>
+      </td>
+      <td class='col-md-1 p-1'>
+        <input class='efecto h22 T_Honorarios_IVA iva' type='text' id='T_Honorarios_IVA_$idFila' value='$n_IVA' size='20' value='0' readonly>
+      </td>
+      <td class='col-md-1 p-1'>
+        <input class='efecto h22 T_Honorarios_RET ret' type='text' id='T_Honorarios_RET_$idFila' value='$n_ret' size='20' value='0' readonly>
+      </td>
+      <td class='col-md-1 p-1'>
+        <input class='efecto h22 T_Honorarios_Subtotal subtotal' type='text' id='T_Honorarios_Subtotal_$idFila' value='$n_total' size='20' value='0' readonly>
+      </td>
+    </tr>";
+
+    $datosHonorariosModifi_CFDI .= "
+    <tr class='row m-0 trHonorarios elemento-honorarios' id='$idFila'>
+      <td class='col-md-4 p-1'>
+        <input class='id-partida' type='hidden' id='T_partida_$pk_id_partida' value='$pk_id_partida'>
+        <input class='efecto h22 T_Honorarios concepto-espanol' type='text' id='T_Honorarios_$idFila' value='$s_conceptoEsp' size='60' maxlength='60' onchange='javascript:eliminaBlancosIntermedios(this);validarStringSAT(this);' readonly tabindex='75'>
+      </td>
+      <td class='col-md-2 p-1 text-left'></td>
+      <td class='col-md-1 p-1'>
+        <input class='efecto h22 T_Honorarios_idcta id-cuenta' type='text' id='T_Hcta_$idFila' value='$fk_id_cuenta' size='15' readonly>
+      </td>
+      <td class='col-md-1 p-1'>
+        <input class='efecto h22 T_Honorarios_idps id-cveProd' type='text' id='T_Hps_$idFila' value='$fk_c_ClaveProdServ' size='15' readonly>
+      </td>
+      <td class='col-md-1 p-1'>
+        <input class='efecto h22 T_Honorarios_Importe importe' type='text' id='T_Honorarios_Importe_$idFila' value='$n_importe' onblur='validaIntDec(this);validaDescImporte(3,$idFila);cortarDecimalesObj(this,2);Iva_Importe_Hon($idFila)' size='18' value='0' readonly>
       </td>
       <td class='col-md-1 p-1'>
         <input class='efecto h22 T_Honorarios_IVA iva' type='text' id='T_Honorarios_IVA_$idFila' value='$n_IVA' size='20' value='0' readonly>

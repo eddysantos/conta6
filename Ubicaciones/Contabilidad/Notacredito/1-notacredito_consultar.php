@@ -32,7 +32,7 @@
 
 
   #if( $s_UUID == '' && $oRst_permisos['CFDI_NC_generar'] && $accion == 'consultar' ){
-  if( $s_UUID == '' && $oRst_permisos['CFDI_NC_generar'] && $accion == 'timbrar' ){
+  if( $s_UUID == '' && $oRst_permisos['s_NC_timbrar'] && $accion == 'timbrar' ){
       if( $fk_c_MetodoPago == 'PPD' && $fk_id_formapago != 99 ){
         $hrefTimbrar = "Error: Para método de pago 'PPD' use forma de pago '99'";
       }elseif( $fk_id_formapago == 'No Identificado' ){
@@ -50,9 +50,9 @@
 
   if( $s_UUID != '' && $s_selloSATcancela == '' && $accion == 'cancelar'){
     if( $fk_id_aduana == $aduana ){
-      if( $oRst_permisos['CFDI_NC_cancelarLibre'] == 1 ){
+      if( $oRst_permisos['s_NC_cancelarLibre'] == 1 ){
 
-      }else if( $oRst_permisos['CFDI_NC_cancelar'] == 1 ){
+      }else if( $oRst_permisos['s_NC_cancelar'] == 1 ){
 
       }
 

@@ -29,6 +29,7 @@ if( $total_consultaFactura > 0 ) {
 	$pk_id_factura = $row_consultaFactura['pk_id_factura'];
 	$d_fechaVencimiento = $row_consultaFactura['d_fechaVencimiento'];
 	if (!is_null($d_fechaVencimiento)){ $d_fechaVencimiento = date_format(date_create($d_fechaVencimiento),"d-m-Y H:i:s"); }
+	$fechaTimbrado = $row_consultaFactura['d_fechaTimbrado'];
 	$d_fechaTimbrado = $row_consultaFactura['d_fechaTimbrado'];
 	if (!is_null($d_fechaTimbrado)){ $d_fechaTimbrado = date_format(date_create($d_fechaTimbrado),"d-m-Y\TH:i:s"); }
 	$fk_id_certificado = $row_consultaFactura['fk_id_certificado'];

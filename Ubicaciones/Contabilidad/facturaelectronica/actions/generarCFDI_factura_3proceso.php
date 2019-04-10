@@ -72,7 +72,7 @@ function xmlV33_genera_xml($array,$nodo) {
 function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura){
   global $lugarExpedicion,$lugarExpedicionTxt,$noCertificado,$id_cliente,$cuenta,$id_factura,$referencia,$cliente,
          $root,$usuario,$db,$aduana,
-         $moneda,$tipoCambio,$totalGralImporte,$totalGral,$IVAretenido,$totaGralIVA,$Total_Anticipos,$folioCtaGastos,
+         $moneda,$tipoCambio,$totalGralImporte,$totalGral,$IVAretenido,$totaGralIVA,$Total_Anticipos,$folioCtaGastos,$iva_aplicado_2,
          $r_razon_social,$total_cta_gastos,$c_MetodoPago,$POCME_Total_MN,$fac_saldo,
          $rutaRepFileHTML,$rutaRepFilePDF,$rutaQRFile;
 

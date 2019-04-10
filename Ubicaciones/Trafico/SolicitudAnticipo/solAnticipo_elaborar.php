@@ -179,8 +179,8 @@ if($referencia != "SN"){
       require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME_delete.php';
     }
     //PARA LA OFICINA DE NUEVO LAREDO ESTOS CONCEPTOS SE CARGAN EN AUTOMATICO
-    if( $aduana == 240 ){
-      #require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente_cobroAutomatico.php';  #$POCME_automatico
+    if( $aduana == 240 && $oRst_permisos["s_solAnt_POCME_automatico"] == 1 ){
+      require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente_cobroAutomatico.php';  #$POCME_automatico
     }
     //CALCULO TARIFA ALMACEN - SECCION: PAGOS REALIZADOS POR SU CUENTA
     require $root . '/conta6/Resources/PHP/actions/tarifas_calculaALMACEN.php'; #$custodia,$manejo,$almacenaje

@@ -28,7 +28,7 @@
   }
 
 
-  if( $s_UUID == '' && $oRst_permisos['s_rPElect_generar'] && $accion == 'timbrar' ){
+  if( $s_UUID == '' && $oRst_permisos['s_rPElect_timbrar'] && $accion == 'timbrar' ){
     $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarPago($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
                       <img class='icomediano' src='/conta6/Resources/iconos/timbrar.svg'>
                     </a>";

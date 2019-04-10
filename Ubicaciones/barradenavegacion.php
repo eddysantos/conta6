@@ -59,61 +59,121 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
             </li>
 
 <!--***************MENU PROLOG  Contabilidad*****************-->
+            <?PHP if($oRst_permisos['s_MENU_CONTABILIDAD'] == 1){ ?>
 			      <li class="nav-item dropdown">
               <a href="#" class="" data-hover="dropdown">CONTABILIDAD <img src="/conta6/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
               <ul class="dropdown-menu">
+
+
+                <?PHP if($oRst_permisos['s_MENU_POLIZAS'] == 1){ ?>
 			          <li class="dropdown">
-                  <a href="#" class="">Polizas <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
+                  <a href="#" class="">Pólizas <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu ">
                     <li class="dropdown">
-                      <li><a href="/conta6/Ubicaciones/Contabilidad/polizas/Generarpoliza.php">Generar</a></li>
-                      <li><a href="" data-toggle='modal' data-target='#modificar-pol'>Modificar</a></li>
-                      <li><a href="#consultar-pol" data-toggle="modal">Consultar</a></li>
-                      <li><a href="#imprimir-pol" data-toggle="modal">Imprimir Pólizas</a></li>
+
+                      <?PHP if($oRst_permisos['s_agregar_polizas'] == 1){ ?>
+                      <li><a href="/conta6/Ubicaciones/Contabilidad/polizas/Generarpoliza.php">Generar</a></li><?php } ?>
+
+                      <?PHP if($oRst_permisos['s_modifica_polizas'] == 1){ ?>
+                      <li><a href="" data-toggle='modal' data-target='#modificar-pol'>Modificar</a></li><?php } ?>
+
+                      <?PHP if($oRst_permisos['s_consulta_polizas'] == 1){ ?>
+                      <li><a href="#consultar-pol" data-toggle="modal">Consultar</a></li><?php } ?>
+
+                      <?PHP if($oRst_permisos['s_imprimir_polizas_periodo'] == 1){ ?>
+                      <li><a href="#imprimir-pol" data-toggle="modal">Imprimir Pólizas</a></li><?php } ?>
+
                     </li>
                   </ul>
                 </li>
+                <?php } ?>
 
+
+                <?PHP if($oRst_permisos['s_MENU_CHEQUES'] == 1){ ?>
                 <li class="dropdown">
                   <a href="#" class="">Cheques <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/cheques/GenerarCheque.php">Generar</a></li>
-                    <li><a href="#modificar-ch" data-toggle="modal">Modificar</a></li>
-                    <li><a href="#consultar-ch" data-toggle="modal">Consultar</a></li>
-				          	<li><a href="/conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/Catalogo.php">Beneficiarios</a></li>
+
+                    <?PHP if($oRst_permisos['s_agregar_cheques'] == 1){ ?>
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/cheques/GenerarCheque.php">Generar</a></li><?php } ?>
+
+                    <?PHP if($oRst_permisos['s_modifica_cheques'] == 1){ ?>
+                    <li><a href="#modificar-ch" data-toggle="modal">Modificar</a></li><?php } ?>
+
+                    <?PHP if($oRst_permisos['s_consulta_cheques'] == 1){ ?>
+                    <li><a href="#consultar-ch" data-toggle="modal">Consultar</a></li><?php } ?>
+
+                    <?PHP if($oRst_permisos['s_benef_cheques'] == 1){ ?>
+				          	<li><a href="/conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/Catalogo.php">Beneficiarios</a></li><?PHP } ?>
+
                   </ul>
                 </li>
+                <?PHP } ?>
+
+
+                <?PHP if($oRst_permisos['s_MENU_ANTICIPOS'] == 1){ ?>
                 <li class="dropdown">
                   <a href="#" class="">Anticipos <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></i></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/anticipos/GenerarAnticipo.php">Generar</a></li>
-                    <li><a href="#modificar-ant" data-toggle="modal">Modificar</a></li>
-                    <li><a href="#consultar-ant" data-toggle="modal">Consultar</a></li>
+                    <?PHP if($oRst_permisos['s_agregar_anticipos'] == 1){ ?>
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/anticipos/GenerarAnticipo.php">Generar</a></li><?PHP } ?>
+
+                    <?PHP if($oRst_permisos['s_modifica_anticipos'] == 1){ ?>
+                    <li><a href="#modificar-ant" data-toggle="modal">Modificar</a></li><?PHP } ?>
+
+                    <?PHP if($oRst_permisos['s_consulta_anticipos'] == 1){ ?>
+                    <li><a href="#consultar-ant" data-toggle="modal">Consultar</a></li><?PHP } ?>
+
                   </ul>
                 </li>
+                <?PHP } ?>
+
+
+                <?PHP if($oRst_permisos['s_MENU_FACTURAS'] == 1){ ?>
                 <li class="dropdown">
-                  <a href="#" class="">Factura Electronica <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
+                  <a href="#" class="">Factura Electrónica <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php">Cuenta de Gastos</a></li>
+
+                    <?PHP if($oRst_permisos['s_cta_gastos'] == 1){ ?>
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php">Cuenta de Gastos</a></li><?PHP } ?>
+
+                    <?PHP if($oRst_permisos['s_facturas'] == 1){ ?>
                     <li class="dropdown">
                       <a href="#" class="">Facturar <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                       <ul class="dropdown-menu sub">
-                        <li><a href="/conta6/Ubicaciones/Contabilidad/facturaelectronica/3-Generarfactura.php">Generar</a></li>
-    					          <li><a href="#ConsultarFactura" data-toggle="modal">Consultar</a></li>
-                        <li><a href="#CancelarFactura" data-toggle="modal">Cancelar</a></li>
+                        <?PHP if($oRst_permisos['s_facturas_timbrar'] == 1){ ?>
+                        <li><a href="/conta6/Ubicaciones/Contabilidad/facturaelectronica/3-Generarfactura.php">Timbrar</a></li><?PHP } ?>
+
+                        <?PHP if($oRst_permisos['s_facturas_consultar'] == 1){ ?>
+    					          <li><a href="#ConsultarFactura" data-toggle="modal">Consultar</a></li><?PHP } ?>
+
+                        <?PHP if($oRst_permisos['s_facturas_cancelar'] == 1){ ?>
+                        <li><a href="#CancelarFactura" data-toggle="modal">Cancelar</a></li><?PHP } ?>
+
                       </ul>
                     </li>
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/facturaelectronica/6-observaciones.php">Observaciones</a></li>
+                    <?PHP } ?>
+
+                    <?PHP if($oRst_permisos['s_facturas_observaciones'] == 1){ ?>
+                      <li><a href="/conta6/Ubicaciones/Contabilidad/facturaelectronica/6-observaciones.php">Observaciones</a></li><?PHP } ?>
                   </ul>
                 </li>
+                <?PHP } ?>
+
+                <?PHP if($oRst_permisos['s_MENU_NOTA_CREDITO'] == 1){ ?>
                 <li class="dropdown">
-                  <a href="#" class="">Nota de Credito <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
+                  <a href="#" class="">Nota de Crédito <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php">Nota de Credito</a></li>
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/Notacredito/2-Reportes.php">Reportes</a></li>
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php">Nota de Crédito</a></li>
+
+                    <?PHP if($oRst_permisos['s_NC_Reportes'] == 1){ ?>
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/Notacredito/2-Reportes.php">Reportes</a></li><?PHP } ?>
                   </ul>
                 </li>
-                <li><a href="/conta6/Ubicaciones/Contabilidad/Pagos/pagos.php">Pagos</a></li>
+                <?PHP } ?>
+
+                <?PHP if($oRst_permisos['s_MENU_RPAGO'] == 1){ ?>
+                <li><a href="/conta6/Ubicaciones/Contabilidad/Pagos/pagos.php">Pagos</a></li><?PHP } ?>
                 <!-- <li><a href="/conta6/Ubicaciones/Contabilidad/controlpedimentos/PedimentosCapturados.php">Control Pedimentos Pag.</a></li> -->
                 <!-- <li class="dropdown">
                   <a href="#" class="">Cuenta de Gastos <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
@@ -121,10 +181,13 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                     <li><a href="/conta6/Ubicaciones/Contabilidad/CuentaGastos/consultarCtaGtos.php" >Consultar</a></li>
                   </ul>
                 </li> -->
+                <?PHP if($oRst_permisos['s_MENU_ADMON_CLIENTES'] == 1){ ?>
+                <li><a href="#">Administración Clientes</a></li><?PHP } ?>
+
                 <li class="dropdown">
-                  <a href="#" class="">Administracion Contable <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
+                  <a href="#" class="">Administración Contable <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/catalogocuentas.php">Catalogo de Cuentas</a></li>
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/catalogocuentas.php">Catálogo de Cuentas</a></li>
                     <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/Corresponsales.php">Corresponsales</a></li>
                     <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/Cierredemes.php">Cierre de Mes</a></li>
                   </ul>
@@ -132,7 +195,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                 <li class="dropdown">
                   <a href="#" class="">Proveedores <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/Proveedores/Catalogo.php">Catalogo</a></li>
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/Proveedores/Catalogo.php">Catálogo</a></li>
                     <li><a href="#asignar-proveedor" data-toggle="modal">Asignar</a></li>
                   </ul>
                 </li>
@@ -140,11 +203,12 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                   <a href="#ReportesCont" data-toggle="modal">Reportes</a>
                 </li>
                </ul>
-
+            </li>
+            <?php } ?>
 
 <!--******************************MENU PROLOG  Indice NOMINA******************************-->
               <li class="nav-item dropdown">
-                <a href="#" class="">NOMINA <img src="/conta6/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
+                <a href="#" class="">NÓMINA <img src="/conta6/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
                 <ul class="dropdown-menu">
                   <!-- <li class="dropdown">
                     <a href="" class="">Sueldos y Salarios CFDI <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
@@ -161,27 +225,27 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                     </ul>
                   </li> -->
                   <li><a href="/Conta6/Ubicaciones/Nomina/empleados/Empleados.php">Empleados</a></li>
-                  <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php">Nomina Sueldos y Salarios CFDI</a></li>
-                  <li><a href="/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">Nomina Honorarios Asimilados CFDI</a></li>
+                  <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php">Nómina Sueldos y Salarios CFDI</a></li>
+                  <li><a href="/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">Nómina Honorarios Asimilados CFDI</a></li>
                   <li><a href="/conta6/Ubicaciones/Nomina/DatosOficina/DatosOficina.php">Datos de Oficina</a></li>
                   <li><a href="/conta6/Ubicaciones/Nomina/Reportes/Reporte.php">Reportes</a></li>
 
                 </ul>
 <!--******************************MENU PROLOG  Indice TRAFICO******************************-->
                <li class="nav-item dropdown">
-                 <a href="#" class="">TRAFICO <img src="/conta6/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
+                 <a href="#" class="">TRÁFICO <img src="/conta6/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
                  <ul class="dropdown-menu">
                    <li><a href="/conta6/Ubicaciones/Trafico/SolicitudAnticipo/SolAnticipo.php">Solicitud de Anticipo</a></li>
-                   <li><a href="/conta6/Ubicaciones/Trafico/NotasRemision/NotasRemision.php">Notas de Remision</a></li>
+                   <li><a href="/conta6/Ubicaciones/Trafico/NotasRemision/NotasRemision.php">Notas de Remisión</a></li>
                    <li class="dropdown">
-                     <a href="" class="">Admon. Tarifas Almacenes <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
+                     <a href="" class="">Admón. Tarifas Almacenes <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                      <ul class="dropdown-menu">
                        <li><a href="/conta6/Ubicaciones/Trafico/TarifasAlmacenes/Conceptos.php">Conceptos</a></li>
                        <li><a href="/conta6/Ubicaciones/Trafico/TarifasAlmacenes/Tarifas.php">Tarifas</a></li>
                      </ul>
                    </li>
                    <li class="dropdown">
-                     <a href="#" class="">Admon. Tarifas Clientes <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
+                     <a href="#" class="">Admón. Tarifas Clientes <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                      <ul class="dropdown-menu">
                        <li><a href="/conta6/Ubicaciones/Trafico/TarifasClientes/Conceptos.php">Conceptos</a></li>
                        <li><a href="/conta6/Ubicaciones/Trafico/TarifasClientes/Tarifas.php">Tarifas</a></li>
@@ -198,9 +262,9 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
                       <a href="/conta6/Ubicaciones/CuentasAmericanas/AdminClientes/AdministrarClientes.php" class="">Administración de Clientes</a>
                     </li>
                     <li class="dropdown">
-                      <a href="#" class="">Administracion de Tarifas <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
+                      <a href="#" class="">Administración de Tarifas <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                       <ul class="dropdown-menu">
-                        <li><a href="/conta6/Ubicaciones/CuentasAmericanas/AdminTarifas/Catalogo.php">Catalogos</a></li>
+                        <li><a href="/conta6/Ubicaciones/CuentasAmericanas/AdminTarifas/Catalogo.php">Catálogos</a></li>
                         <li><a href="#">Conceptos de Tarifas</a></li>
                         <li><a href="#">Tarifas</a></li>
                       </ul>
