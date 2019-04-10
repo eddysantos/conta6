@@ -127,6 +127,7 @@ $(document).ready(function(){
   });
 
 
+
   $('#guardar-pago').click(function(){
     var element = $('.t-factura').length;
     if( element == 0 ){
@@ -372,7 +373,8 @@ function pagosTimbrar(cuenta,id_cliente){
 }
 
 function pagosImprimir(cuenta){
-  window.open('pagos_imprimir_reciboCaptura.php?cuenta='+cuenta+'&accion=consulta');
+  window.open('imprimir.php?cuenta='+cuenta+'&accion=consulta');
+  // window.open('pagos_imprimir_reciboCaptura.php?cuenta='+cuenta+'&accion=consulta');
 }
 
 function asignarMonedaPago(){
@@ -574,7 +576,7 @@ function Btn_agregarPago(){
           newdiv = newdiv + " <div class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-fecha' type='text' id='fecha_"+element+"' readonly></div>";
           newdiv = newdiv + " <div class='col-md-1 p-1'>";
           newdiv = newdiv + btnEliminar;
-          newdiv = newdiv + " <input class=' t-pagosDET' type='text' id='pagosDET_"+element+"' value='-'>";
+          newdiv = newdiv + " <input class=' t-pagosDET' type='hidden' id='pagosDET_"+element+"' value='-'>";
           newdiv = newdiv + " </div>";
 
           newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Certificado: </b></div>";
@@ -605,7 +607,7 @@ function Btn_agregarPago(){
           newdiv = newdiv + " <div class='col-md-1 p-1'>";
           newdiv = newdiv + "   <input class='t-tipoCambio' type='hidden' id='tipoCambio_"+element+"'>";
           newdiv = newdiv + "   <input class='t-moneda' type='hidden' id='moneda_"+element+"'>";
-          newdiv = newdiv + "   <input class='t-idPago' type='text' id='idPago_"+element+"' value='"+element+"'>";
+          newdiv = newdiv + "   <input class='t-idPago' type='hidden' id='idPago_"+element+"' value='"+element+"'>";
           newdiv = newdiv + " </div>";
         newdiv = newdiv + " </div>"; //termino del registro pago
 

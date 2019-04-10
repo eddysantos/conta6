@@ -265,7 +265,7 @@ if ($rows_datosCLTformaPago > 0) {
           <td class="col-md-2 p-1"><span>*</span> Moneda</td>
           <td class="col-md-1 p-1"><span>*</span> Tipo de Cambio</td>
           <td class="col-md-1 p-1"><span>*</span> Importe</td>
-          <td class="col-md-1 p-1">&nbsp;</td>
+          <!-- <td class="col-md-1 p-1">&nbsp;</td> -->
           <td class="col-md-1 p-1 pl-3"></td>
         </tr>
       </thead>
@@ -296,8 +296,8 @@ if ($rows_datosCLTformaPago > 0) {
           <td class="col-md-1 p-1">
             <input class="efecto h22" type="text" id="T_importe" value="0" onchange="buscarNumeroCuentaBanco('<?php echo $id_cliente; ?>')">
           </td>
-          <td class="col-md-1 p-1">&nbsp;</td>
-          <td class="col-md-1 p-1 pl-3">
+          <!-- <td class="col-md-1 p-1">&nbsp;</td> -->
+          <td class="col-md-1 p-1 text-left pl-4">
             <a href="#" id="Btn_agregarPago" onclick="Btn_agregarPago()"><img class="icochico" src="/conta6/Resources/iconos/add.svg"></a>
           </td>
         </tr>
@@ -379,10 +379,10 @@ if ($rows_datosCLTformaPago > 0) {
           <td class="col-md-1">
             <input class="h22 bt border-0 efecto" type="text" id="referencia_DR" size="20" value="<?php echo $fk_referencia; ?>" readonly>
           </td>
-          <td class="col-md-1">
+          <td class="col-md-2">
             <input class="h22 bt border-0 efecto" type="text" id="UUID_DR" size="20" value="<?php echo $s_UUID; ?>" readonly>
           </td>
-          <td class="col-md-2">
+          <td class="col-md-1">
             <input class="h22 bt border-0 efecto" type="text" id="factura_DR" size="20" value="<?php echo $pk_id_factura; ?>" readonly>
           </td>
           <td class="col-md-1">
@@ -399,16 +399,14 @@ if ($rows_datosCLTformaPago > 0) {
           </td>
           <td class="col-md-2">
             <input type="text" id="parcialidad" size="20" value="<?php echo $parcialidad; ?>"
-                <?php if( $oRst_permisos["s_rPgo_editParcialidad"] == 0){ echo "class='h22 bt border-0 efecto' readonly"; }else{ echo "class='efecto h22' "; }?>
-            >
+                <?php if( $oRst_permisos["s_rPgo_editParcialidad"] == 0){ echo "class='h22 bt border-0 efecto' readonly"; }else{ echo "class='efecto h22' "; }?>>
           </td>
         </tr>
         <tr class='row mt-4 sub2'>
           <th class='col-md-1 pt-2'>Saldo Anterior</th>
           <td class='col-md-2'>
             <input class="efecto h22" type="text" id="T_saldoAnterior" size="10" onBlur="validaIntDec(this);suma_saldoInsoluto();" value="<?php echo $n_total_gral; ?>"
-                <?php if( $oRst_permisos["s_rPgo_editSaldoAnterior"] == 0){ echo "readonly"; }?>
-            >
+                <?php if( $oRst_permisos["s_rPgo_editSaldoAnterior"] == 0){ echo "readonly"; }?>>
           </td>
           <th class='col-md-1 pt-2'>Importe Pagado</th>
           <td class='col-md-2'>

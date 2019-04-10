@@ -58,7 +58,7 @@ if( $total_consultaDetalle_DR > 0 ) {
 		//$inputPartidaDR = "<input class='id-partidaDR' type='hidden' id='T_partida_$fk_rowPago' value='0'>";
 		$btnEliminarDR = "<a href='#' class='eliminar-pagosDR'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
 
-		
+
 		if($pk_rowPago == $fk_rowPago){
 			$pagosDetalle_DR .= "
 			<tr class='row m-0 font12 elemento-pagosDR borrar-pagoDR borderojo remove_$fk_rowPago' id='$fk_rowPago'>
@@ -128,6 +128,40 @@ if( $total_consultaDetalle_DR > 0 ) {
 				</tr>
 			</table><br>
 			";
+
+
+			$pagosDetallePrint_PDF .= '
+			<table class="border">
+				<tr bgcolor="#ccc" color="rgb(255, 255, 255)" align="center">
+					<td width="6%">Fact</td>
+					<td width="11%">Referencia</td>
+					<td width="8%">M. Pago</td>
+					<td width="8%">Moneda</td>
+					<td width="10%">T. Cambio </td>
+					<td width="12%">Parcialidad</td>
+					<td width="15%">Saldo Anterior</td>
+					<td width="15%">Importe Pagado</td>
+					<td width="15%">Saldo Insoluto</td>
+				</tr>
+				<tr align="center">
+					<td width="6%">'.$fk_id_facturaDR.'</td>
+					<td width="11%">'.$fk_referenciaDR.'</td>
+					<td width="8%">'.$fk_c_MetodoPagoDR.'</td>
+					<td width="8%">'.$fk_id_monedaDR.'</td>
+					<td width="10%">'.$n_tipoCambioDR.'</td>
+					<td width="12%">'.$n_numParcialidad.'</td>
+					<td width="15%">'.$n_importeSaldoAnterior2.'</td>
+					<td width="15%">'.$n_importePagado2.'</td>
+					<td width="15%">'.$n_importeSaldoInsoluto2.'</td>
+				</tr>
+				<br />
+				<tr>
+					<td width="10%" bgcolor="#ccc" color="rgb(255, 255, 255)" align="center">UUID:</td>
+					<td width="90%" align="left">'.$s_UUID_DR.'</td>
+				</tr>
+			</table>
+			<br />
+			<br />';
 
 
 
