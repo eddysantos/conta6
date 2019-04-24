@@ -10,7 +10,7 @@ if( $accion == 'notacredito' ){
   require $root . '/conta6/Resources/PHP/actions/consultaNotaCreditoTimbrada2.php';
 
 ?>
-    <div class="contorno text-center">
+    <div class="contorno text-center" style="<?php echo $marginbottom ?>">
       <table class="table">
         <thead>
           <tr class="row">
@@ -45,7 +45,7 @@ if( $accion == 'facturas' ){
   require $root . '/conta6/Resources/PHP/actions/consultaFactura_timbradas.php';
 
 ?>
-  <div class="contorno text-center">
+  <div class="contorno text-center" style="<?php echo $marginbottom ?>">
     <table class="table">
       <thead>
         <tr class="row">

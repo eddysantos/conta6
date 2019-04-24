@@ -789,7 +789,7 @@ if($referencia != "SN"){
         </div>
       </div>
 
-      <div class="contorno" style="margin-bottom:100px!important">
+      <div class="contorno" style="<?php echo $marginbottom ?>">
         <table class="table w-100">
          <tr class="col-md-12 backpink" align="center">
            <td>&nbsp;</td>

@@ -20,7 +20,7 @@
 
 
 <!---se muestra al dar click en Buscar-->
-  <div class="contenedor "id="buscarRef" style="display:none">
+  <div class="contenedor" id="buscarRef" style="display:none;<?php echo $marginbottom ?>">
     <div class="row m-0">
       <div class="col-md-1 offset-sm-8 p-0">
         <a href="#" class="atras" accion="cuadroBusqueda">
@@ -46,7 +46,7 @@
       <thead>
         <tr class="row">
           <td class="col-md-1 offset-sm-11 p-0">
-            <a href="#" class="atras" accion="cuadroConsultar">
+            <a href="#" class="atras font14" accion="cuadroConsultar">
               <i class="back fa fa-arrow-left">Regresar</i>
             </a>
           </td>
@@ -72,8 +72,8 @@
 
 
 <!---se muestra al dar click en GENERAR-->
-  <div class="mt-5" id="gSolicitud" style="display:none;margin-bottom:100px">
-    <div class="col-md-1 offset-sm-8 p-0">
+  <div class="contenedor" id="gSolicitud" style="display:none;<?php echo $marginbottom ?>">
+    <div class="col-md-1 offset-sm-8 p-0 font14">
       <a href="#" class="atras" accion="cuadroGenerar">
         <i class="back fa fa-arrow-left">Regresar</i>
       </a>

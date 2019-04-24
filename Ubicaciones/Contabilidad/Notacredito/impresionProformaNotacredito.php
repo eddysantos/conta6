@@ -82,7 +82,7 @@ $EmbarqueYCliente = '<style>
         <tr><td width="100%">'.$s_proveedor_destinatario.'</td></tr>
       </table>
     </td>
-    <td width="50%">
+    <td width="50%"><br />
       <table class="border">
         <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)"><td width="100%" align="center">PROFORMA NOTA DE CREDITO</td></tr>
         <tr><td width="100%" align="center">'.$pk_id_cuenta_captura.'</td></tr>

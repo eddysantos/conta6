@@ -29,7 +29,7 @@ $(document).ready(function(){
         $('#SeleccionarAccion').slideUp();
           break;
 
-          case "datcliente":
+          case "datcliente_CtaGtos":
           if (status == 'cerrado') {
             $('#contornoCliente').fadeIn();
             $(this).attr('status', 'abierto');
@@ -42,7 +42,7 @@ $(document).ready(function(){
             $(this).css('font-size', "");
           }
             break;
-            case "datinfo":
+            case "datinfo_CtaGtos":
             if (status == 'cerrado') {
               $('#contornoInfo').fadeIn();
               $(this).attr('status', 'abierto');
@@ -139,8 +139,10 @@ $(document).ready(function(){
       success: 	function(r){
       r = JSON.parse(r);
         if (r.code == 1) {
-          //console.log(r);
-          $('#btn_buscarDatosEmbarque_ctaAme').html(r.data);
+          $('#datosEmbarque').show();
+
+          // $('#btn_buscarDatosEmbarque_ctaAme').html(r.data);
+          $('#datosEmbarque').html(r.data);
           $('#T_Dias').val('1').attr('value','1');
         } else {
           console.error(r.message);
@@ -150,8 +152,8 @@ $(document).ready(function(){
         console.error(x);
       }
     });
-
   });
+
 
   $('#Btn_new_ctaAme').click(function(){
     window.location.replace('/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos.php');

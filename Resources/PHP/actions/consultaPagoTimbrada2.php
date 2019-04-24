@@ -57,7 +57,7 @@
       if( $oRst_permisos['s_rPElect_consultar'] == 1 ){
         $hreConsultaCFDI = "
         <a href='#' class='ver' accion='cuadroConsultar' onclick='pagosConsultar($id_pago_captura,&#39;$id_cliente&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/magnifier.svg'></a>
-        <a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-5' src='/conta6/Resources/iconos/printer.svg'></a>";
+        <a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-3' src='/conta6/Resources/iconos/printer.svg'></a>";
       }
 
       $pagosCFDI .= "<tr class='row font14 borderojo'>
@@ -69,8 +69,9 @@
         <td class='col-md-1'>$pk_id_pago</td>
         <td class='col-md-1'>$id_poliza</td>
         <td class='col-md-1'>$status</td>
-        <td class='col-md-4'>$id_cliente $nombre</td>
-        <td class='col-md-1 text-right'>$hreConsultaCFDI $hrefSustituir</td>
+        <td class='col-md-5'>$id_cliente $nombre</td>
+        <td class='col-md-1 text-right'>$hreConsultaCFDI</td>
+        <td class='col-md-1'>$hrefSustituir</td>
       </tr>";
     }
   }

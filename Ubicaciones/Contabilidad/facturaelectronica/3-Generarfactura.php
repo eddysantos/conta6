@@ -4,11 +4,11 @@
 ?>
 
 <div class="text-center">
-  <div class="mt10" id="b-ctagastos">
-    <div class="row justify-content-center"  id="referencia">
+  <div class="mt10" id="b-ctagastos" style="<?php echo $marginbottom ?>">
+    <div class="row justify-content-center m-0"  id="referencia">
       <div class="col-md-6 titulograndetop transEff" style="font-size:30px!important">Referencia o Solicitud</div>
     </div>
-    <div class="row justify-content-center" id="nReferencia">
+    <div class="row justify-content-center m-0" id="nReferencia">
       <div class="col-md-6 intermedio transEff" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
           <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
@@ -18,7 +18,7 @@
   </div>
 
 
-  <div class="mt-5 contorno" id="m-factura" style="display:none">
+  <div class="mt-5 contorno" id="m-factura" style="display:none;margin-bottom:100px!important">
     <table class="table form1 font14">
       <thead>
         <tr class="row">
@@ -32,7 +32,7 @@
         <tr class="row backpink" style="font-size:16px!important">
           <td class="col-md-1">Solicitud</td>
           <td class="col-md-1">Poliza</td>
-          <td class="col-md-1">&nbsp;</td>
+          <td class="col-md-1"></td>
           <td class="col-md-1">Factura</td>
           <td class="col-md-2">Referencia</td>
           <td class="col-md-5">Cliente</td>

@@ -192,7 +192,9 @@
           </td>
 
           <td class='p-0 col-md-2 offset-md-1 text-right b'><b>Núm. de Facturas:</b></td>
-      	  <td class='p-0 col-md-2 text-left'>$facturas</td>
+      	  <td class='p-0 col-md-2 text-left'>$facturas
+
+          </td>
         </tr>
 
          <tr class='row mt-2 align-items-center'>
@@ -228,8 +230,6 @@
         <tr class='row mt-5 align-items-center'>
           <td class='p-0 col-md-2 text-right b'><b>Estatus:</b></td>
           <td class='p-0 col-md-4 text-left'>$statusReferencia</td>
-        </tr>
-
-        ";
+        </tr>";
 
 ?>

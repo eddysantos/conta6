@@ -81,7 +81,7 @@ if( $rows_buscaRef > 0 ){
 
 
       // solo cuando la informacion este completa se muestra el boton siguiente
-      $btn = "
+      $btn = "<tr class='row justify-content-center'>
           <td class='col-md-1'>
             <a href='#' id='Btn_conReferencia' onclick='validaDatosReferencia_ctaAme()' class='boton'> Siguiente</a>
           </td>
@@ -101,7 +101,7 @@ if( $rows_buscaRef > 0 ){
       <tr class='row mt-2 align-items-center'>
         <td class='col-md-2 text-right b p-0'><b>Facturar a otro:</b></td>
         <td class='col-md-7 p-0'>
-          <input class='efecto popup-input' id='DGEclienteAme' type='text' id-display='#popup-display-DGEclienteAme' action='clientes_Ame' db-id='' autocomplete='off'>
+          <input class='efecto popup-input h25' id='DGEclienteAme' type='text' id-display='#popup-display-DGEclienteAme' action='clientes_Ame' db-id='' autocomplete='off'>
           <div class='popup-list' id='popup-display-DGEclienteAme' style='display:none'></div>
         </td>
       </tr>

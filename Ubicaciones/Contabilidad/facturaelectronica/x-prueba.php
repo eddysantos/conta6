@@ -525,7 +525,7 @@ if($referencia != "SN"){
   </div>
 
 
-  <div class='contorno' style="margin-bottom:100px!important">
+  <div class='contorno' style="<?php echo $marginbottom ?>">
     <h5 class='titulo font14'>CTA. GASTOS</h5>
     <div class=''>
       <div class='acordeon2'>

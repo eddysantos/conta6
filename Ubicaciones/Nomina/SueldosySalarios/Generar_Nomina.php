@@ -72,7 +72,7 @@
   </div>
 
 
-  <div class="contorno mt-5" style="margin-bottom:100px!important">
+  <div class="contorno mt-5" style="<?php echo $marginbottom ?>">
     <h5 class="titulo">Nómina Extraordinaria</h5>
     <div class="row sub2  mb-3 mt-5 justify-content-center" style="font-size:16px!important">
       <div class="col-md-2 ">Nomina</div>

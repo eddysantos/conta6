@@ -96,8 +96,8 @@
           <a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFileXML&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/xml.svg'></a>
           <a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.pdf&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>
         </td>
-        <td class='col-md-1'>$id_factura</td>
-        <td class='col-md-2'>$fk_referencia</td>
+        <td class='col-md-2'>$id_factura</td>
+        <td class='col-md-1'>$fk_referencia</td>
         <td class='col-md-1'>$fk_id_cuenta_captura_nc</td>
         <td class='col-md-1'>$id_poliza_nc</td>
         <td class='col-md-1'>$status</td>

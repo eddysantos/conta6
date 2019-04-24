@@ -11,7 +11,7 @@ $accion = trim($_GET['accion']);
 if( $accion == 'pagosElect' ){
   require $root . '/conta6/Resources/PHP/actions/consultaPagoTimbrada2.php';
 ?>
-<div class="contorno text-center" style="margin-bottom:100px!important">
+<div class="contorno text-center" style="<?php echo $marginbottom ?>">
   <table class="table">
     <thead>
       <tr class="row">
@@ -30,8 +30,8 @@ if( $accion == 'pagosElect' ){
         <td class="col-md-1">PAGO CFDI</td>
         <td class="col-md-1">PÓLIZA</td>
         <td class="col-md-1">CANCELA</td>
-        <td class="col-md-4">CLIENTE</td>
-        <td class="col-md-1"></td>
+        <td class="col-md-5">CLIENTE</td>
+        <td class="col-md-2"></td>
       </tr>
       <?php echo $pagosCFDI; ?>
     </tbody>
@@ -43,7 +43,7 @@ if( $accion == 'pagosElect' ){
 if( $accion == 'facturas' ){
   require $root . '/conta6/Resources/PHP/actions/facturas_cfdi_PPD.php';
 ?>
-<div class="contorno text-center" style="margin-bottom:100px!important">
+<div class="contorno text-center" style="<?php echo $marginbottom ?>">
   <table class="table">
     <thead>
       <tr class="row">
@@ -76,7 +76,7 @@ if( $accion == 'pagosCaptura' ){
   $text = $buscar;
   require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_lst_capturados.php';
 ?>
-<div class="contorno text-center" style="margin-bottom:100px!important">
+<div class="contorno text-center" style="<?php echo $marginbottom ?>">
   <table class="table">
     <thead>
       <tr class="row">
@@ -92,8 +92,8 @@ if( $accion == 'pagosCaptura' ){
       <tr class="row font14 backpink">
         <td class="col-md-1"></td>
         <td class="col-md-2">SOLICITUD</td>
-        <td class="col-md-2">CLIENTE</td>
-        <td class="col-md-1"></td>
+        <td class="col-md-6">CLIENTE</td>
+        <td class="col-md-3"></td>
       </tr>
       <?php echo $pagosCaptura; ?>
     </tbody>

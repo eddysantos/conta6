@@ -20,7 +20,7 @@
   </div>
 
 <!---se muestra al escribir la referencia y dar enter-->
-  <div class="contenedor contorno" id="m-Remision" style="display:none">
+  <div class="contenedor contorno" id="m-Remision" style="display:none;<?php echo $marginbottom ?>">
     <form class="form1">
       <table class="table">
         <thead>

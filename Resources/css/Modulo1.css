@@ -405,6 +405,13 @@ a img.icochico {
 a img.icochico:hover {
   width:20px;
 }
+
+a img.icoxs {
+  width:14px;
+}
+a img.icoxs:hover {
+  width:16px;
+}
 #submenuMed {
   background-color: transparent!important;
   color: rgb(161, 160, 160)!important;

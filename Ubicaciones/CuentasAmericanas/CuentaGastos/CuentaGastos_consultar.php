@@ -18,12 +18,12 @@
 ?>
 
 <div class="container-fluid">
-  <div class="row m-0 submenuMed text-center">
+  <div class="row submenuMed text-center">
     <div class="col-md-6" role="button">
-      <a  id="submenuMed" class="ctagastos" accion="datcliente" status="cerrado">DATOS CLIENTE</a>
+      <a  id="submenuMed" class="ctagastos" accion="datcliente_CtaGtos" status="cerrado">DATOS CLIENTE</a>
     </div>
     <div class="col-md-6" role="button">
-      <a  id="submenuMed" class="ctagastos" accion="datinfo" status="cerrado">INFORMACIÓN GENERAL</a>
+      <a  id="submenuMed" class="ctagastos" accion="datinfo_CtaGtos" status="cerrado">INFORMACIÓN GENERAL</a>
     </div>
   </div>
   <div class="col-md-1 text-center p-5">
@@ -34,36 +34,40 @@
   </div>
   <div id="contornoCliente" class="contorno mt-4" style="display:none">
     <h5 class="titulo font16">DATOS CLIENTES</h5>
-    <table class="table text-center" id="eCliente">
-      <thead class="font14">
-        <tr class="row encabezado">
-          <td class="col-md-5"><?php echo $fk_id_cliente.' '.trim($s_nombre);?></td>
-          <td class="col-md-5"><?php echo $fk_id_proveedor.' '.trim($s_prov_nombre);?></td>
-        </tr>
-        <tr class="row backpink">
-          <td class="col-md-6">DIRECCION</td>
-          <td class="col-md-6">PROVEEDOR</td>
-        </tr>
-      </thead>
-      <tbody class="font14">
-        <tr class="row">
-          <td class="col-md-6"><?php echo trim($s_calle);?> <?php echo trim($s_no_ext);?> <?php echo trim($s_no_int);?></td>
-          <td class="col-md-6"><?php echo trim($s_prov_calle);?> <?php echo trim($s_prov_no_ext);?> <?php echo trim($s_prov_no_int);?></td>
-        </tr>
-        <tr class="row">
-          <td class="col-md-6"><?php echo trim($s_colonia);?></td>
-          <td class="col-md-6"><?php echo trim($s_prov_colonia);?></td>
-        </tr>
-        <tr class="row">
-          <td class="col-md-6"><?php echo trim($s_codigo);?> <?php echo trim($s_ciudad);?> <?php echo trim($s_estado);?></td>
-          <td class="col-md-6"><?php echo trim($s_prov_codigo);?> <?php echo trim($s_prov_ciudad);?> <?php echo trim($s_prov_estado);?></td>
-        </tr>
-        <tr class="row">
-          <td class="col-md-6"><?php echo trim($s_rfc);?></td>
-          <td class="col-md-6">Tel: <?php echo trim($s_prov_telefono);?></td>
-        </tr>
-      </tbody>
-    </table>
+      <div class="text-center font14" id="eCliente">
+        <div class="row font14 encabezado">
+          <div class="col-md-6"><?php echo $fk_id_cliente.' '.trim($s_nombre);?></div>
+          <div class="col-md-6"><?php echo $fk_id_proveedor.' '.trim($s_prov_nombre);?></div>
+        </div>
+        <div class="row backpink">
+          <div class="col-md-6">DIRECCION</div>
+          <div class="col-md-6">PROVEEDOR</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6"><?php echo trim($s_calle);?> <?php echo trim($s_no_ext);?> <?php echo trim($s_no_int);?></div>
+          <div class="col-md-6"><?php echo trim($s_prov_calle);?> <?php echo trim($s_prov_no_ext);?> <?php echo trim($s_prov_no_int);?></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6"><?php echo trim($s_colonia);?></div>
+          <div class="col-md-6"><?php echo trim($s_prov_colonia);?></div>
+        </div>
+        <div class="row">
+          <div class="col-md-6"><?php echo trim($s_codigo);?> <?php echo trim($s_ciudad);?> <?php echo trim($s_estado);?></div>
+          <div class="col-md-6"><?php echo trim($s_prov_codigo);?> <?php echo trim($s_prov_ciudad);?> <?php echo trim($s_prov_estado);?></div>
+        </div>
+        <div class="row">
+          <div class="col-md-6"><?php echo trim($s_rfc);?></div>
+          <div class="col-md-6">Tel: <?php echo trim($s_prov_telefono);?></div>
+        </div>
+
+
+      </div>
+
+
+
+
   </div>
   <div id="contornoInfo" class="contorno mt-4" style="display:none">
     <h5 class="titulo font16">INFO GENERAL</h5>
@@ -107,27 +111,27 @@
         </thead>
         <tbody class="font14">
           <tr class="row m-0">
-            <td class="col-md-6 pt-1 p-0 text-right">Reference : </td>
+            <td class="col-md-6 pt-1 p-0 text-right b">Reference : </td>
             <td class="col-md-5 pt-1 p-0 text-left"><?php echo $fk_referencia; ?></td>
             <td class="col-md-1 pt-1 p-0"></td>
           </tr>
           <tr class="row m-0">
-            <td class="col-md-6 pt-1 p-0 text-right">Freight Bill :</td>
+            <td class="col-md-6 pt-1 p-0 text-right b">Freight Bill :</td>
             <td class="col-md-5 pt-1 p-0 text-left"><?php echo $s_guia_master; ?></td>
             <td class="col-md-1 pt-1 p-0"></td>
           </tr>
           <tr class="row m-0">
-            <td class="col-md-6 pt-1 p-0 text-right">Quantity :</td>
+            <td class="col-md-6 pt-1 p-0 text-right b">Quantity :</td>
             <td class="col-md-5 pt-1 p-0 text-left"><?php echo $n_bodegaIn; ?></td>
             <td class="col-md-1 pt-1 p-0"></td>
           </tr>
           <tr class="row m-0">
-            <td class="col-md-6 pt-1 p-0 text-right">Type :</td>
+            <td class="col-md-6 pt-1 p-0 text-right b">Type :</td>
             <td class="col-md-5 pt-1 p-0 text-left"><?php echo $s_tipoRegimen;?></td>
             <td class="col-md-1 pt-1 p-0"></td>
           </tr>
           <tr class="row m-0">
-            <td class="col-md-6 pt-1 p-0 text-right">Description :</td>
+            <td class="col-md-6 pt-1 p-0 text-right b">Description :</td>
             <td class="col-md-5 pt-1 p-0 text-left"><?php echo $s_descripcion;?></td>
             <td class="col-md-1 pt-1 p-0"></td>
           </tr>
@@ -142,34 +146,34 @@
         </thead>
         <tbody class="font14">
           <tr class="row m-0">
-            <td class="col-md-3 text-right">Invoince No :</td>
-            <td class="col-md-3"><?php echo $pk_id_ctaAme; ?></td>
+            <td class="col-md-3 p-1 text-right b">Invoince No :</td>
+            <td class="col-md-3 p-1 text-left"><?php echo $pk_id_ctaAme; ?></td>
 
-            <td class="col-md-3 text-right">Invoince Value :</td>
-            <td class="col-md-3"><?php echo number_format($n_valor_usd,2,'.',',');?></td>
+            <td class="col-md-3 p-1 text-right b">Invoince Value :</td>
+            <td class="col-md-3 p-1 text-left"><?php echo number_format($n_valor_usd,2,'.',',');?></td>
           </tr>
           <tr class="row m-0">
-            <td class="col-md-3 text-right">Vencimiento :</td>
-            <td class="col-md-3"><?php echo $d_fechaVencimiento; ?></td>
+            <td class="col-md-3 p-1 text-right b">Vencimiento :</td>
+            <td class="col-md-3 p-1 text-left"><?php echo $d_fechaVencimiento; ?></td>
 
-            <td class="col-md-3 text-right">Date :</td>
-            <td class="col-md-3"><?php echo $d_fecha; ?></td>
+            <td class="col-md-3 p-1 text-right b">Date :</td>
+            <td class="col-md-3 p-1 text-left"><?php echo $d_fecha; ?></td>
           </tr>
 
           <tr class="row m-0">
-            <td class="col-md-3 text-right">Weight :</td>
-            <td class="col-md-3"><?php echo $n_peso; ?></td>
+            <td class="col-md-3 p-1 text-right b">Weight :</td>
+            <td class="col-md-3 p-1 text-left"><?php echo $n_peso; ?></td>
 
-            <td class="col-md-3 text-right">Customer Invoice :</td>
-            <td class="col-md-3"><?php echo $s_customerOrder; ?></td>
+            <td class="col-md-3 p-1 text-right b">Customer Invoice :</td>
+            <td class="col-md-3 p-1 text-left"><?php echo $s_customerOrder; ?></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <div class="contorno mt-5">
-    <h5 class="titulo font16">EDITAR CTA GASTOS</h5>
+  <div class="contorno mt-5" style="<?php echo $marginbottom ?>">
+    <h5 class="titulo w2 font16">EDITAR CTA GASTOS</h5>
     <div class="encabezado font18">ACCOUNT CHARGES</div>
       <form class="form1">
         <table class="table text-center font14">
@@ -189,7 +193,7 @@
               <td class="col-md-1 offset-md-9"></td>
               <td class="col-md-1"></td>
               <td class="col-md-1">
-                <input class="efecto border-0" type="text" value="<?php echo number_format($n_subtotal,2,'.',',');?>" disabled>
+                <input class="efecto border-0 h22" type="text" value="<?php echo number_format($n_subtotal,2,'.',',');?>" disabled>
               </td>
             </tr>
 
@@ -206,4 +210,8 @@
 </div>
 
 
-<script src="js/CuentaGastos.js"></script>
+<!-- <script src="js/CuentaGastos.js"></script> -->
+
+<?php
+require $root . '/conta6/Ubicaciones/footer.php';
+ ?>

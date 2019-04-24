@@ -1,6 +1,9 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+
+
+$marginbottom = "margin-bottom:100px!important";
 ?>
 <!DOCTYPE html>
 <html lang="en">

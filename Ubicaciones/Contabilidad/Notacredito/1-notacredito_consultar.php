@@ -220,9 +220,9 @@
 <?php
 if( $s_UUID != '' ){ ?>
 <div class="contorno">
-  <h5 class="titulo font14 b">ESTADO DEL COMPROBANTE</h5>
+  <h5 class="titulo w2 font14 b">ESTADO DEL COMPROBANTE</h5>
 
-  <div class="row encabezado mt-5 m-0 font14">
+  <div class="row encabezado mt-2 m-0 font14">
     <div class="col-md-4">Total Nota Crédito</div>
     <div class="col-md-2">Estado</div>
     <div class="col-md-2">Es cancelable</div>
@@ -244,7 +244,7 @@ if( $s_UUID != '' ){ ?>
         $fechaActual = date("Y/m", time());
         $fechaActual2 = date("Y/m/d h:m:s", time());
         $txt_evaluar = evaluarCancelarNC($fechaTimbrado,$n_total_gral);
-        $hrefcancela = "<a href='#' onclick='cancelarNC($id_factura)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
+        $hrefcancela = "<a href='#' onclick='cancelarNC($id_factura)'><img class='icoxs' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
 
       if( $total_estadoCancela == 0 ){
         echo "
@@ -264,7 +264,7 @@ if( $s_UUID != '' ){ ?>
 </div>
 <?php } ?>
 
-<div class="contorno">
+<div class="contorno" style="<?php echo $marginbottom ?>">
   <h5 class="titulo font14 b">NOTA DE CRÉDITO</h5>
   <div class="row encabezado font14 m-0">
     <div class="col-md-6">PAGOS O CARGOS EN USD</div>
@@ -310,10 +310,10 @@ if( $s_UUID != '' ){ ?>
     <?php echo $datosHonorarios; ?>
   </div>
 
-  <div class="contorno" style="margin-bottom:100px!important">
-    <table class="table w-100">
+  <div class="contorno m-0 mt-5">
+    <!-- <table class="table w-100">
      <tr align="center">
-       <td class="col-md-12 backpink" colspan="6">Concepto General en la Nota de Cr&eacute;dito</td>
+       <td class="col-md-12 backpink" colspan="6">Concepto General en la Nota de Crédito</td>
      </tr>
      <tr bgcolor="#C0C0C0" align="center">
        <td class="w-16">Cantidad</td>
@@ -355,7 +355,59 @@ if( $s_UUID != '' ){ ?>
        <td><input class="efecto h22" type="text" id="T_totalFactura" size="20" value="<?php echo $n_total_factura;?>" readonly /></td>
        <td>&nbsp;</td>
        </tr>
-   </table>
+   </table> -->
+
+
+
+     <div class="row backpink">
+       <div class="col-md-12">Concepto General en la Nota de Crédito</div>
+     </div>
+     <div class="row sub2 p-1">
+       <div class="col-md-1">Cantidad</div>
+       <div class="col-md-2">Cve. Unidad</div>
+       <div class="col-md-1">cveServProd</div>
+       <div class="col-md-5">Descripción</div>
+       <div class="col-md-2">Valor Unitario</div>
+       <div class="col-md-1">Importe</div>
+     </div>
+
+     <div class="row mt-3">
+       <div class="col-md-1 p-0">
+         <input class="efecto h22" type="text" id="T_cantidadNC" size="15" value="<?php echo $n_cantidadNC; ?>" readonly />
+       </div>
+       <div class="col-md-2">
+         <input class="efecto h22" type="text" id="T_cveUnidadNC" size="15" value="<?php echo $fk_cveUnidadNC; ?>" readonly />
+       </div>
+       <div class="col-md-1 p-0">
+         <input class="efecto h22" type="text" id="T_cveProdNC" size="15" value="<?php echo $fk_c_ClaveProdServ; ?>" readonly /></div>
+       <div class="col-md-5">
+         <input class="efecto h22" type="text" id="T_descripNC" size="60" maxlength="60" value="<?php echo $s_descripNC; ?>" readonly>
+       </div>
+       <div class="col-md-2">
+         <input class="efecto h22" type="text" id="T_valorUnitNC" class="T_valorUnitNC" size="20" value="<?php echo $n_valorUnitNC;?>" readonly>
+       </div>
+       <div class="col-md-1 p-0">
+         <input class="efecto h22" type="text" id="T_importeNC" class="T_importeNC" size="20" value="<?php echo $n_importeNC;?>" readonly>
+       </div>
+     </div>
+
+     <div class="row sub2 p-1 justify-content-center mt-5">
+       <div class="col-md-1">Factura</div>
+       <div class="col-md-5">CFDI Relacionado </div>
+       <div class="col-md-1">Total</div>
+     </div>
+
+     <div class="row justify-content-center mt-3">
+       <div class="col-md-1">
+         <input class="efecto h22" type="text" id="T_idFactura" size="14" value="<?php echo $id_factura;?>" readonly>
+       </div>
+       <div class="col-md-5">
+         <input class="efecto h22" type="text" id="T_UUIDFactura" size="60" value="<?php echo $s_UUID;?>" readonly>
+       </div>
+       <div class="col-md-1">
+         <input class="efecto h22" type="text" id="T_totalFactura" size="20" value="<?php echo $n_total_factura;?>" readonly>
+       </div>
+     </div>
   </div>
 
   <div class="row encabezado m-0 mt-5 font14">

@@ -4,7 +4,7 @@
 ?>
 
 
-<div class="container-fluid text-center">
+<div class="text-center">
   <div class="row submenuMed m-0">
     <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
       <li class="nav-item">
@@ -23,7 +23,7 @@
   </div>
 
   <!--Comienza Generar Clientes en Cuenta Americana-->
-  <div id="cta-Generar" class="contorno" style="display:none">
+  <div id="cta-Generar" class="contorno" style="display:none;<?php echo $marginbottom?>">
     <table class="table form1">
       <thead class="font18">
         <tr class="row encabezado">
@@ -168,7 +168,7 @@
   </div><!--/Termina Generar Poliza de Diario-->
 
   <!--Comienza Modificar Clientes en Cuenta Americana-->
-  <div id="cta-Modificar" class="contorno" style="display:none">
+  <div id="cta-Modificar" class="contorno" style="display:none;<?php echo $marginbottom?>">
     <table class="table">
       <tr class="row">
         <td class="col-md-6 offset-md-3">
@@ -305,7 +305,7 @@
   </div><!--/Termina Generar Poliza de Ingreso-->
 
 <!--Comienza Consultar Clientes en Cuenta Americana-->
-  <div id="cta-Consultar" class="contorno" style="display:none">
+  <div id="cta-Consultar" class="contorno" style="display:none;<?php echo $marginbottom?>">
     <table class="table">
       <tr class="row">
         <td class="col-md-6 offset-md-3">
@@ -434,7 +434,7 @@
     </table>
   </div><!--/Termina Generar Poliza de Ingreso-->
 
-  <div id="cta-credito" class="contorno" style="display:none">
+  <div id="cta-credito" class="contorno" style="display:none;<?php echo $marginbottom?>">
     <table class="table form1">
       <thead class="font18">
         <tr class="row encabezado">
@@ -494,4 +494,6 @@
 
 
 <script src="js/AdministrarClientes.js"></script>
-<?php require_once('modales/AdminClientes.php'); ?>
+<?php
+require $root . '/conta6/Ubicaciones/footer.php';
+require_once('modales/AdminClientes.php'); ?>

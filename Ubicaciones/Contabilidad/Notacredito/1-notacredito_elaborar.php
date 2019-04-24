@@ -731,28 +731,28 @@ if($referencia != "SN"){
                       <div class='col-md-4'>CONCEPTO</div>
                       <div class='col-md-1'>IMPORTE</div>
                       <div class='col-md-1'></div>
-                      <div class='col-md-2'></div>
+                      <div class='col-md-3'></div>
                       <!-- <div class='col-md-2'>MINIMO DE HON</div> -->
                     </div>
                     <div class='row m-0 mt-3 mb-3 justify-content-center'>
                       <div class='col-md-1'>
-                        <input class="efecto" type="text" id="T_Hcta" size="15" readonly>
+                        <input class="efecto h22" type="text" id="T_Hcta" size="15" readonly>
                       </div>
                       <div class='col-md-1'>
-                        <input class="efecto" type="text" id="T_Hps" size="15" readonly>
+                        <input class="efecto h22" type="text" id="T_Hps" size="15" readonly>
                       </div>
 
                       <div class='col-md-4'>
-                        <input class="efecto" type="text" id="T_CH" size="42" onchange="validarStringSAT(this);" onkeypress="return validarStringSATteclaPulsada(event);" onblur="limpia()" readonly>
+                        <input class="efecto h22" type="text" id="T_CH" size="42" onchange="validarStringSAT(this);" onkeypress="return validarStringSATteclaPulsada(event);" onblur="limpia()" readonly>
                       </div>
                       <div class='col-md-1'>
-                        <input class="efecto" type="text" id="T_Valor_Concepto_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15">
+                        <input class="efecto h22" type="text" id="T_Valor_Concepto_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15">
                       </div>
                       <div class='col-md-1 text-left'>
                         <a href='#' id="Btn_Honorarios" onclick="agregarHonorarios()"><img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'></a>
                       </div>
 
-                      <div class='col-md-2 p-0 pt-2'>
+                      <div class='col-md-3 align-self-center b text-left'>
                         <a href="javascript:ayudaPermitidos();">Caracteres permitidos <img class='icochico' src='/conta6/Resources/iconos/help.svg'></a>
                       </div>
 
@@ -789,7 +789,7 @@ if($referencia != "SN"){
         </div>
       </div>
 
-      <div class="contorno" style="margin-bottom:100px!important">
+      <div class="contorno" style="<?php echo $marginbottom ?>">
         <table class="table w-100">
          <tr class="col-md-12 backpink" align="center">
            <td>&nbsp;</td>

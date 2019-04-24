@@ -1,6 +1,8 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+
+
 ?>
 
 <div class="text-center">
@@ -37,6 +39,10 @@
               <div class="popup-list" id="popup-display-ctagatos-cReferencia" style="display:none"></div>
               <label for="ctagatos-cReferencia">CON REFERENCIA</label>
             </td>
+
+             <!-- <input class='efecto popup-input' id='DGEcliente1' type='text' id-display='#popup-display-DGEcliente1' action='clientes' db-id='' autocomplete='off'>
+            <div class='popup-list' id='popup-display-DGEcliente1' style='display:none'></div> -->
+
             <td class="col-md-2">
               <a href="#" id="btn_buscarDatosEmbarque" class="boton"> <i class="fa fa-search "></i> Consultar</a>
             </td>
@@ -69,7 +75,7 @@
 
 
 <!---se muestra al dar click en Buscar-->
-  <div id="b-ctagastos" style="display:none;margin-top:150px!important">
+  <div id="b-ctagastos" style="margin-top: 150px !important;margin-bottom:100px!important">
     <div class="row m-0">
       <div class="col-md-1 offset-sm-8 ">
         <a href="#" class="fele" accion="cuadroBusqueda">
@@ -122,5 +128,5 @@
 </div>
 
 <?php
-  require $root . '/conta6/Ubicaciones/footer.php';
+  require $root . '/Conta6/Ubicaciones/footer.php';
 ?>

@@ -162,7 +162,7 @@
 
   <div id='detalleUsuario' class='contorno' style='display:none'>
     <h5 class='titulo font16'>INFO GENERAL</h5>
-    <table class='table mt-5' id='eInfo'>
+    <table class='table' id='eInfo'>
       <thead>
         <tr class='row encabezado font16'>
           <td class='col-md-12 p-0'>INFORMACION DEL USUARIO</td>
@@ -192,18 +192,18 @@
           <td class="p-1 col-md-3"><?php echo $s_usuario_modifi; ?></td>
           <td class="p-1 col-md-3"><?php echo $d_fecha_modifi; ?></td>
         </tr>
-		<tr class="row">
-			<td class="p-1 col-md-3 text-left"> Pago generado: <?php echo '<b>'.$id_factura.'</b> --- '.$s_UUID; ?></td>
-			<td class="p-1 col-md-3"><?php echo $id_poliza; ?></td>
-			<td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
-			<td class="p-1 col-md-3"><?php echo $fechaTimbre; ?></td>
-		  </tr>
-		  <tr class="row">
-			<td class="p-1 col-md-3 text-left"> Pago cancelado:</td>
-			<td class="p-1 col-md-3"></td>
-			<td class="p-1 col-md-3"><?php echo $usuario_Cancela; ?></td>
-			<td class="p-1 col-md-3"><?php echo $fechaTimbreCancela; ?></td>
-		  </tr>
+    		<tr class="row">
+    			<td class="p-1 col-md-3 text-left"> Pago generado: <?php echo '<b>'.$id_factura.'</b> --- '.$s_UUID; ?></td>
+    			<td class="p-1 col-md-3"><?php echo $id_poliza; ?></td>
+    			<td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
+    			<td class="p-1 col-md-3"><?php echo $fechaTimbre; ?></td>
+    		</tr>
+  		  <tr class="row">
+    			<td class="p-1 col-md-3 text-left"> Pago cancelado:</td>
+    			<td class="p-1 col-md-3"></td>
+    			<td class="p-1 col-md-3"><?php echo $usuario_Cancela; ?></td>
+    			<td class="p-1 col-md-3"><?php echo $fechaTimbreCancela; ?></td>
+  		  </tr>
       </tbody>
     </table>
   </div>
@@ -261,7 +261,7 @@
 #}
 ?>
 
-<div class="contorno mt-5">
+<div class="contorno mt-5" style="<?php echo $marginbottom ?>">
   <form onsubmit="return false">
     <div class="row sub2 m-0 mt-4">
       <div class="col-md-12 p-1 font14"><b>Detalle de Pagos</b></div>

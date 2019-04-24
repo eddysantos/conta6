@@ -456,7 +456,7 @@ if ($rows_datosCLTformaPago > 0) {
   </div>
 
   </div>
-  <div class="row justify-content-center" style="margin-bottom:100px!important">
+  <div class="row justify-content-center" style="<?php echo $marginbottom ?>">
     <div class="col-md-3">
       <input class="efecto boton" type='button' value="GUARDAR" id="modificar-pago" />
     </div>

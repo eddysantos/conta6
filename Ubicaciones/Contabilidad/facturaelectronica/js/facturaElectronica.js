@@ -10,6 +10,11 @@ $(document).ready(function(){
   $('#T_Nombre_Cliente').change();
 
 
+  $('#DGEcliente1000').change(function(){
+    alert('presione cliente');
+  })
+
+
 /**********************************************************************************************/
 
 
@@ -226,7 +231,7 @@ $(document).ready(function(){
 
   	$.ajax({
   		type: "POST",
-  		url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos_datosReferencia.php",
+  		url: "/Conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos_datosReferencia.php",
   		data: data,
   		success: 	function(r){
   		r = JSON.parse(r);

@@ -3,7 +3,7 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 <div class="text-center mb-10">
-  <div class="row submenuMed">
+  <div class="row submenuMed m-0">
     <div class="col-md-12" role="button">
       <a  id="submenuMed" class="aconta" accion="eCap" status="cerrado">CATÁLOGO DE CUENTAS</a>
     </div>

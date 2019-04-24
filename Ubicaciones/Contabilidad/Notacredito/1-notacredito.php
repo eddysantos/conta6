@@ -4,11 +4,11 @@
 ?>
 
 <div class="text-center">
-  <div class="mt10" id="buscarRef">
-    <div class="row justify-content-center" id="referencia">
+  <div class="mt10" id="buscarRef" style="<?php echo $marginbottom ?>">
+    <div class="row justify-content-center m-0" id="referencia">
       <div class="col-md-6 transEff titulograndetop">Buscar</div>
     </div>
-    <div class="row justify-content-center" id="nReferencia">
+    <div class="row justify-content-center m-0" id="nReferencia">
       <div class="col-md-6 transEff intermedio" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
           <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center mt-5 m-0">
       <?php if( $oRst_permisos["s_NC_Proforma"] == 1){ ?>
         <div class="col-md-2">
           <a href="#" id="b-facturas" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> FACTURAS</a>

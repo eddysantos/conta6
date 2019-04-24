@@ -50,6 +50,78 @@
   $pdf->AddPage();
 
 
+  $cliente = '<table class="border">
+    <thead>
+      <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
+        <td width="100%" align="center"><b>Cliente</b></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td width="100%">' . $s_nombre.'</td></tr>
+      <tr><td width="100%">' . $s_calle.' '.$s_no_ext.' '.$s_no_int.'</td></tr>
+      <tr><td width="100%">' . $s_colonia.'</td></tr>
+      <tr><td width="100%">' . $s_codigo.' '.$s_ciudad.', '.$s_estado.'</td></tr>
+      <tr><td width="100%"><b>RFC:</b> ' . $s_rfc.'</td></tr>
+    </tbody>
+  </table>';
+  $solicitud = '<table class="border">
+    <thead>
+      <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)" align="center">
+        <td width="20%"><b>SOLICITUD</b></td>
+        <td width="45%"><b>ADUANA</b></td>
+        <td width="35%"><b>FECHA</b></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr align="center">
+        <td width="20%"><b>'.$pk_id_cuenta_captura.'</b></td>
+        <td width="45%">'.$fk_id_aduana.'</td>
+        <td width="35%"><font>'.$d_fecha_proforma.'</font></td>
+      </tr>
+    </tbody>
+  </table>';
+  $embarque = '<table class="border">
+    <thead>
+      <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
+        <td width="100%" align="center">INFORMACIÓN GENERAL DEL EMBARQUE</td>
+      </tr>
+    </thead>
+    <tbody>
+      '.$impresionDatosEmbarque.'
+    </tbody>
+  </table>';
+  $proveedor = '<table class="border">
+    <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)"><td width="100%" align="center">Proveedor (IMP) o Destinatario (EXP)</td></tr>
+    <tr><td width="100%">'.preg_replace('/&/', '&amp;', preg_replace('/´/', '', utf8_encode($s_proveedor_destinatario))).'</td></tr>
+  </table>';
+  $datosPocme = '<table class="border">
+    <thead>
+      <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
+        <td width="100%" align="center">PAGOS O CARGOS EN MONEDA EXTRANJERA</td>
+      </tr>
+    </thead>
+    <tbody>
+      '.$datosPOCMEImprimir.'
+    </tbody>
+  </table>';
+  $tipoCambio = '<table class="border" align="center">
+    <thead>
+      <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
+        <td width="33%">TOTAL</td>
+        <td width="33%">AL TIPO DE CAMBIO</td>
+        <td width="34%">TOTAL MN.</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td width="33%">'.number_format($n_POCME_total_gral,2,'.','').'</td>
+        <td width="33%">'.number_format($n_POCME_tipo_cambio,2,'.','').'</td>
+        <td width="34%">'.number_format($n_POCME_total_MN,2,'.','').'</td>
+      </tr>
+    </tbody>
+  </table>';
+
+
   $ClienteYFactura = '<style>
    .border{
      border-top:1px solid black;
@@ -62,55 +134,15 @@
     }
   </style>
   <table>
-  <tr>
-    <td width="50%">
-    <br />
-      <table class="border">
-        <thead>
-          <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
-            <td width="100%" align="center"><b>Cliente</b></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td width="100%">' . $s_nombre.'</td></tr>
-          <tr><td width="100%">' . $s_calle.' '.$s_no_ext.' '.$s_no_int.'</td></tr>
-          <tr><td width="100%">' . $s_colonia.'</td></tr>
-          <tr><td width="100%">' . $s_codigo.' '.$s_ciudad.', '.$s_estado.'</td></tr>
-          <tr><td width="100%"><b>RFC:</b> ' . $s_rfc.'</td></tr>
-        </tbody>
-      </table>
-    </td>
-    <td width="50%">
-      <table class="border">
-        <thead>
-          <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)" align="center">
-            <td width="20%"><b>SOLICITUD</b></td>
-            <td width="45%"><b>ADUANA</b></td>
-            <td width="35%"><b>FECHA</b></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr align="center">
-            <td width="20%"><b>'.$pk_id_cuenta_captura.'</b></td>
-            <td width="45%">'.$fk_id_aduana.'</td>
-            <td width="35%"><font>'.$d_fecha_proforma.'</font></td>
-          </tr>
-        </tbody>
-      </table>
-      <br />
-      <br />
-      <table class="border">
-        <thead>
-          <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
-            <td width="100%" align="center">INFORMACIÓN GENERAL DEL EMBARQUE</td>
-          </tr>
-        </thead>
-        <tbody>
-          '.$impresionDatosEmbarque.'
-        </tbody>
-      </table><br>
-    </td>
-  </tr>
+    <tr>
+      <td width="50%"><br />
+      '.$cliente.'<br /><br />'.$proveedor.'<br /><br />'.$datosPocme.'<br /><br />'.$tipoCambio.'
+      </td>
+      <td width="50%"><br />
+        '.$solicitud.'<br /><br />'.$embarque.'
+        <br>
+      </td>
+    </tr>
   </table>';
 
   $pdf->SetFont('courier', '', 8);
@@ -202,16 +234,13 @@
     }
   </style>
   <table class="border">
-  <thead>
-
-  </thead>
-  <tbody>
-    <tr align="left">
-      <td style="font-size:6pt;" align="justify">
-        <br>'.$observacionesPLAA.'
-      </td>
-    </tr>
-  </tbody>
+    <tbody>
+      <tr align="left">
+        <td style="font-size:6pt;" align="justify">
+          '.$observacionesPLAA.'
+        </td>
+      </tr>
+    </tbody>
   </table>';
 
   $datosObservaciones2 = '<style>
@@ -223,69 +252,13 @@
     }
   </style>
   <table class="border">
-  <thead>
-
-  </thead>
   <tbody>
     <tr align="left">
       <td style="font-size:6pt;" align="justify">
-        <br>'.$observaciones.'
+        '.$observaciones.'
       </td>
     </tr>
   </tbody>
-  </table>';
-
-  $EmbarqueYProv= '<style>
-   .border{
-     border-top:1px solid black;
-     border-left:1px solid black;
-     border-right:1px solid black;
-     border-bottom:1px solid black;
-    }
-    table{
-      margin:5px;
-    }
-  </style>
-  <table>
-  <tr>
-    <td width="50%">
-      <br />
-      <table class="border">
-        <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)"><td width="100%" align="center">Proveedor (IMP) o Destinatario (EXP)</td></tr>
-        <tr><td width="100%">'.preg_replace('/&/', '&amp;', preg_replace('/´/', '', utf8_encode($s_proveedor_destinatario))).'</td></tr>
-      </table>
-      <br />
-      <br />
-      <table class="border">
-        <thead>
-          <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
-            <td width="100%" align="center">PAGOS O CARGOS EN MONEDA EXTRANJERA</td>
-          </tr>
-        </thead>
-        <tbody>
-          '.$datosPOCMEImprimir.'
-        </tbody>
-      </table>
-      <br /><br />
-      <table class="border" align="center">
-        <thead>
-          <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
-            <td width="33%">TOTAL</td>
-            <td width="33%">AL TIPO DE CAMBIO</td>
-            <td width="34%">TOTAL MN.</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td width="33%">'.number_format($n_POCME_total_gral,2,'.','').'</td>
-            <td width="33%">'.number_format($n_POCME_tipo_cambio,2,'.','').'</td>
-            <td width="34%">'.number_format($n_POCME_total_MN,2,'.','').'</td>
-          </tr>
-        </tbody>
-      </table>
-    </td>
-
-  </tr>
   </table>';
 
   $pgosxCuentaCliente ='<style>
@@ -349,7 +322,6 @@
 
 
   $pdf->writeHTML($ClienteYFactura, true, false, true, false, '');
-  $pdf->writeHTML($EmbarqueYProv, true, false, true, false, '');
   $pdf->writeHTML($pgosxCuentaCliente, true, false, true, false, 'C');
   $pdf->writeHTML($InfoHonorarios, true, false, true, false, 'C');
   $pdf->writeHTML($metPagoYtotHonorarios, true, false, true, false, '');
@@ -358,23 +330,5 @@
 
 
   $pdf->Output($nombreArchivo, 'I');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//$pdf->Output('pruebas.pdf', 'I');
 
 ?>

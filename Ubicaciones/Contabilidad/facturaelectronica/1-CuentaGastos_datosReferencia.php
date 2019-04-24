@@ -1,10 +1,13 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
 
 $id_referencia = $_POST['id_referencia'];
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosReferencia.php';
+// require $root . '/Conta6/Resources/PHP/actions/popup_actions/clientes.php';
+require $root . '/Conta6/Resources/PHP/actions/consultaDatosReferencia.php';
+// require $root . '/Conta6/Ubicaciones/footer.php';
+
 
 
 if( $rows_buscaRef > 0 ){
@@ -107,12 +110,21 @@ if( $rows_buscaRef > 0 ){
       }
 
 
+
+
       $tr_factura = "$tr_corresponsal
       <tr class='row mt-2 align-items-center'>
         <td class='col-md-2 text-right b p-0'><b>Facturar a otro:</b></td>
+
         <td class='col-md-7 p-0'>
+
+
+
           <input class='efecto popup-input' id='DGEcliente' type='text' id-display='#popup-display-DGEcliente' action='clientes' db-id='' autocomplete='off'>
           <div class='popup-list' id='popup-display-DGEcliente' style='display:none'></div>
+
+
+
         </td>
       </tr>
       $tr_ctaAme

@@ -234,7 +234,7 @@ if( is_null($s_UUIDpagoSustituir) ){
     }
 
   $pagosDetallePrint .= '
-  <table class="border1">
+  <table class="border">
     <tbody>
       <tr>
 				<td width="15%" align="right"><b>Emisor :</b></td>

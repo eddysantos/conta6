@@ -124,10 +124,9 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
 			<td class='col-md-1'>$hrefBorrar</td>
 			<td class='col-md-1'>$id_captura</td>
 			<td class='col-md-1'>$txt_cancela</td>
-			<td class='col-md-2'>$row_ctaGastos[fk_referencia]</td>
-			<td class='col-md-5'>$row_ctaGastos[fk_id_cliente] $row_ctaGastos[s_nombre]</td>
+			<td class='col-md-1'>$row_ctaGastos[fk_referencia]</td>
+			<td class='col-md-7'>$row_ctaGastos[fk_id_cliente] $row_ctaGastos[s_nombre]</td>
 			<td class='col-md-1'>$hrefmodificar $hrefconsultar</td>
-			<td class='col-md-1'></td>
 		</tr>";
 	}
 
