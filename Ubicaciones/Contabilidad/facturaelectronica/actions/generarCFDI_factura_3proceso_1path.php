@@ -1,4 +1,5 @@
 <?php
+# hay rutas en:  Ubicaciones\Contabilidad\facturaelectronica\actions\1-CuentaGastos_modificar_cfdi.php
 
 #nombre carpetas
 $anioActual = date('Y');

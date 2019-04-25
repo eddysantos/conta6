@@ -33,6 +33,8 @@ if( $total_consultaCtaGstos > 0 ) {
 	$fk_idpol_pagoaplicado = $row_consultaCtaGstos['fk_idpol_pagoaplicado'];
 	$s_cancela_pagoaplicado = $row_consultaCtaGstos['s_cancela_pagoaplicado'];
 	$d_fecha_genera = $row_consultaCtaGstos['d_fecha_genera'];
+
+	$folioCtaGastos = $id_ctagastos;
 }
 
 ?>

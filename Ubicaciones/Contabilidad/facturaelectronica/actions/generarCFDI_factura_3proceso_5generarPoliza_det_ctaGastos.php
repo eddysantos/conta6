@@ -17,30 +17,32 @@ if( $rows_ctasCliente > 0 ){
 
 #DETALLE DE LA POLIZA ***
 if( $moneda <> 'MXN' ){
-	$Hono_Total = $totalGralImporte * $tipoCambio;
-	$Total_Gral = $totalGral * $tipoCambio;
+	$Hono_Total = $Total_Pagos * $tipoCambio;
+	$Total_Gral = $total_pagosCLT * $tipoCambio;
 }else{
-  $Hono_Total = $totalGralImporte;
-  $Total_Gral = $totalGral;
+  $Hono_Total = $Total_Pagos;
+  $Total_Gral = $total_pagosCLT;
 }
-
-
-if( $Total_Anticipos > $Total_Gral or $Total_Anticipos == $Total_Gral ){#CASO1
-  $detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$cta208."',3,'CARGO A LA CUENTA POR ANTICIPO','".$id_cliente."','".$referencia.  "',".$id_ctagastos.",".$Total_Anticipos.",0),";
+echo '/'.$moneda;
+echo '/'.$Total_Gral;
+if( $Total_Anticipos > 0 ){
+  if( $Total_Anticipos > $Total_Gral or $Total_Anticipos == $Total_Gral ){#CASO1
+    $detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$cta208."',3,'CARGO A LA CUENTA POR ANTICIPO','".$id_cliente."','".$referencia."',".$id_ctagastos.",".$Total_Anticipos.",0),";
+  }
 }
 
 if( $Total_Anticipos > 0 && $Total_Anticipos < $Total_Gral){#CASO2
-    $detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$cta208."',3,'CARGO A LA CUENTA POR ANTICIPO','".$id_cliente."','".$referencia.  "',".$id_ctagastos.",".$Total_Anticipos.",0),";
+    $detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$cta208."',3,'CARGO A LA CUENTA POR ANTICIPO','".$id_cliente."','".$referencia."',".$id_ctagastos.",".$Total_Anticipos.",0),";
 }
 
 if( $Total_Anticipos == 0 ){#CASO3
   $saldoPorCobrar = $Total_Gral;
-  $detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$cta106."',3,'SALDO POR COBRAR','".$id_cliente."','".$referencia.  "',".$id_ctagastos.",".$saldoPorCobrar.",0),";
+  $detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$cta106."',3,'SALDO POR COBRAR','".$id_cliente."','".$referencia."',".$id_ctagastos.",".$saldoPorCobrar.",0),";
 }
 
 ##--Se inserta el movimiento CUENTA CORRESPONSAL EXTRANJERO
 if( $POCME_Total_MN <> 0 ){
-  $detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'0110-00003',3,'CUENTA CORRESPONSAL EXTRANJERO','".$id_cliente."','".$referencia.  "',".$id_ctagastos.",0,".$POCME_Total_MN."),";
+  $detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'0110-00003',3,'CUENTA CORRESPONSAL EXTRANJERO','".$id_cliente."','".$referencia."',".$id_ctagastos.",0,".$POCME_Total_MN."),";
 }
 
 
@@ -63,6 +65,8 @@ $detPolCtaGastos = rtrim($detPolCtaGastos,',');
 
 $query_polDetCG = "INSERT INTO conta_t_polizas_det(fk_id_poliza,d_fecha,fk_factura,fk_id_cuenta,fk_tipo,s_desc,fk_id_cliente,fk_referencia,fk_ctagastos,n_cargo,n_abono)
           VALUES $detPolCtaGastos";
+
+echo $detPolCtaGastos;
 
 $stmt_polDetCG = $db->prepare($query_polDetCG);
 if (!($stmt_polDetCG)) {

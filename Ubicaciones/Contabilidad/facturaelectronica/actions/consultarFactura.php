@@ -40,6 +40,9 @@ if( $total_consultaFactura > 0 ) {
 	$s_selloCFDI = $row_consultaFactura['s_selloCFDI'];
 	$s_id_certificadoSAT = $row_consultaFactura['s_id_certificadoSAT'];
 	$s_selloSAT = $row_consultaFactura['s_selloSAT'];
+	$id_poliza_factura = $row_consultaFactura['fk_id_poliza'];
+	$fk_usuario_timbrado = $row_consultaFactura['fk_usuario'];
+
 	/*
 	$d_fecha_cta = $row_consultaFactura['d_fecha_cta'];
 	$fk_usuario = $row_consultaFactura['fk_usuario'];
