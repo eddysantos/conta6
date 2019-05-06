@@ -124,7 +124,7 @@ if( $rows > 0 ){
             <td class="col-md-2"><?php echo number_format($rowMST['n_valor'],2,'.',','); ?></td>
             <td class="col-md-2 pt-1">
       				<?php if( $mostrarCancela == true ){ ?>
-      					<select class="custom-select-ch" size="1" id="ant-cancela" <?php echo $txt_disabled; ?>>
+      					<select class="custom-select-s" size="1" id="ant-cancela" <?php echo $txt_disabled; ?>>
         					<?php if( $cancela == 0 ){
       							echo "<option value='0' selected>Activo</option>";
       							echo "<option value='1'>Cancelado</option>";

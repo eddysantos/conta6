@@ -75,7 +75,7 @@ if( $totalRegistrosSelect > 0 ){
   </div><!--/Termina DETALLE DATOS DE POLIZA-->
 
   <form  class="mt-4 font14">
-    <div class="row"><!--DETALLE DE POLIZAS-->
+    <div class="row m-0"><!--DETALLE DE POLIZAS-->
       <div class="col-md-2 offset-md-8">SUMA DE CARGOS</div>
       <div class="col-md-2">SUMA DE ABONOS</div>
     </div>
@@ -90,59 +90,60 @@ if( $totalRegistrosSelect > 0 ){
         <input  class="efecto" value="<?php echo $sumaAbonos; ?>" readonly>
       </div>
     </div>
-    <div class="row">
+    <div class="row m-0">
       <div class="col-md-4 offset-md-8"><?PHP echo $txt_status; ?></div>
     </div>
   </form>
 
 
-  <div id="detallepoliza" class="contorno mt-5 pl-4 pr-4">
+  <div id="detallepoliza" class="contorno mt-5 pl-4 pr-4" style='<?php echo $marginbottom ?>'>
     <div class="row m-0">
       <div class="col-md-12 encabezado font18">DETALLE POLIZA</div>
     </div>
     <table class="table table-hover">
       <tbody>
-        <tr class="backpink">
-          <td class="p-0">TIPO</td>
-          <td class="p-0">CUENTA</td>
-          <td class="p-0">GASTO</td>
-          <td class="p-0">PROV</td>
-          <td class="p-0">REFERENCIA</td>
-          <td class="p-0">CLIENTE</td>
-          <td class="p-0">DOCUMENTO</td>
-          <td class="p-0">FACTURA</td>
-          <td class="p-0">CTAGTOS</td>
-          <td class="p-0">PAGOELECT</td>
-          <td class="p-0">NOTACRED</td>
-          <td class="p-0">ANTICIPO</td>
-          <td class="p-0">CHEQUE</td>
-          <td class="p-0">DESCRIPCION</td>
-          <td class="p-0">CARGO</td>
-          <td class="p-0">ABONO</td>
-          <td class="p-0">FECHA</td>
+        <!-- <tr class="backpink"> -->
+        <tr class="row m-0 sub3 font12 b">
+          <td class="p-0" width="3%">TIPO</td>
+          <td class="p-0" width="6%">CUENTA</td>
+          <td class="p-0" width="6%">GASTO</td>
+          <td class="p-0" width="6%">PROV</td>
+          <td class="p-0" width="7%">REFERENCIA</td>
+          <td class="p-0" width="7%">CLIENTE</td>
+          <td class="p-0" width="7%">DOCUMENTO</td>
+          <td class="p-0" width="7%">FACTURA</td>
+          <td class="p-0" width="7%">CTAGTOS</td>
+          <td class="p-0" width="7%">PAGOELECT</td>
+          <td class="p-0" width="7%">NOTACRED</td>
+          <td class="p-0" width="7%">ANTICIPO</td>
+          <td class="p-0" width="4%">CHEQUE</td>
+          <td class="p-0" width="7%">CARGO</td>
+          <td class="p-0" width="7%">ABONO</td>
+          <td class="p-0" width="5%">FECHA</td>
         </tr>
         <?php
           if( $totalRegistrosPOLDET > 0 ){
             while ($oRst_POLDET = mysqli_fetch_array($sql_POLDET)){
         ?>
-        <tr class="borderojo">
-          <td><?php echo $oRst_POLDET['fk_tipo']; ?></td>
-          <td><?php echo $oRst_POLDET['fk_id_cuenta']; ?></td>
-          <td><?php echo $oRst_POLDET['fk_gastoAduana']; ?></td>
-          <td><?php echo $oRst_POLDET['fk_id_proveedor']; ?></td>
-          <td><?php echo $oRst_POLDET['fk_referencia']; ?></td>
-          <td><?php echo $oRst_POLDET['fk_id_cliente']; ?></td>
-          <td><?php echo $oRst_POLDET['s_folioCFDIext']; ?></td>
-          <td><?php echo $oRst_POLDET['fk_factura']; ?></td>
-          <td><?php echo $oRst_POLDET['fk_ctagastos']; ?></td>
-          <td><?php echo $oRst_POLDET['fk_pago']; ?></td>
-          <td><?php echo $oRst_POLDET['fk_nc']; ?></td>
-          <td><?php echo $oRst_POLDET['fk_anticipo']; ?></td>
-          <td><?php echo $oRst_POLDET['fk_cheque']; ?></td>
-          <td><?php echo $oRst_POLDET['s_desc']; ?></td>
-          <td><?php echo $oRst_POLDET['n_cargo']; ?></td>
-          <td><?php echo $oRst_POLDET['n_abono']; ?></td>
-          <td><?php echo $oRst_POLDET['d_fecha']; ?></td>
+        <tr class="row m-0 borderojo">
+          <td class="p-0" width="3%"><?php echo $oRst_POLDET['fk_tipo']; ?></td>
+          <td class="p-0" width="6%"><?php echo $oRst_POLDET['fk_id_cuenta']; ?></td>
+          <td class="p-0" width="6%"><?php echo $oRst_POLDET['fk_gastoAduana']; ?></td>
+          <td class="p-0" width="6%"><?php echo $oRst_POLDET['fk_id_proveedor']; ?></td>
+          <td class="p-0" width="7%"><?php echo $oRst_POLDET['fk_referencia']; ?></td>
+          <td class="p-0" width="7%"><?php echo $oRst_POLDET['fk_id_cliente']; ?></td>
+          <td class="p-0" width="7%"><?php echo $oRst_POLDET['s_folioCFDIext']; ?></td>
+          <td class="p-0" width="7%"><?php echo $oRst_POLDET['fk_factura']; ?></td>
+          <td class="p-0" width="7%"><?php echo $oRst_POLDET['fk_ctagastos']; ?></td>
+          <td class="p-0" width="7%"><?php echo $oRst_POLDET['fk_pago']; ?></td>
+          <td class="p-0" width="7%"><?php echo $oRst_POLDET['fk_nc']; ?></td>
+          <td class="p-0" width="7%"><?php echo $oRst_POLDET['fk_anticipo']; ?></td>
+          <td class="p-0" width="4%"><?php echo $oRst_POLDET['fk_cheque']; ?></td>
+          <td class="p-0" width="7%"><?php echo $oRst_POLDET['n_cargo']; ?></td>
+          <td class="p-0" width="7%"><?php echo $oRst_POLDET['n_abono']; ?></td>
+          <td class="p-0" width="5%"><?php echo $oRst_POLDET['d_fecha']; ?></td>
+          <td class='p-0 mt-2' width='8%'><b class='b'>DESCRIPCIÓN:</b></td>
+          <td class='p-0 mt-2 text-left' width='70%'><?php echo $oRst_POLDET['s_desc']; ?></td></td>
         </tr>
         <?php
           }

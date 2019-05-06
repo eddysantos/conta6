@@ -15,7 +15,7 @@
       </a>
     </div>
 
-    <div class="contorno" id="m-factura">
+    <div class="contorno" id="m-factura" style="<?php echo $marginbottom ?>">
       <form>
         <table class="table">
           <thead>

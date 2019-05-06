@@ -136,7 +136,7 @@ if( $rows > 0 ){
             <td class="col-md-2"><?php echo $rowMST['n_valor']; ?></td>
             <td class="col-md-2 pt-1">
       				<?php if( $mostrarCancela == true ){ ?>
-      					<select class="custom-select-ch" size="1" id="dchCancela" <?php echo $txt_disabled; ?>>
+      					<select class="custom-select-s" size="1" id="dchCancela" <?php echo $txt_disabled; ?>>
         					<?php if( $cancela == 0 ){
       							echo "<option value='0' selected>Activo</option>";
       							echo "<option value='1'>Cancelado</option>";
@@ -148,14 +148,14 @@ if( $rows > 0 ){
       				<?php }else{ echo $txt_cancela; } ?>
       			</td>
           </tr>
-          <tr class="row sub2 mt-4 font12">
-            <td class="col-md-1">CUENTA</td>
-            <td class="col-md-6">BENEFICIARIO</td>
+          <tr class="row sub2 mt-4 font12 justify-content-center">
+            <td class="col-md-2">CUENTA</td>
+            <td class="col-md-5">BENEFICIARIO</td>
             <td class="col-md-3">CONCEPTO</td>
           </tr>
-          <tr class="row">
-            <td class="col-md-1 p-0 pt-2"><?php echo $rowMST['fk_id_cuentaMST']; ?></td>
-            <td class="col-md-6"><?php echo $rowMST['s_nomOrd']; ?></td>
+          <tr class="row justify-content-center">
+            <td class="col-md-2"><?php echo $rowMST['fk_id_cuentaMST']; ?></td>
+            <td class="col-md-5"><?php echo $rowMST['s_nomOrd']; ?></td>
             <td class="col-md-3"><?php echo $rowMST['s_concepto']; ?></td>
           </tr>
         </tbody>
@@ -299,25 +299,6 @@ if( $rows > 0 ){
           <div class="contorno-mov mt-5">
             <table class="table table-hover">
               <thead>
-                <!-- <tr class="row m-0 backpink">
-                  <td class="p-0 pt-1 xs"></td>
-                  <td class="p-0 pt-1 small">CUENTA</td>
-                  <td class="p-0 pt-1 ssm">GASTO</td>
-                  <td class="p-0 pt-1 ssm">PROV</td>
-                  <td class="p-0 pt-1 small">REFERENCIA</td>
-                  <td class="p-0 pt-1 small">CLIENTE</td>
-                  <td class="p-0 pt-1 small">DOC</td>
-                  <td class="p-0 pt-1 ssm">FACT</td>
-                  <td class="p-0 pt-1 ssm">CTA GASTOS</td>
-                  <td class="p-0 pt-1 ssm">PAGO ELECT</td>
-                  <td class="p-0 pt-1 small">NOTACRED</td>
-                  <td class="p-0 pt-1 small">ANTICIPO</td>
-                  <td class="p-0 pt-1 ssm">CHEQUE</td>
-                  <td class="p-0 pt-1 med">DESCRIPCION</td>
-                  <td class="p-0 pt-1 small">CARGO</td>
-                  <td class="p-0 pt-1 small">ABONO</td>
-                  <td class="p-0 pt-1 xxs"></td>
-                </tr> -->
                 <tr class="row m-0 sub3 font12 b">
                   <td width="3%"></td>
                   <td width="7%">CUENTA</td>
@@ -347,26 +328,26 @@ if( $rows > 0 ){
             <div class="col-md-2 offset-md-8">SUMA DE CARGOS</div>
             <div class="col-md-2">SUMA DE ABONOS</div>
           </div>
-          <div class="row font14">
+          <div class="row font14 align-items-center mb-4">
             <!-- <div class="col-md-3 pt-3">
               <?php if( $oRst_permisos["s_reusar_cheques"] == 1 ){ ?>
               <a href="#detpol-Sueldos" data-toggle="modal" class="boton"><img src= "/conta6/Resources/iconos/refresh-button.svg"> REUSAR CHEQUE</a>
               <?php } ?>
             </div> -->
-            <div class="col-md-3 pt-3">
+            <div class="col-md-3">
               <?php if( $tienePoliza == false && $statusGeneraPoliza == true ){ ?>
               <a href="#" id="btn_generarPolChe" data-toggle="modal" class="boton"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR POLIZA DE CHEQUE</a>
               <?php } ?>
             </div>
-            <div class="col-md-2 offset-md-3 pt-3">
+            <div class="col-md-2 offset-md-3">
               <?php if( $tienePoliza == true ){ ?>
               <a href="#" id="btn_printChe"  class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
               <?php } ?>
             </div>
-            <div class="col-md-2 mt-3">
+            <div class="col-md-2">
               <input  class="efecto" id="sumCargos2_ch" value="<?php echo number_format($sumaCargos,2,'.',','); ?>" readonly>
             </div>
-            <div class="col-md-2 mt-3">
+            <div class="col-md-2">
               <input  class="efecto" id="sumAbonos2_ch" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
             </div>
           </div>
@@ -377,27 +358,6 @@ if( $rows > 0 ){
                 <tr class="row encabezado font18 m-0">
                   <td class="col-md-12">DETALLE CHEQUE</td>
                 </tr>
-                <!-- <tr class="row m-0 backpink">
-                  <td class="p-0 pt-1 xs"></td>
-                  <td class="p-0 pt-1 small">CUENTA</td>
-                  <td class="p-0 pt-1 ssm">GASTO</td>
-                  <td class="p-0 pt-1 ssm">PROV</td>
-                  <td class="p-0 pt-1 small">REFERENCIA</td>
-                  <td class="p-0 pt-1 small">CLIENTE</td>
-                  <td class="p-0 pt-1 small">DOC</td>
-                  <td class="p-0 pt-1 ssm">FACT</td>
-                  <td class="p-0 pt-1 ssm">CTA GASTOS</td>
-                  <td class="p-0 pt-1 ssm">PAGO ELECT</td>
-                  <td class="p-0 pt-1 small">NOTACRED</td>
-                  <td class="p-0 pt-1 small">ANTICIPO</td>
-                  <td class="p-0 pt-1 ssm">CHEQUE</td>
-                  <td class="p-0 pt-1 med">DESCRIPCION</td>
-                  <td class="p-0 pt-1 small">CARGO</td>
-                  <td class="p-0 pt-1 small">ABONO</td>
-                  <td class="p-0 pt-1 xxs"></td>
-                </tr> -->
-
-
                 <tr class="row m-0 sub3 font12 b">
                   <td width="3%"></td>
                   <td width="7%">CUENTA</td>
@@ -438,7 +398,7 @@ if( $rows > 0 ){
   require_once('modales/buscarFacturas.php');
 
 }else{ #$rows?>
-  <div class="container-fluid pantallaGris">
+  <div class="container-fluid pantallaGris" >
       <div class="tituloSinRegistros">NO EXISTE EL CHEQUE O ES DE OTRA OFICINA</div>
   </div>
 <?php

@@ -19,13 +19,13 @@
     </div>
   </div>
 
-  <div class="contorno" id="g-ctagastos" style="display:none; margin-bottom:100px!important">
+  <div class="contorno" id="g-ctagastos" style="display:none; <?php echo $marginbottom ?>">
     <div class="col-md-1 offset-sm-11 p-0">
       <a href="#" class="fele" accion="cuadroGenerar">
         <i class="back fa fa-arrow-left">Regresar</i>
       </a>
     </div>
-    <form class="form1">
+    <form class="form1 font12">
       <table class="table">
         <thead>
           <tr class="row encabezado font18">
@@ -40,8 +40,8 @@
               <label for="ctagatos-cReferencia">CON REFERENCIA</label>
             </td>
 
-             <!-- <input class='efecto popup-input' id='DGEcliente1' type='text' id-display='#popup-display-DGEcliente1' action='clientes' db-id='' autocomplete='off'>
-            <div class='popup-list' id='popup-display-DGEcliente1' style='display:none'></div> -->
+            <!-- <input class='efecto popup-input' id='DGEclienteK' type='text' id-display='#popup-display-DGEclienteK' action='clientes' db-id='' autocomplete='off'>
+            <div class='popup-list' id='popup-display-DGEclienteK' style='display:none'></div> -->
 
             <td class="col-md-2">
               <a href="#" id="btn_buscarDatosEmbarque" class="boton"> <i class="fa fa-search "></i> Consultar</a>
@@ -69,13 +69,15 @@
           </tr>
         </tbody>
       </table>
-      <div id="datosEmbarque"></div>
+      <table class='table'>
+        <tbody id="datosEmbarque"></tbody>
+      </table>
     </form>
   </div>
 
 
 <!---se muestra al dar click en Buscar-->
-  <div id="b-ctagastos" style="margin-top: 150px !important;margin-bottom:100px!important">
+  <div class="contenedor" id="b-ctagastos" style="display:none;<?php echo $marginbottom ?>">
     <div class="row m-0">
       <div class="col-md-1 offset-sm-8 ">
         <a href="#" class="fele" accion="cuadroBusqueda">
@@ -101,7 +103,7 @@
 
 
 <!---se muestra al escribir la referencia y dar enter-->
-  <div class="mt-5 contorno" id="m-ctagastos" style="display:none;margin-bottom: 8rem!important;">
+  <div class="mt-5 contorno" id="m-ctagastos" style="display:none;<?php echo $marginbottom ?>">
     <div class="col-md-1 offset-sm-11">
       <a href="#" class="fele" accion="cuadroConsultar">
         <i class="back fa fa-arrow-left">Regresar</i>

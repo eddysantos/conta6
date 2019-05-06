@@ -6,7 +6,6 @@ $id_referencia = $_POST['id_referencia'];
 
 // require $root . '/Conta6/Resources/PHP/actions/popup_actions/clientes.php';
 require $root . '/Conta6/Resources/PHP/actions/consultaDatosReferencia.php';
-// require $root . '/Conta6/Ubicaciones/footer.php';
 
 
 
@@ -17,7 +16,8 @@ if( $rows_buscaRef > 0 ){
   if ($id_aduanaReferencia == $aduana){ //VALIDO QUE LA ADUANA EN LA REFERENCIA CORRESPONDA A LA OFICINA ACTIVA
 
 
-    $datosEmbarque = "<table class='table font12'>";
+    $datosEmbarque = "";
+    // $datosEmbarque = "<table class='table font12'>";
       require $root . '/conta6/Resources/PHP/actions/datosGeneralesEmbarque.php';
 
       //consulto si ya tiene cuentas capturadas
@@ -64,6 +64,21 @@ if( $rows_buscaRef > 0 ){
           </td>
         </tr>";
       }
+
+      require $root . '/conta6/Resources/PHP/actions/lst_clientes.php';
+      if ($rslt_clientes->num_rows > 0) {
+        $tr_facturarOtro = "
+        <tr class='row mt-2 align-items-center'>
+          <td class='col-md-2 b text-right p-0'><b>Facturar a otro:</b></td>
+          <td class='col-md-7 p-0'>
+            <select class='custom-select-mod h25' size='1' id='DGEcliente'>
+              <option selected value='0'>Facturar a otro</option>
+              $clientes
+            </select>
+          </td>
+        </tr>";
+      }
+
 
 
       //Si tiene $tr_proforma
@@ -112,21 +127,17 @@ if( $rows_buscaRef > 0 ){
 
 
 
+
+      // <tr class='row mt-2 align-items-center'>
+      //   <td class='col-md-2 text-right b p-0'><b>Facturar a otro:</b></td>
+      //   <td class='col-md-7 p-0 input-effect'>
+      //     <input class='efecto popup-input' id='DGEcliente' type='text' id-display='#popup-display-DGEcliente' action='clientes' db-id='' autocomplete='off'>
+      //     <div class='popup-list' id='popup-display-DGEcliente' style='display:none'></div>
+      //   </td>
+      // </tr>
+
       $tr_factura = "$tr_corresponsal
-      <tr class='row mt-2 align-items-center'>
-        <td class='col-md-2 text-right b p-0'><b>Facturar a otro:</b></td>
-
-        <td class='col-md-7 p-0'>
-
-
-
-          <input class='efecto popup-input' id='DGEcliente' type='text' id-display='#popup-display-DGEcliente' action='clientes' db-id='' autocomplete='off'>
-          <div class='popup-list' id='popup-display-DGEcliente' style='display:none'></div>
-
-
-
-        </td>
-      </tr>
+      $tr_facturarOtro
       $tr_ctaAme
       $tr_proforma
       <tr class='row align-items-center mt-3'>
@@ -153,7 +164,7 @@ if( $rows_buscaRef > 0 ){
       </tr>";
 
 
-    $datosEmbarque .= $tr_factura."</table>";
+    $datosEmbarque .= $tr_factura;
 
     $system_callback['code'] = 1;
     $system_callback['data'] = $datosEmbarque;
@@ -170,6 +181,8 @@ if( $rows_buscaRef > 0 ){
 
 
 }//fin $rows_buscaRef
+
+// require $root . '/Conta6/Ubicaciones/footer.php';
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";

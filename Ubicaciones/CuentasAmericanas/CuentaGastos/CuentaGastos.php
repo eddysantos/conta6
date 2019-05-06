@@ -18,7 +18,7 @@
 
 
 <!---se muestra al dar click en Buscar-->
-  <div id="buscarRef" class="contenedor" style="display:none;margin-bottom:100px!important">
+  <div id="buscarRef" class="contenedor" style="display:none;<?php echo $marginbottom ?>">
     <div class="row m-0">
       <div class="col-md-1 offset-sm-8 font14">
         <a href="#" class="atras" accion="cuadroBusqueda">
@@ -111,7 +111,7 @@
       </div>
     </div>
   </div>
-  <div class="contorno" id="datosEmbarque" style="margin-bottom:100px!important;display:none"></div>
+  <div class="contorno" id="datosEmbarque" style="<?php echo $marginbottom ?>;display:none"></div>
 </div>
 
 <?php

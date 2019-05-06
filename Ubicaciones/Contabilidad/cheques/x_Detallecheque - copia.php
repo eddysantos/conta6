@@ -130,7 +130,7 @@ if( $rows > 0 ){
             <td class="col-md-2"><?php echo $rowMST['n_valor']; ?></td>
             <td class="col-md-2 pt-1">
       				<?php if( $mostrarCancela == true ){ ?>
-      					<select class="custom-select-ch" size="1" id="dchCancela">
+      					<select class="custom-select-s" size="1" id="dchCancela">
         					<?php if( $cancela == 0 ){
       							echo "<option value='0' selected>Activo</option>";
       							echo "<option value='1'>Cancelado</option>";

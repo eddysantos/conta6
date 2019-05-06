@@ -76,7 +76,7 @@ if( $totalRegistrosSelect > 0 ){
             <input class="efecto h22 border-0" id="mstpol-aduana" type="text" db-id="" autocomplete="off" disabled value="<?php echo trim($oRst_Select["fk_id_aduana"]); ?>">
           </td>
           <td class="col-md-2">
-            <select class="custom-select-ch" size="1" name="mstpol-cancela" id="mstpol-cancela" onchange="cambiarStatus()">
+            <select class="custom-select-s" size="1" name="mstpol-cancela" id="mstpol-cancela" onchange="cambiarStatus()">
 							<?php if( $cancela == 0 ){
 									echo "<option value='0' selected>Activo</option>";
 									echo "<option value='1'>Cancelado</option>";
@@ -95,7 +95,7 @@ if( $totalRegistrosSelect > 0 ){
           </td>
           <td class="col-md-1 text-left">
 		  	<?php if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 && $cancela == 0 ){ ?>
-            <a href="#" id="guardarPolMST" class="btn-block mt-1"> <img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
+            <a href="#" id="guardarPolMST" class="col-md-1 text-left align-self-center"> <img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
 			<?php } ?>
           </td>
         </tr>
@@ -323,24 +323,6 @@ if( $totalRegistrosSelect > 0 ){
                 </tr>
               </thead>
               <thead>
-                <!-- <tr class="row m-0 backpink">
-                  <td class="xs"></td>
-                  <td class="small">CUENTA</td>
-                  <td class="small">GASTO</td>
-                  <td class="small">PROV</td>
-                  <td class="small">REFERENCIA</td>
-                  <td class="small">CLIENTE</td>
-                  <td class="small">DOCUMENTO</td>
-                  <td class="small">FACTURA</td>
-                  <td class="small">NOTACRED</td>
-                  <td class="small">ANTICIPO</td>
-                  <td class="small">CHEQUE</td>
-                  <td class="med">DESCRIPCION</td>
-                  <td class="small">CARGO</td>
-                  <td class="small">ABONO</td>
-                  <td class="xs"></td>
-                </tr> -->
-
                 <tr class="row m-0 sub3 font12 b">
                   <td width="3%"></td>
                   <td width="8%">CUENTA</td>

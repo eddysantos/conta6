@@ -13,7 +13,7 @@
 
 
 <!--COMIENZA CHEQUES  -->
-  <div id="cheques" class="contorno text-center">
+  <div id="cheques" class="contorno text-center" style="<?php echo $marginbottom ?>">
     <table class="table form1 font14">
       <tbody>
         <tr class="row m-0 mt-5">

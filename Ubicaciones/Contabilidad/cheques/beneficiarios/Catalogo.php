@@ -30,7 +30,7 @@
 
   <div id="datosGeneralesBen"></div>
 
-  <div class='contorno mt-5 font14'>
+  <div class='contorno mt-5 font14' style="<?php echo $marginbottom ?>">
     <h5 class='titulo'>CUENTAS BANCARIAS</h5>
     <table class='table form1'>
       <tbody>

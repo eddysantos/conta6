@@ -57,39 +57,63 @@
     $sql_DET = mysqli_query($db,"SELECT * FROM conta_t_anticipos_det WHERE fk_id_anticipo = '$id_anticipo' ORDER BY pk_partida");
     $totalRegistrosDET = mysqli_num_rows($sql_DET);
 
+
+    // <td class='p-0 pt-3 xs'></td>
+    // <td class='p-0 pt-3 small'>CUENTA</td>
+    // <td class='p-0 pt-3 small'>REFERENCIA</td>
+    // <td class='p-0 pt-3 small'>CLIENTE</td>
+    // <td class='p-0 pt-3 small'>FACTURA</td>
+    // <td class='p-0 pt-3 small'>CTA GASTOS</td>
+    // <td class='p-0 pt-3 small'>PAGO ELECT</td>
+    // <td class='p-0 pt-3 small'>NOTACRED</td>
+    // <td class='p-0 pt-3 gde'>DESCRIPCION</td>
+    // <td class='p-0 pt-3 small'>CARGO</td>
+    // <td class='p-0 pt-3 small'>ABONO</td>
+
+    // <tr class='row borderojo'>
+    //   <td class='xs'></td>
+    //   <td class='small pt-3 p-0'>$row[fk_id_cuenta]</td>
+    //   <td class='small pt-3 p-0'>$row[fk_referencia]</td>
+    //   <td class='small pt-3 p-0'>$row[fk_id_cliente_antdet]</td>
+    //   <td class='small pt-3 p-0'>$row[fk_factura]</td>
+    //   <td class='small pt-3 p-0'>$row[fk_ctagastos]</td>
+    //   <td class='small pt-3 p-0'>$row[fk_pago]</td>
+    //   <td class='small pt-3 p-0'>$row[fk_nc]</td>
+    //   <td class='gde pt-3 p-0'>$row[s_desc]</td>
+    //   <td class='small pt-3 p-0'>$row[n_cargo]</td>
+    //   <td class='small pt-3 p-0'>$row[n_abono]</td>
+    //   <td class='xs'></td>
+    // </tr>
+
     if( $totalRegistrosDET > 0 ){
       while ($row = mysqli_fetch_array($sql_DET)){
 
-        $headDetalle ="<tr class='row encabezado'>
-          <td class='>DETALLE POLIZA</td>
-        </tr>
-        <tr class='row backpink'>
-          <th class='p-0 pt-3 xs'></th>
-          <td class='p-0 pt-3 small'>CUENTA</td>
-          <td class='p-0 pt-3 small'>REFERENCIA</td>
-          <td class='p-0 pt-3 small'>CLIENTE</td>
-          <td class='p-0 pt-3 small'>FACTURA</td>
-          <td class='p-0 pt-3 small'>CTA GASTOS</td>
-          <td class='p-0 pt-3 small'>PAGO ELECT</td>
-          <td class='p-0 pt-3 small'>NOTACRED</td>
-          <td class='p-0 pt-3 gde'>DESCRIPCION</td>
-          <td class='p-0 pt-3 small'>CARGO</td>
-          <td class='p-0 pt-3 small'>ABONO</td>
+        $headDetalle ="
+        <tr class='row sub3 font12 b'>
+          <td class='p-1' width='10%'>CUENTA</td>
+          <td class='p-1' width='10%'>REFERENCIA</td>
+          <td class='p-1' width='10%'>CLIENTE</td>
+          <td class='p-1' width='10%'>FACTURA</td>
+          <td class='p-1' width='10%'>CTA GASTOS</td>
+          <td class='p-1' width='10%'>PAGO ELECT</td>
+          <td class='p-1' width='10%'>NOTACRED</td>
+          <td class='p-1' width='15%'>CARGO</td>
+          <td class='p-1' width='15%'>ABONO</td>
         </tr>";
         $contenidoDetalle = "
         <tr class='row borderojo'>
-          <td class='xs'></td>
-          <td class='small pt-3 p-0'>$row[fk_id_cuenta]</td>
-          <td class='small pt-3 p-0'>$row[fk_referencia]</td>
-          <td class='small pt-3 p-0'>$row[fk_id_cliente_antdet]</td>
-          <td class='small pt-3 p-0'>$row[fk_factura]</td>
-          <td class='small pt-3 p-0'>$row[fk_ctagastos]</td>
-          <td class='small pt-3 p-0'>$row[fk_pago]</td>
-          <td class='small pt-3 p-0'>$row[fk_nc]</td>
-          <td class='gde pt-3 p-0'>$row[s_desc]</td>
-          <td class='small pt-3 p-0'>$row[n_cargo]</td>
-          <td class='small pt-3 p-0'>$row[n_abono]</td>
-          <td class='xs'></td>
+          <td class='p-1' width='10%'>$row[fk_id_cuenta]</td>
+          <td class='p-1' width='10%'>$row[fk_referencia]</td>
+          <td class='p-1' width='10%'>$row[fk_id_cliente_antdet]</td>
+          <td class='p-1' width='10%'>$row[fk_factura]</td>
+          <td class='p-1' width='10%'>$row[fk_ctagastos]</td>
+          <td class='p-1' width='10%'>$row[fk_pago]</td>
+          <td class='p-1' width='10%'>$row[fk_nc]</td>
+          <td class='p-1' width='15%'>$ $row[n_cargo]</td>
+          <td class='p-1' width='15%'>$ $row[n_abono]</td>
+
+          <td class='p-1 b' width='9%'><b>Descripción :</b></td>
+          <td class='p-1 text-left' width='80%'>$row[s_desc]</td>
         </tr>";
       }
     }else{
@@ -156,11 +180,11 @@
   </div><!--/Termina DETALLE DATOS DE POLIZA-->
 
   <form class="font14">
-    <div class="row mt-4">
+    <div class="row mt-4 m-0">
       <div class="col-md-2 offset-md-7">SUMA DE CARGOS</div>
       <div class="col-md-2">SUMA DE ABONOS</div>
     </div>
-    <div class="row">
+    <div class="row m-0">
       <div class="col-md-1">
         <?php if( $tienePoliza == true ){ ?>
         <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
@@ -172,7 +196,7 @@
       <div class="col-md-2">
         <input class="efecto" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
       </div>
-      <div class="row">
+      <div class="row m-0">
         <div class="col-md-4 offset-md-8"><?PHP echo $txtStatus; ?></div>
       </div>
     </div>
@@ -180,6 +204,9 @@
   <div id="detallepoliza" class="contorno">
     <table class="table table-hover">
       <thead class="font18">
+        <tr class="row encabezado">
+          <td class="col-md-12 p-2">DETALLE DE ANTICIPO</td>
+        </tr>
         <?php echo $headDetalle ?>
       </thead>
       <tbody class="font14" id="tabla_detalleanticipoConsulta"><?php echo $contenidoDetalle; ?></tbody>

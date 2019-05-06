@@ -35,7 +35,7 @@ if( $rows_buscaRef > 0 ){
 
         $tr_corresponsal = "
         <tr class='row mt-2 align-items-center'>
-          <td class='col-md-2 text-right b p-0'><b>Facturar a:</b></td>
+          <td class='col-md-2 text-right b pt-0 pb-0'><b>Facturar a:</b></td>
           <td class='col-md-7 p-0'>
             <select class='custom-select-mod h25' id='DGE_Lst_Datos' onchange='asignar_facturarA()'>
                   <option selected value='0'>Cliente / Corresponsal</option>
@@ -51,12 +51,26 @@ if( $rows_buscaRef > 0 ){
       if ($rslt_proforma->num_rows > 0) {
         $tr_proforma = "
         <tr class='row mt-2 align-items-center'>
-          <td class='col-md-2 b text-right p-0'><b>Proforma:</b></td>
+          <td class='col-md-2 b text-right pt-0 pb-0'><b>Proforma:</b></td>
           <td class='p-0 col-md-4'>
           <select class='custom-select-mod h25' size='1' id='DGEproforma' onchange='cargarSolicitudAnticipo()'>
             <option selected value='0'>Proforma</option>
             $proforma
           </select>
+          </td>
+        </tr>";
+      }
+
+      require $root . '/conta6/Resources/PHP/actions/lst_clientes.php';
+      if ($rslt_clientes->num_rows > 0) {
+        $tr_facturarOtro = "
+        <tr class='row mt-2 align-items-center'>
+          <td class='col-md-2 b text-right pt-0 pb-0'><b>Facturar a otro:</b></td>
+          <td class='col-md-7 p-0'>
+            <select class='custom-select-mod h25' size='1' id='DGEcliente'>
+              <option selected value='0'>Facturar a otro</option>
+              $clientes
+            </select>
           </td>
         </tr>";
       }
@@ -67,7 +81,7 @@ if( $rows_buscaRef > 0 ){
       if ($rslt->num_rows > 0) {
         $tr_facturaCFDI = "
         <tr class='row mt-2 align-items-center'>
-          <td class='col-md-2 b text-right p-0'><b>Factura CFDI:</b></td>
+          <td class='col-md-2 b text-right pb-0 pt-0'><b>Factura CFDI:</b></td>
           <td class='p-0 col-md-4'>
             <select class='custom-select-mod h25' size='1' id='DGEfacturas' onchange='cargarCtaAme()'>
               <option selected value='0'>Facturas</option>
@@ -95,20 +109,20 @@ if( $rows_buscaRef > 0 ){
         if( $tieneAlmacen == false && $aduana == 240 ){ $btn_siguiente = $btn; } // Nuevo Laredo no maneja tarifas de almacen.
         if( $tieneAlmacen == true && $aduana != 240 ){ $btn_siguiente = $btn; } // debe tener asignado un almacen
       }
-
+      // <tr class='row mt-2 align-items-center'>
+      //   <td class='col-md-2 text-right b p-0'><b>Facturar a otro:</b></td>
+      //   <td class='col-md-7 p-0'>
+      //     <input class='efecto popup-input h25' id='DGEclienteAme' type='text' id-display='#popup-display-DGEclienteAme' action='clientes_Ame' db-id='' autocomplete='off'>
+      //     <div class='popup-list' id='popup-display-DGEclienteAme' style='display:none'></div>
+      //   </td>
+      // </tr>
 
       $tr_factura = "$tr_corresponsal
-      <tr class='row mt-2 align-items-center'>
-        <td class='col-md-2 text-right b p-0'><b>Facturar a otro:</b></td>
-        <td class='col-md-7 p-0'>
-          <input class='efecto popup-input h25' id='DGEclienteAme' type='text' id-display='#popup-display-DGEclienteAme' action='clientes_Ame' db-id='' autocomplete='off'>
-          <div class='popup-list' id='popup-display-DGEclienteAme' style='display:none'></div>
-        </td>
-      </tr>
+      $tr_facturarOtro
       $tr_facturaCFDI
       $tr_proforma
       <tr class='row align-items-center mt-3'>
-        <td class='col-md-2 text-right b p-0'>
+        <td class='col-md-2 text-right b pt-0 pb-0'>
           <b>Expedir cta de gastos a:</b>
           <input type='hidden' id='docto' value='cliente'>
           <input type='hidden' id='opcionDoc' value='ctagastos'>

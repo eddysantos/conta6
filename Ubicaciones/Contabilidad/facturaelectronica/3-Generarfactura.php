@@ -18,8 +18,8 @@
   </div>
 
 
-  <div class="mt-5 contorno" id="m-factura" style="display:none;margin-bottom:100px!important">
-    <table class="table form1 font14">
+  <div class="mt-5 contorno" id="m-factura" style="display:none;<?php echo $marginbottom ?>">
+    <table class="table font14">
       <thead>
         <tr class="row">
           <td class="col-md-1 offset-md-11 ">

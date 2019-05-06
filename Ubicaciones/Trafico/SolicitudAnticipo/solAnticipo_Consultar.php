@@ -161,7 +161,7 @@
 </div>
 
 
-<div class="contorno">
+<div class="contorno" style="<?php echo $marginbottom ?>">
   <h5 class="titulo font14 b">CUENTA DE GASTOS</h5>
   <div class="row encabezado font14 m-0">
     <div class="col-md-6">PAGOS O CARGOS EN USD</div>

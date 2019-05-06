@@ -67,26 +67,40 @@
               </tr>
             </thead>
             <tbody class="font14">
-              <tr class="row mt-5">
-                <td class="col-md-2 input-effect">
-                  <input class="efecto popup-input" id="b-referencia1" type="text" id-display="#popup-display-b-referencia1" action="facturas_cfdi_referencia" db-id="" autocomplete="off">
-                  <div class="popup-list" id="popup-display-b-referencia1" style="display:none"></div>
-                  <label for="b-referencia1">Por Referencia</label>
-                </td>
-                <td class="col-md-2 input-effect">
-                  <input class="efecto popup-input" id="b-factura1" type="text" id-display="#popup-display-b-factura1" action="facturas_cfdi" db-id="" autocomplete="off">
-                  <div class="popup-list" id="popup-display-b-factura1" style="display:none"></div>
-                  <label for="b-factura1">Por Factura</label>
-                </td>
+
+
                 <?php if( $oRst_permisos['CFDI_lista_facturas'] == 1) {?>
+                <tr class="row mt-5">
+                  <td class="col-md-2 input-effect">
+                    <input class="efecto popup-input" id="b-referencia1" type="text" id-display="#popup-display-b-referencia1" action="facturas_cfdi_referencia" db-id="" autocomplete="off">
+                    <div class="popup-list" id="popup-display-b-referencia1" style="display:none"></div>
+                    <label for="b-referencia1">Por Referencia</label>
+                  </td>
+                  <td class="col-md-2 input-effect">
+                    <input class="efecto popup-input" id="b-factura1" type="text" id-display="#popup-display-b-factura1" action="facturas_cfdi" db-id="" autocomplete="off">
+                    <div class="popup-list" id="popup-display-b-factura1" style="display:none"></div>
+                    <label for="b-factura1">Por Factura</label>
+                  </td>
                 <td class="col-md-8 input-effect">
                   <input class="efecto popup-input" id="b-cliente1" type="text" id-display="#popup-display-b-cliente1" action="facturas_cfdi_cliente" db-id="" autocomplete="off">
                   <div class="popup-list" id="popup-display-b-cliente1" style="display:none"></div>
                   <label for="b-cliente1">Por Cliente</label>
                 </td>
-              <?php } ?>
-                </td>
               </tr>
+              <?php }else{  ?>
+                <tr class="row mt-5 justify-content-center">
+                  <td class="col-md-3 input-effect">
+                    <input class="efecto popup-input" id="b-referencia1" type="text" id-display="#popup-display-b-referencia1" action="facturas_cfdi_referencia" db-id="" autocomplete="off">
+                    <div class="popup-list" id="popup-display-b-referencia1" style="display:none"></div>
+                    <label for="b-referencia1">Por Referencia</label>
+                  </td>
+                  <td class="col-md-3 input-effect">
+                    <input class="efecto popup-input" id="b-factura1" type="text" id-display="#popup-display-b-factura1" action="facturas_cfdi" db-id="" autocomplete="off">
+                    <div class="popup-list" id="popup-display-b-factura1" style="display:none"></div>
+                    <label for="b-factura1">Por Factura</label>
+                  </td>
+                </tr>
+              <?php } ?>
             </tbody>
           </table>
         </div>

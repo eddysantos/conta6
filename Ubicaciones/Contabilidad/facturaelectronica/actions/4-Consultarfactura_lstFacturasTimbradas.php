@@ -152,8 +152,8 @@ if( $total_ctaGastos > 0 ){
 					<td class='col-md-4'>$id_cliente $s_nombre</td>
 					<td class='col-md-1'>
 						$hrefModificarCFDI
-						<a href='#' class='ver' accion='cuadroConsultar' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;consulta&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/magnifier.svg'></a>
-						<a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-5' src='/conta6/Resources/iconos/printer.svg'></a>
+						<a href='#' class='ver' accion='cuadroConsultar' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;consulta&#39;)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/magnifier.svg'></a>
+						<a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'></a>
 					</td>";
 		}
 
@@ -176,7 +176,7 @@ if( $total_ctaGastos > 0 ){
 					}
 				}
 
-				$hrefcancela = "<a href='#' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;cancelar&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
+				$hrefcancela = "<a href='#' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;cancelar&#39;)'><img class='icoxs' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
 
 			}
 

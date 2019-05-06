@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<div id="contornoEmp" class="contorno" style="margin-bottom:100px!important;">
+<div id="contornoEmp" class="contorno" style="<?php echo $marginbottom ?>;">
   <h5 class="titulo w2 font16">EMPLEADOS CAPTURADOS</h5>
   <table class="table mt-4">
     <tr class="row m-0 justify-content-end">
