@@ -11,7 +11,7 @@
       <div class="modal-body p-0">
         <div class="container-fluid">
           <div id="" class="contorno">
-            <form class="form1" style="letter-spacing:0px">
+            <form class="form1 ls0">
               <table class="table text-center">
                 <tbody>
                   <tr class="row mt-4">

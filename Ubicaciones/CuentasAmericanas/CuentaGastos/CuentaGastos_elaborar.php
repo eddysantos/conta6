@@ -255,7 +255,7 @@ if( $parteCliente == "CLT_" ){
                 <input class="w-100 h22 border-0 bt" type="text" id="T_Proveedor_Destinatario" value="<?php echo $nomProv;?>" readonly>
               </td>
             </tr>
-            <tr class='row backpink' style="font-size:14px!important">
+            <tr class='row backpink font14'>
               <td class='col-md-6 p-1'>Direccion Cliente</td>
               <td class="col-md-1 p-1"></td>
               <td class='col-md-5 p-1'>Direccion Proveedor</td>
@@ -397,8 +397,8 @@ if( $parteCliente == "CLT_" ){
           </thead>
           <tbody class="font14" id='tbodyDGE'>
 
-            <tr class="row justify-content-center">
-              <td class="col-md-1 text-right pt-3 ls0 b">Referencia: </td>
+            <tr class="row justify-content-center align-items-center">
+              <td class="col-md-1 text-right ls0 b">Referencia: </td>
               <td class="col-md-2 p-1">
                 <input class="efecto h22 text-left" type="text" id="T_Referencia" size="30" maxlength="60" value="<?php echo $id_referencia;?>" readonly>
               </td>
@@ -407,25 +407,25 @@ if( $parteCliente == "CLT_" ){
               </td>
             </tr>
 
-            <tr class="row justify-content-center">
-              <td class="col-md-1 text-right pt-3 ls0 b">Freight Bill : </td>
+            <tr class="row justify-content-center  align-items-center">
+              <td class="col-md-1 text-right ls0 b">Freight Bill : </td>
               <td class="col-md-3 p-1">
                 <input class="efecto h22 text-left" type="text" id="T_Freight" maxlength="40" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $guiaMaster; ?>">
               </td>
             </tr>
-            <tr class="row justify-content-center">
-              <td class="col-md-1 text-right pt-3 ls0 b">Quantity : </td>
+            <tr class="row justify-content-center  align-items-center">
+              <td class="col-md-1 text-right ls0 b">Quantity : </td>
               <td class="col-md-1 p-1">
                 <input class="efecto h22 text-left" type="text" id="T_Quantity" size="30" maxlength="150" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $entradas; ?>">
               </td>
-              <td class="col-md-1 pt-3 ls0 b text-right">Type : </td>
+              <td class="col-md-1 ls0 b text-right">Type : </td>
               <td class="col-md-1">
                 <input class="efecto h22 text-left" type="text" id="T_Type" size="30" maxlength="60" value="<?php echo $s_tipo; ?>" readonly>
               </td>
 
             </tr>
-            <tr class="row justify-content-center">
-              <td class="col-md-1 text-right pt-3 ls0 b">Description : </td>
+            <tr class="row justify-content-center  align-items-center">
+              <td class="col-md-1 text-right ls0 b">Description : </td>
               <td class="col-md-3 p-1">
                 <input class="efecto h22 text-left" id="T_Descripction" type="text" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $descripcionRef;?>" size="40" readonly>
               </td>
@@ -539,7 +539,7 @@ if( $parteCliente == "CLT_" ){
           <td class="w-50">
             <table class="table">
               <tr class="row">
-                <td class="col-md-3 text-right pt-3 font12 b"> PAGADA :</td>
+                <td class="col-md-3 text-right align-self-center font12 b"> PAGADA :</td>
                 <td class="col-md-3">
                   <select class="custom-select-s" id="T_pagada" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       <option value='1'>Si</option>

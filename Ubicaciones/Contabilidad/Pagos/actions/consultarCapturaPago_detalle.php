@@ -74,7 +74,7 @@ if( $total_consultaDetalle > 0 ) {
     #}
 		$pagosDetalle .= "
     <div class='elemento-pagDet'>
-      <div class='row m-0 font12 elemento-pagos borrar-pago remove_$pk_rowPago' id='$pk_rowPago'>
+      <div class='row m-0 font12 elemento-pagos borderojo borrar-pago remove_$pk_rowPago' id='$pk_rowPago'>
         <div class='col-md-1 text-right p-2 b'><b>Tipo Cadena:</b> </div>
         <div class='col-md-3 p-1'><input class='h22 efecto text-left t-tipoCadena border-0 bt' type='text' id='tipoCadena_$pk_rowPago' value='$s_tipoCadPago' readonly></div>
         <div class='col-md-1 text-right p-2 b'><b> Cuenta Emisor:</b> </div>
@@ -118,7 +118,7 @@ if( $total_consultaDetalle > 0 ) {
     "</div>";
 
     $pagosDetalle_consulta .= "
-    <div class='row m-0 font12 elemento-pagos borrar-pago remove_$pk_rowPago' id='$pk_rowPago'>
+    <div class='row m-0 font12 borderojo elemento-pagos borrar-pago remove_$pk_rowPago' id='$pk_rowPago'>
       <div class='col-md-1 text-right p-2 b'><b>Tipo Cadena:</b> </div>
       <div class='col-md-3 p-1'>$s_tipoCadPago</div>
       <div class='col-md-1 text-right p-2 b'><b> Cuenta Emisor:</b> </div>

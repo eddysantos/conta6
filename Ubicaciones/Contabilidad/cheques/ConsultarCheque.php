@@ -172,7 +172,7 @@
       <div class="col-md-2 offset-md-7">SUMA DE CARGOS</div>
       <div class="col-md-2">SUMA DE ABONOS</div>
     </div>
-    <div class="row m-0 pt-3">
+    <div class="row m-0 mt-3">
       <?php if( $tienePoliza == true ){ ?>
       <div class="col-md-1">
         <a href="#" id="btn_printChe" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>

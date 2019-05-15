@@ -22,13 +22,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="row">
-                <td class="col-md-2 centrar pt-3">N17003469</td>
-                <td class="col-md-2 centrar pt-3">75729</td>
-                <td class="col-md-2 centrar pt-3">11111</td>
-                <td class="col-md-2 centrar pt-3">-3,806.66</td>
-                <td class="col-md-2 centrar pt-2"><input class="efecto h22" type="text"></td>
-                <td class="col-md-2 centrar pt-1">
+              <tr class="row align-items-center">
+                <td class="col-md-2">N17003469</td>
+                <td class="col-md-2">75729</td>
+                <td class="col-md-2">11111</td>
+                <td class="col-md-2">-3,806.66</td>
+                <td class="col-md-2"><input class="efecto h22" type="text"></td>
+                <td class="col-md-2">
                   <div class="checkbox-xs">
                     <label>
                       <input type="checkbox" data-toggle="toggle">

@@ -138,7 +138,7 @@ if( $total_ctaGastos > 0 ){
 			}
 
 			$listaFacturas .= "
-				<tr class='row borderojo font14'>
+				<tr class='row borderojo font14 align-items-center'>
 					<td class='col-md-1'>
 						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFileXML&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/xml.svg'></a>
 						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.pdf&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>
@@ -181,7 +181,7 @@ if( $total_ctaGastos > 0 ){
 			}
 
 			$listaFacturas .= "
-				<tr class='row borderojo font14'>
+				<tr class='row borderojo font14 align-items-center'>
 					<td class='col-md-1'>
 						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFileXML&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/xml.svg'></a>
 						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>

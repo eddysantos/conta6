@@ -368,7 +368,7 @@ if($referencia != "SN"){
                 <input class="eff w-50 h22 text-left border-0 bt" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
               </td>
             </tr>
-            <tr class='row backpink' style="font-size:14px!important">
+            <tr class='row backpink font14'>
               <td class='col-md-6'>Direccion</td>
               <td class='col-md-6'>Proveedor</td>
             </tr>
@@ -591,16 +591,16 @@ if($referencia != "SN"){
                     <?php echo $datosPOCMEmodifi; ?>
                   </tbody>
                   <tfoot>
-                    <tr class='row mt-4 m-0 sub2'>
-                      <th class='col-md-2 pt-4'>Total</th>
+                    <tr class='row mt-4 m-0 sub2 align-items-center'>
+                      <th class='col-md-2'>Total</th>
                       <td class='col-md-2'>
                         <input class="efecto h22 bt" type="text" id="T_POCME_Total" size="17" onBlur="validaIntDec(this);" value="<?php echo $n_POCME_total_gral;?>" readonly>
                       </td>
-                      <th class='col-md-2 pt-4'>Al Tipo de Cambio</th>
+                      <th class='col-md-2'>Al Tipo de Cambio</th>
                       <td class='col-md-2'>
                         <input class="efecto h22" id="T_POCME_Tipo_Cambio" type="text" tabindex="<?php echo $tabindex = $tabindex+1; ?>" onBlur="validaIntDec(this);Suma_POCME();Conversion_Tipo_Cambio();" value="<?php echo $n_POCME_tipo_cambio;?>" size="17">
                       </td>
-                      <th class='col-md-2 pt-4'>Total MN</th>
+                      <th class='col-md-2'>Total MN</th>
                       <td class='col-md-2'>
                         <input class="efecto h22 bt" type="text" id="T_POCME_Total_MN" size="17" onBlur="validaIntDec(this);" value="<?php echo $n_POCME_total_MN;?>" readonly>
                       </td>
@@ -619,37 +619,37 @@ if($referencia != "SN"){
     		<!--div id='collapseTwo'-->
               <form class='form1' onsubmit="return false">
                 <div>
-                  <div class="row mt-3">
-                    <div class='col-md-1 text-right pt-2 b'>Almacen :</div>
+                  <div class="row mt-3 align-items-center">
+                    <div class='col-md-1 text-right b'>Almacen :</div>
                     <div class='col-md-4'>
                       <select size="1" id="Lst_Conceptos" onchange ="tarifaAlmacen()">
                       <?php echo $ConceptosAlmacen; ?>
                       </select>
                     </div>
                     <div class='col-md-3'></div>
-                    <div class='col-md-1 pt-2'>CUSTODIA</div>
-                    <div class='col-md-1 pt-2'>MANIOBRAS</div>
-                    <div class='col-md-1 pt-2'>ALMACENAJE</div>
-                    <div class='col-md-1 pt-2'>TOTAL</div>
+                    <div class='col-md-1'>CUSTODIA</div>
+                    <div class='col-md-1'>MANIOBRAS</div>
+                    <div class='col-md-1'>ALMACENAJE</div>
+                    <div class='col-md-1'>TOTAL</div>
                   </div>
-                  <div class='row mt-3'>
-                    <div class='col-md-1 text-right pt-2 b'>Libres :</div>
-                    <div class='col-md-4 pt-0'>
+                  <div class='row mt-3 align-items-center'>
+                    <div class='col-md-1 text-right b'>Libres :</div>
+                    <div class='col-md-4'>
                       <select size="1" id="Lst_CA" onchange="tarifaAlmacenLibre()">
                         <?php echo $conceptosLibresAlmacen; ?>
                       </select>
                     </div>
                     <div class='col-md-3'></div>
-                    <div class='col-md-1 pt-0'>
+                    <div class='col-md-1'>
                       <input class="h22 efecto" type="text" id="T_Valor_Custodia_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $n_total_custodia; ?>">
                     </div>
-                    <div class='col-md-1 pt-0'>
+                    <div class='col-md-1'>
                       <input class="h22 efecto" type="text" id="T_Valor_Manejo_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $n_total_manejo; ?>" />
                     </div>
-                    <div class='col-md-1 pt-0'>
+                    <div class='col-md-1'>
                       <input class="h22 efecto" type="text" id="T_Valor_Almacenaje_Aer" size="13" onblur="cortarDecimalesObj(this,2);totalManiobras();" value="<?php echo $n_total_almacenaje; ?>" />
                     </div>
-                    <div class='col-md-1 pt-0'>
+                    <div class='col-md-1'>
                       <input class="h22 efecto border-0" type="text" id="T_Valor_Total_Maniobras" onblur="Pasa_Valor_Maniobras()" size="13" value="<?php echo $n_total_maniobras;?>" readonly>
                     </div>
                   </div>
@@ -686,7 +686,7 @@ if($referencia != "SN"){
                   </thead>
                   <tbody id="tbodyCargos">
                     <tr id="9" class="row m-0">
-                      <td class='col-md-6 p-1 pt-3 b font12 ls1'>Impuestos Afianzados o Subsidiados</td>
+                      <td class='col-md-6 p-1 align-self-center b font12 ls1'>Impuestos Afianzados o Subsidiados</td>
                       <td class='col-md-4 p-1'></td>
                       <td class='col-md-2 p-1'>
                         <input class="efecto h22" type="text" id="T_Subsidio" size="20" onblur="validaIntDec(this);cortarDecimalesObj(this,2);Suma_Subtotales();" value="<?php echo $n_total_subsidiado;?>" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
@@ -710,45 +710,45 @@ if($referencia != "SN"){
               <div class='card-block'>
                 <form class='form1'>
                   <div class="">
-                    <div class="row mt-3">
-    				          <div class='col-md-1 pt-2  p-0 text-right b'>Honorarios :</div>
+                    <div class="row mt-3 align-items-center">
+    				          <div class='col-md-1  p-0 text-right b'>Honorarios :</div>
                       <div class='col-md-4'>
                         <select size="1" id="Lst_Conceptos_Honorarios" onchange="asignarTarifaH()">
                           <?php echo $ConceptosCliente; ?>
                         </select>
                       </div>
                       <div class="col-md-3"></div>
-                      <div class="col-md-2 pt-2 text-right b p-0">% de Honorarios :</div>
+                      <div class="col-md-2 text-right b p-0">% de Honorarios :</div>
                       <div class="col-md-2">
                         <input class="efecto h22" type="text" id="T_Honorarios_Porcentaje" onblur="Suma_Valor_Honorarios()" size="10" value="<?php echo cortarDecimales($porcentajeModifi); ?>" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </div>
                     </div>
 
-                    <div class='row mt-3'>
-                      <div class='col-md-1 pt-2 p-0 text-right b'>Libres :</div>
+                    <div class='row mt-3 align-items-center'>
+                      <div class='col-md-1 p-0 text-right b'>Libres :</div>
                       <div class='col-md-4'>
                         <select size="1" onchange="asignarTarifaHlibres()" id="Lst_CHL">
                           <?php echo $conceptosLibresCliente; ?>
                         </select>
                       </div>
                       <div class="col-md-3"></div>
-                      <div class="col-md-2 pt-2 text-right b p-0">Base :</div>
+                      <div class="col-md-2 text-right b p-0">Base :</div>
                       <div class="col-md-2">
                         <input class="efecto h22" type="text" id="T_Honorarios_Base_Honorarios" onblur="calculoHonorarios();" value="<?php echo $baseModifi; ?>" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </div>
                     </div>
 
-                    <div class='row mt-3'>
+                    <div class='row mt-3 align-items-center'>
                       <div class='col-md-8'></div>
-                      <div class="col-md-2 pt-2 text-right b p-0">% Descuento :</div>
+                      <div class="col-md-2 text-right b p-0">% Descuento :</div>
                       <div class="col-md-2">
                         <input class="efecto h22" type="text" id="T_Honorarios_Descuento" onblur="calculoHonorarios();" size="10" value="<?php echo cortarDecimales($descuentoModifi); ?>" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </div>
                     </div>
 
-                    <div class='row mt-3'>
+                    <div class='row mt-3 align-items-center'>
                       <div class='col-md-8'></div>
-                      <div class="col-md-2 pt-2 text-right b p-0">Minimo de Hon :</div>
+                      <div class="col-md-2 text-right b p-0">Minimo de Hon :</div>
                       <div class="col-md-2">
                         <input class="efecto h22" type= text id="T_Honorarios_Minimo_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="7" tabindex="<?php echo $tabindex = $tabindex+1;?>" value="<?php echo $honorarios; ?>">
                       </div>
@@ -780,7 +780,7 @@ if($referencia != "SN"){
                         <a href='#' id="Btn_Honorarios" onclick="agregarHonorarios()"><img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'></a>
                       </div>
 
-                      <div class='col-md-2 p-0 pt-2'>
+                      <div class='col-md-2 p-0 align-self-center'>
                         <a href="javascript:ayudaPermitidos();">Caracteres permitidos <img class='icochico' src='/conta6/Resources/iconos/help.svg'></a>
                       </div>
 
@@ -822,7 +822,7 @@ if($referencia != "SN"){
             <td class="w-50">
               <table class="table">
                 <tr class="row">
-                  <td class="col-md-3 text-left pt-4"> CUSTOMS DC </td>
+                  <td class="col-md-3 text-left align-self-center"> CUSTOMS DC </td>
                   <td class="col-md-3">
                     <select id="CUSTOMS" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                         <?php echo $datosCUSTOMS;?>
@@ -861,11 +861,11 @@ if($referencia != "SN"){
                   <td class="col-md-3">              </td>
                 </tr>
 
-                <tr class="row sub2">
+                <tr class="row sub2 align-items-self">
                   <td class="col-md-3">Forma de pago</td>
                   <td class="col-md-3">Número de cuenta</td>
                   <td class="col-md-3">Moneda</td>
-                  <td class="col-md-3 p-0 pt-3">Tipo Cambio (4 dec.)</td>
+                  <td class="col-md-3 p-0">Tipo Cambio (4 dec.)</td>
                 </tr>
 
                 <tr class="row">

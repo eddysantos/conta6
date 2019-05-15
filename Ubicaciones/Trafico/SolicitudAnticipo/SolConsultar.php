@@ -30,24 +30,24 @@
         <tr class='row encabezado font16'>
           <td class='col-md-12'>MOTORES ELECTRICOS SUMERGIBLES DE MEXICO S. DE R.L DE C.V</td>
         </tr>
-        <tr class='row backpink font14'>
-          <td class='col-md-6 p-0 pt-2'>Direccion</td>
-          <td class='col-md-6 p-0 pt-2'>Proveedor</td>
+        <tr class='row backpink font14 align-items-center'>
+          <td class='col-md-6 p-0'>Direccion</td>
+          <td class='col-md-6 p-0'>Proveedor</td>
         </tr>
       </thead>
       <tbody class="font14">
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-2'>Ave.Industrial Alimentaria 2001</td>
-          <td class='col-md-6 p-0 pt-2'>EC, DBA KECO</td>
+          <td class='col-md-6 p-0'>Ave.Industrial Alimentaria 2001</td>
+          <td class='col-md-6 p-0'>EC, DBA KECO</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-2'>Parque Industrial Linares</td>
+          <td class='col-md-6 p-0'>Parque Industrial Linares</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-2'>Linares Nuevo Leon C.P 67735</td>
+          <td class='col-md-6 p-0'>Linares Nuevo Leon C.P 67735</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-2'>MES0204122KA</td>
+          <td class='col-md-6 p-0'>MES0204122KA</td>
         </tr>
       </tbody>
     </table>
@@ -69,48 +69,48 @@
           <td class='col-md-4'>02/05/2017</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-3 text-right'>Nuestra Referencia:&nbsp;</td>
-          <td class='col-md-6 p-0 pt-3 text-left'>&nbsp;N17003012</td>
+          <td class='col-md-6 p-1 text-right'>Nuestra Referencia:</td>
+          <td class='col-md-6 p-1 text-left'>N17003012</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-3 text-right'>Descripcion General:&nbsp;</td>
-          <td class='col-md-6 p-0 pt-3 text-left'>&nbsp;Hidroxido de Aluminio</td>
+          <td class='col-md-6 p-1 text-right'>Descripcion General:</td>
+          <td class='col-md-6 p-1 text-left'>Hidroxido de Aluminio</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-3 text-right'>Peso en Kg:&nbsp;</td>
-          <td class='col-md-6 p-0 pt-3 text-left'>&nbsp;4660</td>
+          <td class='col-md-6 p-1 text-right'>Peso en Kg:</td>
+          <td class='col-md-6 p-1 text-left'>4660</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-3 text-right'>Tipo de Operacion:&nbsp;</td>
-          <td class='col-md-6 p-0 pt-3 text-left'>&nbsp;IN</td>
+          <td class='col-md-6 p-1 text-right'>Tipo de Operacion:</td>
+          <td class='col-md-6 p-1 text-left'>IN</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-3 text-right'>Talones, Guia o B/Ls:&nbsp;</td>
-          <td class='col-md-6 p-0 pt-3 text-left'>&nbsp;316140370</td>
+          <td class='col-md-6 p-1 text-right'>Talones, Guia o B/Ls:</td>
+          <td class='col-md-6 p-1 text-left'>316140370</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-3 text-right'>Facturas:&nbsp;</td>
-          <td class='col-md-6 p-0 pt-3 text-left'>&nbsp;47352,47353,47354,47355,47...</td>
+          <td class='col-md-6 p-1 text-right'>Facturas:</td>
+          <td class='col-md-6 p-1 text-left'>47352,47353,47354,47355,47...</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-3 text-right'>Fecha Arribo o Salida:&nbsp;</td>
-          <td class='col-md-6 p-0 pt-3 text-left'>&nbsp;01/05/2017</td>
+          <td class='col-md-6 p-1 text-right'>Fecha Arribo o Salida:</td>
+          <td class='col-md-6 p-1 text-left'>01/05/2017</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-3 text-right'>Procedencia o Destino:&nbsp;</td>
-          <td class='col-md-6 p-0 pt-3 text-left'>&nbsp;</td>
+          <td class='col-md-6 p-1 text-right'>Procedencia o Destino:</td>
+          <td class='col-md-6 p-1 text-left'></td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-3 text-right'>No.Pedimento:&nbsp;</td>
-          <td class='col-md-6 p-0 pt-3 text-left'>&nbsp;7003386</td>
+          <td class='col-md-6 p-1 text-right'>No.Pedimento:</td>
+          <td class='col-md-6 p-1 text-left'>7003386</td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-3 text-right'>Caja:&nbsp;</td>
-          <td class='col-md-6 p-0 pt-3 text-left'>&nbsp;</td>
+          <td class='col-md-6 p-1 text-right'>Caja:</td>
+          <td class='col-md-6 p-1 text-left'></td>
         </tr>
         <tr class='row'>
-          <td class='col-md-6 p-0 pt-3 text-right'>Valor en M.N:&nbsp;</td>
-          <td class='col-md-6 p-0 pt-3 text-left'>&nbsp;906,601/00</td>
+          <td class='col-md-6 p-1 text-right'>Valor en M.N:</td>
+          <td class='col-md-6 p-1 text-left'>906,601/00</td>
         </tr>
       </tbody>
     </table>

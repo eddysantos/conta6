@@ -29,7 +29,7 @@
         <tr class="row encabezado font16 mt-2">
           <td class="col-md-12">Cuentas de Gastos Capturadas</td>
         </tr>
-        <tr class="row backpink" style="font-size:16px!important">
+        <tr class="row backpink font16">
           <td class="col-md-1">Solicitud</td>
           <td class="col-md-1">Poliza</td>
           <td class="col-md-1"></td>

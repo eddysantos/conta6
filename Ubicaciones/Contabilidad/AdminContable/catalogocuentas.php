@@ -206,24 +206,24 @@
     <h5 class="titulo font16">CATALOGO</h5>
     <table class="table mt-4">
       <tr class="row m-0">
-        <td class="col-md-6 text-left pt-4">
+        <td class="col-md-6 text-left align-self-center">
           <a href="#" id="printCatCuentas"><img class="icomediano ml-4" src="/conta6/Resources/iconos/printer.svg"></a>
         </td>
-        <td class="col-md-3 offset-md-3">
+        <td class="col-md-3 offset-md-3 p-0">
           <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." table-body="#tabla_cuentas"  action="tablacuentasDet">
        </td>
       </tr>
     </table>
     <table class="table table-hover fixed-table" id="empleadosCap" style="display:none;">
       <thead>
-        <tr class="row m-0 encabezado font14">
+        <tr class="row m-0 encabezado font14 align-items-center">
           <td class="col-md-1"></td>
           <td class="col-md-1">CUENTA</td>
           <td class="col-md-4">DESCRIPCION</td>
           <td class="col-md-1">TIPO</td>
           <td class="col-md-1">NIVEL</td>
           <td class="col-md-1">CAPTURA</td>
-          <td class="col-md-1">CodAgrup SAT</td>
+          <td class="col-md-1 p-0">CodAgrup SAT</td>
           <td class="col-md-1">NATUR SAT</td>
           <td class="col-md-1">ACTIVIDAD</td>
         </tr>

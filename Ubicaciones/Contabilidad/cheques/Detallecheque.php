@@ -126,15 +126,15 @@ if( $rows > 0 ){
           </tr>
         </thead>
         <tbody>
-          <tr class="row">
-            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_poliza']; ?></td>
-            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_usuario']; ?></td>
-            <td class="col-md-1 pt-3"><?php echo $rowMST['pk_id_cheque']; ?></td>
-            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha_alta']; ?></td>
-            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fechache']; ?></td>
-            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_aduana']; ?></td>
+          <tr class="row align-items-center">
+            <td class="col-md-1"><?php echo $rowMST['fk_id_poliza']; ?></td>
+            <td class="col-md-1"><?php echo $rowMST['fk_usuario']; ?></td>
+            <td class="col-md-1"><?php echo $rowMST['pk_id_cheque']; ?></td>
+            <td class="col-md-2"><?php echo $rowMST['d_fecha_alta']; ?></td>
+            <td class="col-md-2"><?php echo $rowMST['d_fechache']; ?></td>
+            <td class="col-md-1"><?php echo $rowMST['fk_id_aduana']; ?></td>
             <td class="col-md-2"><?php echo $rowMST['n_valor']; ?></td>
-            <td class="col-md-2 pt-1">
+            <td class="col-md-2">
       				<?php if( $mostrarCancela == true ){ ?>
       					<select class="custom-select-s" size="1" id="dchCancela" <?php echo $txt_disabled; ?>>
         					<?php if( $cancela == 0 ){

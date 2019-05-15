@@ -14,7 +14,7 @@
   </div>
 
 <!--Comienza Consultar Parametros-->
-  <div id="contornoparam">
+  <div id="contornoparam" style="<?php echo $marginbottom ?>">
     <div class="contorno mt-5">
       <h5 class="titulo font14">PARAMETROS</h5>
       <div class="acordeon2">

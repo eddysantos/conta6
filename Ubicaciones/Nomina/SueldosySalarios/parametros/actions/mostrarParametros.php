@@ -40,7 +40,7 @@ while ($row = $rslt->fetch_assoc()) {
   $n_porcentaje = $row['n_porcentaje'];
   $d_fecha_modifi = $row['d_fecha_modifi'];
 
-  $system_callback['articulo'] .="<tr class='row borderojo'>
+  $system_callback['articulo'] .="<tr class='row borderojo align-items-center'>
     <td class='col-md-1'>
       <a href='#articulo80' data-toggle='modal' db-id='$pk_id_art80' class='editar'>
         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
@@ -98,7 +98,7 @@ while ($row = $rslt->fetch_assoc()) {
 
 
 
-  $system_callback['generales'] .="<tr class='row borderojo'>
+  $system_callback['generales'] .="<tr class='row borderojo align-items-center'>
     <td class='col-md-1'>
       <a href='#paramgenerales' data-toggle='modal' db-id='$pk_id_gen' class='editar'>
         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
@@ -155,7 +155,7 @@ while ($row = $rslt->fetch_assoc()) {
 
 
 
-  $system_callback['factor'] .="<tr class='row borderojo'>
+  $system_callback['factor'] .="<tr class='row borderojo align-items-center'>
     <td class='col-md-3'>
       <a href='#factorintegracion' data-toggle='modal' db-id='$pk_id_factor' class='editar'>
         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
@@ -207,7 +207,7 @@ while ($row = $rslt->fetch_assoc()) {
   $d_fecha_modifi = $row['d_fecha_modifi'];
 
 
-  $system_callback['subsidio'] .="<tr class='row borderojo'>
+  $system_callback['subsidio'] .="<tr class='row borderojo align-items-center'>
     <td class='col-md-2'>
       <a href='#subsidio' data-toggle='modal' db-id='$pk_id_subsidio'  class='editar'>
         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
@@ -262,7 +262,7 @@ while ($row = $rslt->fetch_assoc()) {
   $d_fecha_modifi = $row['d_fecha_modifi'];
 
 
-  $system_callback['imss'] .="<tr class='row borderojo'>
+  $system_callback['imss'] .="<tr class='row borderojo align-items-center'>
     <td class='col-md-1'>
       <a href='#imss' data-toggle='modal' db-id='$pk_id_imss'  class='editar'>
         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>

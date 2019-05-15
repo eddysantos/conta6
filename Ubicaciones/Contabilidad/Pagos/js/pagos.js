@@ -86,6 +86,9 @@ $(document).ready(function(){
   });
 
 
+
+
+
   $('#btn_buscarFactura_pagos').click(function(){
 
     cadena = $('#pagos-factura').attr('db-id');
@@ -119,11 +122,14 @@ $(document).ready(function(){
 
     buscarParcSalInsoluto(id_factura);
 
-    parcialidad = $('#pagos-factura-parcialidad').attr('value');
-    saldoAnterior = $('#pagos-factura-saldoAnterior').attr('value');
-    if( parcialidad == 1 ){ saldoAnterior = total_gral; }
-    $('#parcialidad').val(parcialidad).attr('value',parcialidad);
-    $('#T_saldoAnterior').val(saldoAnterior).attr('value',saldoAnterior);
+    // parcialidad = $('#pagos-factura-parcialidad').attr('value');
+    // saldoAnterior = $('#pagos-factura-saldoAnterior').attr('value');
+    // if( parcialidad == 1 ){ saldoAnterior = total_gral; }
+    // $('#parcialidad').val(parcialidad).attr('value',parcialidad);
+    // $('#T_saldoAnterior').val(saldoAnterior).attr('value',saldoAnterior);
+
+    $('.modal').modal('hide');
+
   });
 
 
@@ -567,7 +573,7 @@ function Btn_agregarPago(){
 
         var element = $('.t-pagosDET').length;
 
-        newdiv = "<div class='row m-0 font12 elemento-pagos remove_"+element+"' id='"+element+"'>";
+        newdiv = "<div class='row m-0 font12 elemento-pagos borderojo remove_"+element+"' id='"+element+"'>";
           newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b>Tipo Cadena:</b> </div>";
           newdiv = newdiv + " <div class='col-md-3 p-1'><input class='h22 efecto text-left t-tipoCadena border-0 bt' type='text' id='tipoCadena_"+element+"' readonly></div>";
           newdiv = newdiv + " <div class='col-md-1 text-right p-2 b'><b> Cuenta Emisor:</b> </div>";
@@ -836,6 +842,10 @@ function buscarParcSalInsoluto(id_factura){
         saldoAnterior = parteCadena2[1];
         $('#pagos-factura-parcialidad').val(parcialidad).attr('value',parcialidad);
         $('#pagos-factura-saldoAnterior').val(saldoAnterior).attr('value',saldoAnterior);
+
+        if( parcialidad == 1 ){ saldoAnterior = total_gral; }
+        $('#parcialidad').val(parcialidad).attr('value',parcialidad);
+        $('#T_saldoAnterior').val(saldoAnterior).attr('value',saldoAnterior);
       } else {
         console.error(r.message);
       }

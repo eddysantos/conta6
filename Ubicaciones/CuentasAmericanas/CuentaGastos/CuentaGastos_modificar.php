@@ -194,7 +194,7 @@ if($entradas > 1){
             <input class="w-100 h22 border-0 bt" type="text" id="T_Proveedor_Destinatario" value="<?php echo $nomProv;?>" readonly>
           </td>
         </tr>
-        <tr class='row backpink' style="font-size:14px!important">
+        <tr class='row backpink font14'>
           <td class='col-md-6 p-1'>Direccion Cliente</td>
           <td class="col-md-1 p-1"></td>
           <td class='col-md-5 p-1'>Direccion Proveedor</td>
@@ -332,8 +332,8 @@ if($entradas > 1){
       </thead>
       <tbody class="font14" id='tbodyDGE'>
 
-        <tr class="row justify-content-center">
-          <td class="col-md-1 text-right pt-3 ls0 b">Referencia: </td>
+        <tr class="row justify-content-center align-items-center">
+          <td class="col-md-1 text-right ls0 b">Referencia: </td>
           <td class="col-md-2 p-1">
             <input class="efecto h22 text-left" type="text" id="T_Referencia" size="30" maxlength="60" value="<?php echo $fk_referencia;?>" readonly>
           </td>
@@ -342,25 +342,25 @@ if($entradas > 1){
           </td>
         </tr>
 
-        <tr class="row justify-content-center">
-          <td class="col-md-1 text-right pt-3 ls0 b">Freight Bill : </td>
+        <tr class="row justify-content-center align-items-center">
+          <td class="col-md-1 text-right ls0 b">Freight Bill : </td>
           <td class="col-md-3 p-1">
             <input class="efecto h22 text-left" type="text" id="T_Freight" maxlength="40" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $s_guia_master; ?>">
           </td>
         </tr>
-        <tr class="row justify-content-center">
-          <td class="col-md-1 text-right pt-3 ls0 b">Quantity : </td>
+        <tr class="row justify-content-center align-items-center">
+          <td class="col-md-1 text-right ls0 b">Quantity : </td>
           <td class="col-md-1 p-1">
             <input class="efecto h22 text-left" type="text" id="T_Quantity" size="30" maxlength="150" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $n_bodegaIn; ?>">
           </td>
-          <td class="col-md-1 pt-3 ls0 b text-right">Type : </td>
+          <td class="col-md-1 ls0 b text-right">Type : </td>
           <td class="col-md-1">
             <input class="efecto h22 text-left" type="text" id="T_Type" size="30" maxlength="60" value="<?php echo $s_tipoRegimen; ?>" readonly>
           </td>
 
         </tr>
-        <tr class="row justify-content-center">
-          <td class="col-md-1 text-right pt-3 ls0 b">Description : </td>
+        <tr class="row justify-content-center align-items-center">
+          <td class="col-md-1 text-right ls0 b">Description : </td>
           <td class="col-md-3 p-1">
             <input class="efecto h22 text-left" id="T_Descripction" type="text" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $s_descripcion;?>" size="40" readonly>
           </td>
@@ -419,9 +419,8 @@ if($entradas > 1){
                 </select>
               </div>
             </div>
-            <div class="row mt-4">
-              <div class="col-md-1"></div>
-              <div class='col-md-1'>
+            <div class="row mt-4 justify-content-center">
+              <div class='col-md-1 p-0'>
                 <input class="efecto h22" type="text" id="T_no_calculo" onBlur="validaSoloNumeros(this);" size="4">
                 <input type="hidden" id="T_POCME_idConcep">
                 <input type="hidden" id="T_POCME_Cta">
@@ -438,7 +437,6 @@ if($entradas > 1){
                   <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
                 </a>
               </div>
-              <div class='col-md-1'></div>
             </div>
           </div>
           <form class='form1' onsubmit="return false">
@@ -473,8 +471,8 @@ if($entradas > 1){
     <tr>
       <td class="w-50">
         <table class="table">
-          <tr class="row">
-            <td class="col-md-3 text-right pt-3 font12 b"> PAGADA :</td>
+          <tr class="row align-items-center">
+            <td class="col-md-3 text-right font12 b"> PAGADA :</td>
             <td class="col-md-3">
               <select class="custom-select-s" id="T_pagada" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                   <?PHP echo $datosPAGADA; ?>

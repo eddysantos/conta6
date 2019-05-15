@@ -31,7 +31,7 @@
     <h5 class="titulo">CATÁLOGO</h5>
     <table class="table form1">
       <tbody>
-        <tr class="row m-0">
+        <tr class="row m-0 align-items-center">
           <td class="col-md-1">
             <a><img class="icomediano ml-2" src="/conta6/Resources/iconos/printer.svg"></a>
           </td>
@@ -40,7 +40,7 @@
             <div class="popup-list" id="popup-display-corp-cliente" style="display:none"></div>
             <label for="corp-cliente">Cliente</label>
           </td>
-          <td class="col-md-3 pt-3">
+          <td class="col-md-3">
             <a href="#" id="genCorresponsal" class="boton border-0 text-left"><img src= "/conta6/Resources/iconos/add.svg" class="icochico">  NUEVO CORRESPONSAL</a>
           </td>
         </tr>

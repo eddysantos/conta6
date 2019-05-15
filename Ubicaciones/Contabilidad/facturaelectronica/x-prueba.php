@@ -332,7 +332,7 @@ if($referencia != "SN"){
             <input class="efecto h22 border-0 bt" type="text" id="T_Nombre_Cliente" readonly value="<?php echo $CLT_nombre;?>" onchange="validarStringSAT(this);quitarNoUsar(this);">
           </td>
         </tr>
-        <tr class='row backpink' style="font-size:14px!important">
+        <tr class='row backpink font14'>
           <td class='col-md-6'>Direccion</td>
           <td class='col-md-6'>Proveedor</td>
         </tr>

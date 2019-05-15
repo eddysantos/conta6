@@ -152,7 +152,8 @@ if ($rows_datosCLTformaPago > 0) {
       </thead>
       <tbody class='font14 text-center'>
         <tr class="row">
-          <td class="p-1 col-md-3 text-left b"><b>Generada</b><input class="efecto h22 border-0" type="text" id="id_pago_captura" value="<?php echo $pk_id_pago_captura; ?>"></td>
+          <td class="p-1 col-md-1 text-left b"><b>Generada</b></td>
+          <td class="p-1 col-md-2"><input class="efecto text-left h22 border-0" type="text" id="id_pago_captura" value="<?php echo $pk_id_pago_captura; ?>"></td>
           <td class="p-1 col-md-3"></td>
           <td class="p-1 col-md-3">
             <input class="h22 bt border-0 text-center" type="text" id="T_Usuario" size="20"value="<?php echo $fk_usuario_alta; ?>" readonly>
@@ -350,22 +351,6 @@ if ($rows_datosCLTformaPago > 0) {
           <td class="col-md-3"><input class="efecto h22" type="text" id="Txt_sello"></td>
         </tr>
       </tbody>
-      <!--tfoot>
-        <tr class='row mt-4 sub2'>
-          <th class='col-md-2 pt-3'>Saldo Anterior</th>
-          <td class='col-md-2'>
-            <input class="efecto h22" type="text" id="T_saldoAnterior" size="17" onBlur="validaIntDec(this);suma_saldoInsoluto();" value="<?php echo $n_total_gral; ?>" <?php if( $oRst_permisos["s_rPgo_editSaldoAnterior"] == 0){ echo "readonly"; }?>>
-          </td>
-          <th class='col-md-2 pt-3'>Importe Pagado</th>
-          <td class='col-md-2'>
-            <input class="efecto h22" id="T_importePagado" onBlur="validaIntDec(this);" type="text" size="17" value="0" readonly>
-          </td>
-          <th class='col-md-2 pt-3'>Saldo Insoluto</th>
-          <td class='col-md-2'>
-            <input class="efecto h22" type="text" id="T_saldoInsoluto" size="17" onBlur="validaIntDec(this);" value="0" readonly>
-          </td>
-        </tr>
-      </tfoot-->
     </table>
 
     <table class='table'>
@@ -374,69 +359,69 @@ if ($rows_datosCLTformaPago > 0) {
           <td class="col-md-12">Datos de Factura Electronica
           <a href="#buscar_factura" data-toggle="modal"><img class='icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a></td>
         </tr>
-        <tr class="row sub3 b font12" style="background-color:rgba(173, 173, 173, 0.1)!important">
+        <tr class="row sub2 b font12">
           <td class="col-md-1 p-1">Aduana</td>
           <td class="col-md-1 p-1">Referencia</td>
-          <td class="col-md-2 p-1">UUID</td>
+          <td class="col-md-3 p-1">UUID</td>
           <td class="col-md-1 p-1">Factura</td>
           <td class="col-md-1 p-1">Moneda</td>
           <td class="col-md-1 p-1">Tipo Cambio</td>
           <td class="col-md-2 p-1">Total Honorarios</td>
           <td class="col-md-1 p-1">Metodo Pago</td>
-          <td class="col-md-2 p-1">Numero de Parcialidad</td>
+          <td class="col-md-1 p-1">#Parcialidad</td>
         </tr>
       </thead>
       <tbody class='font14 text-center'>
         <tr class="row borderojo text-center">
-          <td class="col-md-1">
+          <td class="col-md-1 p-1">
             <input class="h22 bt border-0 efecto" type="text" id="aduana_DR" size="20" value="<?php #echo $fk_id_aduana; ?>" readonly>
           </td>
-          <td class="col-md-1">
+          <td class="col-md-1 p-1">
             <input class="h22 bt border-0 efecto" type="text" id="referencia_DR" size="20" value="<?php #echo $fk_referencia; ?>" readonly>
           </td>
-          <td class="col-md-1">
+          <td class="col-md-3 p-1">
             <input class="h22 bt border-0 efecto" type="text" id="UUID_DR" size="20" value="<?php #echo $s_UUID; ?>" readonly>
           </td>
-          <td class="col-md-2">
+          <td class="col-md-1 p-1">
             <input class="h22 bt border-0 efecto" type="text" id="factura_DR" size="20" value="<?php #echo $pk_id_factura; ?>" readonly>
           </td>
-          <td class="col-md-1">
+          <td class="col-md-1 p-1">
             <input class="h22 bt border-0 efecto" type="text" id="moneda_DR" size="20" value="<?php #echo $fk_id_moneda; ?>" readonly>
           </td>
-          <td class="col-md-1">
+          <td class="col-md-1 p-1">
             <input class="h22 bt border-0 efecto" type="text" id="tipoCambio_DR" size="20" value="<?php #echo $n_tipoCambio; ?>" readonly>
           </td>
-          <td class="col-md-2">
+          <td class="col-md-2 p-1">
             <input class="h22 bt border-0 efecto" type="text" id="totalHon_DR" size="20" value="<?php #echo $n_total_gral; ?>" readonly>
           </td>
-          <td class="col-md-1">
+          <td class="col-md-1 p-1">
             <input class="h22 bt border-0 efecto" type="text" id="metPago_DR" size="20" value="<?php #echo $fk_c_MetodoPago; ?>" readonly>
           </td>
-          <td class="col-md-2">
+          <td class="col-md-1 p-1">
             <input type="text" id="parcialidad" size="20" value="<?php #echo $parcialidad; ?>"
 				        <?php if( $oRst_permisos["s_rPgo_editParcialidad"] == 0){ echo "class='h22 bt border-0 efecto' readonly"; }else{ echo "class='efecto h22' "; }?>
 			      >
           </td>
 		    </tr>
-        <tr class='row mt-4 sub2'>
-          <th class='col-md-1 pt-2'>Saldo Anterior</th>
-          <td class='col-md-2'>
+        <tr class='row mt-4 sub2 align-items-center'>
+          <th class='col-md-2'>Saldo Anterior</th>
+          <td class='col-md-1'>
             <input class="efecto h22" type="text" id="T_saldoAnterior" size="10" onBlur="validaIntDec(this);suma_saldoInsoluto();" value="<?php echo $n_total_gral; ?>"
                 <?php if( $oRst_permisos["s_rPgo_editSaldoAnterior"] == 0){ echo "readonly"; }?>
             >
           </td>
-          <th class='col-md-1 pt-2'>Importe Pagado</th>
-          <td class='col-md-2'>
+          <th class='col-md-2'>Importe Pagado</th>
+          <td class='col-md-1'>
             <input class="efecto h22" id="T_importePagado" onchange="validaIntDec(this);valImportePagoFactura();calculaDepIVA()" type="text" size="10" value="0">
           </td>
-          <th class='col-md-1 pt-2'>IVA</th>
-          <td class='col-md-2'>
+          <th class='col-md-2'>IVA</th>
+          <td class='col-md-1'>
             <input class="efecto h22" type="text" id="T_iva" onchange="validaIntDec(this)" value="0" readonly>
             <input type="hidden" id="T_deposito" value="0">
             <input type="hidden" id="T_sacarIVA" value="<?php echo $sacarIVA;?>">
           </td>
-          <th class='col-md-1 pt-2'>Saldo Insoluto</th>
-          <td class='col-md-2'>
+          <th class='col-md-2'>Saldo Insoluto</th>
+          <td class='col-md-1'>
             <input class="efecto h22" type="text" id="T_saldoInsoluto" size="10" onBlur="validaIntDec(this);" value="0" readonly>
           </td>
         </tr>
@@ -456,7 +441,7 @@ if ($rows_datosCLTformaPago > 0) {
   </div>
 
   </div>
-  <div class="row justify-content-center" style="<?php echo $marginbottom ?>">
+  <div class="row justify-content-center m-0" style="<?php echo $marginbottom ?>">
     <div class="col-md-3">
       <input class="efecto boton" type='button' value="GUARDAR" id="modificar-pago" />
     </div>

@@ -60,18 +60,18 @@ if( $totalRegistrosSelect > 0 ){
         </tr>
       </thead>
       <tbody>
-        <tr class="row m-0">
+        <tr class="row m-0 align-items-center">
           <td class="col-md-1">
             <input class="efecto h22" <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="off" value="<?php echo $tipo; ?>">
           </td>
           <td class="col-md-1">
             <input class="efecto h22 border-0" id="id_poliza" type="text" db-id="" autocomplete="off" disabled value="<?php echo $id_poliza; ?>">
           </td>
-          <td class="col-md-2 pt-4"><?php echo trim($oRst_Select["fk_usuario"]); ?></td>
+          <td class="col-md-2"><?php echo trim($oRst_Select["fk_usuario"]); ?></td>
           <td class="col-md-2">
             <input class="efecto h22" <?php echo $clase; ?> type="date" id="mstpol-fecha" value="<?php echo trim($oRst_Select["d_fecha"]); ?>">
           </td>
-          <td class="col-md-2 pt-4"><?php echo trim($oRst_Select["d_fecha_alta"]); ?></td>
+          <td class="col-md-2"><?php echo trim($oRst_Select["d_fecha_alta"]); ?></td>
           <td class="col-md-2">
             <input class="efecto h22 border-0" id="mstpol-aduana" type="text" db-id="" autocomplete="off" disabled value="<?php echo trim($oRst_Select["fk_id_aduana"]); ?>">
           </td>
@@ -93,9 +93,9 @@ if( $totalRegistrosSelect > 0 ){
             <input id="mstpol-concepto" <?php echo $clase; ?> value="<?php echo trim($oRst_Select["s_concepto"]); ?>" type="text" onchange="eliminaBlancosIntermedios(this)">
             <label for="concep">CONCEPTO</label>
           </td>
-          <td class="col-md-1 text-left">
+          <td class="col-md-1 text-left align-self-center">
 		  	<?php if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 && $cancela == 0 ){ ?>
-            <a href="#" id="guardarPolMST" class="col-md-1 text-left align-self-center"> <img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
+            <a href="#" id="guardarPolMST"> <img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
 			<?php } ?>
           </td>
         </tr>

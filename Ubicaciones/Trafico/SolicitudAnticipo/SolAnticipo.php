@@ -41,7 +41,7 @@
   </div>
 
 <!---se muestra al escribir la referencia y dar enter-->
-  <div class="contenedor contorno" id="repoSol-trafico" style="display:none">
+  <div class="contenedor contorno" id="repoSol-trafico" style="display:none;<?php echo $marginbottom ?>">
     <table class="table">
       <thead>
         <tr class="row">

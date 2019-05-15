@@ -14,8 +14,8 @@
       <div class="modal-body p-0">
         <form class="form1" method="post">
           <table class="table text-center">
-            <thead class="font14">
-              <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
+            <thead>
+              <tr class="row sub3 m-0 h30 align-items-center">
                 <td class="col-md-3">Inferior</td>
                 <td class="col-md-3">Superior</td>
                 <td class="col-md-3">Cuota</td>
@@ -61,10 +61,10 @@
         <h5 class="modal-tittle">Modificar</h5>
       </div>
       <div class="modal-body p-0">
-        <form class="form1" method="post">
+        <form class="form1">
           <table class="table text-center">
-            <thead style="font-size:12px">
-              <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
+            <thead>
+              <tr class="row sub3 m-0 h30 align-items-center">
                 <td class="col-md-2">Oficina</td>
                 <td class="col-md-2">Salario Min</td>
                 <td class="col-md-2">IMSS</td>
@@ -119,10 +119,10 @@
         <h5 class="modal-tittle">Modificar</h5>
       </div>
       <div class="modal-body p-0">
-        <form class="form1" method="post">
+        <form class="form1">
           <table class="table text-center">
-            <thead class="font14">
-              <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
+            <thead>
+              <tr class="row sub3 m-0 h30 align-items-center">
                 <td class="col-md-6">Oficina</td>
                 <td class="col-md-6">Integración</td>
               </tr>
@@ -163,8 +163,8 @@
       <div class="modal-body p-0">
         <form class="form1">
           <table class="table text-center">
-            <thead style="font-size:16px">
-              <tr class="row backpink m-0" style="height:30px;padding: .5rem!important;">
+            <thead>
+              <tr class="row sub3 m-0 h30 align-items-center">
                 <td class="col-md-4">Interior</td>
                 <td class="col-md-4">Superior</td>
                 <td class="col-md-4">Cuota</td>
@@ -207,10 +207,10 @@
         <h5 class="modal-tittle">Modificar</h5>
       </div>
       <div class="modal-body p-0">
-        <form class="form1" method="post">
+        <form class="form1">
           <table class="table text-center">
-            <thead style="font-size:16px">
-              <tr class="row backpink m-0" style="height:30px">
+            <thead>
+              <tr class="row sub3 m-0 h30 align-items-center">
                 <td class="col-md-1">Ramo</td>
                 <td class="col-md-3">Descripción</td>
                 <td class="col-md-2">Base</td>

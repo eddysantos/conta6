@@ -110,30 +110,30 @@
           </tr>
         </thead>
         <tbody class="font14">
-          <tr class="row m-0">
-            <td class="col-md-6 pt-1 p-0 text-right b">Reference : </td>
-            <td class="col-md-5 pt-1 p-0 text-left"><?php echo $fk_referencia; ?></td>
-            <td class="col-md-1 pt-1 p-0"></td>
+          <tr class="row m-0 align-items-center">
+            <td class="col-md-6 p-0 text-right b">Reference : </td>
+            <td class="col-md-5 p-0 text-left"><?php echo $fk_referencia; ?></td>
+            <td class="col-md-1 p-0"></td>
           </tr>
           <tr class="row m-0">
-            <td class="col-md-6 pt-1 p-0 text-right b">Freight Bill :</td>
-            <td class="col-md-5 pt-1 p-0 text-left"><?php echo $s_guia_master; ?></td>
-            <td class="col-md-1 pt-1 p-0"></td>
+            <td class="col-md-6 p-0 text-right b">Freight Bill :</td>
+            <td class="col-md-5 p-0 text-left"><?php echo $s_guia_master; ?></td>
+            <td class="col-md-1 p-0"></td>
           </tr>
           <tr class="row m-0">
-            <td class="col-md-6 pt-1 p-0 text-right b">Quantity :</td>
-            <td class="col-md-5 pt-1 p-0 text-left"><?php echo $n_bodegaIn; ?></td>
-            <td class="col-md-1 pt-1 p-0"></td>
+            <td class="col-md-6 p-0 text-right b">Quantity :</td>
+            <td class="col-md-5 p-0 text-left"><?php echo $n_bodegaIn; ?></td>
+            <td class="col-md-1 p-0"></td>
           </tr>
           <tr class="row m-0">
-            <td class="col-md-6 pt-1 p-0 text-right b">Type :</td>
-            <td class="col-md-5 pt-1 p-0 text-left"><?php echo $s_tipoRegimen;?></td>
-            <td class="col-md-1 pt-1 p-0"></td>
+            <td class="col-md-6 p-0 text-right b">Type :</td>
+            <td class="col-md-5 p-0 text-left"><?php echo $s_tipoRegimen;?></td>
+            <td class="col-md-1 p-0"></td>
           </tr>
           <tr class="row m-0">
-            <td class="col-md-6 pt-1 p-0 text-right b">Description :</td>
-            <td class="col-md-5 pt-1 p-0 text-left"><?php echo $s_descripcion;?></td>
-            <td class="col-md-1 pt-1 p-0"></td>
+            <td class="col-md-6 p-0 text-right b">Description :</td>
+            <td class="col-md-5 p-0 text-left"><?php echo $s_descripcion;?></td>
+            <td class="col-md-1 p-0"></td>
           </tr>
         </tbody>
       </table>

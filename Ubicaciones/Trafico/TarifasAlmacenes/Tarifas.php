@@ -22,7 +22,7 @@
 
   <div class="contorno mt-5">
     <h5 class="titulo font14">REGISTRAR TARIFA</h5>
-    <form class="form1" style="letter-spacing:0px">
+    <form class="form1 ls0">
       <table class="table">
         <tbody>
           <tr class="row">

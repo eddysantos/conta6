@@ -91,8 +91,8 @@
               <option value="5">Pólizas -- 4</option>
             </select>
           </td>
-          <td class="col-md-2 text-left">
-            <a href=""><img src= "/conta6/Resources/iconos/magnifier.svg" class="icomediano pt-1"></a>
+          <td class="col-md-2 text-left align-self-center">
+            <a href=""><img src= "/conta6/Resources/iconos/magnifier.svg" class="icomediano"></a>
           </td>
         </tr>
       </tbody>

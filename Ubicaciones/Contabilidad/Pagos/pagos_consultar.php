@@ -193,13 +193,13 @@
           <td class="p-1 col-md-3"><?php echo $d_fecha_modifi; ?></td>
         </tr>
     		<tr class="row">
-    			<td class="p-1 col-md-3 text-left"> Pago generado: <?php echo '<b>'.$id_factura.'</b> --- '.$s_UUID; ?></td>
+    			<td class="p-1 col-md-3 text-left b"><b>Pago generado: <?php echo $id_factura.'</b> --- '.$s_UUID; ?></td>
     			<td class="p-1 col-md-3"><?php echo $id_poliza; ?></td>
     			<td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
     			<td class="p-1 col-md-3"><?php echo $fechaTimbre; ?></td>
     		</tr>
   		  <tr class="row">
-    			<td class="p-1 col-md-3 text-left"> Pago cancelado:</td>
+    			<td class="p-1 col-md-3 text-left b"><b>Pago cancelado:</b></td>
     			<td class="p-1 col-md-3"></td>
     			<td class="p-1 col-md-3"><?php echo $usuario_Cancela; ?></td>
     			<td class="p-1 col-md-3"><?php echo $fechaTimbreCancela; ?></td>

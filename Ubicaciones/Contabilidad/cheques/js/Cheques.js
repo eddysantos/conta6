@@ -69,15 +69,15 @@ $(document).ready(function(){
 // $('#mModifiChCtaMST').keydown(function(e){
 $('#mModifiChIdcheque').keydown(function(e){
   if (e.keyCode === 13 || e.keyCode === 9) {
-	// if (e.keyCode === 13) {
     id_cheque = $('#mModifiChIdcheque').val();
     id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
     window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
 	}
 })
 
-$('#mConsChCtaMST').keydown(function(e){
-  // if (e.keyCode === 13) {
+
+// $('#mConsChCtaMST').keydown(function(e){
+$('#mConsChIdcheque').keydown(function(e){
 	if (e.keyCode === 13 || e.keyCode === 9) {
     id_cheque = $('#mConsChIdcheque').val();
     id_cuentaMST = $('#mConsChCtaMST').attr('db-id');

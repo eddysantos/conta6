@@ -114,15 +114,15 @@ if( $rows > 0 ){
           <input type="hidden" id="mst-importe" value="<?php echo $rowMST['n_valor']; ?>">
           <input type="hidden" id="mst-cliente" value="<?php echo $rowMST['fk_id_cliente_antmst']; ?>">
 
-          <tr class="row">
-            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_poliza']; ?></td>
-            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_usuario']; ?></td>
-            <td class="col-md-1 pt-3"><?php echo $rowMST['pk_id_anticipo']; ?></td>
-            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha_alta']; ?></td>
-            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha']; ?></td>
-            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_aduana']; ?></td>
+          <tr class="row align-items-center">
+            <td class="col-md-1"><?php echo $rowMST['fk_id_poliza']; ?></td>
+            <td class="col-md-1"><?php echo $rowMST['fk_usuario']; ?></td>
+            <td class="col-md-1"><?php echo $rowMST['pk_id_anticipo']; ?></td>
+            <td class="col-md-2"><?php echo $rowMST['d_fecha_alta']; ?></td>
+            <td class="col-md-2"><?php echo $rowMST['d_fecha']; ?></td>
+            <td class="col-md-1"><?php echo $rowMST['fk_id_aduana']; ?></td>
             <td class="col-md-2"><?php echo number_format($rowMST['n_valor'],2,'.',','); ?></td>
-            <td class="col-md-2 pt-1">
+            <td class="col-md-2">
       				<?php if( $mostrarCancela == true ){ ?>
       					<select class="custom-select-s" size="1" id="ant-cancela" <?php echo $txt_disabled; ?>>
         					<?php if( $cancela == 0 ){
@@ -143,7 +143,7 @@ if( $rows > 0 ){
             <td class="col-md-2">BANCO/CUENTA</td>
             <td class="col-md-6">CONCEPTO</td>
           </tr>
-    		  <tr  class="row">
+    		  <tr  class="row align-items-center">
 			      <td class="col-md-2"><?php echo $rowMST['fk_id_cuentaMST']; ?></td>
             <td class="col-md-1"><?php echo $rowMST['fk_id_cliente_antmst']; ?></td>
             <td class="col-md-2"><?php echo $rowMST['s_bancoOri'].'/'.$rowMST['s_ctaOri']; ?></td>
@@ -275,21 +275,6 @@ if( $rows > 0 ){
                   <td width="11%">ABONO</td>
                   <td width="4%"></td>
                 </tr>
-
-                <!-- <tr class="row backpink m-0">
-                  <td class="p-0 pt-2 xs"></td>
-                  <td class="p-0 pt-2 small">CUENTA</td>
-                  <td class="p-0 pt-2 small">REFERENCIA</td>
-                  <td class="p-0 pt-2 small">CLIENTE</td>
-                  <td class="p-0 pt-2 small">FACTURA</td>
-                  <td class="p-0 pt-2 small">CTA GASTOS</td>
-		              <td class="p-0 pt-2 small">PAGO ELECT</td>
-                  <td class="p-0 pt-2 small">NOTACRED</td>
-                  <td class="p-0 pt-2 gde">DESCRIPCION</td>
-                  <td class="p-0 pt-2 small">CARGO</td>
-                  <td class="p-0 pt-2 small">ABONO</td>
-                  <td class="p-0 pt-2 xs"></td>
-                </tr> -->
               </thead>
               <tbody id="ultimosRegistrosAnticipo"></tbody>
             </table>
@@ -349,20 +334,6 @@ if( $rows > 0 ){
                   <td width="11%">ABONO</td>
                   <td width="4%"></td>
                 </tr>
-                <!-- <tr class="row backpink m-0">
-                  <td class="p-0 pt-2 xs"></td>
-                  <td class="p-0 pt-2 small">CUENTA</td>
-                  <td class="p-0 pt-2 small">REFERENCIA</td>
-                  <td class="p-0 pt-2 small">CLIENTE</td>
-                  <td class="p-0 pt-2 small">FACTURA</td>
-                  <td class="p-0 pt-2 small">CTA GASTOS</td>
-		              <td class="p-0 pt-2 small">PAGO ELECT</td>
-                  <td class="p-0 pt-2 small">NOTACRED</td>
-                  <td class="p-0 pt-2 gde">DESCRIPCION</td>
-                  <td class="p-0 pt-2 small">CARGO</td>
-                  <td class="p-0 pt-2 small">ABONO</td>
-                  <td class="p-0 pt-2 xs"></td>
-                </tr> -->
               </thead>
               <tbody id="tabla_detalleanticipo" class="font12"></tbody>
             </table>
