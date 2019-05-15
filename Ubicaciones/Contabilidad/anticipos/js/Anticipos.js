@@ -429,13 +429,19 @@ function genAnt(){
 					}else{
 						if (id_cliente == 0){
 							alertify.error("Seleccione un Cliente");
-							return false
+							return false;
 						}else{
 							if(id_cliente.search(cliente) == 1){
 								alertify.error("Cliente Incorrecto");
-								return false
+								return false;
 							}else{
-								Inserta();
+                cltAnt = $('#mst-cliente').val();
+                if( cltAnt == id_cliente ){
+								   Inserta();
+                }else{
+                  alertify.error("Cliente Incorrecto, no coincide con el anticipo");
+  								return false;
+                }
 							}
 						}
 					}

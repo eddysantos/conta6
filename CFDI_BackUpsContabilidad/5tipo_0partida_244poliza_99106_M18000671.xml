@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd" Version="3.3" Folio="99106" Fecha="2019-04-03T17:11:49" Sello="lkQb4gijxSv5hWwgWQ1p564FgYN/fFI5fsdtS4Dc+6/kv/5u1jbv2EkrCf5Jv8yye+WjJJ/BMlKftm32hcfBxcGpcT2kdXJ4pPrl69rTaR3K3c/JvV/1DVv7FdAA0eKwkLRf3LJNPi9UpjFctI2KmiPacmTOSgL0YU8Vn3BQu8XtT5/bJiDMygSziUsRFxeN4Z57JQntg9IUfb4b8NrYzyUgrYAlE4aCtrbQK4EGpYekUM8hxLAMkKMqgcODi85LVv83Q+S3PJpmxhHOSU71g1vAZuoyBwFLtjIqyw52zM3/QS6C+hB57hD5777RE262/5KEcEJ35RlfIHz4ikd2Dw==" FormaPago="99" NoCertificado="00001000000404750920" Certificado="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" CondicionesDePago="Mismo dia" SubTotal="1.00" Moneda="MXN" TipoCambio="1" Total="1.16" TipoDeComprobante="I" MetodoPago="PPD" LugarExpedicion="28219">
+	<cfdi:Emisor Rfc="PLA090609&amp;21" Nombre="BABCOCK &amp; WILCOX DE MONTERREY SA DE CV" RegimenFiscal="601" />
+	<cfdi:Receptor Rfc="BAW090916RC4" Nombre="BABCOCK &amp; WILCOX DE MONTERREY SA DE CV" UsoCFDI="G03" />
+	<cfdi:Conceptos>
+		<cfdi:Concepto ClaveProdServ="80151605" Cantidad="1.000000" ClaveUnidad="E48" Unidad="Servicio" Descripcion="0,0000% de Honorarios sobre la base de:1,0000" ValorUnitario="1.00" Importe="1.00">
+			<cfdi:Impuestos>
+				<cfdi:Traslados>
+					<cfdi:Traslado Base="1.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="0.16" />
+				</cfdi:Traslados>
+			</cfdi:Impuestos>
+		</cfdi:Concepto>        
+	</cfdi:Conceptos>
+	<cfdi:Impuestos TotalImpuestosTrasladados="0.16">
+		<cfdi:Traslados>
+			<cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="0.16" />
+		</cfdi:Traslados>
+	</cfdi:Impuestos>
+<cfdi:Complemento><tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="15324552-5ADA-454B-AC0D-72334099F678" FechaTimbrado="2019-04-03T16:11:57" SelloCFD="lkQb4gijxSv5hWwgWQ1p564FgYN/fFI5fsdtS4Dc+6/kv/5u1jbv2EkrCf5Jv8yye+WjJJ/BMlKftm32hcfBxcGpcT2kdXJ4pPrl69rTaR3K3c/JvV/1DVv7FdAA0eKwkLRf3LJNPi9UpjFctI2KmiPacmTOSgL0YU8Vn3BQu8XtT5/bJiDMygSziUsRFxeN4Z57JQntg9IUfb4b8NrYzyUgrYAlE4aCtrbQK4EGpYekUM8hxLAMkKMqgcODi85LVv83Q+S3PJpmxhHOSU71g1vAZuoyBwFLtjIqyw52zM3/QS6C+hB57hD5777RE262/5KEcEJ35RlfIHz4ikd2Dw==" NoCertificadoSAT="00001000000404477432" SelloSAT="VAl180QtcRqEWN7rwP7K1F+4FDGRZzWza3uy/vVCQW8aSBaxLOUcHAz6eot31MDNMvJWtNrYzFpLMzlkqCG7NA/KPGd+9SudEcK+mKvuqjlNtT/ELJn8ycouPqqyWAldnUH344X3hcIzdJUqbSAKJBL9lYp48jejP8dEHg+Qph8Inh/WY4Usnf34mQ1y1JHCASsVdJH048pNCMn0rfRsCBFJ1Ao/hcePKjL1z9CYxVg34liSyaSMVMiKfDzqmMRv9QhsffLY6z+9+dvtRQ624DbbBEGYptBlmBgx/jizIo/CpnhqpqtXYiZJH0Zigg8zBrYDRhdlXwgzfiMQYBHEsg==" RfcProvCertif="EME000602QR9" /></cfdi:Complemento>
+<cfdi:Addenda>
+	<plaa:InformacionEmbarque xmlns:plaa="http://prologmex.com/Addenda/2014" xsi:schemaLocation="http://prologmex.com/Addenda/2014 http://prologmex.com/Addenda/2014/addendaPLAA.xsd">
+		<plaa:Vencimiento concepto="FECHA DE VENCIMIENTO" descripcion="2019-05-03"/>
+		<plaa:Direccion concepto="Calle" descripcion="VALLE ALEGRE COL. VALLE SOLEADO"/>
+		<plaa:Direccion concepto="NoExterior" descripcion="136"/>
+		<plaa:Direccion concepto="NoInterior" descripcion=""/>
+		<plaa:Direccion concepto="Colonia" descripcion="VALLE SOLEADO"/>
+		<plaa:Direccion concepto="CP" descripcion="67130"/>
+		<plaa:Direccion concepto="Ciudad" descripcion="GUADALUPE"/>
+		<plaa:Direccion concepto="Estado" descripcion="NUEVO LEON"/>
+		<plaa:General concepto="Aduana:" descripcion="160"/>
+		<plaa:General concepto="Nuestra Referencia:" descripcion="M18000671"/>
+		<plaa:General concepto="Descripción General:" descripcion="PARTES PARA CALDERAS..."/>
+		<plaa:General concepto="Peso en Kg.:" descripcion="532.000"/>
+		<plaa:General concepto="Tipo de Operación:" descripcion="IMP"/>
+		<plaa:General concepto="Talones, Guía o B/Ls:" descripcion="ONEYSELU81270300"/>
+		<plaa:General concepto="Facturas:" descripcion="2018-704,2018-703......"/>
+		<plaa:General concepto="Fecha Arribo o Salida:" descripcion="10-12-18"/>
+		<plaa:General concepto="Procedencia o Destino:" descripcion="KOREA"/>
+		<plaa:General concepto="No. Pedimento:" descripcion="8000671"/>
+		<plaa:General concepto="Su Referencia:" descripcion="COMPLEMENTO DE LA FACTURA 98961"/>
+		<plaa:General concepto="Clase de Mercancía:" descripcion=""/>
+		<plaa:General concepto="Bill of lading:" descripcion=""/>
+		<plaa:General concepto="Valor en M.N.:" descripcion="133120"/>
+		<plaa:Proveedor concepto="PROVEEDOR (IMP) O DESTINATARIO (EXP)" descripcion="BABCOCK &amp; WILCOX CO"/>
+		<plaa:POCME concepto="Total 0.00 Al Tipo de Cambio 20.47" importe="0.00"/>
+		<plaa:PagosRealizados concepto="Otros Gastos Comprobados" importe="696.00"/>
+		<plaa:PagosRealizados concepto="Maniobras" importe="2707.44"/>
+		<plaa:PagosRealizados concepto="Almacenaje" importe="5233.92"/>
+		<plaa:Totales concepto="Total Honorarios y Servicios" importe="1.00"/>
+		<plaa:Totales concepto="16% IVA sobre Honorarios y Servicios" importe="0.16"/>
+		<plaa:Totales concepto="Subtotal Honorarios y Servicios" importe="1.16"/>
+		<plaa:Totales concepto="Retención (4%) Impto. IVA" importe="0.00"/>
+		<plaa:Totales concepto="Total" importe="1.16"/>
+		<plaa:Totales concepto="Total Pagos o Cargos en Moneda Extranjera" importe="0.00"/>
+		<plaa:Totales concepto="Total Pagos Realizados por su Cuenta" importe="8637.36"/>
+		<plaa:Totales concepto="Total Cuenta de Gastos: *** OCHO MIL SEISCIENTOS TREINTA Y OCHO PESOS 52/100 M.N. ***" importe="8638.52"/>
+		<plaa:Totales concepto="Total Depósitos" importe="0.00"/>
+		<plaa:Totales concepto="Saldo" importe="8638.52"/>
+	</plaa:InformacionEmbarque>
+</cfdi:Addenda></cfdi:Comprobante>

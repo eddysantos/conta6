@@ -1641,6 +1641,7 @@ $('#modificar-cta-cfdi').click(function(){ // editar un CFDI - solo en la parte 
 
       var data = {
         folio: folio,
+        id_factura : $('#id_factura').val(),
         T_No_calculoTarifa : $('#T_No_calculoTarifa').val(),
         Txt_Usuario : $('#Txt_Usuario').val(),
         T_IGED_1 : $('#T_IGED_1').val(),
@@ -1666,6 +1667,7 @@ $('#modificar-cta-cfdi').click(function(){ // editar un CFDI - solo en la parte 
         Txt_Total_MN_Extranjera : $('#Txt_Total_MN_Extranjera').val(),
         T_Cta_Gastos : $('#T_Cta_Gastos').val(),
         T_Total_Anticipos : $('#T_Total_Anticipos').val(),
+        T_Total_Gral : $('#T_Total_Gral').val(),
 
         Txt_Cta_Gastos : $('#Txt_Cta_Gastos').val(),
         Txt_Total_Anticipos : $('#Txt_Total_Anticipos').val(),
@@ -1676,6 +1678,10 @@ $('#modificar-cta-cfdi').click(function(){ // editar un CFDI - solo en la parte 
         T_POCME_Tipo_Cambio : $('#T_POCME_Tipo_Cambio').val(),
         T_POCME_Total_MN : $('#T_POCME_Total_MN').val(),
         Total_Letra : $('#total_CuentaGastos').val(),
+        T_metodoPago : $('#T_metodoPago').val(),
+        T_Moneda : $('#T_Moneda').val(),
+        T_monedaTipoCambio : $('#T_monedaTipoCambio').val(),
+        
         dge: {},
         pocme: {},
         cargos: {},

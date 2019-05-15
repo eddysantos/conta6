@@ -33,13 +33,23 @@ $Txt_Cta_Gastos = trim($_POST['Txt_Cta_Gastos']);
 $Txt_Fac_Saldo = trim($_POST['Txt_Saldo_Gral']);
 $Txt_Total_Pagos = trim($_POST['Txt_Total_Pagos']);
 $Total_Pagos = trim($_POST['T_Total_Pagos']);
+//$Total_Gral = trim($_POST['T_Total_Gral']);
 
 $POCME_Total_Gral = trim($_POST['T_POCME_Total']);
 $POCME_Tipo_Cambio = trim($_POST['T_POCME_Tipo_Cambio']);
 $POCME_Total_MN = trim($_POST['T_POCME_Total_MN']);
 $Total_Letra = trim($_POST['Total_Letra']);
-$folio = trim($_POST['folio']);
+$metodoPago = trim($_POST['T_metodoPago']);
+$moneda = trim($_POST['T_Moneda']);
+$tipoCambio = trim($_POST['T_monedaTipoCambio']);
 
+$folio = trim($_POST['folio']);
+$id_factura = trim($_POST['id_factura']);
+$c_MetodoPago = $metodoPago;
+$id_cliente = $ID_Cliente;
+$referencia = $ID_Referencia;
+
+$total_pagosCLT = $Total_POCME + $Total_Pagos;
 /*
 $usoCFDI = trim($_POST['T_usoCFDI']);
 
@@ -58,7 +68,7 @@ $Honorarios_Subtotal_0 = trim($_POST['T_Honorarios_Subtotal_0']);
 $Total_Gral_Importe = trim($_POST['T_Total_Importes']);
 $Total_Gral_Iva = trim($_POST['T_Total_IVA']);
 $Fac_IVA_Retenido = trim($_POST['T_IVA_RETENIDO']);
-$Total_Gral = trim($_POST['T_Total_Gral']);
+
 $ID_ASOC = trim($_POST['CUSTOMS']);
 $IVA_Aplicado = trim($_POST['T_IVA_Porcentaje']);
 $Total_Honorarios = trim($_POST['T_SUBTOTAL_HON']);
@@ -71,10 +81,9 @@ $Txt_Total_Gral = trim($_POST['Txt_Total_Gral']);
 $Txt_POCME_Total = trim($_POST['Txt_POCME_Total']);
 $Txt_POCME_Tipo_Cambio = trim($_POST['Txt_POCME_Tipo_Cambio']);
 $formaPago = trim($_POST['T_FormaPago']);
-$metodoPago = trim($_POST['T_metodoPago']);
+
 $numCtaPago = trim($_POST['T_CuentaPago']);
-$moneda = trim($_POST['T_Moneda']);
-$tipoCambio = trim($_POST['T_monedaTipoCambio']);
+
 
 
 $Honorarios_Porcentaje = trim($_POST['T_Honorarios_Porcentaje']);
@@ -201,23 +210,90 @@ if( $Total_Cta_Gastos == 0 ){ #importe de los gastos por cuenta del cliente
 
 if( $Total_Cta_Gastos > 0 ){ #importe de los gastos por cuenta del cliente
   if( $total_consultaCtaGstos == 0 ) {
-      require $root . '/conta6/Ubicaciones\Contabilidad\facturaelectronica\actions\generarCFDI_factura_1genCtaGastos.php'; #$folioCtaGastos
-      require $root . '/conta6/Ubicaciones\Contabilidad\facturaelectronica\actions\generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php'; #$poliza_CtaGastos
+      echo "/entro1";
+      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
+      $fechaTimbre = $fechaTimbrado;
+      $idFactura = $pk_id_factura;
+      $r_razon_social = $Fac_Nombre;
+      $concepto = "CUENTA DE GASTOS - ".$r_razon_social;
+
+      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_1genCtaGastos.php'; #$folioCtaGastos
+      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php'; #$poliza_CtaGastos
+
+      if( $c_MetodoPago == 'PUE' && $fac_saldo < 0 ){
+        if( $fk_idpol_pagoaplicado > 0 ){
+          $polizaAplicado = $fk_idpol_pagoaplicado;
+          $id_poliza = $fk_idpol_pagoaplicado;
+          echo "/entro3";
+          require $root . '/conta6/Resources/PHP/actions/borrarDetallePoliza.php';
+          require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicadoDetalle.php';
+        }else{
+          require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
+        }
+      }
   }
 
   if( $total_consultaCtaGstos > 0 ) {
+    if( $fk_idpol_ctagastos > 0 ){
+      $poliza_CtaGastos = $fk_idpol_ctagastos;
+      $id_poliza = $fk_idpol_ctagastos;
+      echo "/entro4";
+      require $root . '/conta6/Resources/PHP/actions/borrarDetallePoliza.php';
 
+      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
+      $fecha = $fechaTimbrado;
+      $idFactura = $pk_id_factura;
+
+      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_det_ctaGastos.php';
+    }else{
+      echo "/entro2";
+      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
+      $fechaTimbre = $fechaTimbrado;
+      $idFactura = $pk_id_factura;
+      $r_razon_social = $Fac_Nombre;
+      $concepto = "CUENTA DE GASTOS - ".$r_razon_social;
+      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php'; #$poliza_CtaGastos
+    }
+
+    if( $c_MetodoPago == 'PUE' && $fac_saldo < 0 ){
+      if( $fk_idpol_pagoaplicado > 0 ){
+        $polizaAplicado = $fk_idpol_pagoaplicado;
+        $id_poliza = $fk_idpol_pagoaplicado;
+        echo "/entro5";
+        require $root . '/conta6/Resources/PHP/actions/borrarDetallePoliza.php';
+        require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicadoDetalle.php';
+      }else{
+        require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
+      }
+    }
   }
+
+  if( $poliza_CtaGastos > 0 || $polizaAplicado > 0 ){
+    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5guardarDatosPolizas.php';
+  }
+
+  $cliente = $ID_Cliente;
+
+
+  #nombre carpetas
+  $anioActual = date_format(date_create($fecha),"Y");
+  $rutaAnioActual = $root . '/conta6/CFDI_generados/'.$anioActual;
+  $rutaCLT = $rutaAnioActual.'/'.$cliente;
+  $rutaQR = $rutaCLT.'/QR';
+  #nombre del archivo
+  $nombre_archivo = $referencia.'_'.$id_factura.'_factura';
+  #ruta
+  $rutaRepFilePDF = $rutaCLT.'/'.$nombre_archivo.'.pdf';
+  $rutaQRFile = $rutaQR.'/'.$nombre_archivo.'.png';
+
+
+  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML.php';
+
+
 }
 
 
 
-#********************************************
-# poliza de pago aplicado
-// if( $c_MetodoPago == 'PUE' && $fac_saldo < 0 ){
-//   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
-//   $respGuardarDatos .= "✓ Póliza de Pago Aplicado: ".$polizaAplicado."\n";
-// }
 
 
 
@@ -226,7 +302,7 @@ if( $Total_Cta_Gastos > 0 ){ #importe de los gastos por cuenta del cliente
 
 # bitacora
 require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
-$descripcion = "Correccion a la factura: $pk_id_factura con numCaptura: $nFolio, ";
+$descripcion = "Correccion a la factura: $pk_id_factura con numCaptura: $cuenta, ";
 $clave = 'facturas';
 require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
 

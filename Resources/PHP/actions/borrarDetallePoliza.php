@@ -1,6 +1,5 @@
 <?php
-  $query_borrarDetPol = "DELETE conta_t_polizas_det
-                        WHERE  fk_id_poliza = ?";
+  $query_borrarDetPol = "DELETE FROM conta_t_polizas_det WHERE  fk_id_poliza = ?";
 
   $stmt_borrarDetPol = $db->prepare($query_borrarDetPol);
 
@@ -9,7 +8,7 @@
   }
 
   $stmt_borrarDetPol->bind_param('s',$id_poliza);
-  
+
   if (!($stmt_borrarDetPol)) {
     die("Error during variables binding borrarDetPol [$stmt_borrarDetPol->errno]: $stmt_borrarDetPol->error");
   }

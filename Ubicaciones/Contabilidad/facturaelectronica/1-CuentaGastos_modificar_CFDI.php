@@ -10,6 +10,37 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
 require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCMEmodifi
 require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargosModifi
 require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorariosModifi_CFDI
+require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
+
+$id_captura = $cuenta;
+require $root . '/conta6/Resources/PHP/actions/consultaFacturaTimbrada.php';
+if( $rows_facTimbrada == 0 ){
+  $s_UUID = '';
+  $id_factura = '';
+  $id_poliza = '';
+  $s_UUID = '';
+  $usuario_timbra = '';
+  $fechaTimbre = '';
+
+  $s_cancela_factura = '';
+  $fechaTimbreCancela = '';
+  $usuario_Cancela = '';
+  $s_selloSATcancela = '';
+}
+
+require $root . '/conta6/Resources/PHP/actions/consultaFactura_ctaGastos.php';
+if( $rows_ctaGastos == 0 ){
+  $id_ctagastos = '';
+  $fecha_ctagastos = '';
+  $id_polctagastos = '';
+  $cancela_ctagastos = '';
+  $id_polpagoaplic = '';
+  $cancela_pagoaplicado = '';
+  $fecha_genera = '';
+}
+
+
+
 
 
 if( $fk_id_asoc == 1 ){
@@ -344,6 +375,7 @@ if($referencia != "SN"){
     <input type="hidden" id="IVARETENIDO" value="<?PHP echo $retencion;?>">
     <input type="hidden" id="IVA_MENOS_RETENCION" value="<?PHP echo $iva_menos_retencion;?>">
     <input type="hidden" id="IVA_GRAL" value="<?PHP echo $ivaGral;?>">
+    <input type="hidden" id="id_factura" value="<?PHP echo $pk_id_factura;?>">
 
 
     <div class='text-center'>
@@ -468,15 +500,17 @@ if($referencia != "SN"){
             </tr>
             <tr class="row backpink">
               <td class="col-md-3"></td>
-              <td class="col-md-3">Póliza</td>
+              <td class="col-md-1">Folio</td>
+              <td class="col-md-2">Póliza</td>
               <td class="col-md-3">Usuario</td>
               <td class="col-md-3">Fecha</td>
             </tr>
           </thead>
           <tbody class='font14 text-center'>
             <tr class="row">
-              <td class="p-1 col-md-3 text-left b"><b>Cta. generada <?php echo $pk_id_cuenta_captura; ?></b> </td>
-              <td class="p-1 col-md-3"></td>
+              <td class="p-1 col-md-3 text-left b"><b>Cta. generada</b></td>
+              <td class="p-1 col-md-1"><?php echo $pk_id_cuenta_captura; ?></td>
+              <td class="p-1 col-md-2"></td>
               <td class="p-1 col-md-3">
                 <input class="h22 bt border-0 text-center" type="text" id="T_Usuario" size="20"value="<?php echo $fk_usuario; ?>" readonly>
               </td>
@@ -487,21 +521,38 @@ if($referencia != "SN"){
 
             <tr class="row b">
               <td class="p-1 col-md-3 text-left b"><b>Cta. modificada</b> </td>
-              <td class="p-1 col-md-3"></td>
+              <td class="p-1 col-md-1"></td>
+              <td class="p-1 col-md-2"></td>
               <td class="p-1 col-md-3"><?php echo $s_usuario_modifi; ?></td>
               <td class="p-1 col-md-3"><?php echo $d_fecha_modifi; ?></td>
             </tr>
             <tr class="row b">
               <td class="p-1 col-md-3 text-left b"><b>Factura generada</b> </td>
-              <td class="p-1 col-md-3"></td>
-              <td class="p-1 col-md-3"></td>
-              <td class="p-1 col-md-3"></td>
+              <td class="p-1 col-md-1"><?PHP echo $pk_id_factura;?></td>
+              <td class="p-1 col-md-2"><?php echo $id_poliza_factura;?></td>
+              <td class="p-1 col-md-3"><?php echo $fk_usuario_timbrado;?></td>
+              <td class="p-1 col-md-3"><?php echo $d_fechaTimbrado; ?></td>
             </tr>
-            <tr class="row b borderojo">
-              <td class="p-1 col-md-3 text-left b"><b></b> </td>
-              <td class="p-1 col-md-3"></td>
-              <td class="p-1 col-md-3"></td>
-              <td class="p-1 col-md-3"></td>
+            <tr class="row">
+              <td class="p-1 col-md-3 text-left"><b>Factura cancelada</b></td>
+              <td class="p-1 col-md-1"></td>
+              <td class="p-1 col-md-2"></td>
+              <td class="p-1 col-md-3"><?php echo $usuario_Cancela; ?></td>
+              <td class="p-1 col-md-3"><?php echo $fechaTimbreCancela; ?></td>
+            </tr>
+            <tr class="row">
+              <td class="p-1 col-md-3 text-left"><b>Cuenta de gastos</b></td>
+              <td class="p-1 col-md-1"><?php echo $id_ctagastos; ?></td>
+              <td class="p-1 col-md-2"><?php echo $id_polctagastos; ?></td>
+              <td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
+              <td class="p-1 col-md-3"><?php echo $fecha_genera; ?></td>
+            </tr>
+            <tr class="row">
+              <td class="p-1 col-md-3 text-left"><b>Pago aplicado</b></td>
+              <td class="p-1 col-md-1"></td>
+              <td class="p-1 col-md-2"><?php echo $id_polpagoaplic; ?></td>
+              <td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
+              <td class="p-1 col-md-3"><?php echo $fecha_genera; ?></td>
             </tr>
           </tbody>
         </table>
@@ -816,6 +867,11 @@ if($referencia != "SN"){
           <tr>
             <td class="w-50">
               <table class="table">
+                <tr class="row">
+                  <td class="col-md-3">
+                    <input class="efecto h22" type="text" id="T_metodoPago" value='<?php echo  $fk_c_MetodoPago; ?>' readonly>
+                 </td>
+                </tr>
                 <!--tr class="row">
                   <td class="col-md-3 text-left pt-4"> CUSTOMS DC </td>
                   <td class="col-md-3">

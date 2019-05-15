@@ -5,7 +5,6 @@
         <td class="col-md-4">
           <select class="custom-select" id="opcionespolizas">
             <option >Selecciona</option>
-            <option value="1">CFD/CBB</option>
             <option value="2">CFDI</option>
             <option value="3">Cheque</option>
             <option value="4">Comprobante Extranjero</option>
@@ -16,7 +15,9 @@
       </tr>
     </table>
   </form>
-  <div id="capturapoliza" class="contorno-mov cfdcbb"><!--solo aparece al seleccionar CFD / CBB-->
+
+  <!--solo aparece al seleccionar CFD / CBB-->
+  <!--div id="capturapoliza" class="contorno-mov cfdcbb">
     <table class="table form1">
       <thead>
         <tr class="row m-0 encabezado font18">
@@ -62,7 +63,7 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div-->
 
   <div id="capturapoliza" class="contorno-mov cfdi"><!--solo aparece al seleccionar CFDI-->
     <table class="table form1">
@@ -71,41 +72,58 @@
           <td class="col-md-12">CFDI</td>
         </tr>
         <tr class="row m-0 mt-3">
-          <td class="col-md-12 ">
-            <input type="file">
+          <td class="col-md-12">
+            <input type="file" id="archivo" onChange="processFiles(this.files)">
+            <div id="datosUUID"></div>
           </td>
         </tr>
       </thead>
       <tbody class="font14">
         <tr class="row m-0 mt-3">
           <td class="col-md-2 input-effect">
-            <input id="cfdi-rfc" class="efecto" type="text">
+            <input id="cfdi-rfc" class="efecto tiene-contenido" type="text" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaRFC(this);">
             <label for="cfdi-rfc">RFC</label>
           </td>
           <td class="col-md-5 input-effect">
-            <input id="cfdi-razonsocial" class="efecto" type="text">
+            <input id="cfdi-razonsocial" class="efecto tiene-contenido" type="text" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);">
             <label for="cfdi-razonsocial">Nombre / Razón Social</label>
           </td>
           <td class="col-md-5 input-effect">
-            <input id="cfdi-uuid" class="efecto" type="text">
+            <input id="cfdi-uuid" class="efecto tiene-contenido" type="text" onchange="eliminaBlancosIntermedios(this);">
             <label for="cfdi-uuid">UUID</label>
           </td>
         </tr>
         <tr class="row m-0 mt-4">
-          <td class="col-md-3 input-effect">
-            <input id="cfdi-subtotal" class="efecto" type="text">
+          <td class="col-md-2 input-effect">
+            <input id="cfdi-subtotal" class="efecto tiene-contenido" type="text" value="0" onchange="validaIntDec(this);">
             <label for="cfdi-subtotal">Subtotal</label>
           </td>
-          <td class="col-md-3 input-effect">
-            <input id="cfdi-iva" class="efecto" type="text">
-            <label for="cfdi-iva">IVA</label>
+          <td class="col-md-2 input-effect">
+            <input id="cfdi-ivatrasladado" class="efecto tiene-contenido" type="text" value="0" onchange="validaIntDec(this);">
+            <label for="cfdi-ivatrasladado">IVA Trasladado</label>
           </td>
-          <td class="col-md-3 input-effect">
-            <input id="cfdi-total" class="efecto" type="text">
+          <td class="col-md-2 input-effect">
+            <input id="cfdi-ivaretenido" class="efecto tiene-contenido" type="text" value="0" onchange="validaIntDec(this);">
+            <label for="cfdi-ivaretenido">IVA Retenido</label>
+          </td>
+          <td class="col-md-2 input-effect">
+            <input id="cfdi-isrretenido" class="efecto tiene-contenido" type="text" value="0" onchange="validaIntDec(this);">
+            <label for="cfdi-isrretenido">ISR Retenido</label>
+          </td>
+          <td class="col-md-2 input-effect">
+            <input id="cfdi-total" class="efecto tiene-contenido" type="text" value="0" onchange="validaIntDec(this);">
             <label for="cfdi-total">Total</label>
+            <input id="cfdi-moneda" type="hidden" value="">
+            <input id="cfdi-tc" type="hidden" value="">
           </td>
-          <td class="col-md-3 input-effect">
-            <input id="cfdi-aplicar" class="efecto" type="text">
+          <td class="col-md-2 input-effect">
+            <select class="custom-select tiene-contenido" id="cfdi-aplicar">
+              <option value="iva">IVA Trasladado</option>
+          		<option value="ivaRet">IVA Retenido</option>
+          		<option value="isr">ISR Retenido</option>
+          		<option value="subtotal">Subtotal</option>
+          		<option selected="selected" value="total">Total</option>
+            </select>
             <label for="cfdi-aplicar">Aplicar</label>
           </td>
         </tr>
@@ -133,11 +151,11 @@
             <label for="chorigen">Seleccione una Cuenta (Origen)</label>
           </td>
           <td class="col-md-2 input-effect">
-            <input id="ch-banco" class="efecto tiene-contenido" type="text" value="002">
+            <input id="ch-banco" class="efecto tiene-contenido" type="text" disabled>
             <label for="ch-banco">Banco</label>
           </td>
           <td class="col-md-3 input-effect">
-            <input id="ch-ncuenta" class="efecto tiene-contenido" type="text" value="7865432">
+            <input id="ch-ncuenta" class="efecto tiene-contenido" type="text" disabled>
             <label for="ch-ncuenta">No.Cuenta</label>
           </td>
           <td class="col-md-2 input-effect">
@@ -153,12 +171,12 @@
         </tr>
         <tr class="row m-0 mt-4">
           <td class="col-md-5 input-effect">
-            <input id="ch-emextran" class="efecto" type="text">
-            <label for="ch-emextran">Emisor Extranjero</label>
+            <input id="ch-emextran" class="efecto" type="text" onchange="eliminaBlancosIntermedios(this);">
+            <label for="ch-emextran">* Banco Emisor Extranjero</label>
           </td>
           <td class="col-md-2 input-effect">
-            <input id="ch-tc" class="efecto" type="text">
-            <label for="ch-tc">Tipo de Cambio</label>
+            <input id="ch-tc" class="efecto" type="text" onchange="validaIntDec(this);">
+            <label for="ch-tc">* Tipo de Cambio</label>
           </td>
           <td class="col-md-5 input-effect">
             <input  list="chmoneda" class="efecto" id="ch-moneda">
@@ -168,28 +186,28 @@
               <option value="Peso Cubano -- CUP"></option>
               <option value="Peso Filipino -- PHP"></option>
             </datalist>
-            <label for="ch-moneda">Moneda</label>
+            <label for="ch-moneda">* Moneda</label>
           </td>
         </tr>
         <tr class="row m-0 mt-4">
           <td class="col-md-1 input-effect">
-            <input id="ch-cheque1" class="efecto" type="text">
+            <input id="ch-cheque1" class="efecto" type="text" disabled>
             <label for="ch-cheque1">Cheque</label>
           </td>
           <td class="col-md-1 input-effect">
-            <input id="ch-importe" class="efecto" type="text">
+            <input id="ch-importe" class="efecto" type="text" disabled>
             <label for="ch-importe">Importe</label>
           </td>
           <td class="col-md-3 input-effect">
-            <input class="efecto tiene-contenido" type="date" id="ch-fecha">
+            <input class="efecto tiene-contenido" type="date" id="ch-fecha" disabled>
             <label for="ch-fecha">Fecha</label>
           </td>
           <td class="col-md-2 input-effect">
-            <input id="ch-rfcbenef" class="efecto" type="text">
+            <input id="ch-rfcbenef" class="efecto" type="text" disabled>
             <label for="ch-rfcbenef">RCF</label>
           </td>
           <td class="col-md-5 input-effect">
-            <input id="ch-nombrebenef" class="efecto" type="text">
+            <input id="ch-nombrebenef" class="efecto" type="text" disabled>
             <label for="ch-nombrebenef">Nombre Beneficiario</label>
           </td>
         </tr>
@@ -207,17 +225,17 @@
       <tbody class="font14">
         <tr class="row m-0 mt-4">
           <td class="col-md-4 input-effect">
-            <input id="comext-tax" class="efecto" type="text">
+            <input id="comext-tax" class="efecto" type="text" onchange="todasMayusculas(this);eliminaBlancosIntermedios(this);">
             <label for="comext-tax">Tax ID</label>
           </td>
           <td class="col-md-8 input-effect">
-            <input id="comext-razsocial" class="efecto" type="text">
+            <input id="comext-razsocial" class="efecto" type="text" onchange="todasMayusculas(this);eliminaBlancosIntermedios(this);">
             <label for="comext-razsocial">Nombre / Razón Social</label>
           </td>
         </tr>
         <tr class="row m-0 mt-4">
           <td class="col-md-3 input-effect">
-            <input id="comext-fact" class="efecto" type="text">
+            <input id="comext-fact" class="efecto" type="text" onchange="eliminaBlancosIntermedios(this);">
             <label for="comext-fact">Número de Factura</label>
           </td>
           <td class="col-md-5 input-effect">
@@ -231,11 +249,11 @@
             <label for="comext-moneda">Seleccione una Cuenta</label>
           </td>
           <td class="col-md-2 input-effect">
-            <input id="comext-tc" class="efecto" type="text">
+            <input id="comext-tc" class="efecto" type="text" onchange="validaIntDec(this);">
             <label for="comext-tc">Tipo de Cambio</label>
           </td>
           <td class="col-md-2 input-effect">
-            <input id="comext-total" class="efecto" type="text">
+            <input id="comext-total" class="efecto" type="text" onchange="validaIntDec(this);">
             <label for="comext-total">Total</label>
           </td>
         </tr>
@@ -264,7 +282,7 @@
               <label for="otr-pago">Metodo Pago</label>
             </td>
             <td class="col-md-3 input-effect">
-              <input id="otr-rfc" class="efecto" type="text">
+              <input id="otr-rfc" class="efecto" type="text" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaRFC(this);">
               <label for="otr-rfc">RFC</label>
             </td>
             <td class="col-md-6 input-effect">
@@ -278,7 +296,7 @@
               <label for="otr-fecha">Fecha</label>
             </td>
             <td class="col-md-2 input-effect">
-              <input id="otr-imp" class="efecto" type="text">
+              <input id="otr-imp" class="efecto" type="text" onchange="validaIntDec(this);">
               <label for="otr-imp">Importe</label>
             </td>
             <td class="col-md-5 input-effect">
@@ -292,7 +310,7 @@
               <label for="otr-moneda">Moneda</label>
             </td>
             <td class="col-md-2 input-effect">
-              <input id="otr-tc" class="efecto" type="text">
+              <input id="otr-tc" class="efecto" type="text" onchange="validaIntDec(this);">
               <label for="otr-tc">Tipo de Cambio</label>
             </td>
           </tr>
@@ -387,7 +405,7 @@
             <input  class="efecto h22" type="text" value="Martinez Martinez">
           </td>
           <td class="col-md-2">
-            <input class="efecto h22" type="text" value="MAMD800330DQ3">
+            <input class="efecto h22" type="text" value="MAMD800330DQ3" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaRFC(this);">
           </td>
         </tr>
 
@@ -425,7 +443,7 @@
             <input  class="efecto h22" type="text" value="Martinez Martinez">
           </td>
           <td class="col-md-3">
-            <input class="efecto h22" type="text" value="MAMD800330DQ3">
+            <input class="efecto h22" type="text" value="MAMD800330DQ3" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaRFC(this);">
           </td>
         </tr>
         <tr class="row m-0">
@@ -463,7 +481,7 @@
             <label class="pt-1" for="trans-desext">Bco. Destino Extranjero</label>
           </td>
           <td class="col-md-2">
-            <input id="trans-tc" class="efecto h22" type="text">
+            <input id="trans-tc" class="efecto h22" type="text" onchange="validaIntDec(this);">
             <label class="pt-1" for="trans-tc">Tipo de Cambio</label>
           </td>
           <td class="col-md-4">
@@ -483,7 +501,7 @@
             <label class="pt-1" for="trans-fecha">Fecha</label>
           </td>
           <td class="col-md-2">
-            <input id="trans-imp" class="efecto h22" type="text">
+            <input id="trans-imp" class="efecto h22" type="text" onchange="validaIntDec(this);">
             <label class="pt-1" for="trans-imp">Importe</label>
           </td>
           <td class="col-md-7">
@@ -496,11 +514,13 @@
   </div>
 
 <!-- DETALLE DE LA POLIZA -->
+
   <div class="contorno-mov mt-4">
     <div class="table table-hover mt-4">
       <div id="infAddtabla_detallePoliza" class="font12"></div>
     </div>
   </div>
-</div><!--Termina desplazamiento numero 3-->
+</div>
+<!--Termina desplazamiento numero 3-->
 
  <!-- prueba modificar -->
