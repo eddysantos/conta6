@@ -113,6 +113,7 @@ if( $rows > 0 ){
           <input type="hidden" id="mst-concepto" value="<?php echo $rowMST['s_concepto']; ?>">
           <input type="hidden" id="mst-importe" value="<?php echo $rowMST['n_valor']; ?>">
           <input type="hidden" id="mst-cliente" value="<?php echo $rowMST['fk_id_cliente_antmst']; ?>">
+          <input type="hidden" id="tipoDoc" value="5">
 
           <tr class="row">
             <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_poliza']; ?></td>
@@ -173,7 +174,7 @@ if( $rows > 0 ){
         </li>
         <?php if( $id_poliza > 0 ){ ?>
         <li class="nav-item">
-          <a class="nav-link pills" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
+          <a class="nav-link pills" id="infPartida" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
           <!-- <a class="nav-link pills" onclick="infAdd_detallePoliza(<?php echo $id_poliza; ?>)">Información de la Partida</a> -->
         </li>
         <?php } ?>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd" Version="3.3" Folio="98843" Fecha="2019-05-07T14:57:22" Sello="NcpkxYwoC3Y5KCCQquzrKlwy3A+d4WlB1HbGbXabAn/S4TUdJe5KYFjJLZETe6Hlbogilt0aGS6yiFL7GcsxiY1YJDOzVJMuIUytk89UFymllOHX8m5RI/DTBZIUtvW6hkNAoSkltD3UcoPcqda37ONQjTs4rq9IXtFyH6udN5k5IIMFPel76AKVSjPDAdOH7rzNrf5oHeqCflFW8euQkq5YNL+HWCT8l1k4aoaylLryWEqK3SMb6PYqQQ3kz2FTlhy0AXtaKLj6eKn/8l73Whg2SHBECBNgXPjNWt7wgjbgpYjXfwmN60xurpuSYjWKkSm4GwQ/YOeXeLH6oGUVTA==" FormaPago="99" NoCertificado="00001000000404750920" Certificado="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" CondicionesDePago="Mismo dia" SubTotal="2680.00" Moneda="MXN" TipoCambio="1" Total="3087.60" TipoDeComprobante="I" MetodoPago="PPD" LugarExpedicion="15520">
+	<cfdi:CfdiRelacionados TipoRelacion="04">
+											<cfdi:CfdiRelacionado UUID="DFB30421-FC80-4D9E-BE10-98FE00D6F875" />
+										</cfdi:CfdiRelacionados>
+	<cfdi:Emisor Rfc="PLA090609N21" Nombre="Proyección Logística Agencia Aduanal, SA de CV" RegimenFiscal="601" />
+	<cfdi:Receptor Rfc="FTM001025RS7" Nombre="FINOS TEXTILES DE MEXICO SA DE CV" UsoCFDI="P01" />
+	<cfdi:Conceptos>
+		<cfdi:Concepto ClaveProdServ="80151605" Cantidad="1.000000" ClaveUnidad="E48" Unidad="Servicio" Descripcion="0,0000% de Honorarios sobre la base de:158204,4800" ValorUnitario="2150.00" Importe="2150.00">
+			<cfdi:Impuestos>
+				<cfdi:Traslados>
+					<cfdi:Traslado Base="2150.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="344.00" />
+				</cfdi:Traslados>
+			</cfdi:Impuestos>
+		</cfdi:Concepto> 
+		<cfdi:Concepto ClaveProdServ="80151605" Cantidad="1.000000" ClaveUnidad="E48" Unidad="Servicio" Descripcion="Entrega de Mercancía" ValorUnitario="530.00" Importe="530.00">
+			<cfdi:Impuestos>
+				<cfdi:Traslados>
+					<cfdi:Traslado Base="530.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="84.80" />
+				</cfdi:Traslados>
+				<cfdi:Retenciones>
+					<cfdi:Retencion Base="530.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.040000" Importe="21.20" />
+				</cfdi:Retenciones>
+			</cfdi:Impuestos>
+		</cfdi:Concepto>       
+	</cfdi:Conceptos>
+	<cfdi:Impuestos TotalImpuestosRetenidos="21.20" TotalImpuestosTrasladados="428.80">
+			<cfdi:Retenciones>
+				<cfdi:Retencion Impuesto="002" Importe="21.20" />
+			</cfdi:Retenciones>
+		<cfdi:Traslados>
+			<cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="428.80" />
+		</cfdi:Traslados>
+	</cfdi:Impuestos>
+<cfdi:Complemento><tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="3084D521-7E57-4D4C-96A2-5D6BD23A0792" FechaTimbrado="2019-05-07T14:57:42" SelloCFD="NcpkxYwoC3Y5KCCQquzrKlwy3A+d4WlB1HbGbXabAn/S4TUdJe5KYFjJLZETe6Hlbogilt0aGS6yiFL7GcsxiY1YJDOzVJMuIUytk89UFymllOHX8m5RI/DTBZIUtvW6hkNAoSkltD3UcoPcqda37ONQjTs4rq9IXtFyH6udN5k5IIMFPel76AKVSjPDAdOH7rzNrf5oHeqCflFW8euQkq5YNL+HWCT8l1k4aoaylLryWEqK3SMb6PYqQQ3kz2FTlhy0AXtaKLj6eKn/8l73Whg2SHBECBNgXPjNWt7wgjbgpYjXfwmN60xurpuSYjWKkSm4GwQ/YOeXeLH6oGUVTA==" NoCertificadoSAT="20001000000300022323" SelloSAT="ODCg4nY4F/8SmPGaCs9q6WEADfrLDXTHTdpUdDmUASEbEP21epbZMY14UhK8l4ccTvyplJVoKs3kUeKfHWYeIwvWO5gvb1MBQ/MA/LlBtLJUWXu+voJuDi7e9E/dsqd6v94aj7+rHjDgCB0zIjA0bCp+crVxICkuDIsniz3EhAWj+oCYzQVuhvyvQJawiK624U8ReA6OYYxbhrcIqepQMO/RMidWoM+kmADwctCDkVgjqEzHRmD38XsvxTPo2CJ5MvqujhQ8CxS4Kimg0slBK7Wtafz37BCWHgAZZkFoqvWEjKp5vfQpCORzWt0shuX52Z188E0p0PaKc61WSQUluw==" RfcProvCertif="EME000602QR9" /></cfdi:Complemento>
+<cfdi:Addenda>
+	<plaa:InformacionEmbarque xmlns:plaa="http://prologmex.com/Addenda/2014" xsi:schemaLocation="http://prologmex.com/Addenda/2014 http://prologmex.com/Addenda/2014/addendaPLAA.xsd">
+		<plaa:Vencimiento concepto="FECHA DE VENCIMIENTO" descripcion="2019-05-07"/>
+		<plaa:Direccion concepto="Calle" descripcion="PROLONGACION SATURNO"/>
+		<plaa:Direccion concepto="NoExterior" descripcion="456"/>
+		<plaa:Direccion concepto="NoInterior" descripcion="NAVE 20"/>
+		<plaa:Direccion concepto="Colonia" descripcion="NUEVA INDUSTRIAL VALLEJO"/>
+		<plaa:Direccion concepto="CP" descripcion="07700"/>
+		<plaa:Direccion concepto="Ciudad" descripcion="GUSTAVO A. MADERO"/>
+		<plaa:Direccion concepto="Estado" descripcion="CIUDAD DE MEXICO"/>
+		<plaa:General concepto="Aduana:" descripcion="470"/>
+		<plaa:General concepto="Nuestra Referencia:" descripcion="A19000123"/>
+		<plaa:General concepto="Descripción General:" descripcion="......"/>
+		<plaa:General concepto="Peso en Kg.:" descripcion="82"/>
+		<plaa:General concepto="Tipo de Operación:" descripcion="IMP"/>
+		<plaa:General concepto="Talones, Guía o B/Ls:" descripcion="023-61644310"/>
+		<plaa:General concepto="Facturas:" descripcion="190715-2......"/>
+		<plaa:General concepto="Fecha Arribo o Salida:" descripcion=""/>
+		<plaa:General concepto="Procedencia o Destino:" descripcion="HKG"/>
+		<plaa:General concepto="No. Pedimento:" descripcion="9000123"/>
+		<plaa:General concepto="Su Referencia:" descripcion=""/>
+		<plaa:General concepto="Clase de Mercancía:" descripcion=""/>
+		<plaa:General concepto="Bill of lading:" descripcion=""/>
+		<plaa:General concepto="Valor en M.N.:" descripcion="117215"/>
+		<plaa:Proveedor concepto="PROVEEDOR (IMP) O DESTINATARIO (EXP)" descripcion="FINOTEX USA CORPORATION"/>
+		<plaa:POCME concepto="Total 0.00 Al Tipo de Cambio 19.52" importe="0.00"/>
+		<plaa:PagosRealizados concepto="Impuestos y/o derechos pagados o garantizados al Com. Ext." importe="33741.00"/>
+		<plaa:PagosRealizados concepto="Desconsolidación" importe="757.02"/>
+		<plaa:PagosRealizados concepto="Maniobras" importe="6491.46"/>
+		<plaa:AnticiposAplicados numero="30205" importe="43391.00"/>
+		<plaa:Totales concepto="Total Honorarios y Servicios" importe="2680.00"/>
+		<plaa:Totales concepto="16% IVA sobre Honorarios y Servicios" importe="428.80"/>
+		<plaa:Totales concepto="Subtotal Honorarios y Servicios" importe="3108.80"/>
+		<plaa:Totales concepto="Retención (4%) Impto. IVA" importe="21.20"/>
+		<plaa:Totales concepto="Total" importe="3087.60"/>
+		<plaa:Totales concepto="Total Pagos o Cargos en Moneda Extranjera" importe="0.00"/>
+		<plaa:Totales concepto="Total Pagos Realizados por su Cuenta" importe="40989.48"/>
+		<plaa:Totales concepto="Total Cuenta de Gastos: *** CUARENTA Y CUATRO MIL SETENTA Y SIETE PESOS 08/100 M.N. ***" importe="44077.08"/>
+		<plaa:Totales concepto="Total Depósitos" importe="43391.00"/>
+		<plaa:Totales concepto="Saldo" importe="686.08"/>
+	</plaa:InformacionEmbarque>
+</cfdi:Addenda></cfdi:Comprobante>

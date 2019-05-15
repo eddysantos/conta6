@@ -38,7 +38,7 @@
     $float_redondeado=round($valor * 100) / 100;
     return $float_redondeado;
   }
-  
+
   function evaluarCancelarFactura($d_fechaTimbrado,$n_total_gral){
     #falta validar que no tenga NotaCredito o PagosElectronicos. -- NO CANCELABLE
     $fechaTimbrado = date_format(date_create($d_fechaTimbrado),"Y/m/d");
@@ -50,21 +50,26 @@
       return "Con aceptación";
     }
   }
-/* no borrar
-  function TildesHtml($cadena)
-     {
-         $texto = str_replace(array("á","é","í","ó","ú","ñ","Á","É","Í","Ó","Ú","Ñ"),
-                            array("&aacute;","&eacute;","&iacute;","&oacute;","&uacute;","&ntilde;",
-                                  "&Aacute;","&Eacute;","&Iacute;","&Oacute;","&Uacute;","&Ntilde;"), $cadena);
-         return($texto);
-     }
-     function elimina_acentos($cadena){
-     		$tofind = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ";
-     		$replac = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn";
-     		$texto = strtr($cadena,$tofind,$replac);
-     		return($texto);
-     	}
 
+  function TildesHtml($cadena){
+    $texto = str_replace(array("á","é","í","ó","ú","ñ","Á","É","Í","Ó","Ú","Ñ"),
+    array("&aacute;","&eacute;","&iacute;","&oacute;","&uacute;","&ntilde;",
+    "&Aacute;","&Eacute;","&Iacute;","&Oacute;","&Uacute;","&Ntilde;"), $cadena);
+    return($texto);
+  }
+  function elimina_acentos($cadena){
+    $texto = str_replace(array("á","é","í","ó","ú","ñ","Á","É","Í","Ó","Ú","Ñ"),
+    array("a","e","i","o","u","n","A","E","I","O","U","N"), $cadena);
+    return($texto);
+  }
+/*
+  function elimina_acentos($cadena){
+  	$tofind = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ";
+  	$replac = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn";
+  	$texto = strtr($cadena,$tofind,$replac);
+  	return($texto);
+  }
 */
+
 
 ?>
