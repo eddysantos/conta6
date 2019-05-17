@@ -3802,9 +3802,10 @@ tbody.collapse.show {
   border-color: #80bdff;
 }
 
-.custom-file-input:lang(en) ~ .custom-file-label::after {
+/* .custom-file-input:lang(en) ~ .custom-file-label::after {
   content: "Browse";
-}
+  content: "Buscar";
+} */
 
 .custom-file-label {
   position: absolute;
@@ -3821,7 +3822,7 @@ tbody.collapse.show {
   border-radius: 0.25rem;
 }
 
-.custom-file-label::after {
+/* .custom-file-label::after {
   position: absolute;
   top: 0;
   right: 0;
@@ -3832,11 +3833,12 @@ tbody.collapse.show {
   padding: 0.375rem 0.75rem;
   line-height: 1.5;
   color: #495057;
+  content: "Buscar";
   content: "Browse";
   background-color: #e9ecef;
   border-left: 1px solid #ced4da;
   border-radius: 0 0.25rem 0.25rem 0;
-}
+} */
 
 .nav {
   display: -webkit-box;

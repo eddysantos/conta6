@@ -94,6 +94,15 @@ input:disabled{
 
   padding-top: 4px; */
 }
+
+
+.efecto ~ label.l22{
+  position: absolute;
+  left: 3px;
+  width: 100%;
+  top: 13px;
+  font-size: 12px;
+}
 .efecto:focus ~ label, .tiene-contenido.efecto ~ label{
   /* top: -12px; */
   top: -9px;

@@ -3561,7 +3561,9 @@ tbody.collapse.show {
   width: 100%;
   height: calc(2.25rem + 2px);
   margin: 0;
-  opacity: 0
+  opacity: 0;
+  cursor: pointer;
+
 }
 
 .custom-file-input:focus~.custom-file-control {
@@ -3573,9 +3575,9 @@ tbody.collapse.show {
   border-color: #80bdff
 }
 
-.custom-file-input:lang(en)~.custom-file-label::after {
+/* .custom-file-input:lang(en)~.custom-file-label::after {
   content: "Browse"
-}
+} */
 
 .custom-file-label {
   position: absolute;
@@ -3587,12 +3589,14 @@ tbody.collapse.show {
   padding: .375rem .75rem;
   line-height: 1.5;
   color: #495057;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: whitesmoke;
   border: 1px solid #ced4da;
-  border-radius: .25rem
+  /* border-radius: .25rem */
+  border-radius: 10px;
 }
 
-.custom-file-label::after {
+/* .custom-file-label::after {
   position: absolute;
   top: 0;
   right: 0;
@@ -3607,7 +3611,7 @@ tbody.collapse.show {
   background-color: #e9ecef;
   border-left: 1px solid #ced4da;
   border-radius: 0 .25rem .25rem 0
-}
+} */
 
 .nav {
   display: -webkit-box;

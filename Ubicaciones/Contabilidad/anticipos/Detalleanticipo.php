@@ -287,26 +287,26 @@ if( $rows > 0 ){
             <div class="col-md-2 offset-md-8">SUMA DE CARGOS</div>
             <div class="col-md-2">SUMA DE ABONOS</div>
           </div>
-          <div class="row font14">
-            <div class="col-md-3 mt-3">
+          <div class="row font14 mt-3">
+            <div class="col-md-3">
               <?php if( $oRst_permisos["s_reusar_anticipos"] == 1 ){ ?>
               <a href="#" id="btn_reusarAnt" class="boton"><img src= "/conta6/Resources/iconos/refresh-button.svg"> REUSAR ANTICIPO</a>
               <?php } ?>
             </div>
-            <div class="col-md-3 mt-3">
+            <div class="col-md-3">
               <?php if( $tienePoliza == false && $statusGeneraPoliza == true ){ ?>
               <a href="#" id="btn_generarPolAnt" class="boton"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR POLIZA</a>
               <?php } ?>
             </div>
-            <div class="col-md-2 mt-3">
+            <div class="col-md-2">
               <?php if( $tienePoliza == true ){ ?>
               <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
               <?php } ?>
             </div>
-            <div class="col-md-2 mt-3">
+            <div class="col-md-2">
               <input class="efecto" id="sumCargos1" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
             </div>
-            <div class="col-md-2 mt-3">
+            <div class="col-md-2">
               <input class="efecto" id="sumAbonos1" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
             </div>
             <?php

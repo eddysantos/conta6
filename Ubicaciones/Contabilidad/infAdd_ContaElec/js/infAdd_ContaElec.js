@@ -18,22 +18,6 @@
 // };
 
 
-function infAdd_detalle(id_poliza){
-      var data = {
-        id_poliza: id_poliza
-      }
-      $.ajax({
-        type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/tabla_infAdd.php",
-        data: data,
-        success: 	function(request){
-					r = JSON.parse(request);
-					if (r.code == 1) {
-						$('#infAddtabla_detallePoliza').html(r.data);
-					}
-        }
-      });
-}
 
 function processFiles(files) {
 			var file = files[0];
@@ -104,7 +88,10 @@ function infAddPartida(id_partida){
   if( seleccion == '2' ){
     guardarCompNal(id_partida);
     console.log('CompNal'); }
-  //Cheque
+
+
+    // ESTOS METODOS AUN NO FUNCIONAN
+  // Cheque
 	if( seleccion == '3' ){ guardarCheque(id_partida); }
   //CompExt
 	if( seleccion == '4' ){ guardarCompExt(id_partida); }
@@ -126,7 +113,8 @@ function guardarCompNal(id_partida){
   if(aplicar == "subtotal"){ importe = $('#cfdi-subtotal').val();}
   if(aplicar == "iva"){ importe = $('#cfdi-ivatrasladado').val();}
   if(aplicar == "isr"){ importe = $('cfdi-isrretenido').val();}
-  if(aplicar == "ivaRet"){ importe = $('#cfdi-ivaretenido').val();}
+	if(aplicar == "ivaRet"){ importe = $('#cfdi-ivaretenido').val();}
+  if(aplicar == "total"){ importe = $('#cfdi-total').val();}
 
   if(UUID == ""){
     alertify.error("UUID es requerido");
@@ -150,7 +138,6 @@ function guardarCompNal(id_partida){
     UUID: UUID,
     importe: importe,
     RFC: RFC,
-    importe: importe,
     tipoInf: tipoInf,
     BeneficiarioOpc: BeneficiarioOpc,
     tipo: $('#tipoDoc').val(),
@@ -160,27 +147,53 @@ function guardarCompNal(id_partida){
   }
   console.log(data);
 
-  $.ajax({
-    type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
-    data: data,
-    success: function(r){
-      console.log(r);
-      r = JSON.parse(r);
-        if (r.code == 1) {
-          infAdd_detalle(id_poliza);
-          //$('#infPartida').click();
-        } else {
-          console.error(r.message);
-        }
-      },
-      error: function(x){
-        console.error(x);
-      }
-  });
+  // $.ajax({
+  //   type: "POST",
+  //   url: "/Conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
+  //   data: data,
+  //   success: function(r){
+  //     console.log(r);
+  //     r = JSON.parse(r);
+  //       if (r.code == 1) {
+  //         alert("se agrego");
+  //         console.log("pase por aqui");
+  //         // infAdd_detalle(id_poliza);
+  //         //$('#infPartida').click();
+  //       } else {
+  //         console.error(r.message);
+  //       }
+  //     },
+  //     error: function(x){
+  //       console.error(x);
+  //     }
+  // });
+
+
+	$.ajax({
+		type: "POST",
+		url: "/Conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
+		data: data,
+		success: 	function(r){
+			r = JSON.parse(r);
+			if (r.code == 1) {
+				swal("Exito", "Se guardo correctamente.", "success");
+				infAdd_detalle(id_poliza);
+
+			} else {
+				console.error(r.message);
+			}
+		}
+	});
 }
 
+
+
+
+
+
+
 function eliminarPartida(partida){
+	id_poliza = $('#mst-poliza').val();
 	swal({
 	title: "Estas Seguro?",
 	text: "Ya no se podra recuperar el registro! "+ partida +" ",
@@ -196,19 +209,17 @@ function eliminarPartida(partida){
 		if (isConfirm) {
 			var data = {
 				partida: partida,
-        id_poliza: $('#mst-poliza').val()
+        id_poliza: id_poliza
 			}
 
 			$.ajax({
 				type: "POST",
 				url: "/conta6/Resources/PHP/actions/contaElect_eliminarPartida.php",
 				data: data,
-
-					success: 	function(r){
-            r = JSON.parse(r);
-						swal("Eliminado!", "Se elimino correctamente.", "success");
-            infAdd_detalle(id_poliza);
-            //$('#infPartida').click();
+				success: 	function(r){
+	        r = JSON.parse(r);
+					swal("Eliminado!", "Se elimino correctamente.", "success");
+	        infAdd_detalle(id_poliza);
 				},
 				error: function(x){
 					console.error(x)
@@ -219,3 +230,27 @@ function eliminarPartida(partida){
 		}
 	});
 }
+
+
+
+function infAdd_detalle(id_poliza){
+  var data = {
+    id_poliza: id_poliza
+  }
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/tabla_infAdd.php",
+    data: data,
+    success: 	function(request){
+			r = JSON.parse(request);
+			if (r.code == 1) {
+				$('#infAddtabla_detallePoliza').html(r.data);
+			}
+    }
+  });
+}
+
+// <script>
+// Add the following code if you want the name of the file appear on select
+
+// </script>

@@ -38,7 +38,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
   $fk_id_poliza = $_POST['id_poliza'];
 
   if( $tipoInf == "CompNal" ){
-    require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
+    require $root . '/Conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
 		$descripcion = "$tipoInf, InfAdPartida partidaDoc:$partidaDoc, tipo:$tipo, UUID:$UUID, RFC:$RFC, Beneficiario:$beneficiarioOpc, monto:$importe, tipoCambio:$tipoCamb, moneda:$moneda";
 	}
 

@@ -71,12 +71,22 @@
         <tr class="row encabezado m-0 font18">
           <td class="col-md-12">CFDI</td>
         </tr>
-        <tr class="row m-0 mt-3">
-          <td class="col-md-12">
-            <input type="file" id="archivo" onChange="processFiles(this.files)">
-            <div id="datosUUID"></div>
+        <tr class="row m-0 mt-3 justify-content-center">
+          <td class="col-md-3 custom-file">
+            <input type="file" class="custom-file-input" id="archivo" onChange="processFiles(this.files)">
+            <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
+          </td>
+          <td class="col-md-12 m-3 sub2 p-0">
+            <div class="m-2 b" id="datosUUID"></div>
           </td>
         </tr>
+
+        <!-- <form>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+          </div>
+        </form> -->
       </thead>
       <tbody class="font14">
         <tr class="row m-0 mt-3">
@@ -93,30 +103,31 @@
             <label for="cfdi-uuid">UUID</label>
           </td>
         </tr>
-        <tr class="row m-0 mt-4">
-          <td class="col-md-2 input-effect">
+        <tr class="row m-0 align-items-center">
+          <td class="col-md-2 input-effect mt-4">
             <input id="cfdi-subtotal" class="efecto tiene-contenido" type="text" value="0" onchange="validaIntDec(this);">
             <label for="cfdi-subtotal">Subtotal</label>
           </td>
-          <td class="col-md-2 input-effect">
+          <td class="col-md-2 input-effect mt-4">
             <input id="cfdi-ivatrasladado" class="efecto tiene-contenido" type="text" value="0" onchange="validaIntDec(this);">
             <label for="cfdi-ivatrasladado">IVA Trasladado</label>
           </td>
-          <td class="col-md-2 input-effect">
+          <td class="col-md-2 input-effect mt-4">
             <input id="cfdi-ivaretenido" class="efecto tiene-contenido" type="text" value="0" onchange="validaIntDec(this);">
             <label for="cfdi-ivaretenido">IVA Retenido</label>
           </td>
-          <td class="col-md-2 input-effect">
+          <td class="col-md-2 input-effect mt-4">
             <input id="cfdi-isrretenido" class="efecto tiene-contenido" type="text" value="0" onchange="validaIntDec(this);">
             <label for="cfdi-isrretenido">ISR Retenido</label>
           </td>
-          <td class="col-md-2 input-effect">
+          <td class="col-md-2 input-effect mt-4">
             <input id="cfdi-total" class="efecto tiene-contenido" type="text" value="0" onchange="validaIntDec(this);">
             <label for="cfdi-total">Total</label>
             <input id="cfdi-moneda" type="hidden" value="">
             <input id="cfdi-tc" type="hidden" value="">
           </td>
-          <td class="col-md-2 input-effect">
+          <td class="col-md-2">
+            <label class="mb-1" style="color: #d59f9f;">Aplicar</label>
             <select class="custom-select tiene-contenido" id="cfdi-aplicar">
               <option value="iva">IVA Trasladado</option>
           		<option value="ivaRet">IVA Retenido</option>
@@ -124,7 +135,7 @@
           		<option value="subtotal">Subtotal</option>
           		<option selected="selected" value="total">Total</option>
             </select>
-            <label for="cfdi-aplicar">Aplicar</label>
+            <!-- <label for="cfdi-aplicar">Aplicar</label> -->
           </td>
         </tr>
       </tbody>
@@ -191,11 +202,11 @@
         </tr>
         <tr class="row m-0 mt-4">
           <td class="col-md-1 input-effect">
-            <input id="ch-cheque1" class="efecto" type="text" disabled>
+            <input id="ch-cheque1" class="efecto tiene-contenido" type="text" disabled>
             <label for="ch-cheque1">Cheque</label>
           </td>
           <td class="col-md-1 input-effect">
-            <input id="ch-importe" class="efecto" type="text" disabled>
+            <input id="ch-importe" class="efecto tiene-contenido" type="text" disabled>
             <label for="ch-importe">Importe</label>
           </td>
           <td class="col-md-3 input-effect">
@@ -203,11 +214,11 @@
             <label for="ch-fecha">Fecha</label>
           </td>
           <td class="col-md-2 input-effect">
-            <input id="ch-rfcbenef" class="efecto" type="text" disabled>
+            <input id="ch-rfcbenef" class="efecto tiene-contenido" type="text" disabled>
             <label for="ch-rfcbenef">RCF</label>
           </td>
           <td class="col-md-5 input-effect">
-            <input id="ch-nombrebenef" class="efecto" type="text" disabled>
+            <input id="ch-nombrebenef" class="efecto tiene-contenido" type="text" disabled>
             <label for="ch-nombrebenef">Nombre Beneficiario</label>
           </td>
         </tr>
@@ -337,7 +348,7 @@
               <option value="Banamex"></option>
               <option value="Bancopel"></option>
             </datalist>
-            <label class="pt-1" for="transf-bancossat">BANCOS SAT</label>
+            <label class="l22" for="transf-bancossat">BANCOS SAT</label>
           </td>
           <td class="col-md-6 input-effect">
             <input  list="transf-bplaa" class="efecto h22"  id="transf-bancosplaa">
@@ -348,7 +359,7 @@
               <option value="BBVA BANCOMER -- 166721346 -- 470"></option>
               <option value="BBVA BANCOMER -- 0192655497 -- 240"></option>
             </datalist>
-            <label class="pt-1" for="transf-bancosplaa">BANCOS PLAA</label>
+            <label class="l22" for="transf-bancosplaa">BANCOS PLAA</label>
           </td>
         </tr>
         <tr class="row m-0 mt-4">
@@ -358,7 +369,7 @@
               <option value="Administracion Portuaria Integral de Manzanillo SA de CV -- API931215862 -- SANTANDER -- 014095655008263897"></option>
               <option value="AAADAM A.C -- AAA8711107K5 -- BANAMEX -- 2801662"></option>
             </datalist>
-            <label class="pt-1" for="transf-benef">BANCOS BENEFICIARIOS</label>
+            <label class="l22" for="transf-benef">BANCOS BENEFICIARIOS</label>
           </td>
           <td class="col-md-6 input-effect">
             <input  list="transf-cli" class="efecto h22"  id="transf-clientes">
@@ -366,7 +377,7 @@
               <option value="Fabricaciones Industriales Computarizadas SA de CV -- FIC980227TCA -- BANORTE -- 1260"></option>
               <option value="Geiko Maiko Industrial S.A de C.V -- GMI120928KU4 -- BBVA BANCOMER -- 2554"></option>
             </datalist>
-            <label class="pt-1" for="transf-clientes">BANCOS CLIENTES</label>
+            <label class="l22" for="transf-clientes">BANCOS CLIENTES</label>
           </td>
         </tr>
         <tr class="row m-0 mt-4">
@@ -376,15 +387,15 @@
               <option value="PINALES AVALOS -- PIAA911122Lp2 -- BANAMEX -- 5256781310675298"></option>
               <option value="MARTINEZ MARTINEZ -- MAMD800330DQ3 -- BBVA BANCOMER -- 012821015214161544"></option>
             </datalist>
-            <label class="pt-1" for="transf-empleados">EMPLEADOS</label>
+            <label class="l22" for="transf-empleados">EMPLEADOS</label>
           </td>
           <td class="col-md-6 input-effect">
             <input  list="transf-prov" class="efecto h22"  id="transf-proveedores">
             <datalist id="transf-prov">
-              <option value="Control Integrado de Tratamiendos Cuarentenarios y Plagas S.A de C.V -- CIT0010198Y0 -- 012821001069756749"></option>
+              <option value="Control Integrado de Tratamientos Cuarentenarios y Plagas S.A de C.V -- CIT0010198Y0 -- 012821001069756749"></option>
               <option value="Banco Monex S.A Institución de Banca Multiple, Mone Grupo Financiero -- BMI9704113pa -- 6580894"></option>
             </datalist>
-            <label class="pt-1" for="transf-proveedores">PROVEEDORES</label>
+            <label class="l22" for="transf-proveedores">PROVEEDORES</label>
           </td>
         </tr>
 
@@ -396,7 +407,7 @@
         </tr>
         <tr class="row m-0">
           <td class="col-md-1">
-            <input class="border-0 pt-1" type="text" value="012">
+            <input class="border-0 efecto h22" type="text" value="012">
           </td>
           <td class="col-md-4">
             <input class="efecto h22" type="text" value="012821011521461544">
@@ -434,7 +445,7 @@
         </tr>
         <tr class="row m-0">
           <td class="col-md-1">
-            <input class="border-0" type="text" value="012">
+            <input class="border-0 efecto h22" type="text" value="012">
           </td>
           <td class="col-md-4">
             <input class="efecto h22" type="text" value="012821011521461544">
@@ -457,7 +468,7 @@
         </tr>
         <tr class="row m-0">
           <td class="col-md-1">
-            <input class="border-0" type="text" value="012">
+            <input class="border-0 efecto h22" type="text" value="012">
           </td>
           <td class="col-md-4">
             <input class="efecto h22" type="text" value="012821011521461544">
@@ -473,16 +484,16 @@
         <tr class="row m-0 mt-4">
           <td class="col-md-3">
             <input id="trans-emext" class="efecto h22" type="text">
-            <label class="pt-1" for="trans-emext">Bco. Emisor Extranjero</label>
+            <label class="l22" for="trans-emext">Bco. Emisor Extranjero</label>
           </td>
 
           <td class="col-md-3">
             <input id="trans-desext" class="efecto h22" type="text">
-            <label class="pt-1" for="trans-desext">Bco. Destino Extranjero</label>
+            <label class="l22" for="trans-desext">Bco. Destino Extranjero</label>
           </td>
           <td class="col-md-2">
             <input id="trans-tc" class="efecto h22" type="text" onchange="validaIntDec(this);">
-            <label class="pt-1" for="trans-tc">Tipo de Cambio</label>
+            <label class="l22" for="trans-tc">Tipo de Cambio</label>
           </td>
           <td class="col-md-4">
             <input  list="trans-mon" class="efecto h22"  id="trans-moneda">
@@ -492,21 +503,21 @@
               <option value="Peso Cubano -- CUP"></option>
               <option value="Peso Filipino -- PHP"></option>
             </datalist>
-            <label class="pt-1" for="trans-moneda">Moneda</label>
+            <label class="l22" for="trans-moneda">Moneda</label>
           </td>
         </tr>
         <tr class="row m-0 mt-4">
           <td class="col-md-3">
             <input class="efecto h22 tiene-contenido" type="date" id="trans-fecha">
-            <label class="pt-1" for="trans-fecha">Fecha</label>
+            <label class="l22" for="trans-fecha">Fecha</label>
           </td>
           <td class="col-md-2">
             <input id="trans-imp" class="efecto h22" type="text" onchange="validaIntDec(this);">
-            <label class="pt-1" for="trans-imp">Importe</label>
+            <label class="l22" for="trans-imp">Importe</label>
           </td>
           <td class="col-md-7">
             <input id="trans-observ" class="efecto h22" type="text">
-            <label class="pt-1" for="trans-observ">Observaciones</label>
+            <label class="l22" for="trans-observ">Observaciones</label>
           </td>
         </tr>
       </tbody>

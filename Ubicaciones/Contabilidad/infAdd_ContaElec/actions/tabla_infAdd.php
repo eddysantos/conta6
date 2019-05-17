@@ -90,47 +90,47 @@ while ($row = $rslt->fetch_assoc()) {
 
     while ($row = $rslt_consulContaElect->fetch_assoc()) {
       $partidaContaElect .=
-                  "<div class='row ml-0 mr-0 borderojo'>
-                    <div class='col-md-1'></div>
-                    <div class='col-md-1 text-right b'>UUID :</div>
-                    <div class='col-md-5 text-left'>$row[s_UUID_CFDI]</div>
-                    <div class='col-md-1'>Bco : $row[s_BancoOri]</div>
-                    <div class='col-md-1'>Bco : $row[s_BancoDest]</div>
-                    <div class='col-md-1'>Bco : $row[s_BancoOriExt]</div>
-                    <div class='col-md-1 text-right'>Tax Id : </div>
-                    <div class='col-md-1 text-left'>$row[s_TaxID]</div>
+        "<div class='row ml-0 mr-0 borderojo'>
+          <div class='col-md-1'></div>
+          <div class='col-md-1 text-right b'>UUID :</div>
+          <div class='col-md-5 text-left'>$row[s_UUID_CFDI]</div>
+          <div class='col-md-1 text-left p-0'><span class='b'>Bco :</span> $row[s_BancoOri]</div>
+          <div class='col-md-1 text-left p-0'><span class='b'>Bco :</span> $row[s_BancoDest]</div>
+          <div class='col-md-1 text-left p-0'><span class='b'>Bco :</span> $row[s_BancoOriExt]</div>
+          <div class='col-md-1 text-right b'>Tax Id :</div>
+          <div class='col-md-1 text-left'>$row[s_TaxID]</div>
 
-                    <div class='col-md-1'><a href='#' onclick='eliminarPartida($row[pk_id_partida])'>
-                      <img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'>
-                    </a></div>
-                    <div class='col-md-1 text-right b'>Benef :</div>
-                    <div class='col-md-5 text-left'>$row[s_Beneficiario]  -- $row[s_RFC]</div>
-                    <div class='col-md-1'>Cta : $row[s_ctaOri]</div>
-                    <div class='col-md-1'>Cta : $row[s_CtaDest]</div>
-                    <div class='col-md-1'>Cta : $row[s_BancoDestExt]</div>
-                    <div class='col-md-1 text-right'>Moneda : </div>
-                    <div class='col-md-1 text-left'>$row[s_moneda]</div>
+          <div class='col-md-1'><a href='#' onclick='eliminarPartida($row[pk_id_partida])'>
+            <img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'>
+          </a></div>
+          <div class='col-md-1 text-right b'>Benef :</div>
+          <div class='col-md-5 text-left'>$row[s_Beneficiario]  -- $row[s_RFC]</div>
+          <div class='col-md-1 text-left p-0'><span class='b'>Cta :</span> $row[s_ctaOri]</div>
+          <div class='col-md-1 text-left p-0'><span class='b'>Cta :</span> $row[s_CtaDest]</div>
+          <div class='col-md-1 text-left p-0'><span class='b'>Cta :</span> $row[s_BancoDestExt]</div>
+          <div class='col-md-1 text-right b'>Moneda : </div>
+          <div class='col-md-1 text-left'>$row[s_moneda]</div>
 
-                    <div class='col-md-1'>$row[s_tipoDetalle]</div>
-                    <div class='col-md-1 text-right b'>Fecha :</div>
-                    <div class='col-md-2 text-left'>$row[d_fecha]</div>
-                    <div class='col-md-6'></div>
-                    <div class='col-md-1 text-right'>TC : </div>
-                    <div class='col-md-1 text-left'>$row[n_TipCamb]</div>
+          <div class='col-md-1'>$row[s_tipoDetalle]</div>
+          <div class='col-md-1 text-right b'>Fecha :</div>
+          <div class='col-md-2 text-left'>$row[d_fecha]</div>
+          <div class='col-md-6'></div>
+          <div class='col-md-1 text-right b'>TC : </div>
+          <div class='col-md-1 text-left'>$row[n_TipCamb]</div>
 
-                    <div class='col-md-1'></div>
-                    <div class='col-md-1 text-right b'>Total :</div>
-                    <div class='col-md-1 text-left'>$row[n_monto]</div>
-                    <div class='col-md-1 text-right b'>Ch :</div>
-                    <div class='col-md-3 text-left'>$row[n_num]</div>
-                    <div class='col-md-5'></div>
+          <div class='col-md-1'></div>
+          <div class='col-md-1 text-right b'>Total :</div>
+          <div class='col-md-1 text-left'>$row[n_monto]</div>
+          <div class='col-md-1 text-right b'>Ch :</div>
+          <div class='col-md-3 text-left'>$row[n_num]</div>
+          <div class='col-md-5'></div>
 
-                    <div class='col-md-1'></div>
-                    <div class='col-md-1 text-right b'>OPCIONALES:</div>
-                    <div class='col-md-5 text-left'>$row[s_RFCopc] -- $row[s_BeneficiarioOpc]</div>
-                    <div class='col-md-1 text-right b'>OBSERVACIONES :</div>
-                    <div class='col-md-4 text-left'>$row[s_observaciones] </div>
-                  </div>";
+          <div class='col-md-1'></div>
+          <div class='col-md-1 text-right b'>Opcionales:</div>
+          <div class='col-md-5 text-left'>$row[s_RFCopc] -- $row[s_BeneficiarioOpc]</div>
+          <div class='col-md-1 text-left b p-0'>Observaciones :</div>
+          <div class='col-md-4 text-left'>$row[s_observaciones] </div>
+        </div>";
     }
   }
 

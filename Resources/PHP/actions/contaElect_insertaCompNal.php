@@ -21,16 +21,16 @@ if (!($stmtCOMPNAL)) {
 }
 
 $stmtCOMPNAL->bind_param('sssssssssss',$fk_id_poliza,
-                                                $partidaDoc,
-                                                $tipo,
-                                                $tipoInf,
-                                                $UUID,
-                                                $RFC,
-                                                $importe,
-                                                $beneficiarioOpc,
-                                                $usuario,
-                                                $moneda,
-                                                $tipoCamb);
+                                        $partidaDoc,
+                                        $tipo,
+                                        $tipoInf,
+                                        $UUID,
+                                        $RFC,
+                                        $importe,
+                                        $beneficiarioOpc,
+                                        $usuario,
+                                        $moneda,
+                                        $tipoCamb);
 
 if (!($stmtCOMPNAL)) {
   $system_callback['code'] = "500";
@@ -43,4 +43,8 @@ if (!($stmtCOMPNAL->execute())) {
   exit_script($system_callback);
 }
 $rsltCOMPNAL = $stmtCOMPNAL->get_result();
+
+$system_callback['code'] = 1;
+$system_callback['message'] = "Script called successfully!";
+exit_script($system_callback);
 ?>
