@@ -41,7 +41,7 @@ if( $total_consultaHonorarios > 0 ) {
 		$fk_c_ClaveProdServ = $row_consultaHonorarios['fk_c_ClaveProdServ'];
 		$fk_id_cuenta = $row_consultaHonorarios['fk_id_cuenta'];
 		$s_conceptoEsp = utf8_encode($row_consultaHonorarios['s_conceptoEsp']);
-		$n_importe = number_format($row_consultaHonorarios['n_importe'],2,'.',',');
+		$n_importe = number_format($row_consultaHonorarios['n_importe'],2,'.','');
 		$n_IVA = $row_consultaHonorarios['n_IVA'];
 		$n_ret = $row_consultaHonorarios['n_ret'];
 		$n_total = $row_consultaHonorarios['n_total'];

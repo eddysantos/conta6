@@ -23,6 +23,7 @@
   $rslt_pagoTimbrada = $stmt_pagoTimbrada->get_result();
   $rows_pagoTimbrada = $rslt_pagoTimbrada->num_rows;
 
+
   if( $rows_pagoTimbrada > 0 ){
     while( $row_pagoTimbrada = $rslt_pagoTimbrada->fetch_assoc() ){
       $id_pago_captura = $row_pagoTimbrada['fk_id_pago_captura'];
@@ -32,7 +33,7 @@
       $s_cancela = $row_pagoTimbrada['s_cancela'];
       $id_cliente = $row_pagoTimbrada['fk_id_cliente'];
       $nombre = $row_pagoTimbrada['s_nombre'];
-      $cancela = $row['s_selloSATcancela'];
+      $cancela = $row_pagoTimbrada['s_selloSATcancela'];
 
       #rutas de consulta
       $anioActual = date_format(date_create($d_fechaTimbrado),"Y");
@@ -48,11 +49,15 @@
 
       $hrefSig = ''; $hrefcancela = ''; $hrefSustituir = '';
 
-      if( $cancela <> "" ){
+      if( $cancela <> '' ){
         $hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>";
         $status = $hrefcancela;
+
+        if( $oRst_permisos['s_rPElect_sustituir'] == 1 ){
+          $cadenaSustituir = "pagosSustituirCFDI($id_pago_captura,&#39;$id_cliente&#39;,&#39;sustituir&#39;)";
+          $hrefSustituir = '<input class="efecto boton" type="button" value="SUSTITUIR" id="sustituir-pago" onclick="'.$cadenaSustituir.'" />';
+        }
       }else{ $status = "Activo"; }
-      $hrefSustituir = '<input class="efecto boton" type="button" value="SUSTITUIR" id="sustituir-pago" />';
 
       if( $oRst_permisos['s_rPElect_consultar'] == 1 ){
         $hreConsultaCFDI = "

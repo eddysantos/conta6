@@ -20,7 +20,7 @@ $rslt_clientes = $stmt_clientes->get_result();
 
 while ($row_clientes = $rslt_clientes->fetch_assoc()) {
 
-  $clientes .="<option value='$row_clientes[pk_id_cliente]'>$row_clientes[s_nombre]</option>";
+  $clientes .="<option value='$row_clientes[pk_id_cliente]'>$row_clientes[s_nombre] - $row_clientes[pk_id_cliente]</option>";
 }
 
  ?>

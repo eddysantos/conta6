@@ -25,89 +25,94 @@ $id_referencia = $_POST['referencia'];
 #PRUEBAS
 #EJECUTA SAT
 
-# VALIDACION 1: CERTIFICADO VIGENTE
-error_log("Just testing");
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
-if( $total_datosCert > 0 ){
-  $noCertificado = $row_datosCert['pk_id_certificado'];
-	$certificado = $row_datosCert['s_certificado'];
+if( $oRst_permisos['s_facturas_timbrar'] == 1 ){
+  # VALIDACION 1: CERTIFICADO VIGENTE
+  error_log("Just testing");
+  require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
+  if( $total_datosCert > 0 ){
+    $noCertificado = $row_datosCert['pk_id_certificado'];
+  	$certificado = $row_datosCert['s_certificado'];
 
-  $system_callback['code'] = 1;
-  $system_callback['message'] .= "✓ Certificado: Vigente \n";
+    $system_callback['code'] = 1;
+    $system_callback['message'] .= "✓ Certificado: Vigente \n";
 
-  # VALIDACION 2: CONSULTO EXISTAN LAS CUENTAS 108,208,103,206 DEL CLIENTE
-  require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
-  if( $rows_ctasCliente > 0 ){
-    // $system_callback['code'] = 1;
-    // $system_callback['message'] .= "✓ Cuentas del cliente: 108,208,106,203 \n";
+    # VALIDACION 2: CONSULTO EXISTAN LAS CUENTAS 108,208,103,206 DEL CLIENTE
+    require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
+    if( $rows_ctasCliente > 0 ){
+      // $system_callback['code'] = 1;
+      // $system_callback['message'] .= "✓ Cuentas del cliente: 108,208,106,203 \n";
 
-    //obtener folio de cuenta de gastos
-    require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_factura_ctaGastos.php';
-    if( $total_consultaDatosCtaGastos == 0 ){
-      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_1genCtaGastos.php'; #$folioCtaGastos
-      // echo "se genero cuenta gastos: ".$folioCtaGastos;
-      // echo "\n";
-      $system_callback['code'] = 1;
-      $system_callback['message'] .= "✓ Cuenta Gastos: ".$folioCtaGastos."\n";
-    }else{
-      $row_consultaDatosCtaGastos = $rslt_consultaDatosCtaGastos->fetch_assoc();
-      $folioCtaGastos = $row_consultaDatosCtaGastos['id_ctagastos'];
-      // echo "ya tiene cuenta gastos: ".$folioCtaGastos;
-      // echo "<br>";
-      $system_callback['code'] = 1;
-      $system_callback['message'] .= "✓ Cuenta Gastos: ".$folioCtaGastos."\n";
+      //obtener folio de cuenta de gastos
+      require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_factura_ctaGastos.php';
+      if( $total_consultaDatosCtaGastos == 0 ){
+        require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_1genCtaGastos.php'; #$folioCtaGastos
+        // echo "se genero cuenta gastos: ".$folioCtaGastos;
+        // echo "\n";
+        $system_callback['code'] = 1;
+        $system_callback['message'] .= "✓ Cuenta Gastos: ".$folioCtaGastos."\n";
+      }else{
+        $row_consultaDatosCtaGastos = $rslt_consultaDatosCtaGastos->fetch_assoc();
+        $folioCtaGastos = $row_consultaDatosCtaGastos['id_ctagastos'];
+        // echo "ya tiene cuenta gastos: ".$folioCtaGastos;
+        // echo "<br>";
+        $system_callback['code'] = 1;
+        $system_callback['message'] .= "✓ Cuenta Gastos: ".$folioCtaGastos."\n";
 
-    }
+      }
 
 
-    //obtener folio de factura
-    require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_factura.php';
-    if( $total_consultaDatosCFDI == 0 ){
-      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_2genFactura.php'; #$folioFactura
-      $idFactura = $folioFactura;
-      // echo "se genero factura: ".$folioFactura;
-      // echo "<br>";
-      //echo "generar factura y timbrar";
-      $system_callback['code'] = 1;
-      $system_callback['message'] .= "✓ Factura: ".$folioFactura."\n";
+      //obtener folio de factura
+      require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_factura.php';
+      if( $total_consultaDatosCFDI == 0 ){
+        require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_2genFactura.php'; #$folioFactura
+        $idFactura = $folioFactura;
+        // echo "se genero factura: ".$folioFactura;
+        // echo "<br>";
+        //echo "generar factura y timbrar";
+        $system_callback['code'] = 1;
+        $system_callback['message'] .= "✓ Factura: ".$folioFactura."\n";
 
-      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso.php';
-      $system_callback['code'] = 1;
-      //$system_callback['message'] .= $mensajeTimbre.' ---'.$mensaje_xmlGen."***\n";
-      exit_script($system_callback);
-    }else{
-          $row_consultaDatosCFDI = $rslt_consultaDatosCFDI->fetch_assoc();
-          $UUID = $row_consultaDatosCFDI['s_UUID'];
-          $folioFactura = $row_consultaDatosCFDI['pk_id_factura'];
-
-          $system_callback['code'] = 1;
-          $system_callback['message'] .= "✓ Factura: ".$folioFactura."\n";
-
-          # VALIDACION 3: CONSULTO EL UUID EN LA CUENTA DE GASTOS
-          if( is_null($UUID) ){
-            require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso.php';
+        require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso.php';
+        $system_callback['code'] = 1;
+        //$system_callback['message'] .= $mensajeTimbre.' ---'.$mensaje_xmlGen."***\n";
+        exit_script($system_callback);
+      }else{
+            $row_consultaDatosCFDI = $rslt_consultaDatosCFDI->fetch_assoc();
+            $UUID = $row_consultaDatosCFDI['s_UUID'];
+            $folioFactura = $row_consultaDatosCFDI['pk_id_factura'];
 
             $system_callback['code'] = 1;
-            //$system_callback['message'] .= $mensajeTimbre;
-            exit_script($system_callback);
-          }else{
-            $system_callback['code'] = 2;
-            $system_callback['message'] = "YA TIENE UUID";
-            exit_script($system_callback);
-          }# fin VALIDACION 3
-    }
+            $system_callback['message'] .= "✓ Factura: ".$folioFactura."\n";
 
+            # VALIDACION 3: CONSULTO EL UUID EN LA CUENTA DE GASTOS
+            if( is_null($UUID) ){
+              require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso.php';
+
+              $system_callback['code'] = 1;
+              //$system_callback['message'] .= $mensajeTimbre;
+              exit_script($system_callback);
+            }else{
+              $system_callback['code'] = 2;
+              $system_callback['message'] = "YA TIENE UUID";
+              exit_script($system_callback);
+            }# fin VALIDACION 3
+      }
+
+    }else{
+      $system_callback['code'] = 2;
+      $system_callback['message'] = "El cliente no tiene cuentas contables";
+      exit_script($system_callback);
+    }#fin VALIDACION 2
   }else{
     $system_callback['code'] = 2;
-    $system_callback['message'] = "El cliente no tiene cuentas contables";
+    $system_callback['message'] = "El Certificado a caducado, reportelo a Contabilidad";
     exit_script($system_callback);
-  }#fin VALIDACION 2
+  }#fin VALIDACION 1
 }else{
   $system_callback['code'] = 2;
-  $system_callback['message'] = "El Certificado a caducado, reportelo a Contabilidad";
+  $system_callback['message'] = "Permiso para timbrar denegado";
   exit_script($system_callback);
-}#fin VALIDACION 1
-
+}#fin sin permiso para timbrar
 
 
 

@@ -732,6 +732,96 @@ $('#mConsChIdcheque').keydown(function(e){
     //     window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
     // 	}
     // });
+
+    $('tbody').on('click', '.buscarFacturas-cheques', function(){
+      cadena = $('#cdchCliente').val();
+      parte = cadena.split('-');
+      nombre = parte[0] + parte[1];
+      $('#detche-cliente-nombre').val(nombre);
+
+      var data = {
+        cliente : $('#cdchCliente').attr('db-id'),
+        fecha : $('#dchFecha').val(),
+        id_poliza : $('#dchPoliza').val(),
+        tipo : 1
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_lista.php",
+        data: data,
+        success: 	function(r){
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            $('#detche-buscarfacturas-lista').html(r.data);
+          } else {
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+      });
+
+    });
+
+    $('#detche-buscarfacturas-lista').on('click','.checkbox-facpend',function(){
+      activado = $(this).parents('tr').find('.facpend-check').prop('checked');
+      cadena = $('#cdchCliente').val();
+      parte = cadena.split('-');
+
+      if( activado == true ){
+        accion = "insertar";
+      }else{
+        accion = "borrar";
+      }
+
+      objPartida = $(this).parents('tr').find('.facpend-partida').attr('id');
+
+      var data = {
+        id_poliza : $('#dchPoliza').val(),
+        id_cliente : parte[0],
+        nombre : parte[1],
+        fecha : $('#dchFecha').val(),
+        tipo : 1,
+        referencia : $(this).parents('tr').find('.facpend-referencia').val(),
+        factura : $(this).parents('tr').find('.facpend-factura').val(),
+        ctagastos : $(this).parents('tr').find('.facpend-ctagastos').val(),
+        nc : $(this).parents('tr').find('.facpend-nc').val(),
+        saldo : $(this).parents('tr').find('.facpend-saldo').val(),
+        pago : $(this).parents('tr').find('.facpend-pago').val(),
+        cuenta : $(this).parents('tr').find('.facpend-cta').val(),
+        accion : accion,
+        id_cheque : $('#dchIdcheque').val(),
+        cuentaMST : $('#dchCtaMST').val(),
+        idcheque_folControl : $('#dchIdcheque_folControl').val(),
+        partidaCh : $(this).parents('tr').find('.facpend-partida').val()
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/buscarFacturas_insertaReg_detalleCheque.php",
+        data: data,
+        success: 	function(r){
+          r = JSON.parse(r);
+          console.log(r);
+          if (r.code == 1) {
+            $('#'+objPartida).attr('value',r.partida);
+            alertify.success(r.data);
+            ultReg_DetChe();
+          } else {
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+      });
+
+    });
+
+
+
 });
 
     //*******************************************************************************
@@ -857,7 +947,6 @@ function sumasCAcheques(){
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
-      console.log(r);
       $('#sumCargos1_ch').val(r.cargos);
       $('#sumAbonos1_ch').val(r.abonos);
       $('#sumCargos2_ch').val(r.cargos);

@@ -421,7 +421,7 @@ function timbrarTest(){
 }
 
 #timbrar xml en modo PRODUCCION
-function timbrar(){
+function timbrarProduccion(){
   global $rutaTempFile,$rutaRepFileZip,$rutaRep,$fileXML,$rutaCLT;
 
   $XMLtemp = fopen($rutaTempFile,"rb");
@@ -456,9 +456,9 @@ function timbrar(){
 
 }
 
-function abrirTimbrado(){
-  global $rutaRepFileXMLTest,$tipoProceso; #para produccion quitar a variable 'Test'
-  $xml = simplexml_load_file($rutaRepFileXMLTest);
+function abrirTimbrado($rutaRepFileXML){
+  global $tipoProceso;
+  $xml = simplexml_load_file($rutaRepFileXML);
   $ns = $xml->getNamespaces(true);
   $xml->registerXPathNamespace('t', $ns['tfd']);
   $xml->registerXPathNamespace('c', $ns['cfdi']);
@@ -469,9 +469,17 @@ function abrirTimbrado(){
       $selloCFDI = $cfdiComprobante['Sello'];
       $selloParte = substr($selloCFDI,-10,8);
       $selloParte = str_replace('==','',$selloParte);
+      $moneda = $cfdiComprobante['Moneda'];
+      $tc = $cfdiComprobante['TipoCambio'];
   }
-  foreach ($xml->xpath('//cfdi:Comprobante//cfdi:Emisor') as $Emisor){ $e_rfc = $Emisor['Rfc']; }
-  foreach ($xml->xpath('//cfdi:Comprobante//cfdi:Receptor') as $Receptor){ $r_rfc = $Receptor['Rfc']; }
+  foreach ($xml->xpath('//cfdi:Comprobante//cfdi:Emisor') as $Emisor){
+    $e_rfc = TildesHtml($Emisor['Rfc']);
+    $nombre = TildesHtml($Emisor['Nombre']);
+  }
+  foreach ($xml->xpath('//cfdi:Comprobante//cfdi:Receptor') as $Receptor){
+    $r_rfc = TildesHtml($Receptor['Rfc']);
+    $r_nombre = TildesHtml($Receptor['Nombre']);
+  }
   foreach ($xml->xpath('//t:TimbreFiscalDigital') as $tfd) {
       $UUID = $tfd['UUID'];
       $certificado = $tfd['NoCertificadoSAT'];
@@ -483,13 +491,13 @@ function abrirTimbrado(){
   $respQR = generarQR($e_rfc,$r_rfc,$total,$UUID,$selloParte);
 
   if( $tipoProceso == "factura" ){
-    $respGuardar = guardarDatosTimbrado($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura );
+    $respGuardar = guardarDatosTimbrado($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura, $r_rfc,$r_nombre,$total,$moneda,$tc );
   }
   if( $tipoProceso == "notaCredito" ){
-    $respGuardar = guardarDatosTimbrado_NC($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura );
+    $respGuardar = guardarDatosTimbrado_NC($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura, $r_rfc,$r_nombre,$total,$moneda,$tc );
   }
   if( $tipoProceso == "pago" ){
-    $respGuardar = guardarDatosTimbrado_Pago($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura );
+    $respGuardar = guardarDatosTimbrado_Pago($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura, $r_rfc,$r_nombre,$total,$moneda,$tc );
   }
   return $UUID."\n".$respQR.$respGuardar;
 }

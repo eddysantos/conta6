@@ -5,10 +5,8 @@ require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
 
 
 $cuenta = trim($_GET['cuenta']);
-//$id_cliente = trim($_GET['id_cliente']);
 
 require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
-// require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle.php'; # $pagosDetallePrint
 
 $mostrarSustituir = false;
 if( is_null($s_UUIDpagoSustituir) ){
@@ -17,33 +15,6 @@ if( is_null($s_UUIDpagoSustituir) ){
 	$s_UUIDpagoSustituir = '';
 	$mostrarSustituir = true;
 }
-
-
-	#http://localhost:88/contabilidad/pagosElectronicos/reciboPagos/elaborar_reciboPagos.php?usuario=admado&id_factura=73731&oficina=470&id_cliente=CLT_7621&id_docPago=4
-
-	// include ("../../../include/conexion.php");
-	// include ("../../../include/cortarDecimales_a3dig.php");
-
-	$cliente = trim($_GET['id_cliente']);
-	$id_factura = trim($_GET['id_factura']);
-	$id_docPago = trim($_GET['id_docPago']);
-
-	$sql_Cliente = mysqli_fetch_array(mysqli_query($link,"SELECT * from TBL_CLIENTES WHERE ID_CLIENTE = '$cliente'"));
-	$oRst_Facturas = mysqli_fetch_array(mysqli_query($link,"SELECT * from TBL_FACTURAS_CFD WHERE id_factura = '$id_factura'"));
-	$sql_formaPago = mysqli_query($link,"SELECT * FROM tbl_metpago_sat WHERE ACTIVO ='S';");
-	$sql_moneda = mysqli_query($link,"select * from TBL_MONEDAS_SAT where activo = 'S' order by moneda");
-	$sql_moneda2 = mysqli_query($link,"select * from TBL_MONEDAS_SAT where activo = 'S' order by moneda");
-	$sql_bancosCIA = mysqli_query($link,"SELECT B.NOMBRE AS nomBanco,A.ID_BANCO,A.CTAORI,A.ID_ADUANA,A.NOMBRE,A.RFC,B.NOMBRE
-										FROM TBL_BANCOS_CIA A, TBL_BANCOS_SAT B
-										WHERE A.ID_BANCO = B.ID_BANCO ORDER BY A.NOMBRE");
-
-	$oRst_Pago = mysqli_fetch_array(mysqli_query($link,"SELECT * from tbl_pagos_cfdi WHERE id_docPago = $id_docPago"));
-	$sql_pagoDetalle = mysqli_query($link,"select * from TBL_PAGOS_CFDI_detalle where id_docPago = $id_docPago");
-	$total_pagoDetalle = mysqli_num_rows($sql_pagoDetalle);
-
-	$oRst_TotalPagoDet = mysqli_fetch_array(mysqli_query($link,"SELECT truncate(sum(importe),2) as totalPagado FROM cplaa.tbl_pagos_cfdi_detalle where id_docPago = $id_docPago"));
-
-	$tabindex=0;
 
 
   $query_consultaDetalle = "SELECT * FROM conta_t_pagos_captura_det where fk_id_pago_captura = ? ";
@@ -79,7 +50,7 @@ if( is_null($s_UUIDpagoSustituir) ){
 
       $pk_id_pago_det = $row_consultaDetalle['pk_id_pago_det'];
   		$d_fecha_docPago = $row_consultaDetalle['d_fecha_docPago'];
-  		$fk_id_formapago = trim($row_consultaDetalle['fk_id_formapago']);
+  		$fk_id_formaPago = trim($row_consultaDetalle['fk_id_formapago']);
   		$s_numOperacion = $row_consultaDetalle['s_numOperacion'];
   		$fk_id_moneda = $row_consultaDetalle['fk_id_moneda'];
   		$n_tipoCambio = $row_consultaDetalle['n_tipoCambio'];
@@ -115,10 +86,6 @@ if( is_null($s_UUIDpagoSustituir) ){
 
       require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_docRel.php';#$pagosDetalle_pago
 
-      #if(tipoDocumento == 'modificar'){
-        $btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
-        $inputPartida = "<input class='id-partida' type='hidden' id='T_partida_$pk_rowPago' value='0'>";
-      #}
   		$pagosDetalle .= "
       <div class='elemento-pagDet'>
         <div class='row m-0 font12 elemento-pagos borrar-pago remove_$pk_rowPago' id='$pk_rowPago'>
@@ -128,10 +95,7 @@ if( is_null($s_UUIDpagoSustituir) ){
           <div class='col-md-3 p-1'> <input class='h22 efecto border-0 bt text-left t-ctaE' type='text' id='ctaE_$pk_rowPago' value='$s_ctaOrd' readonly></div>
           <div class='col-md-1 text-right p-2 b'><b> Fecha: </b></div>
           <div class='col-md-2 p-1'> <input class='h22 efecto border-0 bt text-left t-fecha' type='text' id='fecha_$pk_rowPago' value='$d_fecha_docPago' readonly></div>
-          <div class='col-md-1 p-1'>
-            $btnEliminar
-            $inputPartida
-            <input class=' t-pagosDET' type='hidden' id='pagosDET_$pk_rowPago' value='$pk_id_pago_det'>
+          <div class='col-md-1 p-1'><input class=' t-pagosDET' type='hidden' id='pagosDET_$pk_rowPago' value='$pk_id_pago_det'>
           </div>
 
           <div class='col-md-1 text-right p-2 b'><b> Certificado: </b></div>
@@ -297,7 +261,7 @@ class MYPDF extends TCPDF {
     $this->SetFont('helvetica', '', 10);
     $this->Cell(0, 0, date('m-d-Y', strtotime('today')) , 0, 1, 'R', 0, '', 0, false, 'T', 'C');
     $this->SetFont('helvetica', '', 12);
-    $this->Cell(0, 12, 'RECIBO DE PAGO', 0, 1, 'C', 0, '', 0, false, 'T', 'C');
+    $this->Cell(0, 12, 'PROFORMA RECIBO DE PAGO', 0, 1, 'C', 0, '', 0, false, 'T', 'C');
   }
 
   public function Footer() {

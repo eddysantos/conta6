@@ -38,6 +38,12 @@ while ($row = $rslt->fetch_assoc()) {
   $fk_id_cuenta = trim($row['fk_id_cuenta']);
   $partida = $row['pk_partida'];
 
+  if( $oRst_permisos['s_modificar_contaElect'] == 1 ){
+    $urlADD = "<a href='#' onclick='infAddPartida($row[pk_partida])'>
+                <img class='icochico' src='/conta6/Resources/iconos/001-add.svg'>
+              </a>";
+  }
+
   $partidaPoliza =
   "<div class='row infsub ml-0 mr-0 pt-2 pb-2'>
     <div class='col-md-4 p-0 text-left'>Desc : <black class='b'>$row[s_desc]</black></div>
@@ -45,27 +51,9 @@ while ($row = $rslt->fetch_assoc()) {
     <div class='col-md-2'>Cuenta : <black class='b'>$fk_id_cuenta</black></div>
     <div class='col-md-2'>Cargo : <black class='b'>$row[n_cargo]</black></div>
     <div class='col-md-2'>Abono : <black class='b'>$row[n_abono]</black></div>
-
-    <div class='col-md-1'>
-      <a href='#' onclick='infAddPartida($row[pk_partida])'>
-        <img class='icochico' src='/conta6/Resources/iconos/001-add.svg'>
-      </a>
-    </div>
+    <div class='col-md-1'>$urlADD</div>
   </div>";
 
-  // "<div class='row infsub ml-0 mr-0 pt-2 pb-2'>
-  //   <div class='col-md-4 p-0 text-left'>Desc : <black class='b'>$row[s_desc]</black></div>
-  //   <div class='col-md-1'>Tipo : <black class='b'>$row[fk_tipo]</black></div>
-  //   <div class='col-md-2'>Cuenta : <black class='b'>$fk_id_cuenta</black></div>
-  //   <div class='col-md-2'>Cargo : <black class='b'>$row[n_cargo]</black></div>
-  //   <div class='col-md-2'>Abono : <black class='b'>$row[n_abono]</black></div>
-  //
-  //   <div class='col-md-1'>
-  //     <a href=''>
-  //       <img class='icochico' src='/conta6/Resources/iconos/001-add.svg'>
-  //     </a>
-  //   </div>
-  // </div>";
 
   $query_consulContaElect = "SELECT * FROM conta_t_polizas_det_contaelec WHERE fk_id_poliza = ? AND fk_partidaPol = ?";
   $stmt_consulContaElect = $db->prepare($query_consulContaElect);
@@ -89,20 +77,31 @@ while ($row = $rslt->fetch_assoc()) {
 
 
     while ($row = $rslt_consulContaElect->fetch_assoc()) {
+      $uuid_captura = $row['s_UUID_CFDI'];
+      $imgXML = "";
+      $imgXMLdownload = "";
+      if( $uuid_captura <> '' ){
+        #busqueda de UUID para mostrar ruta de archivo XML
+        require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultaXML_backupsxml.php'; #$imgXML, $imgXMLdownload
+      }
+
+      if( $oRst_permisos['s_modificar_contaElect'] == 1 ){
+        $urlDELETE = "<a href='#' onclick='eliminarPartida($row[pk_id_partida])'>
+                        <img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'>
+                      </a>";
+      }
       $partidaContaElect .=
         "<div class='row ml-0 mr-0 borderojo'>
           <div class='col-md-1'></div>
           <div class='col-md-1 text-right b'>UUID :</div>
-          <div class='col-md-5 text-left'>$row[s_UUID_CFDI]</div>
+          <div class='col-md-5 text-left'>$uuid_captura</div>
           <div class='col-md-1 text-left p-0'><span class='b'>Bco :</span> $row[s_BancoOri]</div>
           <div class='col-md-1 text-left p-0'><span class='b'>Bco :</span> $row[s_BancoDest]</div>
           <div class='col-md-1 text-left p-0'><span class='b'>Bco :</span> $row[s_BancoOriExt]</div>
           <div class='col-md-1 text-right b'>Tax Id :</div>
           <div class='col-md-1 text-left'>$row[s_TaxID]</div>
 
-          <div class='col-md-1'><a href='#' onclick='eliminarPartida($row[pk_id_partida])'>
-            <img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'>
-          </a></div>
+          <div class='col-md-1'>$urlDELETE</div>
           <div class='col-md-1 text-right b'>Benef :</div>
           <div class='col-md-5 text-left'>$row[s_Beneficiario]  -- $row[s_RFC]</div>
           <div class='col-md-1 text-left p-0'><span class='b'>Cta :</span> $row[s_ctaOri]</div>
@@ -129,7 +128,8 @@ while ($row = $rslt->fetch_assoc()) {
           <div class='col-md-1 text-right b'>Opcionales:</div>
           <div class='col-md-5 text-left'>$row[s_RFCopc] -- $row[s_BeneficiarioOpc]</div>
           <div class='col-md-1 text-left b p-0'>Observaciones :</div>
-          <div class='col-md-4 text-left'>$row[s_observaciones] </div>
+          <div class='col-md-3 text-left'>$row[s_observaciones] </div>
+          <div class='col-md-1'>$imgXML $imgXMLdownload</div>
         </div>";
     }
   }

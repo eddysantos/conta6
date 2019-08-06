@@ -28,6 +28,7 @@ $custodia = 0;
 $manejo = 0;
 $almacenaje = 0;
 $maniobras = 0;
+
 require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
 if($referencia != "SN"){
       require $root . '/conta6/Resources/PHP/actions/consultaDatosReferenciaProveedor.php';
@@ -177,6 +178,14 @@ if($referencia != "SN"){
     //LISTA DE USO DE CFDI
     require $root . '/conta6/Resources/PHP/actions/consultaUsoCFDI_facturar.php'; #$consultaUsoCFDIfac
     $tabindex = 0;
+
+
+    #Descomentar - se necesita VPN conectado
+    #require $root . '/conta6/Resources/PHP/DatabasesRemote/conexionADUANET.php';
+    #require $root . '/conta6/Resources/PHP/DatabasesRemote/traficoSAIWEB_pedimento.php';
+    require $root . '/conta6/Resources/PHP/actions/consultaDatosReferenciaPedimento.php'; #$impuesto_CEXT
+    require $root . '/conta6/Resources/PHP/actions/consulta_impuestos_comercioExterior.php'; #$impuesto_CEXT
+
 ?>
 
     <input type="hidden" id="tipoDocumento" value="elaborar">
@@ -547,7 +556,7 @@ if($referencia != "SN"){
                       </td>
                       <th class='col-md-2'>Al Tipo de Cambio</th>
                       <td class='col-md-2'>
-                        <input class="efecto h22" id="T_POCME_Tipo_Cambio" type="text" tabindex="<?php echo $tabindex = $tabindex+1; ?>" onBlur="validaIntDec(this);Suma_POCME();Conversion_Tipo_Cambio();" value="<?php echo $tipoCambio;?>" size="17">
+                        <input class="efecto h22" id="T_POCME_Tipo_Cambio" type="text" tabindex="<?php echo $tabindex = $tabindex+1; ?>" onBlur="validaIntDec(this);Suma_POCME();Conversion_Tipo_Cambio();" value="<?php echo $tipo_Cambio;?>" size="17">
                       </td>
                       <th class='col-md-2'>Total MN</th>
                       <td class='col-md-2'>
@@ -645,7 +654,7 @@ if($referencia != "SN"){
                       <td class='col-md-6 p-1 b font12 ls1'>Impuestos y/o derechos pagados o garantizados al Com. Ext.</td>
                       <td class='col-md-4 p-1'></td>
                       <td class='col-md-2 p-1'>
-                        <input class="efecto h22" type="text" id="T_derechosPagados" size="20" onblur="validaIntDec(this);cortarDecimalesObj(this,2);Suma_Subtotales();" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
+                        <input class="efecto h22" type="text" id="T_derechosPagados" size="20" onblur="validaIntDec(this);cortarDecimalesObj(this,2);Suma_Subtotales();" value="<?php echo $importe_impuesto; ?>" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
                       </td>
                     </tr>
                   </tbody>
@@ -799,12 +808,9 @@ if($referencia != "SN"){
             <td class="w-50">
               <table class="table">
                 <tr class="row">
-                  <td class="col-md-3 text-left align-self-center"> CUSTOMS DC </td>
+                  <td class="col-md-3 text-left align-self-center"></td>
                   <td class="col-md-3">
-                    <select class="custom-select-s" id="CUSTOMS" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                        <option value='1'>Si</option>
-                        <option value='0' selected>No</option>
-                    </select>
+                    <input type="hidden" class="custom-select-s" id="CUSTOMS" value='0' />
                   </td>
                   <td class="col-md-3">
                     <!--select id="Lst_metodoPago" onchange="asignarMetodoPago()"-->

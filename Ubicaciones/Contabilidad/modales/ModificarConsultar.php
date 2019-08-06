@@ -120,7 +120,7 @@
               </td>
 
               <td class="col-md-4 input-effect">
-                <input id="mConsChIdcheque" class="efecto" type="text">
+                <input id="mConsChIdcheque" class="efecto" type="text" autocomplete="off">
                 <label for="mConsChIdcheque">Cheque</label>
               </td>
             </tr>

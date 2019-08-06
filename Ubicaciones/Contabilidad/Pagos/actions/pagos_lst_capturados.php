@@ -37,7 +37,7 @@ while ($row = $rslt->fetch_assoc()) {
 
   require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_lst_timbrados.php';
   if ($rslt_cfdi->num_rows == 0) {
-    if( $oRst_permisos['s_rPgo_modificar'] == 1 ){ $hrefMod = "<a href='#' onclick='pagosModificar($id_pago_captura,&#39;$id_cliente&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/003-edit.svg'></a>"; }
+    if( $oRst_permisos['s_rPgo_modificar'] == 1 ){ $hrefMod = "<a href='#' onclick='pagosModificar($id_pago_captura,&#39;$id_cliente&#39;,&#39;modificar&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/003-edit.svg'></a>"; }
     if( $oRst_permisos['s_rPElect_timbrar'] == 1 ){ $hrefTimbrar = "<a href='#' onclick='pagosTimbrar($id_pago_captura,&#39;$id_cliente&#39;)' class='ml-3'><img class='icomediano' src='/conta6/Resources/iconos/timbrar.svg'></a>"; }
     if( $oRst_permisos['s_rPgo_cancelar'] == 1 ){ $hrefEliminar = "<a href='#' onclick='pagosCapturaEliminar($id_pago_captura)' class='ml-3'><img class='icomediano' src='/conta6/Resources/iconos/002-trash.svg'></a>"; }
   }

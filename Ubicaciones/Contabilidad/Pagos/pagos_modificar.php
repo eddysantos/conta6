@@ -4,9 +4,36 @@ require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 
 $cuenta = trim($_GET['cuenta']);
 $id_cliente = trim($_GET['id_cliente']);
+$opcionDoc = trim($_GET['opcionDoc']);
 
 require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
 require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle.php'; # $pagosDetalle
+
+require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarPagosMismaFactura.php'; # $listpagMismaFac
+
+if( $opcionDoc == 'modificar' ){
+  $tipoRel_doc = $fk_c_TipoRelacion;
+  $uuid_doc = $s_UUIDpagoSustituir;
+  $folio_doc = $n_folioPagoSustituir;
+  $idcaptura_doc = $pk_id_pago_captura;
+  $fechaAlta_doc = $d_fecha_alta;
+  $usuarioAlta_doc = $fk_usuario_alta;
+
+  $idBtnGuardar = 'id="modificar-pago"';
+}
+
+if( $opcionDoc == 'sustituir' ){
+  $id_captura = $cuenta;
+  require $root . '/conta6/Resources/PHP/actions/consultaPagoTimbrada.php';
+
+  $tipoRel_doc = '04';
+  $uuid_doc = $s_UUID;
+  $folio_doc = $pk_id_pago;
+  $idcaptura_doc = '';
+  $fechaAlta_doc = '';
+  $usuarioAlta_doc = '';
+  $idBtnGuardar = 'id="guardar-pago"';
+}
 
 require $root . '/conta6/Resources/PHP/actions/consultaDatosIVA.php';
 $sacarIVA = $row_datosIVA['n_IVA_calculo'];
@@ -153,13 +180,13 @@ if ($rows_datosCLTformaPago > 0) {
       <tbody class='font14 text-center'>
         <tr class="row">
           <td class="p-1 col-md-1 text-left b"><b>Generada</b></td>
-          <td class="p-1 col-md-2"><input class="efecto text-left h22 border-0" type="text" id="id_pago_captura" value="<?php echo $pk_id_pago_captura; ?>"></td>
+          <td class="p-1 col-md-2"><input class="efecto text-left h22 border-0" type="text" id="id_pago_captura" value="<?php echo $idcaptura_doc; ?>"></td>
           <td class="p-1 col-md-3"></td>
           <td class="p-1 col-md-3">
-            <input class="h22 bt border-0 text-center" type="text" id="T_Usuario" size="20"value="<?php echo $fk_usuario_alta; ?>" readonly>
+            <input class="h22 bt border-0 text-center" type="text" id="T_Usuario" size="20"value="<?php echo $usuarioAlta_doc; ?>" readonly>
           </td>
           <td class="p-1 col-md-3">
-            <input class="h22 bt border-0 text-center" type="text" id="T_Fecha_Cta" size="20" value="<?php echo $d_fecha_alta;?>" readonly>
+            <input class="h22 bt border-0 text-center" type="text" id="T_Fecha_Cta" size="20" value="<?php echo $usuarioAlta_doc;?>" readonly>
           </td>
         </tr>
 
@@ -197,9 +224,9 @@ if ($rows_datosCLTformaPago > 0) {
       </thead>
       <tbody class='font14 text-center'>
         <tr class="row">
-          <td class="p-1 col-md-4"><input class="h22 bt border-0 efecto" type="text" id="idPago_sust" size="20" value="<?php echo $fk_c_TipoRelacion; ?>" readonly></td>
-          <td class="p-1 col-md-4"><input class="h22 bt border-0 efecto" type="text" id="uuid_sust" size="20" value="<?php echo $s_UUIDpagoSustituir; ?>" readonly></td>
-          <td class="p-1 col-md-4"><input class="h22 bt border-0 efecto" type="text" id="tipoRel_sust" size="20" value="<?php echo $fk_c_TipoRelacion; ?>" readonly></td>
+          <td class="p-1 col-md-4"><input class="h22 bt border-0 efecto" type="text" id="idPago_sust" size="20" value="<?php echo $folio_doc; ?>" readonly></td>
+          <td class="p-1 col-md-4"><input class="h22 bt border-0 efecto" type="text" id="uuid_sust" size="20" value="<?php echo $uuid_doc; ?>" readonly></td>
+          <td class="p-1 col-md-4"><input class="h22 bt border-0 efecto" type="text" id="tipoRel_sust" size="20" value="<?php echo $tipoRel_doc; ?>" readonly></td>
         </tr>
       </tbody>
     </table>
@@ -219,26 +246,14 @@ if ($rows_datosCLTformaPago > 0) {
           <td class="col-md-1 p-1">no.Doc.Pago</td>
           <td class="col-md-1 p-1">FacturaR</td>
           <td class="col-md-1 p-1">Sust.Pago</td>
-          <td class="col-md-1 p-1">Fecha</td>
-          <td class="col-md-1 p-1">Pol.Cancela</td>
+          <td class="col-md-1 p-1">Fecha Cancela</td>
           <td class="col-md-1 p-1">Saldo Anterior</td>
           <td class="col-md-1 p-1">Importe Pagado</td>
           <td class="col-md-1 p-1">Saldo Insoluto</td>
-
         </tr>
       </thead>
       <tbody class='font14 text-center'>
-        <tr class="row borderojo">
-          <td class="col-md-1"></td>
-          <td class="col-md-1"></td>
-          <td class="col-md-2"></td>
-          <td class="col-md-1"></td>
-          <td class="col-md-1"></td>
-          <td class="col-md-1"></td>
-          <td class="col-md-2"></td>
-          <td class="col-md-1"></td>
-          <td class="col-md-2"></td>
-        </tr>
+        <?php echo $listpagMismaFac; ?>
       </tbody>
     </table>
   </div>
@@ -262,7 +277,6 @@ if ($rows_datosCLTformaPago > 0) {
           <td class="col-md-2 p-1"><span>*</span> Moneda</td>
           <td class="col-md-1 p-1"><span>*</span> Tipo de Cambio</td>
           <td class="col-md-1 p-1"><span>*</span> Importe</td>
-          <td class="col-md-1 p-1">IVA</td>
           <td class="col-md-1 p-1 pl-3"></td>
         </tr>
       </thead>
@@ -292,10 +306,6 @@ if ($rows_datosCLTformaPago > 0) {
           </td>
           <td class="col-md-1 p-1">
             <input class="efecto h22" type="text" id="T_importe" value="0" onchange="buscarNumeroCuentaBanco('<?php echo $id_cliente; ?>')">
-          </td>
-          <td class="col-md-1 p-1">
-            <!--input class="efecto h22" type="text" id="T_iva" onchange="validaIntDec(this)" value="0">
-            <input class="efecto h22" type="hidden" id="T_deposito" value="0"-->
           </td>
           <td class="col-md-1 p-1 pl-3">
             <a href="#" id="Btn_agregarPago" onclick="Btn_agregarPago()"><img class="icochico" src="/conta6/Resources/iconos/add.svg"></a>
@@ -443,7 +453,7 @@ if ($rows_datosCLTformaPago > 0) {
   </div>
   <div class="row justify-content-center m-0" style="<?php echo $marginbottom ?>">
     <div class="col-md-3">
-      <input class="efecto boton" type='button' value="GUARDAR" id="modificar-pago" />
+      <input class="efecto boton" type="button" value="GUARDAR" <?php echo $idBtnGuardar; ?> />
     </div>
   </div>
 

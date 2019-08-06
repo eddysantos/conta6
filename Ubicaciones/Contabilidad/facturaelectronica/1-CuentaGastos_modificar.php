@@ -812,6 +812,8 @@ if($referencia != "SN"){
                     </table>
                   </form>
               </div>
+              
+
             </div>
           </div>
         </div>
@@ -822,12 +824,11 @@ if($referencia != "SN"){
             <td class="w-50">
               <table class="table">
                 <tr class="row">
-                  <td class="col-md-3 text-left align-self-center"> CUSTOMS DC </td>
-                  <td class="col-md-3">
-                    <select id="CUSTOMS" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                        <?php echo $datosCUSTOMS;?>
-                    </select>
-                  </td>
+                  <td class="col-md-3"><input type="text" class="efecto" id="tipoRelacion" value='<?php echo $s_tipoRelacion; ?>' readOnly /></td>
+                  <td class="col-md-3"><input type="text" class="efecto" id="folioRelacionado" value='<?PHP echo $n_folioFacSustituir;?>' readOnly/></td>
+                  <td class="col-md-4"><input type="text" class="efecto" id="UUIDrelacionado" siza='40' value='<?php echo $s_UUIDfacSustituir;?>' readOnly/></td>
+                </tr>
+                <tr class="row">
                   <td class="col-md-3">
                     <select id="T_metodoPago" onchange="asignarMetodoPago()">
                       <option value="PUE">Seleccione método de pago</option>
@@ -839,6 +840,8 @@ if($referencia != "SN"){
                     <?php echo $consultaUsoCFDIfac; ?>
                   </select>
                 </td>
+                <td class="col-md-3 text-left align-self-center"></td>
+                <td class="col-md-3"><input type="hidden" class="custom-select-s" id="CUSTOMS" value='0' /></td>
                 </tr>
                 <tr class="row">
                   <td class="col-md-12 backpink">Seleccione forma y cuenta de pago</td>

@@ -71,7 +71,7 @@ if( $rows_buscaRef > 0 ){
         <tr class='row mt-2 align-items-center'>
           <td class='col-md-2 b text-right p-0'><b>Facturar a otro:</b></td>
           <td class='col-md-7 p-0'>
-            <select class='custom-select-mod h25' size='1' id='DGEcliente'>
+            <select class='custom-select-mod h25' size='1' id='DGEcliente' onchange='cargarOtroCliente()'>
               <option selected value='0'>Facturar a otro</option>
               $clientes
             </select>

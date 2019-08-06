@@ -23,8 +23,10 @@ if( $moneda <> 'MXN' ){
   $Hono_Total = $Total_Pagos;
   $Total_Gral = $total_pagosCLT;
 }
+
 echo '/'.$moneda;
 echo '/'.$Total_Gral;
+
 if( $Total_Anticipos > 0 ){
   if( $Total_Anticipos > $Total_Gral or $Total_Anticipos == $Total_Gral ){#CASO1
     $detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$cta208."',3,'CARGO A LA CUENTA POR ANTICIPO','".$id_cliente."','".$referencia."',".$id_ctagastos.",".$Total_Anticipos.",0),";

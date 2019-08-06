@@ -13,7 +13,7 @@
 
   $id_captura = $cuenta;
   require $root . '/conta6/Resources/PHP/actions/consultaPagoTimbrada.php';
-  if( $rows_facTimbrada == 0 ){
+  if( $rows_pagoTimbrada == 0 ){
     $s_UUID = '';
     $pk_id_pago = '';
     $id_poliza = '';
@@ -193,7 +193,7 @@
           <td class="p-1 col-md-3"><?php echo $d_fecha_modifi; ?></td>
         </tr>
     		<tr class="row">
-    			<td class="p-1 col-md-3 text-left b"><b>Pago generado: <?php echo $id_factura.'</b> --- '.$s_UUID; ?></td>
+    			<td class="p-1 col-md-3 text-left b"><b>Pago generado: <?php echo $pk_id_pago.'</b> --- '.$s_UUID; ?></td>
     			<td class="p-1 col-md-3"><?php echo $id_poliza; ?></td>
     			<td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
     			<td class="p-1 col-md-3"><?php echo $fechaTimbre; ?></td>

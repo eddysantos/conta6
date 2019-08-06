@@ -15,7 +15,12 @@ require_once $root . '/conta6/Resources/PHP/actions/generarCFDI_proceso_function
 
 #***************************************************************************************
 # funciones para timbrar cfdi --- factura
-$ml = xmlV33_genera_xml($array,$nodo);
+if( $id_facturaRelacionada > 0 ){
+  $ml = xmlV33_generaDR_xml($array,$nodo);
+}else{
+  $ml = xmlV33_genera_xml($array,$nodo);
+}
+
 $cO = xmlV33_genera_cadena_original();
 $sello = xmlV33_sella($array);
 $XMLsave = xmlV33_saveTempXML($array); #guardar archivo
@@ -24,10 +29,12 @@ if( $XMLsave == 'xmlTemGenerado' ){
 
   #PRUEBAS
   $respTEST = timbrarTest();
+  $modoTimbrar = 'TEST';
   if( $respTEST == 'correcto'){
     $system_callback['message'] .= "✓ xml Timbrado TEST correctamente:\n";
-    $respAbrirTimbrado = abrirTimbrado(); #abre archivo timbrado, generar QR, genera polizas y guardar los datos
+    $respAbrirTimbrado = abrirTimbrado($rutaRepFileXMLTest); #abre archivo timbrado, generar QR, genera polizas y guardar los datos
     $system_callback['message'] .= $respAbrirTimbrado;
+    exit_script($system_callback);
   }else {
     $system_callback['code'] = 3;
     $system_callback['message'] = $respTEST;
@@ -37,9 +44,10 @@ if( $XMLsave == 'xmlTemGenerado' ){
   #FALTA GENERAR FUNCION DE PRODUCCION
   #EJECUTA SAT
   // $respProd = timbrarProduccion();
+  // $modoTimbrar = 'PRODUC';
   // if( $respProd == 'correcto'){
   //   $system_callback['message'] .= "✓ xml Timbrado correctamente: ";
-  //   $respAbrirTimbrado = abrirTimbrado(); #abre archivo timbrado, generar QR, genera polizas y guardar los datos
+  //   $respAbrirTimbrado = abrirTimbrado($rutaRepFileXML); #abre archivo timbrado, generar QR, genera polizas y guardar los datos
   //   $system_callback['message'] .= $respAbrirTimbrado;
   // }else {
   //   $system_callback['code'] = 3;
@@ -68,13 +76,26 @@ function xmlV33_genera_xml($array,$nodo) {
 	xmlV33_impuestos($array,$nodo);
 }
 
+function xmlV33_generaDR_xml($array,$nodo) {
+	global $xml, $ret;
+	$xml = new DOMdocument("1.0","UTF-8");
+	xmlV33_generales($array,$nodo);
+  xmlV33_cfdi_relacionados($array,$nodo);
+  xmlV33_emisor($array,$nodo);
+	xmlV33_receptor($array,$nodo);
+	xmlV33_conceptos($array,$nodo);
+	xmlV33_impuestos($array,$nodo);
+}
 
-function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura){
+
+function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura, $r_rfc,$r_nombre,$total,$moneda,$tc){
   global $lugarExpedicion,$lugarExpedicionTxt,$noCertificado,$id_cliente,$cuenta,$id_factura,$referencia,$cliente,
          $root,$usuario,$db,$aduana,
          $moneda,$tipoCambio,$totalGralImporte,$totalGral,$IVAretenido,$totaGralIVA,$Total_Anticipos,$folioCtaGastos,$iva_aplicado_2,
          $r_razon_social,$total_cta_gastos,$c_MetodoPago,$POCME_Total_MN,$fac_saldo,
-         $rutaRepFileHTML,$rutaRepFilePDF,$rutaQRFile;
+         $Total_POCME,$Total_Pagos,$total_pagosCLT,
+         $rutaRepFileHTML,$rutaRepFilePDF,$rutaQRFile,
+         $modoTimbrar;
 
   require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_diasCredito.php';
   //$vencimiento = '0000-00-00';
@@ -85,6 +106,7 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
 
   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza.php';#prepare polDetFac
   $respGuardarDatos = "✓ Póliza de Factura: ".$poliza."\n";
+
   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_4guardarDatosTimbrado.php';
 
   $poliza_CtaGastos = 0; $polizaAplicado = 0;
@@ -102,6 +124,18 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
   }
 
   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML.php';
+
+  #registro en contabilidad electronica
+  if( $poliza > 0 ){
+    $fk_id_poliza = $poliza;
+    $tipo = 3;
+    $tipoInf = "CompNal";
+    $RFC = $r_rfc;
+    $importe = $total;
+    $beneficiarioOpc = $r_nombre;
+    $tipoCamb = $tc;
+    require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal_poliza.php';
+  }
 
   return $respGuardarDatos;
 }

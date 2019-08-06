@@ -67,7 +67,7 @@ if( $rows_buscaRef > 0 ){
         <tr class='row mt-2 align-items-center'>
           <td class='col-md-2 b text-right pt-0 pb-0'><b>Facturar a otro:</b></td>
           <td class='col-md-7 p-0'>
-            <select class='custom-select-mod h25' size='1' id='DGEcliente'>
+            <select class='custom-select-mod h25' size='1' id='DGEcliente' onchange='cargarOtroCliente()'>
               <option selected value='0'>Facturar a otro</option>
               $clientes
             </select>
@@ -83,7 +83,7 @@ if( $rows_buscaRef > 0 ){
         <tr class='row mt-2 align-items-center'>
           <td class='col-md-2 b text-right pb-0 pt-0'><b>Factura CFDI:</b></td>
           <td class='p-0 col-md-4'>
-            <select class='custom-select-mod h25' size='1' id='DGEfacturas' onchange='cargarCtaAme()'>
+            <select class='custom-select-mod h25' size='1' id='DGEfacturas' onchange='cargarFactura()'>
               <option selected value='0'>Facturas</option>
               $facCFDI
             </select>

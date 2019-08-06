@@ -27,56 +27,57 @@ $id_referencia = 'N13003039';
 #PRUEBAS
 #EJECUTA SAT
 
-# VALIDACION 1: CERTIFICADO VIGENTE
-error_log("Just testing");
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
-if( $total_datosCert > 0 ){
-  $noCertificado = $row_datosCert['pk_id_certificado'];
-	$certificado = $row_datosCert['s_certificado'];
+if( $oRst_permisos['s_rPElect_timbrar'] == 1 ){
+  # VALIDACION 1: CERTIFICADO VIGENTE
+  error_log("Just testing");
+  require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
+  if( $total_datosCert > 0 ){
+    $noCertificado = $row_datosCert['pk_id_certificado'];
+  	$certificado = $row_datosCert['s_certificado'];
 
-  $system_callback['code'] = 1;
-  $system_callback['message'] .= "✓ Certificado: Vigente \n";
-
-
-
-
-  # VALIDACION 2: CONSULTO FOLIO DE CFDI
-  //obtener folio de PagoCFDI
-  require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_pagos.php';
-  if( $total_consultaDatosCFDI == 0 ){
-    require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_2genFactura.php'; #$folioFactura
-    $idFactura = $folioFactura;
-    echo "se genero pago folio CFDI: ".$folioFactura;
-    // echo "<br>";
-    //echo "generar factura y timbrar";
     $system_callback['code'] = 1;
-    $system_callback['message'] .= "✓ Pago: ".$folioFactura."\n";
+    $system_callback['message'] .= "✓ Certificado: Vigente \n";
 
-    require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso.php';
-    $system_callback['code'] = 1;
-    //$system_callback['message'] .= $mensajeTimbre.' ---'.$mensaje_xmlGen."***\n";
-    exit_script($system_callback);
-  }else{
-        $row_consultaDatosCFDI = $rslt_consultaDatosCFDI->fetch_assoc();
-        $UUID = $row_consultaDatosCFDI['s_UUID'];
-        $folioFactura = $row_consultaDatosCFDI['pk_id_pago'];
 
-        $system_callback['code'] = 1;
-        $system_callback['message'] .= "✓ Pago: ".$folioFactura."\n";
 
-        # VALIDACION 3: CONSULTO EL UUID
-        if( is_null($UUID) ){
-          require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso.php';
+
+    # VALIDACION 2: CONSULTO FOLIO DE CFDI
+    //obtener folio de PagoCFDI
+    require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_pagos.php';
+    if( $total_consultaDatosCFDI == 0 ){
+      require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_2genFactura.php'; #$folioFactura
+      $idFactura = $folioFactura;
+      echo "se genero pago folio CFDI: ".$folioFactura;
+      // echo "<br>";
+      //echo "generar factura y timbrar";
+      $system_callback['code'] = 1;
+      $system_callback['message'] .= "✓ Pago: ".$folioFactura."\n";
+
+      require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso.php';
+      $system_callback['code'] = 1;
+      //$system_callback['message'] .= $mensajeTimbre.' ---'.$mensaje_xmlGen."***\n";
+      exit_script($system_callback);
+    }else{
+          $row_consultaDatosCFDI = $rslt_consultaDatosCFDI->fetch_assoc();
+          $UUID = $row_consultaDatosCFDI['s_UUID'];
+          $folioFactura = $row_consultaDatosCFDI['pk_id_pago'];
 
           $system_callback['code'] = 1;
-          //$system_callback['message'] .= $mensajeTimbre;
-          exit_script($system_callback);
-        }else{
-          $system_callback['code'] = 2;
-          $system_callback['message'] = "YA TIENE UUID";
-          exit_script($system_callback);
-        }# fin VALIDACION 3
-  }
+          $system_callback['message'] .= "✓ Pago: ".$folioFactura."\n";
+
+          # VALIDACION 3: CONSULTO EL UUID
+          if( is_null($UUID) ){
+            require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso.php';
+
+            $system_callback['code'] = 1;
+            //$system_callback['message'] .= $mensajeTimbre;
+            exit_script($system_callback);
+          }else{
+            $system_callback['code'] = 2;
+            $system_callback['message'] = "YA TIENE UUID";
+            exit_script($system_callback);
+          }# fin VALIDACION 3
+    }
 
 
 
@@ -84,12 +85,12 @@ if( $total_datosCert > 0 ){
 
 
 
-}else{
-  $system_callback['code'] = 2;
-  $system_callback['message'] = "El Certificado a caducado, reportelo a Contabilidad";
-  exit_script($system_callback);
-}#fin VALIDACION 1
-
+  }else{
+    $system_callback['code'] = 2;
+    $system_callback['message'] = "El Certificado a caducado, reportelo a Contabilidad";
+    exit_script($system_callback);
+  }#fin VALIDACION 1
+}
 
 
 

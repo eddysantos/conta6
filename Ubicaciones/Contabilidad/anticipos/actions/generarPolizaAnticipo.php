@@ -235,7 +235,8 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
     $BeneficiarioOpc = $nombreCIA;
     $RFCopc = $rfcCIA;
     $usuario_modifi = $usuario;
-
+    $observ = '';
+    
     require $root . '/conta6/Resources/PHP/actions/contaElect_insertaTransferencia.php';
 
     /* FALTA TERMINAR

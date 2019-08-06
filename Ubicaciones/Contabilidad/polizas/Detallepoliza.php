@@ -40,6 +40,12 @@ if( $totalRegistrosSelect > 0 ){
 		$sumaCargos = 0;
 		$sumaAbonos = 0;
 	}
+
+  if( $sumaCargos == $sumaAbonos ){
+    $txtStatus = 'style="color: #000000"';
+  }else{
+    $txtStatus = 'style="color: red"';
+  }
 ?>
 <input type="hidden" id="usuario_activo" db-id="" autocomplete="off" value="<?php echo $usuario; ?>">
 <input type="hidden" id="aduana_activa"  db-id="" autocomplete="off" value="<?php echo $aduana; ?>">
@@ -114,7 +120,10 @@ if( $totalRegistrosSelect > 0 ){
           <a class="nav-link pills" id="detallepoliza">Detalle de Póliza</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link pills" >Información Adicional</a>
+          <?php if( $oRst_permisos['s_consultar_ContaElect'] == 1 ){ ?>
+          <a class="nav-link pills" id="infPartida" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
+          <input type="hidden" id="mst-poliza" value="<?php echo $id_poliza; ?>">
+          <?php } ?>
         </li>
       </ul>
     </nav> <!--links de desplazamiento-->
@@ -170,7 +179,7 @@ if( $totalRegistrosSelect > 0 ){
                   </td>
 
                   <td class="col-md-2" role="button">
-                    <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                    <a href="#detpol-buscarfacturas" class="buscarFacturas-polizas" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
                   </td>
                 </tr>
 
@@ -240,10 +249,10 @@ if( $totalRegistrosSelect > 0 ){
           </div>
           <div class="row justify-content-center mt-3 font14">
             <div class="col-md-2">
-              <input class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
+              <input class="efecto" value="<?php echo $sumaCargos; ?>" <?php echo $txtStatus; ?> readonly>
             </div>
             <div class="col-md-2">
-              <input class="efecto" value="<?php echo $sumaAbonos; ?>" readonly>
+              <input class="efecto" value="<?php echo $sumaAbonos; ?>" <?php echo $txtStatus; ?> readonly>
             </div>
           </div>
 
@@ -308,10 +317,10 @@ if( $totalRegistrosSelect > 0 ){
               <a href="#" onclick="btn_printPoliza(<?php echo $id_poliza; ?>,<?php echo $aduana; ?>)" class="boton border-0"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>
             </div>
             <div class="col-md-2">
-              <input class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
+              <input class="efecto" value="<?php echo $sumaCargos; ?>" <?php echo $txtStatus; ?> readonly>
             </div>
             <div class="col-md-2">
-              <input class="efecto" value="<?php echo $sumaAbonos; ?>" readonly>
+              <input class="efecto" value="<?php echo $sumaAbonos; ?>" <?php echo $txtStatus; ?> readonly>
             </div>
           </div>
 
@@ -345,9 +354,9 @@ if( $totalRegistrosSelect > 0 ){
           </div>
         </div>
 
-        <?php if( $id_poliza > 0 ){
+        <?php if( $oRst_permisos['s_consultar_ContaElect'] == 1 ){
           require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
-          } ?>
+        } ?>
       </div><!--/Termina contenedor-movible-->
     </div><!--/Termina continermov-->
   </div><!--/Termina container-fluid movible-->

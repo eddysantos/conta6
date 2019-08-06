@@ -41,10 +41,10 @@
       $statusGeneraPoliza = false;
 
       if( $Status_Cheque == 0 ){
-        $txtStatus = '<b><font face="Trebuchet MS" size="2" color="#000000">CUADRADA</font></b>';
+        $txtStatus = 'style="color: #000000"';
         $statusGeneraPoliza = true;
 		  }else{
-				$txtStatus = '<b><font color="#E52727" face="Trebuchet MS" size="2"><?php echo $Status_Cheque; ?> CHEQUE SIN CUADRAR</font></b>';
+				$txtStatus = 'style="color: red"';
         $statusGeneraPoliza = false;
 			}
 		}else{
@@ -175,7 +175,10 @@ if( $rows > 0 ){
         </li>
         <?php if( $id_poliza > 0){ ?>
         <li class="nav-item">
-          <a href="#" class="nav-link">Información Adicional</a>
+          <?php if( $oRst_permisos['s_consultar_ContaElect'] == 1 ){ ?>
+          <a class="nav-link pills" id="infPartida" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
+          <input type="hidden" id="mst-poliza" value="<?php echo $id_poliza; ?>">
+          <?php } ?>
         </li>
         <?php } ?>
       </ul>
@@ -232,7 +235,7 @@ if( $rows > 0 ){
                     </td>
 
                     <td class="col-md-2" role="button">
-                      <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                      <a href="#detpol-buscarfacturas" class="buscarFacturas-cheques" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
                     </td>
                   </tr>
                   <tr class="cdchProveedores row m-0 mt-4" style="display:none">
@@ -288,10 +291,10 @@ if( $rows > 0 ){
           </div>
           <div class="row justify-content-center mt-3 font14">
             <div class="col-md-2">
-              <input class="efecto" id="sumCargos1_ch" value="<?php echo number_format($sumaCargos,2,'.',','); ?>" readonly>
+              <input class="efecto" id="sumCargos1_ch" value="<?php echo number_format($sumaCargos,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
             </div>
             <div class="col-md-2">
-              <input class="efecto" id="sumAbonos1_ch" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
+              <input class="efecto" id="sumAbonos1_ch" value="<?php echo number_format($sumaC,2,'.',','); ?>"  <?php echo $txtStatus;?> readonly>
             </div>
           </div>
 
@@ -345,10 +348,10 @@ if( $rows > 0 ){
               <?php } ?>
             </div>
             <div class="col-md-2">
-              <input  class="efecto" id="sumCargos2_ch" value="<?php echo number_format($sumaCargos,2,'.',','); ?>" readonly>
+              <input  class="efecto" id="sumCargos2_ch" value="<?php echo number_format($sumaCargos,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
             </div>
             <div class="col-md-2">
-              <input  class="efecto" id="sumAbonos2_ch" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
+              <input  class="efecto" id="sumAbonos2_ch" value="<?php echo number_format($sumaC,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
             </div>
           </div>
 

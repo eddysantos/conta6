@@ -37,10 +37,10 @@
       $statusGeneraPoliza = false;
 
       if( $Status_Anticipo == 0 ){
-        $txtStatus = '<b><font face="Trebuchet MS" size="2" color="#000000">CUADRADA</font></b>';
+        $txtStatus = 'style="color: #000000"';
         $statusGeneraPoliza = true;
 		  }else{
-				$txtStatus = '<b class="pt-2"><font color="#E52727" face="Trebuchet MS" size="2">'. $Status_Anticipo.' ANTICIPO SIN CUADRAR</font></b>';
+				$txtStatus = 'style="color: red"';
         $statusGeneraPoliza = false;
 			}
 		}else{
@@ -172,14 +172,14 @@ if( $rows > 0 ){
         <li class="nav-item">
           <a class="nav-link pills" id="detalleanticipo">Detalle de Anticipo</a>
         </li>
-        <?php if( $id_poliza > 0 ){ ?>
+        <?php if( $id_poliza > 0 && $oRst_permisos['s_consultar_ContaElect'] == 1 ){ ?>
         <li class="nav-item">
           <a class="nav-link pills" id="infPartida" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
-          <!-- <a class="nav-link pills" onclick="infAdd_detallePoliza(<?php echo $id_poliza; ?>)">Información de la Partida</a> -->
         </li>
         <?php } ?>
       </ul>
     </nav> <!--links de desplazamiento-->
+
     <div class="containermov">
       <div class="contenedor-movible">
         <div id="one"><!--CAPTURA DE POLIZAS-->
@@ -248,16 +248,11 @@ if( $rows > 0 ){
           </div>
           <div class="row" id="totalesAnticipo2">
             <div class="col-md-2 offset-md-4">
-              <input class="efecto" id="sumCargos2" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
+              <input class="efecto" id="sumCargos2" value="<?php echo number_format($sumaC,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
             </div>
             <div class="col-md-2">
-              <input class="efecto" id="sumAbonos2" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
-
-              <!-- <input type="text" id="txtStatus2" value="<?php echo $txtStatus ?>"> -->
+              <input class="efecto" id="sumAbonos2" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
             </div>
-            <?php
-             echo $txtStatus;
-             ?>
           </div>
 
           <div class="contorno-mov mt-5">
@@ -304,10 +299,10 @@ if( $rows > 0 ){
               <?php } ?>
             </div>
             <div class="col-md-2">
-              <input class="efecto" id="sumCargos1" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
+              <input class="efecto" id="sumCargos1" value="<?php echo number_format($sumaC,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
             </div>
             <div class="col-md-2">
-              <input class="efecto" id="sumAbonos1" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
+              <input class="efecto" id="sumAbonos1" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
             </div>
             <?php
             // echo $txtStatus;
@@ -342,7 +337,6 @@ if( $rows > 0 ){
         </div>
 
         <?php if( $id_poliza > 0 ){
-          // require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_detallePoliza.php';
             require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
           } ?>
       </div><!--/Termina contenedor-movible-->
