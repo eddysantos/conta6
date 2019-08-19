@@ -98,6 +98,34 @@ $(document).ready(function(){
       }
     });
 
+  $('#mostrarConsultaObserv').submit(function(){
+      $('#m-cfdi').fadeIn();
+      $('#b-cfdi').slideUp();
+
+      var data = {
+        id_captura: $('#bRef').val()
+      }
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/6-observaciones_lstCapturadas.php",
+        data: data,
+        success: 	function(r){
+          console.log(r);
+        r = JSON.parse(r);
+          if (r.code == 1) {
+            console.log(r);
+            $('#lst_cfdi_capturadas').html(r.data);
+          } else {
+            swal("Error", "La cuenta o Referencia no existen", "error");
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+      });
+  });
+
   $('#mostrarConsulta').submit(function(){
     $('#m-ctagastos').fadeIn();
     $('#b-ctagastos').slideUp();
@@ -125,8 +153,6 @@ $(document).ready(function(){
         console.error(x);
       }
     });
-
-
   });
 
   $('#mostrarConsulta').submit(function(){

@@ -184,13 +184,15 @@ $marginbottom = "margin-bottom:100px!important";
                     <li><a href="/conta6/Ubicaciones/Contabilidad/CuentaGastos/consultarCtaGtos.php" >Consultar</a></li>
                   </ul>
                 </li> -->
-                <?PHP if($oRst_permisos['s_MENU_ADMON_CLIENTES'] == 1){ ?>
-                <li><a href="#">Administración Clientes</a></li><?PHP } ?>
 
                 <li class="dropdown">
                   <a href="#" class="">Administración Contable <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
                     <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/catalogocuentas.php">Catálogo de Cuentas</a></li>
+
+                    <?PHP if($oRst_permisos['s_catalogoPersonas'] == 1){ ?>
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/catalogopersonas.php">Catálogo de Personas</a></li><?PHP } ?>
+
                     <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/Corresponsales.php">Corresponsales</a></li>
                     <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/Cierredemes.php">Cierre de Mes</a></li>
                   </ul>

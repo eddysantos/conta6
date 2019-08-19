@@ -1,6 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+
 $pk_c_UsoCFDI = '';
 $selected_usoCFDI = '';
 $cliente = trim($_GET['id_cliente']);

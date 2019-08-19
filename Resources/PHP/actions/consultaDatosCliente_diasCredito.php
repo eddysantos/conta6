@@ -22,7 +22,11 @@
 
   if( $rows_diasCredCLT > 0 ){
     $row_diasCredCLT = $rslt_diasCredCLT->fetch_assoc();
-    $n_dias = trim($row_diasCredCLT["n_dias"]);
+    $n_dias = trim($row_diasCredCLT['n_dias']);
+    $u_altaDiasCred = trim($row_diasCredCLT['fk_usuario_alta']);
+    $f_altaDiasCred = trim($row_diasCredCLT['d_fecha_alta']);
+    $u_modifiDiasCred = trim($row_diasCredCLT['fk_usuario_modifi']);
+    $f_modifiDiasCred = trim($row_diasCredCLT['d_fecha_modifi']);
   }
 
 ?>
