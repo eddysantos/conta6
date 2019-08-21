@@ -108,5 +108,4 @@ if( $total_consultaGenerales > 0 ) {
 	$s_UUID_factura = $row_consultaGenerales['s_UUID_factura'];
 	$n_total_factura = $row_consultaGenerales['n_total_factura'];
 }
-
 ?>

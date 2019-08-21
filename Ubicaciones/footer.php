@@ -19,6 +19,7 @@
   <!--REQUERIDOS-->
   <script src="/Conta6/Ubicaciones/Contabilidad/js/helperContabilidad.js"></script>
   <script src="/Conta6/Ubicaciones/Contabilidad/AdminContable/js/AdministracionContable.js"></script>
+  <script src="/Conta6/Ubicaciones/Contabilidad/AdminContable/js/catalogoPersonas.js"></script>
   <script src="/Conta6/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
   <script src="/Conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
   <script src="/Conta6/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>

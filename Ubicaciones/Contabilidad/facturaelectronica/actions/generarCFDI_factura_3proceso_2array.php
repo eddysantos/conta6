@@ -27,6 +27,13 @@ if( $total_consultaDatosCaptura > 0 ){
   $c_MetodoPago = $row_consultaDatosCaptura['fk_c_MetodoPago'];
   $Total_Anticipos = $row_consultaDatosCaptura['n_total_depositos'];
   $POCME_Total_MN = $row_consultaDatosCaptura['n_total_POCME'];
+
+  $Total_POCME = $row_consultaDatosCaptura['n_total_POCME'];
+  $Total_Pagos = $row_consultaDatosCaptura['n_total_pagos'];
+  $total_pagosCLT = $Total_POCME + $Total_Pagos;
+
+  $id_facturaRelacionada = $row_consultaDatosCaptura['n_folioFacSustituir'];
+  $UUID_relacionado = $row_consultaDatosCaptura['s_UUIDfacSustituir'];
 }
 
 require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
@@ -70,7 +77,14 @@ $array= array( 'Version'=>$CFDversion,
                 'Traslados' => array('importe' => $totaGralIVA),
                 'Retencion' => array('importe' => $IVAretenido),
                 'Impuestos' => array('TotalImpuestosTrasladados' => $totaGralIVA,
-                                     'TotalImpuestosRetenidos' => $IVAretenido));
+                                     'TotalImpuestosRetenidos' => $IVAretenido),
+                'CfdiRelacionados' => array('TipoRelacion' => '04'),
+                'CfdiRelacionado' =>  array('UUID' => $UUID_relacionado));
+
+if( $id_facturaRelacionada > 0 ){
+  #$array .= array();
+}
+
 
 require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios_2.php';
 if( $total_consultaHonorarios > 0 ) {

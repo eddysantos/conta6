@@ -191,47 +191,61 @@
         <td class='col-md-12 p-0'>INFORMACION DEL USUARIO</td>
       </tr>
       <tr class="row backpink">
-        <td class="col-md-3"></td>
-        <td class="col-md-3">Póliza</td>
-        <td class="col-md-3">Usuario</td>
+        <td class="col-md-2"></td>
+        <td class="col-md-2">Folio</td>
+        <td class="col-md-2">Póliza</td>
+        <td class="col-md-2">Usuario</td>
         <td class="col-md-3">Fecha</td>
       </tr>
     </thead>
     <tbody class='font14'>
       <tr class="row">
-        <td class="p-1 col-md-3 text-left"> Cta. generada: <?php echo '<b>'.$pk_id_cuenta_captura.'</b>'; ?></td>
-        <td class="p-1 col-md-3"></td>
-        <td class="p-1 col-md-3"><?php echo $fk_usuario; ?></td>
+        <td class="p-1 col-md-2 text-left"> Cta. generada:</td>
+        <td class="p-1 col-md-2"><?php echo '<b>'.$pk_id_cuenta_captura.'</b>'; ?></td>
+        <td class="p-1 col-md-2"></td>
+        <td class="p-1 col-md-2"><?php echo $fk_usuario; ?></td>
         <td class="p-1 col-md-3"><?php echo $d_fecha_cta;?></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-3 text-left"> Cta. modificada</td>
-        <td class="p-1 col-md-3"></td>
-        <td class="p-1 col-md-3"><?php echo $s_usuario_modifi; ?></td>
+        <td class="p-1 col-md-2 text-left"> Cta. modificada</td>
+        <td class="p-1 col-md-2"></td>
+        <td class="p-1 col-md-2"></td>
+        <td class="p-1 col-md-2"><?php echo $s_usuario_modifi; ?></td>
         <td class="p-1 col-md-3"><?php echo $d_fecha_modifi; ?></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-3 text-left"> Factura generada: <?php echo '<b>'.$id_factura.'</b> --- '.$s_UUID; ?></td>
-        <td class="p-1 col-md-3"><?php echo $id_poliza; ?></td>
-        <td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
+        <td class="p-1 col-md-2 text-left"> Factura generada:</td>
+        <td class="p-1 col-md-2"><?php echo '<b>'.$id_factura.'</b>'; ?></td>
+        <td class="p-1 col-md-2"><?php echo $id_poliza; ?></td>
+        <td class="p-1 col-md-2"><?php echo $usuario_timbra; ?></td>
         <td class="p-1 col-md-3"><?php echo $fechaTimbre; ?></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-3 text-left"> Factura cancelada</td>
+
+        <td class="p-1 col-md-4"><?php echo '<b>'.$s_UUID.'</b>'; ?></td>
+        <td class="p-1 col-md-2"></td>
+        <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-3"></td>
-        <td class="p-1 col-md-3"><?php echo $usuario_Cancela; ?></td>
+      </tr>
+      <tr class="row">
+        <td class="p-1 col-md-2 text-left"> Factura cancelada</td>
+        <td class="p-1 col-md-2"></td>
+        <td class="p-1 col-md-2"></td>
+        <td class="p-1 col-md-2"><?php echo $usuario_Cancela; ?></td>
         <td class="p-1 col-md-3"><?php echo $fechaTimbreCancela; ?></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-3 text-left"> Cuenta de gastos: <?php echo '<b>'.$id_ctagastos.'</b>'; ?></td>
-        <td class="p-1 col-md-3"><?php echo $id_polctagastos; ?></td>
-        <td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
+        <td class="p-1 col-md-2 text-left"> Cuenta de gastos:</td>
+        <td class="p-1 col-md-2"><?php echo '<b>'.$id_ctagastos.'</b>'; ?></td>
+        <td class="p-1 col-md-2"><?php echo $id_polctagastos; ?></td>
+        <td class="p-1 col-md-2"><?php echo $usuario_timbra; ?></td>
         <td class="p-1 col-md-3"><?php echo $fecha_genera; ?></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-3 text-left"> Pago aplicado</td>
-        <td class="p-1 col-md-3"><?php echo $id_polpagoaplic; ?></td>
-        <td class="p-1 col-md-3"><?php echo $usuario_timbra; ?></td>
+        <td class="p-1 col-md-2 text-left"> Pago aplicado</td>
+        <td class="p-1 col-md-2"></td>
+        <td class="p-1 col-md-2"><?php echo $id_polpagoaplic; ?></td>
+        <td class="p-1 col-md-2"><?php echo $usuario_timbra; ?></td>
         <td class="p-1 col-md-3"><?php echo $fecha_genera; ?></td>
       </tr>
     </tbody>
@@ -375,8 +389,12 @@ if( $s_UUID != '' && $accion == 'cancelar' ){ ?>
   		  <div class="col-md-6 text-left"><?php echo $pk_c_UsoCFDI; ?></div>
       </div>
       <div class="row">
-        <div class="col-md-6 text-right">CUSTOMS :</div>
-        <div class="col-md-6 text-left"><?php echo $txt_id_asoc; ?></div>
+        <div class="col-md-6 text-right">Factura Relacionada :</div>
+        <div class="col-md-6 text-left"><?PHP echo $n_folioFacSustituir;?></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 text-right">UUID Relacionado :</div>
+        <div class="col-md-6 text-left"><?php echo $s_UUIDfacSustituir;?></div>
       </div>
     </div>
 

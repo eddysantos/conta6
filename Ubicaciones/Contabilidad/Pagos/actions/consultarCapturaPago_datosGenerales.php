@@ -32,7 +32,7 @@ if( $total_consultaGenerales > 0 ) {
 	if (!is_null($fecha_alta)){ $d_fecha_alta = date_format(date_create($fecha_alta),"d-m-Y H:i:s"); }
 	$fecha_modifi = $row_consultaGenerales['d_fecha_modifi'];
 	if (!is_null($fecha_modifi)){ $d_fecha_modifi = date_format(date_create($fecha_modifi),"d-m-Y H:i:s"); }
-	$s_usuario_modifi = $row_consultaGenerales['s_usuario_modifi'];
+	$s_usuario_modifi = $row_consultaGenerales['fk_usuario_modifi'];
 	$fk_id_aduana = $row_consultaGenerales['fk_id_aduana'];
 	$fk_id_cliente = $row_consultaGenerales['fk_id_cliente'];
 	$s_nombre = $row_consultaGenerales['s_nombre'];

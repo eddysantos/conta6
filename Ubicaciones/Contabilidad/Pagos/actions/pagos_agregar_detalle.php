@@ -44,14 +44,17 @@ foreach ($pagos as $pago) {
   $ctaE = $pago['ctaE'];
   $bcoExt = $pago['bcoExt'];
   $rfcR = $pago['rfcR'];
-  $ctaR = $pago['ctaR'];
   $tipoCadena = $pago['tipoCadena'];
   $certificado = $pago['certificado'];
   $cadenaOrig = $pago['cadenaOrig'];
   $sello = $pago['sello'];
   $pk_rowPago = $pago['pk_rowPago'];
 
-
+  if( $pago['ctaR'] == 0 ){
+    $ctaR = ''; 
+  }else {
+      $ctaR = $pago['ctaR'];
+  }
 
 
   $stmt_PAGOS->bind_param('ssssssssssssssssss',$nfolio,
@@ -86,7 +89,7 @@ foreach ($pagos as $pago) {
   }
 
   require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar_detalle_docRel.php';
-  
+
 }
 
 ?>

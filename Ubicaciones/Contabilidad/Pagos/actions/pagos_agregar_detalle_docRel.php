@@ -47,7 +47,9 @@ foreach ($pagosDR as $pagoDR) {
   $deposito = $pagoDR['deposito'];
   $fk_rowPago = $pagoDR['fk_rowPago'];
 
-
+  if( $opcionDoc == 'sustituir' ){
+    $fk_rowPago = '-';
+  }
 
 
   $stmt_PAGOS_DR->bind_param('sssssssssssssssss',$nfolio,
@@ -69,7 +71,7 @@ foreach ($pagosDR as $pagoDR) {
                                                 $fk_rowPago
                                                             );
 
-  if( $pk_rowPago == $fk_rowPago ){
+  if( $pk_rowPago == $fk_rowPago ){ # Deben ser iguales para evitar duplicidad
     if (!($stmt_PAGOS_DR)) {
       $system_callback['code'] = "500";
       $system_callback['message'] = "Error during variables binding PAGOS [$stmt_PAGOS_DR->errno]: $stmt_PAGOS_DR->error";
@@ -81,6 +83,22 @@ foreach ($pagosDR as $pagoDR) {
       $system_callback['message'] = "Error during query execution PAGOS [$stmt_PAGOS_DR->errno]: $stmt_PAGOS_DR->error";
     }
   }
+
+  echo $pk_rowPago.'/'.$fk_rowPago
+
+  // if( $pk_rowPago == '-' ){ # Para sustituir y modificar se usa el mismo formulario. En sustituir $pk_rowPago == '-', en modificar $pk_rowPago == 52 fk_id_pago_captura
+  //   if (!($stmt_PAGOS_DR)) {
+  //     $system_callback['code'] = "500";
+  //     $system_callback['message'] = "Error during variables binding PAGOS [$stmt_PAGOS_DR->errno]: $stmt_PAGOS_DR->error";
+  //     exit_script($system_callback);
+  //   }
+  //
+  //   if (!($stmt_PAGOS_DR->execute())) {
+  //     $system_callback['code'] = "500";
+  //     $system_callback['message'] = "Error during query execution PAGOS [$stmt_PAGOS_DR->errno]: $stmt_PAGOS_DR->error";
+  //   }
+  // }
+
 }
 
 ?>

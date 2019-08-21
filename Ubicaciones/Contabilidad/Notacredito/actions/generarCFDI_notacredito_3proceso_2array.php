@@ -27,13 +27,13 @@ if( $total_consultaDatosCaptura > 0 ){
   $Total_Anticipos = $row_consultaDatosCaptura['n_total_depositos'];
   $POCME_Total_MN = $row_consultaDatosCaptura['n_total_POCME'];
 
-  $id_facturaRelacionada = $row_consultaDatosCaptura['fk_id_factura']; 
+  $id_facturaRelacionada = $row_consultaDatosCaptura['fk_id_factura'];
   $UUID_relacionado = $row_consultaDatosCaptura['s_UUID_factura'];
 
   $fk_c_ClaveProdServ = '84111506';
   $n_cantidad = number_format(1,6,'.','');
   $fk_c_claveUnidad = 'ACT';
-  $s_conceptoEsp = utf8_encode($row_consultaDatosCaptura['s_descripNC']);
+  $s_descripNC = utf8_encode($row_consultaDatosCaptura['s_descripNC']);
   $n_importe = number_format($row_consultaDatosCaptura['n_total_gral_importe'],2,'.','');
   $n_IVA = number_format($row_consultaDatosCaptura['n_total_gral_IVA'],2,'.','');
   $n_ret = number_format($row_consultaDatosCaptura['s_fac_IVA_retenido'],2,'.','');
@@ -93,7 +93,7 @@ $array= array( 'Version'=>$CFDversion,
     $fk_c_ClaveProdServ = '84111506';
     $n_cantidad = number_format(1,6,'.','');
     $fk_c_claveUnidad = 'ACT';
-    $s_conceptoEsp = utf8_encode($row_consultaDatosCaptura['s_descripNC']);
+    $s_descripNC = utf8_encode($row_consultaDatosCaptura['s_descripNC']);
     $n_importe = number_format($row_consultaDatosCaptura['n_total_gral_importe'],2,'.','');
     $n_IVA = number_format($row_consultaDatosCaptura['n_total_gral_IVA'],2,'.','');
     $n_ret = number_format($row_consultaDatosCaptura['s_fac_IVA_retenido'],2,'.','');
@@ -104,7 +104,7 @@ $array= array( 'Version'=>$CFDversion,
       $array['Conceptos'][$idFila]['claveProdServ'] = $fk_c_ClaveProdServ;
       $array['Conceptos'][$idFila]['cantidad'] = $n_cantidad;
       $array['Conceptos'][$idFila]['claveUnidad'] = $fk_c_claveUnidad;
-      $array['Conceptos'][$idFila]['descripcion'] = $s_conceptoEsp;
+      $array['Conceptos'][$idFila]['descripcion'] = $s_descripNC;
       $array['Conceptos'][$idFila]['valorUnitario'] = $n_importe;
       $array['Conceptos'][$idFila]['importe'] = $n_importe;
       $array['Conceptos'][$idFila]['Impuesto'] = $cveIVA;

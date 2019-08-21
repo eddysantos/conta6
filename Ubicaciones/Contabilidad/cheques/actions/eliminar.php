@@ -8,7 +8,7 @@ $id_poliza = trim($_POST['id_poliza']);
 $id_cheque = trim($_POST['id_cheque']);
 $id_ctaMST = trim($_POST['id_ctaMST']);
 
-//borrando en el detalle del anticipo
+//borrando en el detalle del cheque
 $query = "DELETE FROM conta_t_cheques_det WHERE pk_partida = ?";
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -26,7 +26,7 @@ if (!($stmt)) {
 
 if (!($stmt->execute())) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during query execution detAnt [$stmt->errno]: $stmt->error";
+  $system_callback['message'] = "Error during query execution detChe [$stmt->errno]: $stmt->error";
   exit_script($system_callback);
 }
 
@@ -128,10 +128,10 @@ if( $id_poliza > 0 ){
   //   //exit_script($system_callback);
   // }
 
-  $descripcion = "Se elimino detalle en Póliza: $id_poliza del Anticipo $id_anticipo";
+  $descripcion = "Se elimino detalle en Póliza: $id_poliza del Cheque: $id_cheque Cuenta: $id_ctaMST";
 
-  $clave = 'anticipos';
-  $folio = $id_anticipo;
+  $clave = 'cheques';
+  $folio = $id_cheque;
   require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
 }
 

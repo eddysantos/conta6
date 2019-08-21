@@ -31,7 +31,10 @@ if( $total_consultaFactura > 0 ) {
 	if (!is_null($d_fechaVencimiento)){ $d_fechaVencimiento = date_format(date_create($d_fechaVencimiento),"d-m-Y H:i:s"); }
 	$fechaTimbrado = $row_consultaFactura['d_fechaTimbrado'];
 	$d_fechaTimbrado = $row_consultaFactura['d_fechaTimbrado'];
-	if (!is_null($d_fechaTimbrado)){ $d_fechaTimbrado = date_format(date_create($d_fechaTimbrado),"d-m-Y\TH:i:s"); }
+	if (!is_null($d_fechaTimbrado)){
+		$d_fechaTimbrado = date_format(date_create($d_fechaTimbrado),"d-m-Y\TH:i:s");
+		$d_fechaTimbrado2 = date_format(date_create($d_fechaTimbrado),"Y-m-d"); 
+	}
 	$fk_id_certificado = $row_consultaFactura['fk_id_certificado'];
 	$s_CFDversion = $row_consultaFactura['s_CFDversion'];
 	$s_UUID = $row_consultaFactura['s_UUID'];

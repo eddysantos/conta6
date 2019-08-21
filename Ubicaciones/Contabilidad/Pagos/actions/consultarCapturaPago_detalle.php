@@ -72,6 +72,11 @@ if( $total_consultaDetalle > 0 ) {
       $btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
       $inputPartida = "<input class='id-partida' type='hidden' id='T_partida_$pk_rowPago' value='0'>";
     #}
+    if( $opcionDoc == 'sustituir' ){
+      $pkidpagodet = '-';
+    }else{
+      $pkidpagodet = $pk_id_pago_det;
+    }
 		$pagosDetalle .= "
     <div class='elemento-pagDet'>
       <div class='row m-0 font12 elemento-pagos borderojo borrar-pago remove_$pk_rowPago' id='$pk_rowPago'>
@@ -84,7 +89,7 @@ if( $total_consultaDetalle > 0 ) {
         <div class='col-md-1 p-1'>
           $btnEliminar
           $inputPartida
-          <input class=' t-pagosDET' type='hidden' id='pagosDET_$pk_rowPago' value='$pk_id_pago_det'>
+          <input class=' t-pagosDET' type='hidden' id='pagosDET_$pk_rowPago' value='$pkidpagodet'>
         </div>
 
         <div class='col-md-1 text-right p-2 b'><b> Certificado: </b></div>

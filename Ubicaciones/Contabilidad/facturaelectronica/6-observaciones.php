@@ -3,15 +3,15 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<!-- <div class="text-center">
-  <div class="contenedor" id="b-ctagastos">
+<div class="text-center">
+  <div class="contenedor" id="b-cfdi">
     <div class="row justify-content-center" id="referencia">
       <div class="col-md-6 titulograndetop">
-        <label class="transEff" for="bRef" id="labelRef">Buscar CFD/CFI</label>
+        <label class="transEff" for="bRef" id="labelRef">Buscar CFDI</label>
       </div>
     </div>
     <div class="row justify-content-center" id="nReferencia">
-      <div class="col-md-6 intermedio transEff" id="mostrarConsulta">
+      <div class="col-md-6 intermedio transEff" id="mostrarConsultaObserv">
         <form  class="form-group" onsubmit="return false;">
           <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
         </form>
@@ -20,7 +20,7 @@
   </div>
 
 
-  <div class="contenedor contorno" id="m-ctagastos" style="display:none">
+  <div class="contenedor contorno" id="m-cfdi" style="display:none">
     <div class="col-md-1 offset-sm-11">
       <a href="#" class="fele" accion="cuadroObservaciones">
         <i class="back fa fa-arrow-left">Regresar</i>
@@ -29,19 +29,20 @@
     <table class="table form1">
       <thead>
         <tr class="row encabezado font18">
-          <td class="col-md-12">Motores Electricos Sumergibles de México S. de R.L de C.V</td>
+          <td class="col-md-12">CFDI</td>
         </tr>
-      </thead>
-      <tbody class="font14">
         <tr class="row backpink font14">
           <td class="col-md-1"></td>
           <td class="col-md-2">REFERENCIA</td>
-          <td class="col-md-2">CFD</td>
+          <td class="col-md-2">CFDI</td>
           <td class="col-md-2">PÓLIZA</td>
           <td class="col-md-2">CANCELA</td>
           <td class="col-md-2">OFICINA</td>
           <td class="col-md-1"></td>
         </tr>
+      </thead>
+      <tbody class="font14">
+        <!--
         <tr class="row">
           <td class="col-md-1"></td>
           <td class="col-md-2">N17004084</td>
@@ -67,12 +68,13 @@
           <td class="col-md-6">Apinales 18-07-2017 16:30:14</td>
           <td class="col-md-6">Apinales 18-07-2017 16:30:14</td>
         </tr>
+      -->
       </tbody>
+      <tbody id="lst_cfdi_capturadas"></tbody>
     </table>
   </div>
 </div>
-
-<script src="js/facturaElectronica.js"></script>
-<script src="/conta6/Resources/js/Inputs.js"></script> -->
-
+<?php
+  require $root . '/Conta6/Ubicaciones/footer.php';
+?>
 <!-- prueba modificar  -->

@@ -30,7 +30,7 @@
   $d_fechavencimiento = '';
   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
+  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$impresionDatosEmbarque
   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
@@ -38,7 +38,7 @@
   $id_cliente = $fk_id_cliente;
   require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago
 
-  echo $nombreArchivo = $fk_referencia.'_'.$pk_id_factura.'_factura.pdf';
+  $nombreArchivo = $fk_referencia.'_'.$pk_id_factura.'_factura.pdf';
 
   if ($rows_datosCLTformaPago > 0 ) {
     while ($row_datosCLTformaPago = $rslt_datosCLTformaPago->fetch_assoc()) {
@@ -99,6 +99,17 @@ if( !is_null($d_fechaVencimiento) ){
                             </tr>';
 }else{ $txt_fechaVencimiento = ""; }
 
+$txt_docRelacionado = "";
+if( $n_folioFacSustituir > 0 ){
+  $txt_docRelacionado = '<tr bgcolor="#e00000" color="rgb(255, 255, 255)" align="center">
+    <td width="100%"><b>CFDI RELACIONADO</b></td>
+  </tr>
+  <tr align="center">
+    <td width="20%"><b>'.$n_folioFacSustituir.'</b></td>
+    <td width="45%">04 sustitución<br>de los CFDI previos</td>
+    <td width="35%">'.$s_UUIDfacSustituir.'</td>
+  </tr>';
+}
 $ClienteYFactura = '<style>
    .border{
      border-top:1px solid black;
@@ -145,6 +156,7 @@ $ClienteYFactura = '<style>
             <td width="45%">'.$fk_id_certificado.'</td>
             <td width="35%"><font>'.$s_lugarExpedicion_txt.'</font><br/>'.$d_fechaTimbrado.' </td>
           </tr>
+          '.$txt_docRelacionado.'
         </tbody>
       </table>
     </td>
@@ -461,7 +473,7 @@ chmod($rutaRepFilePDF,0775);
 if (file_exists($rutaRepFilePDF)){
   $respGuardarDatos .= "✓ Formato Impreso generado correctamente\n";
 }else{
-    $respGuardarDatos .= "X No se genero formato impreso\n";
+  $respGuardarDatos .= "X No se genero formato impreso\n";
 }
 
 ?>

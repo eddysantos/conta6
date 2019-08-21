@@ -74,6 +74,7 @@ $Txt_Cta_Gastos = trim($_POST['Txt_Cta_Gastos']);
 $Txt_Fac_Saldo = trim($_POST['Txt_Saldo_Gral']);
 $Txt_Total_Pagos = trim($_POST['Txt_Total_Pagos']);
 $Total_Pagos = trim($_POST['T_Total_Pagos']);
+$total_pagosCLT = $Total_POCME + $Total_Pagos;
 
 $Txt_POCME_Total = trim($_POST['Txt_POCME_Total']);
 $Txt_POCME_Tipo_Cambio = trim($_POST['Txt_POCME_Tipo_Cambio']);

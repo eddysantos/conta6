@@ -29,7 +29,7 @@ if (!($stmt_facCaptura->execute())) {
 
 $queryPagoCFDI = "UPDATE conta_t_pagos_cfdi
                 SET s_UUID = ?, fk_id_certificado = ?, s_id_certificadoSAT = ?, s_selloCFDI = ?,
-                    s_selloSAT = ?, s_timbradoVersion = ?, d_fechaTimbrado = ?, fk_usuario_generaUUID = ?, fk_id_poliza = ?
+                    s_selloSAT = ?, s_timbradoVersion = ?, d_fechaTimbrado = ?, fk_usuario_generaUUID = ?, fk_id_poliza = ?, modoTimbrado = ?, s_nombrearchivo = ?
                 WHERE fk_id_pago_captura = ? and pk_id_pago = ?";
 
 $stmtPagoCFDI = $db->prepare($queryPagoCFDI);
@@ -39,7 +39,7 @@ if (!($stmtPagoCFDI)) {
   exit_script($system_callback);
 }
 
-$stmtPagoCFDI->bind_param('sssssssssss',$UUID,$noCertificado,$certSAT,$selloCFDI,$SelloSAT,$versionTimbre,$fechaTimbre,$usuario,$poliza,$cuenta,$id_factura);
+$stmtPagoCFDI->bind_param('sssssssssssss',$UUID,$noCertificado,$certSAT,$selloCFDI,$SelloSAT,$versionTimbre,$fechaTimbre,$usuario,$poliza,$modoTimbrar,$nombre_archivo,$cuenta,$id_factura);
 if (!($stmtPagoCFDI)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding PagoCFDI [$stmtPagoCFDI->errno]: $stmtPagoCFDI->error";

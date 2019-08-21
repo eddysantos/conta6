@@ -44,6 +44,8 @@ if ($rows_datosCLTformaPago > 0) {
     $datosCLTformaPago .= '<option value="'.$id_formaPago.'">'.$concepto.' --- '.$id_formaPago.'</option>';
   }
 }
+
+
 ?>
 
 <input type="hidden" id="tipoDocumento" value="elaborar">
@@ -273,6 +275,7 @@ if ($rows_datosCLTformaPago > 0) {
         <tr class="row borderojo pb-3 mt-3 justify-content-center">
           <td class="col-md-2 p-1">
             <input type="date" class="efecto h22" id="fecha" size="10">
+            <input type="hidden" id="fechaFac" value="<?php echo $d_fechaTimbrado2; ?>">
           </td>
           <td class="col-md-1 p-1">
             <input type="time" class="efecto h22" id="hora" min="12:00">

@@ -219,6 +219,109 @@ $(document).ready(function(){
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
+        console.log(data);
+        if (r.code == 1) {
+          folio = r.data;
+          alertify.alert('Folio: '+folio, 'Generado correctamente' , function(){
+          setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/Pagos/Pagos.php')",700);
+          });
+        } else {
+          console.error(r.message);
+        }
+      },
+      error: function(x){
+        console.error(x);
+      }
+    });
+
+
+  });
+
+  $('#sustituir-pago').click(function(){
+    var element = $('.t-factura').length;
+    if( element == 0 ){
+      swal("Error", "Agregue detalle", "error");
+      return false;
+    }
+
+    var data = {
+      pagos: {},
+      pagosDR: {},
+      T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
+      T_Nombre_Cliente : $('#T_Nombre_Cliente').val(),
+      T_Cliente_Calle : $('#T_Cliente_Calle').val(),
+      T_Cliente_No_Ext : $('#T_Cliente_No_Ext').val(),
+      T_Cliente_No_Int : $('#T_Cliente_No_Int').val(),
+      T_Cliente_Colonia : $('#T_Cliente_Colonia').val(),
+      T_Cliente_CP : $('#T_Cliente_CP').val(),
+      T_Cliente_Ciudad : $('#T_Cliente_Ciudad').val(),
+      T_Cliente_Estado : $('#T_Cliente_Estado').val(),
+      T_Cliente_Pais : $('#T_Cliente_Pais').val(),
+      T_Cliente_taxid : $('#T_Cliente_taxid').val(),
+      T_Cliente_RFC : $('#T_Cliente_RFC').val(),
+      T_Proveedor_Destinatario : $('#T_Proveedor_Destinatario').val(),
+      idPago_sust : $('#idPago_sust').val(),
+      uuid_sust : $('#uuid_sust').val(),
+      tipoRel_sust : $('#tipoRel_sust').val()
+    }
+
+    var elementpagosTotal = $('.elemento-pagos').length;
+    var elementpagosDRTotal = $('.elemento-pagosDR').length;
+    console.log(elementpagosTotal);
+    console.log(elementpagosDRTotal);
+
+    $( ".elemento-pagos" ).each(function(i) {
+      var parsed_data = {
+        fecha: $(this).find('.t-fecha').val(),
+        formaPago: $(this).find('.t-formaPago').val(),
+        operacion: $(this).find('.t-operacion').val(),
+        moneda: $(this).find('.t-moneda').val(),
+        tipoCambio: $(this).find('.t-tipoCambio').val(),
+        importe: $(this).find('.t-importe').val(),
+        rfcE: $(this).find('.t-rfcE').val(),
+        ctaE: $(this).find('.t-ctaE').val(),
+        bcoExt: $(this).find('.t-bcoExt').val(),
+        rfcR: $(this).find('.t-rfcR').val(),
+        ctaR: $(this).find('.t-ctaR').val(),
+        tipoCadena: $(this).find('.t-tipoCadena').val(),
+        certificado: $(this).find('.t-certificado').val(),
+        cadenaOrig: $(this).find('.t-cadenaOrig').val(),
+        sello: $(this).find('.t-sello').val(),
+        pk_rowPago: $(this).find('.t-pagosDET').val()
+      }
+      data.pagos[i] = parsed_data;
+    });
+
+    $( ".elemento-pagosDR" ).each(function(i) {
+      var parsed_data = {
+        aduanaDR: $(this).find('.t-aduanaDR').val(),
+        referenciaDR: $(this).find('.t-referencia').val(),
+        uuidDR: $(this).find('.t-uuid').val(),
+        facturaDR: $(this).find('.t-factura').val(),
+        monedaDR: $(this).find('.t-monedaDR').val(),
+        tipoCambioDR: $(this).find('.t-tipoCambioDR').val(),
+        totalDR: $(this).find('.t-total').val(),
+        metPagoDR: $(this).find('.t-metodoPagoDR').val(),
+        parcialidad: $(this).find('.t-parcialidad').val(),
+        saldoAnterior: $(this).find('.t-saldoAnterior').val(),
+        pagado: $(this).find('.t-pagado').val(),
+        iva: $(this).find('.t-iva').val(),
+        deposito: $(this).find('.t-deposito').val(),
+        saldoInsoluto: $(this).find('.t-saldoInsoluto').val(),
+        fk_rowPago: $(this).find('.t-idDR').val()
+      }
+      data.pagosDR[i] = parsed_data;
+    });
+
+
+    console.log(data);
+
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar.php",
+      data: data,
+      success: 	function(r){
+        r = JSON.parse(r);
         console.log(r);
         if (r.code == 1) {
           folio = r.data;
@@ -366,8 +469,12 @@ function pagosGenerar(cuenta,id_cliente){
   window.location.replace('pagos_generar.php?cuenta='+cuenta+'&id_cliente='+id_cliente);
 }
 
-function pagosModificar(cuenta,id_cliente){
-  window.location.replace('pagos_modificar.php?cuenta='+cuenta+'&id_cliente='+id_cliente);
+function pagosModificar(cuenta,id_cliente,opcionDoc){
+  window.location.replace('pagos_modificar.php?cuenta='+cuenta+'&id_cliente='+id_cliente+'&opcionDoc='+opcionDoc);
+}
+
+function pagosSustituirCFDI(cuenta,id_cliente,opcionDoc){
+  window.location.replace('pagos_modificar.php?cuenta='+cuenta+'&id_cliente='+id_cliente+'&opcionDoc='+opcionDoc);
 }
 
 function pagosConsultar(cuenta,id_cliente){
@@ -419,7 +526,31 @@ function valFecha(){
     $('#fecha').focus();
     return false;
   }else{
-    return true;
+      var data = {
+        fecha: fecha,
+        fechaFac: $('#fechaFac').val()
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/Pagos/actions/validarFecha.php",
+        data: data,
+        success: 	function(r){
+          r = JSON.parse(r);
+          //console.log(r);
+          if (r.code == 1) {
+            return true;
+          } else {
+            alertify.alert(r.message, 'Fecha incorrecta' , function(){
+              $('#fecha').focus();
+            });
+            return false;
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+      });
   }
 }
 

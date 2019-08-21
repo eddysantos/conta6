@@ -273,6 +273,39 @@ $(document).ready(function(){
 
 
 //
+		$('tbody').on('click', '.buscarFacturas-polizas', function(){
+			cadena = $('#detpol-cliente').val();
+			parte = cadena.split('-');
+			nombre = parte[0] + parte[1];
+			$('#detpol-cliente-nombre').val(nombre);
+
+			var data = {
+				cliente : $('#detpol-cliente').attr('db-id'),
+				fecha : $('#mstpol-fecha').val(),
+				id_poliza : $('#id_poliza').val(),
+				tipo : $('#mstpol-tipo').val()
+			}
+
+			$.ajax({
+				type: "POST",
+				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_lista.php",
+				data: data,
+				success: 	function(r){
+					r = JSON.parse(r);
+					if (r.code == 1) {
+						$('#detpol-buscarfacturas-lista').html(r.data);
+					} else {
+						console.error(r.message);
+					}
+				},
+				error: function(x){
+					console.error(x);
+				}
+			});
+
+		});
+
+
 		$('tbody').on('click', '.editar-partidaPol', function(){
 	    var dbid = $(this).attr('db-id');
 	    var tar_modal = $($(this).attr('href'));
@@ -361,7 +394,58 @@ $(document).ready(function(){
 					}
 				});
 		$('#detpol-editarRegPolDiario').modal('hide');
-	})
+	});
+
+
+	$('#detpol-buscarfacturas-lista').on('click','.checkbox-facpend',function(){
+		activado = $(this).parents('tr').find('.facpend-check').prop('checked');
+		cadena = $('#detpol-cliente').val();
+		parte = cadena.split('-');
+
+		if( activado == true ){
+			accion = "insertar";
+		}else{
+			accion = "borrar";
+		}
+
+		var data = {
+			id_poliza : $('#id_poliza').val(),
+			id_cliente : parte[0],
+			nombre : parte[1],
+			fecha : $('#mstpol-fecha').val(),
+			tipo : $('#mstpol-tipo').val(),
+			referencia : $(this).parents('tr').find('.facpend-referencia').val(),
+			factura : $(this).parents('tr').find('.facpend-factura').val(),
+			ctagastos : $(this).parents('tr').find('.facpend-ctagastos').val(),
+			nc : $(this).parents('tr').find('.facpend-nc').val(),
+			saldo : $(this).parents('tr').find('.facpend-saldo').val(),
+			pago : $(this).parents('tr').find('.facpend-pago').val(),
+			cuenta : $(this).parents('tr').find('.facpend-cta').val(),
+			accion : accion
+		}
+
+		$.ajax({
+			type: "POST",
+			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_insertaReg_detallePoliza.php",
+			data: data,
+			success: 	function(r){
+				console.log(r);
+				r = JSON.parse(r);
+				if (r.code == 1) {
+					alertify.success(r.data);
+					ultReg_Det();
+				} else {
+					console.error(r.message);
+				}
+			},
+			error: function(x){
+				console.error(x);
+			}
+		});
+
+	});
+
+
 });
 
 

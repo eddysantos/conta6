@@ -17,9 +17,6 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
 	$fileXML = $tipo."tipo_".$partidaDoc."partida_".$id_poliza."poliza_".$fileXML;
 
-	#EL NOMBRE DEL ARCHIVO SE GUARDA EN LA BASE DE DATOS
-	mysqli_query($db,"INSERT INTO conta_t_polizas_det_contaelec_backupsxml(fk_id_poliza,s_nombre_archivo,s_usuario)values($id_poliza,'$fileXML','$usuario')");
-
 	#Ruta CFDI
 	$rutaCFDI = $root . '/conta6/CFDI_BackUpsContabilidad/';
 
@@ -117,7 +114,8 @@ $system_callback = [];
 		}
 	}
 
-	// $UUID."|".$rfc."|".$total."|".$nombre."|".$subTotal."|".$totalImpuestos."|".$totalImpuestosISR."|".$totalImpuestosIVAret;
+	#EL NOMBRE DEL ARCHIVO SE GUARDA EN LA BASE DE DATOS
+	mysqli_query($db,"INSERT INTO conta_t_polizas_det_contaelec_backupsxml(fk_id_poliza,s_nombre_archivo,s_uuid,s_rfc_emisor,s_usuario)values($id_poliza,'$fileXML','$UUID','$rfc','$usuario')");
 
 
 	$system_callback['code'] = "1";

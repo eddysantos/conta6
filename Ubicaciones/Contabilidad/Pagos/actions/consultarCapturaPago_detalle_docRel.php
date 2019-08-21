@@ -24,11 +24,13 @@ $rslt_consultaDetalle_DR = $stmt_consultaDetalle_DR->get_result();
 $total_consultaDetalle_DR = $rslt_consultaDetalle_DR->num_rows;
 
 if( $total_consultaDetalle_DR > 0 ) {
-	//$idFila = 0; $fk_referencia = '';
+
 	$pagosDetalle_DR = '';
+	$pagosDetallePrint_DR = '';
+	$nombreElementDesglose2 = '';
+
 	while( $row_consultaDetalle_DR = $rslt_consultaDetalle_DR->fetch_assoc()  ){
 		$pk_id_DR = $row_consultaDetalle_DR['pk_id_DR'];
-		$fk_rowPago = $row_consultaDetalle_DR['n_fk_rowPago'];
 		$fk_id_aduanaDR = $row_consultaDetalle_DR['fk_id_aduanaDR'];
 		$fk_referenciaDR = $row_consultaDetalle_DR['fk_referenciaDR'];
 		$fk_id_facturaDR = $row_consultaDetalle_DR['fk_id_facturaDR'];
@@ -41,12 +43,13 @@ if( $total_consultaDetalle_DR > 0 ) {
 		$n_importeSaldoAnterior = $row_consultaDetalle_DR['n_importeSaldoAnterior'];
 		$n_importePagado = $row_consultaDetalle_DR['n_importePagado'];
 		$n_importeSaldoInsoluto = $row_consultaDetalle_DR['n_importeSaldoInsoluto'];
-		$s_usuario_alta = $row_consultaDetalle_DR['s_usuario_alta'];
-		$d_fecha_alta = $row_consultaDetalle_DR['d_fecha_alta'];
-		$n_CFDIrelacionado = $row_consultaDetalle_DR['n_CFDIrelacionado'];
-		$s_tipoDetalle = $row_consultaDetalle_DR['s_tipoDetalle'];
 		$n_deposito = $row_consultaDetalle_DR['n_deposito'];
 		$n_iva = $row_consultaDetalle_DR['n_iva'];
+		$s_usuario_alta = $row_consultaDetalle_DR['s_usuario_alta'];
+		$d_fecha_alta = $row_consultaDetalle_DR['d_fecha_alta'];
+		$fk_rowPago = $row_consultaDetalle_DR['n_fk_rowPago'];
+		// $n_CFDIrelacionado = $row_consultaDetalle_DR['n_CFDIrelacionado'];
+		// $s_tipoDetalle = $row_consultaDetalle_DR['s_tipoDetalle'];
 
 		$n_importeSaldoAnterior2 = number_format($n_importeSaldoAnterior,2,'.',',');
 		$n_importePagado2 = number_format($n_importePagado,2,'.',',');
