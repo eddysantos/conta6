@@ -8,7 +8,7 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_cs_proveedores WHERE (pk_id_proveedor LIKE ? OR s_nombre LIKE ?) ORDER BY s_nombre ";
+$query = "SELECT * FROM conta_cs_proveedores WHERE (pk_id_proveedor LIKE ? OR s_nombre LIKE ? OR s_rfc like ?) ORDER BY s_nombre ";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -17,7 +17,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ss', $text, $text);
+$stmt->bind_param('sss', $text, $text, $text);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";

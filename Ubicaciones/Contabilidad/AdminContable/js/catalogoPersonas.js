@@ -1,6 +1,6 @@
 $(document).ready(function(){
   fetch_formaPago_sat();
-
+  polReg_Det();
 
   $('.personas').click(function(){
       var accion = $(this).attr('accion');
@@ -422,6 +422,168 @@ $(document).ready(function(){
 
 
 
+  /* Proveedores */
+  $('#btn_genProv').click(function(){
+    nombre = $('#nombreN_prov').val();
+    persona = $('#personaN_prov').val();
+    rfc = $('#rfcN_prov').val();
+    curp = $('#curpN_prov').val();
+    taxid = $('#taxidN_prov').val();
+    direccion = $('#direccionN_prov').val();
+
+    if( nombre == "" ){
+      alertify.error("Nombre es requerido");
+      $('#nombreN_prov').focus();
+      return false;
+    }
+    if( persona == "" ){
+        alertify.error("Persona es requerido");
+        $('#personaN_prov').focus();
+        return false;
+     }
+    if( persona == "fisica" ){
+        alertify.error("CURP es requerido");
+        $('#curpN_prov').focus();
+        return false;
+     }
+
+     if( rfc == "" ){
+        alertify.error("RFC es requerido");
+        $('#rfcN_prov').focus();
+        return false;
+      }
+      if( rfc == "XEXX010101000" && taxid == '' ){
+         alertify.error("taxID es requerido");
+         $('#taxidN_prov').focus();
+         return false;
+       }
+
+      var data = {
+        nombre : nombre,
+        persona : persona,
+        rfc : rfc,
+        curp : curp,
+        taxid : taxid,
+        direccion : direccion
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregar.php",
+        data: data,
+        success: 	function(r){
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            swal("Exito", "Se generó correctamente.", "success");
+            setTimeout('document.location.reload()',700);
+          } else {
+            swal("RFC existe en sistema", r.data, "error");
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+
+      });
+  });
+
+  $('#bcoSATprov').change(function(){
+    banco = $('#bcoSATprov').attr('db-id');
+    if( banco == '999' ){
+      $('#nomBcoExtj').prop( 'disabled',false );
+      $('#nomBco').prop( 'disabled',false );
+    }else{
+      $('#nomBcoExtj').prop( 'disabled',true )
+                      .prop( 'db-id','' )
+                      .prop( 'value','' );
+
+      $('#nomBco').prop( 'disabled',true )
+                      .prop( 'db-id','' )
+                      .prop( 'value','' );
+    }
+  });
+
+  $('#nomBcoExtj').change(function(){
+    bancoExtj = $('#nomBcoExtj').attr('db-id');
+    $('#nomBco').val(bancoExtj);
+  });
+
+  $('#btn_agrCtaBcoProv').click(function(){
+    id_prov = $('#cat-prov').attr('db-id');
+    banco = $('#bcoSATprov').attr('db-id');
+    cuenta = $('#cinter').val();
+    nomBan = $('#nomBco').val();
+
+
+    if( id_prov == "" ){
+        alertify.error("Seleccione un Proveedor");
+        $('#cat-prov').focus();
+        return false;
+     }
+
+     if( banco == "" ){
+        alertify.error("Seleccione un banco");
+        $('#bcoSAT').focus();
+        return false;
+      }
+
+      if( banco == "999" && nomBan == "" ){
+         alertify.error("Es requerido el nombre del banco");
+         $('#bcoSAT').focus();
+         return false;
+       }
+
+      valid_cuenta = validarCtaBancaria($('#cinter'));
+      if( cuenta == "" || valid_cuenta == false ){
+         alertify.error("Formato Cuenta bancaria Incorrecto");
+         $('#cinter').focus();
+         return false;
+       }
+
+      var data = {
+          id_prov: id_prov,
+          banco: banco,
+          cuenta: cuenta,
+          nomBan: nomBan
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarBcoCta.php",
+        data: data,
+        success: 	function(r){
+          console.log(data);
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            swal("Exito", "Se generó correctamente.", "success");
+            $('#cat-prov').change();
+          } else {
+            swal("Error", r.data, "error");
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+
+      });
+  });
+
+  $('#cat-prov').change(function() {
+    var $this = $(this);
+    var dbid = $this.attr('db-id');
+
+    if (dbid != "") {
+      buscarDatosProv(dbid);
+      buscarCtasProv(dbid);
+    }
+  });
+
+  $('#btn_printProv').click(function(){
+    window.open('/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_impresion.php');
+  });
+
 
 });
 
@@ -438,4 +600,206 @@ function fetch_formaPago_sat(){
         }
       }
     })
+}
+
+
+
+/**** PROVEEDORES ****/
+function buscarDatosProv(id){
+  var data = {
+    id_prov: id
+  }
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/AdminContable/Proveedores_datosGenerales.php",
+    data: data,
+    success: 	function(r){
+      //console.log(r);
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        $('#datosGeneralesProv').html(r.data);
+      } else {
+          console.error(r.message);
+      }
+    },
+    error: function(x){
+      console.error(x);
+    }
+
+  });
+}
+
+function buscarCtasProv(id){
+  var data = {
+    id_prov: id
+  }
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_asignarCtasBancarias.php",
+    data: data,
+    success: 	function(r){
+      console.log(r);
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        $('#datosCtasBen').html(r.data);
+      } else {
+          console.error(r.message);
+      }
+    },
+    error: function(x){
+      console.error(x);
+    }
+
+  });
+}
+
+
+function btn_editProv(){
+  idprov = $('#id_prov').val();
+  nombre = $('#nombre_prov').val();
+  persona = $('#persona_prov').val();
+  rfc = $('#rfc_prov').val();
+  curp = $('#curp_prov').val();
+  taxid = $('#taxid_prov').val();
+  direccion = $('#direccion_prov').val();
+
+  if( persona == "" ){
+      alertify.error("Persona es requerido");
+      $('#persona_prov').focus();
+      return false;
+   }
+  if( persona == "fisica" ){
+      alertify.error("CURP es requerido");
+      $('#curp_prov').focus();
+      return false;
+   }
+
+   if( rfc == "" ){
+      alertify.error("RFC es requerido");
+      $('#rfc_prov').focus();
+      return false;
+    }
+    if( rfc == "XEXX010101000" && taxid == '' ){
+       alertify.error("taxID es requerido");
+       $('#taxid_prov').focus();
+       return false;
+     }
+
+    var data = {
+      idprov : idprov,
+      nombre : nombre,
+      persona : persona,
+      rfc : rfc,
+      curp : curp,
+      taxid : taxid,
+      direccion : direccion
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_editar.php",
+      data: data,
+      success: 	function(r){
+        console.log(r);
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          swal("Exito", "Se modificó correctamente.", "success");
+          $('#cat-benef').change();
+        } else {
+          swal("RFC existe en sistema", r.data, "error");
+          console.error(r.message);
+        }
+      },
+      error: function(x){
+        console.error(x);
+      }
+
+    });
+}
+
+function asignarProvRegPol(partida){
+    id_prov = $('#lstProv').attr('db-id');
+    if( id_prov == '' ){
+      alertify.error("Proveedor es requerido");
+      $('#lstProv').focus();
+      return false;
+    }
+
+    var data = {
+      id_prov: id_prov,
+      partida: partida,
+      id_poliza: $('#mst-poliza').val()
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarProvDetallePoliza.php",
+      data: data,
+      success: 	function(request){
+        r = JSON.parse(request);
+        if (r.code == 1) {
+          swal("Agregado!", "Se agrego correctamente.", "success");
+          polReg_Det();
+        }
+      }
+    })
+
+}
+
+function borrarProvRegPol(partida){
+  swal({
+	title: "Estas Seguro?",
+	text: "Ya no se podra recuperar el Proveedor del registro! "+ partida +" ",
+	type: "warning",
+	showCancelButton: true,
+	confirmButtonClass: "btn-danger",
+	confirmButtonText: "Si, Eliminar",
+	cancelButtonText: "No, cancelar",
+	closeOnConfirm: false,
+	closeOnCancel: false
+	},
+	function(isConfirm) {
+		if (isConfirm) {
+
+      var data = {
+        partida: partida,
+        id_poliza: $('#mst-poliza').val()
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarProvDetallePoliza.php",
+        data: data,
+        success: 	function(request){
+          r = JSON.parse(request);
+          if (r.code == 1) {
+            swal("Borrado!", "Se borro correctamente.", "success");
+            polReg_Det();
+          }
+        }
+      })
+
+    } else {
+      swal("Cancelado", "El registro esta a salvo :)", "error");
+    }
+  });
+}
+
+// MOSTRAR DETALLE DE LA POLIZA
+function polReg_Det(){
+  var data = {
+    id_poliza: $('#mst-poliza').val()
+  }
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_detallePoliza.php",
+    data: data,
+    success: 	function(request){
+      r = JSON.parse(request);
+
+      if (r.code == 1) {
+        $('#registrosDetPol').html(r.data);
+      }
+    }
+  });
 }

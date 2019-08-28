@@ -84,6 +84,22 @@ $(document).ready(function(){
       });
   });
 
+  $('#bcoSAT').change(function(){
+    banco = $('#bcoSAT').attr('db-id');
+    if( banco == '999' ){
+      $('#nomBcoExtj').prop( 'disabled',false );
+      $('#nomBco').prop( 'disabled',false );
+    }else{
+      $('#nomBcoExtj').prop( 'disabled',true )
+                      .prop( 'db-id','' )
+                      .prop( 'value','' );
+
+      $('#nomBco').prop( 'disabled',true )
+                      .prop( 'db-id','' )
+                      .prop( 'value','' );
+    }
+  });
+
   $('#btn_agrCtaBcoBen').click(function(){
     id_ben = $('#cat-benef').attr('db-id');
     banco = $('#bcoSAT').attr('db-id');

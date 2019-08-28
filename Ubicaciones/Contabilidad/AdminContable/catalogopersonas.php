@@ -6,16 +6,26 @@
 
 <div class="text-center">
 <!---AL INGRESAR SOLO SE MOSTRARA ESTA SECCION-->
+  <?PHP if($oRst_permisos['s_catalogoPersonas_CLIENTES'] == 1){ ?>
   <div class="row submenuMed m-0 font14" id="SeleccionarAccion">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <a  href="#" class="personas" accion="clientes"><i class="fa fa-search" aria-hidden="true"></i>Clientes</a>
-    </div>
-    <div class="col-md-4">
+    </div><?PHP } ?>
+
+    <?PHP if($oRst_permisos['s_catalogoPersonas_PROVEEDORES'] == 1){ ?>
+    <div class="col-md-3">
       <a href="#" class="personas" accion="proveedores"><i class="fa fa-search" aria-hidden="true"></i>Proveedores</a>
-    </div>
-    <div class="col-md-4">
+    </div><?PHP } ?>
+
+    <?PHP if($oRst_permisos['s_catalogoPersonas_CORRESPONSALES'] == 1){ ?>
+    <div class="col-md-3">
       <a href="#" class="personas" accion="corresponsales"><i class="fa fa-search" aria-hidden="true"></i>Corresponsales</a>
-    </div>
+    </div><?PHP } ?>
+
+    <?PHP if($oRst_permisos['s_catalogoPersonas_BENEFICIARIOS'] == 1){ ?>
+    <div class="col-md-3">
+      <a href="#" class="personas" accion="Beneficiarios"><i class="fa fa-search" aria-hidden="true"></i>Beneficiarios</a>
+    </div><?PHP } ?>
   </div>
 
 

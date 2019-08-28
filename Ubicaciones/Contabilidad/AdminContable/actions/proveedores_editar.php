@@ -2,9 +2,13 @@
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
-  $id_ben = trim($_POST['id_ben']);
-  $ben = trim($_POST['ben']);
+  $idprov = trim($_POST['idprov']);
+  $nombre = trim($_POST['nombre']);
+  $persona = trim($_POST['persona']);
   $rfc = trim($_POST['rfc']);
+  $curp = trim($_POST['curp']);
+  $taxid = trim($_POST['taxid']);
+  $direccion = trim(utf8_decode($_POST['direccion']));
 
 	$system_callback = [];
 	$data = $_POST;
@@ -16,18 +20,18 @@
   require $root . '/conta6/Resources/PHP/actions/validarRFC_beneficiarios.php';
   //***********************************************************
 
-  if( $rows_CLT == 0 && $rows_PROV == 0 && $rows_EMPL == 0 ){
-    if( $oRst_permisos['s_benefGenerarlibre_cheques'] == 1 || $rows_BEN == 1 ){
+  if( $rows_CLT == 0 && $rows_BEN == 0 && $rows_EMPL == 0 ){
+    if( $oRst_permisos['s_catalogoPersonasPROV_g_libre'] == 1 || $rows_PROV == 1 ){
         $d_fecha_modifi = date("Y-m-d H:i:s",time());
 
-        $query_UPDATE = "UPDATE conta_cs_beneficiarios SET s_nombre = ?, s_rfc = ?, s_usuario_modifi = ?, d_fecha_modifi = ? WHERE pk_id_benef = ?";
+        $query_UPDATE = "UPDATE conta_cs_proveedores SET s_nombre = ?, s_persona = ?, s_rfc = ?, s_curp = ?, s_taxid = ?, s_direccion = ?, s_usuario_modifi = ?, d_fecha_modifi = ? WHERE pk_id_proveedor = ?";
         $stmt_UPDATE = $db->prepare($query_UPDATE);
         if (!($stmt_UPDATE)) {
           $system_callback['code'] = "500";
           $system_callback['message'] = "Error during query prepare INSERT [$db->errno]: $db->error";
           exit_script($system_callback);
         }
-        $stmt_UPDATE->bind_param('sssss',$ben,$rfc,$usuario,$d_fecha_modifi,$id_ben);
+        $stmt_UPDATE->bind_param('sssssssss',$nombre,$persona,$rfc,$curp,$taxid,$direccion,$usuario,$d_fecha_modifi,$idprov);
         if (!($stmt_UPDATE)) {
           $system_callback['code'] = "500";
           $system_callback['message'] = "Error during variables binding INSERT [$stmt_UPDATE->errno]: $stmt_UPDATE->error";
@@ -39,12 +43,10 @@
           exit_script($system_callback);
         }
 
-        //$id_benef = $db->insert_id;
+        $descripcion = "Se modifico Proveedor: $idprov Nombre: $nombre RFC: $rfc CURP: $curp TAXID: $taxid DIRECCION: $direccion PERSONA: $persona";
 
-        $descripcion = "Se modifico Beneficiario: $id_ben Nombre: $ben RFC: $rfc";
-
-        $clave = 'benef';
-        $folio = $id_benef;
+        $clave = 'provConta';
+        $folio = $idprov;
         require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
 
         $system_callback['code'] = 1;

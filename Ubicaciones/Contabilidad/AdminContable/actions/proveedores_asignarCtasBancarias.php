@@ -1,14 +1,12 @@
 <?php
-
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
-$system_callback = [];
-$data = $_POST;
 
-$data['string'];
-$text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_replica_clientes WHERE (pk_id_cliente LIKE ? OR s_nombre LIKE ? or s_rfc LIKE ?) ORDER BY s_nombre ";
+$system_callback = [];
+
+$id_prov = trim($_POST['id_prov']);
+$query = "SELECT * FROM conta_cs_bancos_proveedores WHERE fk_id_proveedor = ?";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -17,7 +15,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('sss', $text, $text, $text);
+$stmt->bind_param('s',$id_prov);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
@@ -34,20 +32,31 @@ $rslt = $stmt->get_result();
 
 if ($rslt->num_rows == 0) {
   $system_callback['code'] = 1;
-  $system_callback['data'] =
-  "<p db-id=''>No se encontraron resultados</p>";
+  $system_callback['data'] ="<p db-id=''>No se encontraron resultados</p>";
   $system_callback['message'] = "Script called successfully but there are no rows to display.";
   exit_script($system_callback);
 }
 
 while ($row = $rslt->fetch_assoc()) {
+  if( $oRst_permisos["s_catalogoPersonasPROV_GctasBcos"] == 1 ){
+    $btnborrar = "<a href='#' onclick='btn_bcben($row[pk_id_banco_ben],$row[fk_id_benef])'><img src= '/conta6/Resources/iconos/002-trash.svg' class='icochico'></a>";
+  }else{ $bntborrar = "";}
+
   $system_callback['data'] .=
-  "<p db-id='$row[pk_id_cliente]'>$row[pk_id_cliente] - $row[s_nombre] - $row[s_rfc]</p>";
+    "<tr class='row borderojo'>
+      <td class='col-md-1'>$btnborrar</td>
+      <td class='col-md-2'>$row[fk_id_banco]</td>
+      <td class='col-md-2'>$row[s_nomBanExt]</td>
+      <td class='col-md-3'>$row[s_cta_banco]</td>
+      <td class='col-md-4'>$row[s_usuario_alta] $row[d_fecha_alta]</td>
+     </tr>";
 }
 
-$system_callback['code'] = 1;
-$system_callback['message'] = "Script called successfully!";
-exit_script($system_callback);
 
 
- ?>
+
+  $system_callback['code'] = 1;
+  $system_callback['message'] = "Script called successfully!";
+  exit_script($system_callback);
+
+?>

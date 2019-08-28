@@ -650,12 +650,14 @@ $('#folioPolconsulta').keydown(function(e){
 	if (e.keyCode === 13 || e.keyCode === 9) {
 		 buscarPoliza('consultar');
 	}
-})
+});
 
-
+$('#btn_asignarProveedor').click(function(){
+	id_poliza = $('#folioPolAsignar').val();
+	window.location.replace('/conta6/Ubicaciones/Contabilidad/Proveedores/AsignarProveedor.php?id_poliza='+id_poliza);
+});
 
 function buscarPoliza(Accion){
-
 	if( Accion == 'consultar'){ id_poliza = $('#folioPolconsulta').val(); }
 	if( Accion == 'modificar'){ id_poliza = $('#folioPol').val(); }
 	window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/actions/buscar_poliza.php?id_poliza='+id_poliza+'&Accion='+Accion);

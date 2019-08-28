@@ -60,7 +60,7 @@ if ($rslt->num_rows == 0) {
             <label for='rfc'>RCF</label>
           </td>
           <td class='col-md-3 input-effect'>
-            <input id='rfc' class='efecto tiene-contenido' type='text' value='$row[s_taxid]' onblur='eliminaBlancosIntermedios(this);'>
+            <input id='taxid' class='efecto tiene-contenido' type='text' value='$row[s_taxid]' onblur='eliminaBlancosIntermedios(this);'>
             <label for='taxid'>Tax ID</label>
           </td>
           <td class='col-md-1 mt-2 text-left'>$btnguardar</td>
