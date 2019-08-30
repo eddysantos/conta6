@@ -302,7 +302,7 @@ $('#validarDistSalarios').click(function(){
   $('tbody').on('click', '.editar-empleado', function(){
     var dbid = $(this).attr('db-id');
     var regimen  = $(this).attr('regimen');
-    var tar_modal = $(this).attr('href');
+    var tar_modal = $($(this).attr('href'));
 
     if (regimen == 2 || regimen == '02') {
       $('.suelysal-1').show();
@@ -539,8 +539,17 @@ $('#validarDistSalarios').click(function(){
   $('#filtroRegimen').change(function(){
     listaEmpleados();
     regimen = $('#filtroRegimen').val();
+
+    // if ($('#filtroRegimen').val() == 2) {
+    //   $('#regimenprueba').val(02);
+    // }else if ($('#filtroRegimen').val() == 9) {
+    //   $('#regimenprueba').val(09);
+    // }
+
     $('#empleados_rt_search').data('regimen', regimen);
   });
+
+
 
 
 
@@ -569,6 +578,7 @@ function Salario_Int(){
 function listaEmpleados(){
   var data = {
     fk_id_aduana : $('#fk_id_aduana_add').val(),
+    // regimen : $('#regimenprueba').val()
     regimen : $('#filtroRegimen').val()
   }
   $.ajax({

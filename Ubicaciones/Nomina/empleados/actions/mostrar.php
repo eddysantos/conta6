@@ -22,7 +22,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ssss',$regimen, $aduana, $text, $text);
+$stmt->bind_param('isss',$regimen, $aduana, $text, $text);
 //$stmt->bind_param('ss',$regimen, $aduana);
 
 if (!($stmt)) {
@@ -89,26 +89,27 @@ while ($row = $rslt->fetch_assoc()) {
 
 
 
-  if ($regimen == '02' || $regimen == '2') {
-    $system_callback['data'] .= "<tr class='row text-center m-0 borderojo'>
-                                  <td class='col-md-1'>
-                                    <a href='#permanentes' data-toggle='modal' class='editar-empleado' db-id='$pk_id_empleado' regimen='$regimen'>
-                                      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
-                                    </a>
-                                  </td>
-                                  <td class='col-md-1'>
-                                    <a href='#modDatosEmp'  class='editar-empleado'  db-id='$pk_id_empleado' regimen='$regimen'>
-                                      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
-                                    </a>
-                                  </td>
-                                  <td class='col-md-1'>$status</td>
-                                  <td class='col-md-1'>$pagar</td>
-                                  <td class='col-md-1'>$pk_id_empleado</td>
-                                  <td class='col-md-5'>$nombre</td>
-                                  <td class='col-md-1'>$row[n_salario_semanal]</td>
-                                  <td class='col-md-1'>$row[n_salario_integrado]</td>
-                                </tr>";
-  }elseif ($regimen == '09' || $regimen == '9') {
+  if ($regimen == 2 || $regimen == '02') {
+    $system_callback['data'] .= "
+    <tr class='row text-center m-0 borderojo'>
+      <td class='col-md-1'>
+        <a href='#permanentes' class='editar-empleado' db-id='$pk_id_empleado' regimen='$regimen'>
+          <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+        </a>
+      </td>
+      <td class='col-md-1'>
+        <a href='#modDatosEmp'  class='editar-empleado'  db-id='$pk_id_empleado' regimen='$regimen'>
+          <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+        </a>
+      </td>
+      <td class='col-md-1'>$status</td>
+      <td class='col-md-1'>$pagar</td>
+      <td class='col-md-1'>$pk_id_empleado</td>
+      <td class='col-md-5'>$nombre</td>
+      <td class='col-md-1'>$row[n_salario_semanal]</td>
+      <td class='col-md-1'>$row[n_salario_integrado]</td>
+    </tr>";
+  }elseif ($regimen == '09' || $regimen == 9) {
     $system_callback['data'] .="<tr class='row text-center m-0 borderojo'>
       <td class='col-md-1'>
         <a href='#modDatosEmp' class='editar-empleado'  db-id='$pk_id_empleado' regimen='$regimen'>
