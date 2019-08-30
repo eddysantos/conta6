@@ -204,7 +204,7 @@ $('#validarDistSalarios').click(function(){
 // function agregarEmpleado(){
   $('.agregarEmpleado').click(function(){
     var regimen = $('#fk_id_regimen_add').val();
-    if (regimen ==  2) {
+    if (regimen == 2 || regimen ==  '02') {
       if ($('#s_IMSS_add').val() == "") {
         alertify.error("IMSS es requerido");
         $('#s_IMSS_add').focus();
@@ -216,7 +216,7 @@ $('#validarDistSalarios').click(function(){
       }
       isr = 0;
       salario_semanal = $('#n_salario_semanal_add').val();
-    }else if (regimen == 9) {
+    }else if (regimen == 9 || regimen ==  '09') {
       if ($('#n_salario_semanal_hon').val() == "") {
         alertify.error("Salario es requerido");
         $('#n_salario_semanal_hon').focus();
@@ -302,12 +302,12 @@ $('#validarDistSalarios').click(function(){
   $('tbody').on('click', '.editar-empleado', function(){
     var dbid = $(this).attr('db-id');
     var regimen  = $(this).attr('regimen');
-    var tar_modal = $($(this).attr('href'));
+    var tar_modal = $(this).attr('href');
 
-    if (regimen == 2) {
+    if (regimen == 2 || regimen == '02') {
       $('.suelysal-1').show();
       $('.honorariosAsim-1').hide();
-    }else if (regimen == 9) {
+    }else if (regimen == 9 || regimen == '09') {
       $('.suelysal-1').hide();
       $('.honorariosAsim-1').show();
     }
@@ -323,35 +323,35 @@ $('#validarDistSalarios').click(function(){
 
       if (r.code == 1) {
 
-      console.log(r.data);
-      for (var key in r.data) {
+        console.log(r.data);
+        for (var key in r.data) {
 
-        if (r.data.hasOwnProperty(key)) {
-          var iterated_element = $('#' + key);
-          var element_type = iterated_element.prop('nodeName');
-          var dbid = iterated_element.attr('db-id');
-          var value = r.data[key];
+          if (r.data.hasOwnProperty(key)) {
+            var iterated_element = $('#' + key);
+            var element_type = iterated_element.prop('nodeName');
+            var dbid = iterated_element.attr('db-id');
+            var value = r.data[key];
 
-          iterated_element.val(value).addClass('tiene-contenido');
-          if (typeof dbid !== undefined && dbid !== false) {
-            iterated_element.attr('db-id', value)
+            iterated_element.val(value).addClass('tiene-contenido');
+            if (typeof dbid !== undefined && dbid !== false) {
+              iterated_element.attr('db-id', value)
+            }
           }
         }
-      }
-      $('#h_salario_mensual').val(r.data.n_salario_semanal);
-      $('#n_salario_pago').val(r.data.n_salario_semanal - r.data.n_ISR);
-      tar_modal.modal('show');
+        $('#h_salario_mensual').val(r.data.n_salario_semanal);
+        $('#n_salario_pago').val(r.data.n_salario_semanal - r.data.n_ISR);
+        tar_modal.modal('show');
       } else {
         console.error(r);
       }
     })
-  })
+  });
 
 // Editar Empleado
   $('.medit-empleado').click(function(){
 
     var regimen = $('#fk_id_regimen').val();
-    if (regimen ==  2) {
+    if (regimen == 2 || regimen ==  '02') {
       if ($('#s_IMSS').val() == "") {
         alertify.error("IMSS es requerido");
         $('#s_IMSS').focus();
@@ -363,7 +363,7 @@ $('#validarDistSalarios').click(function(){
       }
       isr = 0;
       salario_semanal = $('#n_salario_semanal').val();
-    }else if (regimen == 9) {
+    }else if (regimen == 9 || regimen == '09') {
       if ($('#h_salario_mensual').val() == "") {
         alertify.error("Salario es requerido");
         $('#h_salario_mensual').focus();
@@ -534,7 +534,18 @@ $('#validarDistSalarios').click(function(){
         }
       });
     }
-  })
+  });
+
+  $('#filtroRegimen').change(function(){
+    listaEmpleados();
+    regimen = $('#filtroRegimen').val();
+    $('#empleados_rt_search').data('regimen', regimen);
+  });
+
+
+
+
+
 });
 
 
@@ -554,11 +565,6 @@ function Salario_Int(){
   $('#n_salario_integrado').val(sal_int_m + parseFloat($('#n_cuota_integral_salario').val()));
 }
 
-$('#filtroRegimen').change(function(){
-  listaEmpleados();
-  regimen = $('#filtroRegimen').val();
-  $('#empleados_rt_search').data('regimen', regimen);
-});
 
 function listaEmpleados(){
   var data = {

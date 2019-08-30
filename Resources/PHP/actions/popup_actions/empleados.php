@@ -8,7 +8,7 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_cs_empleados WHERE (s_rfc LIKE ? OR s_nombre LIKE ? OR s_apellidoP LIKE ? OR s_apellidoM LIKE ?) ORDER BY s_nombre ";
+$query = "SELECT * FROM conta_t_nom_empleados WHERE (s_RFC LIKE ? OR s_nombre LIKE ? OR s_apellidoP LIKE ? OR s_apellidoM LIKE ?) ORDER BY s_nombre ";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -42,7 +42,7 @@ if ($rslt->num_rows == 0) {
 
 while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
-  "<p db-id='$row[pk_id_empleado]'>$row[pk_id_empleado] - $row[s_nombre] $row[s_apellidoP] $row[s_apellidoM] - $row[s_rfc] - $row[fk_id_aduana]</p>";
+  "<p db-id='$row[pk_id_empleado]'>$row[pk_id_empleado] - $row[s_nombre] $row[s_apellidoP] $row[s_apellidoM] - $row[s_RFC] - $row[fk_id_aduana]</p>";
 }
 
 $system_callback['code'] = 1;

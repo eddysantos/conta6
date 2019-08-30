@@ -32,8 +32,8 @@
     <tr class="row m-0 justify-content-end">
       <td class="col-md-2">
         <select id="filtroRegimen" class="custom-select">
-         <option value="2" selected>Sueldos y Salarios</option>
-         <option value="9">Honorarios Asimilados</option>
+         <option value="02" selected>Sueldos y Salarios</option>
+         <option value="09">Honorarios Asimilados</option>
         </select>
        </td>
       <td class="col-md-3">
