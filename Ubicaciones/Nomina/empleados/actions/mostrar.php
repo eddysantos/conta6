@@ -12,8 +12,6 @@ $aduana = $data['fk_id_aduana'];
 $regimen = $data['regimen'];
 $query = "SELECT * FROM conta_t_nom_empleados WHERE fk_id_regimen = ? AND fk_id_aduana = ? AND (s_nombre LIKE ?  OR s_apellidoP LIKE ?) ORDER BY s_activo DESC,s_nombre,s_apellidoP";
 
-// $query = "SELECT * FROM conta_t_nom_empleados WHERE  fk_id_regimen = ? AND fk_id_aduana = ?  ORDER BY s_activo DESC,s_nombre,s_apellidoP";
-
 $stmt = $db->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
@@ -22,7 +20,6 @@ if (!($stmt)) {
 }
 
 $stmt->bind_param('ssss',$regimen, $aduana, $text, $text);
-// $stmt->bind_param('ss',$regimen, $aduana);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
@@ -44,7 +41,7 @@ if ($rslt->num_rows == 0) {
   exit_script($system_callback);
 }
 
-if ($regimen == 2) {
+if ($regimen == 2 || $regimen == '02') {
   $system_callback['encabezado'] .= "<tr class='row m-0 encabezado font14'>
                                       <td class='col-md-1'>Permanentes</td>
                                       <td class='col-md-1'>Datos</td>
@@ -55,7 +52,7 @@ if ($regimen == 2) {
                                       <td class='col-md-1'>Salario</td>
                                       <td class='col-md-1'>Integrado</td>
                                     </tr>";
-}elseif ($regimen == 9) {
+}elseif ($regimen == 9 || $regimen == '09') {
   $system_callback['encabezado'] .= "<tr class='row m-0 encabezado font14'>
                                       <td class='col-md-1'>Datos</td>
                                       <td class='col-md-1'>Estatus</td>
@@ -81,7 +78,7 @@ while ($row = $rslt->fetch_assoc()) {
     $pagar = "No";
   }
 
-  if ($regimen == 2) {
+  if ($regimen == 2 || $regimen == '02') {
     $system_callback['data'] .="<tr class='row text-center m-0 borderojo'>
       <td class='col-md-1'>
         <a href='#permanentes' class='editar-empleado' db-id='$pk_id_empleado' regimen='$regimen'>
@@ -100,7 +97,7 @@ while ($row = $rslt->fetch_assoc()) {
       <td class='col-md-1'>".$row['n_salario_semanal']."</td>
       <td class='col-md-1'>".$row['n_salario_integrado']."</td>
     </tr>";
-  }elseif ($regimen == 9) {
+  }elseif ($regimen == 9 || $regimen == '09') {
     $system_callback['data'] .="<tr class='row text-center m-0 borderojo'>
       <td class='col-md-1'>
         <a href='#modDatosEmp' class='editar-empleado'  db-id='$pk_id_empleado' regimen='$regimen'>
