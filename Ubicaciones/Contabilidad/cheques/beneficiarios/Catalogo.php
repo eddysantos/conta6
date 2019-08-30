@@ -43,14 +43,19 @@
             </label>
           </td>
           <td class='col-md-3 input-effect'>
-		  	<input class='efecto tiene-contenido popup-input' id='nomBco' type='text' id-display='#popup-display-nomBco' action='bancosExtranjeros' db-id='' autocomplete='off'>
-            <div class='popup-list' id='popup-display-nomBco' style='display:none'></div>
-            <label for='nomBco'>BANCOS EXTRANJEROS
+		  	    <input class='efecto tiene-contenido popup-input' id='nomBcoExtj' type='text' id-display='#popup-display-nomBcoExtj' action='bancosExtranjeros' db-id='' autocomplete='off' disabled>
+            <div class='popup-list' id='popup-display-nomBcoExtj' style='display:none'></div>
+            <label for='nomBcoExtj'>BANCOS EXTRANJEROS
               <a href='#catalogoBancosEXT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
             </label>
-            <!--input id='nomBco' class='efecto tiene-contenido' type='text' onchange='eliminaBlancosIntermedios(this);'>
-            <label for='nomBco'>NOMBRE BANCO EXTRANJERO</label-->
           </td>
+        </td>
+        <td class='col-md-3 input-effect'>
+          <!-- Cuando sea seleccionado banco "999" es necesario saber el nombre del banco para establecerlo en la contabilidad electronica -->
+          <!-- puede ser el caso que sea un banco mexicano que no es ta lista oficial del SAT o bien un banco extranjero -->
+          <input id='nomBco' class='efecto tiene-contenido' type='text' onchange='eliminaBlancosIntermedios(this);' autocomplete='off' disabled>
+          <label for='nomBco'>NOMBRE BANCO</label>
+        </td>
           <td class='col-md-3 input-effect'>
             <input id='cinter' class='efecto tiene-contenido' type='text' onchange='validarCtaBancaria(this);'>
             <label for='cinter'>CUENTA / INTERBANCARIA</label>

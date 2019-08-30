@@ -83,6 +83,9 @@ $marginbottom = "margin-bottom:100px!important";
                       <?PHP if($oRst_permisos['s_consulta_polizas'] == 1){ ?>
                       <li><a href="#consultar-pol" data-toggle="modal">Consultar</a></li><?php } ?>
 
+                      <?PHP if($oRst_permisos['s_catalogoPersonasPROV_asignar'] == 1){ ?>
+                      <li><a href="#asignar-proveedor" data-toggle="modal">Asignar proveedor</a></li><?php } ?>
+
                       <?PHP if($oRst_permisos['s_imprimir_polizas_periodo'] == 1){ ?>
                       <li><a href="#imprimir-pol" data-toggle="modal">Imprimir Pólizas</a></li><?php } ?>
 
@@ -193,15 +196,14 @@ $marginbottom = "margin-bottom:100px!important";
                     <?PHP if($oRst_permisos['s_catalogoPersonas'] == 1){ ?>
                     <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/catalogopersonas.php">Catálogo de Personas</a></li><?PHP } ?>
 
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/Corresponsales.php">Corresponsales</a></li>
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/Corresponsales.php">Corresponsales</a></li><!-- quitar -->
                     <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/Cierredemes.php">Cierre de Mes</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
                   <a href="#" class="">Proveedores <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/Proveedores/Catalogo.php">Catálogo</a></li>
-                    <li><a href="#asignar-proveedor" data-toggle="modal">Asignar</a></li>
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/Proveedores/Catalogo.php">Catálogo</a></li><!-- quitar -->
                   </ul>
                 </li>
                 <li class="dropdown">
