@@ -80,7 +80,7 @@ if( $total_facturas > 0 ) {
 		$anio = date_format(date_create($fecha),"Y");
 
 
-    $imgXML .= "<a href='#' onclick='cargarXML_factura($anio,&#39;$id_cliente&#39;,&#39;$id_referencia&#39;,&#39;$id_factura&#39;,$id_poliza,&#39;V&#39;)' title='factura'><img class='icochico' src='/conta6/Resources/iconos/xml.svg'></a>";
+    $imgXML .= "<a href='#' onclick='cargarXML_factura($anio,&#39;$id_cliente&#39;,&#39;$id_referencia&#39;,&#39;$id_factura&#39;,$id_poliza,&#39;V&#39;)' title='factura'><img class='icochico mr-4' src='/conta6/Resources/iconos/xml.svg'></a>";
     $imgXMLdownload .= "<a href='#' onclick='cargarXML_factura($anio,&#39;$id_cliente&#39;,&#39;$id_referencia&#39;,&#39;$id_factura&#39;,$id_poliza,&#39;D&#39;)' title='factura'><img class='icochico' src='/conta6/Resources/iconos/descargar-2.svg'></a>";
 }
 

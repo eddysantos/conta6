@@ -108,6 +108,7 @@ input:disabled{
   top: -9px;
   font-size: 14px;
   color: #d59f9f;
+  /* color: #3b3b3b; */
   transition: 0.3s;
 }
 

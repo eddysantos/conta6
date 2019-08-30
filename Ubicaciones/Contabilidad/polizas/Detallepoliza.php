@@ -8,6 +8,7 @@
   $sql_Select = mysqli_query($db,"Select * from conta_t_polizas_mst Where pk_id_poliza = $id_poliza AND fk_id_aduana = '$aduana'");
   $totalRegistrosSelect = mysqli_num_rows($sql_Select);
 ?>
+
 <div class="text-center mb-10">
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
@@ -44,322 +45,311 @@ if( $totalRegistrosSelect > 0 ){
   if( $sumaCargos == $sumaAbonos ){
     $txtStatus = 'style="color: #000000"';
   }else{
-    $txtStatus = 'style="color: red"';
+    $txtStatus = 'style="color: rgb(209, 28, 28)"';
   }
 ?>
+
 <input type="hidden" id="usuario_activo" db-id="" autocomplete="off" value="<?php echo $usuario; ?>">
 <input type="hidden" id="aduana_activa"  db-id="" autocomplete="off" value="<?php echo $aduana; ?>">
 
-  <div id="datospoliza" class="contorno mt-5" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
-    <!-- style="display:none" -->
-    <h5 class="titulo">DATOS DE LA POLIZA</h5>
-    <table class="table form1 font14">
-      <thead>
-        <tr class="row m-0 encabezado">
-          <td class="col-md-1">TIPO</td>
-          <td class="col-md-1">POLIZA</td>
-          <td class="col-md-2">USUARIO</td>
-          <td class="col-md-2">FECHA POLIZA</td>
-          <td class="col-md-2">GENERACION</td>
-          <td class="col-md-2">ADUANA</td>
-          <td class="col-md-2">ESTATUS</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="row m-0 align-items-center">
-          <td class="col-md-1">
-            <input class="efecto h22" <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="off" value="<?php echo $tipo; ?>">
-          </td>
-          <td class="col-md-1">
-            <input class="efecto h22 border-0" id="id_poliza" type="text" db-id="" autocomplete="off" disabled value="<?php echo $id_poliza; ?>">
-          </td>
-          <td class="col-md-2"><?php echo trim($oRst_Select["fk_usuario"]); ?></td>
-          <td class="col-md-2">
-            <input class="efecto h22" <?php echo $clase; ?> type="date" id="mstpol-fecha" value="<?php echo trim($oRst_Select["d_fecha"]); ?>">
-          </td>
-          <td class="col-md-2"><?php echo trim($oRst_Select["d_fecha_alta"]); ?></td>
-          <td class="col-md-2">
-            <input class="efecto h22 border-0" id="mstpol-aduana" type="text" db-id="" autocomplete="off" disabled value="<?php echo trim($oRst_Select["fk_id_aduana"]); ?>">
-          </td>
-          <td class="col-md-2">
-            <select class="custom-select-s" size="1" name="mstpol-cancela" id="mstpol-cancela" onchange="cambiarStatus()">
-							<?php if( $cancela == 0 ){
-									echo "<option value='0' selected>Activo</option>";
-									echo "<option value='1'>Cancelado</option>";
-								  }else{
-								  	echo "<option value='0'>Activo</option>";
-								  	echo "<option value='1' selected>Cancelado</option>";
-								  } ?>
-						</select>
-		        <!--input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="off" disabled value="<?php echo $cancela; ?>"-->
-          </td>
-        </tr>
-        <tr class="row m-0 mt-4">
-          <td class="col-md-11">
-            <input id="mstpol-concepto" <?php echo $clase; ?> value="<?php echo trim($oRst_Select["s_concepto"]); ?>" type="text" onchange="eliminaBlancosIntermedios(this)">
-            <label for="concep">CONCEPTO</label>
-          </td>
-          <td class="col-md-1 text-left align-self-center">
-		  	<?php if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 && $cancela == 0 ){ ?>
-            <a href="#" id="guardarPolMST"> <img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
-			<?php } ?>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div><!--/Termina DETALLE DATOS DE POLIZA-->
+<!--Comienza DETALLE DATOS DE POLIZA-->
+<div id="datospoliza" class="contorno mt-5" style="display:none">
+  <!-- style="display:none" -->
+  <h5 class="titulo">DATOS DE LA POLIZA</h5>
+  <table class="table form1 font14">
+    <thead>
+      <tr class="row m-0 encabezado">
+        <td class="col-md-1">TIPO</td>
+        <td class="col-md-1">POLIZA</td>
+        <td class="col-md-2">USUARIO</td>
+        <td class="col-md-2">FECHA POLIZA</td>
+        <td class="col-md-2">GENERACION</td>
+        <td class="col-md-2">ADUANA</td>
+        <td class="col-md-2">ESTATUS</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row m-0 align-items-center">
+        <td class="col-md-1">
+          <input class="efecto h22" <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="off" value="<?php echo $tipo; ?>">
+        </td>
+        <td class="col-md-1">
+          <input class="efecto h22 border-0" id="id_poliza" type="text" db-id="" autocomplete="off" disabled value="<?php echo $id_poliza; ?>">
+        </td>
+        <td class="col-md-2"><?php echo trim($oRst_Select["fk_usuario"]); ?></td>
+        <td class="col-md-2">
+          <input class="efecto h22" <?php echo $clase; ?> type="date" id="mstpol-fecha" value="<?php echo trim($oRst_Select["d_fecha"]); ?>">
+        </td>
+        <td class="col-md-2"><?php echo trim($oRst_Select["d_fecha_alta"]); ?></td>
+        <td class="col-md-2">
+          <input class="efecto h22 border-0" id="mstpol-aduana" type="text" db-id="" autocomplete="off" disabled value="<?php echo trim($oRst_Select["fk_id_aduana"]); ?>">
+        </td>
+        <td class="col-md-2">
+          <select class="custom-select-s" size="1" name="mstpol-cancela" id="mstpol-cancela" onchange="cambiarStatus()">
+            <?php if( $cancela == 0 ){
+                echo "<option value='0' selected>Activo</option>";
+                echo "<option value='1'>Cancelado</option>";
+                }else{
+                  echo "<option value='0'>Activo</option>";
+                  echo "<option value='1' selected>Cancelado</option>";
+                } ?>
+          </select>
+          <!--input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="off" disabled value="<?php echo $cancela; ?>"-->
+        </td>
+      </tr>
+      <tr class="row m-0 mt-4">
+        <td class="col-md-11">
+          <input id="mstpol-concepto" <?php echo $clase; ?> value="<?php echo trim($oRst_Select["s_concepto"]); ?>" type="text" onchange="eliminaBlancosIntermedios(this)">
+          <label for="concep">CONCEPTO</label>
+        </td>
+        <td class="col-md-1 text-left align-self-center">
+      <?php if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 && $cancela == 0 ){ ?>
+          <a href="#" id="guardarPolMST"> <img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
+    <?php } ?>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--/Termina DETALLE DATOS DE POLIZA-->
 
 
-  <div class="movible m-4">
-    <nav>
-      <ul class="nav nav-pills nav-fill w-100 m-15">
-        <li class="nav-item">
-          <a class="nav-link pills" >Captura Detalle Póliza</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link pills" id="detallepoliza">Detalle de Póliza</a>
-        </li>
-        <li class="nav-item">
-          <?php if( $oRst_permisos['s_consultar_ContaElect'] == 1 ){ ?>
-          <a class="nav-link pills" id="infPartida" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
-          <input type="hidden" id="mst-poliza" value="<?php echo $id_poliza; ?>">
-          <?php } ?>
-        </li>
-      </ul>
-    </nav> <!--links de desplazamiento-->
-    <div class="containermov">
-      <div class="contenedor-movible">
-        <div><!--CAPTURA DE POLIZAS-->
-          <div id="capturapoliza" class="contorno-mov">
-            <table class="table form1 font14">
-              <thead>
-                <tr class="row m-0 encabezado font18">
-                  <td class="col-md-12">CAPTURA DETALLE POLIZA</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="row m-0 mt-5">
-                  <td class="col input-effect ">
-                    <?php if( $oRst_permisos["s_lstCompletaCtas_polizas"] == 1 ){
-                    echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
-                    }else{
-                      if( $tipo == 2){
-                        echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv_limitada_paraTipo2" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
-                      }else{
-                        echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv_limitada" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
-                      }
-                    }?>
-                    <div class="popup-list" id="popup-display-detpol-cuenta" style="display:none"></div>
-                    <label for="detpol-cuenta">Seleccione una Cuenta</label>
-                  </td>
-                  <td  class="gto col-md-2 input-effect " style="display:none">
-                    <input class="efecto popup-input" id="detpol-gtoficina" type="text" id-display="#popup-display-detpol-gtoficina" action="oficinas" db-id="" autocomplete="off" onChange="valDescripOficina()">
-                    <div class="popup-list" id="popup-display-detpol-gtoficina" style="display:none"></div>
-                    <label for="detpol-gtoficina">Gasto Oficina</label>
-                  </td>
-                </tr>
-                <tr class="row m-0 mt-4">
-                  <td class="col-md-2 input-effect">
-                    <input class="efecto popup-input" id="detpol-referencia" type="text" id-display="#popup-display-detpol-referencia" action="referencias" db-id="" autocomplete="off">
-                    <div class="popup-list" id="popup-display-detpol-referencia" style="display:none"></div>
-                    <label for="detpol-referencia">Referencia</label>
-                  </td>
 
-                  <td class="col-md-8 input-effect">
-                    <div id="detpol-lstClientes">
-                      <input class="efecto popup-input" id="detpol-cliente" type="text" id-display="#popup-display-detpol-cliente" action="clientes" db-id="" autocomplete="off">
-                      <div class="popup-list" id="popup-display-detpol-cliente" style="display:none"></div>
-                      <label for="detpol-cliente">Cliente</label>
-                    </div>
-                    <div id="detpol-lstClientesCorresp" style="display:none">
-                      <select class="custom-select" size='1' id="detpol-clienteCorresp">
-                        <option selected value='0'>Seleccione Cliente/Corresponsal</option>
-                      </select>
-                    </div>
-                  </td>
+<div class="text-center">
+  <ul class="nav row text-center m-0 mt-5" role="tablist">
+    <li class="nav-item col-md-4">
+      <a class="nav-link pills active" id="CapturaPoliza-tab" data-toggle="tab" href="#CapturaPoliza" role="tab" aria-controls="CapturaPoliza" aria-selected="true">Captura Detalle de Póliza</a>
+    </li>
+    <li class="nav-item col-md-4">
+      <a class="detallepoliza nav-link pills" data-toggle="tab" href="#Detalle" role="tab" aria-controls="Detalle" aria-selected="false">Detalle de Póliza</a>
+    </li>
+    <li class="nav-item col-md-4">
+      <?php if( $oRst_permisos['s_consultar_ContaElect'] == 1 ){ ?>
+      <a class="nav-link pills" id="infPartida" data-toggle="tab" href="#InfoAdd" role="tab" aria-controls="InfoAdd" aria-selected="false" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
+      <input type="hidden" id="mst-poliza" value="<?php echo $id_poliza; ?>">
+      <?php } ?>
+    </li>
+  </ul>
 
-                  <td class="col-md-2" role="button">
-                    <a href="#detpol-buscarfacturas" class="buscarFacturas-polizas" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
-                  </td>
-                </tr>
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="CapturaPoliza" role="tabpanel" aria-labelledby="home-tab">
 
-                <!-- funcionando  pendiente saber si se utiliza-->
-                <!-- <tr class="row m-0">
-                  <td class="col-md-12 input-effect">
-                    <div id="lstClientesCorrespCtas">
-                      <select class="custom-select" size='1' id="detpol-clienteCorrespCtas">
-                          <option selected value='0'>Seleccione</option>
-                      </select>
-                    </div>
-                  </td>
-                </tr> -->
-                <tr class="row m-0 mt-4">
-                  <td class="gto col-md-12 input-effect " style="display:none">
-                    <input class="efecto popup-input" id="detpol-proveedores" type="text" id-display="#popup-display-detpol-proveedores" action="proveedores" db-id="" autocomplete="off">
-                    <div class="popup-list" id="popup-display-detpol-proveedores" style="display:none"></div>
-                    <label for="detpol-proveedores">Proveedor</label>
-                  </td>
-                </tr>
-                <tr class="row m-0 mt-4">
-                  <td class="col-md-12 input-effect">
-                    <input class="efecto tiene-contenido" id="detpol-concepto" onchange="valDescripOficina();eliminaBlancosIntermedios(this);todasMayusculas(this);">
-                    <label for="detpol-concepto">Concepto</label>
-                  </td>
-                </tr>
-                <tr class="row m-0 mt-4">
-                  <td class="col-md-2 input-effect">
-                    <input class="efecto" id="detpol-documento" onchange="validaSoloNumeros(this);">
-                    <label for="detpol-documento">Documento</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input class="efecto popup-input " id="detpol-factura" type="text" id-display="#popup-display-detpol-factura" action="facturas_cfdi" db-id="" autocomplete="off">
-                    <div class="popup-list" id="popup-display-detpol-factura" style="display:none"></div>
-                    <label for="detpol-factura">Factura</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input class="efecto popup-input " id="detpol-anticipo" type="text" id-display="#popup-display-detpol-anticipo" action="anticipos_mst" db-id="" autocomplete="off">
-                    <div class="popup-list" id="popup-display-detpol-anticipo" style="display:none"></div>
-                    <label for="detpol-anticipo">Anticipo</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input class="efecto popup-input " id="detpol-cheque" type="text" id-display="#popup-display-detpol-cheque" action="cheques_mst" db-id="" autocomplete="off">
-                    <div class="popup-list" id="popup-display-detpol-cheque" style="display:none"></div>
-                    <label for="detpol-cheque">Cheque</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input class="efecto tiene-contenido" id="detpol-cargo" value="0" onchange="validaIntDec(this);">
-                    <label for="detpol-cargo">Cargo</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input class="efecto tiene-contenido" id="detpol-abono" value="0" onchange="validaIntDec(this);">
-                    <label for="detpol-abono">Abono</label>
-                  </td>
-                </tr>
-                <tr class="row justify-content-center mt-4">
-                  <td class="col-md-2">
-                    <a href="#" class="boton" id="detpol-btnguardar"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="row mt-3 justify-content-center">
-            <div class="col-md-2">SUMA DE CARGOS</div>
-            <div class="col-md-2">SUMA DE ABONOS</div>
-          </div>
-          <div class="row justify-content-center mt-3 font14">
-            <div class="col-md-2">
-              <input class="efecto" value="<?php echo $sumaCargos; ?>" <?php echo $txtStatus; ?> readonly>
-            </div>
-            <div class="col-md-2">
-              <input class="efecto" value="<?php echo $sumaAbonos; ?>" <?php echo $txtStatus; ?> readonly>
-            </div>
-          </div>
+      <div id="capturapoliza" class="contorno text-center">
+        <table class="table form1 font14">
+          <thead>
+            <tr class="row m-0 encabezado font18">
+              <td class="col-md-12">CAPTURA DETALLE POLIZA</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row m-0 mt-5">
+              <td class="col input-effect ">
+                <?php if( $oRst_permisos["s_lstCompletaCtas_polizas"] == 1 ){
+                echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
+                }else{
+                  if( $tipo == 2){
+                    echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv_limitada_paraTipo2" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
+                  }else{
+                    echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv_limitada" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
+                  }
+                }?>
+                <div class="popup-list" id="popup-display-detpol-cuenta" style="display:none"></div>
+                <label for="detpol-cuenta">Seleccione una Cuenta</label>
+              </td>
+              <td  class="gto col-md-2 input-effect " style="display:none">
+                <input class="efecto popup-input" id="detpol-gtoficina" type="text" id-display="#popup-display-detpol-gtoficina" action="oficinas" db-id="" autocomplete="off" onChange="valDescripOficina()">
+                <div class="popup-list" id="popup-display-detpol-gtoficina" style="display:none"></div>
+                <label for="detpol-gtoficina">Gasto Oficina</label>
+              </td>
+            </tr>
+            <tr class="row m-0 mt-4 align-items-center">
+              <td class="col-md-2 input-effect">
+                <input class="efecto popup-input" id="detpol-referencia" type="text" id-display="#popup-display-detpol-referencia" action="referencias" db-id="" autocomplete="off">
+                <div class="popup-list" id="popup-display-detpol-referencia" style="display:none"></div>
+                <label for="detpol-referencia">Referencia</label>
+              </td>
 
-          <div class="contorno-mov mt-5">
-            <table class="table font12 table-hover">
-              <thead>
-                <!-- <tr class="row m-0 backpink">
-                  <td class="xs"></td>
-                  <td class="small">CUENTA</td>
-                  <td class="small">GASTO</td>
-                  <td class="small">PROV</td>
-                  <td class="small">REFERENCIA</td>
-                  <td class="small">CLIENTE</td>
-                  <td class="small">DOC</td>
-                  <td class="small">FACTURA</td>
-                  <td class="small">NOTACRED</td>
-                  <td class="small">ANTICIPO</td>
-                  <td class="small">CHEQUE</td>
-                  <td class="med">DESCRIPCION</td>
-                  <td class="small">CARGO</td>
-                  <td class="small">ABONO</td>
-                  <td class="xs"></td>
-                </tr> -->
-                <tr class="row m-0 sub3 b">
-                  <td width="3%"></td>
-                  <td width="8%">CUENTA</td>
-                  <td width="8%">GASTO</td>
-                  <td width="8%">PROV</td>
-                  <td width="8%">REFERENCIA</td>
-                  <td width="8%">CLIENTE</td>
-                  <td width="8%">DOCUMENTO</td>
-                  <td width="8%">FACTURA</td>
-                  <td width="8%">NOTACRED</td>
-                  <td width="8%">ANTICIPO</td>
-                  <td width="6%">CHEQUE</td>
-                  <td width="8%">CARGO</td>
-                  <td width="8%">ABONO</td>
-                  <td width="3%"></td>
-                </tr>
-              </thead>
-              <tbody id="ultimosRegistros"></tbody>
-            </table>
-          </div>
+              <td class="col-md-8 input-effect">
+                <div id="detpol-lstClientes">
+                  <input class="efecto popup-input" id="detpol-cliente" type="text" id-display="#popup-display-detpol-cliente" action="clientes" db-id="" autocomplete="off">
+                  <div class="popup-list" id="popup-display-detpol-cliente" style="display:none"></div>
+                  <label for="detpol-cliente">Cliente</label>
+                </div>
+                <div id="detpol-lstClientesCorresp" style="display:none">
+                  <select class="custom-select" size='1' id="detpol-clienteCorresp">
+                    <option selected value='0'>Seleccione Cliente/Corresponsal</option>
+                  </select>
+                </div>
+              </td>
+
+              <td class="col-md-2" role="button">
+                <a href="#detpol-buscarfacturas" class="buscarFacturas-polizas" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+              </td>
+            </tr>
+
+            <!-- funcionando  pendiente saber si se utiliza-->
+            <!-- <tr class="row m-0">
+              <td class="col-md-12 input-effect">
+                <div id="lstClientesCorrespCtas">
+                  <select class="custom-select" size='1' id="detpol-clienteCorrespCtas">
+                      <option selected value='0'>Seleccione</option>
+                  </select>
+                </div>
+              </td>
+            </tr> -->
+            <tr class="row m-0 mt-4">
+              <td class="gto col-md-12 input-effect " style="display:none">
+                <input class="efecto popup-input" id="detpol-proveedores" type="text" id-display="#popup-display-detpol-proveedores" action="proveedores" db-id="" autocomplete="off">
+                <div class="popup-list" id="popup-display-detpol-proveedores" style="display:none"></div>
+                <label for="detpol-proveedores">Proveedor</label>
+              </td>
+            </tr>
+            <tr class="row m-0 mt-4">
+              <td class="col-md-12 input-effect">
+                <input class="efecto tiene-contenido" id="detpol-concepto" onchange="valDescripOficina();eliminaBlancosIntermedios(this);todasMayusculas(this);">
+                <label for="detpol-concepto">Concepto</label>
+              </td>
+            </tr>
+            <tr class="row m-0 mt-4">
+              <td class="col-md-2 input-effect">
+                <input class="efecto" id="detpol-documento" onchange="validaSoloNumeros(this);">
+                <label for="detpol-documento">Documento</label>
+              </td>
+              <td class="col-md-2 input-effect">
+                <input class="efecto popup-input " id="detpol-factura" type="text" id-display="#popup-display-detpol-factura" action="facturas_cfdi" db-id="" autocomplete="off">
+                <div class="popup-list" id="popup-display-detpol-factura" style="display:none"></div>
+                <label for="detpol-factura">Factura</label>
+              </td>
+              <td class="col-md-2 input-effect">
+                <input class="efecto popup-input " id="detpol-anticipo" type="text" id-display="#popup-display-detpol-anticipo" action="anticipos_mst" db-id="" autocomplete="off">
+                <div class="popup-list" id="popup-display-detpol-anticipo" style="display:none"></div>
+                <label for="detpol-anticipo">Anticipo</label>
+              </td>
+              <td class="col-md-2 input-effect">
+                <input class="efecto popup-input " id="detpol-cheque" type="text" id-display="#popup-display-detpol-cheque" action="cheques_mst" db-id="" autocomplete="off">
+                <div class="popup-list" id="popup-display-detpol-cheque" style="display:none"></div>
+                <label for="detpol-cheque">Cheque</label>
+              </td>
+              <td class="col-md-2 input-effect">
+                <input class="efecto tiene-contenido" id="detpol-cargo" value="0" onchange="validaIntDec(this);">
+                <label for="detpol-cargo">Cargo</label>
+              </td>
+              <td class="col-md-2 input-effect">
+                <input class="efecto tiene-contenido" id="detpol-abono" value="0" onchange="validaIntDec(this);">
+                <label for="detpol-abono">Abono</label>
+              </td>
+            </tr>
+            <tr class="row justify-content-center mt-4">
+              <td class="col-md-2">
+                <a href="#" class="boton" id="detpol-btnguardar"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row mt-3 justify-content-center m-0">
+        <div class="col-md-2">SUMA DE CARGOS</div>
+        <div class="col-md-2">SUMA DE ABONOS</div>
+      </div>
+      <div class="row justify-content-center mt-3 font14 m-0">
+        <div class="col-md-2">
+          <input class="efecto" value="<?php echo $sumaCargos; ?>" <?php echo $txtStatus; ?> readonly>
         </div>
-
-
-
-
-        <div id="two"><!--DETALLE DE POLIZAS-->
-          <div class="row d-flex flex-row-reverse mt-4">
-            <div class="col-md-2">SUMA DE CARGOS</div>
-            <div class="col-md-2">SUMA DE ABONOS</div>
-          </div>
-          <div class="row font14 mt-3">
-            <div class="col-md-3">
-              <a href="#detpol-Sueldos" data-toggle="modal" class="boton"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI SUELDOS Y SALARIOS</a>
-            </div>
-            <div class="col-md-3">
-              <a href="#detpol-Honorarios" data-toggle="modal" class="boton"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI HONORARIOS</a>
-            </div>
-            <div class="col-md-2">
-              <a href="#" onclick="btn_printPoliza(<?php echo $id_poliza; ?>,<?php echo $aduana; ?>)" class="boton border-0"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>
-            </div>
-            <div class="col-md-2">
-              <input class="efecto" value="<?php echo $sumaCargos; ?>" <?php echo $txtStatus; ?> readonly>
-            </div>
-            <div class="col-md-2">
-              <input class="efecto" value="<?php echo $sumaAbonos; ?>" <?php echo $txtStatus; ?> readonly>
-            </div>
-          </div>
-
-          <div class="contorno-mov mt-4">
-            <table class="table table-hover">
-              <thead>
-                <tr class="row encabezado m-0 font18">
-                  <td class="col-md-12">DETALLE POLIZA</td>
-                </tr>
-              </thead>
-              <thead>
-                <tr class="row m-0 sub3 font12 b">
-                  <td width="3%"></td>
-                  <td width="8%">CUENTA</td>
-                  <td width="8%">GASTO</td>
-                  <td width="8%">PROV</td>
-                  <td width="8%">REFERENCIA</td>
-                  <td width="8%">CLIENTE</td>
-                  <td width="8%">DOCUMENTO</td>
-                  <td width="8%">FACTURA</td>
-                  <td width="8%">NOTACRED</td>
-                  <td width="8%">ANTICIPO</td>
-                  <td width="6%">CHEQUE</td>
-                  <td width="8%">CARGO</td>
-                  <td width="8%">ABONO</td>
-                  <td width="3%"></td>
-                </tr>
-              </thead>
-              <tbody id="tabla_detallepoliza" class="font12"></tbody>
-            </table>
-          </div>
+        <div class="col-md-2">
+          <input class="efecto" value="<?php echo $sumaAbonos; ?>" <?php echo $txtStatus; ?> readonly>
         </div>
+      </div>
 
-        <?php if( $oRst_permisos['s_consultar_ContaElect'] == 1 ){
-          require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
-        } ?>
-      </div><!--/Termina contenedor-movible-->
-    </div><!--/Termina continermov-->
-  </div><!--/Termina container-fluid movible-->
+      <div class="contorno mt-5">
+        <table class="table font12 table-hover">
+          <thead>
+            <tr class="row m-0 sub3 b">
+              <td width="3%"></td>
+              <td width="8%">CUENTA</td>
+              <td width="8%">GASTO</td>
+              <td width="8%">PROV</td>
+              <td width="8%">REFERENCIA</td>
+              <td width="8%">CLIENTE</td>
+              <td width="8%">DOCUMENTO</td>
+              <td width="8%">FACTURA</td>
+              <td width="8%">NOTACRED</td>
+              <td width="8%">ANTICIPO</td>
+              <td width="6%">CHEQUE</td>
+              <td width="8%">CARGO</td>
+              <td width="8%">ABONO</td>
+              <td width="3%"></td>
+            </tr>
+          </thead>
+          <tbody id="ultimosRegistros"></tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+    <div class="tab-pane fade" id="Detalle" role="tabpanel" aria-labelledby="Detalle-tab">
+      <div class="row d-flex flex-row-reverse mt-4 m-0">
+        <div class="col-md-2">SUMA DE CARGOS</div>
+        <div class="col-md-2">SUMA DE ABONOS</div>
+      </div>
+      <div class="row font14 mt-3 m-0">
+        <div class="col-md-3">
+          <a href="#detpol-Sueldos" data-toggle="modal" class="boton"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI SUELDOS Y SALARIOS</a>
+        </div>
+        <div class="col-md-3">
+          <a href="#detpol-Honorarios" data-toggle="modal" class="boton"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI HONORARIOS</a>
+        </div>
+        <div class="col-md-2">
+          <a href="#" onclick="btn_printPoliza(<?php echo $id_poliza; ?>,<?php echo $aduana; ?>)" class="boton border-0"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>
+        </div>
+        <div class="col-md-2">
+          <input id="sumaCargos" class="efecto" value="<?php echo $sumaCargos; ?>" <?php echo $txtStatus; ?> readonly>
+        </div>
+        <div class="col-md-2">
+          <input id="sumaAbonos" class="efecto" value="<?php echo $sumaAbonos; ?>" <?php echo $txtStatus; ?> readonly>
+        </div>
+      </div>
+
+      <div class="contorno mt-4">
+        <table class="table table-hover">
+          <thead>
+            <tr class="row encabezado m-0 font18">
+              <td class="col-md-12">DETALLE POLIZA</td>
+            </tr>
+          </thead>
+          <thead>
+            <tr class="row m-0 sub3 font12 b">
+              <td width="3%"></td>
+              <td width="8%">CUENTA</td>
+              <td width="8%">GASTO</td>
+              <td width="8%">PROV</td>
+              <td width="8%">REFERENCIA</td>
+              <td width="8%">CLIENTE</td>
+              <td width="8%">DOCUMENTO</td>
+              <td width="8%">FACTURA</td>
+              <td width="8%">NOTACRED</td>
+              <td width="8%">ANTICIPO</td>
+              <td width="6%">CHEQUE</td>
+              <td width="8%">CARGO</td>
+              <td width="8%">ABONO</td>
+              <td width="3%"></td>
+            </tr>
+          </thead>
+          <tbody id="tabla_detallepoliza" class="font12"></tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div class="tab-pane fade" id="InfoAdd" role="tabpanel" aria-labelledby="InfoAdd-tab">
+      <?php if( $oRst_permisos['s_consultar_ContaElect'] == 1 ){
+        require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
+      } ?>
+    </div>
+  </div>
+</div>
+
 </div>
 <?php
 require $root . '/conta6/Ubicaciones/footer.php';

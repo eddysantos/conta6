@@ -30,7 +30,7 @@
     $idProv = $rowMST['fk_idOrd'];
     $nomProv = $rowMST['s_nomOrd'];
   }
-echo $opcion;
+// echo $opcion;
 
 
 ?>

@@ -5,6 +5,10 @@
   $id_cheque = $_GET['id_cheque'];
   $id_cuentaMST = $_GET['id_cuentaMST'];
 
+  // error_log($id_cheque,$id_cuentaMST);
+  // echo $id_cheque,$id_cuentaMST;
+
+
   $sql_Select = "SELECT * from conta_t_cheques_mst Where pk_id_cheque = ? AND fk_id_cuentaMST = ?";
   $stmt = $db->prepare($sql_Select);
   if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
@@ -70,10 +74,54 @@
       }
     }
 
+
+    // $query = "SELECT * FROM conta_t_polizas_det WHERE fk_cheque = ? ORDER BY pk_partida";
+    //
+    // $stmtContDetalle = $db->prepare($query);
+    // $stmtContDetalle->bind_param('s',$id_cheque);
+    // $stmtContDetalle->execute();
+    // $rsltContDetalle = $stmtContDetalle->get_result();
+    // // $contenidoDetalle = "";
+    // if ($rsltContDetalle->num_rows  == 0) {
+    //   $contenidoDetalle = '<div class="container-fluid pantallaGris">
+    //     <div class="tituloSinRegistros">NO HAY DETALLE DE ESTE CHEQUE</div>
+    //   </div>';
+    //
+    // }else{
+    //
+    //   while ($rowContDetalle = $rsltContDetalle->fetch_assoc()) {
+    //
+    //     $contenidoDetalle = "
+    //     <tr class='row borderojo'>
+    //       <td class='p-1' width='9%'>$rowContDetalle[fk_id_cuenta]</td>
+    //       <td class='p-1' width='7%'>$rowContDetalle[fk_gastoAduana]</td>
+    //       <td class='p-1' width='6%'>$rowContDetalle[fk_id_proveedor]</td>
+    //       <td class='p-1' width='7%'>$rowContDetalle[fk_referencia]</td>
+    //       <td class='p-1' width='7%'>$rowContDetalle[fk_id_cliente]</td>
+    //       <td class='p-1' width='7%'>$rowContDetalle[s_folioCFDIext]</td>
+    //       <td class='p-1' width='7%'>$rowContDetalle[fk_factura]</td>
+    //       <td class='p-1' width='7%'>$rowContDetalle[fk_ctagastos]</td>
+    //       <td class='p-1' width='7%'>$rowContDetalle[fk_pago]</td>
+    //       <td class='p-1' width='6%'>$rowContDetalle[fk_nc]</td>
+    //       <td class='p-1' width='7%'>$rowContDetalle[fk_anticipo]</td>
+    //       <td class='p-1' width='7%'>$rowContDetalle[fk_id_cheque]</td>
+    //       <td class='p-1' width='8%'>$rowContDetalle[n_cargo]</td>
+    //       <td class='p-1' width='8%'>$rowContDetalle[n_abono]</td>
+    //
+    //       <td class='p-1 b' width='9%'><b>Descripción :</b></td>
+    //       <td class='p-1 text-left' width='80%'>$rowContDetalle[s_desc]</td>
+    //     </tr>";
+    //
+    //   }
+    // }
+
+
     //detalle cheque
+    // $sql_DET = mysqli_query($db,"SELECT * FROM conta_t_polizas_det WHERE fk_cheque = $id_cheque");
     $sql_DET = mysqli_query($db,"SELECT * FROM conta_t_cheques_det WHERE fk_id_cheque = $id_cheque AND fk_id_cuentaM = '$id_cuentaMST' ORDER BY pk_partida");
     $totalRegistrosDET = mysqli_num_rows($sql_DET);
 
+    $contenidoDetalle = "";
     if( $totalRegistrosDET > 0 ){
       while ($row = mysqli_fetch_array($sql_DET)){
         $contenidoDetalle = "
@@ -186,17 +234,15 @@
       </div>
     </div>
     <div class="row m-0">
-      <div class="col-md-4 offset-md-8"><?PHP echo $txtStatus; ?></div>
+      <div class="col-md-4 offset-md-7"><?PHP echo $txtStatus; ?></div>
     </div>
   </form>
-  <div id="detallepoliza" class="contorno" style='<?php echo $marginbottom ?>'>
+  <div class="contorno" style='<?php echo $marginbottom ?>'>
     <table class="table table-hover">
       <thead class="font18">
         <tr class="row encabezado">
-          <td class="col-md-12">DETALLE DE CHEQUE</td>
+          <td class="col-md-12">CONSULTA DE CHEQUE</td>
         </tr>
-      </thead>
-      <tbody>
         <tr class="row sub3 font12 b">
           <td width="9%">CUENTA</td>
           <td width="7%">GASTO</td>
@@ -213,8 +259,8 @@
           <td width="8%">CARGO</td>
           <td width="8%">ABONO</td>
         </tr>
-        <tbody class="font12"><?php echo $contenidoDetalle; ?></tbody>
-      </tbody>
+      </thead>
+      <tbody class="font12"><?php echo $contenidoDetalle; ?></tbody>
     </table>
   </div>
 </div><!--/Termina continermov-->
@@ -222,12 +268,12 @@
 <?php
 }else{ #$rows?>
 	<div class="container-fluid pantallaGris">
-      <div class="tituloSinRegistros">NO EXISTE EL CHEQUE O ES DE OTRA OFICINA</div>
+    <div class="tituloSinRegistros">NO EXISTE EL CHEQUE O ES DE OTRA OFICINA</div>
   </div>
 <?php
 } #$rows
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Conta6/Ubicaciones/footer.php';
 
 ?>

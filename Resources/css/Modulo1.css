@@ -22,6 +22,13 @@
 .ls1{
   letter-spacing: 1px!important;
 }
+
+.ls2{
+  letter-spacing: 2px!important;
+}
+.ls3{
+  letter-spacing: 3px!important;
+}
 .font12{
   font-size: 12px!important;
 }
@@ -38,29 +45,38 @@
   color : rgb(144, 144, 144);
 }
 .sub{
-  letter-spacing: 7px!important;
-  font-size: 12px!important;
-  background-color: rgba(138,138,138,0.54)!important;
-  font-weight: normal!important;
-  color: white!important;
+  /* letter-spacing: 7px!important; */
+  /* font-size: 12px!important; */
+  background-color: rgba(138,138,138,0.3)!important;
+  /* background-color: rgba(138,138,138,0.54)!important; */
+  /* font-weight: normal!important; */
+  /* font-weight: bold; */
+  /* color: white!important; */
+  color: black;
 }
-.infsub{
+/* .infsub{
   font-size: 12px!important;
   background-color: rgba(138,138,138,0.54)!important;
   font-weight: normal!important;
   color: white;
-}
+} */
 .sub2{
-  letter-spacing: 3px!important;
-  font-size: 10px!important;
+  /* letter-spacing: 3px!important; */
+  /* font-size: 10px!important; */
   background-color:rgba(173, 173, 173, 0.1)!important;
-  font-weight: normal!important;
+  /* font-weight: normal!important; */
   color:rgb(87, 87, 87)!important;
+}
+
+.fw-normal{
+  font-weight: normal!important;
+}
+.fw-bold{
+  font-weight: bold!important;
 }
 
 .sub3{
   background-color: rgba(138,138,138,0.2)!important;
-  font-weight: bold;
 }
 
 .b{
@@ -482,4 +498,9 @@ div.submenuMed {
   color: #fff;
   background-color: rgb(184, 184, 184)!important;
   border-color: rgb(184, 184, 184)!important;
+}
+
+a.active{
+  color: black!important;
+  font-weight: bold;
 }

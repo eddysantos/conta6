@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
 
 $id_cheque = trim($_POST['id_cheque']);
 $id_ctaMST = trim($_POST['id_ctaMST']);

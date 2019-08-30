@@ -57,6 +57,7 @@ while ($row = $rslt->fetch_assoc()) {
   $idRegistro = $fk_id_cuenta.$fk_factura2.$fk_referencia.$fk_nc2.$fk_ctagastos2;
   $idFila = $fk_factura.$fk_nc.$fk_ctagastos;
 
+
 #<input type='checkbox' data-toggle='toggle' onclick='genera_registro(&#39;$fk_referencia&#39;,&#39;$fk_factura2&#39;,&#39;$saldo&#39;,&#39;Chk_$idRegistro&#39;,&#39;pago_$idRegistro&#39;,$fk_nc2,&#39;$idRegistro&#39;,$fk_ctagastos2,&#39;$fk_id_cuenta&#39;,&#39;$cliente&#39;)'>
   $system_callback['data'] .=
   "<tr class='row align-items-center elemento-facpendientes' id='$idFila'>

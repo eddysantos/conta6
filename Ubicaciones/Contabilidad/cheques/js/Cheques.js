@@ -450,7 +450,7 @@ $('#mConsChIdcheque').keydown(function(e){
           success: 	function(request){
   					r = JSON.parse(request);
   					if (r.code == 1) {
-  						$('#tabla_detallecheque').html(r.data);
+              $('#tabla_detallecheque').html(r.data);
   					}
           }
         });
@@ -1332,3 +1332,19 @@ function buscarReferenciaChModal(){
 		}
 	}
 }
+
+// function consultaCheque(){
+//   var ajaxCall = $.ajax({
+//       method: 'POST',
+//       url: 'actions/consultaCheque.php'
+//   });
+//
+//   ajaxCall.done(function(r) {
+//     r = JSON.parse(r);
+//     if (r.code == 1) {
+//       $('#tabla').html(r.data);
+//     } else {
+//       console.error(r.message);
+//     }
+//   });
+// }

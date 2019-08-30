@@ -45,12 +45,12 @@ while ($row = $rslt->fetch_assoc()) {
   }
 
   $partidaPoliza =
-  "<div class='row infsub ml-0 mr-0 pt-2 pb-2'>
-    <div class='col-md-4 p-0 text-left'>Desc : <black class='b'>$row[s_desc]</black></div>
-    <div class='col-md-1'>Tipo : <black class='b'>$row[fk_tipo]</black></div>
-    <div class='col-md-2'>Cuenta : <black class='b'>$fk_id_cuenta</black></div>
-    <div class='col-md-2'>Cargo : <black class='b'>$row[n_cargo]</black></div>
-    <div class='col-md-2'>Abono : <black class='b'>$row[n_abono]</black></div>
+  "<div class='row sub fw-bold py-2'>
+    <div class='col-md-4 p-0 text-left'>Desc : $row[s_desc]</div>
+    <div class='col-md-1'>Tipo : $row[fk_tipo]</div>
+    <div class='col-md-2'>Cuenta : $fk_id_cuenta</div>
+    <div class='col-md-2'>Cargo : $row[n_cargo]</div>
+    <div class='col-md-2'>Abono : $row[n_abono]</div>
     <div class='col-md-1'>$urlADD</div>
   </div>";
 
@@ -66,7 +66,7 @@ while ($row = $rslt->fetch_assoc()) {
 
   if ($rows_consulContaElect > 0) {
     $partidaContaElect =
-    "<div class='row ml-0 mr-0 sub2' style='font-size:12px!important'>
+    "<div class='row sub2 fw-bold ls3'>
       <div class='col-md-1'></div>
       <div class='col-md-6'>Documento Nacional</div>
       <div class='col-md-1'>Origen</div>
@@ -91,45 +91,45 @@ while ($row = $rslt->fetch_assoc()) {
                       </a>";
       }
       $partidaContaElect .=
-        "<div class='row ml-0 mr-0 borderojo'>
+        "<div class='row borderojo pb-3'>
           <div class='col-md-1'></div>
-          <div class='col-md-1 text-right b'>UUID :</div>
+          <div class='col-md-1 text-right b fw-bold'>UUID :</div>
           <div class='col-md-5 text-left'>$uuid_captura</div>
-          <div class='col-md-1 text-left p-0'><span class='b'>Bco :</span> $row[s_BancoOri]</div>
-          <div class='col-md-1 text-left p-0'><span class='b'>Bco :</span> $row[s_BancoDest]</div>
-          <div class='col-md-1 text-left p-0'><span class='b'>Bco :</span> $row[s_BancoOriExt]</div>
-          <div class='col-md-1 text-right b'>Tax Id :</div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Bco :</span> $row[s_BancoOri]</div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Bco :</span> $row[s_BancoDest]</div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Bco :</span> $row[s_BancoOriExt]</div>
+          <div class='col-md-1 text-right b fw-bold'>Tax Id :</div>
           <div class='col-md-1 text-left'>$row[s_TaxID]</div>
 
           <div class='col-md-1'>$urlDELETE</div>
-          <div class='col-md-1 text-right b'>Benef :</div>
+          <div class='col-md-1 text-right b fw-bold'>Benef :</div>
           <div class='col-md-5 text-left'>$row[s_Beneficiario]  -- $row[s_RFC]</div>
-          <div class='col-md-1 text-left p-0'><span class='b'>Cta :</span> $row[s_ctaOri]</div>
-          <div class='col-md-1 text-left p-0'><span class='b'>Cta :</span> $row[s_CtaDest]</div>
-          <div class='col-md-1 text-left p-0'><span class='b'>Cta :</span> $row[s_BancoDestExt]</div>
-          <div class='col-md-1 text-right b'>Moneda : </div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Cta :</span> $row[s_ctaOri]</div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Cta :</span> $row[s_CtaDest]</div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Cta :</span> $row[s_BancoDestExt]</div>
+          <div class='col-md-1 text-right b fw-bold'>Moneda : </div>
           <div class='col-md-1 text-left'>$row[s_moneda]</div>
 
           <div class='col-md-1'>$row[s_tipoDetalle]</div>
-          <div class='col-md-1 text-right b'>Fecha :</div>
+          <div class='col-md-1 text-right b fw-bold'>Fecha :</div>
           <div class='col-md-2 text-left'>$row[d_fecha]</div>
           <div class='col-md-6'></div>
-          <div class='col-md-1 text-right b'>TC : </div>
+          <div class='col-md-1 text-right b fw-bold'>TC : </div>
           <div class='col-md-1 text-left'>$row[n_TipCamb]</div>
 
           <div class='col-md-1'></div>
-          <div class='col-md-1 text-right b'>Total :</div>
+          <div class='col-md-1 text-right b fw-bold'>Total :</div>
           <div class='col-md-1 text-left'>$row[n_monto]</div>
-          <div class='col-md-1 text-right b'>Ch :</div>
+          <div class='col-md-1 text-right b fw-bold'>Ch :</div>
           <div class='col-md-3 text-left'>$row[n_num]</div>
           <div class='col-md-5'></div>
 
           <div class='col-md-1'></div>
-          <div class='col-md-1 text-right b'>Opcionales:</div>
+          <div class='col-md-1 text-right b fw-bold'>Opcionales:</div>
           <div class='col-md-5 text-left'>$row[s_RFCopc] -- $row[s_BeneficiarioOpc]</div>
-          <div class='col-md-1 text-left b p-0'>Observaciones :</div>
-          <div class='col-md-3 text-left'>$row[s_observaciones] </div>
-          <div class='col-md-1'>$imgXML $imgXMLdownload</div>
+          <div class='col-md-1 text-left b p-0 fw-bold'>Observaciones :</div>
+          <div class='col-md-2 text-left'>$row[s_observaciones] </div>
+          <div class='col-md-2'>$imgXML $imgXMLdownload</div>
         </div>";
     }
   }
