@@ -19,9 +19,13 @@ if( $rows_ctasCliente > 0 ){
 #DETALLE DE LA POLIZA ***
 if( $moneda <> 'MXN' ){
 	$Hono_Total = $totalGralImporte * $tipoCambio;
+  $totaGralIVA = $totaGralIVA * $tipoCambio;
+  $IVAretenido = $IVAretenido * $tipoCambio;
 	$Total_Gral = $totalGral * $tipoCambio;
 }else{
   $Hono_Total = $totalGralImporte;
+  $totaGralIVA = $totaGralIVA;
+  $IVAretenido = $IVAretenido;
   $Total_Gral = $totalGral;
 }
 

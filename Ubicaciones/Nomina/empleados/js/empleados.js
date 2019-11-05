@@ -320,10 +320,8 @@ $('#validarDistSalarios').click(function(){
 
     fetch_empleado.done(function(r){
       r = JSON.parse(r);
-
       if (r.code == 1) {
 
-        console.log(r.data);
         for (var key in r.data) {
 
           if (r.data.hasOwnProperty(key)) {
@@ -331,6 +329,7 @@ $('#validarDistSalarios').click(function(){
             var element_type = iterated_element.prop('nodeName');
             var dbid = iterated_element.attr('db-id');
             var value = r.data[key];
+            console.log(value);
 
             iterated_element.val(value).addClass('tiene-contenido');
             if (typeof dbid !== undefined && dbid !== false) {
@@ -345,6 +344,7 @@ $('#validarDistSalarios').click(function(){
         console.error(r);
       }
     })
+
   });
 
 // Editar Empleado
@@ -596,16 +596,18 @@ function listaEmpleados(){
 }
 
 function calcularISR(){
+  salario_diario = $('#n_salario_semanal_hon').val();
   var data = {
-    salario_diario: $('#n_salario_semanal_hon').val()
+    salario_diario: salario_diario
   }
-  if (data.salario_diario > 0) {
+  if (salario_diario > 0) {
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Nomina/SueldosySalarios/empleados/actions/calculoISR.php",
+      url: "/conta6/Ubicaciones/Nomina/empleados/actions/calculoISR.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
+        console.log(r);
         if (r.code == 1) {
           $('#n_ISR_add').val(r.data);
           salarioSemanal =  $('#n_salario_semanal_hon').val();
@@ -619,13 +621,14 @@ function calcularISR(){
 }
 
 function calcularISRmodal(){
+  salario_diario = $('#h_salario_mensual').val();
   var data = {
-    salario_diario: $('#h_salario_mensual').val()
+    salario_diario: salario_diario
   }
-  if (data.salario_diario > 0) {
+  if (salario_diario > 0) {
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Nomina/SueldosySalarios/empleados/actions/calculoISR.php",
+      url: "/conta6/Ubicaciones/Nomina/empleados/actions/calculoISR.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);

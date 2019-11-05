@@ -4,6 +4,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
+$system_callback['data'] = array();
 $data = $_POST;
 
 $query = "SELECT * FROM conta_t_nom_empleados WHERE pk_id_empleado = ?";
@@ -37,7 +38,11 @@ if ($rows == 0) {
   exit_script($system_callback);
 } elseif ($rows == 1) {
   $system_callback['code'] = 1;
-  $system_callback['data'] = $rslt->fetch_assoc();
+  while ($row = $rslt->fetch_assoc()) {
+    foreach ($row as $key => $value) {
+      $system_callback['data'][$key] = utf8_encode($value);
+    }
+  }
   $system_callback['message'] = "Script called successfully!";
   exit_script($system_callback);
 } else {

@@ -35,6 +35,10 @@
 
   <script src="/Conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/js/CuentaGastos.js"></script>
 
+  <script src="/Conta6/Ubicaciones/Nomina/Honorarios/js/Honorarios.js"></script>
+  <script src="/Conta6/Ubicaciones/Nomina/SueldosySalarios/js/SueldosySalarios.js"></script>
+  <script src="/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/js/parametros.js"></script>
+
   <script src="/Conta6/Resources/js/validarFormulario.js"></script>
   <script src="/Conta6/Resources/js/calculadora.js"></script>
 

@@ -7,8 +7,8 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
   $sql_ISR = "SELECT truncate(n_inferior,2) AS inferior,
                      truncate(n_porcentaje,2) AS porcentaje,
                      truncate(n_cuota,2) AS cuota
-              FROM conta_cs_imss_t113
-              WHERE n_inferior <= ? AND n_superior >= ?";
+              FROM conta_cs_imss
+              WHERE n_inferior <= ? AND n_superior >= ? and s_nombreTabla = 'art113' ";
 
   $stmt = $db->prepare($sql_ISR);
   if (!($stmt)) {

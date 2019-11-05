@@ -299,7 +299,7 @@
         </form>
       </div>
 
-      <div class="contorno pb-0 mt-0" id="sueldosySalarios" style="display:none">
+      <div class="contorno pb-0 mt-0" id="sueldosySalarios" >
         <form class="form1">
           <table class="table">
             <tbody>

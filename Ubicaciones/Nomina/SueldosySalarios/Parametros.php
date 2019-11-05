@@ -136,7 +136,6 @@
   </div><!--/Termina Consultar Parametros-->
 </div>
 
-<script src="/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/js/parametros.js"></script>
 <?php
 // require $root .'/conta6/Ubicaciones/Nomina/empleados/modales/Empleados.php';
 require $root .'/conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/modales/Parametros.php';

@@ -25,6 +25,7 @@
             <tbody>
               <tr class="row m-0 text-center">
                 <td class="col-md-3 input-effect">
+                  <input type="hidden" db-id="" id="s_nombreTabla">
                   <input type="hidden" db-id="" id="pk_id_partida">
                   <input  class="efecto" id="n_inferior">
                 </td>
@@ -76,6 +77,7 @@
             <tbody>
               <tr class="row m-0">
                 <td class="col-md-2">
+                  <input type="hidden" db-id="" id="s_nombreTabla">
                   <input type="hidden" id="pk_id_partida">
                   <input  class="efecto" id="fk_id_aduana">
                 </td>
@@ -130,6 +132,7 @@
             <tbody>
               <tr class="row m-0">
                 <td class="col-md-6">
+                  <input type="hidden" db-id="" id="s_nombreTabla">
                   <input  type="hidden" id="pk_id_partida">
                   <input  class="efecto" id="n_anio">
                 </td>
@@ -173,6 +176,7 @@
             <tbody>
               <tr class="row m-0">
                 <td class="col-md-4">
+                  <input type="hidden" db-id="" id="s_nombreTabla">
                   <input type="hidden" id="pk_id_partida">
                   <input  class="efecto" id="n_inferior_b">
                 </td>
@@ -195,7 +199,7 @@
 </div>
 
 
-<!--Sección Parametros para Subsidio al Empleo-->
+<!--Sección Parametros para IMSS-->
 
 <div class="modal fade" id="imss">
   <div class="modal-dialog modal-xl" style="margin-top:150px">
@@ -222,6 +226,7 @@
             <tbody>
               <tr class="row m-0">
                 <td class="col-md-1">
+                  <input type="hidden" db-id="" id="s_nombreTabla">
                   <input type="hidden" id="pk_id_partida">
                   <input  class="efecto" id="n_ramo">
                 </td>

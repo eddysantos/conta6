@@ -57,11 +57,25 @@
     "&Aacute;","&Eacute;","&Iacute;","&Oacute;","&Uacute;","&Ntilde;"), $cadena);
     return($texto);
   }
+
   function elimina_acentos($cadena){
     $texto = str_replace(array("á","é","í","ó","ú","ñ","Á","É","Í","Ó","Ú","Ñ"),
     array("a","e","i","o","u","n","A","E","I","O","U","N"), $cadena);
     return($texto);
   }
+
+  function numeroSemanasTieneUnAno($ano){
+      $date = new DateTime;
+
+      # Establecemos la fecha segun el estandar ISO 8601 (numero de semana)
+      $date->setISODate("$ano", 53);
+
+      if($date->format("W")=="53")
+          return 53;
+      else
+          return 52;
+  }
+
 /*
   function elimina_acentos($cadena){
   	$tofind = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ";

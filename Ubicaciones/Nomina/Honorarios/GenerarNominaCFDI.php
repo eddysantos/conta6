@@ -1,6 +1,12 @@
+
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+
+  $regimenNomina = '09';
+  require $root . '/conta6/Ubicaciones/Nomina/Honorarios/actions/ultimaNominaHonorarios.php';
+  require $root . '/conta6/Resources/PHP/actions/consulta_nomina_anio.php';
 ?>
 
 <div class="container-fluid">
@@ -22,7 +28,7 @@
     <table class="table form1 text-center" id="generarnominaHon">
       <thead>
         <tr class="row font14 encabezado">
-          <td class="col-md-4">2017 Tiene 52 Semanas</td>
+          <td class="col-md-4"><?php echo $anioFI." tiene ".$ultimaSemAnio." semanas";?></td>
           <td class="col-md-2">Nómina</td>
           <td class="col-md-2">Fecha Inicio</td>
           <td class="col-md-2">Fecha Final</td>
@@ -32,25 +38,27 @@
       <tbody class="font14">
         <tr class="row">
           <td class="col-md-4">Ultima Nómina Generada</td>
-          <td class="col-md-2">25</td>
-          <td class="col-md-2">19/06/2017</td>
-          <td class="col-md-2">23/06/2017</td>
+          <td class="col-md-2"><input id="num_nomgen" class="efecto" type="text" readonly value="<?php echo $ULTNOM; ?>"></td>
+          <td class="col-md-2"><input id="fi_nomgen" class="efecto" type="date" readonly value="<?php echo $FIUNG; ?>"></td>
+          <td class="col-md-2"><input id="ff_nomgen" class="efecto" type="date" readonly value="<?php echo $FFUNG; ?>"></td>
           <td class="col-md-2"></td>
         </tr>
         <tr class="row">
           <td class="col-md-4">Nómina Siguiente</td>
-          <td class="col-md-2">26</td>
-          <td class="col-md-2">26/06/2017</td>
-          <td class="col-md-2">30/06/2017</td>
-          <td class="col-md-2">30/06/2017</td>
+          <td class="col-md-2"><input id="num_nomsig" class="efecto" type="text" readonly value="<?php echo $NOM_SIG; ?>"><input id="anio_nomsig" type="hidden" value="<?php echo $anioFI; ?>"></td>
+          <td class="col-md-2"><input id="fi_nomsig" class="efecto" type="date" readonly value="<?php echo $FINS; ?>"></td>
+          <td class="col-md-2"><input id="ff_nomsig" class="efecto" type="date" readonly value="<?php echo $FFNS; ?>"></td>
+          <td class="col-md-2"><input id="fp_nomsig" class="efecto" type="date" value="<?php echo $FFNS; ?>"></td>
         </tr>
         <tr class="row">
           <td class="col-md-2 offset-md-5 mt-4">
-            <input class="boton" type="submit" value="GENERAR NOMINA"><!--Guardar Datos de poliza/cuando se actualizo algun dato-->
+            <input class="efecto" type="submit" id="generarDocNominaHon" value="GENERAR NOMINA"><!--Guardar Datos de poliza/cuando se actualizo algun dato-->
+            <input id="nom_regimen" type="hidden" value="<?php echo $regimenNomina; ?>">
           </td>
         </tr>
       </tbody>
     </table>
+    <div id="resGenNomHon"></div>
   </div><!--/Termina Generar Nomina-->
 
 <!--Comienza Generar CFDI-->
@@ -60,23 +68,11 @@
       <tr class="row mt-5">
         <td class="col-md-1 offset-md-5">
           <select class="custom-select" id="buscaranio">
-            <option selected>Año</option>
-            <option>2018</option>
-            <option>2017</option>
-            <option>2016</option>
-            <option>2015</option>
-            <option>2014</option>
+            <?php echo $consultaAnioNomina; ?>
           </select>
         </td>
         <td class="col-md-1">
-          <select class="custom-select" id="buscaranio">
-            <option selected>Nomina</option>
-            <option>25</option>
-            <option>24</option>
-            <option>23</option>
-            <option>22</option>
-            <option>21</option>
-          </select>
+          <div id="resConNomSem"></div>
         </td>
       </tr>
     </table>
@@ -100,27 +96,7 @@
                   <td class="col-md-2">Total Neto</td>
                 </tr>
               </thead>
-              <tbody class="font14">
-                <tr class="row m-0">
-                  <td class="col-md-1">4</td>
-                  <td class="col-md-1">4</td>
-                  <td class="col-md-2">0</td>
-                  <td class="col-md-2">$39,142.22</td>
-                  <td class="col-md-2">$8,582.97</td>
-                  <td class="col-md-2">$30,559.25</td>
-                  <td class="col-md-2">$30,559.25</td>
-                </tr>
-                <tr class="row m-0 mt-4">
-                  <td class="col-md-12">Nómina 25
-                    <a href="#permanentes" data-toggle="modal">
-                      <img class="icomediano" src="/conta6/Resources/iconos/printer.svg">
-                    </a>
-                  </td>
-                </tr>
-                <tr class="row m-0">
-                  <td class="col-md-12">19/06/2017 al 23/06/2017</td>
-                </tr>
-              </tbody>
+              <tbody class="font14" id="resConNomGenerales"></tbody>
             </table>
           </form>
         </div>
@@ -128,41 +104,23 @@
     </div>
 
     <div class="contorno mt-4">
-      <table class="table text-center m-0">
+      <table class="table text-center m-0 table-hover">
         <thead>
           <tr class="row encabezado">
-            <td class="col-md-1"></td>
-            <td class="col-md-1">Documento</td>
             <td class="col-md-1">No.</td>
             <td class="col-md-3">Empleado</td>
+            <td class="col-md-1">Tipo</td>
+            <td class="col-md-1">Documento <a href=''><img class='icomediano' src='/conta6/Resources/iconos/002-plus.svg'></a></td>
+            <td class="col-md-1"><a href=''><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a></td>
             <td class="col-md-1">Pol.Pago</td>
             <td class="col-md-1">Cancelar</td>
-            <td class="col-md-1">Pol.Cancel</td>
             <td class="col-md-1">Factura</td>
             <td class="col-md-1">Póliza</td>
-            <td class="col-md-1">CFDI</td>
+            <td class="col-md-1">CFDI<a href='#' > <img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a> <a href=''> <img class='icomediano' src='/conta6/Resources/iconos/help.svg'></a></td>
+            <td class="col-md-1"></td>
           </tr>
         </thead>
-        <tbody class="font14">
-          <tr class="row">
-            <td class="col-md-1">
-              <a href=""><img class="icomediano" src="/conta6/Resources/iconos/001-delete.svg"></a>
-              <a href="" class="ml-5"><img class="icomediano" src="/conta6/Resources/iconos/003-edit.svg"></a>
-            </td>
-            <td class="col-md-1">38089</td>
-            <td class="col-md-1">426</td>
-            <td class="col-md-3">Agustin Alejandro Hernandez Uvaldo</td>
-            <td class="col-md-1">248040</td><!--Esto debe ser un link-->
-            <td class="col-md-1"></td>
-            <td class="col-md-1">234567</td><!--Esto debe ser un link-->
-            <td class="col-md-1">15804</td>
-            <td class="col-md-1">248092</td><!--Esto debe ser un link-->
-            <td class="col-md-1">
-              <a href=""><img class="icomediano" src="/conta6/Resources/iconos/pdf.svg"></a>
-              <a href="" class="ml-4"><img class="icomediano" src="/conta6/Resources/iconos/xml.svg"></a>
-            </td>
-          </tr>
-        </tbody>
+        <tbody class="font14" id="resConNomDcocumentos"></tbody>
       </table>
     </div>
   </div><!--/Comienza Generar CDFI-->
@@ -186,28 +144,7 @@
                   <td class="col-md-3">Ultima Modificación</td>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="row m-0">
-                  <td class="col-md-1">
-                    <a href="#articulo113" data-toggle="modal"><img class="icochico" src="/conta6/Resources/iconos/003-edit.svg"></a>
-                  </td>
-                  <td class="col-md-2">0.01</td>
-                  <td class="col-md-2">114.24</td>
-                  <td class="col-md-2">0.00</td>
-                  <td class="col-md-2">1.92</td>
-                  <td class="col-md-3"></td>
-                </tr>
-                <tr class="row m-0">
-                  <td class="col-md-1">
-                    <a href="#articulo113" data-toggle="modal"><img class="icochico" src="/conta6/Resources/iconos/003-edit.svg"></a>
-                  </td>
-                  <td class="col-md-2">114.25</td>
-                  <td class="col-md-2">969.50</td>
-                  <td class="col-md-2">2.17</td>
-                  <td class="col-md-2">6.40</td>
-                  <td class="col-md-3"></td>
-                </tr>
-              </tbody>
+              <tbody id="tablaArticulo113"></tbody>
             </table>
           </form>
         </div>
@@ -215,9 +152,7 @@
     </div><!--/Termina Consultar Parametros-->
   </div>
 
-
-
-
-<script src="js/Honorarios.js"></script>
-<script src="/conta6/Resources/js/Inputs.js"></script>
-<?php include_once('modales/ParametrosHon.php'); ?>
+<?php
+include_once('modales/ParametrosHon.php');
+require $root . '/conta6/Ubicaciones/footer.php';
+?>

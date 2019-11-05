@@ -16,7 +16,6 @@ tablasParametros();
 
       if (r.code == 1) {
 
-      console.log(r.data);
       for (var key in r.data) {
 
         if (r.data.hasOwnProperty(key)) {
@@ -40,6 +39,7 @@ tablasParametros();
 
   $('.m-editar').click(function(){
     var data = {
+      s_nombreTabla: $('#s_nombreTabla').attr('db-id'),
       pk_id_partida: $('#pk_id_partida').attr('db-id'),
       n_inferior: $('#n_inferior').val(),
       n_superior: $('#n_superior').val(),
@@ -59,7 +59,7 @@ tablasParametros();
       n_baseSalarial: $('#n_baseSalarial').val(),
       n_topeSalarial: $('#n_topeSalarial').val(),
       n_patron: $('#n_patron').val(),
-      n_trabajador: $('#n_trabajador').val()
+      n_trabajador: $('#n_trabajador').val(),
     }
       var act_param = $.ajax({
           method: 'POST',
@@ -77,8 +77,38 @@ tablasParametros();
           console.error(r.message);
         }
       });
-    // }
-  })
+  });
+
+  $('.m-editar113').click(function(){
+    var data = {
+      s_nombreTabla: $('#s_nombreTabla').attr('db-id'),
+      pk_id_partida: $('#pk_id_partida').attr('db-id'),
+      n_inferior: $('#n_inferior').val(),
+      n_superior: $('#n_superior').val(),
+      n_cuota: $('#n_cuota').val(),
+      n_porcentaje: $('#n_porcentaje').val(),
+    }
+      var act_param = $.ajax({
+          method: 'POST',
+          data: data,
+          url: '/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/editarParametros.php'
+      });
+
+      act_param.done(function(r) {
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          tablasParametros113();
+          swal("Exito", "Se actualizo.", "success");
+          $('.modal').modal('hide');
+        } else {
+          console.error(r.message);
+        }
+      });
+  });
+
+
+
+
 });
 
 
@@ -96,6 +126,22 @@ function tablasParametros(){
       $('#f-integracion').html(r.factor);
       $('#tablaSubsidio').html(r.subsidio);
       $('#tablaImss').html(r.imss);
+    } else {
+      console.error(r.message);
+    }
+  });
+}
+
+function tablasParametros113(){
+  var ajaxCall = $.ajax({
+      method: 'POST',
+      url: '/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/mostrarParametros.php'
+  });
+
+  ajaxCall.done(function(r) {
+    r = JSON.parse(r);
+    if (r.code == 1) {
+      $('#tablaArticulo113').html(r.articulo113);
     } else {
       console.error(r.message);
     }
