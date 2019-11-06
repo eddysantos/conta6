@@ -2,6 +2,10 @@ $(document).ready(function(){
   fetch_formaPago_sat();
   polReg_Det();
 
+
+  fetch_catalogoBancosSAT();
+  fetch_catalogoBancosExt();
+
   $('.personas').click(function(){
       var accion = $(this).attr('accion');
       var status = $(this).attr('status');
@@ -423,69 +427,135 @@ $(document).ready(function(){
 
 
   /* Proveedores */
-  $('#btn_genProv').click(function(){
-    nombre = $('#nombreN_prov').val();
-    persona = $('#personaN_prov').val();
-    rfc = $('#rfcN_prov').val();
-    curp = $('#curpN_prov').val();
-    taxid = $('#taxidN_prov').val();
-    direccion = $('#direccionN_prov').val();
+  // $('#btn_genProv').click(function(){
+  //   nombre = $('#nombreN_prov').val();
+  //   persona = $('#personaN_prov').val();
+  //   rfc = $('#rfcN_prov').val();
+  //   curp = $('#curpN_prov').val();
+  //   taxid = $('#taxidN_prov').val();
+  //   direccion = $('#direccionN_prov').val();
+  //
+  //   if( nombre == "" ){
+  //     alertify.error("Nombre es requerido");
+  //     $('#nombreN_prov').focus();
+  //     return false;
+  //   }
+  //   if( persona == "" ){
+  //       alertify.error("Persona es requerido");
+  //       $('#personaN_prov').focus();
+  //       return false;
+  //    }
+  //   if( persona == "fisica" ){
+  //       alertify.error("CURP es requerido");
+  //       $('#curpN_prov').focus();
+  //       return false;
+  //    }
+  //
+  //    if( rfc == "" ){
+  //       alertify.error("RFC es requerido");
+  //       $('#rfcN_prov').focus();
+  //       return false;
+  //     }
+  //     if( rfc == "XEXX010101000" && taxid == '' ){
+  //        alertify.error("taxID es requerido");
+  //        $('#taxidN_prov').focus();
+  //        return false;
+  //      }
+  //
+  //     var data = {
+  //       nombre : nombre,
+  //       persona : persona,
+  //       rfc : rfc,
+  //       curp : curp,
+  //       taxid : taxid,
+  //       direccion : direccion
+  //     }
+  //
+  //     $.ajax({
+  //       type: "POST",
+  //       url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregar.php",
+  //       data: data,
+  //       success: 	function(r){
+  //         r = JSON.parse(r);
+  //         if (r.code == 1) {
+  //           swal("Exito", "Se generó correctamente.", "success");
+  //           setTimeout('document.location.reload()',700);
+  //         } else {
+  //           swal("RFC existe en sistema", r.data, "error");
+  //           console.error(r.message);
+  //         }
+  //       },
+  //       error: function(x){
+  //         console.error(x);
+  //       }
+  //
+  //     });
+  // });
 
-    if( nombre == "" ){
-      alertify.error("Nombre es requerido");
-      $('#nombreN_prov').focus();
+  $('#btn_genProv').click(function(){
+  nombre = $('#nombreN_prov').val();
+  persona = $('#personaN_prov').val();
+  rfc = $('#rfcN_prov').val();
+  curp = $('#curpN_prov').val();
+  taxid = $('#taxidN_prov').val();
+  direccion = $('#direccionN_prov').val();
+
+  if( nombre == "" ){
+    alertify.error("Nombre es requerido");
+    $('#nombreN_prov').focus();
+    return false;
+  }
+  if( persona == "" ){
+      alertify.error("Persona es requerido");
+      $('#personaN_prov').focus();
+      return false;
+   }
+  if( persona == "fisica" && curp == ""){
+      alertify.error("CURP es requerido");
+      $('#curpN_prov').focus();
+      return false;
+   }
+
+   if( rfc == "" ){
+      alertify.error("RFC es requerido");
+      $('#rfcN_prov').focus();
       return false;
     }
-    if( persona == "" ){
-        alertify.error("Persona es requerido");
-        $('#personaN_prov').focus();
-        return false;
-     }
-    if( persona == "fisica" ){
-        alertify.error("CURP es requerido");
-        $('#curpN_prov').focus();
-        return false;
+    if( rfc == "XEXX010101000" && taxid == '' ){
+       alertify.error("taxID es requerido");
+       $('#taxidN_prov').focus();
+       return false;
      }
 
-     if( rfc == "" ){
-        alertify.error("RFC es requerido");
-        $('#rfcN_prov').focus();
-        return false;
-      }
-      if( rfc == "XEXX010101000" && taxid == '' ){
-         alertify.error("taxID es requerido");
-         $('#taxidN_prov').focus();
-         return false;
-       }
+    var data = {
+      nombre : nombre,
+      persona : persona,
+      rfc : rfc,
+      curp : curp,
+      taxid : taxid,
+      direccion : direccion
+    }
 
-      var data = {
-        nombre : nombre,
-        persona : persona,
-        rfc : rfc,
-        curp : curp,
-        taxid : taxid,
-        direccion : direccion
-      }
-
-      $.ajax({
-        type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregar.php",
-        data: data,
-        success: 	function(r){
-          r = JSON.parse(r);
-          if (r.code == 1) {
-            swal("Exito", "Se generó correctamente.", "success");
-            setTimeout('document.location.reload()',700);
-          } else {
-            swal("RFC existe en sistema", r.data, "error");
-            console.error(r.message);
-          }
-        },
-        error: function(x){
-          console.error(x);
+    $.ajax({
+      type: "POST",
+      url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregar.php",
+      data: data,
+      success: 	function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          swal("Exito", "Se generó correctamente.", "success");
+          $('.modal').modal('hide');
+          // setTimeout('document.location.reload()',700);
+        } else {
+          swal("RFC existe en sistema", r.data, "error");
+          console.error(r.message);
         }
+      },
+      error: function(x){
+        console.error(x);
+      }
 
-      });
+    });
   });
 
   $('#bcoSATprov').change(function(){
@@ -509,66 +579,125 @@ $(document).ready(function(){
     $('#nomBco').val(bancoExtj);
   });
 
+  // $('#btn_agrCtaBcoProv').click(function(){
+  //   id_prov = $('#cat-prov').attr('db-id');
+  //   banco = $('#bcoSATprov').attr('db-id');
+  //   cuenta = $('#cinter').val();
+  //   nomBan = $('#nomBco').val();
+  //
+  //
+  //   if( id_prov == "" ){
+  //       alertify.error("Seleccione un Proveedor");
+  //       $('#cat-prov').focus();
+  //       return false;
+  //    }
+  //
+  //    if( banco == "" ){
+  //       alertify.error("Seleccione un banco");
+  //       $('#bcoSAT').focus();
+  //       return false;
+  //     }
+  //
+  //     if( banco == "999" && nomBan == "" ){
+  //        alertify.error("Es requerido el nombre del banco");
+  //        $('#bcoSAT').focus();
+  //        return false;
+  //      }
+  //
+  //     valid_cuenta = validarCtaBancaria($('#cinter'));
+  //     if( cuenta == "" || valid_cuenta == false ){
+  //        alertify.error("Formato Cuenta bancaria Incorrecto");
+  //        $('#cinter').focus();
+  //        return false;
+  //      }
+  //
+  //     var data = {
+  //         id_prov: id_prov,
+  //         banco: banco,
+  //         cuenta: cuenta,
+  //         nomBan: nomBan
+  //     }
+  //
+  //     $.ajax({
+  //       type: "POST",
+  //       url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarBcoCta.php",
+  //       data: data,
+  //       success: 	function(r){
+  //         console.log(data);
+  //         r = JSON.parse(r);
+  //         if (r.code == 1) {
+  //           swal("Exito", "Se generó correctamente.", "success");
+  //           $('#cat-prov').change();
+  //         } else {
+  //           swal("Error", r.data, "error");
+  //           console.error(r.message);
+  //         }
+  //       },
+  //       error: function(x){
+  //         console.error(x);
+  //       }
+  //
+  //     });
+  // });
+
   $('#btn_agrCtaBcoProv').click(function(){
-    id_prov = $('#cat-prov').attr('db-id');
-    banco = $('#bcoSATprov').attr('db-id');
-    cuenta = $('#cinter').val();
-    nomBan = $('#nomBco').val();
+  id_prov = $('#cat-prov').attr('db-id');
+  banco = $('#bcoSATprov').attr('db-id');
+  cuenta = $('#cinter').val();
+  nomBan = $('#nomBco').val();
 
+  if( id_prov == "" ){
+    alertify.error("Seleccione un Proveedor");
+    $('#cat-prov').focus();
+    return false;
+  }
 
-    if( id_prov == "" ){
-        alertify.error("Seleccione un Proveedor");
-        $('#cat-prov').focus();
-        return false;
-     }
+  if( banco == "" ){
+    alertify.error("Seleccione un banco");
+    $('#bcoSAT').focus();
+    return false;
+  }
 
-     if( banco == "" ){
-        alertify.error("Seleccione un banco");
-        $('#bcoSAT').focus();
-        return false;
+  if( banco == "999" && nomBan == "" ){
+    alertify.error("Es requerido el nombre del banco");
+    $('#bcoSAT').focus();
+    return false;
+  }
+
+  valid_cuenta = validarCtaBancaria($('#cinter'));
+  if( cuenta == "" || valid_cuenta == false ){
+    alertify.error("Formato Cuenta bancaria Incorrecto");
+    $('#cinter').focus();
+    return false;
+  }
+
+  var data = {
+    id_prov: id_prov,
+    banco: banco,
+    cuenta: cuenta,
+    nomBan: nomBan
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarBcoCta.php",
+    data: data,
+    success: 	function(r){
+      console.log(data);
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        swal("Exito", "Se generó correctamente.", "success");
+        $('#cat-prov').change();
+      } else {
+        swal("Error", r.data, "error");
+        console.error(r.message);
       }
-
-      if( banco == "999" && nomBan == "" ){
-         alertify.error("Es requerido el nombre del banco");
-         $('#bcoSAT').focus();
-         return false;
-       }
-
-      valid_cuenta = validarCtaBancaria($('#cinter'));
-      if( cuenta == "" || valid_cuenta == false ){
-         alertify.error("Formato Cuenta bancaria Incorrecto");
-         $('#cinter').focus();
-         return false;
-       }
-
-      var data = {
-          id_prov: id_prov,
-          banco: banco,
-          cuenta: cuenta,
-          nomBan: nomBan
-      }
-
-      $.ajax({
-        type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarBcoCta.php",
-        data: data,
-        success: 	function(r){
-          console.log(data);
-          r = JSON.parse(r);
-          if (r.code == 1) {
-            swal("Exito", "Se generó correctamente.", "success");
-            $('#cat-prov').change();
-          } else {
-            swal("Error", r.data, "error");
-            console.error(r.message);
-          }
-        },
-        error: function(x){
-          console.error(x);
-        }
-
-      });
+    },
+    error: function(x){
+      console.error(x);
+    }
   });
+}); // agregar cuenta banco proveedor
 
   $('#cat-prov').change(function() {
     var $this = $(this);
@@ -641,7 +770,7 @@ function buscarCtasProv(id){
       console.log(r);
       r = JSON.parse(r);
       if (r.code == 1) {
-        $('#datosCtasBen').html(r.data);
+        $('#datosCtasProv').html(r.data);
       } else {
           console.error(r.message);
       }
@@ -650,6 +779,51 @@ function buscarCtasProv(id){
       console.error(x);
     }
 
+  });
+}
+
+
+function btn_bcprov(partida,prov){
+  swal({
+  title: "Estas Seguro?",
+  text: "Ya no se podra recuperar el registro! "+ partida +" ",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonClass: "btn-danger",
+  confirmButtonText: "Si, Eliminar",
+  cancelButtonText: "No, cancelar",
+  closeOnConfirm: false,
+  closeOnCancel: false
+  },
+  function(isConfirm) {
+    if (isConfirm) {
+      var data = {
+        partida: partida,
+        prov: prov
+      }
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_eliminarCtaBancaria.php",
+        data: data,
+
+          success: 	function(r){
+            r = JSON.parse(r);
+            console.log(r);
+          if (r.code == 1) {
+            swal("Eliminado!", "Se elimino correctamente.", "success");
+            $('#cat-prov').change();
+
+          } else {
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x)
+        }
+      });
+    } else {
+      swal("Cancelado", "El registro esta a salvo :)", "error");
+    }
   });
 }
 
@@ -668,7 +842,7 @@ function btn_editProv(){
       $('#persona_prov').focus();
       return false;
    }
-  if( persona == "fisica" ){
+  if( persona == "fisica" && curp == ""){
       alertify.error("CURP es requerido");
       $('#curp_prov').focus();
       return false;
@@ -697,7 +871,7 @@ function btn_editProv(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_editar.php",
+      url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_editar.php",
       data: data,
       success: 	function(r){
         console.log(r);
@@ -706,8 +880,9 @@ function btn_editProv(){
           swal("Exito", "Se modificó correctamente.", "success");
           $('#cat-benef').change();
         } else {
-          swal("RFC existe en sistema", r.data, "error");
+          swal("hubo un error", r.data, "error");
           console.error(r.message);
+
         }
       },
       error: function(x){
@@ -716,6 +891,70 @@ function btn_editProv(){
 
     });
 }
+
+
+// function btn_editProv(){
+//   idprov = $('#id_prov').val();
+//   nombre = $('#nombre_prov').val();
+//   persona = $('#persona_prov').val();
+//   rfc = $('#rfc_prov').val();
+//   curp = $('#curp_prov').val();
+//   taxid = $('#taxid_prov').val();
+//   direccion = $('#direccion_prov').val();
+//
+//   if( persona == "" ){
+//       alertify.error("Persona es requerido");
+//       $('#persona_prov').focus();
+//       return false;
+//    }
+//   if( persona == "fisica" ){
+//       alertify.error("CURP es requerido");
+//       $('#curp_prov').focus();
+//       return false;
+//    }
+//
+//    if( rfc == "" ){
+//       alertify.error("RFC es requerido");
+//       $('#rfc_prov').focus();
+//       return false;
+//     }
+//     if( rfc == "XEXX010101000" && taxid == '' ){
+//        alertify.error("taxID es requerido");
+//        $('#taxid_prov').focus();
+//        return false;
+//      }
+//
+//     var data = {
+//       idprov : idprov,
+//       nombre : nombre,
+//       persona : persona,
+//       rfc : rfc,
+//       curp : curp,
+//       taxid : taxid,
+//       direccion : direccion
+//     }
+//
+//     $.ajax({
+//       type: "POST",
+//       url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_editar.php",
+//       data: data,
+//       success: 	function(r){
+//         console.log(r);
+//         r = JSON.parse(r);
+//         if (r.code == 1) {
+//           swal("Exito", "Se modificó correctamente.", "success");
+//           $('#cat-benef').change();
+//         } else {
+//           swal("RFC existe en sistema", r.data, "error");
+//           console.error(r.message);
+//         }
+//       },
+//       error: function(x){
+//         console.error(x);
+//       }
+//
+//     });
+// }
 
 function asignarProvRegPol(partida){
     id_prov = $('#lstProv').attr('db-id');
@@ -802,4 +1041,35 @@ function polReg_Det(){
       }
     }
   });
+}
+
+
+function fetch_catalogoBancosSAT(){
+    $.ajax({
+      method: 'POST',
+      url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_bancos.php',
+      success: function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          $('#catalogo-bancossat-helper').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      }
+    })
+}
+
+function fetch_catalogoBancosExt(){
+    $.ajax({
+      method: 'POST',
+      url: '/conta6/Resources/PHP/actions/lst_conta_cs_bancos_extranjeros.php',
+      success: function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          $('#catalogo-bancosext-helper').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      }
+    })
 }

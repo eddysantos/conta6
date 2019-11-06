@@ -38,8 +38,9 @@ if ($rslt->num_rows == 0) {
 }
 
 while ($row = $rslt->fetch_assoc()) {
-  if( $oRst_permisos["s_catalogoPersonasPROV_GctasBcos"] == 1 ){
-    $btnborrar = "<a href='#' onclick='btn_bcben($row[pk_id_banco_ben],$row[fk_id_benef])'><img src= '/conta6/Resources/iconos/002-trash.svg' class='icochico'></a>";
+  // if( $oRst_permisos["s_catalogoPersonasPROV_GctasBcos"] == 1 ){
+  if( $oRst_permisos["s_catalogoPersonasPROV_g"] == 1 ){
+    $btnborrar = "<a href='#' onclick='btn_bcprov($row[pk_id_banco_prov],$row[fk_id_proveedor])'><img src= '/conta6/Resources/iconos/002-trash.svg' class='icochico'></a>";
   }else{ $bntborrar = "";}
 
   $system_callback['data'] .=
