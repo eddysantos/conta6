@@ -2,7 +2,7 @@ $(document).ready(function(){
   fetch_formaPago_sat();
   polReg_Det();
 
-
+  listaCorresponsales();
   fetch_catalogoBancosSAT();
   fetch_catalogoBancosExt();
 
@@ -699,6 +699,9 @@ $(document).ready(function(){
   });
 }); // agregar cuenta banco proveedor
 
+
+
+
   $('#cat-prov').change(function() {
     var $this = $(this);
     var dbid = $this.attr('db-id');
@@ -712,6 +715,55 @@ $(document).ready(function(){
   $('#btn_printProv').click(function(){
     window.open('/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_impresion.php');
   });
+
+
+
+
+  // CORRESPONSALES
+$('#btn_printCorresp').click(function(){
+  window.open('/Conta6/AdminContable/actions/corresposales_impresion');
+});
+
+
+$('#genCorresponsal').click(function(){
+
+  if($('#corp-cliente').attr('db-id') == ""){
+    alertify.error("Seleccione un cliente");
+    $('#corp-cliente').focus();
+    return false;
+  }
+
+  txt_cliente = $('#corp-cliente').val();
+  cliente = $('#corp-cliente').attr('db-id');
+
+  parte = txt_cliente.split(cliente);
+  cliente = parte[0];
+  nombre = parte[1];
+
+  var data = {
+    id_cliente: $('#corp-cliente').attr('db-id'),
+    s_nombre: nombre
+  }
+
+
+  $.ajax({
+    type: "POST",
+    url: "actions/corresposales_agregar.php",
+    data: data,
+    success: 	function(request){
+      r = JSON.parse(request);
+      if (r.code == 1) {
+        swal("Exito", "Se guardo correctamente.", "success");
+        listaCorresponsales();
+        $('#corp-cliente').attr('db-id', "");
+        $('#corp-cliente').val("");
+      } else {
+        console.error(r.message);
+      }
+    }
+  });
+});
+// FIN DE CORRESPONSALES
 
 
 });
@@ -1072,4 +1124,201 @@ function fetch_catalogoBancosExt(){
         }
       }
     })
+}
+
+
+
+
+// FUNCIONES CORRESPONSALES
+function listaCorresponsales(){
+  var ajaxCall = $.ajax({
+    method: 'POST',
+    url: 'actions/corresponsales_mostrarlista.php'
+  });
+
+  ajaxCall.done(function(r) {
+    r = JSON.parse(r);
+    if (r.code == 1) {
+      $('#tablaCorresponsales').html(r.data);
+      actionsCorresponsales();
+    } else {
+      console.error(r.message);
+    }
+  });
+}
+
+
+function actionsCorresponsales(){
+  $('.addCorresp').click(function(){
+    var dbid = $(this).attr('db-id');
+    $('#dbCorresp').val(dbid);
+    $('#addCorresp').modal('show');
+
+    var ajaxCall = $.ajax({
+        method: 'POST',
+        data:{dbid:dbid},
+        url: 'actions/corresposales_mostrarModal.php'
+    });
+
+    ajaxCall.done(function(r) {
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        $('#tablaClienteCorresponsales').html(r.data);
+        eliminarCorresp();
+        // mostrarCorrespModal();
+        // tablaCorrespModal();
+        $('#nombre').html(r.nombre);
+        $('#nombreCorresp').html(r.nombreCorresp);
+      } else {
+        console.error(r.message);
+      }
+    });
+  });
+}
+
+
+function eliminarCorresp(){
+  $('.eliminarCorresp').click(function(){
+    var data = {
+      id_cliente: $(this).attr('idcliente'),
+      id_corresp: 0
+    }
+    swal({
+      title: "Estas Seguro?",
+      text: "Ya no se podra recuperar el registro!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonClass: "btn-danger",
+      confirmButtonText: "Si, Eliminar",
+      cancelButtonText: "No, cancelar",
+      closeOnConfirm: false,
+      closeOnCancel: false
+    },
+    function(isConfirm) {
+      if (isConfirm) {
+        $.ajax({
+          method: 'POST',
+          data: data,
+          url: 'actions/corresponsales_asignarAcliente.php',
+          success: function(r){
+            $('.addCorresp').click();
+          },
+          error: function(x){
+            console.error(x)
+            alertify.error('NO SE PUDO ELIMINAR');
+            $('.addCorresp').click();
+          }
+        });
+        swal("Eliminado!", "Se elimino correctamente.", "success");
+        $('.addCorresp').click();
+      } else {
+        swal("Cancelado", "El registro esta a salvo :)", "error");
+        $('.addCorresp').click();
+      }
+    });
+  });
+}
+
+
+
+function asigCorresponsal(id_corresp,id_cliente){
+  if(id_corresp > 0){
+    if($('#corp-cliente').attr('db-id') == ""){
+      alertify.error("Seleccione un cliente");
+      $('#corp-cliente').focus();
+      return false;
+    }
+    var data = {
+      id_cliente: $('#corp-cliente').attr('db-id'),
+      id_corresp: $('#id_corresp').val()
+    }
+
+  }else{
+    var data = {
+      id_cliente: id_cliente,
+      id_corresp: id_corresp
+    }
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "actions/corresponsales_asignarAcliente.php",
+    data: data,
+    success: 	function(request){
+      r = JSON.parse(request);
+      console.log(r);
+      if (r.code == 1) {
+        swal("Exito", "Operación realizada correctamente.", "success");
+        // $('.modal').modal('hide');
+        // $('.addCorresp').click();
+      } else {
+        console.error(r.message);
+      }
+    }
+  });
+}
+
+
+function mostrarCorrespModal(){
+  // var dbid = $(this).attr('db-id');
+  $('#dbCorresp').val(dbid);
+  $('#addCorresp').modal('show');
+
+  var ajaxCall = $.ajax({
+    method: 'POST',
+    data:{dbid:dbid},
+    url: 'actions/mostrarCorresponsales.php'
+  });
+
+  ajaxCall.done(function(r) {
+    r = JSON.parse(r);
+    if (r.code == 1) {
+      $('#tablaClienteCorresponsales').html(r.data);
+      eliminarCorresp();
+      $('#nombre').html(r.nombre);
+      $('#nombreCorresp').html(r.nombreCorresp);
+    } else {
+      console.error(r.message);
+    }
+  });
+}
+
+function asigCorrespModal(id_corresp,id_cliente){
+  if(id_corresp > 0){
+    if($('#corp-clientem').attr('db-id') == ""){
+      alertify.error("Seleccione un cliente");
+      $('#corp-clientem').focus();
+      return false;
+    }
+
+    var data = {
+      id_cliente: $('#corp-clientem').attr('db-id'),
+      id_corresp: $('#dbCorresp').val()
+    }
+
+  }else{
+    var data = {
+      id_cliente: id_cliente,
+      id_corresp: id_corresp
+    }
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "actions/corresponsales_asignarAcliente.php",
+    data: data,
+    success: 	function(r){
+      r = JSON.parse(r);
+      console.log(r);
+      if (r.code == 1) {
+        swal("Exito", "Operación realizada correctamente.", "success");
+        $('#corp-clientem').attr('db-id', "");
+        $('#corp-clientem').val("");
+        $('.modal').modal('hide');
+      } else {
+        console.error(r.message);
+      }
+
+    }
+  });
 }

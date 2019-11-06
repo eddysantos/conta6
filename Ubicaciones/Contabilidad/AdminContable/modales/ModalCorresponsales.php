@@ -99,6 +99,52 @@
   </div>
 </div> -->
 
+<div class="modal fade text-center" id="addCorresp" style="margin-top:50px">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
+          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
+        </button>
+        <h5 class="modal-tittle">Corresponsal</h5>
+      </div>
+      <div class="modal-body p-0">
+        <div class="text-center mb-10 font14">
+          <div class="contorno mt-5">
+            <table class="table form1">
+              <input id='dbCorresp' type='hidden' value=''>
+              <tbody>
+                <tr class='row m-0 justify-content-center align-items-center mt-5'>
+                  <td class='col-md-8 input-effect'>
+                    <input class='efecto popup-input' id='corp-clientem' type='text' id-display='#popup-corp-clienteM' action='clientes_NoTieneCorresponsal' db-id='' autocomplete='off'>
+                    <div class='popup-list' id='popup-corp-clienteM' style='display:none'></div>
+                    <label for='corp-clientem'>Cliente</label>
+                  </td>
+                  <td id='nombreCorresp'></td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table table-hover fixed-table mt-5">
+              <thead>
+                <tr class="row m-0 encabezado">
+                  <td class="col-md-6 text-right">CLIENTES ASIGNADOS AL CORRESPONSAL //</td>
+                  <td class="col-md-6 text-left" id="nombre"></td>
+                </tr>
+                <tr class="row m-0 sub2 font14">
+                  <td class="col-md-1"></td>
+                  <td class="col-md-4">CLIENTE</td>
+                  <td class="col-md-5">NOMBRE</td>
+                </tr>
+              </thead>
+              <tbody id="tablaClienteCorresponsales"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!--EDITAR DATOS DEL CORRESPONSAL-->
 <div class="modal fade text-center" id="EditarCorresponsal" style="margin-top:50px">

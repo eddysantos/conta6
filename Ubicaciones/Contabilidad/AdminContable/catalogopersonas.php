@@ -201,6 +201,51 @@
       </div>
     </div>
 
+
+
+    <div class="tab-pane fade" id="tres" role="tabpanel" aria-labelledby="tres-tab">
+      <div class="text-center mb-10 font14">
+        <div class="mt-5">
+          <table class="table form1">
+            <tbody>
+              <tr class="row justify-content-center font14 m-0">
+                <td class="col-md-3">
+                  <a href="#" id="genCorresponsal" class="b"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR NUEVO</a>
+                </td>
+              </tr>
+              <tr class="row m-0 align-items-center justify-content-center mt-5">
+                <td class="col-md-7 input-effect">
+                  <input class="efecto popup-input" id="corp-cliente" type="text" id-display="#popup-display-corp-cliente" action="clientes_NoEsCorresponsal" db-id="" autocomplete="off">
+                  <div class="popup-list" id="popup-display-corp-cliente" style="display:none"></div>
+                  <label for="corp-cliente">Cliente</label>
+                </td>
+                <!-- Aun pendiente -->
+                <td class="col-md-1 text-left">
+                  <a href='#'><img class="icomediano ml-2" src="/conta6/Resources/iconos/printer.svg"></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="contorno mt-5">
+            <table class="table table-hover fixed-table">
+              <thead>
+                <tr class="row m-0 encabezado">
+                  <td class="col-md-1"></td>
+                  <td class="col-md-2">CORRESPONSAL</td>
+                  <td class="col-md-2">CLIENTE</td>
+                  <td class="col-md-7">NOMBRE</td>
+                </tr>
+              </thead>
+              <tbody  id="tablaCorresponsales"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
   </div> <!-- fin del navegador -->
 </div> <!-- fin del text center -->
 
@@ -236,6 +281,8 @@
 // require $root . '/conta6/Ubicaciones/footer.php';
 
 require_once('modales/nuevoProveedor.php');
+
+require $root . '/Conta6/Ubicaciones/Contabilidad/AdminContable/modales/ModalCorresponsales.php';
 require $root . '/Conta6/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
 require $root . '/Conta6/Ubicaciones/Contabilidad/modales/catalogoBancosExt.php';
 
