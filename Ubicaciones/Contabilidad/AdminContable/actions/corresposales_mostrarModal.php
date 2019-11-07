@@ -49,9 +49,9 @@ if ($rslt->num_rows == 0) {
   exit_script($system_callback);
 }
 while ($row = $rslt->fetch_assoc()) {
-  $pk_id_cliente = $row['pk_id_cliente'];
+  $pk_id_cliente = utf8_encode($row['pk_id_cliente']);
   // $correp=0;
-  $s_nombre = $row['s_nombre'];
+  $s_nombre = utf8_encode($row['s_nombre']);
   // $cliente = $row['pk_id_cliente'];
   $system_callback['data'] .="<tr class='row m-0 borderojo'>
     <td class='col-md-1'>
