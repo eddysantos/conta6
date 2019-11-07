@@ -22,7 +22,10 @@ if ($rslt->num_rows == 0) {
   exit_script($system_callback);
 }
 while ($row = $rslt->fetch_assoc()) {
-  $pk_id_corresp = $row['pk_id_corresp'];
+  $pk_id_corresp = utf8_encode($row['pk_id_corresp']);
+  $fk_cliente = utf8_encode($row['fk_id_cliente']);
+  $nombre = utf8_encode($row['s_nombre']);
+
   $system_callback['data'] .='<tr class="row m-0 borderojo">
     <td class="col-md-1">
       <a class="addCorresp" href="#addCorresp"  data-toggle="modal" db-id='.$pk_id_corresp.'>
@@ -30,8 +33,8 @@ while ($row = $rslt->fetch_assoc()) {
       </a>
     </td>
     <td class="col-md-2">'.$pk_id_corresp.'</td>
-    <td class="col-md-2">'.$row['fk_id_cliente'].'</td>
-    <td class="col-md-7">'.$row['s_nombre'].'</td>
+    <td class="col-md-2">'.$fk_cliente.'</td>
+    <td class="col-md-7">'.$nombre.'</td>
   </tr>';
 }
 $system_callback['code'] = 1;
