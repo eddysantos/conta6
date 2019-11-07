@@ -109,8 +109,8 @@ $marginbottom = "margin-bottom:100px!important";
                     <?PHP if($oRst_permisos['s_consulta_cheques'] == 1){ ?>
                     <li><a href="#consultar-ch" data-toggle="modal">Consultar</a></li><?php } ?>
 
-                    <?PHP if($oRst_permisos['s_benef_cheques'] == 1){ ?>
-				          	<li><a href="/conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/Catalogo.php">Beneficiarios</a></li><?PHP } ?>
+                    <!-- <?PHP if($oRst_permisos['s_benef_cheques'] == 1){ ?>
+				          	<li><a href="/conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/Catalogo.php">Beneficiarios</a></li><?PHP } ?> -->
 
                   </ul>
                 </li>
@@ -196,16 +196,16 @@ $marginbottom = "margin-bottom:100px!important";
                     <?PHP if($oRst_permisos['s_catalogoPersonas'] == 1){ ?>
                     <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/catalogopersonas.php">Catálogo de Personas</a></li><?PHP } ?>
 
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/Corresponsales.php">Corresponsales</a></li><!-- quitar -->
+                    <!-- <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/Corresponsales.php">Corresponsales</a></li> -->
                     <li><a href="/conta6/Ubicaciones/Contabilidad/AdminContable/Cierredemes.php">Cierre de Mes</a></li>
                   </ul>
                 </li>
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                   <a href="#" class="">Proveedores <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/conta6/Ubicaciones/Contabilidad/Proveedores/Catalogo.php">Catálogo</a></li><!-- quitar -->
+                    <li><a href="/conta6/Ubicaciones/Contabilidad/Proveedores/Catalogo.php">Catálogo</a></li>
                   </ul>
-                </li>
+                </li> -->
                 <li class="dropdown">
                   <a href="#ReportesCont" data-toggle="modal">Reportes</a>
                 </li>
