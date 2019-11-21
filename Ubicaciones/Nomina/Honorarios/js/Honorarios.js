@@ -171,6 +171,46 @@ $(document).ready(function () {
 	});
 
 
+// regresar
+	// $('.imprimirNominaOrdinaria').click(function(){
+	//
+	// //var data = { fk_id_aduana : $('#fk_id_aduana_add').val()}
+	//   var ajaxCall = $.ajax({
+	//       method: 'POST',
+	//       //data: data,
+	//       url: 'actions/mostrar.php'
+	//   });
+	//
+	//   ajaxCall.done(function(r) {
+	//     r = JSON.parse(r);
+	//     if (r.code == 1) {
+	//       $('#tabla').html(r.data);
+	//     } else {
+	//       console.error(r.message);
+	//     }
+	//   });
+	//
+	//
+	// }
+
+	$(function(){
+	  var ajaxCall = $.ajax({
+	      method: 'POST',
+	      url: '/Conta6/Ubicaciones/Nomina/Honorarios/actions/catalogo_percepcionesCompNomina.php'
+	  });
+
+	  ajaxCall.done(function(r) {
+	    r = JSON.parse(r);
+	    if (r.code == 1) {
+				$('#percepcionesComplementoNomina').html(r.data);
+	      $('#deduccionesComplementoNomina').html(r.datadeducciones);
+	    } else {
+	      console.error(r.message);
+	    }
+	  });
+	})
+
+
 
 
 
@@ -265,8 +305,27 @@ function editarDocNomina(idDocNomina){
 }
 
 function imprimirNomina(anio,semana,tipo){
-	window.open('/conta6/Ubicaciones/Nomina/actions/impresionNomina_completo.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+// function imprimirNomina(anio,semana,tipo,fechaIni,fechaFin){
+	// window.open('/conta6/Ubicaciones/Nomina/actions/impresionNomina_completo.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+	//
+	window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresionNominaCompleto.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
 }
+
+
+function imprimirNominaOrdinaria(anio,semana,tipo){
+	tipo = 'O';
+	window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresionNominaOrdinaria.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+}
+
+function imprimirNominaExtra(anio,semana,tipo){
+	tipo = 'E';
+	window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresionNominaOrdinaria.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+}
+
+function impresionCFDICompleto(anio,semana,tipo){
+	window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresionCFDICompleto.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+}
+
 
 function ocultarFormato(){
 	idRegimen = $('#idRegimen').val();

@@ -5,6 +5,10 @@
   $regimenNomina = trim($_POST['regimen']);
   $anio = trim($_POST['anio']);
   $semana = trim($_POST['nomina']);
+  // $tipoOR = '';
+  // $tipoEx = '';
+  $tipoOR = 'O';
+  $tipoEx = 'E';
 
 
 
@@ -171,8 +175,11 @@
       while ($row_consultaFecha = $rslt_consultaFecha->fetch_assoc()) {
         $fechaInicio = $row_consultaFecha['d_fechaInicio'];
         $fechaFinal = $row_consultaFecha['d_fechaFinal'];
+
+
       }
   }
+
 
   $consultaDatosGenerales =
   "<tr class='row m-0'>
@@ -188,8 +195,12 @@
       <td class='col-md-12'>NÓMINA $semana $fechaInicio al $fechaFinal <a href='#' onclick='imprimirNomina($anio,$semana)' data-toggle='modal'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a></td>
     </tr>
     <tr class='row m-0'>
-      <td class='col-md-12'>Ordinaria <a href='' data-toggle='modal'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a>
-                            Extraordinaria <a href='' data-toggle='modal'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a></td>
+      <td class='col-md-12'>Ordinaria
+      <a href='' onclick='imprimirNominaOrdinaria($anio,$semana)' >
+        <img class='icochico' src='/conta6/Resources/iconos/printer.svg'>
+      </a>
+      Extraordinaria
+      <a href='' onclick='imprimirNominaExtra($anio,$semana)'><img class='icochico' src='/conta6/Resources/iconos/printer.svg'></a></td>
     </tr>";
 
   $system_callback['code'] = 1;

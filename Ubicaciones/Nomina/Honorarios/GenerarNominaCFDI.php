@@ -103,23 +103,29 @@
       </div>
     </div>
 
-    <div class="contorno mt-4">
+    <div class="contorno mt-4" style='<?php echo $marginbottom ?>'>
       <table class="table text-center m-0 table-hover">
-        <thead>
-          <tr class="row encabezado">
-            <td class="col-md-1">No.</td>
-            <td class="col-md-3">Empleado</td>
-            <td class="col-md-1">Tipo</td>
-            <td class="col-md-1">Documento <a href=''><img class='icomediano' src='/conta6/Resources/iconos/002-plus.svg'></a></td>
-            <td class="col-md-1"><a href=''><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a></td>
-            <td class="col-md-1">Pol.Pago</td>
-            <td class="col-md-1">Cancelar</td>
-            <td class="col-md-1">Factura</td>
-            <td class="col-md-1">Póliza</td>
-            <td class="col-md-1">CFDI<a href='#' > <img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a> <a href=''> <img class='icomediano' src='/conta6/Resources/iconos/help.svg'></a></td>
-            <td class="col-md-1"></td>
+        <!-- <thead>
+          <tr class='row encabezado'>
+            <td class='col-md-1'>No.</td>
+            <td class='col-md-3'>Empleado</td>
+            <td class='col-md-1'>Tipo</td>
+            <td class='col-md-1'>Documento <a href=''><img class='icomediano' src='/conta6/Resources/iconos/002-plus.svg'></a></td>
+            <td class='col-md-1'><a href=''><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a></td>
+            <td class='col-md-1'>Pol.Pago</td>
+            <td class='col-md-1'>Cancelar</td>
+            <td class='col-md-1'>Factura</td>
+            <td class='col-md-1'>Póliza</td>
+            <td class='col-md-1'>CFDI
+              <a href='#' onclick='impresionCFDICompleto'>
+                <img class='icochico' src='/conta6/Resources/iconos/printer.svg'>
+              </a>
+              <a href='#catalogoComplementoNomina' data-toggle='modal'>
+                <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+              </a>
+            </td>
           </tr>
-        </thead>
+        </thead> -->
         <tbody class="font14" id="resConNomDcocumentos"></tbody>
       </table>
     </div>
@@ -154,5 +160,6 @@
 
 <?php
 include_once('modales/ParametrosHon.php');
+include_once('modales/catalogoCompNomina.php');
 require $root . '/conta6/Ubicaciones/footer.php';
 ?>
