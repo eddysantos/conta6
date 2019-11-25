@@ -24,7 +24,7 @@
   <script src="/Conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
   <script src="/Conta6/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
   <script src="/Conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
-  <script src="/Conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/js/Beneficiarios.js"></script>
+  <!-- <script src="/Conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/js/Beneficiarios.js"></script> -->
   <script src="/Conta6/Ubicaciones/Contabilidad/facturaelectronica/js/facturaElectronica.js"></script>
   <script src="/Conta6/Ubicaciones/Contabilidad/Notacredito/js/NotaCredito.js"></script>
 

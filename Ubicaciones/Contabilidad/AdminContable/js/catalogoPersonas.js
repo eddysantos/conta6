@@ -1261,7 +1261,7 @@ function fetch_catalogoBancosExt(){
 function listaCorresponsales(){
   var ajaxCall = $.ajax({
     method: 'POST',
-    url: 'actions/corresponsales_mostrarlista.php'
+    url: '/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/corresponsales_mostrarlista.php'
   });
 
   ajaxCall.done(function(r) {
