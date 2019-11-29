@@ -9,7 +9,7 @@ $id_nomina = trim($_GET['semana']);
 $id_aduana = $aduana;
 $id_empleado = trim($_GET['id_empleado']);
 $anio = trim($_GET['anio']);
-$id_regimen = 9;
+$id_regimen = '09';
 $image_file = 'cheetah.svg';
 // $fechaIni = '2019-12-30';
 // $fechaFin = '2020-01-03';
@@ -45,7 +45,8 @@ $pdf->setFontSubsetting(true);
 $pdf->SetFont('dejavusans', '', 7, '', true);
 $pdf->AddPage();
 
-$sql_Select = "SELECT * FROM conta_t_nom_captura WHERE n_semana = $id_nomina AND fk_id_regimen = $id_regimen";
+$sql_Select = "SELECT * FROM conta_t_nom_captura
+               WHERE n_anio = $anio and fk_id_aduana = $aduana and n_semana = $id_nomina AND fk_id_regimen = $id_regimen limit 2";
 
 $stmt = $db->prepare($sql_Select);
 if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
@@ -54,6 +55,17 @@ $rslt = $stmt->get_result();
 $rows = $rslt->num_rows;
 
   $html = '';
+  $html .= '<style>
+     .border{
+       border-top:1px solid black;
+       border-left:1px solid black;
+       border-right:1px solid black;
+       border-bottom:1px solid black;
+      }
+      table{
+        margin:5px;
+      }
+  </style>';
 
   while ($row = $rslt->fetch_assoc()) {
     $pk_id_docNomina = $row['pk_id_docNomina'];
@@ -72,17 +84,7 @@ $rows = $rslt->num_rows;
     $n_importe = $row['n_importe'];
     $n_total = $row['n_total'];
 
-    $html .= '<style>
-       .border{
-         border-top:1px solid black;
-         border-left:1px solid black;
-         border-right:1px solid black;
-         border-bottom:1px solid black;
-        }
-        table{
-          margin:5px;
-        }
-    </style>
+    $html .= '
     <table>
       <tr>
         <td width="50%">
@@ -155,7 +157,7 @@ $rows = $rslt->num_rows;
     </table>
     <br /><br /><br /> ';
 
-
+/*
   require $root . '/Conta6/Ubicaciones/Nomina/Honorarios/actions/honorariosPercepcionesDeducciones.php'; //percepciones, deducciones, totales
 
    $html .='<table>
@@ -228,8 +230,8 @@ $rows = $rslt->num_rows;
        </td>
      </tr>
 
-   </table>
-   <br pagebreak="true" />';
+   </table>*/
+   $html .='<br pagebreak="true" />';
 
   }
 
@@ -238,7 +240,7 @@ $rows = $rslt->num_rows;
 // $pdf->writeHTML($percepcionesDeducciones, true, 0, true, 0);
 
 
-$pdf->writeHTML($html, true, false, true, false, '');
+$pdf->writeHTML($html, true, false, true, false, 'C');
 // ---------------------------------------------------------
 $pdf->lastPage();
 $pdf->Output('ImpresionCFDI.pdf', 'I');

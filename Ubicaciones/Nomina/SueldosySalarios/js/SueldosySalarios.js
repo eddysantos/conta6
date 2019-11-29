@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	
+
 
 	$('.sueldosysalarios').click(function(){
     var accion = $(this).attr('accion');
@@ -56,4 +56,47 @@ $(document).ready(function () {
           console.error("Something went terribly wrong...");
     }
   });
+
+
+
+	$('#generarDocNominaSuel').click(function(){
+		num_nomsig = $('#num_nomsig').val();
+		fp_nomsig = $('#fp_nomsig').val();
+		mesCorresponde = $('#mesCorresponde').val();
+
+		if( fp_nomsig == ""){
+				alertify.success('Asigne fecha pago');
+				return false;
+		}
+		if( mesCorresponde == ""){
+				alertify.success('Seleccione mes al que corresponde la nómina');
+				return false;
+		}
+
+		var data = {
+			anio_nomsig : $('#anio_nomsig').val(),
+			num_nomsig : num_nomsig,
+			fi_nomsig : $('#fi_nomsig').val(),
+			ff_nomsig : $('#ff_nomsig').val(),
+			fp_nomsig : fp_nomsig,
+			lstValesDespensa : $('#pagarVales').val(),
+			lstPremioAsistencia : $('#pagarAsistencia').val(),
+			mesCorresponde : $('#mesCorresponde').val()
+		}
+		$.ajax({
+			type: "POST",
+			url: "/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel.php",
+			data: data,
+			success: 	function(r){
+				r = JSON.parse(r);
+				if (r.code == 1) {
+					$('#resGenNomSuel').html(r.data);
+					alertify.alert('Sueldos Nómina: '+num_nomsig, 'Generado correctamente', function(){
+						document.location.replace('/conta6/Ubicaciones/Nomina/sueldosysalarios/Generar_Nomina.php');
+					});
+				}
+			}
+		})
+	});
+
 });

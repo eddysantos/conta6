@@ -7,6 +7,7 @@ $NUM_NOMINA = $_POST['num_nomsig'];
 $FECHAINICIO = $_POST['fi_nomsig'];
 $FECHAFINAL = $_POST['ff_nomsig'];
 $fechaPago = $_POST['fp_nomsig'];
+$mesCorresponde = $_POST['mesCorresponde'];
 
 $id_regimen = '09';
 $tipoNomina = "O"; #NOMINA ORDINARIA

@@ -1,39 +1,82 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+
+  require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
+
+
+  $regimenNomina = '02';
+  require $root . '/conta6/Resources/PHP/actions/consulta_nomina_anio.php';
+
 ?>
-
-<div class="text-center">
-  <div class="row submenuMed m-0 font16">
-    <div class="col-md-6">
-      <a  href="/conta6/ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php">GENERAR NOMINA</a>
-    </div>
-    <div class="col-md-6">
-      <a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/Parametros.php" >PARAMETROS</a>
-    </div>
-  </div>
-
 
   <div class="">
     <form class="form1">
       <table class="table">
         <tr class="row mt-5">
           <td class="col-md-2 offset-md-5 input-effect">
-            <input  list="listanios" class="font14 efecto" id="anios">
-            <datalist id="listanios">
-              <option value="1"></option>
-              <option value="2"></option>
-              <option value="3"></option>
-              <option value="3"></option>
-              <option value="3"></option>
-            </datalist>
-            <label for="anios">Buscar</label>
+            <input id="nom_regimen" type="hidden" value="<?php echo $regimenNomina; ?>">
+            <select class="custom-select" id="buscaranio">
+              <?php echo $consultaAnioNomina; ?>
+            </select>
+          </td>
+          <td class="col-md-1">
+            <div id="resConNomSem"></div>
           </td>
         </tr>
       </table>
     </form>
 
-    <div  class="contorno mt-5">
+    <div  class="contorno mt-4">
+      <div class="acordeon2">
+        <div class="encabezado text-center font16" data-toggle="collapse" href="#collapseOne">
+          <a href="#">DATOS GENERALES</a>
+        </div>
+        <div id="collapseOne" class="collapse">
+          <form class="form1">
+            <table class="table text-center">
+              <thead>
+                <tr class="row m-0 backpink">
+                  <td class="col-md-1">Empleados</td>
+                  <td class="col-md-1">CFDI</td>
+                  <td class="col-md-2">Cancelados</td>
+                  <td class="col-md-2">Percepciones</td>
+                  <td class="col-md-2">Deducciones</td>
+                  <td class="col-md-2">Total</td>
+                  <td class="col-md-2">Total Neto</td>
+                </tr>
+              </thead>
+              <tbody class="font14" id="resConNomGenerales"></tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="contorno mt-4">
+      <table class="table text-center m-0 table-hover">
+        <thead>
+          <tr class="row encabezado">
+            <td class="col-md-1">No.</td>
+            <td class="col-md-3">Empleado</td>
+            <td class="col-md-1">Tipo</td>
+            <td class="col-md-1">Documento <a href=''><img class='icomediano' src='/conta6/Resources/iconos/002-plus.svg'></a></td>
+            <td class="col-md-1"><a href=''><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a></td>
+            <td class="col-md-1">Pol.Pago</td>
+            <td class="col-md-1">Cancelar</td>
+            <td class="col-md-1">Factura</td>
+            <td class="col-md-1">Póliza</td>
+            <td class="col-md-1">CFDI<a href='#' > <img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a> <a href=''> <img class='icomediano' src='/conta6/Resources/iconos/help.svg'></a>
+            </td>
+            <td class="col-md-1"></td>
+          </tr>
+        </thead>
+        <tbody class="font14" id="resConNomDcocumentos"></tbody>
+      </table>
+    </div>
+
+    <!--div  class="contorno mt-5">
       <table class="table table-hover mb-0">
         <thead>
           <tr class="row encabezado">
@@ -89,7 +132,9 @@
           </tr>
         </tfoot>
       </table>
-    </div>
+    </div-->
+
+
   </div>
 </div>
 

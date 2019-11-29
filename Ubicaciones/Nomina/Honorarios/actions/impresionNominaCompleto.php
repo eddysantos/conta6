@@ -5,21 +5,57 @@ require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
 require $root . '/Conta6/Resources/vendor/autoload.php';
 require $root . '/conta6/Resources/PHP/actions/numtoletras.php';
 
-$id_nomina = trim($_GET['semana']);
-$id_aduana = $aduana;
+$semana = trim($_GET['semana']);
 $id_empleado = trim($_GET['id_empleado']);
 $anio = trim($_GET['anio']);
-$id_regimen = 9;
+$tipo = trim($_GET['tipo']);
+$regimenNomina = 9;
 $image_file = 'cheetah.svg';
-$fechaIni = '2019-12-30';
-$fechaFin = '2020-01-03';
+
+if( $tipo == 'Todas' ){ $tipoNomina = ''; $nombrePDF = 'NominaHonorarios.pdf'; }
+if( $tipo == 'O' ){ $tipoNomina = " and s_tipoNomina = 'O' "; $nombrePDF = 'NominaHonorariosOrdinaria.pdf';}
+if( $tipo == 'E' ){ $tipoNomina = " and s_tipoNomina = 'E' "; $nombrePDF = 'NominaHonorariosExtraOrdinaria.pdf';}
+
+
+
+$query_consultaFecha = "SELECT distinct d_fechaFinal, d_fechaInicio
+                            FROM conta_t_nom_captura
+                            WHERE fk_id_regimen = ? and fk_id_aduana = ? and n_anio = ? and n_semana = ?";
+$stmt_consultaFecha = $db->prepare($query_consultaFecha);
+if (!($stmt_consultaFecha)) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
+  exit_script($system_callback);
+}
+$stmt_consultaFecha->bind_param('ssss',$regimenNomina,$aduana,$anio,$semana);
+if (!($stmt_consultaFecha)) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during variables binding [$stmt_consultaFecha->errno]: $stmt_consultaFecha->error";
+  exit_script($system_callback);
+}
+if (!($stmt_consultaFecha->execute())) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during query execution [$stmt_consultaFecha->errno]: $stmt_consultaFecha->error";
+  exit_script($system_callback);
+}
+$rslt_consultaFecha = $stmt_consultaFecha->get_result();
+$rows_consultaFecha = $rslt_consultaFecha->num_rows;
+
+if ($rows_consultaFecha > 0) {
+    while ($row_consultaFecha = $rslt_consultaFecha->fetch_assoc()) {
+      $fechaInicio = $row_consultaFecha['d_fechaInicio'];
+      $fechaFinal = $row_consultaFecha['d_fechaFinal'];
+    }
+}
+
+
 
 // create new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // set default header data
 $pdf->SetHeaderData($image_file, PDF_HEADER_LOGO_WIDTH, 'Proyección Logistica Agencia Aduanal S.A de C.V', 'Empleados Bajo el Regimen de Honorarios Asimilados a Salarios'.'
-Semana: '.$id_nomina.' Fecha Inicio: '.$fechaIni.' Fecha Final: '.$fechaFin.'');
+Semana: '.$semana.' Fecha Inicio: '.$fechaInicio.' Fecha Final: '.$fechaFinal.'');
 
 // $pdf->setFooterData(array(0,64,0), array(0,64,128));
 
@@ -45,7 +81,8 @@ $pdf->SetFont('dejavusans', '', 8, '', true);
 
 $pdf->AddPage();
 
-$sql_Select = "SELECT * FROM conta_t_nom_captura INNER JOIN conta_t_nom_captura_det ON pk_id_docNomina = fk_id_docNomina WHERE n_semana = $id_nomina AND fk_id_regimen = $id_regimen AND s_tipoElemento = 'totales' ";
+$sql_Select = "SELECT * FROM conta_t_nom_captura INNER JOIN conta_t_nom_captura_det ON pk_id_docNomina = fk_id_docNomina
+               WHERE n_semana = $semana AND n_anio = $anio AND fk_id_regimen = $regimenNomina AND s_tipoElemento = 'totales' and fk_id_aduana = $aduana $tipoNomina";
 $stmt = $db->prepare($sql_Select);
 if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
 if (!($stmt->execute())) { die("Error during query prepare [$stmt->errno]: $stmt->error"); }
@@ -153,7 +190,7 @@ $pdf->writeHTML($html, true, false, true, false, 'C');
 
 // ---------------------------------------------------------
 
-$pdf->Output('NominaLista.pdf', 'I');
+$pdf->Output($nombrePDF,'I');
 
 //============================================================+
 // END OF FILE

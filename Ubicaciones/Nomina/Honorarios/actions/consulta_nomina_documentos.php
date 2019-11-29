@@ -40,34 +40,6 @@ if ($rows_consultaDoc == 0) {
     </td>
     <tr>";
 }
-$consultaDocumentos .= "<tr class='row encabezado align-items-center'>
-  <td class='col-md-1'>No.</td>
-  <td class='col-md-3'>Empleado</td>
-  <td class='col-md-1'>Tipo</td>
-  <td class='col-md-1 p-0'>Documento
-    <a href='#'>
-      <img class='icomediano' src='/conta6/Resources/iconos/002-plus.svg'>
-    </a>
-  </td>
-  <td class='col-md-1'>
-    <a href='#'>
-      <img class='icochico' src='/conta6/Resources/iconos/cross.svg'>
-    </a>
-  </td>
-  <td class='col-md-1'>Pol.Pago</td>
-  <td class='col-md-1'>Cancelar</td>
-  <td class='col-md-1'>Factura</td>
-  <td class='col-md-1'>Póliza</td>
-  <td class='col-md-1'>CFDI
-    <a href='#' onclick='impresionCFDICompleto($anio,$semana)'>
-      <img class='icochico' src='/conta6/Resources/iconos/printer.svg'>
-    </a>
-    <a href='#catalogoComplementoNomina' data-toggle='modal'>
-      <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
-    </a>
-  </td>
-</tr>";
-
 
 if ($rows_consultaDoc > 0) {
     while ($row_consultaDoc = $rslt_consultaDoc->fetch_assoc()) {
@@ -108,7 +80,7 @@ if ($rows_consultaDoc > 0) {
 
       if ($rows_consultaFac == 0) {
         if( $oRst_permisos['s_nom_has_modificar'] == 1 ){
-          $linkBorrar = "<a href='#' onclick='borrarDocNomina($idDocNomina)'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
+          $linkBorrar = "<a href='#' class='ml-5' onclick='borrarDocNomina($idDocNomina)'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
           $linkEditar = "<a href='#' class='ml-5' onclick='editarDocNomina($idDocNomina)'><img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'></a>";
         }
 

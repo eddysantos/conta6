@@ -32,9 +32,10 @@ $query_genDoc = "INSERT INTO conta_t_nom_captura (
                                             fk_c_estado_entFed,
                                             s_departamento,
                                             fk_id_riesgo,
-                                            d_FechaInicioRelLaboral
+                                            d_FechaInicioRelLaboral,
+                                            mesCorresponde
                                           )
-          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 $stmt_genDoc = $db->prepare($query_genDoc);
 if (!($stmt_genDoc)) {
@@ -43,7 +44,7 @@ if (!($stmt_genDoc)) {
   exit_script($system_callback);
 }
 
-$stmt_genDoc->bind_param('ssssssssssssssssssssssssssssssss',
+$stmt_genDoc->bind_param('sssssssssssssssssssssssssssssssss',
                                               $aduana,
                                               $tipoNomina,
                                               $descNomina,
@@ -75,7 +76,8 @@ $stmt_genDoc->bind_param('ssssssssssssssssssssssssssssssss',
                                               $id_entfed,
                                               $nom_depto,
                                               $id_riesgo,
-                                              $fechaContrato
+                                              $fechaContrato,
+                                              $mesCorresponde
                                               );
 
 if (!($stmt_genDoc)) {

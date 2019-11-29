@@ -35,11 +35,6 @@
          <option value="02" selected>Sueldos y Salarios</option>
          <option value="09">Honorarios Asimilados</option>
         </select>
-        <!-- <input  id='regimenprueba' type="text" value="02"> -->
-        <!-- <datalist id='regimen' class="">
-          <option value="02">Sueldos y Salarios</option>
-          <option value="09">Honorarios Asimilados</option>
-        </datalist> -->
        </td>
       <td class="col-md-3">
         <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." id='empleados_rt_search' table-body="#registrosEmpleados"  action="mostrar" data-fk_id_aduana="<?php echo $aduana ?>" data-regimen="2">
@@ -54,7 +49,6 @@
 
 
 
-<!-- <script src="/conta6/Resources/js/Inputs.js"></script> -->
 <script src="js/empleados.js"></script>
 <?php
   include_once('modales/Empleados.php');

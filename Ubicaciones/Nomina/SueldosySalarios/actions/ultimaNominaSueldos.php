@@ -10,7 +10,6 @@
 # $ANIO     Ultimo año registrado
 # Se calcula de Lunes a Viernes
 
-
 # Fecha Inicio, primer nomina con la que se iniciara la nomina
 $sql_SelectFI = "SELECT d_fechaInicio FROM conta_cs_imss WHERE s_nombreTabla = 'infoGral' and fk_id_aduana = ?";
 $stmtFI = $db->prepare($sql_SelectFI);
@@ -23,8 +22,6 @@ $rowsFI = $rsltFI->num_rows;
 if( $rowsFI > 0 ){
   $rowFI = $rsltFI->fetch_assoc();
   $FI = $rowFI['d_fechaInicio'];
-
-
 }
 
 $sql_SelectANIO = "SELECT MAX(n_anio) as anio FROM conta_t_nom_captura where fk_id_regimen = '$regimenNomina' and fk_id_aduana = ?";
@@ -99,7 +96,7 @@ if( is_null($ULT_NOM) ){
   #NOMINA 1, INICIO SISTEMA
   $NOM_SIG = 1;
   $FINS = '2019-12-30';
-  $FFNS = date("Y-m-d",strtotime("$FI+4 days"));
+  $FFNS = date("Y-m-d",strtotime("$FI+6 days"));
   $anioFI = '2020';
   $ultimaSemAnio = numeroSemanasTieneUnAno($anioFI);
   $semActual = date_format(date_create($FI),"W");
@@ -110,17 +107,17 @@ if( is_null($ULT_NOM) ){
     $NOM_SIG = 1;
     if( is_null($FI) ){
       $FINS = $FI;
-      $FFNS = date("Y-m-d",strtotime("$FINS+4 days"));
+      $FFNS = date("Y-m-d",strtotime("$FINS+6 days"));
     }else{
-      $FINS = date("Y-m-d",strtotime("$FFUNG+3 days"));
-      $FFNS = date("Y-m-d",strtotime("$FINS+4 days"));
+      $FINS = date("Y-m-d",strtotime("$FFUNG+1 days"));
+      $FFNS = date("Y-m-d",strtotime("$FINS+6 days"));
     }
   }else{
     echo "parte2";
     if( $ULT_NOM < $ultimaSemAnio ){
       $NOM_SIG = $ULT_NOM + 1;
-      $FINS = date("Y-m-d",strtotime("$FFUNG+3 days"));
-      $FFNS = date("Y-m-d",strtotime("$FINS+4 days"));
+      $FINS = date("Y-m-d",strtotime("$FFUNG+1 days"));
+      $FFNS = date("Y-m-d",strtotime("$FINS+6 days"));
     }
   }
 }

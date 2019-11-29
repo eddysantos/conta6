@@ -1,17 +1,10 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-?>
 
-<div class="text-center">
-  <div class="row submenuMed font16 m-0">
-    <div class="col-md-6">
-      <a href="/Conta6/Ubicaciones/Nomina/SueldosySalarios/consultar_Nomina.php" >CONSULTAR NOMINA</a>
-    </div>
-    <div class="col-md-6">
-      <a  href="/Conta6/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php">GENERAR NOMINA</a>
-    </div>
-  </div>
+  require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
+
+?>
 
 <!--Comienza Consultar Parametros-->
   <div id="contornoparam" style="<?php echo $marginbottom ?>">
