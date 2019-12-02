@@ -110,7 +110,7 @@ if( $totalRegistrosSelect > 0 ){
 
       <div id="detallepoliza" class="contorno mt-5 pl-4 pr-4" style='<?php echo $marginbottom ?>'>
         <div class="row m-0">
-          <div class="col-md-12 encabezado font18">DETALLE POLIZA</div>
+          <div class="col-md-12 encabezado font16">DETALLE POLIZA</div>
         </div>
         <table class="table table-hover">
           <tbody>

@@ -2,11 +2,11 @@
 <div class="modal fade" id="detpol-editarRegPolDiario" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header align-items-center">
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">Editar Registro</h5>
+        <h5 class="modal-tittle m-0">Editar Registro</h5>
       </div>
       <div class="modal-body p-0">
         <div id="contorno" class="contorno">

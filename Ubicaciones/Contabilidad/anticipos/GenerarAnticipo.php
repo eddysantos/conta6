@@ -3,10 +3,17 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="row submenuMed m-0">
+<!-- <div class="row submenuMed m-0">
   <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
     <li class="nav-item">
       <a class="nav-link consultar" id="submenuMed">GENERAR ANTICIPO</a>
+    </li>
+  </ul>
+</div> -->
+<div class="row submenuMed m-0">
+  <ul class="nav nav-pills nav-fill w-100">
+    <li class="nav-item">
+      <a class="nav-link" id="submenuMed">GENERAR ANTICIPO</a>
     </li>
   </ul>
 </div>

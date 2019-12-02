@@ -388,7 +388,7 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
           </td>
         </tr>
 
-        <tr class="row m-0 backpink mt-3">
+        <tr class="row m-0 backpink mt-3 font12">
           <th class="col-md-1">Banco</th>
           <th class="col-md-4">No. Cuenta / Interbancaria</th>
           <th class="col-md-5">Nombre / Razón Social</th>
@@ -425,9 +425,9 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
           <td class="col-md-4"></td>
         </tr>
         <tr class="row m-0 mt-3">
-          <td class="col-md-12 sub">Origen</td>
+          <td class="col-md-12 sub2 fw-bold">Origen</td>
         </tr>
-        <tr class="row m-0 sub2">
+        <tr class="row m-0 font12">
           <th class="col-md-1">Banco</th>
           <th class="col-md-4">No. Cuenta / Interbancaria</th>
           <th class="col-md-4">Nombre / Razón Social (opcional)</th>
@@ -447,10 +447,10 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
             <input id="trans-emrfc" class="efecto h22" type="text" disabled>
           </td>
         </tr>
-        <tr class="row m-0">
-          <td class="col-md-12 sub">Destino</td>
+        <tr class="row m-0 mt-4">
+          <td class="col-md-12 sub2 fw-bold">Destino</td>
         </tr>
-        <tr class="row m-0 sub2">
+        <tr class="row m-0 font12">
           <th class="col-md-1">Banco</th>
           <th class="col-md-4">No. Cuenta / Interbancaria</th>
           <th class="col-md-4">Nombre / Razón Social</th>

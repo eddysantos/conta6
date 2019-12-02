@@ -71,8 +71,13 @@
 .fw-normal{
   font-weight: normal!important;
 }
+
 .fw-bold{
   font-weight: bold!important;
+}
+
+.fw-500{
+  font-weight: 500!important;
 }
 
 .sub3{

@@ -58,7 +58,7 @@ if( $totalRegistrosSelect > 0 ){
   <h5 class="titulo">DATOS DE LA POLIZA</h5>
   <table class="table form1 font14">
     <thead>
-      <tr class="row m-0 encabezado">
+      <tr class="row m-0 encabezado font12 b fw-bold">
         <td class="col-md-1">TIPO</td>
         <td class="col-md-1">POLIZA</td>
         <td class="col-md-2">USUARIO</td>
