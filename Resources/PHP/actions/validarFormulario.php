@@ -85,5 +85,58 @@
   }
 */
 
+  # **************************** PARA LA NOMINA
+  function calcularAntiguedad($FECHA_CONTRATO,$FECHAFINAL){
+		/*$parte_ini = explode("-", $FECHA_CONTRATO);
+		$parte_fin = explode("-", $FECHAFINAL);
 
+		$fecha_ini = strtotime(date_format(date_create($FECHA_CONTRATO),"Y-m-d 00:00:00"));
+		$fecha_fin = strtotime(date_format(date_create($FECHAFINAL),"Y-m-d 23:59:59"));
+
+		$segundos = $fecha_ini - $fecha_fin;
+		$segundos = abs($segundos);
+		$semanas = round($segundos / 604800); */
+
+		$fecha_ini = new DateTime($FECHA_CONTRATO);
+		$fecha_fin = new DateTime($FECHAFINAL);
+		$interval = $fecha_ini->diff($fecha_fin);
+
+		$semanas = floor(($interval->format('%a') / 7));
+		$dias = ($interval->format('%a') % 7);
+
+		if( $semanas > 0 ){
+			$pANTIGUEDAD = "P".$semanas."W";
+		}else{
+			$dias = $dias + 1;
+			if( $dias < 7 ){
+				$pANTIGUEDAD = "P".$dias."D";
+			}else{
+				$pANTIGUEDAD = "P1W";
+			}
+		}
+
+		return $pANTIGUEDAD;
+	}
+
+  function cortarXdecimales($valor,$dec){
+		if(is_float($valor)) {
+			$valor = floatval($valor);
+			$parteValor=explode('.',$valor);
+			$entero = $parteValor[0];
+			$decimal = $parteValor[1];
+
+			if($decimal > 0){ $decimal = substr($parteValor[1],0,$dec); }else{$decimal = 0;}
+
+			if($entero == "" || is_null($entero) ){ $entero = 0; }
+			if($decimal == "" || is_null($decimal)){ $decimal = 0;}
+
+			$nuevoValor = $entero.".".$decimal;
+		}else{
+			if( $valor == "" or $valor == " " ){
+				$nuevoValor = 0;
+			}else{ $nuevoValor = $valor; }
+		}
+		return $nuevoValor;
+	}
+  # ****************************
 ?>

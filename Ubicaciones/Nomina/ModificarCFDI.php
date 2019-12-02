@@ -74,6 +74,8 @@
     require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_banco.php'; #$descripcionBanco
     require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_datosEmpleado.php'; #$PRESTAMOCTA
     require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_percepciones.php'; #$consultaPercepConcep
+    require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_percepcionesOtrosPagos.php'; #$consultaPercepConcepOP
+    require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_percepcionesHorasExtra.php'; #$consultaPercepConcepHrExtra
     require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_deducciones.php'; #$consultaDeducConcep
     require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_incapacidad.php'; #$incapacidad
 
@@ -119,6 +121,8 @@
   }
 
   require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepciones.php'; #$detalle_PERCEP
+  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepcionesOtrosPagos.php'; #$detalle_PERCEPOP
+  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepcionesHorasExtra.php'; #$detalle_PERCEPHrExtra
   require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaDeducciones.php'; #$detalle_DEDUC
   require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaTotales.php'; #$detalle_TOTALES
 
@@ -303,50 +307,57 @@
         <a href="#">OTROS PAGOS</a>
       </div>
       <div id="otrospagos" class="collapse">
+        <div>
+          <div class="row mt-3">
+            <div class="col-md-6 text-right">
+              <select class="custom-select-s" name="select" id="percepcionConceptosOP" onchange="concepPercepcionesOP()">
+               <?php echo $consultaPercepConcepOP; ?>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <a href="#"><img class="icomediano" src="/conta6/Resources/iconos/help.svg"></a>
+            </div>
+          </div>
+          <div class="row mt-4 align-items-center justify-content-center">
+            <div class='col-md-1'>
+              <input type="text" class="efecto h22 border-0" id="claveSATpercepcionOP" readonly>
+              <input type="hidden" id="ordenReportePercepcionOP">
+            </div>
+            <div class='col-md-2'>
+              <input type="text" class="efecto h22 border-0" id="claveInternaPercepcionOP" readonly>
+            </div>
+            <div class='col-md-4'>
+              <input type="text" class="efecto" id="desPercepcionOP">
+            </div>
+            <div class='col-md-1'>
+              <input type="text" class="efecto" id="importeExentoPercepcionOP" value="0" onchange="sumaGeneralNomina()">
+            </div>
+            <div class='col-md-1'>
+              <input type="text" class="efecto h22 border-0" id="anioPercepcionOP" value="0" readOnly>
+            </div>
+            <div class='col-md-2'>
+              <input type="text" class="efecto h22 border-0" id="saldoFavorPercepcionOP" value="0" readonly>
+            </div>
+            <div class='col-md-1 text-left'>
+              <a onclick="agregarPercepOtrosPagos()" id="Btn_agregar">
+                <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+              </a>
+            </div>
+          </div>
+        </div>
         <form class="form1">
           <table class="table">
-            <tbody>
-              <tr class="row mt-3">
-                <td class="col-md-6 offset-md-3">
-                  <select class="custom-select">
-                    <option selected>Tipo (Agrupar) SAT</option>
-                    <option>ISR a Favor Ejercicios Anteriores -- 004 -- 0115-00001</option>
-                    <option>Subsidio al Empleo -- 002 -- 0167-00004</option>
-                  </select>
-                </td>
-              </tr>
-              <tr class="row mt-5 m-0">
-                <td class="col-md-1 input-effect">
-                  <input id="cve1" class="efecto">
-                  <label for="cve1">Cve.SAT</label>
-                </td>
-                <td class="col-md-2 input-effect">
-                  <input id="ctacon1" class="efecto">
-                  <label for="ctacon1">Cuenta Contable</label>
-                </td>
-                <td class="col-md-4 input-effect">
-                  <input id="concdesc1" class="efecto">
-                  <label for="concdesc1">Concepto o Descripción</label>
-                </td>
-                <td class="col-md-1 input-effect">
-                  <input id="importe" class="efecto">
-                  <label for="importe">Importe</label>
-                </td>
-                <td class="col-md-1 input-effect">
-                  <input id="anio" class="efecto">
-                  <label for="anio">Año</label>
-                </td>
-                <td class="col-md-2 input-effect">
-                  <input id="sfav" class="efecto">
-                  <label for="sfav">Saldo a Favor</label>
-                </td>
-                <td>
-                  <a>
-                    <img class="icomediano" src="/conta6/Resources/iconos/002-plus.svg">
-                  </a>
-                </td>
-              </tr>
-            </tbody>
+              <thead>
+                <tr class="row mt-4 m-0 backpink">
+                  <td class="col-md-1">Cve. SAT</td>
+                  <td class="col-md-2">Cuenta Contable</td>
+                  <td class="col-md-4">Concepto o Descripción</td>
+                  <td class="col-md-1">Importe</td>
+                  <td class="col-md-1">Año</td>
+                  <td class="col-md-2">Saldo a favor</td>
+                </tr>
+              </thead>
+              <tbody id='tbodyPercepcionesOP'><?php echo $detalle_PERCEPOP; ?></tbody>
           </table>
         </form>
       </div>
@@ -358,18 +369,70 @@
         <a href="#">HORAS EXTRAS</a>
       </div>
       <div id="horasextras" class="collapse">
+        <div>
+          <div class="row mt-3">
+            <div class="col-md-6 text-right">
+              <select class="custom-select-s" name="select" id="percepcionConceptosHrExtra" onchange="concepPercepcionesHrExtra()">
+               <?php echo $consultaPercepConcepHrExtra; ?>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <a href="#"><img class="icomediano" src="/conta6/Resources/iconos/help.svg"></a>
+            </div>
+          </div>
+          <div class="row mt-4 align-items-center justify-content-center">
+            <div class='col-md-1'>
+              <input type="text" class="efecto h22 border-0" id="claveSATpercepcionHrExtra" readonly>
+              <input type="hidden" id="ordenReportepercepcionHrExtra">
+            </div>
+            <div class='col-md-2'>
+              <input type="text" class="efecto h22 border-0" id="claveInternapercepcionHrExtra" readonly>
+            </div>
+            <div class='col-md-4'>
+              <input type="text" class="efecto" id="despercepcionHrExtra">
+            </div>
+            <div class='col-md-1'>
+              <input type="text" class="efecto" id="diaspercepcionHrExtra" value="0">
+            </div>
+            <div class='col-md-1'>
+              <input type="text" class="efecto" id="hrpercepcionHrExtra" value="0">
+            </div>
+            <div class='col-md-1'>
+              <input type="text" class="efecto" id="importeGravadopercepcionHrExtra" value="0" onchange="sumaGeneralNomina()">
+            </div>
+            <div class='col-md-1'>
+              <input type="text" class="efecto" id="importeExentopercepcionHrExtra" value="0" onchange="sumaGeneralNomina()">
+            </div>
+            <div class='col-md-1 text-left'>
+              <a onclick="agregarPercepHrExtra()" id="Btn_agregar">
+                <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+              </a>
+            </div>
+          </div>
+        </div>
         <form class="form1">
           <table class="table">
+              <thead>
+                <tr class="row mt-4 m-0 backpink">
+                  <td class="col-md-1">Cve. SAT</td>
+                  <td class="col-md-2">Cuenta Contable</td>
+                  <td class="col-md-4">Concepto o Descripción</td>
+                  <td class="col-md-1">Días</td>
+                  <td class="col-md-1">Horas</td>
+                  <td class="col-md-1">Importe Gravado</td>
+                  <td class="col-md-1">Importe Exento</td>
+                </tr>
+              </thead>
+              <tbody id='tbodyPercepcionesHrExtra'><?php echo $detalle_PERCEPHrExtra; ?></tbody>
+          </table>
+        </form>
+
+
+
+        <!--form class="form1">
+          <table class="table">
             <tbody>
-              <tr class="row mt-3">
-                <td class="col-md-6 offset-md-3">
-                  <select class="custom-select">
-                    <option selected>Tipo (Agrupar) SAT</option>
-                    <option>Dobles -- 019 -- 0530-00002</option>
-                    <option>Triples -- 019 -- 0530-00003</option>
-                  </select>
-                </td>
-              </tr>
+
 
               <tr class="row mt-5 m-0">
                 <td class="col-md-1 input-effect">
@@ -405,7 +468,7 @@
               </tr>
             </tbody>
           </table>
-        </form>
+        </form-->
       </div>
     </div>
 

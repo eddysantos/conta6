@@ -40,12 +40,14 @@ while ($row = $rslt->fetch_assoc()) {
   $n_porcentaje = $row['n_porcentaje'];
   $d_fecha_modifi = $row['d_fecha_modifi'];
 
+  if($oRst_permisos['s_nom_suel_mod_tab_80'] == 1){
+    $linkModifi_80 = "<a href='#articulo80' data-toggle='modal' db-id='$pk_id_art80' class='editar'>
+      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+    </a>";
+  }
+
   $system_callback['articulo'] .="<tr class='row borderojo align-items-center'>
-    <td class='col-md-1'>
-      <a href='#articulo80' data-toggle='modal' db-id='$pk_id_art80' class='editar'>
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
-      </a>
-    </td>
+    <td class='col-md-1'>$linkModifi_80</td>
     <td class='col-md-2'>$n_inferior</td>
     <td class='col-md-2'>$n_superior</td>
     <td class='col-md-2'>$n_cuota</td>
@@ -95,15 +97,14 @@ while ($row = $rslt->fetch_assoc()) {
   $n_diasPagar = $row['n_diasPagar'];
   $d_fecha_modifi = $row['d_fecha_modifi'];
 
-
-
+  if($oRst_permisos['s_nom_suel_mod_tab_gen'] == 1){
+    $linkModifi_gen = "<a href='#paramgenerales' data-toggle='modal' db-id='$pk_id_gen' class='editar'>
+      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+    </a>";
+  }
 
   $system_callback['generales'] .="<tr class='row borderojo align-items-center'>
-    <td class='col-md-1'>
-      <a href='#paramgenerales' data-toggle='modal' db-id='$pk_id_gen' class='editar'>
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
-      </a>
-    </td>
+    <td class='col-md-1'>$linkModifi_gen</td>
     <td class='col-md-1'>$fk_id_aduana</td>
     <td class='col-md-2'>$n_salarioMinimo</td>
     <td class='col-md-1'>$n_IMSS</td>
@@ -151,16 +152,14 @@ while ($row = $rslt->fetch_assoc()) {
   $n_integrado = $row['n_integrado'];
   $d_fecha_modifi = $row['d_fecha_modifi'];
 
-
-
-
+  if($oRst_permisos['s_nom_suel_mod_tab_imss'] == 1){
+    $linkModifi_integracion = "<a href='#factorintegracion' data-toggle='modal' db-id='$pk_id_factor' class='editar'>
+      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+    </a>";
+  }
 
   $system_callback['factor'] .="<tr class='row borderojo align-items-center'>
-    <td class='col-md-3'>
-      <a href='#factorintegracion' data-toggle='modal' db-id='$pk_id_factor' class='editar'>
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
-      </a>
-    </td>
+    <td class='col-md-3'>$linkModifi_integracion</td>
     <td class='col-md-3'>$n_anio</td>
     <td class='col-md-3'>$n_integrado</td>
     <td class='col-md-3'>$d_fecha_modifi</td>
@@ -206,13 +205,14 @@ while ($row = $rslt->fetch_assoc()) {
   $n_cuota_b = $row['n_cuota_b'];
   $d_fecha_modifi = $row['d_fecha_modifi'];
 
+  if($oRst_permisos['s_nom_suel_mod_tab_subsidio'] == 1){
+    $linkModifi_subsidio = "<a href='#subsidio' data-toggle='modal' db-id='$pk_id_subsidio'  class='editar'>
+      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+    </a>";
+  }
 
   $system_callback['subsidio'] .="<tr class='row borderojo align-items-center'>
-    <td class='col-md-2'>
-      <a href='#subsidio' data-toggle='modal' db-id='$pk_id_subsidio'  class='editar'>
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
-      </a>
-    </td>
+    <td class='col-md-2'>$linkModifi_subsidio</td>
     <td class='col-md-2'>$n_inferior_b</td>
     <td class='col-md-3'>$n_superior_b</td>
     <td class='col-md-2'>$n_cuota_b</td>
@@ -261,13 +261,14 @@ while ($row = $rslt->fetch_assoc()) {
   $n_trabajador = $row['n_trabajador'];
   $d_fecha_modifi = $row['d_fecha_modifi'];
 
+  if($oRst_permisos['s_nom_suel_mod_tab_imss'] == 1){
+    $linkModifi_imss = "<a href='#imss' data-toggle='modal' db-id='$pk_id_imss'  class='editar'>
+      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+    </a>";
+  }
 
   $system_callback['imss'] .="<tr class='row borderojo align-items-center'>
-    <td class='col-md-1'>
-      <a href='#imss' data-toggle='modal' db-id='$pk_id_imss'  class='editar'>
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
-      </a>
-    </td>
+    <td class='col-md-1'>$linkModifi_imss</td>
     <td class='col-md-1'>$n_ramo</td>
     <td class='col-md-2 text-left'>$s_descripcion</td>
     <td class='col-md-1'>$n_baseSalarial</td>
@@ -317,13 +318,14 @@ while ($row = $rslt->fetch_assoc()) {
   $n_porcentaje = $row['n_porcentaje'];
   $d_fecha_modifi = $row['d_fecha_modifi'];
 
+  if($oRst_permisos['s_nom_has_mod_tab_113'] == 1){
+    $linkModifi_113 = "  <a href='#articulo113' data-toggle='modal' db-id='$pk_id_art113'  class='editar'>
+        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+      </a>";
+  }
 
   $system_callback['articulo113'] .="<tr class='row borderojo align-items-center'>
-    <td class='col-md-1'>
-      <a href='#articulo113' data-toggle='modal' db-id='$pk_id_art113'  class='editar'>
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
-      </a>
-    </td>
+    <td class='col-md-1'>$linkModifi_113</td>
     <td class='col-md-2'>$n_inferior</td>
     <td class='col-md-2'>$n_superior</td>
     <td class='col-md-2'>$n_cuota</td>

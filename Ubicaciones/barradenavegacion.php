@@ -217,25 +217,16 @@ $marginbottom = "margin-bottom:100px!important";
               <li class="nav-item dropdown">
                 <a href="#" class="">NÓMINA <img src="/conta6/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
                 <ul class="dropdown-menu">
-                  <!-- <li class="dropdown">
-                    <a href="" class="">Sueldos y Salarios CFDI <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/empleados/Empleados.php">Empleados</a></li>
-                      <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/GenerarNominaCFDI.php">Nomina</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown">
-                    <a href="" class="">Honorarios Asimilados CFDI <img src="/conta6/Resources/iconos/right1.svg"  style="width:10px;"></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="/conta6/Ubicaciones/Nomina/Honorarios/Empleados.php">Empleados</a></li>
-                      <li><a href="/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">Nomina</a></li>
-                    </ul>
-                  </li> -->
-                  <li><a href="/Conta6/Ubicaciones/Nomina/empleados/Empleados.php">Empleados</a></li>
-                  <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php">Nómina Sueldos y Salarios CFDI</a></li>
-                  <li><a href="/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">Nómina Honorarios Asimilados CFDI</a></li>
-                  <li><a href="/conta6/Ubicaciones/Nomina/DatosOficina/DatosOficina.php">Datos de Oficina</a></li>
-                  <li><a href="/conta6/Ubicaciones/Nomina/Reportes/Reporte.php">Reportes</a></li>
+                  <?PHP if($oRst_permisos['s_nom_empleados'] == 1){ ?>
+                    <li><a href="/Conta6/Ubicaciones/Nomina/empleados/Empleados.php">Empleados</a></li><?php } ?>
+                  <?PHP if($oRst_permisos['s_nom_suel'] == 1){ ?>
+                    <li><a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php">Nómina Sueldos y Salarios CFDI</a></li><?php } ?>
+                  <?PHP if($oRst_permisos['s_nom_has'] == 1){ ?>
+                    <li><a href="/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">Nómina Honorarios Asimilados CFDI</a></li><?php } ?>
+                  <?PHP if($oRst_permisos['s_datos_oficinas_mod'] == 1){ ?>
+                    <li><a href="/conta6/Ubicaciones/Nomina/DatosOficina/DatosOficina.php">Datos de Oficina</a></li><?php } ?>
+                  <?PHP if($oRst_permisos['s_nom_reportes'] == 1){ ?>
+                    <li><a href="/conta6/Ubicaciones/Nomina/Reportes/Reporte.php">Reportes</a></li><?php } ?>
 
                 </ul>
 <!--******************************MENU PROLOG  Indice TRAFICO******************************-->

@@ -583,7 +583,7 @@ function listaEmpleados(){
   }
   $.ajax({
     type: "POST",
-    url: "actions/mostrar.php",
+    url: "/conta6/Ubicaciones/Nomina/empleados/actions/mostrar.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);

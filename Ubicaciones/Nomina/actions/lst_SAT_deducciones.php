@@ -1,7 +1,7 @@
 <?PHP
   $query_consultaDeducConcep = "SELECT b.fk_id_deduccion, a.s_descripcion as desDeduccion,b.s_descripcion,b.n_ordenReporte,
                               			 CASE WHEN b.fk_id_cuenta = '0115-00001' THEN '$PRESTAMOCTA' else b.fk_id_cuenta END AS id_cuenta
-                              FROM conta_cs_sat_tipodeduccion a, conta_cs_nom_tipodeduccion_ctamst b
+                              FROM conta_cs_sat_tipodeduccion a, conta_cs_sat_tipodeduccion_ctamst b
                               WHERE a.pk_id_deduccion = b.fk_id_deduccion and a.s_activo = 1 AND s_clasificacion = 'deduccion' AND fk_id_regimen = $id_regimen
                               ORDER BY b.s_descripcion";
 
