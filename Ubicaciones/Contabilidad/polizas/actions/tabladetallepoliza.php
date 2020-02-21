@@ -42,7 +42,7 @@ while ($row = $rslt->fetch_assoc()) {
 
 
   $system_callback['data'] .=
-  "<tr class='row m-0 borderojo'>
+  "<tr class='row borderojo'>
       <td class='p-0 pt-2' width='3%'>
         <a href='#' onclick='borrarRegistro($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
       </td>

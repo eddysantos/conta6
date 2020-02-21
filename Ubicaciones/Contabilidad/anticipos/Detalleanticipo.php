@@ -75,7 +75,7 @@
 ?>
 
 <div class="text-center mb-10">
-  <div class="row m-0 submenuMed">
+  <div class="row m-0 backpink">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
         <a class="nav-link dant" id="submenuMed" status="cerrado" accion="dtosant">DATOS DE ANTICIPO</a>

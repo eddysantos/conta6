@@ -46,7 +46,7 @@ while ($row = $rslt->fetch_assoc()) {
     </a>";
   }
 
-  $system_callback['articulo'] .="<tr class='row borderojo align-items-center'>
+  $system_callback['articulo'] .="<tr class='row borderojo align-items-center m-0'>
     <td class='col-md-1'>$linkModifi_80</td>
     <td class='col-md-2'>$n_inferior</td>
     <td class='col-md-2'>$n_superior</td>
@@ -103,7 +103,7 @@ while ($row = $rslt->fetch_assoc()) {
     </a>";
   }
 
-  $system_callback['generales'] .="<tr class='row borderojo align-items-center'>
+  $system_callback['generales'] .="<tr class='row borderojo align-items-center m-0'>
     <td class='col-md-1'>$linkModifi_gen</td>
     <td class='col-md-1'>$fk_id_aduana</td>
     <td class='col-md-2'>$n_salarioMinimo</td>
@@ -111,7 +111,7 @@ while ($row = $rslt->fetch_assoc()) {
     <td class='col-md-1'>$n_subsidio</td>
     <td class='col-md-2'>$n_diasTrabajados</td>
     <td class='col-md-2'>$n_diasPagar</td>
-    <td class='col-md-2'>$d_fecha_modifi</td>
+    <td class='col-md-2 p-0'>$d_fecha_modifi</td>
   </tr>";
 
 }
@@ -158,7 +158,7 @@ while ($row = $rslt->fetch_assoc()) {
     </a>";
   }
 
-  $system_callback['factor'] .="<tr class='row borderojo align-items-center'>
+  $system_callback['factor'] .="<tr class='row borderojo align-items-center m-0'>
     <td class='col-md-3'>$linkModifi_integracion</td>
     <td class='col-md-3'>$n_anio</td>
     <td class='col-md-3'>$n_integrado</td>
@@ -211,7 +211,7 @@ while ($row = $rslt->fetch_assoc()) {
     </a>";
   }
 
-  $system_callback['subsidio'] .="<tr class='row borderojo align-items-center'>
+  $system_callback['subsidio'] .="<tr class='row borderojo align-items-center m-0'>
     <td class='col-md-2'>$linkModifi_subsidio</td>
     <td class='col-md-2'>$n_inferior_b</td>
     <td class='col-md-3'>$n_superior_b</td>
@@ -267,14 +267,14 @@ while ($row = $rslt->fetch_assoc()) {
     </a>";
   }
 
-  $system_callback['imss'] .="<tr class='row borderojo align-items-center'>
+  $system_callback['imss'] .="<tr class='row borderojo align-items-center m-0'>
     <td class='col-md-1'>$linkModifi_imss</td>
     <td class='col-md-1'>$n_ramo</td>
-    <td class='col-md-2 text-left'>$s_descripcion</td>
+    <td class='col-md-4 text-left'>$s_descripcion</td>
     <td class='col-md-1'>$n_baseSalarial</td>
     <td class='col-md-1'>$n_topeSalarial</td>
-    <td class='col-md-2'>$n_patron</td>
-    <td class='col-md-2'>$n_trabajador</td>
+    <td class='col-md-1'>$n_patron</td>
+    <td class='col-md-1'>$n_trabajador</td>
     <td class='col-md-2'>$d_fecha_modifi</td>
   </tr>";
 
@@ -324,7 +324,7 @@ while ($row = $rslt->fetch_assoc()) {
       </a>";
   }
 
-  $system_callback['articulo113'] .="<tr class='row borderojo align-items-center'>
+  $system_callback['articulo113'] .="<tr class='row borderojo align-items-center m-0'>
     <td class='col-md-1'>$linkModifi_113</td>
     <td class='col-md-2'>$n_inferior</td>
     <td class='col-md-2'>$n_superior</td>

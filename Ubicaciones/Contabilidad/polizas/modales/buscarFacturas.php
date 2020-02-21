@@ -1,8 +1,8 @@
 <!--Buscar Facturas en Captura detalle de poliza-->
 <div class="modal fade" id="detpol-buscarfacturas" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header row font14 m-0 align-items-center">
+    <div class="modal-content m_bordenegro">
+      <!-- <div class="modal-header row font14 m-0 align-items-center">
         <div class="col-md-1">
           <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
             <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
@@ -12,7 +12,21 @@
         <div class="col-md-9">
           <input class="bt border-0 h22 w-100 fw-bold" id="detpol-cliente-nombre" type="text" readonly>
         </div>
+      </div> -->
+
+
+      <div class="modal-header row m-0 border-0 align-items-center">
+        <div class='col-md-2 text-center'>Facturas de:</div>
+        <div class="col-md-9">
+          <input class="bt border-0 h22 w-100 fw-bold" id="detpol-cliente-nombre" type="text" readonly>
+        </div>
+        <div class="col-md-1">
+          <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        </div>
       </div>
+
+
+
       <div class="modal-body p-0">
         <div id="contorno" class="contorno">
           <table class="table text-center table-hover m-0 fixed-table">
@@ -40,7 +54,7 @@
 <!--Buscar Sueldos y Salarios en Detalle de poliza-->
 <div class="modal fade" id="detpol-Sueldos" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
+    <div class="modal-content m_bordenegro">
       <div class="modal-header">
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
@@ -105,7 +119,7 @@
 <!--Buscar CFDI Honorarios en Detalle de poliza-->
 <div class="modal fade" id="detpol-Honorarios" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
+    <div class="modal-content m_bordenegro">
       <div class="modal-header">
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>

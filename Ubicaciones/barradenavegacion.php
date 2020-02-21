@@ -18,21 +18,20 @@ $marginbottom = "margin-bottom:100px!important";
   <link rel="stylesheet" href="/conta6/Resources/fontAwesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="/conta6/Resources/css/inputs.css">
   <link rel="stylesheet" href="/conta6/Resources/css/Modulo1.css">
-  <!-- <link rel="stylesheet" href="/conta6/Resources/css/Modulo2.css">
-  <link rel="stylesheet" href="/conta6/Resources/css/Modulo3.css"> -->
   <link rel="stylesheet" href="/conta6/Resources/css/barraNavegacion.css">
   <link rel="stylesheet" href="/conta6/Resources/css/modals.css">
-  <link rel="stylesheet" href="/conta6/Resources/bootstrap/css/reset.css">
+  <link rel="stylesheet" href="/conta6/Resources/css/cambiosBootstrap.css">
   <link rel="stylesheet" href="/conta6/Resources/css/bienvenida.css">
   <link rel="stylesheet" href="/conta6/Resources/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/conta6/Resources/bootstrap/css/bootstrap-toggle.css">
   <link rel="stylesheet" href="/conta6/Resources/css/sweetalert.css">
-  <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/alertify.min.css">
-  <link rel="stylesheet" href="/conta6/Resources/bootstrap/alertifyjs/css/themes/default.css">
+  <link rel="stylesheet" href="/conta6/Resources/alertifyjs/css/alertify.min.css">
+  <link rel="stylesheet" href="/conta6/Resources/alertifyjs/css/themes/default.css">
+  <!-- <link rel="stylesheet" href="/conta6/Resources/bootstrap/css/reset.css"> -->
+  <!-- <link rel="stylesheet" href="/conta6/Resources/bootstrap/css/bootstrap-toggle.css"> -->
 
 <!--***************SCRIPTS*****************-->
   <script src="/conta6/Resources/JQuery/jquery.min.js"></script>
-  <script src="/conta6/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
+  <script src="/conta6/Resources/alertifyjs/alertify.min.js"></script>
   <script src="/conta6/Resources/JQuery/sweetalert.min.js"></script>
   <script src="/conta6/Resources/JQuery/popper.min.js"></script>
   <script src="/conta6/Resources/JQuery/tether.min.js"></script>
@@ -49,10 +48,11 @@ $marginbottom = "margin-bottom:100px!important";
         <div class="navbar-header"></div>
         <div class="navbar-collapse m-0" id="menu">
           <ul class="nav nav-pills nav-fill">
-            <li class="nav-item dropdown">
-              <a href="#"><img src="/conta6/Resources/imagenes/cheetah.svg"  class="logo"></a>
-              <ul class="dropdown-menu" style="width:220px">
-                <select class="w-75 ml-5">
+            <li class="nav-item dropdown text-left">
+              <a href="#"><img src="/conta6/Resources/imagenes/s_rojo.svg" style=' width: 45px;'></a>
+              <!-- <a href="#"><img src="/conta6/Resources/imagenes/cheetah.svg"  class="logo"></a> -->
+              <ul class="dropdown-menu text-center" style="width:220px">
+                <select class="w-75">
                   <option value="">Aeropuerto</option>
                   <option value="">Manzanillo</option>
                   <option value="">Nuevo Laredo</option>
@@ -63,7 +63,7 @@ $marginbottom = "margin-bottom:100px!important";
 
 <!--***************MENU PROLOG  Contabilidad*****************-->
             <?PHP if($oRst_permisos['s_MENU_CONTABILIDAD'] == 1){ ?>
-			      <li class="nav-item dropdown">
+			      <li class="nav-item dropdown text-left pl-3">
               <a href="#" class="" data-hover="dropdown">CONTABILIDAD <img src="/conta6/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
               <ul class="dropdown-menu">
 
@@ -214,7 +214,7 @@ $marginbottom = "margin-bottom:100px!important";
             <?php } ?>
 
 <!--******************************MENU PROLOG  Indice NOMINA******************************-->
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown text-left pl-3">
                 <a href="#" class="">NÓMINA <img src="/conta6/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
                 <ul class="dropdown-menu">
                   <?PHP if($oRst_permisos['s_nom_empleados'] == 1){ ?>
@@ -230,7 +230,7 @@ $marginbottom = "margin-bottom:100px!important";
 
                 </ul>
 <!--******************************MENU PROLOG  Indice TRAFICO******************************-->
-               <li class="nav-item dropdown">
+               <li class="nav-item dropdown text-left pl-3">
                  <a href="#" class="">TRÁFICO <img src="/conta6/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
                  <ul class="dropdown-menu">
                    <li><a href="/conta6/Ubicaciones/Trafico/SolicitudAnticipo/SolAnticipo.php">Solicitud de Anticipo</a></li>
@@ -252,7 +252,7 @@ $marginbottom = "margin-bottom:100px!important";
                    </li>
                  </ul>
 <!--******************************MENU PROLOG  Indice CUENTAS AMERICANAS*************************************-->
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown text-left">
                   <a href="#" class="">CUENTAS  AMERICANAS <img src="/conta6/Resources/iconos/3down.svg" alt="logo"  style="width:13px;"></a>
                   <ul class="dropdown-menu">
                     <li><a href="/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos.php">Cuentas de Gastos</a></li>
@@ -271,8 +271,8 @@ $marginbottom = "margin-bottom:100px!important";
                   </ul>
                 </li>
                 <!-- <li class="nav-item"><a href="#">OFICINA</a></li> -->
-                <li class="nav-item"><a href="#">SOPORTE</a></li>
-                <li class="nav-item"><a href="/conta6/Resources/PHP/Utilities/cerrarSesion.php">CERRAR SESION</a></li>
+                <li class="nav-item text-left pl-3"><a href="#">SOPORTE</a></li>
+                <li class="nav-item text-left pl-3"><a href="/conta6/Resources/PHP/Utilities/cerrarSesion.php">CERRAR SESION</a></li>
               </ul>
               </li>
               </li>

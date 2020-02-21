@@ -10,7 +10,7 @@
 ?>
 
 <div class="container-fluid">
-  <div class="row submenuMed text-center m-0">
+  <div class="row submenuMed text-center p-1">
     <div class="col-md-4" role="button">
       <a  id="submenuMed" class="honorarios" accion="gnominaHon" status="cerrado">GENERAR NOMINA</a>
     </div>
@@ -23,36 +23,36 @@
   </div>
 
   <!--Comienza Generar Nomina-->
-  <div id="contornognomHon" class="contorno" style="display:none">
-    <h5 class="titulo font16">Documento Ordinario</h5>
-    <table class="table form1 text-center" id="generarnominaHon">
+  <div id="contornognomHon" class="contorno mx-0 mt-4" style="display:none">
+    <div class="titulo font16" style='margin-top: -28px;'>Documento Ordinario</div>
+    <table class="table text-center" id="generarnominaHon">
       <thead>
         <tr class="row font14 encabezado">
-          <td class="col-md-4"><?php echo $anioFI." tiene ".$ultimaSemAnio." semanas";?></td>
+          <td class="col-md-3"><?php echo $anioFI." tiene ".$ultimaSemAnio." semanas";?></td>
           <td class="col-md-1">Nómina</td>
           <td class="col-md-2">Fecha Inicio</td>
           <td class="col-md-2">Fecha Final</td>
           <td class="col-md-2">Fecha de Pago</td>
-          <td class="col-md-1">Mes</td>
+          <td class="col-md-2">Mes</td>
         </tr>
       </thead>
       <tbody class="font14">
         <tr class="row">
-          <td class="col-md-4">Ultima Nómina Generada</td>
-          <td class="col-md-1"><input id="num_nomgen" class="efecto" type="text" readonly value="<?php echo $ULTNOM; ?>"></td>
-          <td class="col-md-2"><input id="fi_nomgen" class="efecto" type="date" readonly value="<?php echo $FIUNG; ?>"></td>
-          <td class="col-md-2"><input id="ff_nomgen" class="efecto" type="date" readonly value="<?php echo $FFUNG; ?>"></td>
+          <td class="col-md-3">Ultima Nómina Generada</td>
+          <td class="col-md-1"><input id="num_nomgen" class="efecto h22" type="text" readonly value="<?php echo $ULTNOM; ?>"></td>
+          <td class="col-md-2"><input id="fi_nomgen" class="efecto h22" type="date" readonly value="<?php echo $FIUNG; ?>"></td>
+          <td class="col-md-2"><input id="ff_nomgen" class="efecto h22" type="date" readonly value="<?php echo $FFUNG; ?>"></td>
           <td class="col-md-2"></td>
-          <td class="col-md-1"></td>
+          <td class="col-md-2"></td>
         </tr>
         <tr class="row">
-          <td class="col-md-4">Nómina Siguiente</td>
-          <td class="col-md-1"><input id="num_nomsig" class="efecto" type="text" readonly value="<?php echo $NOM_SIG; ?>"><input id="anio_nomsig" type="hidden" value="<?php echo $anioFI; ?>"></td>
-          <td class="col-md-2"><input id="fi_nomsig" class="efecto" type="date" readonly value="<?php echo $FINS; ?>"></td>
-          <td class="col-md-2"><input id="ff_nomsig" class="efecto" type="date" readonly value="<?php echo $FFNS; ?>"></td>
-          <td class="col-md-2"><input id="fp_nomsig" class="efecto" type="date" value="<?php echo $FFNS; ?>"></td>
-          <td class="col-md-1">
-            <select class="custom-select" id="mesCorresponde">
+          <td class="col-md-3">Nómina Siguiente</td>
+          <td class="col-md-1"><input id="num_nomsig" class="efecto h22" type="text" readonly value="<?php echo $NOM_SIG; ?>"><input id="anio_nomsig" type="hidden" value="<?php echo $anioFI; ?>"></td>
+          <td class="col-md-2"><input id="fi_nomsig" class="efecto h22" type="date" readonly value="<?php echo $FINS; ?>"></td>
+          <td class="col-md-2"><input id="ff_nomsig" class="efecto h22" type="date" readonly value="<?php echo $FFNS; ?>"></td>
+          <td class="col-md-2"><input id="fp_nomsig" class="efecto h22" type="date" value="<?php echo $FFNS; ?>"></td>
+          <td class="col-md-2">
+            <select class="custom-select-s" id="mesCorresponde">
               <option value="" selected>Corresponde</option>
               <option value="1">Enero</option>
               <option value="2">Febrero</option>
@@ -69,9 +69,9 @@
             </select>
           </td>
         </tr>
-        <tr class="row">
-          <td class="col-md-2 offset-md-5 mt-4">
-            <input class="efecto" type="submit" id="generarDocNominaHon" value="GENERAR NOMINA"><!--Guardar Datos de poliza/cuando se actualizo algun dato-->
+        <tr class="row justify-content-center">
+          <td class="col-md-3 mt-4">
+            <input class="efecto" type="submit" id="generarDocNominaHon" value="Generar Nomina">
             <input id="nom_regimen" type="hidden" value="<?php echo $regimenNomina; ?>">
           </td>
         </tr>
@@ -96,40 +96,38 @@
       </tr>
     </table>
 
-    <div  class="contorno mt-4">
+    <div  class="contorno mt-4 mx-0">
       <div class="acordeon2">
-        <div class="encabezado text-center font16" data-toggle="collapse" href="#collapseOne">
+        <div class="encabezado text-center font16 p-1" data-toggle="collapse" href="#collapseOne">
           <a href="#">DATOS GENERALES</a>
         </div>
         <div id="collapseOne" class="collapse">
-          <form class="form1">
-            <table class="table text-center">
-              <thead>
-                <tr class="row m-0 backpink">
-                  <td class="col-md-1">Empleados</td>
-                  <td class="col-md-1">CFDI</td>
-                  <td class="col-md-2">Cancelados</td>
-                  <td class="col-md-2">Percepciones</td>
-                  <td class="col-md-2">Deducciones</td>
-                  <td class="col-md-2">Total</td>
-                  <td class="col-md-2">Total Neto</td>
-                </tr>
-              </thead>
-              <tbody class="font14" id="resConNomGenerales"></tbody>
-            </table>
-          </form>
+          <table class="table text-center">
+            <thead>
+              <tr class="row m-0 backpink">
+                <td class="p-1 col-md-1">Empleados</td>
+                <td class="p-1 col-md-1">CFDI</td>
+                <td class="p-1 col-md-2">Cancelados</td>
+                <td class="p-1 col-md-2">Percepciones</td>
+                <td class="p-1 col-md-2">Deducciones</td>
+                <td class="p-1 col-md-2">Total</td>
+                <td class="p-1 col-md-2">Total Neto</td>
+              </tr>
+            </thead>
+            <tbody class="font14" id="resConNomGenerales"></tbody>
+          </table>
         </div>
       </div>
     </div>
 
-    <div class="contorno mt-4">
+    <div class="contorno mt-4 mx-0">
       <table class="table text-center m-0 table-hover">
         <thead>
-          <tr class="row encabezado">
+          <tr class="row encabezado align-items-center">
             <td class="col-md-1">No.</td>
             <td class="col-md-3">Empleado</td>
             <td class="col-md-1">Tipo</td>
-            <td class="col-md-1">Documento <a href=''><img class='icomediano' src='/conta6/Resources/iconos/002-plus.svg'></a></td>
+            <td class="col-md-1 p-0">Documento <a href=''><img class='icochico' src='/conta6/Resources/iconos/002-plus.svg'></a></td>
             <td class="col-md-1"><a href=''><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a></td>
             <td class="col-md-1">Pol.Pago</td>
             <td class="col-md-1">Cancelar</td>
@@ -142,9 +140,8 @@
               <a href='#catalogoComplementoNomina' data-toggle='modal'>
                 <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
               </a>
-              <!--a href='#' > <img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a> <a href=''> <img class='icomediano' src='/conta6/Resources/iconos/help.svg'></a-->
             </td>
-            <td class="col-md-1"></td>
+            <!-- <td class="col-md-1"></td> -->
           </tr>
         </thead>
         <tbody class="font14" id="resConNomDcocumentos"></tbody>
@@ -154,7 +151,7 @@
 
 <!--Comienza Consultar Parametros-->
   <div id="contornoparamHon" style="display:none">
-    <div class="contorno">
+    <div class="contorno mx-0">
       <div class="acordeon2">
         <div class="encabezado text-center font16">
           <a href="#">ARTICULO 113</a>
@@ -163,12 +160,12 @@
             <table class="table table-hover text-center">
               <thead>
                 <tr class="row backpink m-0">
-                  <td class="col-md-1">Editar</td>
-                  <td class="col-md-2">Inferior</td>
-                  <td class="col-md-2">Superior</td>
-                  <td class="col-md-2">Cuota</td>
-                  <td class="col-md-2">Porcentaje</td>
-                  <td class="col-md-3">Ultima Modificación</td>
+                  <td class="p-1 col-md-1">Editar</td>
+                  <td class="p-1 col-md-2">Inferior</td>
+                  <td class="p-1 col-md-2">Superior</td>
+                  <td class="p-1 col-md-2">Cuota</td>
+                  <td class="p-1 col-md-2">Porcentaje</td>
+                  <td class="p-1 col-md-3">Ultima Modificación</td>
                 </tr>
               </thead>
               <tbody id="tablaArticulo113"></tbody>
@@ -176,7 +173,7 @@
           </form>
         </div>
       </div>
-    </div><!--/Termina Consultar Parametros-->
+    </div>
   </div>
 
 <?php

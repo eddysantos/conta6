@@ -229,7 +229,7 @@ if($referencia != "SN"){
 
 
     <div class='text-center'>
-      <div class='row m-0 submenuMed'>
+      <div class='row m-0 backpink'>
         <div class='col-md-4' role='button'>
           <a  id="submenuMed" class="visualizar" accion="Ver-cliente" status="cerrado">DATOS CLIENTE</a>
         </div>

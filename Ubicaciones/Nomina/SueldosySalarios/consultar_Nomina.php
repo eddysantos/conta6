@@ -1,3 +1,10 @@
+<style media="screen">
+  .activogenCFDI{
+    color: black!important;
+    font-weight: bold;
+  }
+</style>
+
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
@@ -139,7 +146,7 @@
 </div>
 
 <script src="js/SueldosySalarios.js"></script>
-<script src="/conta6/Resources/bootstrap/js/bootstrap-toggle.js"></script>
+<!-- <script src="/conta6/Resources/bootstrap/js/bootstrap-toggle.js"></script> -->
 
 <?php
 require $root . '/conta6/Ubicaciones/footer.php';

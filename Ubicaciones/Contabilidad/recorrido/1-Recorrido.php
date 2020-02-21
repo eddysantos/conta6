@@ -5,7 +5,7 @@
 
 
 <div class="text-center">
-  <div class="row submenuMed m-0">
+  <div class="row backpink m-0">
     <ul class="nav nav-pills nav-fill w-100" id="AsignarEntregas">
       <li class="nav-item">
         <a class="nav-link consultar" id="submenuMed" accion="Entregas" status="cerrado">OTRAS ENTREGAS</a>
@@ -141,7 +141,7 @@
             </tr>
             <tr class="row m-0">
               <td class="col-md-2 offset-md-2 input-effect">
-                <label class="mb-2 font14" style="color: #d59f9f;">Estatus</label>
+                <label class="mb-2 font14">Estatus</label>
                 <select class="custom-select">
                   <option value="">Entregado</option>
                   <option value="">Pendiente</option>
@@ -242,4 +242,4 @@
 
 <script src="js/Recorrido.js"></script>
 <script src="/conta6/Resources/js/Inputs.js"></script>
-<script src="/conta6/Resources/bootstrap/js/bootstrap-checkbox-toggle.js"></script>
+<!-- <script src="/conta6/Resources/bootstrap/js/bootstrap-checkbox-toggle.js"></script> -->

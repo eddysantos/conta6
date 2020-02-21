@@ -1,3 +1,10 @@
+<style media="screen">
+  .activopermanentes{
+    color: black!important;
+    font-weight: bold;
+  }
+</style>
+
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
@@ -10,7 +17,7 @@
   <h5 class="titulo w-25 font14">MODIFICAR DATOS PERMANENTES</h5>
   <table class="table table-hover font12"><!--tabla para modificr datos del CFDI-->
     <thead>
-      <tr class="row encabezado">
+      <tr class="row encabezado text-center">
         <td class="col-md-3">EMPLEADO</td>
         <td class="col-md-1">FALTAS</td>
         <td class="col-md-1">RETARDO</td>
@@ -32,7 +39,7 @@
         <td class="col-md-1"><input class="efecto h22" type="text" value="0"></td>
         <td class="col-md-1"><input class="efecto h22" type="text" value="0"></td>
         <td class="col-md-1"><input class="efecto h22" type="text" value="0"></td>
-        <td class="col-md-1">
+        <td class="col-md-1 text-center">
           <a href="#permanentes" data-toggle="modal">
             <img class="icomediano" src="/conta6/Resources/iconos/detalles.svg">
           </a>
@@ -47,7 +54,7 @@
         <td class="col-md-1"><input class="efecto h22" type="text" value="0"></td>
         <td class="col-md-1"><input class="efecto h22" type="text" value="0"></td>
         <td class="col-md-1"><input class="efecto h22" type="text" value="0"></td>
-        <td class="col-md-1">
+        <td class="col-md-1 text-center">
           <a href="#permanentes" data-toggle="modal">
             <img class="icomediano" src="/conta6/Resources/iconos/detalles.svg">
           </a>

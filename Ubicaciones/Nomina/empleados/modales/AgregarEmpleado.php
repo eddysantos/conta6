@@ -23,7 +23,7 @@
 
     <div id="regimen" style="display:none" class="text-center">
       <div class="modal-body p-0 pb-4">
-        <div class="row submenuMed m-0">
+        <div class="row backpink m-0">
           <div class="col-md-3" role="button">
             <a  id="submenuModal">Datos Generales</a>
           </div>

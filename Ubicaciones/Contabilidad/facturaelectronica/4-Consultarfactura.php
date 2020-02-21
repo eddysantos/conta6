@@ -24,7 +24,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="row backpink">
+            <tr class="row backpink b fw-bold font12">
               <td class="col-md-1"></td>
               <td class="col-md-1">FECHA</td>
               <td class="col-md-1">FACTURA</td>

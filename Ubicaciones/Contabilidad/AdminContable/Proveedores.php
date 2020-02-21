@@ -5,7 +5,7 @@
 
 <?php if( $oRst_permisos["s_catalogoPersonasPROV_g"] == 1 ){ ?>
 <div class="text-center">
-  <div class="row m-0 submenuMed">
+  <div class="row m-0 backpink">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
         <a href="#NuevoProveedor" data-toggle="modal" class="nav-link" id="submenuMed">AGREGAR NUEVO</a>

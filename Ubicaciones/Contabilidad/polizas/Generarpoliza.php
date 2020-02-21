@@ -7,7 +7,7 @@
 <input type="hidden" id="diausuario" value="<?php echo $usuario;?>">
 
 <div class="text-center">
-  <div class="row submenuMed m-0">
+  <div class="row backpink m-0">
     <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
       <li class="nav-item">
         <a class="nav-link pol" id="submenuMed" accion="poldiario" status="cerrado">POLIZA DE DIARIO</a>
@@ -20,7 +20,7 @@
 
   <!--Comienza Generar Poliza de Diario e Ingreso-->
   <div id="gpoliza" class="contorno" style="display:none">
-    <table class="table form1 font14">
+    <table class="table font14">
       <thead>
         <tr class="row m-0 encabezado font18">
           <td class="col-md-12">GENERAR POLIZA</td>

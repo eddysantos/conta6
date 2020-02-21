@@ -47,11 +47,11 @@ if ($rslt->num_rows == 0) {
 
   $system_callback['data'] .=
   "<div class='contorno font14'>
-    <h5 class='titulo '>DATOS GENERALES</h5>
-    <table class='table form1'>
+    <div class='titulo' style='margin-top: -24px;'>DATOS GENERALES</div>
+    <table class='table'>
       <thead></thead>
       <tbody>
-        <tr class='row mt-4'>
+        <tr class='row mt-4 align-items-center'>
           <td class='col-md-4 input-effect'>
             <input id='nombre' class='efecto tiene-contenido' type='text' value='$nombre' onblur='eliminaBlancosIntermedios(this);todasMayusculas(this);'>
             <label for='nombre'>PERSONA</label>
@@ -64,7 +64,7 @@ if ($rslt->num_rows == 0) {
             <input id='taxid' class='efecto tiene-contenido' type='text' value='$taxid' onblur='eliminaBlancosIntermedios(this);'>
             <label for='taxid'>Tax ID</label>
           </td>
-          <td class='col-md-1 mt-2 text-left'>$btnguardar</td>
+          <td class='col-md-1 text-left'>$btnguardar</td>
         </tr>
        </tbody>
       </table>

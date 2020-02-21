@@ -5,7 +5,7 @@
 
 
 <div class="text-center">
-  <div class="row submenuMed m-0">
+  <div class="row backpink m-0">
     <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
       <li class="nav-item">
         <a class="nav-link adminclientes" id="submenuMed" accion="ca-generar" status="cerrado">GENERAR</a>

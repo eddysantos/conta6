@@ -3,36 +3,36 @@
 <!--Sección de Reportes Contbilidad-->
 <div class="modal fade text-center" id="ReportesCont" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Reportes Contabilidad</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Reportes Contabilidad</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
-        <div class="row submenuMed m-0">
-          <ul class="nav nav-pills nav-fill" id="selecRepoCont">
+        <div class="row sub2 m-0">
+          <ul class="nav nav-pills nav-fill font12" id="selecRepoCont">
             <li class="nav-item">
-              <a style="cursor:pointer" class="nav-link Consul font12" accion="cobranza" status="cerrado">COBRANZA</a>
+              <a style="cursor:pointer" class="nav-link Consul" accion="cobranza" status="cerrado">COBRANZA</a>
             </li>
             <li class="nav-item">
-              <a style="cursor:pointer" class="nav-link Consul font12" accion="conta" status="cerrado">CONTABILIDAD</a>
+              <a style="cursor:pointer" class="nav-link Consul" accion="conta" status="cerrado">CONTABILIDAD</a>
             </li>
             <li class="nav-item">
-              <a style="cursor:pointer" class="nav-link Consul font12" accion="contaElec" status="cerrado">CONTABILIDAD ELECTRONICA</a>
+              <a style="cursor:pointer" class="nav-link Consul" accion="contaElec" status="cerrado">CONTABILIDAD ELECTRONICA</a>
             </li>
             <li class="nav-item">
-              <a style="cursor:pointer" class="nav-link Consul font12" accion="Fact" status="cerrado">FACTURACION</a>
+              <a style="cursor:pointer" class="nav-link Consul" accion="Fact" status="cerrado">FACTURACION</a>
             </li>
             <li class="nav-item">
-              <a style="cursor:pointer" class="nav-link Consul font12" accion="Finan" status="cerrado">FINANCIEROS</a>
+              <a style="cursor:pointer" class="nav-link Consul" accion="Finan" status="cerrado">FINANCIEROS</a>
             </li>
             <li class="nav-item">
-              <a style="cursor:pointer" class="nav-link Consul font12" accion="Impuestos" status="cerrado">IMPUESTOS</a>
+              <a style="cursor:pointer" class="nav-link Consul" accion="Impuestos" status="cerrado">IMPUESTOS</a>
             </li>
             <li class="nav-item">
-              <a style="cursor:pointer" class="nav-link Consul font12" accion="Revisiones" status="cerrado">REVISIONES</a>
+              <a style="cursor:pointer" class="nav-link Consul" accion="Revisiones" status="cerrado">REVISIONES</a>
             </li>
           </ul>
         </div>
@@ -97,7 +97,6 @@
               </table>
             </form>
           </div><!--termina el Container-Fluid-->
-
         </div>
 
         <div id="RepoConta" style="display:none">
@@ -118,7 +117,7 @@
               <table class="table">
                 <thead>
                   <tr class="row encabezado font18">
-                    <td class="col-md-12">REPORTES CONTABILIDAD</td>
+                    <td class="col-md-12 p-1">REPORTES CONTABILIDAD</td>
                   </tr>
                 </thead>
                 <tbody class="font-14">
@@ -137,14 +136,14 @@
                       <label for="ffinal1">Fecha Final</label>
                     </td>
                   </tr>
-                  <tr class="row mt-4">
+                  <tr class="row mt-3">
                     <td class="col-md-12 input-effect">
                       <input  list="listaclientes" class="clientes efecto" id="cliente1">
                       <datalist id="listaclientes"></datalist>
                       <label for="cliente1">Cliente</label>
                     </td>
                   </tr>
-                  <tr class="row mt-4">
+                  <tr class="row mt-3">
                     <td class="col-md-12 input-effect">
                       <input  list="listacuentas" class="cuentas efecto" id="cuentas">
                       <datalist id="listacuentas">
@@ -200,7 +199,7 @@
               <table class="table">
                 <thead>
                   <tr class="row font18 encabezado">
-                    <td class="col-md-12">REPORTES FACTURACIÓN</td>
+                    <td class="col-md-12 p-1">REPORTES FACTURACIÓN</td>
                   </tr>
                 </thead>
                 <tbody class="font14">
@@ -219,14 +218,14 @@
                       <label for="ffinal3">Fecha Final</label>
                     </td>
                   </tr>
-                  <tr class="row mt-4">
+                  <tr class="row mt-3">
                     <td class="col-md-12 input-effect">
                       <input  list="listaclientes" class="clientes efecto" id="f-cliente">
                       <datalist id="listaclientes"></datalist>
                       <label for="f-cliente">Cliente</label>
                     </td>
                   </tr>
-                  <tr class="row mt-4">
+                  <tr class="row mt-3">
                     <td class="col-md-12 input-effect">
                       <input  list="listacorresponsal" class="corres efecto" id="corresponsal">
                       <datalist id="listacorresponsal">
@@ -260,7 +259,7 @@
               <table class="table">
                 <thead>
                   <tr class="row encabezado font18">
-                    <td class="col-md-12">REPORTES FINANCIEROS</td>
+                    <td class="col-md-12 p-1">REPORTES FINANCIEROS</td>
                   </tr>
                 </thead>
                 <tbody class="font14">
@@ -279,7 +278,7 @@
                       <label for="ffinal4">Fecha Final</label>
                     </td>
                   </tr>
-                  <tr class="row mt-4">
+                  <tr class="row mt-3">
                     <td class="col-md-12 input-effect">
                       <input  list="listaclientes" class="clientes efecto" id="finan-cliente">
                       <datalist id="listaclientes"></datalist>
@@ -314,7 +313,7 @@
               <table class="table">
                 <thead>
                   <tr class="row font18 encabezado">
-                    <td class="col-md-12">REPORTES IMPUESTOS</td>
+                    <td class="col-md-12 p-1">REPORTES IMPUESTOS</td>
                   </tr>
                 </thead>
                 <tbody class="font14">
@@ -333,7 +332,7 @@
                       <label for="ffinal5">Fecha Final</label>
                     </td>
                   </tr>
-                  <tr class="row mt-4">
+                  <tr class="row mt-3">
                     <td class="col-md-12 input-effect">
                       <input  list="listaclientes" class="clientes efecto" id="clientes5">
                       <datalist id="listaclientes"></datalist>
@@ -377,7 +376,7 @@
               <table class="table">
                 <thead>
                   <tr class="row font18 encabezado">
-                    <td class="col-md-12">REPORTES PARA REVISIONES</td>
+                    <td class="col-md-12 p-1">REPORTES PARA REVISIONES</td>
                   </tr>
                 </thead>
                 <tbody class="font14">
@@ -396,14 +395,14 @@
                       <label for="ffinal6">Fecha Final</label>
                     </td>
                   </tr>
-                  <tr class="row mt-4">
+                  <tr class="row mt-3">
                     <td class="col-md-12 input-effect">
                       <input  list="listaclientes" class="clientes efecto" id="clientes6">
                       <datalist id="listaclientes"></datalist>
                       <label for="clientes6">Cliente</label>
                     </td>
                   </tr>
-                  <tr class="row mt-4">
+                  <tr class="row mt-3">
                     <td class="col-md-12 input-effect">
                       <input list="ctaMayor" class="ctasMayor efecto" id="lista-ctasmayor">
                       <datalist id="ctaMayor">
@@ -419,11 +418,11 @@
           </div><!--termina el Container-Fluid-->
         </div>
       </div><!--termina el COntenido del Modal-->
-      <div class="modal-footer">
+      <div class="modal-footer border-0 mt-3">
         <table class="table">
           <tbody class="font14">
-            <tr class="row">
-              <td class="col-md-3 offset-md-3">
+            <tr class="row align-items-center justify-content-center">
+              <td class="col-md-3">
                 <a href="" class="boton"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
               </td>
               <td class="col-md-3">

@@ -3,8 +3,8 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 <div class="text-center mb-10">
-  <div class="row submenuMed m-0">
-    <div class="col-md-12" role="button">
+  <div class="row backpink m-0">
+    <div class="col-md-12 p-2" role="button">
       <a  id="submenuMed" class="aconta" accion="eCap" status="cerrado">CATÁLOGO DE CUENTAS</a>
     </div>
   </div>
@@ -18,7 +18,7 @@
         <form class="form1" id="LimpiezaCuentasMaestras">
           <table class="table mb-0">
             <tbody class="font14">
-              <tr class="row m-0 mt-5">
+              <tr class="row m-0 mt-4">
                 <td class="col-md-12 input-effect">
                   <input class="efecto popup-input" id="ctaSAT" type="text" id-display="#popup-display-ctaSAT" action="cuentas_sat" db-id="" autocomplete="off">
                   <div class="popup-list" id="popup-display-ctaSAT" style="display:none"></div>
@@ -54,9 +54,9 @@
                   <label for="concepto">CONCEPTO</label>
                 </td>
               </tr>
-              <tr class="row justify-content-center mt-5">
+              <tr class="row justify-content-center mt-3">
                 <td class="col-md-2">
-                  <a href="#" id="generarCtaMst" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
+                  <a href="#" id="generarCtaMst" class="boton p-1 ls3"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
                   <div id="respuestaCtasMST"></div>
                 </td>
               </tr>
@@ -72,7 +72,7 @@
       </div>
       <div id="collapsetwo" class="collapse">
         <form class="form1" id="Cuentas2doNivel">
-          <table class="table m-0 mt-4 ">
+          <table class="table m-0">
             <tbody class="font14">
               <tr class="row m-0 mt-4">
                 <td class="col-md-12 input-effect">
@@ -83,7 +83,7 @@
                   </label>
                 </td>
               </tr>
-              <tr class="row m-0 mt-4">
+              <tr class="row m-0 mt-3">
                 <td class="col-md-3 input-effect">
                   <input class="efecto popup-input" id="naturSAT1" type="text" id-display="#popup-display-naturSAT1" action="cuentas_sat_natur" db-id="" autocomplete="off">
                   <div class="popup-list" id="popup-display-naturSAT1" style="display:none"></div>
@@ -147,7 +147,7 @@
               </tr>
     <!-- termina CUENTA 0115-0   -->
 
-              <tr class="row justify-content-center m-0 mt-4">
+              <tr class="row justify-content-center m-0 mt-3">
     <!-- SOLO ESTARA VISIBLE CUANDO SELECCIONEN CUENTA 0206-0   -->
                 <td class="col-md-4 input-effect" id="form0206" style="display:none">
                   <input class="efecto popup-input" id="prov0206" type="text" id-display="#popup-display-prov0206" action="proveedores0206" db-id="" autocomplete="off"
@@ -162,9 +162,9 @@
                   <label for="concepto1">CONCEPTO</label>
                 </td>
               </tr>
-              <tr class="row justify-content-center mt-5">
+              <tr class="row justify-content-center mt-3">
                 <td class="col-md-4">
-                  <a href="#" id="generarCtaDet" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR CUENTA DETALLE</a>
+                  <a href="#" id="generarCtaDet" class="boton p-1"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR CUENTA DETALLE</a>
                   <input type="hidden" id="identTipo">
                   <input type="hidden" id="identID">
 				          <!-- <div id="respuestaCtasDET"></div> -->
@@ -191,7 +191,7 @@
                   <label for="clt">CLIENTES</label>
                 </td>
                 <td class="col-md-2 mt-4">
-                  <a href="#" id="generarCtaCLT" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
+                  <a href="#" id="generarCtaCLT" class="boton p-1"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
 				          <!-- <div id="respuestaCtasClientes"></div> -->
                 </td>
               </tr>
@@ -201,6 +201,7 @@
       </div>
     </div>
   </div>
+
 
   <div id="contornoEmp" class="contorno" style="display:none;">
     <h5 class="titulo font16">CATALOGO</h5>

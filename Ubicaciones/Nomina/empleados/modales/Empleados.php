@@ -2,7 +2,7 @@
 <!-- PENDIENTES SOLO SELECT  -->
 <div class="modal fade" id="modDatosEmp" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content text-center">
+    <div class="modal-content text-center m_bordenegro">
       <div class="modal-header">
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
@@ -344,335 +344,334 @@
 
 <div class="modal fade" id="permanentes" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content text-center">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Editar Datos</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Editar Datos</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
         <div class="container-fluid">
       <!--********************************Submenu*******************************-->
-          <div class="row submenuMed">
-            <div class="col-md-6" role="button">
-              <a  id="submenuModal" class="emp perc" accion="perc">Percepciones</a>
-            </div>
-            <div class="col-md-6">
-              <a id="submenuModal" class="emp deduc" accion="deduc">Deducciones</a>
-            </div>
-          </div><!--Termina el Submenu-->
-            <div id="contorno5" class="contorno" style="display:none">
-              <form class="form1" style="letter-spacing:2px">
-                <table class="table mb-0 " id="percepciones">
-                  <tbody>
 
-                    <tr class="row">
-                      <td class="col-md-1 input-effect pt-0">
-                        <label class="mb-0 font14 ls0" style="color: #d59f9f;">Incapacidad</label>
-                        <select class="custom-select mt-2" id="s_incapacidad_pgo">
-                          <option value="0">Incapacidad</option>
-                          <option value="S">Si</option>
-                          <option value="N" selected>No</option>
-                        </select>
-                      </td>
-                      <td class="col-md-1 input-effect mt-3">
-                        <input id="n_incapacidad_dias" class="efecto">
-                        <label for="n_incapacidad_dias">Días</label>
-                      </td>
-                      <td class="col-md-2 input-effect pt-0">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Motivo</label>
-                        <select class="custom-select mt-2" id="fk_tipoIncapacidad">
-                          <?php echo $incapacidad ?>
-                        </select>
-                      </td>
-                      <td></td>
-                      <td class="col-md-1 input-effect pt-0">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Vales</label>
-                        <select class="custom-select mt-2" id="s_valesDespensa_pgo">
-                          <option value="0">Pagar</option>
-                          <option value="S" selected>Si</option>
-                          <option value="N">No</option>
-                        </select>
-                      </td>
-                      <td class="col-md-1 input-effect pt-0">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Días</label>
-                        <select class="custom-select mt-2" id="n_valesDespensa_dias">
-                          <option value="0">Días</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                          <option value="13">13</option>
-                          <option value="14">14</option>
-                          <option value="15" selected>15</option>
-                        </select>
-                      </td>
-                      <td></td>
-                      <td class="col-md-1 input-effect pt-0">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Renta</label>
-                        <select class="custom-select mt-2" id="s_ayudaRenta_pgo">
-                          <option value="0">Renta</option>
-                          <option value="S">Si</option>
-                          <option value="N" selected>No</option>
-                        </select>
-                      </td>
-                      <td class="col-md-1 input-effect mt-3">
-                        <input id="n_ayudaRenta" class="efecto">
-                        <label for="n_ayudaRenta">Importe</label>
-                      </td>
-                      <td class="col-md-2 input-effect pt-0">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Subsidio</label>
-                        <select class="custom-select mt-2" id="s_subsidioPago">
-                          <option value="0">Subsidio</option>
-                          <option value="S">Si</option>
-                          <option value="N" selected>No</option>
-                        </select>
-                      </td>
-                      <td class="col input-effect mt-3">
-                        <input id="n_compensacion" class="efecto">
-                        <label for="n_compensacion">Compensación</label>
-                      </td>
-                    </tr>
-
+          <ul class="nav row sub2 font14 text-center" id="myTab" role="tablist">
+            <li class="nav-item pills col">
+              <a class="nav-link active" id="uno-tab" data-toggle="tab" href="#uno" role="tab" aria-controls="uno" aria-selected="true">Percepciones</a>
+            </li>
+            <li class="nav-item pills col">
+              <a class="nav-link" id="dos-tab" data-toggle="tab" href="#dos" role="tab" aria-controls="dos" aria-selected="false">Deducciones</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="uno" role="tabpanel" aria-labelledby="uno-tab">
+              <div id="contorno5" class="contorno">
+                <form class="form1">
+                  <table class="table mb-0 text-center" id="percepciones">
+                    <tbody>
+                      <tr class="row align-items-center">
+                        <td class="col-md-1 input-effect">
+                          <label class="mb-0 font14 ls0 efecto-select">Incapacidad</label>
+                          <select class="custom-select" id="s_incapacidad_pgo">
+                            <option value="0">Incapacidad</option>
+                            <option value="S">Si</option>
+                            <option value="N" selected>No</option>
+                          </select>
+                        </td>
+                        <td class="col-md-1 input-effect mt-3">
+                          <input id="n_incapacidad_dias" class="efecto" placeholder="Días">
+                        </td>
+                        <td class="col-md-2 input-effect">
+                          <label class="mb-0 font14 efecto-select">Motivo</label>
+                          <select class="custom-select" id="fk_tipoIncapacidad">
+                            <?php echo $incapacidad ?>
+                          </select>
+                        </td>
+                        <td></td>
+                        <td class="col-md-1 input-effect">
+                          <label class="mb-0 font14 efecto-select">Vales</label>
+                          <select class="custom-select" id="s_valesDespensa_pgo">
+                            <option value="0">Pagar</option>
+                            <option value="S" selected>Si</option>
+                            <option value="N">No</option>
+                          </select>
+                        </td>
+                        <td class="col-md-1 input-effect">
+                          <label class="mb-0 font14 efecto-select">Días</label>
+                          <select class="custom-select" id="n_valesDespensa_dias">
+                            <option value="0">Días</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15" selected>15</option>
+                          </select>
+                        </td>
+                        <td></td>
+                        <td class="col-md-1 input-effect">
+                          <label class="mb-0 font14 efecto-select">Renta</label>
+                          <select class="custom-select" id="s_ayudaRenta_pgo">
+                            <option value="0">Renta</option>
+                            <option value="S">Si</option>
+                            <option value="N" selected>No</option>
+                          </select>
+                        </td>
+                        <td class="col-md-1 input-effect mt-3">
+                          <input id="n_ayudaRenta" class="efecto" placeholder="Importe">
+                        </td>
+                        <td class="col-md-2 input-effect">
+                          <label class="mb-0 font14 efecto-select" >Subsidio</label>
+                          <select class="custom-select" id="s_subsidioPago">
+                            <option value="0">Subsidio</option>
+                            <option value="S">Si</option>
+                            <option value="N" selected>No</option>
+                          </select>
+                        </td>
+                        <td class="col input-effect mt-3">
+                          <input id="n_compensacion" class="efecto" placeholder="Compensación">
+                        </td>
+                      </tr>
 
 
-
-                    <tr class="row">
-                      <td class="col-md-2 input-effect mt-4 pt-0">
-                        <input id="n_vacaciones_dias" class="efecto mt-2">
-                        <label for="n_vacaciones_dias">Vacaciones</label>
-                      </td>
-                      <td class="col-md-1 input-effect">
-                        <label class="mb-0 font14 ls0" style="color: #d59f9f;">Prima Vac.</label>
-                        <select class="custom-select mt-1" id="s_vacPrim_Pgo">
-                          <option value="0">Pagar</option>
-                          <option value="S">Si</option>
-                          <option value="N">No</option>
-                        </select>
-                      </td>
-                      <td class="col-md-1 input-effect mt-4 pt-0">
-                        <input class="efecto mt-2" type="text" id="n_vacPrim_dias" value="5">
-                        <label for="n_vacPrim_dias">Días</label>
-                      </td>
-                      <td></td>
-                      <td class="col-md-1 input-effect">
-                        <label class="mb-0 font14 ls0" style="color: #d59f9f;">Asistencia</label>
-                        <select class="custom-select mt-1" id="s_asistencia_pgo">
-                          <option value="0">Pagar</option>
-                          <option value="S" selected>Si</option>
-                          <option value="N">No</option>
-                        </select>
-                      </td>
-                      <td class="col-md-1 input-effect">
-                        <label class="mb-0 font14 ls0" style="color: #d59f9f;">Puntualidad</label>
-                        <select class="custom-select mt-1" id="s_puntualidad_pgo">
-                          <option value="0">Pagar</option>
-                          <option value="S" selected>Si</option>
-                          <option value="N">No</option>
-                        </select>
-                      </td>
-                      <td></td>
-                      <td class="col-md-2 input-effect">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Aguinaldo</label>
-                        <select class="custom-select mt-1" id="s_aguinaldo_Pgo">
-                          <option value="0">Pagar</option>
-                          <option value="S" selected>Si</option>
-                          <option value="N">No</option>
-                        </select>
-                      </td>
-                      <td class="col-md-2 input-effect mt-4 pt-0">
-                        <input id="n_aguinaldo_dias" class="efecto mt-2">
-                        <label for="n_aguinaldo_dias" class="ls1">293 días trabajados</label>
-                      </td>
-                      <td class="col input-effect mt-4 pt-0">
-                        <input id="n_faltas_dias" class="efecto mt-2">
-                        <label for="n_faltas_dias" class="ls0">Faltas (max. 3 dec)</label>
-                      </td>
-                    </tr>
+                      <tr class="row align-items-center">
+                        <td class="col-md-2 input-effect mt-3">
+                          <input id="n_vacaciones_dias" class="efecto" placeholder="Vacaciones">
+                        </td>
+                        <td class="col-md-1 input-effect">
+                          <label class="mb-0 font14 efecto-select ls0">Prima Vac.</label>
+                          <select class="custom-select" id="s_vacPrim_Pgo">
+                            <option value="0">Pagar</option>
+                            <option value="S">Si</option>
+                            <option value="N">No</option>
+                          </select>
+                        </td>
+                        <td class="col-md-1 input-effect mt-3">
+                          <input class="efecto" type="text" id="n_vacPrim_dias" value="5" placeholder="Días">
+                          <!-- <label for="n_vacPrim_dias">Días</label> -->
+                        </td>
+                        <td></td>
+                        <td class="col-md-1 input-effect">
+                          <label class="mb-0 font14 efecto-select ls0">Asistencia</label>
+                          <select class="custom-select" id="s_asistencia_pgo">
+                            <option value="0">Pagar</option>
+                            <option value="S" selected>Si</option>
+                            <option value="N">No</option>
+                          </select>
+                        </td>
+                        <td class="col-md-1 input-effect">
+                          <label class="mb-0 font14 efecto-select ls0">Puntualidad</label>
+                          <select class="custom-select" id="s_puntualidad_pgo">
+                            <option value="0">Pagar</option>
+                            <option value="S" selected>Si</option>
+                            <option value="N">No</option>
+                          </select>
+                        </td>
+                        <td></td>
+                        <td class="col-md-2 input-effect">
+                          <label class="mb-0 font14 efecto-select">Aguinaldo</label>
+                          <select class="custom-select" id="s_aguinaldo_Pgo">
+                            <option value="0">Pagar</option>
+                            <option value="S" selected>Si</option>
+                            <option value="N">No</option>
+                          </select>
+                        </td>
+                        <td class="col-md-2 input-effect mt-3">
+                          <input id="n_aguinaldo_dias" class="efecto" placeholder="293 días trabajados">
+                          <!-- <label for="n_aguinaldo_dias" class="ls1">293 días trabajados</label> -->
+                        </td>
+                        <td class="col input-effect mt-3">
+                          <input id="n_faltas_dias" class="efecto" placeholder="Faltas (max. 3 dec)">
+                          <!-- <label for="n_faltas_dias" class="ls0">Faltas (max. 3 dec)</label> -->
+                        </td>
+                      </tr>
 
 
-                    <tr class="row justify-content-center">
-                      <td class="col-md-6 input-effect">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Cuentas Deudores</label>
-                        <select class="custom-select mt-1" id="s_prestamoCta">
-                          <?php echo $ctasDeudores ?>
-                        </select>
-                      </td>
-                      <td class="col-md-2 input-effect">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Prestamo</label>
-                        <select class="custom-select mt-1" id="s_prestamo_pgo">
-                          <option value="0">Pagar</option>
-                          <option value="S">Si</option>
-                          <option value="N">No</option>
-                        </select>
-                      </td>
-                      <td class="col-md-2 input-effect mt-3">
-                        <input id="n_prestamo" class="efecto mt-1">
-                        <label for="n_prestamo">Importe</label>
-                      </td>
-                    </tr>
+                      <tr class="row justify-content-center align-items-center">
+                        <td class="col-md-6 input-effect">
+                          <label class="mb-0 font14 efecto-select">Cuentas Deudores</label>
+                          <select class="custom-select" id="s_prestamoCta">
+                            <?php echo $ctasDeudores ?>
+                          </select>
+                        </td>
+                        <td class="col-md-2 input-effect">
+                          <label class="mb-0 font14 efecto-select">Prestamo</label>
+                          <select class="custom-select" id="s_prestamo_pgo">
+                            <option value="0">Pagar</option>
+                            <option value="S">Si</option>
+                            <option value="N">No</option>
+                          </select>
+                        </td>
+                        <td class="col-md-2 input-effect mt-3">
+                          <input id="n_prestamo" class="efecto" placeholder="Importe">
+                          <!-- <label for="n_prestamo">Importe</label> -->
+                        </td>
+                      </tr>
 
 
 
-                    <tr class="row mt-3 justify-content-center">
-                      <td class="col-md-2 mt-4">Horas Extras : </td>
-                      <td class="col-md-1 input-effect">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Días</label>
-                        <select class="custom-select" id="n_hrsExtra_dobles_dias">
-                          <option value="0">Días</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select>
-                      </td>
-                      <td class="col-md-1 input-effect">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Dobles</label>
-                        <select class="custom-select" id="n_hrsExtra_dobles">
-                          <option value="0">Horas</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                        </select>
-                      </td>
+                      <tr class="row mt-3 justify-content-center align-items-center">
+                        <td class="col-md-2 mt-4">Horas Extras : </td>
+                        <td class="col-md-1">
+                          <label class="font14 efecto-select">Días</label>
+                          <select class="custom-select" id="n_hrsExtra_dobles_dias">
+                            <option value="0">Días</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                        </td>
+                        <td class="col-md-1">
+                          <label class="font14 efecto-select">Dobles</label>
+                          <select class="custom-select" id="n_hrsExtra_dobles">
+                            <option value="0">Horas</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                          </select>
+                        </td>
 
-                      <td class="col-md-1 ml-5 input-effect">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Días</label>
-                        <select class="custom-select" id="n_hrsExtra_triples_dias">
-                          <option value="0">Días</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select>
-                      </td>
-                      <td class="col-md-1 input-effect">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Triples</label>
-                        <select class="custom-select" id="n_hrsExtra_triples">
-                          <option value="0">Horas</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                        </select>
-                      </td>
+                        <td class="col-md-1">
+                          <label class="font14 efecto-select">Días</label>
+                          <select class="custom-select" id="n_hrsExtra_triples_dias">
+                            <option value="0">Días</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                        </td>
+                        <td class="col-md-1">
+                          <label class="font14 efecto-select">Triples</label>
+                          <select class="custom-select" id="n_hrsExtra_triples">
+                            <option value="0">Horas</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                          </select>
+                        </td>
 
-                      <td class="col-md-1 ml-5 input-effect">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Días</label>
-                        <select class="custom-select" id="n_hrsExtra_simples_dias">
-                          <option value="0">Días</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select>
-                      </td>
-                      <td class="col-md-1 input-effect">
-                        <label class="mb-0 font14" style="color: #d59f9f;">Triples</label>
-                        <select class="custom-select" id="n_hrsExtra_simples">
-                          <option value="0">Horas</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                        </select>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </form>
+                        <td class="col-md-1">
+                          <label class="font14 efecto-select">Días</label>
+                          <select class="custom-select" id="n_hrsExtra_simples_dias">
+                            <option value="0">Días</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                        </td>
+                        <td class="col-md-1">
+                          <label class="font14 efecto-select">Triples</label>
+                          <select class="custom-select" id="n_hrsExtra_simples">
+                            <option value="0">Horas</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                          </select>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+              </div>
             </div>
 
+            <div class="tab-pane fade" id="dos" role="tabpanel" aria-labelledby="dos-tab">
+              <div id="contorno6" class="contorno">
+                <form class="form1">
+                  <table class="table mb-0 text-center" id="deducciones">
+                    <tbody>
+                      <tr class="row align-items-center">
+                        <td class="col-md-2 input-effect mt-3">
+                          <input id="n_desc_descuentos" class="efecto" placeholder="Descuentos">
+                          <!-- <label for="n_desc_descuentos">Descuentos</label> -->
+                        </td>
+                        <td class="col-md-2 input-effect mt-3">
+                          <input id="n_desc_prestamo" class="efecto" placeholder="Prestamos">
+                          <!-- <label for="n_desc_prestamo">Prestamos</label> -->
+                        </td>
+                        <td class="col-md-2 input-effect mt-3">
+                          <input id="n_desc_infonavit" class="efecto" placeholder="INFONAVIT">
+                          <!-- <label for="n_desc_infonavit">INFONAVIT</label> -->
+                        </td>
+                        <td class="col-md-2 input-effect mt-3">
+                          <input id="n_desc_fonacot" class="efecto" placeholder="FONACOT">
+                          <!-- <label for="n_desc_fonacot">FONACOT</label> -->
+                        </td>
+                        <td class="col-md-2 input-effect pt-2">
+                          <label class="mb-2 font14 efecto-select">Por Renta:</label>
+                          <select class="custom-select" id="s_desc_renta_pgo">
+                            <option value="0">Pagar</option>
+                            <option value="S">Si</option>
+                            <option value="N" selected>No</option>
+                          </select>
+                        </td>
+                        <td class="col-md-2 input-effect mt-3">
+                          <input id="n_desc_renta" class="efecto" placeholder="Importe">
+                          <!-- <label for="n_desc_renta">Importe</label> -->
+                        </td>
+                      </tr>
 
-            <div id="contorno6" class="contorno" style="display:none">
-              <form class="form1">
-                <table class="table mb-0 " id="deducciones">
-                  <tbody>
-                    <tr class="row">
-                      <td class="col-md-2 input-effect mt-3">
-                        <input id="n_desc_descuentos" class="efecto">
-                        <label for="n_desc_descuentos">Descuentos</label>
-                      </td>
-                      <td class="col-md-2 input-effect mt-3">
-                        <input id="n_desc_prestamo" class="efecto">
-                        <label for="n_desc_prestamo">Prestamos</label>
-                      </td>
-                      <td class="col-md-2 input-effect mt-3">
-                        <input id="n_desc_infonavit" class="efecto">
-                        <label for="n_desc_infonavit">INFONAVIT</label>
-                      </td>
-                      <td class="col-md-2 input-effect mt-3">
-                        <input id="n_desc_fonacot" class="efecto">
-                        <label for="n_desc_fonacot">FONACOT</label>
-                      </td>
-                      <td class="col-md-2 input-effect pt-0">
-                        <label class="mb-2 font14" style="color: #d59f9f;">Por Renta:</label>
-                        <select class="custom-select" id="s_desc_renta_pgo">
-                          <option value="0">Pagar</option>
-                          <option value="S">Si</option>
-                          <option value="N" selected>No</option>
-                        </select>
-                      </td>
-                      <td class="col-md-2 input-effect mt-3">
-                        <input id="n_desc_renta" class="efecto">
-                        <label for="n_desc_renta">Importe</label>
-                      </td>
-                    </tr>
 
-
-                    <tr class="row mt-3">
-                      <td class="col-md-2 input-effect pt-0">
-                        <label class="mb-2 font14" style="color: #d59f9f;">Pensión</label>
-                        <select class="custom-select" id="s_desc_pensionAlim_pago">
-                          <option value="0">Pensión</option>
-                          <option value="S">Si</option>
-                          <option value="N" selected>No</option>
-                        </select>
-                      </td>
-                      <td class="col-md-2 input-effect mt-3">
-                        <input id="n_desc_pensionAlim_porcent" class="efecto">
-                        <label for="n_desc_pensionAlim_porcent">Porcentaje</label>
-                      </td>
-                      <td class="col-md-4 input-effect mt-3">
-                        <input id="s_desc_pensionAlim_otorgado" class="efecto">
-                        <label for="s_desc_pensionAlim_otorgado">Otorgado al menor:</label>
-                      </td>
-                      <td class="col-md-4 input-effect mt-3">
-                        <input id="s_desc_pensionAlim_entregado" class="efecto">
-                        <label for="s_desc_pensionAlim_entregado">Entregado a:</label>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </form>
+                      <tr class="row mt-3 align-items-center">
+                        <td class="col-md-2 input-effect pt-2">
+                          <label class="mb-2 font14 efecto-select">Pensión</label>
+                          <select class="custom-select" id="s_desc_pensionAlim_pago">
+                            <option value="0">Pensión</option>
+                            <option value="S">Si</option>
+                            <option value="N" selected>No</option>
+                          </select>
+                        </td>
+                        <td class="col-md-2 input-effect mt-3">
+                          <input id="n_desc_pensionAlim_porcent" class="efecto" placeholder="Porcentaje">
+                          <!-- <label for="n_desc_pensionAlim_porcent">Porcentaje</label> -->
+                        </td>
+                        <td class="col-md-4 input-effect mt-3">
+                          <input id="s_desc_pensionAlim_otorgado" class="efecto" placeholder="Otorgado al menor:">
+                          <!-- <label for="s_desc_pensionAlim_otorgado">Otorgado al menor:</label> -->
+                        </td>
+                        <td class="col-md-4 input-effect mt-3">
+                          <input id="s_desc_pensionAlim_entregado" class="efecto" placeholder="Entregado a:">
+                          <!-- <label for="s_desc_pensionAlim_entregado">Entregado a:</label> -->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+              </div>
             </div>
-          </div><!--termina el Cuerpo del Modal-->
-        <div class="modal-footer">
+          </div>
+        </div>
+        <div class="modal-footer border-0 mt-3">
           <a href="#" id="medit-empleado" class="medit-empleado linkbtn">Actualizar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
-      </div><!--termina el COntenido del Modal-->
+      </div>
     </div>
   </div>
 </div>

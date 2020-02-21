@@ -22,73 +22,25 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
     </table>
   </form>
 <?php } ?>
-  <!--solo aparece al seleccionar CFD / CBB-->
-  <!--div id="capturapoliza" class="contorno-mov cfdcbb">
-    <table class="table form1">
-      <thead>
-        <tr class="row m-0 encabezado font18">
-          <td class="col-md-12">CFD / CBB</td>
-        </tr>
-      </thead>
-      <tbody class="font14">
-        <tr class="row m-0 mt-4">
-          <td class="col-md-2 input-effect">
-            <input id="dpol-rfc" class="efecto" type="text">
-            <label for="dpol-rfc">RFC</label>
-          </td>
-          <td class="col-md-6 input-effect">
-            <input id="dpol-razonsocial" class="efecto" type="text">
-            <label for="dpol-razonsocial">Razón Social</label>
-          </td>
-          <td class="col-md-2 input-effect">
-            <input id="dpol-serie" class="efecto" type="text">
-            <label for="dpol-serie">Serie</label>
-          </td>
-          <td class="col-md-2 input-effect">
-            <input id="dpol-folio" class="efecto" type="text">
-            <label for="dpol-folio">Folio</label>
-          </td>
-        </tr>
-        <tr class="row m-0 mt-4">
-          <td class="col-md-3 input-effect">
-            <input id="dpol-subtotal" class="efecto" type="text">
-            <label for="dpol-subtotal">Subtotal</label>
-          </td>
-          <td class="col-md-3 input-effect">
-            <input id="dpol-iva" class="efecto" type="text">
-            <label for="dpol-iva">IVA</label>
-          </td>
-          <td class="col-md-3 input-effect">
-            <input id="dpol-total" class="efecto" type="text">
-            <label for="dpol-total">Total</label>
-          </td>
-          <td class="col-md-3 input-effect">
-            <input id="dpol-aplicar" class="efecto" type="text">
-            <label for="dpol-aplicar">Aplicar</label>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div-->
 
   <div id="capturapoliza" class="contorno cfdi"><!--solo aparece al seleccionar CFDI-->
     <table class="table form1">
       <thead>
-        <tr class="row encabezado m-0 font18">
-          <td class="col-md-12">CFDI</td>
-        </tr>
-        <tr class="row m-0 mt-3 justify-content-center">
+        <div class="row encabezado font18">
+          <div class="col-md-12">CFDI</div>
+        </div>
+        <tr class="row mt-3 justify-content-center">
           <td class="col-md-4 custom-file">
             <input type="file" class="custom-file-input" id="archivo" onChange="processFiles(this.files)">
             <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
           </td>
-          <td class="col-md-12 m-3 p-0">
-            <div class="m-2 b p-2 sub2" id="datosUUID"></div>
+          <td class="col-md-12 p-0">
+            <div class="b p-1 sub2" id="datosUUID"></div>
           </td>
         </tr>
       </thead>
       <tbody class="font14">
-        <tr class="row m-0 mt-3">
+        <tr class="row mt-3">
           <td class="col-md-2 input-effect">
             <input id="cfdi-rfc" class="efecto tiene-contenido" type="text" onchange="eliminaBlancosIntermedios(this);todasMayusculas(this);validaRFC(this);">
             <label for="cfdi-rfc">RFC</label>
@@ -102,7 +54,7 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
             <label for="cfdi-uuid">UUID</label>
           </td>
         </tr>
-        <tr class="row m-0 align-items-center">
+        <tr class="row align-items-center">
           <td class="col-md-2 input-effect mt-4">
             <input id="cfdi-subtotal" class="efecto tiene-contenido" type="text" value="0" onchange="validaIntDec(this);">
             <label for="cfdi-subtotal">Subtotal</label>
@@ -126,7 +78,7 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
             <input id="cfdi-tc" type="hidden" value="">
           </td>
           <td class="col-md-2">
-            <label class="mb-1" style="color: #d59f9f;">Aplicar</label>
+            <label class="mb-1">Aplicar</label>
             <select class="custom-select tiene-contenido" id="cfdi-aplicar">
               <option value="iva">IVA Trasladado</option>
           		<option value="ivaRet">IVA Retenido</option>
@@ -143,12 +95,12 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
   <div id="capturapoliza" class="contorno cheque"><!--solo aparece al seleccionar CHEQUES-->
     <table class="table form1">
       <thead>
-        <tr class="row m-0 encabezado font18">
-          <td class="col-md-12">CHEQUES</td>
-        </tr>
+        <div class="row encabezado font18">
+          <div class="col-md-12">CHEQUES</div>
+        </div>
       </thead>
       <tbody class="font14">
-        <tr class="row m-0 mt-4 justify-content-center">
+        <tr class="row mt-4 justify-content-center">
           <td class="col-md-5 input-effect">
             <input class="efecto popup-input" id="ch-origen" type="text" id-display="#popup-display-ch-origen" action="cuentas_mst_0100_oficina" db-id="" autocomplete="off">
           	<div class="popup-list" id="popup-display-ch-origen" style="display:none"></div>
@@ -161,7 +113,7 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
             <label for="ch-cheques">Cheques</label>
           </td>
         </tr>
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-4">
           <td class="col-md-5 input-effect">
             <input id="ch-emextran" class="efecto" type="text" onchange="eliminaBlancosIntermedios(this);" autocomplete="off">
             <label for="ch-emextran">* Banco Emisor Extranjero</label>
@@ -176,7 +128,7 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
             </select>
           </td>
         </tr>
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-4">
           <td class="col-md-1 input-effect">
             <input id="ch-cheque1" class="efecto h22 tiene-contenido" type="text" disabled>
             <label for="ch-cheque1">Cheque</label>
@@ -205,12 +157,12 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
   <div id="capturapoliza" class="contorno compext"><!--solo aparece al seleccionar Comprobante Extranjero-->
     <table class="table form1">
       <thead>
-        <tr class="row m-0 encabezado font18">
-          <td class="col-md-12">Comprobante Extranjero</td>
+        <div class="row encabezado font18">
+          <div class="col-md-12">Comprobante Extranjero</div>
         </tr>
       </thead>
       <tbody class="font14">
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-4">
           <td class="col-md-4 input-effect">
             <input id="comext-tax" class="efecto" type="text" onchange="todasMayusculas(this);eliminaBlancosIntermedios(this);" autocomplete="off">
             <label for="comext-tax">Tax ID</label>
@@ -220,7 +172,7 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
             <label for="comext-razsocial">Nombre / Razón Social</label>
           </td>
         </tr>
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-4">
           <td class="col-md-3 input-effect">
             <input id="comext-fact" class="efecto" type="text" onchange="eliminaBlancosIntermedios(this);" autocomplete="off">
             <label for="comext-fact">Número de Factura</label>
@@ -247,9 +199,9 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
     <form class="form1">
       <table class="table ">
         <thead>
-          <tr class="row m-0 encabezado font18">
-            <td class="col-md-12">Otro</td>
-          </tr>
+          <div class="row m-0 encabezado font18">
+            <div class="col-md-12">Otro</div>
+          </div>
         </thead>
         <tbody class="font14">
           <tr class="row m-0 mt-4 justify-content-center">
@@ -261,24 +213,20 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
             </td>
           </tr>
           <tr class="row mt-3 m-0">
-            <td class="col-md-12 sub2" style="font-size:14px!important">Pagado a la orden de:</td>
+            <td class="col-md-12 sub2 font14 p-0">Pagado a la orden de:</td>
           </tr>
           <tr class="row m-0 mt-1">
             <td class="col-md-3">
-              <!-- <input class="infAddbeneficiario efecto" type="button" value="Beneficiario"> -->
               <button class="infAddbeneficiario efecto btn-light border" type="button">Beneficiario</button>
             </td>
             <td class="col-md-3">
               <button class="infAddcliente efecto btn-light border" type="button">Cliente</button>
-              <!-- <input class="infAddcliente efecto" type="button" value="Cliente"> -->
             </td>
             <td class="col-md-3">
               <button class="infAddempleado efecto btn-light border" type="button">Empleado</button>
-              <!-- <input class="infAddempleado efecto" type="button" value="Empleado"> -->
             </td>
             <td class="col-md-3">
               <button class="infAddproveedor efecto btn-light border" type="button">Proveedor</button>
-              <!-- <input class="infAddproveedor efecto" type="button" value="Proveedor"> -->
             </td>
           </tr>
           <tr class="row m-0 mt-4">
@@ -333,12 +281,12 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
   <div id="capturapoliza" class="contorno transferencia"><!--solo aparece al seleccionar Transferencia-->
     <table class="table form1">
       <thead>
-        <tr class="row m-0 encabezado font18">
-          <td class="col-md-12">Transferencia</td>
-        </tr>
+        <div class="row encabezado font18">
+          <div class="col-md-12">Transferencia</div>
+        </div>
       </thead>
       <tbody class="font14">
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-4">
           <td class="col-md-4 input-effect">
             <input class="efecto popup-input" id="transf-bancossat" type="text" id-display="#popup-display-transf-bancossat" action="bancosSAT" db-id="" autocomplete="off">
             <div class="popup-list" id="popup-display-transf-bancossat" style="display:none"></div>
@@ -346,41 +294,38 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
               <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
             </label>
           </td>
-
           <td class="col-md-8 input-effect">
             <input class="efecto popup-input" id="transf-bancosplaa" type="text" id-display="#popup-display-transf-bancosplaa" action="cuentas_mst_0100_oficinaTodas" db-id="" autocomplete="off">
           	<div class="popup-list ls0" id="popup-display-transf-bancosplaa" style="display:none"></div>
           	<label for="transf-bancosplaa">Bancos PLAA</label>
           </td>
         </tr>
-        <!-- <tr class="row m-0 mt-4">
 
-        </tr> -->
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-4">
           <td class="col-md-12 input-effect">
             <input class="efecto popup-input" id="transf-benef" type="text" id-display="#popup-display-transf-benef" action="beneficiariosBancos" db-id="" autocomplete="off">
             <div class="popup-list" id="popup-display-transf-benef" style="display:none"></div>
             <label for="transf-benef">Bancos Beneficiarios</label>
           </td>
         </tr>
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-3">
           <td class="col-md-12 input-effect">
             <input class="efecto popup-input" id="transf-clientes" type="text" id-display="#popup-display-transf-clientes" action="clientesBancos" db-id="" autocomplete="off">
             <div class="popup-list" id="popup-display-transf-clientes" style="display:none"></div>
             <label for="transf-clientes">Bancos Clientes</label>
           </td>
         </tr>
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-3">
           <td class="col-md-12 input-effect">
             <input  list="transf-emp" class="efecto"  id="transf-empleados">
             <datalist id="transf-emp">
               <option value="PINALES AVALOS -- PIAA911122Lp2 -- BANAMEX -- 5256781310675298"></option>
               <option value="MARTINEZ MARTINEZ -- MAMD800330DQ3 -- BBVA BANCOMER -- 012821015214161544"></option>
             </datalist>
-            <label class="l22" for="transf-empleados">Empleados</label>
+            <label for="transf-empleados">Empleados</label>
           </td>
         </tr>
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-3">
           <td class="col-md-12 input-effect">
             <input class="efecto popup-input" id="transf-proveedores" type="text" id-display="#popup-display-transf-proveedores" action="proveedoresBancos" db-id="" autocomplete="off">
             <div class="popup-list" id="popup-display-transf-proveedores" style="display:none"></div>
@@ -388,13 +333,13 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
           </td>
         </tr>
 
-        <tr class="row m-0 backpink mt-3 font12">
-          <th class="col-md-1">Banco</th>
-          <th class="col-md-4">No. Cuenta / Interbancaria</th>
-          <th class="col-md-5">Nombre / Razón Social</th>
-          <th class="col-md-2">RFC</th>
+        <tr class="row backpink mt-3 font12">
+          <th class="p-1 col-md-1">Banco</th>
+          <th class="p-1 col-md-4">No. Cuenta / Interbancaria</th>
+          <th class="p-1 col-md-5">Nombre / Razón Social</th>
+          <th class="p-1 col-md-2">RFC</th>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-1">
             <input id="transf-idbanco" class="efecto h22" type="text" disabled>
             <input id="transf-nombancoextj" class="efecto h22" type="hidden">
@@ -410,7 +355,7 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
           </td>
         </tr>
 
-        <tr class="row m-0 mt-3">
+        <tr class="row mt-3">
           <td class="col-md-4"></td>
           <td class="col-md-2">
             <button id="trans-embtn" type="button" class="boton">
@@ -424,16 +369,16 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
           </td>
           <td class="col-md-4"></td>
         </tr>
-        <tr class="row m-0 mt-3">
-          <td class="col-md-12 sub2 fw-bold">Origen</td>
+        <tr class="row mt-3">
+          <td class="col-md-12 sub2 fw-bold p-0">Origen</td>
         </tr>
-        <tr class="row m-0 font12">
-          <th class="col-md-1">Banco</th>
-          <th class="col-md-4">No. Cuenta / Interbancaria</th>
-          <th class="col-md-4">Nombre / Razón Social (opcional)</th>
-          <th class="col-md-3">RFC (opcional)</th>
+        <tr class="row font12">
+          <th class="pb-0 col-md-1">Banco</th>
+          <th class="pb-0 col-md-4">No. Cuenta / Interbancaria</th>
+          <th class="pb-0 col-md-4">Nombre / Razón Social (opcional)</th>
+          <th class="pb-0 col-md-3">RFC (opcional)</th>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-1">
             <input id="trans-emidbanco" class="efecto h22" type="text" disabled>
           </td>
@@ -447,16 +392,16 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
             <input id="trans-emrfc" class="efecto h22" type="text" disabled>
           </td>
         </tr>
-        <tr class="row m-0 mt-4">
-          <td class="col-md-12 sub2 fw-bold">Destino</td>
+        <tr class="row mt-4">
+          <td class="col-md-12 sub2 fw-bold p-0">Destino</td>
         </tr>
-        <tr class="row m-0 font12">
-          <th class="col-md-1">Banco</th>
-          <th class="col-md-4">No. Cuenta / Interbancaria</th>
-          <th class="col-md-4">Nombre / Razón Social</th>
-          <th class="col-md-3">RFC</th>
+        <tr class="row font12">
+          <th class="pb-0 col-md-1">Banco</th>
+          <th class="pb-0 col-md-4">No. Cuenta / Interbancaria</th>
+          <th class="pb-0 col-md-4">Nombre / Razón Social</th>
+          <th class="pb-0 col-md-3">RFC</th>
         </tr>
-        <tr class="row m-0">
+        <tr class="row">
           <td class="col-md-1">
             <input id="trans-desidbanco" class="efecto h22" type="text" disabled>
           </td>
@@ -471,7 +416,7 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
           </td>
         </tr>
 
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-4">
           <td class="col-md-3">
             <input id="trans-emext" class="efecto tiene-contenido h22" type="text" disabled>
             <label class="l22" for="trans-emext">Bco. Emisor Extranjero</label>
@@ -491,7 +436,7 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
             </select>
           </td>
         </tr>
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-3">
           <td class="col-md-3">
             <input class="efecto h22 tiene-contenido" type="date" id="trans-fecha">
             <label class="l22" for="trans-fecha">Fecha</label>

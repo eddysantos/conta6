@@ -70,9 +70,10 @@ $(document).ready(function(){
 							return false
 						}else{
 							st = $('#detpol-cuenta').val();
-							console.log(validarCtasGastoOficina(st));
-							console.log(validarCtasCliente(st));
-							console.log(validarCtasPagosCliente(st));
+							// (nota :fany) comente porque arroja error y no agrega registro
+							// console.log(validarCtasGastoOficina(st));
+							// console.log(validarCtasCliente(st));
+							// console.log(validarCtasPagosCliente(st));
 							if( validarCtasGastoOficina(st) == true || validarCtasCliente(st) == true || validarCtasPagosCliente(st) == true ){
 
 								if( validarCtasGastoOficina(st) == true ){
@@ -267,7 +268,6 @@ $(document).ready(function(){
 
 					if (r.code == 1) {
 						$('#tabla_detallepoliza').html(r.data);
-						// $('#tabla_detallepolizaPrueba').html(r.data);
 					}
         }
       });

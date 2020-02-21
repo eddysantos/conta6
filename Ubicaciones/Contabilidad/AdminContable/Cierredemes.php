@@ -4,7 +4,7 @@
 ?>
 
 <div class="text-center font14 mb-10">
-  <div class="row submenuMed">
+  <div class="row backpink p-2">
     <div class="col-md-6" role="button">
       <a  id="submenuMed" class="aconta" accion="generar" status="cerrado">GENERAR</a>
     </div>
@@ -49,7 +49,7 @@
         </tr>
         <tr class="row mt-4 justify-content-center">
           <td class="col-md-2">
-            <a href="" class="boton"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
+            <a href="" class="boton p-1"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
           </td>
         </tr>
       </tbody>

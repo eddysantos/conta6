@@ -4,7 +4,7 @@
 ?>
 
 <div class='container-fluid'>
-  <div class='row m-0 submenuMed text-center'>
+  <div class='row m-0 backpink text-center'>
     <div class='col-md-6' role='button'>
       <a  id='submenuMed' class='trafico' accion='datcliente' status='cerrado'>DATOS CLIENTE</a>
     </div>

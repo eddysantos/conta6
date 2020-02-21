@@ -55,18 +55,18 @@ if( $totalRegistrosSelect > 0 ){
 <!--Comienza DETALLE DATOS DE POLIZA-->
 <div id="datospoliza" class="contorno mt-5" style="display:none">
   <!-- style="display:none" -->
-  <h5 class="titulo">DATOS DE LA POLIZA</h5>
+  <div class="titulo" style='margin-top:-25px'>DATOS DE LA POLIZA</div>
   <table class="table form1 font14">
     <thead>
-      <tr class="row m-0 encabezado font12 b fw-bold">
-        <td class="col-md-1">TIPO</td>
-        <td class="col-md-1">POLIZA</td>
-        <td class="col-md-2">USUARIO</td>
-        <td class="col-md-2">FECHA POLIZA</td>
-        <td class="col-md-2">GENERACION</td>
-        <td class="col-md-2">ADUANA</td>
-        <td class="col-md-2">ESTATUS</td>
-      </tr>
+      <div class="row m-0 encabezado font12 b fw-bold p-1">
+        <div class="col-md-1">TIPO</div>
+        <div class="col-md-1">POLIZA</div>
+        <div class="col-md-2">USUARIO</div>
+        <div class="col-md-2">FECHA POLIZA</div>
+        <div class="col-md-2">GENERACION</div>
+        <div class="col-md-2">ADUANA</div>
+        <div class="col-md-2">ESTATUS</div>
+      </div>
     </thead>
     <tbody>
       <tr class="row m-0 align-items-center">
@@ -138,16 +138,16 @@ if( $totalRegistrosSelect > 0 ){
         <table class="table form1 font14">
           <thead>
             <tr class="row m-0 encabezado font18">
-              <td class="col-md-12">CAPTURA DETALLE POLIZA</td>
+              <td class="col-md-12 p-0">CAPTURA DETALLE POLIZA</td>
             </tr>
           </thead>
           <tbody>
-            <tr class="row m-0 mt-5">
-              <td class="col input-effect ">
+            <tr class="row m-0 mt-4">
+              <td class="col input-effect">
                 <?php if( $oRst_permisos["s_lstCompletaCtas_polizas"] == 1 ){
                 echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
                 }else{
-                  if( $tipo == 2){
+                  if($tipo == 2){
                     echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv_limitada_paraTipo2" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
                   }else{
                     echo '<input class="efecto popup-input" id="detpol-cuenta" type="text" id-display="#popup-display-detpol-cuenta" action="cuentas_mst_2niv_limitada" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
@@ -156,7 +156,7 @@ if( $totalRegistrosSelect > 0 ){
                 <div class="popup-list" id="popup-display-detpol-cuenta" style="display:none"></div>
                 <label for="detpol-cuenta">Seleccione una Cuenta</label>
               </td>
-              <td  class="gto col-md-2 input-effect " style="display:none">
+              <td class="gto col-md-2 input-effect " style="display:none">
                 <input class="efecto popup-input" id="detpol-gtoficina" type="text" id-display="#popup-display-detpol-gtoficina" action="oficinas" db-id="" autocomplete="off" onChange="valDescripOficina()">
                 <div class="popup-list" id="popup-display-detpol-gtoficina" style="display:none"></div>
                 <label for="detpol-gtoficina">Gasto Oficina</label>
@@ -197,8 +197,8 @@ if( $totalRegistrosSelect > 0 ){
                 </div>
               </td>
             </tr> -->
-            <tr class="row m-0 mt-4">
-              <td class="gto col-md-12 input-effect " style="display:none">
+            <tr class="gto row m-0 mt-4" style="display:none">
+              <td class="col-md-12 input-effect">
                 <input class="efecto popup-input" id="detpol-proveedores" type="text" id-display="#popup-display-detpol-proveedores" action="proveedores" db-id="" autocomplete="off">
                 <div class="popup-list" id="popup-display-detpol-proveedores" style="display:none"></div>
                 <label for="detpol-proveedores">Proveedor</label>
@@ -264,21 +264,21 @@ if( $totalRegistrosSelect > 0 ){
       <div class="contorno mt-5">
         <table class="table font12 table-hover">
           <thead>
-            <tr class="row m-0 sub3 b">
-              <td width="3%"></td>
-              <td width="8%">CUENTA</td>
-              <td width="8%">GASTO</td>
-              <td width="8%">PROV</td>
-              <td width="8%">REFERENCIA</td>
-              <td width="8%">CLIENTE</td>
-              <td width="8%">DOCUMENTO</td>
-              <td width="8%">FACTURA</td>
-              <td width="8%">NOTACRED</td>
-              <td width="8%">ANTICIPO</td>
-              <td width="6%">CHEQUE</td>
-              <td width="8%">CARGO</td>
-              <td width="8%">ABONO</td>
-              <td width="3%"></td>
+            <tr class="row sub3 b">
+              <td class='p-1' width="3%"></td>
+              <td class='p-1' width="8%">CUENTA</td>
+              <td class='p-1' width="8%">GASTO</td>
+              <td class='p-1' width="8%">PROV</td>
+              <td class='p-1' width="8%">REFERENCIA</td>
+              <td class='p-1' width="8%">CLIENTE</td>
+              <td class='p-1' width="8%">DOCUMENTO</td>
+              <td class='p-1' width="8%">FACTURA</td>
+              <td class='p-1' width="8%">NOTACRED</td>
+              <td class='p-1' width="8%">ANTICIPO</td>
+              <td class='p-1' width="6%">CHEQUE</td>
+              <td class='p-1' width="8%">CARGO</td>
+              <td class='p-1' width="8%">ABONO</td>
+              <td class='p-1' width="3%"></td>
             </tr>
           </thead>
           <tbody id="ultimosRegistros"></tbody>
@@ -314,26 +314,26 @@ if( $totalRegistrosSelect > 0 ){
       <div class="contorno mt-4">
         <table class="table table-hover">
           <thead>
-            <tr class="row encabezado m-0 font18">
-              <td class="col-md-12">DETALLE POLIZA</td>
+            <tr class="row encabezado font18">
+              <td class="col-md-12 p-0">DETALLE POLIZA</td>
             </tr>
           </thead>
           <thead>
-            <tr class="row m-0 sub3 font12 b">
-              <td width="3%"></td>
-              <td width="8%">CUENTA</td>
-              <td width="8%">GASTO</td>
-              <td width="8%">PROV</td>
-              <td width="8%">REFERENCIA</td>
-              <td width="8%">CLIENTE</td>
-              <td width="8%">DOCUMENTO</td>
-              <td width="8%">FACTURA</td>
-              <td width="8%">NOTACRED</td>
-              <td width="8%">ANTICIPO</td>
-              <td width="6%">CHEQUE</td>
-              <td width="8%">CARGO</td>
-              <td width="8%">ABONO</td>
-              <td width="3%"></td>
+            <tr class="row sub3 font12 b">
+              <td class='p-1' width="3%"></td>
+              <td class='p-1' width="8%">CUENTA</td>
+              <td class='p-1' width="8%">GASTO</td>
+              <td class='p-1' width="8%">PROV</td>
+              <td class='p-1' width="8%">REFERENCIA</td>
+              <td class='p-1' width="8%">CLIENTE</td>
+              <td class='p-1' width="8%">DOCUMENTO</td>
+              <td class='p-1' width="8%">FACTURA</td>
+              <td class='p-1' width="8%">NOTACRED</td>
+              <td class='p-1' width="8%">ANTICIPO</td>
+              <td class='p-1' width="6%">CHEQUE</td>
+              <td class='p-1' width="8%">CARGO</td>
+              <td class='p-1' width="8%">ABONO</td>
+              <td class='p-1' width="3%"></td>
             </tr>
           </thead>
           <tbody id="tabla_detallepoliza" class="font12"></tbody>

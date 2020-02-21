@@ -2,13 +2,14 @@
 <!--MODAL Contabilidad > Polizas > Modificar -->
 <div class="modal fade text-center" id="modificar-pol">
   <div class="modal-dialog modal-med">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Modificar Póliza</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Modificar Póliza</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
+
       <div class="modal-body">
         <div class="row justify-content-center">
           <div class="col-md-8 titulograndetop">
@@ -22,11 +23,11 @@
             </form>
           </div>
         </div>
-      </div><!--termina el Cuerpo del Modal-->
-      <div class="modal-footer">
+      </div>
+      <div class="modal-footer border-0 mt-3">
         <a href="#" id="btn" onclick="buscarPoliza('modificar')">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
-    </div><!--termina el COntenido del Modal-->
+    </div>
   </div>
 </div>
 
@@ -34,12 +35,12 @@
 <!--MODAL Contabilidad > Polizas > Consultar-->
 <div class="modal fade text-center" id="consultar-pol">
   <div class="modal-dialog modal-med">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Consultar Póliza</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Consultar Póliza</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="row justify-content-center">
@@ -55,7 +56,7 @@
           </div>
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer border-0">
         <a href="#" id="btn" onclick="buscarPoliza('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
@@ -65,12 +66,12 @@
 <!--MODAL Contabilidad > Polizas > Asignar proveedor -->
 <div class="modal fade text-center" id="asignar-proveedor">
   <div class="modal-dialog modal-med">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Asignar Proveedor</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Asignar Proveedor</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="row justify-content-center">
@@ -85,7 +86,7 @@
             </form>
           </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer border-0 mt-3">
           <a href="#" id="btn_asignarProveedor" class="linkbtn">Buscar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -96,12 +97,12 @@
 <!--MODAL Contabilidad > Cheques > Modificar-->
 <div class="modal fade text-center" id="modificar-ch">
   <div class="modal-dialog modal-med">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Modificar Cheque</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Modificar Cheque</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <form class="form1">
@@ -120,7 +121,7 @@
             </tr>
           </table>
         </form>
-        <div class="modal-footer mt-3">
+        <div class="modal-footer mt-3 border-0">
         <a href="#" id="btn_busCheModifi" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -131,12 +132,12 @@
 <!--MODAL Contabilidad > Cheques > Consultar-->
 <div class="modal fade text-center" id="consultar-ch">
   <div class="modal-dialog modal-med">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Consultar Cheque</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Consultar Cheque</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <form class="form1">
@@ -156,7 +157,7 @@
             </tr>
           </table>
         </form>
-        <div class="modal-footer mt-3">
+        <div class="modal-footer mt-3 border-0">
           <a href="#" id="btn_busCheConsulta" class="linkbtn">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -170,12 +171,12 @@
 <!--MODAL Contabilidad > Anticipos > Modificar -->
 <div class="modal fade text-center" id="modificar-ant">
   <div class="modal-dialog modal-med">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Modificar Anticipo</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Modificar Anticipo</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="row justify-content-center">
@@ -190,7 +191,7 @@
           </form>
           </div>
         </div>
-        <div class="modal-footer mt-3">
+        <div class="modal-footer mt-3 border-0">
           <a href="#" id="btn" onclick="buscarAnticipo('modificar')">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -201,12 +202,12 @@
 <!--MODAL Contabilidad > Anticipos > Consultar-->
 <div class="modal fade text-center" id="consultar-ant">
   <div class="modal-dialog modal-med">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Consultar Anticipo</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Consultar Anticipo</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="row justify-content-center">
@@ -221,7 +222,7 @@
           </form>
           </div>
         </div>
-        <div class="modal-footer mt-3">
+        <div class="modal-footer mt-3 border-0">
           <a href="#" id="btn" onclick="buscarAnticipo('consultar')">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -234,12 +235,12 @@
 <!--MODAL Contabilidad > Polizas > Modificar -->
 <div class="modal fade text-center" id="updatetarif">
   <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">MODIFICAR CONCEPTO DE HONORARIOS</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>MODIFICAR CONCEPTO DE HONORARIOS</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
       <table class="table modal-table3">
@@ -286,7 +287,7 @@
         </tbody>
       </table>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer border-0 mt-3">
         <a href="/conta6/Ubicaciones/Modulo2/TarifasAlmacenes/Conceptos.php" class="linkbtn">Aceptar<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
@@ -294,17 +295,16 @@
 </div>
 
 
-
 <!--POLIZAS DE DIARIO-->
 <!--MODAL Contabilidad > Polizas > Modificar -->
 <div class="modal fade text-center" id="AsignarProveedor">
   <div class="modal-dialog modal-med">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Asignar Proveedor</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Asignar Proveedor</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="row justify-content-center">
@@ -319,7 +319,7 @@
             </form>
           </div>
         </div>
-        <div class="modal-footer mt-3">
+        <div class="modal-footer mt-3 border-0">
           <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>

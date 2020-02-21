@@ -8,7 +8,7 @@
 <div class="text-center">
 
 <!---AL INGRESAR SOLO SE MOSTRARA ESTA SECCION-->
-  <div class="row submenuMed m-0" id="SeleccionarAccion">
+  <div class="row submenuMed m-0 p-2" id="SeleccionarAccion">
     <div class="col-md-6">
       <a  id="submenuMed" class="fele" accion="buscarctagastos"><i class="fa fa-search"></i>BUSCAR</a>
     </div>
@@ -20,29 +20,25 @@
   </div>
 
   <div class="contorno" id="g-ctagastos" style="display:none; <?php echo $marginbottom ?>">
-    <div class="col-md-1 offset-sm-11 p-0">
+    <div class="col-md-2 offset-sm-10 text-right p-0">
       <a href="#" class="fele" accion="cuadroGenerar">
-        <i class="back fa fa-arrow-left">Regresar</i>
+        <i class="back fa fa-arrow-left"></i>Regresar
       </a>
     </div>
     <form class="form1 font12">
       <table class="table">
         <thead>
           <tr class="row encabezado font18">
-            <td class="col-md-12">GENERAR CUENTA DE GASTOS</td>
+            <td class="col-md-12 p-0">GENERAR CUENTA DE GASTOS</td>
           </tr>
         </thead>
         <tbody class="font18">
-          <tr class="row mt-5">
+          <tr class="row mt-4">
             <td class="col-md-4 offset-md-3 input-effect">
               <input class="efecto tiene-contenido popup-input" maxlength="9" id="ctagatos-cReferencia" type="text" id-display="#popup-display-ctagatos-cReferencia" action="referencias" db-id="" autocomplete="off">
               <div class="popup-list" id="popup-display-ctagatos-cReferencia" style="display:none"></div>
-              <label for="ctagatos-cReferencia">CON REFERENCIA</label>
+              <label for="ctagatos-cReferencia">Con referencia</label>
             </td>
-
-            <!-- <input class='efecto popup-input' id='DGEclienteK' type='text' id-display='#popup-display-DGEclienteK' action='clientes' db-id='' autocomplete='off'>
-            <div class='popup-list' id='popup-display-DGEclienteK' style='display:none'></div> -->
-
             <td class="col-md-2">
               <a href="#" id="btn_buscarDatosEmbarque" class="boton"> <i class="fa fa-search "></i> Consultar</a>
             </td>
@@ -51,7 +47,7 @@
             <td class="col-md-7 input-effect">
               <input class="efecto popup-input" id="ctagatos-sReferencia" type="text" id-display="#popup-display-ctagatos-sReferencia" action="clientes" db-id="" autocomplete="off" onchange="cargarClienteSinReferencia()">
               <div class="popup-list" id="popup-display-ctagatos-sReferencia" style="display:none"></div>
-              <label for="ctagatos-sReferencia">SELECCIONAR CLIENTE (Sin Referencia)</label>
+              <label for="ctagatos-sReferencia">Seleccionar cliente (Sin Referencia)</label>
             </td>
             <td class="col-md-2">
               <a href="#" class="boton" id="Btn_Busca_Ref_Cta_Gtos_2" onclick="cargarCuentaSinReferencia('IVA')">Siguiente <i class="fa fa-angle-double-right fa-lg"></i></a>
@@ -79,17 +75,18 @@
 <!---se muestra al dar click en Buscar-->
   <div class="contenedor" id="b-ctagastos" style="display:none;<?php echo $marginbottom ?>">
     <div class="row m-0">
-      <div class="col-md-1 offset-sm-8 ">
+      <div class="col-md-2 offset-sm-7 text-right">
         <a href="#" class="fele" accion="cuadroBusqueda">
-          <i class="back fa fa-arrow-left">Regresar</i>
+          <i class="back fa fa-arrow-left"></i>Regresar
         </a>
       </div>
     </div>
     <div class="row justify-content-center" id="referencia">
-      <div class="col-md-6 titulograndetop transEff">
+      <div class="col-md-6 titulograndetop ls3">
         <label class="transEff" for="bRef" id="labelRef">Referencia o Solicitud</label>
       </div>
     </div>
+
     <div class="row justify-content-center" id="nReferencia">
       <div class="col-md-6 intermedio transEff" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
@@ -98,6 +95,22 @@
       </div>
     </div>
   </div>
+
+
+  <!-- <div class="contenedor" id="b-cfdi">
+    <div class="row justify-content-center" id="referencia">
+      <div class="col-md-6 titulograndetop">
+        <label class="transEff" for="bRef" id="labelRef">Referencia o Solicitud</label>
+      </div>
+    </div>
+    <div class="row justify-content-center" id="nReferencia">
+      <div class="col-md-6 intermedio transEff" id="mostrarConsultaObserv">
+        <form  class="form-group" onsubmit="return false;">
+          <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
+        </form>
+      </div>
+    </div>
+  </div> -->
 
 
 

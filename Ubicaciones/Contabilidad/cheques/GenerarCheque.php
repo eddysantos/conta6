@@ -3,7 +3,7 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-  <div class="row submenuMed m-0">
+  <div class="row backpink m-0">
     <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
       <li class="nav-item">
         <a class="nav-link" id="submenuMed">GENERAR CHEQUE</a>
@@ -38,7 +38,7 @@
           </td>
         </tr>
         <tr class="row mt-3 m-0">
-          <td class="col-md-12 sub2" style="font-size:14px!important">Páguese a la orden de:</td>
+          <td class="col-md-12 sub2 font14 p-0">Páguese a la orden de:</td>
         </tr>
 		    <tr class="row m-0 mt-1">
           <td class="col-md-3">
@@ -54,7 +54,7 @@
             <input class="cheproveedor efecto" type="submit" value="Proveedor">
 		      </td>
         </tr>
-        <tr class="row m-0 mt-4">
+        <tr class="row m-0 mt-3">
           <td class="col-md-12 input-effect" style="display:none" id="chebeneficiario1">
             <input class="efecto popup-input" id="chebeneficiario" type="text" id-display="#popup-display-chebeneficiario" action="beneficiarios" db-id="" autocomplete="off">
             <div class="popup-list" id="popup-display-chebeneficiario" style="display:none"></div>
@@ -79,7 +79,7 @@
             <label for="cheproveedor">Proveedor</label>
           </td>
         </tr>
-        <tr class="row m-0 mt-4">
+        <tr class="row m-0 mt-3">
           <td class="col-9 input-effect">
             <input id="checoncepto" class="efecto" type="text" onchange="eliminaBlancosIntermedios(this);">
             <label for="checoncepto">Concepto</label>

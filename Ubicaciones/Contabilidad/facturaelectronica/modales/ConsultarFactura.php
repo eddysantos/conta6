@@ -1,16 +1,16 @@
 <!--Buscar Facturas en Captura detalle de poliza-->
 <div class="modal fade text-center" id="ConsultarFactura" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Consultar Factura</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Consultar Factura</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="contorno">
-          <table class="table form1">
+          <table class="table form1 text-center">
             <thead>
               <tr class="row encabezado">
                 <td class="col-md-12">BUSCAR FACTURA</td>
@@ -40,7 +40,7 @@
           </table>
         </div>
       </div><!--termina el Cuerpo del Modal-->
-      <div class="modal-footer">
+      <div class="modal-footer border-0 mt-3">
         <a href="#" id="btn_buscarFacturasTimbradas" class="linkbtn">Buscar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div><!--termina el COntenido del Modal-->
@@ -51,12 +51,12 @@
 <!--Cancelar Factura-->
 <div class="modal fade text-center" id="CancelarFactura" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Cancelar Factura</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Cancelar Factura</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="contorno">

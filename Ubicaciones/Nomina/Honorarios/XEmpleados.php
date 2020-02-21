@@ -4,7 +4,7 @@
 ?>
 
 <!-- <div class="container-fluid">
-  <div class="row submenuMed m-0">
+  <div class="row backpink m-0">
     <div class="col-md-12 text-center" role="button">
       <a  id="submenuMed" class="honorarios" accion="eCapHon" status="cerrado">EMPLEADOS CAPTURADOS</a>
     </div>

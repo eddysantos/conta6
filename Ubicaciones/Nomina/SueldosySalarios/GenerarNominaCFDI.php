@@ -95,7 +95,7 @@
 
 <script src="js/SueldosySalarios.js"></script>
 <script src="/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/js/parametros.js"></script>
-<script src="/conta6/Resources/bootstrap/js/bootstrap-toggle.js"></script>
+<!-- <script src="/conta6/Resources/bootstrap/js/bootstrap-toggle.js"></script> -->
 <script src="/Conta6/Ubicaciones/Nomina/Empleados/js/empleados.js"></script>
 
 <?php

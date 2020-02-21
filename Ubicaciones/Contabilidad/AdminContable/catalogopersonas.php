@@ -6,31 +6,8 @@
 
 <div class="text-center">
 <!-- -AL INGRESAR SOLO SE MOSTRARA ESTA SECCION-->
-  <!-- <?PHP if($oRst_permisos['s_catalogoPersonas_CLIENTES'] == 1){ ?>
-  <div class="row submenuMed m-0 font14" id="SeleccionarAccion">
-    <div class="col-md-3">
-      <a  href="#" class="personas" accion="clientes"><i class="fa fa-search" aria-hidden="true"></i>Clientes</a>
-    </div><?PHP } ?>
 
-    <?PHP if($oRst_permisos['s_catalogoPersonas_PROVEEDORES'] == 1){ ?>
-    <div class="col-md-3">
-      <a href="#" class="personas" accion="proveedores"><i class="fa fa-search" aria-hidden="true"></i>Proveedores</a>
-    </div><?PHP } ?>
-
-    <?PHP if($oRst_permisos['s_catalogoPersonas_CORRESPONSALES'] == 1){ ?>
-    <div class="col-md-3">
-      <a href="#" class="personas" accion="corresponsales"><i class="fa fa-search" aria-hidden="true"></i>Corresponsales</a>
-    </div><?PHP } ?>
-
-    <?PHP if($oRst_permisos['s_catalogoPersonas_BENEFICIARIOS'] == 1){ ?>
-    <div class="col-md-3">
-      <a href="#" class="personas" accion="Beneficiarios"><i class="fa fa-search" aria-hidden="true"></i>Beneficiarios</a>
-    </div><?PHP } ?>
-  </div> -->
-
-
-
-  <ul class="nav row backpink p-3 m-0 font14 list-style-none align-items-center" id="myTab" role="tablist">
+  <ul class="nav row backpink p-1 m-0 font14 list-style-none align-items-center" id="myTab" role="tablist">
     <?PHP if($oRst_permisos['s_catalogoPersonas_CLIENTES'] == 1){ ?>
     <li class="nav-item pills col">
       <a class="nav-link" id="uno-tab" data-toggle="tab" href="#uno" role="tab" aria-controls="uno" aria-selected="true">
@@ -61,34 +38,6 @@
     <?PHP } ?>
   </ul>
 
-
-<!---se muestra al dar click en Clientes-->
-  <!-- <div class="contenedor" id="buscarClt" style="display:none;<?php echo $marginbottom ?>">
-    <div class="row m-0">
-      <div class="col-md-1 offset-sm-8 p-0">
-        <a href="#" class="atras" accion="cuadroBusqueda">
-          <i class="back fa fa-arrow-left">Regresar</i>
-        </a>
-      </div>
-    </div>
-    <div class="row justify-content-center" id="referencia">
-      <div class="col-md-6 transEff titulograndetop">Cliente</div>
-    </div>
-    <div class="row justify-content-center" id="nReferencia">
-      <div class="col-md-8 intermedio">
-        <form class="form-group" onsubmit="return false;">
-          <input class="efecto popup-input" id="bClt-persona" type="text" id-display="#popup-display-bClt-persona" action="clientes" db-id="" autocomplete="off">
-          <div class="popup-list" id="popup-display-bClt-persona" style="display:none"></div>
-        </form>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#" id="btn-buscarClientePersonas">Consultar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-    </div>
-  </div> -->
-
-
-
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="uno" role="tabpanel" aria-labelledby="uno-tab">
       <div class="contenedor" id="buscarClt" style="<?php echo $marginbottom ?>">
@@ -100,16 +49,10 @@
 
         <div class="row justify-content-center m-0" id="nReferencia">
           <div class="col-md-6 intermedio transEff">
-
             <form  class="form-group" onsubmit="return false;">
               <input class="reg border-0 transEff w-100 popup-input" id="bClt-persona" type="text" id-display="#popup-display-bClt-persona" action="clientes" db-id="" autocomplete="off">
               <div class="popup-list" id="popup-display-bClt-persona" style="display:none"></div>
             </form>
-
-            <!-- <form class="form-group" onsubmit="return false;">
-              <input class="efecto popup-input" id="bClt-persona" type="text" id-display="#popup-display-bClt-persona" action="clientes" db-id="" autocomplete="off">
-              <div class="popup-list" id="popup-display-bClt-persona" style="display:none"></div>
-            </form> -->
           </div>
         </div>
 
@@ -132,8 +75,8 @@
           </div>
         <?php } ?>
 
-        <table class="table form1 mt-5 font14">
-          <tr class="row m-0">
+        <table class="table mt-4 font14">
+          <tr class="row m-0 align-items-center">
             <td class="col-md-6 offset-md-3 input-effect">
               <input class="efecto popup-input" id="cat-prov" type="text" id-display="#popup-display-cat-prov" action="proveedores" db-id="" autocomplete="off">
               <div class="popup-list" id="popup-display-cat-prov" style="display:none"></div>
@@ -147,8 +90,8 @@
         <div id="datosGeneralesProv"></div>
 
         <div class='contorno mt-5 font14' style="<?php echo $marginbottom ?>">
-          <h5 class='titulo'>CUENTAS BANCARIAS</h5>
-          <table class='table form1'>
+          <div class='titulo' style="margin-top: -24px;">CUENTAS BANCARIAS</div>
+          <table class='table'>
             <tbody>
               <tr class='row mt-4'>
                 <td class='col-md-2 input-effect'>
@@ -158,7 +101,6 @@
                     <a href='#catalogoBancosSAT' data-toggle='modal'><img src='/conta6/Resources/iconos/help.svg' class="icochico"></a>
                   </label>
                 </td>
-
                 <td class='col-md-3 input-effect'>
                   <input id='cinter' class='efecto tiene-contenido' type='text' onchange='validarCtaBancaria(this);'>
                   <label for='cinter'>CUENTA / INTERBANCARIA</label>
@@ -187,12 +129,12 @@
           </table>
           <div id='MostrarCuenta'>
             <table class='table font14'>
-              <tr  class='row backpink mt-4'>
-                <td class='col-md-1'></td>
-                <td class='col-md-2'>BANCO</td>
-                <td class='col-md-2'>NOMBRE BANCO</td>
-                <td class='col-md-3'>CUENTA</td>
-                <td class='col-md-4'>AGREGÓ</td>
+              <tr  class='row sub2 mt-4'>
+                <td class='p-1 col-md-1'></td>
+                <td class='p-1 col-md-2'>BANCO</td>
+                <td class='p-1 col-md-2'>NOMBRE BANCO</td>
+                <td class='p-1 col-md-3'>CUENTA</td>
+                <td class='p-1 col-md-4'>AGREGÓ</td>
               </tr>
               <tr colspan="2" id="datosCtasProv"></tr>
             </table>
@@ -202,18 +144,17 @@
     </div>
 
 
-
     <div class="tab-pane fade" id="tres" role="tabpanel" aria-labelledby="tres-tab">
       <div class="text-center mb-10 font14">
         <div class="mt-5">
           <table class="table form1">
             <tbody>
               <tr class="row justify-content-center font14 m-0">
-                <td class="col-md-3">
-                  <a href="#" id="genCorresponsal" class="b"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR NUEVO</a>
+                <td class="col-md-3 p-0">
+                  <a href="#" id="genCorresponsal" class="b"><img src="/conta6/Resources/iconos/001-add.svg" class="icochico"> AGREGAR NUEVO</a>
                 </td>
               </tr>
-              <tr class="row m-0 align-items-center justify-content-center mt-5">
+              <tr class="row m-0 align-items-center justify-content-center mt-4">
                 <td class="col-md-7 input-effect">
                   <input class="efecto popup-input" id="corp-cliente" type="text" id-display="#popup-display-corp-cliente" action="clientes_NoEsCorresponsal" db-id="" autocomplete="off">
                   <div class="popup-list" id="popup-display-corp-cliente" style="display:none"></div>
@@ -253,8 +194,8 @@
             </div>
           </div>
         <?php } ?>
-        <table class="table form1 mt-5 font14">
-          <tr class="row m-0 mt-3">
+        <table class="table form1 mt-3 font14">
+          <tr class="row m-0 mt-3 align-items-center">
             <td class="col-md-6 offset-md-3 input-effect">
               <input class="efecto popup-input" id="cat-benef" type="text" id-display="#popup-display-benef" action="beneficiarios" db-id="" autocomplete="off">
               <div class="popup-list" id="popup-display-benef" style="display:none"></div>
@@ -268,7 +209,7 @@
         <div id="datosGeneralesBen"></div>
 
         <div class='contorno mt-5 font14' style="<?php echo $marginbottom ?>">
-          <h5 class='titulo'>CUENTAS BANCARIAS</h5>
+          <div class='titulo' style="margin-top: -24px;">CUENTAS BANCARIAS</div>
           <table class='table form1'>
             <tbody>
               <tr class='row mt-4'>
@@ -308,12 +249,12 @@
 
           <table class='table font14'>
             <thead>
-              <tr class='row backpink mt-4'>
-                <td class='col-md-1'></td>
-                <td class='col-md-1'>BANCO</td>
-                <td class='col-md-4'>NOMBRE BANCO EXTRANJERO</td>
-                <td class='col-md-3'>CUENTA</td>
-                <td class='col-md-3'>AGREGÓ</td>
+              <tr class='row sub2 mt-4'>
+                <td class='p-1 col-md-1'></td>
+                <td class='p-1 col-md-1'>BANCO</td>
+                <td class='p-1 col-md-4'>NOMBRE BANCO EXTRANJERO</td>
+                <td class='p-1 col-md-3'>CUENTA</td>
+                <td class='p-1 col-md-3'>AGREGÓ</td>
               </tr>
             </thead>
             <tbody id="lista_datosCtasBen"></tbody>

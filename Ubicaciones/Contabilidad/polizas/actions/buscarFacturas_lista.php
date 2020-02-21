@@ -20,13 +20,6 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-// $stmt->bind_param('s',$id_poliza);
-// if (!($stmt)) {
-//   $system_callback['code'] = "500";
-//   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
-//   exit_script($system_callback);
-// }
-
 if (!($stmt->execute())) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during query execution [$stmt->errno]: $stmt->error";
@@ -67,13 +60,12 @@ while ($row = $rslt->fetch_assoc()) {
     <td class='col-md-1'><input type='text' id='facpendnc$idFila' class='efecto bt border-0 h22 facpend-nc' size='10' value='$fk_nc2' readonly></td>
     <td class='col-md-2'><input type='text' id='facpendsaldo$idFila' class='efecto bt border-0 h22 facpend-saldo' size='10' value='$saldo' readonly></td>
     <td class='col-md-2'><input type='text' id='facpendpago$idFila' class='efecto h22 facpend-pago' onchange='validaIntDec(this);'></td>
-    <td class='col-md-1'>
-      <div class='checkbox-xs'>
-        <label>
-          <input type='checkbox' data-toggle='toggle' class='checkbox-facpend facpend-check'>
-          <input type='hidden' id='facpendpartida$idFila' class='efecto h22 facpend-partida' value=''>
-        </label>
+    <td class='col-md-1 text-right'>
+      <div class='custom-control custom-switch'>
+        <input type='checkbox' class='custom-control-input checkbox-facpend facpend-check' id='generada$idFila'>
+        <label class='custom-control-label' for='generada$idFila'></label>
       </div>
+      <input type='hidden' id='facpendpartida$idFila' class='efecto h22 facpend-partida' value=''>
     </td>
     <td class='col-md-2'><input type='text' id='facpendcta$idFila' class='efecto bt border-0 h22 facpend-cta' size='10' value='$fk_id_cuenta' readonly></td>
   </tr>";

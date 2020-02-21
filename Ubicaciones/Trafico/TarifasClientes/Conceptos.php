@@ -28,10 +28,10 @@
   </table>
 
   <div class="contorno mt-5">
-    <h5 class="titulo">GENERAR CONCEPTO</h5>
+    <h5 class="titulo font14">GENERAR CONCEPTO</h5>
     <table class="table form1">
       <tbody class="font14">
-        <tr class="row mt-5">
+        <tr class="row mt-3">
           <td class="col-md-1 input-effect">
             <input id="aduana" class="efecto" type="text">
             <label for="aduana">Aduana</label>
@@ -49,7 +49,7 @@
             <label for="observaciones">Observaciones</label>
           </td>
         </tr>
-        <tr class="row mt-4">
+        <tr class="row mt-3">
           <td class="col-md-6 input-effect">
             <input  list="calculo-tarif" class="efecto" id="tipo">
             <datalist id="calculo-tarif">
@@ -85,7 +85,7 @@
         </tr>
         <tr class="row justify-content-center mt-4">
           <td class="col-md-3">
-            <a role="button" class="boton">
+            <a role="button" class="boton p-1">
               <img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR CONCEPTO
             </a>
           </td>
@@ -116,15 +116,15 @@
     <table class="table">
       <tbody>
         <tr class="row encabezado font16">
-          <td class="col-md-12">470 4 AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V</td>
+          <td class="col-md-12 p-1">470 4 AGENTES ADUANALES ASOCIADOS PARA EL COMERCIO EXTERIOR S.A DE C.V</td>
         </tr>
         <tr class="row backpink">
-          <td class="col-md-1">ADUANA</td>
-          <td class="col-md-1">CONCEPTO</td>
-          <td class="col-md-4">OBSERVACIONES</td>
-          <td class="col-md-2">REALIZA CALCULO</td>
-          <td class="col-md-3">CLASIFICACIÓN DEL INGRESO</td>
-          <td class="col-md-1">ACCIONES</td>
+          <td class="p-1 col-md-1">Aduana</td>
+          <td class="p-1 col-md-1">Concepto</td>
+          <td class="p-1 col-md-4">Observaciones</td>
+          <td class="p-1 col-md-2">Realiza Calculo</td>
+          <td class="p-1 col-md-3">Clasificación del Ingreso</td>
+          <td class="p-1 col-md-1">Acciones</td>
         </tr>
         <tr class="row borderojo">
           <td class="col-md-1">470</td>

@@ -1,12 +1,12 @@
 <!--EDITAR DATOS DEL CORRESPONSAL-->
 <div class="modal fade text-center" id="MonitordeOficinas" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Monitor de Oficinas</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Monitor de Oficinas</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
         <div class="contorno">
@@ -66,8 +66,8 @@
             </tr>
           </table>
         </div>
-      </div><!--termina el Cuerpo del Modal-->
-    </div><!--termina el COntenido del Modal-->
+      </div>
+    </div>
   </div>
 </div>
 

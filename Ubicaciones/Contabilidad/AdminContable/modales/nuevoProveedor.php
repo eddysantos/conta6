@@ -78,7 +78,7 @@
                   <label for='nombreN_prov'>Nombre o Razón Social</label>
                 </td>
                 <td class='col-md-2 input-effect'>
-                  <label for='personaN_prov' style='color: #d59f9f;'>Persona</label>
+                  <label for='personaN_prov'>Persona</label>
                   <select size='1' id='personaN_prov' class="custom-select">
                   <option value='fisica'>Fisica</option>
                   <option value='moral' selected>Moral</option>

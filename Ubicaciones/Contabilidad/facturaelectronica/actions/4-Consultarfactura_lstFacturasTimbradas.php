@@ -133,7 +133,7 @@ if( $total_ctaGastos > 0 ){
 				$hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>";
 				if( $oRst_permisos['s_facturas_sustituir'] == 1 ){
 					$cadenaSustituir = "ctaGastosSustituirCFDI(&#39;".$id_referencia."&#39;,".$dias.",&#39;".$id_cliente."&#39;,".$id_almacen.",&#39;".$tipo."&#39;,".$valor.",".$peso.",".$id_captura.",".$shipper.",&#39;".$consolidado."&#39;,&#39;".$inbond."&#39;,".$entradas.",".$flete.",&#39;".$reexpedicion."&#39;,&#39;".$cobrarFlete."&#39;,&#39;".$status_Flete."&#39;,".$entradasAdicionales.")";
-					$hrefSustituir = '<input class="efecto boton" type="button" value="SUSTITUIR" id="sustituir-factura" onclick="'.$cadenaSustituir.'" />';
+					$hrefSustituir = '<input class="efecto mt-2 h22 boton p-0" type="button" value="SUSTITUIR" id="sustituir-factura" onclick="'.$cadenaSustituir.'" />';
 				}
 			}
 			if( $oRst_permisos['s_facturas_modificar'] == 1 ){

@@ -1,14 +1,5 @@
 <footer class="footer mt-3">
-  <!-- <table class="w-100">
-    <tr>
-      <td><h4 class="m-3 w-30">Bienvenido, <?php echo $usuario;?></h4></td>
-      <td><h4 class="m-3 w-30">Oficina Activa: <?php echo $aduana;?></h4></td>
-      <td><h4 class="m-3 w-40"></td>
-    </tr>
-  </table> -->
-
-
-  <table class="table">
+  <table class="table mb-0">
     <tr class="row font14">
       <td class="col-md-3 offset-md-1">Bienvenido, <b><?php echo $usuario;?></b></td>
       <td class="col-md-6"></td>
@@ -44,7 +35,7 @@
 
   <script src="/Conta6/Ubicaciones/Contabilidad/js/contenedor-movible.js"></script>
   <script src="/Conta6/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
-  <script src="/Conta6/Resources/bootstrap/js/bootstrap-checkbox-toggle.js"></script>
+  <!-- <script src="/Conta6/Resources/bootstrap/js/bootstrap-checkbox-toggle.js"></script> -->
   <script src="/Conta6/Resources/js/popup-list-plugin.js"></script>
   <!-- <script src="/Conta6/Resources/js/popup-list-snippet.js"></script> -->
   <script src="/Conta6/Resources/js/table-fetch-plugin.js"></script>

@@ -4,7 +4,7 @@
 ?>
 
 <div class='text-center'>
-  <div class='row submenuMed m-0'>
+  <div class='row backpink m-0'>
     <div class='col-md-4' role='button'>
       <a  id='submenuMed' class='trafico' accion='cliente' status='cerrado'>DATOS CLIENTE</a>
     </div>

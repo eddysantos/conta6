@@ -53,10 +53,10 @@ while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
     "<tr class='row borderojo'>
       <td class='col-md-1'>$btnborrar</td>
-      <td class='col-md-2'>$fk_id_banco</td>
-      <td class='col-md-2'>$s_nomBanExt</td>
+      <td class='col-md-1'>$fk_id_banco</td>
+      <td class='col-md-4'>$s_nomBanExt</td>
       <td class='col-md-3'>$s_cta_banco</td>
-      <td class='col-md-4'>$s_usuario_alta $d_fecha_alta</td>
+      <td class='col-md-3'>$s_usuario_alta $d_fecha_alta</td>
      </tr>";
 }
 
