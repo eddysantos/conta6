@@ -42,39 +42,39 @@ if( $totalRegistrosSelect > 0 ){
     </ul>
   </div>
 
-  <div id="datospoliza" class="contorno" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
-    <h5 class="titulo">DATOS DE LA POLIZA</h5>
-    <table class="table form1 font14">
+  <div id="datospoliza" class="contorno" style="display:none">
+    <div class="titulo" style="margin-top:-26px">DATOS DE LA POLIZA</div>
+    <table class="table font14">
       <thead>
         <tr class="row encabezado">
-          <td class="col-md-2">POLIZA</td>
-          <td class="col-md-2">USUARIO</td>
-          <td class="col-md-2">FECHA POLIZA</td>
-          <td class="col-md-2">GENERACION</td>
-          <td class="col-md-2">ADUANA</td>
-          <td class="col-md-2">CANCELACIÓN</td>
+          <td class="p-1 col-md-2">POLIZA</td>
+          <td class="p-1 col-md-2">USUARIO</td>
+          <td class="p-1 col-md-2">FECHA POLIZA</td>
+          <td class="p-1 col-md-2">GENERACION</td>
+          <td class="p-1 col-md-2">ADUANA</td>
+          <td class="p-1 col-md-2">CANCELACIÓN</td>
         </tr>
       </thead>
       <tbody>
         <tr class="row">
-          <td class="col-md-2"><?php echo $oRst_Select['pk_id_poliza']; ?></td>
-          <td class="col-md-2"><?php echo $oRst_Select['fk_usuario']; ?></td>
-          <td class="col-md-2"><?php echo $oRst_Select['d_fecha']; ?></td>
-          <td class="col-md-2"><?php echo $oRst_Select['d_fecha_alta']; ?></td>
-          <td class="col-md-2"><?php echo $oRst_Select['fk_id_aduana']; ?></td>
-          <td class="col-md-2"><?php echo $txt_cancela; ?></td>
+          <td class="p-1 col-md-2"><?php echo $oRst_Select['pk_id_poliza']; ?></td>
+          <td class="p-1 col-md-2"><?php echo $oRst_Select['fk_usuario']; ?></td>
+          <td class="p-1 col-md-2"><?php echo $oRst_Select['d_fecha']; ?></td>
+          <td class="p-1 col-md-2"><?php echo $oRst_Select['d_fecha_alta']; ?></td>
+          <td class="p-1 col-md-2"><?php echo $oRst_Select['fk_id_aduana']; ?></td>
+          <td class="p-1 col-md-2"><?php echo $txt_cancela; ?></td>
         </tr>
-        <tr class="row mt-3">
-          <td class="col-md-12 backpink">CONCEPTO :</td>
+        <tr class="row mt-1">
+          <td class="col-md-12 sub2 p-1">CONCEPTO :</td>
         </tr>
-        <tr class="row mt-2">
-          <td class="col-md-12"><?php echo $oRst_Select['s_concepto']; ?>
+        <tr class="row">
+          <td class="col-md-12 p-1"><?php echo $oRst_Select['s_concepto']; ?>
         </tr>
       </tbody>
     </table>
   </div><!--/Termina DETALLE DATOS DE POLIZA-->
 
-  <ul class="nav row text-center m-0 mt-5" id="myTab" role="tablist">
+  <ul class="nav row text-center m-0 mt-3" id="myTab" role="tablist">
     <li class="nav-item col-md-6">
       <a class="nav-link pills active" id="detallepoliza" data-toggle="tab" href="#poliza" role="tab" aria-controls="poliza" aria-selected="true">Detalle de Póliza</a>
     </li>
@@ -88,11 +88,11 @@ if( $totalRegistrosSelect > 0 ){
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="poliza" role="tabpanel" aria-labelledby="poliza-tab">
       <form  class="mt-4 font14">
-        <div class="row m-0"><!--DETALLE DE POLIZAS-->
+        <div class="row m-0">
           <div class="col-md-2 offset-md-8">SUMA DE CARGOS</div>
           <div class="col-md-2">SUMA DE ABONOS</div>
         </div>
-        <div class="row m-0 mt-3">
+        <div class="row m-0">
           <div class="col-md-1">
             <a href="#" onclick="btn_printPoliza(<?php echo $oRst_Select['pk_id_poliza']; ?>,<?php echo $oRst_Select['fk_id_aduana']; ?>)" class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
           </div>
@@ -112,27 +112,29 @@ if( $totalRegistrosSelect > 0 ){
         <div class="row m-0">
           <div class="col-md-12 encabezado font16">DETALLE POLIZA</div>
         </div>
-        <table class="table table-hover">
-          <tbody>
-            <!-- <tr class="backpink"> -->
-            <tr class="row m-0 sub3 font12 b">
-              <td class="p-0" width="3%">TIPO</td>
-              <td class="p-0" width="6%">CUENTA</td>
-              <td class="p-0" width="6%">GASTO</td>
-              <td class="p-0" width="6%">PROV</td>
-              <td class="p-0" width="7%">REFERENCIA</td>
-              <td class="p-0" width="7%">CLIENTE</td>
-              <td class="p-0" width="7%">DOCUMENTO</td>
-              <td class="p-0" width="7%">FACTURA</td>
-              <td class="p-0" width="7%">CTAGTOS</td>
-              <td class="p-0" width="7%">PAGOELECT</td>
-              <td class="p-0" width="7%">NOTACRED</td>
-              <td class="p-0" width="7%">ANTICIPO</td>
-              <td class="p-0" width="4%">CHEQUE</td>
-              <td class="p-0" width="7%">CARGO</td>
-              <td class="p-0" width="7%">ABONO</td>
-              <td class="p-0" width="5%">FECHA</td>
+        <table class="table table-hover fixed-table font12">
+          <thead>
+            <tr class="row m-0 sub2">
+              <th class="p-0" width="3%">TIPO</th>
+              <th class="p-0" width="6%">CUENTA</th>
+              <th class="p-0" width="6%">GASTO</th>
+              <th class="p-0" width="6%">PROV</th>
+              <th class="p-0" width="7%">REFERENCIA</th>
+              <th class="p-0" width="7%">CLIENTE</th>
+              <th class="p-0" width="7%">DOCUMENTO</th>
+              <th class="p-0" width="7%">FACTURA</th>
+              <th class="p-0" width="7%">CTAGTOS</th>
+              <th class="p-0" width="7%">PAGOELECT</th>
+              <th class="p-0" width="7%">NOTACRED</th>
+              <th class="p-0" width="7%">ANTICIPO</th>
+              <th class="p-0" width="4%">CHEQUE</th>
+              <th class="p-0" width="7%">CARGO</th>
+              <th class="p-0" width="7%">ABONO</th>
+              <th class="p-0" width="5%">FECHA</th>
             </tr>
+          </thead>
+          <tbody>
+
             <?php
               if( $totalRegistrosPOLDET > 0 ){
                 while ($oRst_POLDET = mysqli_fetch_array($sql_POLDET)){
@@ -154,8 +156,8 @@ if( $totalRegistrosSelect > 0 ){
               <td class="p-0" width="7%"><?php echo $oRst_POLDET['n_cargo']; ?></td>
               <td class="p-0" width="7%"><?php echo $oRst_POLDET['n_abono']; ?></td>
               <td class="p-0" width="5%"><?php echo $oRst_POLDET['d_fecha']; ?></td>
-              <td class='p-0 mt-2' width='8%'><b class='b'>DESCRIPCIÓN:</b></td>
-              <td class='p-0 mt-2 text-left' width='70%'><?php echo $oRst_POLDET['s_desc']; ?></td></td>
+              <td class='p-0 mt-1' width='8%'><b>DESCRIPCIÓN:</b></td>
+              <td class='p-0 mt-1 text-left' width='70%'><?php echo $oRst_POLDET['s_desc']; ?></td></td>
             </tr>
             <?php
               }

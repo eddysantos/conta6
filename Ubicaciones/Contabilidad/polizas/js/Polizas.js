@@ -157,8 +157,9 @@ $(document).ready(function(){
         $('#selecTipoPoliza').find('a').css('color', "");
         $('#selecTipoPoliza').find('a').css('font-size', "");
         $(this).attr('status', 'abierto');
-        $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-        $(this).css('font-size', '20px');
+				$(this).css('cssText', 'color: #58595b!important');
+        $(this).css('cssText', 'font-weight: bold!important');
+        $(this).css('font-size', '18px');
 
 
         switch (accion) {
@@ -178,8 +179,9 @@ $(document).ready(function(){
             if (status == 'cerrado') {
               $('#datospoliza').fadeIn();
               $(this).attr('status', 'abierto');
-              $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-              $(this).css('font-size', '20px');
+              $(this).css('cssText', 'color: #58595b!important');
+							$(this).css('cssText', 'font-weight: bold!important');
+              $(this).css('font-size', '18px');
             } else {
               $('#datospoliza').fadeOut();
               $(this).attr('status', 'cerrado');

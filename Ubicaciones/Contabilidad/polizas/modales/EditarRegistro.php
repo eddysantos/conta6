@@ -14,7 +14,7 @@
           <form class="form1">
             <table class="table text-center">
               <tbody>
-                <tr class="row mt-4">
+                <tr class="row mt-2">
                   <td class="col-md-10">
                     <?php if( $oRst_permisos["s_lstCompletaCtas_polizas"] == 1 ){
                     echo '<input class="efecto tiene-contenido popup-input" id="fk_id_cuenta" type="text" id-display="#medit-popup-display-cuentas_mst_2niv" action="cuentas_mst_2niv" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
@@ -51,7 +51,7 @@
                   </td>
                 </tr>
 
-                <tr class="row mt-4">
+                <tr class="row mt-3">
                   <td class="col-md-2">
                     <input class="efecto popup-input tiene-contenido" id="fk_referencia" type="text" id-display="#popup-display-referencia" action="referencias" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-referencia" style="display:none"></div>
@@ -72,7 +72,7 @@
                   </td>
                 </tr>
 
-                <tr class="row mt-4">
+                <tr class="row mt-3">
                   <td class="col-md-12">
                     <input class="efecto popup-input tiene-contenido" id="fk_id_proveedor" type="text" id-display="#popup-display-proveedores" action="proveedores" db-id="" autocomplete="off">
                     <div class="popup-list" id="popup-display-proveedores" style="display:none"></div>
@@ -80,14 +80,14 @@
                   </td>
                 </tr>
 
-                <tr class="row mt-4">
+                <tr class="row mt-3">
                   <td class="col-md-12">
                     <input  class="efecto tiene-contenido" id="s_desc" onchange="valDescripOficina();eliminaBlancosIntermedios(this);todasMayusculas(this);">
                     <label for="s_desc">Concepto</label>
                   </td>
                 </tr>
 
-                <tr class="row mt-4">
+                <tr class="row mt-3">
                   <td class="col-md-2">
                     <input class="efecto tiene-contenido" id="s_folioCFDIext" onchange="validaSoloNumeros(this);">
                     <label for="s_folioCFDIext">Documento</label>

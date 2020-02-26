@@ -2,13 +2,13 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
-input[type=date]{
+/* input[type=date]{
   padding-left: 40px;
   font-size: 13px!important;
-}
+} */
 input[type=date]:hover,input[type=submit]:focus,input[type=submit]:hover{
   color: #ed1c24!important;
-  font-size: 14px!important;
+  /* font-size: 14px!important; */
 }
 
 input[type=submit]{
@@ -25,10 +25,6 @@ input:read-only{
 input:read-only.bt{
   background-color: transparent!important;
 }
-/* input[type=submit]:focus,input[type=submit]:hover{
-  color: #ed1c24!important;
-  font-size: 14px;
-} */
 
 input[type=text].reg {
   height: 80px;

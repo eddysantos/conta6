@@ -13,7 +13,7 @@
   <div class="row m-0 submenuMed">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
-        <a class="nav-link pol" id="submenuMed" status="cerrado" accion="dtospol">DATOS DE POLIZA</a>
+        <a class="nav-link pol" status="cerrado" accion="dtospol">DATOS DE POLIZA</a>
       </li>
     </ul>
   </div>
@@ -53,12 +53,11 @@ if( $totalRegistrosSelect > 0 ){
 <input type="hidden" id="aduana_activa"  db-id="" autocomplete="off" value="<?php echo $aduana; ?>">
 
 <!--Comienza DETALLE DATOS DE POLIZA-->
-<div id="datospoliza" class="contorno mt-5" style="display:none">
-  <!-- style="display:none" -->
+<div id="datospoliza" class="contorno mt-4" style="display:none">
   <div class="titulo" style='margin-top:-25px'>DATOS DE LA POLIZA</div>
-  <table class="table form1 font14">
+  <table class="table font14">
     <thead>
-      <div class="row m-0 encabezado font12 b fw-bold p-1">
+      <div class="row encabezado b fw-bold p-1 font14">
         <div class="col-md-1">TIPO</div>
         <div class="col-md-1">POLIZA</div>
         <div class="col-md-2">USUARIO</div>
@@ -69,7 +68,7 @@ if( $totalRegistrosSelect > 0 ){
       </div>
     </thead>
     <tbody>
-      <tr class="row m-0 align-items-center">
+      <tr class="row align-items-center">
         <td class="col-md-1">
           <input class="efecto h22" <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="off" value="<?php echo $tipo; ?>">
         </td>
@@ -78,7 +77,7 @@ if( $totalRegistrosSelect > 0 ){
         </td>
         <td class="col-md-2"><?php echo trim($oRst_Select["fk_usuario"]); ?></td>
         <td class="col-md-2">
-          <input class="efecto h22" <?php echo $clase; ?> type="date" id="mstpol-fecha" value="<?php echo trim($oRst_Select["d_fecha"]); ?>">
+          <input class="efecto h22 pl-5" <?php echo $clase; ?> type="date" id="mstpol-fecha" value="<?php echo trim($oRst_Select["d_fecha"]); ?>">
         </td>
         <td class="col-md-2"><?php echo trim($oRst_Select["d_fecha_alta"]); ?></td>
         <td class="col-md-2">
@@ -97,15 +96,15 @@ if( $totalRegistrosSelect > 0 ){
           <!--input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="off" disabled value="<?php echo $cancela; ?>"-->
         </td>
       </tr>
-      <tr class="row m-0 mt-4">
+      <tr class="row mt-4 align-self-center">
         <td class="col-md-11">
           <input id="mstpol-concepto" <?php echo $clase; ?> value="<?php echo trim($oRst_Select["s_concepto"]); ?>" type="text" onchange="eliminaBlancosIntermedios(this)">
           <label for="concep">CONCEPTO</label>
         </td>
-        <td class="col-md-1 text-left align-self-center">
-      <?php if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 && $cancela == 0 ){ ?>
+        <td class="col-md-1 text-left">
+        <?php if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 && $cancela == 0 ){ ?>
           <a href="#" id="guardarPolMST"> <img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
-    <?php } ?>
+        <?php } ?>
         </td>
       </tr>
     </tbody>
@@ -241,7 +240,7 @@ if( $totalRegistrosSelect > 0 ){
             </tr>
             <tr class="row justify-content-center mt-4">
               <td class="col-md-2">
-                <a href="#" class="boton" id="detpol-btnguardar"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                <a href="#" class="boton p-1" id="detpol-btnguardar"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
               </td>
             </tr>
           </tbody>
@@ -264,7 +263,7 @@ if( $totalRegistrosSelect > 0 ){
       <div class="contorno mt-5">
         <table class="table font12 table-hover">
           <thead>
-            <tr class="row sub3 b">
+            <tr class="row sub2 b">
               <td class='p-1' width="3%"></td>
               <td class='p-1' width="8%">CUENTA</td>
               <td class='p-1' width="8%">GASTO</td>
@@ -319,7 +318,7 @@ if( $totalRegistrosSelect > 0 ){
             </tr>
           </thead>
           <thead>
-            <tr class="row sub3 font12 b">
+            <tr class="row sub2 font12 b">
               <td class='p-1' width="3%"></td>
               <td class='p-1' width="8%">CUENTA</td>
               <td class='p-1' width="8%">GASTO</td>

@@ -6,22 +6,24 @@ require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
 
 class MYPDF extends TCPDF {
   public function Header() {
-
-    $nombreCIA = 'Proyección Logistica Agencia Aduanal S.A de C.V';
-
-    $image_file = 'cheetah.svg';
-    $this->ImageSVG($image_file, 5, 10, '', 10, '', '','', 0,false);
+    $image_file = 'spectrum_worldwide.svg';
+    $this->ImageSVG($image_file, 6, 12, '', 12, '', '','', 0,false);
     $this->setTextColor(102);
-    $this->SetFont('helvetica', '', 10);
-    $this->Cell(0, 0, date('m-d-Y', strtotime('today')) , 0, 1, 'R', 0, '', 0, false, 'T', 'C');
-    $this->SetFont('helvetica', '', 12);
-    $this->Cell(0, 12, $nombreCIA , 0, 1, 'C', 0, '', 0, false, 'T', 'C');
+    $this->SetFont('barlow', '', 12);
+    $this->Cell(0, 12, 'Impresión de poliza' , 0, 1, 'R', 0, '', 0, false, 'T', 'C');
   }
 
-  public function Footer() {
-    $this->SetY(-15);
-    $this->SetFont('helvetica', 'I', 8);
+  function Footer(){
+   $logoX = 100;
+   $logoFileName = "s_rojo.svg";
+   $logoWidth = 7;
+   $logoY = 286;
+   $logo = $this->PageNo() . ' | '. $this->ImageSVG($logoFileName, $logoX, $logoY, $logoWidth);
+
+   $this->SetX($this->w - $this->documentRightMargin - $logoWidth);
+   $this->Cell(10,10, $logo, 0, 0, 'C');
   }
+
 }
 
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -50,20 +52,20 @@ if (!($stmt->execute())) {
 $rslt = $stmt->get_result();
 $amount = $rslt->num_rows;
 
-$pdf->SetFont('courier', '', 9);
+$pdf->SetFont('barlow', '', 9, '', false);
 $pdf->AddPage();
 
 if( $amount > 0 ){
 
-$cancela = $oRst_Select["s_cancela"];
-if( $cancela == 1 ){ $txt_cancela = "Póliza Cancelada";}else{$txt_cancela = "";}
-$contentEncabezado = '';
+  $cancela = $oRst_Select["s_cancela"];
+  if( $cancela == 1 ){ $txt_cancela = "Póliza Cancelada";}else{$txt_cancela = "";}
+  $contentEncabezado = '';
 
 
 $contentEncabezado .= '
 <div border="1">
 <table>
-  <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
+  <tr bgcolor="#58595b" color="rgb(255, 255, 255)">
     <td width="20%">Fecha de Póliza</td>
     <td width="10%">Usuario</td>
     <td width="25%">Fecha de Captura</td>
@@ -122,7 +124,7 @@ if (!($stmt1->execute())) {
 }
 $rslt = $stmt1->get_result();
 $amount1 = $rslt->num_rows;
-$pdf->SetFont('courier', '', 8);
+$pdf->SetFont('barlow', '', 8);
 $pdf->setTextColor(120);
 $pdf->SetAutoPageBreak(TRUE, 15);
 $contenidobody ='';
@@ -130,21 +132,21 @@ $contenidobody ='';
 if ($amount1 > 0) {
 $contenidobody .='<style>
     .bg{
-      background-color : #919191;
+      background-color : #58595b;
       color: #ffffff;
       text-align: center;
     }
 
     td.bbottom {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 0.5px solid #ccc;
 
     }
     .black{
-      color:rgb(80, 80, 80);
+      color:#58595b;
       font-size: 10px
     }
     table.test {
-        color: #787878;
+        color: #58595b;
         border-width: 1px 1px 1px 1px;
         border-color: black;
         text-align: center;
@@ -153,7 +155,6 @@ $contenidobody .='<style>
 <table class="test" >
   <thead>
     <tr>
-      <th  width="0.1%"></th>
       <th class="bg" width="5%">Tipo</th>
       <th class="bg" width="10%">Cuenta</th>
       <th class="bg" width="11%">Referencia</th>
@@ -164,10 +165,10 @@ $contenidobody .='<style>
       <th class="bg" width="6%">P.E.</th>
       <th class="bg" width="6%">N.C</th>
       <th class="bg" width="7%">Cheque</th>
-      <th class="bg" width="9.6%">Cargo</th>
-      <th class="bg" width="9.7%">Abono</th>
-      <th  width="0.1%"></th>
-    </tr></thead>';
+      <th class="bg" width="9.7%">Cargo</th>
+      <th class="bg" width="9.8%">Abono</th>
+    </tr>
+  </thead>';
 
 if ($rslt->num_rows == 0) {
   $cb1['query']['code'] = 2;
@@ -207,10 +208,9 @@ if ($rslt->num_rows == 0) {
       <td width="9.6%" align="right">'.$abono .'</td>
       <td width="0.2%"></td>
     </tr>
-    <tr class="bbottom">
+    <tr color="black">
       <td width="0.5%"></td>
-      <td class="bbottom" width="79.5%" align="left">Desc.'.$descripcion .'</td>
-      <td class="bbottom" width="19.5%" align="left"></td>
+      <td class="bbottom" width="99%" align="left">Descripcion: '.$descripcion .'</td>
       <td width="0.5%"></td>
     </tr>';
   }
@@ -218,7 +218,7 @@ if ($rslt->num_rows == 0) {
 $contenidobody .='</tbody></table><br><br>';
 }else {
   $contenidobody .='<div>
-			<font color="#F73A4A" align="center">NO HAY DETALLES DE ESTA PÓLIZA</font>
+			<font color="#ed1c24" align="center">NO HAY DETALLES DE ESTA PÓLIZA</font>
 		</div>';
 }
 $pdf->writeHTML($contenidobody, true, false, false, false, 'C');
@@ -250,7 +250,7 @@ if (!($stmt2->execute())) {
 $rslt2 = $stmt2->get_result();
 $amount2 = $rslt2->num_rows;
 
-$pdf->SetFont('courier', '', 10);
+$pdf->SetFont('barlow', '', 10);
 $pdf->SetCellPadding(0);
 
 
@@ -274,7 +274,7 @@ if ($amount2 == 0) {
           border:1px solid black;
         }
     </style>
-     <table cellmargin="0" cellpadding="3">
+     <table>
       <tfoot>
         <tr color="black">
           <td width="50%">Totales :</td>
@@ -289,7 +289,7 @@ $pdf->writeHTML($contenidopie, true, false, false, false, 'C');
 
 }else{
   $contenidobody .='<div>
-    <font color="#F73A4A" align="center" >NO HAY DATOS DE ESTA PÓLIZA, O ES UNA PÓLIZA DE OTRA OFICINA</font>
+    <font color="#ed1c24" align="center" >NO HAY DATOS DE ESTA PÓLIZA, O ES UNA PÓLIZA DE OTRA OFICINA</font>
   </div>';
 }
 

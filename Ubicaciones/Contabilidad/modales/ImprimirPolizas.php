@@ -1,7 +1,7 @@
 <!--Imprimir Polizas-->
 <div class="modal fade" id="imprimir-pol" style="margin-top:50px">
   <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <div class="modal-content m_bordenegro">
       <div class="modal-header border-0 align-items-center">
         <div class='text-left ml-4' style='width:900px'>
           <h5>Imprimir Pólizass</h5>
@@ -45,4 +45,4 @@
   </div>
 </div>
 
-<script src="/conta6/Resources/js/Inputs.js"></script>
+<!-- <script src="/conta6/Resources/js/Inputs.js"></script> -->

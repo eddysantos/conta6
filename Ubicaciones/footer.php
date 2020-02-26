@@ -15,7 +15,6 @@
   <script src="/Conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
   <script src="/Conta6/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
   <script src="/Conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
-  <!--script src="/Conta6/Ubicaciones/Contabilidad/cheques/beneficiarios/js/Beneficiarios.js"></script-->
   <script src="/Conta6/Ubicaciones/Contabilidad/facturaelectronica/js/facturaElectronica.js"></script>
   <script src="/Conta6/Ubicaciones/Contabilidad/Notacredito/js/NotaCredito.js"></script>
 
@@ -33,11 +32,9 @@
   <script src="/Conta6/Resources/js/validarFormulario.js"></script>
   <script src="/Conta6/Resources/js/calculadora.js"></script>
 
-  <script src="/Conta6/Ubicaciones/Contabilidad/js/contenedor-movible.js"></script>
+  <!-- <script src="/Conta6/Ubicaciones/Contabilidad/js/contenedor-movible.js"></script> -->
   <script src="/Conta6/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
-  <!-- <script src="/Conta6/Resources/bootstrap/js/bootstrap-checkbox-toggle.js"></script> -->
   <script src="/Conta6/Resources/js/popup-list-plugin.js"></script>
-  <!-- <script src="/Conta6/Resources/js/popup-list-snippet.js"></script> -->
   <script src="/Conta6/Resources/js/table-fetch-plugin.js"></script>
   <script src="/Conta6/Resources/js/Inputs.js"></script>
 

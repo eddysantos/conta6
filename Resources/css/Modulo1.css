@@ -52,6 +52,7 @@
 
 .sub2{
   background-color:rgba(173, 173, 173, 0.1)!important;
+  /* background-color:rgba(86, 87, 91, 0.1)!important; */
   color:rgb(87, 87, 87)!important;
 }
 
@@ -418,7 +419,7 @@ a img.icoxs {
 a img.icoxs:hover {
   width:16px;
 }
-#submenuMed {
+/* #submenuMed {
   background-color: transparent!important;
   color: rgb(161, 160, 160)!important;
   letter-spacing: 6px!important;
@@ -431,17 +432,22 @@ a img.icoxs:hover {
 }
 #submenuMed:visited {
   color: black!important;
+} */
+
+
+a:hover, a:focus{
+  cursor: pointer
 }
+/*
+a:visited{
+  color:red;
+} */
+
 
 
 .submenuMed {
   background-color: rgba(254, 113, 113, 0.04);
 }
-
-/* .backpink{
-  background-color: rgba(246, 92, 92, 0.04)!important;
-  color: rgb(87, 87, 87)!important;
-} */
 
 .contorno {
   border: 1px solid #ccc;
