@@ -1,4 +1,7 @@
 <?php
+#http://localhost:88/conta6/ubicaciones/Nomina/Honorarios/actions/impresionNominaCompleto.php?semana=1&anio=2020&tipo=O
+
+# quite algunas columnas porque no se usan, como vacaciones, faltas, la parte de descuentosPorErrores solo se uso una sola vez.
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
 
@@ -9,14 +12,12 @@ $semana = trim($_GET['semana']);
 $id_empleado = trim($_GET['id_empleado']);
 $anio = trim($_GET['anio']);
 $tipo = trim($_GET['tipo']);
-$regimenNomina = 9;
+$regimenNomina = '09';
 $image_file = 'cheetah.svg';
 
 if( $tipo == 'Todas' ){ $tipoNomina = ''; $nombrePDF = 'NominaHonorarios.pdf'; }
 if( $tipo == 'O' ){ $tipoNomina = " and s_tipoNomina = 'O' "; $nombrePDF = 'NominaHonorariosOrdinaria.pdf';}
 if( $tipo == 'E' ){ $tipoNomina = " and s_tipoNomina = 'E' "; $nombrePDF = 'NominaHonorariosExtraOrdinaria.pdf';}
-
-
 
 $query_consultaFecha = "SELECT distinct d_fechaFinal, d_fechaInicio
                             FROM conta_t_nom_captura
@@ -40,14 +41,11 @@ if (!($stmt_consultaFecha->execute())) {
 }
 $rslt_consultaFecha = $stmt_consultaFecha->get_result();
 $rows_consultaFecha = $rslt_consultaFecha->num_rows;
-
 if ($rows_consultaFecha > 0) {
-    while ($row_consultaFecha = $rslt_consultaFecha->fetch_assoc()) {
+      $row_consultaFecha = $rslt_consultaFecha->fetch_assoc();
       $fechaInicio = $row_consultaFecha['d_fechaInicio'];
       $fechaFinal = $row_consultaFecha['d_fechaFinal'];
-    }
 }
-
 
 
 // create new PDF document
@@ -120,7 +118,7 @@ $html .= <<<EOD
     <td class="bg" width="10%">POLIZA</td>
     <td class="bg" width="10%">CANC</td>
     <td class="bg" width="10%">FACTURA</td>
-    <td class="bg" width="10%">UUID</td>
+    <!--td class="bg" width="10%">UUID</td-->
   </tr>
 EOD;
 
@@ -140,44 +138,63 @@ while ($row = $rslt->fetch_assoc()) {
   $n_totalDeducciones = $row['n_totalDeducciones'];
   $n_total = $row['n_total'];
 
+  $idDocNomina = $pk_id_docNomina;
+  $txt_cancela = '';
+  $poliza = '';
+  $factura = '';
+  $uuid = '';
+  require $root . '/Conta6/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina.php';
+  if( $total_consultaDatosCFDI > 0 ){
+    $row_consultaDatosCFDI = $rslt_consultaDatosCFDI->fetch_assoc();
+    $poliza = $row_consultaDatosCFDI['fk_id_poliza'];
+    $cancela = $row_consultaDatosCFDI['s_cancela_factura'];
+    $factura = $row_consultaDatosCFDI['pk_id_nomina'];
+    $uuid = $row_consultaDatosCFDI['s_UUID'];
+
+    if($cancela == 1){
+      $txt_cancela = 'CANCELADO';
+    }
+
+  }
+
 
   $html .='<tbody><tr color="black">
     <td width="10%">'.$noEmpleado.'</td>
     <td width="40%" align="left">'.$nombre.' '.$s_apellidoP.' '.$s_apellidoM.'</td>
     <td width="10%">'.$pk_id_docNomina.'</td>
-    <td width="10%"></td>
-    <td width="10%"></td>
-    <td width="10%"></td>
-    <td width="10%"></td>
+    <td width="10%">'.$poliza.'</td>
+    <td width="10%">'.$txt_cancela.'</td>
+    <td width="10%">'.$factura.'</td>
+    <!--td width="10%">'.$uuid.'</td-->
   </tr>
-  <tr>
+  <!--tr>
     <td width="40%">Dias</td>
     <td width="15%"></td>
     <td width="10%"></td>
     <td width="20%">DESC ERRORES</td>
     <td width="15%"></td>
-  </tr>
+  </tr-->
 
   <tr>
-    <td width="10%"> I </td>
-    <td width="10%"> V </td>
-    <td width="10%"> F </td>
-    <td width="10%"> P </td>
-    <td width="15%">IMPORTE</td>
-    <td width="10%">ISR</td>
-    <td width="10%">Base %</td>
-    <td width="10%">Importe</td>
+    <td width="40%">UUID</td>
+    <!--td width="10%"> V </td>
+    <td width="10%"> F </td-->
+    <td width="10%"> Días Pagar </td>
+    <td width="15%">Perc</td>
+    <td width="10%">Deduc</td>
+    <!--td width="10%">Base %</td>
+    <td width="10%">Importe</td-->
     <td width="15%">NETO A PAGAR</td>
   </tr>
   <tr color="black">
-    <td class="bbottom" width="10%">'.$n_dias_incapacidad.'</td>
-    <td class="bbottom" width="10%">'.$n_dias_vacaciones.'</td>
-    <td class="bbottom" width="10%">'.$n_dias_faltas.'</td>
+    <td class="bbottom" width="40%">'.$uuid.'</td>
+    <!--td class="bbottom" width="10%">'.$n_dias_vacaciones.'</td>
+    <td class="bbottom" width="10%">'.$n_dias_faltas.'</td-->
     <td class="bbottom" width="10%">'.$n_numDiasPagados.'</td>
     <td class="bbottom" width="15%">'.$n_totalPercepciones.'</td>
     <td class="bbottom" width="10%">'.$n_totalDeducciones.'</td>
-    <td class="bbottom" width="10%"></td>
-    <td class="bbottom" width="10%"></td>
+    <!--td class="bbottom" width="10%"></td>
+    <td class="bbottom" width="10%"></td-->
     <td class="bbottom" width="15%">'.$n_total.'</td>
   </tr>';
 }
@@ -195,4 +212,6 @@ $pdf->Output($nombrePDF,'I');
 //============================================================+
 // END OF FILE
 //============================================================+
+
+
 ?>

@@ -100,3 +100,11 @@ $(document).ready(function () {
 	});
 
 });
+
+function calcularBase(){
+	base = $('#baseDeduccion_penAlim').val();
+	porcentaje = $('#porcentajeDeduccion_penAlim').val();
+	total = base*porcentaje;
+	console.log(total);
+	$('#importeExentoDeduccion_penAlim').val(total);
+}

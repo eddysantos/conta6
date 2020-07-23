@@ -86,6 +86,7 @@
 */
 
   # **************************** PARA LA NOMINA
+  #antiguedad en semanas
   function calcularAntiguedad($FECHA_CONTRATO,$FECHAFINAL){
 		/*$parte_ini = explode("-", $FECHA_CONTRATO);
 		$parte_fin = explode("-", $FECHAFINAL);
@@ -117,6 +118,84 @@
 
 		return $pANTIGUEDAD;
 	}
+
+  function calcularAntiguedadDias($FECHA_CONTRATO,$FECHAFINAL){
+		$parte_ini = explode("-", $FECHA_CONTRATO);
+		$parte_fin = explode("-", $FECHAFINAL);
+
+		$fecha_ini = strtotime(date_format(date_create($FECHA_CONTRATO),"Y-m-d 00:00:00"));
+		$fecha_fin = strtotime(date_format(date_create($FECHAFINAL),"Y-m-d 23:59:59"));
+
+		$segundos = $fecha_ini - $fecha_fin;
+		$segundos = abs($segundos);
+		$dias = round($segundos / 86400);
+
+		$pANTIGUEDADd = $dias;
+		return $pANTIGUEDADd;
+	}
+
+  function calcularAntiguedadAnios($FECHA_CONTRATO,$FECHAFINAL){
+
+    $array_contrato = explode ( "-", $FECHA_CONTRATO );
+    $array_actual = explode ( "-", $FECHAFINAL );
+
+    $anos =  $array_actual[0] - $array_contrato[0];
+    $meses = $array_actual[1] - $array_contrato[1];
+    $dias =  $array_actual[2] - $array_contrato[2];
+
+    if ($dias < 0)
+    {
+      --$meses;
+
+      switch ($array_actual[1]) {
+           case 1:     $dias_mes_anterior=31; break;
+           case 2:     $dias_mes_anterior=31; break;
+           case 3:
+            if (bisiestoAnios($array_actual[0]))
+            {
+              $dias_mes_anterior=29; break;
+            } else {
+              $dias_mes_anterior=28; break;
+            }
+           case 4:     $dias_mes_anterior=31; break;
+           case 5:     $dias_mes_anterior=30; break;
+           case 6:     $dias_mes_anterior=31; break;
+           case 7:     $dias_mes_anterior=30; break;
+           case 8:     $dias_mes_anterior=31; break;
+           case 9:     $dias_mes_anterior=31; break;
+           case 10:     $dias_mes_anterior=30; break;
+           case 11:     $dias_mes_anterior=31; break;
+           case 12:     $dias_mes_anterior=30; break;
+      }
+
+      $dias=$dias + $dias_mes_anterior;
+    }
+
+    if ($meses < 0)
+    {
+      --$anos;
+      $meses=$meses + 12;
+    }
+
+
+    if($anos > 0 ){ $anos = $anos; }else{ $anos = 0; }
+    if($meses >= 6 ){ $anos = $anos + 1; }else{ $anos = $anos; }
+    #if($dias > 0 ){ $dias = $dias; }else{ $dias = 0; }
+
+    $pANTIGUEDAD = $anos;
+    return $pANTIGUEDAD;
+  }
+
+  function bisiestoAnios($anio_actual){
+    $bisiesto=false;
+    //probamos si el mes de febrero del año actual tiene 29 días
+      if (checkdate(2,29,$anio_actual))
+      {
+      $bisiesto=true;
+    }
+    return $bisiesto;
+  }
+
 
   function cortarXdecimales($valor,$dec){
 		if(is_float($valor)) {

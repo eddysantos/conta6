@@ -1,7 +1,6 @@
 <!--MODULO 3 * MODULO 3 * MODULO 3 * MODULO 3 * MODULO 3 * MODULO 3-->
 
 <!--Sección Parametros para Modificar Articulo 80-->
-
 <div class="modal fade" id="articulo80">
   <div class="modal-dialog modal-med" style="margin-top:150px">
     <div class="modal-content">
@@ -70,14 +69,15 @@
                 <td class="col-md-2">Salario Min</td>
                 <td class="col-md-2">IMSS</td>
                 <td class="col-md-2">Subsidio</td>
-                <td class="col-md-2">D. Trabajados</td>
-                <td class="col-md-2">D. Pagar</td>
+                <td class="col-md-2">UMA</td>
+                <td class="col-md-1">D. Trabajados</td>
+                <td class="col-md-1">D. Pagar</td>
               </tr>
             </thead>
             <tbody>
               <tr class="row m-0">
                 <td class="col-md-2">
-                  <input type="hidden" db-id="" id="s_nombreTabla">
+                  <input type="text" db-id="" id="s_nombreTabla">
                   <input type="hidden" id="pk_id_partida">
                   <input  class="efecto" id="fk_id_aduana">
                 </td>
@@ -89,6 +89,9 @@
                 </td>
                 <td class="col-md-2">
                   <input  class="efecto" id="n_subsidio">
+                </td>
+                <td class="col-md-2">
+                  <input  class="efecto" id="n_UMA">
                 </td>
                 <td class="col-md-2">
                   <input  class="efecto" id="n_diasTrabajados">

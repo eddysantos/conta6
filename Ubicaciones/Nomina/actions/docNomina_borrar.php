@@ -4,7 +4,6 @@
 
   $idDocNomina = trim($_POST['idDocNomina']);
 
-
   $query_borrarDocNominaDet = "DELETE FROM conta_t_nom_captura_det WHERE fk_id_docNomina = ?";
   $stmt_borrarDocNominaDet = $db->prepare($query_borrarDocNominaDet);
   if (!($stmt_borrarDocNominaDet)) {

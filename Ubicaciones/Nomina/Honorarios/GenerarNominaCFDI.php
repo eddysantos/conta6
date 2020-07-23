@@ -10,18 +10,7 @@
 ?>
 
 <div class="container-fluid">
-  <div class="row submenuMed text-center m-0">
-    <div class="col-md-4" role="button">
-      <a  id="submenuMed" class="honorarios" accion="gnominaHon" status="cerrado">GENERAR NOMINA</a>
-    </div>
-    <div class="col-md-4">
-      <a id="submenuMed" class="honorarios" accion="gcfdiHon" status="cerrado">GENERAR CFDI</a>
-    </div>
-    <div class="col-md-4">
-      <a id="submenuMed" class="honorarios" accion="paramHon" status="cerrado">PARAMETROS</a>
-    </div>
-  </div>
-
+<?php require $root . '/conta6/Ubicaciones/Nomina/Honorarios/submenu_honorarios.php'; ?>
   <!--Comienza Generar Nomina-->
   <div id="contornognomHon" class="contorno" style="display:none">
     <h5 class="titulo font16">Documento Ordinario</h5>
@@ -127,10 +116,18 @@
         <thead>
           <tr class="row encabezado">
             <td class="col-md-1">No.</td>
-            <td class="col-md-3">Empleado</td>
+            <td class="col-md-2">Empleado</td>
             <td class="col-md-1">Tipo</td>
-            <td class="col-md-1">Documento <a href=''><img class='icomediano' src='/conta6/Resources/iconos/002-plus.svg'></a></td>
-            <td class="col-md-1"><a href=''><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a></td>
+            <td class="col-md-1">Documento
+              <a href='#' onclick="nuevoDocNomina()">
+                <img class='icomediano' src='/conta6/Resources/iconos/002-plus.svg'>
+              </a>
+            </td>
+            <td class="col-md-1">
+              <a href='#' onclick='borrarDocNominaTodos()'>
+                <img class='icochico' src='/conta6/Resources/iconos/cross.svg'>
+              </a>
+            </td>
             <td class="col-md-1">Pol.Pago</td>
             <td class="col-md-1">Cancelar</td>
             <td class="col-md-1">Factura</td>

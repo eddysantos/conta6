@@ -1,6 +1,8 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+
 
 $anio = $_POST['anio_nomsig'];
 $NUM_NOMINA = $_POST['num_nomsig'];
@@ -17,6 +19,7 @@ $descNomina = 'Honorarios';
 $descConcepto = 'Pago de nómina'; #default en BD
 $METODODEPAGO = 'PUE'; #default en BD
 $usoCFDI = 'P01'; #default BD
+$id_pago = 99; #default BD
 
 $query = "select a.*,b.s_descripcion AS nom_depto
           from conta_t_nom_empleados a
@@ -79,7 +82,6 @@ if ($rslt_empl->num_rows > 0) {
     $puesto = $row_empl['s_puesto_actividad'];
     $id_contrato = $row_empl['fk_id_contrato'];
     $id_jornada = $row_empl['fk_id_jornada'];
-    $id_pago = $row_empl['fk_id_pago'];
     $id_depto = $row_empl['fk_id_depto'];
     $id_entfed = $row_empl['s_id_entfed'];
     $nom_depto = $row_empl['nom_depto'];
@@ -91,6 +93,8 @@ if ($rslt_empl->num_rows > 0) {
 	  $TOTAL = $TOTAL_PERCEPCIONES - $TOTAL_DEDUCCIONES;
 	  $TOTAL_NETO = $TOTAL_PERCEPCIONES - $TOTAL_DEDUCCIONES;
 
+    #antiguedad en semanas
+    $pANTIGUEDAD = calcularAntiguedad($fechaContrato,$FECHAFINAL);
 
 
     require $root . '/conta6/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_1agregarDocCaptura.php';

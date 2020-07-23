@@ -59,14 +59,23 @@ if( $total_consultaDetalle > 0 ) {
         $idReferencia = $row_consultaDetalle_DR['fk_referenciaDR'];
         $numParcialidad = $row_consultaDetalle_DR['n_numParcialidad'];
         $id_facturaDR = $row_consultaDetalle_DR['fk_id_facturaDR'];
+        $moneda = $row_consultaDetalle_DR['fk_id_monedaDR'];
+        $tipoCambio = $row_consultaDetalle_DR['n_tipoCambioDR'];
+
+        if( $moneda <> 'MXN' ){
+    			$importe = $importe * $tipoCambio;
+    			$iva = $iva * $tipoCambio;
+    		}
+
 
     		$detallePoliza .= "(".$poliza.",'".$cta208."','".$d_fecha_docPago."',3,'".$idReferencia."','".$id_cliente."',0,".$id_facturaDR.",0,".$idFactura.",0,0,'CARGO A LA CUENTA POR ANTICIPO PARCIALIDAD ".$numParcialidad."',".$importe.",0),";
-
+        if( $iva > 0 ){
     		$detallePoliza .= "(".$poliza.",'0202-00007','".$d_fecha_docPago."',3,'".$idReferencia."','".$id_cliente."',0,".$id_facturaDR.",0,".$idFactura.",0,0,'IVA SOBRE HONORARIOS PARCIALIDAD ".$numParcialidad."',".$iva.",0),";
-
+        }
     		$detallePoliza .= "(".$poliza.",'".$cta108."','".$d_fecha_docPago."',3,'".$idReferencia."','".$id_cliente."',0,".$id_facturaDR.",0,".$idFactura.",0,0,'ABONO A LA CUENTA POR ANTICIPO PARCIALIDAD ".$numParcialidad."',0,".$importe."),";
-
+        if( $iva > 0 ){
     		$detallePoliza .= "(".$poliza.",'0202-00002','".$d_fecha_docPago."',3,'".$idReferencia."','".$id_cliente."',0,".$id_facturaDR.",0,".$idFactura.",0,0,'IVA SOBRE HONORARIOS PARCIALIDAD ".$numParcialidad."',0,".$iva."),";
+        }
       }
     }
 

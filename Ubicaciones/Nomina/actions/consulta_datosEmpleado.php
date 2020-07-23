@@ -1,7 +1,7 @@
 <?php
 
 
-$query_datosEmpleado = "select s_prestamoCta from conta_t_nom_empleados WHERE pk_id_empleado = $id_empleado";
+$query_datosEmpleado = "select * from conta_t_nom_empleados WHERE pk_id_empleado = $id_empleado";
 
 $stmt_datosEmpleado = $db->prepare($query_datosEmpleado);
 if (!($stmt_datosEmpleado)) {

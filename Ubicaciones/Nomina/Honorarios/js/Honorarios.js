@@ -130,9 +130,14 @@ $(document).ready(function () {
 	$('#generarDocNominaHon').click(function(){
 		num_nomsig = $('#num_nomsig').val();
 		fp_nomsig = $('#fp_nomsig').val();
+		mesCorresponde = $('#mesCorresponde').val();
 
 		if( fp_nomsig == ""){
 				alertify.success('Asigne fecha pago');
+				return false;
+		}
+		if( mesCorresponde == ""){
+				alertify.success('Asigne el mes al que corresponde la nómina');
 				return false;
 		}
 
@@ -142,8 +147,9 @@ $(document).ready(function () {
 			fi_nomsig : $('#fi_nomsig').val(),
 			ff_nomsig : $('#ff_nomsig').val(),
 			fp_nomsig : fp_nomsig,
-			mesCorresponde : $('#mesCorresponde').val()
+			mesCorresponde : mesCorresponde
 	  }
+		console.log(data);
 	  $.ajax({
 	    type: "POST",
 	    url: "/conta6/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon.php",
@@ -160,7 +166,10 @@ $(document).ready(function () {
 	  })
 	});
 
- // funciona para sueldos y honorarios
+
+/*******************************************************************/
+// funciona para sueldos y honorarios
+
 	$('#buscaranio').change(function(){
 		var data = {
 			anio : $('#buscaranio').val(),
@@ -179,6 +188,38 @@ $(document).ready(function () {
 	  })
 	});
 
+	$('#generarNuevoDocumento').click(function(){
+		idRegimen = $('#nom_regimen').val();
+		var data = {
+			anio : $('#anio').val(),
+			semana : $('#semana').val(),
+			tipo : $('#opcionestipo').val(),
+			descrip : $('#opcionesdescNom').val(),
+			empleado : $('#empleado').val(),
+			idRegimen : idRegimen
+		}
+		//console.log(data);
+		$.ajax({
+	    type: "POST",
+	    url: "/conta6/Ubicaciones/Nomina/actions/docNomina_generarNuevo.php",
+	    data: data,
+	    success: 	function(r){
+	      r = JSON.parse(r);
+	      if (r.code == 1) {
+					alertify.alert('Documento generado correctamente', function(){
+
+						if( idRegimen == '02'){
+							document.location.replace('/conta6/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php');
+						}
+						if( idRegimen == '09'){
+							document.location.replace('/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php');
+						}
+
+					});
+	      }
+	    }
+	  })
+	});
 
 	$(function(){
 		  var ajaxCall = $.ajax({
@@ -190,6 +231,7 @@ $(document).ready(function () {
 		    r = JSON.parse(r);
 		    if (r.code == 1) {
 					$('#percepcionesComplementoNomina').html(r.data);
+					$('#otrosPagosComplementoNomina').html(r.dataOtrosPagos);
 		      $('#deduccionesComplementoNomina').html(r.datadeducciones);
 		    } else {
 		      console.error(r.message);
@@ -197,6 +239,276 @@ $(document).ready(function () {
 		  });
 		});
 
+	$('#guardar-editarDocNomina').click(function(){
+		//$('#guardar-editarDocNomina').prop('disabled',true);
+		idRegimen = $('#idRegimen').val();
+
+
+		var data = {
+			percepciones: {},
+			percepcionesDelete: {},
+			otrospagos: {},
+			otrospagosDelete: {},
+			horasextras: {},
+			horasextrasDelete: {},
+			percepSepIndem: {},
+			percepSepIndemDelete: {},
+			deducciones: {},
+			deduccionesDelete: {},
+			penalim: {},
+			penalimDelete: {},
+			idRegimen: $('#idRegimen').val(),
+			idDocNomina: $('#doc').val(),
+			fechaPago: $('#fechaPago').val(),
+			valorUnitario: $('#valorUnitario').val(),
+			valorImporte: $('#valorImporte').val(),
+			tipo: $('#tipo').val(),
+			indias: $('#indias').val(),
+			indescontar: $('#indescontar').val(),
+			inpagar: $('#inpagar').val(),
+			totvacaciones: $('#totvac').val(),
+			totfaltas: $('#totfaltas').val(),
+			totpagar: $('#totpagar').val(),
+			totpercep: $('#totpercep').val(),
+			totdeduc: $('#totdeduc ').val(),
+			tottotal: $('#tottotal').val(),
+			tototrospagos: $('#tototrospagos').val(),
+			totneto: $('#totneto').val(),
+			anioserv: $('#anioserv').val(),
+			ultsuelmesord: $('#ultsuelmesord').val(),
+			ingacum: $('#ingacum').val(),
+			ingnoacum: $('#ingnoacum').val(),
+			totalpagado: $('#totalpagado').val(),
+		};
+console.log(data);
+		$( ".elemento-percep" ).each(function(i) {
+			var parsed_data = {
+				cve: $(this).find('.cve').val(),
+				ordenRep: $(this).find('.ordenRep').val(),
+				idpartida: $(this).find('.id-partida').val(),
+				cta: $(this).find('.cta').val(),
+				desc: $(this).find('.desc').val(),
+				gravado: $(this).find('.gravado').val(),
+				exento: $(this).find('.exento').val()
+			}
+			data.percepciones[i] = parsed_data;
+		});
+
+		$( ".elemento-percep-eliminar" ).each(function(i) {
+			var parsed_data = {
+				idpartida: $(this).find('.id-partida').val()
+			}
+			data.percepcionesDelete[i] = parsed_data;
+		});
+
+		$( ".elemento-percepop" ).each(function(i) {
+			var parsed_data = {
+				cve: $(this).find('.cve').val(),
+				ordenRep: $(this).find('.ordenRep').val(),
+				idpartida: $(this).find('.id-partida').val(),
+				cta: $(this).find('.cta').val(),
+				desc: $(this).find('.desc').val(),
+				exento: $(this).find('.exento').val(),
+				subcausado: $(this).find('.subcausado').val(),
+				anio: $(this).find('.anio').val(),
+				saldofavor: $(this).find('.saldofavor').val()
+			}
+			data.otrospagos[i] = parsed_data;
+		});
+
+		$( ".elemento-percepop-eliminar" ).each(function(i) {
+			var parsed_data = {
+				idpartida: $(this).find('.id-partida').val()
+			}
+			data.otrospagosDelete[i] = parsed_data;
+		});
+
+		$( ".elemento-percepHrExtra" ).each(function(i) {
+			var parsed_data = {
+				cve: $(this).find('.cve').val(),
+				ordenRep: $(this).find('.ordenRep').val(),
+				idpartida: $(this).find('.id-partida').val(),
+				cta: $(this).find('.cta').val(),
+				desc: $(this).find('.desc').val(),
+				dias: $(this).find('.dias').val(),
+				horas: $(this).find('.horas').val(),
+				gravado: $(this).find('.gravado').val(),
+				exento: $(this).find('.exento').val()
+			}
+			data.horasextras[i] = parsed_data;
+		});
+
+		$( ".elemento-percepHrExtra-eliminar" ).each(function(i) {
+			var parsed_data = {
+				idpartida: $(this).find('.id-partida').val()
+			}
+			data.horasextrasDelete[i] = parsed_data;
+		});
+
+		$( ".elemento-percepSepIndem" ).each(function(i) {
+		  var parsed_data = {
+		    cve: $(this).find('.cve').val(),
+		    ordenRep: $(this).find('.ordenRep').val(),
+		    idpartida: $(this).find('.id-partida').val(),
+		    cta: $(this).find('.cta').val(),
+		    desc: $(this).find('.desc').val(),
+		    gravado: $(this).find('.gravado').val(),
+		    exento: $(this).find('.exento').val()
+		  }
+		  data.percepSepIndem[i] = parsed_data;
+		});
+
+		$( ".elemento-percepSepIndem-eliminar" ).each(function(i) {
+		  var parsed_data = {
+		    idpartida: $(this).find('.id-partida').val()
+		  }
+		  data.percepSepIndemDelete[i] = parsed_data;
+		});
+
+		$( ".elemento-deduc" ).each(function(i) {
+			var parsed_data = {
+				cve: $(this).find('.cve').val(),
+				ordenRep: $(this).find('.ordenRep').val(),
+				idpartida: $(this).find('.id-partida').val(),
+				cta: $(this).find('.cta').val(),
+				desc: $(this).find('.desc').val(),
+				gravado: $(this).find('.gravado').val(),
+				exento: $(this).find('.exento').val()
+			}
+			data.deducciones[i] = parsed_data;
+		});
+
+		$( ".elemento-deduc-eliminar" ).each(function(i) {
+			var parsed_data = {
+				idpartida: $(this).find('.id-partida').val()
+			}
+			data.deduccionesDelete[i] = parsed_data;
+		});
+
+		$( ".elemento-deducPA" ).each(function(i) {
+			var parsed_data = {
+				cve: $(this).find('.cve').val(),
+				ordenRep: $(this).find('.ordenRep').val(),
+				idpartida: $(this).find('.id-partida').val(),
+				cta: $(this).find('.cta').val(),
+				desc: $(this).find('.desc').val(),
+				base: $(this).find('.base').val(),
+				porcentaje: $(this).find('.porcentaje').val(),
+				gravado: $(this).find('.gravado').val(),
+				exento: $(this).find('.exento').val()
+			}
+			data.penalim[i] = parsed_data;
+		});
+
+		$( ".elemento-deducPA-eliminar" ).each(function(i) {
+			var parsed_data = {
+				idpartida: $(this).find('.id-partida').val()
+			}
+			data.penalimDelete[i] = parsed_data;
+		});
+	//console.log(data);
+
+		$.ajax({
+			type: "POST",
+			url: "/conta6/Ubicaciones/Nomina/actions/docNomina_modificar.php",
+			data: data,
+			success: 	function(r){
+				r = JSON.parse(r);
+					console.log(r);
+					console.log(r.message2);
+				if (r.code == 1) {
+					folio = r.data;
+
+					alertify.alert('Modificado correctamente' , function(){
+/*
+						if( idRegimen == '02'){
+							document.location.replace('/conta6/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php');
+						}
+						if( idRegimen == '09'){
+							document.location.replace('/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php');
+						}
+*/
+					});
+				} else {
+					console.error(r.message);
+				}
+			},
+			error: function(x){
+				console.error(x);
+			}
+		});
+
+	});
+
+	$("#tbodyPercepciones").on('click', '.remove-percep',function(e){
+	  $(this).closest("tr").hide();
+	  $(this).parents('tr')
+	    .removeClass('elemento-percep')
+	    .addClass('elemento-percep-eliminar');
+	  var gravado = $(this).parents('tr').find('.T_PERCEP_GRAVADO');
+	  gravado.removeClass('T_PERCEP_GRAVADO');
+	  var exento = $(this).parents('tr').find('.T_PERCEP_EXENTO');
+	  exento.removeClass('T_PERCEP_EXENTO');
+	  sumaGeneralNomina();
+	});
+
+	$("#tbodyPercepcionesOP").on('click', '.remove-PERCEPOP',function(e){
+	  $(this).closest("tr").hide();
+	  $(this).parents('tr')
+	    .removeClass('elemento-percepop')
+	    .addClass('elemento-percepop-eliminar');
+	  var exento = $(this).parents('tr').find('.T_PERCEPOP_EXENTO');
+	  exento.removeClass('T_PERCEPOP_EXENTO');
+	  sumaGeneralNomina();
+	});
+
+	$("#tbodyPercepcionesSepIndem").on('click', '.remove-PERCEPSepIndem',function(e){
+	  $(this).closest("tr").hide();
+	  $(this).parents('tr')
+	    .removeClass('elemento-percepSepIndem')
+	    .addClass('elemento-percepSepIndem-eliminar');
+	  var gravado = $(this).parents('tr').find('.T_PERCEPSepIndem_GRAVADO');
+	  gravado.removeClass('T_PERCEPSepIndem_GRAVADO');
+		var exento = $(this).parents('tr').find('.T_PERCEPSepIndem_EXENTO');
+	  exento.removeClass('T_PERCEPSepIndem_EXENTO');
+	  sumaGeneralNomina();
+	});
+
+	$("#tbodyPercepcionesHrExtra").on('click', '.remove-PERCEPHrExtra',function(e){
+	  $(this).closest("tr").hide();
+	  $(this).parents('tr')
+	    .removeClass('elemento-percepHrExtra')
+	    .addClass('elemento-percepHrExtra-eliminar');
+	  var gravado = $(this).parents('tr').find('.T_PERCEPHrExtra_GRAVADO');
+	  gravado.removeClass('T_PERCEPHrExtra_GRAVADO');
+	  var exento = $(this).parents('tr').find('.T_PERCEPHrExtra_EXENTO');
+	  exento.removeClass('T_PERCEPHrExtra_EXENTO');
+	  sumaGeneralNomina();
+	});
+
+	$("#tbodyDeducciones").on('click', '.remove-DEDUC',function(e){
+		$(this).closest("tr").hide();
+		$(this).parents('tr')
+			.removeClass('elemento-deduc')
+			.addClass('elemento-deduc-eliminar');
+		var gravado = $(this).parents('tr').find('.T_DEDUC_GRAVADO');
+		gravado.removeClass('T_DEDUC_GRAVADO');
+		var exento = $(this).parents('tr').find('.T_DEDUC_EXENTO');
+		exento.removeClass('T_DEDUC_EXENTO');
+		sumaGeneralNomina();
+	});
+
+	$("#tbodyDeduccionesPenAlim").on('click', '.remove-DEDUCPA',function(e){
+		$(this).closest("tr").hide();
+		$(this).parents('tr')
+			.removeClass('elemento-deducPA')
+			.addClass('elemento-deducPA-eliminar');
+		var gravado = $(this).parents('tr').find('.T_DEDUCPA_GRAVADO');
+		gravado.removeClass('T_DEDUCPA_GRAVADO');
+		var exento = $(this).parents('tr').find('.T_DEDUCPA_EXENTO');
+		exento.removeClass('T_DEDUCPA_EXENTO');
+		sumaGeneralNomina();
+	});
 
 
 });
@@ -230,11 +542,13 @@ function consultaDatosGenNom(anio,nomina){
 }
 
 function consultaDatosDocNom(anio,nomina){
+	regimen = $('#nom_regimen').val();
 	var data = {
 		anio : anio,
 		nomina : nomina,
-		regimen : $('#nom_regimen').val()
+		regimen : regimen
 	}
+	console.log(data);
 	$.ajax({
 		type: "POST",
 		url: "/conta6/Ubicaciones/Nomina/Honorarios/actions/consulta_nomina_documentos.php",
@@ -244,9 +558,46 @@ function consultaDatosDocNom(anio,nomina){
 			console.log(r);
 			if (r.code == 1) {
 				$('#resConNomDcocumentos').html(r.data);
+
 			}
 		}
 	})
+}
+
+function sustituirDocNomina(idDocNomina){
+	swal({
+	title: "Estas Seguro?",
+	text: "Sustituir el documento! "+ idDocNomina +" ",
+	type: "warning",
+	showCancelButton: true,
+	confirmButtonClass: "btn-danger",
+	confirmButtonText: "Si, Eliminar",
+	cancelButtonText: "No, cancelar",
+	closeOnConfirm: false,
+	closeOnCancel: false
+	},
+	function(isConfirm) {
+		if (isConfirm) {
+				var data = {
+					idDocNomina : idDocNomina
+				}
+				$.ajax({
+					type: "POST",
+					url: "/conta6/Ubicaciones/Nomina/actions/docNomina_sustituir_cfdi.php",
+					data: data,
+					success: 	function(r){
+						r = JSON.parse(r);
+						console.log(r);
+						if (r.code == 1) {
+							swal("Copiado!", "Se copio correctamente.", "success");
+							consultaDocNominas();
+						}
+					}
+				});
+			} else {
+				swal("Cancelado", "El registro no se copio :)", "error");
+			}
+		});
 }
 
 function borrarDocNomina(idDocNomina){
@@ -268,7 +619,7 @@ function borrarDocNomina(idDocNomina){
 				}
 				$.ajax({
 					type: "POST",
-					url: "/conta6/Ubicaciones/Nomina/actions/borrar_docNomina.php",
+					url: "/conta6/Ubicaciones/Nomina/actions/docNomina_borrar.php",
 					data: data,
 					success: 	function(r){
 						r = JSON.parse(r);
@@ -285,15 +636,85 @@ function borrarDocNomina(idDocNomina){
 		});
 }
 
+function borrarDocNominaTodos(){
+			swal({
+			title: "Estas Seguro?",
+			text: "Ya no se podra recuperar los registros! ",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonClass: "btn-danger",
+			confirmButtonText: "Si, Eliminar",
+			cancelButtonText: "No, cancelar",
+			closeOnConfirm: false,
+			closeOnCancel: false
+			},
+			function(isConfirm) {
+				if (isConfirm) {
+						var data = {
+							semana : $('#buscarsem').val(),
+							anio : $('#buscaranio').val(),
+							idRegimen : $('#nom_regimen').val(),
+							docNominaDelete: {}
+						}
+						$( ".elemento-docNomina" ).each(function(i) {
+			        var parsed_data = {
+			          idDocNomina: $(this).find('.id-docNomina').val()
+			        }
+			        data.docNominaDelete[i] = parsed_data;
+			      });
+						console.log(data);
+
+						$.ajax({
+							type: "POST",
+							url: "/conta6/Ubicaciones/Nomina/actions/docNomina_borrarTodos.php",
+							data: data,
+							success: 	function(r){
+								r = JSON.parse(r);
+								console.log(r);
+								if (r.code == 1) {
+									swal("Eliminado!", "Se elimino correctamente.", "success");
+									consultaDocNominas();
+								}
+							}
+						});
+
+
+					} else {
+						swal("Cancelado", "El registro esta a salvo :)", "error");
+					}
+				});
+}
+
 function editarDocNomina(idDocNomina){
 	document.location.replace('/conta6/Ubicaciones/Nomina/ModificarCFDI.php?idDocNomina='+idDocNomina);
+}
+
+function nuevoDocNomina(){
+	regimen = $('#nom_regimen').val();
+	semana = $('#buscarsem').val();
+	anio = $('#buscaranio').val();
+	document.location.replace('/conta6/Ubicaciones/Nomina/nuevoDoc.php?regimen='+regimen+'&semana='+semana+'&anio='+anio);
 }
 
 function imprimirNomina(anio,semana,tipo,regimen){
 	if( regimen == '09' ){
 		window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresionNominaCompleto.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
 	}
+	if( regimen == '02' ){
+		window.open('/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/impresionNominaCompletoSuel.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+	}
 }
+
+function imprimirNominaExcel(anio,semana,tipo,regimen){
+	if( regimen == '09' ){
+		window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresionNominaCompleto_excel.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+	}
+	if( regimen == '02' ){
+		window.open('/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/impresionNominaCompletoSuel_excel.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+	}
+}
+
+
 /*
 function imprimirNominaOrdinaria(anio,semana,tipo){
 	tipo = 'O';
@@ -338,6 +759,14 @@ function concepPercepcionesHrExtra(){
 	$('#despercepcionHrExtra').val(parteCadena[2]).attr('value',parteCadena[2]);
 	$('#ordenReportepercepcionHrExtra').val(parteCadena[3]);
 }
+function concepPercepcionesSepIndem(){
+	cadena = $('#percepcionConceptosSepIndem').val();
+	parteCadena = cadena.split("+");
+	$('#claveSATpercepcionSepIndem').val(parteCadena[0]).attr('value',parteCadena[0]);
+	$('#claveInternapercepcionSepIndem').val(parteCadena[1]).attr('value',parteCadena[1]);
+	$('#despercepcionSepIndem').val(parteCadena[2]).attr('value',parteCadena[2]);
+	$('#ordenReportepercepcionSepIndem').val(parteCadena[3]);
+}
 function concepPercepcionesOP(){
 	cadena = $('#percepcionConceptosOP').val();
 	parteCadena = cadena.split("+");
@@ -347,7 +776,7 @@ function concepPercepcionesOP(){
 	$('#desPercepcionOP').val(parteCadena[2]).attr('value',parteCadena[2]);
 	$('#ordenReportePercepcionOP').val(parteCadena[3]);
 
-
+	// si es la cveSAT=='002' DEBE ACTIVAR IMPORTE Y SUBSIDIO CUSADO
 	if(cveSAT == '004'){ //ISR A FAVOR, se captura año y saldo a favor
 		$('#anioPercepcionOP').attr('class','').attr('class','efecto');
 		$('#anioPercepcionOP').removeAttr("readonly") ;
@@ -379,6 +808,15 @@ function concepDeducciones(){
 	$('#ordenReporteDeduccion').val(parteCadena[3]);
 }
 
+function concepDeducPenAlim(){
+	cadena = $('#deduccionPenAlim').val();
+	parteCadena = cadena.split("+");
+	$('#claveSATDeduccion_penAlim').val(parteCadena[0]).attr('value',parteCadena[0]);
+	$('#claveInternaDeduccion_penAlim').val(parteCadena[1]).attr('value',parteCadena[1]);
+	$('#desDeduccion_penAlim').val(parteCadena[2]).attr('value',parteCadena[2]);
+	$('#ordenReporteDeduccion_penAlim').val(parteCadena[3]);
+}
+
 function agregarPercep(){
   cve = $('#claveSATpercepcion').val();
 	ordenRep = $('#ordenReportePercepcion').val();
@@ -397,6 +835,7 @@ function agregarPercep(){
 			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
 			newtr = newtr + "    		<input type='text' id='T_PERCEP_cve"+element+"' class='T_PERCEP_CVE cve efecto border-0' readonly>";
 			newtr = newtr + "    		<input type='hidden' id='T_PERCEP_ordenRep"+element+"' class='T_PERCEP_ORDENREP ordenRep' >";
+			newtr = newtr + "    		<input type='hidden' id='T_PERCEP_ID-PARTIDA"+element+"' class='T_PERCEP_ID-PARTIDA id-partida' >";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
 			newtr = newtr + "    		<input type='text' id='T_PERCEP_cta"+element+"' class='T_PERCEP_CTA cta efecto border-0' readonly>";
@@ -405,13 +844,13 @@ function agregarPercep(){
 			newtr = newtr + "    		<input type='text' id='T_PERCEP_desc"+element+"' class='T_PERCEP_DESC desc efecto'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
-			newtr = newtr + "    		<input type='text' id='T_PERCEP_gravado"+element+"' class='T_PERCEP_GRAVADO gravado efecto' onblur='validaIntDec(this);'>";
+			newtr = newtr + "    		<input type='text' id='T_PERCEP_gravado"+element+"' class='T_PERCEP_GRAVADO gravado efecto' onblur='validaIntDec(this); sumaGeneralNomina();'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
-			newtr = newtr + "    		<input type='text' id='T_PERCEP_exento"+element+"' class='T_PERCEP_EXENTO exento efecto' onblur='validaIntDec(this);'>";
+			newtr = newtr + "    		<input type='text' id='T_PERCEP_exento"+element+"' class='T_PERCEP_EXENTO exento efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td>";
-			newtr = newtr + "    		<a><img class='icomediano remove-PERCEP' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+			newtr = newtr + "    		<a><img class='icomediano remove-percep' src='/conta6/Resources/iconos/002-trash.svg'></a>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    </tr>";
 
@@ -466,10 +905,11 @@ function agregarPercepHrExtra(){
 
       var element = $('.T_PERCEPHrExtra_DESC').length;
 
-			newtr = "<tr class='row mt-4 m-0 trPERCEP elemento-percepHrExtra' id='"+element+"'>";
+			newtr = "<tr class='row mt-4 m-0 trPERCEPHrExtra elemento-percepHrExtra' id='"+element+"'>";
 			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
 			newtr = newtr + "    		<input type='text' id='T_PERCEPHrExtra_cve"+element+"' class='T_PERCEPHrExtra_CVE cve efecto border-0' readonly>";
 			newtr = newtr + "    		<input type='hidden' id='T_PERCEPHrExtra_ordenRep"+element+"' class='T_PERCEPHrExtra_ORDENREP ordenRep' >";
+			newtr = newtr + "    		<input type='hidden' id='T_PERCEPHrExtra_id-partida"+element+"' class='T_PERCEPHrExtra_ID-PARTIDA id-partida' >";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
 			newtr = newtr + "    		<input type='text' id='T_PERCEPHrExtra_cta"+element+"' class='T_PERCEPHrExtra_CTA cta efecto border-0' readonly>";
@@ -484,10 +924,10 @@ function agregarPercepHrExtra(){
 			newtr = newtr + "    		<input type='text' id='T_PERCEPHrExtra_horas"+element+"' class='T_PERCEPHrExtra_HORAS horas efecto'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
-			newtr = newtr + "    		<input type='text' id='T_PERCEPHrExtra_gravado"+element+"' class='T_PERCEPHrExtra_GRAVADO gravado efecto' onblur='validaIntDec(this);'>";
+			newtr = newtr + "    		<input type='text' id='T_PERCEPHrExtra_gravado"+element+"' class='T_PERCEPHrExtra_GRAVADO gravado efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
-			newtr = newtr + "    		<input type='text' id='T_PERCEPHrExtra_exento"+element+"' class='T_PERCEPHrExtra_EXENTO exento efecto' onblur='validaIntDec(this);'>";
+			newtr = newtr + "    		<input type='text' id='T_PERCEPHrExtra_exento"+element+"' class='T_PERCEPHrExtra_EXENTO exento efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td>";
 			newtr = newtr + "    		<a><img class='icomediano remove-PERCEPHrExtra' src='/conta6/Resources/iconos/002-trash.svg'></a>";
@@ -520,8 +960,86 @@ function agregarPercepHrExtra(){
           $('#ordenReportepercepcionHrExtra').val("");
           $('#claveInternapercepcionHrExtra').val("");
     			$('#despercepcionHrExtra').val("");
+					$('#diaspercepcionHrExtra').val("");
+					$('#hrpercepcionHrExtra').val("");
     			$('#importeGravadopercepcionHrExtra').val("");
     			$('#importeExentopercepcionHrExtra').val("");
+
+    			sumaGeneralNomina();
+
+    		  return false;
+    	  }
+      });
+
+    }
+}
+
+function agregarPercepSepIndem(){
+  cve = $('#claveSATpercepcionSepIndem').val();
+	ordenRep = $('#ordenReportepercepcionSepIndem').val();
+	cta =  $('#claveInternapercepcionSepIndem').val();
+	concepto = $('#despercepcionSepIndem').val();
+	dias = $('#diaspercepcionSepIndem').val();
+	horas = $('#hrpercepcionSepIndem').val();
+	gravado = $('#importeGravadopercepcionSepIndem').val();
+	exento = $('#importeExentopercepcionSepIndem').val();
+
+  if( cta == "" ){
+    alertify.success('Seleccione un concepto');
+  }else {
+
+      var element = $('.T_PERCEPSepIndem_DESC').length;
+
+			newtr = "<tr class='row mt-4 m-0 trPERCEPSepIndem elemento-percepSepIndem' id='"+element+"'>";
+			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_PERCEPSepIndem_cve"+element+"' class='T_PERCEPSepIndem_CVE cve efecto border-0' readonly>";
+			newtr = newtr + "    		<input type='hidden' id='T_PERCEPSepIndem_ordenRep"+element+"' class='T_PERCEPSepIndem_ORDENREP ordenRep' >";
+			newtr = newtr + "    		<input type='hidden' id='T_PERCEPSepIndem_id-partida"+element+"' class='T_PERCEPSepIndem_ID-PARTIDA id-partida' >";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_PERCEPSepIndem_cta"+element+"' class='T_PERCEPSepIndem_CTA cta efecto border-0' readonly>";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    	<td class='col-md-4 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_PERCEPSepIndem_desc"+element+"' class='T_PERCEPSepIndem_DESC desc efecto'>";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_PERCEPSepIndem_gravado"+element+"' class='T_PERCEPSepIndem_GRAVADO gravado efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_PERCEPSepIndem_exento"+element+"' class='T_PERCEPSepIndem_EXENTO exento efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    	<td>";
+			newtr = newtr + "    		<a><img class='icomediano remove-PERCEPSepIndem' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    </tr>";
+
+      $('#tbodyPercepcionesSepIndem').append(newtr);
+
+      $(".remove-PERCEPSepIndem").click(function(e){
+        $(this).closest("tr").remove();
+        alertify.success('Se elimino correctamente');
+        sumaGeneralNomina();
+      });
+
+      var element = $('.T_PERCEPSepIndem_DESC').length;
+      $( ".T_PERCEPSepIndem_DESC" ).each(function( x ) {
+    	  if( $('.T_PERCEPSepIndem_DESC').eq(x).val() == "" ){
+
+          $('.T_PERCEPSepIndem_CVE').eq(x).val(cve);
+          $('.T_PERCEPSepIndem_ORDENREP').eq(x).val(ordenRep);
+          $('.T_PERCEPSepIndem_CTA').eq(x).val(cta);
+          $('.T_PERCEPSepIndem_DESC').eq(x).val(concepto);
+    		  $('.T_PERCEPSepIndem_GRAVADO').eq(x).val(gravado);
+    		  $('.T_PERCEPSepIndem_EXENTO').eq(x).val(exento);
+
+    		  $('#percepcionConceptosSepIndem').val(0);
+    			$('#claveSATpercepcionSepIndem').val("");
+          $('#ordenReportepercepcionSepIndem').val("");
+          $('#claveInternapercepcionSepIndem').val("");
+    			$('#despercepcionSepIndem').val("");
+    			$('#importeGravadopercepcionSepIndem').val("");
+    			$('#importeExentopercepcionSepIndem').val("");
+
     			sumaGeneralNomina();
 
     		  return false;
@@ -537,6 +1055,7 @@ function agregarPercepOtrosPagos(){
 	cta =  $('#claveInternaPercepcionOP').val();
 	concepto = $('#desPercepcionOP').val();
 	exento = $('#importeExentoPercepcionOP').val();
+	subCausado = $('#subCausadoPOP').val();
 	anio = $('#anioPercepcionOP').val();
 	saldo = $('#saldoFavorPercepcionOP').val();
 
@@ -550,15 +1069,20 @@ function agregarPercepOtrosPagos(){
 			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
 			newtr = newtr + "    		<input type='text' id='T_PERCEPOP_cve"+element+"' class='T_PERCEPOP_CVE cve efecto border-0' readonly>";
 			newtr = newtr + "    		<input type='hidden' id='T_PERCEPOP_ordenRep"+element+"' class='T_PERCEPOP_ORDENREP ordenRep' >";
+			newtr = newtr + "    		<input type='hidden' id='T_PERCEPOP_id-partida"+element+"' class='T_PERCEPOP_ID-PARTIDA id-partida' >";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
 			newtr = newtr + "    		<input type='text' id='T_PERCEPOP_cta"+element+"' class='T_PERCEPOP_CTA cta efecto border-0' readonly>";
 			newtr = newtr + "    	</td>";
-			newtr = newtr + "    	<td class='col-md-4 input-effect'>";
+			newtr = newtr + "    	<td class='col-md-3 input-effect'>";
 			newtr = newtr + "    		<input type='text' id='T_PERCEPOP_desc"+element+"' class='T_PERCEPOP_DESC desc efecto'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
-			newtr = newtr + "    		<input type='text' id='T_PERCEPOP_exento"+element+"' class='T_PERCEPOP_EXENTO exento efecto' onblur='validaIntDec(this)'; onchange='sumaGeneralNomina()'>";
+			newtr = newtr + "    		<input type='text' id='T_PERCEPOP_exento"+element+"' class='T_PERCEPOP_EXENTO exento efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
+			newtr = newtr + "    	</td>";
+
+			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_PERCEPOP_subCausado"+element+"' class='T_PERCEPOP_SUBCAUSADO subCausado efecto' onblur='validaIntDec(this)';'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
 			newtr = newtr + "    		<input type='text' id='T_PERCEPOP_anio"+element+"' class='T_PERCEPOP_ANIO anio efecto' onblur='validaIntDec(this);'>";
@@ -588,6 +1112,7 @@ function agregarPercepOtrosPagos(){
           $('.T_PERCEPOP_CTA').eq(x).val(cta);
           $('.T_PERCEPOP_DESC').eq(x).val(concepto);
     		  $('.T_PERCEPOP_EXENTO').eq(x).val(exento);
+					$('.T_PERCEPOP_SUBCAUSADO').eq(x).val(subCausado);
 					$('.T_PERCEPOP_ANIO').eq(x).val(anio);
 					$('.T_PERCEPOP_SALDOFAVOR').eq(x).val(saldo);
 
@@ -597,6 +1122,7 @@ function agregarPercepOtrosPagos(){
           $('#claveInternaPercepcionOP').val("");
     			$('#desPercepcionOP').val("");
     			$('#importeExentoPercepcionOP').val("");
+					$('#subCausadoPOP').val("");
 					$('#anioPercepcionOP').val("");
 					$('#saldoFavorPercepcionOP').val("");
     			sumaGeneralNomina();
@@ -607,6 +1133,7 @@ function agregarPercepOtrosPagos(){
 
     }
 }
+
 function agregarDeduc(){
   cve = $('#claveSATDeduccion').val();
 	ordenRep = $('#ordenReporteDeduccion').val();
@@ -625,6 +1152,7 @@ function agregarDeduc(){
 			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
 			newtr = newtr + "    		<input type='text' id='T_DEDUC_cve"+element+"' class='T_DEDUC_CVE cve efecto border-0' readonly>";
 			newtr = newtr + "    		<input type='hidden' id='T_DEDUC_ordenRep"+element+"' class='T_DEDUC_ORDENREP ordenRep' >";
+			newtr = newtr + "    		<input type='hidden' id='T_DEDUC_id-partida"+element+"' class='T_DEDUC_ID-PARTIDA id-partida' >";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
 			newtr = newtr + "    		<input type='text' id='T_DEDUC_cta"+element+"' class='T_DEDUC_CTA cta efecto border-0' readonly>";
@@ -633,10 +1161,10 @@ function agregarDeduc(){
 			newtr = newtr + "    		<input type='text' id='T_DEDUC_desc"+element+"' class='T_DEDUC_DESC desc efecto'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
-			newtr = newtr + "    		<input type='text' id='T_DEDUC_gravado"+element+"' class='T_DEDUC_GRAVADO gravado efecto' onblur='validaIntDec(this);'>";
+			newtr = newtr + "    		<input type='text' id='T_DEDUC_gravado"+element+"' class='T_DEDUC_GRAVADO gravado efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
-			newtr = newtr + "    		<input type='text' id='T_DEDUC_exento"+element+"' class='T_DEDUC_EXENTO exento efecto' onblur='validaIntDec(this);'>";
+			newtr = newtr + "    		<input type='text' id='T_DEDUC_exento"+element+"' class='T_DEDUC_EXENTO exento efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td>";
 			newtr = newtr + "    		<a><img class='icomediano remove-DEDUC' src='/conta6/Resources/iconos/002-trash.svg'></a>";
@@ -678,9 +1206,97 @@ function agregarDeduc(){
     }
 }
 
+function agregarDeducPenAlimen(){
+  cve = $('#claveSATDeduccion_penAlim').val();
+	ordenRep = $('#ordenReporteDeduccion_penAlim').val();
+	cta =  $('#claveInternaDeduccion_penAlim').val();
+	concepto = $('#desDeduccion_penAlim').val();
+  base = $('#baseDeduccion_penAlim').val();
+  porcentaje = $('#porcentajeDeduccion_penAlim').val();
+	gravado = $('#importeGravadoDeduccion_penAlim').val();
+	exento = $('#importeExentoDeduccion_penAlim').val();
+
+  if( cta == "" ){
+    alertify.success('Seleccione un concepto');
+  }else {
+
+      var element = $('.T_DEDUCPA_DESC').length;
+
+			newtr = "<tr class='row mt-4 m-0 trDEDUCPA elemento-deducPA' id='"+element+"'>";
+			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_DEDUCPA_cve"+element+"' class='T_DEDUCPA_CVE cve efecto border-0' readonly>";
+			newtr = newtr + "    		<input type='hidden' id='T_DEDUCPA_ordenRep"+element+"' class='T_DEDUCPA_ORDENREP ordenRep' >";
+			newtr = newtr + "    		<input type='hidden' id='T_DEDUCPA_id-partida"+element+"' class='T_DEDUCPA_ID-PARTIDA id-partida' >";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    	<td class='col-md-2 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_DEDUCPA_cta"+element+"' class='T_DEDUCPA_CTA cta efecto border-0' readonly>";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    	<td class='col-md-4 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_DEDUCPA_desc"+element+"' class='T_DEDUCPA_DESC desc efecto'>";
+			newtr = newtr + "    	</td>";
+      newtr = newtr + "    	<td class='col-md-1 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_DEDUCPA_base"+element+"' class='T_DEDUCPA_BASE base efecto' onblur='validaIntDec(this);'>";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_DEDUCPA_porcentaje"+element+"' class='T_DEDUCPA_PORCENTAJE porcentaje efecto' onblur='validaIntDec(this);'>";
+			newtr = newtr + "    	</td>";
+      newtr = newtr + "    	<td class='col-md-1 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_DEDUCPA_gravado"+element+"' class='T_DEDUCPA_GRAVADO gravado efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    	<td class='col-md-1 input-effect'>";
+			newtr = newtr + "    		<input type='text' id='T_DEDUCPA_exento"+element+"' class='T_DEDUCPA_EXENTO exento efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    	<td>";
+			newtr = newtr + "    		<a><img class='icomediano remove-DEDUCPA' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+			newtr = newtr + "    	</td>";
+			newtr = newtr + "    </tr>";
+
+      $('#tbodyDeduccionesPenAlim').append(newtr);
+
+      $(".remove-DEDUCPA").click(function(e){
+        $(this).closest("tr").remove();
+        alertify.success('Se elimino correctamente');
+        sumaGeneralNomina();
+      });
+
+      var element = $('.T_DEDUCPA_DESC').length;
+      $( ".T_DEDUCPA_DESC" ).each(function( x ) {
+    	  if( $('.T_DEDUCPA_DESC').eq(x).val() == "" ){
+
+          $('.T_DEDUCPA_CVE').eq(x).val(cve);
+          $('.T_DEDUCPA_ORDENREP').eq(x).val(ordenRep);
+          $('.T_DEDUCPA_CTA').eq(x).val(cta);
+          $('.T_DEDUCPA_DESC').eq(x).val(concepto);
+          $('.T_DEDUCPA_BASE').eq(x).val(base);
+          $('.T_DEDUCPA_PORCENTAJE').eq(x).val(porcentaje);
+    		  $('.T_DEDUCPA_GRAVADO').eq(x).val(gravado);
+    		  $('.T_DEDUCPA_EXENTO').eq(x).val(exento);
+
+    		  $('#deduccionConceptos_penAlim').val(0);
+    			$('#claveSATdeduccion_penAlim').val("");
+          $('#ordenReporteDeduccion_penAlim').val("");
+          $('#claveInternaDeduccion_penAlim').val("");
+    			$('#desDeduccion_penAlim').val("");
+          $('#baseDeduccion_penAlim').val("");
+          $('#porcentajeDeduccion_penAlim').val("");
+    			$('#importeGravadoDeduccion_penAlim').val("");
+    			$('#importeExentoDeduccion_penAlim').val("");
+    			sumaGeneralNomina();
+
+    		  return false;
+    	  }
+      });
+
+    }
+}
+
 function sumaGeneralNomina(){
 	//*********************************** SUMA PERCEPCIONES $sum_percepcion = $sum_percep + $sum_horasExtras;
 	totalVales = 0;
+	totalPercepHrExtra = 0;
+	totalPercepSepIndem = 0;
+	totalPercep = 0;
+	neto = 0;
 	$( ".T_PERCEP_GRAVADO" ).each(function( x ) {
 		cve = $('.T_PERCEP_CVE').eq(x).val();
 		gravado = $('.T_PERCEP_GRAVADO').eq(x).val();
@@ -693,7 +1309,8 @@ function sumaGeneralNomina(){
 			totalVales = cortarDecimales(CalcADD(gravado,exento),2);
 		}
 
-		totalPercep = cortarDecimales(CalcADD(gravado,exento),2);
+		totalP = cortarDecimales(CalcADD(gravado,exento),2);
+		totalPercep = cortarDecimales(CalcADD(totalPercep,totalP),2);
 	});
 
 	$( ".T_PERCEPHrExtra_GRAVADO" ).each(function( x ) {
@@ -704,11 +1321,24 @@ function sumaGeneralNomina(){
 		if( exento == "" ){ exento = 0; }
 
 
-		totalPercepHrExtra = cortarDecimales(CalcADD(gravado,exento),2);
+		totalPercepHrE = cortarDecimales(CalcADD(gravado,exento),2);
+		totalPercepHrExtra = cortarDecimales(CalcADD(totalPercepHrExtra,totalPercepHrE),2);
+	});
 
+	$( ".T_PERCEPSepIndem_GRAVADO" ).each(function( x ) {
+		gravado = $('.T_PERCEPSepIndem_GRAVADO').eq(x).val();
+		exento = $('.T_PERCEPSepIndem_EXENTO').eq(x).val();
+
+		if( gravado == "" ){ gravado = 0; }
+		if( exento == "" ){ exento = 0; }
+
+
+		totalPercepIndem = cortarDecimales(CalcADD(gravado,exento),2);
+		totalPercepSepIndem = cortarDecimales(CalcADD(totalPercepSepIndem,totalPercepIndem),2);
 	});
 
 	totalPercepciones = cortarDecimales(CalcADD(totalPercep,totalPercepHrExtra),2);
+	totalPercepciones = cortarDecimales(CalcADD(totalPercepciones,totalPercepSepIndem),2);
 	$('#totpercep').val(totalPercepciones).attr('value',totalPercepciones);
 
 
@@ -716,6 +1346,7 @@ function sumaGeneralNomina(){
 	//*********************************** SUMA DEDUCCIONES
 	suma_DEDUC_GRAVADO = 0;
 	suma_DEDUC_EXENTO = 0;
+	suma_DEDUCPA_EXENTO = 0;
 
 	$( ".T_DEDUC_GRAVADO" ).each(function( x ) {
 			gravado = $(this).val();
@@ -729,13 +1360,22 @@ function sumaGeneralNomina(){
 			suma_DEDUC_EXENTO = cortarDecimales(CalcADD(suma_DEDUC_EXENTO,exento),2);
 	});
 
+	//pension alimenticia
+	$( ".T_DEDUCPA_EXENTO" ).each(function( x ) {
+			exento = $(this).val();
+			if( exento == "" ){ exento = 0; }
+			suma_DEDUCPA_EXENTO = cortarDecimales(CalcADD(suma_DEDUCPA_EXENTO,exento),2);
+	});
+
 	totalDeduc = cortarDecimales(CalcADD(suma_DEDUC_GRAVADO, suma_DEDUC_EXENTO),2);
+	totalDeduc = cortarDecimales(CalcADD(totalDeduc, suma_DEDUCPA_EXENTO),2);
 	$('#totdeduc').val(totalDeduc).attr('value',totalDeduc);
 
 	//*********************************** TOTAL #TOTAL = PERCEPCIONES - DEDUCCIONES
 	total = cortarDecimales(CalcSUB(totalPercep, totalDeduc),2);
 	$('#tottotal').val(total).attr('value',total);
-
+	$('#valorUnitario').val(totalPercepciones).attr('value',totalPercepciones);
+	$('#valorImporte').val(totalPercepciones).attr('value',totalPercepciones);
 
 	//*********************************** OTROS PAGOS
 	otrosPagos = 0;
@@ -743,17 +1383,71 @@ function sumaGeneralNomina(){
 			exento = $(this).val();
 			if( exento == "" ){ exento = 0; }
 			otrosPagos = cortarDecimales(CalcADD(otrosPagos,exento),2);
+			console.log(otrosPagos);
 	});
 	$('#tototrospagos').val(otrosPagos).attr('value',otrosPagos);
 
 
 	//*********************************** NETO $neto = $resta_percepcionDeduccion - $sum_valesDespensa;
-	neto = cortarDecimales(CalcSUB(total,totalVales),2);
-	neto = cortarDecimales(CalcADD(neto,otrospagos),2);
+	neto1 = cortarDecimales(CalcSUB(total,totalVales),2);
+	neto = cortarDecimales(CalcADD(neto1,otrosPagos),2);
 	$('#totneto').val(neto).attr('value',neto);
 
 }
 
 function concepIncapacidad(){
 	$('#tipo').val( $('#incapacidadConceptos').val() );
+}
+
+// Timbrar factura electronica
+function timbrarDocNomina(idDocNomina,regimenNomina){
+  var data = {
+    idDocNomina: idDocNomina,
+		regimen: regimenNomina
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina.php",
+    data: data,
+    beforeSend: function(){
+        $('body').append('<div class="overlay"><div class="overlay-loading">Timbrando Documento ... Porfavor espere.</div></div>');
+    },
+
+      success: 	function(r){
+        r = JSON.parse(r);
+        console.log(r);
+        if (r.code == 1) {
+          //$('#respTimbrado').val(r);
+          resp = r.message;
+          $('.overlay').remove();
+
+          swal({
+            title: 'Timbrar Factura',
+            text: resp,
+            type: 'success'
+            }, function() {
+                setTimeout('document.location.reload()',700);
+            });
+
+        }else if( r.code == 3 ) {
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Respuesta del PAC:",resp, "error");
+          console.error(r.message);
+        }else{
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Error",resp, "error");
+          console.error(r.message);
+        }
+    },
+    error: function(x){
+      console.error(x)
+    }
+  });
+}
+
+function modificarPolizaNomina(id_poliza){
+	window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/DetallePoliza.php?id_poliza='+id_poliza+'&tipo=4');
 }

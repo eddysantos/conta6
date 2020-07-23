@@ -60,6 +60,7 @@ tablasParametros();
       n_topeSalarial: $('#n_topeSalarial').val(),
       n_patron: $('#n_patron').val(),
       n_trabajador: $('#n_trabajador').val(),
+      n_UMA: $('#n_UMA').attr('db-id')
     }
       var act_param = $.ajax({
           method: 'POST',

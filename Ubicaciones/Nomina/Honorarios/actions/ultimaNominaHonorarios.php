@@ -1,7 +1,7 @@
 <?php
 
 # $FI       Fecha Inicial del Año
-# $ULT_NOM  Ultima Nomina
+# $ULTNOM  Ultima Nomina
 # $FIUNG    Fecha Inicial Ultima Nomina Generada
 # $FFUNG    Fecha Final Ultima Nomina Generada
 # $NOM_SIG  Nomina siguiente
@@ -94,7 +94,7 @@ if( $rowsFECHA > 0 ){
 #-- hayan generado la nomina 1 regresar el valor a 52;
 #-- los proximos años seran 2015, 2020, 2026.
 #-- $ultimaSemAnio equivale a 52 semanas
-if( is_null($ULT_NOM) ){
+if( is_null($ULTNOM) ){
   echo "parte0";
   #NOMINA 1, INICIO SISTEMA
   $NOM_SIG = 1;
@@ -105,7 +105,7 @@ if( is_null($ULT_NOM) ){
   $semActual = date_format(date_create($FI),"W");
 
 }else{
-  if( is_null($ULT_NOM) or $ULT_NOM == $ultimaSemAnio ){
+  if( is_null($ULTNOM) or $ULTNOM == $ultimaSemAnio ){
     echo "parte1";
     $NOM_SIG = 1;
     if( is_null($FI) ){
@@ -115,12 +115,15 @@ if( is_null($ULT_NOM) ){
       $FINS = date("Y-m-d",strtotime("$FFUNG+3 days"));
       $FFNS = date("Y-m-d",strtotime("$FINS+4 days"));
     }
+    $anioFI = date_format(date_create($FINS),"Y");
   }else{
     echo "parte2";
-    if( $ULT_NOM < $ultimaSemAnio ){
-      $NOM_SIG = $ULT_NOM + 1;
+    if( $ULTNOM < $ultimaSemAnio ){
+      $NOM_SIG = $ULTNOM + 1;
       $FINS = date("Y-m-d",strtotime("$FFUNG+3 days"));
       $FFNS = date("Y-m-d",strtotime("$FINS+4 days"));
+
+      $anioFI = date_format(date_create($FINS),"Y");
     }
   }
 }

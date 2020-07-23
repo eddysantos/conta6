@@ -52,6 +52,34 @@ function xmlV33_generales_pago($array,$nodo){
 
 }
 
+function xmlV33_generales_nomina($array,$nodo){
+  global $comprobante, $xml;
+	$comprobante = $xml->createElement("cfdi:Comprobante");
+	$comprobante = $xml->appendChild($comprobante);
+  xmlV33_cargaAtt($comprobante, array("xmlns:cfdi"=>"http://www.sat.gob.mx/cfd/3",
+							  "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
+                "xmlns:nomina12"=>"http://www.sat.gob.mx/nomina12",
+							  "xsi:schemaLocation"=>"http://www.sat.gob.mx/cfd/3  http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd /nomina/nomina12.xsd"
+	));
+
+  xmlV33_cargaAtt($comprobante, array("Version"=>$array['Version'],
+                            						  "Folio"=>$array['Folio'],
+                            						  "Fecha"=>$array['Fecha'],
+                            						  "Sello"=>"@",
+                            						  "FormaPago"=>$array['FormaPago'],
+
+                            						  "NoCertificado"=>$array['NoCertificado'],
+                            						  "Certificado"=>$array['Certificado'],
+                            						  "SubTotal"=>$array['SubTotal'],
+                                          "Descuento"=>$array['Descuento'],
+                                          "Moneda"=>$array['Moneda'],
+                            						  "Total"=>$array['Total'],
+                                          "TipoDeComprobante"=>$array['TipoDeComprobante'],
+                                          "MetodoPago"=>$array['MetodoPago'],
+                            						  "LugarExpedicion"=>$array['LugarExpedicion'] ));
+
+}
+
 # CFDI Relacionados
 function xmlV33_cfdi_relacionados($array,$nodo) {
 	global $comprobante, $xml;
@@ -62,6 +90,22 @@ function xmlV33_cfdi_relacionados($array,$nodo) {
   	$relacionado = $xml->createElement("cfdi:CfdiRelacionado");
   	$relacionado = $relacionados->appendChild($relacionado);
     $relacionado->SetAttribute("UUID",$array['CfdiRelacionado']['UUID']);
+}
+
+#usado en nomina
+function xmlV33_cfdi_relacionados_n($array,$nodo) {
+	global $comprobante, $xml;
+	$relacionados = $xml->createElement("cfdi:CfdiRelacionados");
+	$relacionados = $comprobante->appendChild($relacionados);
+  $relacionados->SetAttribute("TipoRelacion",$array['CfdiRelacionados']['TipoRelacion']);
+
+  for ($i=1; $i<=sizeof($array['CfdiRelacionado']); $i++) {
+  	$relacionado = $xml->createElement("cfdi:CfdiRelacionado");
+  	$relacionado = $relacionados->appendChild($relacionado);
+    xmlV33_cargaAtt($relacionado,
+      array("UUID"=>$array['CfdiRelacionado'][$i]['UUID'])
+      );
+  }
 }
 
 #Datos del emisor
@@ -212,7 +256,28 @@ function xmlV33_concepto_pago($array,$nodo) {
 	}
 }
 
-# Complemento --------------------------------------------------------------------------------------------------------------
+function xmlV33_concepto_nomina($array,$nodo) {
+	global $comprobante, $xml;
+	$conceptos = $xml->createElement("cfdi:Conceptos");
+	$conceptos = $comprobante->appendChild($conceptos);
+
+		$concepto = $xml->createElement("cfdi:Concepto");
+		$concepto = $conceptos->appendChild($concepto);
+		$descripcion = xmlV33_fix_chr($array['Conceptos']['descripcion']);
+		xmlV33_cargaAtt($concepto,
+			array("ClaveProdServ"=>$array['Conceptos']['claveProdServ'],
+            "Cantidad"=>$array['Conceptos']['cantidad'],
+            "ClaveUnidad"=>$array['Conceptos']['claveUnidad'],
+  				  "Descripcion"=>$descripcion,
+  				  "ValorUnitario"=>$array['Conceptos']['valorUnitario'],
+  				  "Importe"=>$array['Conceptos']['importe'],
+            "Descuento"=>$array['Conceptos']['Descuento'],
+				 )
+			);
+
+}
+
+# COMPLEMENTO ---------- PAGO -------------------------------------------------
 function xmlV33_complemento_pago($array,$nodo) {
 	global $comprobante, $xml;
 	$complemento = $xml->createElement("cfdi:Complemento");
@@ -240,7 +305,7 @@ function xmlV33_complemento_pago($array,$nodo) {
                                   "TipoCadPago"=>$array['Pago'][$i]['TipoCadPago'],
                                   "CertPago"=>$array['Pago'][$i]['CertPago'],
                                   "CadPago"=>$array['Pago'][$i]['CadPago'],
-                                  "SelloPago"=>$array['Pago'][$i]['SelloPago']
+                                  "SelloPago"=>$array['Pago'][$i]['SelloPago'],
         )
       );
 
@@ -263,7 +328,7 @@ function xmlV33_complemento_pago($array,$nodo) {
                                     "NumParcialidad"=>$array['DoctoRelacionado'][$dr]['NumParcialidad'],
                                     "ImpSaldoAnt"=>$array['DoctoRelacionado'][$dr]['ImpSaldoAnt'],
                                     "ImpPagado"=>$array['DoctoRelacionado'][$dr]['ImpPagado'],
-                                    "ImpSaldoInsoluto"=>$array['DoctoRelacionado'][$dr]['ImpSaldoInsoluto']
+                                    "ImpSaldoInsoluto"=>$array['DoctoRelacionado'][$dr]['ImpSaldoInsoluto'],
             )
           );
         }
@@ -274,7 +339,208 @@ function xmlV33_complemento_pago($array,$nodo) {
 
 }# fin complemento pago
 
-# Complemento/ --------------------------------------------------------------------------------------------------------------
+# COMPLEMENTO ---------- PAGO -------------------------------------------------
+
+
+# COMPLEMENTO ---------- NOMINA -------------------------------------------------
+function xmlV33_complemento_nomina($array,$nodo) {
+	global $comprobante, $xml,$sumPercepcionesSepIndem;
+
+  $tipoRegimen = $array['Receptor']['TipoRegimen'];
+
+	$complemento = $xml->createElement("cfdi:Complemento");
+	$complemento = $comprobante->appendChild($complemento);
+
+    $nomina = $xml->createElement("nomina12:Nomina");
+    $nomina = $complemento->appendChild($nomina);
+    xmlV33_cargaAtt($nomina,array("Version"=>$array['Nomina']['Version'],
+                                  "TipoNomina"=>$array['Nomina']['TipoNomina'],
+                                  "FechaPago"=>$array['Nomina']['FechaPago'],
+                                  "FechaInicialPago"=>$array['Nomina']['FechaInicialPago'],
+                                  "FechaFinalPago"=>$array['Nomina']['FechaFinalPago'],
+                                  "NumDiasPagados"=>$array['Nomina']['NumDiasPagados'],
+                                  "TotalPercepciones"=>$array['Nomina']['TotalPercepciones'],
+                                  "TotalDeducciones"=>$array['Nomina']['TotalDeducciones'],
+                                  "TotalOtrosPagos"=>$array['Nomina']['TotalOtrosPagos']));
+        if( $tipoRegimen == '02'){
+            #$array []= array("TotalOtrosPagos"=>$array['Nomina']['TotalOtrosPagos']);
+
+            $emisorNomina = $xml->createElement("nomina12:Emisor");
+            $emisorNomina = $nomina->appendChild($emisorNomina);
+            xmlV33_cargaAtt($emisorNomina,array("RegistroPatronal"=>$array['Emisor']['RegistroPatronal']));
+        }
+        if( $tipoRegimen == '09'){
+            $nomina ->removeAttribute('TotalOtrosPagos');
+        }
+
+
+      $receptorNomina = $xml->createElement("nomina12:Receptor");
+      $receptorNomina = $nomina->appendChild($receptorNomina);
+      if( $tipoRegimen == '02'){
+        xmlV33_cargaAtt($receptorNomina,array("Curp"=>$array['Receptor']['Curp'],
+                                    "NumSeguridadSocial"=>$array['Receptor']['NumSeguridadSocial'],
+                                    "FechaInicioRelLaboral"=>$array['Receptor']['FechaInicioRelLaboral'],
+                                    "Antigüedad"=>$array['Receptor']['Antigüedad'],
+                                    "TipoContrato"=>$array['Receptor']['TipoContrato'],
+                                    "TipoJornada"=>$array['Receptor']['TipoJornada'],
+                                    "TipoRegimen"=>$array['Receptor']['TipoRegimen'],
+                                    "NumEmpleado"=>$array['Receptor']['NumEmpleado'],
+                                    "Departamento"=>$array['Receptor']['Departamento'],
+                                    "Puesto"=>$array['Receptor']['Puesto'],
+                                    "RiesgoPuesto"=>$array['Receptor']['RiesgoPuesto'],
+                                    "PeriodicidadPago"=>$array['Receptor']['PeriodicidadPago'],
+                                    "Banco"=>$array['Receptor']['Banco'],
+                                    "CuentaBancaria"=>$array['Receptor']['CuentaBancaria'],
+                                    "SalarioBaseCotApor"=>$array['Receptor']['SalarioBaseCotApor'],
+                                    "SalarioDiarioIntegrado"=>$array['Receptor']['SalarioDiarioIntegrado'],
+                                    "ClaveEntFed"=>$array['Receptor']['ClaveEntFed'] ));
+
+    }
+    if( $tipoRegimen == '09'){
+      xmlV33_cargaAtt($receptorNomina,array("Curp"=>$array['Receptor']['Curp'],
+                                  "TipoContrato"=>$array['Receptor']['TipoContrato'],
+                                  "TipoRegimen"=>$array['Receptor']['TipoRegimen'],
+                                  "NumEmpleado"=>$array['Receptor']['NumEmpleado'],
+                                  "Departamento"=>$array['Receptor']['Departamento'],
+                                  "Puesto"=>$array['Receptor']['Puesto'],
+                                  "PeriodicidadPago"=>$array['Receptor']['PeriodicidadPago'],
+                                  "Banco"=>$array['Receptor']['Banco'],
+                                  "CuentaBancaria"=>$array['Receptor']['CuentaBancaria'],
+                                  "ClaveEntFed"=>$array['Receptor']['ClaveEntFed'] ));
+    }
+
+    # la clabe interbancaria consta de 18 digitos y no se debe poner el banco
+    if( strlen( $array['Receptor']['CuentaBancaria'] ) == 18 ){
+      $receptorNomina ->removeAttribute('Banco');
+    }
+
+    if( $array['Percepciones']['TotalSueldos'] > 0 ){
+      $percepciones = $xml->createElement("nomina12:Percepciones");
+      $percepciones = $nomina->appendChild($percepciones);
+      xmlV33_cargaAtt($percepciones,array("TotalSueldos"=>$array['Percepciones']['TotalSueldos'],
+                                    "TotalGravado"=>$array['Percepciones']['TotalGravado'],
+                                    "TotalExento"=>$array['Percepciones']['TotalExento']));
+          if( $sumPercepcionesSepIndem > 0 ){
+            xmlV33_cargaAtt($percepciones,array("TotalSeparacionIndemnizacion"=>$array['Percepciones']['TotalSeparacionIndemnizacion']));
+          }
+
+        for ($i=1; $i<=sizeof($array['Percepcion']); $i++) {
+          $percepcion = $xml->createElement("nomina12:Percepcion");
+          $percepcion = $percepciones->appendChild($percepcion);
+
+          xmlV33_cargaAtt($percepcion,
+            array("TipoPercepcion"=>$array['Percepcion'][$i]['TipoPercepcion'],
+                  "Clave"=>$array['Percepcion'][$i]['Clave'],
+                  "Concepto"=>$array['Percepcion'][$i]['Concepto'],
+                  "ImporteGravado"=>$array['Percepcion'][$i]['ImporteGravado'],
+                  "ImporteExento"=>$array['Percepcion'][$i]['ImporteExento'],
+               )
+            );
+
+            $cve = $array['Percepcion'][$i]['TipoPercepcion'];
+
+            if( $cve == '019' ){
+              $horasExtra = $xml->createElement("nomina12:HorasExtra");
+              $horasExtra = $percepcion->appendChild($horasExtra);
+
+              xmlV33_cargaAtt($horasExtra,
+                array("Dias"=>$array['HorasExtra'][$i]['Dias'],
+                  "TipoHoras"=>$array['HorasExtra'][$i]['TipoHoras'],
+                  "HorasExtra"=>$array['HorasExtra'][$i]['HorasExtra'],
+                  "ImportePagado"=>$array['HorasExtra'][$i]['ImportePagado'],
+                )
+              );
+
+            }
+            if( $cve == '025' ){
+              $separacionIndemnizacion = $xml->createElement("nomina12:separacionIndemnizacion");
+              $separacionIndemnizacion = $percepcion->appendChild($separacionIndemnizacion);
+
+              xmlV33_cargaAtt($separacionIndemnizacion,
+                array("TotalPagado"=>$array['SeparacionIndemnizacion'][$i]['TotalPagado'],
+                      "NumAñosServicio"=>$array['SeparacionIndemnizacion'][$i]['NumAñosServicio'],
+                      "UltimoSueldoMensOrd"=>$array['SeparacionIndemnizacion'][$i]['UltimoSueldoMensOrd'],
+                      "IngresoAcumulable"=>$array['SeparacionIndemnizacion'][$i]['IngresoAcumulable'],
+                      "IngresoNoAcumulable"=>$array['SeparacionIndemnizacion'][$i]['IngresoNoAcumulable'],
+                )
+              );
+
+            }
+        }
+  }#fin TotalSueldos > 0
+
+      $deducciones = $xml->createElement("nomina12:Deducciones");
+      $deducciones = $nomina->appendChild($deducciones);
+      if( $tipoRegimen == '02' ){
+        if( $array['Deducciones']['TotalOtrasDeducciones'] > 0 ){
+          xmlV33_cargaAtt($deducciones,array("TotalOtrasDeducciones"=>$array['Deducciones']['TotalOtrasDeducciones'])); }
+      }
+      if( $array['Deducciones']['TotalImpuestosRetenidos'] > 0 ){
+          xmlV33_cargaAtt($deducciones,array("TotalImpuestosRetenidos"=>$array['Deducciones']['TotalImpuestosRetenidos'])); }
+
+      for ($i=1; $i<=sizeof($array['Deduccion']); $i++) {
+        $deduccion = $xml->createElement("nomina12:Deduccion");
+        $deduccion = $deducciones->appendChild($deduccion);
+
+        xmlV33_cargaAtt($deduccion,
+          array("TipoDeduccion"=>$array['Deduccion'][$i]['TipoDeduccion'],
+                "Clave"=>$array['Deduccion'][$i]['Clave'],
+                "Concepto"=>$array['Deduccion'][$i]['Concepto'],
+                "Importe"=>$array['Deduccion'][$i]['Importe']
+             )
+          );
+      }
+
+    if( $tipoRegimen == '02' ){
+      $otrosPagos = $xml->createElement("nomina12:OtrosPagos");
+      $otrosPagos = $nomina->appendChild($otrosPagos);
+
+      for ($i=1; $i<=sizeof($array['OtroPago']); $i++) {
+        $otroPago = $xml->createElement("nomina12:OtroPago");
+        $otroPago = $otrosPagos->appendChild($otroPago);
+
+        xmlV33_cargaAtt($otroPago,
+          array("TipoOtroPago"=>$array['OtroPago'][$i]['TipoOtroPago'],
+                "Clave"=>$array['OtroPago'][$i]['Clave'],
+                "Concepto"=>$array['OtroPago'][$i]['Concepto'],
+                "Importe"=>$array['OtroPago'][$i]['Importe']
+             )
+          );
+
+
+          $tipoOP = $array['OtroPago'][$i]['TipoOtroPago'];
+
+          if( $tipoOP == '002' ){
+            $subsidio = $xml->createElement("nomina12:SubsidioAlEmpleo");
+            $subsidio = $otroPago->appendChild($subsidio);
+
+            xmlV33_cargaAtt($subsidio,
+              array("SubsidioCausado"=>$array['SubsidioAlEmpleo'][$i]['SubsidioCausado'],
+              )
+            );
+
+          }
+          if( $tipoOP == '004' ){
+            $saldosAfavor = $xml->createElement("nomina12:CompensacionSaldosAFavor");
+            $saldosAfavor = $otrosPagos->appendChild($saldosAfavor);
+
+            xmlV33_cargaAtt($saldosAfavor,
+              array("SaldoAFavor"=>$array['CompensacionSaldosAFavor'][$i]['SaldoAFavor'],
+                    "Año"=>$array['CompensacionSaldosAFavor'][$i]['Año'],
+                    "RemanenteSalFav"=>$array['CompensacionSaldosAFavor'][$i]['RemanenteSalFav'],
+              )
+            );
+
+          }
+      }
+    }
+
+}# fin complemento nomina
+
+# COMPLEMENTO ---------- NOMINA -------------------------------------------------
+
+
+
 
 # Totales Impuestos
 function xmlV33_impuestos($array,$nodo) {
@@ -386,10 +652,10 @@ function xmlV33_saveTempXML($array) {
 
 #timbrar xml en modo TEST
 function timbrarTest(){
-  global $rutaTempFile,$rutaRepFileZipTest,$rutaRep,$fileXMLtest,$rutaCLT;
+  global $rutaTempFile,$rutaRepFileZipTest,$rutaRep,$fileXMLtest,$rutaCLT,$tipoProceso,$idFactura,$root,$rutaCFDI;
 
   $XMLtemp = fopen($rutaTempFile,"rb");
-  $str = stream_get_contents($XMLtemp);
+  echo $str = stream_get_contents($XMLtemp);
   fclose($XMLtemp);
 
   $usuario = 'PLA090609N21';
@@ -401,7 +667,10 @@ function timbrarTest(){
     $result = $client->getCfdiTest(array('user' => 'PLA090609N21','password' => 'eqwlpoolt','file' => $str ));
     $result2 = $result->getCfdiTestReturn;
   } catch (SoapFault $exception) {
-    return $exception->getMessage();
+    $exception->getMessage();
+    $edoDoc = 'error timbrar TEST documento';
+    guardarRespuestaTimbrado($tipoProceso,$idFactura,$edoDoc,$exception);
+    return $exception;
   }
 
   file_put_contents($rutaRepFileZipTest,$result2);//se escribe en un archivo
@@ -410,7 +679,7 @@ function timbrarTest(){
     $zip->renameIndex(0,$fileXMLtest); #Asigno nombre al archivo XML
     if ($zip->open($rutaRepFileZipTest) === TRUE) {
       $zip->extractTo($rutaRep.'/');
-      $zip->extractTo($rutaCLT.'/');
+      $zip->extractTo($rutaCFDI.'/');
       $zip->close();
       return('correcto');
     }
@@ -421,40 +690,40 @@ function timbrarTest(){
 }
 
 #timbrar xml en modo PRODUCCION
-function timbrarProduccion(){
-  global $rutaTempFile,$rutaRepFileZip,$rutaRep,$fileXML,$rutaCLT;
-
-  $XMLtemp = fopen($rutaTempFile,"rb");
-  $str = stream_get_contents($XMLtemp);
-  fclose($XMLtemp);
-
-  $usuario = 'PLA090609N21';
-  $pswd = 'eqwlpoolt';
-
-  #PRODUCCION
-  try {
-    $client = new SoapClient("https://cfdiws.sedeb2b.com/EdiwinWS/services/CFDi?wsdl");
-    $result = $client->getCfdi(array('user' => 'PLA090609N21','password' => 'eqwlpoolt','file' => $str ));
-    $result2 = $result->getCfdiReturn;
-  } catch (SoapFault $exception) {
-    return $exception->getMessage();
-  }
-
-  file_put_contents($rutaRepFileZip,$result2);//se escribe en un archivo
-  $zip = new ZipArchive;
-  if ($zip->open($rutaRepFileZip) === TRUE) {
-    $zip->renameIndex(0,$fileXML); #Asigno nombre al archivo XML
-    if ($zip->open($rutaRepFileZip) === TRUE) {
-      $zip->extractTo($rutaRep.'/');
-      $zip->extractTo($rutaCLT.'/');
-      $zip->close();
-      return('correcto');
-    }
-  }else{
-    return('Error');
-  }
-
-}
+// function timbrarProduccion(){
+//   global $rutaTempFile,$rutaRepFileZip,$rutaRep,$fileXML,$rutaCLT;
+//
+//   $XMLtemp = fopen($rutaTempFile,"rb");
+//   $str = stream_get_contents($XMLtemp);
+//   fclose($XMLtemp);
+//
+//   $usuario = 'PLA090609N21';
+//   $pswd = 'eqwlpoolt';
+//
+//   #PRODUCCION
+//   try {
+//     $client = new SoapClient("https://cfdiws.sedeb2b.com/EdiwinWS/services/CFDi?wsdl");
+//     $result = $client->getCfdi(array('user' => 'PLA090609N21','password' => 'eqwlpoolt','file' => $str ));
+//     $result2 = $result->getCfdiReturn;
+//   } catch (SoapFault $exception) {
+//     return $exception->getMessage();
+//   }
+//
+//   file_put_contents($rutaRepFileZip,$result2);//se escribe en un archivo
+//   $zip = new ZipArchive;
+//   if ($zip->open($rutaRepFileZip) === TRUE) {
+//     $zip->renameIndex(0,$fileXML); #Asigno nombre al archivo XML
+//     if ($zip->open($rutaRepFileZip) === TRUE) {
+//       $zip->extractTo($rutaRep.'/');
+//       $zip->extractTo($rutaCLT.'/');
+//       $zip->close();
+//       return('correcto');
+//     }
+//   }else{
+//     return('Error');
+//   }
+//
+// }
 
 function abrirTimbrado($rutaRepFileXML){
   global $tipoProceso;
@@ -498,6 +767,9 @@ function abrirTimbrado($rutaRepFileXML){
   }
   if( $tipoProceso == "pago" ){
     $respGuardar = guardarDatosTimbrado_Pago($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura, $r_rfc,$r_nombre,$total,$moneda,$tc );
+  }
+  if( $tipoProceso == "nomina" ){
+    $respGuardar = guardarDatosTimbrado_Nomina($UUID,$certificado,$selloCFDI,$fechaTimbre,$versionTimbre,$SelloSAT,$idFactura, $r_rfc,$r_nombre,$total,$moneda,$tc );
   }
   return $UUID."\n".$respQR.$respGuardar;
 }
@@ -661,7 +933,7 @@ function cancelarPoliza($id_poliza, $status){
 }
 
 function guardarRespuestaTimbrado($tipoDoc,$folio,$estado,$statusPAC){
-  global $db;
+  global $db,$root;
   require $root . '/conta6/Resources/PHP/actions/acuse_cancelacion_CFDI_bitacora.php';
 }
 ?>
