@@ -275,6 +275,56 @@ $(document).ready(function(){
 
 
 //
+		$('div').on('click', '.buscarFacturas-sueldos', function(){
+			var data = {
+				regimen : '02'
+			}
+console.log(data);
+			$.ajax({
+				type: "POST",
+				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
+				data: data,
+				success: 	function(r){
+					r = JSON.parse(r);
+					if (r.code == 1) {
+						console.log(r);
+						$('#detpol-Sueldos-lista').html(r.data);
+					} else {
+						console.error(r.message);
+					}
+				},
+				error: function(x){
+					console.error(x);
+				}
+			});
+
+		});
+
+		$('div').on('click', '.buscarFacturas-honorarios', function(){
+			var data = {
+				regimen : '09'
+			}
+console.log(data);
+			$.ajax({
+				type: "POST",
+				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
+				data: data,
+				success: 	function(r){
+					r = JSON.parse(r);
+					if (r.code == 1) {
+						console.log(r);
+						$('#detpol-Honorarios-lista').html(r.data);
+					} else {
+						console.error(r.message);
+					}
+				},
+				error: function(x){
+					console.error(x);
+				}
+			});
+
+		});
+
 		$('tbody').on('click', '.buscarFacturas-polizas', function(){
 			cadena = $('#detpol-cliente').val();
 			parte = cadena.split('-');
@@ -438,6 +488,49 @@ $(document).ready(function(){
 				if (r.code == 1) {
 					alertify.success(r.data);
 					ultReg_Det();
+				} else {
+					console.error(r.message);
+				}
+			},
+			error: function(x){
+				console.error(x);
+			}
+		});
+
+	});
+
+	$('#detpol-Sueldos-lista').on('click','.checkbox-nompend',function(){
+		activado = $(this).parents('tr').find('.nompend-check').prop('checked');
+
+		if( activado == true ){
+			accion = "insertar";
+		}else{
+			accion = "borrar";
+		}
+
+		var data = {
+			id_poliza : $('#id_poliza').val(),
+			concepto : $('#mstpol-concepto').val(),
+			fecha : $('#mstpol-fecha').val(),
+			tipo : $('#mstpol-tipo').val(),
+			factura : $(this).parents('tr').find('.nompend-factura').val(),
+			nombre : $(this).parents('tr').find('.nompend-nombre').val(),
+			importe : $(this).parents('tr').find('.nompend-neto').val(),
+			regimen : $(this).parents('tr').find('.nompend-regimen').val(),
+			accion : accion
+		}
+//onsole.log(data);
+		$.ajax({
+			type: "POST",
+			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_insertaReg_detallePoliza.php",
+			data: data,
+			success: 	function(r){
+				//console.log(r);
+				r = JSON.parse(r);
+				if (r.code == 1) {
+					alertify.success(r.data);
+					//ultReg_Det();
+					detallePoliza();
 				} else {
 					console.error(r.message);
 				}

@@ -23,14 +23,28 @@ $usuario_modifi
 $observ
 */
 
-$queryTRANSFER = "INSERT INTO conta_t_polizas_det_contaelec
-                              (fk_id_poliza,fk_partidaPol,fk_tipo,s_tipoDetalle,
-                              s_ctaOri,s_BancoOri,s_BancoOriExt,
-                              s_CtaDest,s_BancoDest,s_BancoDestExt,
-                              d_fecha,s_Beneficiario,s_RFC,
-                              n_monto,s_moneda,n_TipCamb,
-                              s_BeneficiarioOpc,s_RFCopc,
-                              s_usuario_modifi,s_observaciones)
+$queryTRANSFER = "INSERT INTO conta_t_polizas_det_contaelec(
+                                                              fk_id_poliza,
+                                                              fk_partidaPol,
+                                                              fk_tipo,
+                                                              s_tipoDetalle,
+                                                              s_ctaOri,
+                                                              s_BancoOri,
+                                                              s_BancoOriExt,
+                                                              s_CtaDest,
+                                                              s_BancoDest,
+                                                              s_BancoDestExt,
+                                                              d_fecha,
+                                                              s_Beneficiario,
+                                                              s_RFC,
+                                                              n_monto,
+                                                              s_moneda,
+                                                              n_TipCamb,
+                                                              s_BeneficiarioOpc,
+                                                              s_RFCopc,
+                                                              s_usuario_modifi,
+                                                              s_observaciones
+                                                            )
                               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmtTRANSFER = $db->prepare($queryTRANSFER);
 if (!($stmtTRANSFER)) {

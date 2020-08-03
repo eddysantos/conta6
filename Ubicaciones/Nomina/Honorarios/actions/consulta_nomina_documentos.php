@@ -160,6 +160,12 @@ if ($rows_consultaDoc > 0) {
 
         if ($rows_consultaFac > 0) {
               $linkCancelar = "&nbsp;";
+              $linkBorrar = "&nbsp;";
+              $linkEditar = "&nbsp;";
+              $linkPoliza = "&nbsp;";
+              $linkTimbrar = "&nbsp;";
+              $linkPolizaPago = "&nbsp;";
+              
               $row_consultaFac = $rslt_consultaFac->fetch_assoc();
               $polPago = $row_consultaFac['fk_id_polizaPago'];
               $cancela = $row_consultaFac['s_cancela_factura'];
