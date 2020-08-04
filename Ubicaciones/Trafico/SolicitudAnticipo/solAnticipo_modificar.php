@@ -476,7 +476,7 @@ if($referencia != "SN"){
           </thead>
           <tbody class='font14 text-center'>
             <tr class="row">
-              <td class="p-1 col-md-3 text-left b"><b>Cta. generada <?php echo $pk_id_cuenta_captura; ?></b> </td>
+              <td class="p-1 col-md-3 text-left b"><b>Generada <?php echo $pk_id_cuenta_captura; ?></b> </td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3">
                 <input class="h22 bt border-0 text-center" type="text" id="T_Usuario" size="20"value="<?php echo $fk_usuario; ?>" readonly>
@@ -487,22 +487,10 @@ if($referencia != "SN"){
             </tr>
 
             <tr class="row b">
-              <td class="p-1 col-md-3 text-left b"><b>Cta. modificada</b> </td>
+              <td class="p-1 col-md-3 text-left b"><b>Modificada</b> </td>
               <td class="p-1 col-md-3"></td>
               <td class="p-1 col-md-3"><?php echo $s_usuario_modifi; ?></td>
               <td class="p-1 col-md-3"><?php echo $d_fecha_modifi; ?></td>
-            </tr>
-            <tr class="row b">
-              <td class="p-1 col-md-3 text-left b"><b>Factura generada</b> </td>
-              <td class="p-1 col-md-3"></td>
-              <td class="p-1 col-md-3"></td>
-              <td class="p-1 col-md-3"></td>
-            </tr>
-            <tr class="row b borderojo">
-              <td class="p-1 col-md-3 text-left b"><b></b> </td>
-              <td class="p-1 col-md-3"></td>
-              <td class="p-1 col-md-3"></td>
-              <td class="p-1 col-md-3"></td>
             </tr>
           </tbody>
         </table>
@@ -818,7 +806,20 @@ if($referencia != "SN"){
       <div class="contorno" style="<?php echo $marginbottom ?>">
         <table class="table w-100">
           <tr>
-            <td class="w-50"></td>
+            <td class="w-50">
+              <table class="table">
+      				  <tr class="row">
+                  <td class="col-md-4">
+                    <select name="select2" id="lst_moneda" onchange="asignarMoneda()">
+                      <?php echo $consultaMoneda; ?>
+                    </select>
+                  </td>
+                  <td class="col-md-2">
+      						<input class="efecto h22" type="text" id="T_Moneda" size="6" value="<?php echo $fk_id_moneda; ?>" readonly>
+      					  </td>
+      				  </tr>
+      				</table>
+            </td>
             <td class="w-50">
               <table class="table font14">
                 <tbody>

@@ -203,8 +203,11 @@ if($referencia != "SN"){
     //     $datosCLTformaPago .= '<option value="'.$id_formaPago.'">'.$concepto.' --- '.$id_formaPago.'</option>';
     //   }
     // }
+
+
     //LISTA DE MONEDAS
-    //require $root . '/conta6/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
+    require $root . '/conta6/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
+
     //LISTA DE USO DE CFDI
     //require $root . '/conta6/Resources/PHP/actions/consultaUsoCFDI_facturar.php'; #$consultaUsoCFDIfac
     $tabindex = 0;
@@ -902,6 +905,18 @@ if($referencia != "SN"){
         <table class="table w-100">
           <tr>
             <td class="w-50">
+              <table class="table">
+      				  <tr class="row">
+                  <td class="col-md-4">
+                    <select name="select2" id="lst_moneda" onchange="asignarMoneda()">
+                      <?php echo $consultaMoneda; ?>
+                    </select>
+                  </td>
+                  <td class="col-md-2">
+      						<input class="efecto h22" type="text" id="T_Moneda" size="6" value="MXN" readonly>
+      					  </td>
+      				  </tr>
+      				</table>
             </td>
             <td class="w-50">
               <table class="table font14">

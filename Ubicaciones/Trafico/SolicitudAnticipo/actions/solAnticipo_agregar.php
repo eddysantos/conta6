@@ -104,12 +104,13 @@ $Txt_POCME_Total = trim($_POST['Txt_POCME_Total']);
 $Txt_POCME_Tipo_Cambio = trim($_POST['Txt_POCME_Tipo_Cambio']);
 $Total_Letra = trim($_POST['Total_Letra']);
 
+$moneda = trim($_POST['T_Moneda']);
+
 /*
 $metodoPago = trim($_POST['T_metodoPago']);
 $usoCFDI = trim($_POST['T_usoCFDI']);
 $formaPago = trim($_POST['T_FormaPago']);
 $numCtaPago = trim($_POST['T_CuentaPago']);
-$moneda = trim($_POST['T_Moneda']);
 $tipoCambio = trim($_POST['T_monedaTipoCambio']);
 
 
@@ -168,12 +169,13 @@ $tipoCambio = trim($_POST['T_monedaTipoCambio']);
                                                       n_total_cta_gastos,
                                                       s_total_cta_gastos_letra,
                                                       s_txt_fac_saldo,
-                                                      n_fac_saldo
+                                                      n_fac_saldo,
+                                                      fk_id_moneda
                 )values(?,?,?,?,?,?,?,?,?,?,
                         ?,?,?,?,?,?,?,?,?,?,
                         ?,?,?,?,?,?,?,?,?,?,
                         ?,?,?,?,?,?,?,?,?,?,
-                        ?,?,?,?,?,?,?,?,?,?)";
+                        ?,?,?,?,?,?,?,?,?,?,?)";
 
     $stmt_mst = $db->prepare($query_mst);
     if (!($stmt_mst)) {
@@ -182,7 +184,7 @@ $tipoCambio = trim($_POST['T_monedaTipoCambio']);
       exit_script($system_callback);
     }
 
-    $stmt_mst->bind_param('ssssssssssssssssssssssssssssssssssssssssssssssssss',
+    $stmt_mst->bind_param('sssssssssssssssssssssssssssssssssssssssssssssssssss',
                           $Usuario_Cta,
                           $ID_Referencia,
                           $ID_Aduana,
@@ -232,7 +234,8 @@ $tipoCambio = trim($_POST['T_monedaTipoCambio']);
                           $Total_Cta_Gastos,
                           $Total_Letra,
                           $Txt_Fac_Saldo,
-                          $Fac_Saldo );
+                          $Fac_Saldo,
+                          $moneda);
 
     if (!($stmt_mst)) {
       $system_callback['code'] = "500";
