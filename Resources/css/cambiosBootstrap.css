@@ -40,3 +40,13 @@
 .table thead th{
   border-bottom: 0px!important;
 }
+
+/* .btn-outline-secondary{
+se comento en archivo original min.css
+  border-color: #6c757d;
+} */
+
+.btn-outline-secondary:hover{
+  background-color: rgba(87, 88, 91, 0.8)!important;
+  border-color: rgba(87, 88, 91, 0.4)!important;
+}

@@ -230,7 +230,7 @@ $rows = $rslt->num_rows;
        </td>
      </tr>
 
-   </table>*/
+   </table>
    $html .='<br pagebreak="true" />';
 
   }

@@ -2947,7 +2947,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-outline-secondary {
   color: #6c757d;
-  border-color: #6c757d
+  /* border-color: #6c757d */
 }
 
 .btn-outline-secondary:hover {
