@@ -185,7 +185,10 @@
       <td class='col-md-2'>$totalNeto</td>
     </tr>
     <tr class='row m-0 mt-4'>
-      <td class='col-md-12'>NÓMINA $semana $fechaInicio al $fechaFinal <a href='#' onclick='imprimirNomina($anio,$semana,&#39;Todas&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a></td>
+      <td class='col-md-12'>NÓMINA $semana $fechaInicio al $fechaFinal
+        <a href='#' onclick='imprimirNomina($anio,$semana,&#39;T&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a>
+        <a href='#' onclick='imprimirNominaExcel($anio,$semana,&#39;T&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='icomediano' src='/conta6/Resources/iconos/excel.svg'>Excel</a>
+      </td>
     </tr>
     <tr class='row m-0'>
       <td class='col-md-12'>Ordinaria <a href='#' onclick='imprimirNomina($anio,$semana,&#39;O&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a>

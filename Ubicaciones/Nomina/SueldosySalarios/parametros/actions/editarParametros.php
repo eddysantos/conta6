@@ -23,6 +23,7 @@ $n_baseSalarial = trim($_POST['n_baseSalarial']);
 $n_topeSalarial = trim($_POST['n_topeSalarial']);
 $n_patron = trim($_POST['n_patron']);
 $n_trabajador = trim($_POST['n_trabajador']);
+$n_UMA = trim($_POST['n_UMA']);
 $fk_usuario_modifi = $_SESSION['user']['pk_usuario'];
 $d_fecha_modifi = date("Y-m-d H:i:s",time());
 
@@ -47,7 +48,8 @@ n_topeSalarial = ?,
 n_patron = ?,
 n_trabajador = ?,
 fk_usuario_modifi = ?,
-d_fecha_modifi = ?
+d_fecha_modifi = ?,
+n_UMA = ?
 WHERE pk_id_partida = ?";
 
 $stmt = $db->prepare($query);
@@ -57,7 +59,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ssssssssssssssssssssss',$n_inferior,
+$stmt->bind_param('sssssssssssssssssssssss',$n_inferior,
                                            $n_superior,
                                            $n_cuota,
                                            $n_porcentaje,
@@ -78,6 +80,7 @@ $stmt->bind_param('ssssssssssssssssssssss',$n_inferior,
                                            $n_trabajador,
                                            $usuario,
                                            $d_fecha_modifi,
+                                           $n_UMA,
                                            $pk_id_partida);
 
 /*

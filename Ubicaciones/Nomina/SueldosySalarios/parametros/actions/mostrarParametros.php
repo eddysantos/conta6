@@ -96,6 +96,7 @@ while ($row = $rslt->fetch_assoc()) {
   $n_diasTrabajados = $row['n_diasTrabajados'];
   $n_diasPagar = $row['n_diasPagar'];
   $d_fecha_modifi = $row['d_fecha_modifi'];
+  $n_UMA = $row['n_UMA'];
 
   if($oRst_permisos['s_nom_suel_mod_tab_gen'] == 1){
     $linkModifi_gen = "<a href='#paramgenerales' data-toggle='modal' db-id='$pk_id_gen' class='editar'>
@@ -106,9 +107,10 @@ while ($row = $rslt->fetch_assoc()) {
   $system_callback['generales'] .="<tr class='row borderojo align-items-center m-0'>
     <td class='col-md-1'>$linkModifi_gen</td>
     <td class='col-md-1'>$fk_id_aduana</td>
-    <td class='col-md-2'>$n_salarioMinimo</td>
+    <td class='col-md-1'>$n_salarioMinimo</td>
     <td class='col-md-1'>$n_IMSS</td>
     <td class='col-md-1'>$n_subsidio</td>
+    <td class='col-md-1'>$n_UMA</td>
     <td class='col-md-2'>$n_diasTrabajados</td>
     <td class='col-md-2'>$n_diasPagar</td>
     <td class='col-md-2 p-0'>$d_fecha_modifi</td>

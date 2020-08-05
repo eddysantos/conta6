@@ -96,7 +96,8 @@ $(document).ready(function(){
           Txt_Honorarios : $('#Txt_Total_Importe').val(),
           T_POCME_Total : $('#T_POCME_Total').val(),
           T_POCME_Tipo_Cambio : $('#T_POCME_Tipo_Cambio').val(),
-          T_POCME_Total_MN : $('#T_POCME_Total_MN').val()
+          T_POCME_Total_MN : $('#T_POCME_Total_MN').val(),
+          T_Moneda : $('#T_Moneda').val()
         };
 
         $( ".elemento-pocme" ).each(function(i) {
@@ -227,6 +228,7 @@ $(document).ready(function(){
           T_POCME_Total : $('#T_POCME_Total').val(),
           T_POCME_Tipo_Cambio : $('#T_POCME_Tipo_Cambio').val(),
           T_POCME_Total_MN : $('#T_POCME_Total_MN').val(),
+          T_Moneda : $('#T_Moneda').val(),
           dge: {},
           pocme: {},
           cargos: {},

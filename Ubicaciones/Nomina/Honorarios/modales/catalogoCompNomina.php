@@ -9,6 +9,7 @@
         <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
+
         <table class='table text-center table-hover fixed-table'>
           <thead>
             <tr class='row encabezado m-0'>
@@ -16,6 +17,15 @@
             </tr>
           </thead>
           <tbody id="percepcionesComplementoNomina"></tbody>
+        </table>
+
+        <table class='table text-center table-hover fixed-table'>
+          <thead>
+            <tr class='row encabezado m-0'>
+              <td class='col-md-1'>OTROS PAGOS</td>
+            </tr>
+          </thead>
+          <tbody id="otrosPagosComplementoNomina"></tbody>
         </table>
 
         <table class='table text-center table-hover fixed-table mt-5'>
@@ -26,7 +36,8 @@
           </thead>
           <tbody id="deduccionesComplementoNomina"></tbody>
         </table>
-      </div>
-    </div>
+
+      </div><!--termina el Cuerpo del Modal-->
+    </div><!--termina el COntenido del Modal-->
   </div>
 </div>

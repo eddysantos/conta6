@@ -294,10 +294,10 @@ if( $totalRegistrosSelect > 0 ){
       </div>
       <div class="row font14 mt-3 m-0">
         <div class="col-md-3">
-          <a href="#detpol-Sueldos" data-toggle="modal" class="boton"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI SUELDOS Y SALARIOS</a>
+          <a href="#detpol-Sueldos" class="buscarFacturas-sueldos" data-toggle="modal"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI SUELDOS Y SALARIOS</a>
         </div>
         <div class="col-md-3">
-          <a href="#detpol-Honorarios" data-toggle="modal" class="boton"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI HONORARIOS</a>
+          <a href="#detpol-Honorarios" class="buscarFacturas-honorarios" data-toggle="modal"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI HONORARIOS</a>
         </div>
         <div class="col-md-2">
           <a href="#" onclick="btn_printPoliza(<?php echo $id_poliza; ?>,<?php echo $aduana; ?>)" class="boton border-0"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>

@@ -2013,7 +2013,7 @@ $('#modificar-cta-cfdi').click(function(){ // editar un CFDI - solo en la parte 
 $('#guardar-cta').click(function(){
   Suma_Subtotales();
   if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
-      $('#guardar').prop('disabled',true);
+      $('#guardar-cta').prop('disabled',true);
       $('#mensaje').html("Guardando . . .");
 
       var data = {

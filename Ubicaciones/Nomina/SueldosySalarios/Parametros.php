@@ -48,12 +48,13 @@
                 <tr class="row backpink font14 b fw-bold m-0">
                   <td class="col-md-1">Editar</td>
                   <td class="col-md-1">Oficina</td>
-                  <td class="col-md-2">Salario Mínimo</td>
+                  <td class="col-md-1">Salario Mínimo</td>
                   <td class="col-md-1">IMSS</td>
                   <td class="col-md-1">Subsidio</td>
+                  <td class="col-md-1">UMA</td>
                   <td class="col-md-2">Días Trabajados</td>
                   <td class="col-md-2">Días por Pagar</td>
-                  <td class="col-md-2">Ultima Modificación</td>
+                  <td class="col-md-2">Modificado</td>
                 </tr>
               </thead>
               <tbody id="tablaGenerales"></tbody>

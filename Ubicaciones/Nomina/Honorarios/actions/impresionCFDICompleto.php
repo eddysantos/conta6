@@ -46,7 +46,7 @@ $pdf->SetFont('dejavusans', '', 7, '', true);
 $pdf->AddPage();
 
 $sql_Select = "SELECT * FROM conta_t_nom_captura
-               WHERE n_anio = $anio and fk_id_aduana = $aduana and n_semana = $id_nomina AND fk_id_regimen = $id_regimen limit 2";
+               WHERE n_anio = $anio and fk_id_aduana = $aduana and n_semana = $id_nomina AND fk_id_regimen = $id_regimen limit 1";
 
 $stmt = $db->prepare($sql_Select);
 if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
@@ -230,20 +230,25 @@ $rows = $rslt->num_rows;
        </td>
      </tr>
 
-   </table>
-   $html .='<br pagebreak="true" />';
+   </table>*/
+  $html .='<br pagebreak="true" />';
 
   }
 
 
-// $pdf->writeHTML($html, true, 0, true, 0);
-// $pdf->writeHTML($percepcionesDeducciones, true, 0, true, 0);
+ $pdf->writeHTML($html, true, 0, true, 0, '');
+ $pdf->writeHTML($percepcionesDeducciones, true, 0, true, 0, '');
 
 
 $pdf->writeHTML($html, true, false, true, false, 'C');
 // ---------------------------------------------------------
 $pdf->lastPage();
 $pdf->Output('ImpresionCFDI.pdf', 'I');
+// Destination where to send the document. It can be one of the following:
+// I: send the file inline to the browser. The PDF viewer is used if available.
+// D: send to the browser and force a file download with the name given by name.
+// F: save to a local file with the name given by name (may include a path).
+// S: return the document as a string.
 
 //============================================================+
 // END OF FILE

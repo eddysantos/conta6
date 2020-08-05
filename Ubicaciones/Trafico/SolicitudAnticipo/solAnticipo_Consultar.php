@@ -223,7 +223,7 @@
     <div class="col-lg-4">
       <div class="row">
         <div class="col-md-9">CONCEPTO</div>
-        <div class="col-md-3 pl-0">TOTALES</div>
+        <div class="col-md-3 pl-0">TOTALES <?php echo $fk_id_moneda; ?></div>
       </div>
     </div>
   </div>

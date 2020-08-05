@@ -66,10 +66,18 @@
         <thead>
           <tr class="row encabezado">
             <td class="col-md-1">No.</td>
-            <td class="col-md-3">Empleado</td>
+            <td class="col-md-2">Empleado</td>
             <td class="col-md-1">Tipo</td>
-            <td class="col-md-1">Documento <a href=''><img class='icomediano' src='/conta6/Resources/iconos/002-plus.svg'></a></td>
-            <td class="col-md-1"><a href=''><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a></td>
+            <td class="col-md-1">Documento
+              <a href='#' onclick="nuevoDocNomina()">
+                <img class='icomediano' src='/conta6/Resources/iconos/002-plus.svg'>
+              </a>
+            </td>
+            <td class="col-md-1">
+              <a href='#' onclick='borrarDocNominaTodos()'>
+                <img class='icochico' src='/conta6/Resources/iconos/cross.svg'>
+              </a>
+            </td>
             <td class="col-md-1">Pol.Pago</td>
             <td class="col-md-1">Cancelar</td>
             <td class="col-md-1">Factura</td>

@@ -83,13 +83,14 @@ $Honorarios_Base_Honorarios = trim($_POST['T_Honorarios_Base_Honorarios']);
 $Honorarios_Descuento = trim($_POST['T_Honorarios_Descuento']);
 $folio = trim($_POST['folio']);
 
+$moneda = trim($_POST['T_Moneda']);
+
 
 /*
 $metodoPago = trim($_POST['T_metodoPago']);
 $usoCFDI = trim($_POST['T_usoCFDI']);
 $formaPago = trim($_POST['T_FormaPago']);
 $numCtaPago = trim($_POST['T_CuentaPago']);
-$moneda = trim($_POST['T_Moneda']);
 $tipoCambio = trim($_POST['T_monedaTipoCambio']);
 $Total_Letra = trim($_POST['Total_Letra']);
 
@@ -144,7 +145,8 @@ $query_mst="UPDATE conta_t_proforma SET s_usuario_modifi = ?,
                                                   n_total_cta_gastos = ?,
                                                   s_txt_fac_saldo = ?,
                                                   n_fac_saldo = ?,
-                                                  fk_id_asoc = ?
+                                                  fk_id_asoc = ?,
+                                                  fk_id_moneda = ?
                                 WHERE pk_id_proforma = ?";
 
 $stmt_mst = $db->prepare($query_mst);
@@ -154,7 +156,7 @@ if (!($stmt_mst)) {
   exit_script($system_callback);
 }
 
-$stmt_mst->bind_param('sssssssssssssssssssssssssssssssssssssssssssssssssss',
+$stmt_mst->bind_param('ssssssssssssssssssssssssssssssssssssssssssssssssssss',
                                                   $usuario,
                                                   $ID_Referencia,
                                                   $ID_Aduana,
@@ -205,6 +207,7 @@ $stmt_mst->bind_param('sssssssssssssssssssssssssssssssssssssssssssssssssss',
                                                   $Txt_Fac_Saldo,
                                                   $Fac_Saldo,
                                                   $ID_ASOC,
+                                                  $moneda,
                                                   $folio);
 
 if (!($stmt_mst)) {

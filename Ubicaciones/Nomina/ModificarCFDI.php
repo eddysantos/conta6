@@ -73,11 +73,30 @@
     require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_riesgotrabajo.php'; #$descripcionRiesgotrabajo
     require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_banco.php'; #$descripcionBanco
     require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_datosEmpleado.php'; #$PRESTAMOCTA
+
     require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_percepciones.php'; #$consultaPercepConcep
     require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_percepcionesOtrosPagos.php'; #$consultaPercepConcepOP
     require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_percepcionesHorasExtra.php'; #$consultaPercepConcepHrExtra
+    require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_percepcionesSepIndem.php'; #$consultaPercepConcepINDEM
     require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_deducciones.php'; #$consultaDeducConcep
+    require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_deducciones_pensionAlimen.php'; #$consultaDeduc_penAlim
     require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_incapacidad.php'; #$incapacidad
+
+    require $root . '/conta6/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina_relacionada.php'; #$total_consultaDatosRelacionada
+    $datosFactRelacionada = "";
+    if( $total_consultaDatosRelacionada > 0 ){
+      while ($row_consultaDatosRelacionada = $rslt_consultaDatosRelacionada->fetch_assoc()) {
+        $UUID_relacionado = $row_consultaDatosRelacionada['s_UUID_relacionada'];
+        $idFactura_relacionada = $row_consultaDatosRelacionada['fk_id_nomina_relacionada'];
+
+        $datosFactRelacionada .= "
+          <tr class='row m-0'>
+            <td class='col-md-2'>$idFactura_relacionada</td>
+            <td class='col-md-2'>$UUID_relacionado</td>
+          </tr>";
+      }
+    }
+
 
     $datosGenerales = "
       <td class='col-md-1'>$id_empleado</td>
@@ -92,7 +111,7 @@
       <td class='col-md-2'>$id_pago $descripcionPago</td>
       <td class='col-md-2'>$id_riesgo $descripcionRiesgotrabajo</td>
       <td class='col-md-2'>$departamento</td>
-      <td class='col-md-1'><input id='idRegimen' class='efecto h22 border-0' type='text' value='$id_contrato' readonly></td>
+      <td class='col-md-1'><input id='idRegimen' class='efecto h22 border-0' type='text' value='$id_regimen' readonly></td>
       <td class='col-md-2'>$FechaInicioRelLaboral</td>
       <td class='col-md-2'>$antiguedad</td>
       <td class='col-md-1'>$puesto_actividad</td>";
@@ -123,7 +142,9 @@
   require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepciones.php'; #$detalle_PERCEP
   require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepcionesOtrosPagos.php'; #$detalle_PERCEPOP
   require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepcionesHorasExtra.php'; #$detalle_PERCEPHrExtra
+  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepcionesSepIndem.php'; #$detalle_PERCEPSepIndem
   require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaDeducciones.php'; #$detalle_DEDUC
+  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaDeducciones_pensionAlimenticia.php'; #$detalle_DEDUC_penAlim
   require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaTotales.php'; #$detalle_TOTALES
 
 ?>
@@ -142,9 +163,16 @@
   </div>
 
   <div class="col-md-1 mt-4">
-    <a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/GenerarNominaCFDI.php">
+    <?PHP if( $id_regimen == '02' ){ ?>
+    <a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/consultar_Nomina.php">
       <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
     </a>
+    <?php } ?>
+    <?PHP if( $id_regimen == '09' ){ ?>
+    <a href="/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">
+      <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+    </a>
+    <?php } ?>
   </div>
 
   <div id="contornogen" class="contorno" style="display:none">
@@ -158,7 +186,7 @@
           <td class="col-md-2">CURP</td>
           <td class="col-md-1">RFC</td>
           <td class="col-md-2">No. IMSS</td>
-          <td class="col-md-1">Infonavit</td>
+          <td class="col-md-1">INFONAVIT</td>
         </tr>
       </thead>
       <tbody class="font14">
@@ -241,9 +269,26 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- factura relacionada va aqui -->
   </div>
 
+  <?php if( $total_consultaDatosRelacionada > 0 ){ ?>
+    <table class="table">
+      <thead class="font16">
+        <tr class="row m-0 encabezado">
+          <td class="col-md-2">Factura Relacionada</td>
+          <td class="col-md-2">UUID</td>
+        </tr>
+      </thead>
+      <tbody class="font14">
+        <?php echo $datosFactRelacionada; ?>
+      </tbody>
+    </table>
+  <?php } ?>
+
 <!--ACORDEON DE PERCEPCIONES-->
+<?php if( $tipoNomina == 'O' or $tipoNomina == 'E' ){ ?>
     <div class="acordeon2 mt-3">
       <div class="encabezado font16" data-toggle="collapse" href="#percep">
         <a href="#">PERCEPCIONES</a>
@@ -257,7 +302,9 @@
               </select>
             </div>
             <div class="col-md-6">
-              <a href="#"><img class="icomediano" src="/conta6/Resources/iconos/help.svg"></a>
+              <a href='#catalogoComplementoNomina' data-toggle='modal'>
+                <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+              </a>
             </div>
           </div>
           <div class="row mt-4 align-items-center justify-content-center">
@@ -272,10 +319,10 @@
               <input type="text" class="efecto" id="desPercepcion">
             </div>
             <div class='col-md-2'>
-              <input type="text" class="efecto" id="importeGravadoPercepcion" value="0" onchange="sumaGeneralNomina()">
+              <input type="text" class="efecto" id="importeGravadoPercepcion" value="0" onchange="validaIntDec(this);sumaGeneralNomina()">
             </div>
             <div class='col-md-2'>
-              <input type="text" class="efecto" id="importeExentoPercepcion" value="0" onchange="sumaGeneralNomina()">
+              <input type="text" class="efecto" id="importeExentoPercepcion" value="0" onchange="validaIntDec(this);sumaGeneralNomina()">
             </div>
             <div class='col-md-1 text-left'>
               <a onclick="agregarPercep()" id="Btn_agregar">
@@ -300,8 +347,10 @@
         </form>
       </div>
     </div>
+<?php } ?>
 
 <!--ACORDEON DE OTROS PAGOS-->
+<?php if($id_regimen == '02'){ ?>
     <div class="acordeon2 mt-3" id='formOtrospagos'>
       <div class="encabezado font16" data-toggle="collapse" href="#otrospagos">
         <a href="#">OTROS PAGOS</a>
@@ -315,7 +364,9 @@
               </select>
             </div>
             <div class="col-md-6">
-              <a href="#"><img class="icomediano" src="/conta6/Resources/iconos/help.svg"></a>
+              <a href='#catalogoComplementoNomina' data-toggle='modal'>
+                <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+              </a>
             </div>
           </div>
           <div class="row mt-4 align-items-center justify-content-center">
@@ -326,11 +377,14 @@
             <div class='col-md-2'>
               <input type="text" class="efecto h22 border-0" id="claveInternaPercepcionOP" readonly>
             </div>
-            <div class='col-md-4'>
+            <div class='col-md-3'>
               <input type="text" class="efecto" id="desPercepcionOP">
             </div>
             <div class='col-md-1'>
-              <input type="text" class="efecto" id="importeExentoPercepcionOP" value="0" onchange="sumaGeneralNomina()">
+              <input type="text" class="efecto" id="importeExentoPercepcionOP" value="0" onchange="validaIntDec(this);sumaGeneralNomina()">
+            </div>
+            <div class='col-md-1' >
+              <input type='text' class="efecto" id='subCausadoPOP' value='0' onblur='validaIntDec(this);'>
             </div>
             <div class='col-md-1'>
               <input type="text" class="efecto h22 border-0" id="anioPercepcionOP" value="0" readOnly>
@@ -351,8 +405,9 @@
                 <tr class="row mt-4 m-0 backpink">
                   <td class="col-md-1">Cve. SAT</td>
                   <td class="col-md-2">Cuenta Contable</td>
-                  <td class="col-md-4">Concepto o Descripción</td>
+                  <td class="col-md-3">Concepto o Descripción</td>
                   <td class="col-md-1">Importe</td>
+                  <td class="col-md-1">Subsidio Causado</td>
                   <td class="col-md-1">Año</td>
                   <td class="col-md-2">Saldo a favor</td>
                 </tr>
@@ -362,8 +417,10 @@
         </form>
       </div>
     </div>
+<?php } ?>
 
 <!--ACORDEON HORAS EXTRAS-->
+<?php if($id_regimen == '02'){ ?>
     <div class="acordeon2 mt-3" id="formHorasextras">
       <div class="encabezado font16" data-toggle="collapse" href="#horasextras">
         <a href="#">HORAS EXTRAS</a>
@@ -377,7 +434,9 @@
               </select>
             </div>
             <div class="col-md-6">
-              <a href="#"><img class="icomediano" src="/conta6/Resources/iconos/help.svg"></a>
+              <a href='#catalogoComplementoNomina' data-toggle='modal'>
+                <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+              </a>
             </div>
           </div>
           <div class="row mt-4 align-items-center justify-content-center">
@@ -392,16 +451,16 @@
               <input type="text" class="efecto" id="despercepcionHrExtra">
             </div>
             <div class='col-md-1'>
-              <input type="text" class="efecto" id="diaspercepcionHrExtra" value="0">
+              <input type="text" class="efecto" id="diaspercepcionHrExtra" value="0" onblur="validaSoloNumeros(this);">
             </div>
             <div class='col-md-1'>
-              <input type="text" class="efecto" id="hrpercepcionHrExtra" value="0">
+              <input type="text" class="efecto" id="hrpercepcionHrExtra" value="0" onblur="validaSoloNumeros(this);">
             </div>
             <div class='col-md-1'>
-              <input type="text" class="efecto" id="importeGravadopercepcionHrExtra" value="0" onchange="sumaGeneralNomina()">
+              <input type="text" class="efecto" id="importeGravadopercepcionHrExtra" value="0" onchange="validaIntDec(this);sumaGeneralNomina()">
             </div>
             <div class='col-md-1'>
-              <input type="text" class="efecto" id="importeExentopercepcionHrExtra" value="0" onchange="sumaGeneralNomina()">
+              <input type="text" class="efecto" id="importeExentopercepcionHrExtra" value="0" onchange="validaIntDec(this);sumaGeneralNomina()">
             </div>
             <div class='col-md-1 text-left'>
               <a onclick="agregarPercepHrExtra()" id="Btn_agregar">
@@ -426,51 +485,71 @@
               <tbody id='tbodyPercepcionesHrExtra'><?php echo $detalle_PERCEPHrExtra; ?></tbody>
           </table>
         </form>
-
-
-
-        <!--form class="form1">
-          <table class="table">
-            <tbody>
-
-
-              <tr class="row mt-5 m-0">
-                <td class="col-md-1 input-effect">
-                  <input id="cve2" class="efecto">
-                  <label for="cve2">Cve.SAT</label>
-                </td>
-                <td class="col-md-2 input-effect">
-                  <input id="ctacon2" class="efecto">
-                  <label for="ctacon2">Cuenta Contable</label>
-                </td>
-                <td class="col-md-4 input-effect">
-                  <input id="concdesc2" class="efecto">
-                  <label for="concdesc2">Concepto o Descripción</label>
-                </td>
-                <td class="col-md-1 input-effect">
-                  <input id="dias" class="efecto">
-                  <label for="dias">Días</label>
-                </td>
-                <td class="col-md-1 input-effect">
-                  <input id="horas" class="efecto">
-                  <label for="horas">Horas</label>
-                </td>
-                <td class="col-md-1 input-effect">
-                  <input id="gravado" class="efecto">
-                  <label for="gravado">$ Gravado</label>
-                </td>
-                <td class="col-md-1 input-effect">
-                  <input id="exento" class="efecto">
-                  <label for="exento">$ Exento</label>
-                </td>
-                <td><a><img class="icomediano" src="/conta6/Resources/iconos/002-plus.svg"></a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form-->
       </div>
     </div>
+<?php } ?>
+
+    <!--ACORDEON SEPARACION E INDEMNIZACION-->
+<?php if($id_regimen == '02' and $descNomina == 'Finiquito'){ ?>
+        <div class="acordeon2 mt-3" id="formSepIndem">
+          <div class="encabezado font16" data-toggle="collapse" href="#sepIndem">
+            <a href="#">SEPARACIÓN E INDEMNIZACIÓN</a>
+          </div>
+          <div id="sepIndem" class="collapse">
+            <div>
+              <div class="row mt-3">
+                <div class="col-md-6 text-right">
+                  <select class="custom-select-s" name="select" id="percepcionConceptosSepIndem" onchange="concepPercepcionesSepIndem()">
+                   <?php echo $consultaPercepConcepINDEM; ?>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <a href='#catalogoComplementoNomina' data-toggle='modal'>
+                    <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+                  </a>
+                </div>
+              </div>
+              <div class="row mt-4 align-items-center justify-content-center">
+                <div class='col-md-1'>
+                  <input type="text" class="efecto h22 border-0" id="claveSATpercepcionSepIndem" readonly>
+                  <input type="hidden" id="ordenReportepercepcionSepIndem">
+                </div>
+                <div class='col-md-2'>
+                  <input type="text" class="efecto h22 border-0" id="claveInternapercepcionSepIndem" readonly>
+                </div>
+                <div class='col-md-4'>
+                  <input type="text" class="efecto" id="despercepcionSepIndem">
+                </div>
+                <div class='col-md-1'>
+                  <input type="text" class="efecto" id="importeGravadopercepcionSepIndem" value="0" onchange="validaIntDec(this);sumaGeneralNomina()">
+                </div>
+                <div class='col-md-1'>
+                  <input type="text" class="efecto" id="importeExentopercepcionSepIndem" value="0" onchange="validaIntDec(this);sumaGeneralNomina()">
+                </div>
+                <div class='col-md-1 text-left'>
+                  <a onclick="agregarPercepSepIndem()" id="Btn_agregar">
+                    <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <form class="form1">
+              <table class="table">
+                  <thead>
+                    <tr class="row mt-4 m-0 backpink">
+                      <td class="col-md-1">Cve. SAT</td>
+                      <td class="col-md-2">Cuenta Contable</td>
+                      <td class="col-md-4">Concepto o Descripción</td>
+                      <td class="col-md-2">Importe Gravado</td>
+                      <td class="col-md-2">Importe Exento</td>
+                    </tr>
+                  </thead>
+                  <tbody id='tbodyPercepcionesSepIndem'><?php echo $detalle_PERCEPSepIndem; ?></tbody>
+              </table>
+            </form>
+          </div>
+        </div>
+<?php } ?>
 
 <!--ACORDEON DEDUCCIONES-->
     <div class="acordeon2 mt-3">
@@ -486,7 +565,9 @@
               </select>
             </div>
             <div class="col-md-6">
-              <a href="#"><img class="icomediano" src="/conta6/Resources/iconos/help.svg"></a>
+              <a href='#catalogoComplementoNomina' data-toggle='modal'>
+                <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+              </a>
             </div>
           </div>
           <div class="row mt-4 align-items-center justify-content-center">
@@ -501,10 +582,10 @@
               <input type="text" class="efecto" id="desDeduccion">
             </div>
             <div class='col-md-2'>
-              <input type="text" class="efecto" id="importeGravadoDeduccion" value="0" onchange="sumaGeneralNomina()">
+              <input type="text" class="efecto" id="importeGravadoDeduccion" value="0" onchange="validaIntDec(this);sumaGeneralNomina()">
             </div>
             <div class='col-md-2'>
-              <input type="text" class="efecto" id="importeExentoDeduccion" value="0" onchange="sumaGeneralNomina()">
+              <input type="text" class="efecto" id="importeExentoDeduccion" value="0" onchange="validaIntDec(this);sumaGeneralNomina()">
             </div>
             <div class='col-md-1 text-left'>
               <a onclick="agregarDeduc()" id="Btn_agregar">
@@ -532,60 +613,76 @@
     </div>
 
 <!--ACORDEON PENSION ALIMENTICIA-->
-    <div class="acordeon2 mt-3" id='formPension'>
-      <div class="encabezado font16" data-toggle="collapse" href="#pension">
-        <a href="#">PENSIÓN ALIMENTICIA</a>
+<?php if($id_regimen == '02'){ ?>
+<div class="acordeon2 mt-3" id='formPension'>
+  <div class="encabezado font16" data-toggle="collapse" href="#pension">
+    <a href="#">PENSIÓN ALIMENTICIA</a>
+  </div>
+  <div id="pension" class="collapse">
+    <div>
+      <div class="row mt-3">
+        <div class="col-md-6 text-right">
+          <select class="custom-select-s" name="select" id="deduccionPenAlim" onchange="concepDeducPenAlim()">
+           <?php echo $consultaDeduc_penAlim; ?>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <a href='#catalogoComplementoNomina' data-toggle='modal'>
+            <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+          </a>
+        </div>
       </div>
-      <div id="pension" class="collapse">
-        <form class="form1">
-          <table class="table">
-            <tbody>
-              <tr class="row mt-3">
-                <td class="col-md-6 offset-md-3">
-                  <select class="custom-select">
-                    <option selected>Tipo (Agrupar) SAT</option>
-                    <option>Pensión Alimenticia -- 007 -- 0213-00005</option>
-                  </select>
-                </td>
-              </tr>
-              <tr class="row mt-4 m-0">
-                <td class="col-md-1 input-effect">
-                  <input id="cve4" class="efecto">
-                  <label for="cve4">Cve.SAT</label>
-                </td>
-                <td class="col-md-2 input-effect">
-                  <input id="ctacon4" class="efecto">
-                  <label for="ctacon4">Cuenta Contable</label>
-                </td>
-                <td class="col-md-4 input-effect">
-                  <input id="concdesc4" class="efecto">
-                  <label for="concdesc4">Concepto o Descripción</label>
-                </td>
-                <td class="col-md-1 input-effect">
-                  <input id="base" class="efecto">
-                  <label for="base">Base</label>
-                </td>
-                <td class="col-md-1 input-effect">
-                  <input id="porcent" class="efecto">
-                  <label for="porcent">Porcentaje</label>
-                </td>
-                <td class="col-md-1 input-effect">
-                  <input id="gravado2" class="efecto">
-                  <label for="gravado2">$ Gravado</label>
-                </td>
-                <td class="col-md-1 input-effect">
-                  <input id="exento2" class="efecto">
-                  <label for="exento2">$ Exento</label>
-                </td>
-                <td>
-                  <a><img class="icomediano" src="/conta6/Resources/iconos/002-plus.svg"></a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
+      <div class="row mt-4 align-items-center justify-content-center">
+        <div class='col-md-1'>
+          <input type="text" class="efecto h22 border-0" id="claveSATDeduccion_penAlim" readonly>
+          <input type="hidden" id="ordenReporteDeduccion_penAlim">
+        </div>
+        <div class='col-md-2'>
+          <input type="text" class="efecto h22 border-0" id="claveInternaDeduccion_penAlim" readonly>
+        </div>
+        <div class='col-md-4'>
+          <input type="text" class="efecto" id="desDeduccion_penAlim">
+        </div>
+        <div class='col-md-1'>
+          <input type="text" class="efecto" id="baseDeduccion_penAlim" value="0" onchange="validaIntDec(this);calcularBase();">
+          <!-- Base = totalPer - ( ISPT+IMSS+INFONAVIT ) -->
+        </div>
+        <div class='col-md-1'>
+          <input type="text" class="efecto" id="porcentajeDeduccion_penAlim" value="0" onchange="validaIntDec(this);calcularBase();">
+        </div>
+        <div class='col-md-1'>
+          <input type="text" class="efecto h22 border-0" id="importeGravadoDeduccion_penAlim" value="0" onchange="validaIntDec(this);sumaGeneralNomina()" readonly>
+        </div>
+        <div class='col-md-1'>
+          <input type="text" class="efecto" id="importeExentoDeduccion_penAlim" value="0" onchange="validaIntDec(this);sumaGeneralNomina()">
+        </div>
+        <div class='col-md-1 text-left'>
+          <a onclick="agregarDeducPenAlimen()" id="Btn_agregar">
+            <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+          </a>
+        </div>
       </div>
     </div>
+
+    <form class="form1">
+      <table class="table">
+        <thead>
+          <tr class="row mt-4 m-0 backpink">
+            <td class="col-md-1">Cve. SAT</td>
+            <td class="col-md-2">Cuenta Contable</td>
+            <td class="col-md-4">Concepto o Descripción</td>
+            <td class="col-md-1">Base</td>
+            <td class="col-md-1">Porcentaje</td>
+            <td class="col-md-1">Importe Gravado</td>
+            <td class="col-md-1">Importe Exento</td>
+          </tr>
+        </thead>
+        <tbody id='tbodyDeduccionesPenAlim'><?php echo $detalle_DEDUC_penAlim; ?></tbody>
+      </table>
+    </form>
+  </div>
+</div>
+<?php } ?>
 
 <!--ACORDEON TOTALES-->
     <div class="acordeon2 mt-3">
@@ -597,54 +694,6 @@
           <table class="table">
             <tbody style="letter-spacing:1px">
               <?php echo $detalle_TOTALES; ?>
-
-
-
-              <!--tr class="row m-0 mt-5">
-                <td class="col-md-4 sub2 font14 pt-4">INCAPACIDAD :</td>
-                <td class="col-md-1 input-effect">
-
-                </td>
-                <td class="col-md-1 input-effect">
-
-                </td>
-                <td class="col-md-1 input-effect">
-
-                </td>
-                <td class="col-md-1 input-effect">
-
-                </td>
-                <td class="col-md-2 input-effect">
-
-                </td>
-                <td class="col-md-2 input-effect">
-
-                </td>
-              </tr>
-
-              <tr class="row mt-5 m-0">
-                <td class="col-md-2 input-effect">
-
-                </td>
-                <td class="col-md-2 input-effect">
-
-                </td>
-                <td class="col-md-2 input-effect">
-
-                </td>
-                <td class="col-md-1 input-effect">
-
-                </td>
-                <td class="col-md-2 input-effect">
-
-                </td>
-                <td class="col-md-2 input-effect">
-
-                </td>
-                <td>
-                  <a><img class="icomediano" src="/conta6/Resources/iconos/002-trash.svg"></a>
-                </td>
-              </tr-->
             </tbody>
           </table>
         </form>
@@ -653,12 +702,13 @@
 
     <div class="row">
       <div class="col-md-4 offset-md-4 mt-5 font16">
-          <a href="" class="boton">GUARDAR</a>
+          <input class="efecto boton" type='button' value="GUARDAR" id="guardar-editarDocNomina"/>
       </div>
     </div>
   </div> <!--Termina el contorno-->
 </div> <!--Termina el Container-Fluid-->
 
 <?php
+require $root . '/conta6/Ubicaciones/Nomina/Honorarios/modales/catalogoCompNomina.php';
 require $root . '/conta6/Ubicaciones/footer.php';
 ?>

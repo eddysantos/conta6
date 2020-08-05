@@ -79,6 +79,45 @@ while ($rowdeduccion = $rsltdeduccion->fetch_assoc()) {
   </tr>";
 }
 
+
+
+$queryOtrosPagos = "SELECT * FROM conta_cs_sat_tipootropago  ORDER BY pk_id_otroPago";
+
+$stmtOtrosPagos = $db->prepare($queryOtrosPagos);
+if (!($stmtOtrosPagos)) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error durante la preparacion del query [$db->errno]: $db->error";
+  exit_script($system_callback);
+}
+
+if (!($stmtOtrosPagos->execute())) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error durante la ejecucion [$stmtOtrosPagos->errno]: $stmtOtrosPagos->error";
+  exit_script($system_callback);
+}
+
+$rsltOtrosPagos = $stmtOtrosPagos->get_result();
+
+if ($rsltOtrosPagos->num_rows == 0) {
+  $system_callback['code'] = 1;
+  $system_callback['data'] ="<p db-id=''>No se encontraron resultados</p>";
+  $system_callback['message'] = "Script called successfully but there are no rows to display.";
+  exit_script($system_callback);
+}
+
+while ($rowOtrosPagos = $rsltOtrosPagos->fetch_assoc()) {
+  $pk_id_otroPago = utf8_encode($rowOtrosPagos['pk_id_otroPago']);
+  $s_descripcion = utf8_encode($rowOtrosPagos['s_descripcion']);
+
+  $system_callback['dataOtrosPagos'] .="<tr class='row text-left m-0 borderojo align-items-center'>
+    <td class='col-md-1 p-2'>$pk_id_otroPago</td>
+    <td class='col-md-6 p-2'>$s_descripcion</td>
+  </tr>";
+}
+
+
+
+
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);

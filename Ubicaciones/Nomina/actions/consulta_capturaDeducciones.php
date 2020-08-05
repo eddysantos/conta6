@@ -39,7 +39,8 @@ while ($row_capturaDeducciones = $rslt_capturaDeducciones->fetch_assoc()) {
   <tr class='row mt-4 m-0 trDEDUC elemento-deduc' id='$partidaD'>
     <td class='col-md-1 input-effect'>
       <input type='text' id='T_DEDUC_cve$partidaD' class='T_DEDUC_CVE cve efecto border-0' value='$claveSATD' readonly>
-      <input type='hidden' id='T_DEDUC_ordenReD' class='T_DEDUC_ORDENREP ordenReD' value='$ordenReporteD' >
+      <input type='hidden' id='T_DEDUC_ordenRep' class='T_DEDUC_ORDENREP ordenRep' value='$ordenReporteD' >
+      <input type='hidden' id='T_DEDUC_id-partida' class='T_DEDUC_ID-PARTIDA id-partida' value='$partidaD' >
     </td>
     <td class='col-md-2 input-effect'>
       <input type='text' id='T_DEDUC_cta$partidaD' class='T_DEDUC_CTA cta efecto border-0' value='$idcuentaD' readonly>
@@ -48,10 +49,10 @@ while ($row_capturaDeducciones = $rslt_capturaDeducciones->fetch_assoc()) {
       <input type='text' id='T_DEDUC_desc$partidaD' class='T_DEDUC_DESC desc efecto' value='$conceptoD'>
     </td>
     <td class='col-md-2 input-effect'>
-      <input type='text' id='T_DEDUC_gravado$partidaD' class='T_DEDUC_GRAVADO gravado efecto' value='$importeGravadoD' onblur='validaIntDec(this);' onchange='sumaGeneralNomina()'>
+      <input type='text' id='T_DEDUC_gravado$partidaD' class='T_DEDUC_GRAVADO gravado efecto' value='$importeGravadoD' onblur='validaIntDec(this); sumaGeneralNomina()'>
     </td>
     <td class='col-md-2 input-effect'>
-      <input type='text' id='T_DEDUC_exento$partidaD' class='T_DEDUC_EXENTO exento efecto' value='$importeExentoD' onblur='validaIntDec(this);' onchange='sumaGeneralNomina()'>
+      <input type='text' id='T_DEDUC_exento$partidaD' class='T_DEDUC_EXENTO exento efecto' value='$importeExentoD' onblur='validaIntDec(this); sumaGeneralNomina()'>
     </td>
     <td>
       <a><img class='icomediano remove-DEDUC' src='/conta6/Resources/iconos/002-trash.svg'></a>

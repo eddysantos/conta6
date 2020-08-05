@@ -33,6 +33,7 @@ $descNomina = 'Sueldos'; #Sueldos_Salrios
 $descConcepto = 'Pago de nómina'; #default en BD
 $METODODEPAGO = 'PUE'; #default en BD
 $usoCFDI = 'P01'; #default BD
+$id_pago = 99; #default BD
 
 # DATOS INFORMATIVOS
 $query_inf = "SELECT d_fechaInicio,n_diasPagar,n_diasTrabajados,n_salarioMinimo,n_primaVacaciones,n_subsidio
@@ -144,8 +145,7 @@ if (!($stmt_inf->execute())) {
     $puesto_actividad = utf8_encode($row_empleados['s_puesto_actividad']);
     $id_contrato = $row_empleados['fk_id_contrato'];
     $id_jornada = $row_empleados['fk_id_jornada'];
-    $id_pago = $row_empleados['fk_id_pago'];
-    $INFONAVIT = $row_empleados['id_INFONAVIT'];
+    $cve_INFONAVIT = $row_empleados['s_INFONAVIT'];
     $id_depto = $row_empleados['fk_id_depto'];
     $id_entfed = $row_empleados['s_id_entfed'];
     $id_riesgo = $row_empleados['fk_id_riesgo'];
@@ -779,9 +779,9 @@ if (!($stmt_inf->execute())) {
 
 
 
-    	#--*******************************
-    	#--********** INFONAVIT **********
-    	#--*******************************
+    	#--*****************************************
+    	#--********** INFONAVIT descuento **********
+    	#--*****************************************
     	$INFONAVIT = $row_empleados['n_desc_infonavit'];
     #echo '-- INFONAVIT'; #echo "<br>";
     #echo $INFONAVIT; #echo "<br>";

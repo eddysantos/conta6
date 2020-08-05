@@ -271,7 +271,7 @@
 
   if( $accion == "borrar" ){
     $queryBorrar = "DELETE FROM conta_t_polizas_det
-                    WHERE fk_referencia = ? and fk_id_cuenta = ? AND d_fecha = ? and fk_factura = ? and n_cargo = ? and n_abono = ?";
+                    WHERE fk_referencia = ? and fk_id_cuenta = ? AND d_fecha = ? and fk_factura = ? and n_cargo = ? and n_abono = ? and fk_id_poliza = ?";
 
     $stmtBorrar = $db->prepare($queryBorrar);
     if (!($stmtBorrar)) {
@@ -280,7 +280,7 @@
       exit_script($system_callback);
     }
 
-    $stmtBorrar->bind_param('ssssss',$referencia,$cuenta,$fecha_pol,$factura,$cargo,$abono);
+    $stmtBorrar->bind_param('sssssss',$referencia,$cuenta,$fecha_pol,$factura,$cargo,$abono,$poliza);
     if (!($stmtBorrar)) {
       $system_callback['code'] = "500";
       $system_callback['message'] = "Error during variables binding EX[$stmtBorrar->errno]: $stmtBorrar->error";

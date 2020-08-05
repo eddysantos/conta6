@@ -39,7 +39,8 @@ while ($row_capturaPercepciones = $rslt_capturaPercepciones->fetch_assoc()) {
   <tr class='row mt-4 m-0 trPERCEP elemento-percep' id='$partidaP'>
     <td class='col-md-1 input-effect'>
       <input type='text' id='T_PERCEP_cve$partidaP' class='T_PERCEP_CVE cve efecto border-0' value='$claveSATP' readonly>
-      <input type='hidden' id='T_PERCEP_ordenRep' class='T_PERCEP_ORDENREP ordenRep' value='$ordenReporteP' >
+      <input type='hidden' id='T_PERCEP_ordenRep$partidaP' class='T_PERCEP_ORDENREP ordenRep' value='$ordenReporteP' >
+      <input type='hidden' id='T_PERCEP_id-partida$partidaP' class='T_PERCEP_ID-PARTIDA id-partida' value='$partidaP' >
     </td>
     <td class='col-md-2 input-effect'>
       <input type='text' id='T_PERCEP_cta$partidaP' class='T_PERCEP_CTA cta efecto border-0' value='$idcuentaP' readonly>
@@ -48,13 +49,13 @@ while ($row_capturaPercepciones = $rslt_capturaPercepciones->fetch_assoc()) {
       <input type='text' id='T_PERCEP_desc$partidaP' class='T_PERCEP_DESC desc efecto' value='$conceptoP'>
     </td>
     <td class='col-md-2 input-effect'>
-      <input type='text' id='T_PERCEP_gravado$partidaP' class='T_PERCEP_GRAVADO gravado efecto' value='$importeGravadoP' onblur='validaIntDec(this);' onchange='sumaGeneralNomina()'>
+      <input type='text' id='T_PERCEP_gravado$partidaP' class='T_PERCEP_GRAVADO gravado efecto' value='$importeGravadoP' onblur='validaIntDec(this); sumaGeneralNomina()'>
     </td>
     <td class='col-md-2 input-effect'>
-      <input type='text' id='T_PERCEP_exento$partidaP' class='T_PERCEP_EXENTO exento efecto' value='$importeExentoP' onblur='validaIntDec(this);' onchange='sumaGeneralNomina()'>
+      <input type='text' id='T_PERCEP_exento$partidaP' class='T_PERCEP_EXENTO exento efecto' value='$importeExentoP' onblur='validaIntDec(this); sumaGeneralNomina()'>
     </td>
     <td>
-      <a><img class='icomediano remove-PERCEP' src='/conta6/Resources/iconos/002-trash.svg'></a>
+      <a><img class='icomediano remove-percep' src='/conta6/Resources/iconos/002-trash.svg'></a>
     </td>
   </tr>
   ";
