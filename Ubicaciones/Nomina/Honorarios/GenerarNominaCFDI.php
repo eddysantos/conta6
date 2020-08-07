@@ -131,7 +131,7 @@
             <td class="col-md-1">Factura</td>
             <td class="col-md-1">Póliza</td>
             <td class="col-md-1">CFDI
-              <a href='#' onclick='impresionCFDICompleto()'>
+              <a class='GenerarNominaCFDI' href='#' onclick='impresionCFDICompleto()'>
                 <img class='icochico' src='/conta6/Resources/iconos/printer.svg'>
               </a>
               <a href='#catalogoComplementoNomina' data-toggle='modal'>

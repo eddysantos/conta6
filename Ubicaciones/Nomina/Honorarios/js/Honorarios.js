@@ -730,7 +730,7 @@ function impresionCFDICompleto(){
 	anio = $('#buscaranio').val();
 	semana = $('#buscarsem').val();
 	tipo = 'Todas';
-	window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresionCFDICompleto.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+	window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresion_Nomina_HAS.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
 }
 
 

@@ -52,7 +52,7 @@ if ($total_consulHonDed > 0) {
 }
 
 
-// DEDUCCIONES
+// TOTALES
 $query_consultarTotal = "SELECT n_totalDeducciones,n_totalPercepciones,n_totalNeto,s_tipoElemento,fk_id_docNomina FROM conta_t_nom_captura_det WHERE s_tipoElemento = 'totales' AND fk_id_docNomina = $pk_id_docNomina";
 
 
@@ -72,7 +72,8 @@ if ($total_consulHonTot > 0) {
     $n_totalNeto = $row_perHonTot['n_totalNeto'];
     $numeroLetras = numtoletras($n_totalNeto);
 
-    $totales .= '<table>
+    $totales .= '<br /><br />
+    <table>
       <tr>
         <td width="50%">
         <br />
@@ -82,22 +83,33 @@ if ($total_consulHonTot > 0) {
              <td width="20%" align="left">$ '.$n_totalPercepciones.'</td>
            </tr>
            <tr>
-             <td width="100%" align="left">***'.$numeroLetras.'***</td>
+             <td width="100%" align="center">***'.$numeroLetras.'***</td>
            </tr>
           </table>
         </td>
         <td width="50%"><br />
           <table>
             <tr>
-              <td width="80%" align="right">TOTAL</td>
-              <td width="20%" align="left">$ '.$n_totalDeducciones.'</td>
+              <td width="70%" align="right">TOTAL</td>
+              <td width="30%" align="right">$ '.$n_totalDeducciones.'</td>
             </tr>
             <tr>
-              <td width="80%" align="right">NETO A PAGAR</td>
-              <td width="20%" align="left">$ '.$n_totalNeto.'</td>
+              <td width="70%" align="right" bgcolor="#9f9f9f" color="rgb(255, 255, 255)">NETO A PAGAR</td>
+              <td width="30%" align="right">$ '.$n_totalNeto.'</td>
             </tr>
           </table>
         </td>
+      </tr>
+    </table>
+
+    <br><br><br><br>
+    <table>
+      <tr>
+        <td rowspan="2" width="50%"></td>
+        <td width="50%"></td>
+      </tr>
+      <tr>
+        <td align="center" style="border-top-width:1px;  border-top-style:solid; border-color:#000000;">Firma de Conformidad</td>
       </tr>
     </table>';
    }

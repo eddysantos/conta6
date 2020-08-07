@@ -74,7 +74,7 @@ if ($rows_consultaDoc > 0) {
       if( $descNomina == 'Finiquito' ){ $txtFiniquito = " (".$descNomina.")"; }
 
       $consultaDocumentos .=
-      "<tr class='row text-center elemento-docNomina'>
+      "<tr class='row text-center elemento-docNomina align-items-center'>
           <td class='col-md-1'>$idEmpleado</td>
           <td class='col-md-2 text-left'>$nombre$txtFiniquito</td>
           <td class='col-md-1'>$tipo</td>
@@ -107,14 +107,17 @@ if ($rows_consultaDoc > 0) {
       $rows_consultaDet = $rslt_consultaDet->num_rows;
 
       if( $permisoModificarNomina == 1 ){
-        $linkBorrar = "<a href='#' class='ml-5 remove-docNomina' onclick='borrarDocNomina($idDocNomina)'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>
+        $linkBorrar = "<a href='#' class='remove-docNomina' onclick='borrarDocNomina($idDocNomina)'>
+                        <img class='icochico' src='/conta6/Resources/iconos/delete.svg'>
+                      </a>
                       <input class='id-docNomina' type='hidden' id='T_partida_$idDocNomina' value='$idDocNomina'>";
-        $linkEditar = "<a href='#' class='ml-5' onclick='editarDocNomina($idDocNomina)'><img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'></a>";
+        $linkEditar = "<a href='#' class='' onclick='editarDocNomina($idDocNomina)'><img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'></a>";
       }
 
       if ($rows_consultaDet == 0) {
+        $linkEditar = "<a href='#' class='' onclick='editarDocNomina($idDocNomina)'><img class='icochico ml-4' src='/conta6/Resources/iconos/003-edit.svg'></a>";
         $consultaDocumentos .="
-        <td class='col-md-2'>$linkBorrar SIN DETALLE $linkEditar</td>";
+        <td class='col-md-2'>$linkBorrar Sin detalle $linkEditar</td>";
       }
 
       if ($rows_consultaDet > 0) {
@@ -165,7 +168,7 @@ if ($rows_consultaDoc > 0) {
               $linkPoliza = "&nbsp;";
               $linkTimbrar = "&nbsp;";
               $linkPolizaPago = "&nbsp;";
-              
+
               $row_consultaFac = $rslt_consultaFac->fetch_assoc();
               $polPago = $row_consultaFac['fk_id_polizaPago'];
               $cancela = $row_consultaFac['s_cancela_factura'];
@@ -195,9 +198,15 @@ if ($rows_consultaDoc > 0) {
 
               if( $cancela > 0 ){
                 $linkCancelar = "
-                <a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFileXMLcancela&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/xml.svg'></a>
-    						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.pdf&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>
-                <a href='#' onclick='sustituirDocNomina($idDocNomina)'><img class='icomediano' src='/conta6/Resources/iconos/copy.svg'></a>";
+                <a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFileXMLcancela&#39;)'>
+                  <img class='icomediano' src='/conta6/Resources/iconos/xml.svg'>
+                </a>
+    						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.pdf&#39;,&#39;$rutaFilePDFcancela&#39;)'>
+                  <img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'>
+                </a>
+                <a href='#' onclick='sustituirDocNomina($idDocNomina)'>
+                  <img class='icomediano' src='/conta6/Resources/iconos/copy.svg'>
+                </a>";
               }else{
                 if( $permisoCancelarCFDI == 1 ){
                   $linkCancelar = "<a href='' class='ml-4'><img class='icomediano' src='/conta6/Resources/iconos/001-delete.svg'></a>"; }
@@ -207,13 +216,20 @@ if ($rows_consultaDoc > 0) {
 
               if( $idPoliza > 0 ){
                 if( $permisoConsultarPolizaNomina == 1 && $permisoModificarPolizaNomina == 0 ){
-                  $linkPoliza = "<a href='#' onclick='btn_printPoliza($idPoliza,$aduana)' class='boton border-0'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'>$idPoliza</a>";
+                  $linkPoliza = "<a href='#' onclick='btn_printPoliza($idPoliza,$aduana)' class=''>
+                    <img class='w-5' src='/conta6/Resources/iconos/printer.svg'>$idPoliza
+                  </a>";
                 }
                 if( $permisoConsultarPolizaNomina == 0 && $permisoModificarPolizaNomina == 1 ){
-                  $linkPoliza = "<a href='#' onclick='modificarPolizaNomina($idPoliza)' class='boton border-0'><img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>$idPoliza</a>";
+                  $linkPoliza = "<a href='#' onclick='modificarPolizaNomina($idPoliza)' class='ml-2'>
+                    $idPoliza
+                  </a>";
                 }
                 if( $permisoConsultarPolizaNomina == 1 && $permisoModificarPolizaNomina == 1 ){
-                  $linkPoliza = "<a href='#' onclick='btn_printPoliza($idPoliza,$aduana)' class='boton border-0'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a><a href='#' onclick='modificarPolizaNomina($idPoliza)' class='boton border-0'><img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>$idPoliza</a>";
+                  $linkPoliza = "<a href='#' onclick='btn_printPoliza($idPoliza,$aduana)'>
+                    <img class='w-5' src='/conta6/Resources/iconos/printer.svg'>
+                  </a>
+                  <a href='#' onclick='modificarPolizaNomina($idPoliza)' class='ml-2'>$idPoliza</a>";
                 }
                 if( $permisoConsultarPolizaNomina == 0 && $permisoModificarPolizaNomina == 0 ){
                   $linkPoliza = $idPoliza;
@@ -221,13 +237,18 @@ if ($rows_consultaDoc > 0) {
               }
               if( $polPago > 0 ){
                 if( $permisoConsultarPolizaNomina == 1 && $permisoModificarPolizaNomina == 0 ){
-                  $linkPolizaPago = "<a href='#' onclick='btn_printPoliza($polPago,$aduana)' class='boton border-0'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'>$polPago</a>";
+                  $linkPolizaPago = "<a href='#' onclick='btn_printPoliza($polPago,$aduana)' class=''>
+                    <img class='w-5' src='/conta6/Resources/iconos/printer.svg'>$polPago
+                  </a>";
                 }
                 if( $permisoConsultarPolizaNomina == 0 && $permisoModificarPolizaNomina == 1 ){
-                  $linkPolizaPago = "<a href='#' onclick='modificarPolizaNomina($polPago)' class='boton border-0'><img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>$polPago</a>";
+                  $linkPolizaPago = "<a href='#' onclick='modificarPolizaNomina($polPago)' class='ml-2'>$polPago</a>";
                 }
                 if( $permisoConsultarPolizaNomina == 1 && $permisoModificarPolizaNomina == 1 ){
-                  $linkPolizaPago = "<a href='#' onclick='btn_printPoliza($polPago,$aduana)' class='boton border-0'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a><a href='#' onclick='modificarPolizaNomina($idPoliza)' class='boton border-0'><img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>$polPago</a>";
+                  $linkPolizaPago = "<a href='#' onclick='btn_printPoliza($polPago,$aduana)' class=''>
+                    <img class='w-5' src='/conta6/Resources/iconos/printer.svg'>
+                  </a>
+                  <a href='#' onclick='modificarPolizaNomina($idPoliza)' class=''>$polPago</a>";
                 }
                 if( $permisoConsultarPolizaNomina == 0 && $permisoModificarPolizaNomina == 0 ){
                   $linkPolizaPago = $polPago;
@@ -244,8 +265,7 @@ if ($rows_consultaDoc > 0) {
               <td class='col-md-1'>
                 <a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFileXML&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/xml.svg'></a>
     						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.pdf&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>
-              </td>
-              <td class='col-md-1'>&nbsp;</td>";
+              </td>";
         }
       }# FIN TIENE DETALLE
 

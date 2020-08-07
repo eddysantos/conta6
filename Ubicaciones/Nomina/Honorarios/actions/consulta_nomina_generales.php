@@ -185,14 +185,22 @@
       <td class='col-md-2'>$totalNeto</td>
     </tr>
     <tr class='row m-0 mt-4'>
-      <td class='col-md-12'>NÓMINA $semana $fechaInicio al $fechaFinal
-        <a href='#' onclick='imprimirNomina($anio,$semana,&#39;T&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a>
-        <a href='#' onclick='imprimirNominaExcel($anio,$semana,&#39;T&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='icomediano' src='/conta6/Resources/iconos/excel.svg'>Excel</a>
+      <td class='col-md-12 font16'>NÓMINA $semana $fechaInicio al $fechaFinal
+        <a href='#' class='ml-2' onclick='imprimirNomina($anio,$semana,&#39;T&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='w-5' src='/conta6/Resources/iconos/printer.svg'></a>
+        <a href='#' class='ml-2' onclick='imprimirNominaExcel($anio,$semana,&#39;T&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='w-5' src='/conta6/Resources/iconos/excel2.svg'></a>
       </td>
     </tr>
     <tr class='row m-0'>
-      <td class='col-md-12'>Ordinaria <a href='#' onclick='imprimirNomina($anio,$semana,&#39;O&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a>
-                            Extraordinaria <a href='#' onclick='imprimirNomina($anio,$semana,&#39;E&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a></td>
+      <td class='col-md-12 font16'>
+        Ordinaria
+        <a href='#' onclick='imprimirNomina($anio,$semana,&#39;O&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'>
+          <img class='w-5 ml-2' src='/conta6/Resources/iconos/printer.svg'>
+        </a>
+        Extraordinaria
+        <a href='#' onclick='imprimirNomina($anio,$semana,&#39;E&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'>
+          <img class='w-5 ml-2' src='/conta6/Resources/iconos/printer.svg'>
+        </a>
+      </td>
     </tr>";
 
   $system_callback['code'] = 1;
