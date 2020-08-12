@@ -3,17 +3,20 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
+$db->close();
+
+require $root . "/conta6/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php";
 $system_callback = [];
 $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_replica_referencias WHERE pk_referencia LIKE ? limit 5";
+$query = "SELECT * FROM cb_trafico WHERE sCveTrafico LIKE ? limit 5";
 
-$stmt = $db->prepare($query);
+$stmt = $linkPCnet->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
+  $system_callback['message'] = "Error during query prepare [$linkPCnet->errno]: $linkPCnet->error";
   exit_script($system_callback);
 }
 
@@ -42,7 +45,7 @@ if ($rslt->num_rows == 0) {
 
 while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
-  "<p db-id='$row[pk_referencia]'>$row[pk_referencia]</p>";
+  "<p db-id='$row[sCveTrafico]'>$row[sCveTrafico]</p>";
 }
 
 $system_callback['code'] = 1;

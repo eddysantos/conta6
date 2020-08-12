@@ -24,7 +24,7 @@ $rows_buscaRef = $rslt_buscaRef->num_rows;
 
 if( $rows_buscaRef == 0 ){
   $system_callback['code'] = "1";
-  $system_callback['message'] = "La referencia no existe";
+  $system_callback['message'] = "La referencia no existe**";
   exit_script($system_callback);
 }
 

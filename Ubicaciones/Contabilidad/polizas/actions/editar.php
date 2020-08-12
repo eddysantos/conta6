@@ -18,6 +18,7 @@ $abono = trim($_POST['abono']);
 $desc = trim($_POST['desc']);
 $gastoOficina = trim($_POST['gastoOficina']);
 $proveedor = trim($_POST['proveedor']);
+$mesPoliza = date_format(date_create($fecha),'m');
 
 $query = "UPDATE conta_t_polizas_det
 SET d_fecha = ?,
@@ -32,7 +33,8 @@ s_desc = ?,
 n_cargo = ?,
 n_abono = ?,
 fk_gastoAduana = ?,
-fk_id_proveedor = ?
+fk_id_proveedor = ?,
+d_mes = ?
 WHERE pk_partida = ?";
 
 $stmt = $db->prepare($query);
@@ -42,7 +44,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ssssssssssssss',$fecha,$cuenta,$id_referencia,$id_cliente,$documento,$factura,$anticipo,$cheque,$desc,$cargo,$abono,$gastoOficina,$proveedor,$partida);
+$stmt->bind_param('sssssssssssssss',$fecha,$cuenta,$id_referencia,$id_cliente,$documento,$factura,$anticipo,$cheque,$desc,$cargo,$abono,$gastoOficina,$proveedor,$mesPoliza,$partida);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
