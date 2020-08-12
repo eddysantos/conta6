@@ -3,6 +3,7 @@
 error_reporting(E_ALL);
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/session.php';
+require $root . "/conta6/Resources/vendor/autoload.php";
 
 
 session_start();
