@@ -306,8 +306,8 @@
     <div class="px-1 py-1 flex-grow-1 overflow-auto contorno">
       <!--ACORDEON DE PERCEPCIONES-->
       <?php if( $tipoNomina == 'O' or $tipoNomina == 'E' ){ ?>
-          <div class="acordeon2 mt-3">
-            <div class="encabezado font16" data-toggle="collapse" href="#percep">
+          <div class="acordeon2 mt-3 mx-3 mx-3">
+            <div class="encabezado font16 p-2" data-toggle="collapse" href="#percep">
               <a href="#">PERCEPCIONES</a>
             </div>
             <div id="percep" class="collapse">
@@ -368,8 +368,8 @@
 
       <!--ACORDEON DE OTROS PAGOS-->
       <?php if($id_regimen == '02'){ ?>
-          <div class="acordeon2 mt-3" id='formOtrospagos'>
-            <div class="encabezado font16" data-toggle="collapse" href="#otrospagos">
+          <div class="acordeon2 mt-3 mx-3" id='formOtrospagos'>
+            <div class="encabezado font16 p-2" data-toggle="collapse" href="#otrospagos">
               <a href="#">OTROS PAGOS</a>
             </div>
             <div id="otrospagos" class="collapse">
@@ -438,8 +438,8 @@
 
       <!--ACORDEON HORAS EXTRAS-->
       <?php if($id_regimen == '02'){ ?>
-          <div class="acordeon2 mt-3" id="formHorasextras">
-            <div class="encabezado font16" data-toggle="collapse" href="#horasextras">
+          <div class="acordeon2 mt-3 mx-3" id="formHorasextras">
+            <div class="encabezado font16 p-2" data-toggle="collapse" href="#horasextras">
               <a href="#">HORAS EXTRAS</a>
             </div>
             <div id="horasextras" class="collapse">
@@ -508,8 +508,8 @@
 
           <!--ACORDEON SEPARACION E INDEMNIZACION-->
       <?php if($id_regimen == '02' and $descNomina == 'Finiquito'){ ?>
-              <div class="acordeon2 mt-3" id="formSepIndem">
-                <div class="encabezado font16" data-toggle="collapse" href="#sepIndem">
+              <div class="acordeon2 mt-3 mx-3" id="formSepIndem">
+                <div class="encabezado font16 p-2" data-toggle="collapse" href="#sepIndem">
                   <a href="#">SEPARACIÓN E INDEMNIZACIÓN</a>
                 </div>
                 <div id="sepIndem" class="collapse">
@@ -569,8 +569,8 @@
       <?php } ?>
 
       <!--ACORDEON DEDUCCIONES-->
-          <div class="acordeon2 mt-3">
-            <div class="encabezado font16" data-toggle="collapse" href="#deduc">
+          <div class="acordeon2 mt-3 mx-3">
+            <div class="encabezado font16 p-2" data-toggle="collapse" href="#deduc">
               <a href="#">DEDUCCIONES</a>
             </div>
             <div id="deduc" class="collapse">
@@ -631,8 +631,8 @@
 
       <!--ACORDEON PENSION ALIMENTICIA-->
       <?php if($id_regimen == '02'){ ?>
-      <div class="acordeon2 mt-3" id='formPension'>
-        <div class="encabezado font16" data-toggle="collapse" href="#pension">
+      <div class="acordeon2 mt-3 mx-3" id='formPension'>
+        <div class="encabezado font16 p-2" data-toggle="collapse" href="#pension">
           <a href="#">PENSIÓN ALIMENTICIA</a>
         </div>
         <div id="pension" class="collapse">
@@ -702,8 +702,8 @@
       <?php } ?>
 
       <!--ACORDEON TOTALES-->
-      <div class="acordeon2 mt-3">
-        <div class="encabezado font16" data-toggle="collapse" href="#totales">
+      <div class="acordeon2 mt-3 mx-3">
+        <div class="encabezado font16 p-2" data-toggle="collapse" href="#totales">
           <a href="#">TOTALES</a>
         </div>
         <div id="totales" class="collapse">

@@ -39,8 +39,8 @@ while ($row_capturaPercepciones = $rslt_capturaPercepciones->fetch_assoc()) {
   <tr class='row mt-4 m-0 trPERCEP elemento-percep' id='$partidaP'>
     <td class='col-md-1 input-effect'>
       <input type='text' id='T_PERCEP_cve$partidaP' class='T_PERCEP_CVE cve efecto border-0' value='$claveSATP' readonly>
-      <input type='hidden' id='T_PERCEP_ordenRep$partidaP' class='T_PERCEP_ORDENREP ordenRep' value='$ordenReporteP' >
-      <input type='hidden' id='T_PERCEP_id-partida$partidaP' class='T_PERCEP_ID-PARTIDA id-partida' value='$partidaP' >
+      <input type='hidden' id='T_PERCEP_ordenRep$partidaP' class='T_PERCEP_ORDENREP ordenRep' value='$ordenReporteP'>
+      <input type='hidden' id='T_PERCEP_id-partida$partidaP' class='T_PERCEP_ID-PARTIDA id-partida' value='$partidaP'>
     </td>
     <td class='col-md-2 input-effect'>
       <input type='text' id='T_PERCEP_cta$partidaP' class='T_PERCEP_CTA cta efecto border-0' value='$idcuentaP' readonly>
