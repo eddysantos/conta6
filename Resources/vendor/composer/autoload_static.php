@@ -7,9 +7,18 @@ namespace Composer\Autoload;
 class ComposerStaticInit1d97803165ce8c0f2081c1d641c2f99a
 {
     public static $classMap = array (
+        'Bitacora' => __DIR__ . '/../..' . '/homemade/classes/Bitacora.php',
+        'Client' => __DIR__ . '/../..' . '/homemade/classes/Client.php',
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
+        'File' => __DIR__ . '/../..' . '/homemade/classes/File.php',
+        'Login' => __DIR__ . '/../..' . '/homemade/classes/Login.php',
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
+        'Politica' => __DIR__ . '/../..' . '/homemade/classes/Politica.php',
         'QRcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/qrcode.php',
+        'Query' => __DIR__ . '/../..' . '/homemade/classes/Query.php',
+        'QueryPDO' => __DIR__ . '/../..' . '/homemade/classes/QueryPDO.php',
+        'Queryi' => __DIR__ . '/../..' . '/homemade/classes/Queryi.php',
+        'Role' => __DIR__ . '/../..' . '/homemade/classes/Role.php',
         'TCPDF' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf.php',
         'TCPDF2DBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_2d.php',
         'TCPDFBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_1d.php',
@@ -21,6 +30,9 @@ class ComposerStaticInit1d97803165ce8c0f2081c1d641c2f99a
         'TCPDF_IMPORT' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_import.php',
         'TCPDF_PARSER' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_parser.php',
         'TCPDF_STATIC' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_static.php',
+        'Usuario' => __DIR__ . '/../..' . '/homemade/classes/Usuarios.php',
+        'Veritrade' => __DIR__ . '/../..' . '/homemade/classes/Veritrade.php',
+        'comunicaciones' => __DIR__ . '/../..' . '/homemade/classes/Comunicaciones.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

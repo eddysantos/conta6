@@ -1,11 +1,21 @@
 <?php
 error_reporting(0);
 
-#require $root . '/conta6/Resources/PHP/Utilities/session.php';
-$_SESSION['user_name'] = 'admado';
-$usuario = $_SESSION['user_name'];
-$aduana = 240;
-// $aduana = 470;
+error_reporting(E_ALL);
+$root = $_SERVER['DOCUMENT_ROOT'];
+require $root . '/conta6/Resources/PHP/Utilities/session.php';
+require $root . "/conta6/Resources/vendor/autoload.php";
+
+
+session_start();
+if (!isset($_SESSION['user'])) {
+  header("Location: /conta6/index.php");
+}
+
+$aduana = $_SESSION['user']['fk_id_aduana'];
+$usuario = $_SESSION['user']['pk_usuario'];
+
+
 
 include($root . '/conta6/Resources/PHP/Databases/Conexion.php');
 date_default_timezone_set('America/Monterrey');
