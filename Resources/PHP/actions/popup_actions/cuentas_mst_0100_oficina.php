@@ -8,9 +8,9 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT pk_id_cuenta, s_cta_desc
-		FROM conta_cs_cuentas_mst 
-		WHERE pk_id_cuenta LIKE '0100%' AND fk_id_aduana = 470 AND NOT pk_ID_CUENTA = '0100-00010' AND 
+$query = "SELECT pk_id_cuenta, s_cta_desc, fk_id_banco
+		FROM conta_cs_cuentas_mst
+		WHERE pk_id_cuenta LIKE '0100%' AND fk_id_aduana = $aduana AND NOT pk_ID_CUENTA = '0100-00010' AND
 		( pk_id_cuenta like ? OR s_cta_desc like ?)";
 
 $stmt = $db->prepare($query);
@@ -45,7 +45,7 @@ if ($rslt->num_rows == 0) {
 
 while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
-  "<p db-id='$row[pk_id_cuenta]'>$row[pk_id_cuenta] - $row[s_cta_desc]</p>";
+  "<p db-id='$row[pk_id_cuenta]'>$row[pk_id_cuenta] - $row[s_cta_desc] - $row[fk_id_banco]</p>";
 }
 
 $system_callback['code'] = 1;

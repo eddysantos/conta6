@@ -13,16 +13,17 @@ require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/con
 require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
 require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
 
+$nombreArchivo = $fk_referencia.'_'.$pk_id_cuenta_captura.'profCtaGastos.pdf';
 
 class MYPDF extends TCPDF {
   public function Header() {
-    $image_file = 'cheetah.svg';
+    $image_file = 'imagenes/cheetah.svg';
     $this->ImageSVG($image_file, 5, 10, '', 10, '', '','', 0,false);
     $this->setTextColor(102);
     $this->SetFont('helvetica', '', 10);
     $this->Cell(0, 0, date('m-d-Y', strtotime('today')) , 0, 1, 'R', 0, '', 0, false, 'T', 'C');
     $this->SetFont('helvetica', '', 12);
-    $this->Cell(0, 12, 'PROYECCION LOGISTICA AGENCIA ADUANAL S.A de C.V', 0, 1, 'C', 0, '', 0, false, 'T', 'C');
+    $this->Cell(0, 12, 'CUENTA DE GASTOS', 0, 1, 'C', 0, '', 0, false, 'T', 'C');
   }
 
   public function Footer() {
@@ -81,10 +82,18 @@ $EmbarqueYCliente = '<style>
         <tr><td width="100%">'.$s_proveedor_destinatario.'</td></tr>
       </table>
     </td>
-    <td width="50%">
+    <td width="50%"><br />
+      <table class="border">
+        <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)"><td width="100%" align="center">PROFORMA CUENTA DE GASTOS</td></tr>
+        <tr><td width="100%" align="center">'.$pk_id_cuenta_captura.'</td></tr>
+      </table>
+      <br/>
+      <br/>
       <table class="border">
         <thead>
-          <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)"><td width="100%" align="center">INFORMACIÓN GENERAL DEL EMBARQUE</td></tr>
+          <tr bgcolor="#9f9f9f" color="rgb(255, 255, 255)">
+            <td width="100%" align="center">INFORMACIÓN GENERAL DEL EMBARQUE</td>
+          </tr>
         </thead>
         <tbody>
           '.$impresionDatosEmbarque.'
@@ -228,5 +237,5 @@ $pdf->writeHTML($totalesfinales, true, false, true, false, 'C');
 
 
 $pdf->lastPage();
-$pdf->Output('ImpresionCuentaGtos.pdf', 'I');
+$pdf->Output($nombreArchivo, 'I');
  ?>

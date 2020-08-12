@@ -100,7 +100,13 @@ if( $total_consultaGenerales > 0 ) {
 	$s_regimenFiscal = $row_consultaGenerales['s_regimenFiscal'];
 	$n_statuspagada = $row_consultaGenerales['n_statuspagada'];
 
+	$formaPago = $row_consultaGenerales['fk_id_formapago'];
 	if( $fk_id_asoc == 1 ){ $txt_id_asoc = 'Si'; }
+
+	$s_tipoRelacion = $row_consultaGenerales['s_tipoRelacion'];
+	$n_folioFacSustituir = $row_consultaGenerales['n_folioFacSustituir'];
+	$s_UUIDfacSustituir = $row_consultaGenerales['s_UUIDfacSustituir'];
+
 }
 
 ?>

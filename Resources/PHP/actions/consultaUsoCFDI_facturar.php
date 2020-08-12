@@ -21,10 +21,15 @@
         if($pk_c_UsoCFDI == $c_UsoCFDI){ $selected_usoCFDI = 'selected';}else{ $selected_usoCFDI = '';}
         $descripcion = utf8_encode($row_consultaUsoCFDIfac['s_descripcion']);
         $consultaUsoCFDIfac .= '<option value="'.$c_UsoCFDI.'"  '.$selected_usoCFDI.'>'.$descripcion.' --- '.$c_UsoCFDI.'</option>';
+
+        #usando en imprmir factura
+        if($pk_c_UsoCFDI == $c_UsoCFDI){
+    			$txt_UsoCFDI = $c_UsoCFDI.' '.$row_consultaUsoCFDIfac['s_descripcion'];
+    		}
       }
   }
-  $c_UsoCFDI = $oRst_usoCFDI['c_UsoCFDI'];
-  $descripcion = $oRst_usoCFDI['descripcion'];
+  // $c_UsoCFDI = $oRst_usoCFDI['c_UsoCFDI'];
+  // $descripcion = $oRst_usoCFDI['descripcion'];
   /*
   <select id=" ">
       <?php echo $consultaUsoCFDIfac; ?>

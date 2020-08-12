@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd" Version="3.3" Folio="23" Fecha="2018-11-16T11:35:34" Sello="lPUHJiFCIl0NgPcnyFexE/omYgyy6/KCKw3eYbLTwSoaHrCG8JY1y5zbS+ZTG1ywFMd7jJ0rPc2d44refg33RLjiJ9RlQuV3vT0ldLve28AD4+3DA4EgvscLjRUUFkjPLFCQ7aUUozntNutUmRT5caVdecJCrXd9F9BXVD0UAWfsubUkC4sexjvdXXVozuXoEI816bbCV5V2jcJebzLTA91qykZ9P2BGQMLYjMHfFzmtlbP+7vyKhe/0pIB+Oq8ryoasDwWwtLHbyZGWHXAHs5dXJ/yPwVjHw9vv2Jor3u+LOCRcdvYIhmwZ30vtZ5KXXYNKPXLXtJsWj0nPpWDJCA==" FormaPago="03" MetodoPago="PUE" NoCertificado="00001000000404750920" Certificado="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" SubTotal="450.00" Total="522.00" Moneda="MXN" TipoDeComprobante="I" LugarExpedicion="88280">
+  <cfdi:Emisor Rfc="PLA090609N21" Nombre="Proyección Logística Agencia Aduanal, SA de CV" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="MES0204122KA" Nombre="MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S DE RL DE CV" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="80151605" Cantidad="1.000000" ClaveUnidad="E48" Unidad="Servicio" Descripcion="0 2000 % de Honorarios sobre la base de: 49,038 00" ValorUnitario="450.00" Importe="450.00">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="450.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="72.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="72.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="72.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+</cfdi:Comprobante>

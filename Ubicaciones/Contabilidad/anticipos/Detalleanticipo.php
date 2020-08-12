@@ -4,7 +4,7 @@
 
   $id_anticipo = $_GET['id_anticipo'];
 
-  $sql_Select = "SELECT * from conta_t_anticipos_mst Where pk_id_anticipo = ? AND fk_id_aduana = ?";
+  $sql_Select = "SELECT * FROM conta_t_anticipos_mst WHERE pk_id_anticipo = ? AND fk_id_aduana = ?";
   $stmt = $db->prepare($sql_Select);
 	if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
 	$stmt->bind_param('ss', $id_anticipo,$aduana);
@@ -20,7 +20,7 @@
     $importeAnt = $rowMST['n_valor'];
 
     //totales
-	 	$oRst_STPD_sql = "select fk_id_anticipo,SUM(n_cargo)as SUMA_CARGOS,SUM(n_abono)as SUMA_ABONOS from conta_t_anticipos_det where fk_id_anticipo = ? group by fk_id_anticipo ";
+	 	$oRst_STPD_sql = "SELECT fk_id_anticipo, SUM(n_cargo) AS SUMA_CARGOS, SUM(n_abono) AS SUMA_ABONOS FROM conta_t_anticipos_det WHERE fk_id_anticipo = ? GROUP BY fk_id_anticipo ";
 		$stmtTotales = $db->prepare($oRst_STPD_sql);
 		if (!($stmtTotales)) { die("Error during query prepare [$db->errno]: $db->error");	}
 		$stmtTotales->bind_param('s', $id_anticipo);
@@ -37,10 +37,10 @@
       $statusGeneraPoliza = false;
 
       if( $Status_Anticipo == 0 ){
-        $txtStatus = '<b><font face="Trebuchet MS" size="2" color="#000000">CUADRADA</font></b>';
+        $txtStatus = 'style="color: #000000"';
         $statusGeneraPoliza = true;
 		  }else{
-				$txtStatus = '<b><font color="#E52727" face="Trebuchet MS" size="2"><?php echo $Status_Anticipo; ?> ANTICIPO SIN CUADRAR</font></b>';
+				$txtStatus = 'style="color: red"';
         $statusGeneraPoliza = false;
 			}
 		}else{
@@ -55,7 +55,13 @@
 		if( $oRst_permisos["s_correcciones_mst_anticipos"] == 1 && $cancela == 0 ){ $mostrar = true; }else{ $mostrar = false; }
 		if( $oRst_permisos["s_descancelar_anticipos"] == 1 ){ $mostrarCancela = true; }else{ $mostrarCancela = false; }
 		if( $cancela == 1 ){ $clase = 'class="efecto disabled readonly" disabled'; }
-		if( $id_poliza > 0){ $tienePoliza = true; }else{ $tienePoliza = false;}
+		if( $id_poliza > 0){
+      $tienePoliza = true;
+      $txt_disabled = '';
+    }else{
+      $tienePoliza = false;
+      $txt_disabled = 'disabled';
+    }
 		if( $oRst_permisos["s_editar_anticipos_det_pol"] == 1 && $cancela == 0 && $id_poliza > 0 ){
 		  $mostrarEditConPol = true;
 		}else{
@@ -69,7 +75,7 @@
 ?>
 
 <div class="text-center mb-10">
-  <div class="row m-0 submenuMed">
+  <div class="row m-0 backpink">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
         <a class="nav-link dant" id="submenuMed" status="cerrado" accion="dtosant">DATOS DE ANTICIPO</a>
@@ -107,18 +113,19 @@ if( $rows > 0 ){
           <input type="hidden" id="mst-concepto" value="<?php echo $rowMST['s_concepto']; ?>">
           <input type="hidden" id="mst-importe" value="<?php echo $rowMST['n_valor']; ?>">
           <input type="hidden" id="mst-cliente" value="<?php echo $rowMST['fk_id_cliente_antmst']; ?>">
+          <input type="hidden" id="tipoDoc" value="5">
 
-          <tr class="row">
-            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_poliza']; ?></td>
-            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_usuario']; ?></td>
-            <td class="col-md-1 pt-3"><?php echo $rowMST['pk_id_anticipo']; ?></td>
-            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha_alta']; ?></td>
-            <td class="col-md-2 pt-3"><?php echo $rowMST['d_fecha']; ?></td>
-            <td class="col-md-1 pt-3"><?php echo $rowMST['fk_id_aduana']; ?></td>
+          <tr class="row align-items-center">
+            <td class="col-md-1"><?php echo $rowMST['fk_id_poliza']; ?></td>
+            <td class="col-md-1"><?php echo $rowMST['fk_usuario']; ?></td>
+            <td class="col-md-1"><?php echo $rowMST['pk_id_anticipo']; ?></td>
+            <td class="col-md-2"><?php echo $rowMST['d_fecha_alta']; ?></td>
+            <td class="col-md-2"><?php echo $rowMST['d_fecha']; ?></td>
+            <td class="col-md-1"><?php echo $rowMST['fk_id_aduana']; ?></td>
             <td class="col-md-2"><?php echo number_format($rowMST['n_valor'],2,'.',','); ?></td>
-            <td class="col-md-2 pt-1">
+            <td class="col-md-2">
       				<?php if( $mostrarCancela == true ){ ?>
-      					<select class="custom-select-ch" size="1" id="ant-cancela">
+      					<select class="custom-select-s" size="1" id="ant-cancela" <?php echo $txt_disabled; ?>>
         					<?php if( $cancela == 0 ){
       							echo "<option value='0' selected>Activo</option>";
       							echo "<option value='1'>Cancelado</option>";
@@ -137,15 +144,14 @@ if( $rows > 0 ){
             <td class="col-md-2">BANCO/CUENTA</td>
             <td class="col-md-6">CONCEPTO</td>
           </tr>
-    		  <tr  class="row">
+    		  <tr  class="row align-items-center">
 			      <td class="col-md-2"><?php echo $rowMST['fk_id_cuentaMST']; ?></td>
             <td class="col-md-1"><?php echo $rowMST['fk_id_cliente_antmst']; ?></td>
             <td class="col-md-2"><?php echo $rowMST['s_bancoOri'].'/'.$rowMST['s_ctaOri']; ?></td>
             <td class="col-md-6"><?php echo $rowMST['s_concepto']; ?></td>
             <td class="col-md-1">
               <?php if( $mostrar == true ){ ?>
-              <!-- <a href='#ant-editarRegMST' data-toggle='modal'> -->
-              <a href='#ant-editarRegMST' data-toggle='modal' class='editar-anticipoMST' db-id='<?php echo $id_anticipo; ?>' role='button'>
+              <a href='#ant-editarRegMST' class='editar-anticipoMST' db-id='<?php echo $id_anticipo; ?>'>
                 <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
               </a>
               <?php }?>
@@ -166,14 +172,14 @@ if( $rows > 0 ){
         <li class="nav-item">
           <a class="nav-link pills" id="detalleanticipo">Detalle de Anticipo</a>
         </li>
-        <?php if( $id_poliza > 0 ){ ?>
+        <?php if( $id_poliza > 0 && $oRst_permisos['s_consultar_ContaElect'] == 1 ){ ?>
         <li class="nav-item">
-          <a class="nav-link pills" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
-          <!-- <a class="nav-link pills" onclick="infAdd_detallePoliza(<?php echo $id_poliza; ?>)">Información de la Partida</a> -->
+          <a class="nav-link pills" id="infPartida" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
         </li>
         <?php } ?>
       </ul>
     </nav> <!--links de desplazamiento-->
+
     <div class="containermov">
       <div class="contenedor-movible">
         <div id="one"><!--CAPTURA DE POLIZAS-->
@@ -197,7 +203,7 @@ if( $rows > 0 ){
                       <div class="popup-list" id="popup-display-ant-cliente" style="display:none"></div>
                       <label for="ant-cliente">Cliente</label>
                     </div>
-                    <div id="lstClientesCorresp">
+                    <div id="lstClientesCorresp" style="display:none">
                       <select class="custom-select" size='1' id="ant-clienteCorresp">
                           <option selected value='0'>Seleccione Cliente/Corresponsal</option>
                       </select>
@@ -211,7 +217,7 @@ if( $rows > 0 ){
                 </tr>
                 <tr class="row m-0 mt-4">
                   <td class="col-md-8 input-effect">
-                    <div id="lstClientesCorrespCtas">
+                    <div id="lstClientesCorrespCtas-detpol">
                       <select class="custom-select" size='1' id="ant-clienteCorrespCtas">
                           <option selected value='0'>Seleccione</option>
                       </select>
@@ -240,34 +246,30 @@ if( $rows > 0 ){
             <div class="col-md-2 offset-md-4">SUMA DE CARGOS</div>
             <div class="col-md-2">SUMA DE ABONOS</div>
           </div>
-          <div class="row">
+          <div class="row" id="totalesAnticipo2">
             <div class="col-md-2 offset-md-4">
-              <input class="efecto" id="sumCargos2" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
+              <input class="efecto" id="sumCargos2" value="<?php echo number_format($sumaC,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
             </div>
             <div class="col-md-2">
-              <input class="efecto" id="sumCargos2" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
+              <input class="efecto" id="sumAbonos2" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
             </div>
-            <?php
-             echo $txtStatus;
-             ?>
           </div>
 
           <div class="contorno-mov mt-5">
-            <table class="table">
+            <table class="table font12 table-hover">
               <thead>
-                <tr class="row backpink m-0">
-                  <td class="p-0 pt-2 xs"></td>
-                  <td class="p-0 pt-2 small">CUENTA</td>
-                  <td class="p-0 pt-2 small">REFERENCIA</td>
-                  <td class="p-0 pt-2 small">CLIENTE</td>
-                  <td class="p-0 pt-2 small">FACTURA</td>
-                  <td class="p-0 pt-2 small">CTA GASTOS</td>
-		              <td class="p-0 pt-2 small">PAGO ELECT</td>
-                  <td class="p-0 pt-2 small">NOTACRED</td>
-                  <td class="p-0 pt-2 gde">DESCRIPCION</td>
-                  <td class="p-0 pt-2 small">CARGO</td>
-                  <td class="p-0 pt-2 small">ABONO</td>
-                  <td class="p-0 pt-2 xs"></td>
+                <tr class="row sub3 b m-0">
+                  <td width="4%"></td>
+                  <td width="10%">CUENTA</td>
+                  <td width="10%">REFERENCIA</td>
+                  <td width="10%">CLIENTE</td>
+                  <td width="10%">FACTURA</td>
+                  <td width="10%">CTA GASTOS</td>
+		              <td width="10%">PAGO ELECT</td>
+                  <td width="10%">NOTACRED</td>
+                  <td width="11%">CARGO</td>
+                  <td width="11%">ABONO</td>
+                  <td width="4%"></td>
                 </tr>
               </thead>
               <tbody id="ultimosRegistrosAnticipo"></tbody>
@@ -280,27 +282,27 @@ if( $rows > 0 ){
             <div class="col-md-2 offset-md-8">SUMA DE CARGOS</div>
             <div class="col-md-2">SUMA DE ABONOS</div>
           </div>
-          <div class="row font14">
-            <div class="col-md-3 mt-3">
+          <div class="row font14 mt-3">
+            <div class="col-md-3">
               <?php if( $oRst_permisos["s_reusar_anticipos"] == 1 ){ ?>
               <a href="#" id="btn_reusarAnt" class="boton"><img src= "/conta6/Resources/iconos/refresh-button.svg"> REUSAR ANTICIPO</a>
               <?php } ?>
             </div>
-            <div class="col-md-3 mt-3">
+            <div class="col-md-3">
               <?php if( $tienePoliza == false && $statusGeneraPoliza == true ){ ?>
               <a href="#" id="btn_generarPolAnt" class="boton"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR POLIZA</a>
               <?php } ?>
             </div>
-            <div class="col-md-2 mt-3">
+            <div class="col-md-2">
               <?php if( $tienePoliza == true ){ ?>
               <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
               <?php } ?>
             </div>
-            <div class="col-md-2 mt-3">
-              <input class="efecto" id="sumCargos1" value="<?php echo number_format($sumaC,2,'.',','); ?>" readonly>
+            <div class="col-md-2">
+              <input class="efecto" id="sumCargos1" value="<?php echo number_format($sumaC,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
             </div>
-            <div class="col-md-2 mt-3">
-              <input class="efecto" id="sumAbonos1" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" readonly>
+            <div class="col-md-2">
+              <input class="efecto" id="sumAbonos1" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
             </div>
             <?php
             // echo $txtStatus;
@@ -314,29 +316,27 @@ if( $rows > 0 ){
                   <td class="col-md-12">DETALLE ANTICIPO</td>
                 </tr>
               </thead>
-              <tbody class="font16">
-                <tr class="row backpink m-0">
-                  <td class="p-0 pt-2 xs"></td>
-                  <td class="p-0 pt-2 small">CUENTA</td>
-                  <td class="p-0 pt-2 small">REFERENCIA</td>
-                  <td class="p-0 pt-2 small">CLIENTE</td>
-                  <td class="p-0 pt-2 small">FACTURA</td>
-                  <td class="p-0 pt-2 small">CTA GASTOS</td>
-		              <td class="p-0 pt-2 small">PAGO ELECT</td>
-                  <td class="p-0 pt-2 small">NOTACRED</td>
-                  <td class="p-0 pt-2 gde">DESCRIPCION</td>
-                  <td class="p-0 pt-2 small">CARGO</td>
-                  <td class="p-0 pt-2 small">ABONO</td>
-                  <td class="p-0 pt-2 xs"></td>
+              <thead class="font12">
+                <tr class="row sub3 b m-0">
+                  <td width="4%"></td>
+                  <td width="10%">CUENTA</td>
+                  <td width="10%">REFERENCIA</td>
+                  <td width="10%">CLIENTE</td>
+                  <td width="10%">FACTURA</td>
+                  <td width="10%">CTA GASTOS</td>
+		              <td width="10%">PAGO ELECT</td>
+                  <td width="10%">NOTACRED</td>
+                  <td width="11%">CARGO</td>
+                  <td width="11%">ABONO</td>
+                  <td width="4%"></td>
                 </tr>
-                <tbody id="tabla_detalleanticipo" class="font12"></tbody>
-              </tbody>
+              </thead>
+              <tbody id="tabla_detalleanticipo" class="font12"></tbody>
             </table>
           </div>
         </div>
 
         <?php if( $id_poliza > 0 ){
-          // require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_detallePoliza.php';
             require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
           } ?>
       </div><!--/Termina contenedor-movible-->

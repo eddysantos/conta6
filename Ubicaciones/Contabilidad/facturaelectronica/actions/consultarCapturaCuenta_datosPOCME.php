@@ -25,8 +25,12 @@ if (!($stmt_consultaPOCME->execute())) {
 $rslt_consultaPOCME = $stmt_consultaPOCME->get_result();
 $total_consultaPOCME = $rslt_consultaPOCME->num_rows;
 
+$datosPOCME = '';
+$datosPOCMEImprimir = '';
+$datosPOCMEmodifi;
 if( $total_consultaPOCME > 0 ) {
 	$idFila = 0;
+
 	while( $row_consultaPOCME = $rslt_consultaPOCME->fetch_assoc() ){
 		++$idFila;
 
@@ -36,9 +40,12 @@ if( $total_consultaPOCME > 0 ) {
 		$s_conceptoEsp = utf8_encode($row_consultaPOCME['s_conceptoEsp']);
 		$s_conceptoEnglish =$row_consultaPOCME['s_conceptoEnglish'];
 		$s_descripcion = utf8_encode($row_consultaPOCME['s_descripcion']);
-		$n_importe = number_format($row_consultaPOCME['n_importe'],2,'.','');
-		$n_total = number_format($row_consultaPOCME['n_total'],2,'.','');
+		$n_importe = $row_consultaPOCME['n_importe'];
+		$n_total = $row_consultaPOCME['n_total'];
 		$pk_id_partida = $row_consultaPOCME['pk_id_partida'];
+
+		$n_importe_2 = number_format($row_consultaPOCME['n_importe'],2,'.',',');
+		$n_total_2 = number_format($row_consultaPOCME['n_total'],2,'.',',');
 
 		$datosPOCME = $datosPOCME."<div class='row font12 b'>
 					<div class='col-md-6 text-left ls1'>$n_cantidad $s_conceptoEsp $s_descripcion</div>
@@ -49,8 +56,8 @@ if( $total_consultaPOCME > 0 ) {
 		$datosPOCMEImprimir = $datosPOCMEImprimir.'<tr>
 					<td width="5%">'.$n_cantidad.' </td>
 					<td width="45%">'.$s_conceptoEsp.' </td>
-					<td width="25%">'.$n_importe.' </td>
-					<td width="25%"> '.$n_total.'</td>
+					<td width="25%">'.$n_importe_2.' </td>
+					<td width="25%"> '.$n_total_2.'</td>
 				</tr>';
 
 		$datosPOCMEmodifi = $datosPOCMEmodifi."

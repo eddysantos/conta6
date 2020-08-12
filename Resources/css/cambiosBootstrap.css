@@ -1,0 +1,52 @@
+.custom-control-input:checked~.custom-control-label::before{
+  border-color:#7a936d!important;
+  background-color: #7a936d!important;
+}
+
+.custom-control-label::before{
+  border: #58595b solid 1px!important;
+}
+
+.custom-switch .custom-control-label::after{
+  background-color: #58595b!important;
+}
+
+.custom-switch .custom-control-input:checked~.custom-control-label::after{
+  background-color: #f6f6f6!important;
+}
+
+.table td, .table th{
+  border-top:0px!important;
+  padding: .25rem;
+}
+
+
+
+.custom-file-label::after{
+  /* se comentaron en archivo original */
+  /* height: calc(1.5em + .75rem);
+  padding: .375rem .75rem; */
+}
+
+.btn-light:hover {
+  background-color: rgba(87, 88, 91, 0.1)!important;
+}
+
+
+.custom-select{
+  height: 30px!important;
+}
+
+.table thead th{
+  border-bottom: 0px!important;
+}
+
+/* .btn-outline-secondary{
+se comento en archivo original min.css
+  border-color: #6c757d;
+} */
+
+.btn-outline-secondary:hover{
+  background-color: rgba(87, 88, 91, 0.8)!important;
+  border-color: rgba(87, 88, 91, 0.4)!important;
+}

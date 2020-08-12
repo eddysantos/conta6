@@ -18,8 +18,8 @@
   </div>
 
   <div class="contorno mt-5">
-    <h5 class="titulo">DATOS GENERALES</h5>
-    <table class="table form1">
+    <div class="titulo font14" style='margin-top:-26px'>DATOS GENERALES</div>
+    <table class="table">
       <tbody class="font14">
         <tr class="row mt-4">
           <td class="col-md-1 input-effect">
@@ -105,17 +105,17 @@
     <table class="table">
       <thead>
         <tr class="row encabezado">
-          <td class="col-md-12 font14">240 CLT_6967 MOTORES FRANKLIN S.A DE C.V</td>
+          <td class="col-md-12 font14 p-1">240 CLT_6967 MOTORES FRANKLIN S.A DE C.V</td>
         </tr>
       </thead>
       <tbody>
         <tr class="row backpink">
-          <td class="col-md-1">ADUANA</td>
-          <td class="col-md-1">CONCEPTO</td>
-          <td class="col-md-4">OBSERVACIONES</td>
-          <td class="col-md-2">REALIZA CALCULO</td>
-          <td class="col-md-3">CLASIFICACIÓN DEL INGRESO</td>
-          <td class="col-md-1">ACCIONES</td>
+          <td class="p-1 col-md-1">Aduana</td>
+          <td class="p-1 col-md-1">Concepto</td>
+          <td class="p-1 col-md-4">Observaciones</td>
+          <td class="p-1 col-md-2">Realiza calculo</td>
+          <td class="p-1 col-md-3">Clasificación del ingreso</td>
+          <td class="p-1 col-md-1">Acciones</td>
         </tr>
         <tr class="row borderojo">
           <td class="col-md-1">470</td>
@@ -125,7 +125,7 @@
           <td class="col-md-3">0110-00006 Almacenaje</td>
           <td class="col-md-1">
             <a href="Buscartarifa.php" class="icochico"><img src="/conta6/Resources/iconos/magnifier.svg"></a>
-            <a href="#EditarTarifa" data-toggle="modal" class="icochico ml-5"><img src="/conta6/Resources/iconos/003-edit.svg"></a>
+            <a href="#EditarTarifa" data-toggle="modal" class="icochico ml-2"><img src="/conta6/Resources/iconos/003-edit.svg"></a>
           </td>
         </tr>
       </tbody>

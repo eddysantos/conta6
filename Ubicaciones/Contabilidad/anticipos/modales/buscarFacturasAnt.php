@@ -1,13 +1,14 @@
 <!--Buscar Facturas de Anticipo-->
 <div class="modal fade" id="detpol-buscarfacturas" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Facturas de: Nombre del CLiente (CLT_NUMERO)</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Facturas de: Nombre del CLiente (CLT_NUMERO)</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
+
       <div class="modal-body">
         <div class="contorno">
           <table class="table form1 text-center table-hover m-0">
@@ -22,13 +23,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="row">
-                <td class="col-md-2 centrar pt-3">N17003469</td>
-                <td class="col-md-2 centrar pt-3">75729</td>
-                <td class="col-md-2 centrar pt-3">11111</td>
-                <td class="col-md-2 centrar pt-3">-3,806.66</td>
-                <td class="col-md-2 centrar pt-2"><input class="efecto h22" type="text"></td>
-                <td class="col-md-2 centrar pt-1">
+              <tr class="row align-items-center">
+                <td class="col-md-2">N17003469</td>
+                <td class="col-md-2">75729</td>
+                <td class="col-md-2">11111</td>
+                <td class="col-md-2">-3,806.66</td>
+                <td class="col-md-2"><input class="efecto h22" type="text"></td>
+                <td class="col-md-2">
                   <div class="checkbox-xs">
                     <label>
                       <input type="checkbox" data-toggle="toggle">

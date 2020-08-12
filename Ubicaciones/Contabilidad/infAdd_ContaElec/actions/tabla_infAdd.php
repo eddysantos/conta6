@@ -38,21 +38,22 @@ while ($row = $rslt->fetch_assoc()) {
   $fk_id_cuenta = trim($row['fk_id_cuenta']);
   $partida = $row['pk_partida'];
 
-  $partidaPoliza = "<div class='row infsub ml-0 mr-0 pt-2 pb-2'>
-    <div class='col-md-4 p-0 text-left'>Desc : <black class='b'>$row[s_desc]</black></div>
-    <div class='col-md-1'>Tipo : <black class='b'>$row[fk_tipo]</black></div>
-    <div class='col-md-2'>Cuenta : <black class='b'>$fk_id_cuenta</black></div>
-    <div class='col-md-2'>Cargo : <black class='b'>$row[n_cargo]</black></div>
-    <div class='col-md-2'>Abono : <black class='b'>$row[n_abono]</black></div>
+  if( $oRst_permisos['s_modificar_contaElect'] == 1 ){
+    $urlADD = "<a href='#' onclick='infAddPartida($row[pk_partida])'>
+                <img class='icochico' src='/conta6/Resources/iconos/001-add.svg'>
+              </a>";
+  }
 
-    <div class='col-md-1'>
-      <a href=''>
-        <img class='icochico' src='/conta6/Resources/iconos/001-add.svg'>
-      </a>
-    </div>
-  </div>
+  $partidaPoliza =
+  "<div class='row sub fw-bold py-2'>
+    <div class='col-md-4 p-0 text-left'>Desc : $row[s_desc]</div>
+    <div class='col-md-1'>Tipo : $row[fk_tipo]</div>
+    <div class='col-md-2'>Cuenta : $fk_id_cuenta</div>
+    <div class='col-md-2'>Cargo : $row[n_cargo]</div>
+    <div class='col-md-2'>Abono : $row[n_abono]</div>
+    <div class='col-md-1'>$urlADD</div>
+  </div>";
 
-  ";
 
   $query_consulContaElect = "SELECT * FROM conta_t_polizas_det_contaelec WHERE fk_id_poliza = ? AND fk_partidaPol = ?";
   $stmt_consulContaElect = $db->prepare($query_consulContaElect);
@@ -64,72 +65,75 @@ while ($row = $rslt->fetch_assoc()) {
   $rows_consulContaElect = $rslt_consulContaElect->num_rows;
 
   if ($rows_consulContaElect > 0) {
-    $partidaContaElect = "
-
-
-    <div class='row ml-0 mr-0 sub2' style='font-size:12px!important'>
+    $partidaContaElect =
+    "<div class='row sub2 fw-bold ls3'>
       <div class='col-md-1'></div>
       <div class='col-md-6'>Documento Nacional</div>
       <div class='col-md-1'>Origen</div>
       <div class='col-md-1'>Destino</div>
       <div class='col-md-1'>Extranjero</div>
       <div class='col-md-2'>Doc.Extranjero</div>
-    </div>
+    </div>";
 
-
-    ";
 
     while ($row = $rslt_consulContaElect->fetch_assoc()) {
-      $partidaContaElect .= "
+      $uuid_captura = $row['s_UUID_CFDI'];
+      $imgXML = "";
+      $imgXMLdownload = "";
+      if( $uuid_captura <> '' ){
+        #busqueda de UUID para mostrar ruta de archivo XML
+        require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultaXML_backupsxml.php'; #$imgXML, $imgXMLdownload
+      }
 
-
-                    <div class='row ml-0 mr-0 borderojo'>
-                      <div class='col-md-1'></div>
-                      <div class='col-md-1 text-right b'>UUID :</div>
-                      <div class='col-md-5 text-left'>550e8400-e29b-41d4-a716-446655440000$row[s_UUID_CFDI]</div>
-
-                      <div class='col-md-1'>Bco : $row[s_BancoOri]</div>
-                      <div class='col-md-1'>Bco : $row[s_BancoDest]</div>
-                      <div class='col-md-1'>Bco : $row[s_BancoOriExt]</div>
-                      <div class='col-md-1 text-right'>Tax Id : </div>
-                      <div class='col-md-1 text-left'>$row[s_TaxID]</div>
-
-                      <div class='col-md-1'><a href=''>
+      if( $oRst_permisos['s_modificar_contaElect'] == 1 ){
+        $urlDELETE = "<a href='#' onclick='eliminarPartida($row[pk_id_partida])'>
                         <img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'>
-                      </a></div>
-                      <div class='col-md-1 text-right b'>Benef :</div>
-                      <div class='col-md-5 text-left'>$row[s_Beneficiario]  -- $row[s_RFC]</div>
-                      <div class='col-md-1'>Cta : $row[s_ctaOri]</div>
-                      <div class='col-md-1'>Cta : $row[s_CtaDest]</div>
-                      <div class='col-md-1'>Cta : $row[s_BancoDestExt]</div>
-                      <div class='col-md-1 text-right'>Moneda : </div>
-                      <div class='col-md-1 text-left'>$row[s_moneda]</div>
+                      </a>";
+      }
+      $partidaContaElect .=
+        "<div class='row borderojo pb-3'>
+          <div class='col-md-1'></div>
+          <div class='col-md-1 text-right b fw-bold'>UUID :</div>
+          <div class='col-md-5 text-left'>$uuid_captura</div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Bco :</span> $row[s_BancoOri]</div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Bco :</span> $row[s_BancoDest]</div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Bco :</span> $row[s_BancoOriExt]</div>
+          <div class='col-md-1 text-right b fw-bold'>Tax Id :</div>
+          <div class='col-md-1 text-left'>$row[s_TaxID]</div>
 
-                      <div class='col-md-1'>$row[s_tipoDetalle]</div>
-                      <div class='col-md-1 text-right b'>Fecha :</div>
-                      <div class='col-md-2 text-left'>$row[d_fecha]</div>
-                      <div class='col-md-6'></div>
+          <div class='col-md-1'>$urlDELETE</div>
+          <div class='col-md-1 text-right b fw-bold'>Benef :</div>
+          <div class='col-md-5 text-left'>$row[s_Beneficiario]  -- $row[s_RFC]</div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Cta :</span> $row[s_ctaOri]</div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Cta :</span> $row[s_CtaDest]</div>
+          <div class='col-md-1 text-left p-0'><span class='b fw-bold'>Cta :</span> $row[s_BancoDestExt]</div>
+          <div class='col-md-1 text-right b fw-bold'>Moneda : </div>
+          <div class='col-md-1 text-left'>$row[s_moneda]</div>
 
+          <div class='col-md-1'>$row[s_tipoDetalle]</div>
+          <div class='col-md-1 text-right b fw-bold'>Fecha :</div>
+          <div class='col-md-2 text-left'>$row[d_fecha]</div>
+          <div class='col-md-6'></div>
+          <div class='col-md-1 text-right b fw-bold'>TC : </div>
+          <div class='col-md-1 text-left'>$row[n_TipCamb]</div>
 
-                      <div class='col-md-1 text-right'>TC : </div>
-                      <div class='col-md-1 text-left'>$row[n_TipCamb]</div>
+          <div class='col-md-1'></div>
+          <div class='col-md-1 text-right b fw-bold'>Total :</div>
+          <div class='col-md-1 text-left'>$row[n_monto]</div>
+          <div class='col-md-1 text-right b fw-bold'>Ch :</div>
+          <div class='col-md-3 text-left'>$row[n_num]</div>
+          <div class='col-md-5'></div>
 
-                      <div class='col-md-1'></div>
-                      <div class='col-md-1 text-right b'>Total :</div>
-                      <div class='col-md-1 text-left'>$row[n_monto]</div>
-                      <div class='col-md-1 text-right b'>Ch :</div>
-                      <div class='col-md-3 text-left'>$row[n_num]</div>
-                      <div class='col-md-5'></div>
-                    </div>";
-
+          <div class='col-md-1'></div>
+          <div class='col-md-1 text-right b fw-bold'>Opcionales:</div>
+          <div class='col-md-5 text-left'>$row[s_RFCopc] -- $row[s_BeneficiarioOpc]</div>
+          <div class='col-md-1 text-left b p-0 fw-bold'>Observaciones :</div>
+          <div class='col-md-2 text-left'>$row[s_observaciones] </div>
+          <div class='col-md-2'>$imgXML $imgXMLdownload</div>
+        </div>";
     }
   }
 
-/* Si los agrego, no muestra datos
-<td>$row[s_BeneficiarioOpc]</td>
-<td>$row[s_RFCopc]</td>
-<td>$row[s_observaciones]</td>
-*/
   $system_callback['data'] .= $partidaPoliza.$partidaContaElect;
 }
 

@@ -19,20 +19,16 @@
 .modal-body{
   font-size: 13px;
 }
-.modal-header{
-  background-color:#ccc;
-  color: white;
-  padding: 7px!important;
-}
 .modal-tittle{
   letter-spacing:10px;
   font-size:14px;
 }
-/* .modal-table3{
-  border: 0!important;
-  max-width: 90%!important;
-  margin: 10px 40px;
-} */
+.modalFooter{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1rem;
+}
 
 #submenuModal{
   background-color: transparent!important;
@@ -43,10 +39,6 @@
   color: rgb(209, 28, 28)!important;
   cursor: pointer;
   font-size: 14px;
-}
-
-.centrar{
-  padding-top: 10px!important;
 }
 
 .titulograndetop-modal {
@@ -66,4 +58,8 @@
     border: 2px solid #ccc;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
+}
+
+.m_bordenegro{
+  border : 1.5px solid black!important;
 }

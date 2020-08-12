@@ -6,7 +6,7 @@ $id_poliza = trim($_POST['id_poliza']);
 $fecha = trim($_POST['fecha']);
 $id_referencia = trim($_POST['id_referencia']);
 $cuenta = trim($_POST['cuenta']);
-$id_cliente = trim($_POST['$id_cliente']);
+$id_cliente = trim($_POST['id_cliente']);
 $documento = trim($_POST['documento']);
 $factura = trim($_POST['factura']);
 $anticipo = trim($_POST['anticipo']);
@@ -86,6 +86,8 @@ if ($affected == 0) {
 
 
 if( $id_poliza > 0 ){
+    $mesPoliza = date_format(date_create($fecha),'m');
+
     $query_actualiza = "UPDATE conta_t_polizas_det
     SET fk_id_cuenta = ?,
     fk_referencia = ?,
@@ -99,7 +101,8 @@ if( $id_poliza > 0 ){
     fk_gastoAduana = ?,
     fk_id_proveedor = ?,
     fk_usuario = ?,
-    d_fecha_ultmodif = ?
+    d_fecha_ultmodif = ?,
+    d_mes = ?
     WHERE s_idDocumento = 'chequeDET' and fk_idRegistro = ?";
 
     $stmt_actualiza = $db->prepare($query_actualiza);
@@ -109,7 +112,7 @@ if( $id_poliza > 0 ){
       exit_script($system_callback);
     }
 
-    $stmt_actualiza->bind_param('ssssssssssssss',
+    $stmt_actualiza->bind_param('sssssssssssssss',
     $cuenta,
     $id_referencia,
     $id_cliente,
@@ -123,6 +126,7 @@ if( $id_poliza > 0 ){
     $proveedor,
     $usaurio,
     $fechaActual,
+    $mesPoliza,
     $partidaCheque);
 
 

@@ -17,6 +17,9 @@ $cuentaMST = trim($_POST['cuentaMST']);
 $importe = trim($_POST['importe']);
 $id_cliente = trim($_POST['id_cliente']);
 $idDocumento = 'anticipoMST';
+if(!isset($mesPoliza)){
+  $mesPoliza = date_format(date_create($fecha),'m');
+}
 
 $system_callback = [];
 
@@ -47,7 +50,8 @@ $queryMST = "INSERT INTO conta_t_polizas_det
   n_abono,
   s_idDocumento,
   fk_idRegistro,
-  fk_usuario)
+  fk_usuario,
+  d_mes)
 SELECT $nFolio,
 fk_id_cuentaMST,
 d_fecha,
@@ -59,7 +63,8 @@ n_valor,
 0,
 '$idDocumento',
 pk_id_anticipo,
-'$usuario'
+'$usuario',
+'$mesPoliza'
 FROM conta_t_anticipos_mst WHERE pk_id_anticipo = $anticipo";
 
 $stmtMST = $db->prepare($queryMST);
@@ -97,7 +102,8 @@ $queryDET = "INSERT INTO conta_t_polizas_det
   n_abono,
   s_idDocumento,
   fk_idRegistro,
-  fk_usuario)
+  fk_usuario,
+  d_mes)
 SELECT $nFolio,
 fk_id_cuenta,
 d_fecha,
@@ -116,7 +122,8 @@ n_cargo,
 n_abono,
 '$idDocumento',
 pk_partida,
-'$usuario'
+'$usuario',
+'$mesPoliza'
 FROM conta_t_anticipos_det WHERE fk_id_anticipo = $anticipo";
 $stmtDET = $db->prepare($queryDET);
 if (!($stmtDET)) {
@@ -235,35 +242,37 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
     $BeneficiarioOpc = $nombreCIA;
     $RFCopc = $rfcCIA;
     $usuario_modifi = $usuario;
+    $observ = '';
 
     require $root . '/conta6/Resources/PHP/actions/contaElect_insertaTransferencia.php';
 
-    /* FALTA TERMINAR
-  		// CFDI CompNal
-  		if( $factura > 0 || $notaCred > 0 ){
+
+  	// CFDI CompNal
+  	if( $factura > 0 || $notaCred > 0 ){
+      $partidaDoc = $rowPOL['pk_partida'];
+      $tipoInf = 'CompNal';
+
   			if( $notaCred > 0 ){
-  				$oRst_datosNC = mysqli_fetch_array( mysqli_query($link,"SELECT Fac_RFC,UUID,Total_Honorarios
-  																				FROM TBL_NOTACREDITO_CFDI
-  																				WHERE ID_NC = $notaCred and Id_Referencia = '$referencia' "));
+          require $root . '/conta6/Resources/PHP/actions/consultaNotaCreditoCapturaTimbrada.php';
   				$tipoDetalle = 'CompNal';
-  				$RFC = $oRst_datosNC['Fac_RFC'];
-  				$UUID_CFDI = $oRst_datosNC['UUID'];
-  				$monto = $oRst_datosNC['Total_Honorarios'];
+  				$RFC = $row_ncCaptTim['s_rfc'];
+  				$UUID = $row_ncCaptTim['s_UUID'];
+  				$importe = $row_ncCaptTim['n_importeNC'];
+          $BeneficiarioOpc = $row_ncCaptTim['s_nombre'];
   			}else{
   				if( $factura > 0 && $notaCred == 0 ){
-  					$oRst_datosFactura = mysqli_fetch_array( mysqli_query($link,"SELECT Fac_RFC,UUID,Total_Honorarios
-  																				FROM TBL_FACTURAS_CFD
-  																				WHERE id_factura = $factura and id_referencia = '$referencia' "));
+            require $root . '/conta6/Resources/PHP/actions/consultaFacturaCaptura.php';
   					$tipoDetalle = 'CompNal';
-  					$RFC = $oRst_datosFactura['Fac_RFC'];
-  					$UUID_CFDI = $oRst_datosFactura['UUID'];
-  					$monto = $oRst_datosFactura['Total_Honorarios'];
+  					$RFC = $row_facCapt['s_rfc'];
+  					$UUID = $row_facCapt['s_UUID'];
+  					$importe = $row_facCapt['n_total_honorarios'];
+            $BeneficiarioOpc = $row_facCapt['s_nombre'];
   				}
   			}
-  			mysqli_query($link,"INSERT INTO TBL_POLIZAS_DET_PARTIDA (partidaDoc,tipo,tipoDetalle,RFC,UUID_CFDI,monto,usuario_alta)values
-  			($partidaDoc,$tipo,'CompNal','$RFC','$UUID_CFDI',$monto,'$usuario')");
+
+        require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
   		}
-    */
+
   }
 
   $system_callback['code'] = 1;

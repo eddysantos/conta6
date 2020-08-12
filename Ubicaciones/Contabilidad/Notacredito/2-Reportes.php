@@ -5,7 +5,7 @@
 
 
 <div class="text-center">
-  <div class="row submenuMed m-0">
+  <div class="row backpink m-0">
     <ul class="nav nav-pills nav-fill w-100" id="selecRepo">
       <li class="nav-item">
         <a class="nav-link consultar" id="submenuMed" accion="rOficina" status="cerrado">Por Oficina Detallado</a>
@@ -22,7 +22,7 @@
       <table class="table">
         <thead class="font18">
           <tr class="row m-0 encabezado">
-            <td class="col-md-12">Aplización de Condiciones</td>
+            <td class="col-md-12 p-0">Aplización de Condiciones</td>
           </tr>
         </thead>
         <tbody class="font14">
@@ -36,7 +36,7 @@
               <label for="ffinal">Fecha Final</label>
             </td>
             <td class="col-md-4">
-              <label class="mb-1 font14" style="color: #d59f9f;">Gasto Oficina</label>
+              <label class="mb-1 font14">Gasto Oficina</label>
               <select class="custom-select">
                 <option value="">AEROPUERTO</option>
                 <option value="">MANZANILLO</option>
@@ -64,7 +64,7 @@
       <table class="table">
         <thead class="font18">
           <tr class="row m-0 encabezado">
-            <td class="col-md-12">Aplización de Condiciones</td>
+            <td class="col-md-12 p-0">Aplización de Condiciones</td>
           </tr>
         </thead>
         <tbody class="font14">

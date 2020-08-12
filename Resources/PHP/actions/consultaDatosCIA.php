@@ -11,4 +11,5 @@
     $nombreCIA = trim($rowCIA['s_Razon_Social']);
     $cpCIA = trim($rowCIA['s_codigo']);
     $regPatronalCIA = trim($rowCIA['s_Reg_Patronal']);
+    $cveEntFed = trim($rowCIA['fk_c_estado']);
 ?>

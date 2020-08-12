@@ -2,13 +2,13 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
-input[type=date]{
+/* input[type=date]{
   padding-left: 40px;
   font-size: 13px!important;
-}
+} */
 input[type=date]:hover,input[type=submit]:focus,input[type=submit]:hover{
-  color: rgb(209, 28, 28)!important;
-  font-size: 14px!important;
+  color: #ed1c24!important;
+  /* font-size: 14px!important; */
 }
 
 input[type=submit]{
@@ -18,16 +18,13 @@ input[type=submit]{
   cursor: pointer;
 }
 input:read-only{
-  background-color: rgba(173, 173, 173, 0.1)!important;
+  /* background-color: rgba(173, 173, 173, 0.1)!important; */
+  background-color: rgba(87, 88, 91, 0.1)!important;
 }
 
 input:read-only.bt{
   background-color: transparent!important;
 }
-/* input[type=submit]:focus,input[type=submit]:hover{
-  color: rgb(209, 28, 28)!important;
-  font-size: 14px;
-} */
 
 input[type=text].reg {
   height: 80px;
@@ -87,25 +84,27 @@ input:disabled{
   left: 3px;
   width: 100%;
   top: 17px;
-  font-size: 14px;
-  /* color: #afacac;
-  transition: 0.3s;
-  z-index: 1;
+  color:rgba(87, 88, 91, 0.8)!important;
+}
 
-  padding-top: 4px; */
+
+.efecto ~ label.l22{
+  position: absolute;
+  left: 3px;
+  width: 100%;
+  top: 13px;
+  font-size: 12px;
 }
 .efecto:focus ~ label, .tiene-contenido.efecto ~ label{
-  /* top: -12px; */
   top: -9px;
-  font-size: 14px;
-  color: #d59f9f;
+  color: #000!important;
+  font-weight: 500;
   transition: 0.3s;
 }
 
-/* .data-date{
-  display: block;
-  width: 100%;
-} */
+.pinklabel{
+  color: #d59f9f;
+}
 
 /*LINKS COMO BOTONES*/
 
@@ -114,13 +113,13 @@ input:disabled{
   color: rgb(110, 110, 110)!important;
   letter-spacing: 1px!important;
   border: 1px solid #ccc;
-  padding: 4px!important;
+  /* padding: 4px!important; */
   border-radius: 10px;
   display: block;
   width: 100%;
   cursor: pointer;
 }
-.boton:hover,.boton:focus{
+.boton:hover, .boton:focus{
   color: rgb(217, 0, 0)!important;
-  letter-spacing: 2px!important;
+  /* letter-spacing: 2px!important; */
 }

@@ -1,0 +1,3 @@
+<br />
+<b>Warning</b>:  file_get_contents(C:/xampp/htdocs/conta6/CFDI_generados/2019/CLT_6548/N13003036_36_pago.xml): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Conta6\Resources\PHP\actions\docTimbrado_download.php</b> on line <b>8</b><br />
+<h1><center><font color=#FF0000>Archivo no encontrado, haga una busqueda desde la ruta del FTP</font></center></h1>

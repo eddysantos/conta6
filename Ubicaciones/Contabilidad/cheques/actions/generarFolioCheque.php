@@ -61,8 +61,8 @@
   $rfcOrd = $rowDatosOrdenante['s_rfc'];
 
   //guardando cheque
-  $queryInsert = "INSERT INTO conta_t_cheques_mst (pk_id_cheque,fk_id_cuentaMST,d_fechache,s_tipoOrdenante,fk_idOrd,s_nomOrd,n_valor,fk_usuario,fk_id_aduana,s_concepto )
-                  VALUES(?,?,?,?,?,?,?,?,?,?)";
+  $queryInsert = "INSERT INTO conta_t_cheques_mst (pk_id_cheque,fk_id_cuentaMST,d_fechache,s_tipoOrdenante,fk_idOrd,s_nomOrd,n_valor,fk_usuario,fk_id_aduana,s_concepto,s_rfc )
+                  VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
   $stmtInsert = $db->prepare($queryInsert);
   if (!($stmtInsert)) {
@@ -71,7 +71,7 @@
     exit_script($system_callback);
   }
 
-  $stmtInsert->bind_param('ssssssssss',$cheque,$cuenta,$fechaDoc,$opcion,$idOrd,$nomOrd,$importe,$usuario,$aduana,$concepto);
+  $stmtInsert->bind_param('sssssssssss',$cheque,$cuenta,$fechaDoc,$opcion,$idOrd,$nomOrd,$importe,$usuario,$aduana,$concepto,$rfcOrd);
   if (!($stmtInsert)) {
   	$system_callback['code'] = "500";
     $system_callback['message'] = "Error during variables binding EX[$stmtInsert->errno]: $stmtInsert->error";
@@ -88,7 +88,7 @@
   $nFolio = $cheque;
 
 
-  $descripcion = "Se Genero el Cheque: $nFolio cuentaMST:$cuenta Concepto: $concepto Fecha: $fechaDoc Valor: $importe ExpedidoA: $opcion $idOrd $nomOrd";
+  $descripcion = "Se Genero el Cheque: $nFolio cuentaMST:$cuenta Concepto: $concepto Fecha: $fechaDoc Valor: $importe ExpedidoA: $opcion $idOrd $nomOrd $rfcOrd";
   $clave = 'cheques';
   $folio = $nFolio;
   require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';

@@ -3,8 +3,8 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
 $fecha = trim($_POST['fecha']);
-$cheque = trim($_POST['cheque']);
 $cuenta = trim($_POST['cuenta']);
+$cheque = trim($_POST['cheque']);
 $valor = trim($_POST['importe']);
 $concepto = trim($_POST['concepto']);
 $opcion = trim($_POST['opcion']);
@@ -30,7 +30,7 @@ if( $opcion == "EMPL" ){ $queryDatosOrdenante = "SELECT CONCAT(s_nombre,' ',s_ap
 if( $opcion == "PROV" ){ $queryDatosOrdenante = "SELECT s_nombre,s_rfc
 																								FROM conta_cs_proveedores
 																								WHERE pk_id_proveedor = ?" ;}
-																								
+
 $stmtDatosOrdenante = $db->prepare($queryDatosOrdenante);
 if (!($stmtDatosOrdenante)) { die("Error during query prepare [$db->errno]: $db->error");	}
 $stmtDatosOrdenante->bind_param('s',$idOrd);
@@ -75,6 +75,7 @@ $ctaDest = $row['ctaOri'];
 
 
 $system_callback = [];
+$system_callback['aff_rows'] = [];
 
 //revisando cheque duplicado
 $queryChequeExiste = "SELECT * FROM conta_t_cheques_mst WHERE pk_id_cheque = ? AND fk_id_cuentaMST = ?";
@@ -101,18 +102,19 @@ if (!($stmtChequeExiste->execute())) {
 
 $rsltChequeExiste = $stmtChequeExiste->get_result();
 $rowsChequeExiste = $rsltChequeExiste->num_rows;
+$system_callback['aff_rows']['queryChequeExiste'] = $rowsChequeExiste;
 
-
-if ($rowsChequeExiste > 1) {
+if ($rowsChequeExiste > 0) {
 	$system_callback['code'] = "500";
 	$system_callback['data'] ="EL CHEQUE DUPLICADO $cheque YA EXISTE CON LA CUENTA $cuenta";
 	$system_callback['message'] = "Cheque Existe";
 	exit_script($system_callback);
 }
 
-if ($rowsChequeExiste == 1){
+error_log("Rows Cheque Exist = " . $rowsChequeExiste);
+if ($rowsChequeExiste == 0){
 	try {
-	  $db->beginTransaction();
+	  $db->begin_transaction();
 
 		//actualizando MST
 		$queryUpdateMST = "UPDATE conta_t_cheques_mst
@@ -146,6 +148,10 @@ if ($rowsChequeExiste == 1){
 		  exit_script($system_callback);
 		}
 
+		$rsltUpdateMST = $stmtUpdateMST->get_result();
+		$rowsUpdateMST = $rsltUpdateMST->num_rows;
+		$system_callback['aff_rows']['queryUpdateMST'] = $rowsUpdateMST;
+
 
 		$descripcion = "Se Actualizo el ChequeFolioControl: $idcheque_folControl Cheque: $cheque Cuenta:$cuenta Concepto: $concepto Fecha: $fecha Valor: $valor Expedido a: $opcion, $idOrd $nomOrd";
 		$clave = 'cheques';
@@ -159,33 +165,57 @@ if ($rowsChequeExiste == 1){
 		d_fecha = ?
 		WHERE fk_idcheque_folControl = ?";
 		$stmt_cheEditDET = $db->prepare($query_cheEditDET);
-		if (!($stmt_cheEditDET)) { die("Error during query prepare [$db->errno]: $db->error"); }
-
+		if (!($stmt_cheEditDET)) {
+			// die("Error during query prepare [$db->errno]: $db->error");
+			$system_callback['code'] = "500";
+			"Error during query prepare DET [$db->errno]: $db->error";
+			exit_script($system_callback);
+		}
 		$stmt_cheEditDET->bind_param('ssss',$cheque,$cuenta,$fecha,$idcheque_folControl);
 
-		if (!($stmt_cheEditDET)) { die("Error during variables binding [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error"); }
+		if (!($stmt_cheEditDET)) {
+			// die("Error during variables binding [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error");
+			$system_callback['code'] = "500";
+		  $system_callback['message'] = "Error during variables binding DET [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error";
+		  exit_script($system_callback);
+		}
 
-		if (!($stmt_cheEditDET->execute())) { die("Error during query execute [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error"); }
+		if (!($stmt_cheEditDET->execute())) {
+			// die("Error during query execute [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error");
+			$system_callback['code'] = "500";
+		  $system_callback['message'] = "Error during query execute DET [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error";
+		  exit_script($system_callback);
+		}
 
-		$affected = $stmt_cheEditDET->affected_rows;
+		// $affected = $stmt_cheEditDET->affected_rows;
 
-		if ($affected == 0) {
-			die("El query no hizo ningún cambio a la base de datos  [$stmt_cheEditDET->errno]: $stmt_cheEditDET->error");
-		 }
+		$rsltcheEditDET = $stmt_cheEditDET->get_result();
+		$rowscheEditDET = $rsltcheEditDET->num_rows;
+		$system_callback['aff_rows']['query_cheEditDET'] = $rowscheEditDET;
+
+		// if ($affected == 0) {
+		// 	// die("El query no hizo ningún cambio a la base de datos[$stmt_cheEditDET->errno]: $stmt_cheEditDET->error");
+		//
+		// 	$system_callback['code'] = "500";
+		//   $system_callback['message'] = "El query no hizo ningún cambio a la base de datos[$stmt_cheEditDET->errno]: $stmt_cheEditDET->error";
+		//   exit_script($system_callback);
+		//  }
 
 
 
-
+		error_log("Id Poliza = " . $id_poliza);
 		if( $id_poliza > 0 ){
+				$mesPoliza = date_format(date_create($fecha),'m');
+
 				//actualizando POLMST
-				$queryActPolMST = "UPDATE conta_t_polizas_mst SET d_fecha=?, s_concepto=? WHERE pk_id_poliza=?";
+				$queryActPolMST = "UPDATE conta_t_polizas_mst SET d_fecha=?, s_concepto = ?, d_mes = ? WHERE pk_id_poliza=?";
 				$stmtActPolMST = $db->prepare($queryActPolMST);
 				if (!($stmtActPolMST)) {
 					$system_callback['code'] = "500";
 					$system_callback['message'] = "Error during query prepare POLMST [$db->errno]: $db->error";
 					exit_script($system_callback);
 				}
-				$stmtActPolMST->bind_param('sss', $fecha,$concepto,$id_poliza);
+				$stmtActPolMST->bind_param('ssss', $fecha,$concepto,$mesPoliza,$id_poliza);
 				if (!($stmtActPolMST)) {
 					$system_callback['code'] = "500";
 					$system_callback['message'] = "Error during variables binding POLMST [$stmtActPolMST->errno]: $stmtActPolMST->error";
@@ -197,26 +227,38 @@ if ($rowsChequeExiste == 1){
 					exit_script($system_callback);
 				}
 
+				$rsltcheActPolMST = $stmtActPolMST->get_result();
+				$rowscheActPolMST = $rsltcheActPolMST->num_rows;
+				$system_callback['aff_rows']['queryActPolMST'] = $rowscheActPolMST;
+
 
 				//actualizando POLDETfecha
-				$queryActPolDETfecha = "UPDATE conta_t_polizas_det SET d_fecha=?, fk_cheque= ?	WHERE fk_id_poliza=?";
+				$queryActPolDETfecha = "UPDATE conta_t_polizas_det SET d_fecha = ?, fk_cheque = ?, d_mes = ?	WHERE fk_id_poliza = ?";
 				$stmtActPolDETfecha = $db->prepare($queryActPolDETfecha);
+				error_log("Query Actualizacion de fecha");
 				if (!($stmtActPolDETfecha)) {
 					$system_callback['code'] = "500";
 					$system_callback['message'] = "Error during query prepare POLDETfecha [$db->errno]: $db->error";
+					error_log("Fallo query prepare");
 					exit_script($system_callback);
 				}
-				$stmtActPolDETfecha->bind_param('sss', $fecha,$cheque,$id_poliza);
+				$stmtActPolDETfecha->bind_param('ssss', $fecha,$cheque,$mesPoliza,$id_poliza);
 				if (!($stmtActPolDETfecha)) {
 					$system_callback['code'] = "500";
 					$system_callback['message'] = "Error during variables binding POLDETfecha [$stmtActPolDETfecha->errno]: $stmtActPolDETfecha->error";
+					error_log("Fallo query binding");
 					exit_script($system_callback);
 				}
 				if (!($stmtActPolDETfecha->execute())) {
 					$system_callback['code'] = "500";
 					$system_callback['message'] = "Error during query execution POLDETfecha [$stmtActPolDETfecha->errno]: $stmtActPolDETfecha->error";
+					error_log("Fallo query execution");
 					exit_script($system_callback);
 				}
+
+				$rsltcheActPolDETfecha = $stmtActPolDETfecha->get_result();
+				$rowscheActPolDETfecha = $rsltcheActPolDETfecha->num_rows;
+				$system_callback['aff_rows']['queryActPolDETfecha'] = $rowscheActPolDETfecha;
 
 				//actualizando POLDET
 				$queryActPolDET = "UPDATE conta_t_polizas_det SET fk_id_cuenta=?, fk_id_cliente=?, fk_cheque=?, s_desc=?, n_abono =?
@@ -239,24 +281,33 @@ if ($rowsChequeExiste == 1){
 					exit_script($system_callback);
 				}
 
+				$rsltcheActPolDET = $stmtActPolDET->get_result();
+				$rowscheActPolDET = $rsltcheActPolDET->num_rows;
+				$system_callback['aff_rows']['queryActPolDET'] = $rowscheActPolDET;
+
 
 		}
+
+
 
 		$system_callback['data'] .= $cheque;
 		$system_callback['code'] = 1;
 		$system_callback['message'] = "Script called successfully!";
-		exit_script($system_callback);
 
 		$db->commit();
 	  $system_callback['code'] = 1;
+		error_log("Query commited!");
+		exit_script($system_callback);
 	} catch (\Exception $e) {
 	  $db->rollback();
 	  $system_callback['e'] = $e;
 	  $system_callback['query']['code'] = "2";
 	  $system_callback['query']['message'] = "There was a problem executing the query[$db->errno]: $db->error";
-	  exit_script($system_callback);
+		error_log("query rolled back");
+		exit_script($system_callback);
 	}//try
 
 }// termina $rowsChequeExiste == 1
+
 
 ?>

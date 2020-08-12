@@ -6,6 +6,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 $ID_calculo = trim($_POST['T_No_calculoTarifa']);
 $Usuario_Cta = trim($_POST['Txt_Usuario']);
 $ID_Referencia = trim($_POST['T_IGED_1']);
+// $ID_Referencia = trim($_POST['T_IGED_2']);
 $ID_Aduana = trim($_POST['T_ID_Aduana_Oculto']);
 $ID_Almacen = trim($_POST['T_ID_Almacen_Oculto']);
 $ID_Cliente = trim($_POST['T_ID_Cliente_Oculto']);
@@ -73,6 +74,7 @@ $Txt_Cta_Gastos = trim($_POST['Txt_Cta_Gastos']);
 $Txt_Fac_Saldo = trim($_POST['Txt_Saldo_Gral']);
 $Txt_Total_Pagos = trim($_POST['Txt_Total_Pagos']);
 $Total_Pagos = trim($_POST['T_Total_Pagos']);
+$total_pagosCLT = $Total_POCME + $Total_Pagos;
 
 $Txt_POCME_Total = trim($_POST['Txt_POCME_Total']);
 $Txt_POCME_Tipo_Cambio = trim($_POST['Txt_POCME_Tipo_Cambio']);
@@ -239,4 +241,5 @@ $system_callback['message'] = "Script called successfully!";
 
 exit_script($system_callback);
 
+//prueba modificar
 ?>

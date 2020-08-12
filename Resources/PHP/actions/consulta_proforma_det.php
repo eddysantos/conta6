@@ -1,5 +1,5 @@
 <?php
-  $query_proforma_det = "SELECT * from conta_t_proforma_det where fk_id_proforma = ?";
+  $query_proforma_det = "SELECT * from conta_t_proforma_det where s_tipoDetalle = 'POCME' AND fk_id_proforma = ?";
 
 $stmt_proforma_det = $db->prepare($query_proforma_det);
 if (!($stmt_proforma_det)) {

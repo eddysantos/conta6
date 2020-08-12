@@ -1,42 +1,42 @@
 <?php
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  //require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-	require $root . '/conta6/Ubicaciones/encabezadoImpresion.php';
-
-
-	$sql_Select = "SELECT * from conta_cs_cuentas_mst ORDER BY pk_id_cuenta";
-  $stmt = $db->prepare($sql_Select);
-	if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
-	if (!($stmt->execute())) { die("Error during query prepare [$stmt->errno]: $stmt->error"); }
-	$rslt = $stmt->get_result();
-	$rows = $rslt->num_rows;
-
-	while ($row = $rslt->fetch_assoc()) {
-		if( $row[s_cta_status] == 1 ){ $txt_captura = "Permitido"; }else{ $txt_captura = "Denegado"; }
-		if( $row[s_cta_actividad] == 1 ){
-			$img = '<img src="/conta6/Resources/iconos/check.svg" style="margin-top:-4px" class="w-25">';
-		}else{
-			$img = '<img src="/conta6/Resources/iconos/cross.svg" style="margin-top:-4px" class="w-25">';
-		}
-
-		$lst_cuentas .=
-	  "<tr class='row m-0 borderojo pt-2 pb-1 p-0 text-center'>
-	      <td class='sm font12 p-0'>$row[pk_id_cuenta]</td>
-	      <td class='text-left font12 gde p-0'>$row[s_cta_desc]</td>
-	      <td class='small p-0'>$row[s_cta_tipo]</td>
-	      <td class='small p-0'>$row[s_cta_nivel]</td>
-	      <td class='small p-0'>$txt_captura</td>
-	      <td class='small p-0'>$row[fk_codAgrup]</td>
-	      <td class='small p-0'>$row[fk_id_naturaleza]</td>
-	      <td class='small p-0'>$img</td>
-	      <td class='small p-0'>$row[s_cta_identificador_tipo]</td>
-	      <td class='small p-0'>$row[s_cta_identificador]</td>
-	    </tr>";
-	}
+  // $root = $_SERVER['DOCUMENT_ROOT'];
+  // //require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+	// require $root . '/conta6/Ubicaciones/encabezadoImpresion.php';
+  //
+  //
+	// $sql_Select = "SELECT * from conta_cs_cuentas_mst ORDER BY pk_id_cuenta";
+  // $stmt = $db->prepare($sql_Select);
+	// if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
+	// if (!($stmt->execute())) { die("Error during query prepare [$stmt->errno]: $stmt->error"); }
+	// $rslt = $stmt->get_result();
+	// $rows = $rslt->num_rows;
+  //
+	// while ($row = $rslt->fetch_assoc()) {
+	// 	if( $row['s_cta_status'] == 1 ){ $txt_captura = "Permitido"; }else{ $txt_captura = "Denegado"; }
+	// 	if( $row['s_cta_actividad'] == 1 ){
+	// 		$img = '<img src="/conta6/Resources/iconos/check.svg" style="margin-top:-4px" class="w-25">';
+	// 	}else{
+	// 		$img = '<img src="/conta6/Resources/iconos/cross.svg" style="margin-top:-4px" class="w-25">';
+	// 	}
+  //
+	// 	$lst_cuentas .=
+	//   "<tr class='row m-0 borderojo pt-2 pb-1 p-0 text-center'>
+	//       <td class='sm font12 p-0'>$row[pk_id_cuenta]</td>
+	//       <td class='text-left font12 gde p-0'>$row[s_cta_desc]</td>
+	//       <td class='small p-0'>$row[s_cta_tipo]</td>
+	//       <td class='small p-0'>$row[s_cta_nivel]</td>
+	//       <td class='small p-0'>$txt_captura</td>
+	//       <td class='small p-0'>$row[fk_codAgrup]</td>
+	//       <td class='small p-0'>$row[fk_id_naturaleza]</td>
+	//       <td class='small p-0'>$img</td>
+	//       <td class='small p-0'>$row[s_cta_identificador_tipo]</td>
+	//       <td class='small p-0'>$row[s_cta_identificador]</td>
+	//     </tr>";
+	// }
 
 
 ?>
-<body <?php if( $accion == "I" ){ echo "onload='print();'"; } ?> >
+<!-- <body <?php if( $accion == "I" ){ echo "onload='print();'"; } ?> >
 <table class="table table-hover">
 	<thead class="font18">
 		<tr class="row encabezado m-0">
@@ -58,4 +58,4 @@
 		</tr>
 				<?php echo $lst_cuentas; ?>
 	</tbody>
-</table>
+</table> -->

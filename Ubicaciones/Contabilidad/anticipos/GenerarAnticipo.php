@@ -3,10 +3,10 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-<div class="row submenuMed m-0">
-  <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
+<div class="row backpink m-0">
+  <ul class="nav nav-pills nav-fill w-100">
     <li class="nav-item">
-      <a class="nav-link consultar" id="submenuMed">GENERAR ANTICIPO</a>
+      <a class="nav-link" id="submenuMed">GENERAR ANTICIPO</a>
     </li>
   </ul>
 </div>
@@ -17,7 +17,7 @@
 <div id="anticipos" class="contorno text-center">
   <table class="table form1 font14">
     <tbody>
-      <tr class="row m-0 mt-5">
+      <tr class="row m-0 mt-3">
         <td class="col-md-2 input-effect">
           <input class="efecto tiene-contenido" type="date" id="antfecha">
           <label for="antfecha">Fecha Anticipo</label>

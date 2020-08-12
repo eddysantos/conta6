@@ -105,6 +105,10 @@ $(document).ready(function(){
         $('#gSolicitud').fadeIn();
         $('#SeleccionarAccion').slideUp();
           break;
+        case "generarST":
+        $('#generarSinDatos').fadeIn();
+        $('#SeleccionarAccion').slideUp();
+          break;
 
         default:
           console.error("Something went terribly wrong...");
@@ -132,11 +136,11 @@ $(document).ready(function(){
       $('#SeleccionarAccion').slideDown();
         break;
       case "cuadroConsultar":
-      $('#repoSol').fadeOut();
+      $('#repoSol-trafico').fadeOut();
       $('#SeleccionarAccion').slideDown();
         break;
       case "cuadroDatosSol":
-      $('#datosSol').fadeOut();
+      $('#generarSinDatos').fadeOut();
       $('#SeleccionarAccion').slideDown();
         break;
       default:
@@ -154,14 +158,40 @@ $(document).ready(function(){
 
 
 // SOLICITUD DE ANTICIPO
-  $('#mostrarConsulta').submit(function(){
-    $('#repoSol').fadeIn();
+  $('#mostrarConsulta-trafico').submit(function(){
+    $('#repoSol-trafico').fadeIn();
     $('#buscarRef').slideUp();
+
+    var data = {
+      id_captura: $('#bRef-trafico').val(),
+      accion: 'consulMod',
+      aduana: '240'
+    }
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_lstCapturadas.php",
+      data: data,
+      success: 	function(r){
+        console.log(r);
+      r = JSON.parse(r);
+        if (r.code == 1) {
+          console.log(r);
+          $('#lst_proformas').html(r.data);
+        } else {
+          swal("Error", "La cuenta o Referencia no existen", "error");
+          console.error(r.message);
+        }
+      },
+      error: function(x){
+        console.error(x);
+      }
+    });
+
   });
+
 
   $('#mostrarGenerar').submit(function(){
     $('#datosSol').fadeIn();
-    $('#gSolicitud').slideUp();
   });
 
 

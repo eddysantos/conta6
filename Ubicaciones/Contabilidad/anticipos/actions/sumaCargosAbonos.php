@@ -10,7 +10,7 @@
   $importeAnt = $_POST['importeAnt'];
 
   //totales
-  $oRst_STPD_sql = "select fk_id_anticipo,SUM(n_cargo)as SUMA_CARGOS, SUM(n_abono)as SUMA_ABONOS from conta_t_anticipos_det where fk_id_anticipo = ? group by fk_id_anticipo ";
+  $oRst_STPD_sql = "SELECT fk_id_anticipo,SUM(n_cargo) AS SUMA_CARGOS, SUM(n_abono) AS SUMA_ABONOS FROM conta_t_anticipos_det WHERE fk_id_anticipo = ? GROUP BY fk_id_anticipo ";
   $stmtTotales = $db->prepare($oRst_STPD_sql);
   if (!($stmtTotales)) { die("Error during query prepare [$db->errno]: $db->error");	}
   $stmtTotales->bind_param('s', $id_anticipo);

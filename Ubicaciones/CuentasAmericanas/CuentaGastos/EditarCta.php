@@ -306,31 +306,31 @@
               </td>
             </tr>
 
-            <tr class="row m-0">
-              <td class="col-md-2 offset-md-8 text-right pt-3">Less Advance 1 :</td>
-              <td class="col-md-1 pt-1">
+            <tr class="row m-0 align-items-center">
+              <td class="col-md-2 offset-md-8 text-right">Less Advance 1 :</td>
+              <td class="col-md-1">
                 <input class="efecto" type="text">
               </td>
-              <td class="col-md-1 pt-1">
+              <td class="col-md-1">
                 <input class="efecto" type="text">
               </td>
             </tr>
 
-            <tr class="row m-0">
-              <td class="col-md-2 offset-md-8 text-right pt-3">Less Advance 2 :</td>
-              <td class="col-md-1 pt-1">
+            <tr class="row m-0 align-items-center">
+              <td class="col-md-2 offset-md-8 text-right">Less Advance 2 :</td>
+              <td class="col-md-1">
                 <input class="efecto" type="text">
               </td>
-              <td class="col-md-1 pt-1">
+              <td class="col-md-1">
                 <input class="efecto" type="text">
               </td>
             </tr>
-            <tr class="row m-0">
-              <td class="col-md-2 offset-md-8 text-right pt-3">Total :</td>
-              <td class="col-md-1 pt-1">
+            <tr class="row m-0 align-items-center">
+              <td class="col-md-2 offset-md-8 text-right">Total :</td>
+              <td class="col-md-1">
                 <input class="boton h30" type="button" value="Calculate">
               </td>
-              <td class="col-md-1 pt-1">
+              <td class="col-md-1">
                 <input class="efecto border-0" type="text" disabled>
               </td>
             </tr>

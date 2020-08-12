@@ -3,20 +3,20 @@
   require $root . '/conta6/Ubicaciones/barradenavegacion.php';
 ?>
 
-  <div class="row submenuMed m-0">
-    <ul class="nav nav-pills nav-fill w-100" id="selecTipoPoliza">
+  <div class="row backpink m-0">
+    <ul class="nav nav-fill w-100">
       <li class="nav-item">
-        <a class="nav-link" id="submenuMed">GENERAR CHEQUE</a>
+        <a class="nav-link">GENERAR CHEQUE</a>
       </li>
     </ul>
   </div>
 
 
 <!--COMIENZA CHEQUES  -->
-  <div id="cheques" class="contorno text-center">
-    <table class="table form1 font14">
+  <div id="cheques" class="contorno text-center" style="<?php echo $marginbottom ?>">
+    <table class="table font14">
       <tbody>
-        <tr class="row m-0 mt-5">
+        <tr class="row mt-3">
           <td class="col-md-3 input-effect">
   		  	  <input type="hidden" id="txt_aduana" value="<?php echo $aduana; ?>">
   			    <input type="hidden" id="txt_usuario" value="<?php echo $usuario; ?>">
@@ -37,24 +37,24 @@
             <label for="cheimporte">Importe</label>
           </td>
         </tr>
-        <tr class="row mt-3 m-0">
-          <td class="col-md-12 sub2" style="font-size:14px!important">Páguese a la orden de:</td>
+        <tr class="row mt-3">
+          <td class="col-md-12 sub2 font14 p-0">Páguese a la orden de:</td>
         </tr>
-		    <tr class="row m-0 mt-1">
+		    <tr class="row mt-1">
           <td class="col-md-3">
-            <input class="chebeneficiario efecto" type="submit" value="Beneficiario">
+            <button type="button" class="chebeneficiario btn-outline-secondary efecto">Beneficiario</button>
 		      </td>
           <td class="col-md-3">
-            <input class="checliente efecto" type="submit" value="Cliente">
+            <button type="button" class="checliente btn-outline-secondary efecto">Cliente</button>
 		      </td>
           <td class="col-md-3">
-            <input class="cheempleado efecto" type="submit" value="Empleado">
+            <button type="button" class="cheempleado btn-outline-secondary efecto">Empleado</button>
           </td>
           <td class="col-md-3">
-            <input class="cheproveedor efecto" type="submit" value="Proveedor">
+            <button type="button" class="cheproveedor btn-outline-secondary efecto">Proveedor</button>
 		      </td>
         </tr>
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-3">
           <td class="col-md-12 input-effect" style="display:none" id="chebeneficiario1">
             <input class="efecto popup-input" id="chebeneficiario" type="text" id-display="#popup-display-chebeneficiario" action="beneficiarios" db-id="" autocomplete="off">
             <div class="popup-list" id="popup-display-chebeneficiario" style="display:none"></div>
@@ -79,19 +79,19 @@
             <label for="cheproveedor">Proveedor</label>
           </td>
         </tr>
-        <tr class="row m-0 mt-4">
+        <tr class="row mt-3">
           <td class="col-9 input-effect">
             <input id="checoncepto" class="efecto" type="text" onchange="eliminaBlancosIntermedios(this);">
             <label for="checoncepto">Concepto</label>
           </td>
           <td class="col-md-3">
-		  	    <input type="hidden" id="opcionActivada" db-id>
-            <a href="#" class="boton" id="btn_genFolioCheque"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR CHEQUE</a><!--nueva pagina, ingresar datos en poliza-->
+		  	    <input type="hidden" id="opcionActivada">
+            <a href="#" class="boton p-1" id="btn_genFolioCheque"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR CHEQUE</a>
           </td>
         </tr>
       </tbody>
     </table>
-  </div><!--/Termina Generar Poliza de Ingreso-->
+  </div>
 
 <?php
 require $root . '/conta6/Ubicaciones/footer.php';

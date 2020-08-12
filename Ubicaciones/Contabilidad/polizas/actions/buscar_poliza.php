@@ -65,23 +65,27 @@ if( $totalRegistros_POLIZA_MST > 0 ){
 
 			if( $Tipo == 1 || $Tipo == 3 || $Tipo == 4 || $Tipo == 5 ){
 				if( $Tipo == 3 ){
-
-					#'*************************************************************************************************
-					#'* LAS POLIZAS DE TIPO 3 SON DE FACTURAS, TODO LO DE FACTURA ELECTRONICA NO SE PERMITE MODIFICAR *
-					#'*************************************************************************************************
-
-					$fecha_poliza = strtotime(date_format(date_create($oRst_POLIZA_MST["d_fecha"]),"Y-m-d H:i:s"));
-					$fecha_fac_elect = strtotime("01/01/2011");
-
-					if( $fecha_poliza < $fecha_fac_elect ){
-						//header('Location: '.$rutaPolDiario);
-						//$ruta = $rutaPolDiario;
-						echo "<body onLoad='redirec(".$Tipo.")'></body>";
+					if( $oRst_permisos['s_modifica_polizasTipo3'] == 1 ){
+							echo "<body onLoad='redirec(".$Tipo.")'></body>";
 					}else{
-						echo "
-						<div class='container-fluid pantallaGris'>
-							<div class='tituloSinRegistros font16'><font color=#E52727>La póliza no puede ser modificada por pertenecer a una </br> <b>FACTURA ELECTRÓNICA</font></div>
-						</div>";
+
+						#'*************************************************************************************************
+						#'* LAS POLIZAS DE TIPO 3 SON DE FACTURAS, TODO LO DE FACTURA ELECTRONICA NO SE PERMITE MODIFICAR *
+						#'*************************************************************************************************
+
+						$fecha_poliza = strtotime(date_format(date_create($oRst_POLIZA_MST["d_fecha"]),"Y-m-d H:i:s"));
+						$fecha_fac_elect = strtotime("01/01/2011");
+
+						if( $fecha_poliza < $fecha_fac_elect ){
+							//header('Location: '.$rutaPolDiario);
+							//$ruta = $rutaPolDiario;
+							echo "<body onLoad='redirec(".$Tipo.")'></body>";
+						}else{
+							echo "
+							<div class='container-fluid pantallaGris'>
+								<div class='tituloSinRegistros font16'><font color=#E52727>La póliza no puede ser modificada por pertenecer a un </br> <b>C F D I</font></div>
+							</div>";
+						}
 					}
 				}
 
@@ -112,10 +116,10 @@ if( $totalRegistros_POLIZA_MST > 0 ){
 					$sql_POLIZA_nom = mysqli_query($db,"SELECT fk_id_poliza, pol_cancela, fk_id_polizaPago FROM tbl_nom_nominacfdi WHERE fk_id_poliza = $Poliza or pol_cancela = $Poliza or fk_id_polizaPago = $Poliza");
 					$totalRegistros_POLIZA_nom = mysqli_num_rows($sql_POLIZA_nom);
 					if( $totalRegistros_POLIZA_nom > 0 ){
-						if( $sql_Permisos['s_modifica_polizasNomina'] == 1 && $Accion == 'modificar' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
-							if( $sql_Permisos['s_consulta_polizasNomina'] == 1 && $Accion == 'consultar' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
-								if( $sql_Permisos['s_modifica_polizasNomina'] == 1 && $Accion == 'proveedor' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
-									if( $sql_Permisos['s_consulta_polizasNomina'] == 1 && $Accion == 'proveedor' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
+						if( $oRst_permisos['s_modifica_polizasNomina'] == 1 && $Accion == 'modificar' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
+							if( $oRst_permisos['s_consulta_polizasNomina'] == 1 && $Accion == 'consultar' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
+								if( $oRst_permisos['s_modifica_polizasNomina'] == 1 && $Accion == 'proveedor' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
+									if( $oRst_permisos['s_consulta_polizasNomina'] == 1 && $Accion == 'proveedor' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
 										echo "
 
 										<div class='container-fluid pantallaGris'>
@@ -159,7 +163,7 @@ if( $totalRegistros_POLIZA_MST > 0 ){
   						$sql_POLIZA_nom = mysqli_query($db,"SELECT fk_id_poliza, pol_cancela, fk_id_polizaPago FROM tbl_nom_nominacfdi WHERE fk_id_poliza = $Poliza or pol_cancela = $Poliza or fk_id_polizaPago = $Poliza");
   						$totalRegistros_POLIZA_nom = mysqli_num_rows($sql_POLIZA_nom);
   						if( $totalRegistros_POLIZA_nom > 0 ){
-  							if( $sql_Permisos['s_consulta_polizasNomina'] == 1 && $Accion == 'consultar' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
+  							if( $oRst_permisos['s_consulta_polizasNomina'] == 1 && $Accion == 'consultar' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
   								echo "
 									<div class='container-fluid pantallaGris'>
 							      <div class='tituloSinRegistros font16'><font color=#E52727>La póliza pertenece a una </br> <b>NÓMINA</font></div>

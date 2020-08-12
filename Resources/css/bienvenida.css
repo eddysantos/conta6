@@ -1,5 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Dosis:400,500');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500');
+/* @import url('https://fonts.googleapis.com/css?family=Dosis:400,500');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500'); */
+
+@font-face {
+  font-family: Barlow;
+  src: url(/SpectrumTools/Resources/fonts/Barlow/Barlow-Regular.ttf);
+}
+
+body {
+  overflow-x: hidden;
+  font-family: Barlow!important;
+}
 
 *{
   box-sizing: border-box;
@@ -20,7 +30,7 @@
 } */
 body{
   color: #989898 !important;
-  font-family: 'Montserrat', sans-serif!important;
+  /* font-family: 'Montserrat', sans-serif!important; */
   /* font-size:1.2em!important; */
 }
 h1{

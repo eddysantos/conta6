@@ -28,8 +28,8 @@ $rows_depositosCliente = $rslt_depositosCliente->num_rows;
 
 if( $rows_depositosCliente > 0 ){
   while ($row_depositosCliente = $rslt_depositosCliente->fetch_assoc()) {
-    $deposito = $row_depositosCliente[fk_anticipo];
-    $importe = $row_depositosCliente[n_abono];
+    $deposito = $row_depositosCliente['fk_anticipo'];
+    $importe = $row_depositosCliente['n_abono'];
 
     $depositosSinAplicar .= "<tr class='row'>
       <td class='col-md-6 nomCLT'>$CLT_nombre</td>
@@ -44,9 +44,10 @@ if( $rows_depositosCliente > 0 ){
       </td>
     </tr>";
   }
-}else{
-  $depositosSinAplicar = "<tr class='row'>
-    <td colspan='4'>NO HAY ANTICIPOS PARA ESTA REFRENCIA</td>
-  </tr>";
 }
+// else{
+//   $depositosSinAplicar = "<tr class='row'>
+//     <td colspan='4'>NO HAY ANTICIPOS PARA ESTA REFRENCIA</td>
+//   </tr>";
+// }
 ?>

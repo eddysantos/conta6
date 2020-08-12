@@ -112,8 +112,10 @@ if (!($stmt_antDET->execute())) {
 }
 
 if( $id_poliza > 0 ){
+		$mesPoliza = date_format(date_create($fecha),'m');
+
 		//actualizando POLMST - actualiza la fecha y concepto de poliza
-		$query_polMST = "UPDATE conta_t_polizas_mst SET d_fecha=?, s_concepto = ?
+		$query_polMST = "UPDATE conta_t_polizas_mst SET d_fecha=?, s_concepto = ?, d_mes = ?
 										WHERE pk_id_poliza=?";
 
 		$stmt_polMST = $db->prepare($query_polMST);
@@ -123,7 +125,7 @@ if( $id_poliza > 0 ){
 			exit_script($system_callback);
 		}
 
-		$stmt_polMST->bind_param('sss', $fecha,$concepto,$id_poliza);
+		$stmt_polMST->bind_param('ssss', $fecha,$concepto,$mesPoliza,$id_poliza);
 		if (!($stmt_polMST)) {
 			$system_callback['code'] = "500";
 			$system_callback['message'] = "Error during variables binding POLMST [$stmt_polMST->errno]: $stmt_polMST->error";
@@ -139,7 +141,7 @@ if( $id_poliza > 0 ){
 
 
 		//actualizando POLDET - actualiza la fecha a todos los registros del detalle *********************************************************************
-		$query_polDET = "UPDATE conta_t_polizas_det SET d_fecha=? WHERE fk_id_poliza=?";
+		$query_polDET = "UPDATE conta_t_polizas_det SET d_fecha=?, d_mes WHERE fk_id_poliza=?";
 
 		$stmt_polDET = $db->prepare($query_polDET);
 		if (!($stmt_polDET)) {
@@ -148,7 +150,7 @@ if( $id_poliza > 0 ){
 			exit_script($system_callback);
 		}
 
-		$stmt_polDET->bind_param('ss', $fecha,$id_poliza);
+		$stmt_polDET->bind_param('sss', $fecha,$mesPoliza,$id_poliza);
 		if (!($stmt_polDET)) {
 			$system_callback['code'] = "500";
 			$system_callback['message'] = "Error during variables binding POLDET [$stmt_polDET->errno]: $stmt_polDET->error";
@@ -197,7 +199,7 @@ if( $id_poliza > 0 ){
 
 		//actualizando POLDEL - actualiza el registro que corresponde a anticipoMST *************************************************************
 		$query_partAnt = "UPDATE conta_t_polizas_det
-										SET n_cargo = ?,fk_id_cliente = ?,fk_id_cuenta = ?,s_desc=?
+										SET n_cargo = ?,fk_id_cliente = ?,fk_id_cuenta = ?,s_desc = ?, d_mes = ?
 										WHERE s_idDocumento = 'anticipoMST' AND fk_idRegistro = ? AND fk_id_poliza=?";
 
 		$stmt_partAnt = $db->prepare($query_partAnt);
@@ -207,7 +209,7 @@ if( $id_poliza > 0 ){
 			exit_script($system_callback);
 		}
 
-		$stmt_partAnt->bind_param('ssssss',$valor,$cliente,$cta,$cta_desc,$id_anticipo,$id_poliza);
+		$stmt_partAnt->bind_param('sssssss',$valor,$cliente,$cta,$cta_desc,$mesPoliza,$id_anticipo,$id_poliza);
 		if (!($stmt_partAnt)) {
 			$system_callback['code'] = "500";
 			$system_callback['message'] = "Error during variables binding POLDET [$stmt_partAnt->errno]: $stmt_partAnt->error";
@@ -301,33 +303,38 @@ while($rowPOL = $rsltPOL->fetch_assoc()){
 		exit_script($system_callback);
 	}
 	$rsltTRANSFER = $stmtTRANSFER->get_result();
-	/* FALTA TERMINAR
-		// CFDI CompNal
-		if( $factura > 0 || $notaCred > 0 ){
+
+
+
+	// CFDI CompNal
+	if( $factura > 0 || $notaCred > 0 ){
+		$partidaDoc = $rowPOL['pk_partida'];
+		$tipoInf = 'CompNal';
+
 			if( $notaCred > 0 ){
-				$oRst_datosNC = mysqli_fetch_array( mysqli_query($link,"SELECT Fac_RFC,UUID,Total_Honorarios
-																				FROM TBL_NOTACREDITO_CFDI
-																				WHERE ID_NC = $notaCred and Id_Referencia = '$referencia' "));
+				require $root . '/conta6/Resources/PHP/actions/consultaNotaCreditoCapturaTimbrada.php';
 				$tipoDetalle = 'CompNal';
-				$RFC = $oRst_datosNC['Fac_RFC'];
-				$UUID_CFDI = $oRst_datosNC['UUID'];
-				$monto = $oRst_datosNC['Total_Honorarios'];
+				$RFC = $row_ncCaptTim['s_rfc'];
+				$UUID = $row_ncCaptTim['s_UUID'];
+				$importe = $row_ncCaptTim['n_importeNC'];
+				$BeneficiarioOpc = $row_ncCaptTim['s_nombre'];
 			}else{
 				if( $factura > 0 && $notaCred == 0 ){
-					$oRst_datosFactura = mysqli_fetch_array( mysqli_query($link,"SELECT Fac_RFC,UUID,Total_Honorarios
-																				FROM TBL_FACTURAS_CFD
-																				WHERE id_factura = $factura and id_referencia = '$referencia' "));
+					require $root . '/conta6/Resources/PHP/actions/consultaFacturaCaptura.php';
 					$tipoDetalle = 'CompNal';
-					$RFC = $oRst_datosFactura['Fac_RFC'];
-					$UUID_CFDI = $oRst_datosFactura['UUID'];
-					$monto = $oRst_datosFactura['Total_Honorarios'];
+					$RFC = $row_facCapt['s_rfc'];
+					$UUID = $row_facCapt['s_UUID'];
+					$importe = $row_facCapt['n_total_honorarios'];
+					$BeneficiarioOpc = $row_facCapt['s_nombre'];
 				}
 			}
-			mysqli_query($link,"INSERT INTO TBL_POLIZAS_DET_PARTIDA (partidaDoc,tipo,tipoDetalle,RFC,UUID_CFDI,monto,usuario_alta)values
-			($partidaDoc,$tipo,'CompNal','$RFC','$UUID_CFDI',$monto,'$usuario')");
-		}
-	*/
+
+			require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
 	}
+
+
+
+}
 
 $system_callback['data'] .= $nFolio;
 $system_callback['code'] = 1;

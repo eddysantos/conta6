@@ -12,10 +12,14 @@ $concepto = trim($_POST['diaconcepto']);
 
 $fechaDoc = date_format(date_create($fecha),'Y-m-d');
 
+if(!isset($mesPoliza)){
+  $mesPoliza = date_format(date_create($fecha),'m');
+}
+
 $system_callback = [];
 
-$queryInsert = "INSERT INTO conta_t_polizas_mst (d_fecha,fk_usuario,fk_id_aduana,s_concepto)
-           		 VALUES (?,?,?,?)";
+$queryInsert = "INSERT INTO conta_t_polizas_mst (d_fecha,fk_usuario,fk_id_aduana,s_concepto,d_mes)
+           		 VALUES (?,?,?,?,?)";
 
 $stmtInsert = $db->prepare($queryInsert);
 if (!($stmtInsert)) {
@@ -24,7 +28,7 @@ if (!($stmtInsert)) {
   exit_script($system_callback);
 }
 
-$stmtInsert->bind_param('ssss',$fechaDoc,$usuario,$aduana,$concepto);
+$stmtInsert->bind_param('sssss',$fechaDoc,$usuario,$aduana,$concepto,$mesPoliza);
 if (!($stmtInsert)) {
 	$system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmtInsert->errno]: $stmtInsert->error";

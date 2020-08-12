@@ -23,10 +23,10 @@ if ($rslt_ConceptosCliente->num_rows == 0) {
 if ($rslt_ConceptosCliente->num_rows > 0) {
     $ConceptosCliente = "<option selected value='0'>Seleccione un concepto</option>";
   while ($row_ConceptosCliente = $rslt_ConceptosCliente->fetch_assoc()) {
-    $s_descripcion = trim(utf8_encode($row_ConceptosCliente[s_descripcion]));
-    $id_cuenta =  trim($row_ConceptosCliente[fk_id_cuenta]);
-    $c_ClaveProdServ =  trim($row_ConceptosCliente[fk_c_ClaveProdServ]);
-    $importe =  trim($row_ConceptosCliente[n_importe]);
+    $s_descripcion = trim(utf8_encode($row_ConceptosCliente['s_descripcion']));
+    $id_cuenta =  trim($row_ConceptosCliente['fk_id_cuenta']);
+    $c_ClaveProdServ =  trim($row_ConceptosCliente['fk_c_ClaveProdServ']);
+    $importe =  trim($row_ConceptosCliente['n_importe']);
 
     $ConceptosCliente .= "<option value='$id_cuenta+$c_ClaveProdServ+$importe+$s_descripcion'>$s_descripcion $importe</option>";
   }

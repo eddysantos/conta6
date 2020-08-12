@@ -8,7 +8,7 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_replica_clientes WHERE (pk_id_cliente LIKE ? OR s_nombre LIKE ?) ORDER BY s_nombre ";
+$query = "SELECT * FROM conta_replica_clientes WHERE (pk_id_cliente LIKE ? OR s_nombre LIKE ? or s_rfc LIKE ?) ORDER BY s_nombre ";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -17,7 +17,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ss', $text, $text);
+$stmt->bind_param('sss', $text, $text, $text);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
@@ -42,7 +42,7 @@ if ($rslt->num_rows == 0) {
 
 while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
-  "<p db-id='$row[pk_id_cliente]'>$row[pk_id_cliente] - $row[s_nombre]</p>";
+  "<p db-id='$row[pk_id_cliente]'>$row[pk_id_cliente] - $row[s_nombre] - $row[s_rfc]</p>";
 }
 
 $system_callback['code'] = 1;

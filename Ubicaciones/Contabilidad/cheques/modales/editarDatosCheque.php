@@ -14,11 +14,23 @@
   $rowMST = $rslt->fetch_assoc();
 
   $opcion = $rowMST['s_tipoOrdenante'];
-  if( $opcion == "BEN" ){ $idBen = $rowMST['fk_idOrd']; $nomBen = $rowMST['s_nomOrd']; }
-  if( $opcion == "CLT" ){ $idClt = $rowMST['fk_idOrd']; $nomClt = $rowMST['s_nomOrd']; }
-  if( $opcion == "EMPL" ){ $idEmp = $rowMST['fk_idOrd']; $nomEmp = $rowMST['s_nomOrd']; }
-  if( $opcion == "PROV" ){ $idProv = $rowMST['fk_idOrd']; $nomProv = $rowMST['s_nomOrd']; }
-echo $opcion;
+  if( $opcion == "BEN"){
+    $idBen = $rowMST['fk_idOrd'];
+    $nomBen = $rowMST['s_nomOrd'];
+  }
+  if( $opcion == "CLT"){
+    $idClt = $rowMST['fk_idOrd'];
+    $nomClt = $rowMST['s_nomOrd'];
+  }
+  if( $opcion == "EMPL"){
+    $idEmp = $rowMST['fk_idOrd'];
+    $nomEmp = $rowMST['s_nomOrd'];
+  }
+  if( $opcion == "PROV"){
+    $idProv = $rowMST['fk_idOrd'];
+    $nomProv = $rowMST['s_nomOrd'];
+  }
+// echo $opcion;
 
 
 ?>

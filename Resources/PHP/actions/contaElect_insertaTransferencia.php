@@ -20,17 +20,32 @@ $TipCamb
 $BeneficiarioOpc
 $RFCopc
 $usuario_modifi
+$observ
 */
 
-$queryTRANSFER = "INSERT INTO conta_t_polizas_det_contaelec
-                              (fk_id_poliza,fk_partidaPol,fk_tipo,s_tipoDetalle,
-                              s_ctaOri,s_BancoOri,s_BancoOriExt,
-                              s_CtaDest,s_BancoDest,s_BancoDestExt,
-                              d_fecha,s_Beneficiario,s_RFC,
-                              n_monto,s_moneda,n_TipCamb,
-                              s_BeneficiarioOpc,s_RFCopc,
-                              s_usuario_modifi)
-                              VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$queryTRANSFER = "INSERT INTO conta_t_polizas_det_contaelec(
+                                                              fk_id_poliza,
+                                                              fk_partidaPol,
+                                                              fk_tipo,
+                                                              s_tipoDetalle,
+                                                              s_ctaOri,
+                                                              s_BancoOri,
+                                                              s_BancoOriExt,
+                                                              s_CtaDest,
+                                                              s_BancoDest,
+                                                              s_BancoDestExt,
+                                                              d_fecha,
+                                                              s_Beneficiario,
+                                                              s_RFC,
+                                                              n_monto,
+                                                              s_moneda,
+                                                              n_TipCamb,
+                                                              s_BeneficiarioOpc,
+                                                              s_RFCopc,
+                                                              s_usuario_modifi,
+                                                              s_observaciones
+                                                            )
+                              VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmtTRANSFER = $db->prepare($queryTRANSFER);
 if (!($stmtTRANSFER)) {
   $system_callback['code'] = "500";
@@ -38,7 +53,7 @@ if (!($stmtTRANSFER)) {
   exit_script($system_callback);
 }
 
-$stmtTRANSFER->bind_param('sssssssssssssssssss',$fk_id_poliza,
+$stmtTRANSFER->bind_param('ssssssssssssssssssss',$fk_id_poliza,
                                                 $partidaPol,
                                                 $tipo,
                                                 $tipoDetalle,
@@ -56,7 +71,8 @@ $stmtTRANSFER->bind_param('sssssssssssssssssss',$fk_id_poliza,
                                                 $TipCamb,
                                                 $BeneficiarioOpc,
                                                 $RFCopc,
-                                                $usuario_modifi);
+                                                $usuario_modifi,
+                                                $observ);
 
 if (!($stmtTRANSFER)) {
   $system_callback['code'] = "500";

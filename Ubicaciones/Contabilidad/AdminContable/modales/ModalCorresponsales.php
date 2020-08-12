@@ -1,103 +1,49 @@
-<!--AGREGAR NUEVO CORRESPONSAL-->
-<!-- <div class="modal fade text-center" id="NuevoCorresponsal" style="margin-top:50px">
+
+<div class="modal fade text-center" id="addCorresp" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Agregar Nuevo Corresposal</h5>
+    <div class="modal-content m_bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Corresponsal</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
-        <div class="container-fluid">
-          <div id="" class="contorno">
-            <table class="table form1 m-0">
-              <tbody class="font14">
-                <tr class="row mt-4">
-                  <td class="col-md-12 input-effect">
-                    <input id="correponsal" class="efecto" type="text">
-                    <label for="correponsal">Corresponsal</label>
+        <div class="text-center font14">
+          <div class="contorno mt-3">
+            <table class="table">
+              <input id='dbCorresp' type='hidden' value=''>
+              <tbody>
+                <tr class='row m-0 justify-content-center align-items-center mt-3'>
+                  <td class='col-md-8 input-effect'>
+                    <input class='efecto popup-input' id='corp-clientem' type='text' id-display='#popup-corp-clienteM' action='clientes_NoTieneCorresponsal' db-id='' autocomplete='off'>
+                    <div class='popup-list' id='popup-corp-clienteM' style='display:none'></div>
+                    <label for='corp-clientem'>Cliente</label>
                   </td>
-                </tr>
-                <tr class="row mt-4">
-                  <td class="col-md-4 input-effect">
-                    <input id="calle" class="efecto" type="text">
-                    <label for="calle">Calle</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input id="numext" class="efecto" type="text">
-                    <label for="numext">Num.Ext</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input id="numint" class="efecto" type="text">
-                    <label for="numint">Num.Int</label>
-                  </td>
-                  <td class="col-md-4 input-effect">
-                    <input id="colinia" class="efecto" type="text">
-                    <label for="colinia">Colonia</label>
-                  </td>
-                </tr>
-                <tr class="row mt-4">
-                  <td class="col-md-3 input-effect">
-                    <input id="codigo" class="efecto" type="text">
-                    <label for="codigo">Codigo</label>
-                  </td>
-                  <td class="col-md-3 input-effect">
-                    <input id="ciudad" class="efecto" type="text">
-                    <label for="ciudad">Ciudad</label>
-                  </td>
-                  <td class="col-md-3 input-effect">
-                    <input id="estado" class="efecto" type="text">
-                    <label for="estado">Estado</label>
-                  </td>
-                  <td class="col-md-3 input-effect">
-                    <input id="rfc" class="efecto" type="text">
-                    <label for="rfc">RFC</label>
-                  </td>
-                </tr>
-                <tr class="row mt-4">
-                  <td class="col-md-4 input-effect">
-                    <input id="reprlegal" class="efecto" type="text">
-                    <label for="reprlegal">Representante Legal</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input id="repRFC" class="efecto" type="text">
-                    <label for="repRFC">RCF</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input id="contacto" class="efecto" type="text">
-                    <label for="contacto">Contacto</label>
-                  </td>
-                  <td class="col-md-4 input-effect">
-                    <input id="mail" class="efecto" type="text">
-                    <label for="mail">Correo Electronico</label>
-                  </td>
-                </tr>
-                <tr class="row mt-4">
-                  <td class="col-md-2 input-effect">
-                    <input id="telefono" class="efecto" type="text">
-                    <label for="telefono">Telefono</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input id="fax" class="efecto" type="text">
-                    <label for="fax">Fax</label>
-                  </td>
-                  <td class="col-md-8 input-effect">
-                    <input id="observaciones" class="efecto" type="text">
-                    <label for="observaciones">Observaciones</label>
-                  </td>
+                  <td id='nombreCorresp'></td>
                 </tr>
               </tbody>
+            </table>
+            <table class="table table-hover fixed-table mt-5">
+              <thead>
+                <tr class="row m-0 encabezado">
+                  <td class="col-md-6 text-right">CLIENTES ASIGNADOS AL CORRESPONSAL //</td>
+                  <td class="col-md-6 text-left" id="nombre"></td>
+                </tr>
+                <tr class="row m-0 sub2 font14">
+                  <td class="p-1 col-md-1"></td>
+                  <td class="p-1 col-md-4">CLIENTE</td>
+                  <td class="p-1 col-md-5">NOMBRE</td>
+                </tr>
+              </thead>
+              <tbody id="tablaClienteCorresponsales"></tbody>
             </table>
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <a href="" class="linkbtn">REGISTRAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-      </div>
     </div>
   </div>
-</div> -->
+</div>
 
 
 <!--EDITAR DATOS DEL CORRESPONSAL-->

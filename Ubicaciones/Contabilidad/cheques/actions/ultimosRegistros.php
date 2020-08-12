@@ -1,7 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-
+$system_callback = [];
 $id_cheque = trim($_POST['id_cheque']);
 $id_ctaMST = trim($_POST['id_ctaMST']);
 $idcheque_folControl = $_POST['idcheque_folControl'];
@@ -15,7 +15,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-//$stmt->bind_param('ss',$id_cheque,$id_ctaMST);
+// $stmt->bind_param('ss',$idcheque_folControl,$id_cheque);
 $stmt->bind_param('s',$idcheque_folControl);
 if (!($stmt)) {
   $system_callback['code'] = "500";
@@ -39,35 +39,42 @@ if ($rslt->num_rows == 0) {
 }
 
 while ($row = $rslt->fetch_assoc()) {
+  $fk_id_cuenta = trim($row['fk_id_cuenta']);
   $partida = $row['pk_partida'];
+  $abono = number_format($row['n_abono'],2);
+  $cargo = number_format($row['n_cargo'],2);
 
   $system_callback['data'] .=
-  "<tr class='row m-0 borderojo  pb-2 p-0' style='font-size:12px!important'>
-      <td class='xs'>
+  "<tr class='row m-0 borderojo p-0' style='font-size:12px!important'>
+      <td width='3%' class='p-0 pt-2'>
         <a href='#' onclick='borrarRegistroCheque($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
       </td>
-      <td class='pt-3 small p-0'>$row[fk_id_cuenta]</td>
-      <td class='pt-3 ssm p-0'>$row[fk_gastoAduana]</td>
-      <td class='pt-3 ssm p-0'>$row[fk_id_proveedor]</td>
-      <td class='pt-3 small p-0'>$row[fk_referencia]</td>
-      <td class='pt-3 small p-0'>$row[fk_id_cliente]</td>
-      <td class='pt-3 small p-0'>$row[s_folioCFDIext]</td>
-      <td class='pt-3 ssm p-0'>$row[fk_factura]</td>
-      <td class='pt-3 ssm p-0'>$row[fk_ctagastos]</td>
-      <td class='pt-3 ssm p-0'>$row[fk_pago]</td>
-      <td class='pt-3 small p-0'>$row[fk_nc]</td>
-      <td class='pt-3 small p-0'>$row[fk_anticipo]</td>
-      <td class='pt-3 ssm p-0'>$row[fk_id_cheque]</td>
-      <td class='pt-3 med p-0'>$row[s_desc]</td>
-      <td class='pt-3 small p-0'>$row[n_cargo]</td>
-      <td class='pt-3 small p-0'>$row[n_abono]</td>
-      <td class='pt-3 xxs'>
+      <td width='7%' class='p-0'>$fk_id_cuenta</td>
+      <td width='6%' class='p-0'>$row[fk_gastoAduana]</td>
+      <td width='6%' class='p-0'>$row[fk_id_proveedor]</td>
+      <td width='7%' class='p-0'>$row[fk_referencia]</td>
+      <td width='7%' class='p-0'>$row[fk_id_cliente]</td>
+      <td width='7%' class='p-0'>$row[s_folioCFDIext]</td>
+      <td width='6%' class='p-0'>$row[fk_factura]</td>
+      <td width='7%' class='p-0'>$row[fk_ctagastos]</td>
+      <td width='7%' class='p-0'>$row[fk_pago]</td>
+      <td width='6%' class='p-0'>$row[fk_nc]</td>
+      <td width='7%' class='p-0'>$row[fk_anticipo]</td>
+      <td width='7%' class='p-0'>$row[fk_id_cheque]</td>
+      <td width='7%' class='p-0'>$ $cargo</td>
+      <td width='7%' class='p-0'>$ $abono</td>
+      <td width='3%' class='p-0 pt-2'>
         <a href='#editarRegCheque' class='editar-partidaCh' db-id='$partida' data-toggle='modal'>
           <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
         </a>
       </td>
+
+      <td width='3%' class='p-0'></td>
+      <td width='7%' class='p-0'><b class='b'>Descripción : </b></td>
+      <td width='70%' class='text-left p-0'>$row[s_desc]</td>
     </tr>";
 }
+
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";

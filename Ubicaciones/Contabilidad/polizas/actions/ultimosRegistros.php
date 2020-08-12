@@ -34,33 +34,39 @@ if ($rslt->num_rows == 0) {
   exit_script($system_callback);
 }
 
+
 while ($row = $rslt->fetch_assoc()) {
   $fk_id_cuenta = trim($row['fk_id_cuenta']);
   $partida = $row['pk_partida'];
+  $abono = number_format($row['n_abono'],2);
+  $cargo = number_format($row['n_cargo'],2);
+
 
   $system_callback['data'] .=
-  "<tr class='row m-0 borderojo'>
-      <td class='xs'>
+  "<tr class='row borderojo'>
+      <td class='p-0 pt-2' width='3%'>
         <a href='#' onclick='borrarRegistro($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
       </td>
-      <td class='small pt-3 p-0'>$fk_id_cuenta</td>
-      <td class='small pt-3 p-0'>$row[fk_gastoAduana]</td>
-      <td class='small pt-3 p-0'>$row[fk_id_proveedor]</td>
-      <td class='small pt-3 p-0'>$row[fk_referencia]</td>
-      <td class='small pt-3 p-0'>$row[fk_id_cliente]</td>
-      <td class='small pt-3 p-0'>$row[s_folioCFDIext]</td>
-      <td class='small pt-3 p-0'>$row[fk_factura]</td>
-      <td class='small pt-3 p-0'>$row[fk_nc]</td>
-      <td class='small pt-3 p-0'>$row[fk_anticipo]</td>
-      <td class='small pt-3 p-0'>$row[fk_cheque]</td>
-      <td class='med pt-3 p-0'>$row[s_desc]</td>
-      <td class='small pt-3 p-0'>$row[n_cargo]</td>
-      <td class='small pt-3 p-0'>$row[n_abono]</td>
-      <td class='xs'>
+      <td class='p-0' width='8%'>$fk_id_cuenta</td>
+      <td class='p-0' width='8%'>$row[fk_gastoAduana]</td>
+      <td class='p-0' width='8%'>$row[fk_id_proveedor]</td>
+      <td class='p-0' width='8%'>$row[fk_referencia]</td>
+      <td class='p-0' width='8%'>$row[fk_id_cliente]</td>
+      <td class='p-0' width='8%'>$row[s_folioCFDIext]</td>
+      <td class='p-0' width='8%'>$row[fk_factura]</td>
+      <td class='p-0' width='8%'>$row[fk_nc]</td>
+      <td class='p-0' width='8%'>$row[fk_anticipo]</td>
+      <td class='p-0' width='6%'>$row[fk_cheque]</td>
+      <td class='p-0' width='8%'>$ $cargo</td>
+      <td class='p-0' width='8%'>$ $abono</td>
+      <td class='p-0 pt-2' width='3%'>
         <a href='#detpol-editarRegPolDiario' class='editar-partidaPol' db-id='$partida' role='button'>
           <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
         </a>
       </td>
+      <td class='p-0' width='3%'></td>
+      <td class='p-0' width='8%'><b class='b'>Descripción:</b></td>
+      <td class='p-0 text-left' width='70%'>$row[s_desc]</td>
     </tr>";
 }
 

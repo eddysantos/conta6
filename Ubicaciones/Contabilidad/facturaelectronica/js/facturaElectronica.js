@@ -10,6 +10,11 @@ $(document).ready(function(){
   $('#T_Nombre_Cliente').change();
 
 
+  $('#DGEcliente1000').change(function(){
+    alert('presione cliente');
+  })
+
+
 /**********************************************************************************************/
 
 
@@ -81,17 +86,53 @@ $(document).ready(function(){
         $('#buscarfactura').fadeOut();
         $('#CancelFactura').fadeIn();
           break;
+
+        case "cuadroCancelar2":
+        $('#buscarfactura').fadeOut();
+        $('#CancelFactura').fadeIn();
+          break;
+
+
         default:
           console.error("Something went terribly wrong...");
       }
     });
+
+  $('#mostrarConsultaObserv').submit(function(){
+      $('#m-cfdi').fadeIn();
+      $('#b-cfdi').slideUp();
+
+      var data = {
+        id_captura: $('#bRef').val()
+      }
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/6-observaciones_lstCapturadas.php",
+        data: data,
+        success: 	function(r){
+          console.log(r);
+        r = JSON.parse(r);
+          if (r.code == 1) {
+            console.log(r);
+            $('#lst_cfdi_capturadas').html(r.data);
+          } else {
+            swal("Error", "La cuenta o Referencia no existen", "error");
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+      });
+  });
 
   $('#mostrarConsulta').submit(function(){
     $('#m-ctagastos').fadeIn();
     $('#b-ctagastos').slideUp();
 
     var data = {
-      id_captura: $('#bRef').val()
+      id_captura: $('#bRef').val(),
+      accion: 'consulMod'
     }
     $.ajax({
       type: "POST",
@@ -104,6 +145,36 @@ $(document).ready(function(){
           console.log(r);
           $('#lst_cuentasGastos_capturadas').html(r.data);
         } else {
+          swal("Error", "La cuenta o Referencia no existen", "error");
+          console.error(r.message);
+        }
+      },
+      error: function(x){
+        console.error(x);
+      }
+    });
+  });
+
+  $('#mostrarConsulta').submit(function(){
+    $('#m-factura').fadeIn();
+    $('#b-ctagastos').slideUp();
+
+    var data = {
+      id_captura: $('#bRef').val(),
+      accion: 'timbrar'
+    }
+    $.ajax({
+      type: "POST",
+      url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_lstCapturadas.php",
+      data: data,
+      success: 	function(r){
+        console.log(r);
+      r = JSON.parse(r);
+        if (r.code == 1) {
+          console.log(r);
+          $('#lst_cuentasGastos_capturadas_timbrar').html(r.data);
+        } else {
+          swal("Error", "La cuenta o Referencia no existen", "error");
           console.error(r.message);
         }
       },
@@ -112,12 +183,6 @@ $(document).ready(function(){
       }
     });
 
-
-  });
-
-  $('#mostrarConsulta').submit(function(){
-    $('#m-factura').fadeIn();
-    $('#b-ctagastos').slideUp();
   });
 
   $('.visualizar').click(function(){
@@ -192,7 +257,7 @@ $(document).ready(function(){
 
   	$.ajax({
   		type: "POST",
-  		url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos_datosReferencia.php",
+  		url: "/Conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos_datosReferencia.php",
   		data: data,
   		success: 	function(r){
   		r = JSON.parse(r);
@@ -219,6 +284,7 @@ function asignar_facturarA(){
   nombre = $('#DGE_Lst_Datos option:selected').text();
   $('#id_cliente').val(idcliente);
   $('#nombreCliente').html(nombre);
+  $('#DGEcliente').val(0);
   buscaCuentascontables('ref',idcliente);
 }
 
@@ -228,9 +294,9 @@ function cargarClienteSinReferencia(){
 		buscaCuentascontables('sinref',idcliente);
 }
 function cargarOtroCliente(){
-  idcliente = $('#DGEcliente').attr('db-id');
-  nombre = $('#DGEcliente').val();
-  $('#id_cliente').val(idcliente);
+  idcliente = $('#DGEcliente').val();
+  nombre = $('#DGEcliente option:selected').text();
+  $('#DGE_idcliente').attr('val',idcliente).val(idcliente);
   $('#nombreCliente').html(nombre);
   $('#DGE_Lst_Datos').val(0);
   buscaCuentascontables('ref',idcliente);
@@ -271,6 +337,13 @@ function buscaCuentascontables(opcion,id_cliente){
 
       }
     });
+}
+
+function cargarFactura(){
+  $('#docto').val('CFDIfac');
+  folioNo = $('#DGEfacturas').val();
+  $('#folio').val(folioNo);
+  $('select#DGEproforma').val(0);
 }
 
 function cargarCtaAme(){
@@ -314,6 +387,35 @@ function validaDatosReferencia(){
   flete = $('#DGE_flete').val();
 
   window.location.replace('1-CuentaGastos_elaborar.php?referencia='+referencia+'&consolidado='+consolidado+'&entradas='+entradas+'&shipper='+shipper+'&inbond='+inbond+'&flete='+flete+'&id_cliente='+id_cliente+'&docto='+docto+'&opcionDoc='+opcionDoc+'&extraerfolio='+extraerfolio+'&cobrarFlete='+cobrarFlete+'&dias='+dias+'&tasa=IVA');
+}
+
+function validaDatosReferencia_ctaAme(){
+  id_cliente = $('#DGE_idcliente').val();
+  dias = $('#T_Dias').val();
+  extraerfolio = $('#folio').val();
+  opcionDoc = $('#opcionDoc').val();
+  docto = $('#docto').val();
+  cobrarFlete = $('#cobrarFlete').val();
+
+  if ( id_cliente == ""){
+    alertify.error("seleccione Cliente o Corresponsal");
+    return false;
+  }
+
+  if( dias == ""){
+    alertify.error("asigne un numero de dias");
+    $('#T_Dias').focus();
+    return false;
+  }
+
+  referencia = $('#DGE_referencia').val();
+  consolidado = $('#DGE_consolidado').val();
+  entradas = $('#DGE_entradas').val();
+  shipper = $('#DGE_shipper').val();
+  inbond = $('#DGE_inbond').val();
+  flete = $('#DGE_flete').val();
+
+  window.location.replace('CuentaGastos_elaborar.php?referencia='+referencia+'&consolidado='+consolidado+'&entradas='+entradas+'&shipper='+shipper+'&inbond='+inbond+'&flete='+flete+'&id_cliente='+id_cliente+'&docto='+docto+'&opcionDoc='+opcionDoc+'&extraerfolio='+extraerfolio+'&cobrarFlete='+cobrarFlete+'&dias='+dias+'&tasa=IVA');
 }
 
 function cargarCuentaSinReferencia(tasa){
@@ -390,6 +492,7 @@ $('#Lst_tarifa_general').change(function(){
 $('#T_POCME_Valor').keydown(function(e){
  if (e.keyCode == 9) {
    agregarImporte();
+   agregarImporte_CtaAme();
  }
 })
 
@@ -464,6 +567,7 @@ function agregarImporte(){
       newtr = newtr + "      <td class='col-md-1 p-2 text-left'>";
       newtr = newtr + btnEliminar;
       newtr = newtr + "      </td>";
+
       newtr = newtr + "      <td class='col-md-2 p-2'>";
       newtr = newtr + "        <input type='text' id='T_POCME_Importe"+element+"' class='T_POCME_IMPORTES importe efecto h22' onblur='validaIntDec(this);validaDescImporte(1,"+element+");importe_POCME();cortarDecimalesObj(this,2);' size='17' >";
       newtr = newtr + "      </td>";
@@ -523,6 +627,7 @@ function agregarImporte(){
     }
 }
 
+
 $("#tbodyPOCME").on('click', '.eliminar-POCME',function(e){
   $(this).closest("tr").hide();
   $(this).parents('tr')
@@ -574,8 +679,9 @@ function importe_POCME(){
 
       subtotal = cortarDecimales(CalcMUL(importe,cantidad),2);
       $('.T_POCME_SUBTOTALES').eq(x).val(subtotal).attr('value',subtotal);
+      //console.log(subtotal);
   });
-	sumaGeneral();
+	Suma_POCME();
 }
 
 function sumaGeneral(){
@@ -629,20 +735,22 @@ function Pasa_Valor_Maniobras(){
 }
 
 function Suma_Subtotales(){
-		var Suma_Importes = 0;
-    var Suma_IVA = 0;
-		var Suma_Totales_Cargos = 0;
-		var Suma_Saldo = 0;
-		var Iva_Retenido = 0;
-		var Subtotal_Hon = 0;
-		var Total_Hon = 0;
-		var Total_Cta = 0;
+		var Suma_Importes = 0.00;
+    var Suma_IVA = 0.00;
+		var Suma_Totales_Cargos = 0.00;
+		var Suma_Saldo = 0.00;
+		var Iva_Retenido = 0.00;
+		var Subtotal_Hon = 0.00;
+		var Total_Hon = 0.00;
+		var Total_Cta = 0.00;
 
     //SUMA DE IMPORTES DE HONORARIOS
     $('.T_Honorarios_Importe').each(function( x ) {
         importe = $(this).val();
         if( importe == "" ){ importe = 0; }
         Suma_Importes = cortarDecimales(CalcADD(Suma_Importes,importe),2);
+        Suma_Importes = parseFloat(Suma_Importes).toFixed(2);
+
     });
     $('#T_Total_Importes').val(Suma_Importes).attr('value',Suma_Importes);
 
@@ -651,6 +759,7 @@ function Suma_Subtotales(){
         importe = $(this).val();
         if( importe == "" ){ importe = 0; }
         Suma_IVA = cortarDecimales(CalcADD(Suma_IVA,importe),2);
+        Suma_IVA = parseFloat(Suma_IVA).toFixed(2);
     });
     $('#T_Total_IVA').val(Suma_IVA);
 
@@ -659,41 +768,51 @@ function Suma_Subtotales(){
         importe = $(this).val();
         if( importe == "" ){ importe = 0; }
         Iva_Retenido = cortarDecimales(CalcADD(Iva_Retenido,importe),2);
+        Iva_Retenido = parseFloat(Iva_Retenido).toFixed(2);
+
     });
     $('#T_IVA_RETENIDO').val(Iva_Retenido).attr('value',Iva_Retenido);
 
     //SUBTOTAL DE HONORARIOS
 		Subtotal_Hon = cortarDecimales(CalcADD(Suma_Importes,Suma_IVA),2);
+    Subtotal_Hon = parseFloat(Subtotal_Hon).toFixed(2);
 		$('#T_SUBTOTAL_HON').val(Subtotal_Hon).attr('value',Subtotal_Hon);
 
 		//TOTAL
 		Total_Hon = cortarDecimales(CalcSUB(Subtotal_Hon,Iva_Retenido),2);
+    Total_Hon = parseFloat(Total_Hon).toFixed(2);
 		$('#T_Total_Gral').val(Total_Hon).attr('value',Total_Hon);
 
 		//TOTAL PAGOS O CARGOS EN MONEDA EXTRANJERA
     totalPOCME = $('#T_POCME_Total_MN').val();
+    totalPOCME = parseFloat(totalPOCME).toFixed(2);
 		$('#T_Total_MN_Extranjera').val(totalPOCME).attr('value',totalPOCME);
 
     //SUMA TOTALES PAGOS REALIZADOS POR SU CUENTA
     $('.T_Cargo_Subtotal').each(function( x ) {
         importe = $(this).val();
         if( importe == "" ){ importe = 0; }
+        // console.log(parseFloat(importe));
         Suma_Totales_Cargos = cortarDecimales(CalcADD(Suma_Totales_Cargos,importe),2);
+        Suma_Totales_Cargos = parseFloat(Suma_Totales_Cargos).toFixed(2);
+
     });
-    derechosPagados = $('#T_derechosPagados').val();
-    Suma_Totales_Cargos = cortarDecimales(CalcADD(Suma_Totales_Cargos,derechosPagados),2);
+
     $('#T_Total_Pagos').val(Suma_Totales_Cargos).attr('value',Suma_Totales_Cargos);
 
     //TOTAL CUENTA DE GASTOS
 		Total_Cta = cortarDecimales(CalcADD(Total_Hon, $('#T_POCME_Total_MN').val() ),2);
 		Total_Cta = cortarDecimales(CalcADD(Total_Cta,Suma_Totales_Cargos),2);
-		$('#T_Cta_Gastos').val(Total_Cta).attr('value',Total_Cta);
+    Total_Cta = parseFloat(Total_Cta).toFixed(2);
+		$('#T_Cta_Gastos').val(Total_Cta).attr('value', Total_Cta);
+
 
     //SUMA ANTICIPOS
     Suma_Anticipos = $('#T_Total_Anticipos').val();
 
     //SALDO DE LA CUENTA
 		Suma_Saldo = cortarDecimales(CalcSUB(Total_Cta,Suma_Anticipos),2)
+    Suma_Saldo = parseFloat(Suma_Saldo).toFixed(2);
 		$('#T_SALDO_GRAL').val(Suma_Saldo).attr('value',Suma_Saldo);
 
     //TOTAL DE CUENTA DE GASTOS EN LETRA
@@ -1191,19 +1310,25 @@ function validaDescImporte(seccion,posicion){
 $('#depositos-disponibles, #tbodyDepAplic').on('click', '.agregar-deposito', function(){
   var tr = $(this).parents('tr');
   var destino = $(this).attr('destino');
-  var valor = $('.T_Anticipo').val();
+  var valor = $(this).parents('.row').find('.T_Anticipo.importe').val();
   var totalAnticipos = $('#T_Total_Anticipos').val();
 
   if (destino == '#tbodyDepAplic') {
     $(this).attr('destino', '#depositos-disponibles');
     tr.addClass('elemento-depositos');
     tr.removeClass('elemento-depositos-disponibles');
-    totalAnticipos = cortarDecimales(CalcADD(totalAnticipos,valor),2);
+    $(this).parents('.row').find('.dep_aplic').val(1);
+
+
+    totalAnticipos = CalcADD(totalAnticipos,valor);
   } else {
     $(this).attr('destino', '#tbodyDepAplic');
     tr.removeClass('elemento-depositos');
     tr.addClass('elemento-depositos-disponibles');
-    totalAnticipos = cortarDecimales(CalcSUB(totalAnticipos,valor),2);
+    // $('#dep_aplic').val(sinAplic);
+
+    $(this).parents('.row').find('.dep_aplic').val(0);
+    totalAnticipos = CalcSUB(totalAnticipos,valor);
   }
 
   tr.appendTo(destino);
@@ -1351,7 +1476,7 @@ $('#modificar-cta').click(function(){
 
   Suma_Subtotales();
   if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
-      //$('#guardar').prop('disabled',true);
+
       $('#mensaje').html("Guardando . . .");
 
       var data = {
@@ -1359,6 +1484,7 @@ $('#modificar-cta').click(function(){
         T_No_calculoTarifa : $('#T_No_calculoTarifa').val(),
         Txt_Usuario : $('#Txt_Usuario').val(),
         T_IGED_1 : $('#T_IGED_1').val(),
+        // T_IGED_2 : $('#T_IGED_2').val(),
         T_ID_Aduana_Oculto : $('#T_ID_Aduana_Oculto').val(),
         T_ID_Almacen_Oculto : $('#T_ID_Almacen_Oculto').val(),
         T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
@@ -1507,8 +1633,6 @@ $('#modificar-cta').click(function(){
         data.depositosDisponibles[i] = parsed_data;
       });
 
-      console.log(data);
-
       $.ajax({
         type: "POST",
         url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar.php",
@@ -1516,11 +1640,13 @@ $('#modificar-cta').click(function(){
         success: 	function(r){
           r = JSON.parse(r);
           if (r.code == 1) {
+            //console.log(r);
+            folio = r.data;
+            alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
+              //setTimeout('document.location.reload()',700);
+              setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
+            });
 
-            console.log(r);
-            //folio = r.data;
-            swal("Folio: "+folio, "actualizado correctamente", "success");
-            //setTimeout('document.location.reload()',700);
           } else {
             console.error(r.message);
           }
@@ -1532,11 +1658,362 @@ $('#modificar-cta').click(function(){
   }
 });
 
+$('#sustituir-cta-cfdi').click(function(){
+  folio = $('#id_cuenta_captura').val();
+
+  Suma_Subtotales();
+  if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
+
+      $('#mensaje').html("Guardando . . .");
+
+      var data = {
+        folio: folio,
+        T_No_calculoTarifa : $('#T_No_calculoTarifa').val(),
+        Txt_Usuario : $('#Txt_Usuario').val(),
+        T_IGED_1 : $('#T_IGED_1').val(),
+        T_IGED_2 : $('#T_IGED_2').val(),
+        T_IGED_3 : $('#T_IGED_3').val(),
+        T_IGED_4 : $('#T_IGED_4').val(),
+        T_IGED_5 : $('#T_IGED_5').val(),
+        T_IGED_6 : $('#T_IGED_6').val(),
+        T_IGED_7 : $('#T_IGED_7').val(),
+        T_IGED_8 : $('#T_IGED_8').val(),
+        T_IGED_9 : $('#T_IGED_9').val(),
+        T_IGED_10 : $('#T_IGED_10').val(),
+        T_IGED_11 : $('#T_IGED_11').val(),
+        T_IGED_12 : $('#T_IGED_12').val(),
+        T_IGED_13 : $('#T_IGED_13').val(),
+        T_IGET_1 : $('#T_IGET_1').val(),
+        T_IGET_2 : $('#T_IGET_2').val(),
+        T_IGET_3 : $('#T_IGET_3').val(),
+        T_IGET_4 : $('#T_IGET_4').val(),
+        T_IGET_5 : $('#T_IGET_5').val(),
+        T_IGET_6 : $('#T_IGET_6').val(),
+        T_IGET_7 : $('#T_IGET_7').val(),
+        T_IGET_8 : $('#T_IGET_8').val(),
+        T_IGET_9 : $('#T_IGET_9').val(),
+        T_IGET_10 : $('#T_IGET_10').val(),
+        T_IGET_11 : $('#T_IGET_11').val(),
+        T_IGET_12 : $('#T_IGET_12').val(),
+        T_IGET_13 : $('#T_IGET_13').val(),
+        T_ID_Aduana_Oculto : $('#T_ID_Aduana_Oculto').val(),
+        T_ID_Almacen_Oculto : $('#T_ID_Almacen_Oculto').val(),
+        T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
+        T_Nombre_Cliente : $('#T_Nombre_Cliente').val(),
+        T_Cliente_Calle : $('#T_Cliente_Calle').val(),
+        T_Cliente_No_Ext : $('#T_Cliente_No_Ext').val(),
+        T_Cliente_No_Int : $('#T_Cliente_No_Int').val(),
+        T_Cliente_Colonia : $('#T_Cliente_Colonia').val(),
+        T_Cliente_CP : $('#T_Cliente_CP').val(),
+        T_Cliente_Ciudad : $('#T_Cliente_Ciudad').val(),
+        T_Cliente_Estado : $('#T_Cliente_Estado').val(),
+        T_Cliente_Pais : $('#T_Cliente_Pais').val(),
+        T_Cliente_taxid : $('#T_Cliente_taxid').val(),
+        T_Cliente_RFC : $('#T_Cliente_RFC').val(),
+        T_Proveedor_Destinatario : $('#T_Proveedor_Destinatario').val(),
+        T_Tipo : $('#T_Tipo').val(),
+        T_Valor : $('#T_Valor').val(),
+        T_Peso : $('#T_Peso').val(),
+        T_Dias : $('#T_Dias').val(),
+        T_Valor_Custodia_Aer : $('#T_Valor_Custodia_Aer').val(),
+        T_Valor_Manejo_Aer : $('#T_Valor_Manejo_Aer').val(),
+        T_Valor_Almacenaje_Aer : $('#T_Valor_Almacenaje_Aer').val(),
+        T_Valor_Total_Maniobras : $('#T_Valor_Total_Maniobras').val(),
+        T_Subsidio : $('#T_Subsidio').val(),
+        T_derechosPagados : $('#T_derechosPagados').val(),
+        T_Honorarios_Porcentaje : $('#T_Honorarios_Porcentaje').val(),
+        T_Honorarios_Base_Honorarios : $('#T_Honorarios_Base_Honorarios').val(),
+        T_Honorarios_Descuento : $('#T_Honorarios_Descuento').val(),
+        T_Honorarios_Minimo : $('#T_Honorarios_Minimo_Honorarios').val(),
+
+        T_Total_Importes : $('#T_Total_Importes').val(),
+        T_Total_IVA : $('#T_Total_IVA').val(),
+        T_IVA_RETENIDO : $('#T_IVA_RETENIDO').val(),
+        T_Total_Gral : $('#T_Total_Gral').val(),
+        T_Total_MN_Extranjera : $('#T_Total_MN_Extranjera').val(),
+        T_SALDO_GRAL : $('#T_SALDO_GRAL').val(),
+        CUSTOMS : $('#CUSTOMS').val(),
+        T_IVA_Porcentaje : $('#T_IVA_Porcentaje').val(),
+        T_SUBTOTAL_HON : $('#T_SUBTOTAL_HON').val(),
+        Txt_Total_MN_Extranjera : $('#Txt_Total_MN_Extranjera').val(),
+        T_Cta_Gastos : $('#T_Cta_Gastos').val(),
+        T_Total_Anticipos : $('#T_Total_Anticipos').val(),
+        Txt_Total_Importe : $('#Txt_Total_Importe').val(),
+        Txt_Total_IVA : $('#Txt_Total_IVA').val(),
+        Txt_SUBTOTAL_HON : $('#Txt_SUBTOTAL_HON').val(),
+        Txt_IVA_RETENIDO : $('#Txt_IVA_RETENIDO').val(),
+        Txt_Total_Gral : $('#Txt_Total_Gral').val(),
+        Txt_Cta_Gastos : $('#Txt_Cta_Gastos').val(),
+        Txt_Total_Anticipos : $('#Txt_Total_Anticipos').val(),
+        Txt_Saldo_Gral : $('#Txt_Saldo_Gral').val(),
+        Txt_Total_Pagos : $('#Txt_Total_Pagos').val(),
+        T_Total_Pagos : $('#T_Total_Pagos').val(),
+        Txt_Honorarios : $('#Txt_Total_Importe').val(),
+        T_POCME_Total : $('#T_POCME_Total').val(),
+        T_POCME_Tipo_Cambio : $('#T_POCME_Tipo_Cambio').val(),
+        T_POCME_Total_MN : $('#T_POCME_Total_MN').val(),
+        Total_Letra : $('#total_CuentaGastos').val(),
+        T_FormaPago : $('#T_FormaPago').val(),
+        T_metodoPago : $('#T_metodoPago').val(),
+        T_CuentaPago : $('#T_CuentaPago').val(),
+        T_Moneda : $('#T_Moneda').val(),
+        T_monedaTipoCambio : $('#T_monedaTipoCambio').val(),
+        T_usoCFDI: $('#T_usoCFDI').val(),
+        dge: {},
+        pocme: {},
+        cargos: {},
+        honorarios: {},
+        pocmeDelete: {},
+        cargoDelete: {},
+        honDelete: {},
+        depositos: {},
+        depositosDisponibles: {},
+        tipoRelacion : $('#tipoRelacion').val(),
+        folioRelacionado : $('#folioRelacionado').val(),
+        UUIDrelacionado : $('#UUIDrelacionado').val()
+      }
+
+      $( ".elementos-dge" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          descripcion: $(this).find('.descripcion').val()
+        }
+        data.dge[i] = parsed_data;
+      });
+
+      $( ".elemento-pocme" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          cantidad: $(this).find('.cantidad').val(),
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idconcepto: $(this).find('.id-concepto').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          concepto_ing: $(this).find('.concepto-ingles').val(),
+          descripcion: $(this).find('.descripcion').val(),
+          importe: $(this).find('.importe').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.pocme[i] = parsed_data;
+      });
+
+      $( ".elemento-pocme-eliminar" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val()
+        }
+        data.pocmeDelete[i] = parsed_data;
+      });
+
+      $( ".elemento-cargos" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idconcepto: $(this).find('.id-concepto').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.cargos[i] = parsed_data;
+      });
+
+      $( ".elemento-honorarios" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idcveprod: $(this).find('.id-cveProd').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          importe: $(this).find('.importe').val(),
+          iva: $(this).find('.iva').val(),
+          ret: $(this).find('.ret').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.honorarios[i] = parsed_data;
+      });
+
+      $( ".elemento-depositos" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idDeposito: $(this).find('.id-deposito').val(),
+          importe: $(this).find('.importe').val(),
+        }
+        data.depositos[i] = parsed_data;
+      });
+
+      $( ".elemento-depositos-disponibles" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idDeposito: $(this).find('.id-deposito').val(),
+          importe: $(this).find('.importe').val(),
+        }
+        data.depositosDisponibles[i] = parsed_data;
+      });
+
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_sustituir_agregar.php",
+        data: data,
+        success: 	function(r){
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            console.log(data);
+            folio = r.data;
+            alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
+              //setTimeout('document.location.reload()',700);
+              setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
+            });
+
+          } else {
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+      });
+  }
+});
+
+$('#modificar-cta-cfdi').click(function(){ // editar un CFDI - solo en la parte de la cuenta de gastos
+  folio = $('#id_cuenta_captura').val();
+
+  Suma_Subtotales();
+  if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
+
+      $('#mensaje').html("Guardando . . .");
+
+      var data = {
+        folio: folio,
+        id_factura : $('#id_factura').val(),
+        T_No_calculoTarifa : $('#T_No_calculoTarifa').val(),
+        Txt_Usuario : $('#Txt_Usuario').val(),
+        T_IGED_1 : $('#T_IGED_1').val(),
+        T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
+        T_Nombre_Cliente : $('#T_Nombre_Cliente').val(),
+        T_ID_Aduana_Oculto : $('#T_ID_Aduana_Oculto').val(),
+        T_ID_Almacen_Oculto : $('#T_ID_Almacen_Oculto').val(),
+        T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
+        T_Proveedor_Destinatario : $('#T_Proveedor_Destinatario').val(),
+        T_Tipo : $('#T_Tipo').val(),
+        T_Valor : $('#T_Valor').val(),
+        T_Peso : $('#T_Peso').val(),
+        T_Dias : $('#T_Dias').val(),
+        T_Valor_Custodia_Aer : $('#T_Valor_Custodia_Aer').val(),
+        T_Valor_Manejo_Aer : $('#T_Valor_Manejo_Aer').val(),
+        T_Valor_Almacenaje_Aer : $('#T_Valor_Almacenaje_Aer').val(),
+        T_Valor_Total_Maniobras : $('#T_Valor_Total_Maniobras').val(),
+        T_Subsidio : $('#T_Subsidio').val(),
+        T_derechosPagados : $('#T_derechosPagados').val(),
+
+        T_Total_MN_Extranjera : $('#T_Total_MN_Extranjera').val(),
+        T_SALDO_GRAL : $('#T_SALDO_GRAL').val(),
+        Txt_Total_MN_Extranjera : $('#Txt_Total_MN_Extranjera').val(),
+        T_Cta_Gastos : $('#T_Cta_Gastos').val(),
+        T_Total_Anticipos : $('#T_Total_Anticipos').val(),
+
+        Txt_Cta_Gastos : $('#Txt_Cta_Gastos').val(),
+        Txt_Total_Anticipos : $('#Txt_Total_Anticipos').val(),
+        Txt_Saldo_Gral : $('#Txt_Saldo_Gral').val(),
+        Txt_Total_Pagos : $('#Txt_Total_Pagos').val(),
+        T_Total_Pagos : $('#T_Total_Pagos').val(),
+        T_POCME_Total : $('#T_POCME_Total').val(),
+        T_POCME_Tipo_Cambio : $('#T_POCME_Tipo_Cambio').val(),
+        T_POCME_Total_MN : $('#T_POCME_Total_MN').val(),
+        Total_Letra : $('#total_CuentaGastos').val(),
+        dge: {},
+        pocme: {},
+        cargos: {},
+        pocmeDelete: {},
+        cargoDelete: {},
+        depositos: {},
+        depositosDisponibles: {}
+      }
+
+      $( ".elementos-dge" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          descripcion: $(this).find('.descripcion').val()
+        }
+        data.dge[i] = parsed_data;
+      });
+
+      $( ".elemento-pocme" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          cantidad: $(this).find('.cantidad').val(),
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idconcepto: $(this).find('.id-concepto').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          concepto_ing: $(this).find('.concepto-ingles').val(),
+          descripcion: $(this).find('.descripcion').val(),
+          importe: $(this).find('.importe').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.pocme[i] = parsed_data;
+      });
+
+      $( ".elemento-pocme-eliminar" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val()
+        }
+        data.pocmeDelete[i] = parsed_data;
+      });
+
+      $( ".elemento-cargos" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idcuenta: $(this).find('.id-cuenta').val(),
+          idconcepto: $(this).find('.id-concepto').val(),
+          concepto_esp: $(this).find('.concepto-espanol').val(),
+          subtotal: $(this).find('.subtotal').val()
+        }
+        data.cargos[i] = parsed_data;
+      });
+
+      $( ".elemento-depositos" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idDeposito: $(this).find('.id-deposito').val(),
+          importe: $(this).find('.importe').val(),
+        }
+        data.depositos[i] = parsed_data;
+      });
+
+      $( ".elemento-depositos-disponibles" ).each(function(i) {
+        var parsed_data = {
+          idpartida: $(this).find('.id-partida').val(),
+          idDeposito: $(this).find('.id-deposito').val(),
+          importe: $(this).find('.importe').val(),
+        }
+        data.depositosDisponibles[i] = parsed_data;
+      });
+
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar_cfdi.php",
+        data: data,
+        success: 	function(r){
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            folio = r.data;
+            alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
+              setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
+            });
+
+          } else {
+            console.error(r.message);
+          }
+        },
+        error: function(x){
+          console.error(x);
+        }
+      });
+  }
+});
 
 $('#guardar-cta').click(function(){
   Suma_Subtotales();
   if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
-      $('#guardar').prop('disabled',true);
+      $('#guardar-cta').prop('disabled',true);
       $('#mensaje').html("Guardando . . .");
 
       var data = {
@@ -1684,6 +2161,7 @@ $('#guardar-cta').click(function(){
         var parsed_data = {
           idDeposito: $(this).find('.id-deposito').val(),
           importe: $(this).find('.importe').val(),
+          dep_aplic: $(this).find('.dep_aplic').val(),
         }
         data.depositos[i] = parsed_data;
       });
@@ -1697,8 +2175,10 @@ $('#guardar-cta').click(function(){
           r = JSON.parse(r);
           if (r.code == 1) {
             folio = r.data;
-            swal("Folio: "+folio, "generado correctamente", "success");
-            //setTimeout('document.location.reload()',700);
+            alertify.alert('Folio: '+folio, 'Generado correctamente' , function(){
+              //setTimeout('document.location.reload()',700);
+              setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
+            });
           } else {
             console.error(r.message);
           }
@@ -1716,11 +2196,219 @@ function ctaGastosCapturaModificar(referencia,dias,cliente,almacen,tipo,valor,pe
   window.location.replace('1-CuentaGastos_modificar.php?referencia='+referencia+'&dias='+dias+'&id_cliente='+cliente+'&almacen='+almacen+'&tipo='+tipo+'&valor='+valor+'&peso='+peso+'&cuenta='+cuenta+'&shipper='+shipper+'&consolidado='+consolidado+'&inbond='+inbond+'&entradas='+entradas+'&flete='+flete+'&reexpedicion='+reexpedicion+'&cobrarFlete='+cobrarFlete
     +'&status_flete='+status_flete+'&entradasAdicionales='+entradasAdicionales);
 }
-
-function ctaGastosCapturaConsultar(cuenta){
-  window.location.replace('1-CuentaGastos_Consultar.php?cuenta='+cuenta);
+function ctaGastosModificarCFDI(referencia,dias,cliente,almacen,tipo,valor,peso,cuenta,shipper,consolidado,inbond,entradas,flete,reexpedicion,cobrarFlete,status_flete,entradasAdicionales){
+  window.location.replace('1-CuentaGastos_modificar_CFDI.php?referencia='+referencia+'&dias='+dias+'&id_cliente='+cliente+'&almacen='+almacen+'&tipo='+tipo+'&valor='+valor+'&peso='+peso+'&cuenta='+cuenta+'&shipper='+shipper+'&consolidado='+consolidado+'&inbond='+inbond+'&entradas='+entradas+'&flete='+flete+'&reexpedicion='+reexpedicion+'&cobrarFlete='+cobrarFlete
+    +'&status_flete='+status_flete+'&entradasAdicionales='+entradasAdicionales);
+}
+function ctaGastosSustituirCFDI(referencia,dias,cliente,almacen,tipo,valor,peso,cuenta,shipper,consolidado,inbond,entradas,flete,reexpedicion,cobrarFlete,status_flete,entradasAdicionales){
+  window.location.replace('1-CuentaGastos_sustituir_CFDI.php?referencia='+referencia+'&dias='+dias+'&id_cliente='+cliente+'&almacen='+almacen+'&tipo='+tipo+'&valor='+valor+'&peso='+peso+'&cuenta='+cuenta+'&shipper='+shipper+'&consolidado='+consolidado+'&inbond='+inbond+'&entradas='+entradas+'&flete='+flete+'&reexpedicion='+reexpedicion+'&cobrarFlete='+cobrarFlete
+    +'&status_flete='+status_flete+'&entradasAdicionales='+entradasAdicionales);
+}
+function ctaGastosCapturaConsultar(cuenta,accion){
+    window.location.replace('1-CuentaGastos_Consultar.php?cuenta='+cuenta+'&accion='+accion);
 }
 function ctaGastosCapturaImprimir(cuenta){
-  window.location.replace('impresionCuentaGastos.php?cuenta='+cuenta);
+  window.open('impresionCuentaGastos.php?cuenta='+cuenta);
 }
-function ctaGastosCapturaEliminar($id_captura){}
+function ctaGastosCapturaEliminar(partida){
+  swal({
+  title: "Estas Seguro?",
+  text: "Ya no se podra recuperar el registro! "+ partida +" ",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonClass: "btn-danger",
+  confirmButtonText: "Si, Eliminar",
+  cancelButtonText: "No, cancelar",
+  closeOnConfirm: false,
+  closeOnCancel: false
+  },
+  function(isConfirm) {
+    if (isConfirm) {
+      var data = {
+        partida: partida
+      }
+      $.ajax({
+        type: "POST",
+        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_eliminar.php",
+        data: data,
+
+          success: 	function(r){
+            r = JSON.parse(r);
+            console.log(r);
+            if (r.code == 1) {
+              swal("Eliminado!", "Se elimino correctamente.", "success");
+              setTimeout('document.location.reload()',700);
+            } else {
+                   console.error(r.message);
+            }
+        },
+        error: function(x){
+          console.error(x)
+        }
+      });
+    } else {
+      swal("Cancelado", "El registro esta a salvo :)", "error");
+    }
+  });
+}
+
+// Timbrar factura electronica
+function timbrarFactura(cuenta,referencia,cliente){
+  var data = {
+    cuenta: cuenta,
+    referencia: referencia,
+    cliente: cliente
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura.php",
+    data: data,
+    beforeSend: function(){
+        $('body').append('<div class="overlay"><div class="overlay-loading">Timbrando Factura ... Porfavor espere.</div></div>');
+    },
+
+      success: 	function(r){
+        r = JSON.parse(r);
+        console.log(r);
+        if (r.code == 1) {
+          //$('#respTimbrado').val(r);
+          resp = r.message;
+          $('.overlay').remove();
+
+          swal({
+            title: 'Timbrar Factura',
+            text: resp,
+            type: 'success'
+            }, function() {
+                setTimeout('document.location.reload()',700);
+            });
+
+        }else if( r.code == 3 ) {
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Respuesta del PAC:",resp, "error");
+          console.error(r.message);
+        }else{
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Error",resp, "error");
+          console.error(r.message);
+        }
+    },
+    error: function(x){
+      console.error(x)
+    }
+  });
+}
+
+function cancelarFactura(cuenta,referencia,cliente){
+  var data = {
+    cuenta: cuenta,
+    referencia: referencia,
+    cliente: cliente
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/cancelarCFDI_factura.php",
+    data: data,
+    beforeSend: function(){
+        $('body').append('<div class="overlay"><div class="overlay-loading">Cancelando Factura ... Porfavor espere.</div></div>');
+    },
+
+      success: 	function(r){
+        r = JSON.parse(r);
+        console.log(r);
+        if (r.code == 1) {
+          $('#respTimbrado').val(r);
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Timbrar Factura",resp, "success");
+          console.error(r.message);
+          setTimeout('document.location.reload()',700);
+        }else if( r.code == 3 ) {
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Respuesta del PAC:",resp, "error");
+          console.error(r.message);
+        }else{
+          resp = r.message;
+          $('.overlay').remove();
+          swal("Error",resp, "error");
+          console.error(r.message);
+        }
+    },
+    error: function(x){
+      console.error(x)
+    }
+  });
+}
+
+//buscar Facturas Timbradas
+$('#b-referencia').click(function(){
+  $('#b-factura').attr('db-id','').val('');
+  $('#b-cliente').attr('db-id','').val('');
+});
+$('#b-factura').click(function(){
+  $('#b-referencia').attr('db-id','').val('');
+  $('#b-cliente').attr('db-id','').val('');
+});
+$('#b-cliente').click(function(){
+  $('#b-factura').attr('db-id','').val('');
+  $('#b-referencia').attr('db-id','').val('');
+});
+
+$('#b-referencia1').click(function(){
+  $('#b-factura1').attr('db-id','').val('');
+  $('#b-cliente1').attr('db-id','').val('');
+});
+$('#b-factura1').click(function(){
+  $('#b-referencia1').attr('db-id','').val('');
+  $('#b-cliente1').attr('db-id','').val('');
+});
+$('#b-cliente1').click(function(){
+  $('#b-factura1').attr('db-id','').val('');
+  $('#b-referencia1').attr('db-id','').val('');
+});
+
+$('#btn_buscarFacturasTimbradas').click(function(){
+  id_referencia = $('#b-referencia').attr('db-id');
+  id_factura = $('#b-factura').attr('db-id');
+  id_cliente = $('#b-cliente').attr('db-id');
+  if( id_referencia != "" ){
+    buscar = id_referencia;
+  }else if( id_factura != "" ){
+      buscar = id_factura;
+    }else if( id_cliente != "" ){
+      buscar = id_cliente;
+    }else{
+      alertify.error("No hay resultados");
+    }
+  accion = 'consultar';
+  window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
+});
+
+$('#btn_buscarFacturasTimbradas_cancela').click(function(){
+  id_referencia = $('#b-referencia1').attr('db-id');
+  id_factura = $('#b-factura1').attr('db-id');
+  id_cliente = $('#b-cliente1').attr('db-id');
+  if( id_referencia != "" ){
+    buscar = id_referencia;
+  }else if( id_factura != "" ){
+      buscar = id_factura;
+    }else if( id_cliente != "" ){
+      buscar = id_cliente;
+    }else{
+      alertify.error("No hay resultados");
+    }
+  accion = 'cancelar';
+  window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
+});
+
+function docTimbrado_download(nombreArchivo,ruta){
+  window.open('/conta6/Resources/PHP/actions/docTimbrado_download.php?nombreArchivo='+nombreArchivo+'&ruta='+ruta);
+}
+function docTimbrado_ver(nombreArchivo,ruta){
+  window.open('/conta6/Resources/PHP/actions/docTimbrado_ver.php?nombreArchivo='+nombreArchivo+'&ruta='+ruta);
+}

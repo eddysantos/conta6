@@ -4,22 +4,38 @@
 ?>
 
 <div class="text-center">
-
-  <div class="mt10" id="buscarRef">
-    <div class="row text-center"  id="referencia">
-      <div class="offset-md-3 col-md-6 titulobuscar">Buscar</div>
+  <div class="mt10" id="buscarRef" style="<?php echo $marginbottom ?>">
+    <div class="row justify-content-center m-0" id="referencia">
+      <div class="col-md-6 transEff titulograndetop">Buscar</div>
     </div>
-    <div class="row transEff" id="nReferencia">
-      <div class="offset-md-3 col-md-6 inputbuscar" id="mostrarConsulta">
+    <div class="row justify-content-center m-0" id="nReferencia">
+      <div class="col-md-6 transEff intermedio" id="mostrarConsulta">
         <form  class="form-group" onsubmit="return false;">
           <input class="reg border-0 transEff" id="bRef" type="text" autocomplete="off">
         </form>
       </div>
     </div>
+
+    <div class="row justify-content-center mt-5 m-0">
+      <?php if( $oRst_permisos["s_NC_Proforma"] == 1){ ?>
+        <div class="col-md-2">
+          <a href="#" id="b-facturas" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> FACTURAS</a>
+        </div>
+        <div class="col-md-2">
+          <a href="#" id="b-proforma" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> PROFORMAS NC</a>
+        </div>
+      <?php } ?>
+
+      <?php if( $oRst_permisos["s_NC"] == 1){ ?>
+        <div class="col-md-2">
+          <a href="#" id="b-notacredito" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> NOTA CREDITO</a>
+        </div>
+      <?php } ?>
+    </div>
   </div>
 
-<!---se muestra al escribir la referencia y dar enter-->
-  <div class="mt10 contorno2" id="repoPed" style="display:none">
+<!-- -se muestra al escribir la referencia y dar enter-->
+  <!-- <div class="mt10 contorno" id="repoPed" style="display:none">
     <table class="table">
       <thead>
         <tr class="row">
@@ -52,7 +68,9 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div>-->
 </div>
 
-<script src="js/NotaCredito.js"></script>
+<?php
+  require $root . '/conta6/Ubicaciones/footer.php';
+?>

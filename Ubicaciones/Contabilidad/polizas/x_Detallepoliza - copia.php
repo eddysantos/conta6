@@ -76,7 +76,7 @@ if( $totalRegistrosSelect > 0 ){
             <input class="efecto h22 border-0" id="mstpol-aduana" type="text" db-id="" autocomplete="new-password" disabled value="<?php echo trim($oRst_Select["fk_id_aduana"]); ?>">
           </td>
           <td class="col-md-2">
-            <select class="custom-select-ch" size="1" name="mstpol-cancela" id="mstpol-cancela" onchange="cambiarStatus()">
+            <select class="custom-select-s" size="1" name="mstpol-cancela" id="mstpol-cancela" onchange="cambiarStatus()">
 							<?php if( $cancela == 0 ){
 									echo "<option value='0' selected>Activo</option>";
 									echo "<option value='1'>Cancelado</option>";

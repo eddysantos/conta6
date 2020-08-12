@@ -1,3 +1,47 @@
+function TildesHtml(cadena){
+	var rp = String(cadena);
+	//
+	rp = rp.replace(/á/g, '&aacute;');
+	rp = rp.replace(/é/g, '&eacute;');
+	rp = rp.replace(/í/g, '&iacute;');
+	rp = rp.replace(/ó/g, '&oacute;');
+	rp = rp.replace(/ú/g, '&uacute;');
+	rp = rp.replace(/ñ/g, '&ntilde;');
+	rp = rp.replace(/ü/g, '&uuml;');
+	//
+	rp = rp.replace(/Á/g, '&Aacute;');
+	rp = rp.replace(/É/g, '&Eacute;');
+	rp = rp.replace(/Í/g, '&Iacute;');
+	rp = rp.replace(/Ó/g, '&Oacute;');
+	rp = rp.replace(/Ú/g, '&Uacute;');
+	rp = rp.replace(/Ñ/g, '&Ntilde;');
+	rp = rp.replace(/Ü/g, '&Uuml;');
+	//
+	return rp;
+}
+
+function TildesHtml_decode(cadena){
+	var rp = String(cadena);
+	//
+	rp = rp.replace(/&aacute;/g, 'á');
+	rp = rp.replace(/&eacute;/g, 'é');
+	rp = rp.replace(/&iacute;/g, 'í');
+	rp = rp.replace(/&oacute;/g, 'ó');
+	rp = rp.replace(/&uacute;/g, 'ú');
+	rp = rp.replace(/&ntilde;/g, 'ñ');
+	rp = rp.replace(/&uuml;/g, 'ü');
+	//
+	rp = rp.replace(/&Aacute;/g, 'Á');
+	rp = rp.replace(/&Eacute;/g, 'É');
+	rp = rp.replace(/&Iacute;/g, 'Í');
+	rp = rp.replace(/&Oacute;/g, 'Ó');
+	rp = rp.replace(/&Uacute;/g, 'Ú');
+	rp = rp.replace(/&Ñtilde;/g, 'Ñ');
+	rp = rp.replace(/&Üuml;/g, 'Ü');
+	//
+	return rp;
+};
+
 function cortarDecimalesObj(frmObj,truncar){
 	num = $(frmObj).val();
 	n = num.toString();
@@ -56,6 +100,18 @@ function validaRFC(Obj){
 			}
 		}
 	}
+}
+
+function validaCURP(Obj){
+   CURP =  $(Obj).val();
+    if (CURP.match(/^([a-z]{4})([0-9]{6})([a-z]{6})([0-9]{2})$/i)) {
+      $(Obj).css('cssText','color:rgb(0, 0, 0) !important');
+     return true;
+   }else {
+     $(Obj).css('cssText','color:rgb(255, 0, 0) !important');
+     alertify.error("CURP incorrecto");
+     return false;
+   }
 }
 
 function eliminaBlancosIntermedios(frmObj){
