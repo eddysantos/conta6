@@ -90,6 +90,11 @@ function guardarDatosTimbrado_Pago($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versi
 
   require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_5generarPoliza.php';#prepare polDetFac
   $respGuardarDatos = "✓ Póliza de Pago Electrónico: ".$poliza."\n";
+
+  $mesPoliza = date_format(date_create($fechaTimbre),'m');
+  $poliza2 = $poliza;
+  require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
+
   require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_4guardarDatosTimbrado.php';
 
   require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_5impresoHTML.php';

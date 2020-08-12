@@ -84,6 +84,11 @@ function guardarDatosTimbrado_NC($UUID,$certSAT,$selloCFDI,$fechaTimbre,$version
 
   require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_5generarPolizaNC.php';#prepare polDetFac
   $respGuardarDatos = "✓ Póliza de Factura: ".$poliza."\n";
+
+  $mesPoliza = date_format(date_create($fechaTimbre),'m');
+  $poliza2 = $poliza;
+  require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
+
   require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_4guardarDatosTimbrado.php';
 
   require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_5impresoHTML.php';

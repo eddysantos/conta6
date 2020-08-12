@@ -350,8 +350,32 @@ $(document).ready(function(){
 
   $('.btn_buscarDatos').submit(function(){
     var data = {
-      id_referencia: $('#btn_buscarDatosEmbarque_solAnt').attr('db-id')
+      id_referencia: $('#btn_buscarDatosEmbarque_solAnt').attr('db-id'),
+      num_referencia: $('#btn_buscarDatosEmbarque_solAnt').attr('value'),
     }
+    console.log(data);
+
+    // $.ajax({
+    //   type: "POST",
+    //   url: "/conta6/Resources/PHP/DatabasesRemote/traficoWebGlobalPCnetDemo13_RCP.php",
+    //   data: data,
+    //   success: 	function(r){
+    //   r = JSON.parse(r);
+    //   console.log(data);
+    //   console.log(r);
+    //     if (r.code == 1) {
+    //       //console.log(r);
+    //       $('#datosSol').html(r.data);
+    //       $('#T_Dias').focus();
+    //     } else {
+    //       console.error(r.message);
+    //     }
+    //   },
+    //   error: function(x){
+    //     console.error(x);
+    //   }
+    // });
+
 
     $.ajax({
       type: "POST",
@@ -359,6 +383,8 @@ $(document).ready(function(){
       data: data,
       success: 	function(r){
       r = JSON.parse(r);
+      console.log(data);
+      console.log(r);
         if (r.code == 1) {
           //console.log(r);
           $('#datosSol').html(r.data);
@@ -371,6 +397,8 @@ $(document).ready(function(){
         console.error(x);
       }
     });
+
+
   });
 
 

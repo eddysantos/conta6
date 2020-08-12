@@ -104,8 +104,14 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
     $vencimiento = date("Y-m-d",strtotime("+$credito days"));
   }
 
+
   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza.php';#prepare polDetFac
   $respGuardarDatos = "✓ Póliza de Factura: ".$poliza."\n";
+
+  # actualizando el mes de la poliza
+  $mesPoliza = date_format(date_create($fechaTimbre),'m');
+  $poliza2 = $poliza;
+  require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
 
   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_4guardarDatosTimbrado.php';
 
@@ -113,10 +119,16 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
   if( $total_cta_gastos <> 0 ){
     require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php';
     $respGuardarDatos .= "✓ Póliza de Cuenta Gastos: ".$poliza_CtaGastos."\n";
+
+    $poliza2 = $poliza_CtaGastos;
+    require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
   }
   if( $c_MetodoPago == 'PUE' && $fac_saldo < 0 ){
     require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
     $respGuardarDatos .= "✓ Póliza de Pago Aplicado: ".$polizaAplicado."\n";
+
+    $poliza2 = $polizaAplicado;
+    require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
   }
 
   if( $poliza_CtaGastos > 0 || $polizaAplicado > 0 ){

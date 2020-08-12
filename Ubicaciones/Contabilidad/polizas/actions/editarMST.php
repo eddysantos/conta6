@@ -6,8 +6,9 @@ $tipo = trim($_POST['tipo']);
 $id_poliza = trim($_POST['id_poliza']);
 $fecha = trim($_POST['fecha']);
 $concepto = trim($_POST['concepto']);
+$mesPoliza = date_format(date_create($fecha),'m');
 
-$query = "UPDATE conta_t_polizas_mst SET d_fecha = ?, s_concepto = ? WHERE pk_id_poliza = ?";
+$query = "UPDATE conta_t_polizas_mst SET d_fecha = ?, s_concepto = ?, d_mes = ? WHERE pk_id_poliza = ?";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -16,7 +17,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('sss',$fecha,$concepto,$id_poliza);
+$stmt->bind_param('ssss',$fecha,$concepto,$mesPoliza,$id_poliza);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";

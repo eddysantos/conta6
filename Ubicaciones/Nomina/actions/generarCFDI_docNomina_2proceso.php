@@ -106,6 +106,10 @@ function guardarDatosTimbrado_Nomina($UUID,$certSAT,$selloCFDI,$fechaTimbre,$ver
   if( $poliza == 0 ){
     require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza.php';#prepare polDetFac
     $respGuardarDatos = "✓ Póliza de Factura: ".$poliza."\n";
+
+    $mesPoliza = date_format(date_create($fechaTimbre),'m');
+    $poliza2 = $poliza;
+    require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
   }
 
   require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_4guardarDatosTimbrado.php';
