@@ -263,4 +263,5 @@ $marginbottom = "margin-bottom:100px!important";
   require $root . '/scripts.php';
 
 ?>
+<script src="/Ubicaciones/Contabilidad/Reportes/js/Reportes.js"></script>
 <script src="/Resources/js/navbar.js"></script>
