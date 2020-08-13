@@ -14,34 +14,7 @@ $marginbottom = "margin-bottom:100px!important";
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Proyeccion Logistica Agencia Aduanal S.A de C.V</title>
-
-<!--****************ESTILOS****************-->
-
-  <link rel="stylesheet" href="/Resources/fontAwesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/Resources/css/inputs.css">
-  <link rel="stylesheet" href="/Resources/css/Modulo1.css">
-  <link rel="stylesheet" href="/Resources/css/barraNavegacion.css">
-  <link rel="stylesheet" href="/Resources/css/modals.css">
-  <link rel="stylesheet" href="/Resources/css/cambiosBootstrap.css">
-  <link rel="stylesheet" href="/Resources/css/bienvenida.css">
-  <link rel="stylesheet" href="/Resources/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/Resources/sweetalert/css/sweetalert.css">
-  <link rel="stylesheet" href="/Resources/alertifyjs/css/alertify.min.css">
-  <link rel="stylesheet" href="/Resources/alertifyjs/css/themes/default.css">
-  <!-- <link rel="stylesheet" href="/Resources/bootstrap/css/reset.css"> -->
-  <!-- <link rel="stylesheet" href="/Resources/bootstrap/css/bootstrap-toggle.css"> -->
-
-<!--***************SCRIPTS*****************-->
-  <script src="/Resources/JQuery/jquery.min.js"></script>
-  <script src="/Resources/alertifyjs/alertify.min.js"></script>
-  <script src="/Resources/sweetalert/js/sweetalert.min.js"></script>
-  <script src="/Resources/JQuery/popper.min.js"></script>
-  <script src="/Resources/JQuery/tether.min.js"></script>
-  <script src="/Resources/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/Resources/js/menuresponsive.js"></script>
-
-
-
+  <?php  require $root . '/stylesheets.php'; ?>
 </head>
   <header class="container-fluid p-0">
 
@@ -284,11 +257,13 @@ $marginbottom = "margin-bottom:100px!important";
         <script src="/Resources/js/navbar.js"></script>
       </header>
 
-  <?php
+<?php
   require $root . '/Ubicaciones/Contabilidad/modales/ImprimirPolizas.php';
   require $root . '/Ubicaciones/Contabilidad/Reportes/modales/ModalRepo.php';
   require $root . '/Ubicaciones/Contabilidad/modales/Modificarconsultar.php';
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/modales/ConsultarFactura.php';
   require $root . '/Ubicaciones/Trafico/modales/MonitordeOficinas.php';
 
-  ?>
+  require $root . '/scripts.php';
+
+?>
