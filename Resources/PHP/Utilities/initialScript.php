@@ -24,7 +24,10 @@ $usuario = $_SESSION['user']['pk_usuario'];
 
 
 
-include($root . '/Resources/PHP/Databases/Conexion.php');
+// include($root . '/Resources/PHP/Databases/Conexion.php');
+$db = new Queryi();
+// $db = new Queryi('db_global');
+
 date_default_timezone_set('America/Monterrey');
 
  require $root . '/Resources/PHP/actions/consultaPermisos.php';
