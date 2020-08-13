@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
   $idprov = trim($_POST['idprov']);
   $nombre = trim($_POST['nombre']);
@@ -15,10 +15,10 @@
 
   //********************* validaRFC
   if( $rfc != 'XEXX010101000' && $rfc != 'XAXX010101000' ){
-    require $root . '/conta6/Resources/PHP/actions/validarRFC_cliente.php';
-    require $root . '/conta6/Resources/PHP/actions/validarRFC_proveedores.php';
-    require $root . '/conta6/Resources/PHP/actions/validarRFC_empleados.php';
-    require $root . '/conta6/Resources/PHP/actions/validarRFC_beneficiarios.php';
+    require $root . '/Resources/PHP/actions/validarRFC_cliente.php';
+    require $root . '/Resources/PHP/actions/validarRFC_proveedores.php';
+    require $root . '/Resources/PHP/actions/validarRFC_empleados.php';
+    require $root . '/Resources/PHP/actions/validarRFC_beneficiarios.php';
   }
   //***********************************************************
 
@@ -69,7 +69,7 @@
 
     $clave = 'provConta';
     $folio = $idprov;
-    require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+    require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
   }
 
 

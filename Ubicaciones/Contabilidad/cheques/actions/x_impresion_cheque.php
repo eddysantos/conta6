@@ -1,7 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-require $root . '/conta6/Resources/PHP/actions/numtoletras.php';
+require $root . '/Ubicaciones/barradenavegacion.php';
+require $root . '/Resources/PHP/actions/numtoletras.php';
 
 
 $id_cheque = $_GET['id_cheque'];
@@ -106,7 +106,7 @@ if( $rows > 0 ){
 	<thead>
 		<tr class="row m-0">
 			<td class="col-md-12 font14 text-center sub2" style="font-size:14px!important">
-				<img src="/conta6/Resources/imagenes/cheetah.svg"  style="width:50px"> <?php echo $nombreCIA; ?>
+				<img src="/Resources/imagenes/cheetah.svg"  style="width:50px"> <?php echo $nombreCIA; ?>
 			</td>
 		</tr>
 

@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $id_corresp = trim($_GET['id_corresp']);
   $nombre ="";
@@ -32,7 +32,7 @@
     $tablaClienteCorresponsales .=
     '<tr class="row m-0 borderojo">
       <td class="col-md-1">
-        <a href="#" onclick="asigCorresponsal(0,'.$pk_id_cliente.')"><img class="icochico" src="/conta6/Resources/iconos/002-trash.svg"></a>
+        <a href="#" onclick="asigCorresponsal(0,'.$pk_id_cliente.')"><img class="icochico" src="/Resources/iconos/002-trash.svg"></a>
       </td>
       <td class="col-md-4">'.$row['pk_id_cliente'].'</td>
       <td class="col-md-5">'.$row['s_nombre'].'</td>
@@ -47,7 +47,7 @@
     <table class="table form1">
       <tbody>
         <tr class="row m-0">
-          <td class="col-md-2 text-left"><a href="/Conta6/Ubicaciones/Contabilidad/AdminContable/Corresponsales.php"><img src= "/conta6/Resources/iconos/left.svg" class="icochico"> REGRESAR</a></td>
+          <td class="col-md-2 text-left"><a href="/Ubicaciones/Contabilidad/AdminContable/Corresponsales.php"><img src= "/Resources/iconos/left.svg" class="icochico"> REGRESAR</a></td>
           <td class="col-md-8 input-effect">
             <input class="efecto popup-input" id="corp-cliente" type="text" id-display="#popup-display-corp-cliente" action="clientes_NoTieneCorresponsal" db-id="" autocomplete="off">
             <div class="popup-list" id="popup-display-corp-cliente" style="display:none"></div>
@@ -55,7 +55,7 @@
           </td>
           <td class="col-md-2">
             <input id="id_corresp" type="hidden" value="<?php echo $id_corresp;?>">
-            <a href="#" onclick="asigCorresponsal(<?php echo $id_corresp;?>,0)" class="boton border-0 text-left"><img src= "/conta6/Resources/iconos/add.svg" class="icochico">  AGREGAR</a>
+            <a href="#" onclick="asigCorresponsal(<?php echo $id_corresp;?>,0)" class="boton border-0 text-left"><img src= "/Resources/iconos/add.svg" class="icochico">  AGREGAR</a>
           </td>
         </tr>
       </tbody>
@@ -78,5 +78,5 @@
 
 <?php
  require_once('modales/ModalCorresponsales.php');
- require $root . '/conta6/Ubicaciones/footer.php';
+ require $root . '/Ubicaciones/footer.php';
 ?>

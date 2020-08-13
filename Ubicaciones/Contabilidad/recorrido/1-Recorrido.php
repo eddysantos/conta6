@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 
@@ -85,10 +85,10 @@
                 <label for="concepto">Concepto</label>
               </td>
               <td class="col-md-2">
-                <a href="" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR</a>
+                <a href="" class="boton"><img src= "/Resources/iconos/add.svg" class="icochico"> AGREGAR</a>
               </td>
               <td class="col-md-2">
-                <a href="" class="boton"><img src= "/conta6/Resources/iconos/delete.svg" class="icochico"> CANCELAR</a>
+                <a href="" class="boton"><img src= "/Resources/iconos/delete.svg" class="icochico"> CANCELAR</a>
               </td>
             </tr>
           </tbody>
@@ -136,7 +136,7 @@
                 <label for="referencia">Referencia</label>
               </td>
               <td class="col-md-3 text-left">
-                <a href=""><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
+                <a href=""><img class="icomediano" src="/Resources/iconos/magnifier.svg"></a>
               </td>
             </tr>
             <tr class="row m-0">
@@ -157,7 +157,7 @@
                 <label for="ffinal1">Fecha Final</label>
               </td>
               <td class="col-md-2 text-left mt-4">
-                <a href=""><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
+                <a href=""><img class="icomediano" src="/Resources/iconos/magnifier.svg"></a>
               </td>
             </tr>
           </tbody>
@@ -197,7 +197,7 @@
       <thead class="font18">
         <tr class="row encabezado">
           <td class="col-md-12">CUENTAS PARA RECORRIDO
-            <a href="" class="ml-2"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>
+            <a href="" class="ml-2"><img class="icomediano" src="/Resources/iconos/printer.svg"></a>
           </td>
         </tr>
       </thead>
@@ -231,7 +231,7 @@
             </div>
           </td>
           <td class="col-md-1">
-            <a href=""><img class="icomediano" src="/conta6/Resources/iconos/003-edit.svg"></a>
+            <a href=""><img class="icomediano" src="/Resources/iconos/003-edit.svg"></a>
           </td>
         </tr>
       </tbody>
@@ -241,5 +241,5 @@
 
 
 <script src="js/Recorrido.js"></script>
-<script src="/conta6/Resources/js/Inputs.js"></script>
-<!-- <script src="/conta6/Resources/bootstrap/js/bootstrap-checkbox-toggle.js"></script> -->
+<script src="/Resources/js/Inputs.js"></script>
+<!-- <script src="/Resources/bootstrap/js/bootstrap-checkbox-toggle.js"></script> -->

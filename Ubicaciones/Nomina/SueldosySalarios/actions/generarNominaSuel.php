@@ -1,7 +1,7 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
 
 
 $anio = $_POST['anio_nomsig'];
@@ -903,20 +903,20 @@ if (!($stmt_inf->execute())) {
       	if( $SALARIO_SEMANAL_CD <= 0 ){ $salarioBaseCotApor = $SALARIO * $DIAS_PAGAR_INFO; }else{ $salarioBaseCotApor = $SALARIO_SEMANAL_CD; }
 
 
-        require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_1agregarDocCaptura.php';
+        require $root . '/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_1agregarDocCaptura.php';
         $id_docNomina = $db->insert_id;
         #echo '-- DOCUMENTO EN NOMINA'; #echo "<br>";
         #echo $id_docNomina; #echo "<br>";
 
-        require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_2agregarDetPercep.php';
-        require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_3agregarDetOtrosPagos.php';
-        require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_4agregarDetDeduc.php';
-        require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_5agregarDetTotales.php';
+        require $root . '/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_2agregarDetPercep.php';
+        require $root . '/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_3agregarDetOtrosPagos.php';
+        require $root . '/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_4agregarDetDeduc.php';
+        require $root . '/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_5agregarDetTotales.php';
 
         $descripcion = "Se genero DocNomina: $id_docNomina Oficina: $aduana Anio: $anio Semana: $NUM_NOMINA";
         $clave = 'nomSueldos';
         $folio = $id_docNomina;
-        require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+        require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
         $system_callback['code'] = 1;
         $system_callback['data'] .=

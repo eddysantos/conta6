@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 
@@ -47,10 +47,10 @@
           </tr>
           <tr class="row mt-4">
             <td class="col-md-3 offset-md-3">
-              <a href="" class="boton"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
+              <a href="" class="boton"><img src= "/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
             </td>
             <td class="col-md-3">
-              <a href="" class="boton"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
+              <a href="" class="boton"> <img src= "/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
             </td>
           </tr>
         </tbody>
@@ -88,10 +88,10 @@
           </tr>
           <tr class="row mt-5">
             <td class="col-md-3 offset-md-3">
-              <a href="" class="boton"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
+              <a href="" class="boton"><img src= "/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
             </td>
             <td class="col-md-3">
-              <a href="" class="boton"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a>
+              <a href="" class="boton"> <img src= "/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a>
             </td>
           </tr>
         </tbody>
@@ -101,5 +101,5 @@
 </div>
 
 
-<script src="/conta6/Resources/js/Inputs.js"></script>
+<script src="/Resources/js/Inputs.js"></script>
 <script src="js/NotaCredito.js"></script>

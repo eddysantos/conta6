@@ -4,8 +4,8 @@ error_reporting(E_ALL);
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 //$root = 'C:\\xampp\htdocs';
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
 #limpiarBlancos($txt) <-- eliminaBlancos($cadena)
 
 #SEGUN LAS ESPECIFICICAIONES DEL ANEXO20 VERSION 3.3 SE TIENE QUE USAR EL CATALOGO DE MONEDA PARA LOS DECIMALES, PERO COMO SOLO EXPEDIMOS EN MXN,USD Y AMBOS TIENEN DOS DECIMALES, POR LO TANTO, NUESTROS CALCULOS SE HARAN A DOS DECIMALES.
@@ -26,7 +26,7 @@ $id_referencia = $_POST['referencia'];
 if( $oRst_permisos['s_NC_timbrar'] == 1 ){
   # VALIDACION 1: CERTIFICADO VIGENTE
   error_log("Just testing");
-  require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
+  require $root . '/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
   if( $total_datosCert > 0 ){
     $noCertificado = $row_datosCert['pk_id_certificado'];
   	$certificado = $row_datosCert['s_certificado'];
@@ -35,14 +35,14 @@ if( $oRst_permisos['s_NC_timbrar'] == 1 ){
     $system_callback['message'] .= "✓ Certificado: Vigente \n";
 
     # VALIDACION 2: CONSULTO EXISTAN LAS CUENTAS 108,208,103,206 DEL CLIENTE
-    require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
+    require $root . '/Resources/PHP/actions/consultaCtas108y208_cliente.php';
     if( $rows_ctasCliente > 0 ){
 
 
       //obtener folio de factura
-      require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_notacredito.php';
+      require $root . '/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_notacredito.php';
       if( $total_consultaDatosCFDI == 0 ){
-        require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_2genFactura.php'; #$folioFactura
+        require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_2genFactura.php'; #$folioFactura
         $idFactura = $folioFactura;
          echo "se genero factura: ".$folioFactura;
         // echo "<br>";
@@ -50,7 +50,7 @@ if( $oRst_permisos['s_NC_timbrar'] == 1 ){
         $system_callback['code'] = 1;
         $system_callback['message'] .= "✓ Factura: ".$folioFactura."\n";
 
-        require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso.php';
+        require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso.php';
         $system_callback['code'] = 1;
         //$system_callback['message'] .= $mensajeTimbre.' ---'.$mensaje_xmlGen."***\n";
         exit_script($system_callback);
@@ -65,7 +65,7 @@ if( $oRst_permisos['s_NC_timbrar'] == 1 ){
 
             # VALIDACION 3: CONSULTO EL UUID EN LA CUENTA DE GASTOS
             if( is_null($UUID) ){
-              require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso.php';
+              require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso.php';
 
               $system_callback['code'] = 1;
               //$system_callback['message'] .= $mensajeTimbre;

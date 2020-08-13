@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class="text-center">
@@ -82,7 +82,7 @@
         </tr>
         <tr class="row justify-content-center mt-4">
           <td class="col-md-3">
-            <a class="boton"><img src="/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR CONCEPTO</a>
+            <a class="boton"><img src="/Resources/iconos/add.svg" class="icochico"> AGREGAR CONCEPTO</a>
           </td>
         </tr>
       </tbody>
@@ -124,8 +124,8 @@
           <td class="col-md-2">Almacenaje (Aeropuerto)</td>
           <td class="col-md-3">0110-00006 Almacenaje</td>
           <td class="col-md-1">
-            <a href="Buscartarifa.php" class="icochico"><img src="/conta6/Resources/iconos/magnifier.svg"></a>
-            <a href="#EditarTarifa" data-toggle="modal" class="icochico ml-2"><img src="/conta6/Resources/iconos/003-edit.svg"></a>
+            <a href="Buscartarifa.php" class="icochico"><img src="/Resources/iconos/magnifier.svg"></a>
+            <a href="#EditarTarifa" data-toggle="modal" class="icochico ml-2"><img src="/Resources/iconos/003-edit.svg"></a>
           </td>
         </tr>
       </tbody>

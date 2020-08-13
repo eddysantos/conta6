@@ -3,7 +3,7 @@
 <title>Impresion de Anticipo</title>
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/encabezadoImpresion.php';
+require $root . '/Ubicaciones/encabezadoImpresion.php';
 
 	$id_anticipo = trim($_GET['id_anticipo']);
 
@@ -92,7 +92,7 @@ require $root . '/conta6/Ubicaciones/encabezadoImpresion.php';
 			<thead>
 				<tr class="row m-0">
 					<td class="col-md-12 font14 text-center sub2" style="font-size:14px!important">
-						<img src="/conta6/Resources/imagenes/cheetah.svg"  style="width:50px"> <?php echo $nombreCIA; ?>
+						<img src="/Resources/imagenes/cheetah.svg"  style="width:50px"> <?php echo $nombreCIA; ?>
 					</td>
 				</tr>
 				<tr class="row m-0">

@@ -10,7 +10,7 @@ if( $id_regimen == '02' ){
 }
 $concepto = $semCncpt." ".$nombre." ".$apellidoP." ".$apellidoM;
 $concepto = substr($concepto, 0, 300);
-require $root . '/conta6/Resources/PHP/actions/generarFolioPoliza.php';
+require $root . '/Resources/PHP/actions/generarFolioPoliza.php';
 echo 'POLIZA:';
 echo $poliza = $nFolio;
 echo '<br>';
@@ -96,7 +96,7 @@ mysqli_query($db,"CREATE TABLE IF NOT EXISTS temp_distribSalarioPolNomina(oficin
       echo '--------------------------------------------------- parte1 PERCEPCIONES DISTRIBUIR <br>';
 
         $accionDistribuir = 'percepciones';
-        require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_salarioDistrib.php';
+        require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_salarioDistrib.php';
 
       }else{ #--1
       echo '--------------------------------------------------- parte2 PERCEPCIONES'; echo "<br>";
@@ -104,7 +104,7 @@ mysqli_query($db,"CREATE TABLE IF NOT EXISTS temp_distribSalarioPolNomina(oficin
           // echo "<br>";
           // echo 'INSERTAR EN: '.$registroContaP;
           // echo "<br>";
-          require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_percepciones.php';
+          require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_percepciones.php';
       } #-- 1
   }
   echo '-------------------------------------------------------------------------------------------------------------------- PERCEPCIONES - FIN'; echo "<br>";
@@ -140,14 +140,14 @@ echo $ordenReporteD; echo "<br>";
   if( $distribOfic > 1 and $distribuidoD == 'S' ){ #-- 1
   echo '--------------------------------------------------- parte1 DEDUCCIONES DISTRIBUIR'; echo "<br>";
     $accionDistribuir = 'deduccion';
-    require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_salarioDistrib.php';
+    require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_salarioDistrib.php';
 
   }else{ #-- 1
   echo '--------------------------------------------------- parte2 DEDUCCIONES'; echo "<br>";
       #echo 'EL CONCEPTO SE DISTRIBUYE: '.$distribuidoD;	echo "<br>";
       #echo 'INSERTAR EN: '.$registroContaD; echo "<br>";
 
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_deducciones.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_deducciones.php';
 
   } #-- 1
 
@@ -206,14 +206,14 @@ echo $ordenReporteHE; echo "<br>";
   if( $distribOfic > 1 and $distribuidoHE == 'S' ){ #-- 1
   echo '--------------------------------------------------- parte1 HORAS EXTRAS DISTRIBUIR';
     $accionDistribuir = 'horasExtras';
-    require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_salarioDistrib.php';
+    require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_salarioDistrib.php';
 
   }else{ #-- 1
   echo '--------------------------------------------------- parte2 HORAS EXTRAS'; echo "<br>";
       echo 'EL CONCEPTO SE DISTRIBUYE: '.$distribuidoP; echo "<br>";
       echo 'INSERTAR EN: '.$registroContaP; echo "<br>";
 
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_horasExtra.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_horasExtra.php';
 
   } #-- 1
 }
@@ -262,7 +262,7 @@ $sql_otrosPagos = mysqli_query($db,"SELECT fk_id_otroPago, fk_id_cuenta, s_descr
     if( $distribOfic > 1 and $distribuidoOP == 'S' ){ #-- 1
     echo '--------------------------------------------------- parte1 OTROS PAGOS DISTRIBUIR';
       $accionDistribuir = 'otrosPagos';
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_salarioDistrib.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_salarioDistrib.php';
 
     }else{ #--1
     echo '--------------------------------------------------- parte2 OTROS PAGOS';
@@ -271,7 +271,7 @@ $sql_otrosPagos = mysqli_query($db,"SELECT fk_id_otroPago, fk_id_cuenta, s_descr
         echo 'INSERTAR EN: '.$registroContaOP;
         echo "<br>";
 
-        require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_otrosPagos.php';
+        require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_otrosPagos.php';
     } #-- 1
   }
 echo '-------------------------------------------------------------------------------------------------------------------- OTROS PAGOS - FIN'; echo "<br>";
@@ -312,14 +312,14 @@ while( $oRst_desctoDespTotal = mysqli_fetch_array($desctoDespTotal) ){
     if( $distribOfic > 1 and $distribuido_DT == 'S' ){ #-- 1
     echo '--------------------------------------------------- parte1 desctoDespTotal DISTRIBUIR'; echo "<br>";
       $accionDistribuir = 'desctoDespTotal';
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_salarioDistrib.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_salarioDistrib.php';
 
     }else{ #-- 1
     echo '--------------------------------------------------- parte2 desctoDespTotal'; echo "<br>";
         echo 'EL CONCEPTO SE DISTRIBUYE: '.$distribuido_DT;	echo "<br>";
         echo 'INSERTAR EN: '.$registroConta_DT; echo "<br>";
 
-        require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_desctoDespTotal.php';
+        require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_desctoDespTotal.php';
 
     } #-- 1
 }
@@ -353,7 +353,7 @@ echo $ordenReporteP;  echo "<br>";
       echo 'EL CONCEPTO SE DISTRIBUYE: '.$distribuidoP;	 echo "<br>";
       echo 'INSERTAR EN: '.$registroContaP;  echo "<br>";
 
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_totales.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_totales.php';
 
 }
 echo '-------------------------------------------------------------------------------------------------------------------- TOTALES - FIN';  echo "<br>";

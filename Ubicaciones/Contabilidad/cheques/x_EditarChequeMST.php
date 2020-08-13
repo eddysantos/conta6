@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $id_cheque = $_GET['id_cheque'];
   $id_cuentaMST = $_GET['id_cuentaMST'];
@@ -114,6 +114,6 @@
 </div>
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 
 ?>

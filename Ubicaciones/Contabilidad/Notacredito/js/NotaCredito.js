@@ -57,7 +57,7 @@ $(document).ready(function(){
       buscar = $('#bRef').val();
       accion = 'facturas';
       if( buscar != "" ){
-        window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_buscar.php?buscar='+buscar+'&accion='+accion);
+        window.location.replace('/Ubicaciones/Contabilidad/Notacredito/1-notacredito_buscar.php?buscar='+buscar+'&accion='+accion);
       }else{
         alertify.error("No hay resultados");
       }
@@ -67,7 +67,7 @@ $(document).ready(function(){
       buscar = $('#bRef').val();
       accion = 'proformaNC';
       if( buscar != "" ){
-        window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_buscar.php?buscar='+buscar+'&accion='+accion);
+        window.location.replace('/Ubicaciones/Contabilidad/Notacredito/1-notacredito_buscar.php?buscar='+buscar+'&accion='+accion);
       }else{
         alertify.error("No hay resultados");
       }
@@ -77,7 +77,7 @@ $(document).ready(function(){
       buscar = $('#bRef').val();
       accion = 'notacredito';
       if( buscar != "" ){
-        window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_buscar.php?buscar='+buscar+'&accion='+accion);
+        window.location.replace('/Ubicaciones/Contabilidad/Notacredito/1-notacredito_buscar.php?buscar='+buscar+'&accion='+accion);
       }else{
         alertify.error("No hay resultados");
       }
@@ -247,7 +247,7 @@ $(document).ready(function(){
 
           $.ajax({
             type: "POST",
-            url: "/conta6/Ubicaciones/Contabilidad/Notacredito/actions/1-Notacredito_agregar.php",
+            url: "/Ubicaciones/Contabilidad/Notacredito/actions/1-Notacredito_agregar.php",
             data: data,
             success: 	function(r){
               r = JSON.parse(r);
@@ -255,7 +255,7 @@ $(document).ready(function(){
                 folio = r.data;
                 alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
                   //setTimeout('document.location.reload()',700);
-                  setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php')",700);
+                  setTimeout("window.location.replace('/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php')",700);
                 });
               } else {
                 console.error(r.message);
@@ -436,7 +436,7 @@ $(document).ready(function(){
 
           $.ajax({
             type: "POST",
-            url: "/conta6/Ubicaciones/Contabilidad/notacredito/actions/1-notacredito_modificar.php",
+            url: "/Ubicaciones/Contabilidad/notacredito/actions/1-notacredito_modificar.php",
             data: data,
             success: 	function(r){
               r = JSON.parse(r);
@@ -445,7 +445,7 @@ $(document).ready(function(){
                 folio = r.data;
                 alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
                   //setTimeout('document.location.reload()',700);
-                  setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php')",700);
+                  setTimeout("window.location.replace('/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php')",700);
                 });
               } else {
                 console.error(r.message);
@@ -463,7 +463,7 @@ $(document).ready(function(){
 
 
   function genProfNC(cuenta,id_cliente){
-    window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_elaborar.php?cuenta='+cuenta+'&id_cliente='+id_cliente);
+    window.location.replace('/Ubicaciones/Contabilidad/Notacredito/1-notacredito_elaborar.php?cuenta='+cuenta+'&id_cliente='+id_cliente);
   }
 
   function imprimeProfNC(cuenta){
@@ -471,11 +471,11 @@ $(document).ready(function(){
   }
 
   function modificaProfNC(cuenta,id_cliente){
-    window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_modificar.php?cuenta='+cuenta+'&id_cliente='+id_cliente);
+    window.location.replace('/Ubicaciones/Contabilidad/Notacredito/1-notacredito_modificar.php?cuenta='+cuenta+'&id_cliente='+id_cliente);
   }
 
   function consultaProfNC(cuenta,accion){
-    window.location.replace('/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito_consultar.php?cuenta='+cuenta+'&accion='+accion);
+    window.location.replace('/Ubicaciones/Contabilidad/Notacredito/1-notacredito_consultar.php?cuenta='+cuenta+'&accion='+accion);
   }
   function cancelaProfNC(partida){
     swal({
@@ -496,7 +496,7 @@ $(document).ready(function(){
         }
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/Contabilidad/Notacredito/actions/1-notacredito_eliminar.php",
+          url: "/Ubicaciones/Contabilidad/Notacredito/actions/1-notacredito_eliminar.php",
           data: data,
 
             success: 	function(r){
@@ -529,7 +529,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito.php",
+      url: "/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito.php",
       data: data,
       beforeSend: function(){
           $('body').append('<div class="overlay"><div class="overlay-loading">Timbrando Nota de Crédito ... Porfavor espere.</div></div>');

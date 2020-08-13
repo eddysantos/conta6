@@ -6,7 +6,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Consultar Factura</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="contorno">
@@ -56,7 +56,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Cancelar Factura</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="contorno">
@@ -107,7 +107,7 @@
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
         <a href="#" id="btn_buscarFacturasTimbradas_cancela" class="linkbtn">Buscar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-        <!--a href="/conta6/Ubicaciones/Contabilidad/facturaelectronica/5-Cancelarfactura.php" class="linkbtn">Buscar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
+        <!--a href="/Ubicaciones/Contabilidad/facturaelectronica/5-Cancelarfactura.php" class="linkbtn">Buscar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a-->
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>

@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+require $root . '/Ubicaciones/barradenavegacion.php';
 
 $Poliza = trim($_GET['id_poliza']);
 $Accion = trim($_GET['Accion']);
@@ -13,12 +13,12 @@ $Accion = trim($_GET['Accion']);
 
 		if(Tipo > 0){
 			if (Tipo == '2'){
-				if( Accion == 'modificar' ){ document.location.href="/Conta6/Ubicaciones/Contabilidad/polizas/DetallePoliza.php?id_poliza="+<?php echo $Poliza; ?>+'&tipo='+Tipo}
-				if( Accion == 'consultar' ){ document.location.href="/Conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php?id_poliza="+<?php echo $Poliza; ?> }
+				if( Accion == 'modificar' ){ document.location.href="/Ubicaciones/Contabilidad/polizas/DetallePoliza.php?id_poliza="+<?php echo $Poliza; ?>+'&tipo='+Tipo}
+				if( Accion == 'consultar' ){ document.location.href="/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php?id_poliza="+<?php echo $Poliza; ?> }
 				if( Accion == 'proveedor' ){ document.location.href='../../Proveedores/AsignarProveedores.php?Usuario='+<?php echo $usuario; ?>+'&Pol='+<?php echo $Poliza; ?>+'&Oficina='+<?php echo $aduana; ?> }
 			}else{
-				if( Accion == 'modificar' ){ document.location.href="/Conta6/Ubicaciones/Contabilidad/polizas/DetallePoliza.php?id_poliza="+<?php echo $Poliza; ?>+'&tipo='+Tipo}
-				if( Accion == 'consultar' ){ document.location.href="/Conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php?id_poliza="+<?php echo $Poliza; ?> }
+				if( Accion == 'modificar' ){ document.location.href="/Ubicaciones/Contabilidad/polizas/DetallePoliza.php?id_poliza="+<?php echo $Poliza; ?>+'&tipo='+Tipo}
+				if( Accion == 'consultar' ){ document.location.href="/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php?id_poliza="+<?php echo $Poliza; ?> }
 				if( Accion == 'proveedor' ){ document.location.href='../../Proveedores/AsignarProveedores.php?Usuario='+<?php echo $usuario; ?>+'&Pol='+<?php echo $Poliza; ?>+'&Oficina='+<?php echo $aduana; ?> }
 			}
 		}
@@ -29,12 +29,12 @@ $Accion = trim($_GET['Accion']);
 
 		if(Tipo > 0){
 			if (Tipo == '2'){
-				if( Accion == 'modificar' ){ document.location.href="/Conta6/Ubicaciones/Contabilidad/polizas/DetallePoliza.php?id_poliza="+<?php echo $Poliza; ?>+'&tipo='+Tipo}
-				if( Accion == 'consultar' ){ document.location.href="/Conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php?id_poliza="+<?php echo $Poliza; ?> }
+				if( Accion == 'modificar' ){ document.location.href="/Ubicaciones/Contabilidad/polizas/DetallePoliza.php?id_poliza="+<?php echo $Poliza; ?>+'&tipo='+Tipo}
+				if( Accion == 'consultar' ){ document.location.href="/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php?id_poliza="+<?php echo $Poliza; ?> }
 				if( Accion == 'proveedor' ){ document.location.href='../../proveedores/AsignarProveedores.php?Usuario=<?php echo $usuario; ?>'+'&Pol='+<?php echo $Poliza; ?>+'&Oficina='+<?php echo $aduana; ?> }
 			}else{
-				if( Accion == 'modificar' ){ document.location.href="/Conta6/Ubicaciones/Contabilidad/polizas/DetallePoliza.php?id_poliza="+<?php echo $Poliza; ?>+'&tipo='+Tipo}
-				if( Accion == 'consultar' ){ document.location.href="/Conta6/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php?id_poliza="+<?php echo $Poliza; ?> }
+				if( Accion == 'modificar' ){ document.location.href="/Ubicaciones/Contabilidad/polizas/DetallePoliza.php?id_poliza="+<?php echo $Poliza; ?>+'&tipo='+Tipo}
+				if( Accion == 'consultar' ){ document.location.href="/Ubicaciones/Contabilidad/polizas/ConsultarPoliza.php?id_poliza="+<?php echo $Poliza; ?> }
 				if( Accion == 'proveedor' ){ document.location.href='../../proveedores/AsignarProveedores.php?Usuario=<?php echo $usuario; ?>'+'&Pol='+<?php echo $Poliza; ?>+'&Oficina='+<?php echo $aduana; ?> }
 			}
 		}
@@ -189,4 +189,4 @@ if( $totalRegistros_POLIZA_MST > 0 ){
 		}
 
 
-		require $root . '/conta6/Ubicaciones/footer.php';
+		require $root . '/Ubicaciones/footer.php';

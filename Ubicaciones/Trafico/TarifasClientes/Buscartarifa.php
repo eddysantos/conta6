@@ -1,12 +1,12 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class="text-center">
   <div class="col-md-1 mt-5">
     <a href="Conceptos.php">
-      <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+      <img class="icomediano" src="/Resources/iconos/left.svg">
     </a>
   </div>
 

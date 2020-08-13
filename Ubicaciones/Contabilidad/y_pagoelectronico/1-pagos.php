@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class="text-center">
@@ -19,15 +19,15 @@
     <div class="row justify-content-center mt-5">
       <?php if( $oRst_permisos["CFDI_NC_Proforma"] == 1){ ?>
         <div class="col-md-2">
-          <a href="#" id="b-facturas" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> FACTURAS</a>
+          <a href="#" id="b-facturas" class="boton mostrarbusqueda"><img src="/Resources/iconos/magnifier.svg" class="icochico"> FACTURAS</a>
         </div>
       <?php } ?>
 
         <div class="col-md-2">
-          <a href="#" id="b-proforma" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> PROFORMAS NC</a>
+          <a href="#" id="b-proforma" class="boton mostrarbusqueda"><img src="/Resources/iconos/magnifier.svg" class="icochico"> PROFORMAS NC</a>
         </div>
         <div class="col-md-2">
-          <a href="#" id="b-notacredito" class="boton mostrarbusqueda"><img src="/conta6/Resources/iconos/magnifier.svg" class="icochico"> NOTA CREDITO</a>
+          <a href="#" id="b-notacredito" class="boton mostrarbusqueda"><img src="/Resources/iconos/magnifier.svg" class="icochico"> NOTA CREDITO</a>
         </div>
     </div>
   </div>
@@ -61,7 +61,7 @@
           <td class="col-md-1">234568</td>
           <td class="col-md-6">MOTORES ELECTRICOS SUMERGIBLES S DE RL DE CV</td>
           <td class="col-md-1 text-right">
-            <a href="#"><img src="/conta6/Resources/iconos/rightred.svg"></a>
+            <a href="#"><img src="/Resources/iconos/rightred.svg"></a>
           </td>
         </tr>
       </tbody>
@@ -70,5 +70,5 @@
 </div>
 
 <?php
-  require $root . '/conta6/Ubicaciones/footer.php';
+  require $root . '/Ubicaciones/footer.php';
 ?>

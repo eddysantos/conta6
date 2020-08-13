@@ -23,7 +23,7 @@
               <tbody class="text-center">
                 <tr class="row borderojo">
                   <td class="col-md-4 p-0">Motores Electricos Sumergibles de México S de RL de CV</td>
-                  <td class="col-md-2 p-0"><a><img class="icochico" src="/conta6/Resources/iconos/001-delete.svg"></a> 15 Días</td>
+                  <td class="col-md-2 p-0"><a><img class="icochico" src="/Resources/iconos/001-delete.svg"></a> 15 Días</td>
                   <td class="col-md-3 p-0">Estefania 08/08/2017 03:08</td>
                   <td class="col-md-3 p-0"></td>
                 </tr>

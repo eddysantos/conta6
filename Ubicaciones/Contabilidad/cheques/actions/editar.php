@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = trim($_POST['id_poliza']);
 $fecha = trim($_POST['fecha']);

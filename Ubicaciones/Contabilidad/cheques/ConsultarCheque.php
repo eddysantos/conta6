@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $id_cheque = $_GET['id_cheque'];
   $id_cuentaMST = $_GET['id_cuentaMST'];
@@ -223,7 +223,7 @@
     <div class="row m-0 mt-3">
       <?php if( $tienePoliza == true ){ ?>
       <div class="col-md-1">
-        <a href="#" id="btn_printChe" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
+        <a href="#" id="btn_printChe" class="boton border-0"><img class="icomediano ml-5" src= "/Resources/iconos/printer.svg"></a>
       </div>
       <?php } ?>
       <div class="col-md-2 offset-md-6">
@@ -274,6 +274,6 @@
 } #$rows
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/Conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 
 ?>

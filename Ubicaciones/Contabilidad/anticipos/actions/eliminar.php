@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $partida = trim($_POST['partida']);
 $id_anticipo = trim($_POST['id_anticipo']);
@@ -43,7 +43,7 @@ $descripcion = "Se elimino la Partida: $partida del Anticipo: $id_anticipo";
 
 $clave = 'anticipos';
 $folio = $id_anticipo;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 if( $id_poliza > 0 ){
@@ -130,7 +130,7 @@ if( $id_poliza > 0 ){
 
   $clave = 'anticipos';
   $folio = $id_anticipo;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 }
 
 

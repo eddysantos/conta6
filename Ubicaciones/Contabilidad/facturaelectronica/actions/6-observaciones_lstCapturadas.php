@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 
@@ -45,7 +45,7 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
   if( $cancela_factura == 1 ){ $txt_cancela = "Si"; }else{ $txt_cancela = "No"; }
 
   if( $oRst_permisos['s_NC_Pgenerar'] == 1 && $cancela_factura == 0 ){
-    $href = "<a href='#' onclick='genProfNC($fk_id_cuenta_captura,&#39;$id_cliente&#39;)'><img src='/conta6/Resources/iconos/rightred.svg'></a>";
+    $href = "<a href='#' onclick='genProfNC($fk_id_cuenta_captura,&#39;$id_cliente&#39;)'><img src='/Resources/iconos/rightred.svg'></a>";
   }else{ $href = ""; }
 
   $resultadoConsulta .=

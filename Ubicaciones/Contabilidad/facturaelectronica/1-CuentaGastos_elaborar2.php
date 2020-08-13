@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
 
 	$cliente = trim($_GET['id_cliente']);
@@ -31,11 +31,11 @@
 	$almacenaje = 0;
 	$maniobras = 0;
 
-  require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+  require $root . '/Resources/PHP/actions/validarFormulario.php';
 
 
   if($referencia != "SN"){
-  			require $root . '/conta6/Resources/PHP/actions/consultaDatosReferenciaProveedor.php';
+  			require $root . '/Resources/PHP/actions/consultaDatosReferenciaProveedor.php';
 
         if( $rows_datosRefProv > 0 ){
           $row_datosRefProv = $rslt_datosRefProv->fetch_assoc();
@@ -74,7 +74,7 @@
   			if( trim($tipo) == 'E'){ $tipo = "EXP"; }else{ $tipo = "IMP"; }
 
   			if( $almacen > 0 ){
-          require $root . '/conta6/Resources/PHP/actions/consultaDatosAlmacen.php';
+          require $root . '/Resources/PHP/actions/consultaDatosAlmacen.php';
   				$almacenNombre = trim($row_datosAlmacen['s_almacen']);
   			}else{ $almacen = 0; $almacenNombre = "SIN NOMBRE";}
 
@@ -108,7 +108,7 @@
   		}
 
       //datos del cliente
-      require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
+      require $root . '/Resources/PHP/actions/consultaDatosCliente.php';
       if( $rows_datosCLT > 0 ){
         $CLT_nombre = htmlentities(limpiarNOUSAR($row_datosCLT["s_nombre"]));
         $CLT_calle = limpiarBlancos($row_datosCLT["s_calle"]);
@@ -124,7 +124,7 @@
       }
 
       //IVA
-      require $root . '/conta6/Resources/PHP/actions/consultaDatosIVA.php';
+      require $root . '/Resources/PHP/actions/consultaDatosIVA.php';
       if( $rows_datosIVA > 0 ){
         $iva = trim($row_datosIVA["n_IVA"]);
         $retencion = trim($row_datosIVA["n_IVA_retencion"]);
@@ -140,21 +140,21 @@
 
       /* SACO UN FOLIO DE CALCULO DE TARIFA, ESTE FOLIO ME SERVIRA PARA PODER IDENTIFICAR LOS FILTROS DE LAS TARIFAS */
       $s_tipoDoc = 'ctaGastos';
-      //require $root . '/conta6/Resources/PHP/actions/tarifas_generarFolio.php';
+      //require $root . '/Resources/PHP/actions/tarifas_generarFolio.php';
       $calculoTarifa = 45;
 
 
       #******************** PAGOS O COBROS EN MONEDA EXTRANJERA ********************
       //CALCULO TARIFA DEL CLIENTE - SECCION: POCME
       $id_cliente_usar = $id_cliente;
-      require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME.php';
-      require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente.php'; #$tarifaPOCMEcliente
+      require $root . '/Resources/PHP/actions/tarifas_calculaPOCME.php';
+      require $root . '/Resources/PHP/actions/tarifas_consultaPOCME_cliente.php'; #$tarifaPOCMEcliente
 
       //CALCULO TARIFA GENERAL - SECCION: POCME
       $id_cliente_usar = 'CLT_5900'; #CLIENTES DIVERSOS
       $consolidado = 'LTL/FTL';
-      require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME.php';
-      require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_general.php'; #$tarifaPOCMEgeneral
+      require $root . '/Resources/PHP/actions/tarifas_calculaPOCME.php';
+      require $root . '/Resources/PHP/actions/tarifas_consultaPOCME_general.php'; #$tarifaPOCMEgeneral
 
       //EXTRAER FACTURA-CTA AME-PROFORMA
       #PENDIENTE
@@ -174,11 +174,11 @@
       // 	}
 
       if($opcion == "cliente" || $opcion == "clt_ame" ){
-        require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME_delete.php';
+        require $root . '/Resources/PHP/actions/tarifas_calculaPOCME_delete.php';
       }
 
       # PARA LA OFICINA DE NUEVO LAREDO ESTOS CONCEPTOS SE CARGAN EN AUTOMATICO
-      require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME_mostrarConceptos.php';
+      require $root . '/Resources/PHP/actions/tarifas_calculaPOCME_mostrarConceptos.php';
       $idFila=0;
       if( $oficina == 240 ){
       	while ($oRst_Conceptos = $rslt_Conceptos->fetch_assoc()) {
@@ -220,7 +220,7 @@
               <input type='text' id='T_POCME_Descripcion$idFila' value='$descripcion' maxlength='40' class='T_POCME_DESCRIPCION' size='45' style='border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; '  />
             </td>
         		<td align='center'>
-              <a href='javascript:limpiarCampos(1,$idFila)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+              <a href='javascript:limpiarCampos(1,$idFila)'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>
             </td>
         		<td align='center'>
               <input type='text' id='T_POCME_Importe$idFila' value='$importe' class='T_POCME_IMPORTES' onblur='validaIntDec(this);validaDescImporte(this.form.T_POCME_Concepto$idFila,this.form.T_POCME_Importe$idFila);importe_POCME();cortarDecimalesObj(this.form.T_POCME_Importe$idFila,2);' size='17' style='border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; '  />
@@ -249,7 +249,7 @@
             <input type='text' id='T_POCME_Descripcion$idFilaBlanco' class='T_POCME_DESCRIPCION' onblur='this.form.T_POCME_Subtotal$idFilaBlanco.focus();' size='45' style='border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; ' value='' maxlength='40' tabindex='$tabindex = $tabindex+1'/>
           </td>
       		<td align='center'>
-            <a href='javascript:limpiarCampos(1,$idFilaBlanco)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+            <a href='javascript:limpiarCampos(1,$idFilaBlanco)'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>
           </td>
       		<td align='center'>
             <input type='text' id='T_POCME_Importe$idFilaBlanco' class='T_POCME_IMPORTES' onblur='validaIntDec(this);validaDescImporte(this.form.T_POCME_Concepto$idFilaBlanco,this.form.T_POCME_Importe$idFilaBlanco);importe_POCME();cortarDecimalesObj(this.form.T_POCME_Importe$idFilaBlanco,2);' size='17' style='border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; ' value='' tabindex='$tabindex = $tabindex+1' />
@@ -264,24 +264,24 @@
 
 
       //CALCULO TARIFA ALMACEN - SECCION: PAGOS REALIZADOS POR SU CUENTA
-      require $root . '/conta6/Resources/PHP/actions/tarifas_calculaALMACEN.php'; #$custodia,$manejo,$almacenaje
+      require $root . '/Resources/PHP/actions/tarifas_calculaALMACEN.php'; #$custodia,$manejo,$almacenaje
         $maniobras = redondear_dos_decimal($custodia + $manejo + $almacenaje);
 
-      require $root . '/conta6/Resources/PHP/actions/tarifas_almacen_mostrarConceptos.php'; #$ConceptosAlmacen
-      require $root . '/conta6/Resources/PHP/actions/tarifas_almacen_mostrarConceptosLibres.php'; #$conceptosLibresAlmacen
+      require $root . '/Resources/PHP/actions/tarifas_almacen_mostrarConceptos.php'; #$ConceptosAlmacen
+      require $root . '/Resources/PHP/actions/tarifas_almacen_mostrarConceptosLibres.php'; #$conceptosLibresAlmacen
 
 
       //CALCULO TARIFA CLIENTE - SECCION: HONORARIOS Y SERVICIOS AL COMERCIO EXTERIOR
-      require $root . '/conta6/Resources/PHP/actions/tarifas_calculaCLIENTE.php'; #$honorarios,$factor_honorarios,$descuento
-      require $root . '/conta6/Resources/PHP/actions/tarifas_cliente_mostrarConceptos.php'; #$ConceptosCliente
-      require $root . '/conta6/Resources/PHP/actions/tarifas_cliente_mostrarConceptosLibres.php'; #$conceptosLibresCliente
+      require $root . '/Resources/PHP/actions/tarifas_calculaCLIENTE.php'; #$honorarios,$factor_honorarios,$descuento
+      require $root . '/Resources/PHP/actions/tarifas_cliente_mostrarConceptos.php'; #$ConceptosCliente
+      require $root . '/Resources/PHP/actions/tarifas_cliente_mostrarConceptosLibres.php'; #$conceptosLibresCliente
 
 			$oRst_consultaCve = mysqli_fetch_array(mysqli_query($db,"select fk_c_ClaveProdServ from conta_cs_cuentas_mst where pk_id_cuenta = '0400-00001'"));
 			$cveProdHon = $oRst_consultaCve['fk_c_ClaveProdServ'];
 
 
       //forma de pago del cliente
-      require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
+      require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
       if ($rows_datosCLTformaPago > 0) {
           $datosCLTformaPago = "<option selected value='0'>Forma de pago</option>";
         while ($row_datosCLTformaPago = $rslt_datosCLTformaPago->fetch_assoc()) {
@@ -292,9 +292,9 @@
       }
 
       //LISTA DE MONEDAS
-      require $root . '/conta6/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
+      require $root . '/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
       //LISTA DE USO DE CFDI
-      require $root . '/conta6/Resources/PHP/actions/consultaUsoCFDI_facturar.php'; #$consultaUsoCFDIfac
+      require $root . '/Resources/PHP/actions/consultaUsoCFDI_facturar.php'; #$consultaUsoCFDIfac
 
       $tabindex = 0;
 ?>
@@ -601,7 +601,7 @@
 
 		<tr id="10" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td><input type="text" id="T_Cargo_1" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_1);eliminaBlancoFin(this.form.T_Cargo_1);eliminaBlancosIntermedios(this.form.T_Cargo_1);" class="T_Cargo" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;" value="Impuestos y/o derechos pagados o garantizados al Com. Ext." readonly>&nbsp;</td>
-			<td><a href="javascript:limpiarCampos('C1')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg' /></a></td>
+			<td><a href="javascript:limpiarCampos('C1')"><img class='icochico' src='/Resources/iconos/002-trash.svg' /></a></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td width="15%" align="center"><input type="text" id="T_Cargo_13" size="20" onblur="validaIntDec(this);cortarDecimalesObj(this.form.T_Cargo_13,2);Suma_Subtotales();" class="T_Cargo_Subtotal" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"></td>
@@ -610,7 +610,7 @@
 
 		<tr id="11" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 		  <td width="25%"><input type="text" id="T_Cargo_2" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_2);eliminaBlancoFin(this.form.T_Cargo_2);eliminaBlancosIntermedios(this.form.T_Cargo_2);" class="T_Cargo" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;" /></td>
-			<td width="25%"><a href="javascript:limpiarCampos('C2')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg' /></a></td>
+			<td width="25%"><a href="javascript:limpiarCampos('C2')"><img class='icochico' src='/Resources/iconos/002-trash.svg' /></a></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td width="15%" align="center">
@@ -620,7 +620,7 @@
 
 		<tr id="12" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td width="25%"><input type="text" id="T_Cargo_3" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_3);eliminaBlancoFin(this.form.T_Cargo_3);eliminaBlancosIntermedios(this.form.T_Cargo_3);" class="T_Cargo" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;">&nbsp;</td>
-			<td width="25%"><a href="javascript:limpiarCampos('C3')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg' /></a></td>
+			<td width="25%"><a href="javascript:limpiarCampos('C3')"><img class='icochico' src='/Resources/iconos/002-trash.svg' /></a></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td width="15%" align="center"><input type="text" id"T_Cargo_33" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_3,this.form.T_Cargo_33);cortarDecimalesObj(this.form.T_Cargo_33,2);Suma_Subtotales();" class="T_Cargo_Subtotal" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/></td>
@@ -629,7 +629,7 @@
 
 		<tr id="13" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td width="25%"><input type="text" id="T_Cargo_4" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_4);eliminaBlancoFin(this.form.T_Cargo_4);eliminaBlancosIntermedios(this.form.T_Cargo_4);" class="T_Cargo" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;">&nbsp;</td>
-			<td width="25%"><a href="javascript:limpiarCampos('C4')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg' /></a></td>
+			<td width="25%"><a href="javascript:limpiarCampos('C4')"><img class='icochico' src='/Resources/iconos/002-trash.svg' /></a></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td width="15%" align="center"><input type="text" id"T_Cargo_43" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_4,this.form.T_Cargo_43);cortarDecimalesObj(this.form.T_Cargo_43,2);Suma_Subtotales();" class="T_Cargo_Subtotal" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"></td>
@@ -638,7 +638,7 @@
 
 		<tr id="14" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td width="25%"><input type="text" id="T_Cargo_5" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_5);eliminaBlancoFin(this.form.T_Cargo_5);eliminaBlancosIntermedios(this.form.T_Cargo_5);" class="T_Cargo" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;">&nbsp;</td>
-			<td width="25%"><a href="javascript:limpiarCampos('C5')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg' /></a></td>
+			<td width="25%"><a href="javascript:limpiarCampos('C5')"><img class='icochico' src='/Resources/iconos/002-trash.svg' /></a></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td width="15%" align="center"><input type="text" id"T_Cargo_53" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_5,this.form.T_Cargo_53);cortarDecimalesObj(this.form.T_Cargo_53,2);Suma_Subtotales();" class="T_Cargo_Subtotal" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"></td>
@@ -647,7 +647,7 @@
 
 		<tr id="15" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td width="25%"><input type="text" id="T_Cargo_6" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_6);eliminaBlancoFin(this.form.T_Cargo_6);eliminaBlancosIntermedios(this.form.T_Cargo_6);" class="T_Cargo" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;">&nbsp;</td>
-			<td width="25%"><a href="javascript:limpiarCampos('C6')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg' /></a></td>
+			<td width="25%"><a href="javascript:limpiarCampos('C6')"><img class='icochico' src='/Resources/iconos/002-trash.svg' /></a></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td width="15%" align="center"><input type="text" id"T_Cargo_63" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_6,this.form.T_Cargo_63);cortarDecimalesObj(this.form.T_Cargo_63,2);Suma_Subtotales();" class="T_Cargo_Subtotal" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"></td>
@@ -656,7 +656,7 @@
 
 		<tr id="16" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td width="25%"><input type="text" id="T_Cargo_7" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_7);eliminaBlancoFin(this.form.T_Cargo_7);eliminaBlancosIntermedios(this.form.T_Cargo_7);" class="T_Cargo" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;">&nbsp;</td>
-			<td width="25%"><a href="javascript:limpiarCampos('C7')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg' /></a></td>
+			<td width="25%"><a href="javascript:limpiarCampos('C7')"><img class='icochico' src='/Resources/iconos/002-trash.svg' /></a></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td width="15%" align="center"><input type="text" id"T_Cargo_73" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_7,this.form.T_Cargo_73);cortarDecimalesObj(this.form.T_Cargo_73,2);Suma_Subtotales();" class="T_Cargo_Subtotal" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"></td>
@@ -665,7 +665,7 @@
 
 		<tr id="17" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td width="25%"><input type="text" id="T_Cargo_8" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Cargo_8);eliminaBlancoFin(this.form.T_Cargo_8);eliminaBlancosIntermedios(this.form.T_Cargo_8);" class="T_Cargo" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;">&nbsp;</td>
-			<td width="25%"><a href="javascript:limpiarCampos('C8')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg' /></a></td>
+			<td width="25%"><a href="javascript:limpiarCampos('C8')"><img class='icochico' src='/Resources/iconos/002-trash.svg' /></a></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td width="15%" align="center"><input type="text" id"T_Cargo_83" size="20" onblur="validaIntDec(this);validaDescImporte(this.form.T_Cargo_8,this.form.T_Cargo_83);cortarDecimalesObj(this.form.T_Cargo_83,2);Suma_Subtotales();" class="T_Cargo_Subtotal" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"></td>
@@ -703,7 +703,7 @@
       <td align="right"><input type="text" id="T_CH" size="42" style="font-family: Trebuchet MS; font-size:10pt;" onchange="validarStringSAT(this.form.T_CH);" onkeypress="return validarStringSATteclaPulsada(event);" onblur="limpia()"/></td>
       <td align="left"><input type="text" id"T_Valor_Concepto_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this.form.T_Valor_Concepto_Honorarios,2);" size="15" style="font-family: Trebuchet MS; font-size:10pt; text-align:center; ">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      </td>
   	  <td align="left"><input type=button value="Add" id"Btn_Honorarios" onclick="agregarHonorarios()" style="font-family: Trebuchet MS; font-size: 10pt; color: #000000;" /></td>
-  	  <td align="left"><a href="javascript:ayudaPermitidos();">Caracteres permitidos  <img class='icochico' src='/conta6/Resources/iconos/help.svg'></a></td>
+  	  <td align="left"><a href="javascript:ayudaPermitidos();">Caracteres permitidos  <img class='icochico' src='/Resources/iconos/help.svg'></a></td>
     <td>
       <input type= text id"T_Honorarios_Minimo_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this.form.T_Honorarios_Minimo_Honorarios,2);" size="7" style="font-family: Trebuchet MS; font-size:10pt; text-align:right;" tabindex="<?php echo $tabindex = $tabindex+1; ?>" value="<?php echo $honorarios; ?>">    </td>
   </tr>
@@ -742,7 +742,7 @@
 
 		<tr id="19" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td colspan="4"><input type="text" id="T_Honorarios_1" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_1);eliminaBlancoFin(this.form.T_Honorarios_1);eliminaBlancosIntermedios(this.form.T_Honorarios_1);validarStringSAT(this.form.T_Honorarios_1);" class="T_Honorarios" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;" tabindex="75"></td>
-			<td><a href="javascript:limpiarCampos('H1')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a></td>
+			<td><a href="javascript:limpiarCampos('H1')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a></td>
 			<td align="center"><input type="text" id"T_Hcta1" class="T_Honorarios_idcta" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly /></td>
 			<td align="center"><input type="text" id"T_Hps1" class="T_Honorarios_idps" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly /></td>
 			<td align="center"><input type="text" id"T_Honorarios_11" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_1,this.form.T_Honorarios_11);cortarDecimalesObj(this.form.T_Honorarios_11,2);Iva_Importe_Hon1()" size="18" class="T_Honorarios_Importe" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"></td>
@@ -755,7 +755,7 @@
 
 		<tr id="20" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td colspan="4"><input type="text" id="T_Honorarios_2" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_2);eliminaBlancoFin(this.form.T_Honorarios_2);eliminaBlancosIntermedios(this.form.T_Honorarios_2);validarStringSAT(this.form.T_Honorarios_2);" class="T_Honorarios" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;" tabindex="79"></td>
-			<td><a href="javascript:limpiarCampos('H2')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a></td>
+			<td><a href="javascript:limpiarCampos('H2')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a></td>
 			<td align="center"><input type="text" id"T_Hcta2" class="T_Honorarios_idcta" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly /></td>
 			<td align="center"><input type="text" id"T_Hps2" class="T_Honorarios_idps" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly /></td>
 			<td align="center"><input type="text" id"T_Honorarios_21" size="18" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_2,this.form.T_Honorarios_21);cortarDecimalesObj(this.form.T_Honorarios_21,2);Iva_Importe_Hon2();" class="T_Honorarios_Importe" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"></td>
@@ -767,7 +767,7 @@
 
 		<tr id="21" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td colspan="4"><input type="text" id="T_Honorarios_3" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_3);eliminaBlancoFin(this.form.T_Honorarios_3);eliminaBlancosIntermedios(this.form.T_Honorarios_3);validarStringSAT(this.form.T_Honorarios_3);" class="T_Honorarios" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;" tabindex="83"></td>
-			<td><a href="javascript:limpiarCampos('H3')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a></td>
+			<td><a href="javascript:limpiarCampos('H3')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a></td>
 			<td align="center"><input type="text" id="T_Hcta3" class="T_Honorarios_idcta" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly /></td>
 			<td align="center"><input type="text" id="T_Hps3" class="T_Honorarios_idps" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly /></td>
 			<td align="center"><input type="text" id"T_Honorarios_31" size="18" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_3,this.form.T_Honorarios_31);cortarDecimalesObj(this.form.T_Honorarios_31,2);Iva_Importe_Hon3();" class="T_Honorarios_Importe" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"></td>
@@ -781,7 +781,7 @@
 
 		<tr id="22" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td colspan="4"><input type="text" id="T_Honorarios_4" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_4);eliminaBlancoFin(this.form.T_Honorarios_4);eliminaBlancosIntermedios(this.form.T_Honorarios_4);validarStringSAT(this.form.T_Honorarios_4);" class="T_Honorarios" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;" tabindex="87"></td>
-			<td><a href="javascript:limpiarCampos('H4')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a></td>
+			<td><a href="javascript:limpiarCampos('H4')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a></td>
 			<td align="center"><input type="text" id="T_Hcta4" class="T_Honorarios_idcta" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly /></td>
 			<td align="center"><input type="text" id="T_Hps4" class="T_Honorarios_idps" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly /></td>
 			<td align="center"><input type="text" id"T_Honorarios_41" size="18" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_4,this.form.T_Honorarios_41);cortarDecimalesObj(this.form.T_Honorarios_41,2);Iva_Importe_Hon4();" class="T_Honorarios_Importe" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"></td>
@@ -793,7 +793,7 @@
 
 		<tr id="23" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">
 			<td width="20%" colspan="4"><input type="text" id="T_Honorarios_5" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_5);eliminaBlancoFin(this.form.T_Honorarios_5);eliminaBlancosIntermedios(this.form.T_Honorarios_5);validarStringSAT(this.form.T_Honorarios_5);" class="T_Honorarios" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;" tabindex="91"></td>
-			<td width="20%"><a href="javascript:limpiarCampos('H5')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a></td>
+			<td width="20%"><a href="javascript:limpiarCampos('H5')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a></td>
 			<td align="center"><input type="text" id="T_Hcta5" class="T_Honorarios_idcta" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly /></td>
 			<td align="center"><input type="text" id="T_Hps5" class="T_Honorarios_idps" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly /></td>
 			<td align="center"><input type="text" id"T_Honorarios_51" size="18" onblur="validaIntDec(this);validaDescImporte(this.form.T_Honorarios_5,this.form.T_Honorarios_51);cortarDecimalesObj(this.form.T_Honorarios_51,2);Iva_Importe_Hon5();" class="T_Honorarios_Importe" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right;" value="0" tabindex="<?php echo $tabindex = $tabindex+1; ?>"></td>
@@ -807,7 +807,7 @@
 			<td colspan="4">
         <input type="text" id="T_Honorarios_6" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_6);eliminaBlancoFin(this.form.T_Honorarios_6);eliminaBlancosIntermedios(this.form.T_Honorarios_6);validarStringSAT(this.form.T_Honorarios_6);" class="T_Honorarios" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;" tabindex="95">
       </td>
-			<td><a href="javascript:limpiarCampos('H6')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a></td>
+			<td><a href="javascript:limpiarCampos('H6')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a></td>
 			<td align="center">
         <input type="text" id="T_Hcta6" class="T_Honorarios_idcta" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly />
       </td>
@@ -833,7 +833,7 @@
 			<td width="20%" colspan="4">
         <input type="text" id="T_Honorarios_7" size="60" maxlength="60" onchange="javascript:eliminaBlancoIni(this.form.T_Honorarios_7);eliminaBlancoFin(this.form.T_Honorarios_7);eliminaBlancosIntermedios(this.form.T_Honorarios_7);validarStringSAT(this.form.T_Honorarios_7);" class="T_Honorarios" readonly style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt;" tabindex="99">
       </td>
-			<td width="20%"><a href="javascript:limpiarCampos('H7')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a></td>
+			<td width="20%"><a href="javascript:limpiarCampos('H7')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a></td>
 			<td align="center">
         <input type="text" id="T_Hcta7" class="T_Honorarios_idcta" size="15" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="" readonly />
       </td>
@@ -948,7 +948,7 @@
       </tr>
       <tr style="font-family: Trebuchet MS; font-size:10pt; color:#FFFFFF">
         <td colspan="7">&nbsp;</td>
-    	  <td bgcolor="#7F7F7F">Anticipo 1 <a href="javascript:Btn_Busca_Anticipo('1')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A1')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>      </td>
+    	  <td bgcolor="#7F7F7F">Anticipo 1 <a href="javascript:Btn_Busca_Anticipo('1')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A1')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>      </td>
     	<td colspan="2" align="center" bgcolor="#7F7F7F">
         <input type="text" id"T_No_Anticipo_1" size="20" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:center; background-color:#DCDCDC">      </td>
         <td align="center">
@@ -961,7 +961,7 @@
     					<option value='0' selected>No</option>
     		  </select>      </td>
     	<td bgcolor="#7F7F7F">Anticipo 2
-        <a href="javascript:Btn_Busca_Anticipo('2')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A2')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>      </td>
+        <a href="javascript:Btn_Busca_Anticipo('2')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A2')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>      </td>
     	<td colspan="2" align="center" bgcolor="#7F7F7F"><input type="text" id"T_No_Anticipo_2" size="20" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:center; background-color:#DCDCDC"></td>
         <td align="center">
           <input type="text" id"T_Anticipo_2" size="20" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="0" readonly>        </td>
@@ -1052,7 +1052,7 @@
             </tr>
           </table>        </td>
         <td bgcolor="#7F7F7F" style="font-family: Trebuchet MS; font-size:10pt; color:#FFFFFF">
-          Anticipo 3 <a href="javascript:Btn_Busca_Anticipo('3')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A3')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>        </td>
+          Anticipo 3 <a href="javascript:Btn_Busca_Anticipo('3')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A3')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>        </td>
     	  <td colspan="2" align="center" bgcolor="#7F7F7F">
           <input type="text" id"T_No_Anticipo_3" size="20" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:center; background-color:#DCDCDC">        </td>
         <td align="center">
@@ -1061,7 +1061,7 @@
 
       <tr style="font-family: Trebuchet MS; font-size:10pt; color:#FFFFFF">
         <td bgcolor="#7F7F7F">
-          Anticipo 4 <a href="javascript:Btn_Busca_Anticipo('4')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A4')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>        </td>
+          Anticipo 4 <a href="javascript:Btn_Busca_Anticipo('4')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A4')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>        </td>
     	  <td colspan="2" align="center" bgcolor="#7F7F7F">
           <input type="text" id"T_No_Anticipo_4" size="20" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:center; background-color:#DCDCDC">        </td>
         <td align="center">
@@ -1070,7 +1070,7 @@
 
       <tr style="font-family: Trebuchet MS; font-size:10pt; color:#FFFFFF">
       	<td bgcolor="#7F7F7F">
-          Anticipo 5 <a href="javascript:Btn_Busca_Anticipo('5')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A5')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>        </td>
+          Anticipo 5 <a href="javascript:Btn_Busca_Anticipo('5')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A5')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>        </td>
       	<td colspan="2" align="center" bgcolor="#7F7F7F">
           <input type="text" id"T_No_Anticipo_5" size="20" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:center; background-color:#DCDCDC">        </td>
         <td align="center">
@@ -1078,7 +1078,7 @@
       </tr>
       <tr style="font-family: Trebuchet MS; font-size:10pt; color:#FFFFFF">
     	   <td bgcolor="#7F7F7F">
-           Anticipo 6 <a href="javascript:Btn_Busca_Anticipo('6')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A6')"><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>         </td>
+           Anticipo 6 <a href="javascript:Btn_Busca_Anticipo('6')" tabindex="<?php echo $tabindex = $tabindex+1; ?>"><img class='icochico' src='/Resources/iconos/magnifier.svg' /></a>&nbsp;&nbsp;<a href="javascript:limpiarCampos('A6')"><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>         </td>
     	   <td colspan="2" align="center" bgcolor="#7F7F7F"><input type="text" id"T_No_Anticipo_6" size="20" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:center; background-color:#DCDCDC"></td>
          <td align="center"><input type="text" id"T_Anticipo_6" size="20" style="border:1px solid #C0C0C0; font-family: Trebuchet MS; font-size:10pt; text-align:right; background-color:#DCDCDC" value="0" readonly></td>
       </tr>
@@ -1131,5 +1131,5 @@
 <p style="font-family: Trebuchet MS; font-size: 5pt;">*************</p>
 </body>
 <?php
-  require $root . '/conta6/Ubicaciones/footer.php';
+  require $root . '/Ubicaciones/footer.php';
 ?>

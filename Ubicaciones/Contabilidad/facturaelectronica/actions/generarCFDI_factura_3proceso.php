@@ -5,13 +5,13 @@ ini_set('display_errors',1);
 $tipoProceso = "factura";
 
 # nombre de carpetas y rutas de almacenamiento
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_1path.php';
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_1path.php';
 
 # array con todos los datos a timbrar
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_2array.php';
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_2array.php';
 
 # funciones para timbrar cfdi
-require_once $root . '/conta6/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
+require_once $root . '/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
 
 #***************************************************************************************
 # funciones para timbrar cfdi --- factura
@@ -97,7 +97,7 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
          $rutaRepFileHTML,$rutaRepFilePDF,$rutaQRFile,
          $modoTimbrar;
 
-  require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_diasCredito.php';
+  require $root . '/Resources/PHP/actions/consultaDatosCliente_diasCredito.php';
   //$vencimiento = '0000-00-00';
   if( $rows_diasCredCLT > 0 ){
     $credito = trim($row_diasCredCLT["n_dias"]);
@@ -105,37 +105,37 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
   }
 
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza.php';#prepare polDetFac
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza.php';#prepare polDetFac
   $respGuardarDatos = "✓ Póliza de Factura: ".$poliza."\n";
 
   # actualizando el mes de la poliza
   $mesPoliza = date_format(date_create($fechaTimbre),'m');
   $poliza2 = $poliza;
-  require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
+  require $root . '/Resources/PHP/actions/actualizarPoliza_dmes.php';
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_4guardarDatosTimbrado.php';
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_4guardarDatosTimbrado.php';
 
   $poliza_CtaGastos = 0; $polizaAplicado = 0;
   if( $total_cta_gastos <> 0 ){
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php';
     $respGuardarDatos .= "✓ Póliza de Cuenta Gastos: ".$poliza_CtaGastos."\n";
 
     $poliza2 = $poliza_CtaGastos;
-    require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
+    require $root . '/Resources/PHP/actions/actualizarPoliza_dmes.php';
   }
   if( $c_MetodoPago == 'PUE' && $fac_saldo < 0 ){
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
     $respGuardarDatos .= "✓ Póliza de Pago Aplicado: ".$polizaAplicado."\n";
 
     $poliza2 = $polizaAplicado;
-    require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
+    require $root . '/Resources/PHP/actions/actualizarPoliza_dmes.php';
   }
 
   if( $poliza_CtaGastos > 0 || $polizaAplicado > 0 ){
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5guardarDatosPolizas.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5guardarDatosPolizas.php';
   }
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML.php';
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML.php';
 
   #registro en contabilidad electronica
   if( $poliza > 0 ){
@@ -146,7 +146,7 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
     $importe = $total;
     $beneficiarioOpc = $r_nombre;
     $tipoCamb = $tc;
-    require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal_poliza.php';
+    require $root . '/Resources/PHP/actions/contaElect_insertaCompNal_poliza.php';
   }
 
   return $respGuardarDatos;

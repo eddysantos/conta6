@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = trim($_POST['id_poliza']);
 $query = "SELECT * FROM conta_t_polizas_det WHERE fk_id_poliza = ? ORDER BY pk_partida DESC";
@@ -44,7 +44,7 @@ while ($row = $rslt->fetch_assoc()) {
   $nom_proveedor = '';
 
   if( $idProveedor > 0 ){
-    require $root . '/conta6/Resources/PHP/actions/consultaDatosProveedorContabilidad.php';
+    require $root . '/Resources/PHP/actions/consultaDatosProveedorContabilidad.php';
   }
 
 
@@ -58,8 +58,8 @@ while ($row = $rslt->fetch_assoc()) {
     <td class='col-md-1'>$abono</td>
     <td class='col-md-4'>$nom_proveedor</td>
     <td class='col-md-1'>
-      <a href='#' id='addProvpartpol' onclick='asignarProvRegPol($partida)'><img src= '/conta6/Resources/iconos/add.svg' class='icochico'></a>
-      <a href='#' id='borrarProvpartpol' onclick='borrarProvRegPol($partida)' ><img src= '/conta6/Resources/iconos/002-trash.svg' class='icochico ml-5'></a>
+      <a href='#' id='addProvpartpol' onclick='asignarProvRegPol($partida)'><img src= '/Resources/iconos/add.svg' class='icochico'></a>
+      <a href='#' id='borrarProvpartpol' onclick='borrarProvRegPol($partida)' ><img src= '/Resources/iconos/002-trash.svg' class='icochico ml-5'></a>
     </td>
   </tr>";
 }

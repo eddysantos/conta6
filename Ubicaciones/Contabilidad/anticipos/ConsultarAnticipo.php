@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
   $id_anticipo = $_GET['id_anticipo'];
 
   $sql_Select = "SELECT * from conta_t_anticipos_mst Where pk_id_anticipo = ? AND fk_id_aduana = ?";
@@ -160,7 +160,7 @@
     <div class="row m-0">
       <div class="col-md-1">
         <?php if( $tienePoliza == true ){ ?>
-        <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano ml-5" src= "/conta6/Resources/iconos/printer.svg"></a>
+        <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano ml-5" src= "/Resources/iconos/printer.svg"></a>
         <?php } ?>
       </div>
       <div class="col-md-2 offset-md-6">
@@ -197,5 +197,5 @@
 } #$rows
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

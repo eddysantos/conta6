@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class="row backpink m-0">
@@ -51,7 +51,7 @@
           <label for="antconcepto">Concepto</label>
         </td>
         <td class="col-md-3">
-          <a href="#" id="genFolioAnticipo" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR ANTICIPO</a><!--nueva pagina, ingresar datos en poliza-->
+          <a href="#" id="genFolioAnticipo" class="boton"><img src= "/Resources/iconos/001-add.svg" class="icochico"> GENERAR ANTICIPO</a><!--nueva pagina, ingresar datos en poliza-->
         </td>
       </tr>
     </tbody>
@@ -59,5 +59,5 @@
 </div><!--/Termina Generar Poliza de Ingreso-->
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

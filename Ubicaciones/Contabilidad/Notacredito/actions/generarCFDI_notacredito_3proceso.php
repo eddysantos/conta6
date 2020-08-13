@@ -5,14 +5,14 @@ ini_set('display_errors',1);
 $tipoProceso = "notaCredito";
 
 # nombre de carpetas y rutas de almacenamiento
-require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_1path.php';
+require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_1path.php';
 
 # array con todos los datos a timbrar
-require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_2array.php';
+require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_2array.php';
 //print_r($array);
 
 # funciones para timbrar cfdi
-require_once $root . '/conta6/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
+require_once $root . '/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
 
 #***************************************************************************************
 # funciones para timbrar cfdi --- Nota Credito
@@ -82,16 +82,16 @@ function guardarDatosTimbrado_NC($UUID,$certSAT,$selloCFDI,$fechaTimbre,$version
          $modoTimbrar;
 
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_5generarPolizaNC.php';#prepare polDetFac
+  require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_5generarPolizaNC.php';#prepare polDetFac
   $respGuardarDatos = "✓ Póliza de Factura: ".$poliza."\n";
 
   $mesPoliza = date_format(date_create($fechaTimbre),'m');
   $poliza2 = $poliza;
-  require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
+  require $root . '/Resources/PHP/actions/actualizarPoliza_dmes.php';
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_4guardarDatosTimbrado.php';
+  require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_4guardarDatosTimbrado.php';
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_5impresoHTML.php';
+  require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/generarCFDI_notacredito_3proceso_5impresoHTML.php';
 
   #registro en contabilidad electronica
   if( $poliza > 0 ){
@@ -102,7 +102,7 @@ function guardarDatosTimbrado_NC($UUID,$certSAT,$selloCFDI,$fechaTimbre,$version
     $importe = $total;
     $beneficiarioOpc = $r_nombre;
     $tipoCamb = $tc;
-    require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal_poliza.php';
+    require $root . '/Resources/PHP/actions/contaElect_insertaCompNal_poliza.php';
   }
 
   return $respGuardarDatos;

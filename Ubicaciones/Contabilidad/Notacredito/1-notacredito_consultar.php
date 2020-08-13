@@ -1,20 +1,20 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $cuenta = trim($_GET['cuenta']);
   $accion = trim($_GET['accion']);
   $txt_id_asoc = 'No';
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosGenerales.php';
-  require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarqueModifi
-  require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCMEmodifi
-  require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargosModifi
-  require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorariosModifi
-  require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
+  require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosGenerales.php';
+  require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarqueModifi
+  require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCMEmodifi
+  require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargosModifi
+  require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorariosModifi
+  require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
 
   $id_captura = $cuenta;
-  require $root . '/conta6/Resources/PHP/actions/consultaNotaCreditoTimbrada.php';
+  require $root . '/Resources/PHP/actions/consultaNotaCreditoTimbrada.php';
   if( $rows_facTimbrada == 0 ){
     $s_UUID = '';
     $id_factura = '';
@@ -43,7 +43,7 @@
               $hrefTimbrar = "Error: Es requerido cobro de honorarios";
             }else{
               $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarNC($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
-                <img class='icomediano' src='/conta6/Resources/iconos/timbrar.svg'>
+                <img class='icomediano' src='/Resources/iconos/timbrar.svg'>
               </a>";
             }
   }
@@ -66,14 +66,14 @@
               $hrefTimbrar = "Error: Es requerido cobro de honorarios";
             }else{
               $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarNC($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
-                <img class='icomediano' src='/conta6/Resources/iconos/timbrar.svg'>
+                <img class='icomediano' src='/Resources/iconos/timbrar.svg'>
               </a>";
             }
     }
 
 
   }
-  require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarEstadoCFDI_notacredito.php'; #$datosEdoCancela
+  require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/consultarEstadoCFDI_notacredito.php'; #$datosEdoCancela
 ?>
 
 <div class="text-center">
@@ -91,20 +91,20 @@
 
   <div class="col-md-12 p-3 text-left">
     <?php if( $accion == 'consulta' ){ ?>
-    <a href="/Conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php">
-      <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+    <a href="/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php">
+      <img class="icomediano" src="/Resources/iconos/left.svg">
     </a>
     <a href='#' class="ml-4" onclick='imprimeProfNC(<?php echo $cuenta; ?>)'>
-      <img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'>
+      <img class='icomediano ml-2' src='/Resources/iconos/printer.svg'>
     </a>
     <?php } ?>
 
     <?php if( $accion == 'timbrar' ){ ?>
-    <a href="/Conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php">
-      <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+    <a href="/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php">
+      <img class="icomediano" src="/Resources/iconos/left.svg">
     </a>
     <a href="#" class="ml-4" onclick='imprimeProfNC(<?php echo $cuenta ?>)'>
-      <img class="icomediano" src="/conta6/Resources/iconos/printer.svg">
+      <img class="icomediano" src="/Resources/iconos/printer.svg">
     </a>
     <?php echo $hrefTimbrar; } ?>
   </div>
@@ -244,7 +244,7 @@ if( $s_UUID != '' ){ ?>
         $fechaActual = date("Y/m", time());
         $fechaActual2 = date("Y/m/d h:m:s", time());
         $txt_evaluar = evaluarCancelarNC($fechaTimbrado,$n_total_gral);
-        $hrefcancela = "<a href='#' onclick='cancelarNC($id_factura)'><img class='icoxs' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
+        $hrefcancela = "<a href='#' onclick='cancelarNC($id_factura)'><img class='icoxs' src='/Resources/iconos/cross.svg'>$txt_evaluar</a>";
 
       if( $total_estadoCancela == 0 ){
         echo "
@@ -530,5 +530,5 @@ function evaluarCancelarNC($d_fechaTimbrado,$n_total_gral){
 	}
 }
 
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
  ?>

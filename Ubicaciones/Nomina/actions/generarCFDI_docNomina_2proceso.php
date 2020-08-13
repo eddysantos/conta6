@@ -5,13 +5,13 @@ ini_set('display_errors',1);
 $tipoProceso = "nomina";
 
 # array con todos los datos a timbrar
-require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_2array.php';
+require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_2array.php';
 
 # funciones para timbrar cfdi
-require_once $root . '/conta6/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
+require_once $root . '/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
 
 # nombre de carpetas y rutas de almacenamiento
-require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_1path.php';
+require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_1path.php';
 
 
 
@@ -104,18 +104,18 @@ function guardarDatosTimbrado_Nomina($UUID,$certSAT,$selloCFDI,$fechaTimbre,$ver
 
 
   if( $poliza == 0 ){
-    require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza.php';#prepare polDetFac
+    require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza.php';#prepare polDetFac
     $respGuardarDatos = "✓ Póliza de Factura: ".$poliza."\n";
 
     $mesPoliza = date_format(date_create($fechaTimbre),'m');
     $poliza2 = $poliza;
-    require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
+    require $root . '/Resources/PHP/actions/actualizarPoliza_dmes.php';
   }
 
-  require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_4guardarDatosTimbrado.php';
+  require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_4guardarDatosTimbrado.php';
   #probarCodigo
 
-  #require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_5impresoHTML.php';
+  #require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_5impresoHTML.php';
 
   #registro en contabilidad electronica
   if( $poliza > 0 ){
@@ -126,7 +126,7 @@ function guardarDatosTimbrado_Nomina($UUID,$certSAT,$selloCFDI,$fechaTimbre,$ver
     $importe = $total;
     $beneficiarioOpc = $r_nombre;
     $tipoCamb = $tc;
-    require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal_poliza.php';
+    require $root . '/Resources/PHP/actions/contaElect_insertaCompNal_poliza.php';
   }
 
   return $respGuardarDatos;

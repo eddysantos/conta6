@@ -1,6 +1,6 @@
 <?php
 // $root = $_SERVER['DOCUMENT_ROOT'];
-// require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+// require $root . '/Ubicaciones/barradenavegacion.php';
 //
 //
 // $id_poliza = trim($_GET['id_poliza']);
@@ -140,7 +140,7 @@
 ?>
 
 <?php
-// require $root . '/conta6/Ubicaciones/footer.php';
+// require $root . '/Ubicaciones/footer.php';
 ?>
 
 <?php

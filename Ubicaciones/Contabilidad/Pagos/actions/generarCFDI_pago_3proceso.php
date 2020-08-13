@@ -6,13 +6,13 @@ $tipoProceso = "pago";
 
 # nombre de carpetas y rutas de almacenamiento
 # se toma una referencia para el nombre del archivo pago
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_1path.php';
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_1path.php';
 
 # array con todos los datos a timbrar
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_2array.php'; #$nodo
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_2array.php'; #$nodo
 
 # funciones para timbrar cfdi
-require_once $root . '/conta6/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
+require_once $root . '/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
 
 #***************************************************************************************
 # funciones para timbrar cfdi --- pagos
@@ -88,16 +88,16 @@ function guardarDatosTimbrado_Pago($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versi
          #$tipoCambio,$totalGral,$IVAretenido,$totaGralIVA,$total_cta_gastos,$fac_saldo,$c_MetodoPago,$Total_Anticipos,$POCME_Total_MN,
 
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_5generarPoliza.php';#prepare polDetFac
+  require $root . '/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_5generarPoliza.php';#prepare polDetFac
   $respGuardarDatos = "✓ Póliza de Pago Electrónico: ".$poliza."\n";
 
   $mesPoliza = date_format(date_create($fechaTimbre),'m');
   $poliza2 = $poliza;
-  require $root . '/conta6/Resources/PHP/actions/actualizarPoliza_dmes.php';
+  require $root . '/Resources/PHP/actions/actualizarPoliza_dmes.php';
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_4guardarDatosTimbrado.php';
+  require $root . '/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_4guardarDatosTimbrado.php';
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_5impresoHTML.php';
+  require $root . '/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso_5impresoHTML.php';
 
   #registro en contabilidad electronica
   if( $poliza > 0 ){
@@ -108,7 +108,7 @@ function guardarDatosTimbrado_Pago($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versi
     $importe = $total;
     $beneficiarioOpc = $r_nombre;
     $tipoCamb = $tc;
-    require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal_poliza.php';
+    require $root . '/Resources/PHP/actions/contaElect_insertaCompNal_poliza.php';
   }
 
   return $respGuardarDatos;

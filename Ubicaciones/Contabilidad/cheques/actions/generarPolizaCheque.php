@@ -6,7 +6,7 @@ $fecha = trim($_POST['diafecha']);
 $concepto = trim($_POST['diaconcepto']);
 */
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/actions/generarFolioPolizaGeneral.php';
+require $root . '/Resources/PHP/actions/generarFolioPolizaGeneral.php';
 
 //$nFolio número de Póliza
 //$rfcCIA
@@ -150,7 +150,7 @@ $rsltMST_up = $stmtMST_up->get_result();
 $descripcion = "Se Genero la Poliza: $nFolio del Cheque: $id_cheque CuentaM: $cuentaMST";
 $clave = 'cheques';
 $folio = $id_cheque;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 #'**************** DETALLE EN PARTIDAS DE LA POLIZA - CONTABILIDAD ELECTRONICA *******************************

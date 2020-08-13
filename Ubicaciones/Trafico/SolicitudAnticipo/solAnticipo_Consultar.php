@@ -1,16 +1,16 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $cuenta = trim($_GET['cuenta']);
   $accion = trim($_GET['accion']);
   $txt_id_asoc = 'No';
 
-  require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosGenerales.php';
-  require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosEmbarque.php'; #$datosEmbarque
-  require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosPOCME.php'; # $datosPOCME
-  require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosCargos.php'; #$datosCargos
-  require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosHonorarios.php'; #$datosHonorarios
+  require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosGenerales.php';
+  require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosEmbarque.php'; #$datosEmbarque
+  require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosPOCME.php'; # $datosPOCME
+  require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosCargos.php'; #$datosCargos
+  require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosHonorarios.php'; #$datosHonorarios
 
   if( $rows_facTimbrada == 0 ){
     $s_UUID = '';
@@ -26,7 +26,7 @@
     $s_selloSATcancela = '';
   }
 
-  require $root . '/conta6/Resources/PHP/actions/consultaFactura_ctaGastos.php';
+  require $root . '/Resources/PHP/actions/consultaFactura_ctaGastos.php';
   if( $rows_ctaGastos == 0 ){
     $id_ctagastos = '';
     $fecha_ctagastos = '';
@@ -56,11 +56,11 @@
 
   <div class="col-md-12 p-3 text-left">
     <?php if( $accion == 'consulta' ){ ?>
-    <a href="/Conta6/Ubicaciones/Trafico/SolicitudAnticipo/SolAnticipo.php">
-      <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+    <a href="/Ubicaciones/Trafico/SolicitudAnticipo/SolAnticipo.php">
+      <img class="icomediano" src="/Resources/iconos/left.svg">
     </a>
     <a href='#' class="ml-4" onclick='solAntImprimir(<?php echo $cuenta; ?>)'>
-      <img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'>
+      <img class='icomediano ml-2' src='/Resources/iconos/printer.svg'>
     </a>
     <?php } ?>
   </div>
@@ -288,5 +288,5 @@
 </div>
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
  ?>

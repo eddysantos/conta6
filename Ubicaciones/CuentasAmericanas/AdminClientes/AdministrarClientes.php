@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 
@@ -160,7 +160,7 @@
         </tr>
         <tr class="row">
           <td class="col-md-2 offset-md-5">
-            <a href="" class="boton mt-5"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a><!--nueva pagina, ingresar datos en poliza-->
+            <a href="" class="boton mt-5"><img src= "/Resources/iconos/save.svg" class="icochico"> GUARDAR</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>
@@ -297,7 +297,7 @@
         </tr>
         <tr class="row mt-4">
           <td class="col-md-2 offset-md-5">
-            <a href="" class="boton"><img src= "/conta6/Resources/iconos/003-edit.svg" class="icochico"> MODIFICAR</a><!--nueva pagina, ingresar datos en poliza-->
+            <a href="" class="boton"><img src= "/Resources/iconos/003-edit.svg" class="icochico"> MODIFICAR</a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>
@@ -440,7 +440,7 @@
         <tr class="row encabezado">
           <td class="col-md-6 text-left">Agregar Credito a Cliente</td>
           <td class="col-md-3 offset-md-3">
-            <a href="#creditos"  data-toggle="modal" class="boton"><img class="icochico" src="/conta6/Resources/iconos/magnifier.svg"> REVISAR CREDITOS</a>
+            <a href="#creditos"  data-toggle="modal" class="boton"><img class="icochico" src="/Resources/iconos/magnifier.svg"> REVISAR CREDITOS</a>
           </td>
         </tr>
       </thead>
@@ -462,7 +462,7 @@
             <label for="dcreditoPLA">Días de Credito</label>
           </td>
           <td class="text-left">
-            <a href=""><img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a><!--nueva pagina, ingresar datos en poliza-->
+            <a href=""><img src= "/Resources/iconos/save.svg" class="icomediano"></a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
         <tr class="row mt-5">
@@ -483,7 +483,7 @@
             <label for="dcreditoIM">Días de Credito</label>
           </td>
           <td class="text-left">
-            <a href=""><img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a><!--nueva pagina, ingresar datos en poliza-->
+            <a href=""><img src= "/Resources/iconos/save.svg" class="icomediano"></a><!--nueva pagina, ingresar datos en poliza-->
           </td>
         </tr>
       </tbody>
@@ -495,5 +495,5 @@
 
 <script src="js/AdministrarClientes.js"></script>
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 require_once('modales/AdminClientes.php'); ?>

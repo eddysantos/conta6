@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
   $ben = trim($_POST['ben']);
   $rfc = trim($_POST['rfc']);
   $taxid = trim($_POST['taxid']);
@@ -176,8 +176,8 @@ if( $rfc != 'XEXX010101000' && $rfc != 'XAXX010101000' ){
     $folio = $id_benef;
 
     mysqli_query($db,"INSERT INTO conta_bitacora (fk_usuario,fk_id_operacion,s_folio,s_descripcion) values ('$usuario','$clave','$folio','$descripcion')");
-    
-    // require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+
+    // require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
     $system_callback['code'] = 1;
     $system_callback['message'] = "Script called successfully!";
     exit_script($system_callback);

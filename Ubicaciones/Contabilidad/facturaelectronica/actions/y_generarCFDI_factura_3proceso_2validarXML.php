@@ -4,7 +4,7 @@
 libxml_use_internal_errors(true);
 
 #validar xml
-$rutaXSD = $root . '/conta6/Resources/xsi/cfdv33.xsd';
+$rutaXSD = $root . '/Resources/xsi/cfdv33.xsd';
 $xml_valida = new DOMDocument();
 $xml_valida->load($rutaTempFile);
 
@@ -20,7 +20,7 @@ if (!$xml_valida->schemaValidate($rutaXSD)) {
   $xml_cadenaOriginal->load($rutaTempFile);
 
   $XSL = new DOMDocument();
-  $rutaXSLT = $root . '/conta6/Resources/xsi/cadenaoriginal_3_3.xslt';
+  $rutaXSLT = $root . '/Resources/xsi/cadenaoriginal_3_3.xslt';
   $XSL->load($rutaXSLT);
 
   $proc = new XSLTProcessor;
@@ -35,7 +35,7 @@ if (!$xml_valida->schemaValidate($rutaXSD)) {
 
 
   #GENERO ENCRIPTACION
-  $file = $root . '/conta6/Resources//clavesKeyCer/key2017.pem';//llave privada
+  $file = $root . '/Resources//clavesKeyCer/key2017.pem';//llave privada
   $llave = openssl_get_privatekey(file_get_contents($file));//Obtienes la llave privada
 
   #openssl_sign($cadenaUTF8, $crypttext, $llave, OPENSSL_ALGO_SHA1);//Firmas la cadena original 2011

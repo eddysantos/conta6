@@ -2,7 +2,7 @@
 # http://localhost:88/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos_elaborar.php?referencia=N13003039&consolidado=LTL&entradas=9&shipper=0&inbond=NO&flete=0.00&id_cliente=CLT_7345&docto=cliente&opcionDoc=ctagastos&extraerfolio=0&cobrarFlete=si&dias=5&tasa=IVA#
 # http://localhost:88/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos_elaborar.php?referencia=N13003036&id_cliente=CLT_6548
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+require $root . '/Ubicaciones/barradenavegacion.php';
 $pk_c_UsoCFDI = '';
 $selected_usoCFDI = '';
 $cliente = trim($_GET['id_cliente']);
@@ -33,9 +33,9 @@ $custodia = 0;
 $manejo = 0;
 $almacenaje = 0;
 $maniobras = 0;
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
 if($referencia != "SN"){
-      require $root . '/conta6/Resources/PHP/actions/consultaDatosReferenciaProveedor.php';
+      require $root . '/Resources/PHP/actions/consultaDatosReferenciaProveedor.php';
       if( $rows_datosRefProv > 0 ){
         $row_datosRefProv = $rslt_datosRefProv->fetch_assoc();
           $id_clienteReferencia = $row_datosRefProv['fk_id_cliente'];
@@ -81,7 +81,7 @@ if($referencia != "SN"){
       }
       if( trim($tipo) == 'E'){ $tipo = "EXP"; }else{ $tipo = "IMP"; }
       if( $almacen > 0 ){
-        require $root . '/conta6/Resources/PHP/actions/consultaDatosAlmacen.php';
+        require $root . '/Resources/PHP/actions/consultaDatosAlmacen.php';
         $almacenNombre = trim($row_datosAlmacen['s_almacen']);
       }else{ $almacen = 0; $almacenNombre = "SIN NOMBRE";}
       $nomProv = limpiarBlancos($nomProv);
@@ -116,7 +116,7 @@ $parteCliente = trim( preg_replace('/[0-9]/', '', $cliente ) );
 
 if( $parteCliente == "CLT_" ){
 		//datos del cliente
-		require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
+		require $root . '/Resources/PHP/actions/consultaDatosCliente.php';
 		if( $rows_datosCLT > 0 ){
 		  $CLT_nombre = htmlentities(limpiarNOUSAR($row_datosCLT["s_nombre"]));
 		  $CLT_calle = limpiarBlancos($row_datosCLT["s_calle"]);
@@ -131,7 +131,7 @@ if( $parteCliente == "CLT_" ){
 		  $CLT_taxid = limpiarBlancos($row_datosCLT["s_taxid"]);
 		}
 }else{
-		require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_americano.php';
+		require $root . '/Resources/PHP/actions/consultaDatosCliente_americano.php';
 		if( $rows_datosCLT > 0 ){
 		  $CLT_nombre = htmlentities(limpiarNOUSAR($row_datosCLT["s_nombre"]));
 		  $CLT_calle = limpiarBlancos($row_datosCLT["s_calle"]);
@@ -149,49 +149,49 @@ if( $parteCliente == "CLT_" ){
     /* SACO UN FOLIO DE CALCULO DE TARIFA, ESTE FOLIO ME SERVIRA PARA PODER IDENTIFICAR LOS FILTROS DE LAS TARIFAS */
     $tipoDocumento == 'elaborar';
     $s_tipoDoc = 'ctaGastosAME';
-    require $root . '/conta6/Resources/PHP/actions/tarifas_generarFolio.php'; #$calculoTarifa
+    require $root . '/Resources/PHP/actions/tarifas_generarFolio.php'; #$calculoTarifa
     //$calculoTarifa = 45;
 	  //echo $calculoTarifa;
 
     #******************** PAGOS O COBROS EN MONEDA EXTRANJERA ********************
     //CALCULO TARIFA DEL CLIENTE - SECCION: POCME
     $id_cliente_usar = $id_cliente;
-    require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME.php';
-    require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente.php'; #$tarifaPOCMEcliente
+    require $root . '/Resources/PHP/actions/tarifas_calculaPOCME.php';
+    require $root . '/Resources/PHP/actions/tarifas_consultaPOCME_cliente.php'; #$tarifaPOCMEcliente
     //CALCULO TARIFA GENERAL - SECCION: POCME
     $id_cliente_usar = 'CLT_5900'; #CLIENTES DIVERSOS
     $consolidado = 'LTL/FTL';
-    require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME.php';
-    require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_general.php'; #$tarifaPOCMEgeneral
+    require $root . '/Resources/PHP/actions/tarifas_calculaPOCME.php';
+    require $root . '/Resources/PHP/actions/tarifas_consultaPOCME_general.php'; #$tarifaPOCMEgeneral
     //EXTRAER PROFORMA - SECCION: POCME
     if($docto == "Proforma"){
-      require $root . '/conta6/Resources/PHP/actions/consulta_proforma_det.php'; #$proforma_POCME
+      require $root . '/Resources/PHP/actions/consulta_proforma_det.php'; #$proforma_POCME
     }
     //EXTRAER CTA AME - SECCION: POCME
     if($docto == "ctaAme"){
-      require $root . '/conta6/Resources/PHP/actions/consulta_ctaAme_det.php'; #$ctaAme_POCME
+      require $root . '/Resources/PHP/actions/consulta_ctaAme_det.php'; #$ctaAme_POCME
     }
     if($docto == "cliente" || $docto == "clt_ame" ){
-      require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME_delete.php';
+      require $root . '/Resources/PHP/actions/tarifas_calculaPOCME_delete.php';
     }
     //PARA LA OFICINA DE NUEVO LAREDO ESTOS CONCEPTOS SE CARGAN EN AUTOMATICO
     if( $aduana == 240 ){
       //echo $id_cliente.'/'.$calculoTarifa;
-      require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente_cobroAutomatico.php';  #$POCME_automatico_ctaAme
+      require $root . '/Resources/PHP/actions/tarifas_consultaPOCME_cliente_cobroAutomatico.php';  #$POCME_automatico_ctaAme
     }
     //CALCULO TARIFA ALMACEN - SECCION: PAGOS REALIZADOS POR SU CUENTA
-    require $root . '/conta6/Resources/PHP/actions/tarifas_calculaALMACEN.php'; #$custodia,$manejo,$almacenaje
+    require $root . '/Resources/PHP/actions/tarifas_calculaALMACEN.php'; #$custodia,$manejo,$almacenaje
       $maniobras = redondear_dos_decimal($custodia + $manejo + $almacenaje);
-    require $root . '/conta6/Resources/PHP/actions/tarifas_almacen_mostrarConceptos.php'; #$ConceptosAlmacen
-    require $root . '/conta6/Resources/PHP/actions/tarifas_almacen_mostrarConceptosLibres.php'; #$conceptosLibresAlmacen
+    require $root . '/Resources/PHP/actions/tarifas_almacen_mostrarConceptos.php'; #$ConceptosAlmacen
+    require $root . '/Resources/PHP/actions/tarifas_almacen_mostrarConceptosLibres.php'; #$conceptosLibresAlmacen
     //CALCULO TARIFA CLIENTE - SECCION: HONORARIOS Y SERVICIOS AL COMERCIO EXTERIOR
-    require $root . '/conta6/Resources/PHP/actions/tarifas_calculaCLIENTE.php'; #$honorarios,$factor_honorarios,$descuento
-    require $root . '/conta6/Resources/PHP/actions/tarifas_cliente_mostrarConceptos.php'; #$ConceptosCliente
-    require $root . '/conta6/Resources/PHP/actions/tarifas_cliente_mostrarConceptosLibres.php'; #$conceptosLibresCliente
+    require $root . '/Resources/PHP/actions/tarifas_calculaCLIENTE.php'; #$honorarios,$factor_honorarios,$descuento
+    require $root . '/Resources/PHP/actions/tarifas_cliente_mostrarConceptos.php'; #$ConceptosCliente
+    require $root . '/Resources/PHP/actions/tarifas_cliente_mostrarConceptosLibres.php'; #$conceptosLibresCliente
     $oRst_consultaCve = mysqli_fetch_array(mysqli_query($db,"select fk_c_ClaveProdServ from conta_cs_cuentas_mst where pk_id_cuenta = '0400-00001'"));
     $cveProdHon = $oRst_consultaCve['fk_c_ClaveProdServ'];
     //forma de pago del cliente
-    require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
+    require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
     if ($rows_datosCLTformaPago > 0) {
         $datosCLTformaPago = "<option selected value='0'>Forma de pago</option>";
       while ($row_datosCLTformaPago = $rslt_datosCLTformaPago->fetch_assoc()) {
@@ -201,9 +201,9 @@ if( $parteCliente == "CLT_" ){
       }
     }
     //LISTA DE MONEDAS
-    require $root . '/conta6/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
+    require $root . '/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
     //LISTA DE USO DE CFDI
-    require $root . '/conta6/Resources/PHP/actions/consultaUsoCFDI_facturar.php'; #$consultaUsoCFDIfac
+    require $root . '/Resources/PHP/actions/consultaUsoCFDI_facturar.php'; #$consultaUsoCFDIfac
     $tabindex = 0;
 ?>
 
@@ -500,7 +500,7 @@ if( $parteCliente == "CLT_" ){
                   </div>
                   <div class='col-md-1 text-left'>
                     <a onclick="agregarImporte_ctaAme()" id="Btn_agregar">
-                      <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                      <img src='/Resources/iconos/002-plus.svg' class='icomediano'>
                     </a>
                   </div>
                   <div class='col-md-1'></div>
@@ -611,8 +611,8 @@ if( $parteCliente == "CLT_" ){
           <input class="efecto boton validarstring" type='button' value="GUARDAR" id="guardar-ctaAme" tabindex="<?php echo $tabindex = $tabindex+1; ?>"/>
         </div>
         <div id="print" style="display:none">
-          <a id="Btn_print_ctaAme"><img src='/conta6/Resources/iconos/printer.svg' class='icomediano'></a>
-          <a id="Btn_new_ctaAme"><img src='/conta6/Resources/iconos/hoja2.svg' class='icomediano'></a>
+          <a id="Btn_print_ctaAme"><img src='/Resources/iconos/printer.svg' class='icomediano'></a>
+          <a id="Btn_new_ctaAme"><img src='/Resources/iconos/hoja2.svg' class='icomediano'></a>
         </div>
       </div>
     </div>
@@ -620,5 +620,5 @@ if( $parteCliente == "CLT_" ){
 
 
     <?php
-      require $root . '/conta6/Ubicaciones/footer.php';
+      require $root . '/Ubicaciones/footer.php';
     ?>

@@ -1,16 +1,16 @@
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-  require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
+  require $root . '/Resources/PHP/actions/validarFormulario.php';
 
   $regimenNomina = '09';
-  require $root . '/conta6/Ubicaciones/Nomina/Honorarios/actions/ultimaNominaHonorarios.php';
-  require $root . '/conta6/Resources/PHP/actions/consulta_nomina_anio.php';
+  require $root . '/Ubicaciones/Nomina/Honorarios/actions/ultimaNominaHonorarios.php';
+  require $root . '/Resources/PHP/actions/consulta_nomina_anio.php';
 ?>
 
 <div class="container-fluid">
-<?php require $root . '/conta6/Ubicaciones/Nomina/Honorarios/submenu_honorarios.php'; ?>
+<?php require $root . '/Ubicaciones/Nomina/Honorarios/submenu_honorarios.php'; ?>
   <!--Comienza Generar Nomina-->
   <div id="contornognomHon" class="contorno mx-0 mt-4" style="display:none">
     <div class="titulo font16" style='margin-top: -28px;'>Documento Ordinario</div>
@@ -118,12 +118,12 @@
             <td class="col-md-1">Tipo</td>
             <td class="col-md-1">Documento
               <a href='#' onclick="nuevoDocNomina()">
-                <img class='icomediano' src='/conta6/Resources/iconos/002-plus.svg'>
+                <img class='icomediano' src='/Resources/iconos/002-plus.svg'>
               </a>
             </td>
             <td class="col-md-1">
               <a href='#' onclick='borrarDocNominaTodos()'>
-                <img class='icochico' src='/conta6/Resources/iconos/cross.svg'>
+                <img class='icochico' src='/Resources/iconos/cross.svg'>
               </a>
             </td>
             <td class="col-md-1">Pol.Pago</td>
@@ -132,10 +132,10 @@
             <td class="col-md-1">Póliza</td>
             <td class="col-md-1">CFDI
               <a class='GenerarNominaCFDI' href='#' onclick='impresionCFDICompleto()'>
-                <img class='icochico' src='/conta6/Resources/iconos/printer.svg'>
+                <img class='icochico' src='/Resources/iconos/printer.svg'>
               </a>
               <a href='#catalogoComplementoNomina' data-toggle='modal'>
-                <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+                <img class='icochico' src='/Resources/iconos/help.svg'>
               </a>
             </td>
             <!-- <td class="col-md-1"></td> -->
@@ -176,5 +176,5 @@
 <?php
 include_once('modales/ParametrosHon.php');
 include_once('modales/catalogoCompNomina.php');
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

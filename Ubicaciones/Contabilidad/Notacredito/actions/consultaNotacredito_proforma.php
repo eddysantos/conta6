@@ -45,20 +45,20 @@ while ($row = $rslt->fetch_assoc()) {
 
   $href_cancela = '';  $href_modifica = ''; $href_consulta = ''; $href_imprime = ''; $href_timbrar = '';
   if( $oRst_permisos['s_NC_Pcancelar'] == 1 ){
-    $href_cancela = "<a href='#' onclick='cancelaProfNC($id_captura)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+    $href_cancela = "<a href='#' onclick='cancelaProfNC($id_captura)'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
   }
 
   if( $oRst_permisos['s_NC_Pmodificar'] == 1  ){
-    $href_modifica = "<a href='#' class='' onclick='modificaProfNC($id_captura,&#39;$id_cliente&#39;)'><img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'></a>";
+    $href_modifica = "<a href='#' class='' onclick='modificaProfNC($id_captura,&#39;$id_cliente&#39;)'><img class='icochico' src='/Resources/iconos/003-edit.svg'></a>";
   }
 
   if( $oRst_permisos['s_NC_Pconsultar'] == 1  ){
-    $href_consulta = "<a href='#' class='ml-1' onclick='consultaProfNC($id_captura,&#39;consulta&#39;)'><img class='icochico' src='/conta6/Resources/iconos/magnifier.svg'></a>";
-    $href_imprime = "<a href='#' class='ml-1' onclick='imprimeProfNC($id_captura)'><img class='icochico' src='/conta6/Resources/iconos/printer.svg'></a>";
+    $href_consulta = "<a href='#' class='ml-1' onclick='consultaProfNC($id_captura,&#39;consulta&#39;)'><img class='icochico' src='/Resources/iconos/magnifier.svg'></a>";
+    $href_imprime = "<a href='#' class='ml-1' onclick='imprimeProfNC($id_captura)'><img class='icochico' src='/Resources/iconos/printer.svg'></a>";
   }
 
   if( $oRst_permisos['s_NC_timbrar'] == 1  ){
-    $href_timbrar = "<a href='#' class='ml-1' onclick='consultaProfNC($id_captura,&#39;timbrar&#39;)'><img class='icochico' src='/conta6/Resources/iconos/timbrar.svg'></a>";
+    $href_timbrar = "<a href='#' class='ml-1' onclick='consultaProfNC($id_captura,&#39;timbrar&#39;)'><img class='icochico' src='/Resources/iconos/timbrar.svg'></a>";
   }
 
   $resultadoConsulta .=

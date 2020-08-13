@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
 $ID_calculo = trim($_POST['T_No_calculoTarifa']);
@@ -148,7 +148,7 @@ if (!($stmt_mst->execute())) {
 
 
 # Fecha de vencimiento
-require $root . '/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_fechaVencimiento.php';
+require $root . '/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_fechaVencimiento.php';
 if( $rows_diasCredCLT > 0 ){
   $credito = trim($row_diasCredCLT["n_dias"]);
   $vencimiento = date("Y-m-d",strtotime("$T_Date + $credito days"));
@@ -158,8 +158,8 @@ if( $rows_diasCredCLT > 0 ){
                     WHERE pk_id_ctaAme	 = $T_Invoice_No ");
 }
 
-require $root . '/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_modificar_detalle.php';
-require $root . '/conta6/Resources/PHP/actions/tarifas_calcula_borrar.php';
+require $root . '/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_modificar_detalle.php';
+require $root . '/Resources/PHP/actions/tarifas_calcula_borrar.php';
 
 
 
@@ -168,7 +168,7 @@ $descripcion = "Se modifico cuenta: $T_Invoice_No ";
 
 $clave = 'ctaAme_fac';
 $folio = $T_Invoice_No;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 //$db->commit();

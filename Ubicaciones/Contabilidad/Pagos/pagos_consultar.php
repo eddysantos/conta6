@@ -1,18 +1,18 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $cuenta = trim($_GET['cuenta']);
   $id_cliente = trim($_GET['id_cliente']);
   $accion = trim($_GET['accion']);
   $txt_id_asoc = 'No';
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
-  require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle.php'; # $pagosDetalle_consulta
+  require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
+  require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle.php'; # $pagosDetalle_consulta
 
 
   $id_captura = $cuenta;
-  require $root . '/conta6/Resources/PHP/actions/consultaPagoTimbrada.php';
+  require $root . '/Resources/PHP/actions/consultaPagoTimbrada.php';
   if( $rows_pagoTimbrada == 0 ){
     $s_UUID = '';
     $pk_id_pago = '';
@@ -30,7 +30,7 @@
 
   if( $s_UUID == '' && $oRst_permisos['s_rPElect_timbrar'] && $accion == 'timbrar' ){
     $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarPago($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
-                      <img class='icomediano' src='/conta6/Resources/iconos/timbrar.svg'>
+                      <img class='icomediano' src='/Resources/iconos/timbrar.svg'>
                     </a>";
 
   }
@@ -53,14 +53,14 @@
               $hrefTimbrar = "Error: Es requerido cobro de honorarios";
             }else{
               $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarFactura($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
-                <img class='icomediano' src='/conta6/Resources/iconos/timbrar.svg'>
+                <img class='icomediano' src='/Resources/iconos/timbrar.svg'>
               </a>";
             }
     }
 
 
   }*/
-  #require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarEstadoCFDI_factura.php'; #$datosEdoCancela
+  #require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarEstadoCFDI_factura.php'; #$datosEdoCancela
 ?>
 
 <div class="text-center">
@@ -78,20 +78,20 @@
 
   <div class="col-md-12 p-3 text-left">
     <?php if( $accion == 'consulta' ){ ?>
-    <a href="/Conta6/Ubicaciones/Contabilidad/Pagos/pagos.php">
-      <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+    <a href="/Ubicaciones/Contabilidad/Pagos/pagos.php">
+      <img class="icomediano" src="/Resources/iconos/left.svg">
     </a>
     <a href='#' class="ml-4" onclick='pagosImprimir(<?php echo $cuenta; ?>)'>
-      <img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'>
+      <img class='icomediano ml-2' src='/Resources/iconos/printer.svg'>
     </a>
     <?php } ?>
 
     <?php if( $accion == 'timbrar' ){ ?>
-    <a href="/Conta6/Ubicaciones/Contabilidad/Pagos/pagos.php">
-      <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+    <a href="/Ubicaciones/Contabilidad/Pagos/pagos.php">
+      <img class="icomediano" src="/Resources/iconos/left.svg">
     </a>
     <a href="#" class="ml-4" onclick='pagosImprimir(<?php echo $cuenta ?>)'>
-      <img class="icomediano" src="/conta6/Resources/iconos/printer.svg">
+      <img class="icomediano" src="/Resources/iconos/printer.svg">
     </a>
     <?php echo $hrefTimbrar; } ?>
   </div>
@@ -237,7 +237,7 @@
         $fechaActual = date("Y/m", time());
         $fechaActual2 = date("Y/m/d h:m:s", time());
         $txt_evaluar = evaluarCancelarFactura($fechaTimbrado,$n_total_gral);
-          $hrefcancela = "<a href='#' onclick='cancelarFactura($id_factura)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
+          $hrefcancela = "<a href='#' onclick='cancelarFactura($id_factura)'><img class='icomediano ml-4' src='/Resources/iconos/cross.svg'>$txt_evaluar</a>";
 
       if( $total_estadoCancela == 0 ){
         echo "
@@ -294,5 +294,5 @@
 
 <?php
 
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
  ?>

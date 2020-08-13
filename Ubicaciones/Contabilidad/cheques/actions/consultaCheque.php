@@ -20,7 +20,7 @@
 //   $system_callback['data'] .="<tr class='row text-center m-0 borderojo'>
 //     <td class='col-md-1'>
 //       <a href='#nombremodal' class='editar' db-id='$pk_id'>
-//         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+//         <img class='icochico' src='/Resources/iconos/003-edit.svg'>
 //       </a>
 //     </td>
 //     <td class='col-md-1'>$variable1</td>

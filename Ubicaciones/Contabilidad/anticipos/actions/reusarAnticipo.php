@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = trim($_POST['id_poliza']);
 $id_anticipo = trim($_POST['id_anticipo']);
@@ -44,7 +44,7 @@ $descripcion = "Se elimino detalle del Anticipo $id_anticipo desde btn_reusarAnt
 
 $clave = 'anticipos';
 $folio = $id_anticipo;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 
@@ -86,7 +86,7 @@ $descripcion = "Se elimino Póliza:$id_poliza del Anticipo $id_anticipo desde bt
 
 $clave = 'anticipos';
 $folio = $id_anticipo;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 
@@ -132,7 +132,7 @@ if( $id_poliza > 0 ){
 
   $clave = 'anticipos';
   $folio = $id_anticipo;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
   #'**************** BORRANDO - CONTABILIDAD ELECTRONICA *******************************

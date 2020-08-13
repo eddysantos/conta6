@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_cliente = trim($_POST['id_cliente']);
 $dias = trim($_POST['dias']);
@@ -42,7 +42,7 @@ $descripcion = "Se Actualizo dias de credito: $dias, del cliente $id_cliente";
 
 $clave = 'admonPersonas';
 $folio = $id_cliente;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";

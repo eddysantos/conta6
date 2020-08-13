@@ -1,7 +1,7 @@
 <?php
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
@@ -94,12 +94,12 @@ while ($row = $rslt->fetch_assoc()) {
     <tr class='row text-center m-0 borderojo'>
       <td class='col-md-1'>
         <a href='#permanentes' class='editar-empleado' db-id='$pk_id_empleado' regimen='$regimen'>
-          <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+          <img class='icochico' src='/Resources/iconos/003-edit.svg'>
         </a>
       </td>
       <td class='col-md-1'>
         <a href='#modDatosEmp'  class='editar-empleado'  db-id='$pk_id_empleado' regimen='$regimen'>
-          <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+          <img class='icochico' src='/Resources/iconos/003-edit.svg'>
         </a>
       </td>
       <td class='col-md-1'>$status</td>
@@ -113,7 +113,7 @@ while ($row = $rslt->fetch_assoc()) {
     $system_callback['data'] .="<tr class='row text-center m-0 borderojo'>
       <td class='col-md-1'>
         <a href='#modDatosEmp' class='editar-empleado'  db-id='$pk_id_empleado' regimen='$regimen'>
-          <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+          <img class='icochico' src='/Resources/iconos/003-edit.svg'>
         </a>
       </td>
       <td class='col-md-1'>$status</td>

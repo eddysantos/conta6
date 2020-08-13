@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 
@@ -10,10 +10,10 @@
     <tbody class="font14">
       <tr class="row">
         <td class="col-md-1">
-          <a href=""><img class="icomediano ml-3" src="/conta6/Resources/iconos/printer.svg"></a>
+          <a href=""><img class="icomediano ml-3" src="/Resources/iconos/printer.svg"></a>
         </td>
         <td class="col-md-3 offset-md-8">
-          <a href="#catalogo" data-toggle="modal" class="boton"><img class="icochico" src="/conta6/Resources/iconos/add.svg"> AGREGAR CONCEPTO</a>
+          <a href="#catalogo" data-toggle="modal" class="boton"><img class="icochico" src="/Resources/iconos/add.svg"> AGREGAR CONCEPTO</a>
         </td>
       </tr>
     </tbody>
@@ -30,8 +30,8 @@
     <tbody class="font14">
       <tr class="row m-0 borderojo">
         <td class="col-md-1">
-          <a href="#EditarCorresponsal" data-toggle="modal"><img class="icochico" src="/conta6/Resources/iconos/003-edit.svg"></a>
-          <a href=""><img class="icochico ml-4" src="/conta6/Resources/iconos/001-add.svg"></a>
+          <a href="#EditarCorresponsal" data-toggle="modal"><img class="icochico" src="/Resources/iconos/003-edit.svg"></a>
+          <a href=""><img class="icochico ml-4" src="/Resources/iconos/001-add.svg"></a>
         </td>
         <td class="col-md-5">Servicios Integrales en Logistica Internacional, Aduanas y Tecnologia S.C</td>
         <td class="col-md-4">Jose Luis jvalencia@sologiat.com</td>
@@ -40,8 +40,8 @@
       </tr>
       <tr class="row m-0 borderojo">
         <td class="col-md-1">
-          <a href="#EditarCorresponsal" data-toggle="modal"><img class="icochico" src="/conta6/Resources/iconos/003-edit.svg"></a>
-          <a href=""><img class="icochico ml-4" src="/conta6/Resources/iconos/001-add.svg"></a>
+          <a href="#EditarCorresponsal" data-toggle="modal"><img class="icochico" src="/Resources/iconos/003-edit.svg"></a>
+          <a href=""><img class="icochico ml-4" src="/Resources/iconos/001-add.svg"></a>
         </td>
         <td class="col-md-5">International Freigth Forwarder and Advisor Customs Delivery S.A de C.V</td>
         <td class="col-md-4">Edgar Ortiz edgar@altamar.mx</td>

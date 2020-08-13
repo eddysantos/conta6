@@ -5,7 +5,7 @@
 
 
 	$root = $_SERVER['DOCUMENT_ROOT'];
-	$archivoPath = $root . '/conta6/CFDI_BackUpsContabilidad/'.$archivo;
+	$archivoPath = $root . '/CFDI_BackUpsContabilidad/'.$archivo;
 
 	$ar=file_get_contents($archivoPath,true);
 

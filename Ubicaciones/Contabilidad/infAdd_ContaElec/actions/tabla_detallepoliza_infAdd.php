@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = trim($_POST['id_poliza']);
 $query = "SELECT * FROM conta_t_polizas_det WHERE fk_id_poliza = ?";
@@ -56,7 +56,7 @@ while ($row = $rslt->fetch_assoc()) {
     <td colspan='2'>$row[n_abono]</td>
     <td>
       <a href=''>
-        <img class='icochico' src='/conta6/Resources/iconos/001-add.svg'>
+        <img class='icochico' src='/Resources/iconos/001-add.svg'>
       </a>
     </td>
   </tr>";
@@ -110,7 +110,7 @@ while ($row = $rslt->fetch_assoc()) {
                       <tr class='borderojo'>
                         <td colspan='2'>
                           <a href=''>
-                            <img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'>
+                            <img class='icochico' src='/Resources/iconos/002-trash.svg'>
                           </a>
                         </td>
                         <td>$row[s_tipoDetalle]</td>

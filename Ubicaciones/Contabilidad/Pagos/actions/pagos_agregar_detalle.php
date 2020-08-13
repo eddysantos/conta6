@@ -88,7 +88,7 @@ foreach ($pagos as $pago) {
     $system_callback['message'] = "Error during query execution PAGOS [$stmt_PAGOS->errno]: $stmt_PAGOS->error";
   }
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar_detalle_docRel.php';
+  require $root . '/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar_detalle_docRel.php';
 
 }
 

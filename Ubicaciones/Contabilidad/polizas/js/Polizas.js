@@ -236,7 +236,7 @@ $(document).ready(function(){
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/editarMST.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/editarMST.php",
 				data: data,
 				success: 	function(r){
 					console.log(r);
@@ -263,7 +263,7 @@ $(document).ready(function(){
       }
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/tabladetallepoliza.php",
+        url: "/Ubicaciones/Contabilidad/polizas/actions/tabladetallepoliza.php",
         data: data,
         success: 	function(request){
 					r = JSON.parse(request);
@@ -284,7 +284,7 @@ $(document).ready(function(){
 console.log(data);
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
 				data: data,
 				success: 	function(r){
 					r = JSON.parse(r);
@@ -309,7 +309,7 @@ console.log(data);
 console.log(data);
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
 				data: data,
 				success: 	function(r){
 					r = JSON.parse(r);
@@ -342,7 +342,7 @@ console.log(data);
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_lista.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_lista.php",
 				data: data,
 				success: 	function(r){
 					r = JSON.parse(r);
@@ -428,7 +428,7 @@ console.log(data);
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/editar.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/editar.php",
 				data: data,
 				success: 	function(r){
 					console.log(r);
@@ -482,7 +482,7 @@ console.log(data);
 
 		$.ajax({
 			type: "POST",
-			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_insertaReg_detallePoliza.php",
+			url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_insertaReg_detallePoliza.php",
 			data: data,
 			success: 	function(r){
 				console.log(r);
@@ -524,7 +524,7 @@ console.log(data);
 //onsole.log(data);
 		$.ajax({
 			type: "POST",
-			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_insertaReg_detallePoliza.php",
+			url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_insertaReg_detallePoliza.php",
 			data: data,
 			success: 	function(r){
 				//console.log(r);
@@ -587,7 +587,7 @@ function inserta(){
 
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/agregar.php",
+		url: "/Ubicaciones/Contabilidad/polizas/actions/agregar.php",
 		data: data,
 		success: 	function(r){
 			console.log(r);
@@ -615,7 +615,7 @@ function ultReg_Det(){
   }
 	$.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/ultimosRegistros.php",
+    url: "/Ubicaciones/Contabilidad/polizas/actions/ultimosRegistros.php",
     data: data,
     success: 	function(request){
 			r = JSON.parse(request);
@@ -648,7 +648,7 @@ function borrarRegistro(partida){
 			}
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/eliminar.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/eliminar.php",
 				data: data,
 
 					success: 	function(r){
@@ -694,7 +694,7 @@ function cambiarStatus(){
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/cancelaDescancelaPoliza.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/cancelaDescancelaPoliza.php",
 				data: data,
 				success: 	function(r){
 					console.log(r);
@@ -768,13 +768,13 @@ $('#folioPolconsulta').keydown(function(e){
 
 $('#btn_asignarProveedor').click(function(){
 	id_poliza = $('#folioPolAsignar').val();
-	window.location.replace('/conta6/Ubicaciones/Contabilidad/Proveedores/AsignarProveedor.php?id_poliza='+id_poliza);
+	window.location.replace('/Ubicaciones/Contabilidad/Proveedores/AsignarProveedor.php?id_poliza='+id_poliza);
 });
 
 function buscarPoliza(Accion){
 	if( Accion == 'consultar'){ id_poliza = $('#folioPolconsulta').val(); }
 	if( Accion == 'modificar'){ id_poliza = $('#folioPol').val(); }
-	window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/actions/buscar_poliza.php?id_poliza='+id_poliza+'&Accion='+Accion);
+	window.location.replace('/Ubicaciones/Contabilidad/polizas/actions/buscar_poliza.php?id_poliza='+id_poliza+'&Accion='+Accion);
 }
 
 
@@ -789,7 +789,7 @@ function genPol(){
 	tipo = $('#diatipo').attr('db-id');
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/generarFolioPoliza.php",
+		url: "/Ubicaciones/Contabilidad/polizas/actions/generarFolioPoliza.php",
 		data: data,
 		success: 	function(request){
 			r = JSON.parse(request);
@@ -879,8 +879,8 @@ function valDescripOficina(){
 
 // BOTON IMPRIMIR
 function btn_printPoliza(id_poliza,aduana){
-	// window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/actions/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
-	window.open('/conta6/Ubicaciones/Contabilidad/polizas/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
+	// window.location.replace('/Ubicaciones/Contabilidad/polizas/actions/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
+	window.open('/Ubicaciones/Contabilidad/polizas/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
 };
 
 
@@ -891,7 +891,7 @@ function lstClientesReferenciaPol(){
 
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+		url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
 		data: data,
 		success: 	function(r){
 
@@ -917,7 +917,7 @@ function lstClientesReferenciaPolModal(){
 
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+		url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
 		data: data,
 		success: 	function(r){
 
@@ -1007,7 +1007,7 @@ function lstCuentasPol(){
 
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
+		url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
 		data: data,
 		success: 	function(r){
 
@@ -1034,7 +1034,7 @@ function detallePoliza(){
 	var ajaxCall = $.ajax({
       method: 'POST',
       data: data,
-      url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/tabladetallepoliza.php",
+      url: "/Ubicaciones/Contabilidad/polizas/actions/tabladetallepoliza.php",
   });
 
   ajaxCall.done(function(r) {

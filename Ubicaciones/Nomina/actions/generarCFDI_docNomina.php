@@ -4,8 +4,8 @@ error_reporting(E_ALL);
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 //$root = 'C:\\xampp\htdocs';
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
 #limpiarBlancos($txt) <-- eliminaBlancos($cadena)
 
 #SEGUN LAS ESPECIFICICAIONES DEL ANEXO20 VERSION 3.3 SE TIENE QUE USAR EL CATALOGO DE MONEDA PARA LOS DECIMALES, PERO COMO SOLO EXPEDIMOS EN MXN,USD Y AMBOS TIENEN DOS DECIMALES, POR LO TANTO, NUESTROS CALCULOS SE HARAN A DOS DECIMALES.
@@ -26,7 +26,7 @@ if($regimenNomina == '09'){
 if( $permisoGenerarNomina == 1 ){
   # VALIDACION 1: CERTIFICADO VIGENTE
   error_log("Just testing");
-  require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
+  require $root . '/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
   if( $total_datosCert > 0 ){
     $noCertificado = $row_datosCert['pk_id_certificado'];
     $certificado = $row_datosCert['s_certificado'];
@@ -35,9 +35,9 @@ if( $permisoGenerarNomina == 1 ){
     $system_callback['message'] .= "✓ Certificado: Vigente \n";
 
     //obtener folio de factura
-    require $root . '/conta6/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina.php';
+    require $root . '/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina.php';
     if( $total_consultaDatosCFDI == 0 ){
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_1genFactura.php'; #$folioFactura
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_1genFactura.php'; #$folioFactura
       $idFactura = $folioFactura;
       // echo "se genero factura: ".$folioFactura;
       // echo "<br>";
@@ -45,7 +45,7 @@ if( $permisoGenerarNomina == 1 ){
       $system_callback['code'] = 1;
       $system_callback['message'] .= "✓ Factura: ".$folioFactura."\n";
 
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso.php';
       $system_callback['code'] = 1;
       //$system_callback['message'] .= $mensajeTimbre.' ---'.$mensaje_xmlGen."***\n";
       exit_script($system_callback);
@@ -63,16 +63,16 @@ if( $permisoGenerarNomina == 1 ){
           if( is_null($UUID) ){
             $tipoProceso = "nomina";
             # array con todos los datos a timbrar
-            require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_2array.php';
+            require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_2array.php';
             # funciones para timbrar cfdi
-            require_once $root . '/conta6/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
+            require_once $root . '/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
             # nombre de carpetas y rutas de almacenamiento
-            require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_1path.php';
+            require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_1path.php';
 
             if( file_exists($rutaRepFileXML) && $fk_id_poliza == 0 ) {
               abrirTimbrado($rutaRepFileXML);
             }else{
-              require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso.php';
+              require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso.php';
 
               $system_callback['code'] = 1;
               //$system_callback['message'] .= $mensajeTimbre;

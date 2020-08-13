@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $ID_calculo = trim($_POST['T_No_calculoTarifa']);
 $Usuario_Cta = trim($_POST['Txt_Usuario']);
@@ -268,8 +268,8 @@ $UUIDrelacionado = trim($_POST['UUIDrelacionado']);
 
     $nfolio = $db->insert_id;
 
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_agregar_detalle.php';
-    require $root . '/conta6/Resources/PHP/actions/tarifas_calcula_borrar.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_agregar_detalle.php';
+    require $root . '/Resources/PHP/actions/tarifas_calcula_borrar.php';
 
   //$db->commit();
     $system_callback['hon'] = $query_hon;

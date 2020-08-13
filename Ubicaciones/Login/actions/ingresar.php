@@ -2,7 +2,7 @@
 // session_start();
 
 // $root = $_SERVER['DOCUMENT_ROOT'];
-// require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+// require $root . '/Resources/PHP/Utilities/initialScript.php';
 //
 // // $usuario = $db->real_escape_string($_POST['lg_usuario']);
 // // $contra = $db->real_escape_string($_POST['lg_password']);
@@ -41,8 +41,8 @@
 session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-// require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-require $root . '/conta6/Resources/PHP/Databases/Conexion.php';
+// require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Databases/Conexion.php';
 
 
 $usuario = $db->real_escape_string($_POST['lg_usuario']);

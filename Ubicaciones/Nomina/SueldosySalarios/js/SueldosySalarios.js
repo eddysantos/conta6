@@ -85,14 +85,14 @@ $(document).ready(function () {
 		}
 		$.ajax({
 			type: "POST",
-			url: "/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel.php",
+			url: "/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel.php",
 			data: data,
 			success: 	function(r){
 				r = JSON.parse(r);
 				if (r.code == 1) {
 					$('#resGenNomSuel').html(r.data);
 					alertify.alert('Sueldos Nómina: '+num_nomsig, 'Generado correctamente', function(){
-						document.location.replace('/conta6/Ubicaciones/Nomina/sueldosysalarios/Generar_Nomina.php');
+						document.location.replace('/Ubicaciones/Nomina/sueldosysalarios/Generar_Nomina.php');
 					});
 				}
 			}

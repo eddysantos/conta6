@@ -1,6 +1,6 @@
 <?PHP
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
   $fecha = trim($_POST['fecha']);
   $fechaFac = trim($_POST['fechaFac']);

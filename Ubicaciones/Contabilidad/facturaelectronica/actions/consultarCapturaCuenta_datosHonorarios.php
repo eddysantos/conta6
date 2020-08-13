@@ -108,7 +108,7 @@ if( $total_consultaHonorarios > 0 ) {
           <td width="12%">$ '.$n_total_2.'</td>
         </tr>';
 
-    if( $idFila > 1 ){ $botonEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";}
+    if( $idFila > 1 ){ $botonEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";}
     $datosHonorariosModifi .= "
     <tr class='row m-0 trHonorarios elemento-honorarios' id='$idFila'>
       <td class='col-md-4 p-1'>

@@ -6,7 +6,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Imprimir Pólizass</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
         <div id="contorno" class="contorno-modal">
@@ -45,4 +45,4 @@
   </div>
 </div>
 
-<!-- <script src="/conta6/Resources/js/Inputs.js"></script> -->
+<!-- <script src="/Resources/js/Inputs.js"></script> -->

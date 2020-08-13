@@ -71,7 +71,7 @@ $('#mModifiChIdcheque').keydown(function(e){
   if (e.keyCode === 13 || e.keyCode === 9) {
     id_cheque = $('#mModifiChIdcheque').val();
     id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
-    window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+    window.location.replace('/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
 	}
 })
 
@@ -81,7 +81,7 @@ $('#mConsChIdcheque').keydown(function(e){
 	if (e.keyCode === 13 || e.keyCode === 9) {
     id_cheque = $('#mConsChIdcheque').val();
     id_cuentaMST = $('#mConsChCtaMST').attr('db-id');
-    window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+    window.location.replace('/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
 	}
 })
 
@@ -276,7 +276,7 @@ $('#mConsChIdcheque').keydown(function(e){
 
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/editarChequeMST.php",
+          url: "/Ubicaciones/Contabilidad/cheques/actions/editarChequeMST.php",
           data: data,
           // dataType: "json",
           success: function(r){
@@ -289,7 +289,7 @@ $('#mConsChIdcheque').keydown(function(e){
                 //   console.log("Something needs to happen.");
                 // });
                 alertify.alert('Exito!', 'Los cambios fueron realizados exitosamente', function(){
-                  document.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque=' + data.cheque + '&id_cuentaMST=' + data.cuenta);
+                  document.location.replace('/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque=' + data.cheque + '&id_cuentaMST=' + data.cuenta);
                 });
               } else {
                 console.error(r.message);
@@ -445,7 +445,7 @@ $('#mConsChIdcheque').keydown(function(e){
 
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/tabla_detallecheque.php",
+          url: "/Ubicaciones/Contabilidad/cheques/actions/tabla_detallecheque.php",
           data: data,
           success: 	function(request){
   					r = JSON.parse(request);
@@ -599,7 +599,7 @@ $('#mConsChIdcheque').keydown(function(e){
       id_cheque = $('#dchIdcheque').val();
       id_cuentaMST = $('#dchCtaMST').val();
       id_poliza = $('#dchPoliza').val();
-      window.open('/conta6/Ubicaciones/Contabilidad/cheques/actions/impresionCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST+'&id_poliza='+id_poliza);
+      window.open('/Ubicaciones/Contabilidad/cheques/actions/impresionCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST+'&id_poliza='+id_poliza);
     });
 
     //BOTON GENERAR POLIZA DE CHEQUE
@@ -616,7 +616,7 @@ $('#mConsChIdcheque').keydown(function(e){
         //id_cliente: $('#mst-cliente').val()
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/generarPolizaCheque.php",
+          url: "/Ubicaciones/Contabilidad/cheques/actions/generarPolizaCheque.php",
           data: data,
           success: 	function(r){
             console.log(r);
@@ -641,7 +641,7 @@ $('#mConsChIdcheque').keydown(function(e){
     $('#btn_editDatosCheMST').click(function(){
       id_cheque = $('#mst-cheque').val();
       id_cuentaMST = $('#mst-ctaMST').val();
-      window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/EditarChequeMST.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+      window.location.replace('/Ubicaciones/Contabilidad/cheques/EditarChequeMST.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
     });
 
     //BOTON CANCELAR
@@ -668,7 +668,7 @@ $('#mConsChIdcheque').keydown(function(e){
  console.log(data);
     			$.ajax({
     				type: "POST",
-    				url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/cancelaDescancelaCheque.php",
+    				url: "/Ubicaciones/Contabilidad/cheques/actions/cancelaDescancelaCheque.php",
     				data: data,
     				success: 	function(r){
     					//console.log(fecha);
@@ -694,14 +694,14 @@ $('#mConsChIdcheque').keydown(function(e){
     $('#btn_busCheConsulta').click(function(){
       id_cheque = $('#mConsChIdcheque').val();
       id_cuentaMST = $('#mConsChCtaMST').attr('db-id');
-      window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+      window.location.replace('/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
     });
 
     // BUSCAR CHEQUE Modificar
     $('#btn_busCheModifi').click(function(){
       id_cheque = $('#mModifiChIdcheque').val();
       id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
-      window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+      window.location.replace('/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
     });
 
 
@@ -715,7 +715,7 @@ $('#mConsChIdcheque').keydown(function(e){
     // 	if (e.keyCode === 13) {
     //     id_cheque = $('#mConsChIdcheque').val();
     //     id_cuentaMST = $('#mConsChCtaMST').attr('db-id');
-    //     window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+    //     window.location.replace('/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
     // 	}
     // });
     //
@@ -729,7 +729,7 @@ $('#mConsChIdcheque').keydown(function(e){
     // 	if (e.keyCode === 13) {
     //     id_cheque = $('#mModifiChIdcheque').val();
     //     id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
-    //     window.location.replace('/conta6/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+    //     window.location.replace('/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
     // 	}
     // });
 
@@ -748,7 +748,7 @@ $('#mConsChIdcheque').keydown(function(e){
 
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_lista.php",
+        url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_lista.php",
         data: data,
         success: 	function(r){
           r = JSON.parse(r);
@@ -800,7 +800,7 @@ $('#mConsChIdcheque').keydown(function(e){
 
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/buscarFacturas_insertaReg_detalleCheque.php",
+        url: "/Ubicaciones/Contabilidad/cheques/actions/buscarFacturas_insertaReg_detalleCheque.php",
         data: data,
         success: 	function(r){
           r = JSON.parse(r);
@@ -852,7 +852,7 @@ $('#mConsChIdcheque').keydown(function(e){
     			}
     			$.ajax({
     				type: "POST",
-    				url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/eliminar.php",
+    				url: "/Ubicaciones/Contabilidad/cheques/actions/eliminar.php",
     				data: data,
 
     					success: 	function(r){
@@ -912,7 +912,7 @@ $('#mConsChIdcheque').keydown(function(e){
 
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/Contabilidad/Cheques/actions/editar.php",
+          url: "/Ubicaciones/Contabilidad/Cheques/actions/editar.php",
           data: data,
           success: 	function(r){
             console.log(r);
@@ -943,7 +943,7 @@ function sumasCAcheques(){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/sumaCargosAbonos.php",
+    url: "/Ubicaciones/Contabilidad/cheques/actions/sumaCargosAbonos.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -979,7 +979,7 @@ function genChe(){
   	tipo = 5;
   	$.ajax({
   		type: "POST",
-  		url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/generarFolioCheque.php",
+  		url: "/Ubicaciones/Contabilidad/cheques/actions/generarFolioCheque.php",
   		data: data,
   		success: 	function(r){
   		r = JSON.parse(r);
@@ -1165,7 +1165,7 @@ function insertaDetCh(){
 
 		$.ajax({
 			type: "POST",
-			url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/agregar.php",
+			url: "/Ubicaciones/Contabilidad/cheques/actions/agregar.php",
 			data: data,
 			success: 	function(r){
 				console.log(r);
@@ -1196,7 +1196,7 @@ function ultReg_DetChe(){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/ultimosRegistros.php",
+    url: "/Ubicaciones/Contabilidad/cheques/actions/ultimosRegistros.php",
     data: data,
     success: 	function(request){
       r = JSON.parse(request);
@@ -1218,7 +1218,7 @@ function ultReg_DetChe(){
 //
 //   $.ajax({
 //     type: "POST",
-//     url: "/conta6/Ubicaciones/Contabilidad/cheques/actions/tabla_detallecheque.php",
+//     url: "/Ubicaciones/Contabilidad/cheques/actions/tabla_detallecheque.php",
 //     data: data,
 //     success: 	function(request){
 //       r = JSON.parse(request);
@@ -1236,7 +1236,7 @@ function lstClientesReferenciaChe(){
 
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+		url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
 		data: data,
 		success: 	function(r){
 
@@ -1261,7 +1261,7 @@ function lstClientesReferenciaChModal(){
 
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+		url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
 		data: data,
 		success: 	function(r){
 

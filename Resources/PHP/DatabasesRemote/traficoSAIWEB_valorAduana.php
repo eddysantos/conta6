@@ -1,8 +1,8 @@
 <?php
 
 
-require $root . '/conta6/Resources/PHP/Databases/conexion.php';
-require $root . '/conta6/Resources/PHP/DatabasesRemote/conexionADUANET.php';
+require $root . '/Resources/PHP/Databases/conexion.php';
+require $root . '/Resources/PHP/DatabasesRemote/conexionADUANET.php';
 
 
 $sql_referenciasPedimento = mysqli_query($aduanet,"SELECT AT001.N001VALADU valor_aduana FROM AT001 WHERE AT001.C001REFPED = '$id_referencia'");

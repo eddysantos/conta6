@@ -8,35 +8,35 @@
   </table>
 
   <!--REQUERIDOS-->
-  <script src="/Conta6/Ubicaciones/Contabilidad/js/helperContabilidad.js"></script>
-  <script src="/Conta6/Ubicaciones/Contabilidad/AdminContable/js/AdministracionContable.js"></script>
-  <script src="/Conta6/Ubicaciones/Contabilidad/AdminContable/js/catalogoPersonas.js"></script>
-  <script src="/Conta6/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
-  <script src="/Conta6/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
-  <script src="/Conta6/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
-  <script src="/Conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
-  <script src="/Conta6/Ubicaciones/Contabilidad/facturaelectronica/js/facturaElectronica.js"></script>
-  <script src="/Conta6/Ubicaciones/Contabilidad/Notacredito/js/NotaCredito.js"></script>
+  <script src="/Ubicaciones/Contabilidad/js/helperContabilidad.js"></script>
+  <script src="/Ubicaciones/Contabilidad/AdminContable/js/AdministracionContable.js"></script>
+  <script src="/Ubicaciones/Contabilidad/AdminContable/js/catalogoPersonas.js"></script>
+  <script src="/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
+  <script src="/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
+  <script src="/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
+  <script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
+  <script src="/Ubicaciones/Contabilidad/facturaelectronica/js/facturaElectronica.js"></script>
+  <script src="/Ubicaciones/Contabilidad/Notacredito/js/NotaCredito.js"></script>
 
-  <script src="/Conta6/Ubicaciones/Contabilidad/pagos/js/pagos.js"></script>
+  <script src="/Ubicaciones/Contabilidad/pagos/js/pagos.js"></script>
 
-  <script src="/Conta6/Ubicaciones/Trafico/js/Trafico.js"></script>
-  <script src="/Conta6/Ubicaciones/Trafico/SolicitudAnticipo/js/SolicitudAnticipo.js"></script>
+  <script src="/Ubicaciones/Trafico/js/Trafico.js"></script>
+  <script src="/Ubicaciones/Trafico/SolicitudAnticipo/js/SolicitudAnticipo.js"></script>
 
-  <script src="/Conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/js/CuentaGastos.js"></script>
+  <script src="/Ubicaciones/CuentasAmericanas/CuentaGastos/js/CuentaGastos.js"></script>
 
-  <script src="/Conta6/Ubicaciones/Nomina/Honorarios/js/Honorarios.js"></script>
-  <script src="/Conta6/Ubicaciones/Nomina/SueldosySalarios/js/SueldosySalarios.js"></script>
-  <script src="/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/js/parametros.js"></script>
+  <script src="/Ubicaciones/Nomina/Honorarios/js/Honorarios.js"></script>
+  <script src="/Ubicaciones/Nomina/SueldosySalarios/js/SueldosySalarios.js"></script>
+  <script src="/Ubicaciones/Nomina/SueldosySalarios/parametros/js/parametros.js"></script>
 
-  <script src="/Conta6/Resources/js/validarFormulario.js"></script>
-  <script src="/Conta6/Resources/js/calculadora.js"></script>
+  <script src="/Resources/js/validarFormulario.js"></script>
+  <script src="/Resources/js/calculadora.js"></script>
 
-  <!-- <script src="/Conta6/Ubicaciones/Contabilidad/js/contenedor-movible.js"></script> -->
-  <script src="/Conta6/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
-  <script src="/Conta6/Resources/js/popup-list-plugin.js"></script>
-  <script src="/Conta6/Resources/js/table-fetch-plugin.js"></script>
-  <script src="/Conta6/Resources/js/Inputs.js"></script>
+  <!-- <script src="/Ubicaciones/Contabilidad/js/contenedor-movible.js"></script> -->
+  <script src="/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
+  <script src="/Resources/js/popup-list-plugin.js"></script>
+  <script src="/Resources/js/table-fetch-plugin.js"></script>
+  <script src="/Resources/js/Inputs.js"></script>
 
 
 </footer>

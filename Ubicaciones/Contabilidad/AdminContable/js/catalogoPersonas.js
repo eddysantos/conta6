@@ -130,7 +130,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_actualizarTaxID.php",
+      url: "/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_actualizarTaxID.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -163,7 +163,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_actualizarDiasCredito.php",
+      url: "/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_actualizarDiasCredito.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -196,7 +196,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_guardarDiasCredito.php",
+      url: "/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_guardarDiasCredito.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -224,7 +224,7 @@ $(document).ready(function(){
     }
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_actualizarDatosCFDI.php",
+      url: "/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_actualizarDatosCFDI.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -261,7 +261,7 @@ $(document).ready(function(){
     }
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_guardarMetodoPago.php",
+      url: "/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_guardarMetodoPago.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -299,7 +299,7 @@ $(document).ready(function(){
         }
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_eliminarMetodoPago.php",
+          url: "/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_eliminarMetodoPago.php",
           data: data,
           success: 	function(r){
             r = JSON.parse(r);
@@ -360,7 +360,7 @@ $(document).ready(function(){
     }
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_guardarCtasBancosCLT.php",
+      url: "/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_guardarCtasBancosCLT.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -398,7 +398,7 @@ $(document).ready(function(){
         }
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_eliminarctasbancosCLT.php",
+          url: "/Ubicaciones/Contabilidad/AdminContable/actions/admonPersonas_eliminarctasbancosCLT.php",
           data: data,
           success: 	function(r){
             r = JSON.parse(r);
@@ -468,7 +468,7 @@ $(document).ready(function(){
   //
   //     $.ajax({
   //       type: "POST",
-  //       url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregar.php",
+  //       url: "/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregar.php",
   //       data: data,
   //       success: 	function(r){
   //         r = JSON.parse(r);
@@ -533,7 +533,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregar.php",
+      url: "/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregar.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -615,7 +615,7 @@ $(document).ready(function(){
   //
   //     $.ajax({
   //       type: "POST",
-  //       url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarBcoCta.php",
+  //       url: "/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarBcoCta.php",
   //       data: data,
   //       success: 	function(r){
   //         console.log(data);
@@ -675,7 +675,7 @@ $(document).ready(function(){
 
   $.ajax({
     type: "POST",
-    url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarBcoCta.php",
+    url: "/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarBcoCta.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -707,7 +707,7 @@ $(document).ready(function(){
   });
 
   $('#btn_printProv').click(function(){
-    window.open('/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_impresion.php');
+    window.open('/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_impresion.php');
   });
 
 
@@ -715,7 +715,7 @@ $(document).ready(function(){
 
   // CORRESPONSALES
 $('#btn_printCorresp').click(function(){
-  window.open('/Conta6/AdminContable/actions/corresposales_impresion');
+  window.open('/AdminContable/actions/corresposales_impresion');
 });
 
 
@@ -763,7 +763,7 @@ $('#genCorresponsal').click(function(){
 
 // BENEFICIARIOS
 $('#btn_printBenef').click(function(){
-  window.open('/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_impresion.php');
+  window.open('/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_impresion.php');
 });
 
 $('#ben_razonsocial').change(function(){
@@ -803,7 +803,7 @@ $('.btn_agregarBeneficiario').click(function(){
 
     $.ajax({
       type: "POST",
-      url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_agregar.php",
+      url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_agregar.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -864,7 +864,7 @@ $('.btn_agregarBeneficiario').click(function(){
 
    $.ajax({
      type: "POST",
-     url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_agregarBcoCtaBen.php",
+     url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_agregarBcoCtaBen.php",
      data: data,
      success: 	function(r){
        r = JSON.parse(r);
@@ -903,7 +903,7 @@ $('.btn_agregarBeneficiario').click(function(){
 function fetch_formaPago_sat(){
     $.ajax({
       method: 'POST',
-      url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago_2.php',
+      url: '/Resources/PHP/actions/lst_conta_cs_sat_formapago_2.php',
       success: function(r){
         r = JSON.parse(r);
         if (r.code == 1) {
@@ -924,7 +924,7 @@ function buscarDatosProv(id){
   }
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/AdminContable/Proveedores_datosGenerales.php",
+    url: "/Ubicaciones/Contabilidad/AdminContable/Proveedores_datosGenerales.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -947,7 +947,7 @@ function buscarCtasProv(id){
   }
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_asignarCtasBancarias.php",
+    url: "/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_asignarCtasBancarias.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -985,7 +985,7 @@ function btn_bcprov(partida,prov){
       }
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_eliminarCtaBancaria.php",
+        url: "/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_eliminarCtaBancaria.php",
         data: data,
 
           success: 	function(r){
@@ -1052,7 +1052,7 @@ function btn_editProv(){
 
     $.ajax({
       type: "POST",
-      url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_editar.php",
+      url: "/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_editar.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -1116,7 +1116,7 @@ function btn_editProv(){
 //
 //     $.ajax({
 //       type: "POST",
-//       url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_editar.php",
+//       url: "/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_editar.php",
 //       data: data,
 //       success: 	function(r){
 //         console.log(r);
@@ -1152,7 +1152,7 @@ function asignarProvRegPol(partida){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarProvDetallePoliza.php",
+      url: "/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarProvDetallePoliza.php",
       data: data,
       success: 	function(request){
         r = JSON.parse(request);
@@ -1187,7 +1187,7 @@ function borrarProvRegPol(partida){
 
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarProvDetallePoliza.php",
+        url: "/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_agregarProvDetallePoliza.php",
         data: data,
         success: 	function(request){
           r = JSON.parse(request);
@@ -1211,7 +1211,7 @@ function polReg_Det(){
   }
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_detallePoliza.php",
+    url: "/Ubicaciones/Contabilidad/AdminContable/actions/proveedores_detallePoliza.php",
     data: data,
     success: 	function(request){
       r = JSON.parse(request);
@@ -1227,7 +1227,7 @@ function polReg_Det(){
 function fetch_catalogoBancosSAT(){
     $.ajax({
       method: 'POST',
-      url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_bancos.php',
+      url: '/Resources/PHP/actions/lst_conta_cs_sat_bancos.php',
       success: function(r){
         r = JSON.parse(r);
         if (r.code == 1) {
@@ -1242,7 +1242,7 @@ function fetch_catalogoBancosSAT(){
 function fetch_catalogoBancosExt(){
     $.ajax({
       method: 'POST',
-      url: '/conta6/Resources/PHP/actions/lst_conta_cs_bancos_extranjeros.php',
+      url: '/Resources/PHP/actions/lst_conta_cs_bancos_extranjeros.php',
       success: function(r){
         r = JSON.parse(r);
         if (r.code == 1) {
@@ -1261,7 +1261,7 @@ function fetch_catalogoBancosExt(){
 function listaCorresponsales(){
   var ajaxCall = $.ajax({
     method: 'POST',
-    url: '/conta6/Ubicaciones/Contabilidad/AdminContable/actions/corresponsales_mostrarlista.php'
+    url: '/Ubicaciones/Contabilidad/AdminContable/actions/corresponsales_mostrarlista.php'
   });
 
   ajaxCall.done(function(r) {
@@ -1476,7 +1476,7 @@ function btn_editBen(){
 
     $.ajax({
       type: "POST",
-      url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_editar.php",
+      url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_editar.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -1515,7 +1515,7 @@ function btn_bcben(partida,ben){
       }
       $.ajax({
         type: "POST",
-        url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_eliminar.php",
+        url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_eliminar.php",
         data: data,
 
           success: 	function(r){
@@ -1545,7 +1545,7 @@ function buscarCtasBenef(id){
 
   $.ajax({
     type: "POST",
-    url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_asignarCtasBancarias.php",
+    url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_asignarCtasBancarias.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -1567,7 +1567,7 @@ function buscarDatosBenef(id){
   }
   $.ajax({
     type: "POST",
-    url: "/Conta6/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_datosGenerales.php",
+    url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_datosGenerales.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);

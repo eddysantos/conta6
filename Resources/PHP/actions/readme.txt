@@ -3,7 +3,7 @@ Esta carpeta se va a utilizar para poner las acciones que estarán disponibles p
 Este es el templete que tenemos que seguir en los modulos de acción.
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;

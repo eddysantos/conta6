@@ -1,16 +1,16 @@
 <?php
 #http://localhost:88/conta6/ubicaciones/Trafico/SolicitudAnticipo/solAnticipo_impresion.php?cuenta=192
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/Conta6/Resources/vendor/autoload.php';
-  require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/vendor/autoload.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
   $cuenta = trim($_GET['cuenta']);
 
-  require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosGenerales.php';
-  require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosEmbarque.php'; #$datosEmbarque
-  require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosPOCME.php'; # $datosPOCME
-  require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosCargos.php'; #$datosCargos
-  require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosHonorarios.php'; #$datosHonorarios
+  require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosGenerales.php';
+  require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosEmbarque.php'; #$datosEmbarque
+  require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosPOCME.php'; # $datosPOCME
+  require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosCargos.php'; #$datosCargos
+  require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosHonorarios.php'; #$datosHonorarios
 
   $id_cliente = $fk_id_cliente;
 

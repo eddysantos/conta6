@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $id_anticipo = $_GET['id_anticipo'];
 
@@ -152,7 +152,7 @@ if( $rows > 0 ){
             <td class="col-md-1">
               <?php if( $mostrar == true ){ ?>
               <a href='#ant-editarRegMST' class='editar-anticipoMST' db-id='<?php echo $id_anticipo; ?>'>
-                <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+                <img class='icochico' src='/Resources/iconos/003-edit.svg'>
               </a>
               <?php }?>
             </td>
@@ -211,7 +211,7 @@ if( $rows > 0 ){
                   </td>
                   <td class="col-md-2" role="button">
                     <?php if( $mostrarEditConPol == true ){ ?>
-					          <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+					          <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton icochico border-0"> <img src= "/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
                     <?php } ?>
                   </td>
                 </tr>
@@ -235,7 +235,7 @@ if( $rows > 0 ){
                 <tr class="row mt-4">
                   <td class="col-md-2 offset-md-5">
                     <?php if( $mostrarEditConPol == true ){ ?>
-                    <a href="#" id="btnRegDetAnt" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                    <a href="#" id="btnRegDetAnt" class="boton"><img src= "/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
                     <?php } ?>
                   </td>
                 </tr>
@@ -285,17 +285,17 @@ if( $rows > 0 ){
           <div class="row font14 mt-3">
             <div class="col-md-3">
               <?php if( $oRst_permisos["s_reusar_anticipos"] == 1 ){ ?>
-              <a href="#" id="btn_reusarAnt" class="boton"><img src= "/conta6/Resources/iconos/refresh-button.svg"> REUSAR ANTICIPO</a>
+              <a href="#" id="btn_reusarAnt" class="boton"><img src= "/Resources/iconos/refresh-button.svg"> REUSAR ANTICIPO</a>
               <?php } ?>
             </div>
             <div class="col-md-3">
               <?php if( $tienePoliza == false && $statusGeneraPoliza == true ){ ?>
-              <a href="#" id="btn_generarPolAnt" class="boton"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR POLIZA</a>
+              <a href="#" id="btn_generarPolAnt" class="boton"><img src= "/Resources/iconos/add.svg"> GENERAR POLIZA</a>
               <?php } ?>
             </div>
             <div class="col-md-2">
               <?php if( $tienePoliza == true ){ ?>
-              <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
+              <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano" src= "/Resources/iconos/printer.svg"></a>
               <?php } ?>
             </div>
             <div class="col-md-2">
@@ -337,7 +337,7 @@ if( $rows > 0 ){
         </div>
 
         <?php if( $id_poliza > 0 ){
-            require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
+            require $root . '/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
           } ?>
       </div><!--/Termina contenedor-movible-->
     </div><!--/Termina continermov-->
@@ -359,6 +359,6 @@ if( $rows > 0 ){
 <?php
 } #$rows
 
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 
 ?>

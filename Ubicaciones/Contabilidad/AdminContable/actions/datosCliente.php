@@ -1,15 +1,15 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+require $root . '/Ubicaciones/barradenavegacion.php';
 
 $id_cliente = trim($_GET['id_cliente']);
 $CLT_status = 0;
 
 
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
 
 //datos del cliente
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
+require $root . '/Resources/PHP/actions/consultaDatosCliente.php';
 if( $rows_datosCLT > 0 ){
   $CLT_nombre = htmlentities(limpiarNOUSAR($row_datosCLT["s_nombre"]));
   $CLT_calle = limpiarBlancos($row_datosCLT["s_calle"]);
@@ -40,10 +40,10 @@ if( $rows_datosCLT > 0 ){
 }
 
 //tarifas capturadas
-require $root . '/conta6/Resources/PHP/actions/tarifas_cliente_consultaOficinaCapturadas.php'; # $consultaOficinaTarifa
+require $root . '/Resources/PHP/actions/tarifas_cliente_consultaOficinaCapturadas.php'; # $consultaOficinaTarifa
 
 //cuentas contables
-require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
+require $root . '/Resources/PHP/actions/consultaCtas108y208_cliente.php';
 if( $rows_ctasCliente == 0 ){
   $consultaCuantasCliente = 'NO TIENE CUENTAS CONTABLES';
 }
@@ -61,9 +61,9 @@ if( $rows_ctasCliente > 0 ){
 }
 
 //corresponsal
-require $root . '/conta6/Resources/PHP/actions/consulta_corresponsal.php'; # $consultaCorresponsal
+require $root . '/Resources/PHP/actions/consulta_corresponsal.php'; # $consultaCorresponsal
 // días de crédito
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_diasCredito.php';# $rows_diasCredCLT
+require $root . '/Resources/PHP/actions/consultaDatosCliente_diasCredito.php';# $rows_diasCredCLT
 if( $rows_diasCredCLT > 0 ){
   $btn_actualizarDiasCredito = 'btn_actualizarDiasCredito';
 }
@@ -104,10 +104,10 @@ if( $CLT_status_xml == 1 ){
 }
 
 //Lista forma de pago
-require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago_activos.php'; # $consultaFormapago
+require $root . '/Resources/PHP/actions/lst_conta_cs_sat_formapago_activos.php'; # $consultaFormapago
 
 //Lista forma de pago del cliente
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
+require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
 if( $rows_datosCLTformaPago > 0 ){
   while( $row_datosCLTformaPago = $rslt_datosCLTformaPago->fetch_assoc() ) {
 
@@ -119,7 +119,7 @@ if( $rows_datosCLTformaPago > 0 ){
 
     $trFormaPagoCLT .= "<tr class='row mt-4 m-0 align-items-center elemento-metPagoCLT'>
                         <td class='col-md-2 p-0 text-right'>
-                          <a href='#' class='remove-metPagoCLT'><img class='icomediano ml-2' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                          <a href='#' class='remove-metPagoCLT'><img class='icomediano ml-2' src='/Resources/iconos/002-trash.svg'></a>
                           <input type='hidden' class='partidaMetPago' value='$partida_formapago'>
                         </td>
                         <td class='col-md-2 p-0 text-left'>$id_formapago $concepto</td>
@@ -134,10 +134,10 @@ if( $rows_datosCLTformaPago == 0 ){
 }
 
 //Lista bancos autorizados para uso
-require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_bancos_activos.php'; # $consultaBancos
+require $root . '/Resources/PHP/actions/lst_conta_cs_sat_bancos_activos.php'; # $consultaBancos
 
 //Lista de bancos con cuentas asignados al cliente
-require $root . '/conta6/Resources/PHP/actions/lst_bancos_clientes_2.php'; # $trCtasBancosCLT
+require $root . '/Resources/PHP/actions/lst_bancos_clientes_2.php'; # $trCtasBancosCLT
 
 $tabindex = 0;
 
@@ -254,7 +254,7 @@ $tabindex = 0;
                 <input type="text" class="efecto h22" id="T_Cliente_taxid" value="<?php echo $CLT_taxid; ?>">
               </td>
               <td class="col-md-1 p-0 text-left">
-                <a href="#" id="btn_guardarTaxID"><img class="icomediano ml-2" src="/conta6/Resources/iconos/save.svg"></a>
+                <a href="#" id="btn_guardarTaxID"><img class="icomediano ml-2" src="/Resources/iconos/save.svg"></a>
               </td>
             </tr>
 
@@ -344,7 +344,7 @@ $tabindex = 0;
                         <input class='w-100 border-0 bt text-left' type='text' value='<?php echo $u_modifiDiasCred.' '.$f_modifiDiasCred; ?>' readonly>
                       </td>
                       <td class='col-md-2 p-0 text-left'>
-                        <a href='#' id='<?php echo $btn_actualizarDiasCredito; ?>'><img class='icomediano ml-2' src='/conta6/Resources/iconos/save.svg'></a>
+                        <a href='#' id='<?php echo $btn_actualizarDiasCredito; ?>'><img class='icomediano ml-2' src='/Resources/iconos/save.svg'></a>
                       </td>
                     </tr>
                   </tfoot>
@@ -397,7 +397,7 @@ $tabindex = 0;
                         <input class="w-100 border-0 bt text-left" type="text" value="<?php echo $CLT_usuario_modifi.' '.$CLT_fecha_modifi;?>" readonly>
                       </td>
                       <td class="col-md-2 p-0 text-left">
-                        <a href="#" id="btn_actualizarDatosCFDI"><img class="icomediano ml-2" src="/conta6/Resources/iconos/save.svg"></a>
+                        <a href="#" id="btn_actualizarDatosCFDI"><img class="icomediano ml-2" src="/Resources/iconos/save.svg"></a>
                       </td>
                     </tr>
                   </tfoot>
@@ -422,7 +422,7 @@ $tabindex = 0;
                       </tr>
                       <tr class='row mt-4 m-0 align-items-center'>
                         <td class="col-md-1 p-0 text-right">
-                          <a href="#formaPagoSAT" data-toggle="modal"><img src="/conta6/Resources/iconos/help.svg" style="margin-top:-4px"></a>
+                          <a href="#formaPagoSAT" data-toggle="modal"><img src="/Resources/iconos/help.svg" style="margin-top:-4px"></a>
                         </td>
                         <td class='col-md-2'>
                           <select id="Lst_metPago" class="custom-select-s">
@@ -430,7 +430,7 @@ $tabindex = 0;
                           </select>
                         </td>
                         <td class="col-md-1 p-0 text-left">
-                          <a href="#" id="btn_agregarMetPago"><img class="icomediano ml-2" src="/conta6/Resources/iconos/002-plus.svg"></a>
+                          <a href="#" id="btn_agregarMetPago"><img class="icomediano ml-2" src="/Resources/iconos/002-plus.svg"></a>
                         </td>
                       </tr>
                       <tr class='row mt-4 m-0 sub2 align-items-center'>
@@ -453,7 +453,7 @@ $tabindex = 0;
                       </tr>
                       <tr class='row mt-4 m-0 align-items-center'>
                         <td class="col-md-1 p-0 text-right">
-                            <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
+                            <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/Resources/iconos/help.svg' style='margin-top:-4px'></a>
                         </td>
                         <td class='col-md-2'>
                           <select id="Lst_Bancos" class="custom-select-s">
@@ -471,7 +471,7 @@ $tabindex = 0;
                           <label for="nom_banco_ext">Nombre Banco</label>
                         </td>
                         <td class="col-md-2 p-0 text-left">
-                          <a href="#" id="btn_agregarctasbancosCLT"><img class="icomediano ml-2" src="/conta6/Resources/iconos/002-plus.svg"></a>
+                          <a href="#" id="btn_agregarctasbancosCLT"><img class="icomediano ml-2" src="/Resources/iconos/002-plus.svg"></a>
                         </td>
                       </tr>
                       <tr class='row mt-4 m-0 sub2 align-items-center'>
@@ -512,7 +512,7 @@ $tabindex = 0;
                       <td class='col-md-2'>Observaciones:</td>
                       <td class='col-md-2'></td>
                       <td class='col-md-2'>
-                        <a href="#" onclick=""><img class="icomediano ml-2" src="/conta6/Resources/iconos/save.svg"></a>
+                        <a href="#" onclick=""><img class="icomediano ml-2" src="/Resources/iconos/save.svg"></a>
                       </td>
                     </tr>
                 </table>
@@ -528,7 +528,7 @@ $tabindex = 0;
 
 
 <?php
-require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoSAT.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/Contabilidad/modales/catalogoSAT.php';
+require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

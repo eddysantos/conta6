@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
   $id_ben = trim($_POST['id_ben']);
   $banco = trim($_POST['banco']);
   $cuenta = trim($_POST['cuenta']);
@@ -29,7 +29,7 @@
   $descripcion = "Se agrego bco/cta al Beneficiario: $id_ben Banco: $banco Nombre: $nomBan Cuenta: $cuenta";
   $clave = 'benef';
   $folio = $id_ben;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
   $system_callback['code'] = 1;
   $system_callback['message'] = "Script called successfully!";
   exit_script($system_callback);

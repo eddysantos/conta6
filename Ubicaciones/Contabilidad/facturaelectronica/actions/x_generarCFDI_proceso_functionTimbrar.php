@@ -145,7 +145,7 @@ function xmlV33_genera_cadena_original() {
 	$paso = new DOMDocument("1.0","UTF-8");
 	$paso->loadXML($xml->saveXML());
 	$xsl = new DOMDocument("1.0","UTF-8");
-  $file = $root . '/conta6/Resources/xsi/cadenaoriginal_3_3.xslt';
+  $file = $root . '/Resources/xsi/cadenaoriginal_3_3.xslt';
 	$xsl->load($file);
 	$proc = new XSLTProcessor;
 	$proc->importStyleSheet($xsl);
@@ -160,7 +160,7 @@ function xmlV33_genera_cadena_original() {
 function xmlV33_sella($array) {
   global $comprobante, $cadena_original, $root;
   #ruta
-  $fileKey = $root . '/conta6/Resources/clavesKeyCer/key2017.pem';
+  $fileKey = $root . '/Resources/clavesKeyCer/key2017.pem';
   $certificado = $array['NoCertificado'];
   $pkeyid = openssl_get_privatekey(file_get_contents($fileKey));
   openssl_sign($cadena_original, $crypttext, $pkeyid, OPENSSL_ALGO_SHA256);
@@ -270,7 +270,7 @@ function abrirTimbrado(){
 
 function generarQR($e_rfc,$r_rfc,$total,$UUID,$selloParte){
   global $root,$rutaQRFile;
-  require $root . '/conta6/Resources/phpqrcode/qrlib.php';
+  require $root . '/Resources/phpqrcode/qrlib.php';
 
   /* re=RFC_emisor  rr=RFC_receptor  id=UUID
   fe=$selloParte -> 8 ultimos digitos

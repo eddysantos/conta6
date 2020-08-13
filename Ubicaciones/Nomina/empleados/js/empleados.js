@@ -583,7 +583,7 @@ function listaEmpleados(){
   }
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Nomina/empleados/actions/mostrar.php",
+    url: "/Ubicaciones/Nomina/empleados/actions/mostrar.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -603,7 +603,7 @@ function calcularISR(){
   if (salario_diario > 0) {
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Nomina/empleados/actions/calculoISR.php",
+      url: "/Ubicaciones/Nomina/empleados/actions/calculoISR.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -628,7 +628,7 @@ function calcularISRmodal(){
   if (salario_diario > 0) {
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Nomina/empleados/actions/calculoISR.php",
+      url: "/Ubicaciones/Nomina/empleados/actions/calculoISR.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);

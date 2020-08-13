@@ -4,8 +4,8 @@ ini_set('display_errors',1);
 
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
 
 
 $xml = '';
@@ -22,8 +22,8 @@ $fechaFactura = date("Y-m-d\TH:i:s");
 $id_cliente = 'CLT_6548';
 
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
-require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_factura_captura.php'; #$total_consultaDatosCaptura
+require $root . '/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
+require $root . '/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_factura_captura.php'; #$total_consultaDatosCaptura
 if( $total_consultaDatosCaptura > 0 ){
   $row_consultaDatosCaptura = $rslt_consultaDatosCaptura->fetch_assoc();
   $id_formapago = $row_consultaDatosCaptura['fk_id_formapago'];
@@ -45,17 +45,17 @@ if( $total_consultaDatosCaptura > 0 ){
   $Total_Anticipos = $row_consultaDatosCaptura['n_total_depositos'];
   $POCME_Total_MN = $row_consultaDatosCaptura['n_total_POCME'];
 }
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
+require $root . '/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
 $noCertificado = $row_datosCert['pk_id_certificado'];
 $certificado = $row_datosCert['s_certificado'];
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosOficinaActiva.php';
+require $root . '/Resources/PHP/actions/consultaDatosOficinaActiva.php';
 $ex_cp = $row_oficinaActiva['s_codigo'];
 $lugarExpedicion = $ex_cp;
 $ex_estado = $row_oficinaActiva['s_estado'];
 $lugarExpedicionTxt = $ex_cp.' '.$ex_estado;
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCIA.php';
+require $root . '/Resources/PHP/actions/consultaDatosCIA.php';
 $e_rfc = trim($rowCIA['s_RFC']);
 $e_razon_social = $rowCIA['s_Razon_Social'];
 $regimen = trim($rowCIA['fk_id_regimen']);
@@ -88,7 +88,7 @@ $array= array( 'Version'=>$CFDversion,
                 'Impuestos' => array('TotalImpuestosTrasladados' => $totaGralIVA,
                                      'TotalImpuestosRetenidos' => $IVAretenido));
 
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios_2.php';
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios_2.php';
 if( $total_consultaHonorarios > 0 ) {
   $idFila = 0;
   while( $row_consultaHonXML = $rslt_consultaHonorarios->fetch_assoc()){
@@ -140,7 +140,7 @@ if( $total_consultaHonorarios > 0 ) {
 
 #nombre carpetas
 $anioActual = date('Y');
-$rutaAnioActual = $root . '/conta6/CFDI_generados/'.$anioActual;
+$rutaAnioActual = $root . '/CFDI_generados/'.$anioActual;
 $rutaTemp = $rutaAnioActual.'/temp';
 $rutaRep = $rutaAnioActual.'/repositorio';
 $rutaCLT = $rutaAnioActual.'/'.$id_cliente;
@@ -347,7 +347,7 @@ function xmlV33_genera_cadena_original() {
 	$paso = new DOMDocument("1.0","UTF-8");
 	$paso->loadXML($xml->saveXML());
 	$xsl = new DOMDocument("1.0","UTF-8");
-  $file = $root . '/conta6/Resources/xsi/cadenaoriginal_3_3.xslt';
+  $file = $root . '/Resources/xsi/cadenaoriginal_3_3.xslt';
 	$xsl->load($file);
 	$proc = new XSLTProcessor;
 	$proc->importStyleSheet($xsl);
@@ -362,7 +362,7 @@ function xmlV33_genera_cadena_original() {
 function xmlV33_sella($array) {
   global $comprobante, $cadena_original;
   #ruta
-  $fileKey = $root . '/conta6/Resources/clavesKeyCer/key2017.pem';
+  $fileKey = $root . '/Resources/clavesKeyCer/key2017.pem';
   $certificado = $array['noCertificado'];
   $pkeyid = openssl_get_privatekey(file_get_contents($fileKey));
   openssl_sign($cadena_original, $crypttext, $pkeyid, OPENSSL_ALGO_SHA256);
@@ -471,7 +471,7 @@ function abrirTimbrado(){
 
 function generarQR($e_rfc,$r_rfc,$total,$UUID,$selloParte){
   global $root,$rutaQRFile;
-  require $root . '/conta6/Resources/phpqrcode/qrlib.php';
+  require $root . '/Resources/phpqrcode/qrlib.php';
 
   /* re=RFC_emisor  rr=RFC_receptor  id=UUID
   fe=$selloParte -> 8 ultimos digitos
@@ -492,20 +492,20 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
          $root,$usuario,$db,$aduana,
          $moneda,$tipoCambio,$totalGralImporte,$totalGral,$IVAretenido,$totaGralIVA,$Total_Anticipos,$folioCtaGastos;
 
-  require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_diasCredito.php';
+  require $root . '/Resources/PHP/actions/consultaDatosCliente_diasCredito.php';
   if( $rows_diasCredCLT > 0 ){
     $credito = trim($row_diasCredCLT["n_dias"]);
     $vencimiento = date("Y-m-d",strtotime("+$credito days"));
   }
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_4guardarDatosTimbrado.php';
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza.php';
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_4guardarDatosTimbrado.php';
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza.php';
 
   if( $total_cta_gastos <> 0 ){
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPolizaCtaGastos.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPolizaCtaGastos.php';
   }
   if( $c_MetodoPago == 'PUE' && $fac_saldo < 0 ){
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPolizaPagoAplicado.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPolizaPagoAplicado.php';
   }
 
   return ;

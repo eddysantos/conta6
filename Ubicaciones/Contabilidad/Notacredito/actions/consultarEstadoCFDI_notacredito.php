@@ -37,7 +37,7 @@ if( $total_estadoCancela > 0 ) {
     $s_estatus_pac = $row_estadoCancela['s_estatus_pac'];
     $d_fecha = $row_estadoCancela['d_fecha'];
 
-    $hrefcancela = "<a href='#' onclick='cancelarFactura_status($id_factura)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/refresh-button.svg'>$txt_evaluar</a>";
+    $hrefcancela = "<a href='#' onclick='cancelarFactura_status($id_factura)'><img class='icomediano ml-4' src='/Resources/iconos/refresh-button.svg'>$txt_evaluar</a>";
 
 		$datosEdoCancela = $datosEdoCancela."<div class='row b font12 ls1'>
       <div class='col-md-4 text-center'></div>

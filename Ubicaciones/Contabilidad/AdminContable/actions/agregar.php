@@ -7,12 +7,12 @@ $usuario = $_SESSION['user_name'];
 $accion = trim($_POST['accion']);
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-//require $root . '/conta6/Resources/PHP/Databases/conexion.php';
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+//require $root . '/Resources/PHP/Databases/conexion.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
 /***********************************************
-   CUENTAS DE PRIMER NIVEL - CUENTA MAESTRA 
+   CUENTAS DE PRIMER NIVEL - CUENTA MAESTRA
 ************************************************/
 
 if( $accion == 'MST' ){
@@ -95,7 +95,7 @@ function folioCtaDET($db,$Cta_Mta){
 
 
 /***********************************************
-   CUENTAS DE SEGUNDO NIVEL - CUENTA DETALLE 
+   CUENTAS DE SEGUNDO NIVEL - CUENTA DETALLE
 ************************************************/
 
 if( $accion == 'DET' ){
@@ -113,9 +113,9 @@ if( $accion == 'DET' ){
     if( $Cta_Mta == '0115-00000' ){ $opcionCta = 'deudores'; }
 	// 0115 cliente,empleado     s_cta_identificador_tipo varchar(15)
     if( $Cta_Mta == '0100-00000' || $Cta_Mta == '0101-00000' ){ $opcionCta = 'bancos'; }
-	
-	
-	
+
+
+
 	# Alta de todas las cuentas *************************************************************************
 	if( $opcionCta == 'general' ){
 
@@ -137,8 +137,8 @@ if( $accion == 'DET' ){
       }
       $descripcion = "Se Generaro la Cuenta de Detalle: $CUENTA_DETALLE_ID  $Descripcion_Cta, de la cuenta MST $Cta_Mta";
     }
-	
-	
+
+
 	# Alta de la cuenta de proveedor ******************************************************************
 	if( $opcionCta == 'proveedor' ){
 		$prov = trim($_POST['prov']);
@@ -147,7 +147,7 @@ if( $accion == 'DET' ){
 		$CUENTA_tipo = consultaTipo($db,$Cta_Mta);
 		//$naturaleza = consultaNaturaleza($db,$Cta_Mta);
 		$identificador_tipo = 'proveedor';
-		
+
 		$query = "INSERT INTO conta_cs_cuentas_mst(pk_id_cuenta,s_cta_desc,s_cta_tipo,s_cta_nivel,
 		s_cta_identificador,
 		s_cta_identificador_tipo,
@@ -176,17 +176,17 @@ if( $accion == 'DET' ){
 		  $system_callback['message'] = "Error during query execution PROV [$stmt->errno]: $stmt->error";
 		  exit_script($system_callback);
 		}
-	
+
 		$descripcion = "Se Generaro la Cuenta de Detalle: $CUENTA  $Descripcion_Cta, de la cuenta MST $Cta_Mta";
-		
-	
-	
+
+
+
 	}
 	# Alta de cuentas de los deudores ********************************************************************
 	if( $opcionCta == 'deudores' ){
 	  $identID = trim($_POST['identID']);
 	  $identTipo = trim($_POST['identTipo']);
-	  
+
       $CUENTA_DETALLE_ID = folioCtaDET($db,$Cta_Mta);
       $query = "INSERT INTO conta_cs_cuentas_mst(pk_id_cuenta,s_cta_desc,s_cta_tipo,s_cta_nivel,
 	  s_cta_identificador_tipo,
@@ -214,13 +214,13 @@ if( $accion == 'DET' ){
 
 	# Alta de cuentas bancarias de la CIA ***********************************************************************
     if( $opcionCta == 'bancos' ){
-				
+
       $banSAT = trim($_POST['banSAT']);
 	  $nomBcoExt = trim($_POST['nomBcoExt']);
       $noCuenta = trim($_POST['noCuenta']);
       $oficinaAsignar = trim($_POST['oficinaAsignar']);
       $obser = $_POST['obser'];
-	  
+
 	  $CUENTA_DETALLE_ID = folioCtaDET($db,$Cta_Mta);
       $query = "INSERT INTO conta_cs_cuentas_mst(
 	  pk_id_cuenta,
@@ -255,14 +255,14 @@ if( $accion == 'DET' ){
 	  $natur,
 	  $usuario,
 	  $Cta_Mta);
-	  
+
       if (!($stmt)) {
         $system_callback['code'] = "500";
         $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
         exit_script($system_callback);
       }
       $descripcion = "Se Generaro la Cuenta de Detalle: $CUENTA_DETALLE_ID  $Descripcion_Cta, de la cuenta MST $Cta_Mta";
-	  
+
 	  // se agrega la cuenta de banco a la lista de bancos de la CIA
 	  $CUENTA_DETALLE_ID = folioCtaDET($db,$Cta_Mta);
 	  mysqli_query($db,"INSERT INTO conta_cs_bancos_cia (fk_id_banco, s_nombre, s_RFC, s_ctaOri, fk_id_cuenta, fk_id_aduana, s_obervaciones, fk_usuario_alta)
@@ -324,7 +324,7 @@ if( $accion == 'DET' ){
     $system_callback['code'] = 1;
     $system_callback['message'] = "Script called successfully!".$descripcion;
     exit_script($system_callback);
-*/	
+*/
 }
 
 
@@ -376,7 +376,7 @@ if( $accion == 'cliente' ){
 		  $system_callback['message'] = "Error during query execution [$stmt->errno]: $stmt->error";
 		  exit_script($system_callback);
 		}
-	
+
 		$descripcion = "Se Generaro la Cuenta de Detalle(108,208,106,203) del cliente: $cliente  $NOM_CLI";
 	}
 
@@ -386,6 +386,6 @@ if( $accion == 'cliente' ){
 //HISTORIAL
 $clave = 'admonCtas';
 $folio = $Cta_Mta;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 ?>

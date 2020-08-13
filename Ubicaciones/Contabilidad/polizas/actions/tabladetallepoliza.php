@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = trim($_POST['id_poliza']);
 $query = "SELECT * FROM conta_t_polizas_det WHERE fk_id_poliza = ?";
@@ -44,7 +44,7 @@ while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
   "<tr class='row borderojo'>
       <td class='p-0 pt-2' width='3%'>
-        <a href='#' onclick='borrarRegistro($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+        <a href='#' onclick='borrarRegistro($partida)'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>
       </td>
       <td class='p-0' width='8%'>$fk_id_cuenta</td>
       <td class='p-0' width='8%'>$row[fk_gastoAduana]</td>
@@ -60,7 +60,7 @@ while ($row = $rslt->fetch_assoc()) {
       <td class='p-0' width='8%'>$ $abono</td>
       <td class='p-0 pt-2' width='3%'>
         <a href='#detpol-editarRegPolDiario' class='editar-partidaPol' db-id='$partida' role='button'>
-          <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+          <img class='icochico' src='/Resources/iconos/003-edit.svg'>
         </a>
       </td>
       <td class='p-0' width='3%'></td>

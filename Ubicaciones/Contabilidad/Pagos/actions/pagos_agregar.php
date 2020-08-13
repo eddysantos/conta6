@@ -1,8 +1,8 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
-require $root . '/conta6/Resources/PHP/actions/consultaDatosOficinaActiva.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/actions/consultaDatosOficinaActiva.php';
 $ex_estado = limpiarBlancos($row_oficinaActiva['s_estado']);
 $ex_cp = limpiarBlancos($row_oficinaActiva['s_codigo']);
 $lugarExpedicion = $ex_cp;
@@ -94,7 +94,7 @@ $system_callback['message'] = "Error during query execution captura [$stmt_mst->
 
 $nfolio = $db->insert_id;
 
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar_detalle.php';
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar_detalle.php';
 
 
 $system_callback['hon'] = $query_mst;

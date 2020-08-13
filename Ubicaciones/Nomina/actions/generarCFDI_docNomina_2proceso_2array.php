@@ -6,8 +6,8 @@ $nodo = 'Comprobante';
 
 $fechaFactura = date("Y-m-d\TH:i:s");
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
-require $root . '/conta6/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina_captura.php'; #$total_consultaDatosCaptura
+require $root . '/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
+require $root . '/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina_captura.php'; #$total_consultaDatosCaptura
 if( $total_consultaDatosCaptura > 0 ){
   $row_consultaDatosCaptura = $rslt_consultaDatosCaptura->fetch_assoc();
 
@@ -59,23 +59,23 @@ if( $total_consultaDatosCaptura > 0 ){
 
 }
 
-require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_captura_sumaTotales.php';
+require $root . '/Ubicaciones/Nomina/actions/consulta_captura_sumaTotales.php';
 # <-- $sumPercepcionesSueldos, $sumPercepcionesImporteGravado, $sumPercepcionesImporteExento, $sumPercepcionesSepIndem,
 # <-- $totalDeducciones, $descuentos,	$totalPercepciones, $totalOtrosPagos, $subtotal, $total
 # <-- $totalOtrasDeducciones, $totalOtrasDeduccionesISR
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
+require $root . '/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
 $noCertificado = $row_datosCert['pk_id_certificado'];
 $certificado = $row_datosCert['s_certificado'];
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosOficinaActiva.php';
+require $root . '/Resources/PHP/actions/consultaDatosOficinaActiva.php';
 $ex_cp = $row_oficinaActiva['s_codigo'];
 $lugarExpedicion = $ex_cp;
 $ex_estado = $row_oficinaActiva['s_estado'];
 $lugarExpedicionTxt = $ex_cp.' '.$ex_estado;
 $registroPatronal = $row_oficinaActiva['s_Reg_Patronal'];
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCIA.php';
+require $root . '/Resources/PHP/actions/consultaDatosCIA.php';
 $e_rfc = trim($rowCIA['s_RFC']);
 $e_razon_social = $rowCIA['s_Razon_Social'];
 $regimen = trim($rowCIA['fk_id_regimen']); #601
@@ -105,7 +105,7 @@ $array = array( 'Version'=>$CFDversion,
               );
 
 # CFDI relacionada ********************************************************
-require $root . '/conta6/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina_relacionada.php'; #$total_consultaDatosRelacionada
+require $root . '/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina_relacionada.php'; #$total_consultaDatosRelacionada
 if( $total_consultaDatosRelacionada > 0 ){
   $idFilaDR = 0;
   $array['CfdiRelacionados']['TipoRelacion'] = '04';
@@ -186,18 +186,18 @@ if( $sumPercepcionesSepIndem > 0 ){
   $array['Percepciones']['TotalSeparacionIndemnizacion'] = $sumPercepcionesSepIndem;
 }
 
-require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepciones_array.php';
+require $root . '/Ubicaciones/Nomina/actions/consulta_capturaPercepciones_array.php';
 
 if( $id_regimen == '02' ){
   $array['Deducciones']['TotalOtrasDeducciones'] = $totalOtrasDeducciones;
 }
 $array['Deducciones']['TotalImpuestosRetenidos'] = $totalOtrasDeduccionesISR;
 
-require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaDeducciones_array.php';
+require $root . '/Ubicaciones/Nomina/actions/consulta_capturaDeducciones_array.php';
 
 
 if( $totalOtrosPagos >= 0 && $id_regimen == '02' ){
-  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaOtrosPagos_array.php';
+  require $root . '/Ubicaciones/Nomina/actions/consulta_capturaOtrosPagos_array.php';
 }
 
 

@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class="text-center">
@@ -86,7 +86,7 @@
         <tr class="row justify-content-center mt-4">
           <td class="col-md-3">
             <a role="button" class="boton p-1">
-              <img src= "/conta6/Resources/iconos/add.svg" class="icochico"> AGREGAR CONCEPTO
+              <img src= "/Resources/iconos/add.svg" class="icochico"> AGREGAR CONCEPTO
             </a>
           </td>
         </tr>
@@ -134,13 +134,13 @@
           <td class="col-md-3">0110-00006 Almacenaje</td>
           <td class="col-md-1">
             <a href="Buscartarifa.php">
-              <img class="icochico" src="/conta6/Resources/iconos/002-trash.svg">
+              <img class="icochico" src="/Resources/iconos/002-trash.svg">
             </a>
             <a href="Buscartarifa.php">
-              <img class="icochico" src="/conta6/Resources/iconos/magnifier.svg">
+              <img class="icochico" src="/Resources/iconos/magnifier.svg">
             </a>
             <a href="#EditarTarifaCliente" data-toggle="modal">
-              <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
+              <img class="icochico" src="/Resources/iconos/003-edit.svg">
             </a>
           </td>
         </tr>
@@ -152,13 +152,13 @@
           <td class="col-md-3">0110-00011 Otros Gastos Comprobados</td>
           <td class="col-md-1">
             <a href="Buscartarifa.php">
-              <img class="icochico" src="/conta6/Resources/iconos/002-trash.svg">
+              <img class="icochico" src="/Resources/iconos/002-trash.svg">
             </a>
             <a href="Buscartarifa.php">
-              <img class="icochico" src="/conta6/Resources/iconos/magnifier.svg">
+              <img class="icochico" src="/Resources/iconos/magnifier.svg">
             </a>
             <a href="#EditarTarifaCliente" data-toggle="modal">
-              <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
+              <img class="icochico" src="/Resources/iconos/003-edit.svg">
             </a>
           </td>
         </tr>
@@ -170,13 +170,13 @@
           <td class="col-md-3">0110-00009 Maniobras</td>
           <td class="col-md-1">
             <a href="Buscartarifa.php">
-              <img class="icochico" src="/conta6/Resources/iconos/002-trash.svg">
+              <img class="icochico" src="/Resources/iconos/002-trash.svg">
             </a>
             <a href="Buscartarifa.php">
-              <img class="icochico" src="/conta6/Resources/iconos/magnifier.svg">
+              <img class="icochico" src="/Resources/iconos/magnifier.svg">
             </a>
             <a href="#EditarTarifaCliente" data-toggle="modal">
-              <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
+              <img class="icochico" src="/Resources/iconos/003-edit.svg">
             </a>
           </td>
         </tr>

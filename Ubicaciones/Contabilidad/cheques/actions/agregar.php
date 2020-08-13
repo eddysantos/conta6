@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = trim($_POST['id_poliza']);
 $tipo = trim($_POST['tipo']);
@@ -23,7 +23,7 @@ $idcheque_folControl = trim($_POST['idcheque_folControl']);
 $ctagastos = 0;
 $notaCred = 0;
 
-require $root . '/conta6/Resources/PHP/actions/insertaDetalleCheque.php';
+require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
 $partida = $db->insert_id;
 
 $affected = $stmt->affected_rows;
@@ -40,7 +40,7 @@ $descripcion = "Se Genero Partida:$partida Ch:$id_cheque CtaMST:$cuentaMST Cta: 
 
 $clave = 'cheques';
 $folio = $id_cheque;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 

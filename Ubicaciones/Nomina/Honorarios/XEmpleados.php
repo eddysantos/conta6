@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <!-- <div class="container-fluid">
@@ -348,7 +348,7 @@
       </div>
     </div>
     <div class="col-md-4 offset-md-4 mt-5 font16 text-center">
-        <a href="" class="boton"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR DATOS</a><!-Guardar Datos de poliza/cuando se actualizo algun dato-->
+        <a href="" class="boton"><img src= "/Resources/iconos/save.svg" class="icochico"> GUARDAR DATOS</a><!-Guardar Datos de poliza/cuando se actualizo algun dato-->
     <!-- </div>
   </div>
 
@@ -369,7 +369,7 @@
         <tr class="row text-center borderojo">
           <td class="col-md-1">
             <a href="#modDatosEmpHon" data-toggle="modal">
-              <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
+              <img class="icochico" src="/Resources/iconos/003-edit.svg">
             </a>
           </td>
           <td class="col-md-1">Activo</td>
@@ -385,6 +385,6 @@
 
 
 
-<script src="/conta6/Resources/js/Inputs.js"></script>
+<script src="/Resources/js/Inputs.js"></script>
 <script src="js/Honorarios.js"></script>
 <?php include_once('modales/EmpleadosHon.php'); ?>

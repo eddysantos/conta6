@@ -2,7 +2,7 @@
 
 #nombre carpetas
 $anioActual = date('Y');
-$rutaAnioActual = $root . '/conta6/CFDI_nomina/'.$anioActual;
+$rutaAnioActual = $root . '/CFDI_nomina/'.$anioActual;
 $rutaTemp = $rutaAnioActual.'/temp';
 $rutaRep = $rutaAnioActual.'/repositorio';
 $rutaCFDI = $rutaAnioActual.'/CFDI';
@@ -48,7 +48,7 @@ $rutaAnioActualFileXMLCancela = $rutaAnioActual.'/'.$nombre_archivoCancela.'.xml
 $rutaAnioActualFileHTMLCancela = $rutaAnioActual.'/'.$nombre_archivoCancela.'.html';
 
 #nombre archivo modo cancela_test
-$SHCP = $root . '/conta6/Resources/imagenes/SHCP.png';
+$SHCP = $root . '/Resources/imagenes/SHCP.png';
 $nombre_archivoCancelaTest = $nombre_archivo.'cancelado_TEST';
 $fileXMLCancelaTest = $nombre_archivoCancelaTest.'.xml';
 $rutaRepFileZipCancelaTest = $rutaRep.'/'.$nombre_archivoCancelaTest.'.zip';

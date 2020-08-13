@@ -5,7 +5,7 @@
 #REVISAR EN php.ini     allow_url_fopen=On
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 	$fileXML = $_POST['fileXML'];
 	$contenido_XML = $_POST['contenido_XML'];
@@ -18,10 +18,10 @@ $system_callback = [];
 	$fileXML = $tipo."tipo_".$partidaDoc."partida_".$id_poliza."poliza_".$fileXML;
 
 	#Ruta CFDI
-	$rutaCFDI = $root . '/conta6/CFDI_BackUpsContabilidad/';
+	$rutaCFDI = $root . '/CFDI_BackUpsContabilidad/';
 
 	//Reemplazamos caracteres especiales latinos
-	require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+	require $root . '/Resources/PHP/actions/validarFormulario.php';
 
 	#GUARDAR TEMPORAL XML
 	$control = fopen($rutaCFDI.$fileXML,"w+");

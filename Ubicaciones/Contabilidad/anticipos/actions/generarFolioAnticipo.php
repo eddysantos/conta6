@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $fecha = trim($_POST['antfecha']);
 $valor = trim($_POST['antvalor']);
@@ -89,7 +89,7 @@ $nFolio = $db->insert_id;
 $descripcion = "Se Genero el Anticipo: $nFolio Concepto: $concepto Fecha: $fecha Valor: $valor Cuenta:$cta Cliente:$cliente";
 $clave = 'anticipos';
 $folio = $nFolio;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 $system_callback['data'] .= $nFolio;

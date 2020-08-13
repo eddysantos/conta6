@@ -37,8 +37,8 @@ if( $total_backupsxml > 0 ) {
     $row_backupsxml = $rslt_backupsxml->fetch_assoc();
     $nombreArchivo = trim($row_backupsxml['s_nombre_archivo']);
 
-    $imgXML .= "<a href='#' onclick='cargarXML_backupsxml(&#39;$nombreArchivo&#39;,$id_poliza,&#39;V&#39;)' title='consulta'><img class='icochico' src='/conta6/Resources/iconos/xml.svg'></a>";
-    $imgXMLdownload .= "<a href='#' onclick='cargarXML_backupsxml(&#39;$nombreArchivo&#39;,$id_poliza,&#39;D&#39;)' title='consulta'><img class='ml-3 icochico' src='/conta6/Resources/iconos/descargar-2.svg'></a>";
+    $imgXML .= "<a href='#' onclick='cargarXML_backupsxml(&#39;$nombreArchivo&#39;,$id_poliza,&#39;V&#39;)' title='consulta'><img class='icochico' src='/Resources/iconos/xml.svg'></a>";
+    $imgXMLdownload .= "<a href='#' onclick='cargarXML_backupsxml(&#39;$nombreArchivo&#39;,$id_poliza,&#39;D&#39;)' title='consulta'><img class='ml-3 icochico' src='/Resources/iconos/descargar-2.svg'></a>";
 }
 
 
@@ -80,8 +80,8 @@ if( $total_facturas > 0 ) {
 		$anio = date_format(date_create($fecha),"Y");
 
 
-    $imgXML .= "<a href='#' onclick='cargarXML_factura($anio,&#39;$id_cliente&#39;,&#39;$id_referencia&#39;,&#39;$id_factura&#39;,$id_poliza,&#39;V&#39;)' title='factura'><img class='icochico mr-4' src='/conta6/Resources/iconos/xml.svg'></a>";
-    $imgXMLdownload .= "<a href='#' onclick='cargarXML_factura($anio,&#39;$id_cliente&#39;,&#39;$id_referencia&#39;,&#39;$id_factura&#39;,$id_poliza,&#39;D&#39;)' title='factura'><img class='ml-3 icochico' src='/conta6/Resources/iconos/descargar-2.svg'></a>";
+    $imgXML .= "<a href='#' onclick='cargarXML_factura($anio,&#39;$id_cliente&#39;,&#39;$id_referencia&#39;,&#39;$id_factura&#39;,$id_poliza,&#39;V&#39;)' title='factura'><img class='icochico mr-4' src='/Resources/iconos/xml.svg'></a>";
+    $imgXMLdownload .= "<a href='#' onclick='cargarXML_factura($anio,&#39;$id_cliente&#39;,&#39;$id_referencia&#39;,&#39;$id_factura&#39;,$id_poliza,&#39;D&#39;)' title='factura'><img class='ml-3 icochico' src='/Resources/iconos/descargar-2.svg'></a>";
 }
 
 
@@ -121,8 +121,8 @@ if( $total_pagos > 0 ) {
 		$anio = date_format(date_create($fecha),"Y");
     $nombreArchivo = trim($row_pagos['s_nombrearchivo']);
 
-    $imgXML .= "<a href='#' onclick='cargarXML_pago($anio,&#39;$id_cliente&#39;,&#39;$nombreArchivo&#39;,$id_poliza,&#39;V&#39;)' title='pago'><img class='icochico' src='/conta6/Resources/iconos/xml.svg'></a>";
-    $imgXMLdownload .= "<a href='#' onclick='cargarXML_pago($anio,&#39;$id_cliente&#39;,&#39;$nombreArchivo&#39;,$id_poliza,&#39;D&#39;)' title='pago'><img class='ml-3 icochico' src='/conta6/Resources/iconos/descargar-2.svg'></a>";
+    $imgXML .= "<a href='#' onclick='cargarXML_pago($anio,&#39;$id_cliente&#39;,&#39;$nombreArchivo&#39;,$id_poliza,&#39;V&#39;)' title='pago'><img class='icochico' src='/Resources/iconos/xml.svg'></a>";
+    $imgXMLdownload .= "<a href='#' onclick='cargarXML_pago($anio,&#39;$id_cliente&#39;,&#39;$nombreArchivo&#39;,$id_poliza,&#39;D&#39;)' title='pago'><img class='ml-3 icochico' src='/Resources/iconos/descargar-2.svg'></a>";
 }
 
 #**************************
@@ -162,7 +162,7 @@ if( $total_nc > 0 ) {
 		$fecha = $row_nc['d_fecha_fac'];
 		$anio = date_format(date_create($fecha),"Y");
 
-    $imgXML .= "<a href='#' onclick='cargarXML_nc($anio,&#39;$id_cliente&#39;,&#39;$id_referencia&#39;,&#39;$id_NC&#39;,$id_poliza,&#39;V&#39;)' title='nc'><img class='icochico' src='/conta6/Resources/iconos/xml.svg'></a>";
-    $imgXMLdownload .= "<a href='#' onclick='cargarXML_nc($anio,&#39;$id_cliente&#39;,&#39;$id_referencia&#39;,&#39;$id_NC&#39;,$id_poliza,&#39;D&#39;)' title='nc'><img class='ml-3 icochico' src='/conta6/Resources/iconos/descargar-2.svg'></a>";
+    $imgXML .= "<a href='#' onclick='cargarXML_nc($anio,&#39;$id_cliente&#39;,&#39;$id_referencia&#39;,&#39;$id_NC&#39;,$id_poliza,&#39;V&#39;)' title='nc'><img class='icochico' src='/Resources/iconos/xml.svg'></a>";
+    $imgXMLdownload .= "<a href='#' onclick='cargarXML_nc($anio,&#39;$id_cliente&#39;,&#39;$id_referencia&#39;,&#39;$id_NC&#39;,$id_poliza,&#39;D&#39;)' title='nc'><img class='ml-3 icochico' src='/Resources/iconos/descargar-2.svg'></a>";
 }
 ?>

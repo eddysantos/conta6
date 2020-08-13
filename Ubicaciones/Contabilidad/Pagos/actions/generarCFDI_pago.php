@@ -3,8 +3,8 @@ error_reporting(E_ALL);
 //ini_set('display_errors',1);
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
 #limpiarBlancos($txt) <-- eliminaBlancos($cadena)
 
 #SEGUN LAS ESPECIFICICAIONES DEL ANEXO20 VERSION 3.3 SE TIENE QUE USAR EL CATALOGO DE MONEDA PARA LOS DECIMALES, PERO COMO SOLO EXPEDIMOS EN MXN,USD Y AMBOS TIENEN DOS DECIMALES, POR LO TANTO, NUESTROS CALCULOS SE HARAN A DOS DECIMALES.
@@ -30,7 +30,7 @@ $id_referencia = 'N13003039';
 if( $oRst_permisos['s_rPElect_timbrar'] == 1 ){
   # VALIDACION 1: CERTIFICADO VIGENTE
   error_log("Just testing");
-  require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
+  require $root . '/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
   if( $total_datosCert > 0 ){
     $noCertificado = $row_datosCert['pk_id_certificado'];
   	$certificado = $row_datosCert['s_certificado'];
@@ -43,9 +43,9 @@ if( $oRst_permisos['s_rPElect_timbrar'] == 1 ){
 
     # VALIDACION 2: CONSULTO FOLIO DE CFDI
     //obtener folio de PagoCFDI
-    require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_pagos.php';
+    require $root . '/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_pagos.php';
     if( $total_consultaDatosCFDI == 0 ){
-      require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_2genFactura.php'; #$folioFactura
+      require $root . '/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_2genFactura.php'; #$folioFactura
       $idFactura = $folioFactura;
       echo "se genero pago folio CFDI: ".$folioFactura;
       // echo "<br>";
@@ -53,7 +53,7 @@ if( $oRst_permisos['s_rPElect_timbrar'] == 1 ){
       $system_callback['code'] = 1;
       $system_callback['message'] .= "✓ Pago: ".$folioFactura."\n";
 
-      require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso.php';
+      require $root . '/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso.php';
       $system_callback['code'] = 1;
       //$system_callback['message'] .= $mensajeTimbre.' ---'.$mensaje_xmlGen."***\n";
       exit_script($system_callback);
@@ -67,7 +67,7 @@ if( $oRst_permisos['s_rPElect_timbrar'] == 1 ){
 
           # VALIDACION 3: CONSULTO EL UUID
           if( is_null($UUID) ){
-            require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso.php';
+            require $root . '/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago_3proceso.php';
 
             $system_callback['code'] = 1;
             //$system_callback['message'] .= $mensajeTimbre;

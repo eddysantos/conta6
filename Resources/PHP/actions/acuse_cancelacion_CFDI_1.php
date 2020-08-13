@@ -9,7 +9,7 @@ $UUID = '846C00DC-85C1-48F4-B6FA-D2DDABDF86C5';
 $status = 201;
 $sello = '/SeY8BvQfSk8FVDMQJRBNSuf75CPx6XmH4L9G1m7N68azHpTg9DqqBpxsbe3d1EJoPO2/U2XsgpeOVTfCOmd7A==';
 $root = $_SERVER['DOCUMENT_ROOT'];
-$SHCP = $root . '/conta6/Resources/imagenes/SHCP.png';
+$SHCP = $root . '/Resources/imagenes/SHCP.png';
 */
 
 $html = "

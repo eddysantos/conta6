@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
 $query = "SELECT * FROM conta_cs_sat_cuentas ORDER BY n_id_partida";
 

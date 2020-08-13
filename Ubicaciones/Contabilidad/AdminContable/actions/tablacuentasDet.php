@@ -1,7 +1,7 @@
 <?php
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
@@ -49,7 +49,7 @@ while ($row = $rslt->fetch_assoc()) {
    <td class='col-md-1 text-center'>
       <a href='#EditarCatalogo' data-toggle='modal'>
       <a href='#EditarCatalogo' class='editar-cuenta' db-id='$id' role='button'>
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+        <img class='icochico' src='/Resources/iconos/003-edit.svg'>
       </a>
     </td>
     <td class='col-md-1'>$row[pk_id_cuenta]</td>

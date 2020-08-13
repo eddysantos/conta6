@@ -1,7 +1,7 @@
 <?PHP
 /*
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = 2;
 $status = 0;
@@ -29,7 +29,7 @@ $descripcion = "Se Actualizo la Poliza: $id_poliza, Estatus: $status_txt";
 
 $clave = 'polizas';
 $folio = $id_poliza;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 

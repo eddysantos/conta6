@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 $partida = trim($_POST['partida']);
 $prov = trim($_POST['prov']);
 $query = "DELETE FROM conta_cs_bancos_proveedores WHERE pk_id_banco_prov = ?";
@@ -32,7 +32,7 @@ if ($affected == 0) {
 $descripcion = "Se elimino en bancos Partida: $partida del Proveedore: $prov";
 $clave = 'prov';
 $folio = $prov;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);

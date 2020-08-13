@@ -112,7 +112,7 @@ $(document).ready(function(){
     });
 
     $('#printCatCuentas').click(function(){
-      window.open('/conta6/Ubicaciones/Contabilidad/AdminContable/actions/imprimir_catalogoCtas.php');
+      window.open('/Ubicaciones/Contabilidad/AdminContable/actions/imprimir_catalogoCtas.php');
     });
 
     $('#genCorresponsal').click(function(){
@@ -138,7 +138,7 @@ $(document).ready(function(){
 
     	$.ajax({
     		type: "POST",
-    		url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregarCorresponsal.php",
+    		url: "/Ubicaciones/Contabilidad/AdminContable/actions/agregarCorresponsal.php",
     		data: data,
     		success: 	function(request){
     			r = JSON.parse(request);
@@ -204,7 +204,7 @@ $(document).ready(function(){
 
         $.ajax({
     			type: "POST",
-    			url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregar.php",
+    			url: "/Ubicaciones/Contabilidad/AdminContable/actions/agregar.php",
     			data: data,
     			success: 	function(request, settings){
             //$('#respuestaCtasMST').html(request);
@@ -339,7 +339,7 @@ $(document).ready(function(){
         }
         $.ajax({
     			type: "POST",
-    			url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregar.php",
+    			url: "/Ubicaciones/Contabilidad/AdminContable/actions/agregar.php",
     			data: data,
     			success: 	function(request, settings){
             mensaje = request;
@@ -376,7 +376,7 @@ $(document).ready(function(){
 
         $.ajax({
     			type: "POST",
-    			url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/agregar.php",
+    			url: "/Ubicaciones/Contabilidad/AdminContable/actions/agregar.php",
     			data: data,
     			success: 	function(request, settings){
             mensaje = request;
@@ -476,7 +476,7 @@ $(document).ready(function(){
 
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/editar.php",
+          url: "/Ubicaciones/Contabilidad/AdminContable/actions/editar.php",
           data: data,
           success: 	function(r){
             console.log(r);
@@ -546,7 +546,7 @@ function asigCorresponsal(id_corresp,id_cliente){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/AdminContable/actions/asignarCorresponsalAcliente.php",
+    url: "/Ubicaciones/Contabilidad/AdminContable/actions/asignarCorresponsalAcliente.php",
     data: data,
     success: 	function(request){
       r = JSON.parse(request);
@@ -564,12 +564,12 @@ function asigCorresponsal(id_corresp,id_cliente){
 
 
 function correspAsignar(id_corresp){
-  window.location.replace('/conta6/Ubicaciones/Contabilidad/AdminContable/CorresponsalesAsignar.php?id_corresp='+id_corresp);
+  window.location.replace('/Ubicaciones/Contabilidad/AdminContable/CorresponsalesAsignar.php?id_corresp='+id_corresp);
 }
 function fetch_cuentas_sat(){
     $.ajax({
       method: 'POST',
-      url: '/conta6/Resources/PHP/actions/lst_conta_cs_sat_cuentas.php',
+      url: '/Resources/PHP/actions/lst_conta_cs_sat_cuentas.php',
       success: function(r){
         r = JSON.parse(r);
         if (r.code == 1) {
@@ -584,7 +584,7 @@ function fetch_cuentas_sat(){
 function cuentas_Det(){
   $.ajax({
     method: 'POST',
-    url: '/conta6/Ubicaciones/Contabilidad/AdminContable/actions/tablacuentasDet.php',
+    url: '/Ubicaciones/Contabilidad/AdminContable/actions/tablacuentasDet.php',
     success: function(r){
       r = JSON.parse(r);
       if (r.code == 1) {

@@ -1,12 +1,12 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
 //$cuenta = trim($_GET['cuenta']);
 
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle.php'; # $pagosDetallePrint
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle.php'; # $pagosDetallePrint
 
 $mostrarSustituir = false;
 if( is_null($s_UUIDpagoSustituir) ){

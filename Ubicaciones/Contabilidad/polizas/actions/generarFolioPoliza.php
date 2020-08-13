@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
@@ -47,7 +47,7 @@ $nFolio = $db->insert_id;
 $descripcion = "Se Genero la Poliza: $nFolio Concepto: $concepto";
 $clave = 'polizas';
 $folio = $nFolio;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 $system_callback['data'] .= $nFolio;
 $system_callback['code'] = 1;

@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 
@@ -89,7 +89,7 @@
             <label for="fac3">Factor 3</label>
           </td>
           <td class="col-md-1 text-left">
-            <a href=""><img src= "/conta6/Resources/iconos/add.svg" class="icomediano"></a>
+            <a href=""><img src= "/Resources/iconos/add.svg" class="icomediano"></a>
           </td>
         </tr>
       </tbody>
@@ -102,7 +102,7 @@
       <thead>
         <tr class="row">
           <td class="col-md-1">
-            <a href=""><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>
+            <a href=""><img class="icomediano" src="/Resources/iconos/printer.svg"></a>
           </td>
           <td class="col-md-2 offset-md-9">
             <select class="custom-select">
@@ -145,8 +145,8 @@
           <td class="col-md-1"></td>
           <td class="col-md-1">300</td>
           <td class="col-md-1">
-            <a href=""><img class="icochico" src="/conta6/Resources/iconos/cross.svg"></a>
-            <a href="#EditarRegTarifa" data-toggle="modal"><img class="icochico ml-3" src="/conta6/Resources/iconos/003-edit.svg"></a>
+            <a href=""><img class="icochico" src="/Resources/iconos/cross.svg"></a>
+            <a href="#EditarRegTarifa" data-toggle="modal"><img class="icochico ml-3" src="/Resources/iconos/003-edit.svg"></a>
           </td>
         </tr>
       </tbody>

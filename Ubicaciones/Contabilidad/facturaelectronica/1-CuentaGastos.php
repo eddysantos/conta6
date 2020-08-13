@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
 
 ?>
@@ -143,5 +143,5 @@
 </div>
 
 <?php
-  require $root . '/Conta6/Ubicaciones/footer.php';
+  require $root . '/Ubicaciones/footer.php';
 ?>

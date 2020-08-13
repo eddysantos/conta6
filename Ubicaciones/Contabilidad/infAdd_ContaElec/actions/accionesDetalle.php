@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
   $tipoInf = $_POST['tipoInf'];
   $fk_id_poliza = $_POST['id_poliza'];
@@ -36,7 +36,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
     $TaxID = $_POST['TaxID'];
     $metPago = $_POST['metPago'];
 
-    require $root . '/Conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
+    require $root . '/Resources/PHP/actions/contaElect_insertaCompNal.php';
     $rsltCOMPNAL = $stmtCOMPNAL->get_result();
 
     $system_callback['code'] = 1;
@@ -62,7 +62,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
     if( $moneda == '' ){ $moneda = 'MXN'; }
     if( $tipoCamb == "" ){ $tipoCamb = 1; }
 
-    require $root . '/Conta6/Resources/PHP/actions/contaElect_insertaCheque.php';
+    require $root . '/Resources/PHP/actions/contaElect_insertaCheque.php';
     $rsltCHEQUE = $stmtCHEQUE->get_result();
 
     $system_callback['code'] = 1;
@@ -81,7 +81,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 		$tipoCamb = $_POST['tc'];
 		$importe = $_POST['total'];
 
-    require $root . '/Conta6/Resources/PHP/actions/contaElect_insertaCompExt.php';
+    require $root . '/Resources/PHP/actions/contaElect_insertaCompExt.php';
     $rsltCompExt = $stmtCompExt->get_result();
 
     $system_callback['code'] = 1;
@@ -101,7 +101,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
     $nombre = $_POST['nombre'];
     $rfc = $_POST['rfc'];
 
-    require $root . '/Conta6/Resources/PHP/actions/contaElect_insertaOtrMetodoPago.php';
+    require $root . '/Resources/PHP/actions/contaElect_insertaOtrMetodoPago.php';
     $rsltOtrMetodoPago = $stmtOtrMetodoPago->get_result();
 
     $system_callback['code'] = 1;
@@ -133,7 +133,7 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
     $usuario_modifi = $usuario;
     $observ = $_POST['obser'];
 
-    require $root . '/Conta6/Resources/PHP/actions/contaElect_insertaTransferencia.php';
+    require $root . '/Resources/PHP/actions/contaElect_insertaTransferencia.php';
     $rsltOtrMetodoPago = $stmtOtrMetodoPago->get_result();
 
     $system_callback['code'] = 1;
@@ -145,6 +145,6 @@ require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
 
   $clave = 'contaElect';
   $folio = $fk_id_poliza;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 ?>

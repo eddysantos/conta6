@@ -52,10 +52,10 @@
                 <td class="p-1 col-md-8 text-right">
                   Anticipo 1 :
                   <a href="javascript:Btn_Busca_Anticipo('1')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                    <img class='mr-3 icochico' src='/conta6/Resources/iconos/magnifier.svg'>
+                    <img class='mr-3 icochico' src='/Resources/iconos/magnifier.svg'>
                   </a>
                   <a href="javascript:limpiarCampos(4,1)">
-                    <img class='mr-3 icochico' src='/conta6/Resources/iconos/002-trash.svg'>
+                    <img class='mr-3 icochico' src='/Resources/iconos/002-trash.svg'>
                   </a>
                 </td>
                 <td class="p-1 col-md-2">
@@ -70,9 +70,9 @@
                 <td class="p-1 col-md-8 text-right">
                   Anticipo 2 :
                   <a href="javascript:Btn_Busca_Anticipo('2')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                    <img class='mr-3 icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a>
+                    <img class='mr-3 icochico' src='/Resources/iconos/magnifier.svg' /></a>
                   <a href="javascript:limpiarCampos(4,2)">
-                    <img class='mr-3 icochico' src='/conta6/Resources/iconos/002-trash.svg'>
+                    <img class='mr-3 icochico' src='/Resources/iconos/002-trash.svg'>
                   </a>
                 </td>
                 <td class="p-1 col-md-2">
@@ -87,10 +87,10 @@
                 <td class="p-1 col-md-8 text-right">
                   Anticipo 3 :
                   <a href="javascript:Btn_Busca_Anticipo('3')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                    <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
+                    <img class='icochico mr-3' src='/Resources/iconos/magnifier.svg'>
                   </a>
                   <a href="javascript:limpiarCampos(4,3)">
-                    <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
+                    <img class='icochico mr-3' src='/Resources/iconos/002-trash.svg'>
                   </a>
                 </td>
                 <td class="p-1 col-md-2">
@@ -105,10 +105,10 @@
                 <td class="p-1 col-md-8 text-right">
                   Anticipo 4 :
                   <a href="javascript:Btn_Busca_Anticipo('4')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                    <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
+                    <img class='icochico mr-3' src='/Resources/iconos/magnifier.svg'>
                   </a>
                   <a href="javascript:limpiarCampos(4,4)">
-                    <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
+                    <img class='icochico mr-3' src='/Resources/iconos/002-trash.svg'>
                   </a>
                 </td>
                 <td class="p-1 col-md-2">
@@ -123,10 +123,10 @@
                 <td class="p-1 col-md-8 text-right">
                   Anticipo 5 :
                   <a href="javascript:Btn_Busca_Anticipo('5')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                    <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
+                    <img class='icochico mr-3' src='/Resources/iconos/magnifier.svg'>
                   </a>
                   <a href="javascript:limpiarCampos(4,5)">
-                    <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
+                    <img class='icochico mr-3' src='/Resources/iconos/002-trash.svg'>
                   </a>
                 </td>
                 <td class="p-1 col-md-2">
@@ -141,10 +141,10 @@
                 <td class="p-1 col-md-8 text-right">
                   Anticipo 6 :
                   <a href="javascript:Btn_Busca_Anticipo('6')" tabindex="<?php echo $tabindex = $tabindex+1; ?>">
-                    <img class='icochico mr-3' src='/conta6/Resources/iconos/magnifier.svg'>
+                    <img class='icochico mr-3' src='/Resources/iconos/magnifier.svg'>
                   </a>
                   <a href="javascript:limpiarCampos(4,6)">
-                    <img class='icochico mr-3' src='/conta6/Resources/iconos/002-trash.svg'>
+                    <img class='icochico mr-3' src='/Resources/iconos/002-trash.svg'>
                   </a>
                 </td>
                 <td class="p-1 col-md-2">

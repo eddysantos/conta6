@@ -1,11 +1,11 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $buscar = trim($_GET['buscar']);
   $accion = trim($_GET['accion']);
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/4-Consultarfactura_lstFacturasTimbradas.php';
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/4-Consultarfactura_lstFacturasTimbradas.php';
 ?>
 
   <div id="buscarfactura" class="text-center">
@@ -43,5 +43,5 @@
   </div>
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
  ?>

@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
 $id_prov = trim($_POST['id_prov']);
 $query = "SELECT * FROM conta_cs_proveedores WHERE pk_id_proveedor = ?";
@@ -45,7 +45,7 @@ if ($rslt->num_rows == 0) {
     $txtStatus_moral = 'selected';
   }
   if( $oRst_permisos['s_catalogoPersonasPROV_m'] == 1 ){
-    $btnguardar = "<a href='#' onclick='btn_editProv();'><img src= '/conta6/Resources/iconos/save.svg' class='icomediano'></a>";
+    $btnguardar = "<a href='#' onclick='btn_editProv();'><img src= '/Resources/iconos/save.svg' class='icomediano'></a>";
     $desactivar = '';
   }else{
     $btnguardar = '';

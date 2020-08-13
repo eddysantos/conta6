@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
   $idprov = trim($_POST['idprov']);
   $nombre = trim($_POST['nombre']);
@@ -14,10 +14,10 @@
 	$data = $_POST;
 
   //********************* validaRFC
-  require $root . '/conta6/Resources/PHP/actions/validarRFC_cliente.php';
-  require $root . '/conta6/Resources/PHP/actions/validarRFC_proveedores.php';
-  require $root . '/conta6/Resources/PHP/actions/validarRFC_empleados.php';
-  require $root . '/conta6/Resources/PHP/actions/validarRFC_beneficiarios.php';
+  require $root . '/Resources/PHP/actions/validarRFC_cliente.php';
+  require $root . '/Resources/PHP/actions/validarRFC_proveedores.php';
+  require $root . '/Resources/PHP/actions/validarRFC_empleados.php';
+  require $root . '/Resources/PHP/actions/validarRFC_beneficiarios.php';
   //***********************************************************
 
   if( $rows_CLT == 0 && $rows_BEN == 0 && $rows_EMPL == 0 ){
@@ -47,7 +47,7 @@
 
         $clave = 'provConta';
         $folio = $idprov;
-        require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+        require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
         $system_callback['code'] = 1;
         $system_callback['message'] = "Script called successfully!";

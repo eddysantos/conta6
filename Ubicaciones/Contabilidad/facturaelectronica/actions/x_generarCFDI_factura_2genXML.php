@@ -1,9 +1,9 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
-require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_factura_captura.php';
+require $root . '/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
+require $root . '/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_factura_captura.php';
 
 echo $CFDversion;
 	$id_formapago = $rslt_consultaDatosCaptura['fk_id_formapago'];

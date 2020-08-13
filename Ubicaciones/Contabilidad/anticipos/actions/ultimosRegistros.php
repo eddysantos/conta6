@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_anticipo = trim($_POST['id_anticipo']);
 $query = "SELECT * FROM conta_t_anticipos_det WHERE fk_id_anticipo = ? ORDER BY pk_partida DESC limit 3";
@@ -43,7 +43,7 @@ while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
   "<tr class='row m-0 borderojo'>
       <td width='4%' class='p-0 pt-2'>
-        <a href='#' onclick='borrarRegistroAnticipo($partida)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+        <a href='#' onclick='borrarRegistroAnticipo($partida)'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>
       </td>
       <td width='10%' class='p-0'>$row[fk_id_cuenta]</td>
       <td width='10%' class='p-0'>$row[fk_referencia]</td>
@@ -56,7 +56,7 @@ while ($row = $rslt->fetch_assoc()) {
       <td width='11%' class='p-0'>$ $abono</td>
       <td width='4%' class='p-0 pt-2'>
         <a href='#detant-editar' class='editar-partidaAnt' db-id='$partida' data-toggle='modal'>
-          <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+          <img class='icochico' src='/Resources/iconos/003-edit.svg'>
         </a>
       </td>
 

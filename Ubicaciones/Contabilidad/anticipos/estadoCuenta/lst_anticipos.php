@@ -1,7 +1,7 @@
 <?php
 #http://localhost:88/conta6/ubicaciones/Contabilidad/anticipos/estadoCuenta/lst_anticipos.php?ID_Expedidor=CLT_7021&fechaInicial=2012-12-01&fechaFinal=2012-12-31
 $root = $_SERVER['DOCUMENT_ROOT'];
-include($root . '/conta6/Resources/PHP/Databases/Conexion.php');
+include($root . '/Resources/PHP/Databases/Conexion.php');
 
 	 $expedidoA = trim($_GET['ID_Expedidor']);
 	 $fechaInicial = trim($_GET['fechaInicial']);

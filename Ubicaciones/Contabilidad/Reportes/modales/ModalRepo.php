@@ -8,7 +8,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Reportes Contabilidad</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
         <div class="row sub2 m-0">
@@ -423,10 +423,10 @@
           <tbody class="font14">
             <tr class="row align-items-center justify-content-center">
               <td class="col-md-3">
-                <a href="" class="boton"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
+                <a href="" class="boton"><img src= "/Resources/iconos/magnifier.svg" class="icochico"> CONSULTAR</a>
               </td>
               <td class="col-md-3">
-                <a href="" class="boton"> <img src= "/conta6/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
+                <a href="" class="boton"> <img src= "/Resources/iconos/005-excel.svg" class="icochico"> ABRIR EN EXCEL</a><!--nueva pagina, ingresar datos en poliza-->
               </td>
             </tr>
           </tbody>
@@ -437,4 +437,4 @@
 </div>
 
 
-<script src="/conta6/Ubicaciones/Contabilidad/Reportes/js/Reportes.js"></script>
+<script src="/Ubicaciones/Contabilidad/Reportes/js/Reportes.js"></script>

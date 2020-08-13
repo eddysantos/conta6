@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+require $root . '/Ubicaciones/barradenavegacion.php';
 
 $buscar = trim($_GET['bRef']);
 $accion = trim($_GET['accion']);
@@ -9,14 +9,14 @@ $accion = trim($_GET['accion']);
 
 <?php
 if( $accion == 'pagosElect' ){
-  require $root . '/conta6/Resources/PHP/actions/consultaPagoTimbrada2.php';
+  require $root . '/Resources/PHP/actions/consultaPagoTimbrada2.php';
 ?>
 <div class="contorno text-center" style="<?php echo $marginbottom ?>">
   <table class="table">
     <thead>
       <tr class="row">
         <td class="col-md-1 offset-sm-11 font14">
-          <a href="/conta6/Ubicaciones/Contabilidad/Pagos/pagos.php"><i class="fa fa-arrow-left">Regresar</i></a>
+          <a href="/Ubicaciones/Contabilidad/Pagos/pagos.php"><i class="fa fa-arrow-left">Regresar</i></a>
         </td>
       </tr>
       <tr class="row encabezado font18">
@@ -41,14 +41,14 @@ if( $accion == 'pagosElect' ){
 
 <?php
 if( $accion == 'facturas' ){
-  require $root . '/conta6/Resources/PHP/actions/facturas_cfdi_PPD.php';
+  require $root . '/Resources/PHP/actions/facturas_cfdi_PPD.php';
 ?>
 <div class="contorno text-center" style="<?php echo $marginbottom ?>">
   <table class="table">
     <thead>
       <tr class="row">
         <td class="col-md-1 offset-sm-11 font14">
-          <a href="/conta6/Ubicaciones/Contabilidad/Pagos/pagos.php"><i class="fa fa-arrow-left">Regresar</i></a>
+          <a href="/Ubicaciones/Contabilidad/Pagos/pagos.php"><i class="fa fa-arrow-left">Regresar</i></a>
         </td>
       </tr>
       <tr class="row encabezado font18">
@@ -74,14 +74,14 @@ if( $accion == 'facturas' ){
 <?php
 if( $accion == 'pagosCaptura' ){
   $text = $buscar;
-  require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_lst_capturados.php';
+  require $root . '/Ubicaciones/Contabilidad/Pagos/actions/pagos_lst_capturados.php';
 ?>
 <div class="contorno text-center" style="<?php echo $marginbottom ?>">
   <table class="table">
     <thead>
       <tr class="row">
         <td class="col-md-1 offset-sm-11 font14">
-          <a href="/conta6/Ubicaciones/Contabilidad/Pagos/pagos.php"><i class="fa fa-arrow-left">Regresar</i></a>
+          <a href="/Ubicaciones/Contabilidad/Pagos/pagos.php"><i class="fa fa-arrow-left">Regresar</i></a>
         </td>
       </tr>
       <tr class="row encabezado font18">
@@ -104,5 +104,5 @@ if( $accion == 'pagosCaptura' ){
 <!-- pagosElect -->
 
 <?php
-require $root . '/Conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

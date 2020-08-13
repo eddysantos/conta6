@@ -29,7 +29,7 @@ if( $total_consultaPolContaElect > 0 ) {
 	while( $row_consultaPolContaElect = $rslt_consultaPolContaElect->fetch_assoc() ){
 
 		$partidaDoc = $row_consultaPolContaElect['pk_partida'];
-    require $root . '/Conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
+    require $root . '/Resources/PHP/actions/contaElect_insertaCompNal.php';
 
 	}
 }

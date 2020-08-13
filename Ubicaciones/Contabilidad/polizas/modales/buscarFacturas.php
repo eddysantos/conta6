@@ -8,7 +8,7 @@
           <input class="bt border-0 h22 w-100 fw-bold" id="detpol-cliente-nombre" type="text" readonly>
         </div>
         <div class="col-md-1">
-          <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+          <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
         </div>
       </div>
       <div class="modal-body p-0">
@@ -43,7 +43,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>CFDI de Nomina Sueldos y Salarios</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
         <div id="contorno" class="contorno">
@@ -80,7 +80,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>CFDI de Nomina Honorarios</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
         <div id="contorno" class="contorno">

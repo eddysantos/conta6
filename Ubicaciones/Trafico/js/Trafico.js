@@ -169,7 +169,7 @@ $(document).ready(function(){
     }
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_lstCapturadas.php",
+      url: "/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_lstCapturadas.php",
       data: data,
       success: 	function(r){
         console.log(r);

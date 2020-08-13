@@ -11,7 +11,7 @@ if( $XMLsave == 'xmlTemGenerado' ){
 }
 
 #funciones generales para timbrar un CFDI
-#include $root . '/conta6/Ubicaciones/Contabilidad/actions/generarCFDI_proceso_functionTimbrar.php';
+#include $root . '/Ubicaciones/Contabilidad/actions/generarCFDI_proceso_functionTimbrar.php';
 
 //echo xmlV33($array,$nodo);
 /*
@@ -47,7 +47,7 @@ function xmlV33_genera_xml($array,$nodo) {
 
 
 #funciones generales para timbrar un CFDI
-#require $root . '/conta6/Ubicaciones/Contabilidad/actions/generarCFDI_proceso_functionTimbrar.php';
+#require $root . '/Ubicaciones/Contabilidad/actions/generarCFDI_proceso_functionTimbrar.php';
 
 
 
@@ -56,20 +56,20 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
          $root,$usuario,$db,$aduana,
          $moneda,$tipoCambio,$totalGralImporte,$totalGral,$IVAretenido,$totaGralIVA,$Total_Anticipos,$folioCtaGastos;
 
-  require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_diasCredito.php';
+  require $root . '/Resources/PHP/actions/consultaDatosCliente_diasCredito.php';
   if( $rows_diasCredCLT > 0 ){
     $credito = trim($row_diasCredCLT["n_dias"]);
     $vencimiento = date("Y-m-d",strtotime("+$credito days"));
   }
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_4guardarDatosTimbrado.php';
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza.php';
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_4guardarDatosTimbrado.php';
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza.php';
 
   if( $total_cta_gastos <> 0 ){
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php';
   }
   if( $c_MetodoPago == 'PUE' && $fac_saldo < 0 ){
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
   }
 
   return ;

@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class='container-fluid'>
@@ -15,9 +15,9 @@
 
   <div class='col-md-1 text-center font16 m-3'>
     <a href='SolAnticipo.php'>
-      <img class='icomediano' src='/conta6/Resources/iconos/left.svg'>
+      <img class='icomediano' src='/Resources/iconos/left.svg'>
     </a>
-    <a href='#' style='margin-left:30px'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a>
+    <a href='#' style='margin-left:30px'><img class='icomediano' src='/Resources/iconos/printer.svg'></a>
   </div>
 
   <div id='contornoCliente' class='contorno' style='display:none'>
@@ -168,7 +168,7 @@
                 </td>
                 <td class='col-md-1 text-left'>
                   <a href=''>
-                    <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                    <img src='/Resources/iconos/002-plus.svg' class='icomediano'>
                   </a>
                 </td>
                 <td class='col-md-1'></td>
@@ -290,7 +290,7 @@
                 </td>
                 <td class='col-md-1 text-left'>
                   <a href=''>
-                    <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                    <img src='/Resources/iconos/002-plus.svg' class='icomediano'>
                   </a>
                 </td>
                 <td class='col-md-1'>
@@ -322,7 +322,7 @@
                 </td>
                 <td class='col-md-1 text-left'>
                   <a href=''>
-                    <img src='/conta6/Resources/iconos/001-delete.svg' class='icomediano'>
+                    <img src='/Resources/iconos/001-delete.svg' class='icomediano'>
                   </a>
                 </td>
                 <td class='col-md-2'>
@@ -408,7 +408,7 @@
                     <input class='efecto' type='text'>
                   </td>
                   <td class='col-md-1 text-left'>
-                    <a href=''><img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'></a>
+                    <a href=''><img src='/Resources/iconos/002-plus.svg' class='icomediano'></a>
                   </td>
                   <td class='col-md-3'>
                     <input class='efecto' type='text'>
@@ -429,7 +429,7 @@
                     <input class='efecto' type='text' value='Impuestos y/o Derechos Pagados o Garantizados al Com.Ext.'>
                   </td>
                   <td class='col-md-1 text-left'>
-                    <a href=''><img src='/conta6/Resources/iconos/001-delete.svg' class='icomediano'></a>
+                    <a href=''><img src='/Resources/iconos/001-delete.svg' class='icomediano'></a>
                   </td>
                   <td class='col-md-2'>
                     <input class='efecto' type='text' value='$450.00'>

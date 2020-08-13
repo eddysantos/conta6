@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 
@@ -59,7 +59,7 @@ while( $row_proforma = $rslt_proforma->fetch_assoc() ){
 	      $cobrarFlete = "si";
 	}else{
 
-	  require $root . '/conta6/Resources/PHP/actions/consultaDatosReferencia.php';
+	  require $root . '/Resources/PHP/actions/consultaDatosReferencia.php';
 
 	  if( $rows_buscaRef > 0 ){
 	      $row_buscaRef = $rslt_buscaRef->fetch_assoc();
@@ -104,19 +104,19 @@ while( $row_proforma = $rslt_proforma->fetch_assoc() ){
 	$id_poliza = '';
 	$s_cancela_factura = 0;
 
-	#	require $root . '/conta6/Resources/PHP/actions/consultaFacturaTimbrada.php';
+	#	require $root . '/Resources/PHP/actions/consultaFacturaTimbrada.php';
 
 	if( $oRst_permisos['s_solAnt_modificar'] == 1 ){
 	    $cadena = "solAntModificar(&#39;".$id_referencia."&#39;,".$dias.",&#39;".$id_cliente."&#39;,".$id_almacen.",&#39;".$tipo."&#39;,".$valor.",".$peso.",".$id_captura.",".$shipper.",&#39;".$consolidado."&#39;,&#39;".$inbond."&#39;,".$entradas.",".$flete.",&#39;".$reexpedicion."&#39;,&#39;".$cobrarFlete."&#39;,&#39;".$status_Flete."&#39;,".$entradasAdicionales.")";
-	    $hrefmodificar = "<a href='#' onclick='".$cadena."'><img class='icomediano' src='/conta6/Resources/iconos/003-edit.svg'></a>";
+	    $hrefmodificar = "<a href='#' onclick='".$cadena."'><img class='icomediano' src='/Resources/iconos/003-edit.svg'></a>";
 	}
 
 	if( $oRst_permisos['s_solAnt_consultar'] == 1 ){
-	  $hrefconsultar = "<a href='#' onclick='solAntConsultar($id_captura,&#39;consulta&#39;)' class='ml-3'><img class='icomediano ml-2' src='/conta6/Resources/iconos/magnifier.svg'></a>
-	                <a href='#' onclick='solAntImprimir($id_captura)' class='ml-3'><img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'></a>";
+	  $hrefconsultar = "<a href='#' onclick='solAntConsultar($id_captura,&#39;consulta&#39;)' class='ml-3'><img class='icomediano ml-2' src='/Resources/iconos/magnifier.svg'></a>
+	                <a href='#' onclick='solAntImprimir($id_captura)' class='ml-3'><img class='icomediano ml-2' src='/Resources/iconos/printer.svg'></a>";
 	}
 	if( $oRst_permisos['s_solAnt_cancelar'] == 1 ){
-	  $hrefcancelar = "<a href='#' onclick='solAntEliminar($id_captura)'><img class='icomediano' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+	  $hrefcancelar = "<a href='#' onclick='solAntEliminar($id_captura)'><img class='icomediano' src='/Resources/iconos/002-trash.svg'></a>";
 	}
 
 	//if( $accion == 'consulMod' ){

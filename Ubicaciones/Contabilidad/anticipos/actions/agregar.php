@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
   $id_anticipo = trim($_POST['anticipo']);
   $fecha = trim($_POST['fecha']);
@@ -49,7 +49,7 @@
 
   $clave = 'anticipos';
   $folio = $id_anticipo;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 

@@ -1,8 +1,8 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
-  require $root . '/conta6/Ubicaciones/Nomina/Honorarios/submenu_honorarios.php';
+  require $root . '/Ubicaciones/Nomina/Honorarios/submenu_honorarios.php';
 
 ?>
 
@@ -43,7 +43,7 @@
 </div>
 
 <?php
-// require $root .'/conta6/Ubicaciones/Nomina/empleados/modales/Empleados.php';
-require $root .'/conta6/Ubicaciones/Nomina/Honorarios/parametros/modales/Parametros.php';
-require $root . '/conta6/Ubicaciones/footer.php';
+// require $root .'/Ubicaciones/Nomina/empleados/modales/Empleados.php';
+require $root .'/Ubicaciones/Nomina/Honorarios/parametros/modales/Parametros.php';
+require $root . '/Ubicaciones/footer.php';
  ?>

@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
 
   $query_consultaFormapago = "SELECT * FROM conta_cs_sat_formapago ORDER BY s_concepto";
@@ -30,10 +30,10 @@ $system_callback = [];
         $concepto = utf8_encode($row_consultaFormapago['s_concepto']);
 
         $system_callback['data'] .=
-        '<tr class="row m-0 borderojo"><td class="col-md-1">'.$row['pk_id_formapago'].'</td>'.
-        '<td class="col-md-1">'.utf8_encode($row['s_concepto']).'</td>'.
-        '<td class="col-md-2">'.$row['d_fecha_diarioOficial'].'</td>'.
-        '<td class="col-md-1">'.$row['s_activo'].'</td></tr>';
+        '<tr class="row m-0 borderojo"><td class="col-md-1">'.$row_consultaFormapago['pk_id_formapago'].'</td>'.
+        '<td class="col-md-1">'.utf8_encode($row_consultaFormapago['s_concepto']).'</td>'.
+        '<td class="col-md-2">'.$row_consultaFormapago['d_fecha_diarioOficial'].'</td>'.
+        '<td class="col-md-1">'.$row_consultaFormapago['s_activo'].'</td></tr>';
       }
   }
 

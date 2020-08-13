@@ -1,13 +1,13 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/Conta6/Resources/vendor/autoload.php';
-require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
-require $root . '/conta6/Resources/PHP/actions/numtoletras.php';
+require $root . '/Resources/vendor/autoload.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/numtoletras.php';
 
 
 class MYPDF extends TCPDF {
   public function Header() {
-    // $image_file = '/conta6/Resources/imagenes/logoSHCP.png';
+    // $image_file = '/Resources/imagenes/logoSHCP.png';
     $image_file = 'logoSHCP.png';
     $this->Image($image_file, 8, 8, '', 15, '', '','', 0,false);
     $this->setTextColor(102);

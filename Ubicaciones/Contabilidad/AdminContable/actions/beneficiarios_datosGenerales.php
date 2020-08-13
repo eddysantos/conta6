@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 
@@ -42,7 +42,7 @@ if ($rslt->num_rows == 0) {
   $taxid = utf8_encode($row['s_taxid']);
 
   if( $oRst_permisos['s_benefModificar_cheques'] == 1 ){
-    $btnguardar = "<a href='#' onclick='btn_editBen();'><img src= '/conta6/Resources/iconos/save.svg' class='icomediano'></a>";
+    $btnguardar = "<a href='#' onclick='btn_editBen();'><img src= '/Resources/iconos/save.svg' class='icomediano'></a>";
   }else{ $btnguardar = ''; }
 
   $system_callback['data'] .=

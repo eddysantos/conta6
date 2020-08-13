@@ -3,8 +3,8 @@
 /*
 error_reporting(E_ALL);
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
 #$cuenta = 14;
 $cuenta = 33; #dos reg
 */
@@ -15,8 +15,8 @@ $ret = '';
 $comprobante = '';
 $nodo = 'Comprobante';
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
-require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_pagos_captura.php'; #$total_consultaDatosCaptura
+require $root . '/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
+require $root . '/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_pagos_captura.php'; #$total_consultaDatosCaptura
 if( $total_consultaDatosCaptura > 0 ){
   $row_consultaDatosCaptura = $rslt_consultaDatosCaptura->fetch_assoc();
 
@@ -36,17 +36,17 @@ if( $total_consultaDatosCaptura > 0 ){
   $UUID_relacionado = $row_consultaDatosCaptura['s_UUIDpagoSustituir'];
 }
 
-    require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
+    require $root . '/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
     $noCertificado = $row_datosCert['pk_id_certificado'];
     $certificado = $row_datosCert['s_certificado'];
 
-    require $root . '/conta6/Resources/PHP/actions/consultaDatosOficinaActiva.php';
+    require $root . '/Resources/PHP/actions/consultaDatosOficinaActiva.php';
     $ex_cp = $row_oficinaActiva['s_codigo'];
     $lugarExpedicion = $ex_cp;
     $ex_estado = $row_oficinaActiva['s_estado'];
     $lugarExpedicionTxt = $ex_cp.' '.$ex_estado;
 
-    require $root . '/conta6/Resources/PHP/actions/consultaDatosCIA.php';
+    require $root . '/Resources/PHP/actions/consultaDatosCIA.php';
     $e_rfc = trim($rowCIA['s_RFC']);
     $e_razon_social = $rowCIA['s_Razon_Social'];
     $regimen = trim($rowCIA['fk_id_regimen']);
@@ -84,7 +84,7 @@ if( $total_consultaDatosCaptura > 0 ){
 
 
 
-    require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_2.php';
+    require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_2.php';
     if( $total_consultaDetalle > 0 ) {
       $idFila = 0;
       while(  $row_consultaDetalle = $rslt_consultaDetalle->fetch_assoc() ){
@@ -132,7 +132,7 @@ if( $total_consultaDatosCaptura > 0 ){
       }
     }
 
-    require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_DR.php';
+    require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_DR.php';
     if( $total_consultaDetalle_DR > 0 ) {
       $idFilaDR = 0;
       while(  $row_consultaDetalle_DR = $rslt_consultaDetalle_DR->fetch_assoc() ){

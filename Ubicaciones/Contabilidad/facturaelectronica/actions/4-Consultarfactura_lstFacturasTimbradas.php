@@ -72,7 +72,7 @@ if( $total_ctaGastos > 0 ){
 					$cobrarFlete = "si";
 		}else{
 
-			require $root . '/conta6/Resources/PHP/actions/consultaDatosReferencia.php';
+			require $root . '/Resources/PHP/actions/consultaDatosReferencia.php';
 
 			if( $rows_buscaRef > 0 ){
 					$row_buscaRef = $rslt_buscaRef->fetch_assoc();
@@ -118,7 +118,7 @@ if( $total_ctaGastos > 0 ){
 
 		#rutas de consulta
 		$anioActual = date_format(date_create($d_fechaTimbrado),"Y");
-		$rutaAnioActual = $root . '/conta6/CFDI_generados/'.$anioActual;
+		$rutaAnioActual = $root . '/CFDI_generados/'.$anioActual;
 		$rutaCLT = $rutaAnioActual.'/'.$id_cliente;
 		$nombre_archivo = $referencia.'_'.$id_factura.'_factura';
 		$nombre_archivoCancela = $referencia.'_'.$id_factura.'_factura_cancela';
@@ -130,7 +130,7 @@ if( $total_ctaGastos > 0 ){
 
 		if( $accion == 'consultar' ){
 			if( $s_cancela_factura == 1){
-				$hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>";
+				$hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/Resources/iconos/pdf.svg'></a>";
 				if( $oRst_permisos['s_facturas_sustituir'] == 1 ){
 					$cadenaSustituir = "ctaGastosSustituirCFDI(&#39;".$id_referencia."&#39;,".$dias.",&#39;".$id_cliente."&#39;,".$id_almacen.",&#39;".$tipo."&#39;,".$valor.",".$peso.",".$id_captura.",".$shipper.",&#39;".$consolidado."&#39;,&#39;".$inbond."&#39;,".$entradas.",".$flete.",&#39;".$reexpedicion."&#39;,&#39;".$cobrarFlete."&#39;,&#39;".$status_Flete."&#39;,".$entradasAdicionales.")";
 					$hrefSustituir = '<input class="efecto mt-2 h22 boton p-0" type="button" value="SUSTITUIR" id="sustituir-factura" onclick="'.$cadenaSustituir.'" />';
@@ -138,7 +138,7 @@ if( $total_ctaGastos > 0 ){
 			}
 			if( $oRst_permisos['s_facturas_modificar'] == 1 ){
 				$cadena = "ctaGastosModificarCFDI(&#39;".$id_referencia."&#39;,".$dias.",&#39;".$id_cliente."&#39;,".$id_almacen.",&#39;".$tipo."&#39;,".$valor.",".$peso.",".$id_captura.",".$shipper.",&#39;".$consolidado."&#39;,&#39;".$inbond."&#39;,".$entradas.",".$flete.",&#39;".$reexpedicion."&#39;,&#39;".$cobrarFlete."&#39;,&#39;".$status_Flete."&#39;,".$entradasAdicionales.")";
-				$hrefModificarCFDI = "<a href='#' onclick='".$cadena."'><img class='icomediano' src='/conta6/Resources/iconos/003-edit.svg'></a>";
+				$hrefModificarCFDI = "<a href='#' onclick='".$cadena."'><img class='icomediano' src='/Resources/iconos/003-edit.svg'></a>";
 			}
 
 
@@ -146,8 +146,8 @@ if( $total_ctaGastos > 0 ){
 			$listaFacturas .= "
 				<tr class='row borderojo font14'>
 					<td class='col-md-1'>
-						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFileXML&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/xml.svg'></a>
-						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.pdf&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>
+						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFileXML&#39;)'><img class='icomediano' src='/Resources/iconos/xml.svg'></a>
+						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.pdf&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/Resources/iconos/pdf.svg'></a>
 					</td>
 					<td class='col-md-1'>$d_fechaTimbrado</td>
 					<td class='col-md-1'>$id_factura</td>
@@ -158,8 +158,8 @@ if( $total_ctaGastos > 0 ){
 					<td class='col-md-4'>$id_cliente $s_nombre</td>
 					<td class='col-md-1'>
 						$hrefModificarCFDI
-						<a href='#' class='ver' accion='cuadroConsultar' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;consulta&#39;)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/magnifier.svg'></a>
-						<a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'></a>
+						<a href='#' class='ver' accion='cuadroConsultar' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;consulta&#39;)'><img class='icomediano ml-2' src='/Resources/iconos/magnifier.svg'></a>
+						<a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-2' src='/Resources/iconos/printer.svg'></a>
 						$hrefSustituir
 					</td>";
 		}
@@ -167,8 +167,8 @@ if( $total_ctaGastos > 0 ){
 
 		if( $accion == 'cancelar' ){
 			if( $s_cancela_factura == 1){ #si la factura esta cancelada, download Acuse de cancelacion
-				$hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFileXMLcancela&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/xml.svg'></a>";
-				$hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.pdf&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>";
+				$hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFileXMLcancela&#39;)'><img class='icomediano ml-4' src='/Resources/iconos/xml.svg'></a>";
+				$hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.pdf&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/Resources/iconos/pdf.svg'></a>";
 			}
 
 			if( $s_cancela_factura == 0 ){ #si la factura esta activa
@@ -179,19 +179,19 @@ if( $total_ctaGastos > 0 ){
 					$fechaActual = date("Y/m", time());
 					if( $fechaTimbrado == $fechaActual ){
 						$txt_evaluar = evaluarCancelarFactura($d_fechaTimbrado,$n_total_gral);
-						#$hrefcancela = "<a href='#' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;cancelar&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
+						#$hrefcancela = "<a href='#' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;cancelar&#39;)'><img class='icomediano ml-4' src='/Resources/iconos/cross.svg'>$txt_evaluar</a>";
 					}
 				}
 
-				$hrefcancela = "<a href='#' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;cancelar&#39;)'><img class='icoxs' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
+				$hrefcancela = "<a href='#' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;cancelar&#39;)'><img class='icoxs' src='/Resources/iconos/cross.svg'>$txt_evaluar</a>";
 
 			}
 
 			$listaFacturas .= "
 				<tr class='row borderojo font14'>
 					<td class='col-md-1'>
-						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFileXML&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/xml.svg'></a>
-						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>
+						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFileXML&#39;)'><img class='icomediano' src='/Resources/iconos/xml.svg'></a>
+						<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/Resources/iconos/pdf.svg'></a>
 					</td>
 					<td class='col-md-1'>$d_fechaTimbrado</td>
 					<td class='col-md-1'>$id_factura</td>
@@ -201,8 +201,8 @@ if( $total_ctaGastos > 0 ){
 					<td class='col-md-1'>$referencia</td>
 					<td class='col-md-4'>$id_cliente $s_nombre</td>
 					<td class='col-md-1'>
-						<a href='#' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;consulta&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/magnifier.svg'></a>
-						<a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-5' src='/conta6/Resources/iconos/printer.svg'></a>
+						<a href='#' onclick='ctaGastosCapturaConsultar($pk_id_cuenta_captura,&#39;consulta&#39;)'><img class='icomediano' src='/Resources/iconos/magnifier.svg'></a>
+						<a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-5' src='/Resources/iconos/printer.svg'></a>
 					</td>";
 
 		}//if( $accion == 'cancelar'
@@ -222,5 +222,5 @@ function evaluarCancelarFactura($d_fechaTimbrado,$n_total_gral){
 }
 ?>
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
  ?>

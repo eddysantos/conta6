@@ -1,16 +1,16 @@
 <?php
 #http://localhost:88/conta6/Ubicaciones/Trafico/SolicitudAnticipo/solAnticipo_modificar.php?referencia=N13003039&dias=1&id_cliente=CLT_7345&almacen=0&tipo=IMP&valor=293207&peso=2145&cuenta=191&shipper=0&consolidado=LTL&inbond=NO&entradas=1&flete=0&reexpedicion=NO&cobrarFlete=si&status_flete=PAGADO&entradasAdicionales=0
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+require $root . '/Ubicaciones/barradenavegacion.php';
 
 $selected_usoCFDI = '';
 
 $cuenta = trim($_GET['cuenta']);
-require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosGenerales.php';
-require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosEmbarque.php'; #$datosEmbarqueModifi
-require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosPOCME.php'; # $datosPOCMEmodifi
-require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosCargos.php'; #$datosCargosModifi
-require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosHonorarios.php'; #$datosHonorariosModifi
+require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosGenerales.php';
+require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosEmbarque.php'; #$datosEmbarqueModifi
+require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosPOCME.php'; # $datosPOCMEmodifi
+require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosCargos.php'; #$datosCargosModifi
+require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/consultarCapturaSolAnt_datosHonorarios.php'; #$datosHonorariosModifi
 
 
 if( $fk_id_asoc == 1 ){
@@ -61,11 +61,11 @@ $manejo = 0;
 $almacenaje = 0;
 $maniobras = 0;
 
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
 
 
 if($referencia != "SN"){
-      require $root . '/conta6/Resources/PHP/actions/consultaDatosReferenciaProveedor.php';
+      require $root . '/Resources/PHP/actions/consultaDatosReferenciaProveedor.php';
 
       if( $rows_datosRefProv > 0 ){
         $row_datosRefProv = $rslt_datosRefProv->fetch_assoc();
@@ -104,7 +104,7 @@ if($referencia != "SN"){
       if( trim($tipo) == 'E'){ $tipo = "EXP"; }else{ $tipo = "IMP"; }
 
       if( $almacen > 0 ){
-        require $root . '/conta6/Resources/PHP/actions/consultaDatosAlmacen.php';
+        require $root . '/Resources/PHP/actions/consultaDatosAlmacen.php';
         $almacenNombre = trim($row_datosAlmacen['s_almacen']);
       }else{ $almacen = 0; $almacenNombre = "SIN NOMBRE";}
 
@@ -138,7 +138,7 @@ if($referencia != "SN"){
     }
 
     //datos del cliente
-    require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
+    require $root . '/Resources/PHP/actions/consultaDatosCliente.php';
     if( $rows_datosCLT > 0 ){
       $CLT_nombre = htmlentities(limpiarNOUSAR($row_datosCLT["s_nombre"]));
       $CLT_calle = limpiarBlancos($row_datosCLT["s_calle"]);
@@ -154,7 +154,7 @@ if($referencia != "SN"){
     }
 
     //IVA
-    require $root . '/conta6/Resources/PHP/actions/consultaDatosIVA.php';
+    require $root . '/Resources/PHP/actions/consultaDatosIVA.php';
     if( $rows_datosIVA > 0 ){
       $iva = trim($row_datosIVA["n_IVA"]);
       $retencion = trim($row_datosIVA["n_IVA_retencion"]);
@@ -170,21 +170,21 @@ if($referencia != "SN"){
 
     /* SACO UN FOLIO DE CALCULO DE TARIFA, ESTE FOLIO ME SERVIRA PARA PODER IDENTIFICAR LOS FILTROS DE LAS TARIFAS */
     $s_tipoDoc = 'ctaGastos';
-    require $root . '/conta6/Resources/PHP/actions/tarifas_generarFolio.php';
+    require $root . '/Resources/PHP/actions/tarifas_generarFolio.php';
     //$calculoTarifa = 45;
 
 
     #******************** PAGOS O COBROS EN MONEDA EXTRANJERA ********************
     //CALCULO TARIFA DEL CLIENTE - SECCION: POCME
     $id_cliente_usar = $id_cliente;
-    require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME.php';
-    require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_cliente.php'; #$tarifaPOCMEcliente
+    require $root . '/Resources/PHP/actions/tarifas_calculaPOCME.php';
+    require $root . '/Resources/PHP/actions/tarifas_consultaPOCME_cliente.php'; #$tarifaPOCMEcliente
 
     //CALCULO TARIFA GENERAL - SECCION: POCME
     $id_cliente_usar = 'CLT_5900'; #CLIENTES DIVERSOS
     $consolidado = 'LTL/FTL';
-    require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME.php';
-    require $root . '/conta6/Resources/PHP/actions/tarifas_consultaPOCME_general.php'; #$tarifaPOCMEgeneral
+    require $root . '/Resources/PHP/actions/tarifas_calculaPOCME.php';
+    require $root . '/Resources/PHP/actions/tarifas_consultaPOCME_general.php'; #$tarifaPOCMEgeneral
 
         //EXTRAER FACTURA-CTA AME-PROFORMA
         #PENDIENTE
@@ -204,11 +204,11 @@ if($referencia != "SN"){
         // 	}
 
         if($opcion == "cliente" || $opcion == "clt_ame" ){
-          require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME_delete.php';
+          require $root . '/Resources/PHP/actions/tarifas_calculaPOCME_delete.php';
         }
 
         # PARA LA OFICINA DE NUEVO LAREDO ESTOS CONCEPTOS SE CARGAN EN AUTOMATICO
-        require $root . '/conta6/Resources/PHP/actions/tarifas_calculaPOCME_mostrarConceptos.php';
+        require $root . '/Resources/PHP/actions/tarifas_calculaPOCME_mostrarConceptos.php';
         $idFila=0;
         if( $oficina == 240 ){
           while ($oRst_Conceptos = $rslt_Conceptos->fetch_assoc()) {
@@ -251,7 +251,7 @@ if($referencia != "SN"){
                 <input type='text' id='T_POCME_Descripcion$idFila' value='$descripcion' maxlength='40' class='T_POCME_DESCRIPCION descripcion efecto h22' size='45'>
               </td>
               <td class='col-md-1 p-2 text-left'>
-                <a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+                <a href='#' class='remove-POCME'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>
               </td>
               <td class='col-md-2 p-2'>
                 <input type='text' id='T_POCME_Importe$idFila' value='$importe' class='T_POCME_IMPORTES importe efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17'>
@@ -283,7 +283,7 @@ if($referencia != "SN"){
               <input type='text' id='T_POCME_Descripcion$idFilaBlanco' class='T_POCME_DESCRIPCION efecto h22' onblur='this.form.T_POCME_Subtotal$idFilaBlanco.focus();' size='45' maxlength='40' tabindex='$tabindex = $tabindex+1'>
             </td>
             <td class='col-md-1 p-2 text-left'>
-              <a href='javascript:limpiarCampos(1,$idFilaBlanco)'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+              <a href='javascript:limpiarCampos(1,$idFilaBlanco)'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>
             </td>
             <td class='col-md-2 p-2'>
               <input type='text' id='T_POCME_Importe$idFilaBlanco' class='T_POCME_IMPORTES efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17' tabindex='$tabindex = $tabindex+1'>
@@ -299,24 +299,24 @@ if($referencia != "SN"){
 
 
         //CALCULO TARIFA ALMACEN - SECCION: PAGOS REALIZADOS POR SU CUENTA
-        require $root . '/conta6/Resources/PHP/actions/tarifas_calculaALMACEN.php'; #$custodia,$manejo,$almacenaje
+        require $root . '/Resources/PHP/actions/tarifas_calculaALMACEN.php'; #$custodia,$manejo,$almacenaje
           $maniobras = redondear_dos_decimal($custodia + $manejo + $almacenaje);
 
-        require $root . '/conta6/Resources/PHP/actions/tarifas_almacen_mostrarConceptos.php'; #$ConceptosAlmacen
-        require $root . '/conta6/Resources/PHP/actions/tarifas_almacen_mostrarConceptosLibres.php'; #$conceptosLibresAlmacen
+        require $root . '/Resources/PHP/actions/tarifas_almacen_mostrarConceptos.php'; #$ConceptosAlmacen
+        require $root . '/Resources/PHP/actions/tarifas_almacen_mostrarConceptosLibres.php'; #$conceptosLibresAlmacen
 
 
         //CALCULO TARIFA CLIENTE - SECCION: HONORARIOS Y SERVICIOS AL COMERCIO EXTERIOR
-        require $root . '/conta6/Resources/PHP/actions/tarifas_calculaCLIENTE.php'; #$honorarios,$factor_honorarios,$descuento
-        require $root . '/conta6/Resources/PHP/actions/tarifas_cliente_mostrarConceptos.php'; #$ConceptosCliente
-        require $root . '/conta6/Resources/PHP/actions/tarifas_cliente_mostrarConceptosLibres.php'; #$conceptosLibresCliente
+        require $root . '/Resources/PHP/actions/tarifas_calculaCLIENTE.php'; #$honorarios,$factor_honorarios,$descuento
+        require $root . '/Resources/PHP/actions/tarifas_cliente_mostrarConceptos.php'; #$ConceptosCliente
+        require $root . '/Resources/PHP/actions/tarifas_cliente_mostrarConceptosLibres.php'; #$conceptosLibresCliente
 
         $oRst_consultaCve = mysqli_fetch_array(mysqli_query($db,"select fk_c_ClaveProdServ from conta_cs_cuentas_mst where pk_id_cuenta = '0400-00001'"));
         $cveProdHon = $oRst_consultaCve['fk_c_ClaveProdServ'];
 
 
         //forma de pago del cliente
-        require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
+        require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
         if ($rows_datosCLTformaPago > 0) {
             $datosCLTformaPago = "<option selected value='0'>Forma de pago</option>";
           while ($row_datosCLTformaPago = $rslt_datosCLTformaPago->fetch_assoc()) {
@@ -327,9 +327,9 @@ if($referencia != "SN"){
         }
 
         //LISTA DE MONEDAS
-        require $root . '/conta6/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
+        require $root . '/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
         //LISTA DE USO DE CFDI
-        require $root . '/conta6/Resources/PHP/actions/consultaUsoCFDI_facturar.php'; #$consultaUsoCFDIfac
+        require $root . '/Resources/PHP/actions/consultaUsoCFDI_facturar.php'; #$consultaUsoCFDIfac
 
         $tabindex = 0;
     ?>
@@ -557,7 +557,7 @@ if($referencia != "SN"){
                   </div>
                   <div class='col-md-1 text-left'>
                     <a onclick="agregarImporte()" id="Btn_agregar">
-                      <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                      <img src='/Resources/iconos/002-plus.svg' class='icomediano'>
                     </a>
                   </div>
                 </div>
@@ -657,7 +657,7 @@ if($referencia != "SN"){
                     </div>
                     <div class='col-md-1 text-left'>
                       <a href='#' id="Btn_Cargo" onclick="agregarCargo();">
-                        <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                        <img src='/Resources/iconos/002-plus.svg' class='icomediano'>
                       </a>
                     </div>
                   </div>
@@ -764,11 +764,11 @@ if($referencia != "SN"){
                         <input class="efecto" type="text" id="T_Valor_Concepto_Honorarios" onblur="validaIntDec(this);cortarDecimalesObj(this,2);" size="15">
                       </div>
                       <div class='col-md-1 text-left'>
-                        <a href='#' id="Btn_Honorarios" onclick="agregarHonorarios()"><img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'></a>
+                        <a href='#' id="Btn_Honorarios" onclick="agregarHonorarios()"><img src='/Resources/iconos/002-plus.svg' class='icomediano'></a>
                       </div>
 
                       <div class='col-md-2 p-0'>
-                        <a href="javascript:ayudaPermitidos();">Caracteres permitidos <img class='icochico' src='/conta6/Resources/iconos/help.svg'></a>
+                        <a href="javascript:ayudaPermitidos();">Caracteres permitidos <img class='icochico' src='/Resources/iconos/help.svg'></a>
                       </div>
 
                       <!-- <div class='col-md-2'>
@@ -928,7 +928,7 @@ if($referencia != "SN"){
 
 
     <?php
-      require $root . '/conta6/Ubicaciones/footer.php';
+      require $root . '/Ubicaciones/footer.php';
     ?>
 
 <!-- prueba modificar -->

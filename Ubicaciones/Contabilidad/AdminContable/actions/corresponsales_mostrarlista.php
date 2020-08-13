@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/Conta6/Resources/PHP/utilities/initialScript.php';
+require $root . '/Resources/PHP/utilities/initialScript.php';
 $system_callback = [];
 $query = "SELECT * FROM conta_t_corresponsales order by s_nombre";
 $stmt = $db->prepare($query);
@@ -29,7 +29,7 @@ while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .='<tr class="row m-0 borderojo">
     <td class="col-md-1">
       <a class="addCorresp" href="#addCorresp"  data-toggle="modal" db-id='.$pk_id_corresp.'>
-        <img class="icochico ml-5" src="/conta6/Resources/iconos/001-add.svg">
+        <img class="icochico ml-5" src="/Resources/iconos/001-add.svg">
       </a>
     </td>
     <td class="col-md-2">'.$pk_id_corresp.'</td>

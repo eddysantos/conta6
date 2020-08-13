@@ -95,7 +95,7 @@
 //     }
 //     $.ajax({
 //       type: "POST",
-//       url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_lstCapturadas.php",
+//       url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_lstCapturadas.php",
 //       data: data,
 //       success: 	function(r){
 //         console.log(r);
@@ -193,7 +193,7 @@
 //
 //   	$.ajax({
 //   		type: "POST",
-//   		url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos_datosReferencia.php",
+//   		url: "/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos_datosReferencia.php",
 //   		data: data,
 //   		success: 	function(r){
 //   		r = JSON.parse(r);
@@ -244,7 +244,7 @@
 //
 //     $.ajax({
 //       type: "POST",
-//       url: "/conta6/Resources/PHP/actions/busca_Referencia_CuentasContables.php",
+//       url: "/Resources/PHP/actions/busca_Referencia_CuentasContables.php",
 //       data: data,
 //       success: 	function(request){
 //         r = JSON.parse(request);
@@ -438,11 +438,11 @@
 //     alertify.success('Seleccione un concepto');
 //   }else {
 //       if(tipoDocumento == 'elaborar'){
-//         btnEliminar = "<a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+//         btnEliminar = "<a href='#' class='remove-POCME'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
 //         inputPartida = "";
 //       }
 //       if(tipoDocumento == 'modificar'){
-//         btnEliminar = "<a href='#' class='eliminar-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+//         btnEliminar = "<a href='#' class='eliminar-POCME'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
 //         inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
 //       }
 //
@@ -722,7 +722,7 @@
 //
 //   $.ajax({
 //     type: "POST",
-//     url: "/conta6/Resources/PHP/actions/numtoletras_div.php",
+//     url: "/Resources/PHP/actions/numtoletras_div.php",
 //     data: data,
 //     success: 	function(r){
 //       r = JSON.parse(r);
@@ -844,11 +844,11 @@
 //     alertify.success('Seleccione un concepto');
 //   }else {
 //       if(tipoDocumento == 'elaborar'){
-//         btnEliminar = "<a href='#' class='remove-Cargos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+//         btnEliminar = "<a href='#' class='remove-Cargos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
 //         inputPartida = "";
 //       }
 //       if(tipoDocumento == 'modificar'){
-//         btnEliminar = "<a href='#' class='eliminar-Cargos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+//         btnEliminar = "<a href='#' class='eliminar-Cargos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
 //         inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
 //       }
 //
@@ -973,11 +973,11 @@
 //       alertify.success('Seleccione un concepto');
 //     }else {
 //         if(tipoDocumento == 'elaborar'){
-//           btnEliminar = "<a href='#' class='remove-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+//           btnEliminar = "<a href='#' class='remove-Honorarios'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
 //           inputPartida = "";
 //         }
 //         if(tipoDocumento == 'modificar'){
-//           btnEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+//           btnEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
 //           inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
 //         }
 //
@@ -1280,7 +1280,7 @@
 //
 //   $.ajax({
 //     type: "POST",
-//     url: "/conta6/Resources/PHP/actions/lst_bancos_clientes.php",
+//     url: "/Resources/PHP/actions/lst_bancos_clientes.php",
 //     data: data,
 //     success: 	function(r){
 //       r = JSON.parse(r);
@@ -1527,7 +1527,7 @@
 //
 //       $.ajax({
 //         type: "POST",
-//         url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar.php",
+//         url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar.php",
 //         data: data,
 //         success: 	function(r){
 //           r = JSON.parse(r);
@@ -1707,7 +1707,7 @@
 //
 //       $.ajax({
 //         type: "POST",
-//         url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_agregar.php",
+//         url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_agregar.php",
 //         data: data,
 //         success: 	function(r){
 //           r = JSON.parse(r);

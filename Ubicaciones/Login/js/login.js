@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			method: 'POST',
-			url: "/conta6/Ubicaciones/Login/actions/ingresar.php",
+			url: "/Ubicaciones/Login/actions/ingresar.php",
 			data: {
 				lg_usuario: user,
 				lg_password: pwd
@@ -21,7 +21,7 @@ $(document).ready(function(){
 						break;
 
 					case "1":
-						window.location.replace("/conta6/Ubicaciones/Bienvenida.php");
+						window.location.replace("/Ubicaciones/Bienvenida.php");
 						return false;
 						break;
 
@@ -47,7 +47,7 @@ $(document).ready(function(){
 //
 // 		$.ajax({
 // 			method: 'POST',
-// 			url: "/conta6/Ubicaciones/Login/actions/ingresar.php",
+// 			url: "/Ubicaciones/Login/actions/ingresar.php",
 // 			data: data,
 // 			success: function(result){
 // 				response = jQuery.parseJSON(result);
@@ -59,7 +59,7 @@ $(document).ready(function(){
 // 						break;
 //
 // 					case "1":
-// 						window.location.replace("/conta6/Ubicaciones/Bienvenida.php");
+// 						window.location.replace("/Ubicaciones/Bienvenida.php");
 // 						return false;
 // 						break;
 //
@@ -82,7 +82,7 @@ $(document).ready(function(){
 	// 	}
 	// 	$.ajax({
 	// 		type: "POST",
-	// 		url: "/conta6/Ubicaciones/Login/actions/ingresar.php",
+	// 		url: "/Ubicaciones/Login/actions/ingresar.php",
 	// 		data: data,
 	// 		success: 	function(r){
 	// 			console.log(r);

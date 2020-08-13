@@ -1,11 +1,11 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
   $regimenNomina = trim($_GET['regimen']);
   $anio = trim($_GET['anio']);
   $semana = trim($_GET['semana']);
 
-  require $root . '/conta6/Resources/PHP/actions/lst_empleados_activos.php';
+  require $root . '/Resources/PHP/actions/lst_empleados_activos.php';
 
   if($regimenNomina == '02'){
     $txt_regimenNomina = "<option value='Sueldos'>Sueldos y salarios</option>";
@@ -53,12 +53,12 @@
       </tr>
       <tr class="row justify-content-center mt-5">
         <td class="col-md-2">
-          <a href="#" id="generarNuevoDocumento" class="boton"><img src= "/conta6/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
+          <a href="#" id="generarNuevoDocumento" class="boton"><img src= "/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
         </td>
       </tr>
     </tbody>
   </table>
 </form>
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

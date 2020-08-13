@@ -1,9 +1,9 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
-$rutaLogo = $root . '/Conta6/Resources/imagenes/cheetah.svg';
-#require $root . '/Conta6/Resources/vendor/autoload.php';
-#require $root . '/conta6/Resources/PHP/actions/numtoletras.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+$rutaLogo = $root . '/Resources/imagenes/cheetah.svg';
+#require $root . '/Resources/vendor/autoload.php';
+#require $root . '/Resources/PHP/actions/numtoletras.php';
 
 // $id_nomina = trim($_GET['semana']);
  $id_aduana = $aduana;

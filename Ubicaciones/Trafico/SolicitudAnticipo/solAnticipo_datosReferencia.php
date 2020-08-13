@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 $id_referencia = $_POST['id_referencia'];
 
 $system_callback['message2'] = $id_referencia;
@@ -8,11 +8,11 @@ $system_callback['message2'] = $id_referencia;
 // #if( $totalcaracteres == 9){
 //   # consulta remota
 
-  require $root . '/conta6/Resources/PHP/DatabasesRemote/traficoWebGlobalPCnetDemo13_RCP.php';
+  require $root . '/Resources/PHP/DatabasesRemote/traficoWebGlobalPCnetDemo13_RCP.php';
 // #}
 
   # consulta local
-  require $root . '/conta6/Resources/PHP/actions/consultaDatosReferencia.php';
+  require $root . '/Resources/PHP/actions/consultaDatosReferencia.php';
   if( $rows_buscaRef > 0 ){
     $row_buscaRef = $rslt_buscaRef->fetch_assoc();
     $id_aduanaReferencia = $row_buscaRef['fk_id_aduana'];
@@ -20,7 +20,7 @@ $system_callback['message2'] = $id_referencia;
     if ($id_aduanaReferencia == $aduana){ //VALIDO QUE LA ADUANA EN LA REFERENCIA CORRESPONDA A LA OFICINA ACTIVA
 
       //consulto si ya tiene cuentas capturadas
-      require $root . '/conta6/Resources/PHP/actions/consultaSolAnticipoCapturaReferencia.php';
+      require $root . '/Resources/PHP/actions/consultaSolAnticipoCapturaReferencia.php';
       if( $rows_solAntCaptRef > 0 ){
         $statusReferencia = "<input type='text' id='Txt_ExistenCuentas' size='65' class='p-0 b inputId-red font14' db-id='$rows_status' value='Ya existe proforma con esta referencia' readonly >";
       }
@@ -30,7 +30,7 @@ $system_callback['message2'] = $id_referencia;
 
 
         $datosEmbarque = "<div class='contorno'><table class='table font12'>";
-          require $root . '/conta6/Resources/PHP/actions/datosGeneralesEmbarque.php';
+          require $root . '/Resources/PHP/actions/datosGeneralesEmbarque.php';
 
           // solo cuando la informacion este completa se muestra el boton siguiente
           $btn = "<tr class='row justify-content-center font14'>

@@ -107,7 +107,7 @@ $(document).ready(function(){
       }
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/6-observaciones_lstCapturadas.php",
+        url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/6-observaciones_lstCapturadas.php",
         data: data,
         success: 	function(r){
           console.log(r);
@@ -136,7 +136,7 @@ $(document).ready(function(){
     }
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_lstCapturadas.php",
+      url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_lstCapturadas.php",
       data: data,
       success: 	function(r){
         console.log(r);
@@ -165,7 +165,7 @@ $(document).ready(function(){
     }
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_lstCapturadas.php",
+      url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_lstCapturadas.php",
       data: data,
       success: 	function(r){
         console.log(r);
@@ -257,7 +257,7 @@ $(document).ready(function(){
 
   	$.ajax({
   		type: "POST",
-  		url: "/Conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos_datosReferencia.php",
+  		url: "/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos_datosReferencia.php",
   		data: data,
   		success: 	function(r){
   		r = JSON.parse(r);
@@ -309,7 +309,7 @@ function buscaCuentascontables(opcion,id_cliente){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Resources/PHP/actions/busca_Referencia_CuentasContables.php",
+      url: "/Resources/PHP/actions/busca_Referencia_CuentasContables.php",
       data: data,
       success: 	function(request){
         r = JSON.parse(request);
@@ -540,11 +540,11 @@ function agregarImporte(){
     alertify.success('Seleccione un concepto');
   }else {
       if(tipoDocumento == 'elaborar'){
-        btnEliminar = "<a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        btnEliminar = "<a href='#' class='remove-POCME'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
         inputPartida = "";
       }
       if(tipoDocumento == 'modificar'){
-        btnEliminar = "<a href='#' class='eliminar-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        btnEliminar = "<a href='#' class='eliminar-POCME'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
         inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
       }
 
@@ -828,7 +828,7 @@ function totalLetra(){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Resources/PHP/actions/numtoletras_div.php",
+    url: "/Resources/PHP/actions/numtoletras_div.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -950,11 +950,11 @@ function agregarCargo(){
     alertify.success('Seleccione un concepto');
   }else {
       if(tipoDocumento == 'elaborar'){
-        btnEliminar = "<a href='#' class='remove-Cargos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        btnEliminar = "<a href='#' class='remove-Cargos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
         inputPartida = "";
       }
       if(tipoDocumento == 'modificar'){
-        btnEliminar = "<a href='#' class='eliminar-Cargos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        btnEliminar = "<a href='#' class='eliminar-Cargos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
         inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
       }
 
@@ -1079,11 +1079,11 @@ function agregarHonorarios(){
       alertify.success('Seleccione un concepto');
     }else {
         if(tipoDocumento == 'elaborar'){
-          btnEliminar = "<a href='#' class='remove-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+          btnEliminar = "<a href='#' class='remove-Honorarios'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
           inputPartida = "";
         }
         if(tipoDocumento == 'modificar'){
-          btnEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+          btnEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
           inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
         }
 
@@ -1390,7 +1390,7 @@ function buscarNumeroCuentaBanco(id_cliente){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Resources/PHP/actions/lst_bancos_clientes.php",
+    url: "/Resources/PHP/actions/lst_bancos_clientes.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -1635,7 +1635,7 @@ $('#modificar-cta').click(function(){
 
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar.php",
+        url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar.php",
         data: data,
         success: 	function(r){
           r = JSON.parse(r);
@@ -1644,7 +1644,7 @@ $('#modificar-cta').click(function(){
             folio = r.data;
             alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
               //setTimeout('document.location.reload()',700);
-              setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
+              setTimeout("window.location.replace('/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
             });
 
           } else {
@@ -1849,7 +1849,7 @@ $('#sustituir-cta-cfdi').click(function(){
 
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_sustituir_agregar.php",
+        url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_sustituir_agregar.php",
         data: data,
         success: 	function(r){
           r = JSON.parse(r);
@@ -1858,7 +1858,7 @@ $('#sustituir-cta-cfdi').click(function(){
             folio = r.data;
             alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
               //setTimeout('document.location.reload()',700);
-              setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
+              setTimeout("window.location.replace('/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
             });
 
           } else {
@@ -1989,14 +1989,14 @@ $('#modificar-cta-cfdi').click(function(){ // editar un CFDI - solo en la parte 
 
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar_cfdi.php",
+        url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar_cfdi.php",
         data: data,
         success: 	function(r){
           r = JSON.parse(r);
           if (r.code == 1) {
             folio = r.data;
             alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
-              setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
+              setTimeout("window.location.replace('/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
             });
 
           } else {
@@ -2169,7 +2169,7 @@ $('#guardar-cta').click(function(){
 
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_agregar.php",
+        url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_agregar.php",
         data: data,
         success: 	function(r){
           r = JSON.parse(r);
@@ -2177,7 +2177,7 @@ $('#guardar-cta').click(function(){
             folio = r.data;
             alertify.alert('Folio: '+folio, 'Generado correctamente' , function(){
               //setTimeout('document.location.reload()',700);
-              setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
+              setTimeout("window.location.replace('/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
             });
           } else {
             console.error(r.message);
@@ -2229,7 +2229,7 @@ function ctaGastosCapturaEliminar(partida){
       }
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_eliminar.php",
+        url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_eliminar.php",
         data: data,
 
           success: 	function(r){
@@ -2262,7 +2262,7 @@ function timbrarFactura(cuenta,referencia,cliente){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura.php",
+    url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura.php",
     data: data,
     beforeSend: function(){
         $('body').append('<div class="overlay"><div class="overlay-loading">Timbrando Factura ... Porfavor espere.</div></div>');
@@ -2311,7 +2311,7 @@ function cancelarFactura(cuenta,referencia,cliente){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/cancelarCFDI_factura.php",
+    url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/cancelarCFDI_factura.php",
     data: data,
     beforeSend: function(){
         $('body').append('<div class="overlay"><div class="overlay-loading">Cancelando Factura ... Porfavor espere.</div></div>');
@@ -2386,7 +2386,7 @@ $('#btn_buscarFacturasTimbradas').click(function(){
       alertify.error("No hay resultados");
     }
   accion = 'consultar';
-  window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
+  window.location.replace('/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
 });
 
 $('#btn_buscarFacturasTimbradas_cancela').click(function(){
@@ -2403,12 +2403,12 @@ $('#btn_buscarFacturasTimbradas_cancela').click(function(){
       alertify.error("No hay resultados");
     }
   accion = 'cancelar';
-  window.location.replace('/conta6/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
+  window.location.replace('/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
 });
 
 function docTimbrado_download(nombreArchivo,ruta){
-  window.open('/conta6/Resources/PHP/actions/docTimbrado_download.php?nombreArchivo='+nombreArchivo+'&ruta='+ruta);
+  window.open('/Resources/PHP/actions/docTimbrado_download.php?nombreArchivo='+nombreArchivo+'&ruta='+ruta);
 }
 function docTimbrado_ver(nombreArchivo,ruta){
-  window.open('/conta6/Resources/PHP/actions/docTimbrado_ver.php?nombreArchivo='+nombreArchivo+'&ruta='+ruta);
+  window.open('/Resources/PHP/actions/docTimbrado_ver.php?nombreArchivo='+nombreArchivo+'&ruta='+ruta);
 }

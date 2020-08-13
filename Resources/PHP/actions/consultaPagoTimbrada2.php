@@ -37,7 +37,7 @@
 
       #rutas de consulta
       $anioActual = date_format(date_create($d_fechaTimbrado),"Y");
-      $rutaAnioActual = $root . '/conta6/CFDI_generados/'.$anioActual;
+      $rutaAnioActual = $root . '/CFDI_generados/'.$anioActual;
       $rutaCLT = $rutaAnioActual.'/'.$id_cliente;
       //$nombre_archivo = $referencia.'_'.$id_factura.'_pago';
       $nombre_archivo = $row_pagoTimbrada['s_nombrearchivo'];
@@ -50,7 +50,7 @@
       $hrefSig = ''; $hrefcancela = ''; $hrefSustituir = '';
 
       if( $cancela <> '' ){
-        $hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>";
+        $hrefcancela = "<a href='#' onclick='docTimbrado_download(&#39;$nombre_archivoCancela.xml&#39;,&#39;$rutaFilePDFcancela&#39;)'><img class='icomediano ml-4' src='/Resources/iconos/pdf.svg'></a>";
         $status = $hrefcancela;
 
         if( $oRst_permisos['s_rPElect_sustituir'] == 1 ){
@@ -61,14 +61,14 @@
 
       if( $oRst_permisos['s_rPElect_consultar'] == 1 ){
         $hreConsultaCFDI = "
-        <a href='#' class='ver' accion='cuadroConsultar' onclick='pagosConsultar($id_pago_captura,&#39;$id_cliente&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/magnifier.svg'></a>
-        <a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-3' src='/conta6/Resources/iconos/printer.svg'></a>";
+        <a href='#' class='ver' accion='cuadroConsultar' onclick='pagosConsultar($id_pago_captura,&#39;$id_cliente&#39;)'><img class='icomediano' src='/Resources/iconos/magnifier.svg'></a>
+        <a href='#' onclick='docTimbrado_ver(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-3' src='/Resources/iconos/printer.svg'></a>";
       }
 
       $pagosCFDI .= "<tr class='row font14 borderojo'>
         <td class='col-md-1'>
-          <a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFileXML&#39;)'><img class='icomediano' src='/conta6/Resources/iconos/xml.svg'></a>
-          <a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.pdf&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/pdf.svg'></a>
+          <a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.xml&#39;,&#39;$rutaFileXML&#39;)'><img class='icomediano' src='/Resources/iconos/xml.svg'></a>
+          <a href='#' onclick='docTimbrado_download(&#39;$nombre_archivo.pdf&#39;,&#39;$rutaFilePDF&#39;)'><img class='icomediano ml-4' src='/Resources/iconos/pdf.svg'></a>
         </td>
         <td class='col-md-1'>$d_fechaTimbrado</td>
         <td class='col-md-1'>$pk_id_pago</td>

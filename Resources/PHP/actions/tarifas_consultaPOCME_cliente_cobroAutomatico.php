@@ -84,7 +84,7 @@ while ($oRst_tarifaAutom = $rslt_tarifaAutom->fetch_assoc()) {
             <input type='text' id='T_POCME_Descripcion$idFila' value='$descripcion' class='T_POCME_DESCRIPCION descripcion efecto h22' size='45' maxlength='40'>
           </td>
           <td class=' p-2 text-left'>
-            <a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+            <a href='#' class='remove-POCME'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>
           </td>
           <td class='pt-2 mt-2' $txt_verGstoGana>
             <input type='checkbox' class='check' $txt_editGstoGana_check>
@@ -118,7 +118,7 @@ while ($oRst_tarifaAutom = $rslt_tarifaAutom->fetch_assoc()) {
     		    <input type='text' id='T_POCME_Descripcion$idFila' class='T_POCME_DESCRIPCION descripcion efecto h22' size='45' maxlength='40' value='$descripcion'>
     		  </td>
     		  <td class='col-md-1 p-2 text-left'>
-    		    <a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+    		    <a href='#' class='remove-POCME'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>
     		  </td>
     		  <td class='col-md-2 p-2'>
     		    <input type='text' id='T_POCME_Importe$idFila' class='T_POCME_IMPORTES importe efecto h22' onblur='validaIntDec(this);validaDescImporte(1,$idFila);importe_POCME();cortarDecimalesObj(this,2);' size='17' value='$importe' >

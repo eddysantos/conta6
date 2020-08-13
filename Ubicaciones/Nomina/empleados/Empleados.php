@@ -1,24 +1,24 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
 
-  require $root . '/conta6/Ubicaciones/Nomina/actions/lst_departamentos.php';
-  require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_bancos.php';
-  require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_EntFed.php';
-  require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_formaPago.php';
-  require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_incapacidad.php';
-  require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_jornada.php';
-  require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_periodoPago.php';
-  require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_riesgoTrabajo.php';
-  require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_tipoContrato.php';
-  require $root . '/conta6/Ubicaciones/Nomina/actions/lst_ctasDeudores.php';
+  require $root . '/Ubicaciones/Nomina/actions/lst_departamentos.php';
+  require $root . '/Ubicaciones/Nomina/actions/lst_SAT_bancos.php';
+  require $root . '/Ubicaciones/Nomina/actions/lst_SAT_EntFed.php';
+  require $root . '/Ubicaciones/Nomina/actions/lst_SAT_formaPago.php';
+  require $root . '/Ubicaciones/Nomina/actions/lst_SAT_incapacidad.php';
+  require $root . '/Ubicaciones/Nomina/actions/lst_SAT_jornada.php';
+  require $root . '/Ubicaciones/Nomina/actions/lst_SAT_periodoPago.php';
+  require $root . '/Ubicaciones/Nomina/actions/lst_SAT_riesgoTrabajo.php';
+  require $root . '/Ubicaciones/Nomina/actions/lst_SAT_tipoContrato.php';
+  require $root . '/Ubicaciones/Nomina/actions/lst_ctasDeudores.php';
 
 
   $fecha = strftime( "%Y-%m-%d-%H-%M-%S",time());
 ?>
 
-<link rel="stylesheet" href="/conta6/Resources/css/inputs.css">
+<link rel="stylesheet" href="/Resources/css/inputs.css">
 
 <div class="row submenuMed m-0 text-center">
   <div class="col-md-12 text-center" role="button">
@@ -53,5 +53,5 @@
 <?php
   include_once('modales/Empleados.php');
   include_once('modales/AgregarEmpleado.php');
-  require $root . '/conta6/Ubicaciones/footer.php';
+  require $root . '/Ubicaciones/footer.php';
  ?>

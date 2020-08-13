@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     var txt = $(this).val();
     var action = $(this).attr('action');
-    var url = '/Conta6/Resources/PHP/actions/' + action + '.php';
+    var url = '/Resources/PHP/actions/' + action + '.php';
     var display = $($(this).attr('id-display'));
 
     var query_db = $.ajax({
