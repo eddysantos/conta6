@@ -8,7 +8,8 @@
 // $pwd = '$t0olsC0nn3c71on';
 
 $datab = 'Dev_SpectrumTools';
-$host = '10.1.4.31';
+$host = 'localhost';
+// $host = '10.1.4.31';
 $port = 3306;
 $usr = 'stools_connection';
 $pwd = '$t0olsC0nn3c71on';
