@@ -3,5 +3,5 @@
 session_start();
 session_destroy();
 
-header("Location: /conta6/index.php");
+header("Location: /index.php");
 ?>

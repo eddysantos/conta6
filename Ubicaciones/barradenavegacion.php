@@ -254,7 +254,6 @@ $marginbottom = "margin-bottom:100px!important";
             </div>
           </div>
         </nav>
-        <script src="/Resources/js/navbar.js"></script>
       </header>
 
 <?php
@@ -267,3 +266,4 @@ $marginbottom = "margin-bottom:100px!important";
   require $root . '/scripts.php';
 
 ?>
+<script src="/Resources/js/navbar.js"></script>
