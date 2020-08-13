@@ -258,10 +258,10 @@ $marginbottom = "margin-bottom:100px!important";
 
 <?php
   require $root . '/Ubicaciones/Contabilidad/modales/ImprimirPolizas.php';
-  require $root . '/Ubicaciones/Contabilidad/Reportes/modales/ModalRepo.php';
-  require $root . '/Ubicaciones/Contabilidad/modales/Modificarconsultar.php';
-  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/modales/ConsultarFactura.php';
-  require $root . '/Ubicaciones/Trafico/modales/MonitordeOficinas.php';
+  // require $root . '/Ubicaciones/Contabilidad/Reportes/modales/ModalRepo.php';
+  // require $root . '/Ubicaciones/Contabilidad/modales/Modificarconsultar.php';
+  // require $root . '/Ubicaciones/Contabilidad/facturaelectronica/modales/ConsultarFactura.php';
+  // require $root . '/Ubicaciones/Trafico/modales/MonitordeOficinas.php';
 
   require $root . '/scripts.php';
 
