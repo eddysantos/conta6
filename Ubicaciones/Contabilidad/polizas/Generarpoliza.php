@@ -18,7 +18,6 @@
     </ul>
   </div>
 
-
   <div id="gpoliza" class="contorno" style="display:none">
     <table class="table font14">
       <thead>
@@ -49,7 +48,7 @@
       </tbody>
     </table>
   </div>
-
+</div>
 
 <?php
 require $root . '/Ubicaciones/footer.php';

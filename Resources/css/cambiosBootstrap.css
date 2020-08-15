@@ -50,3 +50,17 @@ se comento en archivo original min.css
   background-color: rgba(87, 88, 91, 0.8)!important;
   border-color: rgba(87, 88, 91, 0.4)!important;
 }
+
+
+
+.badge-success {
+  background-color: rgba(100, 154, 111, 0.84)!important;
+}
+
+a.badge-success:hover, a.badge-success:focus {
+  background-color: #639a6f!important;
+}
+
+a.badge-success:focus, a.badge-success.focus {
+  box-shadow: 0 0 0 0.2rem rgba(100, 154, 111, 0.84)!important;
+}

@@ -1,10 +1,11 @@
 <!--EDITAR DATOS DEL CORRESPONSAL-->
+<!-- Se comento js. porque causa conflicto -->
 <div class="modal fade text-center" id="MonitordeOficinas" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
     <div class="modal-content m_bordenegro">
       <div class="modal-header border-0 align-items-center">
         <div class='text-left ml-4' style='width:900px'>
-          <h5>Monitor de Oficinas</h5>
+          <h5>Monitor de Oficinas  -- Datos falsos pendiente modificar</h5>
         </div>
         <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
@@ -71,4 +72,4 @@
   </div>
 </div>
 
-<script src="/Ubicaciones/Trafico/js/Trafico.js"></script>
+<!-- <script src="/Ubicaciones/Trafico/js/Trafico.js"></script> -->

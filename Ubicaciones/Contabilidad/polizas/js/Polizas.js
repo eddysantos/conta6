@@ -3,7 +3,6 @@ $(document).ready(function(){
 	detallePoliza();
 
 
-	// $('#detpol-lstClientesCorresp').hide();
 	$('#detpol-referencia' || '#fk_referencia').change(function(){
     eliminaBlancosIntermedios(this);
 		todasMayusculas(this);
@@ -70,10 +69,6 @@ $(document).ready(function(){
 							return false
 						}else{
 							st = $('#detpol-cuenta').val();
-							// (nota :fany) comente porque arroja error y no agrega registro
-							// console.log(validarCtasGastoOficina(st));
-							// console.log(validarCtasCliente(st));
-							// console.log(validarCtasPagosCliente(st));
 							if( validarCtasGastoOficina(st) == true || validarCtasCliente(st) == true || validarCtasPagosCliente(st) == true ){
 
 								if( validarCtasGastoOficina(st) == true ){
@@ -196,35 +191,44 @@ $(document).ready(function(){
 
     });
 
+
+
+
 		$('#genFolioPolDia').click(function(){
+			if($('#diafecha').val() == ""){
+				alertify.error("Seleccione una fecha");
+				$('#diafecha').focus();
+				return false;
+			}
 
-				if($('#diafecha').val() == ""){
-					alertify.error("Seleccione una fecha");
-					$('#diafecha').focus();
-					return false;
-				}
+			if($('#diaconcepto').val() == ""){
+				alertify.error("Escriba un concepto");
+				$('#diaconcepto').focus();
+				return false;
+			}
 
-				if($('#diaconcepto').val() == ""){
-					alertify.error("Escriba un concepto");
-					$('#diaconcepto').focus();
-					return false;
-				}
+			fecha = $('#diafecha').val();
+			aduana = $('#diaaduana').val();
+			tipoDoc = $('#diatipo').attr('db-id');
+			usuario = $('#diausuario').val();
+			permiso = "s_generar_x_fecha_polizas";
 
-				fecha = $('#diafecha').val();
-				aduana = $('#diaaduana').val();
-				tipoDoc = $('#diatipo').attr('db-id');
-				usuario = $('#diausuario').val();
-				permiso = "s_generar_x_fecha_polizas";
-
-				var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
-				//console.log(continuar);
-				if(continuar == true) {
-					genPol();
-				}else{
-					//swal("Oops!", "Solicite cambio de fechas a Contabilidad", 'error');
-					return false;
-				}
+			var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
+			if(continuar == true) {
+				genPol(); //funsion para generar poliza
+			}else{
+				return false;
+			}
 		});
+
+
+
+
+
+
+
+
+
 
 		$('#guardarPolMST').click(function(){
 			var data = {

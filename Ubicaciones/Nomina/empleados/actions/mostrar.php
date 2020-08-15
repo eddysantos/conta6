@@ -12,8 +12,10 @@ $aduana = $data['fk_id_aduana'];
 $regimen = $data['regimen'];
 
 
-//$query = "SELECT * FROM conta_t_nom_empleados WHERE fk_id_regimen = ? AND fk_id_aduana = ? ORDER BY s_activo DESC,s_nombre,s_apellidoP";
- $query = "SELECT * FROM conta_t_nom_empleados WHERE fk_id_regimen = ? AND fk_id_aduana = ? AND (s_nombre LIKE ?  OR s_apellidoP LIKE ?) ORDER BY s_activo DESC,s_nombre,s_apellidoP";
+$query = "SELECT  pk_id_empleado, s_activo, s_pagar, s_nombre, s_apellidoP, s_apellidoM, n_salario_semanal,n_salario_integrado
+          FROM conta_t_nom_empleados
+          WHERE fk_id_regimen = ? AND fk_id_aduana = ? AND (s_nombre LIKE ?  OR s_apellidoP LIKE ?)
+          ORDER BY s_activo DESC,s_nombre,s_apellidoP";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
@@ -23,7 +25,6 @@ if (!($stmt)) {
 }
 
 $stmt->bind_param('isss',$regimen, $aduana, $text, $text);
-//$stmt->bind_param('ss',$regimen, $aduana);
 
 if (!($stmt)) {
   $system_callback['code'] = "500";
@@ -47,80 +48,68 @@ if ($rslt->num_rows == 0) {
 }
 
 
-if ($regimen == '02' || $regimen == '2') {
-  $system_callback['encabezado'] .= "<tr class='row m-0 encabezado font14'>
-                                      <td class='col-md-1'>Permanentes</td>
-                                      <td class='col-md-1'>Datos</td>
-                                      <td class='col-md-1'>Estatus</td>
-                                      <td class='col-md-1'>Pagar</td>
-                                      <td class='col-md-1'>No.Emp.</td>
-                                      <td class='col-md-5'>Empleado</td>
-                                      <td class='col-md-1'>Salario</td>
-                                      <td class='col-md-1'>Integrado</td>
-                                    </tr>";
-}elseif ($regimen == '09' || $regimen == '9') {
-  $system_callback['encabezado'] .= "<tr class='row m-0 encabezado font14'>
-                                      <td class='col-md-1'>Datos</td>
-                                      <td class='col-md-1'>Estatus</td>
-                                      <td class='col-md-1'>Pagar</td>
-                                      <td class='col-md-1'>No.Emp.</td>
-                                      <td class='col-md-7'>Empleado</td>
-                                      <td class='col-md-1'>Salario</td>
-                                    </tr>";
-}
-
 while ($row = $rslt->fetch_assoc()) {
     $pk_id_empleado = $row['pk_id_empleado'];
+    $salario_semanal = $row['n_salario_semanal'];
+    $salario_integrado = $row['n_salario_integrado'];
     $status = $row['s_activo'];
     $pagar = $row['s_pagar'];
     $nombre = utf8_encode($row['s_nombre'].' '.$row['s_apellidoP'].' '.$row['s_apellidoM']);
-
+    $acciones = "";
 
     if ($status == 'S') {
-      $status = 'Activo';
+
+      $status = "<span class='badge badge-success'>Activo</span>";
     }else {
-      $status = 'Baja';
+      $status = "<span class='badge badge-danger'>Baja</span>";
     }
     if ($pagar == 'S') {
-      $pagar = "Si";
+      $pagar = "<span class='badge badge-success'>Si Pagar</span>";
     }else {
-      $pagar = "No";
+      $pagar = "<span class='badge badge-danger'>No pagar</span>";
     }
 
 
 
   if ($regimen == 2 || $regimen == '02') {
+    $acciones  = "
+      <button type='button' class='btn btn-outline-secondary btn-sm editar-empleado' name='button' db-id='$pk_usuario' data-target='#permanentes' data-toggle='modal' db-id='$pk_id_empleado' regimen='$regimen'>Permanentes</button>
+
+      <button data-target='#modDatosEmp' data-toggle='modal' type='button' class='btn btn-outline-secondary btn-sm editar-empleado' name='button' db-id='$pk_id_empleado' regimen='$regimen'>Datos</button>";
+
     $system_callback['data'] .= "
-    <tr class='row text-center m-0 borderojo'>
-      <td class='col-md-1'>
-        <a href='#permanentes' class='editar-empleado' db-id='$pk_id_empleado' regimen='$regimen'>
-          <img class='icochico' src='/Resources/iconos/003-edit.svg'>
+    <tr class='row m-0 align-items-center'>
+      <td class='col-md-6 p-1 px-3'>
+        [#$pk_id_empleado] $nombre
         </a>
+        <span class='font-weight-light text-black-50 d-block'>$status  $pagar </span>
       </td>
-      <td class='col-md-1'>
-        <a href='#modDatosEmp'  class='editar-empleado'  db-id='$pk_id_empleado' regimen='$regimen'>
-          <img class='icochico' src='/Resources/iconos/003-edit.svg'>
-        </a>
+      <td class='col-md-3 p-0 px-3'>
+        Salario Semanal :<span class='font-weight-light text-black-50 d-block'>$ $salario_semanal</span>
+        Salario Integrado :<span class='font-weight-light text-black-50 d-block'>$ $salario_integrado</span>
       </td>
-      <td class='col-md-1'>$status</td>
-      <td class='col-md-1'>$pagar</td>
-      <td class='col-md-1'>$pk_id_empleado</td>
-      <td class='col-md-5'>$nombre</td>
-      <td class='col-md-1'>$row[n_salario_semanal]</td>
-      <td class='col-md-1'>$row[n_salario_integrado]</td>
+      <td class='col-md-3 text-center p-0'>
+        $acciones
+      </td>
     </tr>";
   }elseif ($regimen == '09' || $regimen == 9) {
-    $system_callback['data'] .="<tr class='row text-center m-0 borderojo'>
-      <td class='col-md-1'>
-        <a href='#modDatosEmp' class='editar-empleado'  db-id='$pk_id_empleado' regimen='$regimen'>
-          <img class='icochico' src='/Resources/iconos/003-edit.svg'>
+    $acciones = "<a href='/usuarios/Lista_Usuarios/editarUsuario.php?usuario=$pk_usuario' type='button' class='btn btn-outline-secondary btn-sm cambiarPass' name='button' db-id='$pk_usuario' data-target='#cambiarPass' data-toggle='modal'>Editar Datos</a>";
+
+    $system_callback['data'] .="
+
+    <tr class='row m-0 align-items-center'>
+      <td class='col-md-6 p-1 px-3'>
+        [#$pk_id_empleado] $nombre
         </a>
+        <span class='font-weight-light text-black-50 d-block'>$status  $pagar </span>
       </td>
-      <td class='col-md-1'>$status</td>
-      <td class='col-md-1'>$pagar</td>
-      <td class='col-md-1'>$pk_id_empleado</td>
-      <td class='col-md-7'>$nombre</td>
-      <td class='col-md-1'>$row[n_salario_semanal]</td>
+      <td class='col-md-3 p-0 px-3'>
+        Salario Semanal :
+        <span class='font-weight-light text-black-50 d-block'>$ $salario_semanal</span>
+      </td>
+      <td class='col-md-3 text-center p-0'>
+        $acciones
+      </td>
     </tr>";
   }
 
