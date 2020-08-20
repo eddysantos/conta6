@@ -1,7 +1,7 @@
 <?php
 //LISTA DE MONEDAS
-require $root . '/conta6/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
-require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; #  $consultaFormapago
+require $root . '/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
+require $root . '/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; #  $consultaFormapago
 ?>
 <?php if( $oRst_permisos['s_modificar_contaElect'] == 1 ){ ?>
 <div id="three"><!--INFORMACION DE LA PARTIDA-->
@@ -291,7 +291,7 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
             <input class="efecto popup-input" id="transf-bancossat" type="text" id-display="#popup-display-transf-bancossat" action="bancosSAT" db-id="" autocomplete="off">
             <div class="popup-list" id="popup-display-transf-bancossat" style="display:none"></div>
             <label for='transf-bancossat'>Bancos SAT
-              <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
+              <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/Resources/iconos/help.svg' style='margin-top:-4px'></a>
             </label>
           </td>
           <td class="col-md-8 input-effect">
@@ -466,5 +466,5 @@ require $root . '/conta6/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; 
 
  <!-- prueba modificar -->
 <?php
-require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
+require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
 ?>

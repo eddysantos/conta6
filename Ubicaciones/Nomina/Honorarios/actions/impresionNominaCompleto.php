@@ -3,10 +3,10 @@
 
 # quite algunas columnas porque no se usan, como vacaciones, faltas, la parte de descuentosPorErrores solo se uso una sola vez.
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
-require $root . '/Conta6/Resources/vendor/autoload.php';
-require $root . '/conta6/Resources/PHP/actions/numtoletras.php';
+require $root . '/Resources/vendor/autoload.php';
+require $root . '/Resources/PHP/actions/numtoletras.php';
 
 $semana = trim($_GET['semana']);
 $id_empleado = trim($_GET['id_empleado']);
@@ -143,7 +143,7 @@ while ($row = $rslt->fetch_assoc()) {
   $poliza = '';
   $factura = '';
   $uuid = '';
-  require $root . '/Conta6/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina.php';
+  require $root . '/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina.php';
   if( $total_consultaDatosCFDI > 0 ){
     $row_consultaDatosCFDI = $rslt_consultaDatosCFDI->fetch_assoc();
     $poliza = $row_consultaDatosCFDI['fk_id_poliza'];

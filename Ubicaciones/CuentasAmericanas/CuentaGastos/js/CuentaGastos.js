@@ -92,7 +92,7 @@ $(document).ready(function(){
         }
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_lstCapturadas.php",
+          url: "/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_lstCapturadas.php",
           data: data,
           success: 	function(r){
             console.log(r);
@@ -134,7 +134,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos_datosReferencia.php",
+      url: "/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos_datosReferencia.php",
       data: data,
       success: 	function(r){
       r = JSON.parse(r);
@@ -156,7 +156,7 @@ $(document).ready(function(){
 
 
   $('#Btn_new_ctaAme').click(function(){
-    window.location.replace('/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos.php');
+    window.location.replace('/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos.php');
   });
 
   $('#guardar-ctaAme').click(function(){
@@ -249,7 +249,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_agregar.php",
+      url: "/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_agregar.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -377,7 +377,7 @@ $(document).ready(function(){
 
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_modificar.php",
+          url: "/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_modificar.php",
           data: data,
           success: 	function(r){
             r = JSON.parse(r);
@@ -472,11 +472,11 @@ function agregarImporte_ctaAme(){
     alertify.success('Seleccione un concepto');
   }else {
       if(tipoDocumento == 'elaborar'){
-        btnEliminar = "<a href='#' class='remove-POCME'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        btnEliminar = "<a href='#' class='remove-POCME'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
         inputcuenta = "";
       }
       if(tipoDocumento == 'modificar'){
-        btnEliminar = "<a href='#' class='eliminar-POCME-ame'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        btnEliminar = "<a href='#' class='eliminar-POCME-ame'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
         inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
       }
 
@@ -639,11 +639,11 @@ function ctaGastosAmeImprimir(cuenta){
 }
 
 function ctaGastosAmeModificar(cuenta){
-  window.location.replace('/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos_modificar.php?cuenta='+cuenta);
+  window.location.replace('/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos_modificar.php?cuenta='+cuenta);
 }
 
 function ctaGastosAmeConsultar(cuenta){
-  window.location.replace('/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos_consultar.php?cuenta='+cuenta);
+  window.location.replace('/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos_consultar.php?cuenta='+cuenta);
 }
 
 
@@ -666,7 +666,7 @@ function ctaGastosAmeBorrar(cuenta){
       }
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_eliminar.php",
+        url: "/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_eliminar.php",
         data: data,
 
           success: 	function(r){

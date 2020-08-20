@@ -1,7 +1,7 @@
 <?php
-	require $root . '/conta6/Resources/PHP/Databases/conexion.php';
-	require $root . '/conta6/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php';
-	require $root . '/conta6/Resources/PHP/DatabasesRemote/conexionADUANET.php';
+	require $root . '/Resources/PHP/Databases/conexion.php';
+	require $root . '/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php';
+	require $root . '/Resources/PHP/DatabasesRemote/conexionADUANET.php';
 
 	$FI = '2013-01-01';
 	$FF = '2013-12-31 23:59:59';

@@ -141,7 +141,7 @@ $(document).ready(function(){
 
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_agregar.php",
+          url: "/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_agregar.php",
           data: data,
           success: 	function(r){
             r = JSON.parse(r);
@@ -149,7 +149,7 @@ $(document).ready(function(){
               folio = r.data;
               alertify.alert('Folio: '+folio, 'Generado correctamente' , function(){
                 //setTimeout('document.location.reload()',700);
-                setTimeout("window.location.replace('/conta6/Ubicaciones/Trafico/SolicitudAnticipo/SolAnticipo.php')",700);
+                setTimeout("window.location.replace('/Ubicaciones/Trafico/SolicitudAnticipo/SolAnticipo.php')",700);
               });
             } else {
               console.error(r.message);
@@ -298,7 +298,7 @@ $(document).ready(function(){
 
         $.ajax({
           type: "POST",
-          url: "/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_modificar.php",
+          url: "/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_modificar.php",
           data: data,
           success: 	function(r){
             r = JSON.parse(r);
@@ -307,7 +307,7 @@ $(document).ready(function(){
               //folio = r.data;
               alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
                 //setTimeout('document.location.reload()',700);
-                //setTimeout("window.location.replace('/conta6/Ubicaciones/Trafico/SolicitudAnticipo/SolAnticipo.php')",700);
+                //setTimeout("window.location.replace('/Ubicaciones/Trafico/SolicitudAnticipo/SolAnticipo.php')",700);
               });
 
             } else {
@@ -329,7 +329,7 @@ $(document).ready(function(){
   //
   //   $.ajax({
   //     type: "POST",
-  //     url: "/conta6/Ubicaciones/Trafico/SolicitudAnticipo/solAnticipo_datosReferencia.php",
+  //     url: "/Ubicaciones/Trafico/SolicitudAnticipo/solAnticipo_datosReferencia.php",
   //     data: data,
   //     success: 	function(r){
   //     r = JSON.parse(r);
@@ -357,7 +357,7 @@ $(document).ready(function(){
 
     // $.ajax({
     //   type: "POST",
-    //   url: "/conta6/Resources/PHP/DatabasesRemote/traficoWebGlobalPCnetDemo13_RCP.php",
+    //   url: "/Resources/PHP/DatabasesRemote/traficoWebGlobalPCnetDemo13_RCP.php",
     //   data: data,
     //   success: 	function(r){
     //   r = JSON.parse(r);
@@ -379,7 +379,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Trafico/SolicitudAnticipo/solAnticipo_datosReferencia.php",
+      url: "/Ubicaciones/Trafico/SolicitudAnticipo/solAnticipo_datosReferencia.php",
       data: data,
       success: 	function(r){
       r = JSON.parse(r);
@@ -520,7 +520,7 @@ function solAntEliminar(partida){
       }
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_eliminar.php",
+        url: "/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_eliminar.php",
         data: data,
 
           success: 	function(r){

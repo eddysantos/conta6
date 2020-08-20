@@ -57,7 +57,7 @@ if( $total_consultaCargos > 0 ) {
 					<td width="10%"></td>
 				</tr>';
 
-		if( $idFila > 1 ){ $botonEliminar = "<a href='#' class='eliminar-Cargos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";}
+		if( $idFila > 1 ){ $botonEliminar = "<a href='#' class='eliminar-Cargos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";}
 		$datosCargosModifi .= "<tr class='row m-0 trCargos elemento-cargos' id='$idFila'>
 		                <td class='col-md-6 p-1'>
 											<input class='id-partida' type='hidden' id='T_partida_$pk_id_partida' value='$pk_id_partida'>

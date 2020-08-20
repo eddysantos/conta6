@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
   $regimenNomina = trim($_POST['regimen']);
   $anio = trim($_POST['anio']);
@@ -186,19 +186,19 @@
     </tr>
     <tr class='row m-0 mt-4'>
       <td class='col-md-12 font16'>NÓMINA $semana $fechaInicio al $fechaFinal
-        <a href='#' class='ml-2' onclick='imprimirNomina($anio,$semana,&#39;T&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='w-5' src='/conta6/Resources/iconos/printer.svg'></a>
-        <a href='#' class='ml-2' onclick='imprimirNominaExcel($anio,$semana,&#39;T&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='w-5' src='/conta6/Resources/iconos/excel2.svg'></a>
+        <a href='#' class='ml-2' onclick='imprimirNomina($anio,$semana,&#39;T&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='w-5' src='/Resources/iconos/printer.svg'></a>
+        <a href='#' class='ml-2' onclick='imprimirNominaExcel($anio,$semana,&#39;T&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'><img class='w-5' src='/Resources/iconos/excel2.svg'></a>
       </td>
     </tr>
     <tr class='row m-0'>
       <td class='col-md-12 font16'>
         Ordinaria
         <a href='#' onclick='imprimirNomina($anio,$semana,&#39;O&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'>
-          <img class='w-5 ml-2' src='/conta6/Resources/iconos/printer.svg'>
+          <img class='w-5 ml-2' src='/Resources/iconos/printer.svg'>
         </a>
         Extraordinaria
         <a href='#' onclick='imprimirNomina($anio,$semana,&#39;E&#39;,&#39;$regimenNomina&#39;)' data-toggle='modal'>
-          <img class='w-5 ml-2' src='/conta6/Resources/iconos/printer.svg'>
+          <img class='w-5 ml-2' src='/Resources/iconos/printer.svg'>
         </a>
       </td>
     </tr>";

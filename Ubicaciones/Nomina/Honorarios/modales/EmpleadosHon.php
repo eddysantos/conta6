@@ -339,7 +339,7 @@
         </div>
       </div><!--termina el Cuerpo del Modal-->
       <div class="modal-footer">
-        <a href="/conta6/Ubicaciones/Nomina/Honorarios/Empleados.php" class="linkbtn">Aceptar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/Ubicaciones/Nomina/Honorarios/Empleados.php" class="linkbtn">Aceptar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
       </div><!--termina el COntenido del Modal-->
     </div>

@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class="text-center">
@@ -87,7 +87,7 @@
             </tr>
             <tr class="row m-0 justify-content-center">
               <td class="col-md-3">
-                <a href="" class="boton mt-4"> <img src= "/conta6/Resources/iconos/refresh-button.svg" class="icochico"> ACTUALIZAR</a>
+                <a href="" class="boton mt-4"> <img src= "/Resources/iconos/refresh-button.svg" class="icochico"> ACTUALIZAR</a>
               </td>
             </tr>
           </tbody>

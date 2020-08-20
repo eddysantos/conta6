@@ -1,9 +1,9 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
-require $root . '/Conta6/Resources/vendor/autoload.php';
-require $root . '/conta6/Resources/PHP/actions/numtoletras.php';
+require $root . '/Resources/vendor/autoload.php';
+require $root . '/Resources/PHP/actions/numtoletras.php';
 
 $id_nomina = trim($_GET['semana']);
 $id_aduana = $aduana;
@@ -88,7 +88,7 @@ $rows = $rslt->num_rows;
     $s_descNomina = $row['s_descNomina'];
     $tablaFiniquito = "";
 
-    require $root . '/Conta6/Ubicaciones/Nomina/SueldosySalarios/actions/detalleNomina.php'; #Tabla detalle de nomina
+    require $root . '/Ubicaciones/Nomina/SueldosySalarios/actions/detalleNomina.php'; #Tabla detalle de nomina
 
     if ($s_descNomina == "Finiquito") {
       $tablaFiniquito = '<table class="border">
@@ -133,7 +133,7 @@ $rows = $rslt->num_rows;
 
     $nombre_archivo = $id_nomina."_".$cveOficina."_1_".$cveIdRegimen."_".$anio."_".$r_rfc;
 
-    $fileQR = $root . "/Conta6/CFDI_nomina/2020/QR/98_NL_1_Sueldos_2020_PUMS661129JP6.png";
+    $fileQR = $root . "/CFDI_nomina/2020/QR/98_NL_1_Sueldos_2020_PUMS661129JP6.png";
 
 
   $html .= '

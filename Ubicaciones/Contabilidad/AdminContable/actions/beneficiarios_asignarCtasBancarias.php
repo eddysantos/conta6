@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
 $system_callback = [];
@@ -47,7 +47,7 @@ while ($row = $rslt->fetch_assoc()) {
   $id_benef = utf8_encode($row['fk_id_benef']);
 
   if( $oRst_permisos["s_benefGenerar_cheques"] == 1 ){
-    $btnborrar = "<a href='#' onclick='btn_bcben($id_banco_ben,$id_benef)'><img src= '/conta6/Resources/iconos/002-trash.svg' class='icochico'></a>";
+    $btnborrar = "<a href='#' onclick='btn_bcben($id_banco_ben,$id_benef)'><img src= '/Resources/iconos/002-trash.svg' class='icochico'></a>";
   }else{ $bntborrar = "";}
 
   $system_callback['data'] .=

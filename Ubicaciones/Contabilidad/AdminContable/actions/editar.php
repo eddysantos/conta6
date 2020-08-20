@@ -4,8 +4,8 @@
 
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-// require $root . '/conta6/Resources/PHP/Databases/conexion.php';
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+// require $root . '/Resources/PHP/Databases/conexion.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $pk_id_cuenta = trim($_POST['id_cuenta']);
 $s_cta_desc = trim($_POST['concepto']);
@@ -61,7 +61,7 @@ $descripcion = "Se Actualizo la Cuenta de Detalle: $s_cta_desc, de la cuenta $pk
 
 $clave = 'admonCtas';
 $folio = $Cta_Mta;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";

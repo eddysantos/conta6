@@ -4,8 +4,8 @@ error_reporting(E_ALL);
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
 #limpiarBlancos($txt) <-- eliminaBlancos($cadena)
 
 // $id_factura = $_POST['id_factura'];
@@ -30,15 +30,15 @@ $accion = 'cancelarCFDI';
 #$accion = 'estadoCFDI';
 
 # nombre de carpetas y rutas de almacenamiento
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_1path.php'; #$nombre_archivoCancela,$nombre_archivoCancelaTest
-require $root . '/conta6/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_1path.php'; #$nombre_archivoCancela,$nombre_archivoCancelaTest
+require $root . '/Resources/PHP/actions/generarCFDI_proceso_functionTimbrar.php';
 
 $modo = true; #test
 #$modo = false; #produccion
 
 //global $root;
-require $root . '/conta6/Resources/PHP/actions/generarCFDI_proceso_rutaKeyCer.php'; #$fileKey,$fileCer
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
+require $root . '/Resources/PHP/actions/generarCFDI_proceso_rutaKeyCer.php'; #$fileKey,$fileCer
+require $root . '/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
 $pswdCerts = $row_datosCert['s_cve'];
 $s_rfcE = $row_datosCert['s_RFC'];
 $s_userPAC = $row_datosCert['s_userPAC'];

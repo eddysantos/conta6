@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <input type="hidden" id="diaaduana" value="<?php echo $aduana;?>">
@@ -17,7 +17,6 @@
       </li>
     </ul>
   </div>
-
 
   <div id="gpoliza" class="contorno" style="display:none">
     <table class="table font14">
@@ -43,14 +42,14 @@
         </tr>
         <tr class="row justify-content-center mt-5">
           <td class="col-md-3">
-            <a href="#" id="genFolioPolDia" class="boton p-1"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a>
+            <a href="#" id="genFolioPolDia" class="boton p-1"><img src= "/Resources/iconos/001-add.svg" class="icochico"> GENERAR POLIZA</a>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-
+</div>
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

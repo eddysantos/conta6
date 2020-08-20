@@ -7,9 +7,9 @@
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
-  require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
+  require $root . '/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
 ?>
 
 <!--Comienza Consultar Parametros-->
@@ -131,7 +131,7 @@
 </div>
 
 <?php
-// require $root .'/conta6/Ubicaciones/Nomina/empleados/modales/Empleados.php';
-require $root .'/conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/modales/Parametros.php';
-require $root . '/conta6/Ubicaciones/footer.php';
+// require $root .'/Ubicaciones/Nomina/empleados/modales/Empleados.php';
+require $root .'/Ubicaciones/Nomina/SueldosySalarios/parametros/modales/Parametros.php';
+require $root . '/Ubicaciones/footer.php';
  ?>

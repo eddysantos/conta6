@@ -1,12 +1,13 @@
 <!--EDITAR DATOS DEL CORRESPONSAL-->
+<!-- Se comento js. porque causa conflicto -->
 <div class="modal fade text-center" id="MonitordeOficinas" style="margin-top:50px">
   <div class="modal-dialog modal-xl">
     <div class="modal-content m_bordenegro">
       <div class="modal-header border-0 align-items-center">
         <div class='text-left ml-4' style='width:900px'>
-          <h5>Monitor de Oficinas</h5>
+          <h5>Monitor de Oficinas  -- Datos falsos pendiente modificar</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
         <div class="contorno">
@@ -23,7 +24,7 @@
                     <label for="imp-fechaFin1">Fecha Final</label>
                   </td>
                   <td class="col-md-1 text-left mt-3">
-                    <a class="btn-block trafico" accion="botonverDetalle" role="button"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icomediano"></a>
+                    <a class="btn-block trafico" accion="botonverDetalle" role="button"><img src= "/Resources/iconos/magnifier.svg" class="icomediano"></a>
                   </td>
                 </tr>
               </tbody>
@@ -33,7 +34,7 @@
           <table id="VerMonitorOficinas" class="table mt-3" style="display:none">
             <tr class="row encabezado">
               <td class="col-md-1">
-                <a class="trafico" accion="cerrarMonitorOficinas" role="button"><img src= "/conta6/Resources/iconos/cross.svg" class="icochico"></a>
+                <a class="trafico" accion="cerrarMonitorOficinas" role="button"><img src= "/Resources/iconos/cross.svg" class="icochico"></a>
               </td>
               <td class="col-md-2">ADUANA</td>
               <td class="col-md-3">TOTAL DE TRÁFICOS</td>
@@ -71,4 +72,4 @@
   </div>
 </div>
 
-<script src="/conta6/Ubicaciones/Trafico/js/Trafico.js"></script>
+<!-- <script src="/Ubicaciones/Trafico/js/Trafico.js"></script> -->

@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $fecha = trim($_POST['fecha']);
 $cheque = trim($_POST['cheque']);
@@ -137,7 +137,7 @@ if ($rowsChequeExiste == 1) {
 		$descripcion = "Se Actualizo el ChequeFolioControl: $idcheque_folControl Cheque: $cheque Cuenta:$cuenta Concepto: $concepto Fecha: $fecha Valor: $valor Expedido a: $opcion, $idOrd $nomOrd";
 		$clave = 'cheques';
 		$folio = $cheque;
-		require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+		require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 		//actualizo el detalle del cheque
 		//$query_cheEditDET = "UPDATE conta_t_cheques_det SET fk_id_cheque = ?, fk_id_cuentaM = ?, d_fecha = ? WHERE fk_id_cheque = ? AND fk_id_cuentaM = ?";

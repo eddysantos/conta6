@@ -152,14 +152,14 @@ $(document).ready(function () {
 		console.log(data);
 	  $.ajax({
 	    type: "POST",
-	    url: "/conta6/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon.php",
+	    url: "/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon.php",
 	    data: data,
 	    success: 	function(r){
 	      r = JSON.parse(r);
 	      if (r.code == 1) {
 	        $('#resGenNomHon').html(r.data);
 					alertify.alert('Honorarios Semana: '+num_nomsig, 'Generado correctamente', function(){
-						document.location.replace('/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php');
+						document.location.replace('/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php');
 					});
 	      }
 	    }
@@ -177,7 +177,7 @@ $(document).ready(function () {
 	  }
 	  $.ajax({
 	    type: "POST",
-	    url: "/conta6/Resources/PHP/actions/consulta_nomina_semana.php",
+	    url: "/Resources/PHP/actions/consulta_nomina_semana.php",
 	    data: data,
 	    success: 	function(r){
 	      r = JSON.parse(r);
@@ -201,7 +201,7 @@ $(document).ready(function () {
 		//console.log(data);
 		$.ajax({
 	    type: "POST",
-	    url: "/conta6/Ubicaciones/Nomina/actions/docNomina_generarNuevo.php",
+	    url: "/Ubicaciones/Nomina/actions/docNomina_generarNuevo.php",
 	    data: data,
 	    success: 	function(r){
 	      r = JSON.parse(r);
@@ -209,10 +209,10 @@ $(document).ready(function () {
 					alertify.alert('Documento generado correctamente', function(){
 
 						if( idRegimen == '02'){
-							document.location.replace('/conta6/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php');
+							document.location.replace('/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php');
 						}
 						if( idRegimen == '09'){
-							document.location.replace('/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php');
+							document.location.replace('/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php');
 						}
 
 					});
@@ -224,7 +224,7 @@ $(document).ready(function () {
 	$(function(){
 		  var ajaxCall = $.ajax({
 		      method: 'POST',
-		      url: '/Conta6/Ubicaciones/Nomina/Honorarios/actions/catalogo_percepcionesCompNomina.php'
+		      url: '/Ubicaciones/Nomina/Honorarios/actions/catalogo_percepcionesCompNomina.php'
 		  });
 
 		  ajaxCall.done(function(r) {
@@ -410,7 +410,7 @@ console.log(data);
 
 		$.ajax({
 			type: "POST",
-			url: "/conta6/Ubicaciones/Nomina/actions/docNomina_modificar.php",
+			url: "/Ubicaciones/Nomina/actions/docNomina_modificar.php",
 			data: data,
 			success: 	function(r){
 				r = JSON.parse(r);
@@ -422,10 +422,10 @@ console.log(data);
 					alertify.alert('Modificado correctamente' , function(){
 /*
 						if( idRegimen == '02'){
-							document.location.replace('/conta6/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php');
+							document.location.replace('/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php');
 						}
 						if( idRegimen == '09'){
-							document.location.replace('/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php');
+							document.location.replace('/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php');
 						}
 */
 					});
@@ -530,7 +530,7 @@ function consultaDatosGenNom(anio,nomina){
 	}
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Nomina/Honorarios/actions/consulta_nomina_generales.php",
+		url: "/Ubicaciones/Nomina/Honorarios/actions/consulta_nomina_generales.php",
 		data: data,
 		success: 	function(r){
 			r = JSON.parse(r);
@@ -551,7 +551,7 @@ function consultaDatosDocNom(anio,nomina){
 	console.log(data);
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Nomina/Honorarios/actions/consulta_nomina_documentos.php",
+		url: "/Ubicaciones/Nomina/Honorarios/actions/consulta_nomina_documentos.php",
 		data: data,
 		success: 	function(r){
 			r = JSON.parse(r);
@@ -583,7 +583,7 @@ function sustituirDocNomina(idDocNomina){
 				}
 				$.ajax({
 					type: "POST",
-					url: "/conta6/Ubicaciones/Nomina/actions/docNomina_sustituir_cfdi.php",
+					url: "/Ubicaciones/Nomina/actions/docNomina_sustituir_cfdi.php",
 					data: data,
 					success: 	function(r){
 						r = JSON.parse(r);
@@ -619,7 +619,7 @@ function borrarDocNomina(idDocNomina){
 				}
 				$.ajax({
 					type: "POST",
-					url: "/conta6/Ubicaciones/Nomina/actions/docNomina_borrar.php",
+					url: "/Ubicaciones/Nomina/actions/docNomina_borrar.php",
 					data: data,
 					success: 	function(r){
 						r = JSON.parse(r);
@@ -666,7 +666,7 @@ function borrarDocNominaTodos(){
 
 						$.ajax({
 							type: "POST",
-							url: "/conta6/Ubicaciones/Nomina/actions/docNomina_borrarTodos.php",
+							url: "/Ubicaciones/Nomina/actions/docNomina_borrarTodos.php",
 							data: data,
 							success: 	function(r){
 								r = JSON.parse(r);
@@ -686,31 +686,31 @@ function borrarDocNominaTodos(){
 }
 
 function editarDocNomina(idDocNomina){
-	document.location.replace('/conta6/Ubicaciones/Nomina/ModificarCFDI.php?idDocNomina='+idDocNomina);
+	document.location.replace('/Ubicaciones/Nomina/ModificarCFDI.php?idDocNomina='+idDocNomina);
 }
 
 function nuevoDocNomina(){
 	regimen = $('#nom_regimen').val();
 	semana = $('#buscarsem').val();
 	anio = $('#buscaranio').val();
-	document.location.replace('/conta6/Ubicaciones/Nomina/nuevoDoc.php?regimen='+regimen+'&semana='+semana+'&anio='+anio);
+	document.location.replace('/Ubicaciones/Nomina/nuevoDoc.php?regimen='+regimen+'&semana='+semana+'&anio='+anio);
 }
 
 function imprimirNomina(anio,semana,tipo,regimen){
 	if( regimen == '09' ){
-		window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresionNominaCompleto.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+		window.open('/Ubicaciones/Nomina/Honorarios/actions/impresionNominaCompleto.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
 	}
 	if( regimen == '02' ){
-		window.open('/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/impresionNominaCompletoSuel.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+		window.open('/Ubicaciones/Nomina/SueldosySalarios/actions/impresionNominaCompletoSuel.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
 	}
 }
 
 function imprimirNominaExcel(anio,semana,tipo,regimen){
 	if( regimen == '09' ){
-		window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresionNominaCompleto_excel.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+		window.open('/Ubicaciones/Nomina/Honorarios/actions/impresionNominaCompleto_excel.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
 	}
 	if( regimen == '02' ){
-		window.open('/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/impresionNominaCompletoSuel_excel.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+		window.open('/Ubicaciones/Nomina/SueldosySalarios/actions/impresionNominaCompletoSuel_excel.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
 	}
 }
 
@@ -718,19 +718,19 @@ function imprimirNominaExcel(anio,semana,tipo,regimen){
 /*
 function imprimirNominaOrdinaria(anio,semana,tipo){
 	tipo = 'O';
-	window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresionNominaOrdinaria.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+	window.open('/Ubicaciones/Nomina/Honorarios/actions/impresionNominaOrdinaria.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
 }
 
 function imprimirNominaExtra(anio,semana,tipo){
 	tipo = 'E';
-	window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresionNominaOrdinaria.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+	window.open('/Ubicaciones/Nomina/Honorarios/actions/impresionNominaOrdinaria.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
 }
 */
 function impresionCFDICompleto(){
 	anio = $('#buscaranio').val();
 	semana = $('#buscarsem').val();
 	tipo = 'Todas';
-	window.open('/conta6/Ubicaciones/Nomina/Honorarios/actions/impresion_Nomina_HAS.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
+	window.open('/Ubicaciones/Nomina/Honorarios/actions/impresion_Nomina_HAS.php?anio='+anio+'&semana='+semana+'&tipo='+tipo+'&id_empleado=Todas');
 }
 
 
@@ -850,7 +850,7 @@ function agregarPercep(){
 			newtr = newtr + "    		<input type='text' id='T_PERCEP_exento"+element+"' class='T_PERCEP_EXENTO exento efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td>";
-			newtr = newtr + "    		<a><img class='icomediano remove-percep' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+			newtr = newtr + "    		<a><img class='icomediano remove-percep' src='/Resources/iconos/002-trash.svg'></a>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    </tr>";
 
@@ -930,7 +930,7 @@ function agregarPercepHrExtra(){
 			newtr = newtr + "    		<input type='text' id='T_PERCEPHrExtra_exento"+element+"' class='T_PERCEPHrExtra_EXENTO exento efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td>";
-			newtr = newtr + "    		<a><img class='icomediano remove-PERCEPHrExtra' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+			newtr = newtr + "    		<a><img class='icomediano remove-PERCEPHrExtra' src='/Resources/iconos/002-trash.svg'></a>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    </tr>";
 
@@ -1009,7 +1009,7 @@ function agregarPercepSepIndem(){
 			newtr = newtr + "    		<input type='text' id='T_PERCEPSepIndem_exento"+element+"' class='T_PERCEPSepIndem_EXENTO exento efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td>";
-			newtr = newtr + "    		<a><img class='icomediano remove-PERCEPSepIndem' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+			newtr = newtr + "    		<a><img class='icomediano remove-PERCEPSepIndem' src='/Resources/iconos/002-trash.svg'></a>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    </tr>";
 
@@ -1091,7 +1091,7 @@ function agregarPercepOtrosPagos(){
 			newtr = newtr + "    		<input type='text' id='T_PERCEPOP_saldoFavor"+element+"' class='T_PERCEPOP_SALDOFAVOR saldofavor efecto' onblur='validaIntDec(this);'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td>";
-			newtr = newtr + "    		<a><img class='icomediano remove-PERCEPOP' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+			newtr = newtr + "    		<a><img class='icomediano remove-PERCEPOP' src='/Resources/iconos/002-trash.svg'></a>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    </tr>";
 
@@ -1167,7 +1167,7 @@ function agregarDeduc(){
 			newtr = newtr + "    		<input type='text' id='T_DEDUC_exento"+element+"' class='T_DEDUC_EXENTO exento efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td>";
-			newtr = newtr + "    		<a><img class='icomediano remove-DEDUC' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+			newtr = newtr + "    		<a><img class='icomediano remove-DEDUC' src='/Resources/iconos/002-trash.svg'></a>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    </tr>";
 
@@ -1247,7 +1247,7 @@ function agregarDeducPenAlimen(){
 			newtr = newtr + "    		<input type='text' id='T_DEDUCPA_exento"+element+"' class='T_DEDUCPA_EXENTO exento efecto' onblur='validaIntDec(this); sumaGeneralNomina()'>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    	<td>";
-			newtr = newtr + "    		<a><img class='icomediano remove-DEDUCPA' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+			newtr = newtr + "    		<a><img class='icomediano remove-DEDUCPA' src='/Resources/iconos/002-trash.svg'></a>";
 			newtr = newtr + "    	</td>";
 			newtr = newtr + "    </tr>";
 
@@ -1408,7 +1408,7 @@ function timbrarDocNomina(idDocNomina,regimenNomina){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina.php",
+    url: "/Ubicaciones/Nomina/actions/generarCFDI_docNomina.php",
     data: data,
     beforeSend: function(){
         $('body').append('<div class="overlay"><div class="overlay-loading">Timbrando Documento ... Porfavor espere.</div></div>');
@@ -1449,5 +1449,5 @@ function timbrarDocNomina(idDocNomina,regimenNomina){
 }
 
 function modificarPolizaNomina(id_poliza){
-	window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/DetallePoliza.php?id_poliza='+id_poliza+'&tipo=4');
+	window.location.replace('/Ubicaciones/Contabilidad/polizas/DetallePoliza.php?id_poliza='+id_poliza+'&tipo=4');
 }

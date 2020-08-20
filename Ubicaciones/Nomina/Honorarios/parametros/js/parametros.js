@@ -9,7 +9,7 @@ tablasParametros113();
     var fetch_art113 = $.ajax({
       method: 'POST',
       data: {dbid: dbid},
-      url: '/Conta6/Ubicaciones/Nomina/Honorarios/parametros/actions/fetchParametros.php'
+      url: '/Ubicaciones/Nomina/Honorarios/parametros/actions/fetchParametros.php'
     });
 
     fetch_art113.done(function(r){
@@ -66,7 +66,7 @@ tablasParametros113();
       var act_param = $.ajax({
           method: 'POST',
           data: data,
-          url: '/Conta6/Ubicaciones/Nomina/Honorarios/parametros/actions/editarParametros.php'
+          url: '/Ubicaciones/Nomina/Honorarios/parametros/actions/editarParametros.php'
       });
 
       act_param.done(function(r) {
@@ -93,7 +93,7 @@ tablasParametros113();
       var act_param = $.ajax({
           method: 'POST',
           data: data,
-          url: '/Conta6/Ubicaciones/Nomina/Honorarios/parametros/actions/editarParametros.php'
+          url: '/Ubicaciones/Nomina/Honorarios/parametros/actions/editarParametros.php'
       });
 
       act_param.done(function(r) {
@@ -117,7 +117,7 @@ tablasParametros113();
 // function tablasParametros(){
 //   var ajaxCall = $.ajax({
 //       method: 'POST',
-//       url: '/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/mostrarParametros.php'
+//       url: '/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/mostrarParametros.php'
 //   });
 //
 //   ajaxCall.done(function(r) {
@@ -137,7 +137,7 @@ tablasParametros113();
 function tablasParametros113(){
   var ajaxCall = $.ajax({
       method: 'POST',
-      url: '/Conta6/Ubicaciones/Nomina/Honorarios/parametros/actions/mostrarParametros.php'
+      url: '/Ubicaciones/Nomina/Honorarios/parametros/actions/mostrarParametros.php'
   });
 
   ajaxCall.done(function(r) {

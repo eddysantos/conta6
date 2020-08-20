@@ -63,7 +63,7 @@ while ($row_capturaPercepcionesHrExtra = $rslt_capturaPercepcionesHrExtra->fetch
       <input type='text' id='T_PERCEPHrExtra_exento$partidaP' class='T_PERCEPHrExtra_EXENTO exento efecto' value='$importeExentoP' onblur='validaIntDec(this); sumaGeneralNomina()'>
     </td>
     <td>
-      <a><img class='icomediano remove-PERCEPHrExtra' src='/conta6/Resources/iconos/002-trash.svg'></a>
+      <a><img class='icomediano remove-PERCEPHrExtra' src='/Resources/iconos/002-trash.svg'></a>
     </td>
   </tr>
   ";

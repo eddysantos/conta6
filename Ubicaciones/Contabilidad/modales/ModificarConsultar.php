@@ -7,7 +7,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Modificar Póliza</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
 
       <div class="modal-body">
@@ -40,7 +40,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Consultar Póliza</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="row justify-content-center">
@@ -71,7 +71,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Asignar Proveedor</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="row justify-content-center">
@@ -102,7 +102,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Modificar Cheque</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <form class="form1">
@@ -137,7 +137,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Consultar Cheque</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <form class="form1">
@@ -176,7 +176,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Modificar Anticipo</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="row justify-content-center">
@@ -207,7 +207,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Consultar Anticipo</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="row justify-content-center">
@@ -240,7 +240,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>MODIFICAR CONCEPTO DE HONORARIOS</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
       <table class="table modal-table3">
@@ -288,7 +288,7 @@
       </table>
       </div>
       <div class="modal-footer border-0 mt-3">
-        <a href="/conta6/Ubicaciones/Modulo2/TarifasAlmacenes/Conceptos.php" class="linkbtn">Aceptar<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        <a href="/Ubicaciones/Modulo2/TarifasAlmacenes/Conceptos.php" class="linkbtn">Aceptar<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -304,7 +304,7 @@
         <div class='text-left ml-4' style='width:900px'>
           <h5>Asignar Proveedor</h5>
         </div>
-        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Conta6/Resources/iconos/close.svg"></a>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div class="row justify-content-center">
@@ -320,7 +320,7 @@
           </div>
         </div>
         <div class="modal-footer mt-3 border-0">
-          <a href="/conta6/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          <a href="/Ubicaciones/Contabilidad/polizas/DetallepolizaDiario.php" class="linkbtn">Modificar <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $query = "SELECT * FROM conta_t_corresponsales order by s_nombre";
   $stmt = $db->prepare($query);
@@ -15,7 +15,7 @@
     '<tr class="row m-0 borderojo">
       <td class="col-md-1">
         <a href="#" onclick="correspAsignar('.$pk_id_corresp.')" data-toggle="modal">
-          <img class="icochico ml-5" src="/conta6/Resources/iconos/001-add.svg">
+          <img class="icochico ml-5" src="/Resources/iconos/001-add.svg">
         </a>
       </td>
       <td class="col-md-2">'.$pk_id_corresp.'</td>
@@ -33,7 +33,7 @@
       <tbody>
         <tr class="row m-0 align-items-center">
           <td class="col-md-1">
-            <a><img class="icomediano ml-2" src="/conta6/Resources/iconos/printer.svg"></a>
+            <a><img class="icomediano ml-2" src="/Resources/iconos/printer.svg"></a>
           </td>
           <td class="col-md-8 input-effect">
             <input class="efecto popup-input" id="corp-cliente" type="text" id-display="#popup-display-corp-cliente" action="clientes_NoEsCorresponsal" db-id="" autocomplete="off">
@@ -41,7 +41,7 @@
             <label for="corp-cliente">Cliente</label>
           </td>
           <td class="col-md-3">
-            <a href="#" id="genCorresponsal" class="boton border-0 text-left"><img src= "/conta6/Resources/iconos/add.svg" class="icochico">  NUEVO CORRESPONSAL</a>
+            <a href="#" id="genCorresponsal" class="boton border-0 text-left"><img src= "/Resources/iconos/add.svg" class="icochico">  NUEVO CORRESPONSAL</a>
           </td>
         </tr>
       </tbody>
@@ -62,6 +62,6 @@
 
  <?php
  require_once('modales/ModalCorresponsales.php');
- require $root . '/conta6/Ubicaciones/footer.php';
+ require $root . '/Ubicaciones/footer.php';
 
 ?>

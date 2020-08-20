@@ -1,7 +1,7 @@
 <?php
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
@@ -47,7 +47,7 @@ if ($rslt->num_rows > 0) {console.log("llego1");
       $parcialidad++ ;
     }else{
       $parcialidad = 1;
-      require $root . '/conta6/Resources/PHP/actions/consultarFactura_idFactura.php'; #$n_total_honorarios
+      require $root . '/Resources/PHP/actions/consultarFactura_idFactura.php'; #$n_total_honorarios
       $saldoInsoluto = $n_total_honorarios;
     }
     $system_callback['data'] = $parcialidad."+".$saldoInsoluto."+".$id_factura;

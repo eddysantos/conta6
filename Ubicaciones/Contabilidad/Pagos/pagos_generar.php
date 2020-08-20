@@ -1,25 +1,25 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+require $root . '/Ubicaciones/barradenavegacion.php';
 
 $cuenta = trim($_GET['cuenta']);
 $id_cliente = trim($_GET['id_cliente']);
 
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarqueModifi
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCMEmodifi
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargosModifi
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorariosModifi
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php'; #$pk_id_factura
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarqueModifi
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCMEmodifi
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargosModifi
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorariosModifi
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php'; #$pk_id_factura
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosIVA.php';
+require $root . '/Resources/PHP/actions/consultaDatosIVA.php';
 $sacarIVA = $row_datosIVA['n_IVA_calculo'];
 
 //LISTA DE MONEDAS
-require $root . '/conta6/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
+require $root . '/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
 
 //LISTA CTAS BANCARIAS DE COMPAÑIA
-require $root . '/conta6/Resources/PHP/actions/lst_bancos_cia.php'; #$ctasCIA
+require $root . '/Resources/PHP/actions/lst_bancos_cia.php'; #$ctasCIA
 
 $parcialidad = 1;
 // if( is_null($oRst_Pago['numParcialidad']) ){
@@ -35,7 +35,7 @@ $parcialidad = 1;
 
 
 //forma de pago del cliente
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
+require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
 if ($rows_datosCLTformaPago > 0) {
     $datosCLTformaPago = "<option selected value='0'>Forma de pago</option>";
   while ($row_datosCLTformaPago = $rslt_datosCLTformaPago->fetch_assoc()) {
@@ -301,7 +301,7 @@ if ($rows_datosCLTformaPago > 0) {
           </td>
           <!-- <td class="col-md-1 p-1">&nbsp;</td> -->
           <td class="col-md-1 p-1 text-left pl-4">
-            <a href="#" id="Btn_agregarPago" onclick="Btn_agregarPago()"><img class="icochico" src="/conta6/Resources/iconos/add.svg"></a>
+            <a href="#" id="Btn_agregarPago" onclick="Btn_agregarPago()"><img class="icochico" src="/Resources/iconos/add.svg"></a>
           </td>
         </tr>
 
@@ -360,7 +360,7 @@ if ($rows_datosCLTformaPago > 0) {
       <thead>
         <tr class='row encabezado font14'>
           <td class="col-md-12">Datos de Factura Electronica
-          <a href="#buscar_factura" data-toggle="modal"><img class='icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a></td>
+          <a href="#buscar_factura" data-toggle="modal"><img class='icochico' src='/Resources/iconos/magnifier.svg' /></a></td>
         </tr>
         <tr class="row sub3 b font12" style="background-color:rgba(173, 173, 173, 0.1)!important">
           <td class="col-md-1 p-1">Aduana</td>
@@ -468,4 +468,4 @@ if ($rows_datosCLTformaPago > 0) {
 
 <?php
 require_once('modales/buscar_factura.php');
-require $root . '/conta6/Ubicaciones/footer.php';?>
+require $root . '/Ubicaciones/footer.php';?>

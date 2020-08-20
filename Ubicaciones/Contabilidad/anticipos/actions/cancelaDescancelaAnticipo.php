@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = trim($_POST['id_poliza']);
 $id_anticipo = trim($_POST['id_anticipo']);
@@ -25,7 +25,7 @@ $descripcion = "Se Actualizo el Anticipo: $id_anticipo, Estatus: $status_txt";
 
 $clave = 'anticipos';
 $folio = $id_anticipo;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 //CANCELA DETALLE
 if( $status == 1 ){
@@ -81,7 +81,7 @@ if( $status == 0 ){
 
 // CANCELO LA POLIZA DEL ANTICIPO*********************************************************
 if( $id_poliza > 0 ){
-  require $root . '/conta6/Resources/PHP/actions/cancelarPoliza.php';
+  require $root . '/Resources/PHP/actions/cancelarPoliza.php';
 }
 
 $system_callback['code'] = 1;
@@ -129,7 +129,7 @@ $descripcion = "Se Actualizo el Anticipo: $id_anticipo, Estatus: $status_txt";
 
 $clave = 'anticipos';
 $folio = $id_anticipo;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 */
 
 

@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
@@ -42,7 +42,7 @@ while ($row = $rslt->fetch_assoc()) {
 
   if($oRst_permisos['s_nom_has_mod_tab_113'] == 1){
     $linkModifi_113 = "<a href='#articulo113' data-toggle='modal' db-id='$pk_id_art113' class='editar'>
-      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+      <img class='icochico' src='/Resources/iconos/003-edit.svg'>
     </a>";
   }
 
@@ -98,7 +98,7 @@ $system_callback['message'] = "Script called successfully!";
 //
 //   if($oRst_permisos['s_nom_has_mod_tab_113'] == 1){
 //     $linkModifi_113 = "  <a href='#articulo113' data-toggle='modal' db-id='$pk_id_art113'  class='editar'>
-//         <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+//         <img class='icochico' src='/Resources/iconos/003-edit.svg'>
 //       </a>";
 //   }
 //

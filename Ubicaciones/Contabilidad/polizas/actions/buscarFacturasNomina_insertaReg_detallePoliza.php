@@ -2,7 +2,7 @@
 # http://localhost:88/conta6/ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_insertaReg_detallePoliza.php?id_poliza=607&concepto=pago nomina 1 NL&fecha=2020-07-28&tipo=4&factura=98&nombre=Sanjuana LorenaPrunedaMontes&importe=3667.31&regimen=02&accion=insertar
 # http://localhost:88/conta6/ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_insertaReg_detallePoliza.php?id_poliza=607&concepto=pago nomina 1 NL&fecha=2020-07-28&tipo=4&factura=98&nombre=Sanjuana LorenaPrunedaMontes&importe=3667.31&regimen=02&accion=borrar
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $poliza = trim($_POST['id_poliza']);
 $concepto = trim($_POST['concepto']);
@@ -22,7 +22,7 @@ $desc = "SUELDOS POR PAGAR ".$concepto." ".$nombre;
 
 #if($regimen == '02'){ $cuenta = "0213-00001"; }
 #if($regimen == '09'){ $cuenta = "0213-00003"; }
-require $root . '/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_ctas0213pagos.php'; #$cuenta
+require $root . '/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_ctas0213pagos.php'; #$cuenta
 
 $id_poliza = $poliza;
 $fecha = $fecha_pol;
@@ -70,7 +70,7 @@ if( $accion == "insertar" ){
   $cargo = $importe;
   $abono = 0;
 
-  require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+  require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
   $pk_partida = mysqli_insert_id($db);
 
   #*******************
@@ -83,7 +83,7 @@ if( $accion == "insertar" ){
   $beneficiarioOpc = $nombre;
   $moneda = 'MXN';
   $tipoCamb = 1;
-  require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
+  require $root . '/Resources/PHP/actions/contaElect_insertaCompNal.php';
 
   #$fk_id_poliza
   $partidaPol = $pk_partida;
@@ -105,14 +105,14 @@ if( $accion == "insertar" ){
   $RFCopc = $RFCO;
   $usuario_modifi = $usuario;
   $observ = '';
-  require $root . '/conta6/Resources/PHP/actions/contaElect_insertaTransferencia.php';
+  require $root . '/Resources/PHP/actions/contaElect_insertaTransferencia.php';
 
   // Detalle del CFDI a la cuenta 0100 0 101
   $partidaDoc = $pol_partida;
-  require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
+  require $root . '/Resources/PHP/actions/contaElect_insertaCompNal.php';
 
   $partidaPol = $pol_partida;
-  require $root . '/conta6/Resources/PHP/actions/contaElect_insertaTransferencia.php';
+  require $root . '/Resources/PHP/actions/contaElect_insertaTransferencia.php';
 
   // Agrego la poliza de pago en Nomina CFDI
   mysqli_query($db,"UPDATE conta_t_nom_cfdi SET fk_id_polizaPago = $id_poliza WHERE pk_id_nomina = $factura");
@@ -139,7 +139,7 @@ if( $accion == "borrar" ){
   #*******************
   # Transferencia 0213
   #*******************
-  require $root . '/conta6/Resources/PHP/actions/contaElect_eliminar.php';
+  require $root . '/Resources/PHP/actions/contaElect_eliminar.php';
             #mysqli_query($db,"DELETE FROM conta_t_polizas_det_contaelec WHERE fk_partidaPol = $partida");
 
   #*******************
@@ -157,7 +157,7 @@ if( $accion == "borrar" ){
   # Registro en Nomina CFDI
   #*******************
               #mysqli_query($db,"UPDATE conta_t_nom_cfdi SET fk_id_polizaPago = 0 WHERE pk_id_nomina = $factura");
-  require $root . '/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_actualizaPagos.php';
+  require $root . '/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_actualizaPagos.php';
 
 
   $system_callback['data'] = 'Borrado';
@@ -171,6 +171,6 @@ if( $accion == "borrar" ){
 
 $clave = 'polizas';
 $folio = $poliza;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 ?>

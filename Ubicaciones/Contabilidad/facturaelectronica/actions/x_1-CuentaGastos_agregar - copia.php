@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $pocmes = $_POST['pocme'];
 
@@ -454,7 +454,7 @@ $tipoCambio = trim($_POST['T_monedaTipoCambio']);
 
     $nfolio = $db->insert_id;
 
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_agregar_detalle.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_agregar_detalle.php';
 
   //$db->commit();
     $system_callback['hon'] = $query_hon;

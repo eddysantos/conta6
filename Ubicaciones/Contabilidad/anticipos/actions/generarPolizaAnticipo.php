@@ -6,7 +6,7 @@ $fecha = trim($_POST['diafecha']);
 $concepto = trim($_POST['diaconcepto']);
 */
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/actions/generarFolioPolizaGeneral.php';
+require $root . '/Resources/PHP/actions/generarFolioPolizaGeneral.php';
 
 //$nFolio número de Póliza
 //$rfcCIA
@@ -158,12 +158,12 @@ $rsltMST_up = $stmtMST_up->get_result();
 $descripcion = "Se Genero la Poliza: $nFolio del Anticipo: $anticipo Cuenta: $cuentaMST";
 $clave = 'anticipos';
 $folio = $nFolio;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 #'**************** DETALLE EN PARTIDAS DE LA POLIZA - CONTABILIDAD ELECTRONICA *******************************
 
-  require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
+  require $root . '/Resources/PHP/actions/consultaDatosCliente.php';
 
 
 
@@ -221,7 +221,7 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 		// Transferencia
-    require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
+    require $root . '/Resources/PHP/actions/consultaDatosCliente.php';
 
     $fk_id_poliza = $poliza;
     $partidaPol = $rowPOL['pk_partida'];
@@ -244,7 +244,7 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
     $usuario_modifi = $usuario;
     $observ = '';
 
-    require $root . '/conta6/Resources/PHP/actions/contaElect_insertaTransferencia.php';
+    require $root . '/Resources/PHP/actions/contaElect_insertaTransferencia.php';
 
 
   	// CFDI CompNal
@@ -253,7 +253,7 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
       $tipoInf = 'CompNal';
 
   			if( $notaCred > 0 ){
-          require $root . '/conta6/Resources/PHP/actions/consultaNotaCreditoCapturaTimbrada.php';
+          require $root . '/Resources/PHP/actions/consultaNotaCreditoCapturaTimbrada.php';
   				$tipoDetalle = 'CompNal';
   				$RFC = $row_ncCaptTim['s_rfc'];
   				$UUID = $row_ncCaptTim['s_UUID'];
@@ -261,7 +261,7 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
           $BeneficiarioOpc = $row_ncCaptTim['s_nombre'];
   			}else{
   				if( $factura > 0 && $notaCred == 0 ){
-            require $root . '/conta6/Resources/PHP/actions/consultaFacturaCaptura.php';
+            require $root . '/Resources/PHP/actions/consultaFacturaCaptura.php';
   					$tipoDetalle = 'CompNal';
   					$RFC = $row_facCapt['s_rfc'];
   					$UUID = $row_facCapt['s_UUID'];
@@ -270,7 +270,7 @@ require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
   				}
   			}
 
-        require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
+        require $root . '/Resources/PHP/actions/contaElect_insertaCompNal.php';
   		}
 
   }

@@ -1,7 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
-require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/validarFormulario.php';
 
 
 $anio = $_POST['anio_nomsig'];
@@ -97,16 +97,16 @@ if ($rslt_empl->num_rows > 0) {
     $pANTIGUEDAD = calcularAntiguedad($fechaContrato,$FECHAFINAL);
 
 
-    require $root . '/conta6/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_1agregarDocCaptura.php';
+    require $root . '/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_1agregarDocCaptura.php';
     $id_docNomina = $db->insert_id;
-    require $root . '/conta6/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_2agregarDetPercep.php';
-    require $root . '/conta6/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_3agregarDetDeduc.php';
-    require $root . '/conta6/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_4agregarDetTotales.php';
+    require $root . '/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_2agregarDetPercep.php';
+    require $root . '/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_3agregarDetDeduc.php';
+    require $root . '/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_4agregarDetTotales.php';
 
     $descripcion = "Se genero DocNomina: $id_docNomina Oficina: $aduana Anio: $anio Semana: $NUM_NOMINA Sueldo: $SALARIO_SEMANAL ISR: $ISR Total:$TOTAL";
     $clave = 'nomHonorarios';
     $folio = $id_docNomina;
-    require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+    require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
     $system_callback['code'] = 1;

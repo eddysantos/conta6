@@ -100,7 +100,7 @@ if( $total_consultaPOCME > 0 ) {
 						<input type='text' id='T_POCME_Descripcion$idFila' value='$s_descripcionConcepto' class='T_POCME_DESCRIPCION descripcion efecto h22' size='45' maxlength='40'>
 					</td>
 					<td class=' p-2 text-left'>
-						<a href='#' class='eliminar-POCME-ame'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+						<a href='#' class='eliminar-POCME-ame'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>
 					</td>
 					<td class='pt-2 mt-2' $txt_verGstoGana>
 						<input type='checkbox' class='check' $txt_activado $txt_editGstoGana_check>

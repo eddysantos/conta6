@@ -24,20 +24,20 @@ while( $oRst_salarioDistrib = mysqli_fetch_array($sql_salarioDistrib) ){
   // echo "<br>";
 
   if( $accionDistribuir == 'percepciones' ){
-    require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_percepciones.php';
+    require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_percepciones.php';
   }
 
    if( $accionDistribuir == 'otrosPagos' ){
-     require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_otrosPagos.php';
+     require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_otrosPagos.php';
    }
   if( $accionDistribuir == 'deduccion' ){
-    require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_deducciones.php';
+    require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_deducciones.php';
   }
    if( $accionDistribuir == 'desctoDespTotal' ){
-     require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_desctoDespTotal.php';
+     require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_desctoDespTotal.php';
    }
    if( $accionDistribuir == 'horasExtras' ){
-     require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_horasExtra.php';
+     require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_horasExtra.php';
    }
 }
 

@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 
@@ -130,7 +130,7 @@
               <label for="dias">Días</label>
             </td>
             <td class="col-md-2">
-              <a href="#" class="boton" onclick="solAntGenerarSinRef()"><img src= "/conta6/Resources/iconos/magnifier.svg" class="icochico"> BUSCAR</a><!--nueva pagina, ingresar datos en poliza-->
+              <a href="#" class="boton" onclick="solAntGenerarSinRef()"><img src= "/Resources/iconos/magnifier.svg" class="icochico"> BUSCAR</a><!--nueva pagina, ingresar datos en poliza-->
             </td>
           </tr>
         </tbody>
@@ -162,8 +162,8 @@
 
 </div>
 
-<script src="/conta6/Resources/js/Inputs.js"></script>
+<script src="/Resources/js/Inputs.js"></script>
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

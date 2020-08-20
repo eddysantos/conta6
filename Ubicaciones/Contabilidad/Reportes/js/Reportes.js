@@ -1,88 +1,7 @@
 $(document).ready(function(){
 
-  $('.Consul').click(function(){
-        var accion = $(this).attr('accion');
-        var status = $(this).attr('status');
-
-        $('#selecRepoCont').find('a').css('color', "");
-        $('#selecRepoCont').find('a').css('font-size', "");
-        $(this).attr('status', 'abierto');
-        $(this).css('cssText', 'color: rgb(209, 28, 28) !important');
-        $(this).css('font-size', '13px');
-
-
-        switch (accion) {
-          case "cobranza":
-            $('#RepoCobranza').fadeIn();
-            $('#RepoConta').hide();
-            $('#RepoContaElec').hide();
-            $('#RepoFact').hide();
-            $('#RepoFinan').hide();
-            $('#RepoImpuestos').hide();
-            $('#RepoRevisiones').hide();
-            break;
-
-          case "conta":
-          $('#RepoConta').fadeIn();
-          $('#RepoCobranza').hide();
-          $('#RepoContaElec').hide();
-          $('#RepoFact').hide();
-          $('#RepoFinan').hide();
-          $('#RepoImpuestos').hide();
-          $('#RepoRevisiones').hide();
-            break;
-          case "contaElec":
-          $('#RepoContaElec').fadeIn();
-          $('#RepoConta').hide();
-          $('#RepoCobranza').hide();
-          $('#RepoFact').hide();
-          $('#RepoFinan').hide();
-          $('#RepoImpuestos').hide();
-          $('#RepoRevisiones').hide();
-            break;
-          case "Fact":
-          $('#RepoFact').fadeIn();
-          $('#RepoContaElec').hide();
-          $('#RepoConta').hide();
-          $('#RepoCobranza').hide();
-          $('#RepoFinan').hide();
-          $('#RepoImpuestos').hide();
-          $('#RepoRevisiones').hide();
-            break;
-          case "Finan":
-          $('#RepoFinan').fadeIn();
-          $('#RepoFact').hide();
-          $('#RepoContaElec').hide();
-          $('#RepoConta').hide();
-          $('#RepoCobranza').hide();
-          $('#RepoImpuestos').hide();
-          $('#RepoRevisiones').hide();
-            break;
-          case "Impuestos":
-          $('#RepoImpuestos').fadeIn();
-          $('#RepoFinan').hide();
-          $('#RepoFact').hide();
-          $('#RepoContaElec').hide();
-          $('#RepoConta').hide();
-          $('#RepoCobranza').hide();
-          $('#RepoRevisiones').hide();
-            break;
-
-            case "Revisiones":
-            $('#RepoRevisiones').fadeIn();
-            $('#RepoFinan').hide();
-            $('#RepoFact').hide();
-            $('#RepoContaElec').hide();
-            $('#RepoConta').hide();
-            $('#RepoCobranza').hide();
-            $('#RepoImpuestos').hide();
-              break;
-          default:
-          console.error("Something went terribly wrong...");
-        }
-      });
-
-    $('select').on('change',function(){
+  $( ".opciones_reportes_conta" ).change(function() {
+    // alert( "Handler for .change() called." );
       if(this.value == '1' || this.value == '5' || this.value == '6' || this.value == '9' || this.value == '10'){ // SOLO CLIENTES ------ DESABILITADOS
         $('.clientes').prop('disabled',true);
         $('.oficina,.fechas,.cuentas').prop('disabled',false);
@@ -174,4 +93,4 @@ $(document).ready(function(){
         $('.oficina,.fechas,.clientes,.corres,.ctasMayor').prop('disabled',false);
       }
     });
-  });
+  }); // fin del documento

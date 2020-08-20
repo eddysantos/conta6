@@ -62,7 +62,7 @@ while ($row_capturaPercepcionesOP = $rslt_capturaPercepcionesOP->fetch_assoc()) 
       <input type='text' id='T_PERCEPOP_saldoFavor$partidaPOP' class='T_PERCEPOP_SALDOFAVOR saldofavor efecto' value='$remanenteSalFavOP' onblur='validaIntDec(this);'>
     </td>
     <td>
-      <a><img class='icomediano remove-PERCEPOP' src='/conta6/Resources/iconos/002-trash.svg'></a>
+      <a><img class='icomediano remove-PERCEPOP' src='/Resources/iconos/002-trash.svg'></a>
     </td>
   </tr>
   ";

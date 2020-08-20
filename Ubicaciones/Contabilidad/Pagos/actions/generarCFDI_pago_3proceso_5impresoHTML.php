@@ -1,12 +1,12 @@
 <?php
 /*
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 $cuenta = trim($_GET['cuenta']);
 */
-require $root . '/Conta6/Resources/vendor/autoload.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarPago.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
+require $root . '/Resources/vendor/autoload.php';
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarPago.php';
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
 
 $mostrarSustituir = false;
 if( is_null($s_UUIDpagoSustituir) ){
@@ -98,7 +98,7 @@ $cadenaSAT = "||".$s_timbradoVersion."|".$s_UUID."|".$d_fechaTimbrado."|".$s_sel
 
       #FORMA DE PAGO
       $id_cliente = $fk_id_cliente;
-      require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago
+      require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago
 
       if ($rows_datosCLTformaPago > 0 ) {
         while ($row_datosCLTformaPago = $rslt_datosCLTformaPago->fetch_assoc()) {
@@ -111,10 +111,10 @@ $cadenaSAT = "||".$s_timbradoVersion."|".$s_UUID."|".$d_fechaTimbrado."|".$s_sel
         }
       }
 
-      require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_docRel.php';#$pagosDetalle_pago
+      require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_docRel.php';#$pagosDetalle_pago
 
       #if(tipoDocumento == 'modificar'){
-        $btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+        $btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
         $inputPartida = "<input class='id-partida' type='hidden' id='T_partida_$pk_rowPago' value='0'>";
       #}
   		$pagosDetalle .= "

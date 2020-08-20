@@ -1,11 +1,11 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $cuenta = trim($_GET['cuenta']);
-require $root . '/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosGenerales.php';
-require $root . '/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosPOCME.php'; # $datosPOCMEImprimir
-require $root . '/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosAnticipos.php'; # $datosANTICIPOImprimir
+require $root . '/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosGenerales.php';
+require $root . '/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosPOCME.php'; # $datosPOCMEImprimir
+require $root . '/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosAnticipos.php'; # $datosANTICIPOImprimir
 
 
 	#FECHA DE VENCIMIENTO DE LA FACTURA
@@ -210,7 +210,7 @@ require $root . '/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/Cuen
 
 		$clave = 'ctaAme_fac';
 		$folio = $cuenta;
-		require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+		require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 ?>
 
 </body>

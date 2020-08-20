@@ -1,6 +1,6 @@
 <?php
 
-require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
+require $root . '/Resources/PHP/actions/consultaCtas108y208_cliente.php';
 if( $rows_ctasCliente > 0 ){
   while($row_ctasCliente = $rslt_ctasCliente->fetch_assoc()){
     $cta = $row_ctasCliente['pk_id_cuenta'];

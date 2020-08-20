@@ -191,7 +191,7 @@ function validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso){
 
 		var validar_fecha = $.ajax({
 			type: "POST",
-			url: "/conta6/Ubicaciones/Contabilidad/actions/validarFechaCierreDoc.php",
+			url: "/Ubicaciones/Contabilidad/actions/validarFechaCierreDoc.php",
 			data: data,
 			async: false
 		});

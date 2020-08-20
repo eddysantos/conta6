@@ -1,6 +1,6 @@
 <?PHP
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
   $fecha = trim($_POST['fecha']);
   $cuenta = trim($_POST['cuenta']);
@@ -91,7 +91,7 @@
   $descripcion = "Se Genero el Cheque: $nFolio cuentaMST:$cuenta Concepto: $concepto Fecha: $fechaDoc Valor: $importe ExpedidoA: $opcion $idOrd $nomOrd $rfcOrd";
   $clave = 'cheques';
   $folio = $nFolio;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
   $system_callback['data'] .= $nFolio;

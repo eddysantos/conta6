@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class='text-center'>
@@ -18,9 +18,9 @@
 
   <div class='col-md-1 ml-3 mt-4'>
     <a href='SolAnticipo.php'>
-      <img class='icomediano' src='/conta6/Resources/iconos/left.svg'>
+      <img class='icomediano' src='/Resources/iconos/left.svg'>
     </a>
-    <a href='SolConsultar.php' class='ml-5'><img class='icomediano' src='/conta6/Resources/iconos/printer.svg'></a>
+    <a href='SolConsultar.php' class='ml-5'><img class='icomediano' src='/Resources/iconos/printer.svg'></a>
   </div>
 
   <div id='contornodCliente' class='contorno' style='display:none'>

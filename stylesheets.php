@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="/Resources/fontAwesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/Resources/css/inputs.css">
+<link rel="stylesheet" href="/Resources/css/Modulo1.css">
+<link rel="stylesheet" href="/Resources/css/barraNavegacion.css">
+<link rel="stylesheet" href="/Resources/css/modals.css">
+<link rel="stylesheet" href="/Resources/css/cambiosBootstrap.css">
+<link rel="stylesheet" href="/Resources/css/bienvenida.css">
+<link rel="stylesheet" href="/Resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/Resources/sweetalert/css/sweetalert.css">
+<link rel="stylesheet" href="/Resources/alertifyjs/css/alertify.min.css">
+<link rel="stylesheet" href="/Resources/alertifyjs/css/themes/default.css">

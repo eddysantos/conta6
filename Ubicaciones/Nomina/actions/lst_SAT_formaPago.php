@@ -4,12 +4,12 @@ $system_callback = [];
 $formaPago = '';
 
 $formaPago .="<option selected value='0'>Método de pago *</option>";
-  $query = "SELECT * FROM conta_cs_sat_formapago WHERE s_activo = 'S'";
+  $query = "SELECT s_concepto,pk_id_formapago FROM conta_cs_sat_formapago WHERE s_activo = 'S'";
 
   $stmt = $db->prepare($query);
 	if (!($stmt)) {
     $system_callback['code'] = "500";
-    $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
+    $system_callback['message'] = "Error during query prepare forma de pago [$db->errno]: $db->error";
     exit_script($system_callback);
   }
   if (!($stmt->execute())) {

@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
 $ID_calculo = trim($_POST['T_No_calculoTarifa']);
@@ -173,28 +173,28 @@ if (!($stmt_mst->execute())) {
 
 
 
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar_detalle.php';
-require $root . '/conta6/Resources/PHP/actions/tarifas_calcula_borrar.php';
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar_detalle.php';
+require $root . '/Resources/PHP/actions/tarifas_calcula_borrar.php';
 
 
 $cuenta = $folio;
 
 # modificar poliza de cuenta de gastos *************************************************
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCuentaGastos.php'; #$total_consultaCtaGstos
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCuentaGastos.php'; #$total_consultaCtaGstos
 
 if( $Total_Cta_Gastos == 0 ){ #importe de los gastos por cuenta del cliente
   if( $total_consultaCtaGstos == 0 ) {
     $id_poliza = $fk_idpol_ctagastos;
-    require $root . '/conta6/Resources/PHP/actions/borrarDetallePoliza.php';
+    require $root . '/Resources/PHP/actions/borrarDetallePoliza.php';
   }
 }
 
 if( $Total_Cta_Gastos == 0 ){ #importe de los gastos por cuenta del cliente
   if( $total_consultaCtaGstos > 0 ) {
   	$id_poliza = $fk_idpol_ctagastos;
-    require $root . '/conta6/Resources/PHP/actions/borrarDetallePoliza.php';
+    require $root . '/Resources/PHP/actions/borrarDetallePoliza.php';
 
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
     $id_ctagastos = $id_ctagastos;
     $fecha = $fechaTimbrado;
     $ID_Cliente = trim($_POST['T_ID_Cliente_Oculto']);
@@ -202,7 +202,7 @@ if( $Total_Cta_Gastos == 0 ){ #importe de los gastos por cuenta del cliente
     $concepto = "CUENTA DE GASTOS - ".$r_razon_social;
     $poliza_CtaGastos = $fk_idpol_ctagastos;
 
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_det_ctaGastos.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_det_ctaGastos.php';
 
 
   }
@@ -211,24 +211,24 @@ if( $Total_Cta_Gastos == 0 ){ #importe de los gastos por cuenta del cliente
 if( $Total_Cta_Gastos > 0 ){ #importe de los gastos por cuenta del cliente
   if( $total_consultaCtaGstos == 0 ) {
       echo "/entro1";
-      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
+      require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
       $fechaTimbre = $fechaTimbrado;
       $idFactura = $pk_id_factura;
       $r_razon_social = $Fac_Nombre;
       $concepto = "CUENTA DE GASTOS - ".$r_razon_social;
 
-      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_1genCtaGastos.php'; #$folioCtaGastos
-      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php'; #$poliza_CtaGastos
+      require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_1genCtaGastos.php'; #$folioCtaGastos
+      require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php'; #$poliza_CtaGastos
 
       if( $c_MetodoPago == 'PUE' && $fac_saldo < 0 ){
         if( $fk_idpol_pagoaplicado > 0 ){
           $polizaAplicado = $fk_idpol_pagoaplicado;
           $id_poliza = $fk_idpol_pagoaplicado;
           echo "/entro3";
-          require $root . '/conta6/Resources/PHP/actions/borrarDetallePoliza.php';
-          require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicadoDetalle.php';
+          require $root . '/Resources/PHP/actions/borrarDetallePoliza.php';
+          require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicadoDetalle.php';
         }else{
-          require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
+          require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
         }
       }
   }
@@ -238,21 +238,21 @@ if( $Total_Cta_Gastos > 0 ){ #importe de los gastos por cuenta del cliente
       $poliza_CtaGastos = $fk_idpol_ctagastos;
       $id_poliza = $fk_idpol_ctagastos;
       echo "/entro4";
-      require $root . '/conta6/Resources/PHP/actions/borrarDetallePoliza.php';
+      require $root . '/Resources/PHP/actions/borrarDetallePoliza.php';
 
-      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
+      require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
       $fecha = $fechaTimbrado;
       $idFactura = $pk_id_factura;
 
-      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_det_ctaGastos.php';
+      require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_det_ctaGastos.php';
     }else{
       echo "/entro2";
-      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
+      require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
       $fechaTimbre = $fechaTimbrado;
       $idFactura = $pk_id_factura;
       $r_razon_social = $Fac_Nombre;
       $concepto = "CUENTA DE GASTOS - ".$r_razon_social;
-      require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php'; #$poliza_CtaGastos
+      require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php'; #$poliza_CtaGastos
     }
 
     if( $c_MetodoPago == 'PUE' && $fac_saldo < 0 ){
@@ -260,16 +260,16 @@ if( $Total_Cta_Gastos > 0 ){ #importe de los gastos por cuenta del cliente
         $polizaAplicado = $fk_idpol_pagoaplicado;
         $id_poliza = $fk_idpol_pagoaplicado;
         echo "/entro5";
-        require $root . '/conta6/Resources/PHP/actions/borrarDetallePoliza.php';
-        require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicadoDetalle.php';
+        require $root . '/Resources/PHP/actions/borrarDetallePoliza.php';
+        require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicadoDetalle.php';
       }else{
-        require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
+        require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
       }
     }
   }
 
   if( $poliza_CtaGastos > 0 || $polizaAplicado > 0 ){
-    require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5guardarDatosPolizas.php';
+    require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5guardarDatosPolizas.php';
   }
 
   $cliente = $ID_Cliente;
@@ -277,7 +277,7 @@ if( $Total_Cta_Gastos > 0 ){ #importe de los gastos por cuenta del cliente
 
   #nombre carpetas
   $anioActual = date_format(date_create($fecha),"Y");
-  $rutaAnioActual = $root . '/conta6/CFDI_generados/'.$anioActual;
+  $rutaAnioActual = $root . '/CFDI_generados/'.$anioActual;
   $rutaCLT = $rutaAnioActual.'/'.$cliente;
   $rutaQR = $rutaCLT.'/QR';
   #nombre del archivo
@@ -287,7 +287,7 @@ if( $Total_Cta_Gastos > 0 ){ #importe de los gastos por cuenta del cliente
   $rutaQRFile = $rutaQR.'/'.$nombre_archivo.'.png';
 
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML.php';
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML.php';
 
 
 }
@@ -301,10 +301,10 @@ if( $Total_Cta_Gastos > 0 ){ #importe de los gastos por cuenta del cliente
 
 
 # bitacora
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
 $descripcion = "Correccion a la factura: $pk_id_factura con numCaptura: $cuenta, ";
 $clave = 'facturas';
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 $system_callback['data'] = $folio;
 $system_callback['code'] = 1;

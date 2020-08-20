@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
   $semana = trim($_POST['semana']);
   $anio = trim($_POST['anio']);
@@ -108,7 +108,7 @@ foreach ($docNominaDelete as $docNominaD) {
     }
 
     $folio = $idDocNomina;
-    require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+    require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 }

@@ -1,13 +1,13 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+require $root . '/Ubicaciones/barradenavegacion.php';
 
 $buscar = trim($_GET['buscar']);
 $accion = trim($_GET['accion']);
 
 
 if( $accion == 'notacredito' ){
-  require $root . '/conta6/Resources/PHP/actions/consultaNotaCreditoTimbrada2.php';
+  require $root . '/Resources/PHP/actions/consultaNotaCreditoTimbrada2.php';
 
 ?>
     <div class="contorno text-center" style="<?php echo $marginbottom ?>">
@@ -15,7 +15,7 @@ if( $accion == 'notacredito' ){
         <thead>
           <tr class="row">
             <td class="col-md-1 offset-sm-11 font14">
-              <a href="/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php" class="nc" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
+              <a href="/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php" class="nc" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
             </td>
           </tr>
           <tr class="row encabezado font18">
@@ -42,7 +42,7 @@ if( $accion == 'notacredito' ){
 
 
 if( $accion == 'facturas' ){
-  require $root . '/conta6/Resources/PHP/actions/consultaFactura_timbradas.php';
+  require $root . '/Resources/PHP/actions/consultaFactura_timbradas.php';
 
 ?>
   <div class="contorno text-center" style="<?php echo $marginbottom ?>">
@@ -50,7 +50,7 @@ if( $accion == 'facturas' ){
       <thead>
         <tr class="row">
           <td class="col-md-1 offset-sm-11 font14">
-            <a href="/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php" class="nc" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
+            <a href="/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php" class="nc" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
           </td>
         </tr>
         <tr class="row encabezado font18">
@@ -78,14 +78,14 @@ if( $accion == 'facturas' ){
 
 
 if( $accion == 'proformaNC' ){
-  require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultaNotacredito_proforma.php';
+  require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/consultaNotacredito_proforma.php';
 ?>
   <div class="contorno text-center" style="<?php echo $marginbottom ?>">
     <table class="table">
       <thead>
         <tr class="row">
           <td class="col-md-1 offset-sm-11 font14">
-            <a href="/conta6/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php" class="nc" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
+            <a href="/Ubicaciones/Contabilidad/Notacredito/1-notacredito.php" class="nc" accion="datosPedimento"><i class="back fa fa-arrow-left">Regresar</i></a>
           </td>
         </tr>
         <tr class="row encabezado font18">
@@ -110,5 +110,5 @@ if( $accion == 'proformaNC' ){
 }
 
 
-  require $root . '/conta6/Ubicaciones/footer.php';
+  require $root . '/Ubicaciones/footer.php';
 ?>

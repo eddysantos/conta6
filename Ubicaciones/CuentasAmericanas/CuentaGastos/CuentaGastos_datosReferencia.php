@@ -1,10 +1,10 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_referencia = $_POST['id_referencia'];
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosReferencia.php';
+require $root . '/Resources/PHP/actions/consultaDatosReferencia.php';
 
 
 if( $rows_buscaRef > 0 ){
@@ -15,10 +15,10 @@ if( $rows_buscaRef > 0 ){
 
 
     $datosEmbarque = "<table class='table font12'>";
-      require $root . '/conta6/Resources/PHP/actions/datosGeneralesEmbarque.php';
+      require $root . '/Resources/PHP/actions/datosGeneralesEmbarque.php';
 
       //consulto si ya tiene cuentas capturadas
-      require $root . '/conta6/Resources/PHP/actions/consultaFacturaCapturaReferencia.php';
+      require $root . '/Resources/PHP/actions/consultaFacturaCapturaReferencia.php';
       if( $rows_ctaAmetRef > 0 ){
         $statusReferencia = "<input type='text' id='Txt_ExistenCuentas' size='65' class='p-0 b inputId-red font14' db-id='$rows_status' value='Ya existe cuenta de gastos con esta referencia' readonly>";
       }
@@ -31,7 +31,7 @@ if( $rows_buscaRef > 0 ){
       $tr_corresponsal = "";
       if( $id_corresponsal > 0 ){
         $tieneCorresp = true;
-        require $root . '/conta6/Resources/PHP/actions/consultaDatosCorresponsal.php';
+        require $root . '/Resources/PHP/actions/consultaDatosCorresponsal.php';
 
         $tr_corresponsal = "
         <tr class='row mt-2 align-items-center'>
@@ -47,7 +47,7 @@ if( $rows_buscaRef > 0 ){
       }
 
       //Si tiene $tr_proforma
-      require $root . '/conta6/Resources/PHP/actions/proforma_referencia.php';
+      require $root . '/Resources/PHP/actions/proforma_referencia.php';
       if ($rslt_proforma->num_rows > 0) {
         $tr_proforma = "
         <tr class='row mt-2 align-items-center'>
@@ -61,7 +61,7 @@ if( $rows_buscaRef > 0 ){
         </tr>";
       }
 
-      require $root . '/conta6/Resources/PHP/actions/lst_clientes.php';
+      require $root . '/Resources/PHP/actions/lst_clientes.php';
       if ($rslt_clientes->num_rows > 0) {
         $tr_facturarOtro = "
         <tr class='row mt-2 align-items-center'>
@@ -77,7 +77,7 @@ if( $rows_buscaRef > 0 ){
 
 
       //Si tiene factura electrónica
-      require $root . '/conta6/Resources/PHP/actions/consultaFactura_timbradas_porReferencia.php';
+      require $root . '/Resources/PHP/actions/consultaFactura_timbradas_porReferencia.php';
       if ($rslt->num_rows > 0) {
         $tr_facturaCFDI = "
         <tr class='row mt-2 align-items-center'>

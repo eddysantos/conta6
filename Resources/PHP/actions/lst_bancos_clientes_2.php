@@ -44,7 +44,7 @@ if ($rslt_ctasbancosCLT->num_rows > 0) {
 
     $trCtasBancosCLT .= "<tr class='row mt-4 m-0 sub2 align-items-center'>
       <td class='col-md-2 p-0 text-left' elemento-ctasbancosCLT>
-        <a href='#' class='remove-ctasbancosCLT'><img class='icomediano ml-2' src='/conta6/Resources/iconos/002-trash.svg'></a>
+        <a href='#' class='remove-ctasbancosCLT'><img class='icomediano ml-2' src='/Resources/iconos/002-trash.svg'></a>
         <input type='hidden' class='partidactasbancosCLT' value='$idpartida_ctasbancosCLT'>
       </td>
       <td class='col-md-2 p-0 text-left'>$id_banco_ctasbancosCLT $nomBanco_ctasbancosCLT $nomBancoExt_ctasbancosCLT</td>

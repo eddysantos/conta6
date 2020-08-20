@@ -7,11 +7,11 @@
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-  require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
-  require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
+  require $root . '/Resources/PHP/actions/validarFormulario.php';
+  require $root . '/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
   $regimenNomina = '02';
-  require $root . '/conta6/Resources/PHP/actions/consulta_nomina_anio.php';
+  require $root . '/Resources/PHP/actions/consulta_nomina_anio.php';
 
 ?>
 
@@ -67,12 +67,12 @@
             <td class="col-md-1">Tipo</td>
             <td class="col-md-1 p-0">Documento
               <a href='#' onclick="nuevoDocNomina()" class='ml-2'>
-                <img class='w-5' src='/conta6/Resources/iconos/002-plus.svg'>
+                <img class='w-5' src='/Resources/iconos/002-plus.svg'>
               </a>
             </td>
             <td class="col-md-1">
               <a href='#' onclick='borrarDocNominaTodos()'>
-                <img class='w-5' src='/conta6/Resources/iconos/cross.svg'>
+                <img class='w-5' src='/Resources/iconos/cross.svg'>
               </a>
             </td>
             <td class="col-md-1">Pol.Pago</td>
@@ -82,10 +82,10 @@
             <td class="col-md-1 p-0">
               CFDI
               <a href='#'>
-                <img class='w-5 ml-2' src='/conta6/Resources/iconos/printer.svg'>
+                <img class='w-5 ml-2' src='/Resources/iconos/printer.svg'>
               </a>
               <a href='#'>
-                <img class='w-5' src='/conta6/Resources/iconos/help.svg'>
+                <img class='w-5' src='/Resources/iconos/help.svg'>
               </a>
             </td>
             <td class="col-md-1"></td>
@@ -100,8 +100,8 @@
 </div>
 
 <script src="js/SueldosySalarios.js"></script>
-<!-- <script src="/conta6/Resources/bootstrap/js/bootstrap-toggle.js"></script> -->
+<!-- <script src="/Resources/bootstrap/js/bootstrap-toggle.js"></script> -->
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

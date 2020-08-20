@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = trim($_POST['id_poliza']);
 $query = "SELECT * FROM conta_t_polizas_det WHERE fk_id_poliza = ?";
@@ -40,7 +40,7 @@ while ($row = $rslt->fetch_assoc()) {
 
   if( $oRst_permisos['s_modificar_contaElect'] == 1 ){
     $urlADD = "<a href='#' onclick='infAddPartida($row[pk_partida])'>
-                <img class='icochico' src='/conta6/Resources/iconos/001-add.svg'>
+                <img class='icochico' src='/Resources/iconos/001-add.svg'>
               </a>";
   }
 
@@ -82,12 +82,12 @@ while ($row = $rslt->fetch_assoc()) {
       $imgXMLdownload = "";
       if( $uuid_captura <> '' ){
         #busqueda de UUID para mostrar ruta de archivo XML
-        require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultaXML_backupsxml.php'; #$imgXML, $imgXMLdownload
+        require $root . '/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultaXML_backupsxml.php'; #$imgXML, $imgXMLdownload
       }
 
       if( $oRst_permisos['s_modificar_contaElect'] == 1 ){
         $urlDELETE = "<a href='#' onclick='eliminarPartida($row[pk_id_partida])'>
-                        <img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'>
+                        <img class='icochico' src='/Resources/iconos/002-trash.svg'>
                       </a>";
       }
       $partidaContaElect .=

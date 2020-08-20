@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $id_poliza = $_GET['id_poliza'];
   $tipo = $_GET['tipo'];
@@ -103,7 +103,7 @@ if( $totalRegistrosSelect > 0 ){
         </td>
         <td class="col-md-1 text-left">
         <?php if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 && $cancela == 0 ){ ?>
-          <a href="#" id="guardarPolMST"> <img src= "/conta6/Resources/iconos/save.svg" class="icomediano"></a>
+          <a href="#" id="guardarPolMST"> <img src= "/Resources/iconos/save.svg" class="icomediano"></a>
         <?php } ?>
         </td>
       </tr>
@@ -182,7 +182,7 @@ if( $totalRegistrosSelect > 0 ){
               </td>
 
               <td class="col-md-2" role="button">
-                <a href="#detpol-buscarfacturas" class="buscarFacturas-polizas" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                <a href="#detpol-buscarfacturas" class="buscarFacturas-polizas" data-toggle="modal" class="boton icochico border-0"> <img src= "/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
               </td>
             </tr>
 
@@ -240,7 +240,7 @@ if( $totalRegistrosSelect > 0 ){
             </tr>
             <tr class="row justify-content-center mt-4">
               <td class="col-md-2">
-                <a href="#" class="boton p-1" id="detpol-btnguardar"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                <a href="#" class="boton p-1" id="detpol-btnguardar"><img src= "/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
               </td>
             </tr>
           </tbody>
@@ -294,13 +294,13 @@ if( $totalRegistrosSelect > 0 ){
       </div>
       <div class="row font14 mt-3 m-0">
         <div class="col-md-3">
-          <a href="#detpol-Sueldos" class="buscarFacturas-sueldos" data-toggle="modal"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI SUELDOS Y SALARIOS</a>
+          <a href="#detpol-Sueldos" class="buscarFacturas-sueldos" data-toggle="modal"><img src="/Resources/iconos/magnifier.svg"> CFDI SUELDOS Y SALARIOS</a>
         </div>
         <div class="col-md-3">
-          <a href="#detpol-Honorarios" class="buscarFacturas-honorarios" data-toggle="modal"><img src="/conta6/Resources/iconos/magnifier.svg"> CFDI HONORARIOS</a>
+          <a href="#detpol-Honorarios" class="buscarFacturas-honorarios" data-toggle="modal"><img src="/Resources/iconos/magnifier.svg"> CFDI HONORARIOS</a>
         </div>
         <div class="col-md-2">
-          <a href="#" onclick="btn_printPoliza(<?php echo $id_poliza; ?>,<?php echo $aduana; ?>)" class="boton border-0"><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>
+          <a href="#" onclick="btn_printPoliza(<?php echo $id_poliza; ?>,<?php echo $aduana; ?>)" class="boton border-0"><img class="icomediano" src="/Resources/iconos/printer.svg"></a>
         </div>
         <div class="col-md-2">
           <input id="sumaCargos" class="efecto" value="<?php echo $sumaCargos; ?>" <?php echo $txtStatus; ?> readonly>
@@ -343,7 +343,7 @@ if( $totalRegistrosSelect > 0 ){
 
     <div class="tab-pane fade" id="InfoAdd" role="tabpanel" aria-labelledby="InfoAdd-tab">
       <?php if( $oRst_permisos['s_consultar_ContaElect'] == 1 ){
-        require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
+        require $root . '/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
       } ?>
     </div>
   </div>
@@ -351,7 +351,7 @@ if( $totalRegistrosSelect > 0 ){
 
 </div>
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 require_once('modales/EditarRegistro.php');
 require_once('modales/buscarFacturas.php');
 ?>

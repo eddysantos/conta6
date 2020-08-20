@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
@@ -42,7 +42,7 @@ while ($row = $rslt->fetch_assoc()) {
 
   if($oRst_permisos['s_nom_suel_mod_tab_80'] == 1){
     $linkModifi_80 = "<a href='#articulo80' data-toggle='modal' db-id='$pk_id_art80' class='editar'>
-      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+      <img class='icochico' src='/Resources/iconos/003-edit.svg'>
     </a>";
   }
 
@@ -100,7 +100,7 @@ while ($row = $rslt->fetch_assoc()) {
 
   if($oRst_permisos['s_nom_suel_mod_tab_gen'] == 1){
     $linkModifi_gen = "<a href='#paramgenerales' data-toggle='modal' db-id='$pk_id_gen' class='editar'>
-      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+      <img class='icochico' src='/Resources/iconos/003-edit.svg'>
     </a>";
   }
 
@@ -156,7 +156,7 @@ while ($row = $rslt->fetch_assoc()) {
 
   if($oRst_permisos['s_nom_suel_mod_tab_imss'] == 1){
     $linkModifi_integracion = "<a href='#factorintegracion' data-toggle='modal' db-id='$pk_id_factor' class='editar'>
-      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+      <img class='icochico' src='/Resources/iconos/003-edit.svg'>
     </a>";
   }
 
@@ -209,7 +209,7 @@ while ($row = $rslt->fetch_assoc()) {
 
   if($oRst_permisos['s_nom_suel_mod_tab_subsidio'] == 1){
     $linkModifi_subsidio = "<a href='#subsidio' data-toggle='modal' db-id='$pk_id_subsidio'  class='editar'>
-      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+      <img class='icochico' src='/Resources/iconos/003-edit.svg'>
     </a>";
   }
 
@@ -265,7 +265,7 @@ while ($row = $rslt->fetch_assoc()) {
 
   if($oRst_permisos['s_nom_suel_mod_tab_imss'] == 1){
     $linkModifi_imss = "<a href='#imss' data-toggle='modal' db-id='$pk_id_imss'  class='editar'>
-      <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+      <img class='icochico' src='/Resources/iconos/003-edit.svg'>
     </a>";
   }
 
@@ -320,9 +320,11 @@ while ($row = $rslt->fetch_assoc()) {
   $n_porcentaje = $row['n_porcentaje'];
   $d_fecha_modifi = $row['d_fecha_modifi'];
 
+
+  $linkModifi_113 ="";
   if($oRst_permisos['s_nom_has_mod_tab_113'] == 1){
     $linkModifi_113 = "  <a href='#articulo113' data-toggle='modal' db-id='$pk_id_art113'  class='editar'>
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+        <img class='icochico' src='/Resources/iconos/003-edit.svg'>
       </a>";
   }
 

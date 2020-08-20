@@ -4,12 +4,12 @@ $system_callback = [];
 $incapacidad = '';
 $incapacidad .= "<option value='0' selected>Motivo</option>";
 
-$query = "SELECT * FROM conta_cs_sat_incapacidad";
+$query = "SELECT pk_tipoIncapacidad,s_descripcion FROM conta_cs_sat_incapacidad";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error durante la preparacion [$db->errno]: $db->error";
+  $system_callback['message'] = "Error durante la preparacion incapacidad [$db->errno]: $db->error";
   exit_script($system_callback);
 }
 

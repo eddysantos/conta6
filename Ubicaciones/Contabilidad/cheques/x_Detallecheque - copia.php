@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $id_cheque = $_GET['id_cheque'];
   $id_cuentaMST = $_GET['id_cuentaMST'];
@@ -89,9 +89,9 @@ if( $rows > 0 ){
     <h5 class="titulo">DATOS DEL CHEQUE
       <?php if( $mostrar == true ){ ?>
       <a href='#ch-editarRegMST' data-toggle='modal' role='button'>
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+        <img class='icochico' src='/Resources/iconos/003-edit.svg'>
       </a>
-      <!--a href="#" id="btn_editDatosCheMST" class="boton border-0"><img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'></a-->
+      <!--a href="#" id="btn_editDatosCheMST" class="boton border-0"><img class='icochico' src='/Resources/iconos/003-edit.svg'></a-->
       <?php }?>
     </h5>
     <form class="form1">
@@ -207,7 +207,7 @@ if( $rows > 0 ){
                       <label for="cdchCliente">Cliente</label>
                     </td>
                     <td class="col-md-2" role="button">
-                      <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                      <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton border-0"> <img src= "/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
                     </td>
                   </tr>
                   <tr class="row m-0 mt-4">
@@ -256,7 +256,7 @@ if( $rows > 0 ){
                   </tr>
                   <tr class="row mt-5">
                     <td class="col-md-2 offset-md-5">
-                      <a href="#" id="cdch_btnRegistrar" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                      <a href="#" id="cdch_btnRegistrar" class="boton"><img src= "/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
                     </td>
                   </tr>
                 </tbody>
@@ -285,17 +285,17 @@ if( $rows > 0 ){
           <div class="row font14">
             <div class="col-md-3 pt-3">
               <?php if( $oRst_permisos["s_reusar_cheques"] == 1 ){ ?>
-              <a href="#detpol-Sueldos" data-toggle="modal" class="boton"><img src= "/conta6/Resources/iconos/refresh-button.svg"> REUSAR CHEQUE</a>
+              <a href="#detpol-Sueldos" data-toggle="modal" class="boton"><img src= "/Resources/iconos/refresh-button.svg"> REUSAR CHEQUE</a>
               <?php } ?>
             </div>
             <div class="col-md-3 pt-3">
               <?php if( $tienePoliza == false && $statusGeneraPoliza == true ){ ?>
-              <a href="#" id="btn_generarPolChe" data-toggle="modal" class="boton"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR POLIZA DE CHEQUE</a>
+              <a href="#" id="btn_generarPolChe" data-toggle="modal" class="boton"><img src= "/Resources/iconos/add.svg"> GENERAR POLIZA DE CHEQUE</a>
               <?php } ?>
             </div>
             <div class="col-md-2 pt-3">
               <?php if( $tienePoliza == true ){ ?>
-              <a href="#" id="btn_printChe"  class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
+              <a href="#" id="btn_printChe"  class="boton border-0"><img class="icomediano" src= "/Resources/iconos/printer.svg"></a>
               <?php } ?>
             </div>
             <div class="col-md-2 mt-3">
@@ -336,7 +336,7 @@ if( $rows > 0 ){
                 <!--tr class="row m-0 borderojo pt-3 pb-2 p-0">
                   <td class="xs p-0">
                     <a href="">
-                      <img class="icochico" src="/conta6/Resources/iconos/002-trash.svg">
+                      <img class="icochico" src="/Resources/iconos/002-trash.svg">
                     </a>
                   </td>
                   <td class="small p-0">0110-00001</td>
@@ -354,7 +354,7 @@ if( $rows > 0 ){
                   <td class="small p-0">33,299</td>
                   <td class="xs p-0">
                     <a href="#editarRegCheque" data-toggle="modal">
-                      <img class="icochico" src="/conta6/Resources/iconos/003-edit.svg">
+                      <img class="icochico" src="/Resources/iconos/003-edit.svg">
                     </a>
                   </td>
                 </tr-->
@@ -890,7 +890,7 @@ if( $rows > 0 ){
                 <td colspan="10">Servicio Ancira Garza S.A de C.V</td>
                 <td colspan="2">$ 3,000</td>
                 <td colspan="2">0.00</td>
-                <td><a href=""><img class="icochico" src="/conta6/Resources/iconos/001-add.svg"></a></td>
+                <td><a href=""><img class="icochico" src="/Resources/iconos/001-add.svg"></a></td>
               </tr>
               <tr class="table-bordered sub">
                 <th colspan="3"></th>
@@ -929,7 +929,7 @@ if( $rows > 0 ){
               <tr class="borderojo">
                 <td colspan="2">
                   <a href="">
-                    <img class="icochico" src="/conta6/Resources/iconos/002-trash.svg">
+                    <img class="icochico" src="/Resources/iconos/002-trash.svg">
                   </a>
                 </td>
                 <td>CompNal</td>
@@ -976,7 +976,7 @@ if( $rows > 0 ){
 } #$rows
 
 
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 
 
 ?>

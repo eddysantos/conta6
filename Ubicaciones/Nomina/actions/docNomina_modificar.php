@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $idRegimen = trim($_POST['idRegimen']);
 $idDocNomina = trim($_POST['idDocNomina']);
@@ -44,7 +44,7 @@ if (!($stmt_mst->execute())) {
 }
 
 
-require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle.php';
+require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle.php';
 
 
 
@@ -75,7 +75,7 @@ exit_script($system_callback);
 
 
 /*
-require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_datosEmpleado.php';
+require $root . '/Ubicaciones/Nomina/actions/consulta_datosEmpleado.php';
 $ID_EMPLEADO_CURSOR = $row_datosEmpleado['pk_id_empleado'];
 $id_empleado = $row_datosEmpleado['pk_id_empleado'];
 $nombre = $row_datosEmpleado['s_nombre'];
@@ -139,22 +139,22 @@ $row_deptoDesc = $rslt_deptoDesc->fetch_assoc();
 $nom_depto = $row_deptoDesc['s_descripcion'];
 
 if( $descNomina == "Honorarios" ){
-  require $root . '/conta6/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_1agregarDocCaptura.php';
+  require $root . '/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_1agregarDocCaptura.php';
   $id_docNomina = $db->insert_id;
-  require $root . '/conta6/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_4agregarDetTotales.php';
+  require $root . '/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_4agregarDetTotales.php';
 }
 
 if( $descNomina == "Sueldos" || $descNomina == "Finiquito" ){
-  require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_1agregarDocCaptura.php';
+  require $root . '/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_1agregarDocCaptura.php';
   $id_docNomina = $db->insert_id;
 }
 
 if( $descNomina == "Sueldos" ){
-  require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_5agregarDetTotales.php';
+  require $root . '/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_5agregarDetTotales.php';
 }
 
 if( $descNomina == "Finiquito" ){
-  require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_5agregarDetTotales_finiquito.php';
+  require $root . '/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_5agregarDetTotales_finiquito.php';
 }
 
 
@@ -164,7 +164,7 @@ $nombreCompleto = $nombre.' '.$apellidoP.' '.$apellidoM;
 $descripcion = "Se genero DocNomina: $id_docNomina Oficina: $aduana Anio: $anio Semana: $NUM_NOMINA Empleado: $nombreCompleto";
 $clave = 'nomHonorarios';
 $folio = $id_docNomina;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 $system_callback['code'] = 1;

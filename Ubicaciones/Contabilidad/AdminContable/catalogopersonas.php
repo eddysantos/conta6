@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 
@@ -70,7 +70,7 @@
         <div class="text-center">
           <div class="row m-0 justify-content-center mt-5 font14">
             <div class="col-md-3">
-              <a href="#NuevoProveedor" data-toggle="modal" class="b"><img src="/conta6/Resources/iconos/001-add.svg" class="icochico"> AGREGAR NUEVO</a>
+              <a href="#NuevoProveedor" data-toggle="modal" class="b"><img src="/Resources/iconos/001-add.svg" class="icochico"> AGREGAR NUEVO</a>
             </div>
           </div>
         <?php } ?>
@@ -83,7 +83,7 @@
               <label for="cat-prov">Proveedores</label>
             </td>
             <td class="col-md-1 text-left">
-              <a href="#" id="btn_printProv"><img src="/conta6/Resources/iconos/printer.svg" class="icomediano"></a>
+              <a href="#" id="btn_printProv"><img src="/Resources/iconos/printer.svg" class="icomediano"></a>
             </td>
           </tr>
         </table>
@@ -98,7 +98,7 @@
                   <input class='efecto tiene-contenido popup-input' id='bcoSATprov' type='text' id-display='#popup-display-bcoSATprov' action='bancosSAT' db-id='' autocomplete='off'>
                   <div class='popup-list' id='popup-display-bcoSATprov' style='display:none'></div>
                   <label for='bcoSATprov'>BANCOS
-                    <a href='#catalogoBancosSAT' data-toggle='modal'><img src='/conta6/Resources/iconos/help.svg' class="icochico"></a>
+                    <a href='#catalogoBancosSAT' data-toggle='modal'><img src='/Resources/iconos/help.svg' class="icochico"></a>
                   </label>
                 </td>
                 <td class='col-md-3 input-effect'>
@@ -109,7 +109,7 @@
                   <input class='efecto tiene-contenido popup-input' id='nomBcoExtj' type='text' id-display='#popup-display-nomBcoExtj' action='bancosExtranjeros' db-id='' autocomplete='off' disabled>
                   <div class='popup-list' id='popup-display-nomBcoExtj' style='display:none'></div>
                   <label for='nomBcoExtj'>BANCOS EXTRANJEROS
-                    <a href='#catalogoBancosEXT' data-toggle='modal'><img src='/conta6/Resources/iconos/help.svg' class="icochico"></a>
+                    <a href='#catalogoBancosEXT' data-toggle='modal'><img src='/Resources/iconos/help.svg' class="icochico"></a>
                   </label>
                 </td>
                 <td class='col-md-3 input-effect'>
@@ -118,9 +118,9 @@
                 </td>
                 <td class='col-md-1'>
                   <?php if( $oRst_permisos['s_catalogoPersonasPROV_m'] == 1 ){ ?>
-                    <!-- <a href='#' id="btn_agrCtaBcoProv" class='ver boton' accion='mostrarcta'> <img src= '/conta6/Resources/iconos/add.svg' class='icochico'> AGREGAR</a> -->
+                    <!-- <a href='#' id="btn_agrCtaBcoProv" class='ver boton' accion='mostrarcta'> <img src= '/Resources/iconos/add.svg' class='icochico'> AGREGAR</a> -->
 
-                    <a href="#" id="btn_agrCtaBcoProv"><img class="icomediano" src="/conta6/Resources/iconos/002-plus.svg"></a>
+                    <a href="#" id="btn_agrCtaBcoProv"><img class="icomediano" src="/Resources/iconos/002-plus.svg"></a>
                   <?php } ?>
 
                 </td>
@@ -151,7 +151,7 @@
             <tbody>
               <tr class="row justify-content-center font14 m-0">
                 <td class="col-md-3 p-0">
-                  <a href="#" id="genCorresponsal" class="b"><img src="/conta6/Resources/iconos/001-add.svg" class="icochico"> AGREGAR NUEVO</a>
+                  <a href="#" id="genCorresponsal" class="b"><img src="/Resources/iconos/001-add.svg" class="icochico"> AGREGAR NUEVO</a>
                 </td>
               </tr>
               <tr class="row m-0 align-items-center justify-content-center mt-4">
@@ -162,7 +162,7 @@
                 </td>
                 <!-- Aun pendiente -->
                 <td class="col-md-1 text-left">
-                  <a href='#'><img class="icomediano ml-2" src="/conta6/Resources/iconos/printer.svg"></a>
+                  <a href='#'><img class="icomediano ml-2" src="/Resources/iconos/printer.svg"></a>
                 </td>
               </tr>
             </tbody>
@@ -190,7 +190,7 @@
         <div class="text-center">
           <div class="row m-0 justify-content-center mt-5 font14">
             <div class="col-md-3">
-              <a href="#NuevoBeneficiario" data-toggle="modal" class="b"><img src="/conta6/Resources/iconos/001-add.svg" class="icochico"> AGREGAR NUEVO</a>
+              <a href="#NuevoBeneficiario" data-toggle="modal" class="b"><img src="/Resources/iconos/001-add.svg" class="icochico"> AGREGAR NUEVO</a>
             </div>
           </div>
         <?php } ?>
@@ -202,7 +202,7 @@
               <label for="cat-benef">Beneficiario</label>
             </td>
             <td class="col-md-1 text-left">
-              <a href="#" id="btn_printBenef"><img src="/conta6/Resources/iconos/printer.svg" class="icomediano"></a>
+              <a href="#" id="btn_printBenef"><img src="/Resources/iconos/printer.svg" class="icomediano"></a>
             </td>
           </tr>
         </table>
@@ -217,14 +217,14 @@
                   <input class='efecto tiene-contenido popup-input' id='bcoSATben' type='text' id-display='#popup-display-bcoSAT' action='bancosSAT' db-id='' autocomplete='off'>
                   <div class='popup-list' id='popup-display-bcoSAT' style='display:none'></div>
                   <label for='bcoSATben'>BANCOS
-                    <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
+                    <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/Resources/iconos/help.svg' style='margin-top:-4px'></a>
                   </label>
                 </td>
                 <td class='col-md-3 input-effect'>
                   <input class='efecto tiene-contenido popup-input' id='nomBcoExtjben' type='text' id-display='#popup-display-nomBcoExtjBen' action='bancosExtranjeros' db-id='' autocomplete='off' disabled>
                   <div class='popup-list' id='popup-display-nomBcoExtjBen' style='display:none'></div>
                   <label for='nomBcoExtj'>BANCOS EXTRANJEROS
-                    <a href='#catalogoBancosEXT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
+                    <a href='#catalogoBancosEXT' data-toggle='modal' style='margin-top:-4px'><img src='/Resources/iconos/help.svg' style='margin-top:-4px'></a>
                   </label>
                 </td>
                 <td class='col-md-3 input-effect'>
@@ -239,7 +239,7 @@
                 </td>
                 <td class='col-md-1 input-effect'>
                 <?php if( $oRst_permisos['s_benefModificar_cheques'] == 1 ){ ?>
-                  <a href="#" id="btn_agrCtaBcoBen"><img class="icomediano" src="/conta6/Resources/iconos/002-plus.svg"></a>
+                  <a href="#" id="btn_agrCtaBcoBen"><img class="icomediano" src="/Resources/iconos/002-plus.svg"></a>
                 <?php } ?>
                 </td>
               </tr>
@@ -282,26 +282,26 @@
     </tr>
   </table>
 
-  <script src="/Conta6/Ubicaciones/Contabilidad/js/helperContabilidad.js"></script>
-  <script src="/Conta6/Ubicaciones/Contabilidad/AdminContable/js/catalogoPersonas.js"></script>
-  <script src="/Conta6/Resources/js/validarFormulario.js"></script>
-  <script src="/Conta6/Resources/js/calculadora.js"></script>
+  <script src="/Ubicaciones/Contabilidad/js/helperContabilidad.js"></script>
+  <script src="/Ubicaciones/Contabilidad/AdminContable/js/catalogoPersonas.js"></script>
+  <script src="/Resources/js/validarFormulario.js"></script>
+  <script src="/Resources/js/calculadora.js"></script>
 
-  <script src="/Conta6/Ubicaciones/Contabilidad/js/contenedor-movible.js"></script>
-  <script src="/Conta6/Resources/js/popup-list-plugin.js"></script>
-  <script src="/Conta6/Resources/js/table-fetch-plugin.js"></script>
-  <script src="/Conta6/Resources/js/Inputs.js"></script>
+  <script src="/Ubicaciones/Contabilidad/js/contenedor-movible.js"></script>
+  <script src="/Resources/js/popup-list-plugin.js"></script>
+  <script src="/Resources/js/table-fetch-plugin.js"></script>
+  <script src="/Resources/js/Inputs.js"></script>
 
 
 </footer>
 <?php
-// require $root . '/conta6/Ubicaciones/footer.php';
+// require $root . '/Ubicaciones/footer.php';
 
 require_once('modales/nuevoProveedor.php');
 require_once('modales/nuevoBeneficiario.php');
 
-require $root . '/Conta6/Ubicaciones/Contabilidad/AdminContable/modales/ModalCorresponsales.php';
-require $root . '/Conta6/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
-require $root . '/Conta6/Ubicaciones/Contabilidad/modales/catalogoBancosExt.php';
+require $root . '/Ubicaciones/Contabilidad/AdminContable/modales/ModalCorresponsales.php';
+require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
+require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosExt.php';
 
 ?>

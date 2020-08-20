@@ -4,12 +4,12 @@ $system_callback = [];
 $bancos = '';
 
 $bancos = $bancos."<option selected value='0'>Seleccione un banco</option>";
-  $query = "SELECT * FROM conta_cs_sat_bancos WHERE s_activo = 1";
+  $query = "SELECT s_nombre,pk_id_banco FROM conta_cs_sat_bancos WHERE s_activo = 1";
 
   $stmt = $db->prepare($query);
 	if (!($stmt)) {
     $system_callback['code'] = "500";
-    $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
+    $system_callback['message'] = "Error during query prepare bancos [$db->errno]: $db->error";
     exit_script($system_callback);
   }
   if (!($stmt->execute())) {

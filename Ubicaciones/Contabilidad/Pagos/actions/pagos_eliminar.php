@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $partida = trim($_POST['partida']);
 
@@ -108,7 +108,7 @@ $descripcion = "Se elimino id_pago_captura: $partida ";
 
 $clave = 'pagos';
 $folio = $partida;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 $system_callback['code'] = 1;

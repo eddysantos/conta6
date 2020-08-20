@@ -1,6 +1,6 @@
 <?PHP
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 	$poliza  = trim($_POST['id_poliza']);
   $cliente  = trim($_POST['id_cliente']);
@@ -50,7 +50,7 @@
 	#* BUSCO LA CUENTA 0208 DEL CLIENTE             *
 	#************************************************
   $id_cliente = $cliente;
-  require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
+  require $root . '/Resources/PHP/actions/consultaCtas108y208_cliente.php';
   if( $rows_ctasCliente > 0 ){
     while($row_ctasCliente = $rslt_ctasCliente->fetch_assoc()){
       $cta = $row_ctasCliente['pk_id_cuenta'];
@@ -82,7 +82,7 @@
   if( $accion == "insertar" ){
     if( $factura > 0 ){
       $id_factura = $factura;
-      require $root . '/conta6/Resources/PHP/actions/consultarFactura_idFactura.php';
+      require $root . '/Resources/PHP/actions/consultarFactura_idFactura.php';
       $metodoDePago = $row_consultaFactura['fk_c_MetodoPago'];
   		$Total_POCME = $row_consultaFactura['n_total_POCME'];
   		$Total_Pagos = $row_consultaFactura['n_total_pagos'];
@@ -91,11 +91,11 @@
       if( $metodoDePago == 'PPD' && $totalPagosCLT == 0 ){ #agregado 17-abril-2019
 
         $cuenta = $idcta208;
-        require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+        require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
         $pk_partida = mysqli_insert_id($db);
 		  }else{
 
-        require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+        require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
         $pk_partida = mysqli_insert_id($db);
 
         if ($busCta108 !== false && $abono > 0){
@@ -103,7 +103,7 @@
   				$impPago = $abono;
 
   				#IVA no cobrado al 16%
-          require $root . '/conta6/Resources/PHP/actions/consulta_ivaNoCobrado16.php';
+          require $root . '/Resources/PHP/actions/consulta_ivaNoCobrado16.php';
           $rslt_ivaNoCobrado16 = $stmt_ivaNoCobrado16->get_result();
 
           if ($rslt_ivaNoCobrado16->num_rows > 0) {
@@ -111,19 +111,19 @@
               $cargo = $row_ivaNoCobrado16['saldo'];
               $abono = 0;
               $cuenta = '0202-00007';
-              require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+              require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
               $pk_partida = mysqli_insert_id($db);
 
               $cargo = 0;
               $abono = $row_ivaNoCobrado16['saldo'];
               $cuenta = '0202-00002';
-              require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+              require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
               $pk_partida = mysqli_insert_id($db);
           }
 
 
           #IVA no cobrado al 8%
-          require $root . '/conta6/Resources/PHP/actions/consulta_ivaNoCobrado8.php';
+          require $root . '/Resources/PHP/actions/consulta_ivaNoCobrado8.php';
           $rslt_ivaNoCobrado8 = $stmt_ivaNoCobrado8->get_result();
 
           if ($rslt_ivaNoCobrado8->num_rows > 0) {
@@ -131,23 +131,23 @@
               $cargo = $row_ivaNoCobrado8['saldo'];
               $abono = 0;
               $cuenta = '0202-00009';
-              require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+              require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
               $pk_partida = mysqli_insert_id($db);
 
               $cargo = 0;
               $abono = $row_ivaNoCobrado8['saldo'];
               $cuenta = '0202-00008';
-              require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+              require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
               $pk_partida = mysqli_insert_id($db);
           }
 
 
           #IVA retenido por cobrar
-          require $root . '/conta6/Resources/PHP/actions/consulta_ivaRetenidoNoCobrado.php';
+          require $root . '/Resources/PHP/actions/consulta_ivaRetenidoNoCobrado.php';
           $rslt_ivaRetenidoNoCobrado = $stmt_ivaRetenidoNoCobrado->get_result();
 
           if ($rslt_ivaRetenidoNoCobrado->num_rows > 0) {
-            require $root . '/conta6/Resources/PHP/actions/consulta_saldoFactura.php';
+            require $root . '/Resources/PHP/actions/consulta_saldoFactura.php';
             $rslt_saldoFactura = $stmt_saldoFactura->get_result();
 
             $porciento = 51;
@@ -162,14 +162,14 @@
   						if( $abono > 0 ){
                 #por cobrar
                 $cuenta = '0216-00001';
-                require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+                require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
                 $pk_partida = mysqli_insert_id($db);
 
                 #no cobrado
   							$cargo = abs($rslt_ivaRetenidoNoCobrado['saldo']);
   							$abono = 0;
                 $cuenta = '0216-00002';
-                require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+                require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
                 $pk_partida = mysqli_insert_id($db);
 
   						}
@@ -198,7 +198,7 @@
             $cargo = $cargo2;
             $abono = $total;
             $cuenta = $idcta208;
-            require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+            require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
             $pk_partida = mysqli_insert_id($db);
           }
         }
@@ -212,7 +212,7 @@
             $cargo = $cargo2;
             $abono = $total;
             $cuenta = $idcta208;
-            require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+            require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
             $pk_partida = mysqli_insert_id($db);
           }
 
@@ -223,7 +223,7 @@
 
     // INFORMACION ADICIONAL - Contabilidad Electrónica
     if( $notaCred > 0 ){
-      require $root . '/conta6/Resources/PHP/actions/consultaNotaCreditoCapturaTimbrada.php';
+      require $root . '/Resources/PHP/actions/consultaNotaCreditoCapturaTimbrada.php';
 
       $tipoInf = 'CompNal';
       $RFC = $row_ncCaptTim['s_rfc'];
@@ -236,11 +236,11 @@
       $beneficiarioOpc = $nombre;
       $moneda = 'MXN';
       $tipoCamb = 1;
-      require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
+      require $root . '/Resources/PHP/actions/contaElect_insertaCompNal.php';
     }else{
       if( ($factura > 0 && $ctagastos == 0) || ($factura > 0 && $ctagastos > 0) ){
         $id_captura = $row_consultaFactura['pk_id_cuenta_captura'];
-        require $root . '/conta6/Resources/PHP/actions/consultaFacturaTimbrada.php'; #$s_UUID
+        require $root . '/Resources/PHP/actions/consultaFacturaTimbrada.php'; #$s_UUID
 
         $tipoInf = 'CompNal';
         $RFC = $row_consultaFactura['s_rfc'];
@@ -253,7 +253,7 @@
         $beneficiarioOpc = $nombre;
         $moneda = 'MXN';
         $tipoCamb = 1;
-        require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
+        require $root . '/Resources/PHP/actions/contaElect_insertaCompNal.php';
       }
     }
     // TERMINA INFORMACION ADICIONAL
@@ -303,6 +303,6 @@
 
   $clave = 'polizas';
   $folio = $poliza;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 ?>

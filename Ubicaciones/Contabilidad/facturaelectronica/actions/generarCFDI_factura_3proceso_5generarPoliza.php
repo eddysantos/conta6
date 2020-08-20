@@ -3,11 +3,11 @@
 $tipo = 3;
 $fecha = $fechaTimbre;
 $concepto = "FACTURA ELECTRONICA - ".$r_razon_social;
-require $root . '/conta6/Resources/PHP/actions/generarFolioPoliza.php';
+require $root . '/Resources/PHP/actions/generarFolioPoliza.php';
 $poliza = $nFolio;
 $detallePoliza = '';
 
-require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
+require $root . '/Resources/PHP/actions/consultaCtas108y208_cliente.php';
 if( $rows_ctasCliente > 0 ){
   while($row_ctasCliente = $rslt_ctasCliente->fetch_assoc()){
     $cta = $row_ctasCliente['pk_id_cuenta'];
@@ -35,7 +35,7 @@ if( $Total_Gral > 0 ){
 }
 
 #Registros de los conceptos de honorarios
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php';
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php';
 
 #--Movimiento Contable IVA
 if( $totaGralIVA <> 0 ){

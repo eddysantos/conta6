@@ -1,8 +1,8 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
-require $root . '/conta6/Resources/PHP/actions/numtoletras.php';
+require $root . '/Resources/PHP/actions/numtoletras.php';
 
 $Total = trim($_POST['total']);
 

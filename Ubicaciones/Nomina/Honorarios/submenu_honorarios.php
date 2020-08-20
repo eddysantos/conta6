@@ -7,6 +7,6 @@
   </div>
   <div class="col-md-4">
     <!--a id="submenuMed" class="honorarios" accion="paramHon" status="cerrado">PARAMETROS</a-->
-    <a href="/conta6/Ubicaciones/Nomina/Honorarios/Parametros_hon.php" >PARAMETROS</a>
+    <a href="/Ubicaciones/Nomina/Honorarios/Parametros_hon.php" >PARAMETROS</a>
   </div>
 </div>

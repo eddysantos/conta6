@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
   $idDocNomina = trim($_POST['idDocNomina']);
 
@@ -35,7 +35,7 @@
   $descripcion = "Se elimino el documento: $idDocNomina";
   $clave = 'nomHonorarios';
   $folio = $idDocNomina;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
   $system_callback['code'] = 1;

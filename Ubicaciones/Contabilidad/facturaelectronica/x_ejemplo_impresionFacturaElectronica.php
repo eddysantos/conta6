@@ -1,24 +1,24 @@
 <?php
 #http://localhost:88/conta6/ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML_2.php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/Conta6/Resources/vendor/autoload.php';
-  require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/vendor/autoload.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
   #$cuenta = trim($_GET['cuenta']);
   $cuenta = 172;
-  $fileQR = $root . '/Conta6/CFDI_generados/2018/CLT_7345/QR/N13003039_9_factura.png';
-  #require $root . '/conta6/Resources/PHP/actions/consultaDatosCIA.php';
+  $fileQR = $root . '/CFDI_generados/2018/CLT_7345/QR/N13003039_9_factura.png';
+  #require $root . '/Resources/PHP/actions/consultaDatosCIA.php';
   $d_fechavencimiento = '';
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarFactura.php';
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
   $id_cliente = $fk_id_cliente;
-  require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago
+  require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago
 
   $nombreArchivo = $fk_referencia.'_'.$pk_id_factura.'facturaElectronica.pdf';
 
@@ -32,9 +32,9 @@
     }
   }
 
-  require $root . '/conta6/Resources/PHP/actions/consultaUsoCFDI_facturar.php';
+  require $root . '/Resources/PHP/actions/consultaUsoCFDI_facturar.php';
   $id_captura = $cuenta;
-  require $root . '/conta6/Resources/PHP/actions/consultaFactura_ctaGastos.php';
+  require $root . '/Resources/PHP/actions/consultaFactura_ctaGastos.php';
   if( $fk_c_MetodoPago == 'PUE' ){ $descMetodoPago = 'PUE  Pago en una sola exhibici&oacute;n'; }
   if( $fk_c_MetodoPago == 'PPD' ){ $descMetodoPago = 'PPD  Pago en parcialidades o diferido'; }
   $regimen = "601 General de Ley Personas Morales";

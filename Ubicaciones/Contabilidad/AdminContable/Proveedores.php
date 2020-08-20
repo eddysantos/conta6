@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <?php if( $oRst_permisos["s_catalogoPersonasPROV_g"] == 1 ){ ?>
@@ -22,7 +22,7 @@
       <label for="cat-prov">Proveedores</label>
     </td>
     <td class="col-md-1 text-left">
-      <a href="#" id="btn_printProv"><img src="/conta6/Resources/iconos/printer.svg" class="icomediano"></a>
+      <a href="#" id="btn_printProv"><img src="/Resources/iconos/printer.svg" class="icomediano"></a>
     </td>
   </tr>
 </table>
@@ -39,14 +39,14 @@
             <input class='efecto tiene-contenido popup-input' id='bcoSATprov' type='text' id-display='#popup-display-bcoSATprov' action='bancosSAT' db-id='' autocomplete='off'>
             <div class='popup-list' id='popup-display-bcoSATprov' style='display:none'></div>
             <label for='bcoSATprov'>BANCOS
-              <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
+              <a href='#catalogoBancosSAT' data-toggle='modal' style='margin-top:-4px'><img src='/Resources/iconos/help.svg' style='margin-top:-4px'></a>
             </label>
           </td>
           <td class='col-md-3 input-effect'>
 		  	    <input class='efecto tiene-contenido popup-input' id='nomBcoExtj' type='text' id-display='#popup-display-nomBcoExtj' action='bancosExtranjeros' db-id='' autocomplete='off' disabled>
             <div class='popup-list' id='popup-display-nomBcoExtj' style='display:none'></div>
             <label for='nomBcoExtj'>BANCOS EXTRANJEROS
-              <a href='#catalogoBancosEXT' data-toggle='modal' style='margin-top:-4px'><img src='/conta6/Resources/iconos/help.svg' style='margin-top:-4px'></a>
+              <a href='#catalogoBancosEXT' data-toggle='modal' style='margin-top:-4px'><img src='/Resources/iconos/help.svg' style='margin-top:-4px'></a>
             </label>
           </td>
           <td class='col-md-3 input-effect'>
@@ -61,7 +61,7 @@
           </td>
           <td class='col-md-2 input-effect'>
             <?php if( $oRst_permisos['s_catalogoPersonasPROV_m'] == 1 ){ ?>
-              <a href='#' id="btn_agrCtaBcoProv" class='ver boton' accion='mostrarcta'> <img src= '/conta6/Resources/iconos/add.svg' class='icochico'> AGREGAR</a>
+              <a href='#' id="btn_agrCtaBcoProv" class='ver boton' accion='mostrarcta'> <img src= '/Resources/iconos/add.svg' class='icochico'> AGREGAR</a>
             <?php } ?>
 
           </td>
@@ -85,9 +85,9 @@
 
 
 <?php
-require $root . '/conta6/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
-require $root . '/Conta6/Ubicaciones/Contabilidad/modales/catalogoBancosExt.php';
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
+require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosExt.php';
+require $root . '/Ubicaciones/footer.php';
 
 require_once('modales/nuevoProveedor.php');
  ?>

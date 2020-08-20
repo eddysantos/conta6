@@ -10,7 +10,7 @@ if( $id_regimen == '02' ){
 }
 $concepto = $semCncpt." ".$nombre." ".$apellidoP." ".$apellidoM;
 $concepto = substr($concepto, 0, 300);
-require $root . '/conta6/Resources/PHP/actions/generarFolioPoliza.php';
+require $root . '/Resources/PHP/actions/generarFolioPoliza.php';
 $poliza = $nFolio;
 $detallePoliza = '';
 
@@ -111,7 +111,7 @@ mysqli_query($db,"CREATE TABLE IF NOT EXISTS temp_distribSalarioPolNomina(oficin
           echo 'INSERTAR EN: '.$registroContaP;
           echo "<br>";
 
-          require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_percepciones.php';
+          require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_percepciones.php';
         }
 
       }else{ #--1
@@ -120,7 +120,7 @@ mysqli_query($db,"CREATE TABLE IF NOT EXISTS temp_distribSalarioPolNomina(oficin
           echo "<br>";
           echo 'INSERTAR EN: '.$registroContaP;
           echo "<br>";
-          require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_percepciones.php';
+          require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_percepciones.php';
       } #-- 1
   }
   echo '-------------------------------------------------------------------------------------------------------------------- PERCEPCIONES - FIN'; echo "<br>";
@@ -175,7 +175,7 @@ echo $ordenReporteP; echo "<br>";
       echo 'EL CONCEPTO SE DISTRIBUYE: '.$distribuidoP;	 echo "<br>";
       echo 'INSERTAR EN: '.$registroContaP; echo "<br>";
 
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_horasExtra.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_horasExtra.php';
     }
 
   }else{ #-- 1
@@ -183,7 +183,7 @@ echo $ordenReporteP; echo "<br>";
       echo 'EL CONCEPTO SE DISTRIBUYE: '.$distribuidoP; echo "<br>";
       echo 'INSERTAR EN: '.$registroContaP; echo "<br>";
 
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_horasExtra.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_horasExtra.php';
 
   } #-- 1
 }
@@ -247,7 +247,7 @@ while( $oRst_otrosPagos = mysqli_fetch_array($sql_otrosPagos) ){
       echo 'INSERTAR EN: '.$registroContaOP;
       echo "<br>";
 
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_otrosPagos.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_otrosPagos.php';
 
     }
 
@@ -258,7 +258,7 @@ while( $oRst_otrosPagos = mysqli_fetch_array($sql_otrosPagos) ){
       echo 'INSERTAR EN: '.$registroContaOP;
       echo "<br>";
 
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_otrosPagos.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_otrosPagos.php';
   } #-- 1
 }
 echo '-------------------------------------------------------------------------------------------------------------------- OTROS PAGOS - FIN'; echo "<br>";
@@ -309,7 +309,7 @@ echo $ordenReporteP; echo "<br>";
       echo 'EL CONCEPTO SE DISTRIBUYE: '.$distribuidoP;
       echo 'INSERTAR EN: '.$registroContaP; echo "<br>";
 
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_deducciones.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_deducciones.php';
     }
 
   }else{ #-- 1
@@ -317,7 +317,7 @@ echo $ordenReporteP; echo "<br>";
       echo 'EL CONCEPTO SE DISTRIBUYE: '.$distribuidoP;	echo "<br>";
       echo 'INSERTAR EN: '.$registroContaP; echo "<br>";
 
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_deducciones.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_deducciones.php';
 
   } #-- 1
 }
@@ -367,14 +367,14 @@ while( $oRst_desctoDespTotal = mysqli_fetch_array($desctoDespTotal) ){
         echo 'EL CONCEPTO SE DISTRIBUYE: '.$distribuidoP;
         echo 'INSERTAR EN: '.$registroContaP; echo "<br>";
 
-        require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_desctoDespTotal.php';
+        require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_desctoDespTotal.php';
       }
     }else{ #-- 1
     echo '--------------------------------------------------- parte2 desctoDespTotal'; echo "<br>";
         echo 'EL CONCEPTO SE DISTRIBUYE: '.$distribuidoP;	echo "<br>";
         echo 'INSERTAR EN: '.$registroContaP; echo "<br>";
 
-        require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_desctoDespTotal.php';
+        require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_desctoDespTotal.php';
 
     } #-- 1
 }
@@ -408,7 +408,7 @@ echo $ordenReporteP;  echo "<br>";
       echo 'EL CONCEPTO SE DISTRIBUYE: '.$distribuidoP;	 echo "<br>";
       echo 'INSERTAR EN: '.$registroContaP;  echo "<br>";
 
-      require $root . '/conta6/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_totales.php';
+      require $root . '/Ubicaciones/Nomina/actions/generarCFDI_docNomina_2proceso_3generarPoliza_totales.php';
 
 }
 echo '-------------------------------------------------------------------------------------------------------------------- TOTALES - FIN';  echo "<br>";

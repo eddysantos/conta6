@@ -59,7 +59,7 @@ if( $total_consultaDetalle_DR > 0 ) {
 		$fk_referencia .= $fk_referenciaDR.'_';
 
 		//$inputPartidaDR = "<input class='id-partidaDR' type='hidden' id='T_partida_$fk_rowPago' value='0'>";
-		$btnEliminarDR = "<a href='#' class='eliminar-pagosDR'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
+		$btnEliminarDR = "<a href='#' class='eliminar-pagosDR'><img class='icochico' src='/Resources/iconos/cross.svg'></a>";
 
 
 		if($pk_rowPago == $fk_rowPago){
@@ -187,7 +187,7 @@ if( $total_consultaDetalle_DR > 0 ) {
 						<td class='col-md-2 p-1'>Imp. Pagado</td>
 						<td class='col-md-1 p-1'>IVA</td>
 						<td class='col-md-1 p-1'>S.Insoluto</td>
-						<td class='col-md-1 p-1'><a href='#' id='Btn_agregarDR' onclick='Btn_agregarDR(&#39;$idElementDesglose&#39;,$fk_rowPago)'><img class='icochico' src='/conta6/Resources/iconos/002-plus.svg'></a></td>
+						<td class='col-md-1 p-1'><a href='#' id='Btn_agregarDR' onclick='Btn_agregarDR(&#39;$idElementDesglose&#39;,$fk_rowPago)'><img class='icochico' src='/Resources/iconos/002-plus.svg'></a></td>
 					</tr>
 				</thead>
 				<tbody id='$idElementDesglose' class='tbodyPagosDesglose'>$pagosDetalle_DR</tbody>

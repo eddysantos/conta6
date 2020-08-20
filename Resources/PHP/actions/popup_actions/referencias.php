@@ -1,11 +1,11 @@
 <?php
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $db->close();
 
-require $root . "/conta6/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php";
+require $root . "/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php";
 $system_callback = [];
 $data = $_POST;
 

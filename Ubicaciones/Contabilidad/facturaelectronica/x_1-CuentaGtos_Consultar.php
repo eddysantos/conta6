@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <!-- <div class="text-center">
@@ -18,10 +18,10 @@
 
   <div class="col-md-2 p-3">
     <a href="1-CuentaGastos.php">
-      <img class="icomediano ml-4" src="/conta6/Resources/iconos/left.svg">
+      <img class="icomediano ml-4" src="/Resources/iconos/left.svg">
     </a>
     <a href="" class="ml-4">
-      <img class="icomediano" src="/conta6/Resources/iconos/printer.svg">
+      <img class="icomediano" src="/Resources/iconos/printer.svg">
     </a>
   </div>
 

@@ -159,7 +159,7 @@ $(document).ready(function(){
 		}
 		$.ajax({
 	    type: "POST",
-	    url: "/conta6/Resources/PHP/actions/consulta_cheques.php",
+	    url: "/Resources/PHP/actions/consulta_cheques.php",
 	    data: data,
 	    success: function(r){
 				console.log(data);
@@ -188,7 +188,7 @@ $(document).ready(function(){
 
 		 $.ajax({
 			 type: "POST",
-			 url: "/conta6/Resources/PHP/actions/consulta_chequeDatos.php",
+			 url: "/Resources/PHP/actions/consulta_chequeDatos.php",
 			 data: data,
 			 success: function(r){
 				 console.log(data);
@@ -252,7 +252,7 @@ $(document).ready(function(){
 //       }
 //       $.ajax({
 //         type: "POST",
-//         url: "/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/tabla_detallepoliza_infAdd.php",
+//         url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/tabla_detallepoliza_infAdd.php",
 //         data: data,
 //         success: 	function(request){
 // 					r = JSON.parse(request);
@@ -300,7 +300,7 @@ function procesaXML(fileXML,contenido_XML){
   }
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/procesaArchivo.php",
+    url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/procesaArchivo.php",
     data: data,
     success: function(r){
       console.log(r);
@@ -390,7 +390,7 @@ function guardarCompNal(id_partida){
 
 	$.ajax({
 		type: "POST",
-		url: "/Conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
+		url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
 		data: data,
 		success: 	function(r){
 			r = JSON.parse(r);
@@ -445,7 +445,7 @@ function guardarCheque(id_partida){
 
 	$.ajax({
 		type: "POST",
-		url: "/Conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
+		url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
 		data: data,
 		success: 	function(r){
 			r = JSON.parse(r);
@@ -510,7 +510,7 @@ function guardarCompExt(id_partida){
 
 	$.ajax({
 		type: "POST",
-		url: "/Conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
+		url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
 		data: data,
 		success: 	function(r){
 			r = JSON.parse(r);
@@ -593,7 +593,7 @@ function guardarTransfer(id_partida){
 
 	$.ajax({
 		type: "POST",
-		url: "/Conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
+		url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
 		data: data,
 		success: 	function(r){
 			r = JSON.parse(r);
@@ -678,7 +678,7 @@ function guardarOtrMetodoPago(id_partida){
 
 	$.ajax({
 		type: "POST",
-		url: "/Conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
+		url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesDetalle.php",
 		data: data,
 		success: 	function(r){
 			r = JSON.parse(r);
@@ -720,7 +720,7 @@ function eliminarPartida(partida){
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Resources/PHP/actions/contaElect_eliminarPartida.php",
+				url: "/Resources/PHP/actions/contaElect_eliminarPartida.php",
 				data: data,
 				success: 	function(r){
 	        r = JSON.parse(r);
@@ -746,7 +746,7 @@ function infAdd_detalle(id_poliza){
   }
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/tabla_infAdd.php",
+    url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/tabla_infAdd.php",
     data: data,
     success: 	function(request){
 			r = JSON.parse(request);
@@ -758,23 +758,23 @@ function infAdd_detalle(id_poliza){
 }
 
 function cargarXML_backupsxml(nombre,poliza,formato){
-	window.open('/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultarBackUpsXML.php?archivo='+nombre+'&poliza='+poliza+'&formato='+formato);
+	window.open('/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultarBackUpsXML.php?archivo='+nombre+'&poliza='+poliza+'&formato='+formato);
 }
 
 function cargarXML_factura(anio,id_cliente,id_referencia,id_factura,poliza,formato){
-	window.open('/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultarFacturasXML.php?id_factura='+id_factura+'&oficina='+oficina+'&anio='+anio+'&id_cliente='+id_cliente+'&id_referencia='+id_referencia+'&poliza='+poliza+'&formato='+formato)
+	window.open('/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultarFacturasXML.php?id_factura='+id_factura+'&oficina='+oficina+'&anio='+anio+'&id_cliente='+id_cliente+'&id_referencia='+id_referencia+'&poliza='+poliza+'&formato='+formato)
 }
 
 function cargarXML_nomina(nombre,poliza,formato){
-	window.open('/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultarNominaXML.php?archivo='+nombre+'&poliza='+poliza+'&formato='+formato)
+	window.open('/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultarNominaXML.php?archivo='+nombre+'&poliza='+poliza+'&formato='+formato)
 }
 
 function cargarXML_pago(anio,id_cliente,nombreArchivo,poliza,formato){
-	window.open('/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultarPagoXML.php?anio='+anio+'&id_cliente='+id_cliente+'&nombreArchivo='+nombreArchivo+'&poliza='+poliza+'&formato='+formato)
+	window.open('/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultarPagoXML.php?anio='+anio+'&id_cliente='+id_cliente+'&nombreArchivo='+nombreArchivo+'&poliza='+poliza+'&formato='+formato)
 }
 
 function cargarXML_nc(anio,id_cliente,id_referencia,id_NC,poliza,formato){
-	window.open('/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultarNCXML.php?id_NC='+id_NC+'&oficina='+oficina+'&anio='+anio+'&id_cliente='+id_cliente+'&id_referencia='+id_referencia+'&poliza='+poliza+'&formato='+formato)
+	window.open('/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/consultarNCXML.php?id_NC='+id_NC+'&oficina='+oficina+'&anio='+anio+'&id_cliente='+id_cliente+'&id_referencia='+id_referencia+'&poliza='+poliza+'&formato='+formato)
 }
 
 // <script>

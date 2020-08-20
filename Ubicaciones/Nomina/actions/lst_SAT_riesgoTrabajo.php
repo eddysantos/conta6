@@ -3,12 +3,12 @@ $system_callback = [];
 $riesgoTrabajo = '';
 $riesgoTrabajo .="<option selected value='0'>Riesgo de Trabajo *</option>";
 
-$query = "SELECT * FROM conta_cs_sat_riesgotrabajo";
+$query = "SELECT pk_id_riesgo,s_descripcion FROM conta_cs_sat_riesgotrabajo";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error durante la preparacion [$db->errno]: $db->error";
+  $system_callback['message'] = "Error durante la preparacion riesgo de trabajo [$db->errno]: $db->error";
   exit_script($system_callback);
 }
 

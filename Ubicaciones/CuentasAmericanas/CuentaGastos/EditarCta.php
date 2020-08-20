@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class="container-fluid text-center">
@@ -14,8 +14,8 @@
   </div>
 
   <div class="col-md-1" style="padding:15px">
-    <a href="/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos.php">
-      <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+    <a href="/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos.php">
+      <img class="icomediano" src="/Resources/iconos/left.svg">
     </a>
   </div>
 
@@ -222,7 +222,7 @@
               </td>
               <td class="col-md-2 text-left">
                 <a href="">
-                  <img src="/conta6/Resources/iconos/002-plus.svg" class="icomediano">
+                  <img src="/Resources/iconos/002-plus.svg" class="icomediano">
                 </a>
               </td>
             </tr>
@@ -336,10 +336,10 @@
             </tr>
             <tr class="row mt-5 justify-content-center">
               <td class="col-md-2">
-                <a href="" class="boton"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
+                <a href="" class="boton"><img src= "/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
               </td>
               <td class="col-md-2">
-                <a href="" class="boton"> <img src= "/conta6/Resources/iconos/cross.svg" class="icochico"> CALCELAR</a><!--nueva pagina, ingresar datos en poliza-->
+                <a href="" class="boton"> <img src= "/Resources/iconos/cross.svg" class="icochico"> CALCELAR</a><!--nueva pagina, ingresar datos en poliza-->
               </td>
             </tr>
           </tbody>

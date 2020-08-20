@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class="text-center font14 mb-10">
@@ -49,7 +49,7 @@
         </tr>
         <tr class="row mt-4 justify-content-center">
           <td class="col-md-2">
-            <a href="" class="boton p-1"><img src= "/conta6/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
+            <a href="" class="boton p-1"><img src= "/Resources/iconos/save.svg" class="icochico"> GUARDAR</a>
           </td>
         </tr>
       </tbody>
@@ -92,7 +92,7 @@
             </select>
           </td>
           <td class="col-md-2 text-left align-self-center">
-            <a href=""><img src= "/conta6/Resources/iconos/magnifier.svg" class="icomediano"></a>
+            <a href=""><img src= "/Resources/iconos/magnifier.svg" class="icomediano"></a>
           </td>
         </tr>
       </tbody>
@@ -115,8 +115,8 @@
           <td class="col-md-3">2017/07/01</td>
           <td class="col-md-3">2017/07/30</td>
           <td class="col-md-2">
-            <a href="#EditarCierre" data-toggle="modal"><img src= "/conta6/Resources/iconos/003-edit.svg" class="icochico"></a>
-            <a href="" class="ml-5"><img src= "/conta6/Resources/iconos/002-trash.svg" class="icochico"></a>
+            <a href="#EditarCierre" data-toggle="modal"><img src= "/Resources/iconos/003-edit.svg" class="icochico"></a>
+            <a href="" class="ml-5"><img src= "/Resources/iconos/002-trash.svg" class="icochico"></a>
           </td>
         </tr>
         <tr class="row borderojo">
@@ -125,8 +125,8 @@
           <td class="col-md-3">2017/07/01</td>
           <td class="col-md-3">2017/07/30</td>
           <td class="col-md-2">
-            <a href="#EditarCierre" data-toggle="modal"><img src= "/conta6/Resources/iconos/003-edit.svg" class="icochico"></a>
-            <a href="" class="ml-5"><img src= "/conta6/Resources/iconos/002-trash.svg" class="icochico"></a>
+            <a href="#EditarCierre" data-toggle="modal"><img src= "/Resources/iconos/003-edit.svg" class="icochico"></a>
+            <a href="" class="ml-5"><img src= "/Resources/iconos/002-trash.svg" class="icochico"></a>
           </td>
         </tr>
         <tr class="row borderojo">
@@ -135,8 +135,8 @@
           <td class="col-md-3">2017/07/01</td>
           <td class="col-md-3">2017/07/30</td>
           <td class="col-md-2">
-            <a href="#EditarCierre" data-toggle="modal"><img src= "/conta6/Resources/iconos/003-edit.svg" class="icochico"></a>
-            <a href="" class="ml-5"><img src= "/conta6/Resources/iconos/002-trash.svg" class="icochico"></a>
+            <a href="#EditarCierre" data-toggle="modal"><img src= "/Resources/iconos/003-edit.svg" class="icochico"></a>
+            <a href="" class="ml-5"><img src= "/Resources/iconos/002-trash.svg" class="icochico"></a>
           </td>
         </tr>
         <tr class="row borderojo">
@@ -145,8 +145,8 @@
           <td class="col-md-3">2017/07/01</td>
           <td class="col-md-3">2017/07/30</td>
           <td class="col-md-2">
-            <a href=""><img src= "/conta6/Resources/iconos/003-edit.svg" class="icochico"></a>
-            <a href="" class="ml-5"><img src= "/conta6/Resources/iconos/002-trash.svg" class="icochico"></a>
+            <a href=""><img src= "/Resources/iconos/003-edit.svg" class="icochico"></a>
+            <a href="" class="ml-5"><img src= "/Resources/iconos/002-trash.svg" class="icochico"></a>
           </td>
         </tr>
       </tbody>
@@ -157,5 +157,5 @@
 
 <?php
 require_once('modales/modificarCierre.php');
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
  ?>

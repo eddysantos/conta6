@@ -1,7 +1,7 @@
 <?PHP
 /*
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $almacen=211;
 $valor=22538.88;

@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $partida = trim($_POST['partida']);
 $idcheque_folControl = trim($_POST['idcheque_folControl']);
@@ -45,7 +45,7 @@ $descripcion = "Se elimino la Partida: $partida del Cheque: $id_cheque ctaMST: $
 
 $clave = 'cheques';
 $folio = $id_cheque;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 if( $id_poliza > 0 ){
@@ -132,7 +132,7 @@ if( $id_poliza > 0 ){
 
   $clave = 'cheques';
   $folio = $id_cheque;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 }
 
 

@@ -44,7 +44,7 @@ while ($row = $rslt->fetch_assoc()) {
 
   if( $cancela <> "" ){ $status = "Cancelado"; }else{ $status = "Activo"; }
   if( $metodo_pago == "PPD" && $cancela == "" ){
-    $hrefSig = "<a href='#' onclick='pagosGenerar($cuenta,&#39;$id_cliente&#39;)'><img src='/conta6/Resources/iconos/rightred.svg'></a>";
+    $hrefSig = "<a href='#' onclick='pagosGenerar($cuenta,&#39;$id_cliente&#39;)'><img src='/Resources/iconos/rightred.svg'></a>";
   }
   $facturasPPD .= "<tr class='row font14 borderojo'>
     <td class='col-md-1'>$id_factura</td>

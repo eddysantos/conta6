@@ -9,7 +9,7 @@
 
 	$archivo = $id_factura."_".$id_referencia.".xml";
 	$root = $_SERVER['DOCUMENT_ROOT'];
-	$archivoPath = "/conta6/CFDI_generados/".$anio."/".$id_cliente."/".$archivo;
+	$archivoPath = "/CFDI_generados/".$anio."/".$id_cliente."/".$archivo;
 
 	$ar=file_get_contents($archivoPath,true);
 

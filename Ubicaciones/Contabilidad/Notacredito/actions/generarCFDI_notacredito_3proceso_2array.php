@@ -4,8 +4,8 @@ $ret = '';
 $comprobante = '';
 $nodo = 'Comprobante';
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
-require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_notacredito_captura.php'; #$total_consultaDatosCaptura
+require $root . '/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
+require $root . '/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_notacredito_captura.php'; #$total_consultaDatosCaptura
 if( $total_consultaDatosCaptura > 0 ){
   $row_consultaDatosCaptura = $rslt_consultaDatosCaptura->fetch_assoc();
   $id_formapago = $row_consultaDatosCaptura['fk_id_formapago'];
@@ -42,17 +42,17 @@ if( $total_consultaDatosCaptura > 0 ){
 
 }
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
+require $root . '/Resources/PHP/actions/consultaDatosCertificado.php'; #$total_datosCert
 $noCertificado = $row_datosCert['pk_id_certificado'];
 $certificado = $row_datosCert['s_certificado'];
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosOficinaActiva.php';
+require $root . '/Resources/PHP/actions/consultaDatosOficinaActiva.php';
 $ex_cp = $row_oficinaActiva['s_codigo'];
 $lugarExpedicion = $ex_cp;
 $ex_estado = $row_oficinaActiva['s_estado'];
 $lugarExpedicionTxt = $ex_cp.' '.$ex_estado;
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCIA.php';
+require $root . '/Resources/PHP/actions/consultaDatosCIA.php';
 $e_rfc = trim($rowCIA['s_RFC']);
 $e_razon_social = $rowCIA['s_Razon_Social'];
 $regimen = trim($rowCIA['fk_id_regimen']);

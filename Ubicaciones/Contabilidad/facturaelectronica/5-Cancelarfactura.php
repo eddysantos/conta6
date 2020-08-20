@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <!-- <div class="text-center">
@@ -32,8 +32,8 @@
           </tr>
           <tr class="row borderojo font14">
             <td class="col-md-1">
-              <a href=""><img class="icomediano" src="/conta6/Resources/iconos/xml.svg"></a>
-              <a><img class="icomediano ml-4" src="/conta6/Resources/iconos/pdf.svg"></a>
+              <a href=""><img class="icomediano" src="/Resources/iconos/xml.svg"></a>
+              <a><img class="icomediano ml-4" src="/Resources/iconos/pdf.svg"></a>
             </td>
             <td class="col-md-1">17-07-2017</td>
             <td class="col-md-1">77166</td>
@@ -43,8 +43,8 @@
             <td class="col-md-1">N17003012</td>
             <td class="col-md-4">CLT_6548 MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L DE C.V</td>
             <td class="col-md-1">
-              <a class="ver" accion="cuadroCancelar"><img class="icomediano" src="/conta6/Resources/iconos/magnifier.svg"></a>
-              <a><img class="icomediano ml-5" src="/conta6/Resources/iconos/printer.svg"></a>
+              <a class="ver" accion="cuadroCancelar"><img class="icomediano" src="/Resources/iconos/magnifier.svg"></a>
+              <a><img class="icomediano ml-5" src="/Resources/iconos/printer.svg"></a>
             </td>
           </tr>
         </tbody>
@@ -68,10 +68,10 @@
 
     <div class="text-left col-md-2 p-4">
       <a href="5-Cancelarfactura.php">
-        <img class="icomediano ml-4" src="/conta6/Resources/iconos/left.svg">
+        <img class="icomediano ml-4" src="/Resources/iconos/left.svg">
       </a>
       <a href="" class="ml-4">
-        <img class="icomediano" src="/conta6/Resources/iconos/printer.svg">
+        <img class="icomediano" src="/Resources/iconos/printer.svg">
       </a>
     </div>
 

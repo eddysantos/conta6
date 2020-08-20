@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = trim($_POST['id_poliza']);
 $fecha = trim($_POST['fecha']);
@@ -18,7 +18,7 @@ $desc = trim($_POST['desc']);
 $gastoOficina = trim($_POST['gastoOficina']);
 $proveedor = trim($_POST['proveedor']);
 
-require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza.php';
+require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
 
 $affected = $stmt->affected_rows;
 $system_callback['affected'] = $affected;
@@ -34,7 +34,7 @@ $descripcion = "Se inserto Poliza: $id_poliza Cta: $cuenta Ref:$id_referencia Cl
 
 $clave = 'polizas';
 $folio = $id_poliza;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";

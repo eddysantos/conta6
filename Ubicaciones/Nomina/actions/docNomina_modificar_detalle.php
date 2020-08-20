@@ -2,7 +2,7 @@
 //PERCEPCIONES ******************************************
 $percepcion = $_POST['percepciones'];
 foreach ($percepcion as $percep) {
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
   $tipoElemento = 'percepcion';
   $clasificacion = 'percepcion';
 
@@ -17,16 +17,16 @@ foreach ($percepcion as $percep) {
 
 
   if( $idpartida > 0 ){
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
   }else{
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
   }
 }
 
 
 $horasext = $_POST['horasextras'];
 foreach ($horasext as $HE) {
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
   $tipoElemento = 'percepcion';
   $clasificacion = 'horasExtras';
 
@@ -48,16 +48,16 @@ foreach ($horasext as $HE) {
 
 
   if( $idpartida > 0 ){
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
   }else{
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
   }
 }
 
 
 $percepSepIndem = $_POST['percepSepIndem'];
 foreach ($percepSepIndem as $sepIndem) {
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
   $tipoElemento = 'percepcion';
   $clasificacion = 'separacionIndemnizacion';
 
@@ -72,9 +72,9 @@ foreach ($percepSepIndem as $sepIndem) {
 
 
   if( $idpartida > 0 ){
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
   }else{
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
   }
 }
 
@@ -82,7 +82,7 @@ foreach ($percepSepIndem as $sepIndem) {
 //OTROS PAGOS ******************************************
 $otrospagos = $_POST['otrospagos'];
 foreach ($otrospagos as $OP) {
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
   $tipoElemento = 'otrosPagos';
   $clasificacion = 'otrosPagos';
 
@@ -99,9 +99,9 @@ foreach ($otrospagos as $OP) {
   $idpartida = $OP['idpartida'];
 
   if( $idpartida > 0 ){
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
   }else{
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
   }
 }
 
@@ -109,7 +109,7 @@ foreach ($otrospagos as $OP) {
 //DEDUCCIONES ******************************************
 $deduccion = $_POST['deducciones'];
 foreach ($deduccion as $deduc) {
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
   $tipoElemento = 'deduccion';
   $clasificacion = 'deduccion';
 
@@ -124,15 +124,15 @@ foreach ($deduccion as $deduc) {
 
 
   if( $idpartida > 0 ){
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
   }else{
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
   }
 }
 
 $penalim = $_POST['penalim'];
 foreach ($penalim as $PA) {
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_variables.php';
   $tipoElemento = 'deduccion';
   $clasificacion = 'desctoDespTotal';
 
@@ -148,9 +148,9 @@ foreach ($penalim as $PA) {
 
 
   if( $idpartida > 0 ){
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar.php';
   }else{
-    require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
+    require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_insertar.php';
   }
 }
 
@@ -159,22 +159,22 @@ foreach ($penalim as $PA) {
 
   //BORRAR ******************************************
   $borrar = $_POST['percepcionesDelete'];
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
 
   $borrar = $_POST['otrospagosDelete'];
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
 
   $borrar = $_POST['horasextrasDelete'];
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
 
   $borrar = $_POST['percepSepIndemDelete'];
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
 
   $borrar = $_POST['deduccionesDelete'];
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
 
   $borrar = $_POST['penalimDelete'];
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_borrar.php';
 
 
   //TOTALES ******************************************
@@ -196,6 +196,6 @@ foreach ($penalim as $PA) {
   $ingresoNoAcumulable = trim($_POST['ingnoacum']);
   $totalPagado = trim($_POST['totalpagado']);
 
-  require $root . '/conta6/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar_totales.php';
+  require $root . '/Ubicaciones/Nomina/actions/docNomina_modificar_detalle_actualizar_totales.php';
 
 ?>

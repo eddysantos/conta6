@@ -6,8 +6,8 @@
 #$system_callback['message2'] = $num_referencia;
 
 
-require $root . '/conta6/Resources/PHP/DatabasesRemote/conexionADUANET.php';
-require $root . '/conta6/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php';
+require $root . '/Resources/PHP/DatabasesRemote/conexionADUANET.php';
+require $root . '/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php';
 
 error_reporting(E_ALL);
 ini_set('display_errors',1);
@@ -106,7 +106,7 @@ if( $total_referencias > 0 ){
 	// $total_consRef = mysqli_num_rows($sql_consRef);
 	// if( $total_consRef > 0 ){
 
-  require $root . '/conta6/Resources/PHP/Databases/conexion.php';
+  require $root . '/Resources/PHP/Databases/conexion.php';
   $query_consultaReferencia = "SELECT * FROM conta_replica_referencias WHERE pk_referencia = ?";
 
   $stmt_consultaReferencia = $db->prepare($query_consultaReferencia);

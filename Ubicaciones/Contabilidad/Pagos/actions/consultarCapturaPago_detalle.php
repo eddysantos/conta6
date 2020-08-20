@@ -53,7 +53,7 @@ if( $total_consultaDetalle > 0 ) {
 
     #FORMA DE PAGO
     $id_cliente = $fk_id_cliente;
-    require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago
+    require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago
 
     if ($rows_datosCLTformaPago > 0 ) {
       while ($row_datosCLTformaPago = $rslt_datosCLTformaPago->fetch_assoc()) {
@@ -66,10 +66,10 @@ if( $total_consultaDetalle > 0 ) {
       }
     }
 
-    require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_docRel.php';#$pagosDetalle_pago
+    require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_docRel.php';#$pagosDetalle_pago
 
     #if(tipoDocumento == 'modificar'){
-      $btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+      $btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
       $inputPartida = "<input class='id-partida' type='hidden' id='T_partida_$pk_rowPago' value='0'>";
     #}
     if( $opcionDoc == 'sustituir' ){

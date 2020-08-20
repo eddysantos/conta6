@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
 $data = $_POST;
 $id_corresp = $data['dbid'];
@@ -19,7 +19,7 @@ $rowCorresp = $rsltCorresp->fetch_assoc();
 $nombreCorresp = $rowCorresp['s_nombre'];
 $system_callback['nombreCorresp'] .="
   <a href='#' onclick='asigCorrespModal($id_corresp,0)' class='boton border-0 text-left'>
-    <img src= '/conta6/Resources/iconos/add.svg' class='icochico'>  AGREGAR
+    <img src= '/Resources/iconos/add.svg' class='icochico'>  AGREGAR
   </a>
 ";
 $system_callback['nombre'] .="<span class='colorRosa'>$id_corresp - $nombreCorresp</span>";
@@ -55,7 +55,7 @@ while ($row = $rslt->fetch_assoc()) {
   // $cliente = $row['pk_id_cliente'];
   $system_callback['data'] .="<tr class='row m-0 borderojo'>
     <td class='col-md-1'>
-      <a href='#' idcliente='$pk_id_cliente' class='eliminarCorresp'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>
+      <a href='#' idcliente='$pk_id_cliente' class='eliminarCorresp'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>
     </td>
     <td class='col-md-4'>$pk_id_cliente</td>
     <td class='col-md-5'>$s_nombre</td>

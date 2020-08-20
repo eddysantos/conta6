@@ -1,9 +1,9 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
-require $root . '/Conta6/Resources/vendor/autoload.php';
-require $root . '/conta6/Resources/PHP/actions/numtoletras.php';
+require $root . '/Resources/vendor/autoload.php';
+require $root . '/Resources/PHP/actions/numtoletras.php';
 
 $id_nomina = trim($_GET['semana']);
 $id_aduana = $aduana;
@@ -11,7 +11,7 @@ $id_empleado = trim($_GET['id_empleado']);
 $anio = trim($_GET['anio']);
 $id_regimen = '09';
 // $image_file = 'cheetah.svg';
-// $image_file = $root . '/Conta6/Resources/imagenes/sww_icon_red.png';
+// $image_file = $root . '/Resources/imagenes/sww_icon_red.png';
 $image_file = 'sww_icon_red.png';
 // $fechaIni = '2019-12-30';
 // $fechaFin = '2020-01-03';
@@ -114,11 +114,11 @@ $rows = $rslt->num_rows;
 
     // NOTE: revisar esta ruta, no supe que campo jalar para el #1
     $nombre_archivo = $id_nomina."_".$cveOficina."_1_".$cveIdRegimen."_".$anio."_".$r_rfc;
-    // $fileQR = "/Conta6/CFDI_nomina/2020/QR/$nombre_archivo.png";
-    $fileQR = $root . "/Conta6/CFDI_nomina/2020/QR/97_NL_1_Honorarios_2020_MADA8111253E5.png";
+    // $fileQR = "/CFDI_nomina/2020/QR/$nombre_archivo.png";
+    $fileQR = $root . "/CFDI_nomina/2020/QR/97_NL_1_Honorarios_2020_MADA8111253E5.png";
 
-    require $root . '/Conta6/Ubicaciones/Nomina/Honorarios/actions/honorariosPercepcionesDeducciones.php'; //percepciones, deducciones, totales
-    require $root . '/Conta6/Ubicaciones/Nomina/Honorarios/actions/honorariosCFDI_relacionado.php'; // CFDI relacionado
+    require $root . '/Ubicaciones/Nomina/Honorarios/actions/honorariosPercepcionesDeducciones.php'; //percepciones, deducciones, totales
+    require $root . '/Ubicaciones/Nomina/Honorarios/actions/honorariosCFDI_relacionado.php'; // CFDI relacionado
     $html .= '
     <table>
       <tr>

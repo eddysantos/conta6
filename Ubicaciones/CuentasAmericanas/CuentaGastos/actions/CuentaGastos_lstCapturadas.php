@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 
@@ -59,7 +59,7 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
 				$cobrarFlete = "si";
 	}else{
 
-		require $root . '/conta6/Resources/PHP/actions/consultaDatosReferencia.php';
+		require $root . '/Resources/PHP/actions/consultaDatosReferencia.php';
 
 		if( $rows_buscaRef > 0 ){
 				$row_buscaRef = $rslt_buscaRef->fetch_assoc();
@@ -107,14 +107,14 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
 
 	if( $oRst_permisos['s_cta_ame_modificar'] == 1 && $cancela == 0 ){
 		$cadena = "ctaGastosAmeModificar($id_captura)";
-		$hrefmodificar = "<a href='#' onclick='$cadena'><img class='icomediano' src='/conta6/Resources/iconos/003-edit.svg'></a>";
+		$hrefmodificar = "<a href='#' onclick='$cadena'><img class='icomediano' src='/Resources/iconos/003-edit.svg'></a>";
 	}
 	if( $oRst_permisos['s_cta_ame_consultar'] == 1 ){
-		$hrefconsultar = "<a href='#' onclick='ctaGastosAmeConsultar($id_captura)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/magnifier.svg'></a>
-		<a href='#' onclick='ctaGastosAmeImprimir($id_captura)'><img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'></a>";
+		$hrefconsultar = "<a href='#' onclick='ctaGastosAmeConsultar($id_captura)'><img class='icomediano ml-2' src='/Resources/iconos/magnifier.svg'></a>
+		<a href='#' onclick='ctaGastosAmeImprimir($id_captura)'><img class='icomediano ml-2' src='/Resources/iconos/printer.svg'></a>";
 	}
 	if( $oRst_permisos['s_cta_ame_borrar'] == 1 ){
-		$hrefBorrar = "<a href='#' onclick='ctaGastosAmeBorrar($id_captura)'><img class='icomediano' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+		$hrefBorrar = "<a href='#' onclick='ctaGastosAmeBorrar($id_captura)'><img class='icomediano' src='/Resources/iconos/002-trash.svg'></a>";
 	}
 
 	if( $cancela == 1 ){ $txt_cancela = 'Cancelada'; }else{ $txt_cancela = 'Activa'; }

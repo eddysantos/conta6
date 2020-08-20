@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class="text-center">
@@ -32,7 +32,7 @@
           <td class="col-md-1">234568</td>
           <td class="col-md-6">MOTORES ELECTRICOS SUMERGIBLES S DE RL DE CV</td>
           <td class="col-md-1 text-right">
-            <a href="#"><img src="/conta6/Resources/iconos/rightred.svg"></a>
+            <a href="#"><img src="/Resources/iconos/rightred.svg"></a>
           </td>
         </tr>
       </tbody>
@@ -41,5 +41,5 @@
 </div>
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

@@ -1,6 +1,6 @@
 <?PHP
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 	$poliza  = trim($_POST['id_poliza']);
   $cliente  = trim($_POST['id_cliente']);
@@ -53,7 +53,7 @@
 	#* BUSCO LA CUENTA 0208 DEL CLIENTE             *
 	#************************************************
   $id_cliente = $cliente;
-  require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
+  require $root . '/Resources/PHP/actions/consultaCtas108y208_cliente.php';
   if( $rows_ctasCliente > 0 ){
     while($row_ctasCliente = $rslt_ctasCliente->fetch_assoc()){
       $cta = $row_ctasCliente['pk_id_cuenta'];
@@ -89,7 +89,7 @@
   if( $accion == "insertar" ){
     if( $factura > 0 ){
       $id_factura = $factura;
-      require $root . '/conta6/Resources/PHP/actions/consultarFactura_idFactura.php';
+      require $root . '/Resources/PHP/actions/consultarFactura_idFactura.php';
       $metodoDePago = $row_consultaFactura['fk_c_MetodoPago'];
   		$Total_POCME = $row_consultaFactura['n_total_POCME'];
   		$Total_Pagos = $row_consultaFactura['n_total_pagos'];
@@ -98,23 +98,23 @@
       if( $metodoDePago == 'PPD' && $totalPagosCLT == 0 ){ #agregado 17-abril-2019
 
         $cuenta = $cta208;
-        require $root . '/conta6/Resources/PHP/actions/insertaDetalleCheque.php';
+        require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
         $pk_partida = mysqli_insert_id($db);
 
         if( $poliza > 0 ){
           $pk_partidaDoc = $pk_partida;
           $idDocumento = 'chequeDET';
-          require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
+          require $root . '/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
         }
 		  }else{
 
-        require $root . '/conta6/Resources/PHP/actions/insertaDetalleCheque.php';
+        require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
         $pk_partida = mysqli_insert_id($db);
 
         if( $poliza > 0 ){
           $pk_partidaDoc = $pk_partida;
           $idDocumento = 'chequeDET';
-          require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
+          require $root . '/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
         }
 
         if ($busCta108 !== false && $abono > 0){
@@ -122,7 +122,7 @@
   				$impPago = $abono;
 
   				#IVA no cobrado al 16%
-          require $root . '/conta6/Resources/PHP/actions/consulta_ivaNoCobrado16.php';
+          require $root . '/Resources/PHP/actions/consulta_ivaNoCobrado16.php';
           $rslt_ivaNoCobrado16 = $stmt_ivaNoCobrado16->get_result();
 
           if ($rslt_ivaNoCobrado16->num_rows > 0) {
@@ -130,31 +130,31 @@
               $cargo = $row_ivaNoCobrado16['saldo'];
               $abono = 0;
               $cuenta = '0202-00007';
-              require $root . '/conta6/Resources/PHP/actions/insertaDetalleCheque.php';
+              require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
               $pk_partida = mysqli_insert_id($db);
 
               if( $poliza > 0 ){
                 $pk_partidaDoc = $pk_partida;
                 $idDocumento = 'chequeDET';
-                require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
+                require $root . '/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
               }
 
               $cargo = 0;
               $abono = $row_ivaNoCobrado16['saldo'];
               $cuenta = '0202-00002';
-              require $root . '/conta6/Resources/PHP/actions/insertaDetalleCheque.php';
+              require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
               $pk_partida = mysqli_insert_id($db);
 
               if( $poliza > 0 ){
                 $pk_partidaDoc = $pk_partida;
                 $idDocumento = 'chequeDET';
-                require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
+                require $root . '/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
               }
           }
 
 
           #IVA no cobrado al 8%
-          require $root . '/conta6/Resources/PHP/actions/consulta_ivaNoCobrado8.php';
+          require $root . '/Resources/PHP/actions/consulta_ivaNoCobrado8.php';
           $rslt_ivaNoCobrado8 = $stmt_ivaNoCobrado8->get_result();
 
           if ($rslt_ivaNoCobrado8->num_rows > 0) {
@@ -162,35 +162,35 @@
               $cargo = $row_ivaNoCobrado8['saldo'];
               $abono = 0;
               $cuenta = '0202-00009';
-              require $root . '/conta6/Resources/PHP/actions/insertaDetalleCheque.php';
+              require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
               $pk_partida = mysqli_insert_id($db);
 
               if( $poliza > 0 ){
                 $pk_partidaDoc = $pk_partida;
                 $idDocumento = 'chequeDET';
-                require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
+                require $root . '/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
               }
 
               $cargo = 0;
               $abono = $row_ivaNoCobrado8['saldo'];
               $cuenta = '0202-00008';
-              require $root . '/conta6/Resources/PHP/actions/insertaDetalleCheque.php';
+              require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
               $pk_partida = mysqli_insert_id($db);
 
               if( $poliza > 0 ){
                 $pk_partidaDoc = $pk_partida;
                 $idDocumento = 'chequeDET';
-                require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
+                require $root . '/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
               }
           }
 
 
           #IVA retenido por cobrar
-          require $root . '/conta6/Resources/PHP/actions/consulta_ivaRetenidoNoCobrado.php';
+          require $root . '/Resources/PHP/actions/consulta_ivaRetenidoNoCobrado.php';
           $rslt_ivaRetenidoNoCobrado = $stmt_ivaRetenidoNoCobrado->get_result();
 
           if ($rslt_ivaRetenidoNoCobrado->num_rows > 0) {
-            require $root . '/conta6/Resources/PHP/actions/consulta_saldoFactura.php';
+            require $root . '/Resources/PHP/actions/consulta_saldoFactura.php';
             $rslt_saldoFactura = $stmt_saldoFactura->get_result();
 
             $porciento = 51;
@@ -205,26 +205,26 @@
   						if( $abono > 0 ){
                 #por cobrar
                 $cuenta = '0216-00001';
-                require $root . '/conta6/Resources/PHP/actions/insertaDetalleCheque.php';
+                require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
                 $pk_partida = mysqli_insert_id($db);
 
                 if( $poliza > 0 ){
                   $pk_partidaDoc = $pk_partida;
                   $idDocumento = 'chequeDET';
-                  require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
+                  require $root . '/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
                 }
 
                 #no cobrado
   							$cargo = abs($rslt_ivaRetenidoNoCobrado['saldo']);
   							$abono = 0;
                 $cuenta = '0216-00002';
-                require $root . '/conta6/Resources/PHP/actions/insertaDetalleCheque.php';
+                require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
                 $pk_partida = mysqli_insert_id($db);
 
                 if( $poliza > 0 ){
                   $pk_partidaDoc = $pk_partida;
                   $idDocumento = 'chequeDET';
-                  require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
+                  require $root . '/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
                 }
   						}
   					}
@@ -252,13 +252,13 @@
             $cargo = $cargo2;
             $abono = $total;
             $cuenta = $cta208;
-            require $root . '/conta6/Resources/PHP/actions/insertaDetalleCheque.php';
+            require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
             $pk_partida = mysqli_insert_id($db);
 
             if( $poliza > 0 ){
               $pk_partidaDoc = $pk_partida;
               $idDocumento = 'chequeDET';
-              require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
+              require $root . '/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
             }
           }
         }
@@ -272,13 +272,13 @@
             $cargo = $cargo2;
             $abono = $total;
             $cuenta = $cta208;
-            require $root . '/conta6/Resources/PHP/actions/insertaDetalleCheque.php';
+            require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
             $pk_partida = mysqli_insert_id($db);
 
             if( $poliza > 0 ){
               $pk_partidaDoc = $pk_partida;
               $idDocumento = 'chequeDET';
-              require $root . '/conta6/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
+              require $root . '/Resources/PHP/actions/insertaDetallePoliza_partidaDoc.php';
             }
           }
 
@@ -359,6 +359,6 @@
 
   $clave = 'cheques';
   $folio = $id_cheque;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 ?>

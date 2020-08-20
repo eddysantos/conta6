@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $s_nombreTabla = trim($_POST['s_nombreTabla']);
 $pk_id_partida = trim($_POST['pk_id_partida']);
@@ -163,7 +163,7 @@ if ($affected == 0) {
 $descripcion = "Se modifico PARAMETRO: $s_nombreTabla, PARTIDA: $pk_id_partida, DATOS: $n_inferior,$n_superior,$n_cuota,$n_porcentaje,$fk_id_aduana,$n_salarioMinimo,$n_diasTrabajados,$n_diasPagar,$n_anio,$n_integrado,$n_inferior_b,$n_superior_b,$n_cuota_b,$n_ramo,$s_descripcion,$n_baseSalarial,$n_topeSalarial,$n_patron,$n_trabajador";
 $clave = 'parametros';
 $folio = $pk_id_partida;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 $system_callback['code'] = 1;

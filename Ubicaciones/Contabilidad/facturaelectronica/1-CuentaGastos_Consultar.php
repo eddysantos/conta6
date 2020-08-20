@@ -1,20 +1,20 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $cuenta = trim($_GET['cuenta']);
   $accion = trim($_GET['accion']);
   $txt_id_asoc = 'No';
 
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
 
   $id_captura = $cuenta;
-  require $root . '/conta6/Resources/PHP/actions/consultaFacturaTimbrada.php';
+  require $root . '/Resources/PHP/actions/consultaFacturaTimbrada.php';
   if( $rows_facTimbrada == 0 ){
     $s_UUID = '';
     $id_factura = '';
@@ -29,7 +29,7 @@
     $s_selloSATcancela = '';
   }
 
-  require $root . '/conta6/Resources/PHP/actions/consultaFactura_ctaGastos.php';
+  require $root . '/Resources/PHP/actions/consultaFactura_ctaGastos.php';
   if( $rows_ctaGastos == 0 ){
     $id_ctagastos = '';
     $fecha_ctagastos = '';
@@ -53,7 +53,7 @@
               $hrefTimbrar = "Error: Es requerido cobro de honorarios";
             }else{
               $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarFactura($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
-                <img class='icomediano' src='/conta6/Resources/iconos/timbrar.svg'>
+                <img class='icomediano' src='/Resources/iconos/timbrar.svg'>
               </a>";
             }
   }
@@ -76,14 +76,14 @@
               $hrefTimbrar = "Error: Es requerido cobro de honorarios";
             }else{
               $hrefTimbrar = "<a href='#' class='ml-4' onclick='timbrarFactura($cuenta,&#39;$fk_referencia&#39;,&#39;$fk_id_cliente&#39;)'>
-                <img class='icomediano' src='/conta6/Resources/iconos/timbrar.svg'>
+                <img class='icomediano' src='/Resources/iconos/timbrar.svg'>
               </a>";
             }
     }
 
 
   }
-  require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarEstadoCFDI_factura.php'; #$datosEdoCancela
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarEstadoCFDI_factura.php'; #$datosEdoCancela
 ?>
 
 <div class="text-center">
@@ -101,20 +101,20 @@
 
   <div class="col-md-12 p-3 text-left">
     <?php if( $accion == 'consulta' ){ ?>
-    <a href="/Conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php">
-      <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+    <a href="/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php">
+      <img class="icomediano" src="/Resources/iconos/left.svg">
     </a>
     <a href='#' class="ml-4" onclick='ctaGastosCapturaImprimir(<?php echo $cuenta; ?>)'>
-      <img class='icomediano ml-2' src='/conta6/Resources/iconos/printer.svg'>
+      <img class='icomediano ml-2' src='/Resources/iconos/printer.svg'>
     </a>
     <?php } ?>
 
     <?php if( $accion == 'timbrar' ){ ?>
-    <a href="/Conta6/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php">
-      <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+    <a href="/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php">
+      <img class="icomediano" src="/Resources/iconos/left.svg">
     </a>
     <a href="#" class="ml-4" onclick='ctaGastosCapturaImprimir(<?php echo $cuenta ?>)'>
-      <img class="icomediano" src="/conta6/Resources/iconos/printer.svg">
+      <img class="icomediano" src="/Resources/iconos/printer.svg">
     </a>
     <?php echo $hrefTimbrar; } ?>
   </div>
@@ -280,7 +280,7 @@ if( $s_UUID != '' && $accion == 'cancelar' ){ ?>
         $fechaActual = date("Y/m", time());
         $fechaActual2 = date("Y/m/d h:m:s", time());
         $txt_evaluar = evaluarCancelarFactura($fechaTimbrado,$n_total_gral);
-          $hrefcancela = "<a href='#' onclick='cancelarFactura($id_factura)'><img class='icomediano ml-4' src='/conta6/Resources/iconos/cross.svg'>$txt_evaluar</a>";
+          $hrefcancela = "<a href='#' onclick='cancelarFactura($id_factura)'><img class='icomediano ml-4' src='/Resources/iconos/cross.svg'>$txt_evaluar</a>";
 
       if( $total_estadoCancela == 0 ){
         echo "
@@ -471,5 +471,5 @@ function evaluarCancelarFactura($d_fechaTimbrado,$n_total_gral){
 	}
 }
 
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
  ?>

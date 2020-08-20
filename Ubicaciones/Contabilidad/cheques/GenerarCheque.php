@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
   <div class="row backpink m-0">
@@ -86,7 +86,7 @@
           </td>
           <td class="col-md-3">
 		  	    <input type="hidden" id="opcionActivada">
-            <a href="#" class="boton p-1" id="btn_genFolioCheque"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> GENERAR CHEQUE</a>
+            <a href="#" class="boton p-1" id="btn_genFolioCheque"><img src= "/Resources/iconos/001-add.svg" class="icochico"> GENERAR CHEQUE</a>
           </td>
         </tr>
       </tbody>
@@ -94,5 +94,5 @@
   </div>
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

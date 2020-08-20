@@ -1,11 +1,11 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $cuenta = trim($_GET['cuenta']);
-  require $root . '/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosGenerales.php';
-  require $root . '/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosPOCME.php'; # $datosPOCMEconsultar
-  require $root . '/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosAnticipos.php'; # $datosANTICIPOconsultar
+  require $root . '/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosGenerales.php';
+  require $root . '/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosPOCME.php'; # $datosPOCMEconsultar
+  require $root . '/Ubicaciones/CuentasAmericanas/CuentaGastos/actions/CuentaGastos_consultaDatosAnticipos.php'; # $datosANTICIPOconsultar
 
 
   #************ historial ************
@@ -13,7 +13,7 @@
 
   $clave = 'ctaAme_fac';
   $folio = $cuenta;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 ?>
 
@@ -27,10 +27,10 @@
     </div>
   </div>
   <div class="col-md-1 text-center p-5">
-    <a href="/conta6/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos.php">
-      <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+    <a href="/Ubicaciones/CuentasAmericanas/CuentaGastos/CuentaGastos.php">
+      <img class="icomediano" src="/Resources/iconos/left.svg">
     </a>
-    <a href="#" id="Btn_print_Ame" onclick="ctaGastosAmeImprimir(<?php echo $pk_id_ctaAme; ?>)"><img src='/conta6/Resources/iconos/printer.svg' class='icomediano'></a>
+    <a href="#" id="Btn_print_Ame" onclick="ctaGastosAmeImprimir(<?php echo $pk_id_ctaAme; ?>)"><img src='/Resources/iconos/printer.svg' class='icomediano'></a>
   </div>
   <div id="contornoCliente" class="contorno mt-4" style="display:none">
     <h5 class="titulo font16">DATOS CLIENTES</h5>
@@ -213,5 +213,5 @@
 <!-- <script src="js/CuentaGastos.js"></script> -->
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
  ?>

@@ -1,7 +1,7 @@
 <?PHP
 /*
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 $cuenta = 43;
 */
 $query_facDR = "SELECT DISTINCT fk_id_facturaDR from conta_t_pagos_captura_det_dr WHERE fk_id_pago_captura = ?";

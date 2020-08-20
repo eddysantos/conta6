@@ -2,7 +2,7 @@
 #comentar
 /*
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 $fechaTimbre = '2019-01-22';
 $r_razon_social = 'pruebas';
 $id_cliente = 'CLT_6548';
@@ -16,11 +16,11 @@ $idFactura = 28;
 $tipo = 3;
 $fecha = $fechaTimbre;
 $concepto = "CFDI PAGO - ".$r_razon_social;
-require $root . '/conta6/Resources/PHP/actions/generarFolioPoliza.php';
+require $root . '/Resources/PHP/actions/generarFolioPoliza.php';
 $poliza = $nFolio;
 $detallePoliza = '';
 
-require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
+require $root . '/Resources/PHP/actions/consultaCtas108y208_cliente.php';
 if( $rows_ctasCliente > 0 ){
   while($row_ctasCliente = $rslt_ctasCliente->fetch_assoc()){
     $cta = $row_ctasCliente['pk_id_cuenta'];
@@ -40,7 +40,7 @@ if( $rows_ctasCliente > 0 ){
 // }
 
 #Registros de los pagos
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_2.php';
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_2.php';
 if( $total_consultaDetalle > 0 ) {
   $idFila = 0;
   while(  $row_consultaDetalle = $rslt_consultaDetalle->fetch_assoc() ){
@@ -51,7 +51,7 @@ if( $total_consultaDetalle > 0 ) {
     $d_fecha_docPago = date_format(date_create($d_fecha_docPago),"Y-m-d");
 
 
-    require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_DR.php';
+    require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_DR.php';
     if( $total_consultaDetalle_DR > 0 ){
       while( $row_consultaDetalle_DR = $rslt_consultaDetalle_DR->fetch_assoc()  ){
         $importe = $row_consultaDetalle_DR['n_importePagado'];

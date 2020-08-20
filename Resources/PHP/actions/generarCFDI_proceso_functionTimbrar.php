@@ -587,7 +587,7 @@ function xmlV33_genera_cadena_original() {
 	$paso = new DOMDocument("1.0","UTF-8");
 	$paso->loadXML($xml->saveXML());
 	$xsl = new DOMDocument("1.0","UTF-8");
-  $file = $root . '/conta6/Resources/xsi/cadenaoriginal_3_3.xslt';
+  $file = $root . '/Resources/xsi/cadenaoriginal_3_3.xslt';
 	$xsl->load($file);
 	$proc = new XSLTProcessor;
 	$proc->importStyleSheet($xsl);
@@ -602,8 +602,8 @@ function xmlV33_genera_cadena_original() {
 function xmlV33_sella($array) {
   global $comprobante, $cadena_original, $root;
   #ruta
-  #$fileKey = $root . '/conta6/Resources/clavesKeyCer/key2017.pem';
-  require $root . '/conta6/Resources/PHP/actions/generarCFDI_proceso_rutaKeyCer.php'; #$fileKey,$fileCer
+  #$fileKey = $root . '/Resources/clavesKeyCer/key2017.pem';
+  require $root . '/Resources/PHP/actions/generarCFDI_proceso_rutaKeyCer.php'; #$fileKey,$fileCer
   $certificado = $array['NoCertificado'];
   $pkeyid = openssl_get_privatekey(file_get_contents($fileKey));
   openssl_sign($cadena_original, $crypttext, $pkeyid, OPENSSL_ALGO_SHA256);
@@ -776,7 +776,7 @@ function abrirTimbrado($rutaRepFileXML){
 
 function generarQR($e_rfc,$r_rfc,$total,$UUID,$selloParte){
   global $root,$rutaQRFile;
-  require $root . '/conta6/Resources/phpqrcode/qrlib.php';
+  require $root . '/Resources/phpqrcode/qrlib.php';
 
         /* re=RFC_emisor  rr=RFC_receptor  id=UUID
         fe=$selloParte -> 8 ultimos digitos
@@ -868,7 +868,7 @@ function cancelarCFDI($rfcR,$s_UUID,$totalFac,$modo){
   	   }
 
        #genero acuse de cancelacion en formato html
-       require $root . '/conta6/Resources/PHP/actions/acuse_cancelacion_CFDI.php';
+       require $root . '/Resources/PHP/actions/acuse_cancelacion_CFDI.php';
 
        $control = fopen($rutaFileClienteHTML,"w+");
        if($control == false){
@@ -884,10 +884,10 @@ function cancelarCFDI($rfcR,$s_UUID,$totalFac,$modo){
        $fechaCancela = date_format(date_create($fechaCancela),"d-m-Y H:i:s");
 
        #guardo los datos de la cancelacion
-       require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5guardarDatosCancelacion.php';
+       require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5guardarDatosCancelacion.php';
 
        # Cancelo pólizas de la cuenta de gastos
-       require $root . '/conta6/Resources/PHP/actions/consultaFactura_ctaGastos.php';
+       require $root . '/Resources/PHP/actions/consultaFactura_ctaGastos.php';
        if( $rows_ctaGastos > 0 ){
          if( $id_polctagastos > 0 ){
            cancelarPoliza($id_polctagastos, 0);
@@ -904,7 +904,7 @@ function cancelarCFDI($rfcR,$s_UUID,$totalFac,$modo){
          }
        }
        # Cancelo pólizas de la factura
-       require $root . '/conta6/Resources/PHP/actions/consultaFacturaTimbrada.php';
+       require $root . '/Resources/PHP/actions/consultaFacturaTimbrada.php';
        if( $rows_facTimbrada > 0 ){
          if( $id_poliza > 0 ){
            cancelarPoliza($id_poliza, 0);
@@ -929,11 +929,11 @@ function cancelarCFDI($rfcR,$s_UUID,$totalFac,$modo){
 
 function cancelarPoliza($id_poliza, $status){
   global $db,$root;
-  require $root . '/conta6/Resources/PHP/actions/cancelarPoliza.php';
+  require $root . '/Resources/PHP/actions/cancelarPoliza.php';
 }
 
 function guardarRespuestaTimbrado($tipoDoc,$folio,$estado,$statusPAC){
   global $db,$root;
-  require $root . '/conta6/Resources/PHP/actions/acuse_cancelacion_CFDI_bitacora.php';
+  require $root . '/Resources/PHP/actions/acuse_cancelacion_CFDI_bitacora.php';
 }
 ?>

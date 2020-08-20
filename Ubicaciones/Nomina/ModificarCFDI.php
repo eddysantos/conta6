@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $idDocNomina = trim($_GET['idDocNomina']);
 
@@ -69,20 +69,20 @@
 
     if($tipoNomina == 'O'){ $txt_tipoNomina = 'Ordinaria'; }else{ $txt_tipoNomina = 'Extraodinaria'; }
 
-    require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_periodoPago.php'; #$descripcionPago
-    require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_riesgotrabajo.php'; #$descripcionRiesgotrabajo
-    require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_banco.php'; #$descripcionBanco
-    require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_datosEmpleado.php'; #$PRESTAMOCTA
+    require $root . '/Ubicaciones/Nomina/actions/consulta_periodoPago.php'; #$descripcionPago
+    require $root . '/Ubicaciones/Nomina/actions/consulta_riesgotrabajo.php'; #$descripcionRiesgotrabajo
+    require $root . '/Ubicaciones/Nomina/actions/consulta_banco.php'; #$descripcionBanco
+    require $root . '/Ubicaciones/Nomina/actions/consulta_datosEmpleado.php'; #$PRESTAMOCTA
 
-    require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_percepciones.php'; #$consultaPercepConcep
-    require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_percepcionesOtrosPagos.php'; #$consultaPercepConcepOP
-    require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_percepcionesHorasExtra.php'; #$consultaPercepConcepHrExtra
-    require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_percepcionesSepIndem.php'; #$consultaPercepConcepINDEM
-    require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_deducciones.php'; #$consultaDeducConcep
-    require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_deducciones_pensionAlimen.php'; #$consultaDeduc_penAlim
-    require $root . '/conta6/Ubicaciones/Nomina/actions/lst_SAT_incapacidad.php'; #$incapacidad
+    require $root . '/Ubicaciones/Nomina/actions/lst_SAT_percepciones.php'; #$consultaPercepConcep
+    require $root . '/Ubicaciones/Nomina/actions/lst_SAT_percepcionesOtrosPagos.php'; #$consultaPercepConcepOP
+    require $root . '/Ubicaciones/Nomina/actions/lst_SAT_percepcionesHorasExtra.php'; #$consultaPercepConcepHrExtra
+    require $root . '/Ubicaciones/Nomina/actions/lst_SAT_percepcionesSepIndem.php'; #$consultaPercepConcepINDEM
+    require $root . '/Ubicaciones/Nomina/actions/lst_SAT_deducciones.php'; #$consultaDeducConcep
+    require $root . '/Ubicaciones/Nomina/actions/lst_SAT_deducciones_pensionAlimen.php'; #$consultaDeduc_penAlim
+    require $root . '/Ubicaciones/Nomina/actions/lst_SAT_incapacidad.php'; #$incapacidad
 
-    require $root . '/conta6/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina_relacionada.php'; #$total_consultaDatosRelacionada
+    require $root . '/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina_relacionada.php'; #$total_consultaDatosRelacionada
     $datosFactRelacionada = "";
     if( $total_consultaDatosRelacionada > 0 ){
       while ($row_consultaDatosRelacionada = $rslt_consultaDatosRelacionada->fetch_assoc()) {
@@ -139,13 +139,13 @@
 
   }
 
-  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepciones.php'; #$detalle_PERCEP
-  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepcionesOtrosPagos.php'; #$detalle_PERCEPOP
-  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepcionesHorasExtra.php'; #$detalle_PERCEPHrExtra
-  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaPercepcionesSepIndem.php'; #$detalle_PERCEPSepIndem
-  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaDeducciones.php'; #$detalle_DEDUC
-  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaDeducciones_pensionAlimenticia.php'; #$detalle_DEDUC_penAlim
-  require $root . '/conta6/Ubicaciones/Nomina/actions/consulta_capturaTotales.php'; #$detalle_TOTALES
+  require $root . '/Ubicaciones/Nomina/actions/consulta_capturaPercepciones.php'; #$detalle_PERCEP
+  require $root . '/Ubicaciones/Nomina/actions/consulta_capturaPercepcionesOtrosPagos.php'; #$detalle_PERCEPOP
+  require $root . '/Ubicaciones/Nomina/actions/consulta_capturaPercepcionesHorasExtra.php'; #$detalle_PERCEPHrExtra
+  require $root . '/Ubicaciones/Nomina/actions/consulta_capturaPercepcionesSepIndem.php'; #$detalle_PERCEPSepIndem
+  require $root . '/Ubicaciones/Nomina/actions/consulta_capturaDeducciones.php'; #$detalle_DEDUC
+  require $root . '/Ubicaciones/Nomina/actions/consulta_capturaDeducciones_pensionAlimenticia.php'; #$detalle_DEDUC_penAlim
+  require $root . '/Ubicaciones/Nomina/actions/consulta_capturaTotales.php'; #$detalle_TOTALES
 
 ?>
 
@@ -291,13 +291,13 @@
 
     <div class="row d-flex justify-content-start m-3">
       <?PHP if( $id_regimen == '02' ){ ?>
-      <a href="/conta6/Ubicaciones/Nomina/SueldosySalarios/consultar_Nomina.php">
-        <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+      <a href="/Ubicaciones/Nomina/SueldosySalarios/consultar_Nomina.php">
+        <img class="icomediano" src="/Resources/iconos/left.svg">
       </a>
       <?php } ?>
       <?PHP if( $id_regimen == '09' ){ ?>
-      <a href="/conta6/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">
-        <img class="icomediano" src="/conta6/Resources/iconos/left.svg">
+      <a href="/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">
+        <img class="icomediano" src="/Resources/iconos/left.svg">
       </a>
       <?php } ?>
     </div>
@@ -320,7 +320,7 @@
                   </div>
                   <div class="col-md-6">
                     <a href='#catalogoComplementoNomina' data-toggle='modal'>
-                      <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+                      <img class='icochico' src='/Resources/iconos/help.svg'>
                     </a>
                   </div>
                 </div>
@@ -343,7 +343,7 @@
                   </div>
                   <div class='col-md-1 text-left'>
                     <a onclick="agregarPercep()" id="Btn_agregar">
-                      <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                      <img src='/Resources/iconos/002-plus.svg' class='icomediano'>
                     </a>
                   </div>
                 </div>
@@ -382,7 +382,7 @@
                   </div>
                   <div class="col-md-6">
                     <a href='#catalogoComplementoNomina' data-toggle='modal'>
-                      <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+                      <img class='icochico' src='/Resources/iconos/help.svg'>
                     </a>
                   </div>
                 </div>
@@ -411,7 +411,7 @@
                   </div>
                   <div class='col-md-1 text-left'>
                     <a onclick="agregarPercepOtrosPagos()" id="Btn_agregar">
-                      <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                      <img src='/Resources/iconos/002-plus.svg' class='icomediano'>
                     </a>
                   </div>
                 </div>
@@ -452,7 +452,7 @@
                   </div>
                   <div class="col-md-6">
                     <a href='#catalogoComplementoNomina' data-toggle='modal'>
-                      <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+                      <img class='icochico' src='/Resources/iconos/help.svg'>
                     </a>
                   </div>
                 </div>
@@ -481,7 +481,7 @@
                   </div>
                   <div class='col-md-1 text-left'>
                     <a onclick="agregarPercepHrExtra()" id="Btn_agregar">
-                      <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                      <img src='/Resources/iconos/002-plus.svg' class='icomediano'>
                     </a>
                   </div>
                 </div>
@@ -522,7 +522,7 @@
                       </div>
                       <div class="col-md-6">
                         <a href='#catalogoComplementoNomina' data-toggle='modal'>
-                          <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+                          <img class='icochico' src='/Resources/iconos/help.svg'>
                         </a>
                       </div>
                     </div>
@@ -545,7 +545,7 @@
                       </div>
                       <div class='col-md-1 text-left'>
                         <a onclick="agregarPercepSepIndem()" id="Btn_agregar">
-                          <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                          <img src='/Resources/iconos/002-plus.svg' class='icomediano'>
                         </a>
                       </div>
                     </div>
@@ -583,7 +583,7 @@
                   </div>
                   <div class="col-md-6">
                     <a href='#catalogoComplementoNomina' data-toggle='modal'>
-                      <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+                      <img class='icochico' src='/Resources/iconos/help.svg'>
                     </a>
                   </div>
                 </div>
@@ -606,7 +606,7 @@
                   </div>
                   <div class='col-md-1 text-left'>
                     <a onclick="agregarDeduc()" id="Btn_agregar">
-                      <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                      <img src='/Resources/iconos/002-plus.svg' class='icomediano'>
                     </a>
                   </div>
                 </div>
@@ -645,7 +645,7 @@
               </div>
               <div class="col-md-6">
                 <a href='#catalogoComplementoNomina' data-toggle='modal'>
-                  <img class='icochico' src='/conta6/Resources/iconos/help.svg'>
+                  <img class='icochico' src='/Resources/iconos/help.svg'>
                 </a>
               </div>
             </div>
@@ -675,7 +675,7 @@
               </div>
               <div class='col-md-1 text-left'>
                 <a onclick="agregarDeducPenAlimen()" id="Btn_agregar">
-                  <img src='/conta6/Resources/iconos/002-plus.svg' class='icomediano'>
+                  <img src='/Resources/iconos/002-plus.svg' class='icomediano'>
                 </a>
               </div>
             </div>
@@ -729,6 +729,6 @@
 </body>
 
 <?php
-require $root . '/conta6/Ubicaciones/Nomina/Honorarios/modales/catalogoCompNomina.php';
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/Nomina/Honorarios/modales/catalogoCompNomina.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

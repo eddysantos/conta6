@@ -7,14 +7,14 @@
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-  require $root . '/conta6/Resources/PHP/actions/validarFormulario.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
+  require $root . '/Resources/PHP/actions/validarFormulario.php';
 
   $regimenNomina = '02';
-  require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/ultimaNominaSueldos.php';
-  require $root . '/conta6/Resources/PHP/actions/consulta_nomina_anio.php';
+  require $root . '/Ubicaciones/Nomina/SueldosySalarios/actions/ultimaNominaSueldos.php';
+  require $root . '/Resources/PHP/actions/consulta_nomina_anio.php';
 
-  require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
+  require $root . '/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
 
 ?>
   <div class="contorno mt-5" id="contgenerarnom">
@@ -87,7 +87,7 @@
 
     <div class="row font16 justify-content-center" id="vprev"><!--RUTA VISTA PREVIA-->
       <div class="col-md-3 mt-4 text-center" role="button">
-        <a href="#" class="boton icochico" id="generarDocNominaSuel"> <img src= "/conta6/Resources/iconos/001-add.svg"> GENERAR NOMINA</a>
+        <a href="#" class="boton icochico" id="generarDocNominaSuel"> <img src= "/Resources/iconos/001-add.svg"> GENERAR NOMINA</a>
         <input id="nom_regimen" type="hidden" value="<?php echo $regimenNomina; ?>">
       </div>
     </div> <!--VISTA PREVIA-->
@@ -123,7 +123,7 @@
 
     <div class="row font16 justify-content-center"><!--RUTA VISTA PREVIA-->
       <div class="col-md-3 mt-4 p-1" role="button">
-        <a href="#" class="boton icochico"> <img src= "/conta6/Resources/iconos/001-add.svg"> GENERAR AGUINALDO</a>
+        <a href="#" class="boton icochico"> <img src= "/Resources/iconos/001-add.svg"> GENERAR AGUINALDO</a>
       </div>
     </div> <!--VISTA PREVIA-->
   </div>
@@ -134,8 +134,8 @@
 
 
 <script src="js/SueldosySalarios.js"></script>
-<!-- <script src="/conta6/Resources/bootstrap/js/bootstrap-toggle.js"></script> -->
+<!-- <script src="/Resources/bootstrap/js/bootstrap-toggle.js"></script> -->
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

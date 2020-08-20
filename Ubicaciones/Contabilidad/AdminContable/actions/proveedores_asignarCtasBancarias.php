@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
 $system_callback = [];
@@ -40,7 +40,7 @@ if ($rslt->num_rows == 0) {
 while ($row = $rslt->fetch_assoc()) {
   // if( $oRst_permisos["s_catalogoPersonasPROV_GctasBcos"] == 1 ){
   if( $oRst_permisos["s_catalogoPersonasPROV_g"] == 1 ){
-    $btnborrar = "<a href='#' onclick='btn_bcprov($row[pk_id_banco_prov],$row[fk_id_proveedor])'><img src= '/conta6/Resources/iconos/002-trash.svg' class='icochico'></a>";
+    $btnborrar = "<a href='#' onclick='btn_bcprov($row[pk_id_banco_prov],$row[fk_id_proveedor])'><img src= '/Resources/iconos/002-trash.svg' class='icochico'></a>";
   }else{ $bntborrar = "";}
 
   $system_callback['data'] .=

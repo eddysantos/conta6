@@ -3,7 +3,7 @@
 $tipo = 3;
 $detPolCtaGastos = '';
 
-require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
+require $root . '/Resources/PHP/actions/consultaCtas108y208_cliente.php';
 if( $rows_ctasCliente > 0 ){
   while($row_ctasCliente = $rslt_ctasCliente->fetch_assoc()){
     $cta = $row_ctasCliente['pk_id_cuenta'];
@@ -49,7 +49,7 @@ if( $POCME_Total_MN <> 0 ){
 
 
 #Registros de los cargos a cuenta del cliente
-require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php';
+require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php';
 
 
 

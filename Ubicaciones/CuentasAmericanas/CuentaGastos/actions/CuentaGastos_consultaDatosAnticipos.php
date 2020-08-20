@@ -1,7 +1,7 @@
 <?PHP
 
 // $root = $_SERVER['DOCUMENT_ROOT'];
-// require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+// require $root . '/Resources/PHP/Utilities/initialScript.php';
 // echo $cuenta = 34;
 
 $query_consultaANTICIPO = "SELECT pk_id_partida,n_noDeposito,n_importe

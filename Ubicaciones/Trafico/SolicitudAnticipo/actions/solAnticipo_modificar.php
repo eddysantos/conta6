@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
 $ID_calculo = trim($_POST['T_No_calculoTarifa']);
@@ -225,8 +225,8 @@ if (!($stmt_mst->execute())) {
 
 
 
-require $root . '/conta6/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_modificar_detalle.php';
-require $root . '/conta6/Resources/PHP/actions/tarifas_calcula_borrar.php';
+require $root . '/Ubicaciones/Trafico/SolicitudAnticipo/actions/solAnticipo_modificar_detalle.php';
+require $root . '/Resources/PHP/actions/tarifas_calcula_borrar.php';
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";

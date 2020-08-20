@@ -1,7 +1,7 @@
 <?php
   // $root = $_SERVER['DOCUMENT_ROOT'];
-  // //require $root . '/conta6/Ubicaciones/barradenavegacion.php';
-	// require $root . '/conta6/Ubicaciones/encabezadoImpresion.php';
+  // //require $root . '/Ubicaciones/barradenavegacion.php';
+	// require $root . '/Ubicaciones/encabezadoImpresion.php';
   //
   //
 	// $sql_Select = "SELECT * from conta_cs_cuentas_mst ORDER BY pk_id_cuenta";
@@ -14,9 +14,9 @@
 	// while ($row = $rslt->fetch_assoc()) {
 	// 	if( $row['s_cta_status'] == 1 ){ $txt_captura = "Permitido"; }else{ $txt_captura = "Denegado"; }
 	// 	if( $row['s_cta_actividad'] == 1 ){
-	// 		$img = '<img src="/conta6/Resources/iconos/check.svg" style="margin-top:-4px" class="w-25">';
+	// 		$img = '<img src="/Resources/iconos/check.svg" style="margin-top:-4px" class="w-25">';
 	// 	}else{
-	// 		$img = '<img src="/conta6/Resources/iconos/cross.svg" style="margin-top:-4px" class="w-25">';
+	// 		$img = '<img src="/Resources/iconos/cross.svg" style="margin-top:-4px" class="w-25">';
 	// 	}
   //
 	// 	$lst_cuentas .=

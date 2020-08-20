@@ -2,56 +2,56 @@ $(document).ready(function(){
 listaEmpleados();
 
 // MOSTRAR / OCULTAR DIVS
-  $('.emp').click(function(){
-    var accion = $(this).attr('accion');
-
-  switch (accion) {
-      case "dgen":
-        $('#contorno1').fadeIn();
-        $('#contorno2,#contorno3,#sueldos,#hos_has').hide();
-        $('.dlab, .dsal, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
-        $(this).css('cssText', 'color: #d11c1c !important');
-        break;
-			case "dlab":/*Comienza Editar Datos Laborales*/
-        $('#contorno2').fadeIn();
-        $('#contorno1, #contorno3,#sueldos,#hos_has').hide();
-        $('.dgen, .dsal, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
-        $(this).css('cssText', 'color: #d11c1c !important');
-        break;
-			case "dsal":/*Comienza Editar Distribucion de Salario*/
-        $('#contorno3').fadeIn();
-        $('#contorno1, #contorno2,#sueldos,#hos_has').hide();
-        $('.dlab, .dgen, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
-        $(this).css('cssText', 'color: #d11c1c !important');
-				break;
-			case "dsuel": /*Comienza Editar Distribucion de Salario*/
-        $('#sueldos').fadeIn();
-        $('#contorno1, #contorno2,#contorno3,#hos_has').hide();
-        $('.dlab, .dgen, .dsal, .hon').css('cssText', 'color: #a1a0a0 !important');
-        $(this).css('cssText', 'color: #d11c1c !important');
-				break;
-      case "hon":
-         $('#hon_has').fadeIn();
-         $('#contorno1, #contorno2, #contorno3, #sueldos').hide();
-         $('.dlab, .dgen, .dsal, .suel').css('cssText', 'color: #a1a0a0 !important');
-         $(this).css('cssText', 'color: #d11c1c !important');
-         break;
-			case "perc":// ******** PERMANENTES *********** ///*Comienza Editar percepciones*/
-        $('#contorno5').fadeIn();
-        $('#contorno6').hide();
-        $('.deduc').css('cssText', 'color: #a1a0a0 !important');
-        $(this).css('cssText', 'color: #d11c1c !important');
-				break;
-			case "deduc":/*Comienza Editar Deducciones*/
-        $('#contorno6').fadeIn();
-        $('#contorno5').hide();
-        $('.perc').css('cssText', 'color: #a1a0a0 !important');
-        $(this).css('cssText', 'color: #d11c1c !important');
-				break;
-      default:
-      console.error("Something went terribly wrong...");
-    }
-  });
+  // $('.emp').click(function(){
+  //   var accion = $(this).attr('accion');
+  //
+  // switch (accion) {
+  //     case "dgen":
+  //       $('#contorno1').fadeIn();
+  //       $('#contorno2,#contorno3,#sueldos,#hos_has').hide();
+  //       $('.dlab, .dsal, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
+  //       $(this).css('cssText', 'color: #d11c1c !important');
+  //       break;
+	// 		case "dlab":
+  //       $('#contorno2').fadeIn();
+  //       $('#contorno1, #contorno3,#sueldos,#hos_has').hide();
+  //       $('.dgen, .dsal, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
+  //       $(this).css('cssText', 'color: #d11c1c !important');
+  //       break;
+	// 		case "dsal":
+  //       $('#contorno3').fadeIn();
+  //       $('#contorno1, #contorno2,#sueldos,#hos_has').hide();
+  //       $('.dlab, .dgen, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
+  //       $(this).css('cssText', 'color: #d11c1c !important');
+	// 			break;
+	// 		case "dsuel":
+  //       $('#sueldos').fadeIn();
+  //       $('#contorno1, #contorno2,#contorno3,#hos_has').hide();
+  //       $('.dlab, .dgen, .dsal, .hon').css('cssText', 'color: #a1a0a0 !important');
+  //       $(this).css('cssText', 'color: #d11c1c !important');
+	// 			break;
+  //     case "hon":
+  //        $('#hon_has').fadeIn();
+  //        $('#contorno1, #contorno2, #contorno3, #sueldos').hide();
+  //        $('.dlab, .dgen, .dsal, .suel').css('cssText', 'color: #a1a0a0 !important');
+  //        $(this).css('cssText', 'color: #d11c1c !important');
+  //        break;
+	// 		case "perc":
+  //       $('#contorno5').fadeIn();
+  //       $('#contorno6').hide();
+  //       $('.deduc').css('cssText', 'color: #a1a0a0 !important');
+  //       $(this).css('cssText', 'color: #d11c1c !important');
+	// 			break;
+	// 		case "deduc":
+  //       $('#contorno6').fadeIn();
+  //       $('#contorno5').hide();
+  //       $('.perc').css('cssText', 'color: #a1a0a0 !important');
+  //       $(this).css('cssText', 'color: #d11c1c !important');
+	// 			break;
+  //     default:
+  //     console.error("Something went terribly wrong...");
+  //   }
+  // });
   // TERMINA MOSTRAR / OCULTAR DIVS
 
 $(function(){
@@ -112,37 +112,34 @@ $(function(){
 
 
 
-// SELECCION DE REGIMEN FUNCIONANDO
 $('#fk_id_regimen_add').change(function(){
-  if ($('#fk_id_regimen_add').val() == 2) {
-    $('#regimen').show();
-    $('#txtSueldos').show();
-    $('#txtHon').hide();
-  }else if ($('#fk_id_regimen_add').val() == 9) {
-    $('#regimen').show();
-    $('#txtHon').show();
-    $('#txtSueldos').hide();
+  if ($(this).val() == 2) {
+    $('#regimen,#add_userTabContent,.add_ss-tab').show();
+    $('.add_hon-tab').hide();
+  }else if ($(this).val() == 9) {
+    $('#regimen,#add_userTabContent,.add_hon-tab').show();
+    $('.add_ss-tab').hide();
   }
 });
+
 // VALIDACIONES
 $('#validarDtosGenerales').click(function(){
-
   validacionDatosGenerales =   $('#s_nombre_add').val() == "" ||
-                               $('#s_apellidoP_add').val() == "" ||
-                               $('#s_apellidoM_add').val() == "" ||
-                               $('#d_fechaNacido_add').val() == "" ||
-                               $('#s_CURP_add').val() == "" ||
-                               $('#s_RFC_add').val() == "" ||
-                               $('#s_email_personal_add').val() == "" ||
-                               $('#s_calle_add').val() == "" ||
-                               $('#s_no_ext_add').val() == "" ||
-                               $('#s_colonia_add').val() == "" ||
-                               $('#s_municipio_add').val() == "" ||
-                               $('#s_estado_add').val() == 0 ||
-                               $('#s_codigo_add').val() == "" ||
-                               $('#s_id_entfed_add').val() == 0 ||
-                               $('#fk_id_formapago_add').val() == 0;
-
+  $('#s_apellidoP_add').val() == "" ||
+  $('#s_apellidoM_add').val() == "" ||
+  $('#d_fechaNacido_add').val() == "" ||
+  $('#s_CURP_add').val() == "" ||
+  $('#s_RFC_add').val() == "" ||
+  $('#s_email_personal_add').val() == "" ||
+  $('#s_calle_add').val() == "" ||
+  $('#s_no_ext_add').val() == "" ||
+  $('#s_colonia_add').val() == "" ||
+  $('#s_municipio_add').val() == "" ||
+  $('#s_estado_add').val() == 0 ||
+  $('#s_codigo_add').val() == "" ||
+  $('#s_id_entfed_add').val() == 0 ||
+  $('#fk_id_formapago_add').val() == 0;
+// validacionDatosGenerales = "";
   if (validacionDatosGenerales) {
     swal("Error","Los campos marcados con (*), son obligatorios","error");
   }else{
@@ -150,22 +147,25 @@ $('#validarDtosGenerales').click(function(){
       alertify.error("Banco y número de cuenta es requerido");
        return false;
     }
-    $('#datosGenerales').hide();
-    $('#datosLaborales').show();
+
+    $('#add_dlab-tab,.add_dlab-tab').removeClass('disabled').click();
+    $('#add_dlab').removeClass('d-none');
     $(this).hide();
   }
 });
 
 $('#validarDtosLaborales').click(function(){
   validacionDatosLaborales =  $('#fk_id_depto_add').val() == "" ||
-                              $('#s_puesto_actividad_add').val() == "" ||
-                              $('#d_fechaContrato_add').val() == "" ||
-                              $('#fk_id_contrato_add').val() == "" ||
-                              $('#fk_id_jornada_add').val() == "" ||
-                              $('#fk_id_riesgo_add').val() == 0 ||
-                              $('#fk_id_pago_add').val() == 0 ||
-                              $('#s_activo_add').val() == 0 ||
-                              $('#s_pagar_add').val() == 0 ;
+  $('#s_puesto_actividad_add').val() == "" ||
+  $('#d_fechaContrato_add').val() == "" ||
+  $('#fk_id_contrato_add').val() == "" ||
+  $('#fk_id_jornada_add').val() == "" ||
+  $('#fk_id_riesgo_add').val() == 0 ||
+  $('#fk_id_pago_add').val() == 0 ||
+  $('#s_activo_add').val() == 0 ||
+  $('#s_pagar_add').val() == 0 ;
+
+  // validacionDatosLaborales = "";
 
   if (validacionDatosLaborales) {
     swal("Error","Los campos marcados con (*), son obligatorios","error");
@@ -178,25 +178,32 @@ $('#validarDtosLaborales').click(function(){
       alertify.error("La fecha de contrato es requerida");
       return false;
     }
-    $('#datosLaborales').hide();
-    $('#distribucionSalario').show();
+
+    $('#add_dsal-tab,.add_dsal-tab').removeClass('disabled').click();
+    $('#add_dsal').removeClass('d-none');
+    $(this).hide();
   }
 });
 
 $('#validarDistSalarios').click(function(){
   validarDistSalarios = $('#n_porcentajeTotal_add').val() == "" ||
-                        $('#n_porcentajeTotal_add').val() != "100";
+  $('#n_porcentajeTotal_add').val() != "100";
 
+  // validarDistSalarios = "";
   if (validarDistSalarios) {
     swal("Error","Favor de verificar el campo total debe ser 100%","error");
   }else {
     $('#distribucionSalario').hide();
     if ($('#fk_id_regimen_add').val() == 2) {
-      $('#sueldosySalarios').show();
-      $('#honorariosAsim').hide();
+      $('#add_ss-tab,.add_ss-tab').removeClass('disabled').click();
+      $('#add_ss').removeClass('d-none');
+      $(this).hide();
+
+
     }else if ($('#fk_id_regimen_add').val() == 9) {
-      $('#honorariosAsim').show();
-      $('#sueldosySalarios').hide();
+      $('#add_hon-tab,.add_hon-tab').removeClass('disabled').click();
+      $('#add_hon').removeClass('d-none');
+      $(this).hide();
     }
   }
 });
@@ -298,11 +305,10 @@ $('#validarDistSalarios').click(function(){
     });
   });
 
-// PASAR VARIABLES A MODAL
+
   $('tbody').on('click', '.editar-empleado', function(){
     var dbid = $(this).attr('db-id');
     var regimen  = $(this).attr('regimen');
-    var tar_modal = $($(this).attr('href'));
 
     if (regimen == 2 || regimen == '02') {
       $('.suelysal-1').show();
@@ -329,7 +335,6 @@ $('#validarDistSalarios').click(function(){
             var element_type = iterated_element.prop('nodeName');
             var dbid = iterated_element.attr('db-id');
             var value = r.data[key];
-            console.log(value);
 
             iterated_element.val(value).addClass('tiene-contenido');
             if (typeof dbid !== undefined && dbid !== false) {
@@ -339,7 +344,6 @@ $('#validarDistSalarios').click(function(){
         }
         $('#h_salario_mensual').val(r.data.n_salario_semanal);
         $('#n_salario_pago').val(r.data.n_salario_semanal - r.data.n_ISR);
-        tar_modal.modal('show');
       } else {
         console.error(r);
       }
@@ -347,9 +351,8 @@ $('#validarDistSalarios').click(function(){
 
   });
 
-// Editar Empleado
-  $('.medit-empleado').click(function(){
 
+  $('.medit-empleado').click(function(){
     var regimen = $('#fk_id_regimen').val();
     if (regimen == 2 || regimen ==  '02') {
       if ($('#s_IMSS').val() == "") {
@@ -539,20 +542,8 @@ $('#validarDistSalarios').click(function(){
   $('#filtroRegimen').change(function(){
     listaEmpleados();
     regimen = $('#filtroRegimen').val();
-
-    // if ($('#filtroRegimen').val() == 2) {
-    //   $('#regimenprueba').val(02);
-    // }else if ($('#filtroRegimen').val() == 9) {
-    //   $('#regimenprueba').val(09);
-    // }
-
     $('#empleados_rt_search').data('regimen', regimen);
   });
-
-
-
-
-
 
 
 });
@@ -577,19 +568,18 @@ function Salario_Int(){
 
 function listaEmpleados(){
   var data = {
-    fk_id_aduana : $('#fk_id_aduana_add').val(),
-    // regimen : $('#regimenprueba').val()
+    // fk_id_aduana : $('#fk_id_aduana_add').val(),
     regimen : $('#filtroRegimen').val()
   }
+  console.log(data);
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Nomina/empleados/actions/mostrar.php",
+    url: "/Ubicaciones/Nomina/empleados/actions/mostrar.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
       if (r.code == 1) {
         $('#registrosEmpleados').html(r.data);
-        $('#registrosEncabezado').html(r.encabezado);
       }
     }
   });
@@ -603,7 +593,7 @@ function calcularISR(){
   if (salario_diario > 0) {
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Nomina/empleados/actions/calculoISR.php",
+      url: "/Ubicaciones/Nomina/empleados/actions/calculoISR.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -628,7 +618,7 @@ function calcularISRmodal(){
   if (salario_diario > 0) {
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Nomina/empleados/actions/calculoISR.php",
+      url: "/Ubicaciones/Nomina/empleados/actions/calculoISR.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);

@@ -6,7 +6,7 @@ $(document).ready(function(){
     var display = $($(this).attr('id-display'));
     var text = $(this).val();
     var action = $(this).attr('action');
-    var url = '/Conta6/Resources/PHP/actions/popup_actions/' + action + '.php';
+    var url = '/Resources/PHP/actions/popup_actions/' + action + '.php';
 
     $(this).attr('db-id', '');
 

@@ -1,12 +1,12 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
 
   $idDocNomina = trim($_POST['idDocNomina']);
   $fechaActual = date("Y-m-d H:i:s");
 
 
-require $root . '/conta6/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina_captura.php';
+require $root . '/Ubicaciones/Nomina/actions/consultaDatosCFDI_docNomina_captura.php';
 if( $total_consultaDatosCaptura > 0 ){
   $row_consultaDatosCaptura = $rslt_consultaDatosCaptura->fetch_assoc();
 
@@ -79,13 +79,13 @@ if( $total_consultaDatosCaptura > 0 ){
 
 }
 if( $id_regimen == "09" ){
-  require $root . '/conta6/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_1agregarDocCaptura.php';
+  require $root . '/Ubicaciones/Nomina/Honorarios/actions/generarNominaHon_1agregarDocCaptura.php';
   $id_docNomina = $db->insert_id;
   $clave = 'nomHonorarios';
 }
 
 if( $id_regimen == "02" ){
-  require $root . '/conta6/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_1agregarDocCaptura.php';
+  require $root . '/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel_1agregarDocCaptura.php';
   $id_docNomina = $db->insert_id;
   $clave = 'nomSueldos';
 }
@@ -143,7 +143,7 @@ $query_detalleDocNomina = "INSERT INTO conta_t_nom_captura_det(
 
   $descripcion = "Se genera Documento: $id_docNomina que sustituye al Documento: $idDocNomina";
   $folio = $id_docNomina;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
   $system_callback['code'] = 1;

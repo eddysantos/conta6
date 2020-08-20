@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_anticipo = trim($_POST['id_anticipo']);
 $fecha = trim($_POST['antfecha']);
@@ -85,7 +85,7 @@ if (!($stmt_antMST->execute())) {
 $descripcion = "Se Actualizo el Anticipo: $id_anticipo Concepto: $concepto Fecha: $fecha Valor: $valor Cuenta:$cta Cliente:$cliente";
 $clave = 'anticipos';
 $folio = $id_anticipo;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 //actualizando DET ******************************************************************************
@@ -312,7 +312,7 @@ while($rowPOL = $rsltPOL->fetch_assoc()){
 		$tipoInf = 'CompNal';
 
 			if( $notaCred > 0 ){
-				require $root . '/conta6/Resources/PHP/actions/consultaNotaCreditoCapturaTimbrada.php';
+				require $root . '/Resources/PHP/actions/consultaNotaCreditoCapturaTimbrada.php';
 				$tipoDetalle = 'CompNal';
 				$RFC = $row_ncCaptTim['s_rfc'];
 				$UUID = $row_ncCaptTim['s_UUID'];
@@ -320,7 +320,7 @@ while($rowPOL = $rsltPOL->fetch_assoc()){
 				$BeneficiarioOpc = $row_ncCaptTim['s_nombre'];
 			}else{
 				if( $factura > 0 && $notaCred == 0 ){
-					require $root . '/conta6/Resources/PHP/actions/consultaFacturaCaptura.php';
+					require $root . '/Resources/PHP/actions/consultaFacturaCaptura.php';
 					$tipoDetalle = 'CompNal';
 					$RFC = $row_facCapt['s_rfc'];
 					$UUID = $row_facCapt['s_UUID'];
@@ -329,7 +329,7 @@ while($rowPOL = $rsltPOL->fetch_assoc()){
 				}
 			}
 
-			require $root . '/conta6/Resources/PHP/actions/contaElect_insertaCompNal.php';
+			require $root . '/Resources/PHP/actions/contaElect_insertaCompNal.php';
 	}
 
 

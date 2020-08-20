@@ -1,6 +1,6 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $cliente = trim($_POST['cliente']);
 $fecha = trim($_POST['fecha']);
@@ -8,7 +8,7 @@ $id_poliza = trim($_POST['id_poliza']);
 $tipo = trim($_POST['tipo']);
 
 $TBL = "temp_polizas_cliente";
-require $root . '/conta6/Ubicaciones/Contabilidad/actions/buscarFacturas.php';
+require $root . '/Ubicaciones/Contabilidad/actions/buscarFacturas.php';
 
 
 $query = "SELECT * FROM temp_polizas_cliente where saldo <> 0 ORDER BY abs(fk_factura) desc";

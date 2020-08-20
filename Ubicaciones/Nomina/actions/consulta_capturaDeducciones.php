@@ -55,7 +55,7 @@ while ($row_capturaDeducciones = $rslt_capturaDeducciones->fetch_assoc()) {
       <input type='text' id='T_DEDUC_exento$partidaD' class='T_DEDUC_EXENTO exento efecto' value='$importeExentoD' onblur='validaIntDec(this); sumaGeneralNomina()'>
     </td>
     <td>
-      <a><img class='icomediano remove-DEDUC' src='/conta6/Resources/iconos/002-trash.svg'></a>
+      <a><img class='icomediano remove-DEDUC' src='/Resources/iconos/002-trash.svg'></a>
     </td>
   </tr>
   ";

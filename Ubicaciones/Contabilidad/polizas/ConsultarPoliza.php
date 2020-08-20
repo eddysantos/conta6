@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+require $root . '/Ubicaciones/barradenavegacion.php';
 
 
 $id_poliza = trim($_GET['id_poliza']);
@@ -94,7 +94,7 @@ if( $totalRegistrosSelect > 0 ){
         </div>
         <div class="row m-0">
           <div class="col-md-1">
-            <a href="#" onclick="btn_printPoliza(<?php echo $oRst_Select['pk_id_poliza']; ?>,<?php echo $oRst_Select['fk_id_aduana']; ?>)" class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
+            <a href="#" onclick="btn_printPoliza(<?php echo $oRst_Select['pk_id_poliza']; ?>,<?php echo $oRst_Select['fk_id_aduana']; ?>)" class="boton border-0"><img class="icomediano" src= "/Resources/iconos/printer.svg"></a>
           </div>
           <div class="col-md-2 offset-md-7">
             <input  class="efecto" value="<?php echo $sumaCargos; ?>" readonly>
@@ -176,7 +176,7 @@ if( $totalRegistrosSelect > 0 ){
     </div>
     <div class="tab-pane fade" id="inf" role="tabpanel" aria-labelledby="dos-tab">
       <?php if( $oRst_permisos['s_consultar_ContaElect'] == 1 ){
-        require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
+        require $root . '/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
       } ?>
     </div>
   </div>
@@ -193,6 +193,6 @@ if( $totalRegistrosSelect > 0 ){
 
 
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
  ?>
-<!-- <script src="/conta6/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script> -->
+<!-- <script src="/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script> -->

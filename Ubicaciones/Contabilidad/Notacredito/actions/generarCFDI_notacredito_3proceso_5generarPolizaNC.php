@@ -3,11 +3,11 @@
 $tipo = 3;
 $fecha = $fechaTimbre;
 $concepto = "NOTA DE CREDITO - ".$r_razon_social;
-require $root . '/conta6/Resources/PHP/actions/generarFolioPoliza.php';
+require $root . '/Resources/PHP/actions/generarFolioPoliza.php';
 $poliza = $nFolio;
 $detallePoliza = '';
 
-require $root . '/conta6/Resources/PHP/actions/consultaCtas108y208_cliente.php';
+require $root . '/Resources/PHP/actions/consultaCtas108y208_cliente.php';
 if( $rows_ctasCliente > 0 ){
   while($row_ctasCliente = $rslt_ctasCliente->fetch_assoc()){
     $cta = $row_ctasCliente['pk_id_cuenta'];
@@ -36,8 +36,8 @@ if( $POCME_Total_MN <> 0 ){
 
 
 #Registros de los conceptos
-require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosCargos.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosHonorarios.php';
+require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosCargos.php';
+require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosHonorarios.php';
 
 if( $totaGralIVA > 0 ){
   $detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'0202-00002',3,'IVA SOBRE HONORARIOS','".$id_cliente."','".$referencia."',".$id_facturaRelacionada.",0,".$totaGralIVA.",0),";
@@ -45,7 +45,7 @@ if( $totaGralIVA > 0 ){
 if( $IVAretenido > 0 ){
   $detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'0167-00005',3,'IVA Retenido (4%)','".$id_cliente."','".$referencia."',".$id_facturaRelacionada.",0,".$IVAretenido.",0),";
 }
-require $root . '/conta6/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosDepositos.php';
+require $root . '/Ubicaciones/Contabilidad/Notacredito/actions/consultarCapturaCuenta_datosDepositos.php';
 
 if( $totalGral <> 0 ){
   $detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'".$cta108."',3,'IMPORTE DE LA NOTA DE CREDITO','".$id_cliente."','".$referencia."',".$id_facturaRelacionada.",0,0,".$totalGral."),";

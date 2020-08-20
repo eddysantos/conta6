@@ -1,7 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
-$rutaLogo = $root . '/Conta6/Resources/imagenes/cheetah.svg';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
+$rutaLogo = $root . '/Resources/imagenes/cheetah.svg';
 
 $id_aduana = $aduana;
 $id_nomina = trim($_GET['semana']);

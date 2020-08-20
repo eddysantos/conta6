@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
 $id_poliza = trim($_POST['id_poliza']);
@@ -45,7 +45,7 @@ $descripcion = "Se Actualizo la Poliza: $id_poliza, Estatus: $status_txt";
 
 $clave = 'polizas';
 $folio = $id_poliza;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";

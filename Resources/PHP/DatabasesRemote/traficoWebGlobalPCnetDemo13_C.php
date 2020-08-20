@@ -1,6 +1,6 @@
 <?php
-require $root . '/conta6/Resources/PHP/Databases/conexion.php';
-require $root . '/conta6/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php';
+require $root . '/Resources/PHP/Databases/conexion.php';
+require $root . '/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php';
 
 	#***********
 	# CLIENTES *

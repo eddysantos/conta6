@@ -1,14 +1,14 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $partida = trim($_POST['partida']);
 $id_poliza = trim($_POST['id_poliza']);
 
 #*** PAGO DE NOMINA
 # SI LA CUENTA ES 0213-01 OR 0213-3 SE TIENE QUE QUITAR LA POLIZA DE PAGO EN NOMINA
-require $root . '/conta6/Ubicaciones/Contabilidad/polizas/actions/consulta_datosPartida.php'; # $fk_id_cuenta, $fk_factura
-require $root . '/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_ctas0213pagos.php'; #$cuentaSuel,$cuentaHon
+require $root . '/Ubicaciones/Contabilidad/polizas/actions/consulta_datosPartida.php'; # $fk_id_cuenta, $fk_factura
+require $root . '/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_ctas0213pagos.php'; #$cuentaSuel,$cuentaHon
 
 
 $query_eliminaPartPol = "DELETE FROM conta_t_polizas_det WHERE pk_partida = ?";
@@ -48,18 +48,18 @@ if ($affected_eliminaPartPol > 0) {
   if( $fk_id_cuenta == $cuentaHon || $fk_id_cuenta == $cuentaSuel ){
     $factura = $fk_factura;
     $system_callback['message2'] = 'llego3: '.$factura;
-    require $root . '/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_actualizaPagos.php';
+    require $root . '/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_actualizaPagos.php';
   }
 
 
   #*** ELIMINAR EN CONTABILIDAD ELECTRONICA LOS REGISTROS DE LA PARTIDA QUE SE BORRA
-  require $root . '/conta6/Resources/PHP/actions/contaElect_eliminar.php';
+  require $root . '/Resources/PHP/actions/contaElect_eliminar.php';
 
   $descripcion = "Se elimino la Partida: $partida de la Poliza: $id_poliza";
 
   $clave = 'polizas';
   $folio = $id_poliza;
-  require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
   $system_callback['code'] = 1;
   $system_callback['message'] = "Script called successfully!";

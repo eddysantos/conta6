@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $id_poliza = trim($_POST['id_poliza']);
 $id_cheque = trim($_POST['id_cheque']);
@@ -60,7 +60,7 @@ $descripcion = "Se Actualizo el Cheque: $id_cheque, Cta: $id_cuentaMST Estatus: 
 
 $clave = 'cheques';
 $folio = $id_cheque;
-require $root . '/conta6/Resources/PHP/actions/registroAccionesBitacora.php';
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
 //CANCELA DETALLE
@@ -117,7 +117,7 @@ if( $status == 0 ){
 
 // CANCELO LA POLIZA DEL CHEQUE *********************************************************
 if( $id_poliza > 0 ){
-  require $root . '/conta6/Resources/PHP/actions/cancelarPoliza.php';
+  require $root . '/Resources/PHP/actions/cancelarPoliza.php';
 }
 
 

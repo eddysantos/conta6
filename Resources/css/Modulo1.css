@@ -1,3 +1,21 @@
+
+a{
+  text-decoration: none!important;
+  color: var(--gris-spectrum-80)!important;
+}
+/* a:hover{
+  text-decoration: none;
+} */
+.whitesmoke{
+  color: whitesmoke!important;
+}
+
+li.disabled {
+    cursor: not-allowed;
+}
+.disabled {
+    cursor: not-allowed;
+}
 .h35{
   height: 35px;
 }

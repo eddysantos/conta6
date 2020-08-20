@@ -107,7 +107,7 @@ function genAnt(){
 	tipo = 5;
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/generarFolioAnticipo.php",
+		url: "/Ubicaciones/Contabilidad/anticipos/actions/generarFolioAnticipo.php",
 		data: data,
 		success: 	function(r){
 		r = JSON.parse(r);
@@ -140,7 +140,7 @@ function genAnt(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/generarPolizaAnticipo.php",
+      url: "/Ubicaciones/Contabilidad/anticipos/actions/generarPolizaAnticipo.php",
       data: data,
       success: 	function(r){
         console.log(r);
@@ -303,7 +303,7 @@ $('tbody').on('click', '.editar-anticipoMST', function(){
     tipo = 5;
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/editarAnticipoMST.php",
+      url: "/Ubicaciones/Contabilidad/anticipos/actions/editarAnticipoMST.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -439,7 +439,7 @@ $('tbody').on('click', '.editar-anticipoMST', function(){
         if(continuarInsert == true) {
             $.ajax({
               type: "POST",
-              url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/agregar.php",
+              url: "/Ubicaciones/Contabilidad/anticipos/actions/agregar.php",
               data: data,
               success: 	function(r){
                 console.log(r);
@@ -478,7 +478,7 @@ $('tbody').on('click', '.editar-anticipoMST', function(){
       }
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/tabla_detalleanticipo.php",
+        url: "/Ubicaciones/Contabilidad/anticipos/actions/tabla_detalleanticipo.php",
         data: data,
         success: 	function(request){
 					r = JSON.parse(request);
@@ -518,7 +518,7 @@ $('tbody').on('click', '.editar-partidaAnt', function(){
 
     return $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
+      url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
       data: {id_cliente: r.data.fk_id_cliente_antdet}
     });
   });
@@ -529,7 +529,7 @@ $('tbody').on('click', '.editar-partidaAnt', function(){
 
     return $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+      url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
       data: {referencia: r.data.fk_referencia}
     });
   });
@@ -604,7 +604,7 @@ $('tbody').on('click', '.editar-partidaAnt', function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/editar.php",
+      url: "/Ubicaciones/Contabilidad/anticipos/actions/editar.php",
       data: data,
       success: 	function(r){
         console.log(r);
@@ -634,7 +634,7 @@ $('tbody').on('click', '.editar-partidaAnt', function(){
 // BOTON IMPRIMIR ANTICIPO
 $('#btn_prinAnt').click(function(){
   id_anticipo = $('#mst-anticipo').val();
-  window.open('/conta6/Ubicaciones/Contabilidad/anticipos/actions/ImprimirAnticipo.php?id_anticipo='+id_anticipo);
+  window.open('/Ubicaciones/Contabilidad/anticipos/actions/ImprimirAnticipo.php?id_anticipo='+id_anticipo);
 });
 
 
@@ -661,7 +661,7 @@ $('#btn_reusarAnt').click(function(){
 			}
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/reusarAnticipo.php",
+				url: "/Ubicaciones/Contabilidad/anticipos/actions/reusarAnticipo.php",
 				data: data,
 
 					success: 	function(r){
@@ -708,7 +708,7 @@ $('#ant-cancela').change(function(){
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/cancelaDescancelaAnticipo.php",
+				url: "/Ubicaciones/Contabilidad/anticipos/actions/cancelaDescancelaAnticipo.php",
 				data: data,
 				success: 	function(r){
 					//console.log(fecha);
@@ -758,7 +758,7 @@ function borrarRegistroAnticipo(partida){
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/eliminar.php",
+				url: "/Ubicaciones/Contabilidad/anticipos/actions/eliminar.php",
 				data: data,
 
 					success: 	function(r){
@@ -795,7 +795,7 @@ function ultReg_DetAnt(){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/ultimosRegistros.php",
+    url: "/Ubicaciones/Contabilidad/anticipos/actions/ultimosRegistros.php",
     data: data,
     success: 	function(request){
       r = JSON.parse(request);
@@ -823,7 +823,7 @@ function ultReg_DetAnt(){
 
   		var validar_reg = $.ajax({
   			type: "POST",
-  			url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/validarRegIgualAnticipo.php",
+  			url: "/Ubicaciones/Contabilidad/anticipos/actions/validarRegIgualAnticipo.php",
   			data: data,
   			async: false
   		});
@@ -870,7 +870,7 @@ function ultReg_DetAnt(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/lst_cuentas.php",
+      url: "/Ubicaciones/Contabilidad/anticipos/actions/lst_cuentas.php",
       data: data,
       success: 	function(r){
 
@@ -896,7 +896,7 @@ function ultReg_DetAnt(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/lst_cuentas.php",
+      url: "/Ubicaciones/Contabilidad/anticipos/actions/lst_cuentas.php",
       data: data,
       success: 	function(r){
 
@@ -923,7 +923,7 @@ function ultReg_DetAnt(){
 
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/lst_cuentas.php",
+        url: "/Ubicaciones/Contabilidad/anticipos/actions/lst_cuentas.php",
         data: data,
         success: 	function(r){
 
@@ -953,7 +953,7 @@ function ultReg_DetAnt(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Resources/PHP/actions/lst_bancos_clientes.php",
+      url: "/Resources/PHP/actions/lst_bancos_clientes.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -979,7 +979,7 @@ function bcosClientes_MST(id_cliente){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/lst_bancos_clientes.php",
+    url: "/Ubicaciones/Contabilidad/anticipos/actions/lst_bancos_clientes.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -1026,11 +1026,11 @@ $('#folioAntConsulta').keydown(function(e){
 function buscarAnticipo(Accion){
 	if( Accion == 'consultar' ){
     id_anticipo = $('#folioAntConsulta').val();
-    window.location.replace('/conta6/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php?id_anticipo='+id_anticipo);
+    window.location.replace('/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php?id_anticipo='+id_anticipo);
   }
 	if( Accion == 'modificar' ){
     id_anticipo = $('#folioAnt').val();
-    window.location.replace('/conta6/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php?id_anticipo='+id_anticipo);
+    window.location.replace('/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php?id_anticipo='+id_anticipo);
   }
 }
 
@@ -1043,7 +1043,7 @@ function sumasCAanticipos(){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/anticipos/actions/sumaCargosAbonos.php",
+    url: "/Ubicaciones/Contabilidad/anticipos/actions/sumaCargosAbonos.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -1081,7 +1081,7 @@ function lstCuentasAnt(){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
+    url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
     data: data,
     success: 	function(r){
 
@@ -1106,7 +1106,7 @@ function lstClientesReferencia(){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+    url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
     data: data,
     success: 	function(r){
 
@@ -1161,7 +1161,7 @@ function lstClientesReferenciaModal(){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+    url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -1191,7 +1191,7 @@ function lstCuentasAntModal(){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
+    url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
     data: data,
     success: 	function(r){
 

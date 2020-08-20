@@ -215,7 +215,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar.php",
+      url: "/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -223,7 +223,7 @@ $(document).ready(function(){
         if (r.code == 1) {
           folio = r.data;
           alertify.alert('Folio: '+folio, 'Generado correctamente' , function(){
-          setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/Pagos/Pagos.php')",700);
+          setTimeout("window.location.replace('/Ubicaciones/Contabilidad/Pagos/Pagos.php')",700);
           });
         } else {
           console.error(r.message);
@@ -318,7 +318,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar.php",
+      url: "/Ubicaciones/Contabilidad/Pagos/actions/pagos_agregar.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -326,7 +326,7 @@ $(document).ready(function(){
         if (r.code == 1) {
           folio = r.data;
           alertify.alert('Folio: '+folio, 'Generado correctamente' , function(){
-          setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/Pagos/Pagos.php')",700);
+          setTimeout("window.location.replace('/Ubicaciones/Contabilidad/Pagos/Pagos.php')",700);
           });
         } else {
           console.error(r.message);
@@ -435,7 +435,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_modificar.php",
+      url: "/Ubicaciones/Contabilidad/Pagos/actions/pagos_modificar.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -443,7 +443,7 @@ $(document).ready(function(){
           console.log(r);
           console.log(data);
           alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
-            //setTimeout("window.location.replace('/conta6/Ubicaciones/Contabilidad/Pagos/Pagos.php')",700);
+            //setTimeout("window.location.replace('/Ubicaciones/Contabilidad/Pagos/Pagos.php')",700);
           });
 
         } else {
@@ -533,7 +533,7 @@ function valFecha(){
 
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/Pagos/actions/validarFecha.php",
+        url: "/Ubicaciones/Contabilidad/Pagos/actions/validarFecha.php",
         data: data,
         success: 	function(r){
           r = JSON.parse(r);
@@ -692,14 +692,14 @@ function Btn_agregarPago(){
 
 
         if(tipoDocumento == 'elaborar'){
-          btnEliminar = " <a href='#' class='remove-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+          btnEliminar = " <a href='#' class='remove-Pagos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
           inputPartida = "";
-          btnEliminarDR = " <a href='#' class='remove-DR'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
+          btnEliminarDR = " <a href='#' class='remove-DR'><img class='icochico' src='/Resources/iconos/cross.svg'></a>";
         }
         if(tipoDocumento == 'modificar'){
-          btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+          btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
           inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
-          btnEliminarDR = "<a href='#' class='eliminar-pagosDR'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
+          btnEliminarDR = "<a href='#' class='eliminar-pagosDR'><img class='icochico' src='/Resources/iconos/cross.svg'></a>";
         }
 
         var element = $('.t-pagosDET').length;
@@ -766,7 +766,7 @@ function Btn_agregarPago(){
           newdiv = newdiv + "       <td class='col-md-2 p-1'>Imp. Pagado</td>";
           newdiv = newdiv + "       <td class='col-md-1 p-1'>IVA</td>";
           newdiv = newdiv + "       <td class='col-md-1 p-1'>S.Insoluto</td>";
-          newdiv = newdiv + "       <td class='col-md-1 p-1'><a href='#' id='Btn_agregarDR' onclick='Btn_agregarDR(&#39;"+idElementDesglose+"&#39;,"+element+")'><img class='icochico' src='/conta6/Resources/iconos/002-plus.svg'></a></td>";
+          newdiv = newdiv + "       <td class='col-md-1 p-1'><a href='#' id='Btn_agregarDR' onclick='Btn_agregarDR(&#39;"+idElementDesglose+"&#39;,"+element+")'><img class='icochico' src='/Resources/iconos/002-plus.svg'></a></td>";
           newdiv = newdiv + "     </tr>";
           newdiv = newdiv + "   </thead>";
           newdiv = newdiv + "   <tbody id='"+idElementDesglose+"' class='"+nombreElementDesglose2+"'></tbody>";
@@ -871,14 +871,14 @@ function Btn_agregarDR(idElementDesglose,element){
   tipoDocumento = $('#tipoDocumento').val();
 
   if(tipoDocumento == 'elaborar'){
-    btnEliminar = " <a href='#' class='remove-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+    btnEliminar = " <a href='#' class='remove-Pagos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
     inputPartida = "";
-    btnEliminarDR = " <a href='#' class='remove-DR'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
+    btnEliminarDR = " <a href='#' class='remove-DR'><img class='icochico' src='/Resources/iconos/cross.svg'></a>";
   }
   if(tipoDocumento == 'modificar'){
-    btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/conta6/Resources/iconos/002-trash.svg'></a>";
+    btnEliminar = "<a href='#' class='eliminar-Pagos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
     inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
-    btnEliminarDR = "<a href='#' class='eliminar-pagosDR'><img class='icochico' src='/conta6/Resources/iconos/cross.svg'></a>";
+    btnEliminarDR = "<a href='#' class='eliminar-pagosDR'><img class='icochico' src='/Resources/iconos/cross.svg'></a>";
   }
 
   var idElementDesglose2 = '#'+idElementDesglose;
@@ -961,7 +961,7 @@ function buscarParcSalInsoluto(id_factura){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_buscarUltimaParcialidad.php",
+    url: "/Ubicaciones/Contabilidad/Pagos/actions/pagos_buscarUltimaParcialidad.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -1006,7 +1006,7 @@ function pagosCapturaEliminar(partida){
       }
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/Pagos/actions/pagos_eliminar.php",
+        url: "/Ubicaciones/Contabilidad/Pagos/actions/pagos_eliminar.php",
         data: data,
 
           success: 	function(r){
@@ -1038,7 +1038,7 @@ function timbrarPago(cuenta,referencia,cliente){
 
   $.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago.php",
+    url: "/Ubicaciones/Contabilidad/Pagos/actions/generarCFDI_pago.php",
     data: data,
     beforeSend: function(){
         $('body').append('<div class="overlay"><div class="overlay-loading">Timbrando Pago ... Porfavor espere.</div></div>');

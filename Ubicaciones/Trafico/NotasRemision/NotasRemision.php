@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 ?>
 
 <div class="container-fluid text-center">
@@ -71,7 +71,7 @@
             <label for="observacion">OBSERVACIONES</label>
           </td>
           <td class="col-md-1">
-            <a><img class="icomediano" src="/conta6/Resources/iconos/printer.svg"></a>
+            <a><img class="icomediano" src="/Resources/iconos/printer.svg"></a>
           </td>
         </tr>
       </tbody>
@@ -80,5 +80,5 @@
 </div>
 <!-- <script src="../js/Trafico.js"></script> -->
 <?php
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 ?>

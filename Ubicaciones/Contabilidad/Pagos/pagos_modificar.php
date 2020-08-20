@@ -1,15 +1,15 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+require $root . '/Ubicaciones/barradenavegacion.php';
 
 $cuenta = trim($_GET['cuenta']);
 $id_cliente = trim($_GET['id_cliente']);
 $opcionDoc = trim($_GET['opcionDoc']);
 
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle.php'; # $pagosDetalle
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle.php'; # $pagosDetalle
 
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarPagosMismaFactura.php'; # $listpagMismaFac
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarPagosMismaFactura.php'; # $listpagMismaFac
 
 if( $opcionDoc == 'modificar' ){
   $tipoRel_doc = $fk_c_TipoRelacion;
@@ -24,7 +24,7 @@ if( $opcionDoc == 'modificar' ){
 
 if( $opcionDoc == 'sustituir' ){
   $id_captura = $cuenta;
-  require $root . '/conta6/Resources/PHP/actions/consultaPagoTimbrada.php';
+  require $root . '/Resources/PHP/actions/consultaPagoTimbrada.php';
 
   $tipoRel_doc = '04';
   $uuid_doc = $s_UUID;
@@ -35,14 +35,14 @@ if( $opcionDoc == 'sustituir' ){
   $idBtnGuardar = 'id="guardar-pago"';
 }
 
-require $root . '/conta6/Resources/PHP/actions/consultaDatosIVA.php';
+require $root . '/Resources/PHP/actions/consultaDatosIVA.php';
 $sacarIVA = $row_datosIVA['n_IVA_calculo'];
 
 //LISTA DE MONEDAS
-require $root . '/conta6/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
+require $root . '/Resources/PHP/actions/consultaMoneda.php'; #$consultaMoneda
 
 //LISTA CTAS BANCARIAS DE COMPAÑIA
-require $root . '/conta6/Resources/PHP/actions/lst_bancos_cia.php'; #$ctasCIA
+require $root . '/Resources/PHP/actions/lst_bancos_cia.php'; #$ctasCIA
 
 $parcialidad = 1;
 // if( is_null($oRst_Pago['numParcialidad']) ){
@@ -58,7 +58,7 @@ $parcialidad = 1;
 
 
 //forma de pago del cliente
-require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
+require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';
 if ($rows_datosCLTformaPago > 0) {
     $datosCLTformaPago = "<option selected value='0'>Forma de pago</option>";
   while ($row_datosCLTformaPago = $rslt_datosCLTformaPago->fetch_assoc()) {
@@ -308,7 +308,7 @@ if ($rows_datosCLTformaPago > 0) {
             <input class="efecto h22" type="text" id="T_importe" value="0" onchange="buscarNumeroCuentaBanco('<?php echo $id_cliente; ?>')">
           </td>
           <td class="col-md-1 p-1 pl-3">
-            <a href="#" id="Btn_agregarPago" onclick="Btn_agregarPago()"><img class="icochico" src="/conta6/Resources/iconos/add.svg"></a>
+            <a href="#" id="Btn_agregarPago" onclick="Btn_agregarPago()"><img class="icochico" src="/Resources/iconos/add.svg"></a>
           </td>
         </tr>
 
@@ -367,7 +367,7 @@ if ($rows_datosCLTformaPago > 0) {
       <thead>
         <tr class='row encabezado font14'>
           <td class="col-md-12">Datos de Factura Electronica
-          <a href="#buscar_factura" data-toggle="modal"><img class='icochico' src='/conta6/Resources/iconos/magnifier.svg' /></a></td>
+          <a href="#buscar_factura" data-toggle="modal"><img class='icochico' src='/Resources/iconos/magnifier.svg' /></a></td>
         </tr>
         <tr class="row sub2 b font12">
           <td class="col-md-1 p-1">Aduana</td>
@@ -461,4 +461,4 @@ if ($rows_datosCLTformaPago > 0) {
 
 <?php
 require_once('modales/buscar_factura.php');
-require $root . '/conta6/Ubicaciones/footer.php';?>
+require $root . '/Ubicaciones/footer.php';?>

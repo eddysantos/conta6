@@ -8,7 +8,7 @@ tablasParametros();
     var fetch_art80 = $.ajax({
       method: 'POST',
       data: {dbid: dbid},
-      url: '/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/fetchParametros.php'
+      url: '/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/fetchParametros.php'
     });
 
     fetch_art80.done(function(r){
@@ -65,7 +65,7 @@ tablasParametros();
       var act_param = $.ajax({
           method: 'POST',
           data: data,
-          url: '/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/editarParametros.php'
+          url: '/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/editarParametros.php'
       });
 
       act_param.done(function(r) {
@@ -92,7 +92,7 @@ tablasParametros();
       var act_param = $.ajax({
           method: 'POST',
           data: data,
-          url: '/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/editarParametros.php'
+          url: '/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/editarParametros.php'
       });
 
       act_param.done(function(r) {
@@ -116,7 +116,7 @@ tablasParametros();
 function tablasParametros(){
   var ajaxCall = $.ajax({
       method: 'POST',
-      url: '/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/mostrarParametros.php'
+      url: '/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/mostrarParametros.php'
   });
 
   ajaxCall.done(function(r) {
@@ -136,7 +136,7 @@ function tablasParametros(){
 function tablasParametros113(){
   var ajaxCall = $.ajax({
       method: 'POST',
-      url: '/Conta6/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/mostrarParametros.php'
+      url: '/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/mostrarParametros.php'
   });
 
   ajaxCall.done(function(r) {

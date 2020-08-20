@@ -55,7 +55,7 @@ while ($row_capturaPercepcionesSepIndem = $rslt_capturaPercepcionesSepIndem->fet
       <input type='text' id='T_PERCEPSepIndem_exento$partidaP' class='T_PERCEPSepIndem_EXENTO exento efecto' value='$importeExentoP' onblur='validaIntDec(this); sumaGeneralNomina()'>
     </td>
     <td>
-      <a><img class='icomediano remove-PERCEPSepIndem' src='/conta6/Resources/iconos/002-trash.svg'></a>
+      <a><img class='icomediano remove-PERCEPSepIndem' src='/Resources/iconos/002-trash.svg'></a>
     </td>
   </tr>
   ";

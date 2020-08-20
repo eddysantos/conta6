@@ -1,12 +1,12 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/Conta6/Resources/vendor/autoload.php';
-require $root . '/Conta6/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/vendor/autoload.php';
+require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
 $cuenta = trim($_GET['cuenta']);
 
-require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
+require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_datosGenerales.php';
 
 $mostrarSustituir = false;
 if( is_null($s_UUIDpagoSustituir) ){
@@ -71,7 +71,7 @@ if( is_null($s_UUIDpagoSustituir) ){
 
       #FORMA DE PAGO
       $id_cliente = $fk_id_cliente;
-      require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago
+      require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago
 
       if ($rows_datosCLTformaPago > 0 ) {
         while ($row_datosCLTformaPago = $rslt_datosCLTformaPago->fetch_assoc()) {
@@ -84,7 +84,7 @@ if( is_null($s_UUIDpagoSustituir) ){
         }
       }
 
-      require $root . '/conta6/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_docRel.php';#$pagosDetalle_pago
+      require $root . '/Ubicaciones/Contabilidad/Pagos/actions/consultarCapturaPago_detalle_docRel.php';#$pagosDetalle_pago
 
   		$pagosDetalle .= "
       <div class='elemento-pagDet'>

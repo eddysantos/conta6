@@ -22,7 +22,7 @@ $sql_referenciasPedimento = mysqli_query($aduanet,"SELECT 	a.C001REFPED 		refere
 #AND	a.C001NUMPED = '9002945'
 
 while($oRst_referenciasPedimento = mysqli_fetch_array($sql_referenciasPedimento) ){
-	require $root . '/conta6/Resources/PHP/Databases/conexion.php';
+	require $root . '/Resources/PHP/Databases/conexion.php';
 
 	$referencia_aduanet = $oRst_referenciasPedimento['referencia'];
 	$pedimento_aduanet = trim($oRst_referenciasPedimento['pedimento']);

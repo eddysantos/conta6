@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/conta6/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/barradenavegacion.php';
 
   $id_cheque = $_GET['id_cheque'];
   $id_cuentaMST = $_GET['id_cuentaMST'];
@@ -95,9 +95,9 @@ if( $rows > 0 ){
     <h5 class="titulo">DATOS DEL CHEQUE
       <?php if( $mostrar == true ){ ?>
       <a href='#ch-editarRegMST' data-toggle='modal' role='button'>
-        <img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'>
+        <img class='icochico' src='/Resources/iconos/003-edit.svg'>
       </a>
-      <!--a href="#" id="btn_editDatosCheMST" class="boton border-0"><img class='icochico' src='/conta6/Resources/iconos/003-edit.svg'></a-->
+      <!--a href="#" id="btn_editDatosCheMST" class="boton border-0"><img class='icochico' src='/Resources/iconos/003-edit.svg'></a-->
       <?php }?>
     </h5>
     <form class="form1">
@@ -235,7 +235,7 @@ if( $rows > 0 ){
                     </td>
 
                     <td class="col-md-2" role="button">
-                      <a href="#detpol-buscarfacturas" class="buscarFacturas-cheques" data-toggle="modal" class="boton icochico border-0"> <img src= "/conta6/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                      <a href="#detpol-buscarfacturas" class="buscarFacturas-cheques" data-toggle="modal" class="boton icochico border-0"> <img src= "/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
                     </td>
                   </tr>
                   <tr class="cdchProveedores row m-0 mt-4" style="display:none">
@@ -278,7 +278,7 @@ if( $rows > 0 ){
                   </tr>
                   <tr class="row mt-5">
                     <td class="col-md-2 offset-md-5">
-                      <a href="#" id="cdch_btnRegistrar" class="boton"><img src= "/conta6/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                      <a href="#" id="cdch_btnRegistrar" class="boton"><img src= "/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
                     </td>
                   </tr>
                 </tbody>
@@ -334,17 +334,17 @@ if( $rows > 0 ){
           <div class="row font14 align-items-center mb-4">
             <!-- <div class="col-md-3 pt-3">
               <?php if( $oRst_permisos["s_reusar_cheques"] == 1 ){ ?>
-              <a href="#detpol-Sueldos" data-toggle="modal" class="boton"><img src= "/conta6/Resources/iconos/refresh-button.svg"> REUSAR CHEQUE</a>
+              <a href="#detpol-Sueldos" data-toggle="modal" class="boton"><img src= "/Resources/iconos/refresh-button.svg"> REUSAR CHEQUE</a>
               <?php } ?>
             </div> -->
             <div class="col-md-3">
               <?php if( $tienePoliza == false && $statusGeneraPoliza == true ){ ?>
-              <a href="#" id="btn_generarPolChe" data-toggle="modal" class="boton"><img src= "/conta6/Resources/iconos/add.svg"> GENERAR POLIZA DE CHEQUE</a>
+              <a href="#" id="btn_generarPolChe" data-toggle="modal" class="boton"><img src= "/Resources/iconos/add.svg"> GENERAR POLIZA DE CHEQUE</a>
               <?php } ?>
             </div>
             <div class="col-md-2 offset-md-3">
               <?php if( $tienePoliza == true ){ ?>
-              <a href="#" id="btn_printChe"  class="boton border-0"><img class="icomediano" src= "/conta6/Resources/iconos/printer.svg"></a>
+              <a href="#" id="btn_printChe"  class="boton border-0"><img class="icomediano" src= "/Resources/iconos/printer.svg"></a>
               <?php } ?>
             </div>
             <div class="col-md-2">
@@ -386,7 +386,7 @@ if( $rows > 0 ){
         </div>
 
         <?php if( $id_poliza > 0 ){
-          require $root . '/conta6/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
+          require $root . '/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
           } ?>
 
       </div><!--/Termina contenedor-movible-->
@@ -408,7 +408,7 @@ if( $rows > 0 ){
 } #$rows
 
 
-require $root . '/conta6/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php';
 
 
 ?>

@@ -97,10 +97,10 @@
 
 
       //consulto datos del cliente
-      require $root . '/conta6/Resources/PHP/actions/consultaDatosCliente.php';
+      require $root . '/Resources/PHP/actions/consultaDatosCliente.php';
 
       //consulto datos del Proveedor
-      require $root . '/conta6/Resources/PHP/actions/consultaDatosProveedorReplica.php';
+      require $root . '/Resources/PHP/actions/consultaDatosProveedorReplica.php';
       if( $rows_datosPROV > 0 ){
         $tieneProv = true;
       }
@@ -109,7 +109,7 @@
       if( $id_aduanaReferencia == 240 ){ $nom_almacen = "Ninguno"; }
       if( $id_aduanaReferencia != 240 ){
 
-        require $root . '/conta6/Resources/PHP/actions/consultaDatosAlmacen.php';
+        require $root . '/Resources/PHP/actions/consultaDatosAlmacen.php';
 
         if( $rows_datosAlmacen > 0 ){
             $tieneAlmacen = true;

@@ -3,7 +3,6 @@ $(document).ready(function(){
 	detallePoliza();
 
 
-	// $('#detpol-lstClientesCorresp').hide();
 	$('#detpol-referencia' || '#fk_referencia').change(function(){
     eliminaBlancosIntermedios(this);
 		todasMayusculas(this);
@@ -70,10 +69,6 @@ $(document).ready(function(){
 							return false
 						}else{
 							st = $('#detpol-cuenta').val();
-							// (nota :fany) comente porque arroja error y no agrega registro
-							// console.log(validarCtasGastoOficina(st));
-							// console.log(validarCtasCliente(st));
-							// console.log(validarCtasPagosCliente(st));
 							if( validarCtasGastoOficina(st) == true || validarCtasCliente(st) == true || validarCtasPagosCliente(st) == true ){
 
 								if( validarCtasGastoOficina(st) == true ){
@@ -196,35 +191,44 @@ $(document).ready(function(){
 
     });
 
+
+
+
 		$('#genFolioPolDia').click(function(){
+			if($('#diafecha').val() == ""){
+				alertify.error("Seleccione una fecha");
+				$('#diafecha').focus();
+				return false;
+			}
 
-				if($('#diafecha').val() == ""){
-					alertify.error("Seleccione una fecha");
-					$('#diafecha').focus();
-					return false;
-				}
+			if($('#diaconcepto').val() == ""){
+				alertify.error("Escriba un concepto");
+				$('#diaconcepto').focus();
+				return false;
+			}
 
-				if($('#diaconcepto').val() == ""){
-					alertify.error("Escriba un concepto");
-					$('#diaconcepto').focus();
-					return false;
-				}
+			fecha = $('#diafecha').val();
+			aduana = $('#diaaduana').val();
+			tipoDoc = $('#diatipo').attr('db-id');
+			usuario = $('#diausuario').val();
+			permiso = "s_generar_x_fecha_polizas";
 
-				fecha = $('#diafecha').val();
-				aduana = $('#diaaduana').val();
-				tipoDoc = $('#diatipo').attr('db-id');
-				usuario = $('#diausuario').val();
-				permiso = "s_generar_x_fecha_polizas";
-
-				var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
-				//console.log(continuar);
-				if(continuar == true) {
-					genPol();
-				}else{
-					//swal("Oops!", "Solicite cambio de fechas a Contabilidad", 'error');
-					return false;
-				}
+			var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
+			if(continuar == true) {
+				genPol(); //funsion para generar poliza
+			}else{
+				return false;
+			}
 		});
+
+
+
+
+
+
+
+
+
 
 		$('#guardarPolMST').click(function(){
 			var data = {
@@ -236,7 +240,7 @@ $(document).ready(function(){
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/editarMST.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/editarMST.php",
 				data: data,
 				success: 	function(r){
 					console.log(r);
@@ -263,7 +267,7 @@ $(document).ready(function(){
       }
       $.ajax({
         type: "POST",
-        url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/tabladetallepoliza.php",
+        url: "/Ubicaciones/Contabilidad/polizas/actions/tabladetallepoliza.php",
         data: data,
         success: 	function(request){
 					r = JSON.parse(request);
@@ -284,7 +288,7 @@ $(document).ready(function(){
 console.log(data);
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
 				data: data,
 				success: 	function(r){
 					r = JSON.parse(r);
@@ -309,7 +313,7 @@ console.log(data);
 console.log(data);
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
 				data: data,
 				success: 	function(r){
 					r = JSON.parse(r);
@@ -342,7 +346,7 @@ console.log(data);
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_lista.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_lista.php",
 				data: data,
 				success: 	function(r){
 					r = JSON.parse(r);
@@ -428,7 +432,7 @@ console.log(data);
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/editar.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/editar.php",
 				data: data,
 				success: 	function(r){
 					console.log(r);
@@ -482,7 +486,7 @@ console.log(data);
 
 		$.ajax({
 			type: "POST",
-			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_insertaReg_detallePoliza.php",
+			url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_insertaReg_detallePoliza.php",
 			data: data,
 			success: 	function(r){
 				console.log(r);
@@ -524,7 +528,7 @@ console.log(data);
 //onsole.log(data);
 		$.ajax({
 			type: "POST",
-			url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_insertaReg_detallePoliza.php",
+			url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_insertaReg_detallePoliza.php",
 			data: data,
 			success: 	function(r){
 				//console.log(r);
@@ -587,7 +591,7 @@ function inserta(){
 
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/agregar.php",
+		url: "/Ubicaciones/Contabilidad/polizas/actions/agregar.php",
 		data: data,
 		success: 	function(r){
 			console.log(r);
@@ -615,7 +619,7 @@ function ultReg_Det(){
   }
 	$.ajax({
     type: "POST",
-    url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/ultimosRegistros.php",
+    url: "/Ubicaciones/Contabilidad/polizas/actions/ultimosRegistros.php",
     data: data,
     success: 	function(request){
 			r = JSON.parse(request);
@@ -648,7 +652,7 @@ function borrarRegistro(partida){
 			}
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/eliminar.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/eliminar.php",
 				data: data,
 
 					success: 	function(r){
@@ -694,7 +698,7 @@ function cambiarStatus(){
 
 			$.ajax({
 				type: "POST",
-				url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/cancelaDescancelaPoliza.php",
+				url: "/Ubicaciones/Contabilidad/polizas/actions/cancelaDescancelaPoliza.php",
 				data: data,
 				success: 	function(r){
 					console.log(r);
@@ -768,13 +772,13 @@ $('#folioPolconsulta').keydown(function(e){
 
 $('#btn_asignarProveedor').click(function(){
 	id_poliza = $('#folioPolAsignar').val();
-	window.location.replace('/conta6/Ubicaciones/Contabilidad/Proveedores/AsignarProveedor.php?id_poliza='+id_poliza);
+	window.location.replace('/Ubicaciones/Contabilidad/Proveedores/AsignarProveedor.php?id_poliza='+id_poliza);
 });
 
 function buscarPoliza(Accion){
 	if( Accion == 'consultar'){ id_poliza = $('#folioPolconsulta').val(); }
 	if( Accion == 'modificar'){ id_poliza = $('#folioPol').val(); }
-	window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/actions/buscar_poliza.php?id_poliza='+id_poliza+'&Accion='+Accion);
+	window.location.replace('/Ubicaciones/Contabilidad/polizas/actions/buscar_poliza.php?id_poliza='+id_poliza+'&Accion='+Accion);
 }
 
 
@@ -789,7 +793,7 @@ function genPol(){
 	tipo = $('#diatipo').attr('db-id');
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/generarFolioPoliza.php",
+		url: "/Ubicaciones/Contabilidad/polizas/actions/generarFolioPoliza.php",
 		data: data,
 		success: 	function(request){
 			r = JSON.parse(request);
@@ -879,8 +883,8 @@ function valDescripOficina(){
 
 // BOTON IMPRIMIR
 function btn_printPoliza(id_poliza,aduana){
-	// window.location.replace('/conta6/Ubicaciones/Contabilidad/polizas/actions/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
-	window.open('/conta6/Ubicaciones/Contabilidad/polizas/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
+	// window.location.replace('/Ubicaciones/Contabilidad/polizas/actions/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
+	window.open('/Ubicaciones/Contabilidad/polizas/impresionPoliza.php?id_poliza='+id_poliza+'&aduana='+aduana);
 };
 
 
@@ -891,7 +895,7 @@ function lstClientesReferenciaPol(){
 
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+		url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
 		data: data,
 		success: 	function(r){
 
@@ -917,7 +921,7 @@ function lstClientesReferenciaPolModal(){
 
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
+		url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal.php",
 		data: data,
 		success: 	function(r){
 
@@ -1007,7 +1011,7 @@ function lstCuentasPol(){
 
 	$.ajax({
 		type: "POST",
-		url: "/conta6/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
+		url: "/Ubicaciones/Contabilidad/actions/lst_clienteCorresponsal_ctas.php",
 		data: data,
 		success: 	function(r){
 
@@ -1034,7 +1038,7 @@ function detallePoliza(){
 	var ajaxCall = $.ajax({
       method: 'POST',
       data: data,
-      url: "/conta6/Ubicaciones/Contabilidad/polizas/actions/tabladetallepoliza.php",
+      url: "/Ubicaciones/Contabilidad/polizas/actions/tabladetallepoliza.php",
   });
 
   ajaxCall.done(function(r) {

@@ -1,6 +1,6 @@
 <?PHP
-  require $root . '/conta6/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
-  require $root . '/conta6/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_factura_captura.php'; #$rslt_consultaDatosCaptura
+  require $root . '/Resources/PHP/actions/consultaDatosGrales_CFDI.php'; #$CFDversion,$regimen,$cveIVA
+  require $root . '/Ubicaciones/Contabilidad/actions/consultaDatosCFDI_factura_captura.php'; #$rslt_consultaDatosCaptura
   if( $total_consultaDatosCaptura > 0 ){
     $row_consultaDatosCaptura = $rslt_consultaDatosCaptura->fetch_assoc();
     $id_formapago = $row_consultaDatosCaptura['fk_id_formapago'];
@@ -19,19 +19,19 @@
 
   }
 
-  require $root . '/conta6/Resources/PHP/actions/consultaDatosOficinaActiva.php';
+  require $root . '/Resources/PHP/actions/consultaDatosOficinaActiva.php';
   $ex_estado = $row_oficinaActiva['s_estado'];
   $ex_cp = $row_oficinaActiva['s_codigo'];
   $lugarExpedicion = $ex_cp;
   $lugarExpedicionTxt = $ex_cp.' '.$ex_estado;
 
 
-   require $root . '/conta6/Resources/PHP/actions/consultaDatosCIA.php';
+   require $root . '/Resources/PHP/actions/consultaDatosCIA.php';
    $e_rfc = trim($rowCIA['s_RFC']);
    $e_razon_social = utf8_encode(trim($rowCIA['s_Razon_Social']));
    $regimen = trim($rowCIA['fk_id_regimen']);
 
-   require $root . '/conta6/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios_2.php';
+   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios_2.php';
 
   $xml = new DomDocument('1.0', 'UTF-8');
   $comprobante = $xml->createElement('cfdi:Comprobante');
