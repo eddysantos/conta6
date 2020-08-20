@@ -3,12 +3,12 @@ $system_callback = [];
 $tipoContrato = '';
 
 $tipoContrato .="<option selected value='0'>Tipo de Contrato *</option>";
-  $query = "SELECT * FROM conta_cs_sat_tipocontrato";
+  $query = "SELECT pk_id_contrato,s_descripcion FROM conta_cs_sat_tipocontrato";
 
   $stmt = $db->prepare($query);
 	if (!($stmt)) {
     $system_callback['code'] = "500";
-    $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
+    $system_callback['message'] = "Error during query prepare tipo contrato [$db->errno]: $db->error";
     exit_script($system_callback);
   }
   if (!($stmt->execute())) {

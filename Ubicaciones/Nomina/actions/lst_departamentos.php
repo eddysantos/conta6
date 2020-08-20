@@ -4,13 +4,13 @@ $departamentos = '';
 
 
 $departamentos.="<option selected value='0'>Departamento *</option>";
-$query = "SELECT * FROM conta_cs_departamentos";
+$query = "SELECT pk_id_depto,s_descripcion FROM conta_cs_departamentos";
 
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
 	$system_callback['code'] = "500";
-	$system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
+	$system_callback['message'] = "Error during query prepare departamento [$db->errno]: $db->error";
 	exit_script($system_callback);
 }
 

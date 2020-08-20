@@ -8,8 +8,9 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$aduana = $data['fk_id_aduana'];
+// $aduana = $data['fk_id_aduana'];
 $regimen = $data['regimen'];
+
 
 
 $query = "SELECT  pk_id_empleado, s_activo, s_pagar, s_nombre, s_apellidoP, s_apellidoM, n_salario_semanal,n_salario_integrado
@@ -58,7 +59,6 @@ while ($row = $rslt->fetch_assoc()) {
     $acciones = "";
 
     if ($status == 'S') {
-
       $status = "<span class='badge badge-success'>Activo</span>";
     }else {
       $status = "<span class='badge badge-danger'>Baja</span>";
@@ -73,41 +73,41 @@ while ($row = $rslt->fetch_assoc()) {
 
   if ($regimen == 2 || $regimen == '02') {
     $acciones  = "
-      <button type='button' class='btn btn-outline-secondary btn-sm editar-empleado' name='button' db-id='$pk_usuario' data-target='#permanentes' data-toggle='modal' db-id='$pk_id_empleado' regimen='$regimen'>Permanentes</button>
+      <button type='button' class='btn btn-outline-secondary btn-sm editar-empleado' name='button' data-target='#permanentes' data-toggle='modal' db-id='$pk_id_empleado' regimen='$regimen'>Permanentes</button>
 
       <button data-target='#modDatosEmp' data-toggle='modal' type='button' class='btn btn-outline-secondary btn-sm editar-empleado' name='button' db-id='$pk_id_empleado' regimen='$regimen'>Datos</button>";
 
     $system_callback['data'] .= "
-    <tr class='row m-0 align-items-center'>
-      <td class='col-md-6 p-1 px-3'>
+    <tr class='row  align-items-center px-3'>
+      <td class='col-md-6'>
         [#$pk_id_empleado] $nombre
         </a>
         <span class='font-weight-light text-black-50 d-block'>$status  $pagar </span>
       </td>
-      <td class='col-md-3 p-0 px-3'>
-        Salario Semanal :<span class='font-weight-light text-black-50 d-block'>$ $salario_semanal</span>
-        Salario Integrado :<span class='font-weight-light text-black-50 d-block'>$ $salario_integrado</span>
+      <td class='col-md-4'>
+        Salario Semanal :<span class='font-weight-light text-black-50 '>$ $salario_semanal</span><br />
+        Salario Integrado :<span class='font-weight-light text-black-50 '>$ $salario_integrado</span>
       </td>
-      <td class='col-md-3 text-center p-0'>
+      <td class='col-md-2 text-center'>
         $acciones
       </td>
     </tr>";
   }elseif ($regimen == '09' || $regimen == 9) {
-    $acciones = "<a href='/usuarios/Lista_Usuarios/editarUsuario.php?usuario=$pk_usuario' type='button' class='btn btn-outline-secondary btn-sm cambiarPass' name='button' db-id='$pk_usuario' data-target='#cambiarPass' data-toggle='modal'>Editar Datos</a>";
+    $acciones = "<button data-target='#modDatosEmp' data-toggle='modal' type='button' class='btn btn-outline-secondary btn-sm editar-empleado' name='button' db-id='$pk_id_empleado' regimen='$regimen'>Datos</button>";
+
 
     $system_callback['data'] .="
-
-    <tr class='row m-0 align-items-center'>
-      <td class='col-md-6 p-1 px-3'>
+    <tr class='row  align-items-center px-3'>
+      <td class='col-md-6'>
         [#$pk_id_empleado] $nombre
         </a>
         <span class='font-weight-light text-black-50 d-block'>$status  $pagar </span>
       </td>
-      <td class='col-md-3 p-0 px-3'>
+      <td class='col-md-4'>
         Salario Semanal :
         <span class='font-weight-light text-black-50 d-block'>$ $salario_semanal</span>
       </td>
-      <td class='col-md-3 text-center p-0'>
+      <td class='col-md-2 text-center '>
         $acciones
       </td>
     </tr>";

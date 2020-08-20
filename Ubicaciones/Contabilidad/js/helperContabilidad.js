@@ -1,7 +1,6 @@
 function fetch_catalogoBancosSAT(){
   $.ajax({
     method: 'POST',
-    // url: '/Resources/PHP/actions/lst_conta_cs_sat_cuentas.php',
     url: '/Resources/PHP/actions/lst_conta_cs_sat_bancos.php',
     success: function(r){
       r = JSON.parse(r);

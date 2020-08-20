@@ -1,4 +1,4 @@
-.modal-ch{
+/* .modal-ch{
   max-width: 500px!important;
   margin-top: 100px!important;
 }
@@ -62,4 +62,31 @@
 
 .m_bordenegro{
   border : 1.5px solid black!important;
+} */
+
+
+
+
+
+
+.bordenegro{
+  border: 2px solid!important;
+}
+
+.modal-xl {
+  max-width: 1140px;
+}
+
+/* inputs modales */
+.input-modal{
+  background: transparent;
+  border-radius: 8px;
+  border: 1px solid rgba(87, 88, 91, 0.4);
+  width: 100%;
+}
+
+.input-modal:hover,.input-modal:focus{
+  background: transparent;
+  border: 1px solid #58595b;
+  outline: none;
 }

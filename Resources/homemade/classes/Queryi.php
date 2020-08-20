@@ -31,7 +31,6 @@ class Queryi extends mysqli
   private $sha = 'sha256';
   private $hashing = 'ewgdhfjjluo3pip4l';
   private $hashing_iv = 'sdfkljsadf567890saf';
-  //$db->query("SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;");
 
   function __construct($specific_server = NULL){
     $db_configuration = parse_ini_file('db_config.ini', true);
@@ -54,18 +53,13 @@ class Queryi extends mysqli
   }
 
   function insert(string $table, array $data){
-
-    // error_log("1 $table");
-
     $num_params = count($data);
     $s = str_repeat("s", $num_params);
 
     $bind_params = [$s];
     foreach ($data as $field => $value) {
       $bind_params[] =& $data[$field];
-      // array_push($bind_params, $value);
     }
-    // error_log("2 $table");
 
     $fields = implode(",", array_keys($data));
 
@@ -74,7 +68,6 @@ class Queryi extends mysqli
 
     $query = "INSERT IGNORE INTO $table ($fields) VALUES ($value_tokens)";
 
-    // error_log("3 $table");
     $this->stmt = $this->prepare($query);
 
     if (!$this->stmt) {
@@ -91,11 +84,9 @@ class Queryi extends mysqli
       return false;
     }
 
-    // error_log("5 $table");
     if ($this->stmt->execute()) {
       $this->aff_rows = $this->stmt->affected_rows;
       $this->last_id = $this->stmt->insert_id == 0 ? "true" :  $this->stmt->insert_id;
-      //error_log("Queryi exitoso");
       return $this->last_id;
     } else {
 
@@ -114,10 +105,8 @@ class Queryi extends mysqli
     foreach ($data as $field => $value) {
       $field_value_tokens .= " $field = ?,";
       $bind_params[] =& $data[$field];
-      // array_push($bind_params, $value);
     }
     $bind_params[] =& $id[1];
-    // array_push($bind_params, $id[1]); //Hay que ingresar el valor del ID a modificar
 
     $field_value_tokens = rtrim($field_value_tokens, ",");
 
@@ -129,14 +118,12 @@ class Queryi extends mysqli
       return false;
     }
 
-    // error_log("4 $table");
     call_user_func_array(array($this->stmt, 'bind_param'), $bind_params);
     if (!$this->stmt) {
       $this->last_error = "MySql error ($this->errno): $this->error";
       return false;
     }
 
-    // error_log("5 $table");
     if ($this->stmt->execute()) {
       $this->aff_rows = $this->stmt->affected_rows;
       $this->last_id = $this->stmt->insert_id;
@@ -157,8 +144,6 @@ class Queryi extends mysqli
 
     $key = hash($sha, $hashing);
     $iv = substr(hash($sha, $hashing_iv), 0, 16);
-    // $key = hash('sha256', "ewgdhfjjluo3pip4l");
-    // $iv = substr(hash('sha256', "sdfkljsadf567890saf"), 0, 16);
     $token = openssl_encrypt($password, $cipher, $key, 0, $iv);
     $token = base64_encode($token);
     return $token;
@@ -204,9 +189,6 @@ class Queryi extends mysqli
       }
     }
 
-
-
-
     $query = "SELECT $this->fields FROM $this->table $left_joins $where";
 
     $stmt = $this->prepare($query);
@@ -237,9 +219,6 @@ class Queryi extends mysqli
       $this->last_error = "MySql error ($this->errno): $this->error";
       return false;
     }
-
-
-
   }
 
   function setTable($table){
@@ -247,8 +226,7 @@ class Queryi extends mysqli
   }
 
   function setFields(array $fields){
-    $this->fields =
-    implode(",", $fields);
+    $this->fields = implode(",", $fields);
   }
 
   function addEqualTo($field, $value){
@@ -285,6 +263,7 @@ class Queryi extends mysqli
 
     $this->left_joins[] = $fullJoinStatement;
   }
+
 }
 
 

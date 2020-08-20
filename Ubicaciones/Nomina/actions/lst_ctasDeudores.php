@@ -4,12 +4,12 @@ $system_callback = [];
 $ctasDeudores ='';
 $ctasDeudores .= "<option value='0' selected>Cuentas Deudores</option>";
 
-$query = "SELECT * FROM conta_t_nom_empleados WHERE s_prestamoCta like '0115%'";
+$query = "SELECT s_nombre,s_apellidoP,s_apellidoM,s_prestamoCta FROM conta_t_nom_empleados WHERE s_prestamoCta like '0115%'";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error durante la preparacion de uery [$db->errno]: $db->error";
+  $system_callback['message'] = "Error durante la preparacion de query Deudores [$db->errno]: $db->error";
   exit_script($system_callback);
 }
 

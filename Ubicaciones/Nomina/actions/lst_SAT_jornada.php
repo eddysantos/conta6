@@ -4,12 +4,12 @@ $system_callback = [];
 $jornada = '';
 $jornada .="<option selected value='0'>Jornada *</option>";
 
-  $query = "SELECT * FROM conta_cs_sat_tipojornada";
+  $query = "SELECT pk_id_jornada,s_descripcion FROM conta_cs_sat_tipojornada";
 
   $stmt = $db->prepare($query);
 	if (!($stmt)) {
     $system_callback['code'] = "500";
-    $system_callback['message'] = "Error during query prepare [$db->errno]: $db->error";
+    $system_callback['message'] = "Error during query prepare jornada [$db->errno]: $db->error";
     exit_script($system_callback);
   }
   if (!($stmt->execute())) {
