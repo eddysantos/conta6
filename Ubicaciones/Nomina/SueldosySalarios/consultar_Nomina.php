@@ -99,7 +99,10 @@
   </div>
 </div>
 
+<script src="/Ubicaciones/Nomina/js/nomina.js"></script>
+
 <script src="js/SueldosySalarios.js"></script>
+
 <!-- <script src="/Resources/bootstrap/js/bootstrap-toggle.js"></script> -->
 
 <?php

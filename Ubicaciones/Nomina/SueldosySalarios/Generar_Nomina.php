@@ -85,13 +85,12 @@
     </table>
 
 
-    <div class="row font16 justify-content-center" id="vprev"><!--RUTA VISTA PREVIA-->
+    <div class="row font16 justify-content-center" id="vprev">
       <div class="col-md-3 mt-4 text-center" role="button">
         <a href="#" class="boton icochico" id="generarDocNominaSuel"> <img src= "/Resources/iconos/001-add.svg"> GENERAR NOMINA</a>
         <input id="nom_regimen" type="hidden" value="<?php echo $regimenNomina; ?>">
       </div>
-    </div> <!--VISTA PREVIA-->
-    <div id="resGenNomSuel"></div>
+    </div>
   </div>
 
 
@@ -121,19 +120,19 @@
       </div>
     </div>
 
-    <div class="row font16 justify-content-center"><!--RUTA VISTA PREVIA-->
+    <div class="row font16 justify-content-center">
       <div class="col-md-3 mt-4 p-1" role="button">
         <a href="#" class="boton icochico"> <img src= "/Resources/iconos/001-add.svg"> GENERAR AGUINALDO</a>
       </div>
-    </div> <!--VISTA PREVIA-->
+    </div>
   </div>
 
 
 
 
+<script src="/Ubicaciones/Nomina/js/nomina.js"></script>
 
-
-<script src="/Ubicaciones/Nomina/SueldosySalarios/js/SueldosySalarios.js"></script>
+<script src="js/SueldosySalarios.js"></script>
 <?php
 require $root . '/Ubicaciones/footer.php';
 ?>

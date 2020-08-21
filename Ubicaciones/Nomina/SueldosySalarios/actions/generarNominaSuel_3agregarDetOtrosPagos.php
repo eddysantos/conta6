@@ -2,7 +2,7 @@
 $totalOtrosPagos = 0;
 
 $query_otrosPagos = "SELECT fk_id_otroPago, fk_id_cuenta, s_descripcion, n_ordenReporte, s_clasificacion
-                         FROM conta_cs_nom_tipootropago_ctamst WHERE fk_id_regimen = ? ORDER BY n_ordenReporte";
+                     FROM conta_cs_sat_tipootropago_ctamst WHERE fk_id_regimen = ? ORDER BY n_ordenReporte";
 
 
 $stmt_otrosPagos = $db->prepare($query_otrosPagos);

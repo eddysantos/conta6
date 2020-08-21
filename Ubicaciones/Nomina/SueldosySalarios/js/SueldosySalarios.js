@@ -5,9 +5,6 @@ $(document).ready(function () {
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');
 
-
-
-
 /*Comienza Editar Datos Generales*/
 		switch (accion) {
 
@@ -58,7 +55,6 @@ $(document).ready(function () {
   });
 
 
-
 	$('#generarDocNominaSuel').click(function(){
 		num_nomsig = $('#num_nomsig').val();
 		fp_nomsig = $('#fp_nomsig').val();
@@ -81,23 +77,65 @@ $(document).ready(function () {
 			fp_nomsig : fp_nomsig,
 			lstValesDespensa : $('#pagarVales').val(),
 			lstPremioAsistencia : $('#pagarAsistencia').val(),
-			mesCorresponde : $('#mesCorresponde').val()
+			mesCorresponde : mesCorresponde
 		}
-		$.ajax({
-			type: "POST",
-			url: "/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel.php",
-			data: data,
-			success: 	function(r){
-				r = JSON.parse(r);
-				if (r.code == 1) {
-					$('#resGenNomSuel').html(r.data);
-					alertify.alert('Sueldos Nómina: '+num_nomsig, 'Generado correctamente', function(){
-						document.location.replace('/Ubicaciones/Nomina/sueldosysalarios/Generar_Nomina.php');
-					});
-				}
-			}
-		})
+
+	  var ajaxCall = $.ajax({
+	      method: 'POST',
+	      data: data,
+	      url: '/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel.php'
+	  });
+
+	  ajaxCall.done(function(r) {
+	    r = JSON.parse(r);
+	    if (r.code == 1) {
+				// $('#VistaPrevia').removeClass('d-none');
+				// $('#resGenNomSuel').html(r.data); // no esta funcionando
+				// alertify.alert('Sueldos Nómina: '+num_nomsig, 'Generado correctamente', function(){
+				// 	document.location.replace('/Ubicaciones/Nomina/sueldosysalarios/Generar_Nomina.php');
+				// });
+				// alertify.alert('Generada Correctamente');
+				//
+				// swal({type: "success",
+        //     title: "¡Generada Correctamente!"
+        // }).then(function() {
+        //     window.location = "/Ubicaciones/Nomina/SueldosySalarios/consultar_Nomina.php";
+				//
+        // });
+
+				swal({
+             title: "¡Se genero correctamente!",
+             type: "success",
+        },
+        function(){
+           window.location.href = "/Ubicaciones/Nomina/SueldosySalarios/consultar_Nomina.php";
+        })
+	    } else {
+	      console.error(r.message);
+				alertify.alert('Algo salio mal');
+	    }
+	  });
 	});
+
+	// $('#generarDocNominaSuel').click(function(){
+	//
+	// 	console.log(data);
+	// 	$.ajax({
+	// 		type: "POST",
+	// 		url: "/Ubicaciones/Nomina/SueldosySalarios/actions/generarNominaSuel.php",
+	// 		data: data,
+	// 		success: 	function(r){
+	// 			r = JSON.parse(r);
+	// 			if (r.code == 1) {
+	//
+	//
+	// 				alertify.alert('Generada Correctamente');
+	// 			}else {
+	//
+	// 			}
+	// 		}
+	// 	})
+	// });
 
 });
 
