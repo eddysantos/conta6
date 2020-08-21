@@ -1,7 +1,7 @@
 
 
 
-<script src="/Resources/JQuery/jquery.min.js"></script>
+ <script src="/Resources/JQuery/jquery.min.js"></script>
 <script src="/Resources/alertifyjs/alertify.min.js"></script>
 <script src="/Resources/sweetalert/js/sweetalert.min.js"></script>
 <script src="/Resources/JQuery/popper.min.js"></script>
