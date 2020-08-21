@@ -1,6 +1,9 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/Ubicaciones/barradenavegacion.php';
+
+  require $root .'/Ubicaciones/Nomina/empleados/modales/Empleados.php';
+  // require $root .'/Ubicaciones/Nomina/SueldosySalarios/Parametros/modales/Parametros.php';
 ?>
 
 
@@ -10,13 +13,13 @@
       <a href="/Ubicaciones/Nomina/SueldosySalarios/consultar_Nomina.php" >CONSULTAR NOMINA</a>
     </div>
     <div class="col-md-6">
-      <a  href="/Ubicaciones/Nomina/SueldosySalarios/Parametros.php">PARAMETROS</a>
+      <a  href="/Ubicaciones/Nomina/SueldosySalarios/Parametros/">PARAMETROS</a>
     </div>
   </div>
 
 
   <div class="contorno">
-    <div class="row font16 mb-3 justify-content-center"><!--RUTAS PREVISUALIZAR Y TIMBRAR CFDIS-->
+    <div class="row font16 mb-3 justify-content-center">
       <div class="col-md-4">
         <a href="#" class="boton icochico border-0"> <img src= "/Resources/iconos/magnifier.svg"> PREVISUALIZAR CFDI'S</a>
       </div>
@@ -93,13 +96,9 @@
 
 
 
-<script src="js/SueldosySalarios.js"></script>
-<script src="/Ubicaciones/Nomina/SueldosySalarios/parametros/js/parametros.js"></script>
-<!-- <script src="/Resources/bootstrap/js/bootstrap-toggle.js"></script> -->
+<script src="/Ubicaciones/Nomina/SueldosySalarios/js/SueldosySalarios.js"></script>
 <script src="/Ubicaciones/Nomina/Empleados/js/empleados.js"></script>
 
 <?php
-require $root .'/Ubicaciones/Nomina/empleados/modales/Empleados.php';
-require $root .'/Ubicaciones/Nomina/SueldosySalarios/parametros/modales/Parametros.php';
-require $root . '/Ubicaciones/footer.php';
+  require $root . '/Ubicaciones/footer.php';
  ?>

@@ -1,7 +1,7 @@
 <?php
 
 $query_consultaPercep = "SELECT fk_id_percepcion, fk_id_cuenta, s_descripcion, n_ordenReporte, s_clasificacion
-                         FROM conta_cs_nom_tipopercepcion_ctamst WHERE fk_id_regimen = ? ORDER BY n_ordenReporte";
+                         FROM conta_cs_sat_tipopercepcion_ctamst WHERE fk_id_regimen = ? ORDER BY n_ordenReporte";
 
 $stmt_consultaPercep = $db->prepare($query_consultaPercep);
 if (!($stmt_consultaPercep)) {

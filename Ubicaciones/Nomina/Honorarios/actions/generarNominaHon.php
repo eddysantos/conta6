@@ -21,10 +21,11 @@ $METODODEPAGO = 'PUE'; #default en BD
 $usoCFDI = 'P01'; #default BD
 $id_pago = 99; #default BD
 
-$query = "select a.*,b.s_descripcion AS nom_depto
-          from conta_t_nom_empleados a
-						INNER JOIN conta_cs_departamentos b
-          on a.fk_id_depto = b.pk_id_depto where s_activo = 's' and s_pagar = 's' and fk_id_regimen = ? and fk_id_aduana = ?
+$query = "SELECT a.*,b.s_descripcion AS nom_depto
+          FROM conta_t_nom_empleados a
+					INNER JOIN conta_cs_departamentos b
+          ON a.fk_id_depto = b.pk_id_depto
+          WHERE s_activo = 's' and s_pagar = 's' and fk_id_regimen = ? and fk_id_aduana = ?
           ORDER BY pk_id_empleado";
 
 $stmt = $db->prepare($query);
@@ -58,16 +59,8 @@ if ($rslt_empl->num_rows == 0) {
   exit_script($system_callback);
 }
 
-if ($rslt_empl->num_rows > 0) {
-  $system_callback['data'] =
-  "<table>
-    <tr>
-      <td>EMPLEADO</td>
-      <td>SUELDO</td>
-      <td>ISR</td>
-      <td>TOTAL</td>
-      <td>CAPTURA</td>
-    </tr>";
+
+
   while ($row_empl = $rslt_empl->fetch_assoc()) {
     $id_empleado = $row_empl['pk_id_empleado'];
     $SALARIO_SEMANAL = $row_empl['n_salario_semanal'];
@@ -109,26 +102,10 @@ if ($rslt_empl->num_rows > 0) {
     require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
-    $system_callback['code'] = 1;
-    $system_callback['data'] .=
-    "<tr>
-      <td>$id_empleado $nombre $apellidoP</td>
-      <td>$SALARIO_SEMANAL</td>
-      <td>$ISR</td>
-      <td>$TOTAL</td>
-      <td>$id_docNomina</td>
-     </tr>";
-    $system_callback['message'] = "Script called successfully but there are no rows to display.";
-
-
-
-
-
-
   }
-  $system_callback['data'] .= "</table>";
+  $system_callback['code'] = 1;
   exit_script($system_callback);
-}
+// }
 
 
 ?>

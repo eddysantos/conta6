@@ -1,59 +1,6 @@
 $(document).ready(function(){
 listaEmpleados();
 
-// MOSTRAR / OCULTAR DIVS
-  // $('.emp').click(function(){
-  //   var accion = $(this).attr('accion');
-  //
-  // switch (accion) {
-  //     case "dgen":
-  //       $('#contorno1').fadeIn();
-  //       $('#contorno2,#contorno3,#sueldos,#hos_has').hide();
-  //       $('.dlab, .dsal, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
-  //       $(this).css('cssText', 'color: #d11c1c !important');
-  //       break;
-	// 		case "dlab":
-  //       $('#contorno2').fadeIn();
-  //       $('#contorno1, #contorno3,#sueldos,#hos_has').hide();
-  //       $('.dgen, .dsal, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
-  //       $(this).css('cssText', 'color: #d11c1c !important');
-  //       break;
-	// 		case "dsal":
-  //       $('#contorno3').fadeIn();
-  //       $('#contorno1, #contorno2,#sueldos,#hos_has').hide();
-  //       $('.dlab, .dgen, .suel, .hon').css('cssText', 'color: #a1a0a0 !important');
-  //       $(this).css('cssText', 'color: #d11c1c !important');
-	// 			break;
-	// 		case "dsuel":
-  //       $('#sueldos').fadeIn();
-  //       $('#contorno1, #contorno2,#contorno3,#hos_has').hide();
-  //       $('.dlab, .dgen, .dsal, .hon').css('cssText', 'color: #a1a0a0 !important');
-  //       $(this).css('cssText', 'color: #d11c1c !important');
-	// 			break;
-  //     case "hon":
-  //        $('#hon_has').fadeIn();
-  //        $('#contorno1, #contorno2, #contorno3, #sueldos').hide();
-  //        $('.dlab, .dgen, .dsal, .suel').css('cssText', 'color: #a1a0a0 !important');
-  //        $(this).css('cssText', 'color: #d11c1c !important');
-  //        break;
-	// 		case "perc":
-  //       $('#contorno5').fadeIn();
-  //       $('#contorno6').hide();
-  //       $('.deduc').css('cssText', 'color: #a1a0a0 !important');
-  //       $(this).css('cssText', 'color: #d11c1c !important');
-	// 			break;
-	// 		case "deduc":
-  //       $('#contorno6').fadeIn();
-  //       $('#contorno5').hide();
-  //       $('.perc').css('cssText', 'color: #a1a0a0 !important');
-  //       $(this).css('cssText', 'color: #d11c1c !important');
-	// 			break;
-  //     default:
-  //     console.error("Something went terribly wrong...");
-  //   }
-  // });
-  // TERMINA MOSTRAR / OCULTAR DIVS
-
 $(function(){
   $('#distribucionSalario').on('change','#n_salario_AER_add,#n_salario_MAN_add,#n_salario_NL_add,#n_salario_VER_add,#n_salario_LTX_add',function(){
     var n_salario_AER_add = parseInt($('#n_salario_AER_add').val());

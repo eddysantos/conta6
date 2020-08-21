@@ -1,5 +1,4 @@
 $(document).ready(function(){
-//tablasParametros();
 tablasParametros113();
 
   $('tbody').on('click', '.editar', function(){
@@ -107,32 +106,9 @@ tablasParametros113();
         }
       });
   });
-
-
-
-
 });
 
 
-// function tablasParametros(){
-//   var ajaxCall = $.ajax({
-//       method: 'POST',
-//       url: '/Ubicaciones/Nomina/SueldosySalarios/parametros/actions/mostrarParametros.php'
-//   });
-//
-//   ajaxCall.done(function(r) {
-//     r = JSON.parse(r);
-//     if (r.code == 1) {
-//       $('#tablaArticulo80').html(r.articulo);
-//       $('#tablaGenerales').html(r.generales);
-//       $('#f-integracion').html(r.factor);
-//       $('#tablaSubsidio').html(r.subsidio);
-//       $('#tablaImss').html(r.imss);
-//     } else {
-//       console.error(r.message);
-//     }
-//   });
-// }
 
 function tablasParametros113(){
   var ajaxCall = $.ajax({

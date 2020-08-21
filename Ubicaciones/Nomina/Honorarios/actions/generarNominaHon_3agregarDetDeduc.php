@@ -1,7 +1,7 @@
 <?php
 
 $query_consultaDeduc = "SELECT fk_id_deduccion, fk_id_cuenta, s_descripcion, n_ordenReporte, s_clasificacion
-                         FROM conta_cs_nom_tipodeduccion_ctamst WHERE fk_id_regimen = ? ORDER BY n_ordenReporte";
+                         FROM conta_cs_sat_tipodeduccion_ctamst WHERE fk_id_regimen = ? ORDER BY n_ordenReporte";
 
 $stmt_consultaDeduc = $db->prepare($query_consultaDeduc);
 if (!($stmt_consultaDeduc)) {

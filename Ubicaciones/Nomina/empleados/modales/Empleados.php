@@ -336,6 +336,8 @@
   </div>
 </div>
 
+
+<?php // TODO: elminar si funciona ?>
 <!-- <div class="modal fade" id="modDatosEmp">
   <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content text-center m_bordenegro">
@@ -677,6 +679,8 @@
   </div> -->
 
 
+
+<?php // TODO: agregar etiquetas a los inputs ?>
 <div class="modal fade" id="permanentes">
   <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content bordenegro">
@@ -932,11 +936,6 @@
                 </tr>
               </tbody>
             </table>
-            <!-- <div id="contorno5" class="contorno">
-              <form class="form1">
-
-              </form>
-            </div> -->
           </div>
 
           <div class="tab-pane fade" id="perc" role="tabpanel" aria-labelledby="perc-tab">

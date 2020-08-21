@@ -10,12 +10,13 @@
   require $root . '/Ubicaciones/barradenavegacion.php';
 
   require $root . '/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
+  require $root .'/Ubicaciones/Nomina/empleados/modales/Empleados.php';
 
 ?>
 
 <div class="contorno text-center">
   <h5 class="titulo w-25 font14">MODIFICAR DATOS PERMANENTES</h5>
-  <table class="table table-hover font12"><!--tabla para modificr datos del CFDI-->
+  <table class="table table-hover font12">
     <thead>
       <tr class="row encabezado text-center">
         <td class="col-md-3">EMPLEADO</td>
@@ -73,14 +74,8 @@
   </div>
 </div>
 
-
-<!-- <script src="js/SueldosySalarios.js"></script> -->
-<!-- <script src="/Ubicaciones/Nomina/SueldosySalarios/parametros/js/parametros.js"></script> -->
-<!-- <script src="/Resources/bootstrap/js/bootstrap-toggle.js"></script> -->
 <script src="/Ubicaciones/Nomina/empleados/js/empleados.js"></script>
 
 <?php
-require $root .'/Ubicaciones/Nomina/empleados/modales/Empleados.php';
-// require $root .'/Ubicaciones/Nomina/SueldosySalarios/parametros/modales/Parametros.php';
 require $root . '/Ubicaciones/footer.php';
  ?>
