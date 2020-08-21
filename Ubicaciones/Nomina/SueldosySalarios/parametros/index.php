@@ -8,8 +8,8 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/Ubicaciones/barradenavegacion.php';
-  require $root .'/Ubicaciones/Nomina/SueldosySalarios/Parametros/modales/Parametros.php';
   require $root . '/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
+  require $root .'/Ubicaciones/Nomina/SueldosySalarios/Parametros/modales/Parametros.php';
 ?>
 
 <!--Comienza Consultar Parametros-->
