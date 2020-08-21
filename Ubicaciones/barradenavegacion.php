@@ -1,6 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/consultaDatosOficina.php'; # $lst_oficinasPermitidas
 $marginbottom = "margin-bottom:100px!important";
 ?>
 
@@ -24,11 +25,8 @@ $marginbottom = "margin-bottom:100px!important";
               <a href="#"><img src="/Resources/imagenes/s_rojo.svg" style=' width: 45px;'></a>
               <!-- <a href="#"><img src="/Resources/imagenes/cheetah.svg"  class="logo"></a> -->
               <ul class="dropdown-menu text-center" style="width:220px">
-                <select class="w-75">
-                  <option value="">Aeropuerto</option>
-                  <option value="">Manzanillo</option>
-                  <option value="">Nuevo Laredo</option>
-                  <option value="">Veracruz</option>
+                <select id="selectAduana" class="w-75 actualizaMenus">
+                  <?php echo $lst_oficinasPermitidas; ?>
                 </select>
               </ul>
             </li>
@@ -187,6 +185,7 @@ $marginbottom = "margin-bottom:100px!important";
 
 <!--******************************MENU PROLOG  Indice NOMINA******************************-->
               <li class="nav-item dropdown text-left pl-3">
+                <?PHP if($oRst_permisos['s_MENU_NOMINA'] == 1){ ?>
                 <a href="#" class="">NÓMINA <img src="/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
                 <ul class="dropdown-menu">
                   <?PHP if($oRst_permisos['s_nom_empleados'] == 1){ ?>
@@ -199,8 +198,7 @@ $marginbottom = "margin-bottom:100px!important";
                     <li><a href="/Ubicaciones/Nomina/DatosOficina/DatosOficina.php">Datos de Oficina</a></li><?php } ?>
                   <?PHP if($oRst_permisos['s_nom_reportes'] == 1){ ?>
                     <li><a href="/Ubicaciones/Nomina/Reportes/Reporte.php">Reportes</a></li><?php } ?>
-
-                </ul>
+                </ul><?php } ?>
 <!--******************************MENU PROLOG  Indice TRAFICO******************************-->
                <li class="nav-item dropdown text-left pl-3">
                  <a href="#" class="">TRÁFICO <img src="/Resources/iconos/3down.svg" alt="logo" style="width:13px;"></a>
