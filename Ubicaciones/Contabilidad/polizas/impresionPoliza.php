@@ -57,8 +57,8 @@ $pdf->AddPage();
 
 if( $amount > 0 ){
 
-  $cancela = $oRst_Select["s_cancela"];
-  if( $cancela == 1 ){ $txt_cancela = "Póliza Cancelada";}else{$txt_cancela = "";}
+  #$cancela = $oRst_Select["s_cancela"];
+  #if( $cancela == 1 ){ $txt_cancela = "Póliza Cancelada";}else{$txt_cancela = "";}
   $contentEncabezado = '';
 
 

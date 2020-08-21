@@ -20,7 +20,7 @@ if (!($stmt_empleados->execute())) {
 }
 
 $rslt_empleados = $stmt_empleados->get_result();
-
+$empleados = '';
 while ($row_empleados = $rslt_empleados->fetch_assoc()) {
   $nombreEmpleado = $row_empleados['s_nombre'].' '.$row_empleados['s_apellidoP'].' '. $row_empleados['s_apellidoM'];
   $empleados .="<option value='$row_empleados[pk_id_empleado]'>$nombreEmpleado</option>";
