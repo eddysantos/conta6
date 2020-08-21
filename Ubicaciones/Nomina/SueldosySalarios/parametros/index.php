@@ -13,7 +13,7 @@
 ?>
 
 <!--Comienza Consultar Parametros-->
-  <div id="contornoparam" style="<?php echo $marginbottom ?>">
+  <div id="contornoparam">
     <div class="contorno mt-5 text-center">
       <div class="titulo font16" style="margin-top: -26px;">PARAMETROS</div>
       <div class="acordeon2">
@@ -132,5 +132,5 @@
 
 <script src="/Ubicaciones/Nomina/SueldosySalarios/Parametros/js/parametros.js"></script>
 <?php
-require $root . '/Ubicaciones/footer.php';
- ?>
+  require $root . '/Ubicaciones/footer.php';
+?>
