@@ -1,11 +1,11 @@
-<div class="row submenuMed text-center m-0">
-  <div class="col-md-4" role="button">
-    <a  id="submenuMed" class="honorarios" accion="gnominaHon" status="cerrado">GENERAR NOMINA</a>
+<div class="submenuMed row font16 m-0 p-2 text-center">
+  <div class="col-md-4">
+    <a class='activogenom' href="/Ubicaciones/Nomina/Honorarios/Generar_Nomina.php">GENERAR NOMINA</a>
   </div>
   <div class="col-md-4">
-    <a id="submenuMed" class="honorarios" accion="gcfdiHon" status="cerrado">GENERAR CFDI</a>
+    <a class='activogenCFDI' href="/Ubicaciones/Nomina/Honorarios/consultar_Nomina.php" >GENERAR CFDI</a>
   </div>
   <div class="col-md-4">
-    <a href="/Ubicaciones/Nomina/Honorarios/Parametros/" >PARAMETROS</a>
+    <a class="activoparam" href="/Ubicaciones/Nomina/Honorarios/Parametros/" >PARAMETROS</a>
   </div>
 </div>

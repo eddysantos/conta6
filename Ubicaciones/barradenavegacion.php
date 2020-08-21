@@ -162,7 +162,7 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
           <?PHP if($oRst_permisos['s_nom_suel'] == 1){ ?>
             <li><a href="/Ubicaciones/Nomina/SueldosySalarios/Generar_Nomina.php">Nómina Sueldos y Salarios CFDI</a></li><?php } ?>
           <?PHP if($oRst_permisos['s_nom_has'] == 1){ ?>
-            <li><a href="/Ubicaciones/Nomina/Honorarios/GenerarNominaCFDI.php">Nómina Honorarios Asimilados CFDI</a></li><?php } ?>
+            <li><a href="/Ubicaciones/Nomina/Honorarios/Generar_Nomina.php">Nómina Honorarios Asimilados CFDI</a></li><?php } ?>
           <?PHP if($oRst_permisos['s_datos_oficinas_mod'] == 1){ ?>
             <li><a href="/Ubicaciones/Nomina/DatosOficina/DatosOficina.php">Datos de Oficina</a></li><?php } ?>
           <?PHP if($oRst_permisos['s_nom_reportes'] == 1){ ?>
