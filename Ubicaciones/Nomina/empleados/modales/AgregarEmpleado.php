@@ -381,7 +381,7 @@
 
 
 
-
+<?php // TODO: eliminar si funciona ?>
     <!-- <div id="regimen" style="display:none" class="text-center"> -->
       <!-- <div class="modal-body p-0 pb-4">
         <div class="row backpink">

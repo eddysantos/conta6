@@ -6,7 +6,6 @@
     <a id="submenuMed" class="honorarios" accion="gcfdiHon" status="cerrado">GENERAR CFDI</a>
   </div>
   <div class="col-md-4">
-    <!--a id="submenuMed" class="honorarios" accion="paramHon" status="cerrado">PARAMETROS</a-->
-    <a href="/Ubicaciones/Nomina/Honorarios/Parametros_hon.php" >PARAMETROS</a>
+    <a href="/Ubicaciones/Nomina/Honorarios/Parametros/" >PARAMETROS</a>
   </div>
 </div>

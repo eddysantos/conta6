@@ -133,9 +133,7 @@
 
 
 
-<script src="js/SueldosySalarios.js"></script>
-<!-- <script src="/Resources/bootstrap/js/bootstrap-toggle.js"></script> -->
-
+<script src="/Ubicaciones/Nomina/SueldosySalarios/js/SueldosySalarios.js"></script>
 <?php
 require $root . '/Ubicaciones/footer.php';
 ?>
