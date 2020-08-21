@@ -1,9 +1,9 @@
-<style media="screen">
+<!-- <style media="screen">
   .activoparam{
     color: black!important;
     font-weight: bold;
   }
-</style>
+</style> -->
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
