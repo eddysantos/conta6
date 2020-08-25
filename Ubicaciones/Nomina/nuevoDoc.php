@@ -19,30 +19,27 @@
   <input type="hidden" id="anio" value="<?php echo $anio;?>">
   <input type="hidden" id="nom_regimen" value="<?php echo $regimenNomina; ?>">
 
-  <table class="table mb-0">
+  <table class="table mb-0 text-center">
     <tbody class="font14">
-      <tr class="row m-0 mt-5">
-        <td class="col-md-4 input-effect">Tipo Nómina</td>
+      <tr class="row mt-5 justify-content-center">
         <td class="col-md-4 input-effect">
           <select class="custom-select" id="opcionestipo">
-            <option >Selecciona</option>
+            <option value="0">Tipo Nómina</option>
             <option value="O">Ordinaria</option>
             <option value="E">Extraordinaria</option>
           </select>
         </td>
       </tr>
-      <tr class="row m-0 mt-5">
-        <td class="col-md-4 input-effect">Nómina</td>
+      <tr class="row mt-5 justify-content-center">
         <td class="col-md-4 input-effect">
           <select class="custom-select" id="opcionesdescNom">
-            <option >Selecciona</option>
+            <option value="0">Nómina</option>
             <?php echo $txt_regimenNomina; ?>
             <option value="Finiquito">Finiquito</option>
           </select>
         </td>
       </tr>
-      <tr class="row m-0 mt-5">
-        <td class="col-md-4 input-effect">Empleado</td>
+      <tr class="row mt-5 justify-content-center">
         <td class="col-md-4 input-effect">
           <input list="empleado-nombre" class="efecto" id="empleado">
           <datalist id="empleado-nombre">
@@ -53,12 +50,14 @@
       </tr>
       <tr class="row justify-content-center mt-5">
         <td class="col-md-2">
-          <a href="#" id="generarNuevoDocumento" class="boton"><img src= "/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
+          <a href="#" id="generarNuevoDocumento" class="boton p-1"><img src= "/Resources/iconos/add.svg" class="icochico"> GENERAR</a>
         </td>
       </tr>
     </tbody>
   </table>
 </form>
+
+<script src="/Ubicaciones/Nomina/js/nomina.js" charset="utf-8"></script>
 <?php
 require $root . '/Ubicaciones/footer.php';
 ?>

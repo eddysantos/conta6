@@ -22,7 +22,7 @@
         <table class='table text-center table-hover fixed-table'>
           <thead>
             <tr class='row encabezado m-0'>
-              <td class='col-md-1'>OTROS PAGOS</td>
+              <td class='col-md-12'>OTROS PAGOS</td>
             </tr>
           </thead>
           <tbody id="otrosPagosComplementoNomina"></tbody>

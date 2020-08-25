@@ -99,6 +99,7 @@ if (!($stmt_inf->execute())) {
   }
 
   $rslt_empleados = $stmt_empleados->get_result();
+  // TODO: eliminar
   // $system_callback['data'] =
   // "<table>
   //   <tr>
@@ -416,6 +417,7 @@ if (!($stmt_inf->execute())) {
     $folio = $id_docNomina;
     require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
+    // TODO: eliminar
     // $system_callback['data'] .=
     // "<tr>
     //   <td>$id_empleado $nombre $apellidoP</td>

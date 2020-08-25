@@ -33,7 +33,7 @@ while ($row = $rslt->fetch_assoc()) {
   $s_descripcion = utf8_encode($row['s_descripcion']);
   $s_observaciones = utf8_encode($row['s_observaciones']);
 
-  $system_callback['data'] .="<tr class='row text-left m-0 borderojo'>
+  $system_callback['data'] .="<tr class='row text-left m-0 borderojo mx-3'>
     <td class='col-md-1 p-1'>$pk_id_percepcion</td>
     <td class='col-md-6 p-1'>$s_descripcion</td>
     <td class='col-md-5 p-1'>$s_observaciones</td>
@@ -72,10 +72,10 @@ while ($rowdeduccion = $rsltdeduccion->fetch_assoc()) {
   $s_descripcion = utf8_encode($rowdeduccion['s_descripcion']);
   $s_observaciones = utf8_encode($rowdeduccion['s_observaciones']);
 
-  $system_callback['datadeducciones'] .="<tr class='row text-left m-0 borderojo align-items-center'>
-    <td class='col-md-1 p-2'>$pk_id_deduccion</td>
-    <td class='col-md-6 p-2'>$s_descripcion</td>
-    <td class='col-md-5 p-2'>$s_observaciones</td>
+  $system_callback['datadeducciones'] .="<tr class='row text-left m-0 borderojo align-items-center mx-3'>
+    <td class='col-md-1 p-1'>$pk_id_deduccion</td>
+    <td class='col-md-6 p-1'>$s_descripcion</td>
+    <td class='col-md-5 p-1'>$s_observaciones</td>
   </tr>";
 }
 
@@ -109,9 +109,9 @@ while ($rowOtrosPagos = $rsltOtrosPagos->fetch_assoc()) {
   $pk_id_otroPago = utf8_encode($rowOtrosPagos['pk_id_otroPago']);
   $s_descripcion = utf8_encode($rowOtrosPagos['s_descripcion']);
 
-  $system_callback['dataOtrosPagos'] .="<tr class='row text-left m-0 borderojo align-items-center'>
-    <td class='col-md-1 p-2'>$pk_id_otroPago</td>
-    <td class='col-md-6 p-2'>$s_descripcion</td>
+  $system_callback['dataOtrosPagos'] .="<tr class='row text-left m-0 borderojo align-items-center mx-3'>
+    <td class='col-md-1 p-1'>$pk_id_otroPago</td>
+    <td class='col-md-6 p-1'>$s_descripcion</td>
   </tr>";
 }
 
