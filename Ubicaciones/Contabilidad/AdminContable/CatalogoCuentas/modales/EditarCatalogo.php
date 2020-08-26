@@ -1,11 +1,9 @@
 <!--EDITAR CATALO DE CUENTAS-->
-<div class="modal fade text-center" id="EditarCatalogo" style="margin-top:50px">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content m_bordenegro">
-      <div class="modal-header border-0 align-items-center">
-        <div class='text-left ml-4' style='width:900px'>
-          <h5>Editar Catalogo de Cuentas</h5>
-        </div>
+<div class="modal fade text-center" id="EditarCatalogo">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bordenegro">
+      <div class="modal-header border-0">
+        <h3 class="modal-title mx-3 s_gris_100">Editar Catalogo de Cuentas</h3>
         <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">

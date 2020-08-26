@@ -139,7 +139,7 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
               <li class="dropdown">
                 <a href="#" class="">Administración Contable <img src="/Resources/iconos/right1.svg"  style="width:10px;"></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/Ubicaciones/Contabilidad/AdminContable/catalogocuentas.php">Catálogo de Cuentas</a></li>
+                  <li><a href="/Ubicaciones/Contabilidad/AdminContable/CatalogoCuentas/index.php">Catálogo de Cuentas</a></li>
 
                   <?PHP if($oRst_permisos['s_catalogoPersonas'] == 1){ ?>
                   <li><a href="/Ubicaciones/Contabilidad/AdminContable/catalogopersonas.php">Catálogo de Personas</a></li><?PHP } ?>

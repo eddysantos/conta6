@@ -1,13 +1,32 @@
+
+<?php // NOTE: se eliminara cuando funcione correctamente index ?> 
+
+
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/Ubicaciones/barradenavegacion.php';
+
+  require $root . '/Ubicaciones/Contabilidad/AdminContable/modales/catalogoSAT.php';
+  require $root . '/Ubicaciones/Contabilidad/AdminContable/modales/EditarCatalogo.php';
+  require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
+  require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosEXT.php';
+  error_log('llegue aqui');
 ?>
+
+
 <div class="text-center mb-10">
-  <div class="row backpink m-0">
+  <!-- <div class="row backpink m-0">
     <div class="col-md-12 p-2" role="button">
       <a  id="submenuMed" class="aconta" accion="eCap" status="cerrado">CATÁLOGO DE CUENTAS</a>
     </div>
-  </div>
+  </div> -->
+
+  <ul class="nav backpink" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="catCuentas-tab" data-toggle="tab" href="#catCuentas" role="tab" aria-controls="catCuentas" aria-selected="true">CATÁLOGO DE CUENTAS</a>
+    </li>
+  </ul>
+
 
   <div id="contorno" class="contorno">
     <div class="acordeon2">
@@ -203,46 +222,48 @@
   </div>
 
 
-  <div id="contornoEmp" class="contorno" style="display:none;">
-    <h5 class="titulo font16">CATALOGO</h5>
-    <table class="table mt-4">
-      <tr class="row m-0">
-        <td class="col-md-6 text-left align-self-center">
-          <a href="#" id="printCatCuentas"><img class="icomediano ml-4" src="/Resources/iconos/printer.svg"></a>
-        </td>
-        <td class="col-md-3 offset-md-3 p-0">
-          <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." table-body="#tabla_cuentas"  action="tablacuentasDet">
-       </td>
-      </tr>
-    </table>
-    <table class="table table-hover fixed-table" id="empleadosCap" style="display:none;">
-      <thead>
-        <tr class="row m-0 encabezado font14 align-items-center">
-          <td class="col-md-1"></td>
-          <td class="col-md-1">CUENTA</td>
-          <td class="col-md-4">DESCRIPCION</td>
-          <td class="col-md-1">TIPO</td>
-          <td class="col-md-1">NIVEL</td>
-          <td class="col-md-1">CAPTURA</td>
-          <td class="col-md-1 p-0">CodAgrup SAT</td>
-          <td class="col-md-1">NATUR SAT</td>
-          <td class="col-md-1">ACTIVIDAD</td>
-        </tr>
-      </thead>
-      <tbody id="tabla_cuentas" class="font12">
-        <tr>
-          <td colspan="9">No hay resultados</td>
-        </tr>
-      </tbody>
-    </table>
+
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade" id="catCuentas" role="tabpanel" aria-labelledby="catCuentas-tab">
+      <div id="contornoEmp" class="contorno">
+        <h5 class="titulo font16">CATALOGO</h5>
+        <table class="table mt-4">
+          <tr class="row m-0">
+            <td class="col-md-6 text-left align-self-center">
+              <a href="#" id="printCatCuentas"><img class="icomediano ml-4" src="/Resources/iconos/printer.svg"></a>
+            </td>
+            <td class="col-md-3 offset-md-3 p-0">
+              <input class="efecto real-time-search" type="text" name="search" placeholder="Buscar..." table-body="#tabla_cuentas"  action="tablacuentasDet">
+           </td>
+          </tr>
+        </table>
+        <table class="table table-hover fixed-table" id="empleadosCap" style="display:none;">
+          <thead>
+            <tr class="row m-0 encabezado font14 align-items-center">
+              <td class="col-md-1"></td>
+              <td class="col-md-1">CUENTA</td>
+              <td class="col-md-4">DESCRIPCION</td>
+              <td class="col-md-1">TIPO</td>
+              <td class="col-md-1">NIVEL</td>
+              <td class="col-md-1">CAPTURA</td>
+              <td class="col-md-1 p-0">CodAgrup SAT</td>
+              <td class="col-md-1">NATUR SAT</td>
+              <td class="col-md-1">ACTIVIDAD</td>
+            </tr>
+          </thead>
+          <tbody id="tabla_cuentas" class="font12">
+            <tr>
+              <td colspan="9">No hay resultados</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
   </div>
 
-<?php
-require_once('modales/EditarCatalogo.php');
-require_once('modales/catalogoSAT.php');
-require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
-require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosEXT.php';
-require $root . '/Ubicaciones/footer.php';
-$db->close();
 
- ?>
+
+<?php
+  require $root . '/Ubicaciones/footer.php';
+?>
