@@ -8,13 +8,14 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
+// NOTE: Verificar si es la tabla correcta
 $query = "SELECT *
-          FROM conta_cs_empleados
+          -- FROM conta_cs_empleados
+          FROM conta_t_nom_empleados
           WHERE (s_rfc LIKE ? OR s_nombre LIKE ? OR s_apellidoP LIKE ? OR s_apellidoM LIKE ?)
-                AND pk_id_empleado NOT IN(
-                                        	SELECT s_cta_identificador
-                                          FROM conta_cs_cuentas_mst
-                                          where s_cta_identificador_tipo = 'empleado' AND pk_id_cuenta like '0115%')
+          AND pk_id_empleado NOT IN(SELECT s_cta_identificador
+                                    FROM conta_cs_cuentas_mst
+                                    where s_cta_identificador_tipo = 'empleado' AND pk_id_cuenta like '0115%')
           ORDER BY s_nombre ";
 
 $stmt = $db->prepare($query);
