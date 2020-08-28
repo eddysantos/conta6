@@ -2,8 +2,10 @@
 <div class="modal fade" id="catalogoSAT">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content bordenegro border-radius">
-      <div class="modal-header border-0">
-        <h3 class="modal-title mx-3 s_gris_100">Catálogo SAT</h3>
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Catálogo SAT</h5>
+        </div>
         <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
@@ -29,14 +31,14 @@
 </div>
 
 <!--CATALO DE FORMA DE PAGO-->
-<div class="modal fade" id="formaPagoSAT" style="margin-top:50px">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Forma de pago SAT</h5>
+<div class="modal fade" id="formaPagoSAT">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Forma de pago SAT</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
         <div id="" class="contorno">
@@ -44,8 +46,8 @@
             <thead>
               <tr class='row encabezado m-0'>
                 <td class='col-md-1'>Clave</td>
-                <td class='col-md-1'>Concepto</td>
-                <td class='col-md-2'>Publicacion Diario Oficial</td>
+                <td class='col-md-6'>Concepto</td>
+                <td class='col-md-4'>Publicacion Diario Oficial</td>
                 <td class='col-md-1'>Activa</td>
               </tr>
             </thead>

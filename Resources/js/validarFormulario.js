@@ -170,9 +170,12 @@ function validaReferenciaBlanco(frmObj){
 function validaSoloNumeros(frmObj){
   campo = $(frmObj).val();
   campo = $.trim(campo);
-  if( (!/^([0-9])*$/.test(campo)) || campo == "" ){
+	if( (!/^([0-9])*$/.test(campo))){
+	// NOTE: quite cuando campo esta vacio, porque si no nunca sale del ciclo
+  // if( (!/^([0-9])*$/.test(campo)) || campo == "" ){
     alertify.error("Ingrese solo numeros")
 		$(frmObj).focus();
+		return false; // agregue *fany* cambiarlo si hace falta
   }else{
 		$(frmObj).val(campo);
   }

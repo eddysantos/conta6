@@ -1,15 +1,11 @@
 <?php
-
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 
-$system_callback = [];
-$data = $_POST;
+$id_cliente = trim($_POST['id_cliente']);
+$dias = trim($_POST['dias']);
 
-$data['string'];
-$text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_cs_vendedores WHERE s_activo = 's' ORDER BY s_nombre ";
-
+$query = "UPDATE conta_cs_diasCredito_clientes SET n_dias = ?, fk_usuario_modifi = ? WHERE fk_id_cliente = ? and s_credito = 'MEX' ";
 
 
 $stmt = $db->prepare($query);
@@ -19,7 +15,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ss', $text, $text);
+$stmt->bind_param('sss',$dias,$usuario,$id_cliente);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
@@ -32,24 +28,26 @@ if (!($stmt->execute())) {
   exit_script($system_callback);
 }
 
-$rslt = $stmt->get_result();
+$affected = $stmt->affected_rows;
+$system_callback['affected'] = $affected;
+$system_callback['datos'] = $_POST;
 
-if ($rslt->num_rows == 0) {
-  $system_callback['code'] = 1;
-  $system_callback['data'] =
-  "<p db-id=''>No se encontraron resultados</p>";
-  $system_callback['message'] = "Script called successfully but there are no rows to display.";
+if ($affected == 0) {
+  $system_callback['code'] = 2;
+  $system_callback['message'] = "El query no hizo ningún cambio a la base de datos";
   exit_script($system_callback);
 }
 
-while ($row = $rslt->fetch_assoc()) {
-  $system_callback['data'] .=
-  "<p db-id='$row[pk_id_vendedor]'>$row[pk_id_vendedor] - $row[s_nombre] $row[s_apelledoP] $row[s_apellidoM]</p>";
-}
+$descripcion = "Se Actualizo dias de credito: $dias, del cliente $id_cliente";
+
+$clave = 'admonPersonas';
+$folio = $id_cliente;
+require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
+
 
 
  ?>

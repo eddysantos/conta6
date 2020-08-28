@@ -26,8 +26,8 @@ if ($rslt_consultaCorresponsal->num_rows > 0) {
     $nombrecorresp =  trim($row_consultaCorresponsal['s_nombre']);
 
     $consultaCorresponsal .= "<tr class='row'>
-      <td class='col-md-4 p-0'><input class='efecto h22 border-0' type='text' value='$idcorresp'></td>
-      <td class='col-md-4 p-0'><input class='efecto h22 border-0' type='text' size='100' value='$nombrecorresp'></td>
+      <td class='col-md-4 p-0'>$idcorresp</td>
+      <td class='col-md-6 p-0'>$nombrecorresp</td>
     </tr>";
   }
 }

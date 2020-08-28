@@ -1,10 +1,10 @@
 <!--EDITAR CATALO DE CUENTAS-->
-<div class="modal fade" id="catalogoBancosSAT" style="margin-top:50px">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content m_bordenegro">
+<div class="modal fade" id="catalogoBancosSAT">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bordenegro">
       <div class="modal-header border-0 align-items-center">
         <div class='text-left ml-4' style='width:900px'>
-          <h5>Catalogo SAT</h5>
+          <h5>Catalogo Bancos SAT</h5>
         </div>
         <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
