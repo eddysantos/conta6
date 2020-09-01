@@ -1,10 +1,10 @@
 
-<div class="modal fade text-center" id="addCorresp" style="margin-top:50px">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content m_bordenegro">
+<div class="modal fade" id="addCorresp">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bordenegro">
       <div class="modal-header border-0 align-items-center">
         <div class='text-left ml-4' style='width:900px'>
-          <h5>Corresponsal</h5>
+          <h5>Corresponsales</h5>
         </div>
         <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
@@ -12,7 +12,7 @@
         <div class="text-center font14">
           <div class="contorno mt-3">
             <table class="table">
-              <input id='dbCorresp' type='hidden' value=''>
+              <!-- <input id='dbCorresp' type='text' value=''> -->
               <tbody>
                 <tr class='row m-0 justify-content-center align-items-center mt-3'>
                   <td class='col-md-8 input-effect'>
