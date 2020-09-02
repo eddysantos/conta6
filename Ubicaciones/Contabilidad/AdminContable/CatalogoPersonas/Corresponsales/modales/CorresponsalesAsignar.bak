@@ -44,7 +44,7 @@
 <div class="text-center mb-10 font14">
   <div class="contorno mt-5">
     <h5 class="titulo">CATÁLOGO</h5>
-    <table class="table form1">
+    <table class="table">
       <tbody>
         <tr class="row m-0">
           <td class="col-md-2 text-left"><a href="/Ubicaciones/Contabilidad/AdminContable/Corresponsales.php"><img src= "/Resources/iconos/left.svg" class="icochico"> REGRESAR</a></td>

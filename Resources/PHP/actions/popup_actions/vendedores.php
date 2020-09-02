@@ -8,7 +8,7 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM conta_css_vendedores WHERE s_activo = 's' ORDER BY s_nombre ";
+$query = "SELECT * FROM conta_cs_vendedores WHERE s_activo = 's' ORDER BY s_nombre ";
 
 
 

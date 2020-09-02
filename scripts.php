@@ -1,7 +1,7 @@
 
 
 
-<script src="/Resources/JQuery/jquery.min.js"></script>
+ <script src="/Resources/JQuery/jquery.min.js"></script>
 <script src="/Resources/alertifyjs/alertify.min.js"></script>
 <script src="/Resources/sweetalert/js/sweetalert.min.js"></script>
 <script src="/Resources/JQuery/popper.min.js"></script>
@@ -11,6 +11,7 @@
 <script src="/Resources/js/calculadora.js"></script>
 <script src="/Resources/js/popup-list-plugin.js"></script>
 <script src="/Resources/js/table-fetch-plugin.js"></script>
+<script src="/Resources/js/inputs.js"></script>
 <!-- se utilizan para toda la pagina, por los modales de barra de navegacion -->
 <script src="/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
 <script src="/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>

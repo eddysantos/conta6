@@ -1,10 +1,12 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/Ubicaciones/barradenavegacion.php';
+  require $root . '/Ubicaciones/Nomina/Honorarios/modales/catalogoCompNomina.php';
+
 
   $idDocNomina = trim($_GET['idDocNomina']);
 
-  $sql_datosCaptura = "select * from conta_t_nom_captura WHERE pk_id_docNomina = ?";
+  $sql_datosCaptura = "SELECT * FROM conta_t_nom_captura WHERE pk_id_docNomina = ?";
   $stmt_datosCaptura = $db->prepare($sql_datosCaptura);
   if (!($stmt_datosCaptura)) { die("Error during query prepare [$db->errno]: $db->error");	}
   $stmt_datosCaptura->bind_param('s', $idDocNomina);
@@ -149,7 +151,7 @@
 
 ?>
 
-<body class="d-flex flex-column h-100">
+<!-- <body class="d-flex flex-column h-100"> -->
   <div class="text-center">
     <ul class="nav nav-justified backpink" id="myTab" role="tablist">
       <li class="nav-item">
@@ -318,7 +320,7 @@
                      <?php echo $consultaPercepConcep; ?>
                     </select>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-6 text-left">
                     <a href='#catalogoComplementoNomina' data-toggle='modal'>
                       <img class='icochico' src='/Resources/iconos/help.svg'>
                     </a>
@@ -380,7 +382,7 @@
                      <?php echo $consultaPercepConcepOP; ?>
                     </select>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-6 text-left">
                     <a href='#catalogoComplementoNomina' data-toggle='modal'>
                       <img class='icochico' src='/Resources/iconos/help.svg'>
                     </a>
@@ -450,7 +452,7 @@
                      <?php echo $consultaPercepConcepHrExtra; ?>
                     </select>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-6 text-left">
                     <a href='#catalogoComplementoNomina' data-toggle='modal'>
                       <img class='icochico' src='/Resources/iconos/help.svg'>
                     </a>
@@ -520,7 +522,7 @@
                          <?php echo $consultaPercepConcepINDEM; ?>
                         </select>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-6 text-left">
                         <a href='#catalogoComplementoNomina' data-toggle='modal'>
                           <img class='icochico' src='/Resources/iconos/help.svg'>
                         </a>
@@ -581,7 +583,7 @@
                      <?php echo $consultaDeducConcep; ?>
                     </select>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-6 text-left">
                     <a href='#catalogoComplementoNomina' data-toggle='modal'>
                       <img class='icochico' src='/Resources/iconos/help.svg'>
                     </a>
@@ -643,7 +645,7 @@
                  <?php echo $consultaDeduc_penAlim; ?>
                 </select>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 text-left">
                 <a href='#catalogoComplementoNomina' data-toggle='modal'>
                   <img class='icochico' src='/Resources/iconos/help.svg'>
                 </a>
@@ -717,18 +719,16 @@
         </div>
       </div>
     </div>
-
-
-      <div class="row m-0">
-        <div class="col-md-4 offset-md-4 my-5 font16">
-            <input class="efecto boton" type='button' value="GUARDAR" id="guardar-editarDocNomina"/>
-        </div>
+    <div class="row m-0">
+      <div class="col-md-4 offset-md-4 my-5 font16">
+          <input class="efecto boton" type='button' value="GUARDAR" id="guardar-editarDocNomina"/>
       </div>
-    </div> <!--Termina el contorno-->
-  </div> <!--Termina el Container-Fluid-->
-</body>
+    </div>
+    </div>
+  </div>
+<!-- </body> -->
 
+<script src="/Ubicaciones/Nomina/js/nomina.js?1" charset="utf-8"></script>
 <?php
-require $root . '/Ubicaciones/Nomina/Honorarios/modales/catalogoCompNomina.php';
 require $root . '/Ubicaciones/footer.php';
 ?>

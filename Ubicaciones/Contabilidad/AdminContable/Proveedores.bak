@@ -8,7 +8,7 @@
   <div class="row m-0 backpink">
     <ul class="nav nav-pills nav-fill w-100">
       <li class="nav-item">
-        <a href="#NuevoProveedor" data-toggle="modal" class="nav-link" id="submenuMed">AGREGAR NUEVO</a>
+        <a href="#NuevoProveedor" data-toggle="modal" class="nav-link" id="submenuMed">AGREGAR NUEVO proveedor</a>
       </li>
     </ul>
   </div>

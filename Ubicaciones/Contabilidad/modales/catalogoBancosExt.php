@@ -1,7 +1,7 @@
 <!--EDITAR CATALO DE BANCOS EXTRANJEROS-->
-<div class="modal fade" id="catalogoBancosEXT" style="margin-top:50px">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content m_bordenegro">
+<div class="modal fade" id="catalogoBancosEXT">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bordenegro">
       <div class="modal-header border-0 align-items-center">
         <div class='text-left ml-4' style='width:900px'>
           <h5>Catálogo Bancos Extranjeros</h5>

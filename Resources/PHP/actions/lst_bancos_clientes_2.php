@@ -26,8 +26,8 @@ if (!($stmt_ctasbancosCLT->execute())) {
 $rslt_ctasbancosCLT = $stmt_ctasbancosCLT->get_result();
 
 if ($rslt_ctasbancosCLT->num_rows == 0) {
-  $trCtasBancosCLT .= "<tr class='row mt-4 m-0 sub2 align-items-center'>
-                        <td class='col-md-10 p-0 text-left'>No se encontraron resultados</td>
+  $trCtasBancosCLT .= "<tr class='row m-0 sub2 align-items-center'>
+                        <td class='col p-0 text-left'>No se encontraron resultados</td>
                       </tr>";
 }
 
@@ -42,15 +42,15 @@ if ($rslt_ctasbancosCLT->num_rows > 0) {
     $nomBanco_ctasbancosCLT = $row_ctasbancosCLT['s_nombre'];
     $nomBancoExt_ctasbancosCLT = $row_ctasbancosCLT['s_nomBanExt'];
 
-    $trCtasBancosCLT .= "<tr class='row mt-4 m-0 sub2 align-items-center'>
-      <td class='col-md-2 p-0 text-left' elemento-ctasbancosCLT>
-        <a href='#' class='remove-ctasbancosCLT'><img class='icomediano ml-2' src='/Resources/iconos/002-trash.svg'></a>
+    $trCtasBancosCLT .= "<tr class='row m-0 align-items-center justify-content-center'>
+      <td class='col-md-1 p-0' elemento-ctasbancosCLT>
+        <a href='#' class='remove-ctasbancosCLT'><img class='icomediano' src='/Resources/iconos/002-trash.svg'></a>
         <input type='hidden' class='partidactasbancosCLT' value='$idpartida_ctasbancosCLT'>
       </td>
       <td class='col-md-2 p-0 text-left'>$id_banco_ctasbancosCLT $nomBanco_ctasbancosCLT $nomBancoExt_ctasbancosCLT</td>
       <td class='col-md-2 p-0 text-left'>$row_ctasbancosCLT[s_cta_banco]</td>
-      <td class='col-md-2 p-0 text-left'>$ualta_ctasbancosCLT $falta_ctasbancosCLT</td>
-      <td class='col-md-2 p-0 text-left'>$umodifi_ctasbancosCLT $fmodifi_ctasbancosCLT</td>
+      <td class='col-md-2 p-0'>$ualta_ctasbancosCLT $falta_ctasbancosCLT</td>
+      <td class='col-md-2 p-0'>$umodifi_ctasbancosCLT $fmodifi_ctasbancosCLT</td>
     </tr>";
   }
 }

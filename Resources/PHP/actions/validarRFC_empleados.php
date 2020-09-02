@@ -1,5 +1,6 @@
 <?php
-$query_EMPL = "SELECT * FROM conta_cs_empleados WHERE s_rfc = ?";
+$query_EMPL = "SELECT * FROM conta_t_nom_empleados WHERE s_rfc = ?";
+// $query_EMPL = "SELECT * FROM conta_cs_empleados WHERE s_rfc = ?";
   $stmt_EMPL = $db->prepare($query_EMPL);
   if (!($stmt_EMPL)) {
     $system_callback['code'] = "500";

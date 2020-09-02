@@ -1,19 +1,19 @@
-<style media="screen">
+<!-- <style media="screen">
   .activoparam{
     color: black!important;
     font-weight: bold;
   }
-</style>
+</style> -->
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/Ubicaciones/barradenavegacion.php';
-  require $root .'/Ubicaciones/Nomina/SueldosySalarios/Parametros/modales/Parametros.php';
   require $root . '/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
+  require $root .'/Ubicaciones/Nomina/SueldosySalarios/Parametros/modales/Parametros.php';
 ?>
 
 <!--Comienza Consultar Parametros-->
-  <div id="contornoparam" style="<?php echo $marginbottom ?>">
+  <div id="contornoparam">
     <div class="contorno mt-5 text-center">
       <div class="titulo font16" style="margin-top: -26px;">PARAMETROS</div>
       <div class="acordeon2">
@@ -132,5 +132,5 @@
 
 <script src="/Ubicaciones/Nomina/SueldosySalarios/Parametros/js/parametros.js"></script>
 <?php
-require $root . '/Ubicaciones/footer.php';
- ?>
+  require $root . '/Ubicaciones/footer.php';
+?>

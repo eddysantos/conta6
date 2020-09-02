@@ -94,7 +94,7 @@
   </div>
 
 
-  <div class="contorno mt-5 text-center" style="<?php echo $marginbottom ?>">
+  <div class="contorno my-5 text-center">
     <div class="titulo" style='margin-top: -26px;width:200px'>Nómina Extraordinaria</div>
     <div class="row sub2 font16 my-3 justify-content-center">
       <div class="col-md-2 ">Nomina</div>

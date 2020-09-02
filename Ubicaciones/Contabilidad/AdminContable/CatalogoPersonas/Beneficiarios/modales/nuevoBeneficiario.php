@@ -1,16 +1,16 @@
 <!--Agregar Nuevo beneficiario a Catalogo Beneficiario-->
-<div class="modal fade text-center" id="NuevoBeneficiario" style="margin-top:50px">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Agregar Nuevo Beneficiario</h5>
+<div class="modal fade text-center" id="NuevoBeneficiario">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bordenegro">
+      <div class="modal-header border-0 align-items-center">
+        <div class='text-left ml-4' style='width:900px'>
+          <h5>Agregar Nuevo Beneficiario</h5>
+        </div>
+        <a href="#" type="button" class="close mr-3" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body p-0">
         <div id="contorno" class="contorno">
-          <table class="table form1">
+          <table class="table">
             <tbody class="font14">
                 <tr class="row">
                   <td class="col-md-12 input-effect mt-3">

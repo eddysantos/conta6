@@ -11,7 +11,9 @@
   require $root . '/Resources/PHP/actions/validarFormulario.php';
   require $root . '/Ubicaciones/Nomina/SueldosySalarios/submenu_sueldos.php';
   $regimenNomina = '02';
+  $permisoModificarNomina = $oRst_permisos['s_nom_suel_modificar'];
   require $root . '/Resources/PHP/actions/consulta_nomina_anio.php';
+
 
 ?>
 
@@ -58,7 +60,7 @@
       </div>
     </div>
 
-    <div class="contorno mt-4" style="<?php echo $marginbottom ?>">
+    <div class="contorno my-5">
       <table class="table text-center m-0 table-hover">
         <thead>
           <tr class="row encabezado align-items-center">
@@ -71,9 +73,15 @@
               </a>
             </td>
             <td class="col-md-1">
-              <a href='#' onclick='borrarDocNominaTodos()'>
-                <img class='w-5' src='/Resources/iconos/cross.svg'>
-              </a>
+              <?php if ($permisoModificarNomina): ?>
+                <a href='#' onclick='borrarDocNominaTodos()'>
+                  <img class='w-5' src='/Resources/iconos/cross.svg'>
+                </a>
+              <?php else: ?>
+                <a href='#'>
+                  <img disabled class='disabled' class='w-5' src='/Resources/iconos/cross.svg'>
+                </a>
+              <?php endif; ?>
             </td>
             <td class="col-md-1">Pol.Pago</td>
             <td class="col-md-1">Cancelar</td>
@@ -99,10 +107,8 @@
   </div>
 </div>
 
-<script src="/Ubicaciones/Nomina/js/nomina.js"></script>
-<script src="js/SueldosySalarios.js"></script>
-
-<!-- <script src="/Resources/bootstrap/js/bootstrap-toggle.js"></script> -->
+<script src="/Ubicaciones/Nomina/js/nomina.js?1"></script>
+<script src="js/SueldosySalarios.js?1"></script>
 
 <?php
 require $root . '/Ubicaciones/footer.php';

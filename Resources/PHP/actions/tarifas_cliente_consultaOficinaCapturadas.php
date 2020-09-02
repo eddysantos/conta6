@@ -1,5 +1,5 @@
 <?PHP
-$query_consultaOficinaTarifa = "select pk_id_aduana,s_nombre from conta_t_oficinas where pk_id_aduana in (
+$query_consultaOficinaTarifa = "SELECT pk_id_aduana,s_nombre FROM conta_t_oficinas WHERE pk_id_aduana in (
 SELECT distinct fk_id_aduana FROM conta_tarifas where fk_id_cliente = '$id_cliente' and fk_c_pais = 'MEX') ORDER BY s_nombre";
 
 $stmt_consultaOficinaTarifa = $db->prepare($query_consultaOficinaTarifa);
@@ -27,8 +27,8 @@ if ($rslt_consultaOficinaTarifa->num_rows > 0) {
     $tarifa_nomaduana =  trim($row_consultaOficinaTarifa['s_nombre']);
 
     $consultaOficinaTarifa .= "<tr class='row'>
-      <td class='col-md-4 p-0'><input class='efecto h22 border-0' type='text' value='$tarifa_idaduana'></td>
-      <td class='col-md-1 p-0'><input class='efecto h22 border-0' type='text' value='$tarifa_nomaduana'></td>
+      <td class='col-md-6 p-0'>$tarifa_idaduana</td>
+      <td class='col-md-6 p-0'>$tarifa_nomaduana</td>
     </tr>";
   }
 }

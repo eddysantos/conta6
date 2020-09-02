@@ -30,10 +30,11 @@ $system_callback = [];
         $concepto = utf8_encode($row_consultaFormapago['s_concepto']);
 
         $system_callback['data'] .=
-        '<tr class="row m-0 borderojo"><td class="col-md-1">'.$row_consultaFormapago['pk_id_formapago'].'</td>'.
-        '<td class="col-md-1">'.utf8_encode($row_consultaFormapago['s_concepto']).'</td>'.
-        '<td class="col-md-2">'.$row_consultaFormapago['d_fecha_diarioOficial'].'</td>'.
-        '<td class="col-md-1">'.$row_consultaFormapago['s_activo'].'</td></tr>';
+        '<tr class="row m-0 borderojo">
+          <td class="p-1 col-md-1">'.$row_consultaFormapago['pk_id_formapago'].'</td>'.
+          '<td class="p-1 col-md-6">'.utf8_encode($row_consultaFormapago['s_concepto']).'</td>'.
+          '<td class="p-1 col-md-4">'.$row_consultaFormapago['d_fecha_diarioOficial'].'</td>'.
+          '<td class="p-1 col-md-1">'.$row_consultaFormapago['s_activo'].'</td></tr>';
       }
   }
 
