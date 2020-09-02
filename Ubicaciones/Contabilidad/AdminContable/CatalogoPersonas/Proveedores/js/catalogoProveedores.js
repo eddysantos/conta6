@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  var ruta = "/Ubicaciones/Contabilidad/AdminContable/CatalogoPersonas/Proveedores/";
+  var ruta = "/Ubicaciones/Contabilidad/AdminContable/CatalogoPersonas/";
 
 
   $('#cat-prov').change(function() {
@@ -14,7 +14,7 @@ $(document).ready(function(){
   });
 
   $('#btn_printProv').click(function(){
-    window.open(""+ruta+"actions/proveedores_impresion.php");
+    window.open(""+ruta+"Proveedores/actions/proveedores_impresion.php");
   });
 
 
@@ -58,7 +58,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: ""+ruta+"actions/proveedores_agregarBcoCta.php",
+      url: ""+ruta+"Proveedores/actions/proveedores_agregarBcoCta.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -123,7 +123,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: ""+ruta+"actions/proveedores_agregar.php",
+      url: ""+ruta+"Proveedores/actions/proveedores_agregar.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
@@ -145,7 +145,7 @@ $(document).ready(function(){
 
 }); // fin del documento
 
-var ruta = "/Ubicaciones/Contabilidad/AdminContable/CatalogoPersonas/Proveedores/";
+var ruta = "/Ubicaciones/Contabilidad/AdminContable/CatalogoPersonas/";
 
 function buscarDatosProv(id){
   var data = {
@@ -153,7 +153,7 @@ function buscarDatosProv(id){
   }
   $.ajax({
     type: "POST",
-    url: ""+ruta+"actions/proveedores_datosGenerales.php",
+    url: ""+ruta+"Proveedores/actions/proveedores_datosGenerales.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -175,7 +175,7 @@ function buscarCtasProv(id){
   }
   $.ajax({
     type: "POST",
-    url: ""+ruta+"actions/proveedores_asignarCtasBancarias.php",
+    url: ""+ruta+"Proveedores/actions/proveedores_asignarCtasBancarias.php",
     data: data,
     success: 	function(r){
       r = JSON.parse(r);
@@ -211,7 +211,7 @@ function btn_bcprov(partida,prov){
       }
       $.ajax({
         type: "POST",
-        url: ""+ruta+"actions/proveedores_eliminarCtaBancaria.php",
+        url: ""+ruta+"Proveedores/actions/proveedores_eliminarCtaBancaria.php",
         data: data,
 
           success: 	function(r){
@@ -277,7 +277,7 @@ function btn_editProv(){
 
     $.ajax({
       type: "POST",
-      url: ""+ruta+"actions/proveedores_editar.php",
+      url: ""+ruta+"Proveedores/actions/proveedores_editar.php",
       data: data,
       success: 	function(r){
         r = JSON.parse(r);
