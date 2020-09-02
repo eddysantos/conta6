@@ -2,7 +2,6 @@ $(document).ready(function(){
   fetch_formaPago_sat();
   polReg_Det();
 
-  listaCorresponsales();
   fetch_catalogoBancosSAT();
   fetch_catalogoBancosExt();
 
@@ -723,58 +722,14 @@ $(document).ready(function(){
 
 
 
-  // CORRESPONSALES
-$('#btn_printCorresp').click(function(){
-  window.open('/AdminContable/actions/corresposales_impresion');
-});
 
-
-$('#genCorresponsal').click(function(){
-
-  if($('#corp-cliente').attr('db-id') == ""){
-    alertify.error("Seleccione un cliente");
-    $('#corp-cliente').focus();
-    return false;
-  }
-
-  txt_cliente = $('#corp-cliente').val();
-  cliente = $('#corp-cliente').attr('db-id');
-
-  parte = txt_cliente.split(cliente);
-  cliente = parte[0];
-  nombre = parte[1];
-
-  var data = {
-    id_cliente: $('#corp-cliente').attr('db-id'),
-    s_nombre: nombre
-  }
-
-
-  $.ajax({
-    type: "POST",
-    url: "actions/corresposales_agregar.php",
-    data: data,
-    success: 	function(request){
-      r = JSON.parse(request);
-      if (r.code == 1) {
-        swal("Exito", "Se guardo correctamente.", "success");
-        listaCorresponsales();
-        $('#corp-cliente').attr('db-id', "");
-        $('#corp-cliente').val("");
-      } else {
-        console.error(r.message);
-      }
-    }
-  });
-});
-// FIN DE CORRESPONSALES
 
 
 
 // BENEFICIARIOS
-$('#btn_printBenef').click(function(){
-  window.open('/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_impresion.php');
-});
+// $('#btn_printBenef').click(function(){
+//   window.open('/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_impresion.php');
+// });
 
 $('#ben_razonsocial').change(function(){
   eliminaBlancosIntermedios(this);
@@ -787,122 +742,110 @@ $('#ben_mrfc').change(function(){
   validaRFC(this);
 });
 
-$('.btn_agregarBeneficiario').click(function(){
-  ben = $('#ben_razonsocial').val();
-  rfc = $('#ben_mrfc').val();
+// $('.btn_agregarBeneficiario').click(function(){
+//   ben = $('#ben_razonsocial').val();
+//   rfc = $('#ben_mrfc').val();
+//
+//   if( ben == "" ){
+//     alertify.error("Escriba un Nombre");
+//     $('#ben_razonsocial').focus();
+//     return false;
+//    }
+//
+//    validRFC = validaRFC($('#ben_mrfc'));
+//    if( rfc == "" || validRFC == false ){
+//      $('#ben_mrfc').focus();
+//      return false;
+//     }
+//
+//   	var data = {
+//   		ben: ben,
+//   		rfc: rfc,
+//       taxid: $('#ben_taxid').val()
+//     }
+//
+//     $.ajax({
+//       type: "POST",
+//       url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_agregar.php",
+//       data: data,
+//       success: 	function(r){
+//         r = JSON.parse(r);
+//         if (r.code == 1) {
+//           swal("Exito", "Se generó correctamente.", "success");
+//           $('.modal').modal('hide');
+//         } else if (r.code == 500) {
+// 			    swal("RFC existe en sistema", r.data, "error");
+//           console.error(r.message);
+//         }else {
+//           swal("No se agrego, favor de reportar", r.data, "error");
+//           console.error(r.message);
+//         }
+//       },
+//       error: function(x){
+//         console.error(x);
+//       }
+//     });
+//   });
 
-  if( ben == "" ){
-    alertify.error("Escriba un Nombre");
-    $('#ben_razonsocial').focus();
-    return false;
-   }
-
-   validRFC = validaRFC($('#ben_mrfc'));
-   console.log(validRFC);
-   if( rfc == "" || validRFC == false ){
-     alertify.error("Formato RFC Incorrecto");
-     $('#ben_mrfc').focus();
-     return false;
-    }
-
-  	var data = {
-  		ben: ben,
-  		rfc: rfc,
-      taxid: $('#ben_taxid').val()
-    }
-
-    $.ajax({
-      type: "POST",
-      url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_agregar.php",
-      data: data,
-      success: 	function(r){
-        r = JSON.parse(r);
-        if (r.code == 1) {
-          swal("Exito", "Se generó correctamente.", "success");
-          $('.modal').modal('hide');
-        } else if (r.code == 500) {
-			    swal("RFC existe en sistema", r.data, "error");
-          console.error(r.message);
-        }else {
-          swal("No se agrego, favor de reportar", r.data, "error");
-          console.error(r.message);
-        }
-      },
-      error: function(x){
-        console.error(x);
-      }
-    });
-  });
-
-  $('#btn_agrCtaBcoBen').click(function(){
-  id_ben = $('#cat-benef').attr('db-id');
-  banco = $('#bcoSATben').attr('db-id');
-  cuenta = $('#cinterben').val();
-  nomBan = $('#nomBcoben').attr('db-id');
-
-  if( id_ben == "" ){
-    alertify.error("Seleccione un Beneficiario");
-    $('#cat-benef').focus();
-    return false;
-   }
-
-   if( banco == "" ){
-     alertify.error("Seleccione un banco");
-     $('#bcoSATben').focus();
-     return false;
-   }
-
-   if( banco == "999" && nomBan == "" ){
-     alertify.error("Es requerido el nombre del banco");
-     $('#bcoSATben').focus();
-     return false;
-   }
-
-   valid_cuenta = validarCtaBancaria($('#cinterben'));
-   if( cuenta == "" || valid_cuenta == false ){
-     alertify.error("Formato Cuenta bancaria Incorrecto");
-     $('#cinterben').focus();
-     return false;
-   }
-
-   var data = {
-     id_ben: id_ben,
-     banco: banco,
-     cuenta: cuenta,
-     nomBan: nomBan
-   }
-
-   $.ajax({
-     type: "POST",
-     url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_agregarBcoCtaBen.php",
-     data: data,
-     success: 	function(r){
-       r = JSON.parse(r);
-       if (r.code == 1) {
-         swal("Exito", "Se generó correctamente.", "success");
-         $('#cat-benef').change();
-       } else {
-         swal("Error", r.data, "error");
-         console.error(r.message);
-       }
-     },
-     error: function(x){
-       console.error(x);
-     }
-   });
- });
+ //  $('#btn_agrCtaBcoBen').click(function(){
+  // id_ben = $('#cat-benef').attr('db-id');
+  // banco = $('#bcoSATben').attr('db-id');
+  // cuenta = $('#cinterben').val();
+  // nomBan = $('#nomBcoben').attr('db-id');
+  //
+  // if( id_ben == "" ){
+  //   alertify.error("Seleccione un Beneficiario");
+  //   $('#cat-benef').focus();
+  //   return false;
+  //  }
+  //
+  //  if( banco == "" ){
+  //    alertify.error("Seleccione un banco");
+  //    $('#bcoSATben').focus();
+  //    return false;
+  //  }
+  //
+  //  if( banco == "999" && nomBan == "" ){
+  //    alertify.error("Es requerido el nombre del banco");
+  //    $('#bcoSATben').focus();
+  //    return false;
+  //  }
+  //
+  //  valid_cuenta = validarCtaBancaria($('#cinterben'));
+  //  if( cuenta == "" || valid_cuenta == false ){
+  //    alertify.error("Formato Cuenta bancaria Incorrecto");
+  //    $('#cinterben').focus();
+  //    return false;
+  //  }
+  //
+  //  var data = {
+  //    id_ben: id_ben,
+  //    banco: banco,
+  //    cuenta: cuenta,
+  //    nomBan: nomBan
+  //  }
+ //
+ //   $.ajax({
+ //     type: "POST",
+ //     url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_agregarBcoCtaBen.php",
+ //     data: data,
+ //     success: 	function(r){
+ //       r = JSON.parse(r);
+ //       if (r.code == 1) {
+ //         swal("Exito", "Se generó correctamente.", "success");
+ //         $('#cat-benef').change();
+ //       } else {
+ //         swal("Error", r.data, "error");
+ //         console.error(r.message);
+ //       }
+ //     },
+ //     error: function(x){
+ //       console.error(x);
+ //     }
+ //   });
+ // });
 
 
-  $('#cat-benef').change(function() {
-    var $this = $(this);
-    var dbid = $this.attr('db-id');
-
-    if (dbid != "") {
-      buscarDatosBenef(dbid);
-
-      buscarCtasBenef(dbid);
-    }
-  });
 
 
 // FIN BENEFICIARIOS
@@ -1229,347 +1172,150 @@ function fetch_catalogoBancosSAT(){
 }
 
 function fetch_catalogoBancosExt(){
-    $.ajax({
-      method: 'POST',
-      url: '/Resources/PHP/actions/lst_conta_cs_bancos_extranjeros.php',
-      success: function(r){
-        r = JSON.parse(r);
-        if (r.code == 1) {
-          $('#catalogo-bancosext-helper').html(r.data);
-        } else {
-          console.error(r.message);
-        }
-      }
-    })
-}
-
-
-
-
-// FUNCIONES CORRESPONSALES
-function listaCorresponsales(){
-  var ajaxCall = $.ajax({
+  $.ajax({
     method: 'POST',
-    url: '/Ubicaciones/Contabilidad/AdminContable/actions/corresponsales_mostrarlista.php'
-  });
-
-  ajaxCall.done(function(r) {
-    r = JSON.parse(r);
-    if (r.code == 1) {
-      $('#tablaCorresponsales').html(r.data);
-      actionsCorresponsales();
-    } else {
-      console.error(r.message);
-    }
-  });
-}
-
-
-function actionsCorresponsales(){
-  $('.addCorresp').click(function(){
-    var dbid = $(this).attr('db-id');
-    $('#dbCorresp').val(dbid);
-    $('#addCorresp').modal('show');
-
-    var ajaxCall = $.ajax({
-        method: 'POST',
-        data:{dbid:dbid},
-        url: 'actions/corresposales_mostrarModal.php'
-    });
-
-    ajaxCall.done(function(r) {
+    url: '/Resources/PHP/actions/lst_conta_cs_bancos_extranjeros.php',
+    success: function(r){
       r = JSON.parse(r);
       if (r.code == 1) {
-        $('#tablaClienteCorresponsales').html(r.data);
-        eliminarCorresp();
-        // mostrarCorrespModal();
-        // tablaCorrespModal();
-        $('#nombre').html(r.nombre);
-        $('#nombreCorresp').html(r.nombreCorresp);
-      } else {
-        console.error(r.message);
-      }
-    });
-  });
-}
-
-
-function eliminarCorresp(){
-  $('.eliminarCorresp').click(function(){
-    var data = {
-      id_cliente: $(this).attr('idcliente'),
-      id_corresp: 0
-    }
-    swal({
-      title: "Estas Seguro?",
-      text: "Ya no se podra recuperar el registro!",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonClass: "btn-danger",
-      confirmButtonText: "Si, Eliminar",
-      cancelButtonText: "No, cancelar",
-      closeOnConfirm: false,
-      closeOnCancel: false
-    },
-    function(isConfirm) {
-      if (isConfirm) {
-        $.ajax({
-          method: 'POST',
-          data: data,
-          url: 'actions/corresponsales_asignarAcliente.php',
-          success: function(r){
-            $('.addCorresp').click();
-          },
-          error: function(x){
-            console.error(x)
-            alertify.error('NO SE PUDO ELIMINAR');
-            $('.addCorresp').click();
-          }
-        });
-        swal("Eliminado!", "Se elimino correctamente.", "success");
-        $('.addCorresp').click();
-      } else {
-        swal("Cancelado", "El registro esta a salvo :)", "error");
-        $('.addCorresp').click();
-      }
-    });
-  });
-}
-
-
-
-function asigCorresponsal(id_corresp,id_cliente){
-  if(id_corresp > 0){
-    if($('#corp-cliente').attr('db-id') == ""){
-      alertify.error("Seleccione un cliente");
-      $('#corp-cliente').focus();
-      return false;
-    }
-    var data = {
-      id_cliente: $('#corp-cliente').attr('db-id'),
-      id_corresp: $('#id_corresp').val()
-    }
-
-  }else{
-    var data = {
-      id_cliente: id_cliente,
-      id_corresp: id_corresp
-    }
-  }
-
-  $.ajax({
-    type: "POST",
-    url: "actions/corresponsales_asignarAcliente.php",
-    data: data,
-    success: 	function(request){
-      r = JSON.parse(request);
-      if (r.code == 1) {
-        swal("Exito", "Operación realizada correctamente.", "success");
-        // $('.modal').modal('hide');
-        // $('.addCorresp').click();
+        $('#catalogo-bancosext-helper').html(r.data);
       } else {
         console.error(r.message);
       }
     }
-  });
-}
-
-
-function mostrarCorrespModal(){
-  // var dbid = $(this).attr('db-id');
-  $('#dbCorresp').val(dbid);
-  $('#addCorresp').modal('show');
-
-  var ajaxCall = $.ajax({
-    method: 'POST',
-    data:{dbid:dbid},
-    url: 'actions/mostrarCorresponsales.php'
-  });
-
-  ajaxCall.done(function(r) {
-    r = JSON.parse(r);
-    if (r.code == 1) {
-      $('#tablaClienteCorresponsales').html(r.data);
-      eliminarCorresp();
-      $('#nombre').html(r.nombre);
-      $('#nombreCorresp').html(r.nombreCorresp);
-    } else {
-      console.error(r.message);
-    }
-  });
-}
-
-function asigCorrespModal(id_corresp,id_cliente){
-  if(id_corresp > 0){
-    if($('#corp-clientem').attr('db-id') == ""){
-      alertify.error("Seleccione un cliente");
-      $('#corp-clientem').focus();
-      return false;
-    }
-
-    var data = {
-      id_cliente: $('#corp-clientem').attr('db-id'),
-      id_corresp: $('#dbCorresp').val()
-    }
-
-  }else{
-    var data = {
-      id_cliente: id_cliente,
-      id_corresp: id_corresp
-    }
-  }
-
-  $.ajax({
-    type: "POST",
-    url: "actions/corresponsales_asignarAcliente.php",
-    data: data,
-    success: 	function(r){
-      r = JSON.parse(r);
-      if (r.code == 1) {
-        swal("Exito", "Operación realizada correctamente.", "success");
-        $('#corp-clientem').attr('db-id', "");
-        $('#corp-clientem').val("");
-        $('.modal').modal('hide');
-      } else {
-        console.error(r.message);
-      }
-
-    }
-  });
+  })
 }
 
 
 
 // FUNCIONES BENEFICIARIOS
-function btn_editBen(){
-  ben = $('#nombre').val();
-  rfc = $('#rfc').val();
+// function btn_editBen(){
+//   ben = $('#nombre').val();
+//   rfc = $('#rfc').val();
+//
+//   if( ben == "" ){
+//     alertify.error("Escriba un Nombre");
+//     $('#nombre').focus();
+//     return false;
+//    }
+//
+//    if( rfc == "" ){
+//       alertify.error("Escriba un RFC");
+//       $('#rfc').focus();
+//       return false;
+//     }
+//
+//     var data = {
+//       id_ben: $('#cat-benef').attr('db-id'),
+//       ben: ben,
+//       rfc: rfc
+//     }
+//
+//     $.ajax({
+//       type: "POST",
+//       url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_editar.php",
+//       data: data,
+//       success: 	function(r){
+//         r = JSON.parse(r);
+//         if (r.code == 1) {
+//           swal("Exito", "Se modificó correctamente.", "success");
+//           $('#cat-benef').change();
+//         } else {
+//           swal("RFC existe en sistema", r.data, "error");
+//           console.error(r.message);
+//         }
+//       },
+//       error: function(x){
+//         console.error(x);
+//       }
+//
+//     });
+// }
 
-  if( ben == "" ){
-    alertify.error("Escriba un Nombre");
-    $('#nombre').focus();
-    return false;
-   }
+// function btn_bcben(partida,ben){
+//   swal({
+//   title: "Estas Seguro?",
+//   text: "Ya no se podra recuperar el registro! "+ partida +" ",
+//   type: "warning",
+//   showCancelButton: true,
+//   confirmButtonClass: "btn-danger",
+//   confirmButtonText: "Si, Eliminar",
+//   cancelButtonText: "No, cancelar",
+//   closeOnConfirm: false,
+//   closeOnCancel: false
+//   },
+//   function(isConfirm) {
+//     if (isConfirm) {
+//       var data = {
+//         partida: partida,
+//         ben: ben
+//       }
+//       $.ajax({
+//         type: "POST",
+//         url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_eliminar.php",
+//         data: data,
+//           success: 	function(r){
+//             r = JSON.parse(r);
+//           if (r.code == 1) {
+//             swal("Eliminado!", "Se elimino correctamente.", "success");
+//             $('#cat-benef').change();
+//           } else {
+//             console.error(r.message);
+//           }
+//         },
+//         error: function(x){
+//           console.error(x)
+//         }
+//       });
+//     } else {
+//       swal("Cancelado", "El registro esta a salvo :)", "error");
+//     }
+//   });
+// }
 
-   if( rfc == "" ){
-      alertify.error("Escriba un RFC");
-      $('#rfc').focus();
-      return false;
-    }
+// function buscarCtasBenef(id){
+//   var data = {
+//     id_ben: id
+//   }
+//
+//   $.ajax({
+//     type: "POST",
+//     url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_asignarCtasBancarias.php",
+//     data: data,
+//     success: 	function(r){
+//       r = JSON.parse(r);
+//       if (r.code == 1) {
+//         $('#lista_datosCtasBen').html(r.data);
+//       } else {
+//           console.error(r.message);
+//       }
+//     },
+//     error: function(x){
+//       console.error(x);
+//     }
+//   });
+// }
 
-    var data = {
-      id_ben: $('#cat-benef').attr('db-id'),
-      ben: ben,
-      rfc: rfc
-    }
-
-    $.ajax({
-      type: "POST",
-      url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_editar.php",
-      data: data,
-      success: 	function(r){
-        r = JSON.parse(r);
-        if (r.code == 1) {
-          swal("Exito", "Se modificó correctamente.", "success");
-          $('#cat-benef').change();
-        } else {
-          swal("RFC existe en sistema", r.data, "error");
-          console.error(r.message);
-        }
-      },
-      error: function(x){
-        console.error(x);
-      }
-
-    });
-}
-
-function btn_bcben(partida,ben){
-  swal({
-  title: "Estas Seguro?",
-  text: "Ya no se podra recuperar el registro! "+ partida +" ",
-  type: "warning",
-  showCancelButton: true,
-  confirmButtonClass: "btn-danger",
-  confirmButtonText: "Si, Eliminar",
-  cancelButtonText: "No, cancelar",
-  closeOnConfirm: false,
-  closeOnCancel: false
-  },
-  function(isConfirm) {
-    if (isConfirm) {
-      var data = {
-        partida: partida,
-        ben: ben
-      }
-      $.ajax({
-        type: "POST",
-        url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_eliminar.php",
-        data: data,
-
-          success: 	function(r){
-            r = JSON.parse(r);
-          if (r.code == 1) {
-            swal("Eliminado!", "Se elimino correctamente.", "success");
-            $('#cat-benef').change();
-
-          } else {
-            console.error(r.message);
-          }
-        },
-        error: function(x){
-          console.error(x)
-        }
-      });
-    } else {
-      swal("Cancelado", "El registro esta a salvo :)", "error");
-    }
-  });
-}
-
-function buscarCtasBenef(id){
-  var data = {
-    id_ben: id
-  }
-
-  $.ajax({
-    type: "POST",
-    url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_asignarCtasBancarias.php",
-    data: data,
-    success: 	function(r){
-      r = JSON.parse(r);
-      if (r.code == 1) {
-        $('#lista_datosCtasBen').html(r.data);
-      } else {
-          console.error(r.message);
-      }
-    },
-    error: function(x){
-      console.error(x);
-    }
-  });
-}
-
-function buscarDatosBenef(id){
-  var data = {
-    id_ben: id
-  }
-  $.ajax({
-    type: "POST",
-    url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_datosGenerales.php",
-    data: data,
-    success: 	function(r){
-      r = JSON.parse(r);
-      if (r.code == 1) {
-        $('#datosGeneralesBen').html(r.data);
-      } else {
-          console.error(r.message);
-      }
-    },
-    error: function(x){
-      console.error(x);
-    }
-
-  });
-}
+// function buscarDatosBenef(id){
+//   var data = {
+//     id_ben: id
+//   }
+//   $.ajax({
+//     type: "POST",
+//     url: "/Ubicaciones/Contabilidad/AdminContable/actions/beneficiarios_datosGenerales.php",
+//     data: data,
+//     success: 	function(r){
+//       r = JSON.parse(r);
+//       if (r.code == 1) {
+//         $('#datosGeneralesBen').html(r.data);
+//       } else {
+//           console.error(r.message);
+//       }
+//     },
+//     error: function(x){
+//       console.error(x);
+//     }
+//
+//   });
+// }
 // FIN FUNCIONES BENEFICIARIOS
