@@ -1,55 +1,56 @@
 <?php
+
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/vendor/autoload.php';
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 require $root . '/Resources/PHP/actions/numtoletras.php';
 
 
-// class MYPDF extends TCPDF {
-//   public function Header() {
-//     $image_file = 'cheetah.svg';
-//     $this->ImageSVG($image_file, 5, 10, '', 10, '', '','', 0,false);
-//     $this->setTextColor(102);
-//     $this->SetFont('helvetica', '', 10);
-//     $this->Cell(0, 0, date('m-d-Y', strtotime('today')) , 0, 1, 'R', 0, '', 0, false, 'T', 'C');
-//     $this->SetFont('helvetica', '', 12);
-//     $this->Cell(0, 12, 'Proyección Logística Agencia Aduanal S.A de C.V.' , 0, 1, 'C', 0, '', 0, false, 'T', 'C');
-//   }
+class MYPDF extends TCPDF {
+  public function Header() {
+    $image_file = 'spectrum_worldwide.svg';
+    $this->ImageSVG($image_file, 5, 10, '', 10, '', '','', 0,false);
+    $this->setTextColor(102);
+    $this->SetFont('helvetica', '', 10);
+    $this->Cell(0, 0, date('m-d-Y', strtotime('today')) , 0, 1, 'R', 0, '', 0, false, 'T', 'C');
+    $this->SetFont('helvetica', '', 12);
+    $this->Cell(0, 12, 'Proyección Logística Agencia Aduanal S.A de C.V.' , 0, 1, 'C', 0, '', 0, false, 'T', 'C');
+  }
+
+  public function Footer() {
+    $this->SetY(-15);
+    $this->SetFont('helvetica', 'I', 8);
+  }
+}
+
+
+
+// $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+// $pdf->SetHeaderData($image_file, 22, '', 'Proyección Logistica Agencia Aduanal S.A de C.V'.'
+// R.F.C PLA090609N21');
 //
-//   public function Footer() {
-//     $this->SetY(-15);
-//     $this->SetFont('helvetica', 'I', 8);
-//   }
-// }
-
-$image_file = 'sww_icon_red.png';
-
-
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-$pdf->SetHeaderData($image_file, 22, '', 'Proyección Logistica Agencia Aduanal S.A de C.V'.'
-R.F.C PLA090609N21');
-
-$pdf->setFooterData(array(0,64,0), array(0,64,128));
-
-$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, 'Proyeccion', PDF_FONT_SIZE_DATA));
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-$pdf->setFontSubsetting(true);
-$pdf->SetFont('dejavusans', '', 6, '', true);
-$pdf->AddPage();
-
-// $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-// $pdf->SetMargins(8, 30, 8);
+// $pdf->setFooterData(array(0,64,0), array(0,64,128));
+//
+// $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+// $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, 'Proyeccion', PDF_FONT_SIZE_DATA));
+// $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+// $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 // $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-//
+// $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+// $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+// $pdf->setFontSubsetting(true);
+// $pdf->SetFont('dejavusans', '', 6, '', true);
 // $pdf->AddPage();
-// $pdf->SetFont('courier', '', 8);
 
-$sql_Select = "SELECT * from conta_cs_proveedores order by s_nombre limit 10";
+$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+$pdf->SetMargins(8, 30, 8);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+
+$pdf->AddPage();
+$pdf->SetFont('courier', '', 8);
+
+$sql_Select = "SELECT pk_id_proveedor,s_nombre,s_rfc,s_taxid,s_persona,s_curp from conta_cs_proveedores order by s_nombre limit 800";
+// $sql_Select = "SELECT * from conta_cs_proveedores order by s_nombre";
 $stmt = $db->prepare($sql_Select);
 if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
 if (!($stmt->execute())) { die("Error during query prepare [$stmt->errno]: $stmt->error"); }
@@ -95,7 +96,9 @@ $proveedores .= '<style>
     $taxId = trim($rowMST['s_taxid']);
     $persona = trim($rowMST['s_persona']);
     $curp = trim($rowMST['s_curp']);
-    $direccion = trim($rowMST['s_direccion']);
+    $listCtas = '';
+
+    // $direccion = trim($rowMST['s_direccion']);
 
 
 
@@ -109,7 +112,6 @@ $proveedores .= '<style>
     if (!($stmt_ctas->execute())) { die("Error during query prepare [$stmt_ctas->errno]: $stmt_ctas->error"); }
     $rslt_ctas = $stmt_ctas->get_result();
     if ($rslt_ctas->num_rows > 0) {
-       $listCtas = '';
 
        while( $rowctas = $rslt_ctas->fetch_assoc() ){
 

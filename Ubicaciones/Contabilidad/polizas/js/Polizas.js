@@ -285,7 +285,7 @@ $(document).ready(function(){
 			var data = {
 				regimen : '02'
 			}
-console.log(data);
+			console.log(data);
 			$.ajax({
 				type: "POST",
 				url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
@@ -310,7 +310,7 @@ console.log(data);
 			var data = {
 				regimen : '09'
 			}
-console.log(data);
+			console.log(data);
 			$.ajax({
 				type: "POST",
 				url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
