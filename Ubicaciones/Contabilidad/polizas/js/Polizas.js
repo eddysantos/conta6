@@ -285,7 +285,7 @@ $(document).ready(function(){
 			var data = {
 				regimen : '02'
 			}
-			console.log(data);
+//console.log(data);
 			$.ajax({
 				type: "POST",
 				url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
@@ -293,7 +293,7 @@ $(document).ready(function(){
 				success: 	function(r){
 					r = JSON.parse(r);
 					if (r.code == 1) {
-						console.log(r);
+						//console.log(r);
 						$('#detpol-Sueldos-lista').html(r.data);
 					} else {
 						console.error(r.message);
@@ -310,7 +310,7 @@ $(document).ready(function(){
 			var data = {
 				regimen : '09'
 			}
-			console.log(data);
+//console.log(data);
 			$.ajax({
 				type: "POST",
 				url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_lista.php",
@@ -318,7 +318,7 @@ $(document).ready(function(){
 				success: 	function(r){
 					r = JSON.parse(r);
 					if (r.code == 1) {
-						console.log(r);
+						//console.log(r);
 						$('#detpol-Honorarios-lista').html(r.data);
 					} else {
 						console.error(r.message);
@@ -489,6 +489,7 @@ $(document).ready(function(){
 			url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_insertaReg_detallePoliza.php",
 			data: data,
 			success: 	function(r){
+				console.log(data);
 				console.log(r);
 				r = JSON.parse(r);
 				if (r.code == 1) {
@@ -505,15 +506,13 @@ $(document).ready(function(){
 
 	});
 
-	$('#detpol-Sueldos-lista').on('click','.checkbox-nompend',function(){
+	$('#detpol-Sueldos-lista,#detpol-Honorarios-lista').on('click','.checkbox-nompend',function(){
 		activado = $(this).parents('tr').find('.nompend-check').prop('checked');
-
 		if( activado == true ){
 			accion = "insertar";
 		}else{
 			accion = "borrar";
 		}
-
 		var data = {
 			id_poliza : $('#id_poliza').val(),
 			concepto : $('#mstpol-concepto').val(),
@@ -525,7 +524,7 @@ $(document).ready(function(){
 			regimen : $(this).parents('tr').find('.nompend-regimen').val(),
 			accion : accion
 		}
-//onsole.log(data);
+//console.log(data);
 		$.ajax({
 			type: "POST",
 			url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_insertaReg_detallePoliza.php",

@@ -53,7 +53,7 @@ if ($affected_eliminaPartPol > 0) {
 
 
   #*** ELIMINAR EN CONTABILIDAD ELECTRONICA LOS REGISTROS DE LA PARTIDA QUE SE BORRA
-  require $root . '/Resources/PHP/actions/contaElect_eliminar.php';
+  require $root . '/Resources/PHP/actions/contaElect_eliminarPartidaPol.php';
 
   $descripcion = "Se elimino la Partida: $partida de la Poliza: $id_poliza";
 

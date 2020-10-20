@@ -11,6 +11,8 @@ $opcion = trim($_POST['opcion']);
 $idOrd = trim($_POST['id_expedidor']);
 $id_poliza = trim($_POST['id_poliza']);
 $idcheque_folControl = trim($_POST['idcheque_folControl']);
+$idcuentaMST = trim($_POST['idcuentaMST']);
+$idchequeMST = trim($_POST['idchequeMST']);
 
 $fechaDoc = date_format(date_create($fecha),'Y-m-d');
 
@@ -78,40 +80,45 @@ $system_callback = [];
 $system_callback['aff_rows'] = [];
 
 //revisando cheque duplicado
-$queryChequeExiste = "SELECT * FROM conta_t_cheques_mst WHERE pk_id_cheque = ? AND fk_id_cuentaMST = ?";
+if( $idchequeMST != $cheque || $cuenta != $idcuentaMST ){
+	$queryChequeExiste = "SELECT * FROM conta_t_cheques_mst WHERE pk_id_cheque = ? AND fk_id_cuentaMST = ?";
 
-$stmtChequeExiste = $db->prepare($queryChequeExiste);
-if (!($stmtChequeExiste)) {
-	$system_callback['code'] = "500";
-	$system_callback['message'] = "Error during query prepare EX[$db->errno]: $db->error";
-	exit_script($system_callback);
+	$stmtChequeExiste = $db->prepare($queryChequeExiste);
+	if (!($stmtChequeExiste)) {
+		$system_callback['code'] = "500";
+		$system_callback['message'] = "Error during query prepare EX[$db->errno]: $db->error";
+		exit_script($system_callback);
+	}
+
+	$stmtChequeExiste->bind_param('ss', $cheque,$cuenta);
+	if (!($stmtChequeExiste)) {
+		$system_callback['code'] = "500";
+		$system_callback['message'] = "Error during variables binding EX[$stmtChequeExiste->errno]: $stmtChequeExiste->error";
+		exit_script($system_callback);
+	}
+
+	if (!($stmtChequeExiste->execute())) {
+		$system_callback['code'] = "500";
+		$system_callback['message'] = "Error during query execution EX[$stmtChequeExiste->errno]: $stmtChequeExiste->error";
+		exit_script($system_callback);
+	}
+
+	$rsltChequeExiste = $stmtChequeExiste->get_result();
+	$rowsChequeExiste = $rsltChequeExiste->num_rows;
+	$system_callback['aff_rows']['queryChequeExiste'] = $rowsChequeExiste;
+
+	if ($rowsChequeExiste > 0) {
+		$system_callback['code'] = "500";
+		$system_callback['data'] ="EL CHEQUE DUPLICADO $cheque YA EXISTE CON LA CUENTA $cuenta";
+		$system_callback['message'] = "Cheque Existe";
+		exit_script($system_callback);
+	}
+
+	error_log("Rows Cheque Exist = " . $rowsChequeExiste);
+}else{
+	$rowsChequeExiste = 0;
 }
 
-$stmtChequeExiste->bind_param('ss', $cheque,$cuenta);
-if (!($stmtChequeExiste)) {
-	$system_callback['code'] = "500";
-	$system_callback['message'] = "Error during variables binding EX[$stmtChequeExiste->errno]: $stmtChequeExiste->error";
-	exit_script($system_callback);
-}
-
-if (!($stmtChequeExiste->execute())) {
-	$system_callback['code'] = "500";
-	$system_callback['message'] = "Error during query execution EX[$stmtChequeExiste->errno]: $stmtChequeExiste->error";
-	exit_script($system_callback);
-}
-
-$rsltChequeExiste = $stmtChequeExiste->get_result();
-$rowsChequeExiste = $rsltChequeExiste->num_rows;
-$system_callback['aff_rows']['queryChequeExiste'] = $rowsChequeExiste;
-
-if ($rowsChequeExiste > 0) {
-	$system_callback['code'] = "500";
-	$system_callback['data'] ="EL CHEQUE DUPLICADO $cheque YA EXISTE CON LA CUENTA $cuenta";
-	$system_callback['message'] = "Cheque Existe";
-	exit_script($system_callback);
-}
-
-error_log("Rows Cheque Exist = " . $rowsChequeExiste);
 if ($rowsChequeExiste == 0){
 	try {
 	  $db->begin_transaction();

@@ -34,6 +34,7 @@
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
+
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
   $id_cliente = $fk_id_cliente;
   require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago

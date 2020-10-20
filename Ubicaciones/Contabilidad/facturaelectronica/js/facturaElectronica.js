@@ -714,24 +714,28 @@ function Conversion_Tipo_Cambio(){
 }
 
 function totalManiobras(){
-  custodia = $('#T_Valor_Custodia_Aer').val();
-  manejo = $('#T_Valor_Manejo_Aer').val();
-  almacenaje = $('#T_Valor_Almacenaje_Aer').val();
-  suma = cortarDecimales(CalcADD(custodia,manejo),2);
-  suma = cortarDecimales(CalcADD(suma,almacenaje),2)
-  $('#T_Valor_Total_Maniobras').val(suma);
+  // EN FORMULARIOS SIGUE EXISTIENDO LA LLAMADA A ESTA FUNCION
+  //No se usa; bloqueado 2 abril 2020 a peticion de Julieta Gomez
+  // custodia = $('#T_Valor_Custodia_Aer').val();
+  // manejo = $('#T_Valor_Manejo_Aer').val();
+  // almacenaje = $('#T_Valor_Almacenaje_Aer').val();
+  // suma = cortarDecimales(CalcADD(custodia,manejo),2);
+  // suma = cortarDecimales(CalcADD(suma,almacenaje),2)
+  // $('#T_Valor_Total_Maniobras').val(suma);
 }
 
 function Pasa_Valor_Maniobras(){
-		if($('#T_ID_Aduana_Oculto').val() == 470){
-      $('#T_CA_idconcepto').val('7').attr('value','7');
-      $('#T_CA_idcuenta').val('0110-00009').attr('value','0110-00009');
-      $('#T_CA').val('MANIOBRAS. (CUSTODIA, MANEJO Y ALMACENAJE)').attr('value','MANIOBRAS. (CUSTODIA, MANEJO Y ALMACENAJE)');
-
-      total = $('#T_Valor_Total_Maniobras').val();
-			$('#T_Valor_Concepto_Gral').val(total).attr('value',total);
-      $('#Btn_Cargo').click();
-		}
+  // EN FORMULARIOS SIGUE EXISTIENDO LA LLAMADA A ESTA FUNCION
+  //No se usa; bloqueado 2 abril 2020 a peticion de Julieta Gomez
+		// if($('#T_ID_Aduana_Oculto').val() == 470){
+    //   $('#T_CA_idconcepto').val('7').attr('value','7');
+    //   $('#T_CA_idcuenta').val('0110-00009').attr('value','0110-00009');
+    //   $('#T_CA').val('MANIOBRAS. (CUSTODIA, MANEJO Y ALMACENAJE)').attr('value','MANIOBRAS. (CUSTODIA, MANEJO Y ALMACENAJE)');
+    //
+    //   total = $('#T_Valor_Total_Maniobras').val();
+		// 	$('#T_Valor_Concepto_Gral').val(total).attr('value',total);
+    //   $('#Btn_Cargo').click();
+		// }
 }
 
 function Suma_Subtotales(){
@@ -1184,16 +1188,23 @@ function iva_retenido(concepto,importe){
 }
 
 function Suma_Valor_Honorarios(){
+  id_cliente = $('#T_ID_Cliente_Oculto').val();
   total_POCME_MN = $('#T_POCME_Total_MN').val();
   total_mercancias = $('#T_IGED_13').val();
   subsidio = $('#T_Subsidio').val();
   total_cargos = $('#T_Total_Pagos').val();
   Suma_Totales = 0;
 
-	Suma_Totales = cortarDecimales(CalcADD(total_POCME_MN,total_mercancias),2);
-	Suma_Totales = cortarDecimales(CalcADD(Suma_Totales,subsidio),2);
-	Suma_Totales = cortarDecimales(CalcADD(Suma_Totales,total_cargos),2);
-
+  if( id_cliente == 'CLT_6548' ){
+			//MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S. DE R.L. DE C.V.
+			//aplica a partir del 14 julio 2020, solicitado por:
+			//Eduardo Santos, Julia Pacheco, Alfonso Garcia, Elvira Villegas, Adriana Villaverde
+      Suma_Totales = cortarDecimales(total_mercancias,2);
+  }else{
+	   Suma_Totales = cortarDecimales(CalcADD(total_POCME_MN,total_mercancias),2);
+	   Suma_Totales = cortarDecimales(CalcADD(Suma_Totales,subsidio),2);
+	   Suma_Totales = cortarDecimales(CalcADD(Suma_Totales,total_cargos),2);
+  }
 	$('#T_Honorarios_Base_Honorarios').val(Suma_Totales);
 	calculoHonorarios();
 }
@@ -2271,6 +2282,7 @@ function timbrarFactura(cuenta,referencia,cliente){
       success: 	function(r){
         r = JSON.parse(r);
         console.log(r);
+        console.log(r.message);
         if (r.code == 1) {
           //$('#respTimbrado').val(r);
           resp = r.message;

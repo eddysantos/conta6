@@ -16,12 +16,13 @@ $fechaActual = date("Y-m-d H:i:s");
 $fechaFactura = date("Y-m-d\TH:i:s");
 $id_referencia = $_POST['referencia'];
 
-// $cuenta =172;
-// $referencia = 'N13003039';
-// $id_cliente = 'CLT_7345';
+#http://localhost:88/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura.php
+// $cuenta =153;
+// $referencia = 'N17000003';
+// $id_cliente = 'CLT_6548';
 // $fechaActual = date("Y-m-d H:i:s");
 // $fechaFactura = date("Y-m-d\TH:i:s");
-// $id_referencia = 'N13003039';
+// $id_referencia = 'N17000003';
 #PRUEBAS
 #EJECUTA SAT
 

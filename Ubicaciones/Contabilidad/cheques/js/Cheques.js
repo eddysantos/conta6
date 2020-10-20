@@ -233,7 +233,7 @@ $('#mConsChIdcheque').keydown(function(e){
           permiso = "s_generar_x_fecha_anticipos";
 
           var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
-          console.log(continuar);
+          //console.log(continuar);
           if(continuar == true) {
             modificarChequeMST();
             //tar_modal.modal('show');
@@ -269,10 +269,12 @@ $('#mConsChIdcheque').keydown(function(e){
           opcion: $('#opcAct').val(),
           id_expedidor: id_expedidor,
           id_poliza: $('#dchPoliza').val(),
-          idcheque_folControl: $('#idcheque_folControl').val()
+          idcheque_folControl: $('#idcheque_folControl').val(),
+          idcuentaMST: $('#dchCtaMST').val(),
+          idchequeMST: $('#chNum').val()
       	}
         tipo = 1;
-        console.log(data);
+        //console.log(data);
 
         $.ajax({
           type: "POST",
@@ -280,10 +282,10 @@ $('#mConsChIdcheque').keydown(function(e){
           data: data,
           // dataType: "json",
           success: function(r){
-            console.log(r);
+            //console.log(r);
             r = JSON.parse(r);
               if (r.code == 1) {
-              console.log(r.data);
+              //console.log(r.data);
                 $('.modal').modal('hide');
                 // swal('Exito', 'Los cambios fueron realizados exitosamente').then(function(){
                 //   console.log("Something needs to happen.");
@@ -291,6 +293,9 @@ $('#mConsChIdcheque').keydown(function(e){
                 alertify.alert('Exito!', 'Los cambios fueron realizados exitosamente', function(){
                   document.location.replace('/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque=' + data.cheque + '&id_cuentaMST=' + data.cuenta);
                 });
+              }else if (r.code == 500) {
+                alertify.error(r.message);
+                return false;
               } else {
                 console.error(r.message);
               }
@@ -619,7 +624,7 @@ $('#mConsChIdcheque').keydown(function(e){
           url: "/Ubicaciones/Contabilidad/cheques/actions/generarPolizaCheque.php",
           data: data,
           success: 	function(r){
-            console.log(r);
+            //console.log(r);
             r = JSON.parse(r);
             if (r.code == 1) {
               console.log(r);

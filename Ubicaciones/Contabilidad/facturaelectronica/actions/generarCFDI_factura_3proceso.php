@@ -115,6 +115,7 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
 
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_4guardarDatosTimbrado.php';
 
+
   $poliza_CtaGastos = 0; $polizaAplicado = 0;
   if( $total_cta_gastos <> 0 ){
     require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_ctaGastos.php';
@@ -123,6 +124,7 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
     $poliza2 = $poliza_CtaGastos;
     require $root . '/Resources/PHP/actions/actualizarPoliza_dmes.php';
   }
+
   if( $c_MetodoPago == 'PUE' && $fac_saldo < 0 ){
     require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza_pagoAplicado.php';
     $respGuardarDatos .= "✓ Póliza de Pago Aplicado: ".$polizaAplicado."\n";
@@ -135,6 +137,8 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
     require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5guardarDatosPolizas.php';
   }
 
+  $CLT_nombre = '';
+  $importe = 0;
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML.php';
 
   #registro en contabilidad electronica
@@ -148,6 +152,7 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
     $tipoCamb = $tc;
     require $root . '/Resources/PHP/actions/contaElect_insertaCompNal_poliza.php';
   }
+
 
   return $respGuardarDatos;
 }
