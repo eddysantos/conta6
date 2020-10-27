@@ -1,7 +1,7 @@
 
 
 
- <script src="/Resources/JQuery/jquery.min.js"></script>
+<script src="/Resources/JQuery/jquery.min.js"></script>
 <script src="/Resources/alertifyjs/alertify.min.js"></script>
 <script src="/Resources/sweetalert/js/sweetalert.min.js"></script>
 <script src="/Resources/JQuery/popper.min.js"></script>
@@ -23,6 +23,7 @@
 <!-- agrego Adriana -->
 <script src="/Ubicaciones/Contabilidad/facturaelectronica/js/facturaElectronica.js"></script>
 <script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
+<script src="/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
 <!-- buscaba infAdd_detalle(), no muestra los formularios de captura para la contabilidad electronica-->
 
 <script src="/Ubicaciones/Contabilidad/AdminContable/js/AdministracionContable.js"></script>
