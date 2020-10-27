@@ -207,7 +207,7 @@
         <td class="p-1 col-md-3"><?php echo $d_fecha_cta;?></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-2 text-left"> Cta. modificada</td>
+        <td class="p-1 col-md-2 text-left"> Cta. modificada:</td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"><?php echo $s_usuario_modifi; ?></td>
@@ -221,14 +221,13 @@
         <td class="p-1 col-md-3"><?php echo $fechaTimbre; ?></td>
       </tr>
       <tr class="row">
-
         <td class="p-1 col-md-4"><?php echo '<b>'.$s_UUID.'</b>'; ?></td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-3"></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-2 text-left"> Factura cancelada</td>
+        <td class="p-1 col-md-2 text-left"> Factura cancelada:</td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"><?php echo $usuario_Cancela; ?></td>
@@ -242,7 +241,7 @@
         <td class="p-1 col-md-3"><?php echo $fecha_genera; ?></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-2 text-left"> Pago aplicado</td>
+        <td class="p-1 col-md-2 text-left"> Pago aplicado:</td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"><?php echo $id_polpagoaplic; ?></td>
         <td class="p-1 col-md-2"><?php echo $usuario_timbra; ?></td>

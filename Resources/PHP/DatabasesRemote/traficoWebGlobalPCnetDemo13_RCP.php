@@ -7,6 +7,7 @@
 
 
 require $root . '/Resources/PHP/DatabasesRemote/conexionADUANET.php';
+require $root . '/Resources/PHP/DatabasesRemote/conexionSemillero.php';
 require $root . '/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php';
 
 error_reporting(E_ALL);
@@ -95,6 +96,11 @@ if( $total_referencias > 0 ){
 	# valorAduana en el pedimento
 	$sql_referenciasPedimento = mysqli_query($aduanet,"SELECT AT001.N001VALADU valor_aduana FROM AT001 WHERE AT001.C001REFPED = '$Referencia'");
 	$oRst_referenciasPedimento = mysqli_fetch_array($sql_referenciasPedimento);
+  if(count($oRst_referenciasPedimento)==0){
+    $sql_referenciasPedimentoSemillero = mysqli_query($semillero,"SELECT reg501.valoraduanamxp valor_aduana FROM reg501 WHERE reg501.referencia = '$Referencia'");
+    $oRst_referenciasPedimento = mysqli_fetch_array($sql_referenciasPedimentoSemillero);
+  }
+
 	$Valor_Aduana = trim($oRst_referenciasPedimento['valor_aduana']);
 
 

@@ -140,6 +140,7 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
 			$txt_cancela = '';
 		}
 
+		$hrefTimbrar = "";
 		if( is_null($s_UUID) && $oRst_permisos['s_facturas_timbrar'] ){
 			$id_factura = '';
 			$hrefTimbrar = "<a href='#' onclick='ctaGastosCapturaConsultar($id_captura,&#39;timbrar&#39;)'><img class='icomediano' src='/Resources/iconos/timbrar.svg'></a>";

@@ -25,7 +25,7 @@ if (!($stmt_actMes_mst->execute())) {
 
 
 $query_actMes_det="UPDATE conta_t_polizas_det SET d_mes = ?
-            WHERE pk_id_poliza = ?";
+            WHERE fk_id_poliza = ?";
 
 $stmt_actMes_det = $db->prepare($query_actMes_det);
 if (!($stmt_actMes_det)) {

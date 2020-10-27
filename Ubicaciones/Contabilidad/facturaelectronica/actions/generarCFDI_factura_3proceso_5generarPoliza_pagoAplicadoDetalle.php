@@ -28,7 +28,7 @@ if( $moneda <> 'MXN' ){
     $ctaIVA_noCobrado = '0202-00007';
   }
 
-  $detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'".$cta203."',3,'CARGO A LA CUENTA POR PAGAR','".$id_cliente."','".$referencia."',".$Total_Gral.",0),";
+  $detallePolizaAplicado = "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'".$cta203."',3,'CARGO A LA CUENTA POR PAGAR','".$id_cliente."','".$referencia."',".$Total_Gral.",0),";
   $detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'".$ctaIVA_noCobrado."',3,'IVA TRASLADADO NO COBRADO','".$id_cliente."','".$referencia."',".$totaGralIVA.",0),";
   $detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'".$cta108."',3,'ABONO A LA CUENTA POR ANTICIPO','".$id_cliente."','".$referencia."',0,".$Total_Gral."),";
   $detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'".$ctaIVA_porPagar."',3,'IVA POR PAGAR','".$id_cliente."','".$referencia."',0,".$totaGralIVA."),";
@@ -37,7 +37,7 @@ if( $moneda <> 'MXN' ){
 #--Movimiento Contable RETENIDO
 if( $IVAretenido <> 0 ){
   $detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'0216-00002',3,'CARGO IVA RETENIDO (4%)','".$id_cliente."','".$referencia."',0,".$IVAretenido."),";
-  $detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'0216-00001',3,'ABONO IVA RETENIDO (4%)','".$id_cliente."','".$referencia."',0,".$IVAretenido.",0),";
+  $detallePolizaAplicado .= "(".$polizaAplicado.",'".$fecha."',".$idFactura.",'0216-00001',3,'ABONO IVA RETENIDO (4%)','".$id_cliente."','".$referencia."',".$IVAretenido.",0),";
 }
 //echo "<br>poliza aplicado:<br>"
 $detallePolizaAplicado = rtrim($detallePolizaAplicado,',');

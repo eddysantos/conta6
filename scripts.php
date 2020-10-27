@@ -17,3 +17,26 @@
 <script src="/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
 <script src="/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
 <script src="/Ubicaciones/Contabilidad/Reportes/js/Reportes.js"></script>
+
+
+
+<!-- agrego Adriana -->
+<script src="/Ubicaciones/Contabilidad/facturaelectronica/js/facturaElectronica.js"></script>
+<script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
+<!-- buscaba infAdd_detalle(), no muestra los formularios de captura para la contabilidad electronica-->
+
+<script src="/Ubicaciones/Contabilidad/AdminContable/js/AdministracionContable.js"></script>
+<script src="/Ubicaciones/Contabilidad/AdminContable/CatalogoCuentas/js/catalogoCuentas.js"></script>
+
+
+
+<script src="/Ubicaciones/Contabilidad/AdminContable/js/catalogoPersonas.js"></script>
+
+
+<!--script src="/Ubicaciones/Nomina/js/nomina.js"></script>
+<script src="/Ubicaciones/Nomina/Honorarios/js/Honorarios.js"></script>
+<script src="/Ubicaciones/Nomina/SueldosySalarios/js/SueldosySalarios.js"></script>
+<script src="/Ubicaciones/Nomina/SueldosySalarios/parametros/js/parametros.js"></script>
+<script src="/Ubicaciones/Contabilidad/js/helperContabilidad.js"></script>
+
+-->

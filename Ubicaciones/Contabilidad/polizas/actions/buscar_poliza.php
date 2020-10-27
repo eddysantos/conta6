@@ -113,7 +113,7 @@ if( $totalRegistros_POLIZA_MST > 0 ){
 					#'********************************************************************************
 					#'* LAS POLIZAS DE TIPO 4 PUEDEN PERTENECER A LA NOMINA, NO SE PERMITE MODIFICAR *
 					#'********************************************************************************
-					$sql_POLIZA_nom = mysqli_query($db,"SELECT fk_id_poliza, pol_cancela, fk_id_polizaPago FROM tbl_nom_nominacfdi WHERE fk_id_poliza = $Poliza or pol_cancela = $Poliza or fk_id_polizaPago = $Poliza");
+					$sql_POLIZA_nom = mysqli_query($db,"SELECT fk_id_poliza, s_cancela_factura, fk_id_polizaPago FROM conta_t_nom_cfdi WHERE fk_id_poliza = $Poliza or s_cancela_factura = $Poliza or fk_id_polizaPago = $Poliza");
 					$totalRegistros_POLIZA_nom = mysqli_num_rows($sql_POLIZA_nom);
 					if( $totalRegistros_POLIZA_nom > 0 ){
 						if( $oRst_permisos['s_modifica_polizasNomina'] == 1 && $Accion == 'modificar' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{
@@ -160,7 +160,7 @@ if( $totalRegistros_POLIZA_MST > 0 ){
   						#'********************************************************************************
   						#'* LAS POLIZAS DE TIPO 4 PUEDEN PERTENECER A LA NOMINA, NO SE PERMITE MODIFICAR *
   						#'********************************************************************************
-  						$sql_POLIZA_nom = mysqli_query($db,"SELECT fk_id_poliza, pol_cancela, fk_id_polizaPago FROM tbl_nom_nominacfdi WHERE fk_id_poliza = $Poliza or pol_cancela = $Poliza or fk_id_polizaPago = $Poliza");
+  						$sql_POLIZA_nom = mysqli_query($db,"SELECT fk_id_poliza, s_cancela_factura, fk_id_polizaPago FROM conta_t_nom_cfdi WHERE fk_id_poliza = $Poliza or s_cancela_factura = $Poliza or fk_id_polizaPago = $Poliza");
   						$totalRegistros_POLIZA_nom = mysqli_num_rows($sql_POLIZA_nom);
   						if( $totalRegistros_POLIZA_nom > 0 ){
   							if( $oRst_permisos['s_consulta_polizasNomina'] == 1 && $Accion == 'consultar' ){ echo "<body onLoad='redirec(".$Tipo.")'></body>"; }else{

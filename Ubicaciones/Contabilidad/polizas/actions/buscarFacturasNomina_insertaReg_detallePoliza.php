@@ -139,8 +139,8 @@ if( $accion == "borrar" ){
   #*******************
   # Transferencia 0213
   #*******************
-  require $root . '/Resources/PHP/actions/contaElect_eliminar.php';
-            #mysqli_query($db,"DELETE FROM conta_t_polizas_det_contaelec WHERE fk_partidaPol = $partida");
+      #require $root . '/Resources/PHP/actions/contaElect_eliminar.php';
+  mysqli_query($db,"DELETE FROM conta_t_polizas_det_contaelec WHERE fk_partidaPol = $partida");
 
   #*******************
   # Transferencia - Cta del Banco

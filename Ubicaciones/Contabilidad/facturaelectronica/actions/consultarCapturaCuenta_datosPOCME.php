@@ -27,7 +27,7 @@ $total_consultaPOCME = $rslt_consultaPOCME->num_rows;
 
 $datosPOCME = '';
 $datosPOCMEImprimir = '';
-$datosPOCMEmodifi;
+$datosPOCMEmodifi = '';
 if( $total_consultaPOCME > 0 ) {
 	$idFila = 0;
 
