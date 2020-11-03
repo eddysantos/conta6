@@ -2,12 +2,13 @@
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
-
+$system_callback['data'] = '';
 $db->close();
 
 require $root . "/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php";
 $system_callback = [];
 $data = $_POST;
+$system_callback['data'] = '';
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
@@ -50,7 +51,7 @@ while ($row = $rslt->fetch_assoc()) {
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
-exit_script($system_callback);
+#exit_script($system_callback);
 
 
  ?>

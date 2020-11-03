@@ -182,7 +182,7 @@ if( $totalRegistrosSelect > 0 ){
               </td>
 
               <td class="col-md-2" role="button">
-                <a href="#detpol-buscarfacturas" class="buscarFacturas-polizas" data-toggle="modal" class="boton icochico border-0"> <img src= "/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                <a href="#detpol-buscarfacturas" class="buscarFacturas-polizas boton icochico border-0" data-toggle="modal"> <img src= "/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
               </td>
             </tr>
 
@@ -350,6 +350,7 @@ if( $totalRegistrosSelect > 0 ){
 </div>
 
 </div>
+<script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
 <?php
 require $root . '/Ubicaciones/footer.php';
 require_once('modales/EditarRegistro.php');

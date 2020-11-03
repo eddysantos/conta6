@@ -2,6 +2,8 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
+$system_callback['data'] = '';
+
 $query = "SELECT * FROM conta_cs_sat_bancos ORDER BY s_activo desc,s_nombre";
 
 

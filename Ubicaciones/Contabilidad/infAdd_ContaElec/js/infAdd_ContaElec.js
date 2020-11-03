@@ -191,7 +191,8 @@ $(document).ready(function(){
 			 url: "/Resources/PHP/actions/consulta_chequeDatos.php",
 			 data: data,
 			 success: function(r){
-				 console.log(data);
+				 //console.log(data);
+				 //console.log(r);
 				 r = JSON.parse(r);
 					 if (r.code == 1) {
 						 $('#ch-cheque1').val(numerocheque);
@@ -294,7 +295,7 @@ function procesaXML(fileXML,contenido_XML){
   var data = {
     contenido_XML: contenido_XML,
     fileXML: fileXML,
-    tipo: $('#tipoDoc').val(),
+    tipo: $('#mstpol-tipo').val(),
     partidaDoc: 0,
     id_poliza:$('#mst-poliza').val()
   }
@@ -303,7 +304,8 @@ function procesaXML(fileXML,contenido_XML){
     url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/procesaArchivo.php",
     data: data,
     success: function(r){
-      console.log(r);
+      //console.log(data);
+			//console.log(r);
       r = JSON.parse(r);
         if (r.code == 1) {
           $('#datosUUID').html(r.data);

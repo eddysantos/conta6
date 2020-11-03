@@ -5,8 +5,9 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
+$system_callback['data'] = '';
 
-$data['string'];
+$data['string'] = '';
 $text = "%" . $data['string'] . "%";
 $query = "SELECT * FROM conta_cs_cuentas_mst WHERE (pk_id_cuenta LIKE ?)  OR (s_cta_desc LIKE ?)";
 

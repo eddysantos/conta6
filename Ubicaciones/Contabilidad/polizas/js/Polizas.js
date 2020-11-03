@@ -656,6 +656,7 @@ function borrarRegistro(partida){
 
 					success: 	function(r){
 						r = JSON.parse(r);
+						console.log(data);
 						console.log(r);
 					if (r.code == 1) {
 						swal("Eliminado!", "Se elimino correctamente.", "success");

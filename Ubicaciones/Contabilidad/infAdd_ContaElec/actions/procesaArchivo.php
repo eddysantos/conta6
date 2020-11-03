@@ -40,7 +40,7 @@ $system_callback = [];
 
 	$totalImpuestosISR = 0;
 	$totalImpuestosIVAret = 0;
-
+  $totalImpuestos = 0;
 
 	if($encuentra === false) {
 
@@ -119,7 +119,7 @@ $system_callback = [];
 
 
 	$system_callback['code'] = "1";
-	$system_callback['data'] .= $UUID."|".$rfc."|".$total."|".$nombre."|".$subTotal."|".$totalImpuestos."|".$totalImpuestosISR."|".$totalImpuestosIVAret."|".$moneda."|".$tc;
+	$system_callback['data'] = $UUID."|".$rfc."|".$total."|".$nombre."|".$subTotal."|".$totalImpuestos."|".$totalImpuestosISR."|".$totalImpuestosIVAret."|".$moneda."|".$tc;
 	$system_callback['message'] = "Script called successfully!";
 	exit_script($system_callback);
 

@@ -8,6 +8,7 @@ $id_poliza = trim($_POST['id_poliza']);
 #*** PAGO DE NOMINA
 # SI LA CUENTA ES 0213-01 OR 0213-3 SE TIENE QUE QUITAR LA POLIZA DE PAGO EN NOMINA
 require $root . '/Ubicaciones/Contabilidad/polizas/actions/consulta_datosPartida.php'; # $fk_id_cuenta, $fk_factura
+$regimen = '';
 require $root . '/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_ctas0213pagos.php'; #$cuentaSuel,$cuentaHon
 
 

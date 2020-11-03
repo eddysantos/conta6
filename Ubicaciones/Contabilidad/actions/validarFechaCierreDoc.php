@@ -13,7 +13,8 @@ $usuario = trim($_POST['usuario']);
 $permiso = trim($_POST['permiso']);
 
 if( $oRst_permisos[$permiso] == 1){
-	 $system_callback['data'] .= "fechaValida";
+	 #$system_callback['data'] .= "fechaValida";
+	 $system_callback['data'] = "fechaValida";
 	 $system_callback['code'] = 1;
 	 $system_callback['message'] = "Script called successfully!";
 }else {

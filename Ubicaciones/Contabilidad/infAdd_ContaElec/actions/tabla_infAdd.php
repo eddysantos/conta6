@@ -1,6 +1,8 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
+$partidaContaElect = '';
+$system_callback['data'] = '';
 
 $id_poliza = trim($_POST['id_poliza']);
 $query = "SELECT * FROM conta_t_polizas_det WHERE fk_id_poliza = ?";
