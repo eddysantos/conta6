@@ -262,7 +262,7 @@ if ($amount2 == 0) {
   $cb2['query']['message'] = "Script called successfully but there are no rows to display. For trailer query.";
 }else {
   while ($row = $rslt2->fetch_assoc()) {
-    if( $totalRegistrosSTPD > 0 ){
+    if( $row > 0 ){
     	$Status_Poliza = number_format($row["SUMA_CARGOS"] - $row["SUMA_ABONOS"],2,'.',',');
     }
     $cargos = number_format($row['SUMA_CARGOS'],2,'.',',');

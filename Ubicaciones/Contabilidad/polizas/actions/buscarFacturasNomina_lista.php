@@ -1,7 +1,7 @@
 <?PHP
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
-
+$system_callback['data'] = '';
 
 $regimen = trim($_POST['regimen']);
 
