@@ -519,17 +519,15 @@ $(document).ready(function(){
 			regimen : $(this).parents('tr').find('.nompend-regimen').val(),
 			accion : accion
 		}
-//console.log(data);
 		$.ajax({
 			type: "POST",
 			url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_insertaReg_detallePoliza.php",
 			data: data,
 			success: 	function(r){
-				//console.log(r);
 				r = JSON.parse(r);
 				if (r.code == 1) {
 					alertify.success(r.data);
-					//ultReg_Det();
+					ultReg_Det();
 					detallePoliza();
 				} else {
 					console.error(r.message);

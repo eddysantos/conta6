@@ -192,7 +192,7 @@ if( $totalRegistrosSelect > 0 ){
 }
 ?>
 
-
+<script src="/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
 <?php
 require $root . '/Ubicaciones/footer.php';
  ?>

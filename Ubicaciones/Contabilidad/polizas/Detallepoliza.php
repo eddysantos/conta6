@@ -350,7 +350,10 @@ if( $totalRegistrosSelect > 0 ){
 </div>
 
 </div>
+
 <script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
+<script src="/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
+
 <?php
 require $root . '/Ubicaciones/footer.php'; // el footer contiene el archivo scripts.php
 require_once('modales/EditarRegistro.php');

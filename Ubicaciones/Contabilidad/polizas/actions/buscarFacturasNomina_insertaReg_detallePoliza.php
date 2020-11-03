@@ -35,10 +35,10 @@ $documento = '0';
 # CTA ORIGEN
 #*************
 $sql_ctaOrigen=mysqli_fetch_array(mysqli_query($db,"SELECT a.fk_id_cuenta,b.pk_partida,a.s_nombre,a.fk_id_banco,a.s_ctaOri,a.s_RFC
-                                                    FROM conta_cs_bancos_cia a
-                                                    INNER JOIN conta_t_polizas_det b
-                                                    ON a.fk_id_cuenta = b.fk_id_cuenta
-                                                    where   (b.fk_id_cuenta like '0100%' or b.fk_id_cuenta like '0101%') and b.fk_id_poliza = $id_poliza"));
+FROM conta_cs_bancos_cia a
+INNER JOIN conta_t_polizas_det b
+ON a.fk_id_cuenta = b.fk_id_cuenta
+where   (b.fk_id_cuenta like '0100%' or b.fk_id_cuenta like '0101%') and b.fk_id_poliza = $id_poliza"));
 $id_cuentaO = $sql_ctaOrigen['fk_id_cuenta'];
 $nombreO = $sql_ctaOrigen['s_nombre'];
 $id_bancoO = $sql_ctaOrigen['fk_id_banco'];
@@ -52,10 +52,10 @@ $pol_partida = $sql_ctaOrigen['pk_partida'];
 # DATOS DEL XML
 #*******************
 $sql_xml=mysqli_fetch_array(mysqli_query($db,"SELECT concat(b.s_nombre,' ',b.s_apellidoP,' ',b.s_apellidoM) as nombre, b.s_RFC, a.d_fecha_generaUUID, a.s_UUID, b.n_importe, b.fk_id_banco, b.s_CLABE
-                                              FROM conta_t_nom_cfdi a
-                                              INNER JOIN conta_t_nom_captura b
-                                              on a.fk_id_docNomina = b.pk_id_docNomina
-                                              WHERE pk_id_nomina = $factura"));
+FROM conta_t_nom_cfdi a
+INNER JOIN conta_t_nom_captura b
+on a.fk_id_docNomina = b.pk_id_docNomina
+WHERE pk_id_nomina = $factura"));
 $nombreD = $sql_xml['nombre'];
 $RFCD = $sql_xml['s_RFC'];
 $fechaD = date_format(date_create($sql_xml['d_fecha_generaUUID']),"Y-m-d H:i:s");
@@ -65,7 +65,7 @@ $ctaBancoD = $sql_xml['s_CLABE'];
 
 
 
-# inertar ++++++++++++++++++++
+# insertar ++++++++++++++++++++
 if( $accion == "insertar" ){
   $cargo = $importe;
   $abono = 0;
@@ -133,7 +133,10 @@ if( $accion == "insertar" ){
 # borrar ++++++++++++++++++++
 if( $accion == "borrar" ){
 
-  $sql_partida=mysqli_fetch_array(mysqli_query($db,"SELECT pk_partida,fk_tipo FROM conta_t_polizas_det WHERE fk_id_poliza = $id_poliza AND fk_factura = $factura"));
+  $sql_partida = mysqli_fetch_array(mysqli_query($db,
+  "SELECT pk_partida,fk_tipo FROM conta_t_polizas_det
+  WHERE fk_id_poliza = $id_poliza AND fk_factura = $factura"));
+  
   $partida = $sql_partida['pk_partida'];
 
   #*******************

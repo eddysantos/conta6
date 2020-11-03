@@ -693,9 +693,6 @@ function guardarOtrMetodoPago(id_partida){
 		}
 	});
 
-
-
-
 }
 
 
@@ -726,7 +723,6 @@ function eliminarPartida(partida){
 				data: data,
 				success: 	function(r){
 	        r = JSON.parse(r);
-					console.log(r);
 					swal("Eliminado!", "Se elimino correctamente.", "success");
 	        infAdd_detalle(id_poliza);
 				},
