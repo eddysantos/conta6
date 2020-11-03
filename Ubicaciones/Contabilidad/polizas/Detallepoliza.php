@@ -240,7 +240,7 @@ if( $totalRegistrosSelect > 0 ){
             </tr>
             <tr class="row justify-content-center mt-4">
               <td class="col-md-2">
-                <a href="#" type="button" class="boton p-1" id="detpol-btnguardar"><img src= "/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                <a href="#" class="boton p-1" id="detpol-btnguardar"><img src= "/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
               </td>
             </tr>
           </tbody>
@@ -352,7 +352,7 @@ if( $totalRegistrosSelect > 0 ){
 </div>
 <script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
 <?php
-require $root . '/Ubicaciones/footer.php'; // el footer contiene el archivo scripts.php
+require $root . '/Ubicaciones/footer.php';
 require_once('modales/EditarRegistro.php');
 require_once('modales/buscarFacturas.php');
 ?>

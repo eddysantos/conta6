@@ -467,6 +467,6 @@ require $root . '/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; #  $con
  <!-- prueba modificar -->
 <?php
 
-// require $root . '/scripts.php';
+require $root . '/scripts.php';
 require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
 ?>

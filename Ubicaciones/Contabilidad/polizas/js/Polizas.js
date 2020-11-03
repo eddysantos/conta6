@@ -17,133 +17,131 @@ $(document).ready(function(){
 
 	if( $('#mstpol-cancela') == 0){ $('#detpol-btnguardar').prop( 'disabled', false ); }
 
-
-
 	$('#detpol-btnguardar').click(function(){
-		if($('#mstpol-fecha').val() == ""){
-			alertify.error("Seleccione una fecha");
-			$('#mstpol-fecha').focus();
-			return false;
-		}
-
-		fecha = $('#mstpol-fecha').val();
-		aduana = $('#aduana_activa').val();
-		tipoDoc = $('#mstpol-tipo').val();
-		usuario = $('#usuario_activo').val();
-		permiso = "s_generar_x_fecha_polizas";
-
-		var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
-		if(continuar == true) {
-			id_poliza = $('#id_poliza').val();
-			fecha = $('#mstpol-fecha').val();
-			id_referencia = $('#detpol-referencia').attr('db-id');
-			tipo = $('#mstpol-tipo').val();
-			cuenta = $('#detpol-cuenta').attr('db-id');
-			documento = $('#detpol-documento').val();
-			factura = $('#detpol-factura').attr('db-id');
-			anticipo = $('#detpol-anticipo').attr('db-id');
-			cheque = $('#detpol-cheque').attr('db-id');
-			cargo = $('#detpol-cargo').val();
-			abono = $('#detpol-abono').val();
-			desc = $('#detpol-concepto').val();
-			gastoOficina = $('#detpol-gtoficina').attr('db-id');
-			proveedor = $('#detpol-proveedores').attr('db-id');
-			if (id_referencia == 'SN' || id_referencia == '') {
-				id_cliente = $('#detpol-cliente').attr('db-id');
-			}else {
-				id_cliente = $('#detpol-clienteCorresp').val();
+			if($('#mstpol-fecha').val() == ""){
+				alertify.error("Seleccione una fecha");
+				$('#mstpol-fecha').focus();
+				return false;
 			}
 
-			if(cuenta == ""){
-				alertify.error("Seleccione una cuenta");
-				$('#detpol-cuenta').focus();
-				return false;
-			}else{
-				if(desc == ""){
-					alertify.error("Ingrese una descripción");
-					$('#detpol-concepto').focus();
+			fecha = $('#mstpol-fecha').val();
+			aduana = $('#aduana_activa').val();
+			tipoDoc = $('#mstpol-tipo').val();
+			usuario = $('#usuario_activo').val();
+			permiso = "s_generar_x_fecha_polizas";
+
+			var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
+			if(continuar == true) {
+				id_poliza = $('#id_poliza').val();
+				fecha = $('#mstpol-fecha').val();
+				id_referencia = $('#detpol-referencia').attr('db-id');
+				tipo = $('#mstpol-tipo').val();
+				cuenta = $('#detpol-cuenta').attr('db-id');
+				documento = $('#detpol-documento').val();
+				factura = $('#detpol-factura').attr('db-id');
+				anticipo = $('#detpol-anticipo').attr('db-id');
+				cheque = $('#detpol-cheque').attr('db-id');
+				cargo = $('#detpol-cargo').val();
+				abono = $('#detpol-abono').val();
+				desc = $('#detpol-concepto').val();
+				gastoOficina = $('#detpol-gtoficina').attr('db-id');
+				proveedor = $('#detpol-proveedores').attr('db-id');
+				if (id_referencia == 'SN' || id_referencia == '') {
+					id_cliente = $('#detpol-cliente').attr('db-id');
+				}else {
+					id_cliente = $('#detpol-clienteCorresp').val();
+				}
+
+				if(cuenta == ""){
+					alertify.error("Seleccione una cuenta");
+					$('#detpol-cuenta').focus();
 					return false;
 				}else{
-					if( (cargo == 0 && abono == 0) || (cargo > 0 && abono > 0) ){
-						alertify.error("Ingrese un importe")
-						$('#detpol-cargo').focus();
-						if(cargo > 0 && abono > 0){ $('#detpol-cargo').val(0); $('#detpol-abono').val(0); }
-						return false
+					if(desc == ""){
+						alertify.error("Ingrese una descripción");
+						$('#detpol-concepto').focus();
+						return false;
 					}else{
-						st = $('#detpol-cuenta').val();
-						if( validarCtasGastoOficina(st) == true || validarCtasCliente(st) == true || validarCtasPagosCliente(st) == true ){
+						if( (cargo == 0 && abono == 0) || (cargo > 0 && abono > 0) ){
+							alertify.error("Ingrese un importe")
+							$('#detpol-cargo').focus();
+							if(cargo > 0 && abono > 0){ $('#detpol-cargo').val(0); $('#detpol-abono').val(0); }
+							return false
+						}else{
+							st = $('#detpol-cuenta').val();
+							if( validarCtasGastoOficina(st) == true || validarCtasCliente(st) == true || validarCtasPagosCliente(st) == true ){
 
-							if( validarCtasGastoOficina(st) == true ){
-								if( gastoOficina == ''){
-									alertify.error("Seleccione una Oficina");
-									$('#detpol-gtoficina').focus();
-									return false
-								}else{
-									inserta();
-								}
-							}
-
-							if (validarCtasPagosCliente(st) == true) {
-								if (id_referencia == 0){
-									alertify.error("Ingrese n\u00FAmero de Referencia");
-									$('#detpol-referencia').focus();
-									return false;
-								}else{
-									//SIEMPRE VALIDAR QUE LA REFERENCIA EXISTA EN LA TABLA DE REFERENCIAS
-									if (id_referencia != "SN" ){
-										if (id_cliente == 0){
-											alertify.error("Seleccione un Cliente");
-											$('#detpol-cliente').focus();
-											return false
-										}else{
-											inserta();
-										}
-									}else{
-										if (id_cliente == 0){
-											alertify.error("Seleccione un Cliente");
-											$('#detpol-cliente').focus();
-											return false
-										}else{
-											inserta();
-										}
-									}
-								}
-							}
-
-							if( validarCtasCliente(st) == true ){
-								if( cuenta == '0208-00001'){
-									$('#detpol-cliente').attr('db-id')='';
-									$('#detpol-cliente').val('');
-									id_cliente = 0;
-									inserta();
-								}else{
-									if(id_cliente == ''){
-										alertify.error("Seleccione un Cliente");
-										$('#detpol-cliente').focus();
+								if( validarCtasGastoOficina(st) == true ){
+									if( gastoOficina == ''){
+										alertify.error("Seleccione una Oficina");
+										$('#detpol-gtoficina').focus();
 										return false
 									}else{
-										parte_Cuenta = cuenta.split('-');
-										parte_Cliente = id_cliente.split('_');
-										if( parte_Cuenta[1].search(parte_Cliente[1]) == -1){
-											alertify.error("La cuenta contable no corresponde al cliente seleccionado");
-											$('#detpol-cliente').focus();
-											return false
+										inserta();
+									}
+								}
+
+								if (validarCtasPagosCliente(st) == true) {
+									if (id_referencia == 0){
+										alertify.error("Ingrese n\u00FAmero de Referencia");
+										$('#detpol-referencia').focus();
+										return false;
+									}else{
+										//SIEMPRE VALIDAR QUE LA REFERENCIA EXISTA EN LA TABLA DE REFERENCIAS
+										if (id_referencia != "SN" ){
+											if (id_cliente == 0){
+												alertify.error("Seleccione un Cliente");
+												$('#detpol-cliente').focus();
+												return false
+											}else{
+												inserta();
+											}
 										}else{
-											inserta();
+											if (id_cliente == 0){
+												alertify.error("Seleccione un Cliente");
+												$('#detpol-cliente').focus();
+												return false
+											}else{
+												inserta();
+											}
 										}
 									}
 								}
-							}
 
-						}else{
-							inserta();
+								if( validarCtasCliente(st) == true ){
+									if( cuenta == '0208-00001'){
+										$('#detpol-cliente').attr('db-id')='';
+										$('#detpol-cliente').val('');
+										id_cliente = 0;
+										inserta();
+									}else{
+										if(id_cliente == ''){
+											alertify.error("Seleccione un Cliente");
+											$('#detpol-cliente').focus();
+											return false
+										}else{
+											parte_Cuenta = cuenta.split('-');
+											parte_Cliente = id_cliente.split('_');
+											if( parte_Cuenta[1].search(parte_Cliente[1]) == -1){
+												alertify.error("La cuenta contable no corresponde al cliente seleccionado");
+												$('#detpol-cliente').focus();
+												return false
+											}else{
+												inserta();
+											}
+										}
+									}
+								}
+
+							}else{
+								inserta();
+							}
 						}
 					}
 				}
+			}else{
+				return false;
 			}
-		}else{
-			return false;
-		}
   });
 
 
@@ -222,6 +220,13 @@ $(document).ready(function(){
 				return false;
 			}
 		});
+
+
+
+
+
+
+
 
 
 
@@ -592,6 +597,7 @@ function inserta(){
 			r = JSON.parse(r);
 			if (r.code == 1) {
 				swal("Exito", "Se registro correctamente.", "success");
+				// $('#capturapoliza').click();
 				ultReg_Det();
 				location.reload();
 			} else {
