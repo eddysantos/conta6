@@ -46,7 +46,6 @@ $ctaDest = $row['ctaOri'];
 #'******* FIN CTA ORIGEN ******************************
 
 
-
 $system_callback = [];
 //$data = $_POST;
 
@@ -92,7 +91,7 @@ $folio = $nFolio;
 require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
 
 
-$system_callback['data'] .= $nFolio;
+$system_callback['data'] = $nFolio;
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);

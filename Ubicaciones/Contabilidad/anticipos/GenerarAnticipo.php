@@ -57,6 +57,7 @@
     </tbody>
   </table>
 </div><!--/Termina Generar Poliza de Ingreso-->
+<script src="/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
 
 <?php
 require $root . '/Ubicaciones/footer.php';

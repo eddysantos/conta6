@@ -5,6 +5,7 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
+$system_callback['data'] ="";
 
 $id_cliente = trim($_POST['id_cliente']);
 $query = "SELECT A.fk_id_banco,A.s_cta_banco,B.s_nombre

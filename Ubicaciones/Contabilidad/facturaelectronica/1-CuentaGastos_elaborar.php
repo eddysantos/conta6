@@ -116,12 +116,21 @@ if($referencia != "SN"){
       $retencion = trim($row_datosIVA["n_IVA_retencion"]);
       $iva_menos_retencion = $row_datosIVA['n_IVA_menos_retencion'];
       $ivaGral = $row_datosIVA['n_IVA_general'] - $retencion; //IMPUESTO GENERAL - APLICADO AL CONCEPTO Flete Terrestre cuando es la oficina de Nuevo Laredo
+	  $ivaAER = $sql_IMPUESTOS_GRAL['IVA']; 
     }
     if( $tasa == "sinIVA" ){
       $iva = 0;
       $retencion = 0;
       $iva_menos_retencion = 0;
     }
+	
+	# PARA -> FRANKLIN ELECTRIC MANUFACTURING, INC. SE COBRA 16% PARA EXPORTACION EN NUEVO LAREDO A PARTIR 01-MAYO-2019
+//REVISAR QUE SI FUNCIONE	
+	if( $cliente == 'CLT_7254' and $tipo == 'EXP' ){
+		$iva = $ivaAER;
+		$iva_menos_retencion = $iva - $retencion;	
+	}
+		
     /* SACO UN FOLIO DE CALCULO DE TARIFA, ESTE FOLIO ME SERVIRA PARA PODER IDENTIFICAR LOS FILTROS DE LAS TARIFAS */
     $s_tipoDoc = 'ctaGastos';
     require $root . '/Resources/PHP/actions/tarifas_generarFolio.php';

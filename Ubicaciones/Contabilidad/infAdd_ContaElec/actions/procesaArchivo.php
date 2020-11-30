@@ -55,10 +55,15 @@ $system_callback = [];
 			 $total = $cfdi['Total'];
 			 $moneda = $cfdi['Moneda'];
 			 $tc = $cfdi['TipoCambio'];
+			 $folio = $cfdi['Folio'];
 		}
+
 		foreach ($xml->xpath('//c:Impuestos') as $cfdi) {
 			$atributos = $cfdi->attributes();
 			$totalImpuestos = $atributos['TotalImpuestosTrasladados'];
+		}
+		foreach ($xml->xpath('//c:Impuestos//cfdi:Traslados//cfdi:Traslado') as $cfdi) {
+			$TasaOCuota = $cfdi['TasaOCuota'];
 		}
 
 		foreach ($xml->xpath('//c:Retencion') as $cfdi) {
@@ -119,7 +124,7 @@ $system_callback = [];
 
 
 	$system_callback['code'] = "1";
-	$system_callback['data'] = $UUID."|".$rfc."|".$total."|".$nombre."|".$subTotal."|".$totalImpuestos."|".$totalImpuestosISR."|".$totalImpuestosIVAret."|".$moneda."|".$tc;
+	$system_callback['data'] = $UUID."|".$rfc."|".$total."|".$nombre."|".$subTotal."|".$totalImpuestos."|".$totalImpuestosISR."|".$totalImpuestosIVAret."|".$moneda."|".$tc."|".$folio."|".$TasaOCuota;
 	$system_callback['message'] = "Script called successfully!";
 	exit_script($system_callback);
 

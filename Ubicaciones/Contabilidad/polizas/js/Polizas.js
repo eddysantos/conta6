@@ -2,6 +2,47 @@ $(document).ready(function(){
 	ultReg_Det();
 	detallePoliza();
 
+	$('#fk_id_cuenta').change(function(){
+	    st = $('#fk_id_cuenta').val();
+	    nombreCta = st.split('-');
+
+	    if( validarCtasGastoOficina(st) == true ){
+	      //ACTIVAR GASTO OFICINA
+	      $('.gto_fk_gastoAduana').show();
+	      $('#fk_gasto').val('');
+	      $('#fk_gasto').attr('db-id','');
+	      $('#fk_id_cliente').attr('db-id','')
+	    }else{
+	      $('.gto_fk_gastoAduana').hide();
+	      $('#fk_gasto').val('');
+	      $('#fk_gasto').attr('db-id','');
+	    }
+
+	    if(st.substring(0,4) == '0110' && $('#fk_referencia').val() == ""){
+	      $('#fk_referencia').focus();
+	      alertify.error("Referencia es requerido");
+	      $('#fk_id_cliente').val('');
+	      $('#fk_id_cliente').attr('db-id','');
+	      $('#detpol-clienteCorresp').val('');
+	    }else{
+	      $('#fk_id_cliente').attr('action','clientes');
+	    }
+
+	    if(st.substring(0,4) == '0206'){
+	      //ACTIVAR PROVEEDORES
+	      $('.gto_fk_gastoAduana').show();
+	      $('#fk_id_proveedor').val('');
+	      $('#fk_id_proveedor').attr('db-id','');
+	    }else{
+	      // $('#fk_id_proveedor').prop( 'disabled', true );
+	      $('#fk_id_proveedor').val('');
+	      $('#fk_id_proveedor').attr('db-id','');
+	    }
+
+
+	    $('#s_desc').val($.trim(nombreCta[2]));
+
+	});
 
 	$('#detpol-referencia' || '#fk_referencia').change(function(){
     eliminaBlancosIntermedios(this);
@@ -844,6 +885,7 @@ function Actualiza_Cuenta(){
 
 
     $('#detpol-concepto').val($.trim(nombreCta[2]));
+		console.log(st);
 }
 
 

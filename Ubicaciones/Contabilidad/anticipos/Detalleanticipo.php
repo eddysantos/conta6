@@ -28,6 +28,7 @@
 		if (!($stmtTotales->execute())) { die("Error during query prepare [$stmtTotales->errno]: $stmtTotales->error"); }
 		$rsltTotales = $stmtTotales->get_result();
 		$rowsTotales = $rsltTotales->num_rows;
+    $txtStatus = '';
 		if( $rowsTotales > 0 ){
 			$oRst_STPD = $rsltTotales->fetch_assoc();
 			$sumaCargos = $oRst_STPD['SUMA_CARGOS'];

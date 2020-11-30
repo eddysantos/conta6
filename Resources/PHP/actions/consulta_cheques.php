@@ -4,6 +4,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
+$system_callback['data'] = '';
 
 $idcta = trim($_POST['idcta']);
 $idbanco = trim($_POST['idbanco']);

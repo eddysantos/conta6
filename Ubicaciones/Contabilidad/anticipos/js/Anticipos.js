@@ -125,6 +125,7 @@ function genAnt(){
 		data: data,
 		success: 	function(r){
 		r = JSON.parse(r);
+    console.log(r);
     if (r.code == 1) {
         //console.log(r.data);
         id_anticipo = r.data;

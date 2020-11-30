@@ -2,6 +2,8 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
+$system_callback['data'] = "";
+
 $id_cheque = trim($_POST['id_cheque']);
 $id_ctaMST = trim($_POST['id_ctaMST']);
 $idcheque_folControl = $_POST['idcheque_folControl'];
