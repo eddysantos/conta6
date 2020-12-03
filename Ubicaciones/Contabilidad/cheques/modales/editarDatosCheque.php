@@ -35,14 +35,12 @@
 
 ?>
 <!--Editar Datos de Anticipo-->
-<div class="modal fade text-center" id="ch-editarRegMST" style="margin-top:50px">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">Editar Datos de Cheque</h5>
+<div class="modal fade text-center" id="ch-editarRegMST">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bordenegro border-radius">
+      <div class="modal-header border-0 align-items-center">
+        <h6 class="modal-title mx-3 s_gris_100">Editar Datos de Cheque</h6>
+        <a href="#" type="button" class="close mr-3 actualizar_usuario" data-dismiss="modal" aria-label="Close"><img style='width:35px' src="/Resources/iconos/close.svg"></a>
       </div>
       <div class="modal-body">
         <div>
@@ -50,7 +48,7 @@
             <table class="table form1 font14">
               <tbody>
                 <tr class="row m-0 mt-3">
-                  <td class="col-md-12 sub2" style="font-size:14px!important">Páguese a la orden de:</td>
+                  <td class="col-md-12 sub2 font14">Páguese a la orden de:</td>
                 </tr>
                 <tr class="row m-0 mt-5">
                   <td class="col-md-6 input-effect">

@@ -16,7 +16,7 @@
 	$rows = $rslt->num_rows;
 
   $statusGeneraPoliza = false;
-  
+
 	if( $rows > 0 ){
 		$rowMST = $rslt->fetch_assoc();
 		$cancela = $rowMST['s_cancela']; // 0=Activo 1=Cancelado
@@ -94,14 +94,14 @@
   ?>
 
   <div id="datoscheque" class="contorno mt-5" style="display:none" >
-    <h5 class="titulo">DATOS DEL CHEQUE
+    <div class="titulo" style="width: 200px!important">DATOS DEL CHEQUE
       <?php if( $mostrar == true ){ ?>
       <a href='#ch-editarRegMST' data-toggle='modal' role='button'>
         <img class='icochico' src='/Resources/iconos/003-edit.svg'>
       </a>
       <!--a href="#" id="btn_editDatosCheMST" class="boton border-0"><img class='icochico' src='/Resources/iconos/003-edit.svg'></a-->
       <?php }?>
-    </h5>
+    </div>
     <form class="form1">
       <table class="table font14">
         <thead>

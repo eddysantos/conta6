@@ -224,7 +224,6 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
   require $root . '/Ubicaciones/Contabilidad/modales/ModificarConsultar.php';
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/modales/ConsultarFactura.php';
   require $root . '/Ubicaciones/Trafico/modales/MonitordeOficinas.php';
-
   require $root . '/scripts.php';
 
 ?>

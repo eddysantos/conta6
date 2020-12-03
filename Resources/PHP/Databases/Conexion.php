@@ -16,18 +16,18 @@
 
 
 /* PUERTOS LOCALES PARA DESARROLLO */
-// $datab = 'SpectrumTools';
-// $host = 'localhost';
-// $port = 8889;
-// $usr = 'root';
-// $pwd = 'root';
-
-/** TEST DATABASE ADRIANA **/
 $datab = 'SpectrumTools';
 $host = 'localhost';
-$port = 3306;
+$port = 8889;
 $usr = 'root';
-$pwd = '';
+$pwd = 'root';
+
+/** TEST DATABASE ADRIANA **/
+// $datab = 'SpectrumTools';
+// $host = 'localhost';
+// $port = 3306;
+// $usr = 'root';
+// $pwd = '';
 
 $db = new mysqli($host, $usr, $pwd, $datab, $port) or die ('Could not connect to the database server ' . $login->error );
 

@@ -233,12 +233,9 @@ $('#mConsChIdcheque').keydown(function(e){
           permiso = "s_generar_x_fecha_anticipos";
 
           var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
-          //console.log(continuar);
           if(continuar == true) {
             modificarChequeMST();
-            //tar_modal.modal('show');
           }else{
-            //swal("Oops!", "Solicite cambio de fechas a Contabilidad", 'error');
             return false;
           }
       });
@@ -274,22 +271,17 @@ $('#mConsChIdcheque').keydown(function(e){
           idchequeMST: $('#chNum').val()
       	}
         tipo = 1;
-        //console.log(data);
+        console.log(data);
+        // return false;
 
         $.ajax({
           type: "POST",
           url: "/Ubicaciones/Contabilidad/cheques/actions/editarChequeMST.php",
           data: data,
-          // dataType: "json",
           success: function(r){
-            //console.log(r);
             r = JSON.parse(r);
               if (r.code == 1) {
-              //console.log(r.data);
                 $('.modal').modal('hide');
-                // swal('Exito', 'Los cambios fueron realizados exitosamente').then(function(){
-                //   console.log("Something needs to happen.");
-                // });
                 alertify.alert('Exito!', 'Los cambios fueron realizados exitosamente', function(){
                   document.location.replace('/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque=' + data.cheque + '&id_cuentaMST=' + data.cuenta);
                 });

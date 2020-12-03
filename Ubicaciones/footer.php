@@ -8,6 +8,11 @@
       </div>
     </div>
   </footer>
-  <?php require_once $root . "/scripts.php" ?>
+
+
+<?php // NOTE: se comenta, porque la barra de navegacion ya cuenta con el archivo de scritps y causa conflicto al querer utilizar barra de navegacion ?>
+  <?php
+  // require_once $root . "/scripts.php"
+  ?>
 </body>
 </html>
