@@ -313,12 +313,12 @@ $('#mConsChIdcheque').keydown(function(e){
       //if( $('#dchCancela').val() == 0){ $('#cdch_btnRegistrar').prop( 'disabled', false ); }
 
       $('#cdch_btnRegistrar').click(function(){
-          fecha = $('#dchFechafecha').val();
+          fecha = $('#dchFecha').val();
           aduana = $('#aduana_activa').val();
           tipoDoc = 1;
           usuario = $('#usuario_activo').val();
           permiso = "s_generar_x_fecha_cheques";
-
+console.log(fecha);
           var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
           if(continuar == true) {
             id_poliza = $('#dchPoliza').val();
@@ -993,7 +993,11 @@ function genChe(){
           id_cheque = r.data;
           window.location.replace('Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
         } else {
-          console.error(r.message);
+          if( r.message == 'Cheque Existe'){
+            swal("Ya Existe", r.message , "warning");
+          }else{
+            console.error(r.message);
+          }
         }
       },
       error: function(x){
@@ -1086,7 +1090,7 @@ function Actualiza_CuentaCapCh_modal(){
 		}
 
 
-    $('#che_concepto').val($.trim(nombreCta[2]));
+    $('#che_desc').val($.trim(nombreCta[2]));
 }
 
 function valDescripOficinaCapCh(){

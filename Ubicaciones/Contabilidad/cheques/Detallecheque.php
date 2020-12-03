@@ -4,6 +4,7 @@
 
   $id_cheque = $_GET['id_cheque'];
   $id_cuentaMST = $_GET['id_cuentaMST'];
+  $txtStatus = '';
 
   $sql_Select = "SELECT * from conta_t_cheques_mst Where pk_id_cheque = ? AND fk_id_cuentaMST = ?";
   $stmt = $db->prepare($sql_Select);
@@ -14,6 +15,8 @@
 	$rslt = $stmt->get_result();
 	$rows = $rslt->num_rows;
 
+  $statusGeneraPoliza = false;
+  
 	if( $rows > 0 ){
 		$rowMST = $rslt->fetch_assoc();
 		$cancela = $rowMST['s_cancela']; // 0=Activo 1=Cancelado
@@ -38,7 +41,6 @@
 			$sumaAbonos = $oRst_STPD['SUMA_ABONOS'];
       $sumaC = number_format($sumaAbonos,2,'.','') + number_format($importeChe,2,'.','') ;
 		  $Status_Cheque =  number_format($sumaC - $sumaCargos,2,'.','');
-      $statusGeneraPoliza = false;
 
       if( $Status_Cheque == 0 ){
         $txtStatus = 'style="color: #000000"';

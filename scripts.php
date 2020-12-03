@@ -17,8 +17,10 @@
 <script src="/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
 <script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
 <script src="/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>
-<!--script src="/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
-<script src="/Ubicaciones/Contabilidad/Reportes/js/Reportes.js"></script-->
+<script src="/Ubicaciones/Contabilidad/cheques/js/Cheques.js"></script>
+<!--
+<script src="/Ubicaciones/Contabilidad/Reportes/js/Reportes.js"></script>
+-->
 
 
 
