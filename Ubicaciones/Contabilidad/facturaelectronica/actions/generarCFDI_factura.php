@@ -8,6 +8,8 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 require $root . '/Resources/PHP/actions/validarFormulario.php';
 #limpiarBlancos($txt) <-- eliminaBlancos($cadena)
 
+$system_callback['message'] = "";
+
 #SEGUN LAS ESPECIFICICAIONES DEL ANEXO20 VERSION 3.3 SE TIENE QUE USAR EL CATALOGO DE MONEDA PARA LOS DECIMALES, PERO COMO SOLO EXPEDIMOS EN MXN,USD Y AMBOS TIENEN DOS DECIMALES, POR LO TANTO, NUESTROS CALCULOS SE HARAN A DOS DECIMALES.
 $cuenta = $_POST['cuenta'];
 $referencia = $_POST['referencia'];

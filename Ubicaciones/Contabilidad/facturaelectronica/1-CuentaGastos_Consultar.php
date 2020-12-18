@@ -5,8 +5,22 @@
   $cuenta = trim($_GET['cuenta']);
   $accion = trim($_GET['accion']);
   $txt_id_asoc = 'No';
+  $poliza = '';
+  $hrefTimbrar = "";
+  $detallePoliza = "";
 
-  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
+  $datosCargos = '';
+  $id_polctagastos = '';
+  $fecha = '';
+  $idFactura = '';
+  $id_cliente = '';
+  $referencia = '';
+  $id_ctagastos = '';
+  $detPolCtaGastos = "";
+  $poliza_CtaGastos = "";
+
+
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php'; #$fk_id_moneda
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
@@ -253,6 +267,7 @@
 
 <!--Esta informacion si estara visible SOLICITUD-->
 <?php
+$txt_evaluar = '';
 if( $s_UUID != '' && $accion == 'cancelar' ){ ?>
 <div class="contorno">
   <h5 class="titulo font14 b">ESTADO DEL COMPROBANTE</h5>

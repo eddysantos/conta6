@@ -110,10 +110,10 @@ $(document).ready(function(){
         url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/6-observaciones_lstCapturadas.php",
         data: data,
         success: 	function(r){
-          console.log(r);
+          //console.log(r);
         r = JSON.parse(r);
           if (r.code == 1) {
-            console.log(r);
+            //console.log(r);
             $('#lst_cfdi_capturadas').html(r.data);
           } else {
             swal("Error", "La cuenta o Referencia no existen", "error");
@@ -139,10 +139,10 @@ $(document).ready(function(){
       url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_lstCapturadas.php",
       data: data,
       success: 	function(r){
-        console.log(r);
+        //console.log(r);
       r = JSON.parse(r);
         if (r.code == 1) {
-          console.log(r);
+          //console.log(r);
           $('#lst_cuentasGastos_capturadas').html(r.data);
         } else {
           swal("Error", "La cuenta o Referencia no existen", "error");
@@ -539,16 +539,17 @@ function agregarImporte(){
   if( cta == "" ){
     alertify.success('Seleccione un concepto');
   }else {
+      var element = $('.T_POCME_CONCEPTOS').length;
+
       if(tipoDocumento == 'elaborar'){
         btnEliminar = "<a href='#' class='remove-POCME'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
         inputPartida = "";
       }
       if(tipoDocumento == 'modificar'){
         btnEliminar = "<a href='#' class='eliminar-POCME'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
-        inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
+        inputPartida = "<input class='id-partida' type='hidden' id='T_partida_"+element+"' value='0'>";
       }
 
-      var element = $('.T_POCME_CONCEPTOS').length;
 
       newtr = "<tr class='row m-0 trPOCME elemento-pocme' id='"+element+"'>";
       newtr = newtr + "    <td class='col-md-1 p-2'>";
@@ -953,16 +954,17 @@ function agregarCargo(){
   if( id_cuenta == "" ){
     alertify.success('Seleccione un concepto');
   }else {
+      var element = $('.T_Cargo').length;
+
       if(tipoDocumento == 'elaborar'){
         btnEliminar = "<a href='#' class='remove-Cargos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
         inputPartida = "";
       }
       if(tipoDocumento == 'modificar'){
         btnEliminar = "<a href='#' class='eliminar-Cargos'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
-        inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
+        inputPartida = "<input class='id-partida' type='hidden' id='T_partida_"+element+"' value='0'>";
       }
 
-      var element = $('.T_Cargo').length;
 
       newtr = "<tr class='row m-0 trCargos elemento-cargos' id='"+element+"'>";
       newtr = newtr + "                <td class='col-md-6 p-1'>";
@@ -1082,16 +1084,17 @@ function agregarHonorarios(){
     if( id_prodServ == "" ){
       alertify.success('Seleccione un concepto');
     }else {
+        var element = $('.T_Honorarios').length;
+
         if(tipoDocumento == 'elaborar'){
           btnEliminar = "<a href='#' class='remove-Honorarios'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
           inputPartida = "";
         }
         if(tipoDocumento == 'modificar'){
           btnEliminar = "<a href='#' class='eliminar-Honorarios'><img class='icochico' src='/Resources/iconos/002-trash.svg'></a>";
-          inputPartida = "<input class='id-partida' type='hidden' id='T_partida_' value='0'>";
+          inputPartida = "<input class='id-partida' type='hidden' id='T_partida_"+element+"' value='0'>";
         }
 
-        var element = $('.T_Honorarios').length;
 
         newtr = "<tr class='row m-0 trHonorarios elemento-honorarios' id='"+element+"'>";
         newtr = newtr + "<td class='col-md-4 p-1'>";
@@ -1482,192 +1485,6 @@ function valUsoCFDI(){
 		}
 }
 
-$('#modificar-cta').click(function(){
-  folio = $('#id_cuenta_captura').val();
-
-  Suma_Subtotales();
-  if( valFormaPago()==true && valMoneda()==true && valUsoCFDI()==true ){
-
-      $('#mensaje').html("Guardando . . .");
-
-      var data = {
-        folio: folio,
-        T_No_calculoTarifa : $('#T_No_calculoTarifa').val(),
-        Txt_Usuario : $('#Txt_Usuario').val(),
-        T_IGED_1 : $('#T_IGED_1').val(),
-        // T_IGED_2 : $('#T_IGED_2').val(),
-        T_ID_Aduana_Oculto : $('#T_ID_Aduana_Oculto').val(),
-        T_ID_Almacen_Oculto : $('#T_ID_Almacen_Oculto').val(),
-        T_ID_Cliente_Oculto : $('#T_ID_Cliente_Oculto').val(),
-        T_Nombre_Cliente : $('#T_Nombre_Cliente').val(),
-        T_Cliente_Calle : $('#T_Cliente_Calle').val(),
-        T_Cliente_No_Ext : $('#T_Cliente_No_Ext').val(),
-        T_Cliente_No_Int : $('#T_Cliente_No_Int').val(),
-        T_Cliente_Colonia : $('#T_Cliente_Colonia').val(),
-        T_Cliente_CP : $('#T_Cliente_CP').val(),
-        T_Cliente_Ciudad : $('#T_Cliente_Ciudad').val(),
-        T_Cliente_Estado : $('#T_Cliente_Estado').val(),
-        T_Cliente_Pais : $('#T_Cliente_Pais').val(),
-        T_Cliente_taxid : $('#T_Cliente_taxid').val(),
-        T_Cliente_RFC : $('#T_Cliente_RFC').val(),
-        T_Proveedor_Destinatario : $('#T_Proveedor_Destinatario').val(),
-        T_Tipo : $('#T_Tipo').val(),
-        T_Valor : $('#T_Valor').val(),
-        T_Peso : $('#T_Peso').val(),
-        T_Dias : $('#T_Dias').val(),
-        T_Valor_Custodia_Aer : $('#T_Valor_Custodia_Aer').val(),
-        T_Valor_Manejo_Aer : $('#T_Valor_Manejo_Aer').val(),
-        T_Valor_Almacenaje_Aer : $('#T_Valor_Almacenaje_Aer').val(),
-        T_Valor_Total_Maniobras : $('#T_Valor_Total_Maniobras').val(),
-        T_Subsidio : $('#T_Subsidio').val(),
-        T_derechosPagados : $('#T_derechosPagados').val(),
-        T_Honorarios_Porcentaje : $('#T_Honorarios_Porcentaje').val(),
-        T_Honorarios_Base_Honorarios : $('#T_Honorarios_Base_Honorarios').val(),
-        T_Honorarios_Descuento : $('#T_Honorarios_Descuento').val(),
-        T_Honorarios_Minimo : $('#T_Honorarios_Minimo_Honorarios').val(),
-
-        T_Total_Importes : $('#T_Total_Importes').val(),
-        T_Total_IVA : $('#T_Total_IVA').val(),
-        T_IVA_RETENIDO : $('#T_IVA_RETENIDO').val(),
-        T_Total_Gral : $('#T_Total_Gral').val(),
-        T_Total_MN_Extranjera : $('#T_Total_MN_Extranjera').val(),
-        T_SALDO_GRAL : $('#T_SALDO_GRAL').val(),
-        CUSTOMS : $('#CUSTOMS').val(),
-        T_IVA_Porcentaje : $('#T_IVA_Porcentaje').val(),
-        T_SUBTOTAL_HON : $('#T_SUBTOTAL_HON').val(),
-        Txt_Total_MN_Extranjera : $('#Txt_Total_MN_Extranjera').val(),
-        T_Cta_Gastos : $('#T_Cta_Gastos').val(),
-        T_Total_Anticipos : $('#T_Total_Anticipos').val(),
-        Txt_Total_Importe : $('#Txt_Total_Importe').val(),
-        Txt_Total_IVA : $('#Txt_Total_IVA').val(),
-        Txt_SUBTOTAL_HON : $('#Txt_SUBTOTAL_HON').val(),
-        Txt_IVA_RETENIDO : $('#Txt_IVA_RETENIDO').val(),
-        Txt_Total_Gral : $('#Txt_Total_Gral').val(),
-        Txt_Cta_Gastos : $('#Txt_Cta_Gastos').val(),
-        Txt_Total_Anticipos : $('#Txt_Total_Anticipos').val(),
-        Txt_Saldo_Gral : $('#Txt_Saldo_Gral').val(),
-        Txt_Total_Pagos : $('#Txt_Total_Pagos').val(),
-        T_Total_Pagos : $('#T_Total_Pagos').val(),
-        Txt_Honorarios : $('#Txt_Total_Importe').val(),
-        T_POCME_Total : $('#T_POCME_Total').val(),
-        T_POCME_Tipo_Cambio : $('#T_POCME_Tipo_Cambio').val(),
-        T_POCME_Total_MN : $('#T_POCME_Total_MN').val(),
-        Total_Letra : $('#total_CuentaGastos').val(),
-        T_FormaPago : $('#T_FormaPago').val(),
-        T_metodoPago : $('#T_metodoPago').val(),
-        T_CuentaPago : $('#T_CuentaPago').val(),
-        T_Moneda : $('#T_Moneda').val(),
-        T_monedaTipoCambio : $('#T_monedaTipoCambio').val(),
-        T_usoCFDI: $('#T_usoCFDI').val(),
-        dge: {},
-        pocme: {},
-        cargos: {},
-        honorarios: {},
-        pocmeDelete: {},
-        cargoDelete: {},
-        honDelete: {},
-        depositos: {},
-        depositosDisponibles: {}
-      }
-
-      $( ".elementos-dge" ).each(function(i) {
-        var parsed_data = {
-          idpartida: $(this).find('.id-partida').val(),
-          concepto_esp: $(this).find('.concepto-espanol').val(),
-          descripcion: $(this).find('.descripcion').val()
-        }
-        data.dge[i] = parsed_data;
-      });
-
-      $( ".elemento-pocme" ).each(function(i) {
-        var parsed_data = {
-          idpartida: $(this).find('.id-partida').val(),
-          cantidad: $(this).find('.cantidad').val(),
-          idcuenta: $(this).find('.id-cuenta').val(),
-          idconcepto: $(this).find('.id-concepto').val(),
-          concepto_esp: $(this).find('.concepto-espanol').val(),
-          concepto_ing: $(this).find('.concepto-ingles').val(),
-          descripcion: $(this).find('.descripcion').val(),
-          importe: $(this).find('.importe').val(),
-          subtotal: $(this).find('.subtotal').val()
-        }
-        data.pocme[i] = parsed_data;
-      });
-
-      $( ".elemento-pocme-eliminar" ).each(function(i) {
-        var parsed_data = {
-          idpartida: $(this).find('.id-partida').val()
-        }
-        data.pocmeDelete[i] = parsed_data;
-      });
-
-      $( ".elemento-cargos" ).each(function(i) {
-        var parsed_data = {
-          idpartida: $(this).find('.id-partida').val(),
-          idcuenta: $(this).find('.id-cuenta').val(),
-          idconcepto: $(this).find('.id-concepto').val(),
-          concepto_esp: $(this).find('.concepto-espanol').val(),
-          subtotal: $(this).find('.subtotal').val()
-        }
-        data.cargos[i] = parsed_data;
-      });
-
-      $( ".elemento-honorarios" ).each(function(i) {
-        var parsed_data = {
-          idpartida: $(this).find('.id-partida').val(),
-          idcuenta: $(this).find('.id-cuenta').val(),
-          idcveprod: $(this).find('.id-cveProd').val(),
-          concepto_esp: $(this).find('.concepto-espanol').val(),
-          importe: $(this).find('.importe').val(),
-          iva: $(this).find('.iva').val(),
-          ret: $(this).find('.ret').val(),
-          subtotal: $(this).find('.subtotal').val()
-        }
-        data.honorarios[i] = parsed_data;
-      });
-
-      $( ".elemento-depositos" ).each(function(i) {
-        var parsed_data = {
-          idpartida: $(this).find('.id-partida').val(),
-          idDeposito: $(this).find('.id-deposito').val(),
-          importe: $(this).find('.importe').val(),
-        }
-        data.depositos[i] = parsed_data;
-      });
-
-      $( ".elemento-depositos-disponibles" ).each(function(i) {
-        var parsed_data = {
-          idpartida: $(this).find('.id-partida').val(),
-          idDeposito: $(this).find('.id-deposito').val(),
-          importe: $(this).find('.importe').val(),
-        }
-        data.depositosDisponibles[i] = parsed_data;
-      });
-
-      $.ajax({
-        type: "POST",
-        url: "/Ubicaciones/Contabilidad/facturaelectronica/actions/1-CuentaGastos_modificar.php",
-        data: data,
-        success: 	function(r){
-          r = JSON.parse(r);
-          if (r.code == 1) {
-            //console.log(r);
-            folio = r.data;
-            alertify.alert('Folio: '+folio, 'Actualizado correctamente' , function(){
-              //setTimeout('document.location.reload()',700);
-              setTimeout("window.location.replace('/Ubicaciones/Contabilidad/facturaelectronica/1-CuentaGastos.php')",700);
-            });
-
-          } else {
-            console.error(r.message);
-          }
-        },
-        error: function(x){
-          console.error(x);
-        }
-      });
-  }
-});
 
 $('#sustituir-cta-cfdi').click(function(){
   folio = $('#id_cuenta_captura').val();

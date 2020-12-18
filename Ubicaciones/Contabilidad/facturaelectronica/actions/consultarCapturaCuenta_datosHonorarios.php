@@ -35,6 +35,7 @@ $botonEliminar = '';
 
 if( $total_consultaHonorarios > 0 ) {
   $idFila = 0;
+  # $detallePoliza = ""; no inicializar la variable , algenerar el CFDI se corta.
 	while( $row_consultaHonorarios = $rslt_consultaHonorarios->fetch_assoc() ){
     ++$idFila;
 		$n_cantidad = $row_consultaHonorarios['n_cantidad'];

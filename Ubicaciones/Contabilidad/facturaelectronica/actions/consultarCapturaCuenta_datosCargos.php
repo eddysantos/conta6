@@ -23,9 +23,21 @@ if (!($stmt_consultaCargos->execute())) {
 $rslt_consultaCargos = $stmt_consultaCargos->get_result();
 $total_consultaCargos = $rslt_consultaCargos->num_rows;
 
+/* no inicializar, se trunca la generacion de la poliza de la cuenta de gastos
 $datosCargos = '';
+$id_polctagastos = '';
+$fecha = '';
+$idFactura = '';
+$id_cliente = '';
+$referencia = '';
+$id_ctagastos = '';
+$detPolCtaGastos = "";
+*/
+
 $datosCargosModifi = '';
 $datosCargosImpresion = '';
+$datosCargos='';
+
 if( $total_consultaCargos > 0 ) {
 	$idFila = 0;
 
@@ -40,7 +52,9 @@ if( $total_consultaCargos > 0 ) {
 
 		$n_total_2 = number_format($row_consultaCargos['n_total'],2,'.',',');
 
+		#linea para insertar los datos para la poliza de la cuenta de gastos.
 		$detPolCtaGastos .= "(".$poliza_CtaGastos.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',".$id_ctagastos.",0,".$n_total."),";
+		#$detPolCtaGastos .= "(".$id_polctagastos.",'".$fecha."',".$idFactura.",'".$fk_id_cuenta."',3,'".$s_conceptoEsp."','".$id_cliente."','".$referencia."',".$id_ctagastos.",0,".$n_total."),";
 
 		$datosCargos .= "<div class='row b font12'>
 					<div class='col-md-6 text-left ls1'>$s_conceptoEsp</div>

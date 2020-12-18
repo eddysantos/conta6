@@ -6,6 +6,8 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $cuenta = trim($_GET['cuenta']);
 $txt_id_asoc = 'No';
+$poliza = '';
+
 require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
 require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
 require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME

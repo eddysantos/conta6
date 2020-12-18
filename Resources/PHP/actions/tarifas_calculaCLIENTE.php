@@ -66,7 +66,7 @@ while ($row_consultaConcCLT = $rslt_consultaConcCLT->fetch_assoc()) {
 	#--Busca... Exclusivo para Honorarios con un Cargo Minimo
 	 if( $tipo_CURSOR == 103 ){
 
-		$consul = mysqli_fetch_array(mysqli_query($db,"SELECT n_importe_1,n_factor_1 from conta_tarifas WHERE fk_id_concepto = '$ID_CONCEPTO_CURSOR' AND s_imp_exp = '$tipo'"));
+		$consul = mysqli_fetch_array(mysqli_query($db,"SELECT n_importe_1,n_factor_1,n_factor_2 from conta_tarifas WHERE fk_id_concepto = '$ID_CONCEPTO_CURSOR' AND s_imp_exp = '$tipo'"));
 		$IMPORTE = $consul['n_importe_1'];
 		$FACTOR_1 = $consul['n_factor_1'];
 

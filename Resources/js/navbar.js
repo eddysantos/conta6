@@ -13,6 +13,7 @@ $("#toggle").click(function(event){
 });
 
 $('#selectAduana').change(function(){
+
   var aduanaSelect = $('#selectAduana').val();
   $.ajax({
     method: 'POST',
@@ -21,24 +22,7 @@ $('#selectAduana').change(function(){
       aduanaSelect: aduanaSelect
     },
     success: function(result){
-      response = jQuery.parseJSON(result);
-      console.log(response);
-      switch (response.code) {
-        case "200":
-          swal("Usuario o contraseña incorrectos","Favor de Verificar","error");
-          console.log(response);
-          return false;
-          break;
-
-        case "1":
-          //window.location.replace("/Ubicaciones/Bienvenida.php");
-          window.location.reload();
-          return false;
-          break;
-
-        default:
-          alert("Something went terribly wrong");
-      }
+      location.reload();
     },
     error: function(exception){
       console.error(exception);

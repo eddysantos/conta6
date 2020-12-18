@@ -142,22 +142,8 @@ if( $Total_Gral_Importe > 0 ){
   $hon_unidad = 'Servicio';
 
   if( $Honorarios_Subtotal_0 > 0 ){
-      $query_hon1="INSERT INTO conta_t_facturas_captura_det( fk_id_cuenta_captura,
-                                                              s_tipoDetalle,
-                                                              n_cantidad,
-                                                              fk_c_claveUnidad,
-                                                              s_Unidad,
-                                                              s_conceptoEsp,
-                                                              fk_id_cuenta,
-                                                              fk_c_ClaveProdServ,
-                                                              n_importe,
-                                                              n_IVA,
-                                                              n_ret,
-                                                              n_total,
-                                                              n_porcentaje,
-                                                              n_base,
-                                                              n_descuento)
-                                                      VALUES( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query_hon1="INSERT INTO conta_t_facturas_captura_det( fk_id_cuenta_captura,s_tipoDetalle,n_cantidad,fk_c_claveUnidad,s_Unidad,s_conceptoEsp,fk_id_cuenta,fk_c_ClaveProdServ,n_importe,n_IVA,n_ret,n_total,n_porcentaje,n_base,n_descuento)
+                    VALUES( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
       $stmt_hon1 = $db->prepare($query_hon1);
       if (!($stmt_hon1)) {
@@ -183,19 +169,8 @@ if( $Total_Gral_Importe > 0 ){
   }
 
   $honorarios = $_POST['honorarios'];
-  $query_hon="INSERT INTO conta_t_facturas_captura_det( fk_id_cuenta_captura,
-                                                            s_tipoDetalle,
-                                                            n_cantidad,
-                                                            fk_c_claveUnidad,
-                                                            s_Unidad,
-                                                            s_conceptoEsp,
-                                                            fk_id_cuenta,
-                                                            fk_c_ClaveProdServ,
-                                                            n_importe,
-                                                            n_IVA,
-                                                            n_ret,
-                                                            n_total)
-                                                    VALUES( ?,?,?,?,?,?,?,?,?,?,?,?)";
+  $query_hon="INSERT INTO conta_t_facturas_captura_det( fk_id_cuenta_captura,s_tipoDetalle,n_cantidad,fk_c_claveUnidad,s_Unidad,s_conceptoEsp,fk_id_cuenta,fk_c_ClaveProdServ,n_importe,n_IVA,n_ret,n_total)
+              VALUES( ?,?,?,?,?,?,?,?,?,?,?,?)";
 
     $stmt_hon = $db->prepare($query_hon);
     if (!($stmt_hon)) {

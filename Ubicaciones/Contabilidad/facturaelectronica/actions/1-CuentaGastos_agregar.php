@@ -101,8 +101,8 @@ $Txt_Fac_Saldo = trim($_POST['Txt_Saldo_Gral']);
 $Txt_Total_Pagos = trim($_POST['Txt_Total_Pagos']);
 $Total_Pagos = trim($_POST['T_Total_Pagos']);
 
-$Txt_POCME_Total = trim($_POST['Txt_POCME_Total']);
-$Txt_POCME_Tipo_Cambio = trim($_POST['Txt_POCME_Tipo_Cambio']);
+#$Txt_POCME_Total = trim($_POST['Txt_POCME_Total']);
+#$Txt_POCME_Tipo_Cambio = trim($_POST['Txt_POCME_Tipo_Cambio']);
 $Total_Letra = trim($_POST['Total_Letra']);
 $formaPago = trim($_POST['T_FormaPago']);
 $metodoPago = trim($_POST['T_metodoPago']);

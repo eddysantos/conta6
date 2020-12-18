@@ -87,6 +87,7 @@ if( $total_consultaGenerales > 0 ) {
 	$s_total_letra = $row_consultaGenerales['s_total_letra'];
 	$n_tipoCambio = $row_consultaGenerales['n_tipoCambio'];
 	$fk_id_moneda = $row_consultaGenerales['fk_id_moneda'];
+	$moneda  = $row_consultaGenerales['fk_id_moneda'];
 	$pk_c_UsoCFDI = trim($row_consultaGenerales['pk_c_UsoCFDI']);
 	$fk_id_asoc = $row_consultaGenerales['fk_id_asoc'];
 	$s_tipoDeComprobante = $row_consultaGenerales['s_tipoDeComprobante'];

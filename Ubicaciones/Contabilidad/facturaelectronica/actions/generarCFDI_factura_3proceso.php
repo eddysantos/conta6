@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors',1);
 
 $tipoProceso = "factura";
+$respGuardarDatos = '';
 
 # nombre de carpetas y rutas de almacenamiento
 require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_1path.php';
@@ -23,7 +24,7 @@ if( $id_facturaRelacionada > 0 ){
 
 $cO = xmlV33_genera_cadena_original();
 $sello = xmlV33_sella($array);
-$XMLsave = xmlV33_saveTempXML($array); #guardar archivo
+$XMLsave = xmlV33_saveTempXML($array); #guardar archivo  esta funcion guarda un archivo temporal
 if( $XMLsave == 'xmlTemGenerado' ){
   $system_callback['message'] .= "✓ xml generado correctamente\n";
 
@@ -137,10 +138,6 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
     require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5guardarDatosPolizas.php';
   }
 
-  $CLT_nombre = '';
-  $importe = 0;
-  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML.php';
-
   #registro en contabilidad electronica
   if( $poliza > 0 ){
     $fk_id_poliza = $poliza;
@@ -153,6 +150,9 @@ function guardarDatosTimbrado($UUID,$certSAT,$selloCFDI,$fechaTimbre,$versionTim
     require $root . '/Resources/PHP/actions/contaElect_insertaCompNal_poliza.php';
   }
 
+  $CLT_nombre = '';
+  $importe = 0;
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML.php';
 
   return $respGuardarDatos;
 }

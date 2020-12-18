@@ -1,6 +1,8 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/consultaDatosOficina.php'; # $lst_oficinasPermitidas
+
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +23,8 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
           <li class="nav-item dropdown text-left">
             <a href="/Ubicaciones/Bienvenida.php"><img src="/Resources/imagenes/s_rojo.svg" style=' width: 45px;'></a>
             <ul class="dropdown-menu text-center" style="width:220px">
-              <select class="w-75">
-                <option value="">Aeropuerto</option>
-                <option value="">Manzanillo</option>
-                <option value="">Nuevo Laredo</option>
-                <option value="">Veracruz</option>
+              <select id="selectAduana" class="w-75 actualizaMenus">
+                  <?php echo $lst_oficinasPermitidas; ?>
               </select>
             </ul>
           </li>

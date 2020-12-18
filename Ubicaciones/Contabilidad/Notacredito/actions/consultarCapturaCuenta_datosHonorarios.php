@@ -32,10 +32,14 @@ $datosHonorariosXML = '';
 $datosHonorariosModifi = '';
 $botonEliminar = '';
 
+
 if( $total_consultaHonorarios > 0 ) {
   $idFila = 0;
 	while( $row_consultaHonorarios = $rslt_consultaHonorarios->fetch_assoc() ){
     ++$idFila;
+    $porcentajeModifi = "0.00";
+    $descuentoModifi = "0.00";
+    
 		$n_cantidad = $row_consultaHonorarios['n_cantidad'];
 		$fk_c_ClaveProdServ = $row_consultaHonorarios['fk_c_ClaveProdServ'];
 		$fk_id_cuenta = $row_consultaHonorarios['fk_id_cuenta'];
@@ -80,6 +84,7 @@ if( $total_consultaHonorarios > 0 ) {
       $s_conceptoEspPrint = $porcentajeModifi.' '.$s_conceptoEspPrint.' '.number_format($baseModifi,2,'.',',');
     }else{
       $s_conceptoEspPrint = $s_conceptoEsp;
+
     }
 
 

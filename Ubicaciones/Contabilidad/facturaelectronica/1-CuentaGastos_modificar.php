@@ -3,6 +3,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Ubicaciones/barradenavegacion.php';
 
 $selected_usoCFDI = '';
+$poliza = '';
 
 $cuenta = trim($_GET['cuenta']);
 require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
@@ -39,15 +40,15 @@ $entradas = trim($_GET['entradas']);
 $shipper = trim($_GET['shipper']);
 $inbond = trim($_GET['inbond']);
 $flete = trim($_GET['flete']);
-$extraerfolio = trim($_GET['extraerfolio']);
 $cobrarFlete = trim($_GET['cobrarFlete']);
-$opcion = trim($_GET['opcion']);
-$tasa = trim($_GET['tasa']);
+
 
 $id_cliente = trim($_GET['id_cliente']);
 $id_referencia = trim($_GET['referencia']);
 
-
+if (isset($_GET['extraerfolio'])){ $extraerfolio = trim($_GET['extraerfolio']); }else{ $extraerfolio = ''; }
+if (isset($_GET['opcion'])){ $opcion = trim($_GET['opcion']); }else{ $opcion = ''; }
+if (isset($_GET['tasa'])){ $tasa = trim($_GET['tasa']); }else{ $tasa = ''; }
 
 $PME_1 = 0;
 $PME_2 = 0;
@@ -84,7 +85,7 @@ if($referencia != "SN"){
           $tipoCambio = $row_datosRefProv['n_tipo_cambio'];
           $tipo = limpiarBlancos($row_datosRefProv['s_imp_exp']);
           $almacen = limpiarBlancos($row_datosRefProv['fk_almacen_seccion']);
-          $nomProv = $row_datosRefProv['s_NOMBRE'];
+          $nomProv = $row_datosRefProv['s_nombre'];
 
           $fechaEntrada =  $row_datosRefProv['d_fecha_entrada'];
           if (!is_null($fechaEntrada)){
@@ -117,7 +118,7 @@ if($referencia != "SN"){
       $peso = 0;
       $volumen = 0;
       $tipo = "EXP";
-      $aduana = $oficina;
+      //$aduana = $oficina;
       $almacenNombre = "SIN ALMACEN";
       $nomProv = "";
       $descripcion = "";
@@ -209,7 +210,8 @@ if($referencia != "SN"){
         # PARA LA OFICINA DE NUEVO LAREDO ESTOS CONCEPTOS SE CARGAN EN AUTOMATICO
         require $root . '/Resources/PHP/actions/tarifas_calculaPOCME_mostrarConceptos.php';
         $idFila=0;
-        if( $oficina == 240 ){
+        //if( $oficina == 240 ){
+        if( $aduana == 240 ){
           while ($oRst_Conceptos = $rslt_Conceptos->fetch_assoc()) {
             ++$idFila;
             $ID_CONCEPTOcta = $oRst_Conceptos['fk_id_cuenta'];
@@ -812,7 +814,7 @@ if($referencia != "SN"){
                     </table>
                   </form>
               </div>
-              
+
 
             </div>
           </div>
@@ -823,6 +825,12 @@ if($referencia != "SN"){
           <tr>
             <td class="w-50">
               <table class="table">
+                <tr class="row sub2 align-items-self">
+                  <td class="col-md-3">Relación</td>
+                  <td class="col-md-3">Folio</td>
+                  <td class="col-md-3">UUID</td>
+                </tr>
+
                 <tr class="row">
                   <td class="col-md-3"><input type="text" class="efecto" id="tipoRelacion" value='<?php echo $s_tipoRelacion; ?>' readOnly /></td>
                   <td class="col-md-3"><input type="text" class="efecto" id="folioRelacionado" value='<?PHP echo $n_folioFacSustituir;?>' readOnly/></td>
@@ -1011,7 +1019,7 @@ if($referencia != "SN"){
         </div>
       </div>
     </div>
-
+<script src="/Ubicaciones/Contabilidad/facturaelectronica/js/facturaElectronica_Modifi.js"></script>
 
     <?php
       require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos, $depositosAplicados
