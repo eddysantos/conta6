@@ -2201,39 +2201,41 @@ $('#b-cliente1').click(function(){
   $('#b-referencia1').attr('db-id','').val('');
 });
 
-$('#btn_buscarFacturasTimbradas').click(function(){
-  id_referencia = $('#b-referencia').attr('db-id');
-  id_factura = $('#b-factura').attr('db-id');
-  id_cliente = $('#b-cliente').attr('db-id');
-  if( id_referencia != "" ){
-    buscar = id_referencia;
-  }else if( id_factura != "" ){
-      buscar = id_factura;
-    }else if( id_cliente != "" ){
-      buscar = id_cliente;
-    }else{
-      alertify.error("No hay resultados");
-    }
-  accion = 'consultar';
-  window.location.replace('/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
-});
+// // NOTE: se movieron a modales.js
 
-$('#btn_buscarFacturasTimbradas_cancela').click(function(){
-  id_referencia = $('#b-referencia1').attr('db-id');
-  id_factura = $('#b-factura1').attr('db-id');
-  id_cliente = $('#b-cliente1').attr('db-id');
-  if( id_referencia != "" ){
-    buscar = id_referencia;
-  }else if( id_factura != "" ){
-      buscar = id_factura;
-    }else if( id_cliente != "" ){
-      buscar = id_cliente;
-    }else{
-      alertify.error("No hay resultados");
-    }
-  accion = 'cancelar';
-  window.location.replace('/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
-});
+// $('#btn_buscarFacturasTimbradas').click(function(){
+//   id_referencia = $('#b-referencia').attr('db-id');
+//   id_factura = $('#b-factura').attr('db-id');
+//   id_cliente = $('#b-cliente').attr('db-id');
+//   if( id_referencia != "" ){
+//     buscar = id_referencia;
+//   }else if( id_factura != "" ){
+//       buscar = id_factura;
+//     }else if( id_cliente != "" ){
+//       buscar = id_cliente;
+//     }else{
+//       alertify.error("No hay resultados");
+//     }
+//   accion = 'consultar';
+//   window.location.replace('/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
+// });
+//
+// $('#btn_buscarFacturasTimbradas_cancela').click(function(){
+//   id_referencia = $('#b-referencia1').attr('db-id');
+//   id_factura = $('#b-factura1').attr('db-id');
+//   id_cliente = $('#b-cliente1').attr('db-id');
+//   if( id_referencia != "" ){
+//     buscar = id_referencia;
+//   }else if( id_factura != "" ){
+//       buscar = id_factura;
+//     }else if( id_cliente != "" ){
+//       buscar = id_cliente;
+//     }else{
+//       alertify.error("No hay resultados");
+//     }
+//   accion = 'cancelar';
+//   window.location.replace('/Ubicaciones/Contabilidad/facturaelectronica/4-Consultarfactura.php?buscar='+buscar+'&accion='+accion);
+// });
 
 function docTimbrado_download(nombreArchivo,ruta){
   window.open('/Resources/PHP/actions/docTimbrado_download.php?nombreArchivo='+nombreArchivo+'&ruta='+ruta);

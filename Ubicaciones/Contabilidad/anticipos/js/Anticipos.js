@@ -1080,16 +1080,17 @@ $('#folioAntConsulta').keydown(function(e){
 
 
 // BUSCAR ANTICIPO
-function buscarAnticipo(Accion){
-	if( Accion == 'consultar' ){
-    id_anticipo = $('#folioAntConsulta').val();
-    window.location.replace('/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php?id_anticipo='+id_anticipo);
-  }
-	if( Accion == 'modificar' ){
-    id_anticipo = $('#folioAnt').val();
-    window.location.replace('/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php?id_anticipo='+id_anticipo);
-  }
-}
+// NOTE: se paso funcion para modales.js este se manda llamar el el footer dentro de scripts.js
+// function buscarAnticipo(Accion){
+// 	if( Accion == 'consultar' ){
+//     id_anticipo = $('#folioAntConsulta').val();
+//     window.location.replace('/Ubicaciones/Contabilidad/anticipos/ConsultarAnticipo.php?id_anticipo='+id_anticipo);
+//   }
+// 	if( Accion == 'modificar' ){
+//     id_anticipo = $('#folioAnt').val();
+//     window.location.replace('/Ubicaciones/Contabilidad/anticipos/Detalleanticipo.php?id_anticipo='+id_anticipo);
+//   }
+// }
 
 //SUMA DE CARGOS Y ABONOS
 function sumasCAanticipos(){

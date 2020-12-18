@@ -695,19 +695,23 @@ console.log(fecha);
     	}
     });
 
+
+    // NOTE: se pasaron para el script de modales.js
+
     // BUSCAR CHEQUE Consultar
-    $('#btn_busCheConsulta').click(function(){
-      id_cheque = $('#mConsChIdcheque').val();
-      id_cuentaMST = $('#mConsChCtaMST').attr('db-id');
-      window.location.replace('/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
-    });
+    // $('#btn_busCheConsulta').click(function(){
+    //   id_cheque = $('#mConsChIdcheque').val();
+    //   id_cuentaMST = $('#mConsChCtaMST').attr('db-id');
+    //   window.location.replace('/Ubicaciones/Contabilidad/cheques/ConsultarCheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+    // });
 
     // BUSCAR CHEQUE Modificar
-    $('#btn_busCheModifi').click(function(){
-      id_cheque = $('#mModifiChIdcheque').val();
-      id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
-      window.location.replace('/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
-    });
+
+    // $('#btn_busCheModifi').click(function(){
+    //   id_cheque = $('#mModifiChIdcheque').val();
+    //   id_cuentaMST = $('#mModifiChCtaMST').attr('db-id');
+    //   window.location.replace('/Ubicaciones/Contabilidad/cheques/Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+    // });
 
 
     // $('#mConsChCtaMST').keydown(function(e){

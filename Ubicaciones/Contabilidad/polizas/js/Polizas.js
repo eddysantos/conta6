@@ -803,16 +803,19 @@ $('#folioPolconsulta').keydown(function(e){
 	}
 });
 
-$('#btn_asignarProveedor').click(function(){
-	id_poliza = $('#folioPolAsignar').val();
-	window.location.replace('/Ubicaciones/Contabilidad/Proveedores/AsignarProveedor.php?id_poliza='+id_poliza);
-});
 
-function buscarPoliza(Accion){
-	if( Accion == 'consultar'){ id_poliza = $('#folioPolconsulta').val(); }
-	if( Accion == 'modificar'){ id_poliza = $('#folioPol').val(); }
-	window.location.replace('/Ubicaciones/Contabilidad/polizas/actions/buscar_poliza.php?id_poliza='+id_poliza+'&Accion='+Accion);
-}
+// NOTE: se movieron para archivo modales.js ya que se llaman en toda la pagina
+
+// $('#btn_asignarProveedor').click(function(){
+// 	id_poliza = $('#folioPolAsignar').val();
+// 	window.location.replace('/Ubicaciones/Contabilidad/Proveedores/AsignarProveedor.php?id_poliza='+id_poliza);
+// });
+//
+// function buscarPoliza(Accion){
+// 	if( Accion == 'consultar'){ id_poliza = $('#folioPolconsulta').val(); }
+// 	if( Accion == 'modificar'){ id_poliza = $('#folioPol').val(); }
+// 	window.location.replace('/Ubicaciones/Contabilidad/polizas/actions/buscar_poliza.php?id_poliza='+id_poliza+'&Accion='+Accion);
+// }
 
 
 function genPol(){
