@@ -188,81 +188,80 @@ $(document).ready(function(){
   });
 
 
-  $('.pol').click(function(){
-        var accion = $(this).attr('accion');
-        var status = $(this).attr('status');
 
-        $('#selecTipoPoliza').find('a').css('color', "");
-        $('#selecTipoPoliza').find('a').css('font-size', "");
-        $(this).attr('status', 'abierto');
-				$(this).css('cssText', 'color: #58595b!important');
-        $(this).css('cssText', 'font-weight: bold!important');
-        $(this).css('font-size', '18px');
-
-
-        switch (accion) {
-          case "poldiario":
-						$('#gpoliza').fadeIn();
-						$('#diatipo').val('4 Diario');
-						$('#diatipo').attr('db-id','4');
-            break;
-
-          case "polingreso":
-						$('#gpoliza').fadeIn();
-						$('#diatipo').val('2 Ingreso');
-						$('#diatipo').attr('db-id','2');
-            break;
-
-            case "dtospol":
-            if (status == 'cerrado') {
-              $('#datospoliza').fadeIn();
-              $(this).attr('status', 'abierto');
-              $(this).css('cssText', 'color: #58595b!important');
-							$(this).css('cssText', 'font-weight: bold!important');
-              $(this).css('font-size', '18px');
-            } else {
-              $('#datospoliza').fadeOut();
-              $(this).attr('status', 'cerrado');
-              $(this).css('color', "");
-              $(this).css('font-size', "");
-            }
-              break;
-          default:
-          console.error("Something went terribly wrong...");
-
-        }
-
-    });
-
-
-
-
-		$('#genFolioPolDia').click(function(){
-			if($('#diafecha').val() == ""){
-				alertify.error("Seleccione una fecha");
-				$('#diafecha').focus();
-				return false;
-			}
-
-			if($('#diaconcepto').val() == ""){
-				alertify.error("Escriba un concepto");
-				$('#diaconcepto').focus();
-				return false;
-			}
-
-			fecha = $('#diafecha').val();
-			aduana = $('#diaaduana').val();
-			tipoDoc = $('#diatipo').attr('db-id');
-			usuario = $('#diausuario').val();
-			permiso = "s_generar_x_fecha_polizas";
-
-			var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
-			if(continuar == true) {
-				genPol(); //funsion para generar poliza
-			}else{
-				return false;
-			}
-		});
+	// NOTE: se movio directamente al archivo de generar poliza
+  // $('.pol').click(function(){
+  //   var accion = $(this).attr('accion');
+  //   var status = $(this).attr('status');
+	//
+  //   $('#selecTipoPoliza').find('a').css('color', "");
+  //   $('#selecTipoPoliza').find('a').css('font-size', "");
+  //   $(this).attr('status', 'abierto');
+	// 	$(this).css('cssText', 'color: #58595b!important');
+  //   $(this).css('cssText', 'font-weight: bold!important');
+  //   $(this).css('font-size', '18px');
+	//
+	//
+  //   switch (accion) {
+  //     case "poldiario":
+	// 			$('#gpoliza').fadeIn();
+	// 			$('#diatipo').val('4 Diario');
+	// 			$('#diatipo').attr('db-id','4');
+  //       break;
+	//
+  //     case "polingreso":
+	// 			$('#gpoliza').fadeIn();
+	// 			$('#diatipo').val('2 Ingreso');
+	// 			$('#diatipo').attr('db-id','2');
+  //       break;
+	//
+  //       case "dtospol":
+  //       if (status == 'cerrado') {
+  //         $('#datospoliza').fadeIn();
+  //         $(this).attr('status', 'abierto');
+  //         $(this).css('cssText', 'color: #58595b!important');
+	// 				$(this).css('cssText', 'font-weight: bold!important');
+  //         $(this).css('font-size', '18px');
+  //       } else {
+  //         $('#datospoliza').fadeOut();
+  //         $(this).attr('status', 'cerrado');
+  //         $(this).css('color', "");
+  //         $(this).css('font-size', "");
+  //       }
+  //         break;
+  //     default:
+  //     console.error("Something went terribly wrong...");
+	//
+  //   }
+	//
+  //   });
+	//
+	// $('#genFolioPolDia').click(function(){
+	// 	if($('#diafecha').val() == ""){
+	// 		alertify.error("Seleccione una fecha");
+	// 		$('#diafecha').focus();
+	// 		return false;
+	// 	}
+	//
+	// 	if($('#diaconcepto').val() == ""){
+	// 		alertify.error("Escriba un concepto");
+	// 		$('#diaconcepto').focus();
+	// 		return false;
+	// 	}
+	//
+	// 	fecha = $('#diafecha').val();
+	// 	aduana = $('#diaaduana').val();
+	// 	tipoDoc = $('#diatipo').attr('db-id');
+	// 	usuario = $('#diausuario').val();
+	// 	permiso = "s_generar_x_fecha_polizas";
+	//
+	// 	var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
+	// 	if(continuar == true) {
+	// 		genPol(); //funsion para generar poliza
+	// 	}else{
+	// 		return false;
+	// 	}
+	// });
 
 
 
@@ -283,7 +282,6 @@ $(document).ready(function(){
 					r = JSON.parse(r);
 					if (r.code == 1) {
 						swal("Exito", "La Póliza se actualizó correctamente.", "success");
-						//$('.real-time-search').keyup();
 					} else {
 						console.error(r.message);
 					}
@@ -492,8 +490,12 @@ $(document).ready(function(){
 		$('#detpol-editarRegPolDiario').modal('hide');
 	});
 
+	$('body').on('')
+
 
 	$('#detpol-buscarfacturas-lista').on('click','.checkbox-facpend',function(){
+		alert('si di click');
+		// return false;
 		activado = $(this).parents('tr').find('.facpend-check').prop('checked');
 		cadena = $('#detpol-cliente').val();
 		parte = cadena.split('-');
@@ -525,8 +527,8 @@ $(document).ready(function(){
 			url: "/Ubicaciones/Contabilidad/polizas/actions/buscarFacturas_insertaReg_detallePoliza.php",
 			data: data,
 			success: 	function(r){
-				console.log(data);
-				console.log(r);
+				// console.log(data);
+				// console.log(r);
 				r = JSON.parse(r);
 				if (r.code == 1) {
 					alertify.success(r.data);
@@ -816,38 +818,6 @@ $('#folioPolconsulta').keydown(function(e){
 // 	if( Accion == 'modificar'){ id_poliza = $('#folioPol').val(); }
 // 	window.location.replace('/Ubicaciones/Contabilidad/polizas/actions/buscar_poliza.php?id_poliza='+id_poliza+'&Accion='+Accion);
 // }
-
-
-function genPol(){
-	var data = {
-		diafecha: $('#diafecha').val(),
-		diaconcepto: $('#diaconcepto').val(),
-		diaaduana: $('#diaaduana').val(),
-		diatipo: $('#diatipo').attr('db-id')
-	}
-
-	tipo = $('#diatipo').attr('db-id');
-	$.ajax({
-		type: "POST",
-		url: "/Ubicaciones/Contabilidad/polizas/actions/generarFolioPoliza.php",
-		data: data,
-		success: 	function(request){
-			r = JSON.parse(request);
-				if (r.code == 1) {
-					console.log(r);
-					id_poliza = r.data;
-					window.location.replace('Detallepoliza.php?id_poliza='+id_poliza+'&tipo='+tipo);
-				} else {
-					console.error(r.message);
-				}
-			},
-			error: function(x){
-				console.error(x);
-			}
-
-	});
-}
-
 
 function Actualiza_Cuenta(){
 		st = $('#detpol-cuenta').val();
