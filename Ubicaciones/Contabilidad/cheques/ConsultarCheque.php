@@ -167,7 +167,7 @@
     if( $rows > 0 ){
   ?>
   <div id="datoscheque" class="contorno" style="display:none"><!--Comienza DETALLE DATOS DE POLIZA-->
-    <h5 class="titulo">DATOS DEL CHEQUE</h5>
+    <h5 class="titulo font14">DATOS DEL CHEQUE</h5>
     <form class="form1">
       <table class="table">
         <thead>
@@ -273,7 +273,7 @@
 <?php
 } #$rows
 
-$root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Ubicaciones/footer.php';
 
 ?>
+<script src="/Ubicaciones/Contabilidad/cheques/js/Cheques.js" charset="utf-8"></script>

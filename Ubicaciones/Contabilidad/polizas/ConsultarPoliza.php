@@ -181,7 +181,8 @@ if( $totalRegistrosSelect > 0 ){
     </div>
   </div>
 </div>
-<script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
+<?php // NOTE: se metio a scripts.php ?>
+<!-- <script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script> -->
 <?php
 }else{
 ?>

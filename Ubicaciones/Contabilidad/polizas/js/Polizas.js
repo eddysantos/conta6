@@ -756,40 +756,42 @@ function cambiarStatus(){
 }
 
 
-function validarCtasGastoOficina(st){
-	/* CUENTAS QUE REQUIEREN ASIGNAR OFICINA PARA REFLEJAR EL GASTO */
-	nombreCta = st.split('-');
 
-	if(st.substring(0,2) == '05' ||
-	   st.substring(0,4) == '0147' || st.substring(0,4) == '0148' || st.substring(0,4) == '0149' ||
-		 st.substring(0,4) == '0420' || st.substring(0,4) == '0430' ||
-		 st.substring(0,10) == '0168-00005' ||
-		 st.substring(0,10) == '0201-00002' || st.substring(0,10) == '0201-00003' || st.substring(0,10) == '0201-00004' ||
-		 st.substring(0,10) == '0201-00005' || st.substring(0,10) == '0201-00006' || st.substring(0,10) == '0201-00007' ){
-
-		 return true;
-	}
-}
-
-
-function validarCtasCliente(st){
-	/* CUENTAS QUE REQUIEREN ASIGNAR CLIENTE */
-	nombreCta = st.split('-');
-
-	if(st.substring(0,4) == '0108' || st.substring(0,4) == '0208' || st.substring(0,4) == '0106' || st.substring(0,4) == '0203'){
-		 return true;
-	}
-}
+// NOTE: se movio a modales.js porque se utiliza en mas de un modulo
+// function validarCtasGastoOficina(st){
+// 	/* CUENTAS QUE REQUIEREN ASIGNAR OFICINA PARA REFLEJAR EL GASTO */
+// 	nombreCta = st.split('-');
+//
+// 	if(st.substring(0,2) == '05' ||
+// 	   st.substring(0,4) == '0147' || st.substring(0,4) == '0148' || st.substring(0,4) == '0149' ||
+// 		 st.substring(0,4) == '0420' || st.substring(0,4) == '0430' ||
+// 		 st.substring(0,10) == '0168-00005' ||
+// 		 st.substring(0,10) == '0201-00002' || st.substring(0,10) == '0201-00003' || st.substring(0,10) == '0201-00004' ||
+// 		 st.substring(0,10) == '0201-00005' || st.substring(0,10) == '0201-00006' || st.substring(0,10) == '0201-00007' ){
+//
+// 		 return true;
+// 	}
+// }
 
 
-function validarCtasPagosCliente(st){
-	/* CUENTAS QUE REQUIEREN ASIGNAR CLIENTE */
-	nombreCta = st.split('-');
-
-	if(st.substring(0,4) == '0110'){
-		 return true;
-	}
-}
+// function validarCtasCliente(st){
+// 	/* CUENTAS QUE REQUIEREN ASIGNAR CLIENTE */
+// 	nombreCta = st.split('-');
+//
+// 	if(st.substring(0,4) == '0108' || st.substring(0,4) == '0208' || st.substring(0,4) == '0106' || st.substring(0,4) == '0203'){
+// 		 return true;
+// 	}
+// }
+//
+//
+// function validarCtasPagosCliente(st){
+// 	/* CUENTAS QUE REQUIEREN ASIGNAR CLIENTE */
+// 	nombreCta = st.split('-');
+//
+// 	if(st.substring(0,4) == '0110'){
+// 		 return true;
+// 	}
+// }
 
 
 
@@ -861,32 +863,32 @@ function Actualiza_Cuenta(){
 		console.log(st);
 }
 
-
-function valDescripOficina(){
-		/********************************************************************************************************
-		PARAMETRO DE DISTINCION EN EL GASTO, NO BASTA SOLO CON ASIGNAR LA OFICINA.
-		CUANDO ES EL CASO QUE HAY MAS DE UN REGISTRO IGUAL EN LA MISMA POLIZA, SE REPIDE LA PARTIDA EN EL GASTO;
-		PARA EVITAR ESTO SE ASIGNA UN PARAMETRO QUE HACE LA DISTINCION EN LA DESCRIPCION
-		*/
-		desc = $('#detpol-concepto').val();
-		desc = desc.replace(" ::160::","");
-		desc = desc.replace(" ::240::","");
-		desc = desc.replace(" ::430::","");
-		desc = desc.replace(" ::470::","");
-		desc = desc.replace(" ::241::","");
-
-		gastoOficina = $('#detpol-gtoficina').attr('db-id');
-		descOficina = "";
-
-		if (gastoOficina == 160){ descOficina = "::160::"; }
-		if (gastoOficina == 240){ descOficina = "::240::"; }
-		if (gastoOficina == 430){ descOficina = "::430::"; }
-		if (gastoOficina == 470){ descOficina = "::470::"; }
-		if (gastoOficina == 241){ descOficina = "::241::"; }
-
- 		desc = desc + " " + descOficina;
-		$('#detpol-concepto').val(desc);
-}
+// NOTE: se movio  a modales.js
+// function valDescripOficina(){
+// 		/********************************************************************************************************
+// 		PARAMETRO DE DISTINCION EN EL GASTO, NO BASTA SOLO CON ASIGNAR LA OFICINA.
+// 		CUANDO ES EL CASO QUE HAY MAS DE UN REGISTRO IGUAL EN LA MISMA POLIZA, SE REPIDE LA PARTIDA EN EL GASTO;
+// 		PARA EVITAR ESTO SE ASIGNA UN PARAMETRO QUE HACE LA DISTINCION EN LA DESCRIPCION
+// 		*/
+// 		desc = $('#detpol-concepto').val();
+// 		desc = desc.replace(" ::160::","");
+// 		desc = desc.replace(" ::240::","");
+// 		desc = desc.replace(" ::430::","");
+// 		desc = desc.replace(" ::470::","");
+// 		desc = desc.replace(" ::241::","");
+//
+// 		gastoOficina = $('#detpol-gtoficina').attr('db-id');
+// 		descOficina = "";
+//
+// 		if (gastoOficina == 160){ descOficina = "::160::"; }
+// 		if (gastoOficina == 240){ descOficina = "::240::"; }
+// 		if (gastoOficina == 430){ descOficina = "::430::"; }
+// 		if (gastoOficina == 470){ descOficina = "::470::"; }
+// 		if (gastoOficina == 241){ descOficina = "::241::"; }
+//
+//  		desc = desc + " " + descOficina;
+// 		$('#detpol-concepto').val(desc);
+// }
 
 // BOTON IMPRIMIR
 function btn_printPoliza(id_poliza,aduana){

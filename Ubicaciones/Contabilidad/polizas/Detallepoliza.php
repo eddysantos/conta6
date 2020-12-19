@@ -362,8 +362,7 @@ require_once('modales/EditarRegistro.php');
 require_once('modales/buscarFacturas.php');
 ?>
 
-<script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
-<script src="/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
+
 <script src="/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
 
 <?PHP

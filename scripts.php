@@ -15,3 +15,5 @@
 <script src="/Resources/js/navbar.js"></script>
 <?php // NOTE: se comentaron ya que se inician varias funciones al estar listo el documento, se creo un nuevo archivo modales.js, solo para las funciones que llaman a los modales en toda la pagina ?>
 <script src="/Resources/js/modales.js" charset="utf-8"></script>
+<script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script>
+<script src="/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>

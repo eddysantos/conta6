@@ -36,29 +36,29 @@ $(document).ready(function(){
     });
 
 
-    $('.chebeneficiario').click(function(){
-      $('#chebeneficiario1').show();
-      $('#chebeneficiario').focus();
-      $('#checliente1,#cheempleado1,#cheproveedor1').hide();
-    });
-
-    $('.checliente').click(function(){
-      $('#checliente1').show();
-      $('#checliente').focus();
-      $('#chebeneficiario1,#cheempleado1,#cheproveedor1').hide();
-    });
-
-    $('.cheempleado').click(function(){
-      $('#cheempleado1').show();
-      $('#cheempleado').focus();
-      $('#checliente1,#chebeneficiario1,#cheproveedor1').hide();
-    });
-
-    $('.cheproveedor').click(function(){
-      $('#cheproveedor1').show();
-      $('#cheproveedor').focus();
-      $('#chebeneficiario1,#checliente1,#cheempleado1').hide();
-    });
+    // $('.chebeneficiario').click(function(){
+    //   $('#chebeneficiario1').show();
+    //   $('#chebeneficiario').focus();
+    //   $('#checliente1,#cheempleado1,#cheproveedor1').hide();
+    // });
+    //
+    // $('.checliente').click(function(){
+    //   $('#checliente1').show();
+    //   $('#checliente').focus();
+    //   $('#chebeneficiario1,#cheempleado1,#cheproveedor1').hide();
+    // });
+    //
+    // $('.cheempleado').click(function(){
+    //   $('#cheempleado1').show();
+    //   $('#cheempleado').focus();
+    //   $('#checliente1,#chebeneficiario1,#cheproveedor1').hide();
+    // });
+    //
+    // $('.cheproveedor').click(function(){
+    //   $('#cheproveedor1').show();
+    //   $('#cheproveedor').focus();
+    //   $('#chebeneficiario1,#checliente1,#cheempleado1').hide();
+    // });
 
 
 
@@ -85,81 +85,83 @@ $('#mConsChIdcheque').keydown(function(e){
 	}
 })
 
-    $('#chebeneficiario').change(function(){
-        $('#opcionActivada').val("BEN");
-        $('#checliente').val('');
-        $('#cheempleado').val('');
-        $('#cheproveedor').val('');
-    });
+// NOTE: esto se paso directamente a la pagina de generar cheque
 
-    $('#checliente').change(function(){
-        $('#opcionActivada').val('CLT');
-        $('#chebeneficiario').val('');
-        $('#cheempleado').val('');
-        $('#cheproveedor').val('');
-    });
-
-    $('#cheempleado').change(function(){
-        $('#opcionActivada').val('EMPL');
-        $('#chebeneficiario').val('');
-        $('#checliente').val('');
-        $('#cheproveedor').val('');
-    });
-
-    $('#cheproveedor').change(function(){
-        $('#opcionActivada').val('PROV');
-        $('#chebeneficiario').val('');
-        $('#cheempleado').val('');
-        $('#checliente').val('');
-    });
-
-    $('#btn_genFolioCheque').click(function(){
-      if($('#chefecha').val() == ""){
-        alertify.error("Seleccione una fecha");
-        $('#chefecha').focus();
-        return false;
-      }
-      if($('#checuenta').attr('db-id') == ""){
-        alertify.error("Seleccione una cuenta");
-        $('#chequecuenta').focus();
-        return false;
-      }
-      if($('#chenumero').val() == ""){
-        alertify.error("Ingrese número de cheque");
-        $('#chenumero').focus();
-        return false;
-      }
-      if($('#cheimporte').val() == ""){
-        alertify.error("Ingrese valor del cheque");
-        $('#cheimporte').focus();
-        return false;
-      }
-      if($('#opcionActivada').val() == ""){
-        alertify.error("Seleccione nombre a pagar");
-        $('#opcionActivada').focus();
-        return false;
-      }
-      if($('#checoncepto').val() == ""){
-        alertify.error("Escriba un concepto");
-        $('#checoncepto').focus();
-        return false;
-      }
-
-      fecha = $('#chefecha').val();
-      aduana = $('#txt_aduana').val();
-      tipoDoc = 1;
-      usuario = $('#txt_usuario').val();
-      permiso = "s_generar_x_fecha_cheques";
-
-      var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
-      //console.log(continuar);
-      if(continuar == true) {
-        genChe();
-      }else{
-        //swal("Oops!", "Solicite cambio de fechas a Contabilidad", 'error');
-        return false;
-      }
-    });
+    // $('#chebeneficiario').change(function(){
+    //     $('#opcionActivada').val("BEN");
+    //     $('#checliente').val('');
+    //     $('#cheempleado').val('');
+    //     $('#cheproveedor').val('');
+    // });
+    //
+    // $('#checliente').change(function(){
+    //     $('#opcionActivada').val('CLT');
+    //     $('#chebeneficiario').val('');
+    //     $('#cheempleado').val('');
+    //     $('#cheproveedor').val('');
+    // });
+    //
+    // $('#cheempleado').change(function(){
+    //     $('#opcionActivada').val('EMPL');
+    //     $('#chebeneficiario').val('');
+    //     $('#checliente').val('');
+    //     $('#cheproveedor').val('');
+    // });
+    //
+    // $('#cheproveedor').change(function(){
+    //     $('#opcionActivada').val('PROV');
+    //     $('#chebeneficiario').val('');
+    //     $('#cheempleado').val('');
+    //     $('#checliente').val('');
+    // });
+    //
+    // $('#btn_genFolioCheque').click(function(){
+    //   if($('#chefecha').val() == ""){
+    //     alertify.error("Seleccione una fecha");
+    //     $('#chefecha').focus();
+    //     return false;
+    //   }
+    //   if($('#checuenta').attr('db-id') == ""){
+    //     alertify.error("Seleccione una cuenta");
+    //     $('#chequecuenta').focus();
+    //     return false;
+    //   }
+    //   if($('#chenumero').val() == ""){
+    //     alertify.error("Ingrese número de cheque");
+    //     $('#chenumero').focus();
+    //     return false;
+    //   }
+    //   if($('#cheimporte').val() == ""){
+    //     alertify.error("Ingrese valor del cheque");
+    //     $('#cheimporte').focus();
+    //     return false;
+    //   }
+    //   if($('#opcionActivada').val() == ""){
+    //     alertify.error("Seleccione nombre a pagar");
+    //     $('#opcionActivada').focus();
+    //     return false;
+    //   }
+    //   if($('#checoncepto').val() == ""){
+    //     alertify.error("Escriba un concepto");
+    //     $('#checoncepto').focus();
+    //     return false;
+    //   }
+    //
+    //   fecha = $('#chefecha').val();
+    //   aduana = $('#txt_aduana').val();
+    //   tipoDoc = 1;
+    //   usuario = $('#txt_usuario').val();
+    //   permiso = "s_generar_x_fecha_cheques";
+    //
+    //   var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
+    //   //console.log(continuar);
+    //   if(continuar == true) {
+    //     genChe();
+    //   }else{
+    //     //swal("Oops!", "Solicite cambio de fechas a Contabilidad", 'error');
+    //     return false;
+    //   }
+    // });
 
     //*******************************************************************************
     //                                 EDITAR CHEQUE MST
@@ -967,49 +969,51 @@ function sumasCAcheques(){
   });
 }
 
-function genChe(){
-    if($('#opcionActivada').val() == "BEN"){ id_expedidor = $('#chebeneficiario').attr('db-id'); }
-    if($('#opcionActivada').val() == "CLT"){ id_expedidor = $('#checliente').attr('db-id'); }
-    if($('#opcionActivada').val() == "EMPL"){ id_expedidor = $('#cheempleado').attr('db-id'); }
-    if($('#opcionActivada').val() == "PROV"){ id_expedidor = $('#cheproveedor').attr('db-id'); }
 
-    id_cuentaMST = $('#checuenta').attr('db-id');
-
-    var data = {
-  		fecha: $('#chefecha').val(),
-      cuenta: $('#checuenta').attr('db-id'),
-      cheque: $('#chenumero').val(),
-      importe: $('#cheimporte').val(),
-      concepto: $('#checoncepto').val(),
-      opcion: $('#opcionActivada').val(),
-      id_expedidor: id_expedidor
-  	}
-
-  	tipo = 5;
-  	$.ajax({
-  		type: "POST",
-  		url: "/Ubicaciones/Contabilidad/cheques/actions/generarFolioCheque.php",
-  		data: data,
-  		success: 	function(r){
-  		r = JSON.parse(r);
-      if (r.code == 1) {
-          console.log(r.data);
-          id_cheque = r.data;
-          window.location.replace('Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
-        } else {
-          if( r.message == 'Cheque Existe'){
-            swal("Ya Existe", r.message , "warning");
-          }else{
-            console.error(r.message);
-          }
-        }
-      },
-      error: function(x){
-        console.error(x);
-      }
-  	});
-
-}
+// NOTE: se paso directamente a pagina generarcheque.php
+// function genChe(){
+//     if($('#opcionActivada').val() == "BEN"){ id_expedidor = $('#chebeneficiario').attr('db-id'); }
+//     if($('#opcionActivada').val() == "CLT"){ id_expedidor = $('#checliente').attr('db-id'); }
+//     if($('#opcionActivada').val() == "EMPL"){ id_expedidor = $('#cheempleado').attr('db-id'); }
+//     if($('#opcionActivada').val() == "PROV"){ id_expedidor = $('#cheproveedor').attr('db-id'); }
+//
+//     id_cuentaMST = $('#checuenta').attr('db-id');
+//
+//     var data = {
+//   		fecha: $('#chefecha').val(),
+//       cuenta: $('#checuenta').attr('db-id'),
+//       cheque: $('#chenumero').val(),
+//       importe: $('#cheimporte').val(),
+//       concepto: $('#checoncepto').val(),
+//       opcion: $('#opcionActivada').val(),
+//       id_expedidor: id_expedidor
+//   	}
+//
+//   	tipo = 5;
+//   	$.ajax({
+//   		type: "POST",
+//   		url: "/Ubicaciones/Contabilidad/cheques/actions/generarFolioCheque.php",
+//   		data: data,
+//   		success: 	function(r){
+//   		r = JSON.parse(r);
+//       if (r.code == 1) {
+//           console.log(r.data);
+//           id_cheque = r.data;
+//           window.location.replace('Detallecheque.php?id_cheque='+id_cheque+'&id_cuentaMST='+id_cuentaMST);
+//         } else {
+//           if( r.message == 'Cheque Existe'){
+//             swal("Ya Existe", r.message , "warning");
+//           }else{
+//             console.error(r.message);
+//           }
+//         }
+//       },
+//       error: function(x){
+//         console.error(x);
+//       }
+//   	});
+//
+// }
 
 
 function Actualiza_CuentaCapCh(){
