@@ -31,8 +31,8 @@ if (!($stmt->execute())) {
   exit_script($system_callback);
 }
 $rslt = $stmt->get_result();
-error_log('pase el resultado');
 $rows = $rslt->num_rows;
+error_log('$rows ' . $rows);
 if( $rows > 0 ){
   $rowCLT = $rslt->fetch_assoc();
 	$cltRef = $rowCLT['pk_id_cliente'];
