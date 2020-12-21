@@ -1,6 +1,8 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
+require $root . '/Resources/PHP/actions/consultaDatosOficina.php'; # $lst_oficinasPermitidas
+
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +23,8 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
           <li class="nav-item dropdown text-left">
             <a href="/Ubicaciones/Bienvenida.php"><img src="/Resources/imagenes/s_rojo.svg" style=' width: 45px;'></a>
             <ul class="dropdown-menu text-center" style="width:220px">
-              <select class="w-75">
-                <option value="">Aeropuerto</option>
-                <option value="">Manzanillo</option>
-                <option value="">Nuevo Laredo</option>
-                <option value="">Veracruz</option>
+              <select id="selectAduana" class="w-75 actualizaMenus">
+                  <?php echo $lst_oficinasPermitidas; ?>
               </select>
             </ul>
           </li>
@@ -53,7 +52,9 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
                   <li><a href="#asignar-proveedor" data-toggle="modal">Asignar proveedor</a></li><?php } ?>
 
                   <?PHP if($oRst_permisos['s_imprimir_polizas_periodo'] == 1){ ?>
-                  <li><a href="#imprimir-pol" data-toggle="modal">Imprimir Pólizas</a></li><?php } ?>
+                    <?php // NOTE: comentado porque aun no tiene funcion ?>
+                  <!-- <li><a href="#imprimir-pol" data-toggle="modal">Imprimir Pólizas</a></li> -->
+                <?php } ?>
 
                 </li>
               </ul>
@@ -218,14 +219,16 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
     </nav>
   </header>
 
+
 <?php
-  require $root . '/Ubicaciones/Contabilidad/modales/ImprimirPolizas.php';
+  // NOTE: comentado porque aun falta funcion
+  // require $root . '/Ubicaciones/Contabilidad/modales/ImprimirPolizas.php';
   require $root . '/Ubicaciones/Contabilidad/Reportes/modales/ModalRepo.php';
   require $root . '/Ubicaciones/Contabilidad/modales/ModificarConsultar.php';
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/modales/ConsultarFactura.php';
   require $root . '/Ubicaciones/Trafico/modales/MonitordeOficinas.php';
 
-  require $root . '/scripts.php';
+  // NOTE: SE COMENTO PORQUE se manda llamar en bienvenida  2 veces, se encontraba aqui en barra de navegacion y el footer, se dejo el del footer
+  // require $root . '/scripts.php';
 
 ?>
-<script src="/Resources/js/navbar.js"></script>

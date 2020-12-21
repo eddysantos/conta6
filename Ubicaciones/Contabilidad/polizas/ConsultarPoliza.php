@@ -34,45 +34,50 @@ if( $totalRegistrosSelect > 0 ){
 ?>
 
 <div class="text-center mb-10">
-  <div class="row m-0 submenuMed">
-    <ul class="nav nav-pills nav-fill w-100">
-      <li class="nav-item">
-        <a class="nav-link pol" id="submenuMed" status="cerrado" accion="dtospol">DATOS DE POLIZA</a>
-      </li>
-    </ul>
+  <!--Comienza DETALLE DATOS DE POLIZA-->
+  <ul class="nav nav-tabs justify-content-center backpink" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">DATOS DE POLIZA</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div id="datospoliza" class="contorno mt-4">
+        <div class="titulo" style='margin-top:-25px'>DATOS DE LA POLIZA</div>
+        <table class="table font14">
+          <thead>
+            <tr class="row encabezado">
+              <td class="p-1 col-md-2">POLIZA</td>
+              <td class="p-1 col-md-2">USUARIO</td>
+              <td class="p-1 col-md-2">FECHA POLIZA</td>
+              <td class="p-1 col-md-2">GENERACION</td>
+              <td class="p-1 col-md-2">ADUANA</td>
+              <td class="p-1 col-md-2">CANCELACIÓN</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row">
+              <td class="p-1 col-md-2"><?php echo $oRst_Select['pk_id_poliza']; ?></td>
+              <td class="p-1 col-md-2"><?php echo $oRst_Select['fk_usuario']; ?></td>
+              <td class="p-1 col-md-2"><?php echo $oRst_Select['d_fecha']; ?></td>
+              <td class="p-1 col-md-2"><?php echo $oRst_Select['d_fecha_alta']; ?></td>
+              <td class="p-1 col-md-2"><?php echo $oRst_Select['fk_id_aduana']; ?></td>
+              <td class="p-1 col-md-2"><?php echo $txt_cancela; ?></td>
+            </tr>
+            <tr class="row mt-1">
+              <td class="col-md-12 sub2 p-1">CONCEPTO :</td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-12 p-1"><?php echo $oRst_Select['s_concepto']; ?>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
-  <div id="datospoliza" class="contorno" style="display:none">
-    <div class="titulo" style="margin-top:-26px">DATOS DE LA POLIZA</div>
-    <table class="table font14">
-      <thead>
-        <tr class="row encabezado">
-          <td class="p-1 col-md-2">POLIZA</td>
-          <td class="p-1 col-md-2">USUARIO</td>
-          <td class="p-1 col-md-2">FECHA POLIZA</td>
-          <td class="p-1 col-md-2">GENERACION</td>
-          <td class="p-1 col-md-2">ADUANA</td>
-          <td class="p-1 col-md-2">CANCELACIÓN</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="row">
-          <td class="p-1 col-md-2"><?php echo $oRst_Select['pk_id_poliza']; ?></td>
-          <td class="p-1 col-md-2"><?php echo $oRst_Select['fk_usuario']; ?></td>
-          <td class="p-1 col-md-2"><?php echo $oRst_Select['d_fecha']; ?></td>
-          <td class="p-1 col-md-2"><?php echo $oRst_Select['d_fecha_alta']; ?></td>
-          <td class="p-1 col-md-2"><?php echo $oRst_Select['fk_id_aduana']; ?></td>
-          <td class="p-1 col-md-2"><?php echo $txt_cancela; ?></td>
-        </tr>
-        <tr class="row mt-1">
-          <td class="col-md-12 sub2 p-1">CONCEPTO :</td>
-        </tr>
-        <tr class="row">
-          <td class="col-md-12 p-1"><?php echo $oRst_Select['s_concepto']; ?>
-        </tr>
-      </tbody>
-    </table>
-  </div><!--/Termina DETALLE DATOS DE POLIZA-->
+  <!--/Termina DETALLE DATOS DE POLIZA-->
+
 
   <ul class="nav row text-center m-0 mt-3" id="myTab" role="tablist">
     <li class="nav-item col-md-6">
@@ -181,6 +186,8 @@ if( $totalRegistrosSelect > 0 ){
     </div>
   </div>
 </div>
+<?php // NOTE: se metio a scripts.php ?>
+<!-- <script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js"></script> -->
 <?php
 }else{
 ?>
@@ -191,8 +198,7 @@ if( $totalRegistrosSelect > 0 ){
 }
 ?>
 
-
 <?php
 require $root . '/Ubicaciones/footer.php';
  ?>
-<!-- <script src="/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script> -->
+<script src="/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>

@@ -19,6 +19,7 @@ if (!($stmt_ConceptosAlmacen->execute())) {
 
 $rslt_ConceptosAlmacen = $stmt_ConceptosAlmacen->get_result();
 
+$ConceptosAlmacen = "";
 if ($rslt_ConceptosAlmacen->num_rows == 0) {
   $ConceptosAlmacen .= "<option selected value='0'>Sin tarifa</option>";
 }

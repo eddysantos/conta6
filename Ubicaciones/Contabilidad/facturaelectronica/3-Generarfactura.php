@@ -43,7 +43,6 @@
     </table>
   </div>
 </div>
-<script src="js/facturaElectronica.js"></script>
 <?php
 require $root . '/Ubicaciones/footer.php';
  ?>

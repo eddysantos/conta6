@@ -54,7 +54,7 @@
   if( $rows_ctasCliente > 0 ){
     while($row_ctasCliente = $rslt_ctasCliente->fetch_assoc()){
       $cta = $row_ctasCliente['pk_id_cuenta'];
-      if( strpos($cta,'0208-') !==  false ){ $cta208 = $cta; }
+      if( strpos($cta,'0208-') !==  false ){ $idcta208 = $cta; }
     }
   }
 

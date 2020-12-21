@@ -2,6 +2,7 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
+$system_callback['data'] = '';
 
   $query_consultaFormapago = "SELECT * FROM conta_cs_sat_formapago ORDER BY s_concepto";
   $stmt_consultaFormapago = $db->prepare($query_consultaFormapago);

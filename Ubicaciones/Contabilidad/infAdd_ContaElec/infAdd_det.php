@@ -88,6 +88,29 @@ require $root . '/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; #  $con
             </select>
           </td>
         </tr>
+
+        <?php if( $oRst_permisos['s_provisionar'] == 1 ){ ?>
+        <tr class="row backpink mt-3 font12">
+          <td class="col-md-5">
+            <input class="efecto popup-input tiene-contenido" id="cfdi-prov" type="text" id-display="#popup-display-cfdi-prov" action="proveedores" db-id="" autocomplete="off">
+            <div class="popup-list" id="popup-display-cfdi-prov" style="display:none"></div>
+            <label for="cfdi-prov">Proveedores</label>
+            <input type="hidden" id="cfdi-folio">
+		        <input type="hidden" id="cfdi-ivaaplicado">
+          </td>
+          <td class="col-md-2">
+            <button id="cfdi-provisionbtn" type="button" class="boton">
+              <i class="fa fa-plus-circle"></i> PROVISIONAR
+            </button>
+          </td>
+          <td class="col-md-2">
+            <button id="cfdi-pagoprovisionbtn" type="button" class="boton">
+              <i class="fa fa-plus-circle"></i> PAGO PROVISIÓN
+            </button>
+          </td>
+        </tr>
+        <?php } ?>
+
       </tbody>
     </table>
   </div>
@@ -464,7 +487,6 @@ require $root . '/Resources/PHP/actions/lst_conta_cs_sat_formapago.php'; #  $con
 </div>
 <!--Termina desplazamiento numero 3-->
 
- <!-- prueba modificar -->
 <?php
 require $root . '/Ubicaciones/Contabilidad/modales/catalogoBancosSAT.php';
 ?>

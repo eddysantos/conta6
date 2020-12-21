@@ -21,6 +21,9 @@ $partidaCheque = trim($_POST['partidaCheque']);
 
 $fechaActual = date ("Y-m-d H:i:s",time ());
 
+if ($gastoOficina == '') {$gastoOficina = null;}
+if ($proveedor == '') {$proveedor = null;}
+
 $query = "UPDATE conta_t_cheques_det SET
 fk_id_cuenta = ?,
 fk_referencia = ?,

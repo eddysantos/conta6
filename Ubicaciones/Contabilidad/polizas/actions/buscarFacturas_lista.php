@@ -6,6 +6,7 @@ $cliente = trim($_POST['cliente']);
 $fecha = trim($_POST['fecha']);
 $id_poliza = trim($_POST['id_poliza']);
 $tipo = trim($_POST['tipo']);
+$system_callback['data'] = '';
 
 $TBL = "temp_polizas_cliente";
 require $root . '/Ubicaciones/Contabilidad/actions/buscarFacturas.php';

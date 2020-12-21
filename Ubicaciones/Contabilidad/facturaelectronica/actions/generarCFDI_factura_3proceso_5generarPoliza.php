@@ -1,4 +1,26 @@
 <?php
+#http://localhost:88/ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5generarPoliza.php
+
+/*
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  require $root . '/Resources/PHP/Utilities/initialScript.php';
+
+  $fechaTimbre = '2020-12-17 11:24:36';
+  $moneda = 'MXN';
+  $totalGralImporte = 2150;
+  $totaGralIVA = 344;
+  $IVAretenido = 0;
+  $totalGral = 2494;
+  $idFactura = 48;
+  $referencia = 'SN';
+  $cliente = 'CLT_6548';
+  $id_cliente = $cliente;
+  $r_razon_social = 'MOTORES ELECTRICOS SUMERGIBLES DE MEXICO, S DE RL DE CV';
+  $cuenta = 225;
+*/
+
+
+
 
 $tipo = 3;
 $fecha = $fechaTimbre;
@@ -30,7 +52,7 @@ if( $moneda <> 'MXN' ){
 }
 
 #--Movimiento Contable del Subtotal
-if( $Total_Gral > 0 ){
+if( $Total_Gral <> 0 ){
   $detallePoliza .= "(".$poliza.",'".$fecha."',".$idFactura.",'".$cta108."',3,'IMPORTE DE LA FACTURA ELECTRONICA','".$id_cliente."','".$referencia."',".$Total_Gral.",0),";
 }
 

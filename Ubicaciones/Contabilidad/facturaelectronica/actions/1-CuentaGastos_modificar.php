@@ -44,13 +44,14 @@ $Honorarios_Porcentaje = trim($_POST['T_Honorarios_Porcentaje']);
 $Honorarios_Base_Honorarios = trim($_POST['T_Honorarios_Base_Honorarios']);
 $Honorarios_Descuent = trim($_POST['T_Honorarios_Descuento']);
 $Honorarios_Minimo = trim($_POST['T_Honorarios_Minimo']);
-$Honorarios_0 = trim($_POST['T_Honorarios_0']);
-$Hcta_0 = trim($_POST['T_Hcta_0']);
-$Hps_0 = trim($_POST['T_Hps_0']);
-$Honorarios_Importe_0 = trim($_POST['T_Honorarios_Importe_0']);
-$Honorarios_IVA_0 = trim($_POST['T_Honorarios_IVA_0']);
-$Honorarios_RET_0 = trim($_POST['T_Honorarios_RET_0']);
-$Honorarios_Subtotal_0 = trim($_POST['T_Honorarios_Subtotal_0']);
+
+// $Honorarios_0 = trim($_POST['T_Honorarios_0']);
+// $Hcta_0 = trim($_POST['T_Hcta_0']);
+// $Hps_0 = trim($_POST['T_Hps_0']);
+// $Honorarios_Importe_0 = trim($_POST['T_Honorarios_Importe_0']);
+// $Honorarios_IVA_0 = trim($_POST['T_Honorarios_IVA_0']);
+// $Honorarios_RET_0 = trim($_POST['T_Honorarios_RET_0']);
+// $Honorarios_Subtotal_0 = trim($_POST['T_Honorarios_Subtotal_0']);
 
 $Total_Gral_Importe = trim($_POST['T_Total_Importes']);
 $Total_Gral_Iva = trim($_POST['T_Total_IVA']);
@@ -76,8 +77,8 @@ $Txt_Total_Pagos = trim($_POST['Txt_Total_Pagos']);
 $Total_Pagos = trim($_POST['T_Total_Pagos']);
 $total_pagosCLT = $Total_POCME + $Total_Pagos;
 
-$Txt_POCME_Total = trim($_POST['Txt_POCME_Total']);
-$Txt_POCME_Tipo_Cambio = trim($_POST['Txt_POCME_Tipo_Cambio']);
+//$Txt_POCME_Total = trim($_POST['Txt_POCME_Total']);
+//$Txt_POCME_Tipo_Cambio = trim($_POST['Txt_POCME_Tipo_Cambio']);
 $Total_Letra = trim($_POST['Total_Letra']);
 $formaPago = trim($_POST['T_FormaPago']);
 $metodoPago = trim($_POST['T_metodoPago']);
@@ -238,7 +239,7 @@ require $root . '/Resources/PHP/actions/tarifas_calcula_borrar.php';
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
-
+$system_callback['data'] = $folio;
 exit_script($system_callback);
 
 //prueba modificar

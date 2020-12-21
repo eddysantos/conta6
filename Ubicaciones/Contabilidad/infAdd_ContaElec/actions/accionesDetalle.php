@@ -5,36 +5,42 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
   $tipoInf = $_POST['tipoInf'];
   $fk_id_poliza = $_POST['id_poliza'];
   $partidaDoc = $_POST['partidaDoc'];
-  $tipo = $_POST['tipo']; # ant,che, pol ...
+  if(isset($_POST['tipo'])){
+    $tipo = $_POST['tipo']; # ant,che, pol ...
+  }
 
+  /*
+  $accion = $_POST['accion'];
+  $bancoO = $_POST['bancoO'];
+  $ctaBancoO = $_POST['ctaBancoO'];
+  $bancoD = $_POST['bancoD'];
+  $ctaBancoD = $_POST['ctaBancoD'];
+  $fecha = $_POST['fecha'];
+  $fecha = date_format(date_create($fecha),'Y-m-d');
+  $beneficiario = $_POST['Beneficiario'];
+  $RFCopc = $_POST['RFCopc'];
+  $id_partida = $_POST['id_partida'];
+  $fechaActual = date("Y-m-s H:i:s");
+  $id_cheque = $_POST['numCheque'];
+  $observaciones = $_POST['observaciones'];
+  $bancoExt = $_POST['bancoExt'];
+  $bancoDestExt = $_POST['bancoDestExt'];
+  $serie = $_POST['serie'];
+  $folio = $_POST['folio'];
+  $NumFactExt = $_POST['NumFactExt'];
+  $TaxID = $_POST['TaxID'];
+  $metPago = $_POST['metPago'];
+  */
+  
   if( $tipoInf == "CompNal" ){
     # CONTROL INTERNO: $beneficiarioOpc, $RFCopc, $observaciones
-    $accion = $_POST['accion'];
-    $bancoO = $_POST['bancoO'];
-    $ctaBancoO = $_POST['ctaBancoO'];
-    $bancoD = $_POST['bancoD'];
-    $ctaBancoD = $_POST['ctaBancoD'];
-    $fecha = $_POST['fecha'];
-    $fecha = date_format(date_create($fecha),'Y-m-d');
-    $beneficiario = $_POST['Beneficiario'];
-    $beneficiarioOpc = $_POST['BeneficiarioOpc'];
-    $RFC = $_POST['RFC'];
-    $RFCopc = $_POST['RFCopc'];
-    $importe = $_POST['importe'];
     $UUID = $_POST['UUID'];
-    $id_partida = $_POST['id_partida'];
-    $fechaActual = date("Y-m-s H:i:s");
-    $id_cheque = $_POST['numCheque'];
-    $observaciones = $_POST['observaciones'];
-    $tipoCamb = $_POST['tipoCamb'];
+    $RFC = $_POST['RFC'];
+    $importe = $_POST['importe'];
+    $beneficiarioOpc = $_POST['BeneficiarioOpc'];
     $moneda = $_POST['moneda'];
-    $bancoExt = $_POST['bancoExt'];
-    $bancoDestExt = $_POST['bancoDestExt'];
-    $serie = $_POST['serie'];
-    $folio = $_POST['folio'];
-    $NumFactExt = $_POST['NumFactExt'];
-    $TaxID = $_POST['TaxID'];
-    $metPago = $_POST['metPago'];
+    $tipoCamb = $_POST['tipoCamb'];
+
 
     require $root . '/Resources/PHP/actions/contaElect_insertaCompNal.php';
     $rsltCOMPNAL = $stmtCOMPNAL->get_result();

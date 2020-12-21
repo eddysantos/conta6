@@ -64,12 +64,12 @@ $response = array(
     //die();
   // } else {
   //   $response['code']="200";
-  //   $response['msg']="El usuario o contraseña es incorrecto";
-  //   $response['data'] = mysqli_error($db);
+     //$response['msg']="El usuario o contraseña es incorrecto";
+     //$response['data'] = mysqli_error($db);
   // }
 
-  $response = json_encode($response);
-  echo $response;
+  #$response = json_encode($response);
+  #echo $response;
 
 
  ?>

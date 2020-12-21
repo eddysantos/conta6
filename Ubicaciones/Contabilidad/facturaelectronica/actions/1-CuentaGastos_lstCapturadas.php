@@ -3,6 +3,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
+$system_callback['data'] = "";
 
 $id_captura = trim($_POST['id_captura']);
 $accion = trim($_POST['accion']);
@@ -103,6 +104,10 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
 	$id_factura = '';
 	$id_poliza = '';
 	$s_cancela_factura = 0;
+	$hrefcancelar = "";
+	$hrefconsultar = "";
+	$hrefmodificar = "";
+	$s_UUID = "";
 
 	require $root . '/Resources/PHP/actions/consultaFacturaTimbrada.php';
 
@@ -140,7 +145,9 @@ while( $row_ctaGastos = $rslt_ctaGastos->fetch_assoc() ){
 			$txt_cancela = '';
 		}
 
-		if( is_null($s_UUID) && $oRst_permisos['s_facturas_timbrar'] ){
+		$hrefTimbrar = "";
+		//if( is_null($s_UUID) && $oRst_permisos['s_facturas_timbrar'] ){
+		if( $s_UUID == '' && $oRst_permisos['s_facturas_timbrar'] ){
 			$id_factura = '';
 			$hrefTimbrar = "<a href='#' onclick='ctaGastosCapturaConsultar($id_captura,&#39;timbrar&#39;)'><img class='icomediano' src='/Resources/iconos/timbrar.svg'></a>";
 		}

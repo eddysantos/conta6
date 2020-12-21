@@ -1,5 +1,167 @@
 $(document).ready(function(){
 
+	$('#cfdi-pagoprovisionbtn').click(function(){
+		//console.log(UUID+','+RFC+','+importe+','+subtotal+','+BeneficiarioOpc+','+iva+','+iva_aplicado+','+prov+','+folio+','+fecha_Poliza+','+seleccion+','+id_poliza+','+proveedor+','+ctaproveedor);
+		seleccion = $('#opcionespolizas').val();
+
+		//CompNal
+		if( seleccion == '2' ){
+			UUID = $('#cfdi-uuid').val();
+			RFC = $('#cfdi-rfc').val();
+			prov = $('#cfdi-prov').attr('db-id');
+			cadenaTexto = $('#cfdi-prov').val();
+			fragmentoTexto = cadenaTexto.split('-');
+			numProv = fragmentoTexto[0];
+			proveedor = fragmentoTexto[1];
+			ctaproveedor = fragmentoTexto[3]+'-'+fragmentoTexto[4];
+
+			accion = 'pagarProvision';
+
+			if(UUID == ""){
+				alertify.error("UUID es requerido");
+				$('#cfdi-uuid').focus();
+				return false;
+			}
+
+			if(RFC == ""){
+				alertify.error("RFC es requerido");
+				 $('#cfdi-rfc').focus();
+				return false;
+			}
+
+			if(prov == ""){
+				alertify.error("Proveedor es requerido");
+				$('#cfdi-prov').focus();
+				return false;
+			}
+
+			var data = {
+				seleccion : seleccion,
+				accion : accion,
+				UUID : UUID,
+				RFC : RFC,
+				prov : prov,
+				seleccion : seleccion,
+				numProv : numProv,
+				proveedor : proveedor,
+				ctaproveedor : ctaproveedor,
+				importe : $('#cfdi-total').val(),
+				subtotal : $('#cfdi-total').val(),
+				BeneficiarioOpc : $('#cfdi-razonsocial').val(),
+				iva : $('#cfdi-ivatrasladado').val(),
+				iva_aplicado : $('#cfdi-ivaaplicado').val(),
+				folio : $('#cfdi-folio').val(),
+				fecha_Poliza : $('#mstpol-fecha').val(),
+				id_poliza : $('#mst-poliza').val(),
+				tipo : $('#mstpol-tipo').val(),
+				moneda: $('#cfdi-moneda').val(),
+				tipoCamb: $('#cfdi-tc').val(),
+				retenido:  $('#cfdi-ivaretenido').val()
+			}
+			$.ajax({
+				type: "POST",
+				url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesProvisionar.php",
+				data: data,
+				success: function(r){
+					console.log(data);
+					r = JSON.parse(r);
+					console.log(r);
+						if (r.code == 1) {
+							//$('#datosProvision').html(r.data);
+							swal("Exito", "Se guardo correctamente.", "success");
+							infAdd_detalle(id_poliza);
+						} else {
+							console.error(r.message);
+						}
+					},
+					error: function(x){
+						console.error(x);
+					}
+			});
+		}
+	});
+
+	$('#cfdi-provisionbtn').click(function(){
+		//console.log(UUID+','+RFC+','+importe+','+subtotal+','+BeneficiarioOpc+','+iva+','+iva_aplicado+','+prov+','+folio+','+fecha_Poliza+','+seleccion+','+id_poliza+','+proveedor+','+ctaproveedor);
+		seleccion = $('#opcionespolizas').val();
+
+		//CompNal
+	  if( seleccion == '2' ){
+			UUID = $('#cfdi-uuid').val();
+		  RFC = $('#cfdi-rfc').val();
+			prov = $('#cfdi-prov').attr('db-id');
+			cadenaTexto = $('#cfdi-prov').val();
+			fragmentoTexto = cadenaTexto.split('-');
+			numProv = fragmentoTexto[0];
+			proveedor = fragmentoTexto[1];
+			ctaproveedor = fragmentoTexto[3]+'-'+fragmentoTexto[4];
+
+			accion = 'provisionar';
+
+			if(UUID == ""){
+		    alertify.error("UUID es requerido");
+		    $('#cfdi-uuid').focus();
+		    return false;
+		  }
+
+		  if(RFC == ""){
+		    alertify.error("RFC es requerido");
+		     $('#cfdi-rfc').focus();
+		    return false;
+		  }
+
+		  if(prov == ""){
+		    alertify.error("Proveedor es requerido");
+				$('#cfdi-prov').focus();
+		    return false;
+		  }
+
+			var data = {
+				seleccion : seleccion,
+				accion : accion,
+				UUID : UUID,
+			  RFC : RFC,
+				prov : prov,
+				seleccion : seleccion,
+				numProv : numProv,
+				proveedor : proveedor,
+				ctaproveedor : ctaproveedor,
+				importe : $('#cfdi-total').val(),
+				subtotal : $('#cfdi-total').val(),
+				BeneficiarioOpc : $('#cfdi-razonsocial').val(),
+				iva : $('#cfdi-ivatrasladado').val(),
+				iva_aplicado : $('#cfdi-ivaaplicado').val(),
+				folio : $('#cfdi-folio').val(),
+				fecha_Poliza : $('#mstpol-fecha').val(),
+				id_poliza : $('#mst-poliza').val(),
+				tipo : $('#mstpol-tipo').val(),
+				moneda: $('#cfdi-moneda').val(),
+		    tipoCamb: $('#cfdi-tc').val(),
+				retenido:  $('#cfdi-ivaretenido').val()
+			}
+			$.ajax({
+		    type: "POST",
+				url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/accionesProvisionar.php",
+		    data: data,
+		    success: function(r){
+					console.log(data);
+		      r = JSON.parse(r);
+					console.log(r);
+		        if (r.code == 1) {
+							//$('#datosProvision').html(r.data);
+							swal("Exito", "Se guardo correctamente.", "success");
+		          infAdd_detalle(id_poliza);
+		        } else {
+		          console.error(r.message);
+		        }
+		      },
+		      error: function(x){
+		        console.error(x);
+		      }
+		  });
+		}
+	});
+
 	$('#trans-embtn').click(function(){
 		idbanco = $('#transf-idbanco').val();
 		nomBancExtj = $('#transf-nombancoextj').val();
@@ -191,7 +353,8 @@ $(document).ready(function(){
 			 url: "/Resources/PHP/actions/consulta_chequeDatos.php",
 			 data: data,
 			 success: function(r){
-				 console.log(data);
+				 //console.log(data);
+				 //console.log(r);
 				 r = JSON.parse(r);
 					 if (r.code == 1) {
 						 $('#ch-cheque1').val(numerocheque);
@@ -294,7 +457,7 @@ function procesaXML(fileXML,contenido_XML){
   var data = {
     contenido_XML: contenido_XML,
     fileXML: fileXML,
-    tipo: $('#tipoDoc').val(),
+    tipo: $('#mstpol-tipo').val(),
     partidaDoc: 0,
     id_poliza:$('#mst-poliza').val()
   }
@@ -303,7 +466,8 @@ function procesaXML(fileXML,contenido_XML){
     url: "/Ubicaciones/Contabilidad/infAdd_ContaElec/actions/procesaArchivo.php",
     data: data,
     success: function(r){
-      console.log(r);
+      //console.log(data);
+			//console.log(r);
       r = JSON.parse(r);
         if (r.code == 1) {
           $('#datosUUID').html(r.data);
@@ -319,6 +483,8 @@ function procesaXML(fileXML,contenido_XML){
           $('#cfdi-ivaretenido').val(parte[7]);
           $('#cfdi-moneda').val(parte[8]);
           $('#cfdi-tc').val(parte[9]);
+					$('#cfdi-folio').val(parte[10]);
+          $('#cfdi-ivaaplicado').val(parte[11]);
         } else {
           console.error(r.message);
         }
@@ -691,9 +857,6 @@ function guardarOtrMetodoPago(id_partida){
 		}
 	});
 
-
-
-
 }
 
 
@@ -724,7 +887,6 @@ function eliminarPartida(partida){
 				data: data,
 				success: 	function(r){
 	        r = JSON.parse(r);
-					console.log(r);
 					swal("Eliminado!", "Se elimino correctamente.", "success");
 	        infAdd_detalle(id_poliza);
 				},

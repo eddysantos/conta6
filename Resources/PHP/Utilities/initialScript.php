@@ -1,7 +1,7 @@
 <?php
-error_reporting(0);
+#error_reporting(0);
+#error_reporting(E_ALL);
 
-error_reporting(E_ALL);
 $root = $_SERVER['DOCUMENT_ROOT'];
 // require $root . '/Resources/PHP/Utilities/session.php';
 require $root . "/Resources/vendor/autoload.php";

@@ -5,8 +5,8 @@
 
 <div class="row backpink m-0">
   <ul class="nav nav-pills nav-fill w-100">
-    <li class="nav-item">
-      <a class="nav-link" id="submenuMed">GENERAR ANTICIPO</a>
+    <li class="nav-item font18 p-2">
+      GENERAR ANTICIPO
     </li>
   </ul>
 </div>
@@ -61,3 +61,5 @@
 <?php
 require $root . '/Ubicaciones/footer.php';
 ?>
+
+<script src="/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js"></script>

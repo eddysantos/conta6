@@ -6,6 +6,7 @@ $rutaAnioActual = $root . '/CFDI_generados/'.$anioActual;
 $rutaTemp = $rutaAnioActual.'/temp';
 $rutaRep = $rutaAnioActual.'/repositorio';
 $rutaCLT = $rutaAnioActual.'/'.$id_cliente;
+$rutaCFDI = $rutaCLT;
 $rutaQR = $rutaCLT.'/QR';
 
 #generar carpetas

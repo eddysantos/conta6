@@ -5,6 +5,7 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
+$system_callback['data'] = "" ;
 
 $id_cliente = trim($_POST['id_cliente']);
 $modulo = trim($_POST['modulo']);

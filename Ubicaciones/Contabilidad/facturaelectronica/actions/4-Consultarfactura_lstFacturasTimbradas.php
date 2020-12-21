@@ -28,6 +28,7 @@ if (!($stmt_ctaGastos->execute())) {
 $rslt_ctaGastos = $stmt_ctaGastos->get_result();
 $total_ctaGastos = $rslt_ctaGastos->num_rows;
 
+$listaFacturas = "";
 if( $total_ctaGastos == 0 ){
 	$listaFacturas = "No hay resultados";
 }

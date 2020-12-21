@@ -26,6 +26,7 @@ $rows_depositosCliente = $rslt_depositosCliente->num_rows;
 
 #<div class='checkbox-xs' onclick='agregarAnticipo($deposito,$importe)'>
 
+$depositosSinAplicar = "";
 if( $rows_depositosCliente > 0 ){
   while ($row_depositosCliente = $rslt_depositosCliente->fetch_assoc()) {
     $deposito = $row_depositosCliente['fk_anticipo'];

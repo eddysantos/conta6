@@ -2,23 +2,31 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 
-$partida = trim($_POST['partida']);
-$id_poliza = trim($_POST['id_poliza']);
-$fecha = trim($_POST['fecha']);
-$id_referencia = trim($_POST['id_referencia']);
-$tipo = trim($_POST['tipo']);
-$cuenta = trim($_POST['cuenta']);
-$id_cliente = trim($_POST['id_cliente']);
-$documento = trim($_POST['documento']);
-$factura = trim($_POST['factura']);
-$anticipo = trim($_POST['anticipo']);
-$cheque = trim($_POST['cheque']);
-$cargo = trim($_POST['cargo']);
-$abono = trim($_POST['abono']);
-$desc = trim($_POST['desc']);
-$gastoOficina = trim($_POST['gastoOficina']);
-$proveedor = trim($_POST['proveedor']);
+// $partida = trim($_POST['partida']);
+// $id_poliza = trim($_POST['id_poliza']);
+// $fecha = trim($_POST['fecha']);
+// $id_referencia = trim($_POST['id_referencia']);
+// $tipo = trim($_POST['tipo']);
+// $cuenta = trim($_POST['cuenta']);
+// $id_cliente = trim($_POST['id_cliente']);
+// $documento = trim($_POST['documento']);
+// $factura = trim($_POST['factura']);
+// $anticipo = trim($_POST['anticipo']);
+// $cheque = trim($_POST['cheque']);
+// $cargo = trim($_POST['cargo']);
+// $abono = trim($_POST['abono']);
+// $desc = trim($_POST['desc']);
+// $gastoOficina = trim($_POST['gastoOficina']);
+// $proveedor = trim($_POST['proveedor']);
+
+extract($_POST);
+if ($cheque == '') {$cheque = NULL;}
+if ($notaCred == '') {$notaCred = NULL;}
+if ($ctagastos == '') {$ctagastos = NULL;}
+if ($gastoOficina == '') {$gastoOficina = NULL;}
+if ($proveedor == '') {$proveedor = NULL;}
 $mesPoliza = date_format(date_create($fecha),'m');
+
 
 $query = "UPDATE conta_t_polizas_det
 SET d_fecha = ?,

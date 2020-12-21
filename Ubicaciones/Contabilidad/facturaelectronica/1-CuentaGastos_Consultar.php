@@ -5,8 +5,22 @@
   $cuenta = trim($_GET['cuenta']);
   $accion = trim($_GET['accion']);
   $txt_id_asoc = 'No';
+  $poliza = '';
+  $hrefTimbrar = "";
+  $detallePoliza = "";
 
-  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php';
+  $datosCargos = '';
+  $id_polctagastos = '';
+  $fecha = '';
+  $idFactura = '';
+  $id_cliente = '';
+  $referencia = '';
+  $id_ctagastos = '';
+  $detPolCtaGastos = "";
+  $poliza_CtaGastos = "";
+
+
+  require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosGenerales.php'; #$fk_id_moneda
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosEmbarque.php'; #$datosEmbarque
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
@@ -207,7 +221,7 @@
         <td class="p-1 col-md-3"><?php echo $d_fecha_cta;?></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-2 text-left"> Cta. modificada</td>
+        <td class="p-1 col-md-2 text-left"> Cta. modificada:</td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"><?php echo $s_usuario_modifi; ?></td>
@@ -221,14 +235,13 @@
         <td class="p-1 col-md-3"><?php echo $fechaTimbre; ?></td>
       </tr>
       <tr class="row">
-
         <td class="p-1 col-md-4"><?php echo '<b>'.$s_UUID.'</b>'; ?></td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-3"></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-2 text-left"> Factura cancelada</td>
+        <td class="p-1 col-md-2 text-left"> Factura cancelada:</td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"><?php echo $usuario_Cancela; ?></td>
@@ -242,7 +255,7 @@
         <td class="p-1 col-md-3"><?php echo $fecha_genera; ?></td>
       </tr>
       <tr class="row">
-        <td class="p-1 col-md-2 text-left"> Pago aplicado</td>
+        <td class="p-1 col-md-2 text-left"> Pago aplicado:</td>
         <td class="p-1 col-md-2"></td>
         <td class="p-1 col-md-2"><?php echo $id_polpagoaplic; ?></td>
         <td class="p-1 col-md-2"><?php echo $usuario_timbra; ?></td>
@@ -254,6 +267,7 @@
 
 <!--Esta informacion si estara visible SOLICITUD-->
 <?php
+$txt_evaluar = '';
 if( $s_UUID != '' && $accion == 'cancelar' ){ ?>
 <div class="contorno">
   <h5 class="titulo font14 b">ESTADO DEL COMPROBANTE</h5>

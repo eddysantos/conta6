@@ -5,6 +5,7 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
+$system_callback['data'] = '';
 
 $data['string'];
 $text = "%" . $data['string'] . "%";

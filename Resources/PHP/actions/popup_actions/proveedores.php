@@ -5,6 +5,7 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
 $data = $_POST;
+$system_callback['data'] = '';
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
@@ -42,7 +43,7 @@ if ($rslt->num_rows == 0) {
 
 while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
-  "<p db-id='$row[pk_id_proveedor]'>$row[pk_id_proveedor] - $row[s_nombre] - $row[s_rfc]</p>";
+  "<p db-id='$row[pk_id_proveedor]'>$row[pk_id_proveedor] - $row[s_nombre] - $row[s_rfc] - $row[fk_id_cuenta]</p>";
 }
 
 $system_callback['code'] = 1;

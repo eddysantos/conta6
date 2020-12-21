@@ -11,6 +11,7 @@
   $idOrd  = trim($_POST['id_expedidor']);
 
   $fechaDoc = date_format(date_create($fecha),'Y-m-d');
+  $system_callback['data'] = '';
 
   //revisando cheque duplicado
   $queryChequeExiste = "SELECT * FROM conta_t_cheques_mst WHERE pk_id_cheque = ? AND fk_id_cuentaMST = ?";

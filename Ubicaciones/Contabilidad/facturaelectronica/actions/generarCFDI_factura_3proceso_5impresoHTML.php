@@ -1,18 +1,20 @@
 <?php
-#http://localhost:88/conta6/ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML.php
+#http://localhost:88/ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura_3proceso_5impresoHTML.php
 
 /*
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
-  $cuenta = 173;
-  $id_factura = 10;
-  $referencia = 'N13003039';
-  $cliente = 'CLT_7345';
+  $cuenta = 220;
+  $id_factura = 44;
+  $referencia = 'SN';
+  $cliente = 'CLT_6548';
+  $poliza = 668;
+  $respGuardarDatos = '';
 
   #nombre carpetas
-  $anioActual = 2018;
+  $anioActual = 2020;
   $rutaAnioActual = $root . '/CFDI_generados/'.$anioActual;
   $rutaCLT = $rutaAnioActual.'/'.$cliente;
   $rutaQR = $rutaCLT.'/QR';
@@ -34,6 +36,7 @@
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosPOCME.php'; # $datosPOCME
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosCargos.php'; #$datosCargos
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosHonorarios.php'; #$datosHonorarios
+
   require $root . '/Ubicaciones/Contabilidad/facturaelectronica/actions/consultarCapturaCuenta_datosDepositos.php'; #$datosDepositos
   $id_cliente = $fk_id_cliente;
   require $root . '/Resources/PHP/actions/consultaDatosCliente_formaPago.php';#$formaPago

@@ -122,6 +122,14 @@ if($referencia != "SN"){
       $retencion = 0;
       $iva_menos_retencion = 0;
     }
+
+	# PARA -> FRANKLIN ELECTRIC MANUFACTURING, INC. SE COBRA 16% PARA EXPORTACION EN NUEVO LAREDO A PARTIR 01-MAYO-2019
+//REVISAR QUE SI FUNCIONE
+	if( $cliente == 'CLT_7254' and $tipo == 'EXP' ){
+		$iva = $ivaGral;
+		$iva_menos_retencion = $iva - $retencion;
+	}
+
     /* SACO UN FOLIO DE CALCULO DE TARIFA, ESTE FOLIO ME SERVIRA PARA PODER IDENTIFICAR LOS FILTROS DE LAS TARIFAS */
     $s_tipoDoc = 'ctaGastos';
     require $root . '/Resources/PHP/actions/tarifas_generarFolio.php';
@@ -139,10 +147,12 @@ if($referencia != "SN"){
     require $root . '/Resources/PHP/actions/tarifas_calculaPOCME.php';
     require $root . '/Resources/PHP/actions/tarifas_consultaPOCME_general.php'; #$tarifaPOCMEgeneral
     //EXTRAER PROFORMA - SECCION: POCME
+    $proforma_POCME = '';
     if($docto == "Proforma"){
       require $root . '/Resources/PHP/actions/consulta_proforma_det.php'; #$proforma_POCME
     }
     //EXTRAER CTA AME - SECCION: POCME
+    $ctaAme_POCME = '';
     if($docto == "ctaAme"){
       require $root . '/Resources/PHP/actions/consulta_ctaAme_det.php'; #$ctaAme_POCME
     }
@@ -557,7 +567,7 @@ if($referencia != "SN"){
                       </td>
                       <th class='col-md-2'>Al Tipo de Cambio</th>
                       <td class='col-md-2'>
-                        <input class="efecto h22" id="T_POCME_Tipo_Cambio" type="text" tabindex="<?php echo $tabindex = $tabindex+1; ?>" onBlur="validaIntDec(this);Suma_POCME();Conversion_Tipo_Cambio();" value="<?php echo $tipo_Cambio;?>" size="17">
+                        <input class="efecto h22" id="T_POCME_Tipo_Cambio" type="text" tabindex="<?php echo $tabindex = $tabindex+1; ?>" onBlur="validaIntDec(this);Suma_POCME();Conversion_Tipo_Cambio();" value="<?php echo $tipoCambio;?>" size="17">
                       </td>
                       <th class='col-md-2'>Total MN</th>
                       <td class='col-md-2'>
@@ -952,7 +962,7 @@ if($referencia != "SN"){
                   </tr>
                   <tr class="row">
                     <td class="col-md-12">
-                      <input class="h22 w-100 bt text-center border-0" type="text" id="total_CuentaGastos" readonly value="<?php echo $s_total_cta_gastos_letra; ?>">
+                      <input class="h22 w-100 bt text-center border-0" type="text" id="total_CuentaGastos" readonly value="">
                     </td>
                   </tr>
 
@@ -1002,6 +1012,7 @@ if($referencia != "SN"){
         </div>
       </div>
     </div>
+    <script src="/Ubicaciones/Contabilidad/facturaelectronica/js/facturaElectronica_Modifi.js"></script>
 
 
     <?php

@@ -17,18 +17,19 @@
                 <tr class="row mt-2">
                   <td class="col-md-10">
                     <?php if( $oRst_permisos["s_lstCompletaCtas_polizas"] == 1 ){
-                    echo '<input class="efecto tiene-contenido popup-input" id="fk_id_cuenta" type="text" id-display="#medit-popup-display-cuentas_mst_2niv" action="cuentas_mst_2niv" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
+                    echo '<input class="efecto tiene-contenido popup-input" id="fk_id_cuenta" type="text" id-display="#medit-popup-display-cuentas_mst_2niv" action="cuentas_mst_2niv" db-id="" autocomplete="off">';
                     }else{
                       if( $tipo == 2){
-                        echo '<input class="efecto tiene-contenido popup-input" id="fk_id_cuenta" type="text" id-display="#medit-popup-display-cuentas_mst_2niv" action="cuentas_mst_2niv_limitada_paraTipo2" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
+                        echo '<input class="efecto tiene-contenido popup-input" id="fk_id_cuenta" type="text" id-display="#medit-popup-display-cuentas_mst_2niv" action="cuentas_mst_2niv_limitada_paraTipo2" db-id="" autocomplete="off">';
                       }else{
-                        echo '<input class="efecto tiene-contenido popup-input" id="fk_id_cuenta" type="text" id-display="#medit-popup-display-cuentas_mst_2niv" action="cuentas_mst_2niv_limitada" db-id="" autocomplete="off" onchange="Actualiza_Cuenta()">';
+                        echo '<input class="efecto tiene-contenido popup-input" id="fk_id_cuenta" type="text" id-display="#medit-popup-display-cuentas_mst_2niv" action="cuentas_mst_2niv_limitada" db-id="" autocomplete="off">';
                       }
                     }?>
                     <div class="popup-list" id="medit-popup-display-cuentas_mst_2niv" style="display:none"></div>
                     <label for="fk_id_cuenta" style="padding-top:.10rem">Seleccione una Cuenta</label>
                   </td>
-                  <td class="col-md-2">
+                  <!--td class="col-md-2"-->
+                  <td class="gto_fk_gastoAduana col-md-2 input-effect " style="display:none">
                     <!-- PRUEBA -->
                     <input class="efecto popup-input tiene-contenido" id="fk_gastoAduana" type="text" id-display="#popup-display-oficina" action="oficinas" db-id="" autocomplete="off" onChange="valDescripOficina()">
                     <div class="popup-list" id="popup-display-oficina" style="display:none"></div>

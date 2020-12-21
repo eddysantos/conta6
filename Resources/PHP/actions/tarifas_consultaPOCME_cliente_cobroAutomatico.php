@@ -43,6 +43,8 @@ if( $editGstoGana == 0 ){
 }
 
 $idFila=0;
+$POCME_automatico_ctaAme = "";
+$POCME_automatico = "";
 while ($oRst_tarifaAutom = $rslt_tarifaAutom->fetch_assoc()) {
     ++$idFila;
     $ID_CONCEPTOcta = $oRst_tarifaAutom['fk_id_cuenta'];
@@ -76,7 +78,7 @@ while ($oRst_tarifaAutom = $rslt_tarifaAutom->fetch_assoc()) {
           </td>
           <td class='col-md-3 p-2 datos-transferibles'>
             <input type='hidden' id='T_POCME_idTipoCta$idFila'  value='$ID_CONCEPTOcta' class='T_POCME_CUENTAS id-cuenta'>
-            <input type='hidden' id='T_POCME_idConcep$idFilaBlanco' value='$fk_id_concepto' class='T_POCME_idCONCEPTOS id-concepto'>
+            <input type='hidden' id='T_POCME_idConcep$idFila' value='$fk_id_concepto' class='T_POCME_idCONCEPTOS id-concepto'>
             <input type='text' id='T_POCME_Concepto$idFila' value='$CONCEPTOcta' class='T_POCME_CONCEPTOS efecto h22 concepto-espanol' size='45' readonly/>
             <input type='hidden' id='T_POCME_ConceptoEng$idFila' value='$CONCEPTOctaEng' class='T_POCME_CONCEPTOS_ENG concepto-ingles'>
           </td>
@@ -106,7 +108,7 @@ while ($oRst_tarifaAutom = $rslt_tarifaAutom->fetch_assoc()) {
         $POCME_automatico .= "<tr class='row m-0 trPOCME elemento-pocme' id='$idFila'>
     			<td class='col-md-1 p-2'>
     		    <input type='text' id='T_POCME_Cantidad$idFila' class='T_POCME_CANTIDAD cantidad efecto h22' value='$cantidad' onblur='validaSoloNumeros(this);importe_POCME();' size='4'/>
-    				<input class='id-partida' type='hidden' id='T_partida_' value='0'>
+    				<input class='id-partida' type='hidden' id='T_partida_$idFila' value='0'>
     		  </td>
     		  <td class='col-md-3 p-2 datos-transferibles'>
     		    <input type='hidden' id='T_POCME_idTipoCta$idFila' class='T_POCME_CUENTAS id-cuenta' value='$ID_CONCEPTOcta'>

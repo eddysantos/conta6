@@ -4,6 +4,7 @@
 
   $id_cheque = $_GET['id_cheque'];
   $id_cuentaMST = $_GET['id_cuentaMST'];
+  $txtStatus = '';
 
   $sql_Select = "SELECT * from conta_t_cheques_mst Where pk_id_cheque = ? AND fk_id_cuentaMST = ?";
   $stmt = $db->prepare($sql_Select);
@@ -13,6 +14,8 @@
 	if (!($stmt->execute())) { die("Error during query prepare [$stmt->errno]: $stmt->error"); }
 	$rslt = $stmt->get_result();
 	$rows = $rslt->num_rows;
+
+  $statusGeneraPoliza = false;
 
 	if( $rows > 0 ){
 		$rowMST = $rslt->fetch_assoc();
@@ -38,7 +41,6 @@
 			$sumaAbonos = $oRst_STPD['SUMA_ABONOS'];
       $sumaC = number_format($sumaAbonos,2,'.','') + number_format($importeChe,2,'.','') ;
 		  $Status_Cheque =  number_format($sumaC - $sumaCargos,2,'.','');
-      $statusGeneraPoliza = false;
 
       if( $Status_Cheque == 0 ){
         $txtStatus = 'style="color: #000000"';
@@ -92,7 +94,7 @@
   ?>
 
   <div id="datoscheque" class="contorno mt-5" style="display:none" >
-    <h5 class="titulo">DATOS DEL CHEQUE
+    <h5 class="titulo font14">DATOS DEL CHEQUE
       <?php if( $mostrar == true ){ ?>
       <a href='#ch-editarRegMST' data-toggle='modal' role='button'>
         <img class='icochico' src='/Resources/iconos/003-edit.svg'>
@@ -397,8 +399,8 @@
 <?php
 } #$rows
 
-
 require $root . '/Ubicaciones/footer.php';
-
-
 ?>
+<?php // NOTE: se metio a script.js ?>
+<!-- <script src="/Ubicaciones/Contabilidad/infAdd_ContaElec/js/infAdd_ContaElec.js" charset="utf-8"></script> -->
+<script src="/Ubicaciones/Contabilidad/cheques/js/Cheques.js" charset="utf-8"></script>

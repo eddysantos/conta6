@@ -8,6 +8,7 @@ $id_poliza = trim($_POST['id_poliza']);
 #*** PAGO DE NOMINA
 # SI LA CUENTA ES 0213-01 OR 0213-3 SE TIENE QUE QUITAR LA POLIZA DE PAGO EN NOMINA
 require $root . '/Ubicaciones/Contabilidad/polizas/actions/consulta_datosPartida.php'; # $fk_id_cuenta, $fk_factura
+$regimen = '';
 require $root . '/Ubicaciones/Contabilidad/polizas/actions/buscarFacturasNomina_ctas0213pagos.php'; #$cuentaSuel,$cuentaHon
 
 
@@ -45,6 +46,8 @@ if ($affected_eliminaPartPol == 0) {
 
 if ($affected_eliminaPartPol > 0) {
 
+  error_log('si elimine :' . $partida);
+
   if( $fk_id_cuenta == $cuentaHon || $fk_id_cuenta == $cuentaSuel ){
     $factura = $fk_factura;
     $system_callback['message2'] = 'llego3: '.$factura;
@@ -53,16 +56,18 @@ if ($affected_eliminaPartPol > 0) {
 
 
   #*** ELIMINAR EN CONTABILIDAD ELECTRONICA LOS REGISTROS DE LA PARTIDA QUE SE BORRA
-  require $root . '/Resources/PHP/actions/contaElect_eliminar.php';
+  require $root . '/Resources/PHP/actions/contaElect_eliminarPartidaPol.php';
 
   $descripcion = "Se elimino la Partida: $partida de la Poliza: $id_poliza";
+  error_log($descripcion);
 
   $clave = 'polizas';
   $folio = $id_poliza;
   require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
-
   $system_callback['code'] = 1;
   $system_callback['message'] = "Script called successfully!";
-  exit_script($system_callback);
 }
+
+
+exit_script($system_callback);
 ?>

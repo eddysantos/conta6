@@ -24,8 +24,8 @@ if( $moneda <> 'MXN' ){
   $Total_Gral = $total_pagosCLT;
 }
 
-echo '/'.$moneda;
-echo '/'.$Total_Gral;
+#echo '/'.$moneda;
+#echo '/'.$Total_Gral;
 
 if( $Total_Anticipos > 0 ){
   if( $Total_Anticipos > $Total_Gral or $Total_Anticipos == $Total_Gral ){#CASO1
@@ -65,10 +65,11 @@ if( $Total_Anticipos > 0 && $Total_Anticipos < $Total_Gral){#CASO2
 
 $detPolCtaGastos = rtrim($detPolCtaGastos,',');
 
+
 $query_polDetCG = "INSERT INTO conta_t_polizas_det(fk_id_poliza,d_fecha,fk_factura,fk_id_cuenta,fk_tipo,s_desc,fk_id_cliente,fk_referencia,fk_ctagastos,n_cargo,n_abono)
           VALUES $detPolCtaGastos";
 
-echo $detPolCtaGastos;
+#echo $detPolCtaGastos;
 
 $stmt_polDetCG = $db->prepare($query_polDetCG);
 if (!($stmt_polDetCG)) {

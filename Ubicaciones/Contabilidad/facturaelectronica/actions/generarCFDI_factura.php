@@ -8,6 +8,8 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 require $root . '/Resources/PHP/actions/validarFormulario.php';
 #limpiarBlancos($txt) <-- eliminaBlancos($cadena)
 
+$system_callback['message'] = "";
+
 #SEGUN LAS ESPECIFICICAIONES DEL ANEXO20 VERSION 3.3 SE TIENE QUE USAR EL CATALOGO DE MONEDA PARA LOS DECIMALES, PERO COMO SOLO EXPEDIMOS EN MXN,USD Y AMBOS TIENEN DOS DECIMALES, POR LO TANTO, NUESTROS CALCULOS SE HARAN A DOS DECIMALES.
 $cuenta = $_POST['cuenta'];
 $referencia = $_POST['referencia'];
@@ -16,12 +18,13 @@ $fechaActual = date("Y-m-d H:i:s");
 $fechaFactura = date("Y-m-d\TH:i:s");
 $id_referencia = $_POST['referencia'];
 
-// $cuenta =172;
-// $referencia = 'N13003039';
-// $id_cliente = 'CLT_7345';
+#http://localhost:88/Ubicaciones/Contabilidad/facturaelectronica/actions/generarCFDI_factura.php
+// $cuenta =153;
+// $referencia = 'N17000003';
+// $id_cliente = 'CLT_6548';
 // $fechaActual = date("Y-m-d H:i:s");
 // $fechaFactura = date("Y-m-d\TH:i:s");
-// $id_referencia = 'N13003039';
+// $id_referencia = 'N17000003';
 #PRUEBAS
 #EJECUTA SAT
 

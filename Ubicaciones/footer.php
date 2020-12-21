@@ -9,5 +9,6 @@
     </div>
   </footer>
   <?php require_once $root . "/scripts.php" ?>
+  
 </body>
 </html>

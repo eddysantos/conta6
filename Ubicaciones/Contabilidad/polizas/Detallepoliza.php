@@ -10,13 +10,7 @@
 ?>
 
 <div class="text-center mb-10">
-  <div class="row m-0 submenuMed">
-    <ul class="nav nav-pills nav-fill w-100">
-      <li class="nav-item">
-        <a class="nav-link pol" status="cerrado" accion="dtospol">DATOS DE POLIZA</a>
-      </li>
-    </ul>
-  </div>
+
 
 <?PHP
 if( $totalRegistrosSelect > 0 ){
@@ -53,63 +47,73 @@ if( $totalRegistrosSelect > 0 ){
 <input type="hidden" id="aduana_activa"  db-id="" autocomplete="off" value="<?php echo $aduana; ?>">
 
 <!--Comienza DETALLE DATOS DE POLIZA-->
-<div id="datospoliza" class="contorno mt-4" style="display:none">
-  <div class="titulo" style='margin-top:-25px'>DATOS DE LA POLIZA</div>
-  <table class="table font14">
-    <thead>
-      <div class="row encabezado b fw-bold p-1 font14">
-        <div class="col-md-1">TIPO</div>
-        <div class="col-md-1">POLIZA</div>
-        <div class="col-md-2">USUARIO</div>
-        <div class="col-md-2">FECHA POLIZA</div>
-        <div class="col-md-2">GENERACION</div>
-        <div class="col-md-2">ADUANA</div>
-        <div class="col-md-2">ESTATUS</div>
-      </div>
-    </thead>
-    <tbody>
-      <tr class="row align-items-center">
-        <td class="col-md-1">
-          <input class="efecto h22" <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="off" value="<?php echo $tipo; ?>">
-        </td>
-        <td class="col-md-1">
-          <input class="efecto h22 border-0" id="id_poliza" type="text" db-id="" autocomplete="off" disabled value="<?php echo $id_poliza; ?>">
-        </td>
-        <td class="col-md-2"><?php echo trim($oRst_Select["fk_usuario"]); ?></td>
-        <td class="col-md-2">
-          <input class="efecto h22 pl-5" <?php echo $clase; ?> type="date" id="mstpol-fecha" value="<?php echo trim($oRst_Select["d_fecha"]); ?>">
-        </td>
-        <td class="col-md-2"><?php echo trim($oRst_Select["d_fecha_alta"]); ?></td>
-        <td class="col-md-2">
-          <input class="efecto h22 border-0" id="mstpol-aduana" type="text" db-id="" autocomplete="off" disabled value="<?php echo trim($oRst_Select["fk_id_aduana"]); ?>">
-        </td>
-        <td class="col-md-2">
-          <select class="custom-select-s" size="1" name="mstpol-cancela" id="mstpol-cancela" onchange="cambiarStatus()">
-            <?php if( $cancela == 0 ){
-                echo "<option value='0' selected>Activo</option>";
-                echo "<option value='1'>Cancelado</option>";
-                }else{
-                  echo "<option value='0'>Activo</option>";
-                  echo "<option value='1' selected>Cancelado</option>";
-                } ?>
-          </select>
-          <!--input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="off" disabled value="<?php echo $cancela; ?>"-->
-        </td>
-      </tr>
-      <tr class="row mt-4 align-self-center">
-        <td class="col-md-11">
-          <input id="mstpol-concepto" <?php echo $clase; ?> value="<?php echo trim($oRst_Select["s_concepto"]); ?>" type="text" onchange="eliminaBlancosIntermedios(this)">
-          <label for="concep">CONCEPTO</label>
-        </td>
-        <td class="col-md-1 text-left">
-        <?php if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 && $cancela == 0 ){ ?>
-          <a href="#" id="guardarPolMST"> <img src= "/Resources/iconos/save.svg" class="icomediano"></a>
-        <?php } ?>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<ul class="nav nav-tabs justify-content-center backpink" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">DATOS DE POLIZA</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div id="datospoliza" class="contorno mt-4">
+      <div class="titulo" style='margin-top:-25px'>DATOS DE LA POLIZA</div>
+      <table class="table font14">
+        <thead>
+          <div class="row encabezado b fw-bold p-1 font14">
+            <div class="col-md-1">TIPO</div>
+            <div class="col-md-1">POLIZA</div>
+            <div class="col-md-2">USUARIO</div>
+            <div class="col-md-2">FECHA POLIZA</div>
+            <div class="col-md-2">GENERACION</div>
+            <div class="col-md-2">ADUANA</div>
+            <div class="col-md-2">ESTATUS</div>
+          </div>
+        </thead>
+        <tbody>
+          <tr class="row align-items-center">
+            <td class="col-md-1">
+              <input class="efecto h22" <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="off" value="<?php echo $tipo; ?>">
+            </td>
+            <td class="col-md-1">
+              <input class="efecto h22 border-0" id="id_poliza" type="text" db-id="" autocomplete="off" disabled value="<?php echo $id_poliza; ?>">
+            </td>
+            <td class="col-md-2"><?php echo trim($oRst_Select["fk_usuario"]); ?></td>
+            <td class="col-md-2">
+              <input class="efecto h22 pl-5" <?php echo $clase; ?> type="date" id="mstpol-fecha" value="<?php echo trim($oRst_Select["d_fecha"]); ?>">
+            </td>
+            <td class="col-md-2"><?php echo trim($oRst_Select["d_fecha_alta"]); ?></td>
+            <td class="col-md-2">
+              <input class="efecto h22 border-0" id="mstpol-aduana" type="text" db-id="" autocomplete="off" disabled value="<?php echo trim($oRst_Select["fk_id_aduana"]); ?>">
+            </td>
+            <td class="col-md-2">
+              <select class="custom-select-s" size="1" name="mstpol-cancela" id="mstpol-cancela" onchange="cambiarStatus()">
+                <?php if( $cancela == 0 ){
+                    echo "<option value='0' selected>Activo</option>";
+                    echo "<option value='1'>Cancelado</option>";
+                    }else{
+                      echo "<option value='0'>Activo</option>";
+                      echo "<option value='1' selected>Cancelado</option>";
+                    } ?>
+              </select>
+              <!--input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="off" disabled value="<?php echo $cancela; ?>"-->
+            </td>
+          </tr>
+          <tr class="row mt-4 align-self-center">
+            <td class="col-md-11">
+              <input id="mstpol-concepto" <?php echo $clase; ?> value="<?php echo trim($oRst_Select["s_concepto"]); ?>" type="text" onchange="eliminaBlancosIntermedios(this)">
+              <label for="concep">CONCEPTO</label>
+            </td>
+            <td class="col-md-1 text-left">
+            <?php if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 && $cancela == 0 ){ ?>
+              <a href="#" id="guardarPolMST"> <img src= "/Resources/iconos/save.svg" class="icomediano"></a>
+            <?php } ?>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+
 <!--/Termina DETALLE DATOS DE POLIZA-->
 
 
@@ -182,7 +186,7 @@ if( $totalRegistrosSelect > 0 ){
               </td>
 
               <td class="col-md-2" role="button">
-                <a href="#detpol-buscarfacturas" class="buscarFacturas-polizas" data-toggle="modal" class="boton icochico border-0"> <img src= "/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                <a href="#detpol-buscarfacturas" class="buscarFacturas-polizas boton icochico border-0" data-toggle="modal"> <img src= "/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
               </td>
             </tr>
 
@@ -240,7 +244,7 @@ if( $totalRegistrosSelect > 0 ){
             </tr>
             <tr class="row justify-content-center mt-4">
               <td class="col-md-2">
-                <a href="#" class="boton p-1" id="detpol-btnguardar"><img src= "/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                <a href="#" type="button" class="boton p-1" id="detpol-btnguardar"><img src= "/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
               </td>
             </tr>
           </tbody>
@@ -350,11 +354,16 @@ if( $totalRegistrosSelect > 0 ){
 </div>
 
 </div>
+
+
 <?php
-require $root . '/Ubicaciones/footer.php';
+require $root . '/Ubicaciones/footer.php'; // el footer contiene el archivo scripts.php
 require_once('modales/EditarRegistro.php');
 require_once('modales/buscarFacturas.php');
 ?>
+
+
+<script src="/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
 
 <?PHP
 }else{ #$totalRegistrosSelect?>
