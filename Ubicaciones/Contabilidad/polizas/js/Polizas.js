@@ -50,7 +50,9 @@ $(document).ready(function(){
     validaReferencia(this);
   });
 
-	$('#detpol-referencia').change(function(){ buscarReferenciaPol(); });
+	$('#detpol-referencia').change(function(){
+		 buscarReferenciaPol();
+	 });
 	$('#fk_referencia').change(function(){ buscarReferenciaPolModal(); });
   $('#detpol-cliente').change(function(){ lstCuentasPol(); });
   $('#detpol-clienteCorresp').change(function(){ lstCuentasPol(); });
@@ -959,19 +961,18 @@ function buscarReferenciaPol(){
 
 
 		if(ref == "0" || ref == "SN" || ref  == ""){
-    $('#detpol-btnguardar').prop('disabled',false);
-    $('#detpol-lstClientes').show();
-    $('#detpol-lstClientesCorresp').val();
-    $('#detpol-lstClientesCorresp').hide();
-
+	    $('#detpol-btnguardar').prop('disabled',false);
+	    $('#detpol-lstClientes').show();
+	    $('#detpol-lstClientesCorresp').val();
+	    $('#detpol-lstClientesCorresp').hide();
 		}else{
-    if(Referencia != ""){
-      $('#detpol-lstClientesCorresp').val();
-      lstClientesReferenciaPol();
-			$('#detpol-btnguardar').prop('disabled',false);
-      $('#detpol-lstClientes').hide();
-      $('#detpol-lstClientesCorresp').show();
-		}
+	    if(Referencia != ""){
+	      $('#detpol-lstClientesCorresp').val();
+	      lstClientesReferenciaPol();
+				$('#detpol-btnguardar').prop('disabled',false);
+	      $('#detpol-lstClientes').hide();
+	      $('#detpol-lstClientesCorresp').show();
+			}
 	}
 }
 
