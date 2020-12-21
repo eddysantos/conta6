@@ -2,21 +2,27 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 
-$id_poliza = trim($_POST['id_poliza']);
-$fecha = trim($_POST['fecha']);
-$id_referencia = trim($_POST['id_referencia']);
-$tipo = trim($_POST['tipo']);
-$cuenta = trim($_POST['cuenta']);
-$id_cliente = trim($_POST['id_cliente']);
-$documento = trim($_POST['documento']);
-$factura = trim($_POST['factura']);
-$anticipo = trim($_POST['anticipo']);
-$cheque = trim($_POST['cheque']);
-$cargo = trim($_POST['cargo']);
-$abono = trim($_POST['abono']);
-$desc = trim($_POST['desc']);
-$gastoOficina = trim($_POST['gastoOficina']);
-$proveedor = trim($_POST['proveedor']);
+// $id_poliza = trim($_POST['id_poliza']);
+// $fecha = trim($_POST['fecha']);
+// $id_referencia = trim($_POST['id_referencia']);
+// $tipo = trim($_POST['tipo']);
+// $cuenta = trim($_POST['cuenta']);
+// $id_cliente = trim($_POST['id_cliente']);
+// $documento = trim($_POST['documento']);
+// $factura = trim($_POST['factura']);
+// $anticipo = trim($_POST['anticipo']);
+// $cheque = trim($_POST['cheque']);
+// $cargo = trim($_POST['cargo']);
+// $abono = trim($_POST['abono']);
+// $desc = trim($_POST['desc']);
+// $gastoOficina = trim($_POST['gastoOficina']);
+// $proveedor = trim($_POST['proveedor']);
+
+extract($_POST);
+
+if ($cheque == '') {$cheque = NULL;}
+if ($notaCred == '') {$notaCred = NULL;}
+if ($ctagastos == '') {$ctagastos = NULL;}
 
 require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
 
