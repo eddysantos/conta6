@@ -8,7 +8,11 @@ $(document).ready(function(){
 
 
   $('#ant-referencia').change(function(){ buscarReferenciaAnt(); });
-  $('#ant-cliente').change(function(){ lstCuentasAnt(); });
+
+  $('#ant-cliente').change(function(){
+     lstCuentasAnt();
+   });
+
   $('#ant-clienteCorresp').change(function(){ lstCuentasAnt(); });
 
 
@@ -533,7 +537,7 @@ function genAnt(){
 
 
 // MOSTRAR DETALLE DE ANTICIPO
-  $('#detalleanticipo').click(function(){
+  $('#detalleAnticipo-tab').click(function(){
       var data = {
         id_anticipo: $('#mst-anticipo').val(),
       }
@@ -886,15 +890,12 @@ function ultReg_DetAnt(){
   		});
 
   		validar_reg.done(function(r){
-  			//console.log(r);
   			r = JSON.parse(r);
   			if (r.code == 1) {
   				if(r.data == "conceptoValido"){
   					response = true;
-  					//console.log(response);
   				}else{
   					swal(r.data, "Ya existe un concepto igual", "info");
-  					//response = false;
   			}
   		}
   			return response;
@@ -1015,7 +1016,6 @@ function ultReg_DetAnt(){
       success: 	function(r){
         r = JSON.parse(r);
         if (r.code == 1) {
-          //console.log(r.data);
           $('#antbcocliente').html(r.data);
         } else {
           console.error(r.message);

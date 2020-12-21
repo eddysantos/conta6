@@ -89,7 +89,7 @@ if( $rows > 0 ){
 
   <!--Comienza DETALLE DATOS DE ANTICIPO-->
   <div id="datosanticipo" class="contorno" style="display:none">
-    <h5 class="titulo">DATOS DE ANTICIPO</h5>
+    <h5 class="titulo font16">DATOS DE ANTICIPO</h5>
     <form class="form1">
       <table class="table">
         <thead>
@@ -164,185 +164,178 @@ if( $rows > 0 ){
     </form>
   </div><!--/Termina DETALLE DATOS DE ANTICIPO-->
 
-  <div class="movible m-4">
-    <nav>
-      <ul class="nav nav-pills nav-fill w-100 mt-5 mb-3">
-        <li class="nav-item">
-          <a class="nav-link pills">Captura Detalle de Anticipo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link pills" id="detalleanticipo">Detalle de Anticipo</a>
-        </li>
-        <?php if( $id_poliza > 0 && $oRst_permisos['s_consultar_ContaElect'] == 1 ){ ?>
-        <li class="nav-item">
-          <a class="nav-link pills" id="infPartida" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
-        </li>
-        <?php } ?>
-      </ul>
-    </nav> <!--links de desplazamiento-->
 
-    <div class="containermov">
-      <div class="contenedor-movible">
-        <div id="one"><!--CAPTURA DE POLIZAS-->
-          <div id="capturaAnticipo" class="contorno-mov">
-            <table class="table form1">
-              <thead>
-                <tr class="row m-0 encabezado font16">
-                  <td class="col-md-12">CAPTURA DETALLE DE ANTICIPO</td>
-                </tr>
-              </thead>
-              <tbody class="font14">
-                <tr class="row m-0 mt-5">
-                  <td class="col-md-2 input-effect">
-                    <input class="efecto tiene-contenido popup-input" id="ant-referencia" type="text" id-display="#popup-display-ant-referencia" action="referencias" value="SN" db-id="SN" autocomplete="off">
-                    <div class="popup-list" id="popup-display-ant-referencia" style="display:none"></div>
-                    <label for="ant-referencia">Referencia</label>
-                  </td>
-                  <td class="col-md-8 input-effect">
-                    <div id="lstClientes">
-                      <input class="efecto popup-input" id="ant-cliente" type="text" id-display="#popup-display-ant-cliente" action="clientes" db-id="" autocomplete="off">
-                      <div class="popup-list" id="popup-display-ant-cliente" style="display:none"></div>
-                      <label for="ant-cliente">Cliente</label>
-                    </div>
-                    <div id="lstClientesCorresp" style="display:none">
-                      <select class="custom-select" size='1' id="ant-clienteCorresp">
-                          <option selected value='0'>Seleccione Cliente/Corresponsal</option>
-                      </select>
-                    </div>
-                  </td>
-                  <td class="col-md-2" role="button">
-                    <?php if( $mostrarEditConPol == true ){ ?>
-					          <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton icochico border-0"> <img src= "/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
-                    <?php } ?>
-                  </td>
-                </tr>
-                <tr class="row m-0 mt-4">
-                  <td class="col-md-8 input-effect">
-                    <div id="lstClientesCorrespCtas-detpol">
-                      <select class="custom-select" size='1' id="ant-clienteCorrespCtas">
-                          <option selected value='0'>Seleccione</option>
-                      </select>
-                    </div>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input  class="efecto tiene-contenido" id="ant-cargo" value="0" onchange="validaIntDec(this);">
-                    <label for="ant-cargo">Cargo</label>
-                  </td>
-                  <td class="col-md-2 input-effect">
-                    <input  class="efecto tiene-contenido" id="ant-abono" value="0" onchange="validaIntDec(this);">
-                    <label for="ant-abono">Abono</label>
-                  </td>
-                </tr>
-                <tr class="row mt-4">
-                  <td class="col-md-2 offset-md-5">
-                    <?php if( $mostrarEditConPol == true ){ ?>
-                    <a href="#" id="btnRegDetAnt" class="boton"><img src= "/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
-                    <?php } ?>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="row mt-5 ">
-            <div class="col-md-2 offset-md-4">SUMA DE CARGOS</div>
-            <div class="col-md-2">SUMA DE ABONOS</div>
-          </div>
-          <div class="row" id="totalesAnticipo2">
-            <div class="col-md-2 offset-md-4">
-              <input class="efecto" id="sumCargos2" value="<?php echo number_format($sumaC,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
-            </div>
-            <div class="col-md-2">
-              <input class="efecto" id="sumAbonos2" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
-            </div>
-          </div>
-
-          <div class="contorno-mov mt-5">
-            <table class="table font12 table-hover">
-              <thead>
-                <tr class="row sub3 b m-0">
-                  <td width="4%"></td>
-                  <td width="10%">CUENTA</td>
-                  <td width="10%">REFERENCIA</td>
-                  <td width="10%">CLIENTE</td>
-                  <td width="10%">FACTURA</td>
-                  <td width="10%">CTA GASTOS</td>
-		              <td width="10%">PAGO ELECT</td>
-                  <td width="10%">NOTACRED</td>
-                  <td width="11%">CARGO</td>
-                  <td width="11%">ABONO</td>
-                  <td width="4%"></td>
-                </tr>
-              </thead>
-              <tbody id="ultimosRegistrosAnticipo"></tbody>
-            </table>
-          </div>
+  <ul class="nav nav-pills m-3 nav-justified" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="capturaAnticipo-tab" data-toggle="pill" href="#capturaAnticipo" role="tab" aria-controls="capturaAnticipo" aria-selected="true">Captura Detalle de Anticipo</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="detalleAnticipo-tab" data-toggle="pill" href="#detalleAnticipo" role="tab" aria-controls="detalleAnticipo" aria-selected="false">Detalle de Anticipo</a>
+    </li>
+    <?php if( $id_poliza > 0 && $oRst_permisos['s_consultar_ContaElect'] == 1 ){ ?>
+    <li class="nav-item">
+      <a class="nav-link" id="inforPartidaAnticipo-tab" data-toggle="pill" href="#inforPartidaAnticipo" role="tab" aria-controls="inforPartidaAnticipo" aria-selected="false" onclick="infAdd_detalle(<?php echo $id_poliza; ?>)">Información de la Partida</a>
+    </li>
+    <?php } ?>
+  </ul>
+  <div class="tab-content container-fluid" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="capturaAnticipo" role="tabpanel" aria-labelledby="capturaAnticipo-tab">
+      <div id="capturaAnticipo" class="contorno-mov">
+        <table class="table form1">
+          <thead>
+            <tr class="row m-0 encabezado font16">
+              <td class="col-md-12">CAPTURA DETALLE DE ANTICIPO</td>
+            </tr>
+          </thead>
+          <tbody class="font14">
+            <tr class="row m-0 mt-5">
+              <td class="col-md-2 input-effect">
+                <input class="efecto tiene-contenido popup-input" id="ant-referencia" type="text" id-display="#popup-display-ant-referencia" action="referencias" value="SN" db-id="SN" autocomplete="off">
+                <div class="popup-list" id="popup-display-ant-referencia" style="display:none"></div>
+                <label for="ant-referencia">Referencia</label>
+              </td>
+              <td class="col-md-8 input-effect">
+                <div id="lstClientes">
+                  <input class="efecto popup-input" id="ant-cliente" type="text" id-display="#popup-display-ant-cliente" action="clientes" db-id="" autocomplete="off">
+                  <div class="popup-list" id="popup-display-ant-cliente" style="display:none"></div>
+                  <label for="ant-cliente">Cliente</label>
+                </div>
+                <div id="lstClientesCorresp" style="display:none">
+                  <select class="custom-select" size='1' id="ant-clienteCorresp">
+                      <option selected value='0'>Seleccione Cliente/Corresponsal</option>
+                  </select>
+                </div>
+              </td>
+              <td class="col-md-2" role="button">
+                <?php if( $mostrarEditConPol == true ){ ?>
+			          <a  href="#detpol-buscarfacturas" data-toggle="modal" class="boton icochico border-0"> <img src= "/Resources/iconos/magnifier.svg"> Buscar Facturas</a>
+                <?php } ?>
+              </td>
+            </tr>
+            <tr class="row m-0 mt-4">
+              <td class="col-md-8 input-effect">
+                <div id="lstClientesCorrespCtas-detpol">
+                  <select class="custom-select" size='1' id="ant-clienteCorrespCtas">
+                      <option selected value='0'>Seleccione</option>
+                  </select>
+                </div>
+              </td>
+              <td class="col-md-2 input-effect">
+                <input  class="efecto tiene-contenido" id="ant-cargo" value="0" onchange="validaIntDec(this);">
+                <label for="ant-cargo">Cargo</label>
+              </td>
+              <td class="col-md-2 input-effect">
+                <input  class="efecto tiene-contenido" id="ant-abono" value="0" onchange="validaIntDec(this);">
+                <label for="ant-abono">Abono</label>
+              </td>
+            </tr>
+            <tr class="row mt-4">
+              <td class="col-md-2 offset-md-5">
+                <?php if( $mostrarEditConPol == true ){ ?>
+                <a href="#" id="btnRegDetAnt" class="boton"><img src= "/Resources/iconos/001-add.svg" class="icochico"> REGISTRAR</a>
+                <?php } ?>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row mt-5 ">
+        <div class="col-md-2 offset-md-4">SUMA DE CARGOS</div>
+        <div class="col-md-2">SUMA DE ABONOS</div>
+      </div>
+      <div class="row" id="totalesAnticipo2">
+        <div class="col-md-2 offset-md-4">
+          <input class="efecto" id="sumCargos2" value="<?php echo number_format($sumaC,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
         </div>
-
-        <div id="two"><!--DETALLE DE ANTICIPO-->
-          <div class="row">
-            <div class="col-md-2 offset-md-8">SUMA DE CARGOS</div>
-            <div class="col-md-2">SUMA DE ABONOS</div>
-          </div>
-          <div class="row font14 mt-3">
-            <div class="col-md-3">
-              <?php if( $oRst_permisos["s_reusar_anticipos"] == 1 ){ ?>
-              <a href="#" id="btn_reusarAnt" class="boton"><img src= "/Resources/iconos/refresh-button.svg"> REUSAR ANTICIPO</a>
-              <?php } ?>
-            </div>
-            <div class="col-md-3">
-              <?php if( $tienePoliza == false && $statusGeneraPoliza == true ){ ?>
-              <a href="#" id="btn_generarPolAnt" class="boton"><img src= "/Resources/iconos/add.svg"> GENERAR POLIZA</a>
-              <?php } ?>
-            </div>
-            <div class="col-md-2">
-              <?php if( $tienePoliza == true ){ ?>
-              <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano" src= "/Resources/iconos/printer.svg"></a>
-              <?php } ?>
-            </div>
-            <div class="col-md-2">
-              <input class="efecto" id="sumCargos1" value="<?php echo number_format($sumaC,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
-            </div>
-            <div class="col-md-2">
-              <input class="efecto" id="sumAbonos1" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
-            </div>
-            <?php
-            // echo $txtStatus;
-            ?>
-          </div>
-
-          <div id="detallepoliza" class="contorno-mov mt-4">
-            <table class="table table-hover">
-              <thead>
-                <tr class="row encabezado font16 m-0">
-                  <td class="col-md-12">DETALLE ANTICIPO</td>
-                </tr>
-              </thead>
-              <thead class="font12">
-                <tr class="row sub3 b m-0">
-                  <td width="4%"></td>
-                  <td width="10%">CUENTA</td>
-                  <td width="10%">REFERENCIA</td>
-                  <td width="10%">CLIENTE</td>
-                  <td width="10%">FACTURA</td>
-                  <td width="10%">CTA GASTOS</td>
-		              <td width="10%">PAGO ELECT</td>
-                  <td width="10%">NOTACRED</td>
-                  <td width="11%">CARGO</td>
-                  <td width="11%">ABONO</td>
-                  <td width="4%"></td>
-                </tr>
-              </thead>
-              <tbody id="tabla_detalleanticipo" class="font12"></tbody>
-            </table>
-          </div>
+        <div class="col-md-2">
+          <input class="efecto" id="sumAbonos2" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
         </div>
+      </div>
 
-        <?php if( $id_poliza > 0 ){
-            require $root . '/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
-          } ?>
-      </div><!--/Termina contenedor-movible-->
-    </div><!--/Termina continermov-->
-  </div><!--/Termina container-fluid movible-->
+      <div class="contorno-mov mt-5">
+        <table class="table font12 table-hover">
+          <thead>
+            <tr class="row sub3 b m-0">
+              <td width="4%"></td>
+              <td width="10%">CUENTA</td>
+              <td width="10%">REFERENCIA</td>
+              <td width="10%">CLIENTE</td>
+              <td width="10%">FACTURA</td>
+              <td width="10%">CTA GASTOS</td>
+              <td width="10%">PAGO ELECT</td>
+              <td width="10%">NOTACRED</td>
+              <td width="11%">CARGO</td>
+              <td width="11%">ABONO</td>
+              <td width="4%"></td>
+            </tr>
+          </thead>
+          <tbody id="ultimosRegistrosAnticipo"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="detalleAnticipo" role="tabpanel" aria-labelledby="detalleAnticipo-tab">
+      <div class="row">
+        <div class="col-md-2 offset-md-8">SUMA DE CARGOS</div>
+        <div class="col-md-2">SUMA DE ABONOS</div>
+      </div>
+      <div class="row font14 mt-3">
+        <div class="col-md-3">
+          <?php if( $oRst_permisos["s_reusar_anticipos"] == 1 ){ ?>
+          <a href="#" id="btn_reusarAnt" class="boton"><img src= "/Resources/iconos/refresh-button.svg"> REUSAR ANTICIPO</a>
+          <?php } ?>
+        </div>
+        <div class="col-md-3">
+          <?php if( $tienePoliza == false && $statusGeneraPoliza == true ){ ?>
+          <a href="#" id="btn_generarPolAnt" class="boton"><img src= "/Resources/iconos/add.svg"> GENERAR POLIZA</a>
+          <?php } ?>
+        </div>
+        <div class="col-md-2">
+          <?php if( $tienePoliza == true ){ ?>
+          <a href="#" id="btn_prinAnt" class="boton border-0"><img class="icomediano" src= "/Resources/iconos/printer.svg"></a>
+          <?php } ?>
+        </div>
+        <div class="col-md-2">
+          <input class="efecto" id="sumCargos1" value="<?php echo number_format($sumaC,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
+        </div>
+        <div class="col-md-2">
+          <input class="efecto" id="sumAbonos1" value="<?php echo number_format($sumaAbonos,2,'.',','); ?>" <?php echo $txtStatus;?> readonly>
+        </div>
+        <?php
+        // echo $txtStatus;
+        ?>
+      </div>
+
+      <div id="detallepoliza" class="contorno-mov mt-4">
+        <table class="table table-hover">
+          <thead>
+            <tr class="row encabezado font16 m-0">
+              <td class="col-md-12">DETALLE ANTICIPO</td>
+            </tr>
+            <tr class="row sub3 b m-0 font12">
+              <td width="4%"></td>
+              <td width="10%">CUENTA</td>
+              <td width="10%">REFERENCIA</td>
+              <td width="10%">CLIENTE</td>
+              <td width="10%">FACTURA</td>
+              <td width="10%">CTA GASTOS</td>
+              <td width="10%">PAGO ELECT</td>
+              <td width="10%">NOTACRED</td>
+              <td width="11%">CARGO</td>
+              <td width="11%">ABONO</td>
+              <td width="4%"></td>
+            </tr>
+          </thead>
+          <tbody id="tabla_detalleanticipo" class="font12"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="inforPartidaAnticipo" role="tabpanel" aria-labelledby="inforPartidaAnticipo-tab">
+      <?php if( $id_poliza > 0 ){
+          require $root . '/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
+        } ?>
+    </div>
+  </div>
+
 </div>
 
 
@@ -361,5 +354,6 @@ if( $rows > 0 ){
 } #$rows
 
 require $root . '/Ubicaciones/footer.php';
-
 ?>
+
+<script src="/Ubicaciones/Contabilidad/anticipos/js/Anticipos.js" charset="utf-8"></script>
