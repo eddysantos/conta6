@@ -42,8 +42,12 @@ if ($rslt->num_rows == 0) {
 }
 
 while ($row = $rslt->fetch_assoc()) {
+  $pk_id_cuenta = utf8_encode($row['pk_id_cuenta']);
+  $s_cta_desc = utf8_encode($row['s_cta_desc']);
+
   $system_callback['data'] .=
-  "<p db-id='$row[pk_id_cuenta]'>$row[pk_id_cuenta] - $row[s_cta_desc]</p>";
+
+  "<p db-id='$pk_id_cuenta'>$pk_id_cuenta - $s_cta_desc</p>";
 }
 
 $system_callback['code'] = 1;
