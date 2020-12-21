@@ -23,6 +23,8 @@ extract($_POST);
 if ($cheque == '') {$cheque = NULL;}
 if ($notaCred == '') {$notaCred = NULL;}
 if ($ctagastos == '') {$ctagastos = NULL;}
+if ($gastoOficina == '') {$gastoOficina = NULL;}
+if ($proveedor == '') {$proveedor = NULL;}
 
 require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
 
