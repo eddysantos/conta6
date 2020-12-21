@@ -23,6 +23,10 @@ $idcheque_folControl = trim($_POST['idcheque_folControl']);
 $ctagastos = 0;
 $notaCred = 0;
 
+if ($gastoOficina == '') {
+  $gastoOficina = null;
+}
+
 require $root . '/Resources/PHP/actions/insertaDetalleCheque.php';
 $partida = $db->insert_id;
 
