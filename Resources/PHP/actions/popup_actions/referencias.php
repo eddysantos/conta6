@@ -10,7 +10,7 @@ $system_callback['data'] = '';
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM cb_trafico WHERE sCveTrafico LIKE ? limit 5";
+$query = "SELECT sCveTrafico FROM cb_trafico WHERE sCveTrafico LIKE ? limit 5";
 
 $stmt = $dbGlobal->prepare($query);
 if (!($stmt)) {
