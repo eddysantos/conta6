@@ -1,11 +1,9 @@
 <?php
-
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 $system_callback['data'] = '';
-$db->close();
 
-require $root . "/Resources/PHP/DatabasesRemote/conexionGlobalPCnet.php";
+$dbGlobal = new Queryi('db_global');
 $system_callback = [];
 $data = $_POST;
 $system_callback['data'] = '';
@@ -14,10 +12,10 @@ $data['string'];
 $text = "%" . $data['string'] . "%";
 $query = "SELECT * FROM cb_trafico WHERE sCveTrafico LIKE ? limit 5";
 
-$stmt = $linkPCnet->prepare($query);
+$stmt = $dbGlobal->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during query prepare [$linkPCnet->errno]: $linkPCnet->error";
+  $system_callback['message'] = "Error during query prepare [$dbGlobal->errno]: $dbGlobal->error";
   exit_script($system_callback);
 }
 
@@ -45,13 +43,13 @@ if ($rslt->num_rows == 0) {
 }
 
 while ($row = $rslt->fetch_assoc()) {
+  $sCveTrafico = utf8_encode($row['sCveTrafico']);
   $system_callback['data'] .=
-  "<p db-id='$row[sCveTrafico]'>$row[sCveTrafico]</p>";
+  "<p db-id='$sCveTrafico'>$sCveTrafico</p>";
 }
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
-#exit_script($system_callback);
-
+exit_script($system_callback);
 
  ?>
