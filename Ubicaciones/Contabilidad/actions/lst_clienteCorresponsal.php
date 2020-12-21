@@ -4,7 +4,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
-$data = $_POST;
+// $data = $_POST;
 
 $referencia = trim($_POST['referencia']);
 $cltRef = "";
@@ -13,7 +13,7 @@ $cltRefCor = "";
 $system_callback['data'] .="<option selected value='0'>Seleccione Cliente/Corresponsal</option>";
 
 
-error_log($referencia);
+error_log('entre a la pagina y tengo referencia ' . $referencia);
 
 
 $query = "SELECT pk_id_cliente, s_nombre, fk_id_corresp
