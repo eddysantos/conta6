@@ -331,6 +331,7 @@ if( $rows > 0 ){
     </div>
     <div class="tab-pane fade" id="inforPartidaAnticipo" role="tabpanel" aria-labelledby="inforPartidaAnticipo-tab">
       <?php if( $id_poliza > 0 ){
+          error_log('entre a soy mayor a cero');
           require $root . '/Ubicaciones/Contabilidad/infAdd_ContaElec/infAdd_det.php';
         } ?>
     </div>
