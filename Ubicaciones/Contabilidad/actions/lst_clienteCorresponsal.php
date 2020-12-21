@@ -18,12 +18,13 @@ error_log('entre a la pagina y tengo referencia ' . $referencia);
 
 $query = "SELECT pk_id_cliente, s_nombre, fk_id_corresp
 FROM conta_replica_clientes
-WHERE pk_id_cliente IN(SELECT fk_id_cliente FROM conta_replica_referencias WHERE pk_referencia =?)";
+WHERE pk_id_cliente IN(SELECT fk_id_cliente FROM conta_replica_referencias WHERE pk_referencia = '$referencia')";
 
 $stmt = $db->prepare($query);
 if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}
-$stmt->bind_param('s',$referencia);
-if (!($stmt)) { die("Error during query prepare [$stmt->errno]: $stmt->error");	}
+// $stmt->bind_param('s',$referencia);
+// if (!($stmt)) { die("Error during query prepare [$stmt->errno]: $stmt->error");	}
+error_log('query : ' . $query);
 if (!($stmt->execute())) { die("Error during query prepare [$stmt->errno]: $stmt->error"); }
 $rslt = $stmt->get_result();
 $rows = $rslt->num_rows;
@@ -40,11 +41,11 @@ if( $rows > 0 ){
 if( $cltRefCor > 0 ){
   error_log('entre en soy mayor a cero');
 
-  $queryCor = "SELECT * FROM conta_t_corresponsales WHERE pk_id_corresp =?";
+  $queryCor = "SELECT * FROM conta_t_corresponsales WHERE pk_id_corresp ='$cltRefCor'";
   $stmtCor = $db->prepare($queryCor);
 	if (!($stmtCor)) { die("Error during query prepare [$db->errno]: $db->error");	}
-	$stmtCor->bind_param('s',$cltRefCor);
-	if (!($stmtCor)) { die("Error during query prepare [$stmtCor->errno]: $stmtCor->error");	}
+	// $stmtCor->bind_param('s',$cltRefCor);
+	// if (!($stmtCor)) { die("Error during query prepare [$stmtCor->errno]: $stmtCor->error");	}
   error_log($queryCor);
 	if (!($stmtCor->execute())) { die("Error during query prepare [$stmtCor->errno]: $stmtCor->error"); }
 	$rsltCor = $stmtCor->get_result();
