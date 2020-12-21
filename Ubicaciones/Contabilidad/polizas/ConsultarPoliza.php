@@ -193,8 +193,7 @@ if( $totalRegistrosSelect > 0 ){
 }
 ?>
 
-<script src="/Ubicaciones/Contabilidad/js/OpcionesSelect.js"></script>
 <?php
 require $root . '/Ubicaciones/footer.php';
  ?>
-<!-- <script src="/Ubicaciones/Contabilidad/js/validarFechaCierre.js"></script> -->
+<script src="/Ubicaciones/Contabilidad/polizas/js/Polizas.js"></script>
