@@ -1,10 +1,8 @@
 <?php
-
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 $system_callback = [];
-// $data = $_POST;
 
 $referencia = trim($_POST['referencia']);
 $cltRef = "";
@@ -26,8 +24,6 @@ if (!($stmt)) {
   $system_callback['message'] = "Error durante la preparacion del query [$db->errno]: $db->error";
   exit_script($system_callback);
 }
-// $stmt->bind_param('s',$referencia);
-// if (!($stmt)) { die("Error during query prepare [$stmt->errno]: $stmt->error");	}
 error_log('query : ' . $query);
 if (!($stmt->execute())) {
   $system_callback['code'] = "500";
@@ -35,6 +31,7 @@ if (!($stmt->execute())) {
   exit_script($system_callback);
 }
 $rslt = $stmt->get_result();
+error_log('pase el resultado');
 $rows = $rslt->num_rows;
 if( $rows > 0 ){
   $rowCLT = $rslt->fetch_assoc();
@@ -56,9 +53,7 @@ if( $cltRefCor > 0 ){
     $system_callback['message'] = "Error durante la preparacion del query [$db->errno]: $db->error";
     exit_script($system_callback);
   }
-	// $stmtCor->bind_param('s',$cltRefCor);
-	// if (!($stmtCor)) { die("Error during query prepare [$stmtCor->errno]: $stmtCor->error");	}
-  error_log($queryCor);
+  error_log('$queryCor ' . $queryCor);
 	if (!($stmtCor->execute())) { die("Error during query prepare [$stmtCor->errno]: $stmtCor->error"); }
 	$rsltCor = $stmtCor->get_result();
 	$rowsCor = $rsltCor->num_rows;
