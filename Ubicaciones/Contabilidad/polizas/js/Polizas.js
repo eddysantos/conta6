@@ -912,7 +912,6 @@ function lstClientesReferenciaPol(){
 
 			r = JSON.parse(r);
 			if (r.code == 1) {
-				//console.log(r.data);
 				$('#detpol-clienteCorresp').html(r.data);
 			} else {
 				console.error(r.message);

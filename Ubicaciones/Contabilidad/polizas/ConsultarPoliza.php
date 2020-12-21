@@ -34,45 +34,76 @@ if( $totalRegistrosSelect > 0 ){
 ?>
 
 <div class="text-center mb-10">
-  <div class="row m-0 submenuMed">
-    <ul class="nav nav-pills nav-fill w-100">
-      <li class="nav-item">
-        <a class="nav-link pol" id="submenuMed" status="cerrado" accion="dtospol">DATOS DE POLIZA</a>
-      </li>
-    </ul>
+  <!--Comienza DETALLE DATOS DE POLIZA-->
+  <ul class="nav nav-tabs justify-content-center backpink" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">DATOS DE POLIZA</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div id="datospoliza" class="contorno mt-4">
+        <div class="titulo" style='margin-top:-25px'>DATOS DE LA POLIZA</div>
+        <table class="table font14">
+          <thead>
+            <div class="row encabezado b fw-bold p-1 font14">
+              <div class="col-md-1">TIPO</div>
+              <div class="col-md-1">POLIZA</div>
+              <div class="col-md-2">USUARIO</div>
+              <div class="col-md-2">FECHA POLIZA</div>
+              <div class="col-md-2">GENERACION</div>
+              <div class="col-md-2">ADUANA</div>
+              <div class="col-md-2">ESTATUS</div>
+            </div>
+          </thead>
+          <tbody>
+            <tr class="row align-items-center">
+              <td class="col-md-1">
+                <input class="efecto h22" <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="off" value="<?php echo $tipo; ?>">
+              </td>
+              <td class="col-md-1">
+                <input class="efecto h22 border-0" id="id_poliza" type="text" db-id="" autocomplete="off" disabled value="<?php echo $id_poliza; ?>">
+              </td>
+              <td class="col-md-2"><?php echo trim($oRst_Select["fk_usuario"]); ?></td>
+              <td class="col-md-2">
+                <input class="efecto h22 pl-5" <?php echo $clase; ?> type="date" id="mstpol-fecha" value="<?php echo trim($oRst_Select["d_fecha"]); ?>">
+              </td>
+              <td class="col-md-2"><?php echo trim($oRst_Select["d_fecha_alta"]); ?></td>
+              <td class="col-md-2">
+                <input class="efecto h22 border-0" id="mstpol-aduana" type="text" db-id="" autocomplete="off" disabled value="<?php echo trim($oRst_Select["fk_id_aduana"]); ?>">
+              </td>
+              <td class="col-md-2">
+                <select class="custom-select-s" size="1" name="mstpol-cancela" id="mstpol-cancela" onchange="cambiarStatus()">
+                  <?php if( $cancela == 0 ){
+                      echo "<option value='0' selected>Activo</option>";
+                      echo "<option value='1'>Cancelado</option>";
+                      }else{
+                        echo "<option value='0'>Activo</option>";
+                        echo "<option value='1' selected>Cancelado</option>";
+                      } ?>
+                </select>
+                <!--input class="efecto disabled readonly" id="mstpol-cancela" type="text" db-id="" autocomplete="off" disabled value="<?php echo $cancela; ?>"-->
+              </td>
+            </tr>
+            <tr class="row mt-4 align-self-center">
+              <td class="col-md-11">
+                <input id="mstpol-concepto" <?php echo $clase; ?> value="<?php echo trim($oRst_Select["s_concepto"]); ?>" type="text" onchange="eliminaBlancosIntermedios(this)">
+                <label for="concep">CONCEPTO</label>
+              </td>
+              <td class="col-md-1 text-left">
+              <?php if( $oRst_permisos["s_correcciones_mst_polizas"] == 1 && $cancela == 0 ){ ?>
+                <a href="#" id="guardarPolMST"> <img src= "/Resources/iconos/save.svg" class="icomediano"></a>
+              <?php } ?>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
-  <div id="datospoliza" class="contorno" style="display:none">
-    <div class="titulo" style="margin-top:-26px">DATOS DE LA POLIZA</div>
-    <table class="table font14">
-      <thead>
-        <tr class="row encabezado">
-          <td class="p-1 col-md-2">POLIZA</td>
-          <td class="p-1 col-md-2">USUARIO</td>
-          <td class="p-1 col-md-2">FECHA POLIZA</td>
-          <td class="p-1 col-md-2">GENERACION</td>
-          <td class="p-1 col-md-2">ADUANA</td>
-          <td class="p-1 col-md-2">CANCELACIÓN</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="row">
-          <td class="p-1 col-md-2"><?php echo $oRst_Select['pk_id_poliza']; ?></td>
-          <td class="p-1 col-md-2"><?php echo $oRst_Select['fk_usuario']; ?></td>
-          <td class="p-1 col-md-2"><?php echo $oRst_Select['d_fecha']; ?></td>
-          <td class="p-1 col-md-2"><?php echo $oRst_Select['d_fecha_alta']; ?></td>
-          <td class="p-1 col-md-2"><?php echo $oRst_Select['fk_id_aduana']; ?></td>
-          <td class="p-1 col-md-2"><?php echo $txt_cancela; ?></td>
-        </tr>
-        <tr class="row mt-1">
-          <td class="col-md-12 sub2 p-1">CONCEPTO :</td>
-        </tr>
-        <tr class="row">
-          <td class="col-md-12 p-1"><?php echo $oRst_Select['s_concepto']; ?>
-        </tr>
-      </tbody>
-    </table>
-  </div><!--/Termina DETALLE DATOS DE POLIZA-->
+  <!--/Termina DETALLE DATOS DE POLIZA-->
+
 
   <ul class="nav row text-center m-0 mt-3" id="myTab" role="tablist">
     <li class="nav-item col-md-6">
