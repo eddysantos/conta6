@@ -923,7 +923,7 @@ console.log(fecha);
 
         $.ajax({
           type: "POST",
-          url: "/Ubicaciones/Contabilidad/Cheques/actions/editar.php",
+          url: "/Ubicaciones/Contabilidad/cheques/actions/editar.php",
           data: data,
           success: 	function(r){
             console.log(r);
