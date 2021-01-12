@@ -42,7 +42,7 @@ where   (b.fk_id_cuenta like '0100%' or b.fk_id_cuenta like '0101%') and b.fk_id
 $id_cuentaO = $sql_ctaOrigen['fk_id_cuenta'];
 $nombreO = $sql_ctaOrigen['s_nombre'];
 $id_bancoO = $sql_ctaOrigen['fk_id_banco'];
-$ctaBcoO = $sql_ctaOrigen['s_ctaori'];
+$ctaBcoO = $sql_ctaOrigen['s_ctaOri'];
 $benefO = "Proyeccion Logistica Agencia Aduanal, S.A. de C.V.";
 $RFCO = $sql_ctaOrigen['s_RFC'];
 $pol_partida = $sql_ctaOrigen['pk_partida'];
@@ -136,7 +136,7 @@ if( $accion == "borrar" ){
   $sql_partida = mysqli_fetch_array(mysqli_query($db,
   "SELECT pk_partida,fk_tipo FROM conta_t_polizas_det
   WHERE fk_id_poliza = $id_poliza AND fk_factura = $factura"));
-  
+
   $partida = $sql_partida['pk_partida'];
 
   #*******************

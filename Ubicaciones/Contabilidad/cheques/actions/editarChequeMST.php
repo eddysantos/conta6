@@ -156,8 +156,8 @@ if ($rowsChequeExiste == 0){
 		}
 
 		$rsltUpdateMST = $stmtUpdateMST->get_result();
-		$rowsUpdateMST = $rsltUpdateMST->num_rows;
-		$system_callback['aff_rows']['queryUpdateMST'] = $rowsUpdateMST;
+		#$rowsUpdateMST = $rsltUpdateMST->num_rows;
+		#$system_callback['aff_rows']['queryUpdateMST'] = $rowsUpdateMST;
 
 
 		$descripcion = "Se Actualizo el ChequeFolioControl: $idcheque_folControl Cheque: $cheque Cuenta:$cuenta Concepto: $concepto Fecha: $fecha Valor: $valor Expedido a: $opcion, $idOrd $nomOrd";
@@ -194,19 +194,11 @@ if ($rowsChequeExiste == 0){
 		  exit_script($system_callback);
 		}
 
-		// $affected = $stmt_cheEditDET->affected_rows;
 
 		$rsltcheEditDET = $stmt_cheEditDET->get_result();
-		$rowscheEditDET = $rsltcheEditDET->num_rows;
-		$system_callback['aff_rows']['query_cheEditDET'] = $rowscheEditDET;
+		#$rowscheEditDET = $rsltcheEditDET->num_rows;
+		#$system_callback['aff_rows']['query_cheEditDET'] = $rowscheEditDET;
 
-		// if ($affected == 0) {
-		// 	// die("El query no hizo ningún cambio a la base de datos[$stmt_cheEditDET->errno]: $stmt_cheEditDET->error");
-		//
-		// 	$system_callback['code'] = "500";
-		//   $system_callback['message'] = "El query no hizo ningún cambio a la base de datos[$stmt_cheEditDET->errno]: $stmt_cheEditDET->error";
-		//   exit_script($system_callback);
-		//  }
 
 
 
@@ -297,7 +289,7 @@ if ($rowsChequeExiste == 0){
 
 
 
-		$system_callback['data'] .= $cheque;
+		$system_callback['data'] = $cheque;
 		$system_callback['code'] = 1;
 		$system_callback['message'] = "Script called successfully!";
 

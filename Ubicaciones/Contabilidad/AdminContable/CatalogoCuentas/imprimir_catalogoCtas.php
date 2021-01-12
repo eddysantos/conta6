@@ -3,7 +3,14 @@
   require $root . '/Ubicaciones/barradenavegacion.php';
   require $root . '/Resources/PHP/actions/numtoletras.php';
 
+  $lst_cuentas = "";
+  #$id_cuentaMST = $_GET['id_cuentaMST'];
 
+  if (isset( $_GET['accion'] )){
+    $accion = $_GET['accion'];
+  }else{
+    $accion = "";
+  }
 	$sql_Select = "SELECT * from conta_cs_cuentas_mst ORDER BY pk_id_cuenta";
   $stmt = $db->prepare($sql_Select);
 	if (!($stmt)) { die("Error during query prepare [$db->errno]: $db->error");	}

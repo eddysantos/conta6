@@ -6,18 +6,12 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
    CUENTAS DE PRIMER NIVEL - CUENTA MAESTRA
 ************************************************/
 $accion = trim($_POST['accion']);
-$ctaSAT = trim($_POST['ctaSAT']);
-$natur = trim($_POST['naturSAT']);
-$Cta_Mta = trim($_POST['ctamaestra']);
-$Descripcion_Cta = $_POST['concepto'];
+
+
 
 if( $accion == 'MST' ){
 
-  // $ctaSAT = trim($_POST['ctaSAT']);
-  // $natur = trim($_POST['naturSAT']);
   $Tipo = trim($_POST['tipo']);
-  // $Cta_Mta = trim($_POST['ctamaestra']);
-  // $Descripcion_Cta = $_POST['concepto'] ;
   $s_cta_nivel = '1';
 
   $query = "INSERT INTO conta_cs_cuentas_mst (pk_id_cuenta,

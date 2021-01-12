@@ -495,10 +495,24 @@ function procesaXML(fileXML,contenido_XML){
   });
 }
 
-function infAddPartida(id_partida){
+function infAddPartida(id_partida,cuenta){
   seleccion = $('#opcionespolizas').val();
+
   //CompNal
-  if( seleccion == '2' ){ guardarCompNal(id_partida); }
+  if( seleccion == '2' ){
+		if( validarCtasGastoOficina(cuenta) == true ){
+			RFC = $('#cfdi-rfc').val();
+			if( RFC != 'PLA090609N21' ){
+				alertify.error("El receptor es: " +RFC);
+				return false;
+			}else{
+				guardarCompNal(id_partida);
+			}
+		}else{
+			guardarCompNal(id_partida);
+		}
+
+	}
 	// Cheque
 	if( seleccion == '3' ){ guardarCheque(id_partida); 	}
 	//CompExt

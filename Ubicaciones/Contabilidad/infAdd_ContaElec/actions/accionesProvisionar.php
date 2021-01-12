@@ -8,8 +8,10 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 
 
-	$usuario = trim($_POST['usuario']);
-	$id_aduana = trim($_POST['id_aduana']);
+	#$usuario = trim($_POST['usuario']);
+	#$id_aduana = trim($_POST['id_aduana']);
+
+
 	$tipo = trim($_POST['tipo']);
 	$id_poliza = trim($_POST['id_poliza']);
 	$UUID = trim($_POST['UUID']);
@@ -32,7 +34,8 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 	if( $accion == 'provisionar' ){
 		$Usuario = $usuario;
-		$Aduana = $id_aduana;
+		#$Aduana = $id_aduana;
+		$Aduana = $aduana;
 		$Poliza = $id_poliza;
 		$Fecha = $fecha_Poliza;
 		$Referencia = 0;
@@ -140,7 +143,8 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 
 	if( $accion == 'pagarProvision' ){
 		$Usuario = $usuario;
-		$Aduana = $id_aduana;
+		#$Aduana = $id_aduana;
+		$Aduana = $aduana;
 		$Poliza = $id_poliza;
 		$Fecha = $fecha_Poliza;
 		$Referencia = 0;

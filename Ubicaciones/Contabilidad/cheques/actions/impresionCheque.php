@@ -125,7 +125,7 @@ $encabezado = '<style>
       <td width="10%">'.$rowMST["fk_usuario"].'</td>
       <td width="30%">'.$fechaCaptura.'</td>
       <td width="15%">'.$rowMST["fk_id_poliza"].'</td>
-      <td width="15%">'.$rowMST["$txt_cancela"].'</td>
+      <td width="15%">'.$txt_cancela.'</td>
     </tr>
     <br />
     <tr>

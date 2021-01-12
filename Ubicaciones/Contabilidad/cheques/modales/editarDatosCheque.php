@@ -14,6 +14,11 @@
   $rowMST = $rslt->fetch_assoc();
 
   $opcion = $rowMST['s_tipoOrdenante'];
+  $nomBen = '';
+  $nomClt = '';
+  $nomEmp = '';
+  $nomProv = '';
+  
   if( $opcion == "BEN"){
     $idBen = $rowMST['fk_idOrd'];
     $nomBen = $rowMST['s_nomOrd'];

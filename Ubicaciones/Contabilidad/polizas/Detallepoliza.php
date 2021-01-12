@@ -71,7 +71,7 @@ if( $totalRegistrosSelect > 0 ){
         <tbody>
           <tr class="row align-items-center">
             <td class="col-md-1">
-              <input class="efecto h22" <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="off" value="<?php echo $tipo; ?>">
+              <input class="efecto h22 border-0" <?php echo $claseAdmin; ?> id="mstpol-tipo" type="text" db-id="" autocomplete="off" disabled value="<?php echo $tipo; ?>">
             </td>
             <td class="col-md-1">
               <input class="efecto h22 border-0" id="id_poliza" type="text" db-id="" autocomplete="off" disabled value="<?php echo $id_poliza; ?>">

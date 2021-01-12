@@ -20,11 +20,12 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 // $proveedor = trim($_POST['proveedor']);
 
 extract($_POST);
-if ($cheque == '') {$cheque = NULL;}
-if ($notaCred == '') {$notaCred = NULL;}
-if ($ctagastos == '') {$ctagastos = NULL;}
-if ($gastoOficina == '') {$gastoOficina = NULL;}
-if ($proveedor == '') {$proveedor = NULL;}
+if(!isset($cheque)){ $cheque = NULL;}
+if(!isset($notaCred)){ $notaCred = NULL;}
+if(!isset($ctagastos)){ $ctagastos = NULL;}
+if(!isset($gastoOficina)){ $gastoOficina = NULL;}
+if(!isset($proveedor)){ $proveedor = NULL;}
+
 $mesPoliza = date_format(date_create($fecha),'m');
 
 

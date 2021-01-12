@@ -13,16 +13,17 @@ $anticipo = trim($_POST['anticipo']);
 $cargo = trim($_POST['cargo']);
 $abono = trim($_POST['abono']);
 $desc = trim($_POST['desc']);
-$gastoOficina = trim($_POST['gastoOficina']);
-$proveedor = trim($_POST['proveedor']);
 $id_cheque = trim($_POST['id_cheque']);
 $cuentaMST = trim($_POST['cuentaMST']);
 $partidaCheque = trim($_POST['partidaCheque']);
 
 $fechaActual = date ("Y-m-d H:i:s",time ());
 
-if ($gastoOficina == '') {$gastoOficina = null;}
-if ($proveedor == '') {$proveedor = null;}
+$gastoOficina = null;
+$proveedor = null;
+if( isset( $_POST['gastoOficina'] )){ $gastoOficina = trim($_POST['gastoOficina']); }
+if( isset( $_POST['proveedor'] )){ $proveedor = trim($_POST['proveedor']);  }
+
 
 $query = "UPDATE conta_t_cheques_det SET
 fk_id_cuenta = ?,

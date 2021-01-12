@@ -229,9 +229,9 @@ $('#mConsChIdcheque').keydown(function(e){
           }
 
           fecha = $('#chFecha').val();
-          aduana = $('#txt_aduana').val();
+          aduana = $('#aduana_activa').val();
           tipoDoc = 1;
-          usuario = $('#txt_usuario').val();
+          usuario = $('#usuario_activo').val();
           permiso = "s_generar_x_fecha_anticipos";
 
           var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);

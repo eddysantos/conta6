@@ -45,63 +45,120 @@ $(document).ready(function(){
 //******************************************************************************
 //                             GENERAR ANTICIPO
 //******************************************************************************
-
-
-
+// nota adri: lo pase a generarAnticipo.php
 //GENERAR FOLIO ANTICIPO
-$('#genFolioAnticipo').click(function(){
+// $('#genFolioAnticipo').click(function(){
+//
+//   if($('#antfecha').val() == ""){
+//     alertify.error("Seleccione una fecha");
+//     $('#antfecha').focus();
+//     return false;
+//   }
+//
+//   if($('#antimporte').val() == "" || $('#antimporte').val() == 0){
+//     alertify.error("Ingrese un importe");
+//     $('#antimporte').focus();
+//     return false;
+//   }
+//
+//   if($('#antcliente').attr('db-id') == ""){
+//     alertify.error("Seleccione un cliente");
+//     $('#antcliente').focus();
+//     return false;
+//   }
+//
+//   if($('#antbcocliente').val() == "" || $('#antbcocliente').val() == 0){
+//     alertify.error("Seleccione un banco");
+//     $('#antbcocliente').focus();
+//     return false;
+//   }
+//
+//   if($('#antcuenta').val() == "" || $('#antcuenta').val() == 0){
+//     alertify.error("Seleccione una cuenta");
+//     $('#antcuenta').focus();
+//     return false;
+//   }
+//
+//   if($('#antconcepto').val() == ""){
+//     alertify.error("Ingrese un concepto");
+//     $('#antconcepto').focus();
+//     return false;
+//   }
+//
+//   fecha = $('#antfecha').val();
+//   aduana = $('#txt_aduana').val();
+//   tipoDoc = 5;
+//   usuario = $('#txt_usuario').val();
+//   permiso = "s_generar_x_fecha_anticipos";
+//
+//   var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
+//   //console.log(continuar);
+//   if(continuar == true) {
+//     genAnt();
+//   }else{
+//     //swal("Oops!", "Solicite cambio de fechas a Contabilidad", 'error');
+//     return false;
+//   }
+// });
 
-  if($('#antfecha').val() == ""){
-    alertify.error("Seleccione una fecha");
-    $('#antfecha').focus();
-    return false;
-  }
 
-  if($('#antimporte').val() == "" || $('#antimporte').val() == 0){
-    alertify.error("Ingrese un importe");
-    $('#antimporte').focus();
-    return false;
-  }
 
-  if($('#antcliente').attr('db-id') == ""){
-    alertify.error("Seleccione un cliente");
-    $('#antcliente').focus();
-    return false;
-  }
+// function Actualiza_Expedido_Cliente(){
+//   id_cliente = $('#antcliente').attr('db-id');
+//   lstCuentas('antGenClt',id_cliente);
+//   bcosClientes(id_cliente);
+// }
 
-  if($('#antbcocliente').val() == "" || $('#antbcocliente').val() == 0){
-    alertify.error("Seleccione un banco");
-    $('#antbcocliente').focus();
-    return false;
-  }
+// function lstCuentas(modulo,id_cliente){
+// 	var data = {
+//     id_cliente: id_cliente,
+//     modulo: modulo
+//   }
+//
+//   $.ajax({
+//     type: "POST",
+//     url: "/Ubicaciones/Contabilidad/anticipos/actions/lst_cuentas.php",
+//     data: data,
+//     success: 	function(r){
+//
+//       r = JSON.parse(r);
+//       if (r.code == 1) {
+//         //console.log(r.data);
+//         $('#antcuenta').html(r.data);
+//       } else {
+//         console.error(r.message);
+//       }
+//     },
+//     error: function(x){
+//       console.error(x);
+//     }
+//   });
+// }
 
-  if($('#antcuenta').val() == "" || $('#antcuenta').val() == 0){
-    alertify.error("Seleccione una cuenta");
-    $('#antcuenta').focus();
-    return false;
-  }
+// function bcosClientes(id_cliente){
+//   var data = {
+//     id_cliente: id_cliente
+//   }
+//
+//   $.ajax({
+//     type: "POST",
+//     url: "/Resources/PHP/actions/lst_bancos_clientes.php",
+//     data: data,
+//     success: 	function(r){
+//       r = JSON.parse(r);
+//       if (r.code == 1) {
+//         $('#antbcocliente').html(r.data);
+//       } else {
+//         console.error(r.message);
+//       }
+//     },
+//     error: function(x){
+//       console.error(x);
+//     }
+//   });
+// }
 
-  if($('#antconcepto').val() == ""){
-    alertify.error("Ingrese un concepto");
-    $('#antconcepto').focus();
-    return false;
-  }
 
-  fecha = $('#antfecha').val();
-  aduana = $('#txt_aduana').val();
-  tipoDoc = 5;
-  usuario = $('#txt_usuario').val();
-  permiso = "s_generar_x_fecha_anticipos";
-
-  var continuar = validarFechaCierre(fecha,aduana,tipoDoc,usuario,permiso);
-  //console.log(continuar);
-  if(continuar == true) {
-    genAnt();
-  }else{
-    //swal("Oops!", "Solicite cambio de fechas a Contabilidad", 'error');
-    return false;
-  }
-});
 
 // GENERAR FOLIO DE ANTICIPO
 function genAnt(){
@@ -908,11 +965,6 @@ function ultReg_DetAnt(){
   		;
   }
 
-  function Actualiza_Expedido_Cliente(){
-    id_cliente = $('#antcliente').attr('db-id');
-    lstCuentas('antGenClt',id_cliente);
-    bcosClientes(id_cliente);
-  }
 
   function Actualiza_Expedido_Cliente_MST(){
     id_cliente = $('#fk_id_cliente_antmst').attr('db-id');
@@ -920,31 +972,6 @@ function ultReg_DetAnt(){
     bcosClientes_MST(id_cliente);
   }
 
-  function lstCuentas(modulo,id_cliente){
-  	var data = {
-      id_cliente: id_cliente,
-      modulo: modulo
-    }
-
-    $.ajax({
-      type: "POST",
-      url: "/Ubicaciones/Contabilidad/anticipos/actions/lst_cuentas.php",
-      data: data,
-      success: 	function(r){
-
-        r = JSON.parse(r);
-        if (r.code == 1) {
-          //console.log(r.data);
-          $('#antcuenta').html(r.data);
-        } else {
-          console.error(r.message);
-        }
-      },
-      error: function(x){
-        console.error(x);
-      }
-    });
-  }
 
   function lstCuentas_2(modulo,id_cliente){
   	var data = {
@@ -1004,28 +1031,6 @@ function ultReg_DetAnt(){
     $('#fk_id_cuentaMST').val(cuentaMST);
   }
 
-  function bcosClientes(id_cliente){
-    var data = {
-      id_cliente: id_cliente
-    }
-
-    $.ajax({
-      type: "POST",
-      url: "/Resources/PHP/actions/lst_bancos_clientes.php",
-      data: data,
-      success: 	function(r){
-        r = JSON.parse(r);
-        if (r.code == 1) {
-          $('#antbcocliente').html(r.data);
-        } else {
-          console.error(r.message);
-        }
-      },
-      error: function(x){
-        console.error(x);
-      }
-    });
-  }
 
 
 //LISTA BANCO DEL CLIENTE

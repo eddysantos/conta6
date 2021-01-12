@@ -5,7 +5,7 @@
     if (!($stmt_oficina->execute())) { die("Error during query prepare [$stmt_oficina->errno]: $stmt_oficina->error"); }
     $rslt_oficina = $stmt_oficina->get_result();
 
-    $lst_oficinasPermitidas = '';
+    $lst_oficinasPermitidas = "<option value='0'>ADUANA</option>";
     while ($row_oficina = $rslt_oficina->fetch_assoc()){
 
       if($row_oficina['pk_id_aduana'] == 160 && $oRst_permisos['s_contab_Per_160'] == 1 ){

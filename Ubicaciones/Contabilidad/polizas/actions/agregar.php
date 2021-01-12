@@ -21,32 +21,46 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 extract($_POST);
 
 if ($cheque == '') {$cheque = NULL;}
-if ($notaCred == '') {$notaCred = NULL;}
-if ($ctagastos == '') {$ctagastos = NULL;}
+#if ($notaCred == '') {$notaCred = NULL;}
+#if ($ctagastos == '') {$ctagastos = NULL;}
+
+if(!isset($notaCred)){ $notaCred = 0; }
+if(!isset($ctagastos)){ $ctagastos = 0; }
+
 if ($gastoOficina == '') {$gastoOficina = NULL;}
 if ($proveedor == '') {$proveedor = NULL;}
 
-require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
 
-$affected = $stmt->affected_rows;
-$system_callback['affected'] = $affected;
-$system_callback['datos'] = $_POST;
+require $root . '/Ubicaciones/Contabilidad/polizas/actions/consulta_existeRegistro.php';//$rows_polCapt
 
-if ($affected == 0) {
-  $system_callback['code'] = 2;
-  $system_callback['message'] = "El query no hizo ningún cambio a la base de datos";
+if( $rows_polCapt == 0 ){
+  require $root . '/Resources/PHP/actions/insertaDetallePoliza.php';
+
+  $affected = $stmt->affected_rows;
+  $system_callback['affected'] = $affected;
+  $system_callback['datos'] = $_POST;
+
+  if ($affected == 0) {
+    $system_callback['code'] = 2;
+    $system_callback['message'] = "El query no hizo ningún cambio a la base de datos";
+    exit_script($system_callback);
+  }
+
+  $descripcion = "Se inserto Poliza: $id_poliza Cta: $cuenta Ref:$id_referencia Clt:$id_cliente Doc:$documento Fac:$factura Ant:$anticipo Ch:$cheque Des:$desc Cargo:$cargo Abono:$abono Gasto:$gastoOficina Prov:$proveedor";
+
+  $clave = 'polizas';
+  $folio = $id_poliza;
+  require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
+
+  $system_callback['code'] = 1;
+  $system_callback['message'] = "Script called successfully!";
   exit_script($system_callback);
 }
-
-$descripcion = "Se inserto Poliza: $id_poliza Cta: $cuenta Ref:$id_referencia Clt:$id_cliente Doc:$documento Fac:$factura Ant:$anticipo Ch:$cheque Des:$desc Cargo:$cargo Abono:$abono Gasto:$gastoOficina Prov:$proveedor";
-
-$clave = 'polizas';
-$folio = $id_poliza;
-require $root . '/Resources/PHP/actions/registroAccionesBitacora.php';
-
-$system_callback['code'] = 1;
-$system_callback['message'] = "Script called successfully!";
-exit_script($system_callback);
+if( $rows_polCapt > 0 ){
+  $system_callback['code'] = 2;
+  $system_callback['message'] = "No puede haber registros iguales!";
+  exit_script($system_callback);
+}
 
 
 ?>

@@ -6,10 +6,12 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 $system_callback = [];
 $data = $_POST;
 
+
+#$aduana = trim($_POST['diaaduana']);
+#$usuario = trim($_POST['usuario']);
+# nota adri; para cheques $aduana y $usuario estan demas
 $tipo = trim($_POST['diatipo']);
-$aduana = trim($_POST['diaaduana']);
 $fecha = trim($_POST['diafecha']);
-$usuario = trim($_POST['usuario']);
 $permiso = trim($_POST['permiso']);
 
 if( $oRst_permisos[$permiso] == 1){

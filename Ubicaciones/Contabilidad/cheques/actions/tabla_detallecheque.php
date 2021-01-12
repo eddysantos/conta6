@@ -5,6 +5,7 @@ require $root . '/Resources/PHP/Utilities/initialScript.php';
 $id_cheque = trim($_POST['id_cheque']);
 $id_ctaMST = trim($_POST['id_ctaMST']);
 $idcheque_folControl = $_POST['idcheque_folControl'];
+$system_callback['data'] = "";
 
 $query = "SELECT * FROM conta_t_cheques_det WHERE fk_idcheque_folControl = ?";
 

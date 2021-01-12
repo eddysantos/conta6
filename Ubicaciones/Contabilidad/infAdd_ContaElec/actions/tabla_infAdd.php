@@ -42,7 +42,7 @@ while ($row = $rslt->fetch_assoc()) {
   $s_desc = utf8_encode($row['s_desc']);
 
   if( $oRst_permisos['s_modificar_contaElect'] == 1 ){
-    $urlADD = "<a href='#' onclick='infAddPartida($row[pk_partida])'>
+    $urlADD = "<a href='#' onclick='infAddPartida($row[pk_partida],&#39;$fk_id_cuenta&#39;)'>
                 <img class='icochico' src='/Resources/iconos/001-add.svg'>
               </a>";
   }

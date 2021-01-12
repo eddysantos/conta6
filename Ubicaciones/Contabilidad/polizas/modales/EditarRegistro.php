@@ -31,7 +31,7 @@
                   <!--td class="col-md-2"-->
                   <td class="gto_fk_gastoAduana col-md-2 input-effect " style="display:none">
                     <!-- PRUEBA -->
-                    <input class="efecto popup-input tiene-contenido" id="fk_gastoAduana" type="text" id-display="#popup-display-oficina" action="oficinas" db-id="" autocomplete="off" onChange="valDescripOficina()">
+                    <input class="efecto popup-input tiene-contenido" id="fk_gastoAduana" type="text" id-display="#popup-display-oficina" action="oficinas" db-id="" autocomplete="off" onChange="valDescripOficina_modal()">
                     <div class="popup-list" id="popup-display-oficina" style="display:none"></div>
                     <label for="fk_gastoAduana">Gasto Oficina</label>
                   </td>
@@ -83,7 +83,7 @@
 
                 <tr class="row mt-3">
                   <td class="col-md-12">
-                    <input  class="efecto tiene-contenido" id="s_desc" onchange="valDescripOficina();eliminaBlancosIntermedios(this);todasMayusculas(this);">
+                    <input  class="efecto tiene-contenido" id="s_desc" onchange="valDescripOficina_modal();eliminaBlancosIntermedios(this);todasMayusculas(this);">
                     <label for="s_desc">Concepto</label>
                   </td>
                 </tr>

@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 
 //GENERAR FOLIO ANTICIPO
-$('#genFolioAnticipo').click(function(){
+//$('#genFolioAnticipo').click(function(){
 
   if($('#antfecha').val() == ""){
     alertify.error("Seleccione una fecha");

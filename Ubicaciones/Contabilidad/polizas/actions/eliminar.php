@@ -56,7 +56,28 @@ if ($affected_eliminaPartPol > 0) {
 
 
   #*** ELIMINAR EN CONTABILIDAD ELECTRONICA LOS REGISTROS DE LA PARTIDA QUE SE BORRA
-  require $root . '/Resources/PHP/actions/contaElect_eliminarPartidaPol.php';
+  #require $root . '/Resources/PHP/actions/contaElect_eliminarPartidaPol.php';
+  $query_CEeliminarpartida = "DELETE FROM conta_t_polizas_det_contaelec WHERE fk_partidaPol = ?";
+  $stmt_CEeliminarpartida = $db->prepare($query_CEeliminarpartida);
+  if (!($stmt_CEeliminarpartida)) {
+    $system_callback['code'] = "500";
+    $system_callback['message'] = "Error during query prepare CEeliminarpartida [$db->errno]: $db->error";
+    exit_script($system_callback);
+  }
+
+  $stmt_CEeliminarpartida->bind_param('s',$partida);
+  if (!($stmt_CEeliminarpartida)) {
+    $system_callback['code'] = "500";
+    $system_callback['message'] = "Error during variables binding CEeliminarpartida [$stmt_CEeliminarpartida->errno]: $stmt_CEeliminarpartida->error";
+    exit_script($system_callback);
+  }
+
+  if (!($stmt_CEeliminarpartida->execute())) {
+    $system_callback['code'] = "500";
+    $system_callback['message'] = "Error during query execution CEeliminarpartida [$stmt_CEeliminarpartida->errno]: $stmt_CEeliminarpartida->error";
+    exit_script($system_callback);
+  }
+  #***
 
   $descripcion = "Se elimino la Partida: $partida de la Poliza: $id_poliza";
   error_log($descripcion);
